@@ -16,9 +16,18 @@
   .govuk-header {
     @include govuk-font($size: 16, $line-height: 1);
 
-    border-bottom: govuk-spacing(2) solid govuk-colour("white");
+    @include _govuk-rebrand(
+      "border-bottom",
+      $from: govuk-spacing(2) solid govuk-colour("white"),
+      $to: none
+    );
+    @include _govuk-rebrand(
+      "background",
+      $from: $govuk-header-background,
+      $to: $govuk-brand-colour
+    );
+
     color: $govuk-header-text;
-    background: $govuk-header-background;
   }
 
   .govuk-header__container--full-width {
@@ -36,6 +45,17 @@
     margin-bottom: -$govuk-header-border-width;
     padding-top: govuk-spacing($govuk-header-vertical-spacing-value);
     border-bottom: $govuk-header-border-width solid $govuk-header-border-color;
+
+    @include _govuk-rebrand {
+      // Remove the space allocated to the blue bar
+      margin-bottom: 0;
+
+      // Remove padding as the child elements are now responsible for spacing
+      padding-top: 0;
+
+      // Remove the blue bar
+      border-bottom: none;
+    }
   }
 
   .govuk-header--full-width-border {
@@ -97,6 +117,19 @@
         margin-top: $product-name-offset-tablet - 0.5px;
       }
     }
+
+    @include _govuk-rebrand {
+      // Stop reducing the product name size on narrow screens
+      font-size: govuk-px-to-rem(30px);
+
+      // Reduce letter spacing (this is roughly equivalent to -3.5% in Figma)
+      letter-spacing: -0.035em;
+
+      // Change product name font-size to match the GOV.UK logotype on desktop
+      @include govuk-media-query($from: desktop) {
+        margin-top: 1px;
+      }
+    }
   }
 
   .govuk-header__link {
@@ -136,6 +169,23 @@
       display: inline;
     }
 
+    @include _govuk-rebrand {
+      // Turn the logo lockup into an inline flexbox so we have more control over
+      // the margins when a product name is involved
+      display: inline-flex;
+      flex-wrap: wrap;
+
+      // IE doesn't support `gap`, only remove the logo's margin if we can use it
+      @supports (gap: 1px) {
+        gap: 7px;
+
+        // stylelint-disable-next-line max-nesting-depth
+        .govuk-header__logotype {
+          margin-right: 0;
+        }
+      }
+    }
+
     &:link,
     &:visited {
       text-decoration: none;
@@ -160,6 +210,15 @@
     margin-bottom: govuk-spacing(2);
     @include govuk-font-size($size: 24);
     @include govuk-typography-weight-bold;
+
+    @include _govuk-rebrand {
+      // Apply margins to internal elements to emulate padding
+      margin-bottom: govuk-spacing(3);
+
+      @include govuk-media-query($from: desktop) {
+        margin: govuk-spacing(3) 0;
+      }
+    }
   }
 
   .govuk-header__logo,
@@ -172,6 +231,12 @@
     // Protect the absolute positioned menu button from overlapping with the
     // logo with right padding using the button's width
     padding-right: $govuk-header-menu-button-width;
+
+    @include _govuk-rebrand {
+      // Apply margins to internal elements to emulate padding
+      margin-bottom: 0;
+      padding: govuk-spacing(3) 0;
+    }
 
     @include govuk-media-query($from: desktop) {
       width: 33.33%;
@@ -260,6 +325,22 @@
   .govuk-header__navigation {
     @include govuk-media-query($from: desktop) {
       margin-bottom: govuk-spacing(2);
+
+      @include _govuk-rebrand {
+        // Apply margins to internal elements to emulate padding
+        margin-bottom: 0;
+        padding: govuk-spacing(3) 0;
+      }
+    }
+  }
+
+  .govuk-header__service-name + .govuk-header__navigation {
+    @include _govuk-rebrand {
+      // If there's both a service name and navigation,
+      // remove the extra margin between them on desktop
+      @include govuk-media-query($from: desktop) {
+        padding-top: 0;
+      }
     }
   }
 
@@ -271,6 +352,12 @@
 
     &[hidden] {
       display: none;
+    }
+
+    @include _govuk-rebrand {
+      @include govuk-media-query($until: desktop) {
+        padding-bottom: govuk-spacing(3);
+      }
     }
   }
 
@@ -298,14 +385,33 @@
       @include govuk-typography-weight-bold;
       white-space: nowrap;
     }
+
+    @include _govuk-rebrand {
+      // Remove the dividing lines between mobile nav items
+      border-bottom: none;
+
+      // Reduce default weight of links so that we can use bold for active ones
+      a {
+        @include govuk-typography-weight-regular;
+      }
+    }
   }
 
   .govuk-header__navigation-item--active {
     a {
+      @include _govuk-rebrand {
+        // Change active links to use bold text instead of changing colour
+        @include govuk-typography-weight-bold;
+      }
+
       &:link,
       &:hover,
       &:visited {
         color: $govuk-header-link-active;
+
+        @include _govuk-rebrand {
+          color: inherit;
+        }
       }
 
       // When printing, use the normal blue as this contrasts better with the
@@ -344,119 +450,6 @@
       &::after {
         display: none;
       }
-    }
-  }
-}
-
-// Rebrand styles
-.govuk-header--rebrand {
-  // Remove border that placeholds the blue bar
-  border-bottom: none;
-
-  // Make the background brand blue
-  background-color: $govuk-brand-colour;
-
-  .govuk-header__container {
-    // Remove the space allocated to the blue bar
-    margin-bottom: 0;
-
-    // Remove padding as the child elements are now responsible for spacing
-    padding-top: 0;
-
-    // Remove the blue bar
-    border-bottom: none;
-  }
-
-  // Apply margins to internal elements to emulate padding
-  .govuk-header__logo {
-    margin-bottom: 0;
-    padding: govuk-spacing(3) 0;
-  }
-
-  .govuk-header__navigation {
-    @include govuk-media-query($from: desktop) {
-      margin-bottom: 0;
-      padding: govuk-spacing(3) 0;
-    }
-  }
-
-  .govuk-header__navigation-list {
-    @include govuk-media-query($until: desktop) {
-      padding-bottom: govuk-spacing(3);
-    }
-  }
-
-  .govuk-header__service-name {
-    margin-bottom: govuk-spacing(3);
-
-    @include govuk-media-query($from: desktop) {
-      margin: govuk-spacing(3) 0;
-    }
-  }
-
-  // If there's both a service name and navigation,
-  // remove the extra margin between them on desktop
-  .govuk-header__service-name + .govuk-header__navigation {
-    @include govuk-media-query($from: desktop) {
-      padding-top: 0;
-    }
-  }
-
-  .govuk-header__navigation-item {
-    // Remove the dividing lines between mobile nav items
-    border-bottom: none;
-
-    // Reduce default weight of links so that we can use bold for active ones
-    a {
-      @include govuk-typography-weight-regular;
-    }
-  }
-
-  // Change active links to use bold text instead of changing colour
-  .govuk-header__navigation-item--active {
-    a {
-      @include govuk-typography-weight-bold;
-
-      &:link,
-      &:hover,
-      &:visited {
-        color: inherit;
-      }
-
-      &:focus {
-        color: $govuk-focus-text-colour;
-      }
-    }
-  }
-
-  // Turn the logo lockup into an inline flexbox so we have more control over
-  // the margins when a product name is involved
-  .govuk-header__link--homepage {
-    display: inline-flex;
-    flex-wrap: wrap;
-  }
-
-  // IE doesn't support `gap`, only remove the logo's margin if we can use it
-  @supports (gap: 1px) {
-    .govuk-header__link--homepage {
-      gap: 7px;
-    }
-
-    .govuk-header__logotype {
-      margin-right: 0;
-    }
-  }
-
-  .govuk-header__product-name {
-    // Stop reducing the product name size on narrow screens
-    font-size: govuk-px-to-rem(30px);
-
-    // Reduce letter spacing (this is roughly equivalent to -3.5% in Figma)
-    letter-spacing: -0.035em;
-
-    // Change product name font-size to match the GOV.UK logotype on desktop
-    @include govuk-media-query($from: desktop) {
-      margin-top: 1px;
     }
   }
 }
