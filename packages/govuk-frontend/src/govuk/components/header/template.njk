@@ -3,7 +3,7 @@
 
 {%- set menuButtonText = params.menuButtonText if params.menuButtonText else 'Menu' -%}
 
-<header class="govuk-header {%- if params.rebrand %} govuk-header--rebrand{% endif %} {%- if params.classes %} {{ params.classes }}{% endif %}" data-module="govuk-header"
+<header class="govuk-header {%- if params.classes %} {{ params.classes }}{% endif %}" data-module="govuk-header"
   {{- govukAttributes(params.attributes) }}>
   <div class="govuk-header__container {{ params.containerClasses | default("govuk-width-container", true) }}">
     <div class="govuk-header__logo">
