@@ -13,7 +13,7 @@
           ariaLabelText: "GOV.UK",
           useTudorCrown: params.useTudorCrown,
           rebrand: params.rebrand
-        }) }}
+        }) | trim | indent(8) }}
         {% if (params.productName) %}
         <span class="govuk-header__product-name">
           {{ params.productName }}
