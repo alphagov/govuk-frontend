@@ -59,16 +59,16 @@ releases of Frontend. #}
   the keyboard to navigate. #}
   <svg
     focusable="false"
-    role="img"
+    role="{{ "img" if params.ariaLabelText else "presentation" }}"
     class="govuk-logo {%- if params.classes %} {{ params.classes }}{% endif %}"
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 {{ svgWidth }} 30"
     height="30"
     width="{{ svgWidth }}"
-    aria-label="GOV.UK"
+    {%- if params.ariaLabelText %} aria-label="{{ params.ariaLabelText }}"{% endif %}
     {{- govukAttributes(params.attributes) }}
   >
-    <title>GOV.UK</title>
+    {%- if params.ariaLabelText %}<title>{{ params.ariaLabelText }}</title>{% endif %}
     {{ (_stEdwardsCrown if not useTudorCrown else _tudorCrown) | safe | trim | indent(2) }}
     {%- if useLogotype %}
       {{ (_dotLogotype if rebrand else _logotype) | safe | trim | indent(2) }}
