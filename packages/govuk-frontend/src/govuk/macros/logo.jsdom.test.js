@@ -110,7 +110,7 @@ describe('logo.njk', () => {
   })
 
   describe('if `useTudorCrown` is false', () => {
-    it("uses the St Edward's Crown", () => {
+    it("uses the St Edward's Crown with logotype", () => {
       document.body.innerHTML = renderMacro(
         'govukLogo',
         './govuk/macros/logo.njk',
@@ -123,6 +123,24 @@ describe('logo.njk', () => {
       const $svg = document.querySelector('.govuk-logo')
 
       expect($svg).toHaveAttribute('viewBox', '0 0 152 30')
+    })
+  })
+
+  describe('if `useTudorCrown` and `useLogotype` are false', () => {
+    it("uses the St Edward's Crown in isolation", () => {
+      document.body.innerHTML = renderMacro(
+        'govukLogo',
+        './govuk/macros/logo.njk',
+        {
+          context: {
+            useTudorCrown: false,
+            useLogotype: false
+          }
+        }
+      )
+      const $svg = document.querySelector('.govuk-logo')
+
+      expect($svg).toHaveAttribute('viewBox', '0 0 36 30')
     })
   })
 
@@ -142,7 +160,7 @@ describe('logo.njk', () => {
       $svg = document.querySelector('.govuk-logo')
     })
 
-    it('uses the Dot Logotype if `rebrand` is true', () => {
+    it('uses the Dot logotype if `rebrand` is true', () => {
       const $logotypeDot = $svg.querySelector('.govuk-logo__dot')
 
       expect($logotypeDot).not.toBeNull()
