@@ -23,20 +23,12 @@ describe('logo.njk', () => {
       expect($logotypeDot).toBeNull()
     })
 
-    it('sets focusable="false" so that IE does not treat it as an interactive element', () => {
+    it('sets `focusable="false"` so that IE does not treat it as an interactive element', () => {
       expect($svg).toHaveAttribute('focusable', 'false')
     })
 
-    it('sets role="img" so that assistive technologies do not treat it as an embedded document', () => {
-      expect($svg).toHaveAttribute('role', 'img')
-    })
-
-    it('sets aria-label so that assistive technologies have an accessible name to fall back to', () => {
-      expect($svg).toHaveAttribute('aria-label', 'GOV.UK')
-    })
-
-    it('has an embedded <title> element to serve as alternative text', () => {
-      expect($svg.innerHTML).toContain('<title>GOV.UK</title>')
+    it('sets `role="presentation"` so that assistive technologies do not treat it as an embedded document', () => {
+      expect($svg).toHaveAttribute('role', 'presentation')
     })
   })
 
@@ -60,7 +52,7 @@ describe('logo.njk', () => {
       expect($svg).toHaveAttribute('data-test-attribute-2', 'value-2')
     })
 
-    it('renders classes', () => {
+    it('renders classes correctly', () => {
       document.body.innerHTML = renderMacro(
         'govukLogo',
         './govuk/macros/logo.njk',
@@ -73,6 +65,32 @@ describe('logo.njk', () => {
 
       const $svg = document.querySelector('.govuk-logo')
       expect($svg.classList).toContain('app-logo--custom-modifier')
+    })
+
+    describe('if `ariaLabelText` is set', () => {
+      let $svg
+
+      beforeAll(() => {
+        document.body.innerHTML = renderMacro(
+          'govukLogo',
+          './govuk/macros/logo.njk',
+          {
+            context: {
+              ariaLabelText: 'test string'
+            }
+          }
+        )
+        $svg = document.querySelector('.govuk-logo')
+      })
+
+      it('renders `aria-label` and `<title>`', () => {
+        expect($svg).toHaveAttribute('aria-label', 'test string')
+        expect($svg.innerHTML).toContain('<title>test string</title>')
+      })
+
+      it('changes the `role` to `img`', () => {
+        expect($svg).toHaveAttribute('role', 'img')
+      })
     })
   })
 
@@ -92,7 +110,7 @@ describe('logo.njk', () => {
       $svg = document.querySelector('.govuk-logo')
     })
 
-    it('reduces the viewBox width', () => {
+    it('reduces the `viewBox` width', () => {
       expect($svg).toHaveAttribute('viewBox', '0 0 32 30')
     })
 

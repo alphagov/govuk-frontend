@@ -10,6 +10,7 @@
       <a href="{{ params.homepageUrl | default("/", true) }}" class="govuk-header__link govuk-header__link--homepage">
         {{ govukLogo({
           classes: "govuk-header__logotype",
+          ariaLabelText: "GOV.UK",
           useTudorCrown: params.useTudorCrown
         }) }}
         {% if (params.productName) %}
