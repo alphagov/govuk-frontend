@@ -6,6 +6,17 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 ### New features
 
+#### Use the refreshed GOV.UK brand
+
+> Placeholder for instructions on enabling the brand and when it's allowed to be deployed to live.
+
+These changes affect the Header, Footer, Service navigation, and Cookie banner components. Ensure that they still work as expected after enabling the refreshed brand.
+
+These changes were made in the following pull requests:
+
+- [#5798: Add mixin to help rebrand specific properties](https://github.com/alphagov/govuk-frontend/pull/5798)
+- [#5793: Add GOV.UK logo macro](https://github.com/alphagov/govuk-frontend/pull/5793)
+
 #### Footer top border is now consistent with GOV.UK
 
 We've updated the border of the Footer component so it matches the border used on GOV.UK. This will provide a more consistent experience for users as they navigate from GOV.UK to services.
