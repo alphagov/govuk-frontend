@@ -16,16 +16,8 @@
   .govuk-header {
     @include govuk-font($size: 16, $line-height: 1);
 
-    @include _govuk-rebrand(
-      "border-bottom",
-      $from: govuk-spacing(2) solid govuk-colour("white"),
-      $to: none
-    );
-    @include _govuk-rebrand(
-      "background",
-      $from: $govuk-header-background,
-      $to: $govuk-brand-colour
-    );
+    @include _govuk-rebrand("border-bottom", $from: govuk-spacing(2) solid govuk-colour("white"), $to: none);
+    @include _govuk-rebrand("background", $from: $govuk-header-background, $to: $govuk-brand-colour);
 
     color: $govuk-header-text;
   }
@@ -88,6 +80,26 @@
     // and focus states neat
     &:last-child {
       margin-right: 0;
+    }
+  }
+
+  // Colour in the Dot
+  .govuk-logo-dot {
+    fill: #11e0f1;
+
+    // Override Dot colour when printing
+    @include govuk-media-query($media-type: print) {
+      fill: currentcolor;
+    }
+
+    // Override Dot colour on forced colours mode
+    @media (forced-colors: active) {
+      fill: currentcolor;
+    }
+
+    // Override Dot colour on focus
+    :focus & {
+      fill: currentcolor;
     }
   }
 
