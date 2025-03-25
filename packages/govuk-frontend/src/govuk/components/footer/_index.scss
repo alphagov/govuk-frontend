@@ -71,9 +71,10 @@
     text-wrap: balance;
   }
 
-  .govuk-footer__copyright-logo {
-    display: inline-block;
-    min-width: $govuk-footer-crest-image-width;
+  .govuk-footer__copyright-logo::before {
+    content: "";
+    display: block;
+    width: 100%;
     padding-top: ($govuk-footer-crest-image-height + govuk-spacing(2));
     background-image: govuk-image-url("govuk-crest.svg");
     background-repeat: no-repeat;
@@ -81,6 +82,7 @@
     background-size: $govuk-footer-crest-image-width $govuk-footer-crest-image-height;
     text-align: center;
     white-space: nowrap;
+    filter: brightness(calc(5 / 45));
   }
 
   .govuk-footer__inline-list {

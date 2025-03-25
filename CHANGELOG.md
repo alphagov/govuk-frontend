@@ -23,6 +23,12 @@ We've updated the border of the Footer component so it matches the border used o
 
 This change was introduced in [pull request #5792: Update footer top border to be consistent with GOV.UK](https://github.com/alphagov/govuk-frontend/pull/5792)
 
+#### Royal Arms in the Footer now matches the text's colour
+
+We've updated the colour of the Royal Arms in the [GOV.UK footer](https://design-system.service.gov.uk/components/footer/) so it matches the text colour in browsers supporting the `filter` CSS property.
+
+This improves its accessibility and reduces the number of colours used in the footer.
+
 ### Fixes
 
 We've made fixes to GOV.UK Frontend in the following pull requests:
