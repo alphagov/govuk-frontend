@@ -1,0 +1,39 @@
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes -%}
+{% from "govuk/components/button/macro.njk" import govukButton -%}
+{% from "govuk/components/details/macro.njk" import govukDetails -%}
+
+{%- set featureFlagHtml -%}
+  <h2 class="govuk-heading-m">Feature flag control</h2>
+  <p class="govuk-body">This is an experimental feature for turning the 'rebrand' feature flag on and off only.</p>
+  <form method="post" action="/set-rebrand">
+    {{ govukCheckboxes({
+      name: 'setRebrand',
+      items: [
+        {
+          text: 'Rebrand feature flag on',
+          value: 'true',
+          checked: useRebrand
+        }
+      ]
+    }) }}
+
+    {{ govukButton({
+      text: 'Submit'
+    }) }}
+  </form>
+  <p class="govuk-body">
+    <a href="{{ '?' if showAllFlagStates else '?showAllFlagStates' }}" class="govuk-link">
+      {{'Only show one state' if showAllFlagStates else 'Show all flag states'}}
+    </a>
+  </p>
+{%- endset -%}
+
+<div class="app-feature-flag-banner">
+  <div class="govuk-width-container">
+    {{ govukDetails({
+      summaryText: 'Feature flags',
+      html: featureFlagHtml,
+      classes: 'govuk-!-margin-bottom-0'
+    }) }}
+  </div>
+</div>
