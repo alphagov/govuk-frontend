@@ -8,5 +8,6 @@ $govuk-suppressed-warnings: ("organisation-colours");
 @import "partials/app";
 @import "partials/code";
 @import "partials/banner";
+@import "partials/feature-flag-banner";
 @import "partials/organisation-swatch";
 @import "partials/prose";
