@@ -10,7 +10,7 @@ describe('logo.njk', () => {
         './govuk/macros/logo.njk',
         {}
       )
-      $svg = document.querySelector('.govuk-logo')
+      $svg = document.querySelector('svg')
     })
 
     it('defaults to Tudor crown', () => {
@@ -18,7 +18,7 @@ describe('logo.njk', () => {
     })
 
     it('defaults to old logotype', () => {
-      const $logotypeDot = $svg.querySelector('.govuk-logo__dot')
+      const $logotypeDot = $svg.querySelector('.govuk-logo-dot')
 
       expect($logotypeDot).toBeNull()
     })
@@ -47,7 +47,7 @@ describe('logo.njk', () => {
         }
       )
 
-      const $svg = document.querySelector('.govuk-logo')
+      const $svg = document.querySelector('svg')
       expect($svg).toHaveAttribute('data-test-attribute', 'value')
       expect($svg).toHaveAttribute('data-test-attribute-2', 'value-2')
     })
@@ -63,7 +63,7 @@ describe('logo.njk', () => {
         }
       )
 
-      const $svg = document.querySelector('.govuk-logo')
+      const $svg = document.querySelector('svg')
       expect($svg.classList).toContain('app-logo--custom-modifier')
     })
 
@@ -80,7 +80,7 @@ describe('logo.njk', () => {
             }
           }
         )
-        $svg = document.querySelector('.govuk-logo')
+        $svg = document.querySelector('svg')
       })
 
       it('renders `aria-label` and `<title>`', () => {
@@ -107,7 +107,7 @@ describe('logo.njk', () => {
           }
         }
       )
-      $svg = document.querySelector('.govuk-logo')
+      $svg = document.querySelector('svg')
     })
 
     it('reduces the `viewBox` width', () => {
@@ -119,8 +119,8 @@ describe('logo.njk', () => {
     })
 
     it('does not render the logotype element', () => {
-      const $crown = $svg.querySelector('.govuk-logo__crown')
-      const $logotype = $svg.querySelector('.govuk-logo__logotype')
+      const $crown = $svg.querySelector('g')
+      const $logotype = $svg.querySelector('g + path')
 
       expect($crown).not.toBeNull()
       expect($logotype).toBeNull()
@@ -138,7 +138,7 @@ describe('logo.njk', () => {
           }
         }
       )
-      const $svg = document.querySelector('.govuk-logo')
+      const $svg = document.querySelector('svg')
 
       expect($svg).toHaveAttribute('viewBox', '0 0 152 30')
     })
@@ -156,7 +156,7 @@ describe('logo.njk', () => {
           }
         }
       )
-      const $svg = document.querySelector('.govuk-logo')
+      const $svg = document.querySelector('svg')
 
       expect($svg).toHaveAttribute('viewBox', '0 0 36 30')
     })
@@ -175,13 +175,14 @@ describe('logo.njk', () => {
           }
         }
       )
-      $svg = document.querySelector('.govuk-logo')
+      $svg = document.querySelector('svg')
     })
 
     it('uses the Dot logotype if `rebrand` is true', () => {
-      const $logotypeDot = $svg.querySelector('.govuk-logo__dot')
+      const $logotypeDot = $svg.querySelector('g ~ circle')
 
       expect($logotypeDot).not.toBeNull()
+      expect($logotypeDot).toHaveClass('govuk-logo-dot')
     })
 
     it('forces use of the Tudor Crown if `rebrand` is true', () => {
