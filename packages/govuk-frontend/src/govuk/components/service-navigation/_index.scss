@@ -8,8 +8,18 @@
   $govuk-service-navigation-link-colour: govuk-shade($govuk-link-colour, 10%);
 
   .govuk-service-navigation {
-    border-bottom: 1px solid $govuk-service-navigation-border-colour;
-    background-color: $govuk-service-navigation-background;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    @include _govuk-rebrand(
+      "border-bottom-color",
+      $from: $govuk-service-navigation-border-colour,
+      $to: $_govuk-rebrand-border-colour-on-blue-tint-95
+    );
+    @include _govuk-rebrand(
+      "background-color",
+      $from: $govuk-service-navigation-background,
+      $to: $_govuk-rebrand-template-background-colour
+    );
   }
 
   .govuk-service-navigation__container {
