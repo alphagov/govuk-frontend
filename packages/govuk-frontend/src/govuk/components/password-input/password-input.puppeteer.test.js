@@ -119,7 +119,7 @@ describe('/components/password-input', () => {
           )
 
           // Submit the form
-          await page.click('[type="submit"]')
+          await page.click('main [type="submit"]')
 
           // Check the input type again
           const afterSubmitType = await page.$eval(inputSelector, (el) =>
