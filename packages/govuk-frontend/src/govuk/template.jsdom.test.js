@@ -153,7 +153,7 @@ describe('Template', () => {
       it('has a mask-icon', () => {
         const $icon = document.querySelector('link[rel="mask-icon"]')
 
-        expect($icon).toHaveAttribute('color', '#0b0c0c')
+        expect($icon).toHaveAttribute('color', '#1d70b8')
         expect($icon).toHaveAttribute(
           'href',
           '/assets/images/govuk-icon-mask.svg'
@@ -221,11 +221,11 @@ describe('Template', () => {
     })
 
     describe('<meta name="theme-color">', () => {
-      it('has a default content of #0b0c0c', () => {
+      it('has a default content of #1d70b8', () => {
         replacePageWith(renderTemplate('govuk/template.njk'))
         const $themeColor = document.querySelector('meta[name="theme-color"]')
 
-        expect($themeColor).toHaveAttribute('content', '#0b0c0c')
+        expect($themeColor).toHaveAttribute('content', '#1d70b8')
       })
 
       it('can be overridden using themeColor', () => {
