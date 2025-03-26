@@ -29,8 +29,30 @@ $govuk-text-colour: govuk-colour("black") !default;
 ///
 /// @type Colour
 /// @access public
-
+/// @deprecated "$govuk-canvas-background-colour has been deprecated and will be removed in the next major
+/// version. Use `$govuk-template-background-colour` if you want to change the background of
+/// the `<html>` element and background colour of elements that need to match for visual
+/// continuity.
 $govuk-canvas-background-colour: govuk-colour("light-grey") !default;
+
+// Output a deprecation warning if $govuk-canvas-background-colour is being overridden
+// Remove in next major version.
+@if $govuk-canvas-background-colour != govuk-colour("light-grey") {
+  @include _warning(
+    "$govuk-canvas-background-colour",
+    "$govuk-canvas-background-colour has been deprecated and will be removed in the next major version."
+  );
+}
+
+/// Template background colour
+///
+/// Used by components that want to give the illusion of extending
+/// the template background (such as the footer and cookie banner).
+///
+/// @type Colour
+/// @access public
+
+$govuk-template-background-colour: govuk-colour("light-grey") !default;
 
 /// Body background colour
 ///
