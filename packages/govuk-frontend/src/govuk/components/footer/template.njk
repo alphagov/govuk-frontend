@@ -1,8 +1,17 @@
 {% from "../../macros/attributes.njk" import govukAttributes -%}
 
+{% from "../../macros/logo.njk" import govukLogo -%}
+
 <footer class="govuk-footer {%- if params.classes %} {{ params.classes }}{% endif %}"
   {{- govukAttributes(params.attributes) }}>
   <div class="govuk-width-container {%- if params.containerClasses %} {{ params.containerClasses }}{% endif %}">
+    {% if params.rebrand %}
+      {{- govukLogo({
+        classes: 'govuk-footer__crown',
+        rebrand: true,
+        useLogotype: false
+      }) }}
+    {% endif %}
     {% if params.navigation | length %}
       <div class="govuk-footer__navigation">
         {% for nav in params.navigation %}
