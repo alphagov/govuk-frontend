@@ -21,6 +21,10 @@
     );
   }
 
+  .govuk-footer__crown {
+    margin-bottom: govuk-spacing(5);
+  }
+
   .govuk-footer__link {
     @include govuk-link-common;
     @include govuk-link-style-text;
