@@ -267,4 +267,20 @@ describe('footer', () => {
       )
     })
   })
+
+  describe('rebrand', () => {
+    it('Does not show the crown in the footer by default', () => {
+      const $ = render('footer', examples.default)
+
+      const $crown = $('.govuk-footer__crown')
+      expect($crown).toHaveLength(0)
+    })
+
+    it('Does render the crown if the `rebrand` option is set', () => {
+      const $ = render('footer', examples.rebrand)
+
+      const $crown = $('.govuk-footer__crown')
+      expect($crown).toHaveLength(1)
+    })
+  })
 })
