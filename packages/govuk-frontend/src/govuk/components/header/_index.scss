@@ -131,15 +131,22 @@
     }
 
     @include _govuk-rebrand {
+      // Remove top margin
+      margin-top: 0;
+
       // Stop reducing the product name size on narrow screens
       font-size: govuk-px-to-rem(30px);
 
       // Reduce letter spacing (this is roughly equivalent to -3.5% in Figma)
       letter-spacing: -0.035em;
 
-      // Change product name font-size to match the GOV.UK logotype on desktop
+      // Remove top margin on the breakpoints too
+      @include govuk-media-query($from: tablet) {
+        margin-top: 0;
+      }
+
       @include govuk-media-query($from: desktop) {
-        margin-top: 1px;
+        margin-top: 0;
       }
     }
   }
@@ -247,7 +254,7 @@
     @include _govuk-rebrand {
       // Apply margins to internal elements to emulate padding
       margin-bottom: 0;
-      padding: govuk-spacing(3) 0;
+      padding: govuk-spacing(3) $govuk-header-menu-button-width govuk-spacing(3) 0;
     }
 
     @include govuk-media-query($from: desktop) {
