@@ -38,31 +38,53 @@ describe('Changelog release helper', () => {
       )
     })
 
-    it('throws an error if new version is more than one possible increment', () => {
-      const increments = [
-        {
-          badVersion: '5.0.0',
-          type: 'major',
-          goodVersion: '4.0.0'
-        },
-        {
-          badVersion: '3.2.0',
-          type: 'minor',
-          goodVersion: '3.1.0'
-        },
-        {
-          badVersion: '3.0.2',
-          type: 'patch',
-          goodVersion: '3.0.1'
-        }
-      ]
+    it.each([
+      {
+        badVersion: '5.0.0',
+        type: 'major',
+        goodVersion: '4.0.0'
+      },
+      {
+        badVersion: '3.2.0',
+        type: 'minor',
+        goodVersion: '3.1.0'
+      },
+      {
+        badVersion: '3.0.2',
+        type: 'patch',
+        goodVersion: '3.0.1'
+      },
+      {
+        badVersion: '3.0.2-beta.0',
+        type: 'prepatch',
+        goodVersion: '3.0.1-beta.0'
+      },
+      {
+        badVersion: '3.0.2',
+        type: 'patch',
+        goodVersion: '3.0.1',
+        customLastTitle: '3.0.1-beta.15 (Beta patch release)'
+      }
+    ])(
+      'throws an error if new version is more than one possible `$type` increment',
+      ({ badVersion, type, goodVersion, customLastTitle }) => {
+        if (customLastTitle) {
+          jest.mocked(fs.readFileSync).mockReturnValue(`
+          ## Unreleased
 
-      for (const increment of increments) {
-        expect(() => validateVersion(increment.badVersion)).toThrow(
-          `New version number ${increment.badVersion} is incrementing more than one for its increment type (${increment.type}). Please provide a version number than only increments by one from the current version. In this case, it's likely that your new version number should be: ${increment.goodVersion}`
+          ### Fixes
+
+          Bing bong
+
+          ## v${customLastTitle}
+        `)
+        }
+
+        expect(() => validateVersion(badVersion)).toThrow(
+          `New version number ${badVersion} is incrementing more than one for its increment type (${type}). Please provide a version number than only increments by one from the current version. In this case, it's likely that your new version number should be: ${goodVersion}`
         )
       }
-    })
+    )
   })
 
   describe('Update changelog', () => {
@@ -72,6 +94,42 @@ describe('Changelog release helper', () => {
         './CHANGELOG.md',
         expect.stringContaining('## v3.1.0 (Feature release)')
       )
+    })
+
+    it('prefixes a new heading with a pre-release identifier if the new version is a pre-release', () => {
+      updateChangelog('3.1.0-beta.0')
+      expect(fs.writeFileSync).toHaveBeenCalledWith(
+        './CHANGELOG.md',
+        expect.stringContaining('## v3.1.0-beta.0 (Beta feature release)')
+      )
+    })
+
+    it('copies the previous release type if the new version is a prerelease increment', () => {
+      jest.mocked(fs.readFileSync).mockReturnValue(`
+        ## Unreleased
+
+        ### Fixes
+
+        Bing bong
+
+        ## v3.1.0-beta.0 (Beta feature release)
+      `)
+
+      updateChangelog('3.1.0-beta.1')
+      expect(fs.writeFileSync).toHaveBeenCalledWith(
+        './CHANGELOG.md',
+        expect.stringContaining('## v3.1.0-beta.1 (Beta feature release)')
+      )
+    })
+
+    it('does not change the changelog if the provided version is an internal pre-release', () => {
+      const consoleLogSpy = jest.spyOn(console, 'log')
+
+      updateChangelog('3.1.0-internal.0')
+      expect(consoleLogSpy).toHaveBeenCalledWith(
+        'This is an internal release, intended for testing only. The changelog will therefore not be updated.'
+      )
+      expect(fs.writeFileSync).not.toHaveBeenCalled()
     })
   })
 
@@ -86,13 +144,30 @@ describe('Changelog release helper', () => {
     })
 
     it('writes release notes from the changelog from the last version heading', () => {
-      // re-mock the readFileSync return value as if we'd just run
-      // updateChangelog and the contents we wanted was between the new and
-      // current version headings
       jest.mocked(fs.readFileSync).mockReturnValue(`
         ## Unreleased
 
         ## v3.1.0 (Feature release)
+
+        ### Fixes
+
+        Bing bong
+
+        ## v3.0.0 (Breaking release)
+      `)
+
+      generateReleaseNotes()
+      expect(fs.writeFileSync).toHaveBeenCalledWith(
+        './release-notes-body',
+        expect.stringContaining('Bing bong')
+      )
+    })
+
+    it('writes release notes from the changelog from the last version heading if that version is a pre-release', () => {
+      jest.mocked(fs.readFileSync).mockReturnValue(`
+        ## Unreleased
+
+        ## v3.1.0-beta.0 (Feature release)
 
         ### Fixes
 
