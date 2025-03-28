@@ -344,6 +344,12 @@
   }
 
   .govuk-header__navigation {
+    @include govuk-media-query($until: mobile) {
+      @include _govuk-rebrand {
+        padding-bottom: govuk-spacing(3);
+      }
+    }
+
     @include govuk-media-query($from: desktop) {
       margin-bottom: govuk-spacing(2);
 
@@ -383,7 +389,7 @@
     }
 
     @include _govuk-rebrand {
-      @include govuk-media-query($until: desktop) {
+      @include govuk-media-query($from: mobile, $until: desktop) {
         padding-bottom: govuk-spacing(3);
       }
     }
