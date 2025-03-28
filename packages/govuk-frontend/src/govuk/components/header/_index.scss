@@ -469,6 +469,10 @@
       // contrast is still acceptable
       &:focus {
         color: $govuk-focus-text-colour;
+
+        @include _govuk-rebrand {
+          color: $govuk-focus-text-colour;
+        }
       }
     }
   }
