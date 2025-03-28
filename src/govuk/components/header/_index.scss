@@ -253,12 +253,6 @@
     // logo with right padding using the button's width
     padding-right: $govuk-header-menu-button-width;
 
-    @include _govuk-rebrand {
-      // Apply margins to internal elements to emulate padding
-      margin-bottom: 0;
-      padding: govuk-spacing(3) $govuk-header-menu-button-width govuk-spacing(3) 0;
-    }
-
     @include govuk-media-query($from: desktop) {
       width: 33.33%;
       padding-right: $govuk-gutter-half;
@@ -271,6 +265,15 @@
         padding-right: 0;
         float: none;
       }
+    }
+
+    @include _govuk-rebrand {
+      // Apply margins to internal elements to emulate padding
+      margin-bottom: 0;
+
+      // Increase top/bottom padding
+      padding-top: govuk-spacing(3);
+      padding-bottom: govuk-spacing(3);
     }
   }
 
