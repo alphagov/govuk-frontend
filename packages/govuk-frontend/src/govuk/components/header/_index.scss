@@ -421,8 +421,16 @@
     }
 
     @include _govuk-rebrand {
-      // Remove the dividing lines between mobile nav items
-      border-bottom: none;
+      // Increase top padding of nav items...
+      padding-top: govuk-spacing(3);
+
+      // ...except on desktop
+      @include govuk-media-query($from: desktop) {
+        padding-top: govuk-spacing(1);
+      }
+
+      // Change the dividing line colour between mobile nav items
+      border-bottom-color: govuk-colour("white");
 
       // Reduce default weight of links so that we can use bold for active ones
       a {
