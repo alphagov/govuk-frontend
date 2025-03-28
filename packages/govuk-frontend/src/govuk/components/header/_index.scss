@@ -235,7 +235,9 @@
       margin-bottom: govuk-spacing(3);
 
       @include govuk-media-query($from: desktop) {
-        margin: govuk-spacing(3) 0;
+        // Pixel nudging to align service name baseline with the GOV.UK logo
+        $govuk-service-name-offset: 2px;
+        margin: (govuk-spacing(3) + $govuk-service-name-offset) 0 (govuk-spacing(3) - $govuk-service-name-offset);
       }
     }
   }
@@ -346,19 +348,26 @@
       margin-bottom: govuk-spacing(2);
 
       @include _govuk-rebrand {
+        // Nudge pixels so that the bottom of the nav links aligns with the
+        // baseline of the GOV.UK logo
+        $govuk-navigation-offset: 5px;
+
         // Apply margins to internal elements to emulate padding
         margin-bottom: 0;
-        padding: govuk-spacing(3) 0;
+        padding: (govuk-spacing(3) + $govuk-navigation-offset) 0 (govuk-spacing(3) - $govuk-navigation-offset);
       }
     }
   }
 
   .govuk-header__service-name + .govuk-header__navigation {
     @include _govuk-rebrand {
-      // If there's both a service name and navigation,
-      // remove the extra margin between them on desktop
       @include govuk-media-query($from: desktop) {
+        // If there's both a service name and navigation,
+        // remove the extra padding between them on desktop
         padding-top: 0;
+
+        // Restore the full bottom padding as the navigation isn't standalone
+        padding-bottom: govuk-spacing(3);
       }
     }
   }
