@@ -11,8 +11,9 @@
         {{ govukLogo({
           classes: "govuk-header__logotype",
           ariaLabelText: "GOV.UK",
-          useTudorCrown: params.useTudorCrown
-        }) }}
+          useTudorCrown: params.useTudorCrown,
+          rebrand: params.rebrand
+        }) | trim | indent(8) }}
         {% if (params.productName) %}
         <span class="govuk-header__product-name">
           {{ params.productName }}

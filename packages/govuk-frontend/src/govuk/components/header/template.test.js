@@ -262,4 +262,14 @@ describe('header', () => {
       expect($('.govuk-header__content')).toHaveLength(0)
     })
   })
+
+  describe('rebrand', () => {
+    describe('when local `rebrand` parameter is enabled', () => {
+      it('renders the new GOV.UK logotype', () => {
+        const $ = render('header', examples.rebrand)
+
+        expect($('.govuk-logo-dot')).not.toBeNull()
+      })
+    })
+  })
 })

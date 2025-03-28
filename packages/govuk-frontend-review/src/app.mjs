@@ -210,7 +210,7 @@ export default async () => {
 
       // Render component using fixture
       const componentView = render(componentName, {
-        context: fixture.options,
+        context: { ...fixture.options, rebrand: res.locals.useRebrand },
         env,
         fixture
       })
@@ -280,6 +280,7 @@ class NotFoundError extends Error {
  * @property {ComponentFixture} [componentFixture] - Single component fixture
  * @property {string} componentName - Component name
  * @property {string} [exampleName] - Example name
+ * @property {boolean} [useRebrand] - Whether to show rebranded examples
  */
 
 /**

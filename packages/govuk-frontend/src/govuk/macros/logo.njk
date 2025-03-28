@@ -70,8 +70,8 @@ releases of Frontend. #}
   >
     {%- if params.ariaLabelText %}<title>{{ params.ariaLabelText }}</title>{% endif %}
     {{ (_stEdwardsCrown if not useTudorCrown else _tudorCrown) | safe | trim | indent(2) }}
-    {%- if useLogotype %}
+    {% if useLogotype %}
       {{ (_dotLogotype if rebrand else _logotype) | safe | trim | indent(2) }}
-    {%- endif %}
+    {% endif %}
   </svg>
 {% endmacro %}
