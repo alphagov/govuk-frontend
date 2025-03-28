@@ -114,8 +114,18 @@ export async function screenshotExample(browser, exampleName) {
     url: page.url()
   })
 
-  // Screenshot preview page
   await page.reload({ waitUntil: 'load' })
+
+  // Remove feature flag banner
+  await page.evaluate(() => {
+    const featureFlagBanner = document.querySelector('.app-feature-flag-banner')
+
+    if (featureFlagBanner) {
+      featureFlagBanner.remove()
+    }
+  })
+
+  // Screenshot preview page
   await percySnapshot(page, `js: ${exampleName} (example)`)
 
   // Close page

@@ -1,7 +1,7 @@
 @include govuk-exports("govuk/component/footer") {
   $govuk-footer-background: $govuk-template-background-colour;
-  $govuk-footer-border: $govuk-border-colour;
   $govuk-footer-text: $govuk-text-colour;
+  $govuk-footer-content-border: $govuk-border-colour;
 
   // Royal Arms image dimensions
   $govuk-footer-crest-image-width: 125px;
@@ -12,9 +12,13 @@
     @include govuk-responsive-padding(7, "top");
     @include govuk-responsive-padding(5, "bottom");
 
-    border-top: 1px solid $govuk-footer-border;
+    border-top: 10px solid $govuk-brand-colour;
     color: $govuk-footer-text;
-    background: $govuk-footer-background;
+    @include _govuk-rebrand(
+      "background",
+      $from: $govuk-footer-background,
+      $to: $_govuk-rebrand-template-background-colour
+    );
   }
 
   .govuk-footer__link {
@@ -26,7 +30,12 @@
     margin: 0; // Reset `<hr>` default margins
     @include govuk-responsive-margin(8, "bottom");
     border: 0; // Reset `<hr>` default borders
-    border-bottom: 1px solid $govuk-footer-border;
+    border-bottom: 1px solid;
+    @include _govuk-rebrand(
+      "border-bottom-color",
+      $from: $govuk-footer-content-border,
+      $to: $_govuk-rebrand-border-colour-on-blue-tint-95
+    );
   }
 
   .govuk-footer__meta {
@@ -71,9 +80,10 @@
     text-wrap: balance;
   }
 
-  .govuk-footer__copyright-logo {
-    display: inline-block;
-    min-width: $govuk-footer-crest-image-width;
+  .govuk-footer__copyright-logo::before {
+    content: "";
+    display: block;
+    width: 100%;
     padding-top: ($govuk-footer-crest-image-height + govuk-spacing(2));
     background-image: govuk-image-url("govuk-crest.svg");
     background-repeat: no-repeat;
@@ -81,6 +91,7 @@
     background-size: $govuk-footer-crest-image-width $govuk-footer-crest-image-height;
     text-align: center;
     white-space: nowrap;
+    filter: brightness(calc(5 / 45));
   }
 
   .govuk-footer__inline-list {
@@ -106,7 +117,13 @@
     @include govuk-media-query($until: tablet) {
       padding-bottom: govuk-spacing(2);
     }
-    border-bottom: 1px solid $govuk-footer-border;
+
+    border-bottom: 1px solid;
+    @include _govuk-rebrand(
+      "border-bottom-color",
+      $from: $govuk-footer-content-border,
+      $to: $_govuk-rebrand-border-colour-on-blue-tint-95
+    );
   }
 
   .govuk-footer__navigation {

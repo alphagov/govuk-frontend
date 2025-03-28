@@ -102,7 +102,7 @@ describe('Full page examples (with form submit)', () => {
     it('should show errors if submitted without input', async () => {
       await Promise.all([
         page.waitForNavigation(),
-        page.click('button[type="submit"]')
+        page.click('main button[type="submit"]')
       ])
 
       const $title = await page.$('title')
@@ -138,7 +138,7 @@ describe('Full page examples (with form submit)', () => {
 
       await Promise.all([
         page.waitForNavigation(),
-        page.click('button[type="submit"]')
+        page.click('main button[type="submit"]')
       ])
 
       const $summary = await page.$('.app-search-results-summary')
@@ -155,7 +155,7 @@ describe('Full page examples (with form submit)', () => {
 
       await Promise.all([
         page.waitForNavigation(),
-        page.click('button[type="submit"]')
+        page.click('main button[type="submit"]')
       ])
 
       const $summary = await page.$('.app-search-results-summary')
