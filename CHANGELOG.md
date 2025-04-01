@@ -19,6 +19,7 @@ These changes were made in the following pull requests:
 
 - [#5796: Update template background colour and components using it](https://github.com/alphagov/govuk-frontend/pull/5796)
 - [#5806: Update background colour of Cookie banner for brand refresh](https://github.com/alphagov/govuk-frontend/pull/5806)
+- [#5797: Add refreshed brand to service navigation component](https://github.com/alphagov/govuk-frontend/pull/5797)
 - [#5798: Add mixin to help rebrand specific properties](https://github.com/alphagov/govuk-frontend/pull/5798)
 - [#5793: Add GOV.UK logo macro](https://github.com/alphagov/govuk-frontend/pull/5793)
 
