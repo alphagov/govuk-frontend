@@ -9,16 +9,17 @@ For advice on how to use these release notes see [our guidance on staying up to 
 #### Use the refreshed GOV.UK brand
 
 > Placeholder for instructions on enabling the brand and when it's allowed to be deployed to live.
-> If you're not using our Page Template:
+> If you're not using our page template:
 
 1. Add the `govuk-template--rebranded` to the `<html>` element of your page to use the rebranded styles of Footer and Cookie banner components.
 
-These changes affect the Header, Footer, Service navigation, and Cookie banner components. Ensure that they still work as expected after enabling the refreshed brand.
+These changes affect the Header, Footer, Service navigation, and Cookie banner components. Make sure they still work as expected after enabling the refreshed brand.
 
 These changes were made in the following pull requests:
 
 - [#5796: Update template background colour and components using it](https://github.com/alphagov/govuk-frontend/pull/5796)
 - [#5806: Update background colour of Cookie banner for brand refresh](https://github.com/alphagov/govuk-frontend/pull/5806)
+- [#5797: Add refreshed brand to service navigation component](https://github.com/alphagov/govuk-frontend/pull/5797)
 - [#5798: Add mixin to help rebrand specific properties](https://github.com/alphagov/govuk-frontend/pull/5798)
 - [#5793: Add GOV.UK logo macro](https://github.com/alphagov/govuk-frontend/pull/5793)
 - [#5794: Add redesigned header component](https://github.com/alphagov/govuk-frontend/pull/5794)
@@ -27,7 +28,7 @@ These changes were made in the following pull requests:
 
 The GOV.UK logo has been updated to introduce a refreshed logotype design. This can be enabled using the feature flag described in the previous section.
 
-If you're not using the GOV.UK template, but are using the [GOV.UK header](https://design-system.service.gov.uk/components/header/) Nunjucks macro, you can enable this new logo by passing the `rebrand: true` in the component configuration.
+If you're not using the GOV.UK template, but are using the [GOV.UK header](https://design-system.service.gov.uk/components/header/) Nunjucks macro, you can enable this new logo by inserting `rebrand: true` into the component configuration.
 
 ```nunjucks
 {{ govukHeader({
@@ -61,13 +62,13 @@ These changes were made in the following pull requests:
 - [#5793: Add GOV.UK logo macro](https://github.com/alphagov/govuk-frontend/pull/5793)
 - [#5794: Add redesigned header component](https://github.com/alphagov/govuk-frontend/pull/5794)
 
-#### Footer top border is now consistent with GOV.UK
+#### Footer component top border is now consistent with GOV.UK
 
 We've updated the border of the Footer component so it matches the border used on GOV.UK. This will provide a more consistent experience for users as they navigate from GOV.UK to services.
 
 This change was introduced in [pull request #5792: Update footer top border to be consistent with GOV.UK](https://github.com/alphagov/govuk-frontend/pull/5792)
 
-#### Royal Arms in the Footer now matches the text's colour
+#### Royal Arms in the Footer component now matches the text's colour
 
 We've updated the colour of the Royal Arms in the [GOV.UK footer](https://design-system.service.gov.uk/components/footer/) so it matches the text colour in browsers supporting the `filter` CSS property.
 
