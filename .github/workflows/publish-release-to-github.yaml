@@ -67,5 +67,5 @@ jobs:
             echo "⚠️ Release $GH_TAG already exists. Please delete the release and tag via the GitHub UI and re-run this workflow"
             exit 1
           else
-            gh release create "$GH_TAG" ./release-"${GH_TAG}".zip --title "GOV.UK Frontend ${RELEASE_NAME}" --notes "$RELEASE_BODY"
+            gh release create "$GH_TAG" ./release-"${GH_TAG}".zip --title "${RELEASE_NAME}" --notes "$RELEASE_BODY"
           fi
