@@ -74,6 +74,8 @@ We've updated the colour of the Royal Arms in the [GOV.UK footer](https://design
 
 This improves its accessibility and reduces the number of colours used in the footer.
 
+This change was introduced in [pull request #5801: Update colour of the copyright logo using CSS](https://github.com/alphagov/govuk-frontend/pull/5801)
+
 ### Fixes
 
 We've made fixes to GOV.UK Frontend in the following pull requests:
@@ -92,6 +94,12 @@ We're replacing it with a `$govuk-template-background-colour` variable, with a m
 If you were using `$govuk-canvas-background-colour` to match the background colour of the `<html>` element then use `$govuk-template-background-colour` instead.
 
 If you were using `$govuk-canvas-background-colour` to set the background colour in your custom styling to `light-grey` then use `govuk-colour('light-grey')` instead.
+
+### Fixes
+
+We've made fixes to GOV.UK Frontend in the following pull requests:
+
+- [#5785: Add missing Sass imports of components depended on](https://github.com/alphagov/govuk-frontend/pull/5785) - thanks to @matthew-shaw for reporting this issue and proposing a fix
 
 ## v5.9.0 (Feature release)
 
