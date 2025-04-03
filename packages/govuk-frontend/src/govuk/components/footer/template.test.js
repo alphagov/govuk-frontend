@@ -1,4 +1,5 @@
 const { render } = require('@govuk-frontend/helpers/nunjucks')
+const { withRebrand } = require('@govuk-frontend/helpers/tests')
 const { getExamples } = require('@govuk-frontend/lib/components')
 
 describe('footer', () => {
@@ -265,6 +266,22 @@ describe('footer', () => {
       expect($copyrightMessage.html()).toContain(
         '&lt;span&gt;Hawlfraint y Goron&lt;/span&gt;'
       )
+    })
+  })
+
+  describe('rebrand', () => {
+    it('Does not show the crown in the footer by default', () => {
+      const $ = render('footer', examples.default)
+
+      const $crown = $('.govuk-footer__crown')
+      expect($crown).toHaveLength(0)
+    })
+
+    it('Does render the crown if the `rebrand` option is set', () => {
+      const $ = render('footer', withRebrand(examples.default))
+
+      const $crown = $('.govuk-footer__crown')
+      expect($crown).toHaveLength(1)
     })
   })
 })
