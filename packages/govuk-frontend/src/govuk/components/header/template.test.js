@@ -1,4 +1,5 @@
 const { render } = require('@govuk-frontend/helpers/nunjucks')
+const { withRebrand } = require('@govuk-frontend/helpers/tests')
 const { getExamples } = require('@govuk-frontend/lib/components')
 
 describe('header', () => {
@@ -265,10 +266,20 @@ describe('header', () => {
 
   describe('rebrand', () => {
     describe('when local `rebrand` parameter is enabled', () => {
+      it('does not render the new GOV.UK logotype by default', () => {
+        const $ = render('header', examples.default)
+
+        expect($('.govuk-logo-dot')).toHaveLength(0)
+      })
       it('renders the new GOV.UK logotype', () => {
         const $ = render('header', examples.rebrand)
 
-        expect($('.govuk-logo-dot')).not.toBeNull()
+        expect($('.govuk-logo-dot')).toHaveLength(1)
+      })
+      it('renders the new GOV.UK logotype when option comes from JavaScript', () => {
+        const $ = render('header', withRebrand(examples.default))
+
+        expect($('.govuk-logo-dot')).toHaveLength(1)
       })
     })
   })
