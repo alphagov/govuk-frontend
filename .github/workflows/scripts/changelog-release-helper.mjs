@@ -16,7 +16,7 @@ const processingErrorMessage =
  * - The version increments the current version by more than one possible
  * increment, eg: going from 3.1.0 to 5.0.0, 3.3.0 or 3.1.2
  *
- * @param {string} newVersion
+ * @param {string} newVersion - New version to validate
  */
 export function validateVersion(newVersion) {
   const changelogLines = getChangelogLines()
@@ -86,7 +86,9 @@ export function validateVersion(newVersion) {
  * Inserts a new heading between the 'Unreleased' heading and the most recent
  * content
  *
- * @param {string} newVersion
+ * @param {string} newVersion - New version to add to the changelog. We presume
+ *   that this is a valid version as this function is always run after validateVersion
+ *   has passed.
  */
 export function updateChangelog(newVersion) {
   // Skip the entire function if the release version is internal eg: 5.1.0-internal.0
