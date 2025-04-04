@@ -149,22 +149,11 @@ export function generateReleaseNotes(newVersion) {
 
   const releaseNotes = changelogLines
     .slice(startIndex + 1, previousReleaseLineIndex - 1)
-    .filter((value, index, arr) => {
-      if (value !== '') {
-        return true
-      }
-      if (
-        arr[index + 1].startsWith('#') ||
-        (index > 0 && arr[index - 1].startsWith('#'))
-      ) {
-        return true
-      }
-      return false
-    })
-    .map((value) => {
-      const line = value.replace(/^\s+/, '')
-      return line.startsWith('##') ? line.substring(1) : line
-    })
+    .map((line) =>
+      line.replace(/^\s+/, '').startsWith('##')
+        ? line.replace(/^\s+/, '').substring(1)
+        : line
+    )
 
   writeFileSync('./release-notes-body', releaseNotes.join('\n'))
 }
