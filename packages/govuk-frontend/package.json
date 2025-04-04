@@ -7,6 +7,7 @@
   "sass": "dist/govuk/index.scss",
   "files": [
     "dist",
+    "!dist/**/*.html",
     "govuk-prototype-kit.config.json",
     "package.json",
     "README.md"
