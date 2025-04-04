@@ -55,7 +55,7 @@ jobs:
           script: |
             const { generateReleaseNotes } = await import('${{ github.workspace }}/.github/workflows/scripts/changelog-release-helper.mjs')
 
-            await generateReleaseNotes()
+            await generateReleaseNotes('${{ steps.create-github-tag.outputs.GH_TAG }}')
 
       - name: Create GitHub release
         run: |
