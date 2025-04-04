@@ -283,5 +283,11 @@ describe('footer', () => {
       const $crown = $('.govuk-footer__crown')
       expect($crown).toHaveLength(1)
     })
+    it('Does render the crown when rebrand set in YAML', () => {
+      const $ = render('footer', withRebrand(examples.rebrand))
+
+      const $crown = $('.govuk-footer__crown')
+      expect($crown).toHaveLength(1)
+    })
   })
 })
