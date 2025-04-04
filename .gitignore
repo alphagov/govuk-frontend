@@ -24,3 +24,6 @@ release-notes-body
 # Project lockfile only
 package-lock.json
 !/package-lock.json
+
+# Output of npm pack
+*.tgz
