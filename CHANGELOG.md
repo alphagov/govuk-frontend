@@ -62,6 +62,45 @@ These changes were made in the following pull requests:
 - [#5793: Add GOV.UK logo macro](https://github.com/alphagov/govuk-frontend/pull/5793)
 - [#5794: Add redesigned header component](https://github.com/alphagov/govuk-frontend/pull/5794)
 
+#### Display the GOV.UK crown in the Footer component
+
+The GOV.UK Footer has been updated to display the GOV.UK crown before its content, as a visual 'full stop' at the end of the page. This can be enabled using the feature flag described in the previous section.
+
+If you're not using the GOV.UK template, but are using the [GOV.UK footer](https://design-system.service.gov.uk/components/footer/) Nunjucks macro, you can display the crown by inserting `rebrand: true` into the component configuration.
+
+```nunjucks
+{{ govukFooter({
+  rebrand: true
+}) }}
+```
+
+If you're not using our Nunjucks macros, update your footer HTML to adding the following SVG code inside the `<div>` with the `govuk-width-container` class
+child of the `<footer>` with `govuk-footer` element.
+
+```html
+<svg
+  focusable="false"
+  role="presentation"
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 32 30"
+  height="30"
+  width="32"
+  class="govuk-footer__crown"
+>
+  <g>
+    <circle cx="10.1" cy="8.8" r="1.8"></circle>
+    <circle cx="5.2" cy="11.7" r="1.8"></circle>
+    <circle cx="1.9" cy="16.6" r="1.8"></circle>
+    <circle cx="16" cy="15.3" r="1.8"></circle>
+    <circle cx="21.9" cy="8.8" r="1.8"></circle>
+    <circle cx="26.8" cy="11.7" r="1.8"></circle>
+    <circle cx="30.1" cy="16.6" r="1.8"></circle>
+    <circle cx="16" cy="15.3" r="1.8"></circle>
+    <path d="m16.7 4.9.2-.2 2.3 1.2V2.5l-2.3.7s-.1-.2-.2-.2l.9-2.9h-3.4l.9 2.9s-.2.1-.2.2l-2.3-.7v3.4l2.3-1.2.2.2-1.3 4c-.5 1.4.6 2.9 2.1 2.9s2.5-1.4 2.1-2.9l-1.3-4Zm2 14s-1.7 1.9-2.1 3c1.1 0 2.1-.3 3.2-1.4l-.4 4.3c-1-1.4-2.2-2-2.9-1.9 0 1.5.2 3.4 2.9 3.6 1.9.2 3.4-.8 3.5-1.9.2-1.3-1-2.2-1.9-.8-.7-2.3 1.2-3 2.5-1.6-1-2.2-.9-3.8 1.2-5.4 1.5 2 1.3 3.7-.6 5.5 1.2-.7 3.1 0 2 2.3-.6-1.4-1.8-1.1-2.1.1-.2.9.3 1.9 1.5 2.1.9.2 2.4-.5 3.5-2.9-.6 0-1.2.3-2 .8l1.2-4c.3 1.1.7 1.9 1.1 2.3.3-.8.2-1.4 0-2.7l2.5.9c-1.3 1.8-2.6 4.3-3.7 8.8-3.7-.5-7.9-.8-12.3-.8s-8.6.3-12.3.8c-1.1-4.4-2.3-7-3.7-8.8l2.5-.9c-.2 1.3-.3 1.9 0 2.7.4-.4.8-1.1 1.1-2.3l1.2 4c-.7-.5-1.3-.8-2-.8 1.2 2.5 2.6 3.1 3.5 2.9 1.1-.2 1.7-1.2 1.5-2.1-.3-1.2-1.5-1.5-2.1-.1-1.1-2.3.8-3 2-2.3-1.9-1.9-2.1-3.5-.6-5.5C9 18.4 9 20 8.1 22.2c1.2-1.4 3.2-.7 2.5 1.6-.9-1.4-2.1-.5-1.9.8.2 1.1 1.7 2.1 3.5 1.9 2.7-.2 2.9-2.1 2.9-3.6-.7-.1-1.9.5-2.9 1.9l-.4-4.3c1.1 1.1 2.1 1.4 3.2 1.4-.4-1.2-2.1-3-2.1-3h5.3Z"></path>
+  </g>
+</svg>
+```
+
 #### Footer component top border is now consistent with GOV.UK
 
 We've updated the border of the Footer component so it matches the border used on GOV.UK. This will provide a more consistent experience for users as they navigate from GOV.UK to services.

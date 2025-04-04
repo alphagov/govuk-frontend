@@ -57,8 +57,31 @@ function htmlWithClassName($, className) {
   return $.html($component)
 }
 
+/**
+ * Creates a copy of a given example with the `rebrand` option set to `true`
+ *
+ * @param {MacroRenderOptions} example - The example to which the `rebrand` option should be added
+ * @returns {MacroRenderOptions} The example with `rebrand` added to the options
+ */
+function withRebrand(example) {
+  const context = typeof example.context === 'object' ? example.context : {}
+
+  return {
+    ...example,
+    context: {
+      ...context,
+      rebrand: true
+    }
+  }
+}
+
 module.exports = {
   compileSassFile,
   compileSassString,
-  htmlWithClassName
+  htmlWithClassName,
+  withRebrand
 }
+
+/**
+ * @import {MacroRenderOptions} from '@govuk-frontend/lib/components'
+ */
