@@ -3,6 +3,12 @@
 
 {%- set menuButtonText = params.menuButtonText if params.menuButtonText else 'Menu' -%}
 
+{%- if govukRebrandGlobal -%}
+  {%- set _rebrand = govukRebrandGlobal() or params.rebrand | default(false) -%}
+{%- else -%}
+  {%- set _rebrand = params.rebrand | default(false) -%}
+{%- endif -%}
+
 <header class="govuk-header {%- if params.classes %} {{ params.classes }}{% endif %}" data-module="govuk-header"
   {{- govukAttributes(params.attributes) }}>
   <div class="govuk-header__container {{ params.containerClasses | default("govuk-width-container", true) }}">
@@ -12,7 +18,7 @@
           classes: "govuk-header__logotype",
           ariaLabelText: "GOV.UK",
           useTudorCrown: params.useTudorCrown,
-          rebrand: params.rebrand
+          rebrand: _rebrand
         }) | trim | indent(8) }}
         {% if (params.productName) %}
         <span class="govuk-header__product-name">
