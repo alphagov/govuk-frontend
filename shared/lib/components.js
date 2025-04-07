@@ -240,7 +240,10 @@ function renderPreview(componentName, options) {
  */
 function renderString(string, options) {
   const nunjucksEnv = options?.env ?? env
-  return nunjucksEnv.renderString(string, options?.context ?? {})
+  return nunjucksEnv.renderString(
+    string,
+    options?.context && !options?.preContext ? options.context : {}
+  )
 }
 
 /**
@@ -260,6 +263,14 @@ function renderTemplate(templatePath, options) {
         {% block ${name} -%}
           ${content}
         {%- endblock %}`
+    }
+  }
+
+  if (options?.preContext) {
+    for (const [name, content] of Object.entries(options.preContext)) {
+      viewString += outdent`
+
+        {% set ${name} = ${content} %}`
     }
   }
 
@@ -336,6 +347,7 @@ module.exports = {
  *
  * @typedef {object} MacroRenderOptions
  * @property {MacroOptions | unknown} [context] - Nunjucks mixed context (optional)
+ * @property {MacroOptions | unknown} [preContext] - Alternative to Nunjucks context object which uses Nunjucks 'set' rather than standard context (optional)
  * @property {string} [callBlock] - Nunjucks macro `caller()` content (optional)
  * @property {import('nunjucks').Environment} [env] - Nunjucks environment (optional)
  * @property {ComponentFixture} [fixture] - Component fixture (optional)
@@ -347,6 +359,7 @@ module.exports = {
  * @typedef {object} TemplateRenderOptions
  * @property {object} [context] - Nunjucks context object (optional)
  * @property {{ [blockName: string]: string }} [blocks] - Nunjucks blocks (optional)
+ * @property {object} [preContext] - Alternative to Nunjucks context object which uses Nunjucks 'set' rather than standard context (optional)
  * @property {import('nunjucks').Environment} [env] - Nunjucks environment (optional)
  */
 
