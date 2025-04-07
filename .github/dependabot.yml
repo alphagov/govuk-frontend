@@ -47,6 +47,7 @@ updates:
           - '@puppeteer/*'
           - '@types/jest'
           - '@types/jest-*'
+          - 'axe-core'
           - 'jest'
           - 'jest-*'
           - 'puppeteer'
