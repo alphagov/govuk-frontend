@@ -204,8 +204,8 @@ describe('Error Summary', () => {
         )
 
         // Allow for high DPI displays (device pixel ratio)
-        expect(legendOrLabelOffsetFromTop).toBeGreaterThanOrEqual(0)
-        expect(legendOrLabelOffsetFromTop).toBeLessThan(1)
+        // toBeCloseTo(0, 0) allows for a differentiator of 0.5 either side of 0
+        expect(legendOrLabelOffsetFromTop).toBeCloseTo(0, 0)
       })
 
       it('does not include a hash in the URL', async () => {
