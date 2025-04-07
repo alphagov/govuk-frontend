@@ -2,10 +2,16 @@
 
 {% from "../../macros/logo.njk" import govukLogo -%}
 
+{%- if govukRebrandGlobal -%}
+  {%- set _rebrand = govukRebrandGlobal() or params.rebrand | default(false) -%}
+{%- else -%}
+  {%- set _rebrand = params.rebrand | default(false) -%}
+{%- endif -%}
+
 <footer class="govuk-footer {%- if params.classes %} {{ params.classes }}{% endif %}"
   {{- govukAttributes(params.attributes) }}>
   <div class="govuk-width-container {%- if params.containerClasses %} {{ params.containerClasses }}{% endif %}">
-    {% if params.rebrand %}
+    {% if _rebrand %}
       {{- govukLogo({
         classes: 'govuk-footer__crown',
         rebrand: true,
