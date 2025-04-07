@@ -253,6 +253,14 @@ function renderString(string, options) {
 function renderTemplate(templatePath, options) {
   let viewString = `{% extends "${templatePath}" %}`
 
+  if (options?.set) {
+    for (const [name, content] of Object.entries(options.set)) {
+      viewString += outdent`
+
+        {% set ${name} = ${content} %}`
+    }
+  }
+
   if (options?.blocks) {
     for (const [name, content] of Object.entries(options.blocks)) {
       viewString += outdent`
@@ -347,6 +355,7 @@ module.exports = {
  * @typedef {object} TemplateRenderOptions
  * @property {object} [context] - Nunjucks context object (optional)
  * @property {{ [blockName: string]: string }} [blocks] - Nunjucks blocks (optional)
+ * @property {object} [set] - Nunjucks variables to set in template (optional)
  * @property {import('nunjucks').Environment} [env] - Nunjucks environment (optional)
  */
 
