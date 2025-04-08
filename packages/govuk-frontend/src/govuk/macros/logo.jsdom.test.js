@@ -186,7 +186,7 @@ describe('logo.njk', () => {
     })
 
     it('forces use of the Tudor Crown if `rebrand` is true', () => {
-      expect($svg).toHaveAttribute('viewBox', '0 0 159 30')
+      expect($svg).toHaveAttribute('viewBox', '0 0 162 30')
     })
   })
 })
