@@ -13,6 +13,15 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 1. Add the `govuk-template--rebranded` to the `<html>` element of your page to use the rebranded styles of Footer and Cookie banner components.
 
+We've added a new `govukRebrand` ['variable' option to our page template](https://design-system.service.gov.uk/styles/page-template/#changing-template-content). It makes the Header, Footer, Service navigation and Cookie banner components use new styles for the brand refresh and display updated content (new logo in the Header component, crown in the Footer component).
+
+Use [`set`](https://mozilla.github.io/nunjucks/templating.html#set) to assign it `true` and enable the new styles:
+
+```nunjucks
+{% set govukRebrand = true %}
+```
+
+This snippet should not be placed between any `block` and `endblock` lines and instead be a separate line.
 These changes affect the Header, Footer, Service navigation, and Cookie banner components. Make sure they still work as expected after enabling the refreshed brand.
 
 These changes were made in the following pull requests:
