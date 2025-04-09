@@ -208,9 +208,11 @@ export default async () => {
         componentFixture: fixture
       } = res.locals
 
+      env.addGlobal('govukRebrandGlobal', () => res.locals.useRebrand)
+
       // Render component using fixture
       const componentView = render(componentName, {
-        context: { ...fixture.options, rebrand: res.locals.useRebrand },
+        context: fixture.options,
         env,
         fixture
       })
