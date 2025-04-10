@@ -287,6 +287,11 @@ examples:
         - text: Navigation item 2
         - text: Navigation item 3
 
+  - name: with St. Edward's Crown
+    description: Does not work if the rebrand is enabled.
+    options:
+      useTudorCrown: false
+
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: attributes
     hidden: true
