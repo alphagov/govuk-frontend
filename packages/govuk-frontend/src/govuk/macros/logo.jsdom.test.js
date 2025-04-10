@@ -14,7 +14,7 @@ describe('logo.njk', () => {
     })
 
     it('defaults to Tudor crown', () => {
-      expect($svg).toHaveAttribute('viewBox', '0 0 148 30')
+      expect($svg).toHaveAttribute('viewBox', '0 0 304 60')
     })
 
     it('defaults to old logotype', () => {
@@ -111,7 +111,7 @@ describe('logo.njk', () => {
     })
 
     it('reduces the `viewBox` width', () => {
-      expect($svg).toHaveAttribute('viewBox', '0 0 32 30')
+      expect($svg).toHaveAttribute('viewBox', '0 0 64 60')
     })
 
     it('reduces the image width', () => {
@@ -140,7 +140,7 @@ describe('logo.njk', () => {
       )
       const $svg = document.querySelector('svg')
 
-      expect($svg).toHaveAttribute('viewBox', '0 0 152 30')
+      expect($svg).toHaveAttribute('viewBox', '0 0 312 60')
     })
   })
 
@@ -158,7 +158,7 @@ describe('logo.njk', () => {
       )
       const $svg = document.querySelector('svg')
 
-      expect($svg).toHaveAttribute('viewBox', '0 0 36 30')
+      expect($svg).toHaveAttribute('viewBox', '0 0 72 60')
     })
   })
 
@@ -186,7 +186,7 @@ describe('logo.njk', () => {
     })
 
     it('forces use of the Tudor Crown if `rebrand` is true', () => {
-      expect($svg).toHaveAttribute('viewBox', '0 0 164 30')
+      expect($svg).toHaveAttribute('viewBox', '0 0 324 60')
     })
   })
 })
