@@ -69,6 +69,12 @@
     fill: currentcolor;
     vertical-align: top;
 
+    @include _govuk-rebrand {
+      // Magic number. In combination with the glyph spacing in Transport,
+      // this makes for 7px of spacing between the logo and product name.
+      margin-right: -2px;
+    }
+
     // Prevent readability backplate from obscuring underline in Windows High
     // Contrast Mode
     @media (forced-colors: active) {
@@ -134,11 +140,16 @@
       // Remove top margin
       margin-top: 0;
 
-      // Stop reducing the product name size on narrow screens
-      font-size: govuk-px-to-rem(30px);
+      // Remove 1px from the bottom to account for the font-size being 1px
+      // larger than the logo height.
+      margin-bottom: -1px;
 
-      // Reduce letter spacing (this is roughly equivalent to -3.5% in Figma)
-      letter-spacing: -0.035em;
+      // Magic number font-size that visually aligns with GOV.UK logo.
+      // Stop reducing the product name size on narrow screens
+      font-size: govuk-px-to-rem(31px);
+
+      // Reduce letter spacing
+      letter-spacing: -0.015em;
 
       // Remove top margin on the breakpoints too
       @include govuk-media-query($from: tablet) {
@@ -182,27 +193,10 @@
     // in Firefox
     display: inline-block;
     margin-right: govuk-spacing(2);
-    font-size: 30px; // We don't have a mixin that produces 30px font size
+    font-size: govuk-px-to-rem(31px); // We don't have a mixin that produces 30px font size
 
     @include govuk-media-query($from: desktop) {
       display: inline;
-    }
-
-    @include _govuk-rebrand {
-      // Turn the logo lockup into an inline flexbox so we have more control over
-      // the margins when a product name is involved
-      display: inline-flex;
-      flex-wrap: wrap;
-
-      // IE doesn't support `gap`, only remove the logo's margin if we can use it
-      @supports (gap: 1px) {
-        gap: 7px;
-
-        // stylelint-disable-next-line max-nesting-depth
-        .govuk-header__logotype {
-          margin-right: 0;
-        }
-      }
     }
 
     &:link,
@@ -235,8 +229,9 @@
       margin-bottom: govuk-spacing(3);
 
       @include govuk-media-query($from: desktop) {
-        // Pixel nudging to align service name baseline with the GOV.UK logo
-        $govuk-service-name-offset: 2px;
+        // Magic number to align service name baseline with the GOV.UK logo
+        $govuk-service-name-offset: 3px;
+
         margin: (govuk-spacing(3) + $govuk-service-name-offset) 0 (govuk-spacing(3) - $govuk-service-name-offset);
       }
     }
@@ -249,6 +244,7 @@
 
   .govuk-header__logo {
     @include govuk-responsive-margin($govuk-header-vertical-spacing-value, "bottom");
+
     // Protect the absolute positioned menu button from overlapping with the
     // logo with right padding using the button's width
     padding-right: $govuk-header-menu-button-width;
@@ -357,9 +353,9 @@
       margin-bottom: govuk-spacing(2);
 
       @include _govuk-rebrand {
-        // Nudge pixels so that the bottom of the nav links aligns with the
+        // Magic number so that the bottom of the nav links aligns with the
         // baseline of the GOV.UK logo
-        $govuk-navigation-offset: 5px;
+        $govuk-navigation-offset: 6px;
 
         // Apply margins to internal elements to emulate padding
         margin-bottom: 0;
