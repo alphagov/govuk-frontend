@@ -171,11 +171,13 @@ function renderMacro(macroName, macroPath, options) {
 
   let macroString = `{%- from "${macroPath}" import ${macroName} -%}`
 
-  // If we're nesting child components or text, pass the children to the macro
-  // using the 'caller' Nunjucks feature
-  macroString += options?.callBlock
-    ? `{%- call ${macroName}(${paramsFormatted}) -%}${options.callBlock}{%- endcall -%}`
-    : `{{- ${macroName}(${paramsFormatted}) -}}`
+  if (options?.callBlock) {
+    const callArgs = options.callArgs ? `(${options.callArgs.join(', ')})` : ''
+
+    macroString += `{%- call${callArgs} ${macroName}(${paramsFormatted}) -%}${options.callBlock}{%- endcall -%}`
+  } else {
+    macroString += `{{- ${macroName}(${paramsFormatted}) -}}`
+  }
 
   return renderString(macroString, options)
 }
@@ -337,6 +339,7 @@ module.exports = {
  * @typedef {object} MacroRenderOptions
  * @property {MacroOptions | unknown} [context] - Nunjucks mixed context (optional)
  * @property {string} [callBlock] - Nunjucks macro `caller()` content (optional)
+ * @property {string[]} [callArgs] - Name of the arguments passed to the `call` instruction
  * @property {import('nunjucks').Environment} [env] - Nunjucks environment (optional)
  * @property {ComponentFixture} [fixture] - Component fixture (optional)
  */
