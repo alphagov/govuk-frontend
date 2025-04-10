@@ -1,13 +1,10 @@
 {% from "../../macros/attributes.njk" import govukAttributes %}
 {% from "../../macros/logo.njk" import govukLogo %}
+{% from "../../macros/rebrand.njk" import govukSetRebrand %}
 
 {%- set menuButtonText = params.menuButtonText if params.menuButtonText else 'Menu' -%}
 
-{%- if govukRebrandGlobal -%}
-  {%- set _rebrand = govukRebrandGlobal() or params.rebrand | default(false) -%}
-{%- else -%}
-  {%- set _rebrand = params.rebrand | default(false) -%}
-{%- endif -%}
+{% call(_rebrand) govukSetRebrand(params) -%}
 
 <header class="govuk-header {%- if params.classes %} {{ params.classes }}{% endif %}" data-module="govuk-header"
   {{- govukAttributes(params.attributes) }}>
@@ -68,3 +65,5 @@
   {% endif %}
   </div>
 </header>
+
+{%- endcall %}

@@ -1,0 +1,9 @@
+{% macro govukSetRebrand(params) %}
+  {%- if govukRebrandGlobal -%}
+    {%- set _rebrand = govukRebrandGlobal() or params.rebrand | default(false) -%}
+  {%- else -%}
+    {%- set _rebrand = params.rebrand | default(false) -%}
+  {%- endif -%}
+
+  {{ caller(_rebrand) }}
+{% endmacro %}
