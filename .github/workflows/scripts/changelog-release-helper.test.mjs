@@ -134,15 +134,6 @@ describe('Changelog release helper', () => {
   })
 
   describe('Generate release notes', () => {
-    it('writes release notes from the changelog from the Unreleased heading', () => {
-      // Pass 'true' here so that the function reads from the 'Unreleased' heading
-      generateReleaseNotes(true)
-      expect(fs.writeFileSync).toHaveBeenCalledWith(
-        './release-notes-body',
-        expect.stringContaining('Bing bong')
-      )
-    })
-
     it('writes release notes from the changelog from the last version heading', () => {
       jest.mocked(fs.readFileSync).mockReturnValue(`
         ## Unreleased
@@ -156,7 +147,7 @@ describe('Changelog release helper', () => {
         ## v3.0.0 (Breaking release)
       `)
 
-      generateReleaseNotes()
+      generateReleaseNotes('3.1.0')
       expect(fs.writeFileSync).toHaveBeenCalledWith(
         './release-notes-body',
         expect.stringContaining('Bing bong')
@@ -176,7 +167,15 @@ describe('Changelog release helper', () => {
         ## v3.0.0 (Breaking release)
       `)
 
-      generateReleaseNotes()
+      generateReleaseNotes('3.1.0-beta.0')
+      expect(fs.writeFileSync).toHaveBeenCalledWith(
+        './release-notes-body',
+        expect.stringContaining('Bing bong')
+      )
+    })
+
+    it('writes release notes from the changelog from the Unreleased heading if the version is internal', () => {
+      generateReleaseNotes('3.1.0-internal.0')
       expect(fs.writeFileSync).toHaveBeenCalledWith(
         './release-notes-body',
         expect.stringContaining('Bing bong')
@@ -184,7 +183,7 @@ describe('Changelog release helper', () => {
     })
 
     it('increases the heading levels from the changelog by one', () => {
-      generateReleaseNotes(true)
+      generateReleaseNotes('Unreleased')
       expect(fs.writeFileSync).toHaveBeenCalledWith(
         './release-notes-body',
         expect.stringContaining('## Fixes')

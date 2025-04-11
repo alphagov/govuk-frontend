@@ -4,11 +4,125 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 ## Unreleased
 
-### Fixes
+### New features
 
-We've made fixes to GOV.UK Frontend in the following pull requests:
+#### Use the refreshed GOV.UK brand
 
-- [#5785: Add missing Sass imports of components depended on](https://github.com/alphagov/govuk-frontend/pull/5785) - thanks to @matthew-shaw for reporting this issue and proposing a fix
+> Placeholder for instructions on enabling the brand and when it's allowed to be deployed to live.
+> If you're not using our page template:
+
+1. Add the `govuk-template--rebranded` to the `<html>` element of your page to use the rebranded styles of Footer and Cookie banner components.
+
+We've added a new `govukRebrand` ['variable' option to our page template](https://design-system.service.gov.uk/styles/page-template/#changing-template-content). It makes the Header, Footer, Service navigation and Cookie banner components use new styles for the brand refresh and display updated content (new logo in the Header component, crown in the Footer component).
+
+Use [`set`](https://mozilla.github.io/nunjucks/templating.html#set) to assign it `true` and enable the new styles:
+
+```nunjucks
+{% set govukRebrand = true %}
+```
+
+This snippet should not be placed between any `block` and `endblock` lines and instead be a separate line.
+These changes affect the Header, Footer, Service navigation, and Cookie banner components. Make sure they still work as expected after enabling the refreshed brand.
+
+These changes were made in the following pull requests:
+
+- [#5796: Update template background colour and components using it](https://github.com/alphagov/govuk-frontend/pull/5796)
+- [#5806: Update background colour of Cookie banner for brand refresh](https://github.com/alphagov/govuk-frontend/pull/5806)
+- [#5797: Add refreshed brand to service navigation component](https://github.com/alphagov/govuk-frontend/pull/5797)
+- [#5798: Add mixin to help rebrand specific properties](https://github.com/alphagov/govuk-frontend/pull/5798)
+- [#5793: Add GOV.UK logo macro](https://github.com/alphagov/govuk-frontend/pull/5793)
+- [#5794: Add redesigned header component](https://github.com/alphagov/govuk-frontend/pull/5794)
+
+#### Update to the new GOV.UK logo
+
+The GOV.UK logo has been updated to introduce a refreshed logotype design. This can be enabled using the feature flag described in the previous section.
+
+If you're not using the GOV.UK template, but are using the [GOV.UK header](https://design-system.service.gov.uk/components/header/) Nunjucks macro, you can enable this new logo by inserting `rebrand: true` into the component configuration.
+
+```nunjucks
+{{ govukHeader({
+  rebrand: true
+}) }}
+```
+
+If you're not using our Nunjucks macros, update your logo HTML to use the new SVG code.
+
+```html
+<svg focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 163 30" height="30" width="163" class="govuk-header__logotype" aria-label="GOV.UK">
+  <title>GOV.UK</title>
+  <g>
+    <circle cx="10.1" cy="8.8" r="1.8"></circle>
+    <circle cx="5.2" cy="11.7" r="1.8"></circle>
+    <circle cx="1.9" cy="16.6" r="1.8"></circle>
+    <circle cx="16" cy="15.3" r="1.8"></circle>
+    <circle cx="21.9" cy="8.8" r="1.8"></circle>
+    <circle cx="26.8" cy="11.7" r="1.8"></circle>
+    <circle cx="30.1" cy="16.6" r="1.8"></circle>
+    <circle cx="16" cy="15.3" r="1.8"></circle>
+    <path d="m16.7 4.9.2-.2 2.3 1.2V2.5l-2.3.7s-.1-.2-.2-.2l.9-2.9h-3.4l.9 2.9s-.2.1-.2.2l-2.3-.7v3.4l2.3-1.2.2.2-1.3 4c-.5 1.4.6 2.9 2.1 2.9s2.5-1.4 2.1-2.9l-1.3-4Zm2 14s-1.7 1.9-2.1 3c1.1 0 2.1-.3 3.2-1.4l-.4 4.3c-1-1.4-2.2-2-2.9-1.9 0 1.5.2 3.4 2.9 3.6 1.9.2 3.4-.8 3.5-1.9.2-1.3-1-2.2-1.9-.8-.7-2.3 1.2-3 2.5-1.6-1-2.2-.9-3.8 1.2-5.4 1.5 2 1.3 3.7-.6 5.5 1.2-.7 3.1 0 2 2.3-.6-1.4-1.8-1.1-2.1.1-.2.9.3 1.9 1.5 2.1.9.2 2.4-.5 3.5-2.9-.6 0-1.2.3-2 .8l1.2-4c.3 1.1.7 1.9 1.1 2.3.3-.8.2-1.4 0-2.7l2.5.9c-1.3 1.8-2.6 4.3-3.7 8.8-3.7-.5-7.9-.8-12.3-.8s-8.6.3-12.3.8c-1.1-4.4-2.3-7-3.7-8.8l2.5-.9c-.2 1.3-.3 1.9 0 2.7.4-.4.8-1.1 1.1-2.3l1.2 4c-.7-.5-1.3-.8-2-.8 1.2 2.5 2.6 3.1 3.5 2.9 1.1-.2 1.7-1.2 1.5-2.1-.3-1.2-1.5-1.5-2.1-.1-1.1-2.3.8-3 2-2.3-1.9-1.9-2.1-3.5-.6-5.5C9 18.4 9 20 8.1 22.2c1.2-1.4 3.2-.7 2.5 1.6-.9-1.4-2.1-.5-1.9.8.2 1.1 1.7 2.1 3.5 1.9 2.7-.2 2.9-2.1 2.9-3.6-.7-.1-1.9.5-2.9 1.9l-.4-4.3c1.1 1.1 2.1 1.4 3.2 1.4-.4-1.2-2.1-3-2.1-3h5.3Z"></path>
+  </g>
+  <circle class="govuk-logo-dot" cx="113.6" cy="18" r="3.7"></circle>
+  <path d="M47.4,18.1c0,.9.1,1.8.3,2.7s.6,1.6,1.1,2.3c.5.7,1.1,1.2,1.8,1.6.7.4,1.6.6,2.6.6s1.8-.2,2.4-.5c.7-.3,1.2-.7,1.6-1.2.4-.5.7-1,.8-1.5s.2-1,.2-1.5v-.2h-5.5v-3.3s9.8,0,9.8,0v12h-3.8v-2.7c-.3.4-.6.8-1,1.2-.4.4-.9.6-1.4.9-.5.2-1.1.4-1.7.6s-1.2.2-1.9.2c-1.6,0-3-.3-4.2-.9-1.2-.6-2.3-1.4-3.1-2.4s-1.5-2.2-1.9-3.5-.7-2.8-.7-4.4.2-3,.7-4.4c.5-1.4,1.2-2.5,2.1-3.5s2-1.8,3.3-2.4,2.7-.9,4.3-.9,2,.1,2.9.4c.9.2,1.8.6,2.5,1,.8.4,1.4,1,2,1.6.6.6,1.1,1.3,1.4,2.1l-3.8,2.2c-.2-.5-.5-.9-.8-1.3-.3-.4-.7-.7-1.1-1-.4-.3-.9-.5-1.4-.7s-1.1-.2-1.8-.2c-1,0-1.9.2-2.6.6-.7.4-1.3.9-1.8,1.6s-.8,1.4-1.1,2.3c-.2.9-.3,1.8-.3,2.7h0c0,.1,0,.1,0,.1ZM76.5,6.9c1.6,0,3.1.3,4.3.9s2.4,1.4,3.3,2.4,1.6,2.2,2,3.5.7,2.8.7,4.4-.2,3-.7,4.4c-.5,1.4-1.2,2.5-2,3.5s-2,1.8-3.3,2.4-2.7.9-4.3.9-3.1-.3-4.3-.9-2.4-1.4-3.2-2.4-1.6-2.2-2-3.5-.7-2.8-.7-4.4.2-3,.7-4.4,1.2-2.5,2-3.5,2-1.8,3.2-2.4,2.7-.9,4.3-.9ZM76.5,25.2c.9,0,1.8-.2,2.5-.5s1.3-.9,1.8-1.5.9-1.4,1.1-2.2c.2-.9.4-1.8.4-2.8h0c0-1.1-.1-2.1-.4-3s-.6-1.6-1.1-2.3c-.5-.6-1.1-1.1-1.8-1.5s-1.6-.5-2.5-.5-1.8.2-2.5.5c-.7.4-1.3.9-1.8,1.5s-.9,1.4-1.1,2.3-.4,1.8-.4,2.8h0c0,1.2.1,2.1.4,3,.2.9.6,1.6,1.1,2.2.5.6,1.1,1.1,1.8,1.5.7.4,1.6.5,2.5.5ZM94.6,29l-6.1-22h4.9l4.2,16.5h.2l4.1-16.5h4.9l-6.1,22h-6ZM131.5,25.2c.6,0,1.2,0,1.8-.3s1-.5,1.4-.9c.4-.4.7-.9.9-1.4.2-.6.4-1.3.4-2V7h4.3v14.2c0,1.2-.2,2.3-.7,3.3-.4,1-1.1,1.8-1.8,2.5s-1.7,1.2-2.8,1.6c-1.1.4-2.3.6-3.5.6s-2.5-.2-3.5-.6c-1.1-.4-2-.9-2.8-1.6s-1.4-1.5-1.8-2.5c-.4-1-.7-2.1-.7-3.3V7s4.3,0,4.3,0v13.6c0,.8.1,1.5.4,2,.2.6.6,1.1,1,1.4.4.4.9.7,1.4.9s1.1.3,1.8.3h0ZM144.2,7h4.4v9.6s7.8-9.6,7.8-9.6h5.4l-7.5,8.8,8,13.2h-5.1l-5.7-9.9-2.8,3.1v6.7s-4.4,0-4.4,0V7Z"></path>
+</svg>
+```
+
+These changes were made in the following pull requests:
+
+- [#5793: Add GOV.UK logo macro](https://github.com/alphagov/govuk-frontend/pull/5793)
+- [#5794: Add redesigned header component](https://github.com/alphagov/govuk-frontend/pull/5794)
+
+#### Display the GOV.UK crown in the Footer component
+
+The GOV.UK Footer has been updated to display the GOV.UK crown before its content, as a visual 'full stop' at the end of the page. This can be enabled using the feature flag described in the previous section.
+
+If you're not using the GOV.UK template, but are using the [GOV.UK footer](https://design-system.service.gov.uk/components/footer/) Nunjucks macro, you can display the crown by inserting `rebrand: true` into the component configuration.
+
+```nunjucks
+{{ govukFooter({
+  rebrand: true
+}) }}
+```
+
+If you're not using our Nunjucks macros, update your footer HTML to adding the following SVG code inside the `<div>` with the `govuk-width-container` class
+child of the `<footer>` with `govuk-footer` element.
+
+```html
+<svg
+  focusable="false"
+  role="presentation"
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 32 30"
+  height="30"
+  width="32"
+  class="govuk-footer__crown"
+>
+  <g>
+    <circle cx="10.1" cy="8.8" r="1.8"></circle>
+    <circle cx="5.2" cy="11.7" r="1.8"></circle>
+    <circle cx="1.9" cy="16.6" r="1.8"></circle>
+    <circle cx="16" cy="15.3" r="1.8"></circle>
+    <circle cx="21.9" cy="8.8" r="1.8"></circle>
+    <circle cx="26.8" cy="11.7" r="1.8"></circle>
+    <circle cx="30.1" cy="16.6" r="1.8"></circle>
+    <circle cx="16" cy="15.3" r="1.8"></circle>
+    <path d="m16.7 4.9.2-.2 2.3 1.2V2.5l-2.3.7s-.1-.2-.2-.2l.9-2.9h-3.4l.9 2.9s-.2.1-.2.2l-2.3-.7v3.4l2.3-1.2.2.2-1.3 4c-.5 1.4.6 2.9 2.1 2.9s2.5-1.4 2.1-2.9l-1.3-4Zm2 14s-1.7 1.9-2.1 3c1.1 0 2.1-.3 3.2-1.4l-.4 4.3c-1-1.4-2.2-2-2.9-1.9 0 1.5.2 3.4 2.9 3.6 1.9.2 3.4-.8 3.5-1.9.2-1.3-1-2.2-1.9-.8-.7-2.3 1.2-3 2.5-1.6-1-2.2-.9-3.8 1.2-5.4 1.5 2 1.3 3.7-.6 5.5 1.2-.7 3.1 0 2 2.3-.6-1.4-1.8-1.1-2.1.1-.2.9.3 1.9 1.5 2.1.9.2 2.4-.5 3.5-2.9-.6 0-1.2.3-2 .8l1.2-4c.3 1.1.7 1.9 1.1 2.3.3-.8.2-1.4 0-2.7l2.5.9c-1.3 1.8-2.6 4.3-3.7 8.8-3.7-.5-7.9-.8-12.3-.8s-8.6.3-12.3.8c-1.1-4.4-2.3-7-3.7-8.8l2.5-.9c-.2 1.3-.3 1.9 0 2.7.4-.4.8-1.1 1.1-2.3l1.2 4c-.7-.5-1.3-.8-2-.8 1.2 2.5 2.6 3.1 3.5 2.9 1.1-.2 1.7-1.2 1.5-2.1-.3-1.2-1.5-1.5-2.1-.1-1.1-2.3.8-3 2-2.3-1.9-1.9-2.1-3.5-.6-5.5C9 18.4 9 20 8.1 22.2c1.2-1.4 3.2-.7 2.5 1.6-.9-1.4-2.1-.5-1.9.8.2 1.1 1.7 2.1 3.5 1.9 2.7-.2 2.9-2.1 2.9-3.6-.7-.1-1.9.5-2.9 1.9l-.4-4.3c1.1 1.1 2.1 1.4 3.2 1.4-.4-1.2-2.1-3-2.1-3h5.3Z"></path>
+  </g>
+</svg>
+```
+
+#### Footer component top border is now consistent with GOV.UK
+
+We've updated the border of the Footer component so it matches the border used on GOV.UK. This will provide a more consistent experience for users as they navigate from GOV.UK to services.
+
+This change was introduced in [pull request #5792: Update footer top border to be consistent with GOV.UK](https://github.com/alphagov/govuk-frontend/pull/5792)
+
+#### Royal Arms in the Footer component now matches the text's colour
+
+We've updated the colour of the Royal Arms in the [GOV.UK footer](https://design-system.service.gov.uk/components/footer/) so it matches the text colour in browsers supporting the `filter` CSS property.
+
+This improves its accessibility and reduces the number of colours used in the footer.
+
+This change was introduced in [pull request #5801: Update colour of the copyright logo using CSS](https://github.com/alphagov/govuk-frontend/pull/5801)
 
 ### Deprecated features
 
@@ -21,6 +135,12 @@ We're replacing it with a `$govuk-template-background-colour` variable, with a m
 If you were using `$govuk-canvas-background-colour` to match the background colour of the `<html>` element then use `$govuk-template-background-colour` instead.
 
 If you were using `$govuk-canvas-background-colour` to set the background colour in your custom styling to `light-grey` then use `govuk-colour('light-grey')` instead.
+
+### Fixes
+
+We've made fixes to GOV.UK Frontend in the following pull requests:
+
+- [#5785: Add missing Sass imports of components depended on](https://github.com/alphagov/govuk-frontend/pull/5785) - thanks to @matthew-shaw for reporting this issue and proposing a fix
 
 ## v5.9.0 (Feature release)
 

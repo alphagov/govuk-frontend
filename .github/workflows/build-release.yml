@@ -54,7 +54,7 @@ jobs:
           script: |
             const { generateReleaseNotes } = await import('${{ github.workspace }}/.github/workflows/scripts/changelog-release-helper.mjs')
 
-            generateReleaseNotes()
+            generateReleaseNotes('${{ inputs.version }}')
 
       - name: Build release
         run: npm run build:release

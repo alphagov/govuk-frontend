@@ -68,6 +68,32 @@ describe('Template', () => {
       expect(document.documentElement).toHaveClass('my-custom-class')
     })
 
+    it('adds the rebrand class if govukRebrand is set to true', () => {
+      replacePageWith(
+        renderTemplate('govuk/template.njk', {
+          context: {
+            govukRebrand: true
+          }
+        })
+      )
+
+      expect(document.documentElement).toHaveClass('govuk-template--rebranded')
+    })
+
+    it('adds the rebrand class if govukRebrand is set to true in a nunjucks template `set`', () => {
+      // Passing `set` applies a nunjucks `set` in `renderTemplate` rather
+      // than just applying the context
+      replacePageWith(
+        renderTemplate('govuk/template.njk', {
+          set: {
+            govukRebrand: true
+          }
+        })
+      )
+
+      expect(document.documentElement).toHaveClass('govuk-template--rebranded')
+    })
+
     it('renders valid HTML', () => {
       expect(renderTemplate('govuk/template.njk')).toHTMLValidate({
         extends: ['html-validate:document'],
@@ -412,6 +438,20 @@ describe('Template', () => {
         expect(document.querySelector('.my-header')).toBeInTheDocument()
         expect(document.querySelector('.govuk-header')).toBeNull()
       })
+
+      it('sets the rebrand param to true by default if govukRebrand is true', () => {
+        replacePageWith(
+          renderTemplate('govuk/template.njk', {
+            context: {
+              govukRebrand: true
+            }
+          })
+        )
+
+        expect(
+          document.querySelector('.govuk-header .govuk-logo-dot')
+        ).toBeInTheDocument()
+      })
     })
 
     describe('<main>', () => {
@@ -498,6 +538,20 @@ describe('Template', () => {
 
         expect(document.querySelector('.my-footer')).toBeInTheDocument()
         expect(document.querySelector('.govuk-footer')).toBeNull()
+      })
+
+      it('sets the rebrand param to true by default if govukRebrand is true', () => {
+        replacePageWith(
+          renderTemplate('govuk/template.njk', {
+            context: {
+              govukRebrand: true
+            }
+          })
+        )
+
+        expect(
+          document.querySelector('.govuk-footer .govuk-footer__crown')
+        ).toBeInTheDocument()
       })
     })
   })
