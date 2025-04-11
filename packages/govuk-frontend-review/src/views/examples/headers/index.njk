@@ -1,0 +1,310 @@
+{% extends "layouts/examples.njk" %}
+
+{% from "govuk/components/header/macro.njk" import govukHeader %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+{% from "govuk/components/cookie-banner/macro.njk" import govukCookieBanner %}
+{% from "govuk/components/exit-this-page/macro.njk" import govukExitThisPage %}
+{% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
+{% from "govuk/components/panel/macro.njk" import govukPanel %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full-width">
+    <h1 class="govuk-heading-xl">Heading experimentation</h1>
+
+    <div class="govuk-grid-column-full-width">
+      <h2 class="govuk-heading-l">Header and Back link</h2>
+        {{ govukHeader({
+        navigationClasses: "govuk-header__navigation--end",
+        productName: "Product Name"
+        }) }}
+        <a href="#" class="govuk-back-link">Back</a>
+        <div class="govuk-width-container">
+          <main class="govuk-main-wrapper govuk-main-wrapper--l" >
+            <div class="govuk-grid-row">
+              <div class="govuk-grid-column-two-thirds">
+              </div>
+            </div>
+          </main>
+        </div>
+      </div>
+    </div>
+
+    <div class="govuk-grid-column-full-width">
+      <h2 class="govuk-heading-l">Header and Breadcrumbs</h2>
+        {{ govukHeader({
+        navigationClasses: "govuk-header__navigation--end",
+        productName: "Product Name"
+        }) }}
+        <nav class="govuk-breadcrumbs" aria-label="Breadcrumb">
+          <ol class="govuk-breadcrumbs__list">
+            <li class="govuk-breadcrumbs__list-item">
+              <a class="govuk-breadcrumbs__link" href="#">Home</a>
+            </li>
+            <li class="govuk-breadcrumbs__list-item">
+              <a class="govuk-breadcrumbs__link" href="#">Passports, travel and living abroad</a>
+            </li>
+            <li class="govuk-breadcrumbs__list-item">
+              <a class="govuk-breadcrumbs__link" href="#">Travel abroad</a>
+            </li>
+          </ol>
+        </nav>
+        <div class="govuk-width-container">
+          <main class="govuk-main-wrapper govuk-main-wrapper--l" >
+            <div class="govuk-grid-row">
+              <div class="govuk-grid-column-two-thirds">
+              </div>
+            </div>
+          </main>
+        </div>
+      </div>
+
+    <div class="govuk-grid-column-full-width">
+      <h2 class="govuk-heading-l">Header and Cookie banner</h2>
+      <div>
+      <div class="govuk-cookie-banner" data-nosnippet role="region" aria-label="Cookies on [name of service]">
+      <div class="govuk-cookie-banner__message govuk-width-container">
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-two-thirds">
+            <h2 class="govuk-cookie-banner__heading govuk-heading-m">
+              Cookies on [name of service]
+            </h2>
+            <div class="govuk-cookie-banner__content">
+              <p class="govuk-body">We use some essential cookies to make this service work.</p>
+              <p class="govuk-body">We’d also like to use analytics cookies so we can understand how you use the service and make improvements.</p>
+            </div>
+          </div>
+        </div>
+        <div class="govuk-button-group">
+          <button type="button" class="govuk-button" data-module="govuk-button">
+            Accept analytics cookies
+          </button>
+          <button type="button" class="govuk-button" data-module="govuk-button">
+            Reject analytics cookies
+          </button>
+          <a class="govuk-link" href="#">View cookies</a>
+        </div>
+      </div>
+    </div>
+        {{ govukHeader({
+        navigationClasses: "govuk-header__navigation--end",
+        productName: "Product Name"
+        }) }}
+
+        <div class="govuk-width-container">
+          <main class="govuk-main-wrapper govuk-main-wrapper--l" >
+            <div class="govuk-grid-row">
+              <div class="govuk-grid-column-two-thirds">
+              </div>
+            </div>
+          </main>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="govuk-grid-column-full-width">
+      <h2 class="govuk-heading-l">Header and Exit this page</h2>
+        {{ govukHeader({
+        navigationClasses: "govuk-header__navigation--end",
+        productName: "Product Name"
+        }) }}
+        <div class="govuk-width-container">
+          <main class="govuk-main-wrapper govuk-main-wrapper--l" >
+          <div class="govuk-exit-this-page" data-module="govuk-exit-this-page">
+            <a href="https://www.bbc.co.uk/weather" role="button" draggable="false" class="govuk-button govuk-button--warning govuk-exit-this-page__button govuk-js-exit-this-page-button" data-module="govuk-button" rel="nofollow noreferrer">
+              <span class="govuk-visually-hidden">Emergency</span> Exit this page
+            </a>
+          </div>
+            <div class="govuk-grid-row">
+              <div class="govuk-grid-column-two-thirds">
+              </div>
+            </div>
+          </main>
+        </div>
+      </div>
+
+    <div class="govuk-grid-column-full-width">
+      <h2 class="govuk-heading-l">Header and Notification banner</h2>
+        {{ govukHeader({
+        navigationClasses: "govuk-header__navigation--end",
+        productName: "Product Name"
+        }) }}
+        <div class="govuk-width-container">
+          <main class="govuk-main-wrapper govuk-main-wrapper--l" >
+            <div class="govuk-grid-row">
+              <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+                <div class="govuk-notification-banner__header">
+                  <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+                    Important
+                  </h2>
+                </div>
+                <div class="govuk-notification-banner__content">
+                  <p class="govuk-notification-banner__heading">
+                    You have 7 days left to send your application.
+                    <a class="govuk-notification-banner__link" href="#">View application</a>.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </main>
+        </div>
+      </div>
+
+    <div class="govuk-grid-column-full-width">
+      <h2 class="govuk-heading-l">Header and Panel</h2>
+        {{ govukHeader({
+        navigationClasses: "govuk-header__navigation--end",
+        productName: "Product Name"
+        }) }}
+        <div class="govuk-width-container">
+          <main class="govuk-main-wrapper govuk-main-wrapper--l" >
+            <div class="govuk-grid-row">
+              <div class="govuk-panel govuk-panel--confirmation">
+                <h1 class="govuk-panel__title">
+                  Application complete
+                </h1>
+                <div class="govuk-panel__body">
+                  Your reference number<br><strong>HDJ2123F</strong>
+                </div>
+              </div>
+            </div>
+          </main>
+        </div>
+      </div>
+
+
+    <div class="govuk-grid-column-full-width">
+      <h2 class="govuk-heading-l">Header and Phase banner</h2>
+        {{ govukHeader({
+        navigationClasses: "govuk-header__navigation--end",
+        productName: "Product Name"
+        }) }}
+        <div class="govuk-phase-banner">
+          <p class="govuk-phase-banner__content">
+            <strong class="govuk-tag govuk-phase-banner__content__tag">
+              Alpha
+            </strong>
+            <span class="govuk-phase-banner__text">
+              This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback by email</a>.
+            </span>
+          </p>
+        </div>
+        <div class="govuk-width-container">
+          <main class="govuk-main-wrapper govuk-main-wrapper--l" >
+            <div class="govuk-grid-row">
+              <div class="govuk-grid-column-two-thirds">
+              </div>
+            </div>
+          </main>
+        </div>
+      </div>
+
+      <div class="govuk-grid-column-full-width">
+      <h2 class="govuk-heading-l">Header with multiple components</h2>
+      {% set html %}
+      <p class="govuk-body">We use some essential cookies to make this service work.</p>
+      <p class="govuk-body">We’d also like to use analytics cookies so we can understand how you use the service and make improvements.</p>
+    {% endset %}
+
+    {{ govukCookieBanner({
+      ariaLabel: "Cookies on [name of service]",
+      messages: [
+        {
+          headingText: "Cookies on [name of service]",
+          html: html,
+          actions: [
+            {
+              text: "Accept analytics cookies",
+              type: "button"
+            },
+            {
+              text: "Reject analytics cookies",
+              type: "button"
+            },
+            {
+              text: "View cookies",
+              href: "#"
+            }
+          ]
+        }
+      ]
+    }) }}
+      {{ govukHeader({
+      serviceName: "Service Name",
+      serviceUrl: "/components/header",
+      navigation: [
+        {
+          href: "#1",
+          text: "Navigation item 1",
+          active: true
+        },
+        {
+          href: "#2",
+          text: "Navigation item 2"
+        },
+        {
+          href: "#3",
+          text: "Navigation item 3"
+        },
+        {
+          href: "#4",
+          text: "Navigation item 4"
+        }
+      ]
+    }) }}
+
+        {{ govukPhaseBanner({
+          tag: {
+            text: "Alpha"
+          },
+          html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback by email</a>.'
+        }) }}
+
+        {{ govukBreadcrumbs({
+          items: [
+            {
+              text: "Home",
+              href: "#"
+            },
+            {
+              text: "Passports, travel and living abroad",
+              href: "#"
+            },
+            {
+              text: "Travel abroad",
+              href: "#"
+            }
+          ]
+        }) }}
+        <div class="govuk-width-container">{{ govukExitThisPage() }}
+          <main class="govuk-main-wrapper govuk-main-wrapper--l" >
+            <div class="govuk-grid-row">
+              <div class="govuk-grid-column-full-width">
+
+                {% set html %}
+                  <p class="govuk-notification-banner__heading">
+                    You have 7 days left to send your application.
+                    <a class="govuk-notification-banner__link" href="#">View application</a>.
+                  </p>
+                {% endset %}
+
+                {{ govukNotificationBanner({
+                  html: html
+                }) }}
+              </div>
+            </div>
+          </main>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+{% endblock %}
