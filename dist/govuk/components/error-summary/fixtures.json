@@ -1,0 +1,326 @@
+{
+    "component": "error-summary",
+    "fixtures": [
+        {
+            "name": "default",
+            "options": {
+                "titleText": "There is a problem",
+                "errorList": [
+                    {
+                        "text": "The date your passport was issued must be in the past",
+                        "href": "#example-error-1"
+                    },
+                    {
+                        "text": "Enter a postcode, like AA1 1AA",
+                        "href": "#example-error-2"
+                    }
+                ]
+            },
+            "hidden": false,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-error-summary\" data-module=\"govuk-error-summary\">\n  <div role=\"alert\">\n    <h2 class=\"govuk-error-summary__title\">\n      There is a problem\n    </h2>\n    <div class=\"govuk-error-summary__body\">\n        <ul class=\"govuk-list govuk-error-summary__list\">\n          <li>\n            <a href=\"#example-error-1\">The date your passport was issued must be in the past</a>\n          </li>\n          <li>\n            <a href=\"#example-error-2\">Enter a postcode, like AA1 1AA</a>\n          </li>\n        </ul>\n    </div>\n  </div>\n</div>"
+        },
+        {
+            "name": "without links",
+            "options": {
+                "titleText": "There is a problem",
+                "errorList": [
+                    {
+                        "text": "Invalid username or password"
+                    }
+                ]
+            },
+            "hidden": false,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-error-summary\" data-module=\"govuk-error-summary\">\n  <div role=\"alert\">\n    <h2 class=\"govuk-error-summary__title\">\n      There is a problem\n    </h2>\n    <div class=\"govuk-error-summary__body\">\n        <ul class=\"govuk-list govuk-error-summary__list\">\n          <li>\n            Invalid username or password\n          </li>\n        </ul>\n    </div>\n  </div>\n</div>"
+        },
+        {
+            "name": "mixed with and without links",
+            "options": {
+                "titleText": "There is a problem",
+                "errorList": [
+                    {
+                        "text": "Invalid username or password"
+                    },
+                    {
+                        "text": "Agree to the terms of service to log in",
+                        "href": "#example-error-1"
+                    }
+                ]
+            },
+            "hidden": false,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-error-summary\" data-module=\"govuk-error-summary\">\n  <div role=\"alert\">\n    <h2 class=\"govuk-error-summary__title\">\n      There is a problem\n    </h2>\n    <div class=\"govuk-error-summary__body\">\n        <ul class=\"govuk-list govuk-error-summary__list\">\n          <li>\n            Invalid username or password\n          </li>\n          <li>\n            <a href=\"#example-error-1\">Agree to the terms of service to log in</a>\n          </li>\n        </ul>\n    </div>\n  </div>\n</div>"
+        },
+        {
+            "name": "with description only",
+            "options": {
+                "titleText": "There is a problem",
+                "descriptionText": "The file couldn't be loaded. Try again later."
+            },
+            "hidden": false,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-error-summary\" data-module=\"govuk-error-summary\">\n  <div role=\"alert\">\n    <h2 class=\"govuk-error-summary__title\">\n      There is a problem\n    </h2>\n    <div class=\"govuk-error-summary__body\">\n      <p>\n        The file couldn&#39;t be loaded. Try again later.\n      </p>\n    </div>\n  </div>\n</div>"
+        },
+        {
+            "name": "with everything",
+            "options": {
+                "titleText": "There is a problem",
+                "descriptionText": "Please fix the errors below.",
+                "errorList": [
+                    {
+                        "text": "Invalid username or password"
+                    },
+                    {
+                        "text": "Agree to the terms of service to log in",
+                        "href": "#example-error-1"
+                    }
+                ]
+            },
+            "hidden": false,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-error-summary\" data-module=\"govuk-error-summary\">\n  <div role=\"alert\">\n    <h2 class=\"govuk-error-summary__title\">\n      There is a problem\n    </h2>\n    <div class=\"govuk-error-summary__body\">\n      <p>\n        Please fix the errors below.\n      </p>\n        <ul class=\"govuk-list govuk-error-summary__list\">\n          <li>\n            Invalid username or password\n          </li>\n          <li>\n            <a href=\"#example-error-1\">Agree to the terms of service to log in</a>\n          </li>\n        </ul>\n    </div>\n  </div>\n</div>"
+        },
+        {
+            "name": "html as titleText",
+            "options": {
+                "titleText": "Alert, <em>alert</em>",
+                "errorList": [
+                    {
+                        "text": "Invalid username or password"
+                    }
+                ]
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-error-summary\" data-module=\"govuk-error-summary\">\n  <div role=\"alert\">\n    <h2 class=\"govuk-error-summary__title\">\n      Alert, &lt;em&gt;alert&lt;/em&gt;\n    </h2>\n    <div class=\"govuk-error-summary__body\">\n        <ul class=\"govuk-list govuk-error-summary__list\">\n          <li>\n            Invalid username or password\n          </li>\n        </ul>\n    </div>\n  </div>\n</div>"
+        },
+        {
+            "name": "title html",
+            "options": {
+                "titleHtml": "Alert, <em>alert</em>",
+                "errorList": [
+                    {
+                        "text": "Invalid username or password"
+                    }
+                ]
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-error-summary\" data-module=\"govuk-error-summary\">\n  <div role=\"alert\">\n    <h2 class=\"govuk-error-summary__title\">\n      Alert, <em>alert</em>\n    </h2>\n    <div class=\"govuk-error-summary__body\">\n        <ul class=\"govuk-list govuk-error-summary__list\">\n          <li>\n            Invalid username or password\n          </li>\n        </ul>\n    </div>\n  </div>\n</div>"
+        },
+        {
+            "name": "description",
+            "options": {
+                "titleText": "There is a problem",
+                "descriptionText": "Lorem ipsum",
+                "errorList": [
+                    {
+                        "text": "Invalid username or password"
+                    }
+                ]
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-error-summary\" data-module=\"govuk-error-summary\">\n  <div role=\"alert\">\n    <h2 class=\"govuk-error-summary__title\">\n      There is a problem\n    </h2>\n    <div class=\"govuk-error-summary__body\">\n      <p>\n        Lorem ipsum\n      </p>\n        <ul class=\"govuk-list govuk-error-summary__list\">\n          <li>\n            Invalid username or password\n          </li>\n        </ul>\n    </div>\n  </div>\n</div>"
+        },
+        {
+            "name": "html as descriptionText",
+            "options": {
+                "titleText": "There is a problem",
+                "descriptionText": "See errors below (>)",
+                "errorList": [
+                    {
+                        "text": "Invalid username or password"
+                    }
+                ]
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-error-summary\" data-module=\"govuk-error-summary\">\n  <div role=\"alert\">\n    <h2 class=\"govuk-error-summary__title\">\n      There is a problem\n    </h2>\n    <div class=\"govuk-error-summary__body\">\n      <p>\n        See errors below (&gt;)\n      </p>\n        <ul class=\"govuk-list govuk-error-summary__list\">\n          <li>\n            Invalid username or password\n          </li>\n        </ul>\n    </div>\n  </div>\n</div>"
+        },
+        {
+            "name": "description html",
+            "options": {
+                "titleText": "There is a problem",
+                "descriptionHtml": "See <span>errors</span> below",
+                "errorList": [
+                    {
+                        "text": "Invalid username or password"
+                    }
+                ]
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-error-summary\" data-module=\"govuk-error-summary\">\n  <div role=\"alert\">\n    <h2 class=\"govuk-error-summary__title\">\n      There is a problem\n    </h2>\n    <div class=\"govuk-error-summary__body\">\n      <p>\n        See <span>errors</span> below\n      </p>\n        <ul class=\"govuk-list govuk-error-summary__list\">\n          <li>\n            Invalid username or password\n          </li>\n        </ul>\n    </div>\n  </div>\n</div>"
+        },
+        {
+            "name": "classes",
+            "options": {
+                "titleText": "There is a problem",
+                "classes": "extra-class one-more-class",
+                "errorList": [
+                    {
+                        "text": "Invalid username or password"
+                    }
+                ]
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-error-summary extra-class one-more-class\" data-module=\"govuk-error-summary\">\n  <div role=\"alert\">\n    <h2 class=\"govuk-error-summary__title\">\n      There is a problem\n    </h2>\n    <div class=\"govuk-error-summary__body\">\n        <ul class=\"govuk-list govuk-error-summary__list\">\n          <li>\n            Invalid username or password\n          </li>\n        </ul>\n    </div>\n  </div>\n</div>"
+        },
+        {
+            "name": "attributes",
+            "options": {
+                "titleText": "There is a problem",
+                "attributes": {
+                    "first-attribute": "foo",
+                    "second-attribute": "bar"
+                },
+                "errorList": [
+                    {
+                        "text": "Invalid username or password"
+                    }
+                ]
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-error-summary\" first-attribute=\"foo\" second-attribute=\"bar\" data-module=\"govuk-error-summary\">\n  <div role=\"alert\">\n    <h2 class=\"govuk-error-summary__title\">\n      There is a problem\n    </h2>\n    <div class=\"govuk-error-summary__body\">\n        <ul class=\"govuk-list govuk-error-summary__list\">\n          <li>\n            Invalid username or password\n          </li>\n        </ul>\n    </div>\n  </div>\n</div>"
+        },
+        {
+            "name": "error list with attributes",
+            "options": {
+                "titleText": "There is a problem",
+                "errorList": [
+                    {
+                        "text": "Error-1",
+                        "href": "#item",
+                        "attributes": {
+                            "data-attribute": "my-attribute",
+                            "data-attribute-2": "my-attribute-2"
+                        }
+                    }
+                ]
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-error-summary\" data-module=\"govuk-error-summary\">\n  <div role=\"alert\">\n    <h2 class=\"govuk-error-summary__title\">\n      There is a problem\n    </h2>\n    <div class=\"govuk-error-summary__body\">\n        <ul class=\"govuk-list govuk-error-summary__list\">\n          <li>\n            <a href=\"#item\" data-attribute=\"my-attribute\" data-attribute-2=\"my-attribute-2\">Error-1</a>\n          </li>\n        </ul>\n    </div>\n  </div>\n</div>"
+        },
+        {
+            "name": "error list with html as text",
+            "options": {
+                "titleText": "There is a problem",
+                "errorList": [
+                    {
+                        "text": "Descriptive link to the <b>question</b> with an error"
+                    }
+                ]
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-error-summary\" data-module=\"govuk-error-summary\">\n  <div role=\"alert\">\n    <h2 class=\"govuk-error-summary__title\">\n      There is a problem\n    </h2>\n    <div class=\"govuk-error-summary__body\">\n        <ul class=\"govuk-list govuk-error-summary__list\">\n          <li>\n            Descriptive link to the &lt;b&gt;question&lt;/b&gt; with an error\n          </li>\n        </ul>\n    </div>\n  </div>\n</div>"
+        },
+        {
+            "name": "error list with html",
+            "options": {
+                "titleText": "There is a problem",
+                "errorList": [
+                    {
+                        "html": "The date your passport was issued <b>must</b> be in the past"
+                    }
+                ]
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-error-summary\" data-module=\"govuk-error-summary\">\n  <div role=\"alert\">\n    <h2 class=\"govuk-error-summary__title\">\n      There is a problem\n    </h2>\n    <div class=\"govuk-error-summary__body\">\n        <ul class=\"govuk-list govuk-error-summary__list\">\n          <li>\n            The date your passport was issued <b>must</b> be in the past\n          </li>\n        </ul>\n    </div>\n  </div>\n</div>"
+        },
+        {
+            "name": "error list with html link",
+            "options": {
+                "titleText": "There is a problem",
+                "errorList": [
+                    {
+                        "html": "Descriptive link to the <b>question</b> with an error",
+                        "href": "#error-1"
+                    }
+                ]
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-error-summary\" data-module=\"govuk-error-summary\">\n  <div role=\"alert\">\n    <h2 class=\"govuk-error-summary__title\">\n      There is a problem\n    </h2>\n    <div class=\"govuk-error-summary__body\">\n        <ul class=\"govuk-list govuk-error-summary__list\">\n          <li>\n            <a href=\"#error-1\">Descriptive link to the <b>question</b> with an error</a>\n          </li>\n        </ul>\n    </div>\n  </div>\n</div>"
+        },
+        {
+            "name": "error list with html as text link",
+            "options": {
+                "titleText": "There is a problem",
+                "errorList": [
+                    {
+                        "text": "Descriptive link to the <b>question</b> with an error",
+                        "href": "#error-1"
+                    }
+                ]
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-error-summary\" data-module=\"govuk-error-summary\">\n  <div role=\"alert\">\n    <h2 class=\"govuk-error-summary__title\">\n      There is a problem\n    </h2>\n    <div class=\"govuk-error-summary__body\">\n        <ul class=\"govuk-list govuk-error-summary__list\">\n          <li>\n            <a href=\"#error-1\">Descriptive link to the &lt;b&gt;question&lt;/b&gt; with an error</a>\n          </li>\n        </ul>\n    </div>\n  </div>\n</div>"
+        },
+        {
+            "name": "autofocus disabled",
+            "options": {
+                "titleText": "There is a problem",
+                "disableAutoFocus": true
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-error-summary\" data-disable-auto-focus=\"true\" data-module=\"govuk-error-summary\">\n  <div role=\"alert\">\n    <h2 class=\"govuk-error-summary__title\">\n      There is a problem\n    </h2>\n    <div class=\"govuk-error-summary__body\">\n    </div>\n  </div>\n</div>"
+        },
+        {
+            "name": "autofocus explicitly enabled",
+            "options": {
+                "titleText": "There is a problem",
+                "disableAutoFocus": false
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-error-summary\" data-disable-auto-focus=\"false\" data-module=\"govuk-error-summary\">\n  <div role=\"alert\">\n    <h2 class=\"govuk-error-summary__title\">\n      There is a problem\n    </h2>\n    <div class=\"govuk-error-summary__body\">\n    </div>\n  </div>\n</div>"
+        }
+    ]
+}

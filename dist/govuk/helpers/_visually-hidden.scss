@@ -1,0 +1,85 @@
+////
+/// @group helpers/accessibility
+////
+
+/// Helper function containing the common code for the following two mixins
+///
+/// @link https://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+///   - Hiding Content for Accessibility, Jonathan Snook, February 2011
+/// @link https://github.com/h5bp/html5-boilerplate/blob/9f13695d21ff92c55c78dfa9f16bb02a1b6e911f/src/css/main.css#L121-L158
+///   - h5bp/html5-boilerplate - Thanks!
+///
+/// @param {Boolean} $important [true] - Whether to mark as `!important`
+///
+/// @access private
+
+@mixin _govuk-visually-hide-content($important: true) {
+  position: absolute if($important, !important, null);
+
+  width: 1px if($important, !important, null);
+  height: 1px if($important, !important, null);
+  // If margin is set to a negative value it can cause text to be announced in
+  // the wrong order in VoiceOver for OSX
+  margin: 0 if($important, !important, null);
+  padding: 0 if($important, !important, null);
+
+  overflow: hidden if($important, !important, null);
+
+  // `clip` is needed for IE11 support
+  clip: rect(0 0 0 0) if($important, !important, null);
+  -webkit-clip-path: inset(50%) if($important, !important, null);
+          clip-path: inset(50%) if($important, !important, null);
+
+  border: 0 if($important, !important, null);
+
+  // For long content, line feeds are not interpreted as spaces and small width
+  // causes content to wrap 1 word per line:
+  // https://medium.com/@jessebeach/beware-smushed-off-screen-accessible-text-5952a4c2cbfe
+  white-space: nowrap if($important, !important, null);
+
+  // Prevent users from selecting or copying visually-hidden text. This prevents
+  // a user unintentionally copying more text than they intended and needing to
+  // manually trim it down again.
+  -webkit-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+/// Hide an element visually, but have it available for screen readers
+///
+/// @param {Boolean} $important [true] - Whether to mark as `!important`
+///
+/// @access public
+
+@mixin govuk-visually-hidden($important: true) {
+  @include _govuk-visually-hide-content($important: $important);
+
+  // Absolute positioning has the unintended consequence of removing any
+  // whitespace surrounding visually hidden text from the accessibility tree.
+  // Insert a space character before and after visually hidden text to separate
+  // it from any visible text surrounding it.
+  &::before {
+    content: "\00a0";
+  }
+
+  &::after {
+    content: "\00a0";
+  }
+}
+
+/// Hide an element visually, but have it available for screen readers whilst
+/// allowing the element to be focused when navigated to via the keyboard (e.g.
+/// for the skip link)
+///
+/// @param {Boolean} $important [true] - Whether to mark as `!important`
+///
+/// @access public
+
+@mixin govuk-visually-hidden-focusable($important: true) {
+  // IE 11 doesn't support the combined `:not(:active, :focus)` syntax.
+  &:not(:active):not(:focus) {
+    @include _govuk-visually-hide-content($important: $important);
+  }
+}
+
+/*# sourceMappingURL=_visually-hidden.scss.map */

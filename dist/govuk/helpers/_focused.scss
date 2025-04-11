@@ -1,0 +1,49 @@
+////
+/// @group helpers/accessibility
+////
+
+/// Focused text
+///
+/// Provides an outline to clearly indicate when the target element is focused.
+/// Used for interactive text-based elements.
+///
+/// @access public
+
+@mixin govuk-focused-text {
+  // When colours are overridden, for example when users have a dark mode,
+  // backgrounds and box-shadows disappear, so we need to ensure there's a
+  // transparent outline which will be set to a visible colour.
+
+  outline: $govuk-focus-width solid transparent;
+  color: $govuk-focus-text-colour;
+  background-color: $govuk-focus-colour;
+  box-shadow:
+    0 -2px $govuk-focus-colour,
+    0 4px $govuk-focus-text-colour;
+  // When link is focussed, hide the default underline since the
+  // box shadow adds the "underline"
+  text-decoration: none;
+
+  // When a focused box is broken by e.g. a line break, ensure that the
+  // box-shadow is applied to each fragment independently.
+  -webkit-box-decoration-break: clone;
+          box-decoration-break: clone;
+}
+
+/// Focused box
+///
+/// Provides an outline to clearly indicate when the target element is focused.
+/// Unlike govuk-focused-text, which only draws an underline below the element,
+/// govuk-focused-box draws an outline around all sides of the element.
+/// Best used for non-text content contained within links.
+///
+/// @access public
+
+@mixin govuk-focused-box {
+  outline: $govuk-focus-width solid transparent;
+  box-shadow:
+    0 0 0 4px $govuk-focus-colour,
+    0 0 0 8px $govuk-focus-text-colour;
+}
+
+/*# sourceMappingURL=_focused.scss.map */

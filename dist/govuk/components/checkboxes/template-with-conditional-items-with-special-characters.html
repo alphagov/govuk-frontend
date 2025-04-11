@@ -1,0 +1,39 @@
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend">
+      How do you want to be contacted?
+    </legend>
+    <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="user.profile[contact-prefs]" name="contact-prefs" type="checkbox" value="email" data-aria-controls="conditional-user.profile[contact-prefs]">
+        <label class="govuk-label govuk-checkboxes__label" for="user.profile[contact-prefs]">
+          Email
+        </label>
+      </div>
+      <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-user.profile[contact-prefs]">
+        <label class="govuk-label" for="context-email">Email address</label>
+  <input class="govuk-input govuk-!-width-one-third" name="context-email" type="text" id="context-email">
+      </div>
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="user.profile[contact-prefs]-2" name="contact-prefs" type="checkbox" value="phone" data-aria-controls="conditional-user.profile[contact-prefs]-2">
+        <label class="govuk-label govuk-checkboxes__label" for="user.profile[contact-prefs]-2">
+          Phone
+        </label>
+      </div>
+      <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-user.profile[contact-prefs]-2">
+        <label class="govuk-label" for="contact-phone">Phone number</label>
+  <input class="govuk-input govuk-!-width-one-third" name="contact-phone" type="text" id="contact-phone">
+      </div>
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="user.profile[contact-prefs]-3" name="contact-prefs" type="checkbox" value="text" data-aria-controls="conditional-user.profile[contact-prefs]-3">
+        <label class="govuk-label govuk-checkboxes__label" for="user.profile[contact-prefs]-3">
+          Text message
+        </label>
+      </div>
+      <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-user.profile[contact-prefs]-3">
+        <label class="govuk-label" for="contact-text-message">Mobile phone number</label>
+  <input class="govuk-input govuk-!-width-one-third" name="contact-text-message" type="text" id="contact-text-message">
+      </div>
+    </div>
+  </fieldset>
+</div>

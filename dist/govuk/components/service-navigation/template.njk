@@ -1,0 +1,102 @@
+{% from "../../macros/attributes.njk" import govukAttributes %}
+
+{%- set menuButtonText = params.menuButtonText | default("Menu", true) -%}
+{%- set navigationId = params.navigationId | default("navigation", true) %}
+
+{%- set commonAttributes %}
+class="govuk-service-navigation {%- if params.classes %} {{ params.classes }}{% endif %}"
+data-module="govuk-service-navigation"
+{{- govukAttributes(params.attributes) }}
+{% endset -%}
+
+{%- set innerContent %}
+  <div class="govuk-width-container">
+
+    {# Slot: start #}
+    {%- if params.slots.start %}{{ params.slots.start | safe }}{% endif -%}
+
+    <div class="govuk-service-navigation__container">
+      {# Service name #}
+      {% if params.serviceName %}
+        <span class="govuk-service-navigation__service-name">
+          {% if params.serviceUrl %}
+            <a href="{{ params.serviceUrl }}" class="govuk-service-navigation__link">
+              {{ params.serviceName }}
+            </a>
+          {% else %}
+            <span class="govuk-service-navigation__text">
+              {{- params.serviceName -}}
+            </span>
+          {% endif %}
+        </span>
+      {% endif %}
+
+      {# Navigation #}
+      {% if params.navigation | length or params.slots.navigationStart or params.slots.navigationEnd %}
+        <nav aria-label="{{ params.navigationLabel | default(menuButtonText, true) }}" class="govuk-service-navigation__wrapper {%- if params.navigationClasses %} {{ params.navigationClasses }}{% endif %}">
+          <button type="button" class="govuk-service-navigation__toggle govuk-js-service-navigation-toggle" aria-controls="{{ navigationId }}" {%- if params.menuButtonLabel and params.menuButtonLabel != menuButtonText %} aria-label="{{ params.menuButtonLabel }}"{% endif %} hidden>
+            {{ menuButtonText }}
+          </button>
+
+          <ul class="govuk-service-navigation__list" id="{{ navigationId }}" >
+
+            {# Slot: navigationStart #}
+            {%- if params.slots.navigationStart %}{{ params.slots.navigationStart | safe }}{% endif -%}
+
+            {% for item in params.navigation %}
+              {% set linkInnerContent %}
+                {# We wrap active links in strong tags so that users who
+                  override colours or styles will still have some indicator of
+                  the current nav item. #}
+                {% if item.active or item.current %}
+                  <strong class="govuk-service-navigation__active-fallback">{{- item.html | safe if item.html else item.text -}}</strong>
+                {% else %}
+                  {{- item.html | safe if item.html else item.text -}}
+                {% endif %}
+              {% endset %}
+
+              {#
+                If item.current, add active style and set aria-current="page"
+                Elseif item.active, add active style and set aria-current="true"
+              #}
+              <li class="govuk-service-navigation__item {%- if item.active or item.current %} govuk-service-navigation__item--active{% endif %}">
+                {% if item.href %}
+                  <a class="govuk-service-navigation__link" href="{{ item.href }}"
+                    {%- if item.active or item.current %} aria-current="{{ 'page' if item.current else 'true' }}"{% endif %}
+                    {{- govukAttributes(item.attributes) -}}>
+                    {{ linkInnerContent | safe }}
+                  </a>
+                {% elif item.html or item.text %}
+                  <span class="govuk-service-navigation__text"
+                    {%- if item.active or item.current %} aria-current="{{ 'page' if item.current else 'true' }}"{% endif %}>
+                    {{ linkInnerContent | safe }}
+                  </span>
+                {% endif %}
+              </li>
+            {% endfor %}
+
+            {# Slot: navigationEnd #}
+            {%- if params.slots.navigationEnd %}{{ params.slots.navigationEnd | safe }}{% endif -%}
+          </ul>
+        </nav>
+      {% endif %}
+    </div>
+
+    {# Slot: end #}
+    {%- if params.slots.end %}{{ params.slots.end | safe }}{% endif -%}
+
+  </div>
+{% endset -%}
+
+{# If a service name is included, we use a <section> element with an
+  aria-label to create a containing landmark region. Otherwise, the <nav> in
+  the innerContent can do the job just fine by itself. #}
+{% if params.serviceName or params.slots.start or params.slots.end %}
+  <section aria-label="{{ params.ariaLabel | default("Service information") }}" {{ commonAttributes | safe }}>
+    {{ innerContent | safe }}
+  </section>
+{% else %}
+  <div {{ commonAttributes | safe }}>
+    {{ innerContent | safe }}
+  </div>
+{% endif %}

@@ -1,0 +1,464 @@
+{
+    "component": "service-navigation",
+    "fixtures": [
+        {
+            "name": "default",
+            "options": {
+                "navigation": [
+                    {
+                        "href": "#/1",
+                        "text": "Navigation item 1"
+                    },
+                    {
+                        "href": "#/2",
+                        "text": "Navigation item 2"
+                    },
+                    {
+                        "href": "#/3",
+                        "text": "Navigation item 3"
+                    },
+                    {
+                        "href": "#/4",
+                        "text": "Navigation item 4"
+                    }
+                ]
+            },
+            "hidden": false,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-service-navigation\"\ndata-module=\"govuk-service-navigation\"\n>\n      <div class=\"govuk-width-container\">\n\n    <div class=\"govuk-service-navigation__container\">\n      \n\n      \n        <nav aria-label=\"Menu\" class=\"govuk-service-navigation__wrapper\">\n          <button type=\"button\" class=\"govuk-service-navigation__toggle govuk-js-service-navigation-toggle\" aria-controls=\"navigation\" hidden>\n            Menu\n          </button>\n\n          <ul class=\"govuk-service-navigation__list\" id=\"navigation\" >\n\n            \n              \n              <li class=\"govuk-service-navigation__item\">\n                  <a class=\"govuk-service-navigation__link\" href=\"#/1\">\n                                    \nNavigation item 1\n                  </a>\n              </li>\n\n              \n              <li class=\"govuk-service-navigation__item\">\n                  <a class=\"govuk-service-navigation__link\" href=\"#/2\">\n                                    \nNavigation item 2\n                  </a>\n              </li>\n\n              \n              <li class=\"govuk-service-navigation__item\">\n                  <a class=\"govuk-service-navigation__link\" href=\"#/3\">\n                                    \nNavigation item 3\n                  </a>\n              </li>\n\n              \n              <li class=\"govuk-service-navigation__item\">\n                  <a class=\"govuk-service-navigation__link\" href=\"#/4\">\n                                    \nNavigation item 4\n                  </a>\n              </li>\n\n            </ul>\n        </nav>\n    </div>\n\n    </div>\n\n  </div>"
+        },
+        {
+            "name": "with navigation with a current item",
+            "options": {
+                "navigation": [
+                    {
+                        "href": "#/1",
+                        "text": "Navigation item 1"
+                    },
+                    {
+                        "href": "#/2",
+                        "text": "Navigation item 2",
+                        "current": true
+                    },
+                    {
+                        "href": "#/3",
+                        "text": "Navigation item 3"
+                    },
+                    {
+                        "href": "#/4",
+                        "text": "Navigation item 4"
+                    }
+                ]
+            },
+            "hidden": false,
+            "description": "The current item indicates that the user is present on that exact page. It looks the same as an active item, but marks this item as the one the user is currently viewing in ARIA.",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-service-navigation\"\ndata-module=\"govuk-service-navigation\"\n>\n      <div class=\"govuk-width-container\">\n\n    <div class=\"govuk-service-navigation__container\">\n      \n\n      \n        <nav aria-label=\"Menu\" class=\"govuk-service-navigation__wrapper\">\n          <button type=\"button\" class=\"govuk-service-navigation__toggle govuk-js-service-navigation-toggle\" aria-controls=\"navigation\" hidden>\n            Menu\n          </button>\n\n          <ul class=\"govuk-service-navigation__list\" id=\"navigation\" >\n\n            \n              \n              <li class=\"govuk-service-navigation__item\">\n                  <a class=\"govuk-service-navigation__link\" href=\"#/1\">\n                                    \nNavigation item 1\n                  </a>\n              </li>\n\n              \n              <li class=\"govuk-service-navigation__item govuk-service-navigation__item--active\">\n                  <a class=\"govuk-service-navigation__link\" href=\"#/2\" aria-current=\"page\">\n                                    \n                  <strong class=\"govuk-service-navigation__active-fallback\">Navigation item 2</strong>\n\n                  </a>\n              </li>\n\n              \n              <li class=\"govuk-service-navigation__item\">\n                  <a class=\"govuk-service-navigation__link\" href=\"#/3\">\n                                    \nNavigation item 3\n                  </a>\n              </li>\n\n              \n              <li class=\"govuk-service-navigation__item\">\n                  <a class=\"govuk-service-navigation__link\" href=\"#/4\">\n                                    \nNavigation item 4\n                  </a>\n              </li>\n\n            </ul>\n        </nav>\n    </div>\n\n    </div>\n\n  </div>"
+        },
+        {
+            "name": "with navigation with an active item",
+            "options": {
+                "navigation": [
+                    {
+                        "href": "#/1",
+                        "text": "Navigation item 1"
+                    },
+                    {
+                        "href": "#/2",
+                        "text": "Navigation item 2",
+                        "active": true
+                    },
+                    {
+                        "href": "#/3",
+                        "text": "Navigation item 3"
+                    },
+                    {
+                        "href": "#/4",
+                        "text": "Navigation item 4"
+                    }
+                ]
+            },
+            "hidden": false,
+            "description": "The active item indicates that the user is within that section, but not on the exact page being linked. It looks the same as a current item, but marks this item as an ancestor to the one the user is viewing in ARIA (e.g. a parent section).",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-service-navigation\"\ndata-module=\"govuk-service-navigation\"\n>\n      <div class=\"govuk-width-container\">\n\n    <div class=\"govuk-service-navigation__container\">\n      \n\n      \n        <nav aria-label=\"Menu\" class=\"govuk-service-navigation__wrapper\">\n          <button type=\"button\" class=\"govuk-service-navigation__toggle govuk-js-service-navigation-toggle\" aria-controls=\"navigation\" hidden>\n            Menu\n          </button>\n\n          <ul class=\"govuk-service-navigation__list\" id=\"navigation\" >\n\n            \n              \n              <li class=\"govuk-service-navigation__item\">\n                  <a class=\"govuk-service-navigation__link\" href=\"#/1\">\n                                    \nNavigation item 1\n                  </a>\n              </li>\n\n              \n              <li class=\"govuk-service-navigation__item govuk-service-navigation__item--active\">\n                  <a class=\"govuk-service-navigation__link\" href=\"#/2\" aria-current=\"true\">\n                                    \n                  <strong class=\"govuk-service-navigation__active-fallback\">Navigation item 2</strong>\n\n                  </a>\n              </li>\n\n              \n              <li class=\"govuk-service-navigation__item\">\n                  <a class=\"govuk-service-navigation__link\" href=\"#/3\">\n                                    \nNavigation item 3\n                  </a>\n              </li>\n\n              \n              <li class=\"govuk-service-navigation__item\">\n                  <a class=\"govuk-service-navigation__link\" href=\"#/4\">\n                                    \nNavigation item 4\n                  </a>\n              </li>\n\n            </ul>\n        </nav>\n    </div>\n\n    </div>\n\n  </div>"
+        },
+        {
+            "name": "with large navigation",
+            "options": {
+                "navigation": [
+                    {
+                        "href": "#/browse/benefits",
+                        "text": "Benefits"
+                    },
+                    {
+                        "href": "#/browse/births-deaths-marriages",
+                        "text": "Births, deaths, marriages and care"
+                    },
+                    {
+                        "href": "#/browse/business",
+                        "text": "Business and self-employed"
+                    },
+                    {
+                        "href": "#/browse/childcare-parenting",
+                        "text": "Childcare and parenting"
+                    },
+                    {
+                        "href": "#/browse/citizenship",
+                        "text": "Citizenship and living in the UK"
+                    },
+                    {
+                        "href": "#/browse/justice",
+                        "text": "Crime, justice and the law"
+                    },
+                    {
+                        "href": "#/browse/disabilities",
+                        "text": "Disabled people"
+                    },
+                    {
+                        "href": "#/browse/driving",
+                        "text": "Driving and transport"
+                    },
+                    {
+                        "href": "#/browse/education",
+                        "text": "Education and learning"
+                    },
+                    {
+                        "href": "#/browse/employing-people",
+                        "text": "Employing people"
+                    },
+                    {
+                        "href": "#/browse/environment-countryside",
+                        "text": "Environment and countryside"
+                    },
+                    {
+                        "href": "#/browse/housing-local-services",
+                        "text": "Housing and local services"
+                    },
+                    {
+                        "href": "#/browse/tax",
+                        "text": "Money and tax"
+                    },
+                    {
+                        "href": "#/browse/abroad",
+                        "text": "Passports, travel and living abroad"
+                    },
+                    {
+                        "href": "#/browse/visas-immigration",
+                        "text": "Visas and immigration"
+                    },
+                    {
+                        "href": "#/browse/working",
+                        "text": "Working, jobs and pensions"
+                    }
+                ]
+            },
+            "hidden": false,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-service-navigation\"\ndata-module=\"govuk-service-navigation\"\n>\n      <div class=\"govuk-width-container\">\n\n    <div class=\"govuk-service-navigation__container\">\n      \n\n      \n        <nav aria-label=\"Menu\" class=\"govuk-service-navigation__wrapper\">\n          <button type=\"button\" class=\"govuk-service-navigation__toggle govuk-js-service-navigation-toggle\" aria-controls=\"navigation\" hidden>\n            Menu\n          </button>\n\n          <ul class=\"govuk-service-navigation__list\" id=\"navigation\" >\n\n            \n              \n              <li class=\"govuk-service-navigation__item\">\n                  <a class=\"govuk-service-navigation__link\" href=\"#/browse/benefits\">\n                                    \nBenefits\n                  </a>\n              </li>\n\n              \n              <li class=\"govuk-service-navigation__item\">\n                  <a class=\"govuk-service-navigation__link\" href=\"#/browse/births-deaths-marriages\">\n                                    \nBirths, deaths, marriages and care\n                  </a>\n              </li>\n\n              \n              <li class=\"govuk-service-navigation__item\">\n                  <a class=\"govuk-service-navigation__link\" href=\"#/browse/business\">\n                                    \nBusiness and self-employed\n                  </a>\n              </li>\n\n              \n              <li class=\"govuk-service-navigation__item\">\n                  <a class=\"govuk-service-navigation__link\" href=\"#/browse/childcare-parenting\">\n                                    \nChildcare and parenting\n                  </a>\n              </li>\n\n              \n              <li class=\"govuk-service-navigation__item\">\n                  <a class=\"govuk-service-navigation__link\" href=\"#/browse/citizenship\">\n                                    \nCitizenship and living in the UK\n                  </a>\n              </li>\n\n              \n              <li class=\"govuk-service-navigation__item\">\n                  <a class=\"govuk-service-navigation__link\" href=\"#/browse/justice\">\n                                    \nCrime, justice and the law\n                  </a>\n              </li>\n\n              \n              <li class=\"govuk-service-navigation__item\">\n                  <a class=\"govuk-service-navigation__link\" href=\"#/browse/disabilities\">\n                                    \nDisabled people\n                  </a>\n              </li>\n\n              \n              <li class=\"govuk-service-navigation__item\">\n                  <a class=\"govuk-service-navigation__link\" href=\"#/browse/driving\">\n                                    \nDriving and transport\n                  </a>\n              </li>\n\n              \n              <li class=\"govuk-service-navigation__item\">\n                  <a class=\"govuk-service-navigation__link\" href=\"#/browse/education\">\n                                    \nEducation and learning\n                  </a>\n              </li>\n\n              \n              <li class=\"govuk-service-navigation__item\">\n                  <a class=\"govuk-service-navigation__link\" href=\"#/browse/employing-people\">\n                                    \nEmploying people\n                  </a>\n              </li>\n\n              \n              <li class=\"govuk-service-navigation__item\">\n                  <a class=\"govuk-service-navigation__link\" href=\"#/browse/environment-countryside\">\n                                    \nEnvironment and countryside\n                  </a>\n              </li>\n\n              \n              <li class=\"govuk-service-navigation__item\">\n                  <a class=\"govuk-service-navigation__link\" href=\"#/browse/housing-local-services\">\n                                    \nHousing and local services\n                  </a>\n              </li>\n\n              \n              <li class=\"govuk-service-navigation__item\">\n                  <a class=\"govuk-service-navigation__link\" href=\"#/browse/tax\">\n                                    \nMoney and tax\n                  </a>\n              </li>\n\n              \n              <li class=\"govuk-service-navigation__item\">\n                  <a class=\"govuk-service-navigation__link\" href=\"#/browse/abroad\">\n                                    \nPassports, travel and living abroad\n                  </a>\n              </li>\n\n              \n              <li class=\"govuk-service-navigation__item\">\n                  <a class=\"govuk-service-navigation__link\" href=\"#/browse/visas-immigration\">\n                                    \nVisas and immigration\n                  </a>\n              </li>\n\n              \n              <li class=\"govuk-service-navigation__item\">\n                  <a class=\"govuk-service-navigation__link\" href=\"#/browse/working\">\n                                    \nWorking, jobs and pensions\n                  </a>\n              </li>\n\n            </ul>\n        </nav>\n    </div>\n\n    </div>\n\n  </div>"
+        },
+        {
+            "name": "with HTML navigation items",
+            "options": {
+                "navigation": [
+                    {
+                        "href": "#/1",
+                        "html": "<em>Navigation item 1</em>"
+                    },
+                    {
+                        "href": "#/2",
+                        "html": "<em>Navigation item 2</em>"
+                    },
+                    {
+                        "href": "#/3",
+                        "html": "<em>Navigation item 3</em>"
+                    }
+                ]
+            },
+            "hidden": false,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-service-navigation\"\ndata-module=\"govuk-service-navigation\"\n>\n      <div class=\"govuk-width-container\">\n\n    <div class=\"govuk-service-navigation__container\">\n      \n\n      \n        <nav aria-label=\"Menu\" class=\"govuk-service-navigation__wrapper\">\n          <button type=\"button\" class=\"govuk-service-navigation__toggle govuk-js-service-navigation-toggle\" aria-controls=\"navigation\" hidden>\n            Menu\n          </button>\n\n          <ul class=\"govuk-service-navigation__list\" id=\"navigation\" >\n\n            \n              \n              <li class=\"govuk-service-navigation__item\">\n                  <a class=\"govuk-service-navigation__link\" href=\"#/1\">\n                                    \n<em>Navigation item 1</em>\n                  </a>\n              </li>\n\n              \n              <li class=\"govuk-service-navigation__item\">\n                  <a class=\"govuk-service-navigation__link\" href=\"#/2\">\n                                    \n<em>Navigation item 2</em>\n                  </a>\n              </li>\n\n              \n              <li class=\"govuk-service-navigation__item\">\n                  <a class=\"govuk-service-navigation__link\" href=\"#/3\">\n                                    \n<em>Navigation item 3</em>\n                  </a>\n              </li>\n\n            </ul>\n        </nav>\n    </div>\n\n    </div>\n\n  </div>"
+        },
+        {
+            "name": "with non-link navigation items",
+            "options": {
+                "navigation": [
+                    {
+                        "text": "Navigation item 1"
+                    },
+                    {
+                        "html": "<em>Navigation item 2</em>"
+                    },
+                    {
+                        "text": "Navigation item 3"
+                    }
+                ]
+            },
+            "hidden": false,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-service-navigation\"\ndata-module=\"govuk-service-navigation\"\n>\n      <div class=\"govuk-width-container\">\n\n    <div class=\"govuk-service-navigation__container\">\n      \n\n      \n        <nav aria-label=\"Menu\" class=\"govuk-service-navigation__wrapper\">\n          <button type=\"button\" class=\"govuk-service-navigation__toggle govuk-js-service-navigation-toggle\" aria-controls=\"navigation\" hidden>\n            Menu\n          </button>\n\n          <ul class=\"govuk-service-navigation__list\" id=\"navigation\" >\n\n            \n              \n              <li class=\"govuk-service-navigation__item\">\n                  <span class=\"govuk-service-navigation__text\">\n                                    \nNavigation item 1\n                  </span>\n              </li>\n\n              \n              <li class=\"govuk-service-navigation__item\">\n                  <span class=\"govuk-service-navigation__text\">\n                                    \n<em>Navigation item 2</em>\n                  </span>\n              </li>\n\n              \n              <li class=\"govuk-service-navigation__item\">\n                  <span class=\"govuk-service-navigation__text\">\n                                    \nNavigation item 3\n                  </span>\n              </li>\n\n            </ul>\n        </nav>\n    </div>\n\n    </div>\n\n  </div>"
+        },
+        {
+            "name": "with service name",
+            "options": {
+                "serviceName": "Service name"
+            },
+            "hidden": false,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<section aria-label=\"Service information\" class=\"govuk-service-navigation\"\ndata-module=\"govuk-service-navigation\"\n>\n      <div class=\"govuk-width-container\">\n\n    <div class=\"govuk-service-navigation__container\">\n      \n        <span class=\"govuk-service-navigation__service-name\">\n            <span class=\"govuk-service-navigation__text\">Service name</span>\n        </span>\n\n      \n    </div>\n\n    </div>\n\n  </section>"
+        },
+        {
+            "name": "with service link",
+            "options": {
+                "serviceName": "Service name",
+                "serviceUrl": "#/"
+            },
+            "hidden": false,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<section aria-label=\"Service information\" class=\"govuk-service-navigation\"\ndata-module=\"govuk-service-navigation\"\n>\n      <div class=\"govuk-width-container\">\n\n    <div class=\"govuk-service-navigation__container\">\n      \n        <span class=\"govuk-service-navigation__service-name\">\n            <a href=\"#/\" class=\"govuk-service-navigation__link\">\n              Service name\n            </a>\n        </span>\n\n      \n    </div>\n\n    </div>\n\n  </section>"
+        },
+        {
+            "name": "with long service name",
+            "options": {
+                "serviceName": "Apply to receive a rare holofoil Charizard Pokémon card from the King",
+                "serviceUrl": "#/"
+            },
+            "hidden": false,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<section aria-label=\"Service information\" class=\"govuk-service-navigation\"\ndata-module=\"govuk-service-navigation\"\n>\n      <div class=\"govuk-width-container\">\n\n    <div class=\"govuk-service-navigation__container\">\n      \n        <span class=\"govuk-service-navigation__service-name\">\n            <a href=\"#/\" class=\"govuk-service-navigation__link\">\n              Apply to receive a rare holofoil Charizard Pokémon card from the King\n            </a>\n        </span>\n\n      \n    </div>\n\n    </div>\n\n  </section>"
+        },
+        {
+            "name": "with service name and navigation",
+            "options": {
+                "serviceName": "Apply for a juggling license",
+                "serviceUrl": "#/",
+                "navigation": [
+                    {
+                        "href": "#/1",
+                        "text": "Navigation item 1"
+                    },
+                    {
+                        "href": "#/2",
+                        "text": "Navigation item 2",
+                        "active": true
+                    },
+                    {
+                        "href": "#/3",
+                        "text": "Navigation item 3"
+                    },
+                    {
+                        "href": "#/4",
+                        "text": "Navigation item 4"
+                    }
+                ]
+            },
+            "hidden": false,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<section aria-label=\"Service information\" class=\"govuk-service-navigation\"\ndata-module=\"govuk-service-navigation\"\n>\n      <div class=\"govuk-width-container\">\n\n    <div class=\"govuk-service-navigation__container\">\n      \n        <span class=\"govuk-service-navigation__service-name\">\n            <a href=\"#/\" class=\"govuk-service-navigation__link\">\n              Apply for a juggling license\n            </a>\n        </span>\n\n      \n        <nav aria-label=\"Menu\" class=\"govuk-service-navigation__wrapper\">\n          <button type=\"button\" class=\"govuk-service-navigation__toggle govuk-js-service-navigation-toggle\" aria-controls=\"navigation\" hidden>\n            Menu\n          </button>\n\n          <ul class=\"govuk-service-navigation__list\" id=\"navigation\" >\n\n            \n              \n              <li class=\"govuk-service-navigation__item\">\n                  <a class=\"govuk-service-navigation__link\" href=\"#/1\">\n                                    \nNavigation item 1\n                  </a>\n              </li>\n\n              \n              <li class=\"govuk-service-navigation__item govuk-service-navigation__item--active\">\n                  <a class=\"govuk-service-navigation__link\" href=\"#/2\" aria-current=\"true\">\n                                    \n                  <strong class=\"govuk-service-navigation__active-fallback\">Navigation item 2</strong>\n\n                  </a>\n              </li>\n\n              \n              <li class=\"govuk-service-navigation__item\">\n                  <a class=\"govuk-service-navigation__link\" href=\"#/3\">\n                                    \nNavigation item 3\n                  </a>\n              </li>\n\n              \n              <li class=\"govuk-service-navigation__item\">\n                  <a class=\"govuk-service-navigation__link\" href=\"#/4\">\n                                    \nNavigation item 4\n                  </a>\n              </li>\n\n            </ul>\n        </nav>\n    </div>\n\n    </div>\n\n  </section>"
+        },
+        {
+            "name": "with no options set",
+            "options": {},
+            "hidden": true,
+            "description": "If no serviceName or navigation is set, don't render anything.",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-service-navigation\"\ndata-module=\"govuk-service-navigation\"\n>\n      <div class=\"govuk-width-container\">\n\n    <div class=\"govuk-service-navigation__container\">\n      \n\n      \n    </div>\n\n    </div>\n\n  </div>"
+        },
+        {
+            "name": "attributes",
+            "options": {
+                "serviceName": "Service name",
+                "attributes": {
+                    "data-foo": "bar",
+                    "data-pika": "chu"
+                }
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<section aria-label=\"Service information\" class=\"govuk-service-navigation\"\ndata-module=\"govuk-service-navigation\" data-foo=\"bar\" data-pika=\"chu\"\n>\n      <div class=\"govuk-width-container\">\n\n    <div class=\"govuk-service-navigation__container\">\n      \n        <span class=\"govuk-service-navigation__service-name\">\n            <span class=\"govuk-service-navigation__text\">Service name</span>\n        </span>\n\n      \n    </div>\n\n    </div>\n\n  </section>"
+        },
+        {
+            "name": "classes",
+            "options": {
+                "serviceName": "Service name",
+                "classes": "app-my-curious-custom-class"
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<section aria-label=\"Service information\" class=\"govuk-service-navigation app-my-curious-custom-class\"\ndata-module=\"govuk-service-navigation\"\n>\n      <div class=\"govuk-width-container\">\n\n    <div class=\"govuk-service-navigation__container\">\n      \n        <span class=\"govuk-service-navigation__service-name\">\n            <span class=\"govuk-service-navigation__text\">Service name</span>\n        </span>\n\n      \n    </div>\n\n    </div>\n\n  </section>"
+        },
+        {
+            "name": "with custom aria-label",
+            "options": {
+                "serviceName": "Service name",
+                "ariaLabel": "Service name and nav"
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<section aria-label=\"Service name and nav\" class=\"govuk-service-navigation\"\ndata-module=\"govuk-service-navigation\"\n>\n      <div class=\"govuk-width-container\">\n\n    <div class=\"govuk-service-navigation__container\">\n      \n        <span class=\"govuk-service-navigation__service-name\">\n            <span class=\"govuk-service-navigation__text\">Service name</span>\n        </span>\n\n      \n    </div>\n\n    </div>\n\n  </section>"
+        },
+        {
+            "name": "with custom navigation toggle text",
+            "options": {
+                "menuButtonText": "Enter the NavZone",
+                "navigation": [
+                    {
+                        "href": "#/1",
+                        "text": "Navigation item 1"
+                    }
+                ]
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-service-navigation\"\ndata-module=\"govuk-service-navigation\"\n>\n      <div class=\"govuk-width-container\">\n\n    <div class=\"govuk-service-navigation__container\">\n      \n\n      \n        <nav aria-label=\"Enter the NavZone\" class=\"govuk-service-navigation__wrapper\">\n          <button type=\"button\" class=\"govuk-service-navigation__toggle govuk-js-service-navigation-toggle\" aria-controls=\"navigation\" hidden>\n            Enter the NavZone\n          </button>\n\n          <ul class=\"govuk-service-navigation__list\" id=\"navigation\" >\n\n            \n              \n              <li class=\"govuk-service-navigation__item\">\n                  <a class=\"govuk-service-navigation__link\" href=\"#/1\">\n                                    \nNavigation item 1\n                  </a>\n              </li>\n\n            </ul>\n        </nav>\n    </div>\n\n    </div>\n\n  </div>"
+        },
+        {
+            "name": "with custom navigation toggle label",
+            "options": {
+                "menuButtonLabel": "Enter the NavZone",
+                "navigation": [
+                    {
+                        "href": "#/1",
+                        "text": "Navigation item 1"
+                    }
+                ]
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-service-navigation\"\ndata-module=\"govuk-service-navigation\"\n>\n      <div class=\"govuk-width-container\">\n\n    <div class=\"govuk-service-navigation__container\">\n      \n\n      \n        <nav aria-label=\"Menu\" class=\"govuk-service-navigation__wrapper\">\n          <button type=\"button\" class=\"govuk-service-navigation__toggle govuk-js-service-navigation-toggle\" aria-controls=\"navigation\" aria-label=\"Enter the NavZone\" hidden>\n            Menu\n          </button>\n\n          <ul class=\"govuk-service-navigation__list\" id=\"navigation\" >\n\n            \n              \n              <li class=\"govuk-service-navigation__item\">\n                  <a class=\"govuk-service-navigation__link\" href=\"#/1\">\n                                    \nNavigation item 1\n                  </a>\n              </li>\n\n            </ul>\n        </nav>\n    </div>\n\n    </div>\n\n  </div>"
+        },
+        {
+            "name": "with identical navigation toggle text and label",
+            "options": {
+                "menuButtonText": "Enter the NavZone",
+                "menuButtonLabel": "Enter the NavZone",
+                "navigation": [
+                    {
+                        "href": "#/1",
+                        "text": "Navigation item 1"
+                    }
+                ]
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-service-navigation\"\ndata-module=\"govuk-service-navigation\"\n>\n      <div class=\"govuk-width-container\">\n\n    <div class=\"govuk-service-navigation__container\">\n      \n\n      \n        <nav aria-label=\"Enter the NavZone\" class=\"govuk-service-navigation__wrapper\">\n          <button type=\"button\" class=\"govuk-service-navigation__toggle govuk-js-service-navigation-toggle\" aria-controls=\"navigation\" hidden>\n            Enter the NavZone\n          </button>\n\n          <ul class=\"govuk-service-navigation__list\" id=\"navigation\" >\n\n            \n              \n              <li class=\"govuk-service-navigation__item\">\n                  <a class=\"govuk-service-navigation__link\" href=\"#/1\">\n                                    \nNavigation item 1\n                  </a>\n              </li>\n\n            </ul>\n        </nav>\n    </div>\n\n    </div>\n\n  </div>"
+        },
+        {
+            "name": "with custom navigation label",
+            "options": {
+                "navigationLabel": "Main navigation",
+                "navigation": [
+                    {
+                        "href": "#/1",
+                        "text": "Navigation item 1"
+                    }
+                ]
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-service-navigation\"\ndata-module=\"govuk-service-navigation\"\n>\n      <div class=\"govuk-width-container\">\n\n    <div class=\"govuk-service-navigation__container\">\n      \n\n      \n        <nav aria-label=\"Main navigation\" class=\"govuk-service-navigation__wrapper\">\n          <button type=\"button\" class=\"govuk-service-navigation__toggle govuk-js-service-navigation-toggle\" aria-controls=\"navigation\" hidden>\n            Menu\n          </button>\n\n          <ul class=\"govuk-service-navigation__list\" id=\"navigation\" >\n\n            \n              \n              <li class=\"govuk-service-navigation__item\">\n                  <a class=\"govuk-service-navigation__link\" href=\"#/1\">\n                                    \nNavigation item 1\n                  </a>\n              </li>\n\n            </ul>\n        </nav>\n    </div>\n\n    </div>\n\n  </div>"
+        },
+        {
+            "name": "with custom navigation toggle text and navigation label",
+            "options": {
+                "menuButtonText": "Enter the NavZone",
+                "navigationLabel": "The NavZone",
+                "navigation": [
+                    {
+                        "href": "#/1",
+                        "text": "Navigation item 1"
+                    }
+                ]
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-service-navigation\"\ndata-module=\"govuk-service-navigation\"\n>\n      <div class=\"govuk-width-container\">\n\n    <div class=\"govuk-service-navigation__container\">\n      \n\n      \n        <nav aria-label=\"The NavZone\" class=\"govuk-service-navigation__wrapper\">\n          <button type=\"button\" class=\"govuk-service-navigation__toggle govuk-js-service-navigation-toggle\" aria-controls=\"navigation\" hidden>\n            Enter the NavZone\n          </button>\n\n          <ul class=\"govuk-service-navigation__list\" id=\"navigation\" >\n\n            \n              \n              <li class=\"govuk-service-navigation__item\">\n                  <a class=\"govuk-service-navigation__link\" href=\"#/1\">\n                                    \nNavigation item 1\n                  </a>\n              </li>\n\n            </ul>\n        </nav>\n    </div>\n\n    </div>\n\n  </div>"
+        },
+        {
+            "name": "with custom navigation classes",
+            "options": {
+                "navigationClasses": "app-my-neat-navigation-class",
+                "navigation": [
+                    {
+                        "href": "#/1",
+                        "text": "Navigation item 1"
+                    }
+                ]
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-service-navigation\"\ndata-module=\"govuk-service-navigation\"\n>\n      <div class=\"govuk-width-container\">\n\n    <div class=\"govuk-service-navigation__container\">\n      \n\n      \n        <nav aria-label=\"Menu\" class=\"govuk-service-navigation__wrapper app-my-neat-navigation-class\">\n          <button type=\"button\" class=\"govuk-service-navigation__toggle govuk-js-service-navigation-toggle\" aria-controls=\"navigation\" hidden>\n            Menu\n          </button>\n\n          <ul class=\"govuk-service-navigation__list\" id=\"navigation\" >\n\n            \n              \n              <li class=\"govuk-service-navigation__item\">\n                  <a class=\"govuk-service-navigation__link\" href=\"#/1\">\n                                    \nNavigation item 1\n                  </a>\n              </li>\n\n            </ul>\n        </nav>\n    </div>\n\n    </div>\n\n  </div>"
+        },
+        {
+            "name": "with custom navigation ID",
+            "options": {
+                "navigationId": "main-nav",
+                "navigation": [
+                    {
+                        "href": "#/1",
+                        "text": "Navigation item 1"
+                    }
+                ]
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-service-navigation\"\ndata-module=\"govuk-service-navigation\"\n>\n      <div class=\"govuk-width-container\">\n\n    <div class=\"govuk-service-navigation__container\">\n      \n\n      \n        <nav aria-label=\"Menu\" class=\"govuk-service-navigation__wrapper\">\n          <button type=\"button\" class=\"govuk-service-navigation__toggle govuk-js-service-navigation-toggle\" aria-controls=\"main-nav\" hidden>\n            Menu\n          </button>\n\n          <ul class=\"govuk-service-navigation__list\" id=\"main-nav\" >\n\n            \n              \n              <li class=\"govuk-service-navigation__item\">\n                  <a class=\"govuk-service-navigation__link\" href=\"#/1\">\n                                    \nNavigation item 1\n                  </a>\n              </li>\n\n            </ul>\n        </nav>\n    </div>\n\n    </div>\n\n  </div>"
+        },
+        {
+            "name": "with slotted content",
+            "options": {
+                "slots": {
+                    "start": "<div>[start]</div>",
+                    "end": "<div>[end]</div>",
+                    "navigationStart": "<li>[navigation start]</li>",
+                    "navigationEnd": "<li>[navigation end]</li>"
+                }
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<section aria-label=\"Service information\" class=\"govuk-service-navigation\"\ndata-module=\"govuk-service-navigation\"\n>\n      <div class=\"govuk-width-container\">\n\n    <div>[start]</div><div class=\"govuk-service-navigation__container\">\n      \n\n      \n        <nav aria-label=\"Menu\" class=\"govuk-service-navigation__wrapper\">\n          <button type=\"button\" class=\"govuk-service-navigation__toggle govuk-js-service-navigation-toggle\" aria-controls=\"navigation\" hidden>\n            Menu\n          </button>\n\n          <ul class=\"govuk-service-navigation__list\" id=\"navigation\" >\n\n            <li>[navigation start]</li>\n            <li>[navigation end]</li></ul>\n        </nav>\n    </div>\n\n    <div>[end]</div></div>\n\n  </section>"
+        }
+    ],
+    "previewLayout": "full-width"
+}

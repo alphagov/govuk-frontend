@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../src/govuk/all.scss"],"names":[],"mappings":"AAAA,eAAe;;AAEf;;;;CAIC","file":"all.scss","sourcesContent":["@import \"index\";\n\n@include _warning(\n  \"import-using-all\",\n  \"Importing using 'govuk/all' is deprecated. Update your import statement to import 'govuk/index'.\",\n  $silence-further-warnings: false\n);\n"]}

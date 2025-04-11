@@ -1,0 +1,67 @@
+{% from "../../macros/attributes.njk" import govukAttributes %}
+{% from "../../macros/i18n.njk" import govukI18nAttributes %}
+
+{%- macro _accordionItem(params, item, index) %}
+  {%- set headingLevel = params.headingLevel if params.headingLevel else 2 %}
+  <div class="govuk-accordion__section {%- if item.expanded %} govuk-accordion__section--expanded{% endif %}">
+    <div class="govuk-accordion__section-header">
+      <h{{ headingLevel }} class="govuk-accordion__section-heading">
+        <span class="govuk-accordion__section-button" id="{{ params.id }}-heading-{{ index }}">
+          {{ item.heading.html | safe | trim | indent(8) if item.heading.html else item.heading.text }}
+        </span>
+      </h{{ headingLevel }}>
+      {% if item.summary.html or item.summary.text %}
+      <div class="govuk-accordion__section-summary govuk-body" id="{{ params.id }}-summary-{{ index }}">
+        {{ item.summary.html | safe | trim | indent(8) if item.summary.html else item.summary.text }}
+      </div>
+      {% endif %}
+    </div>
+    <div id="{{ params.id }}-content-{{ index }}" class="govuk-accordion__section-content">
+    {% if item.content.html %}
+      {{ item.content.html | safe | trim | indent(6) }}
+    {% elif item.content.text %}
+      <p class="govuk-body">
+        {{ item.content.text | trim | indent(8) }}
+      </p>
+    {% endif %}
+    </div>
+  </div>
+{% endmacro -%}
+
+<div class="govuk-accordion {%- if params.classes %} {{ params.classes }}{% endif %}" data-module="govuk-accordion" id="{{ params.id }}"
+  {{- govukI18nAttributes({
+    key: 'hide-all-sections',
+    message: params.hideAllSectionsText
+  }) -}}
+
+  {{- govukI18nAttributes({
+    key: 'hide-section',
+    message: params.hideSectionText
+  }) -}}
+
+  {{- govukI18nAttributes({
+    key: 'hide-section-aria-label',
+    message: params.hideSectionAriaLabelText
+  }) -}}
+
+  {{- govukI18nAttributes({
+    key: 'show-all-sections',
+    message: params.showAllSectionsText
+  }) -}}
+
+  {{- govukI18nAttributes({
+    key: 'show-section',
+    message: params.showSectionText
+  }) -}}
+
+  {{- govukI18nAttributes({
+    key: 'show-section-aria-label',
+    message: params.showSectionAriaLabelText
+  }) -}}
+
+  {%- if params.rememberExpanded !== undefined %} data-remember-expanded="{{ params.rememberExpanded | escape }}"{% endif %}
+  {{- govukAttributes(params.attributes) }}>
+  {% for item in params.items %}
+    {% if item %}{{ _accordionItem(params, item, loop.index) }}{% endif %}
+  {% endfor %}
+</div>
