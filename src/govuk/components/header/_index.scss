@@ -16,7 +16,11 @@
   .govuk-header {
     @include govuk-font($size: 16, $line-height: 1);
 
-    @include _govuk-rebrand("border-bottom", $from: govuk-spacing(2) solid govuk-colour("white"), $to: none);
+    // Add a transparent bottom border for forced-colour modes
+    @include _govuk-rebrand("border-bottom",
+      $from: govuk-spacing(2) solid govuk-colour("white"),
+      $to: 1px solid transparent
+    );
     @include _govuk-rebrand("background", $from: $govuk-header-background, $to: $govuk-brand-colour);
 
     color: $govuk-header-text;
@@ -50,6 +54,7 @@
     }
   }
 
+  // TODO: Remove this when _govuk-rebrand becomes the default
   .govuk-header--full-width-border {
     border-bottom-color: $govuk-header-border-color;
 
