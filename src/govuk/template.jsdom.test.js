@@ -144,6 +144,22 @@ describe('Template', () => {
       expect($icon).toHaveAttribute('href', '/assets/images/favicon.ico')
     })
 
+    it('uses a default assets path of /assets/rebrand if govukRebrand is true', () => {
+      replacePageWith(
+        renderTemplate('govuk/template.njk', {
+          context: {
+            govukRebrand: true
+          }
+        })
+      )
+      const $icon = document.querySelector('link[rel="icon"][sizes="48x48"]')
+
+      expect($icon).toHaveAttribute(
+        'href',
+        '/assets/rebrand/images/favicon.ico'
+      )
+    })
+
     it('can have the assets path overridden using assetPath', () => {
       replacePageWith(
         renderTemplate('govuk/template.njk', {
@@ -252,6 +268,19 @@ describe('Template', () => {
         const $themeColor = document.querySelector('meta[name="theme-color"]')
 
         expect($themeColor).toHaveAttribute('content', '#0b0c0c')
+      })
+
+      it('has a default content of #1d70b8 if govukRebrand is true', () => {
+        replacePageWith(
+          renderTemplate('govuk/template.njk', {
+            context: {
+              govukRebrand: true
+            }
+          })
+        )
+        const $themeColor = document.querySelector('meta[name="theme-color"]')
+
+        expect($themeColor).toHaveAttribute('content', '#1d70b8')
       })
 
       it('can be overridden using themeColor', () => {
