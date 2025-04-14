@@ -279,6 +279,30 @@ examples:
       navigation:
         - href: '#/1'
           text: Navigation item 1
+  - name: with navigation having empty values
+    hidden: true
+    options:
+      navigation:
+        - href: '#/1'
+          text: Navigation item 1
+        - null
+        - false
+        - ''
+        -
+        - href: '#/2'
+          text: Navigation item 2
+  - name: with navigation having only empty values
+    hidden: true
+    options:
+      navigation:
+        - null
+        - false
+        -
+        - ''
+  - name: with navigation being an empty array
+    hidden: true
+    options:
+      navigation: []
   - name: with slotted content
     hidden: true
     options:

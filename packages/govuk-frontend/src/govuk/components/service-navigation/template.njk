@@ -32,7 +32,8 @@ data-module="govuk-service-navigation"
       {% endif %}
 
       {# Navigation #}
-      {% if params.navigation | length or params.slots.navigationStart or params.slots.navigationEnd %}
+      {% set navigationItems = params.navigation | default([]) | select("truthy") %}
+      {% if navigationItems | length or params.slots.navigationStart or params.slots.navigationEnd %}
         <nav aria-label="{{ params.navigationLabel | default(menuButtonText, true) }}" class="govuk-service-navigation__wrapper {%- if params.navigationClasses %} {{ params.navigationClasses }}{% endif %}">
           <button type="button" class="govuk-service-navigation__toggle govuk-js-service-navigation-toggle" aria-controls="{{ navigationId }}" {%- if params.menuButtonLabel and params.menuButtonLabel != menuButtonText %} aria-label="{{ params.menuButtonLabel }}"{% endif %} hidden>
             {{ menuButtonText }}
@@ -43,7 +44,7 @@ data-module="govuk-service-navigation"
             {# Slot: navigationStart #}
             {%- if params.slots.navigationStart %}{{ params.slots.navigationStart | safe }}{% endif -%}
 
-            {% for item in params.navigation %}
+            {% for item in navigationItems %}
               {% set linkInnerContent %}
                 {# We wrap active links in strong tags so that users who
                   override colours or styles will still have some indicator of
