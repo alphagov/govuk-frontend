@@ -88,6 +88,38 @@ describe('Service Navigation', () => {
       expect($navToggle.attr('aria-controls')).toBe(navId)
     })
 
+    it('omits empty items from the navigation', () => {
+      const $ = render(
+        'service-navigation',
+        examples['with navigation having empty values']
+      )
+      const $listItems = $('.govuk-service-navigation__list li')
+
+      expect($listItems).toHaveLength(2)
+    })
+
+    it('omits the entire navigation if only empty items are included', () => {
+      const $ = render(
+        'service-navigation',
+        examples['with navigation having only empty values']
+      )
+
+      const $navWrapper = $('.govuk-service-navigation__wrapper')
+
+      expect($navWrapper).toHaveLength(0)
+    })
+
+    it('omits the entire navigation if navigation is an empty array', () => {
+      const $ = render(
+        'service-navigation',
+        examples['with navigation being an empty array']
+      )
+
+      const $navWrapper = $('.govuk-service-navigation__wrapper')
+
+      expect($navWrapper).toHaveLength(0)
+    })
+
     describe('custom options', () => {
       it('renders custom navigation classes', () => {
         const $ = render(
