@@ -9,7 +9,8 @@ For advice on how to use these release notes see [our guidance on staying up to 
 #### Use the refreshed GOV.UK brand
 
 > Placeholder for instructions on enabling the brand and when it's allowed to be deployed to live.
-> If you're not using our page template:
+
+If you're not using our page template:
 
 1. Add the `govuk-template--rebranded` to the `<html>` element of your page to use the rebranded styles of Footer and Cookie banner components.
 
@@ -22,6 +23,7 @@ Use [`set`](https://mozilla.github.io/nunjucks/templating.html#set) to assign it
 ```
 
 This snippet should not be placed between any `block` and `endblock` lines and instead be a separate line.
+
 These changes affect the Header, Footer, Service navigation, and Cookie banner components. Make sure they still work as expected after enabling the refreshed brand.
 
 These changes were made in the following pull requests:
@@ -109,6 +111,30 @@ child of the `<footer>` with `govuk-footer` element.
   </g>
 </svg>
 ```
+
+#### Update the GOV.UK icons, OpenGraph image, manifest file, and theme colour
+
+The icon and OpenGraph image assets have been updated to reflect the refreshed brand.
+
+If you're using the GOV.UK template and use these assets directly from GOV.UK Frontend, this can be enabled using the feature flag described in the previous section.
+
+If you normally copy these assets from Frontend to a location within your service, the changed files are located in the `/assets/rebrand` directory.
+
+If you have previously customised the template's `assetPath`, `assetUrl` or `opengraphImageUrl` options, you may need to update these to point to the new assets.
+
+If you're not using the GOV.UK template, update your HTML to use the new file locations and `theme-color`, replacing any existing definitions.
+
+```html
+<meta name="theme-color" content="#1d70b8">
+<link rel="icon" sizes="48x48" href="/assets/rebrand/images/favicon.ico">
+<link rel="icon" sizes="any" href="/assets/rebrand/images/favicon.svg" type="image/svg+xml">
+<link rel="mask-icon" href="/assets/rebrand/images/govuk-icon-mask.svg" color="#1d70b8">
+<link rel="apple-touch-icon" href="/assets/rebrand/images/govuk-icon-180.png">
+<link rel="manifest" href="/assets/rebrand/manifest.json">
+<meta property="og:image" content="<SERVICE URL>/assets/rebrand/images/govuk-opengraph-image.png">
+```
+
+This change was introduced in [pull request #5800: Update favicons, app icons and OpenGraph image](https://github.com/alphagov/govuk-frontend/pull/5800)
 
 #### Footer component top border is now consistent with GOV.UK
 
