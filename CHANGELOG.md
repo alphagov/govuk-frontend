@@ -86,8 +86,7 @@ If you're not using the GOV.UK template, but are using the [GOV.UK footer](https
 }) }}
 ```
 
-If you're not using our Nunjucks macros, update your footer HTML to adding the following SVG code inside the `<div>` with the `govuk-width-container` class
-child of the `<footer>` with `govuk-footer` element.
+If you're not using our Nunjucks macros, update your footer HTML by adding the following SVG code inside the `<div>` with the `govuk-width-container` class which is a child of the `<footer>` element with the `govuk-footer` class.
 
 ```html
 <svg
