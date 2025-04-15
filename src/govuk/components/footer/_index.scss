@@ -105,6 +105,13 @@
       mask-repeat: no-repeat;
       mask-position: 50% 0%;
       mask-size: $govuk-footer-crest-image-width $govuk-footer-crest-image-height;
+
+      // currentcolor doesn't seem to be computed correctly in forced colors
+      // mode so force the background color to match the system link color
+      // (matching the text in the link)
+      @media screen and (forced-colors: active) {
+        background: linktext;
+      }
     }
   }
 
