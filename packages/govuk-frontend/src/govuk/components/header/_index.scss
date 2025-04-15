@@ -142,10 +142,10 @@
 
       // Remove 1px from the bottom to account for the font-size being 1px
       // larger than the logo height.
-      margin-bottom: -1px;
+      margin-bottom: govuk-px-to-rem(-1px);
 
       // Magic number font-size that visually aligns with GOV.UK logo.
-      // Stop reducing the product name size on narrow screens
+      // Also stops reducing the product name size on narrow screens
       font-size: govuk-px-to-rem(31px);
 
       // Reduce letter spacing
@@ -193,7 +193,7 @@
     // in Firefox
     display: inline-block;
     margin-right: govuk-spacing(2);
-    font-size: govuk-px-to-rem(31px); // We don't have a mixin that produces 30px font size
+    font-size: 30px; // We don't have a mixin that produces 30px font size
 
     @include govuk-media-query($from: desktop) {
       display: inline;
