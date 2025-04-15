@@ -17,25 +17,16 @@ const processingErrorMessage =
  * increment, eg: going from 3.1.0 to 5.0.0, 3.3.0 or 3.1.2
  *
  * @param {string} newVersion - New version to validate
+ * @param {string} previousVersion - Previous version to compare to
  */
-export function validateVersion(newVersion) {
-  const changelogLines = getChangelogLines()
-  const previousReleaseLineIndex = getChangelogLineIndexes(changelogLines)[1]
-
+export function validateVersion(newVersion, previousVersion) {
   if (!semver.valid(newVersion)) {
     throw new Error(
       `New version number ${newVersion} could not be processed by Semver. Please ensure you are providing a valid semantic version`
     )
   }
 
-  // Convert the previous release heading into a processable semver
-  const previousReleaseNumber = convertVersionHeadingToSemver(
-    changelogLines[previousReleaseLineIndex]
-  )
-
-  if (!previousReleaseNumber) {
-    throw new Error(processingErrorMessage)
-  }
+  const previousReleaseNumber = validatePreviousVersionNumber(previousVersion)
 
   // Check the new version against the old version. Firstly a quick check that
   // the new one isn't less than the old one
@@ -89,8 +80,10 @@ export function validateVersion(newVersion) {
  * @param {string} newVersion - New version to add to the changelog. We presume
  *   that this is a valid version as this function is always run after validateVersion
  *   has passed.
+ * @param {string} previousVersion - Previous version. Used for calculating difference
+ *   in versions to build the changelog title
  */
-export function updateChangelog(newVersion) {
+export function updateChangelog(newVersion, previousVersion) {
   // Skip the entire function if the release version is internal eg: 5.1.0-internal.0
   if (versionIsAPrerelease(newVersion)) {
     const identifier = getPrereleaseIdentifier(newVersion)
@@ -107,16 +100,10 @@ export function updateChangelog(newVersion) {
   const [startIndex, previousReleaseLineIndex] =
     getChangelogLineIndexes(changelogLines)
 
-  // Convert the previous release heading into a processable semver
-  const previousReleaseNumber = convertVersionHeadingToSemver(
-    changelogLines[previousReleaseLineIndex]
+  const versionDiff = semver.diff(
+    newVersion,
+    validatePreviousVersionNumber(previousVersion)
   )
-
-  if (!previousReleaseNumber) {
-    throw new Error(processingErrorMessage)
-  }
-
-  const versionDiff = semver.diff(newVersion, previousReleaseNumber)
 
   if (!versionDiff) {
     throw new Error(processingErrorMessage)
@@ -158,6 +145,25 @@ export function generateReleaseNotes(newVersion) {
     )
 
   writeFileSync('./release-notes-body', releaseNotes.join('\n'))
+}
+
+/**
+ * Validates the previous govuk-frontend version number, presumed passed from
+ * the govuk-frontend package.json
+ *
+ * @param {string} previousVersion - pervious version number
+ * @returns {string} - Validated semver of previous version
+ */
+function validatePreviousVersionNumber(previousVersion) {
+  const previousReleaseNumber = semver.valid(previousVersion)
+
+  if (!previousReleaseNumber) {
+    throw new Error(
+      `Previous version number ${previousVersion} could not be processed by Semver. Please ensure a valid version is being passed to the script via the govuk-frontend package.json package.`
+    )
+  }
+
+  return previousReleaseNumber
 }
 
 /**
@@ -233,24 +239,6 @@ function findIndexOfFirstMatchingLine(changelogLines, regExp, offset = 0) {
     .filter((x) => x !== undefined)
     .at(0)
   return foundIndex ? foundIndex + offset : -1
-}
-
-/**
- * Convert a release heading into a semver
- *
- * Presumes the heading param follows the changelog heading format of:
- * '## v{version} ({release type})'
- *
- * @param {string} heading - Markdown heading from changelog to convert into a
- *   processable SemVer
- * @returns {string|null} - Processed semver which we expect to have the format
- *   X.Y.Z(-{identifier}.{base})
- */
-function convertVersionHeadingToSemver(heading) {
-  const trimmedHeading = heading.trim()
-  return semver.valid(
-    trimmedHeading.trim().substring(4, trimmedHeading.indexOf(' ('))
-  )
 }
 
 /**
