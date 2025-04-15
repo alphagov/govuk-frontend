@@ -64,6 +64,7 @@ releases of Frontend. #}
     viewBox="0 0 {{ svgWidth * 2 }} 60"
     height="30"
     width="{{ svgWidth }}"
+    fill="currentcolor"
     {%- if params.classes %} class="{{ params.classes }}"{% endif %}
     {%- if params.ariaLabelText %} aria-label="{{ params.ariaLabelText }}"{% endif %}
     {{- govukAttributes(params.attributes) }}

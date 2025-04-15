@@ -30,6 +30,10 @@ describe('logo.njk', () => {
     it('sets `role="presentation"` so that assistive technologies do not treat it as an embedded document', () => {
       expect($svg).toHaveAttribute('role', 'presentation')
     })
+
+    it('sets `fill="currentColor"` so that forced colors are respected', () => {
+      expect($svg).toHaveAttribute('fill', 'currentcolor')
+    })
   })
 
   describe('custom options', () => {
