@@ -17,7 +17,8 @@
     @include govuk-font($size: 16, $line-height: 1);
 
     // Add a transparent bottom border for forced-colour modes
-    @include _govuk-rebrand("border-bottom",
+    @include _govuk-rebrand(
+      "border-bottom",
       $from: govuk-spacing(2) solid govuk-colour("white"),
       $to: 1px solid transparent
     );
@@ -73,12 +74,6 @@
     margin-right: govuk-spacing(1);
     fill: currentcolor;
     vertical-align: top;
-
-    @include _govuk-rebrand {
-      // Magic number. In combination with the glyph spacing in Transport,
-      // this makes for 7px of spacing between the logo and product name.
-      margin-right: -2px;
-    }
 
     // Prevent readability backplate from obscuring underline in Windows High
     // Contrast Mode
@@ -220,6 +215,22 @@
     &:focus {
       margin-bottom: 0;
       border-bottom: 0;
+    }
+
+    @include _govuk-rebrand {
+      display: inline-flex;
+      flex-wrap: wrap;
+
+      // Magic number some gaps.
+      column-gap: 7px;
+      row-gap: 2px;
+
+      // If `gap`s are supported, remove the margin the logo normally has
+      @supports (row-gap: 1px) and (column-gap: 1px) {
+        .govuk-header__logotype {
+          margin-right: 0;
+        }
+      }
     }
   }
 
