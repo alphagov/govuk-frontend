@@ -144,7 +144,7 @@ This change was introduced in [pull request #5792: Update footer top border to b
 
 #### Royal Arms in the Footer component now matches the text's colour
 
-We've updated the colour of the Royal Arms in the [GOV.UK footer](https://design-system.service.gov.uk/components/footer/) so it matches the text colour in browsers supporting the `filter` CSS property.
+We've updated the colour of the Royal Arms in the [GOV.UK footer](https://design-system.service.gov.uk/components/footer/) so it matches the text colour in browsers supporting the `mask-image` CSS property.
 
 This improves its accessibility and reduces the number of colours used in the footer.
 
