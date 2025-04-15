@@ -47,7 +47,8 @@
       padding: govuk-spacing(4) 0;
 
       @include _govuk-rebrand {
-        padding-top: govuk-spacing(3);
+        padding: govuk-spacing(3) 0;
+        line-height: 1.5;
       }
 
       &:not(:last-child) {
@@ -66,7 +67,11 @@
     }
 
     @include govuk-media-query($from: tablet) {
-      padding-bottom: govuk-spacing(4) - $govuk-service-navigation-active-link-border-width;
+      @include _govuk-rebrand(
+        "padding-bottom",
+        $from: govuk-spacing(4) - $govuk-service-navigation-active-link-border-width,
+        $to: govuk-spacing(3) - $govuk-service-navigation-active-link-border-width
+      );
       border-bottom-width: $govuk-service-navigation-active-link-border-width;
     }
   }
