@@ -1,0 +1,174 @@
+[
+    {
+        "name": "name",
+        "type": "string",
+        "required": true,
+        "description": "The name of the input, which is submitted with the form data."
+    },
+    {
+        "name": "id",
+        "type": "string",
+        "required": false,
+        "description": "The ID of the input. Defaults to the value of `name`."
+    },
+    {
+        "name": "value",
+        "type": "string",
+        "required": false,
+        "description": "Optional initial value of the input.",
+        "deprecated": "5.7.1"
+    },
+    {
+        "name": "disabled",
+        "type": "boolean",
+        "required": false,
+        "description": "If `true`, file input will be disabled."
+    },
+    {
+        "name": "multiple",
+        "type": "boolean",
+        "required": false,
+        "description": "If `true`, a user may select multiple files at the same time. The exact mechanism to do this differs depending on operating system."
+    },
+    {
+        "name": "describedBy",
+        "type": "string",
+        "required": false,
+        "description": "One or more element IDs to add to the `aria-describedby` attribute, used to provide additional descriptive information for screenreader users."
+    },
+    {
+        "name": "label",
+        "type": "object",
+        "required": true,
+        "description": "The label used by the file upload component.",
+        "isComponent": true
+    },
+    {
+        "name": "hint",
+        "type": "object",
+        "required": false,
+        "description": "Can be used to add a hint to the file upload component.",
+        "isComponent": true
+    },
+    {
+        "name": "errorMessage",
+        "type": "object",
+        "required": false,
+        "description": "Can be used to add an error message to the file upload component. The error message component will not display if you use a falsy value for `errorMessage`, for example `false` or `null`.",
+        "isComponent": true
+    },
+    {
+        "name": "formGroup",
+        "type": "object",
+        "required": false,
+        "description": "Additional options for the form group containing the file upload component.",
+        "params": [
+            {
+                "name": "classes",
+                "type": "string",
+                "required": false,
+                "description": "Classes to add to the form group (for example to show error state for the whole group)."
+            },
+            {
+                "name": "attributes",
+                "type": "object",
+                "required": false,
+                "description": "HTML attributes (for example data attributes) to add to the form group."
+            },
+            {
+                "name": "beforeInput",
+                "type": "object",
+                "required": false,
+                "description": "Content to add before the input used by the file upload component.",
+                "params": [
+                    {
+                        "name": "text",
+                        "type": "string",
+                        "required": true,
+                        "description": "Text to add before the input. If `html` is provided, the `text` option will be ignored."
+                    },
+                    {
+                        "name": "html",
+                        "type": "string",
+                        "required": true,
+                        "description": "HTML to add before the input. If `html` is provided, the `text` option will be ignored."
+                    }
+                ]
+            },
+            {
+                "name": "afterInput",
+                "type": "object",
+                "required": false,
+                "description": "Content to add after the input used by the file upload component.",
+                "params": [
+                    {
+                        "name": "text",
+                        "type": "string",
+                        "required": true,
+                        "description": "Text to add after the input. If `html` is provided, the `text` option will be ignored."
+                    },
+                    {
+                        "name": "html",
+                        "type": "string",
+                        "required": true,
+                        "description": "HTML to add after the input. If `html` is provided, the `text` option will be ignored."
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "javascript",
+        "type": "boolean",
+        "required": false,
+        "description": "Can be used to enable JavaScript enhancements for the component."
+    },
+    {
+        "name": "chooseFilesButtonText",
+        "type": "string",
+        "required": false,
+        "description": "The text of the button that opens the file picker. Default is `\"Choose file\"`. If `javascript` is not provided, this option will be ignored."
+    },
+    {
+        "name": "dropInstructionText",
+        "type": "string",
+        "required": false,
+        "description": "The text informing users they can drop files. Default is `\"or drop file\"`. If `javascript` is not provided, this option will be ignored."
+    },
+    {
+        "name": "multipleFilesChosenText",
+        "type": "object",
+        "required": false,
+        "description": "The text displayed when multiple files have been chosen by the user. The component will replace the `%{count}` placeholder with the number of files selected. [Our pluralisation rules apply to this macro option](https://frontend.design-system.service.gov.uk/localise-govuk-frontend/#understanding-pluralisation-rules). If `javascript` is not provided, this option will be ignored."
+    },
+    {
+        "name": "noFileChosenText",
+        "type": "string",
+        "required": false,
+        "description": "The text displayed when no file has been chosen by the user. Default is `\"No file chosen\"`. If `javascript` is not provided, this option will be ignored."
+    },
+    {
+        "name": "enteredDropZoneText",
+        "type": "string",
+        "required": false,
+        "description": "The text announced by assistive technology when user drags files and enters the drop zone. Default is `\"Entered drop zone\"`. If `javascript` is not provided, this option will be ignored."
+    },
+    {
+        "name": "leftDropZoneText",
+        "type": "string",
+        "required": false,
+        "description": "The text announced by assistive technology when user drags files and leaves the drop zone without dropping. Default is `\"Left drop zone\"`. If `javascript` is not provided, this option will be ignored."
+    },
+    {
+        "name": "classes",
+        "type": "string",
+        "required": false,
+        "description": "Classes to add to the file upload component."
+    },
+    {
+        "name": "attributes",
+        "type": "object",
+        "required": false,
+        "description": "HTML attributes (for example data attributes) to add to the file upload component."
+    }
+]
