@@ -210,7 +210,7 @@ export default async () => {
 
       // Render component using fixture
       const componentView = render(componentName, {
-        context: { ...fixture.options, rebrand: res.locals.useRebrand },
+        context: fixture.options,
         env,
         fixture
       })
