@@ -1,5 +1,7 @@
-{% from "../../macros/attributes.njk" import govukAttributes %}
-{% from "../../macros/logo.njk" import govukLogo %}
+{% from "../../macros/attributes.njk" import govukAttributes -%}
+{% from "../../macros/logo.njk" import govukLogo -%}
+
+{%- set _rebrand = params.rebrand | default(govukRebrand() if govukRebrand is callable else govukRebrand) -%}
 
 {%- set menuButtonText = params.menuButtonText if params.menuButtonText else 'Menu' -%}
 
@@ -12,7 +14,7 @@
           classes: "govuk-header__logotype",
           ariaLabelText: "GOV.UK",
           useTudorCrown: params.useTudorCrown,
-          rebrand: params.rebrand
+          rebrand: _rebrand
         }) | trim | indent(8) }}
         {% if (params.productName) %}
         <span class="govuk-header__product-name">
