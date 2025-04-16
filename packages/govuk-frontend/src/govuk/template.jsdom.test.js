@@ -94,6 +94,32 @@ describe('Template', () => {
       expect(document.documentElement).toHaveClass('govuk-template--rebranded')
     })
 
+    it('adds the rebrand class if govukRebrand is set to true as a nunjucks global bool', () => {
+      const env = nunjucksEnv()
+      env.addGlobal('govukRebrand', true)
+
+      replacePageWith(
+        renderTemplate('govuk/template.njk', {
+          env
+        })
+      )
+
+      expect(document.documentElement).toHaveClass('govuk-template--rebranded')
+    })
+
+    it('adds the rebrand class if govukRebrand is set to true as a nunjucks global function', () => {
+      const env = nunjucksEnv()
+      env.addGlobal('govukRebrand', () => true)
+
+      replacePageWith(
+        renderTemplate('govuk/template.njk', {
+          env
+        })
+      )
+
+      expect(document.documentElement).toHaveClass('govuk-template--rebranded')
+    })
+
     it('renders valid HTML', () => {
       expect(renderTemplate('govuk/template.njk')).toHTMLValidate({
         extends: ['html-validate:document'],
@@ -150,6 +176,23 @@ describe('Template', () => {
           context: {
             govukRebrand: true
           }
+        })
+      )
+      const $icon = document.querySelector('link[rel="icon"][sizes="48x48"]')
+
+      expect($icon).toHaveAttribute(
+        'href',
+        '/assets/rebrand/images/favicon.ico'
+      )
+    })
+
+    it('uses a default assets path of /assets/rebrand if govukRebrand is true as a nunjucks global', () => {
+      const env = nunjucksEnv()
+      env.addGlobal('govukRebrand', true)
+
+      replacePageWith(
+        renderTemplate('govuk/template.njk', {
+          env
         })
       )
       const $icon = document.querySelector('link[rel="icon"][sizes="48x48"]')
@@ -276,6 +319,20 @@ describe('Template', () => {
             context: {
               govukRebrand: true
             }
+          })
+        )
+        const $themeColor = document.querySelector('meta[name="theme-color"]')
+
+        expect($themeColor).toHaveAttribute('content', '#1d70b8')
+      })
+
+      it('has a default content of #1d70b8 if govukRebrand is true as a nunjucks global', () => {
+        const env = nunjucksEnv()
+        env.addGlobal('govukRebrand', true)
+
+        replacePageWith(
+          renderTemplate('govuk/template.njk', {
+            env
           })
         )
         const $themeColor = document.querySelector('meta[name="theme-color"]')
