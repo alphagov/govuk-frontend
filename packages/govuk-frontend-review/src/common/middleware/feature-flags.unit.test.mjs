@@ -88,4 +88,18 @@ describe('Middleware: Feature flag toggling', () => {
       expect(res.header['set-cookie'][0]).not.toContain('use_rebrand=true;')
     })
   })
+
+  describe('Nunjucks global', () => {
+    it('sets a `govukRebrand` nunjucks global if the nunjucks env has been set', async () => {
+      // Mock nunjucks env so it can be pulled from the req in the middleware
+      const mockEnv = {
+        addGlobal: jest.fn()
+      }
+      app.set('nunjucksEnv', mockEnv)
+
+      await agent.get('/').set('Cookie', ['use_rebrand=true'])
+
+      expect(mockEnv.addGlobal.mock.calls).toHaveLength(1)
+    })
+  })
 })
