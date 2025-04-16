@@ -1,5 +1,3 @@
-import { resolve } from 'path'
-
 import express from 'express'
 
 import { getFullPageExamples } from '../common/lib/files.mjs'
@@ -86,23 +84,6 @@ router.get('/:exampleName/confirm', (req, res, next) => {
   }
 
   res.render(`full-page-examples/${exampleName}/confirm`)
-})
-
-/**
- * Dynamically serve images for use in examples
- */
-router.get('/:exampleName/images/:fileName', function (req, res, next) {
-  const { exampleName, fileName } = req.params
-
-  const options = {
-    root: resolve(`src/views/full-page-examples/${exampleName}/images`)
-  }
-
-  res.sendFile(fileName, options, function (err) {
-    if (err) {
-      next()
-    }
-  })
 })
 
 export default router
