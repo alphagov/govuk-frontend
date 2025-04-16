@@ -194,6 +194,12 @@ describe('GOV.UK Prototype Kit config', () => {
     it('includes paths', () => {
       expect(config.nunjucksPaths).toEqual(['/dist'])
     })
+
+    it('includes function paths', () => {
+      expect(config.nunjucksFunctions).toEqual([
+        '/dist/govuk-prototype-kit/functions.js'
+      ])
+    })
   })
 })
 
