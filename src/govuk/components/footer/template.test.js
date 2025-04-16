@@ -1,5 +1,5 @@
 const { render } = require('@govuk-frontend/helpers/nunjucks')
-const { getExamples } = require('@govuk-frontend/lib/components')
+const { nunjucksEnv, getExamples } = require('@govuk-frontend/lib/components')
 
 describe('footer', () => {
   let examples
@@ -278,6 +278,19 @@ describe('footer', () => {
 
     it('Does render the crown if the `rebrand` option is set', () => {
       const $ = render('footer', examples.rebrand)
+
+      const $crown = $('.govuk-footer__crown')
+      expect($crown).toHaveLength(1)
+    })
+
+    it('Does render the crown if the `govukRebrand` nunjucks global is set to true', () => {
+      const env = nunjucksEnv()
+      env.addGlobal('govukRebrand', true)
+
+      const $ = render('footer', {
+        ...examples.default,
+        env
+      })
 
       const $crown = $('.govuk-footer__crown')
       expect($crown).toHaveLength(1)
