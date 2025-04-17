@@ -3,11 +3,14 @@
 {% from "./components/header/macro.njk" import govukHeader -%}
 {% from "./components/footer/macro.njk" import govukFooter -%}
 
+{%- set _rebrand = govukRebrand() if govukRebrand is callable else govukRebrand -%}
+
 {# Hardcoded value is $govuk-brand-blue if rebrand, otherwise govuk-colour("black") -#}
-{% set themeColor = themeColor | default("#1d70b8" if govukRebrand else "#0b0c0c", true) -%}
-{% set assetPath = assetPath | default("/assets/rebrand" if govukRebrand else "/assets", true) -%}
+{% set themeColor = themeColor | default("#1d70b8" if _rebrand else "#0b0c0c", true) -%}
+{% set assetPath = assetPath | default("/assets/rebrand" if _rebrand else "/assets", true) -%}
+
 <!DOCTYPE html>
-<html lang="{{ htmlLang | default("en", true) }}" class="govuk-template {%- if govukRebrand %} govuk-template--rebranded{% endif %} {%- if htmlClasses %} {{ htmlClasses }}{% endif %}">
+<html lang="{{ htmlLang | default("en", true) }}" class="govuk-template {%- if _rebrand %} govuk-template--rebranded{% endif %} {%- if htmlClasses %} {{ htmlClasses }}{% endif %}">
   <head>
     <meta charset="utf-8">
     <title {%- if pageTitleLang %} lang="{{ pageTitleLang }}"{% endif %}>{% block pageTitle %}GOV.UK - The best place to find government services and information{% endblock %}</title>
@@ -42,7 +45,7 @@
 
     {% block header %}
       {{ govukHeader({
-        rebrand: govukRebrand
+        rebrand: _rebrand
       }) }}
     {% endblock %}
 
@@ -57,7 +60,7 @@
 
     {% block footer %}
       {{ govukFooter({
-        rebrand: govukRebrand
+        rebrand: _rebrand
       }) }}
     {% endblock %}
 

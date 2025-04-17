@@ -37,6 +37,7 @@ router.post(`/set-${FEATURE_NAME}`, (req, res) => {
 router.use((req, res, next) => {
   const localVarName = `use${FEATURE_NAME.charAt(0).toUpperCase() + FEATURE_NAME.slice(1)}`
   const overrideQuery = `${FEATURE_NAME}Override`
+  const env = req.app.get('nunjucksEnv')
 
   res.locals[localVarName] =
     overrideQuery in req.query
@@ -47,6 +48,9 @@ router.use((req, res, next) => {
   res.locals.exampleStates = res.locals.showAllFlagStates
     ? [true, false]
     : [res.locals.useRebrand]
+
+  // set the govukRebrand global
+  env?.addGlobal('govukRebrand', res.locals[localVarName])
 
   next()
 })
