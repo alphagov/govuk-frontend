@@ -1,0 +1,90 @@
+{% from "../../macros/attributes.njk" import govukAttributes %}
+{% from "../../macros/i18n.njk" import govukI18nAttributes %}
+{% from "../error-message/macro.njk" import govukErrorMessage %}
+{% from "../hint/macro.njk" import govukHint %}
+{% from "../label/macro.njk" import govukLabel %}
+
+{#- a record of other elements that we need to associate with the input using
+  aria-describedby – for example hints or error messages -#}
+{%- set describedBy = params.describedBy if params.describedBy else "" -%}
+{%- set id = params.id if params.id else params.name -%}
+
+<div class="govuk-form-group {%- if params.errorMessage %} govuk-form-group--error{% endif %} {%- if params.formGroup.classes %} {{ params.formGroup.classes }}{% endif %}"
+  {{- govukAttributes(params.formGroup.attributes) }}>
+  {{ govukLabel({
+    html: params.label.html,
+    text: params.label.text,
+    classes: params.label.classes,
+    isPageHeading: params.label.isPageHeading,
+    attributes: params.label.attributes,
+    for: id
+  }) | trim | indent(2) }}
+{% if params.hint %}
+  {% set hintId = id + '-hint' %}
+  {% set describedBy = describedBy + ' ' + hintId if describedBy else hintId %}
+  {{ govukHint({
+    id: hintId,
+    classes: params.hint.classes,
+    attributes: params.hint.attributes,
+    html: params.hint.html,
+    text: params.hint.text
+  }) | trim | indent(2) }}
+{% endif %}
+{% if params.errorMessage %}
+  {% set errorId = id + '-error' %}
+  {% set describedBy = describedBy + ' ' + errorId if describedBy else errorId %}
+  {{ govukErrorMessage({
+    id: errorId,
+    classes: params.errorMessage.classes,
+    attributes: params.errorMessage.attributes,
+    html: params.errorMessage.html,
+    text: params.errorMessage.text,
+    visuallyHiddenText: params.errorMessage.visuallyHiddenText
+  }) | trim | indent(2) }}
+{% endif %}
+{% if params.formGroup.beforeInput %}
+  {{ params.formGroup.beforeInput.html | safe | trim | indent(2) if params.formGroup.beforeInput.html else params.formGroup.beforeInput.text }}
+{% endif %}
+{% if params.javascript %}
+  <div
+    class="govuk-drop-zone"
+    data-module="govuk-file-upload"
+    {{- govukI18nAttributes({
+      key: 'choose-files-button',
+      message: params.chooseFilesButtonText
+    }) -}}
+    {{- govukI18nAttributes({
+      key: 'no-file-chosen',
+      message: params.noFileChosenText
+    }) -}}
+    {{- govukI18nAttributes({
+      key: 'multiple-files-chosen',
+      messages: params.multipleFilesChosenText
+    }) -}}
+    {{- govukI18nAttributes({
+      key: 'drop-instruction',
+      message: params.dropInstructionText
+    }) -}}
+    {{- govukI18nAttributes({
+      key: 'entered-drop-zone',
+      message: params.enteredDropZoneText
+    }) -}}
+    {{- govukI18nAttributes({
+      key: 'left-drop-zone',
+      message: params.leftDropZoneText
+    }) -}}
+  >
+{% endif %}
+  <input class="govuk-file-upload {%- if params.classes %} {{ params.classes }}{% endif %} {%- if params.errorMessage %} govuk-file-upload--error{% endif %}" id="{{ id }}" name="{{ params.name }}" type="file"
+  {%- if params.value %} value="{{ params.value }}"{% endif %}
+  {%- if params.disabled %} disabled{% endif %}
+  {%- if params.multiple %} multiple{% endif %}
+  {%- if describedBy %} aria-describedby="{{ describedBy }}"{% endif %}
+  {{- govukAttributes(params.attributes) }}>
+{% if params.javascript %}
+  </div>
+{% endif %}
+{% if params.formGroup.afterInput %}
+  {{ params.formGroup.afterInput.html | safe | trim | indent(2) if params.formGroup.afterInput.html else params.formGroup.afterInput.text }}
+{% endif %}
+</div>

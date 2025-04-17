@@ -1,0 +1,134 @@
+@include govuk-exports("govuk/component/breadcrumbs") {
+  // Component font-size on the Frontend (used for calculations)
+  $font-size: 16;
+
+  // Size of chevron (excluding border)
+  $chevron-size: govuk-em(7px, $font-size);
+
+  // Size of chevron border
+  $chevron-border-min-width: 1px;
+  $chevron-border-width: govuk-em($chevron-border-min-width, $font-size);
+
+  // Colour of chevron
+  $chevron-border-colour: $govuk-secondary-text-colour;
+
+  // Calculated altitude (△↕) of the right-angled isosceles chevron with sides
+  // of length 8 (7px + 1px border):
+  //
+  // √(8² + 8²) * 0.5 ≅ 5.655
+  $chevron-altitude-calculated: govuk-em(5.655px, $font-size);
+
+  .govuk-breadcrumbs {
+    @include govuk-font($size: $font-size);
+    @include govuk-text-colour;
+
+    margin-top: govuk-spacing(3);
+    margin-bottom: govuk-spacing(2);
+  }
+
+  .govuk-breadcrumbs__list {
+    @include govuk-clearfix;
+
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+
+  .govuk-breadcrumbs__list-item {
+    display: inline-block;
+    position: relative;
+
+    margin-bottom: govuk-spacing(1);
+
+    // Add both margin and padding such that the chevron appears centrally
+    // between each breadcrumb item
+    margin-left: govuk-em(govuk-spacing(2), $font-size);
+    padding-left: govuk-em(govuk-spacing(2), $font-size) + $chevron-altitude-calculated;
+
+    float: left;
+
+    // Create a chevron using a box with borders on two sides, rotated 45deg.
+    &::before {
+      content: "";
+      display: block;
+
+      position: absolute;
+      top: 0;
+      bottom: 0;
+
+      // Offset by the difference between the width of the non-rotated square
+      // and its width when rotated
+      left: (($chevron-altitude-calculated * -2) + $chevron-size + $chevron-border-width);
+
+      width: $chevron-size;
+      height: $chevron-size;
+
+      margin: auto 0;
+
+      transform: rotate(45deg);
+
+      border: solid;
+      border-width: $chevron-border-min-width $chevron-border-min-width 0 0;
+      border-color: $chevron-border-colour;
+
+      @supports (border-width: unquote("max(0px)")) {
+        $border-width-eval: "max(#{$chevron-border-min-width}, #{$chevron-border-width})";
+
+        // Ensure that the chevron never gets smaller than 16px
+        border-width: unquote($border-width-eval) unquote($border-width-eval) 0 0;
+        font-size: unquote("max(#{$font-size * 1px}, 1em)");
+      }
+    }
+
+    &:first-child {
+      margin-left: 0;
+      padding-left: 0;
+
+      &::before {
+        content: none;
+        display: none;
+      }
+    }
+  }
+
+  .govuk-breadcrumbs__link {
+    @include govuk-link-common;
+    @include govuk-link-style-text;
+  }
+
+  .govuk-breadcrumbs--collapse-on-mobile {
+    @include govuk-media-query($until: tablet) {
+      .govuk-breadcrumbs__list-item {
+        display: none;
+
+        &:first-child,
+        &:last-child {
+          display: inline-block;
+        }
+
+        &::before {
+          top: govuk-em(6px, $font-size);
+          margin: 0;
+        }
+      }
+
+      .govuk-breadcrumbs__list {
+        display: flex;
+      }
+    }
+  }
+
+  .govuk-breadcrumbs--inverse {
+    color: govuk-colour("white");
+
+    .govuk-breadcrumbs__link {
+      @include govuk-link-style-inverse;
+    }
+
+    .govuk-breadcrumbs__list-item::before {
+      border-color: currentcolor;
+    }
+  }
+}
+
+/*# sourceMappingURL=_index.scss.map */
