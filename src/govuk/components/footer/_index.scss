@@ -98,8 +98,10 @@
 
     // Where possible use the crest as a mask instead. This lets us use
     // currentColor, increasing the contrast of the image and matching the
-    // user's prefered foreground colour in e.g. forced colors mode
-    @supports (mask-image: url("")) {
+    // user's prefered foreground colour in e.g. forced colors mode.
+    // We test for `mask-position` rather than `mask-image` because of a false
+    // positive in Edge 17.
+    @supports (mask-position: initial) {
       background: currentcolor;
       mask-image: govuk-image-url("govuk-crest.svg");
       mask-repeat: no-repeat;
