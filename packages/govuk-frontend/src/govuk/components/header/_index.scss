@@ -13,6 +13,10 @@
   $govuk-header-menu-button-height: 24px;
   $govuk-header-menu-button-width: 80px;
 
+  $govuk-header-rebrand-background: $govuk-brand-colour;
+  $govuk-header-rebrand-vertical-spacing-value: 3;
+  $govuk-header-rebrand-logo-bottom-margin: 2px;
+
   .govuk-header {
     @include govuk-font($size: 16, $line-height: 1);
 
@@ -22,7 +26,7 @@
       $from: govuk-spacing(2) solid govuk-colour("white"),
       $to: 1px solid transparent
     );
-    @include _govuk-rebrand("background", $from: $govuk-header-background, $to: $govuk-brand-colour);
+    @include _govuk-rebrand("background", $from: $govuk-header-background, $to: $govuk-header-rebrand-background);
 
     color: $govuk-header-text;
   }
@@ -86,6 +90,11 @@
     // and focus states neat
     &:last-child {
       margin-right: 0;
+    }
+
+    @include _govuk-rebrand {
+      margin-right: govuk-px-to-rem(7px); // 1 'dot'
+      margin-bottom: $govuk-header-rebrand-logo-bottom-margin;
     }
   }
 
@@ -218,18 +227,19 @@
     }
 
     @include _govuk-rebrand {
-      display: inline-flex;
-      flex-wrap: wrap;
+      display: inline;
 
-      // Magic number some gaps.
-      column-gap: 7px;
-      row-gap: 2px;
+      // Remove word-spacing from within the logo so we can ignore
+      // whitespace characters in the HTML
+      word-spacing: govuk-px-to-rem(-6px);
 
-      // If `gap`s are supported, remove the margin the logo normally has
-      @supports (row-gap: 1px) and (column-gap: 1px) {
-        .govuk-header__logotype {
-          margin-right: 0;
-        }
+      // Reset word-spacing for child elements
+      > * {
+        word-spacing: 0;
+      }
+
+      &:not(:focus) {
+        background-color: $govuk-header-rebrand-background;
       }
     }
   }
@@ -242,13 +252,14 @@
 
     @include _govuk-rebrand {
       // Apply margins to internal elements to emulate padding
-      margin-bottom: govuk-spacing(3);
+      margin-bottom: govuk-spacing($govuk-header-rebrand-vertical-spacing-value);
 
       @include govuk-media-query($from: desktop) {
         // Magic number to align service name baseline with the GOV.UK logo
         $govuk-service-name-offset: 3px;
 
-        margin: (govuk-spacing(3) + $govuk-service-name-offset) 0 (govuk-spacing(3) - $govuk-service-name-offset);
+        margin: (govuk-spacing($govuk-header-rebrand-vertical-spacing-value) + $govuk-service-name-offset) 0
+          (govuk-spacing($govuk-header-rebrand-vertical-spacing-value) - $govuk-service-name-offset);
       }
     }
   }
@@ -285,7 +296,7 @@
 
       // Increase top/bottom padding
       padding-top: govuk-spacing(3);
-      padding-bottom: govuk-spacing(3);
+      padding-bottom: govuk-spacing(3) - $govuk-header-rebrand-logo-bottom-margin;
     }
   }
 

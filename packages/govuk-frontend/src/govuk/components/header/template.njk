@@ -16,7 +16,7 @@
         }) | trim | indent(8) }}
         {% if (params.productName) %}
         <span class="govuk-header__product-name">
-          {{ params.productName }}
+          {{- params.productName -}}
         </span>
         {% endif %}
       </a>
