@@ -1,4 +1,4 @@
-import { join } from 'path'
+import { join, resolve } from 'path'
 
 import { paths } from '@govuk-frontend/config'
 import {
@@ -238,6 +238,9 @@ export default async () => {
    */
   app.use('/examples', routes.examples)
   app.use('/full-page-examples', routes.fullPageExamples)
+
+  // For use in examples
+  app.use('/images', express.static(resolve('src/images')))
 
   /**
    * Page not found handler
