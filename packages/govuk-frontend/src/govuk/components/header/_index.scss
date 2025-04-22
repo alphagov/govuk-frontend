@@ -13,6 +13,8 @@
   $govuk-header-menu-button-height: 24px;
   $govuk-header-menu-button-width: 80px;
 
+  $govuk-header-rebrand-logo-bottom-margin: 2px;
+
   .govuk-header {
     @include govuk-font($size: 16, $line-height: 1);
 
@@ -86,6 +88,12 @@
     // and focus states neat
     &:last-child {
       margin-right: 0;
+    }
+
+    @include _govuk-rebrand {
+      // Magic number spacings
+      margin-right: 7px;
+      margin-bottom: $govuk-header-rebrand-logo-bottom-margin;
     }
   }
 
@@ -216,22 +224,6 @@
       margin-bottom: 0;
       border-bottom: 0;
     }
-
-    @include _govuk-rebrand {
-      display: inline-flex;
-      flex-wrap: wrap;
-
-      // Magic number some gaps.
-      column-gap: 7px;
-      row-gap: 2px;
-
-      // If `gap`s are supported, remove the margin the logo normally has
-      @supports (row-gap: 1px) and (column-gap: 1px) {
-        .govuk-header__logotype {
-          margin-right: 0;
-        }
-      }
-    }
   }
 
   .govuk-header__service-name {
@@ -285,7 +277,7 @@
 
       // Increase top/bottom padding
       padding-top: govuk-spacing(3);
-      padding-bottom: govuk-spacing(3);
+      padding-bottom: govuk-spacing(3) - $govuk-header-rebrand-logo-bottom-margin;
     }
   }
 
