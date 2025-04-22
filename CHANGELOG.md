@@ -9,6 +9,7 @@ For advice on how to use these release notes see [our guidance on staying up to 
 We've made fixes to GOV.UK Frontend in the following pull requests:
 
 - [#5785: Add missing Sass imports of components depended on](https://github.com/alphagov/govuk-frontend/pull/5785) - thanks to @matthew-shaw for reporting this issue and proposing a fix
+- [#5863: Omit ‘empty’ nav items from service navigation](https://github.com/alphagov/govuk-frontend/pull/5863) – thanks to @NikhilNanjappa for reporting this issue
 
 ### Deprecated features
 
