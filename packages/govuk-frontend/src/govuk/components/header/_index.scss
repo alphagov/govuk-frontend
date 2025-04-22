@@ -224,6 +224,20 @@
       margin-bottom: 0;
       border-bottom: 0;
     }
+
+    @include _govuk-rebrand {
+      // Remove white space between SVG and product name
+      word-spacing: -6px;
+
+      > * {
+        // Restores word spacing in children
+        word-spacing: 0;
+      }
+
+      &:not(:focus) {
+        background-color: $govuk-brand-colour;
+      }
+    }
   }
 
   .govuk-header__service-name {
