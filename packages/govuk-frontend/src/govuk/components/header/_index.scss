@@ -14,7 +14,6 @@
   $govuk-header-menu-button-width: 80px;
 
   $govuk-header-rebrand-background: $govuk-brand-colour;
-  $govuk-header-rebrand-vertical-spacing-value: 3;
   $govuk-header-rebrand-logo-bottom-margin: 2px;
 
   .govuk-header {
@@ -261,14 +260,13 @@
 
     @include _govuk-rebrand {
       // Apply margins to internal elements to emulate padding
-      margin-bottom: govuk-spacing($govuk-header-rebrand-vertical-spacing-value);
+      margin-bottom: govuk-spacing(3);
 
       @include govuk-media-query($from: desktop) {
         // Magic number to align service name baseline with the GOV.UK logo
-        $govuk-service-name-offset: 4px;
+        $service-name-offset: 4px;
 
-        margin: (govuk-spacing($govuk-header-rebrand-vertical-spacing-value) + $govuk-service-name-offset) 0
-          (govuk-spacing($govuk-header-rebrand-vertical-spacing-value) - $govuk-service-name-offset);
+        margin: (govuk-spacing(3) + $service-name-offset) 0 (govuk-spacing(3) - $service-name-offset);
       }
     }
   }
@@ -303,7 +301,7 @@
       // Apply margins to internal elements to emulate padding
       margin-bottom: 0;
 
-      // Magic numbers, set top/bottom padding
+      // Magic numbers, set padding to vertically centre align the logo
       padding-top: 16px;
       padding-bottom: 14px - $govuk-header-rebrand-logo-bottom-margin;
     }
@@ -391,11 +389,11 @@
       @include _govuk-rebrand {
         // Magic number so that the bottom of the nav links aligns with the
         // baseline of the GOV.UK logo
-        $govuk-navigation-offset: 7px;
+        $navigation-offset: 7px;
 
         // Apply margins to internal elements to emulate padding
         margin-bottom: 0;
-        padding: (govuk-spacing(3) + $govuk-navigation-offset) 0 (govuk-spacing(3) - $govuk-navigation-offset);
+        padding: (govuk-spacing(3) + $navigation-offset) 0 (govuk-spacing(3) - $navigation-offset);
       }
     }
   }
