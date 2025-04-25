@@ -1,0 +1,106 @@
+{% from "../../macros/attributes.njk" import govukAttributes %}
+{% from "../error-message/macro.njk" import govukErrorMessage %}
+{% from "../fieldset/macro.njk" import govukFieldset %}
+{% from "../hint/macro.njk" import govukHint %}
+{% from "../input/macro.njk" import govukInput %}
+
+{#- a record of other elements that we need to associate with the input using
+  aria-describedby – for example hints or error messages -#}
+{% set describedBy = params.fieldset.describedBy if params.fieldset.describedBy else "" %}
+
+{#- fieldset is false by default -#}
+{% set hasFieldset = true if params.fieldset else false %}
+
+{%- if params.items | length %}
+  {% set dateInputItems = params.items %}
+{% else %}
+  {% set dateInputItems = [
+    {
+      name: "day",
+      classes: "govuk-input--width-2"
+    },
+    {
+      name: "month",
+      classes: "govuk-input--width-2"
+    },
+    {
+      name: "year",
+      classes: "govuk-input--width-4"
+    }
+  ] %}
+{% endif %}
+
+{#- Capture the HTML so we can optionally nest it in a fieldset -#}
+{% set innerHtml %}
+{% if params.hint %}
+  {% set hintId = params.id + "-hint" %}
+  {% set describedBy = describedBy + " " + hintId if describedBy else hintId %}
+  {{ govukHint({
+    id: hintId,
+    classes: params.hint.classes,
+    attributes: params.hint.attributes,
+    html: params.hint.html,
+    text: params.hint.text
+  }) | trim | indent(2) }}
+{% endif %}
+{% if params.errorMessage %}
+  {% set errorId = params.id + "-error" %}
+  {% set describedBy = describedBy + " " + errorId if describedBy else errorId %}
+  {{ govukErrorMessage({
+    id: errorId,
+    classes: params.errorMessage.classes,
+    attributes: params.errorMessage.attributes,
+    html: params.errorMessage.html,
+    text: params.errorMessage.text,
+    visuallyHiddenText: params.errorMessage.visuallyHiddenText
+  }) | trim | indent(2) }}
+{% endif %}
+  <div class="govuk-date-input {%- if params.classes %} {{ params.classes }}{% endif %}"
+    {{- govukAttributes(params.attributes) -}}
+    {%- if params.id %} id="{{ params.id }}"{% endif %}>
+    {% if params.formGroup.beforeInputs %}
+    {{ params.formGroup.beforeInputs.html | safe | trim | indent(4) if params.formGroup.beforeInputs.html else params.formGroup.beforeInputs.text }}
+    {% endif %}
+    {% for item in dateInputItems %}
+    <div class="govuk-date-input__item">
+      {{ govukInput({
+        label: {
+          text: item.label if item.label else item.name | capitalize,
+          classes: "govuk-date-input__label"
+        },
+        id: item.id if item.id else (params.id + "-" + item.name),
+        classes: "govuk-date-input__input " + (item.classes if item.classes),
+        name: (params.namePrefix + "-" + item.name) if params.namePrefix else item.name,
+        value: item.value,
+        type: "text",
+        inputmode: item.inputmode if item.inputmode else "numeric",
+        autocomplete: item.autocomplete,
+        pattern: item.pattern,
+        attributes: item.attributes
+      }) | trim | indent(6) }}
+    </div>
+    {% endfor %}
+    {% if params.formGroup.afterInputs %}
+    {{ params.formGroup.afterInputs.html | safe | trim | indent(4) if params.formGroup.afterInputs.html else params.formGroup.afterInputs.text }}
+    {% endif %}
+  </div>
+{% endset -%}
+
+<div class="govuk-form-group {%- if params.errorMessage %} govuk-form-group--error{% endif %} {%- if params.formGroup.classes %} {{ params.formGroup.classes }}{% endif %}" {{- govukAttributes(params.formGroup.attributes) }}>
+{% if hasFieldset %}
+  {# We override the fieldset's role to 'group' because otherwise JAWS does not
+    announce the description for a fieldset comprised of text inputs, but
+    adding the role to the fieldset always makes the output overly verbose for
+    radio buttons or checkboxes. -#}
+  {{ govukFieldset({
+    describedBy: describedBy,
+    classes: params.fieldset.classes,
+    role: 'group',
+    attributes: params.fieldset.attributes,
+    legend: params.fieldset.legend,
+    html: innerHtml | trim
+  }) | trim | indent(2) }}
+{% else %}
+  {{ innerHtml | safe | trim }}
+{% endif %}
+</div>
