@@ -160,6 +160,15 @@
       // Reduce letter spacing
       letter-spacing: -0.015em;
 
+      // Prevent forced colour modes from applying a background colour behind
+      // the product name, which cuts off the underline that appears on hover.
+      forced-color-adjust: none;
+
+      @media screen and (forced-colors: active) {
+        color: LinkText;
+        background: transparent;
+      }
+
       // Remove top margin on the breakpoints too
       @include govuk-media-query($from: tablet) {
         margin-top: 0;
