@@ -1,0 +1,294 @@
+{
+    "component": "notification-banner",
+    "fixtures": [
+        {
+            "name": "default",
+            "options": {
+                "text": "This publication was withdrawn on 7 March 2014."
+            },
+            "hidden": false,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-notification-banner\" role=\"region\" aria-labelledby=\"govuk-notification-banner-title\" data-module=\"govuk-notification-banner\">\n  <div class=\"govuk-notification-banner__header\">\n    <h2 class=\"govuk-notification-banner__title\" id=\"govuk-notification-banner-title\">\n      Important\n    </h2>\n  </div>\n  <div class=\"govuk-notification-banner__content\">\n    <p class=\"govuk-notification-banner__heading\">\n      This publication was withdrawn on 7 March 2014.\n    </p>\n  </div>\n</div>"
+        },
+        {
+            "name": "paragraph as html heading",
+            "options": {
+                "html": "<p class=\"govuk-notification-banner__heading\">You have 9 days to send a response.</p>\n"
+            },
+            "hidden": false,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-notification-banner\" role=\"region\" aria-labelledby=\"govuk-notification-banner-title\" data-module=\"govuk-notification-banner\">\n  <div class=\"govuk-notification-banner__header\">\n    <h2 class=\"govuk-notification-banner__title\" id=\"govuk-notification-banner-title\">\n      Important\n    </h2>\n  </div>\n  <div class=\"govuk-notification-banner__content\">\n    <p class=\"govuk-notification-banner__heading\">You have 9 days to send a response.</p>\n  </div>\n</div>"
+        },
+        {
+            "name": "with text as html",
+            "options": {
+                "html": "<h3 class=\"govuk-notification-banner__heading\">\n  This publication was withdrawn on 7 March 2014\n</h3>\n<p class=\"govuk-body\">\n  Archived and replaced by the <a href=\"#\" class=\"govuk-notification-banner__link\">new planning guidance</a> launched 6 March 2014 on an external website\n</p>\n"
+            },
+            "hidden": false,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-notification-banner\" role=\"region\" aria-labelledby=\"govuk-notification-banner-title\" data-module=\"govuk-notification-banner\">\n  <div class=\"govuk-notification-banner__header\">\n    <h2 class=\"govuk-notification-banner__title\" id=\"govuk-notification-banner-title\">\n      Important\n    </h2>\n  </div>\n  <div class=\"govuk-notification-banner__content\">\n    <h3 class=\"govuk-notification-banner__heading\">\n      This publication was withdrawn on 7 March 2014\n    </h3>\n    <p class=\"govuk-body\">\n      Archived and replaced by the <a href=\"#\" class=\"govuk-notification-banner__link\">new planning guidance</a> launched 6 March 2014 on an external website\n    </p>\n  </div>\n</div>"
+        },
+        {
+            "name": "with type as success",
+            "options": {
+                "type": "success",
+                "text": "Email sent to example@email.com"
+            },
+            "hidden": false,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-notification-banner govuk-notification-banner--success\" role=\"alert\" aria-labelledby=\"govuk-notification-banner-title\" data-module=\"govuk-notification-banner\">\n  <div class=\"govuk-notification-banner__header\">\n    <h2 class=\"govuk-notification-banner__title\" id=\"govuk-notification-banner-title\">\n      Success\n    </h2>\n  </div>\n  <div class=\"govuk-notification-banner__content\">\n    <p class=\"govuk-notification-banner__heading\">\n      Email sent to example@email.com\n    </p>\n  </div>\n</div>"
+        },
+        {
+            "name": "success with custom html",
+            "options": {
+                "type": "success",
+                "html": "<h3 class=\"govuk-notification-banner__heading\">\n  4 files uploaded\n</h3>\n<ul class=\"govuk-!-margin-0 govuk-list\">\n  <li><a href=\"link-1\" class=\"govuk-notification-banner__link\">government-strategy.pdf</a></li>\n  <li><a href=\"link-2\" class=\"govuk-notification-banner__link\">government-strategy-v1.pdf</a></li>\n</ul>\n"
+            },
+            "hidden": false,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-notification-banner govuk-notification-banner--success\" role=\"alert\" aria-labelledby=\"govuk-notification-banner-title\" data-module=\"govuk-notification-banner\">\n  <div class=\"govuk-notification-banner__header\">\n    <h2 class=\"govuk-notification-banner__title\" id=\"govuk-notification-banner-title\">\n      Success\n    </h2>\n  </div>\n  <div class=\"govuk-notification-banner__content\">\n    <h3 class=\"govuk-notification-banner__heading\">\n      4 files uploaded\n    </h3>\n    <ul class=\"govuk-!-margin-0 govuk-list\">\n      <li><a href=\"link-1\" class=\"govuk-notification-banner__link\">government-strategy.pdf</a></li>\n      <li><a href=\"link-2\" class=\"govuk-notification-banner__link\">government-strategy-v1.pdf</a></li>\n    </ul>\n  </div>\n</div>"
+        },
+        {
+            "name": "with a list",
+            "options": {
+                "html": "<h3 class=\"govuk-notification-banner__heading\">4 files uploaded</h3>\n<ul class=\"govuk-list govuk-list--bullet govuk-!-margin-bottom-0\">\n  <li><a href=\"#\" class=\"govuk-notification-banner__link\">government-strategy.pdf</a></li>\n  <li><a href=\"#\" class=\"govuk-notification-banner__link\">government-strategy-v2.pdf</a></li>\n  <li><a href=\"#\" class=\"govuk-notification-banner__link\">government-strategy-v3-FINAL.pdf</a></li>\n  <li><a href=\"#\" class=\"govuk-notification-banner__link\">government-strategy-v4-FINAL-v2.pdf</a></li>\n</ul>\n"
+            },
+            "hidden": false,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-notification-banner\" role=\"region\" aria-labelledby=\"govuk-notification-banner-title\" data-module=\"govuk-notification-banner\">\n  <div class=\"govuk-notification-banner__header\">\n    <h2 class=\"govuk-notification-banner__title\" id=\"govuk-notification-banner-title\">\n      Important\n    </h2>\n  </div>\n  <div class=\"govuk-notification-banner__content\">\n    <h3 class=\"govuk-notification-banner__heading\">4 files uploaded</h3>\n    <ul class=\"govuk-list govuk-list--bullet govuk-!-margin-bottom-0\">\n      <li><a href=\"#\" class=\"govuk-notification-banner__link\">government-strategy.pdf</a></li>\n      <li><a href=\"#\" class=\"govuk-notification-banner__link\">government-strategy-v2.pdf</a></li>\n      <li><a href=\"#\" class=\"govuk-notification-banner__link\">government-strategy-v3-FINAL.pdf</a></li>\n      <li><a href=\"#\" class=\"govuk-notification-banner__link\">government-strategy-v4-FINAL-v2.pdf</a></li>\n    </ul>\n  </div>\n</div>"
+        },
+        {
+            "name": "with long heading",
+            "options": {
+                "text": "This publication was withdrawn on 7 March 2014, before being sent in, sent back, queried, lost, found, subjected to public inquiry, lost again, and finally buried in soft peat for three months and recycled as firelighters."
+            },
+            "hidden": false,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-notification-banner\" role=\"region\" aria-labelledby=\"govuk-notification-banner-title\" data-module=\"govuk-notification-banner\">\n  <div class=\"govuk-notification-banner__header\">\n    <h2 class=\"govuk-notification-banner__title\" id=\"govuk-notification-banner-title\">\n      Important\n    </h2>\n  </div>\n  <div class=\"govuk-notification-banner__content\">\n    <p class=\"govuk-notification-banner__heading\">\n      This publication was withdrawn on 7 March 2014, before being sent in, sent back, queried, lost, found, subjected to public inquiry, lost again, and finally buried in soft peat for three months and recycled as firelighters.\n    </p>\n  </div>\n</div>"
+        },
+        {
+            "name": "with lots of content",
+            "options": {
+                "html": "<h3 class=\"govuk-notification-banner__heading\">\n  Check if you need to apply the reverse charge to this application\n</h3>\n<p class=\"govuk-body\">\n  You will have to apply the <a href=\"#\" class=\"govuk-notification-banner__link\">reverse charge</a> if the applicant supplies any of these services:\n</p>\n<ul class=\"govuk-list govuk-list--bullet govuk-list--spaced\">\n  <li>constructing, altering, repairing, extending, demolishing or dismantling buildings or structures (whether permanent or not), including offshore installation services</li>\n  <li>constructing, altering, repairing, extending, demolishing of any works forming, or planned to form, part of the land, including (in particular) walls, roadworks, power lines, electronic communications equipment, aircraft runways, railways, inland waterways, docks and harbours</li>\n</ul>\n"
+            },
+            "hidden": false,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-notification-banner\" role=\"region\" aria-labelledby=\"govuk-notification-banner-title\" data-module=\"govuk-notification-banner\">\n  <div class=\"govuk-notification-banner__header\">\n    <h2 class=\"govuk-notification-banner__title\" id=\"govuk-notification-banner-title\">\n      Important\n    </h2>\n  </div>\n  <div class=\"govuk-notification-banner__content\">\n    <h3 class=\"govuk-notification-banner__heading\">\n      Check if you need to apply the reverse charge to this application\n    </h3>\n    <p class=\"govuk-body\">\n      You will have to apply the <a href=\"#\" class=\"govuk-notification-banner__link\">reverse charge</a> if the applicant supplies any of these services:\n    </p>\n    <ul class=\"govuk-list govuk-list--bullet govuk-list--spaced\">\n      <li>constructing, altering, repairing, extending, demolishing or dismantling buildings or structures (whether permanent or not), including offshore installation services</li>\n      <li>constructing, altering, repairing, extending, demolishing of any works forming, or planned to form, part of the land, including (in particular) walls, roadworks, power lines, electronic communications equipment, aircraft runways, railways, inland waterways, docks and harbours</li>\n    </ul>\n  </div>\n</div>"
+        },
+        {
+            "name": "auto-focus disabled, with type as success",
+            "options": {
+                "type": "success",
+                "disableAutoFocus": true,
+                "text": "Email sent to example@email.com"
+            },
+            "hidden": false,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-notification-banner govuk-notification-banner--success\" role=\"alert\" aria-labelledby=\"govuk-notification-banner-title\" data-module=\"govuk-notification-banner\" data-disable-auto-focus=\"true\">\n  <div class=\"govuk-notification-banner__header\">\n    <h2 class=\"govuk-notification-banner__title\" id=\"govuk-notification-banner-title\">\n      Success\n    </h2>\n  </div>\n  <div class=\"govuk-notification-banner__content\">\n    <p class=\"govuk-notification-banner__heading\">\n      Email sent to example@email.com\n    </p>\n  </div>\n</div>"
+        },
+        {
+            "name": "auto-focus explicitly enabled, with type as success",
+            "options": {
+                "type": "success",
+                "disableAutoFocus": false,
+                "text": "Email sent to example@email.com"
+            },
+            "hidden": false,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-notification-banner govuk-notification-banner--success\" role=\"alert\" aria-labelledby=\"govuk-notification-banner-title\" data-module=\"govuk-notification-banner\" data-disable-auto-focus=\"false\">\n  <div class=\"govuk-notification-banner__header\">\n    <h2 class=\"govuk-notification-banner__title\" id=\"govuk-notification-banner-title\">\n      Success\n    </h2>\n  </div>\n  <div class=\"govuk-notification-banner__content\">\n    <p class=\"govuk-notification-banner__heading\">\n      Email sent to example@email.com\n    </p>\n  </div>\n</div>"
+        },
+        {
+            "name": "role=alert overridden to role=region, with type as success",
+            "options": {
+                "type": "success",
+                "role": "region",
+                "text": "Email sent to example@email.com"
+            },
+            "hidden": false,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-notification-banner govuk-notification-banner--success\" role=\"region\" aria-labelledby=\"govuk-notification-banner-title\" data-module=\"govuk-notification-banner\">\n  <div class=\"govuk-notification-banner__header\">\n    <h2 class=\"govuk-notification-banner__title\" id=\"govuk-notification-banner-title\">\n      Success\n    </h2>\n  </div>\n  <div class=\"govuk-notification-banner__content\">\n    <p class=\"govuk-notification-banner__heading\">\n      Email sent to example@email.com\n    </p>\n  </div>\n</div>"
+        },
+        {
+            "name": "custom tabindex",
+            "options": {
+                "type": "success",
+                "text": "Email sent to example@email.com",
+                "attributes": {
+                    "tabindex": 2
+                }
+            },
+            "hidden": false,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-notification-banner govuk-notification-banner--success\" role=\"alert\" aria-labelledby=\"govuk-notification-banner-title\" data-module=\"govuk-notification-banner\" tabindex=\"2\">\n  <div class=\"govuk-notification-banner__header\">\n    <h2 class=\"govuk-notification-banner__title\" id=\"govuk-notification-banner-title\">\n      Success\n    </h2>\n  </div>\n  <div class=\"govuk-notification-banner__content\">\n    <p class=\"govuk-notification-banner__heading\">\n      Email sent to example@email.com\n    </p>\n  </div>\n</div>"
+        },
+        {
+            "name": "custom title",
+            "options": {
+                "titleText": "Important information",
+                "text": "This publication was withdrawn on 7 March 2014."
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-notification-banner\" role=\"region\" aria-labelledby=\"govuk-notification-banner-title\" data-module=\"govuk-notification-banner\">\n  <div class=\"govuk-notification-banner__header\">\n    <h2 class=\"govuk-notification-banner__title\" id=\"govuk-notification-banner-title\">\n      Important information\n    </h2>\n  </div>\n  <div class=\"govuk-notification-banner__content\">\n    <p class=\"govuk-notification-banner__heading\">\n      This publication was withdrawn on 7 March 2014.\n    </p>\n  </div>\n</div>"
+        },
+        {
+            "name": "title as html",
+            "options": {
+                "titleHtml": "<span>Important information</span>",
+                "text": "This publication was withdrawn on 7 March 2014."
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-notification-banner\" role=\"region\" aria-labelledby=\"govuk-notification-banner-title\" data-module=\"govuk-notification-banner\">\n  <div class=\"govuk-notification-banner__header\">\n    <h2 class=\"govuk-notification-banner__title\" id=\"govuk-notification-banner-title\">\n      <span>Important information</span>\n    </h2>\n  </div>\n  <div class=\"govuk-notification-banner__content\">\n    <p class=\"govuk-notification-banner__heading\">\n      This publication was withdrawn on 7 March 2014.\n    </p>\n  </div>\n</div>"
+        },
+        {
+            "name": "title html as text",
+            "options": {
+                "titleText": "<span>Important information</span>",
+                "text": "This publication was withdrawn on 7 March 2014."
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-notification-banner\" role=\"region\" aria-labelledby=\"govuk-notification-banner-title\" data-module=\"govuk-notification-banner\">\n  <div class=\"govuk-notification-banner__header\">\n    <h2 class=\"govuk-notification-banner__title\" id=\"govuk-notification-banner-title\">\n      &lt;span&gt;Important information&lt;/span&gt;\n    </h2>\n  </div>\n  <div class=\"govuk-notification-banner__content\">\n    <p class=\"govuk-notification-banner__heading\">\n      This publication was withdrawn on 7 March 2014.\n    </p>\n  </div>\n</div>"
+        },
+        {
+            "name": "custom title heading level",
+            "options": {
+                "titleHeadingLevel": 3,
+                "text": "This publication was withdrawn on 7 March 2014."
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-notification-banner\" role=\"region\" aria-labelledby=\"govuk-notification-banner-title\" data-module=\"govuk-notification-banner\">\n  <div class=\"govuk-notification-banner__header\">\n    <h3 class=\"govuk-notification-banner__title\" id=\"govuk-notification-banner-title\">\n      Important\n    </h3>\n  </div>\n  <div class=\"govuk-notification-banner__content\">\n    <p class=\"govuk-notification-banner__heading\">\n      This publication was withdrawn on 7 March 2014.\n    </p>\n  </div>\n</div>"
+        },
+        {
+            "name": "custom title id",
+            "options": {
+                "titleId": "my-id",
+                "text": "This publication was withdrawn on 7 March 2014."
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-notification-banner\" role=\"region\" aria-labelledby=\"my-id\" data-module=\"govuk-notification-banner\">\n  <div class=\"govuk-notification-banner__header\">\n    <h2 class=\"govuk-notification-banner__title\" id=\"my-id\">\n      Important\n    </h2>\n  </div>\n  <div class=\"govuk-notification-banner__content\">\n    <p class=\"govuk-notification-banner__heading\">\n      This publication was withdrawn on 7 March 2014.\n    </p>\n  </div>\n</div>"
+        },
+        {
+            "name": "custom title id with type as success",
+            "options": {
+                "type": "success",
+                "titleId": "my-id",
+                "text": "Email sent to example@email.com"
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-notification-banner govuk-notification-banner--success\" role=\"alert\" aria-labelledby=\"my-id\" data-module=\"govuk-notification-banner\">\n  <div class=\"govuk-notification-banner__header\">\n    <h2 class=\"govuk-notification-banner__title\" id=\"my-id\">\n      Success\n    </h2>\n  </div>\n  <div class=\"govuk-notification-banner__content\">\n    <p class=\"govuk-notification-banner__heading\">\n      Email sent to example@email.com\n    </p>\n  </div>\n</div>"
+        },
+        {
+            "name": "custom text",
+            "options": {
+                "text": "This publication was withdrawn on 7 March 2014."
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-notification-banner\" role=\"region\" aria-labelledby=\"govuk-notification-banner-title\" data-module=\"govuk-notification-banner\">\n  <div class=\"govuk-notification-banner__header\">\n    <h2 class=\"govuk-notification-banner__title\" id=\"govuk-notification-banner-title\">\n      Important\n    </h2>\n  </div>\n  <div class=\"govuk-notification-banner__content\">\n    <p class=\"govuk-notification-banner__heading\">\n      This publication was withdrawn on 7 March 2014.\n    </p>\n  </div>\n</div>"
+        },
+        {
+            "name": "html as text",
+            "options": {
+                "text": "<span>This publication was withdrawn on 7 March 2014.</span>"
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-notification-banner\" role=\"region\" aria-labelledby=\"govuk-notification-banner-title\" data-module=\"govuk-notification-banner\">\n  <div class=\"govuk-notification-banner__header\">\n    <h2 class=\"govuk-notification-banner__title\" id=\"govuk-notification-banner-title\">\n      Important\n    </h2>\n  </div>\n  <div class=\"govuk-notification-banner__content\">\n    <p class=\"govuk-notification-banner__heading\">\n      &lt;span&gt;This publication was withdrawn on 7 March 2014.&lt;/span&gt;\n    </p>\n  </div>\n</div>"
+        },
+        {
+            "name": "custom role",
+            "options": {
+                "role": "banner",
+                "text": "This publication was withdrawn on 7 March 2014."
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-notification-banner\" role=\"banner\" aria-labelledby=\"govuk-notification-banner-title\" data-module=\"govuk-notification-banner\">\n  <div class=\"govuk-notification-banner__header\">\n    <h2 class=\"govuk-notification-banner__title\" id=\"govuk-notification-banner-title\">\n      Important\n    </h2>\n  </div>\n  <div class=\"govuk-notification-banner__content\">\n    <p class=\"govuk-notification-banner__heading\">\n      This publication was withdrawn on 7 March 2014.\n    </p>\n  </div>\n</div>"
+        },
+        {
+            "name": "classes",
+            "options": {
+                "text": "This publication was withdrawn on 7 March 2014.",
+                "classes": "app-my-class"
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-notification-banner app-my-class\" role=\"region\" aria-labelledby=\"govuk-notification-banner-title\" data-module=\"govuk-notification-banner\">\n  <div class=\"govuk-notification-banner__header\">\n    <h2 class=\"govuk-notification-banner__title\" id=\"govuk-notification-banner-title\">\n      Important\n    </h2>\n  </div>\n  <div class=\"govuk-notification-banner__content\">\n    <p class=\"govuk-notification-banner__heading\">\n      This publication was withdrawn on 7 March 2014.\n    </p>\n  </div>\n</div>"
+        },
+        {
+            "name": "attributes",
+            "options": {
+                "text": "This publication was withdrawn on 7 March 2014.",
+                "attributes": {
+                    "my-attribute": "value"
+                }
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-notification-banner\" role=\"region\" aria-labelledby=\"govuk-notification-banner-title\" data-module=\"govuk-notification-banner\" my-attribute=\"value\">\n  <div class=\"govuk-notification-banner__header\">\n    <h2 class=\"govuk-notification-banner__title\" id=\"govuk-notification-banner-title\">\n      Important\n    </h2>\n  </div>\n  <div class=\"govuk-notification-banner__content\">\n    <p class=\"govuk-notification-banner__heading\">\n      This publication was withdrawn on 7 March 2014.\n    </p>\n  </div>\n</div>"
+        },
+        {
+            "name": "with invalid type",
+            "options": {
+                "type": "some-type",
+                "text": "This publication was withdrawn on 7 March 2014."
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-notification-banner\" role=\"region\" aria-labelledby=\"govuk-notification-banner-title\" data-module=\"govuk-notification-banner\">\n  <div class=\"govuk-notification-banner__header\">\n    <h2 class=\"govuk-notification-banner__title\" id=\"govuk-notification-banner-title\">\n      Important\n    </h2>\n  </div>\n  <div class=\"govuk-notification-banner__content\">\n    <p class=\"govuk-notification-banner__heading\">\n      This publication was withdrawn on 7 March 2014.\n    </p>\n  </div>\n</div>"
+        }
+    ]
+}

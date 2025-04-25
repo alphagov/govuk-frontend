@@ -1,0 +1,194 @@
+@include govuk-exports("govuk/component/footer") {
+  $govuk-footer-background: $govuk-template-background-colour;
+  $govuk-footer-text: $govuk-text-colour;
+  $govuk-footer-content-border: $govuk-border-colour;
+
+  // Royal Arms image dimensions
+  $govuk-footer-crest-image-width: 125px;
+  $govuk-footer-crest-image-height: 102px;
+
+  .govuk-footer {
+    @include govuk-font($size: if($govuk-new-typography-scale, 19, 16));
+    @include govuk-responsive-padding(7, "top");
+    @include govuk-responsive-padding(5, "bottom");
+
+    border-top: 10px solid $govuk-brand-colour;
+    color: $govuk-footer-text;
+    @include _govuk-rebrand(
+      "background",
+      $from: $govuk-footer-background,
+      $to: $_govuk-rebrand-template-background-colour
+    );
+  }
+
+  .govuk-footer__crown {
+    margin-bottom: govuk-spacing(5);
+  }
+
+  .govuk-footer__link {
+    @include govuk-link-common;
+    @include govuk-link-style-text;
+  }
+
+  .govuk-footer__section-break {
+    margin: 0; // Reset `<hr>` default margins
+    @include govuk-responsive-margin(8, "bottom");
+    border: 0; // Reset `<hr>` default borders
+    border-bottom: 1px solid;
+    @include _govuk-rebrand(
+      "border-bottom-color",
+      $from: $govuk-footer-content-border,
+      $to: $_govuk-rebrand-border-colour-on-blue-tint-95
+    );
+  }
+
+  .govuk-footer__meta {
+    display: flex; // Support: Flexbox
+    margin-right: -$govuk-gutter-half;
+    margin-left: -$govuk-gutter-half;
+    flex-wrap: wrap; // Support: Flexbox
+    align-items: flex-end; // Support: Flexbox
+    justify-content: center; // Support: Flexbox
+  }
+
+  .govuk-footer__meta-item {
+    margin-right: $govuk-gutter-half;
+    margin-bottom: govuk-spacing(5);
+    margin-left: $govuk-gutter-half;
+  }
+
+  .govuk-footer__meta-item--grow {
+    flex: 1; // Support: Flexbox
+    @include govuk-media-query($until: tablet) {
+      flex-basis: 320px; // Support: Flexbox
+    }
+  }
+
+  .govuk-footer__licence-logo {
+    display: inline-block;
+    margin-right: govuk-spacing(2);
+    @include govuk-media-query($until: desktop) {
+      margin-bottom: govuk-spacing(3);
+    }
+    vertical-align: top;
+    // Work around SVGs not inheriting color from parent in forced color mode
+    // (https://github.com/w3c/csswg-drafts/issues/6310)
+    forced-color-adjust: auto;
+  }
+
+  .govuk-footer__licence-description {
+    // This makes the license description reflow under the logo when space gets too narrow
+    display: inline-block;
+    // This prevents the description from having orphans when space is narrow enough
+    // and makes the text reflow more nicely
+    text-wrap: balance;
+  }
+
+  .govuk-footer__copyright-logo::before {
+    content: "";
+    display: block;
+    width: 100%;
+    padding-top: ($govuk-footer-crest-image-height + govuk-spacing(2));
+    background-image: govuk-image-url("govuk-crest.svg");
+    background-repeat: no-repeat;
+    background-position: 50% 0%;
+    background-size: $govuk-footer-crest-image-width $govuk-footer-crest-image-height;
+    text-align: center;
+    white-space: nowrap;
+
+    // Where possible use the crest as a mask instead. This lets us use
+    // currentColor, increasing the contrast of the image and matching the
+    // user's prefered foreground colour in e.g. forced colors mode.
+    // We test for `mask-position` rather than `mask-image` because of a false
+    // positive in Edge 17.
+    @supports ((-webkit-mask-position: initial) or (mask-position: initial)) {
+      background: currentcolor;
+      -webkit-mask-image: govuk-image-url("govuk-crest.svg");
+              mask-image: govuk-image-url("govuk-crest.svg");
+      -webkit-mask-repeat: no-repeat;
+              mask-repeat: no-repeat;
+      -webkit-mask-position: 50% 0%;
+              mask-position: 50% 0%;
+      -webkit-mask-size: $govuk-footer-crest-image-width $govuk-footer-crest-image-height;
+              mask-size: $govuk-footer-crest-image-width $govuk-footer-crest-image-height;
+
+      // currentcolor doesn't seem to be computed correctly in forced colors
+      // mode so force the background color to match the system link color
+      // (matching the text in the link)
+      @media screen and (forced-colors: active) {
+        background: linktext;
+      }
+    }
+  }
+
+  .govuk-footer__inline-list {
+    margin-top: 0;
+    margin-bottom: govuk-spacing(3);
+    padding: 0;
+  }
+
+  .govuk-footer__meta-custom {
+    margin-bottom: govuk-spacing(4);
+  }
+
+  .govuk-footer__inline-list-item {
+    display: inline-block;
+    margin-right: govuk-spacing(3);
+    margin-bottom: govuk-spacing(1);
+  }
+
+  .govuk-footer__heading {
+    margin-bottom: govuk-spacing(6);
+    padding-bottom: govuk-spacing(4);
+
+    @include govuk-media-query($until: tablet) {
+      padding-bottom: govuk-spacing(2);
+    }
+
+    border-bottom: 1px solid;
+    @include _govuk-rebrand(
+      "border-bottom-color",
+      $from: $govuk-footer-content-border,
+      $to: $_govuk-rebrand-border-colour-on-blue-tint-95
+    );
+  }
+
+  .govuk-footer__navigation {
+    @include govuk-clearfix;
+    margin-right: -$govuk-gutter-half;
+    margin-left: -$govuk-gutter-half;
+  }
+
+  .govuk-footer__section {
+    display: inline-block;
+    margin-bottom: $govuk-gutter;
+    vertical-align: top;
+  }
+
+  .govuk-footer__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    column-gap: $govuk-gutter; // Support: Columns
+  }
+
+  @include govuk-media-query($from: desktop) {
+    .govuk-footer__list--columns-2 {
+      column-count: 2; // Support: Columns
+    }
+
+    .govuk-footer__list--columns-3 {
+      column-count: 3; // Support: Columns
+    }
+  }
+
+  .govuk-footer__list-item {
+    @include govuk-responsive-margin(4, "bottom");
+  }
+
+  .govuk-footer__list-item:last-child {
+    margin-bottom: 0;
+  }
+}
+
+/*# sourceMappingURL=_index.scss.map */

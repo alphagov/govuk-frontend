@@ -1,0 +1,29 @@
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+      <h1 class="govuk-fieldset__heading">
+        How do you want to sign in?
+      </h1>
+    </legend>
+    <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="government-gateway" name="gateway" type="checkbox" value="gov-gateway" aria-describedby="government-gateway-item-hint">
+        <label class="govuk-label govuk-checkboxes__label" for="government-gateway">
+          Sign in with Government Gateway
+        </label>
+        <div id="government-gateway-item-hint" class="govuk-hint govuk-checkboxes__hint">
+          You&#39;ll have a user ID if you&#39;ve registered for Self Assessment or filed a tax return online before.
+        </div>
+      </div>
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="govuk-verify" name="verify" type="checkbox" value="gov-verify" disabled aria-describedby="govuk-verify-item-hint">
+        <label class="govuk-label govuk-checkboxes__label" for="govuk-verify">
+          Sign in with GOV.UK Verify
+        </label>
+        <div id="govuk-verify-item-hint" class="govuk-hint govuk-checkboxes__hint">
+          You&#39;ll have an account if you&#39;ve already proved your identity with either Barclays, CitizenSafe, Digidentity, Experian, Post Office, Royal Mail or SecureIdentity.
+        </div>
+      </div>
+    </div>
+  </fieldset>
+</div>

@@ -1,0 +1,218 @@
+@import "../error-message/index";
+@import "../hint/index";
+@import "../label/index";
+
+@include govuk-exports("govuk/component/file-upload") {
+  $file-upload-border-width: 2px;
+  $component-padding: govuk-spacing(1);
+  $empty-button-background-colour: govuk-colour("white");
+  $empty-pseudo-button-background-colour: govuk-colour("light-grey");
+  $empty-status-background-colour: govuk-tint(govuk-colour("blue"), 70%);
+
+  .govuk-file-upload {
+    @include govuk-font($size: 19);
+    @include govuk-text-colour;
+    max-width: 100%;
+    margin-left: -$component-padding;
+    padding: $component-padding;
+
+    // The default file upload button in Safari does not support setting a
+    // custom font-size. Set `-webkit-appearance` to `button` to drop out of the
+    // native appearance so the font-size is set to 19px
+    // https://webkit.org/b/224746
+    &::-webkit-file-upload-button {
+      -webkit-appearance: button;
+      color: inherit;
+      font: inherit;
+    }
+
+    &:focus {
+      outline: $govuk-focus-width solid $govuk-focus-colour;
+      // Use `box-shadow` to add border instead of changing `border-width`
+      // (which changes element size) and since `outline` is already used for
+      // the yellow focus state.
+      box-shadow: inset 0 0 0 4px $govuk-input-border-colour;
+    }
+
+    // Set "focus-within" to fix https://bugzil.la/1430196 so that component
+    // receives focus in Firefox.
+    // This can't be set together with `:focus` as all versions of IE fail
+    // to recognise `focus-within` and don't set any styles from the block
+    // when it's a selector.
+    &:focus-within {
+      outline: $govuk-focus-width solid $govuk-focus-colour;
+
+      box-shadow: inset 0 0 0 4px $govuk-input-border-colour;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+
+  .govuk-drop-zone {
+    display: block;
+    position: relative;
+    z-index: 0;
+    background-color: $govuk-body-background-colour;
+  }
+
+  // required because disabling pointer events
+  // on the button means that the cursor style
+  // be applied on the button itself
+  .govuk-drop-zone--disabled {
+    cursor: not-allowed;
+  }
+
+  .govuk-file-upload-button__pseudo-button {
+    width: auto;
+    margin-right: govuk-spacing(2);
+    margin-bottom: $govuk-border-width-form-element + 1;
+    flex-shrink: 0;
+  }
+
+  .govuk-file-upload-button__instruction {
+    margin-top: govuk-spacing(2) - ($govuk-border-width-form-element + 1);
+    margin-bottom: 0;
+    text-align: left;
+  }
+
+  .govuk-file-upload-button__status {
+    display: block;
+    margin-bottom: govuk-spacing(2);
+    padding: govuk-spacing(3) govuk-spacing(2);
+    background-color: govuk-colour("white");
+    text-align: left;
+  }
+
+  // bugs documented with button using flex
+  // https://github.com/philipwalton/flexbugs#flexbug-9
+  // so we need a container here
+  .govuk-file-upload-button__pseudo-button-container {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+  }
+
+  .govuk-file-upload-button {
+    width: 100%;
+    // align the padding to be same as notification banner and error summary accounting for the thicker borders
+    padding: (govuk-spacing(3) + $govuk-border-width - $file-upload-border-width);
+    border: $file-upload-border-width govuk-colour("mid-grey") solid;
+    background-color: govuk-colour("light-grey");
+    cursor: pointer;
+
+    @include govuk-media-query($from: tablet) {
+      padding: (govuk-spacing(4) + $govuk-border-width - $file-upload-border-width);
+    }
+
+    .govuk-file-upload-button__pseudo-button {
+      background-color: govuk-colour("white");
+    }
+
+    &:hover {
+      background-color: govuk-tint(govuk-colour("mid-grey"), 20%);
+
+      .govuk-file-upload-button__pseudo-button {
+        background-color: govuk-shade(govuk-colour("light-grey"), 10%);
+      }
+
+      .govuk-file-upload-button__status {
+        background-color: govuk-tint(govuk-colour("blue"), 80%);
+      }
+    }
+
+    &:active,
+    &:focus {
+      border: $file-upload-border-width solid govuk-colour("black");
+      outline: $govuk-focus-width solid $govuk-focus-colour;
+      // Ensure outline appears outside of the element
+      outline-offset: 0;
+      background-color: govuk-tint(govuk-colour("mid-grey"), 20%);
+      // Double the border by adding its width again. Use `box-shadow` for this
+      // instead of changing `border-width` - this is for consistency with
+      // components such as textarea where we avoid changing `border-width` as
+      // it will change the element size. Also, `outline` cannot be utilised
+      // here as it is already used for the yellow focus state.
+      box-shadow: inset 0 0 0 $govuk-border-width-form-element;
+
+      .govuk-file-upload-button__pseudo-button {
+        background-color: $govuk-focus-colour;
+        box-shadow: 0 2px 0 govuk-colour("black");
+      }
+
+      &:hover .govuk-file-upload-button__pseudo-button {
+        border-color: $govuk-focus-colour;
+        outline: 3px solid transparent;
+        background-color: govuk-colour("light-grey");
+        box-shadow: inset 0 0 0 1px $govuk-focus-colour;
+      }
+    }
+  }
+
+  .govuk-file-upload-button--empty {
+    border-style: dashed;
+    background-color: $empty-button-background-colour;
+
+    .govuk-file-upload-button__pseudo-button {
+      background-color: $empty-pseudo-button-background-colour;
+    }
+
+    .govuk-file-upload-button__status {
+      color: govuk-shade(govuk-colour("blue"), 60%);
+      background-color: $empty-status-background-colour;
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: govuk-colour("light-grey");
+
+      .govuk-file-upload-button__status {
+        background-color: govuk-tint(govuk-colour("blue"), 80%);
+      }
+    }
+  }
+
+  .govuk-file-upload-button--dragging {
+    border-style: solid;
+    border-color: govuk-colour("black");
+
+    // extra specificity to apply when
+    // empty
+    &.govuk-file-upload-button {
+      background-color: govuk-tint(govuk-colour("mid-grey"), 20%);
+    }
+
+    &.govuk-file-upload-button--empty {
+      background-color: govuk-colour("light-grey");
+    }
+
+    &.govuk-file-upload-button--empty:not(:disabled) .govuk-file-upload-button__status,
+    &.govuk-file-upload-button--empty .govuk-file-upload-button__pseudo-button {
+      background-color: govuk-colour("white");
+    }
+
+    .govuk-file-upload-button__pseudo-button {
+      background-color: govuk-shade(govuk-colour("light-grey"), 10%);
+    }
+  }
+
+  .govuk-file-upload-button:disabled {
+    pointer-events: none;
+    opacity: 0.5;
+
+    background-color: $empty-button-background-colour;
+
+    .govuk-file-upload-button__pseudo-button {
+      background-color: $empty-pseudo-button-background-colour;
+    }
+
+    .govuk-file-upload-button__status {
+      background-color: $empty-status-background-colour;
+    }
+  }
+}
+
+/*# sourceMappingURL=_index.scss.map */
