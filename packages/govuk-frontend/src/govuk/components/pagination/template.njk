@@ -37,7 +37,7 @@
 {% endmacro -%}
 
 {%- macro _pageItem(item) -%}
-  <li class="govuk-pagination__item {%- if item.current %} govuk-pagination__item--current{% endif %} {%- if item.ellipsis %} govuk-pagination__item--ellipses{% endif %}">
+  <li class="govuk-pagination__item {%- if item.current %} govuk-pagination__item--current{% endif %} {%- if item.ellipsis %} govuk-pagination__item--ellipsis{% endif %}">
   {% if item.ellipsis %}
     &ctdot;
   {% else %}
