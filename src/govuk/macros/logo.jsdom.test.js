@@ -14,7 +14,7 @@ describe('logo.njk', () => {
     })
 
     it('defaults to Tudor crown', () => {
-      expect($svg).toHaveAttribute('viewBox', '0 0 304 60')
+      expect($svg).toHaveAttribute('viewBox', '0 0 296 60')
     })
 
     it('defaults to old logotype', () => {
@@ -144,7 +144,7 @@ describe('logo.njk', () => {
       )
       const $svg = document.querySelector('svg')
 
-      expect($svg).toHaveAttribute('viewBox', '0 0 312 60')
+      expect($svg).toHaveAttribute('viewBox', '0 0 304 60')
     })
   })
 
