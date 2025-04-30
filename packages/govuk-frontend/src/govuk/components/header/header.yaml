@@ -85,6 +85,10 @@ params:
     required: false
     description: If `true`, uses the Tudor crown from King Charles III's royal cypher. Otherwise, uses the St. Edward's crown. Default is `true`.
     deprecated: '5.2.0'
+  - name: rebrand
+    type: boolean
+    required: false
+    description: If `true`, use the redesigned header and new GOV.UK logotype. Default is `false`.
 
 previewLayout: full-width
 accessibilityCriteria: |
@@ -110,11 +114,6 @@ examples:
   - name: default
     description: The standard header as used on information pages on GOV.UK
     options: {}
-
-  - name: with St Edward's crown
-    description: Legacy header with Queen Elizabeth II's crown.
-    options:
-      useTudorCrown: false
 
   - name: with service name
     description: If your service is more than a few pages long, you can help users understand where they are by adding the service name.
@@ -261,7 +260,7 @@ examples:
           text: Navigation item 3
 
   - name: with full width border
-    description: Makes the header's bottom border full width without affecting the header's content.
+    description: Makes the header's bottom border full width without affecting the header's content. Removed with redesign.
     options:
       classes: govuk-header--full-width-border
       productName: Product Name
@@ -287,6 +286,11 @@ examples:
         - text: Navigation item 1
         - text: Navigation item 2
         - text: Navigation item 3
+
+  - name: with St. Edward's Crown
+    description: Does not work if the rebrand is enabled.
+    options:
+      useTudorCrown: false
 
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: attributes
@@ -350,8 +354,11 @@ examples:
           text: Navigation item 3
         - href: '#4'
           text: Navigation item 4
-
   - name: empty navigation array
     hidden: true
     options:
       navigation: []
+  - name: rebrand
+    hidden: true
+    options:
+      rebrand: true

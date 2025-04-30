@@ -1,0 +1,126 @@
+---
+title: GOV.UK Pay
+---
+{% extends "layouts/full-page-example.njk" %}
+
+{% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/header/macro.njk" import govukHeader %}
+{% from "govuk/components/service-navigation/macro.njk" import govukServiceNavigation %}
+
+{% set pageTitle = example.title %}
+{% block pageTitle %}{{ example.title }} - GOV.UK{% endblock %}
+
+
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" href="/stylesheets/full-page-examples/product-page.min.css">
+{% endblock %}
+
+{% block header %}
+  {{ govukHeader({
+    productName: "Pay",
+    classes: "govuk-header--full-width-border"
+  }) }}
+
+  {{ govukServiceNavigation({
+  navigation: [
+    {
+      href: "#",
+      text: "Features"
+    },
+    {
+      href: "#",
+      text: "Get started",
+      active: true
+    },
+    {
+      href: "#",
+      text: "Documentation"
+    },
+    {
+      href: "#",
+      text: "Support"
+    },
+    {
+      href: "#",
+      text: "Sign in"
+    }
+  ]
+}) }}
+
+
+{% endblock%}
+
+{% block main %}
+
+<div class="app-masthead">
+
+  <div class="govuk-width-container">
+    {{ govukBreadcrumbs({
+      classes: "govuk-breadcrumbs--inverse app-breadcrumbs__underline",
+      items: [
+        {
+          text: "GOV.UK services",
+          href: "#"
+        },
+        {
+          text: "GOV.UK Pay"
+        }
+      ]
+    }) }}
+
+    <div class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h1 class="govuk-heading-xl app-inverse">The best way to take payments for public services</h1>
+          <p class="govuk-body-lead app-inverse">GOV.UK Pay has contracts with payment providers so you can take payments quickly and easily. It’s used across central and local government, police and the NHS.</p>
+
+          {{ govukButton({
+            text: "Find out if you can use GOV.UK Pay",
+            classes: "govuk-button--inverse",
+            isStartButton: true
+          }) }}
+        </div>
+        <div class="govuk-grid-column-one-third">
+          <img style="max-width: 100%;" src="/images/full-page-examples/product-page/top-image.png">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="govuk-width-container">
+  <div class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-half">
+        <h2 class="govuk-heading-m">What GOV.UK Pay can do</h2>
+        <p class="govuk-body">GOV.UK Pay does more than just take card payments. It can also:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>provide a PCI DSS compliant platform</li>
+          <li>take recurring payments to a schedule you can set</li>
+          <li>take telephone (MOTO) payments so your users can pay by telephoning your call centre</li>
+          <li>integrate with GOV.UK Forms and finance software</li>
+          <li>give you real-time information on your payments</li>
+          <li>take digital wallet payments with Apple Pay and Google Pay</li>
+        </ul>
+        <p class="govuk-body">We’re adding <a href="#" class="govuk-link">new features</a> all the time.</p>
+      </div>
+      <div class="govuk-grid-column-one-half">
+        <img style="max-width: 100%;" src="/images/full-page-examples/product-page/user-screen.svg">
+      </div>
+    </div>
+
+    <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h2 class="govuk-heading-m">What’s new</h2>
+        <p class="govuk-body">We’re updating GOV.UK Pay all the time.</p>
+        <p class="govuk-body">Read the <a href="#" class="govuk-link">full roadmap</a> to see what’s changed and what’s coming next.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -34,8 +34,9 @@ jobs:
         with:
           script: |
             const { validateVersion } = await import('${{ github.workspace }}/.github/workflows/scripts/changelog-release-helper.mjs')
+            const frontendPackage = await import('../../../packages/govuk-frontend/package.json', { with: { type: 'json' })
 
-            validateVersion('${{ inputs.version }}')
+            validateVersion('${{ inputs.version }}', frontendPackage.version)
 
       - name: Update package version
         run: npm version --no-git-tag-version --workspace govuk-frontend ${{ inputs.version }}
@@ -45,8 +46,9 @@ jobs:
         with:
           script: |
             const { updateChangelog } = await import('${{ github.workspace }}/.github/workflows/scripts/changelog-release-helper.mjs')
+            const frontendPackage = await import('../../../packages/govuk-frontend/package.json', { with: { type: 'json' })
 
-            updateChangelog('${{ inputs.version }}')
+            updateChangelog('${{ inputs.version }}', frontendPackage.version)
 
       - name: Generate release notes
         uses: actions/github-script@v7.0.1
@@ -54,7 +56,7 @@ jobs:
           script: |
             const { generateReleaseNotes } = await import('${{ github.workspace }}/.github/workflows/scripts/changelog-release-helper.mjs')
 
-            generateReleaseNotes()
+            generateReleaseNotes('${{ inputs.version }}')
 
       - name: Build release
         run: npm run build:release

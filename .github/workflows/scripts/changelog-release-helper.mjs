@@ -16,26 +16,17 @@ const processingErrorMessage =
  * - The version increments the current version by more than one possible
  * increment, eg: going from 3.1.0 to 5.0.0, 3.3.0 or 3.1.2
  *
- * @param {string} newVersion
+ * @param {string} newVersion - New version to validate
+ * @param {string} previousVersion - Previous version to compare to
  */
-export function validateVersion(newVersion) {
-  const changelogLines = getChangelogLines()
-  const previousReleaseLineIndex = getChangelogLineIndexes(changelogLines)[1]
-
+export function validateVersion(newVersion, previousVersion) {
   if (!semver.valid(newVersion)) {
     throw new Error(
       `New version number ${newVersion} could not be processed by Semver. Please ensure you are providing a valid semantic version`
     )
   }
 
-  // Convert the previous release heading into a processable semver
-  const previousReleaseNumber = convertVersionHeadingToSemver(
-    changelogLines[previousReleaseLineIndex]
-  )
-
-  if (!previousReleaseNumber) {
-    throw new Error(processingErrorMessage)
-  }
+  const previousReleaseNumber = validatePreviousVersionNumber(previousVersion)
 
   // Check the new version against the old version. Firstly a quick check that
   // the new one isn't less than the old one
@@ -86,9 +77,13 @@ export function validateVersion(newVersion) {
  * Inserts a new heading between the 'Unreleased' heading and the most recent
  * content
  *
- * @param {string} newVersion
+ * @param {string} newVersion - New version to add to the changelog. We presume
+ *   that this is a valid version as this function is always run after validateVersion
+ *   has passed.
+ * @param {string} previousVersion - Previous version. Used for calculating difference
+ *   in versions to build the changelog title
  */
-export function updateChangelog(newVersion) {
+export function updateChangelog(newVersion, previousVersion) {
   // Skip the entire function if the release version is internal eg: 5.1.0-internal.0
   if (versionIsAPrerelease(newVersion)) {
     const identifier = getPrereleaseIdentifier(newVersion)
@@ -105,16 +100,10 @@ export function updateChangelog(newVersion) {
   const [startIndex, previousReleaseLineIndex] =
     getChangelogLineIndexes(changelogLines)
 
-  // Convert the previous release heading into a processable semver
-  const previousReleaseNumber = convertVersionHeadingToSemver(
-    changelogLines[previousReleaseLineIndex]
+  const versionDiff = semver.diff(
+    newVersion,
+    validatePreviousVersionNumber(previousVersion)
   )
-
-  if (!previousReleaseNumber) {
-    throw new Error(processingErrorMessage)
-  }
-
-  const versionDiff = semver.diff(newVersion, previousReleaseNumber)
 
   if (!versionDiff) {
     throw new Error(processingErrorMessage)
@@ -129,38 +118,52 @@ export function updateChangelog(newVersion) {
  * Generates release notes from the most recent changelog
  *
  * Creates a text file 'release-notes-body' from the content between either the
- * first release heading (default) or the 'Unreleased' heading and the following
- * release heading
+ * release heading passed to it by newVersion or the 'Unreleased' heading and the
+ * following release heading if newVersion is tagged as internal
  *
- * @param {boolean} fromUnreleasedHeading
+ * @param {string} newVersion - Version used to find start point for release notes
  */
-export function generateReleaseNotes(fromUnreleasedHeading = false) {
+export function generateReleaseNotes(newVersion) {
+  // Get the identifier from the version if there is one as we'll use this to
+  // change what we pass to getChangelogLineIndexes if the version has an
+  // 'internal' tag
+  const identifier = versionIsAPrerelease(newVersion)
+    ? getPrereleaseIdentifier(newVersion)
+    : undefined
   const changelogLines = getChangelogLines()
   const [startIndex, previousReleaseLineIndex] = getChangelogLineIndexes(
     changelogLines,
-    fromUnreleasedHeading
+    identifier === 'internal' ? undefined : newVersion
   )
 
   const releaseNotes = changelogLines
     .slice(startIndex + 1, previousReleaseLineIndex - 1)
-    .filter((value, index, arr) => {
-      if (value !== '') {
-        return true
-      }
-      if (
-        arr[index + 1].startsWith('#') ||
-        (index > 0 && arr[index - 1].startsWith('#'))
-      ) {
-        return true
-      }
-      return false
-    })
-    .map((value) => {
-      const line = value.replace(/^\s+/, '')
-      return line.startsWith('##') ? line.substring(1) : line
-    })
+    .map((line) =>
+      line.replace(/^\s+/, '').startsWith('##')
+        ? line.replace(/^\s+/, '').substring(1)
+        : line
+    )
 
   writeFileSync('./release-notes-body', releaseNotes.join('\n'))
+}
+
+/**
+ * Validates the previous govuk-frontend version number, presumed passed from
+ * the govuk-frontend package.json
+ *
+ * @param {string} previousVersion - pervious version number
+ * @returns {string} - Validated semver of previous version
+ */
+function validatePreviousVersionNumber(previousVersion) {
+  const previousReleaseNumber = semver.valid(previousVersion)
+
+  if (!previousReleaseNumber) {
+    throw new Error(
+      `Previous version number ${previousVersion} could not be processed by Semver. Please ensure a valid version is being passed to the script via the govuk-frontend package.json package.`
+    )
+  }
+
+  return previousReleaseNumber
 }
 
 /**
@@ -176,25 +179,32 @@ function getChangelogLines() {
  * Gets the start and end headings in the changelog for processing by the
  * exported functions
  *
- * @param {Array<string>} changelogLines
- * @param {boolean} fromUnreleasedHeading - Specifies if we get the first index from the 'Unreleased' heading or the first version heading we find
+ * @param {Array<string>} changelogLines - Produced from getChangelogLines
+ * @param {string|undefined} heading - Optional query to look for heading
+ *   where the first index is pulled from eg: 'Unreleased'
  * @returns {Array<number>} - Indexes in the changelog identifying start and end lines
  */
-function getChangelogLineIndexes(changelogLines, fromUnreleasedHeading = true) {
-  const versionTitleRegex = /^\s*#+\s+v\d+\.\d+\.\d+(-.+\.\d+)?\s+\(.+\)$/i
+function getChangelogLineIndexes(changelogLines, heading = undefined) {
+  // Build regex for finding the correct heading in the changelog
+  // If a heading hasn't been passed to the function, use 'Unreleased'
+  const defaultHeadingRegex = '\\d+\\.\\d+\\.\\d+(-.+\\.\\d+)?'
+  const headingRegex = heading
+    ? heading.replaceAll('.', '\\.').replace('v', '')
+    : 'Unreleased'
+
   const startIndex = findIndexOfFirstMatchingLine(
     changelogLines,
-    fromUnreleasedHeading ? /^\s*#+\s+Unreleased\s*$/i : versionTitleRegex
+    buildHeadingRegexQuery(headingRegex)
   )
 
-  if (!startIndex) {
+  if (startIndex === -1) {
     throw new Error(processingErrorMessage)
   }
 
   const endIndex = findIndexOfFirstMatchingLine(
     changelogLines,
-    versionTitleRegex,
-    fromUnreleasedHeading ? 0 : startIndex + 1
+    buildHeadingRegexQuery(defaultHeadingRegex),
+    startIndex + 1
   )
 
   if (endIndex === -1) {
@@ -205,11 +215,21 @@ function getChangelogLineIndexes(changelogLines, fromUnreleasedHeading = true) {
 }
 
 /**
+ * Builds the search query for headings when getting indexes in the changelog
+ *
+ * @param {string} identifier - Either the semantic version or 'Unreleased'
+ * @returns {RegExp} - Complete heading regex including hashes and release type formatting
+ */
+function buildHeadingRegexQuery(identifier) {
+  return new RegExp(`^\\s*#+\\s+v?${identifier}\\s*(\\(.+\\))?$`, 'i')
+}
+
+/**
  * Get the first matching line in the changelog that matches the passed regex
  *
- * @param {Array<string>} changelogLines
- * @param {RegExp} regExp
- * @param {number} offset
+ * @param {Array<string>} changelogLines - Produced from getChangelogLines
+ * @param {RegExp} regExp - Regular Expression to match against
+ * @param {number} offset - Offset from start of the changelogLines array
  * @returns {number} - Index in changeLogLines or -1 if we can't locate the index
  */
 function findIndexOfFirstMatchingLine(changelogLines, regExp, offset = 0) {
@@ -219,23 +239,6 @@ function findIndexOfFirstMatchingLine(changelogLines, regExp, offset = 0) {
     .filter((x) => x !== undefined)
     .at(0)
   return foundIndex ? foundIndex + offset : -1
-}
-
-/**
- * Convert a release heading into a semver
- *
- * Presumes the heading param follows the changelog heading format of:
- * '## v{version} ({release type})'
- *
- * @param {string} heading
- * @returns {string|null} - Processed semver which we expect to have the format
- *   X.Y.Z(-{identifier}.{base})
- */
-function convertVersionHeadingToSemver(heading) {
-  const trimmedHeading = heading.trim()
-  return semver.valid(
-    trimmedHeading.trim().substring(4, trimmedHeading.indexOf(' ('))
-  )
 }
 
 /**
@@ -280,10 +283,11 @@ function getPrereleaseIdentifier(version) {
  * and the new version is 6.3.0-beta.0, the generated string would be
  * 'Beta feature'
  *
- * @param {string} incType
- * @param {string|null} version
- * @param {boolean} capitalise
- * @param {string|null} lastReleaseTitle
+ * @param {string} incType - SemVer increment type
+ * @param {string|null} version - SemVer version
+ * @param {boolean} capitalise - If the returned string should start with a capital
+ *   letter or not
+ * @param {string|null} lastReleaseTitle - Previous release title
  * @returns {string} - The reworded increment type
  */
 function convertIncTypeWord(

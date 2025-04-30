@@ -155,13 +155,6 @@ function render(componentName, options) {
   const macroName = componentNameToMacroName(componentName)
   const macroPath = `govuk/components/${componentName}/macro.njk`
 
-  // On Heroku / CI we know we're running against an up-to-date build so we can
-  // use the generated HTML from the component JSON (where it exists) to make
-  // things faster
-  if ((process.env.HEROKU_APP || process.env.CI) && options?.fixture?.html) {
-    return options.fixture.html
-  }
-
   return renderMacro(macroName, macroPath, options)
 }
 
@@ -260,6 +253,14 @@ function renderString(string, options) {
 function renderTemplate(templatePath, options) {
   let viewString = `{% extends "${templatePath}" %}`
 
+  if (options?.set) {
+    for (const [name, content] of Object.entries(options.set)) {
+      viewString += outdent`
+
+        {% set ${name} = ${content} %}`
+    }
+  }
+
   if (options?.blocks) {
     for (const [name, content] of Object.entries(options.blocks)) {
       viewString += outdent`
@@ -354,6 +355,7 @@ module.exports = {
  * @typedef {object} TemplateRenderOptions
  * @property {object} [context] - Nunjucks context object (optional)
  * @property {{ [blockName: string]: string }} [blocks] - Nunjucks blocks (optional)
+ * @property {object} [set] - Nunjucks variables to set in template (optional)
  * @property {import('nunjucks').Environment} [env] - Nunjucks environment (optional)
  */
 

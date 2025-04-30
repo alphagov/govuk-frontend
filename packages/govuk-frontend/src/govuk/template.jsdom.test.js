@@ -68,6 +68,58 @@ describe('Template', () => {
       expect(document.documentElement).toHaveClass('my-custom-class')
     })
 
+    it('adds the rebrand class if govukRebrand is set to true', () => {
+      replacePageWith(
+        renderTemplate('govuk/template.njk', {
+          context: {
+            govukRebrand: true
+          }
+        })
+      )
+
+      expect(document.documentElement).toHaveClass('govuk-template--rebranded')
+    })
+
+    it('adds the rebrand class if govukRebrand is set to true in a nunjucks template `set`', () => {
+      // Passing `set` applies a nunjucks `set` in `renderTemplate` rather
+      // than just applying the context
+      replacePageWith(
+        renderTemplate('govuk/template.njk', {
+          set: {
+            govukRebrand: true
+          }
+        })
+      )
+
+      expect(document.documentElement).toHaveClass('govuk-template--rebranded')
+    })
+
+    it('adds the rebrand class if govukRebrand is set to true as a nunjucks global bool', () => {
+      const env = nunjucksEnv()
+      env.addGlobal('govukRebrand', true)
+
+      replacePageWith(
+        renderTemplate('govuk/template.njk', {
+          env
+        })
+      )
+
+      expect(document.documentElement).toHaveClass('govuk-template--rebranded')
+    })
+
+    it('adds the rebrand class if govukRebrand is set to true as a nunjucks global function', () => {
+      const env = nunjucksEnv()
+      env.addGlobal('govukRebrand', () => true)
+
+      replacePageWith(
+        renderTemplate('govuk/template.njk', {
+          env
+        })
+      )
+
+      expect(document.documentElement).toHaveClass('govuk-template--rebranded')
+    })
+
     it('renders valid HTML', () => {
       expect(renderTemplate('govuk/template.njk')).toHTMLValidate({
         extends: ['html-validate:document'],
@@ -116,6 +168,39 @@ describe('Template', () => {
       const $icon = document.querySelector('link[rel="icon"][sizes="48x48"]')
 
       expect($icon).toHaveAttribute('href', '/assets/images/favicon.ico')
+    })
+
+    it('uses a default assets path of /assets/rebrand if govukRebrand is true', () => {
+      replacePageWith(
+        renderTemplate('govuk/template.njk', {
+          context: {
+            govukRebrand: true
+          }
+        })
+      )
+      const $icon = document.querySelector('link[rel="icon"][sizes="48x48"]')
+
+      expect($icon).toHaveAttribute(
+        'href',
+        '/assets/rebrand/images/favicon.ico'
+      )
+    })
+
+    it('uses a default assets path of /assets/rebrand if govukRebrand is true as a nunjucks global', () => {
+      const env = nunjucksEnv()
+      env.addGlobal('govukRebrand', true)
+
+      replacePageWith(
+        renderTemplate('govuk/template.njk', {
+          env
+        })
+      )
+      const $icon = document.querySelector('link[rel="icon"][sizes="48x48"]')
+
+      expect($icon).toHaveAttribute(
+        'href',
+        '/assets/rebrand/images/favicon.ico'
+      )
     })
 
     it('can have the assets path overridden using assetPath', () => {
@@ -226,6 +311,33 @@ describe('Template', () => {
         const $themeColor = document.querySelector('meta[name="theme-color"]')
 
         expect($themeColor).toHaveAttribute('content', '#0b0c0c')
+      })
+
+      it('has a default content of #1d70b8 if govukRebrand is true', () => {
+        replacePageWith(
+          renderTemplate('govuk/template.njk', {
+            context: {
+              govukRebrand: true
+            }
+          })
+        )
+        const $themeColor = document.querySelector('meta[name="theme-color"]')
+
+        expect($themeColor).toHaveAttribute('content', '#1d70b8')
+      })
+
+      it('has a default content of #1d70b8 if govukRebrand is true as a nunjucks global', () => {
+        const env = nunjucksEnv()
+        env.addGlobal('govukRebrand', true)
+
+        replacePageWith(
+          renderTemplate('govuk/template.njk', {
+            env
+          })
+        )
+        const $themeColor = document.querySelector('meta[name="theme-color"]')
+
+        expect($themeColor).toHaveAttribute('content', '#1d70b8')
       })
 
       it('can be overridden using themeColor', () => {
@@ -412,6 +524,20 @@ describe('Template', () => {
         expect(document.querySelector('.my-header')).toBeInTheDocument()
         expect(document.querySelector('.govuk-header')).toBeNull()
       })
+
+      it('sets the rebrand param to true by default if govukRebrand is true', () => {
+        replacePageWith(
+          renderTemplate('govuk/template.njk', {
+            context: {
+              govukRebrand: true
+            }
+          })
+        )
+
+        expect(
+          document.querySelector('.govuk-header .govuk-logo-dot')
+        ).toBeInTheDocument()
+      })
     })
 
     describe('<main>', () => {
@@ -498,6 +624,20 @@ describe('Template', () => {
 
         expect(document.querySelector('.my-footer')).toBeInTheDocument()
         expect(document.querySelector('.govuk-footer')).toBeNull()
+      })
+
+      it('sets the rebrand param to true by default if govukRebrand is true', () => {
+        replacePageWith(
+          renderTemplate('govuk/template.njk', {
+            context: {
+              govukRebrand: true
+            }
+          })
+        )
+
+        expect(
+          document.querySelector('.govuk-footer .govuk-footer__crown')
+        ).toBeInTheDocument()
       })
     })
   })

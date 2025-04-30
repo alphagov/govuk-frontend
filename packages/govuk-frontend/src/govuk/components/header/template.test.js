@@ -1,5 +1,5 @@
 const { render } = require('@govuk-frontend/helpers/nunjucks')
-const { getExamples } = require('@govuk-frontend/lib/components')
+const { nunjucksEnv, getExamples } = require('@govuk-frontend/lib/components')
 
 describe('header', () => {
   let examples
@@ -263,40 +263,27 @@ describe('header', () => {
     })
   })
 
-  describe('SVG logo', () => {
-    let $
-    let $svg
+  describe('rebrand', () => {
+    describe('when local `rebrand` parameter is enabled', () => {
+      it('renders the new GOV.UK logotype', () => {
+        const $ = render('header', examples.rebrand)
 
-    beforeAll(() => {
-      $ = render('header', examples.default)
-      $svg = $('.govuk-header__logotype')
+        expect($('.govuk-logo-dot')).not.toBeNull()
+      })
     })
 
-    it('defaults to Tudor crown', () => {
-      expect($svg.attr('viewBox')).toBe('0 0 148 30')
-    })
+    describe('when `govukRebrand` nunjucks global is set to `true`', () => {
+      it('renders the new GOV.UK logotype', () => {
+        const env = nunjucksEnv()
+        env.addGlobal('govukRebrand', true)
 
-    it('sets focusable="false" so that IE does not treat it as an interactive element', () => {
-      expect($svg.attr('focusable')).toBe('false')
-    })
+        const $ = render('header', {
+          ...examples.default,
+          env
+        })
 
-    it('sets role="img" so that assistive technologies do not treat it as an embedded document', () => {
-      expect($svg.attr('role')).toBe('img')
-    })
-
-    it('sets aria-label so that assistive technologies have an accessible name to fall back to', () => {
-      expect($svg.attr('aria-label')).toBe('GOV.UK')
-    })
-
-    it('has an embedded <title> element to serve as alternative text', () => {
-      expect($svg.html()).toContain('<title>GOV.UK</title>')
-    })
-
-    it("uses the St Edward's Crown if useTudorCrown is false", () => {
-      $ = render('header', examples["with St Edward's crown"])
-      $svg = $('.govuk-header__logotype')
-
-      expect($svg.attr('viewBox')).toBe('0 0 152 30')
+        expect($('.govuk-logo-dot')).not.toBeNull()
+      })
     })
   })
 })

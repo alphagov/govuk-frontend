@@ -8,8 +8,18 @@
   $govuk-service-navigation-link-colour: govuk-shade($govuk-link-colour, 10%);
 
   .govuk-service-navigation {
-    border-bottom: 1px solid $govuk-service-navigation-border-colour;
-    background-color: $govuk-service-navigation-background;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    @include _govuk-rebrand(
+      "border-bottom-color",
+      $from: $govuk-service-navigation-border-colour,
+      $to: $_govuk-rebrand-border-colour-on-blue-tint-95
+    );
+    @include _govuk-rebrand(
+      "background-color",
+      $from: $govuk-service-navigation-background,
+      $to: $_govuk-rebrand-template-background-colour
+    );
   }
 
   .govuk-service-navigation__container {
@@ -36,6 +46,11 @@
       margin-bottom: 0;
       padding: govuk-spacing(4) 0;
 
+      @include _govuk-rebrand {
+        padding: govuk-spacing(3) 0;
+        line-height: 1.5;
+      }
+
       &:not(:last-child) {
         @include govuk-responsive-margin(6, $direction: right);
       }
@@ -52,7 +67,11 @@
     }
 
     @include govuk-media-query($from: tablet) {
-      padding-bottom: govuk-spacing(4) - $govuk-service-navigation-active-link-border-width;
+      @include _govuk-rebrand(
+        "padding-bottom",
+        $from: govuk-spacing(4) - $govuk-service-navigation-active-link-border-width,
+        $to: govuk-spacing(3) - $govuk-service-navigation-active-link-border-width
+      );
       border-bottom-width: $govuk-service-navigation-active-link-border-width;
     }
   }

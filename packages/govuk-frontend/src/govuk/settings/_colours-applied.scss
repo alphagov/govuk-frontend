@@ -175,3 +175,19 @@ $govuk-link-hover-colour: govuk-colour("dark-blue") !default;
 /// @access public
 
 $govuk-link-active-colour: govuk-colour("black") !default;
+
+// =============================================================================
+// Brand refresh
+// =============================================================================
+
+/// Updated template background colour
+///
+/// @type Colour
+/// @access private
+$_govuk-rebrand-template-background-colour: #f4f8fb; // Blue tint 95%
+
+/// Border colour for areas on a light-blue background
+///
+/// @type Colour
+/// @access private
+$_govuk-rebrand-border-colour-on-blue-tint-95: #8eb8dc; // Blue tint 50%

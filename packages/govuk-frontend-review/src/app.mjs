@@ -1,4 +1,4 @@
-import { join } from 'path'
+import { join, resolve } from 'path'
 
 import { paths } from '@govuk-frontend/config'
 import {
@@ -67,6 +67,7 @@ export default async () => {
   app.use(middleware.request)
   app.use(middleware.robots)
   app.use(middleware.banner)
+  app.use(middleware.featureFlags)
 
   // Add build stats
   app.locals.stats = Object.fromEntries(
@@ -93,23 +94,18 @@ export default async () => {
      * @param {string} componentName
      */
     (req, res, next, componentName) => {
-      const exampleName = 'default'
-
       // Find all fixtures for component
       const componentFixtures = componentsFixtures.find(
         ({ component }) => component === componentName
       )
 
-      // Find default fixture for component
-      const componentFixture = componentFixtures?.fixtures.find(
-        ({ name }) => name === exampleName
-      )
+      if (!componentFixtures) {
+        throw new NotFoundError(`Component not found: ${componentName}`)
+      }
 
       // Add response locals
       res.locals.componentName = componentName
       res.locals.componentFixtures = componentFixtures
-      res.locals.componentFixture = componentFixture
-      res.locals.exampleName = 'default'
 
       next()
     }
@@ -137,6 +133,10 @@ export default async () => {
         ({ name }) => nunjucks.filters.slugify(name) === exampleName
       )
 
+      if (!componentFixture) {
+        throw new NotFoundError(`Example not found: ${exampleName}`)
+      }
+
       // Update response locals
       res.locals.componentFixture = componentFixture
       res.locals.exampleName = exampleName
@@ -160,42 +160,40 @@ export default async () => {
   /**
    * All components redirect
    */
-  app.get('/components/all', function (req, res) {
+  app.get('/components/all', (req, res) => {
     res.redirect('./')
+  })
+
+  /**
+   * All default examples of all components
+   */
+  app.get('/components', (req, res) => {
+    res.render('components', {
+      componentsFixtures
+    })
   })
 
   /**
    * Component examples
    */
-  app.get(
-    '/components/:componentName?',
+  app.get('/components/:componentName', (req, res) => {
+    res.render('component')
+  })
 
-    /**
-     * @param {import('express').Request} req
-     * @param {import('express').Response<{}, Partial<PreviewLocals>>} res
-     * @param {import('express').NextFunction} next
-     * @returns {void}
-     */
-    (req, res, next) => {
-      const { componentName } = res.locals
-
-      // Unknown component, continue to page not found
-      if (componentName && !componentNames.includes(componentName)) {
-        return next()
-      }
-
-      res.render(componentName ? 'component' : 'components', {
-        componentsFixtures,
-        componentName
-      })
-    }
-  )
+  /**
+   * Default example redirect
+   */
+  app.get('/components/:componentName/preview', (req, res, next) => {
+    // Rewrite the URL to set the example to 'default' without redirecting
+    req.url = req.url.replace('/preview', '/default/preview')
+    next()
+  })
 
   /**
    * Component example preview
    */
   app.get(
-    '/components/:componentName/:exampleName?/preview',
+    '/components/:componentName/:exampleName/preview',
 
     /**
      * @param {import('express').Request} req
@@ -209,11 +207,6 @@ export default async () => {
         componentFixtures: fixtures,
         componentFixture: fixture
       } = res.locals
-
-      // Unknown component or fixture, continue to page not found
-      if (!componentNames.includes(componentName) || !fixtures || !fixture) {
-        return next()
-      }
 
       // Render component using fixture
       const componentView = render(componentName, {
@@ -246,6 +239,9 @@ export default async () => {
   app.use('/examples', routes.examples)
   app.use('/full-page-examples', routes.fullPageExamples)
 
+  // For use in examples
+  app.use('/images', express.static(resolve('src/images')))
+
   /**
    * Page not found handler
    */
@@ -257,6 +253,12 @@ export default async () => {
    * Error handler
    */
   app.use((error, req, res, next) => {
+    if (error instanceof NotFoundError) {
+      return res.status(404).render('errors/404', {
+        error
+      })
+    }
+
     console.error(error)
     res.status(500).render('errors/500', {
       error
@@ -266,12 +268,22 @@ export default async () => {
   return app
 }
 
+class NotFoundError extends Error {
+  name = 'NotFoundError'
+}
+
+/**
+ * @import {ComponentFixtures} from '@govuk-frontend/lib/components'
+ * @import {ComponentFixture} from '@govuk-frontend/lib/components'
+ */
+
 /**
  * @typedef {object} PreviewLocals
- * @property {import('@govuk-frontend/lib/components').ComponentFixtures} componentFixtures - All Component fixtures
- * @property {import('@govuk-frontend/lib/components').ComponentFixture} [componentFixture] - Single component fixture
+ * @property {ComponentFixtures} componentFixtures - All Component fixtures
+ * @property {ComponentFixture} [componentFixture] - Single component fixture
  * @property {string} componentName - Component name
  * @property {string} [exampleName] - Example name
+ * @property {boolean} [useRebrand] - Whether to show rebranded examples
  */
 
 /**

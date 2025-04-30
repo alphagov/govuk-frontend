@@ -2,20 +2,27 @@
 {% from "./components/skip-link/macro.njk" import govukSkipLink -%}
 {% from "./components/header/macro.njk" import govukHeader -%}
 {% from "./components/footer/macro.njk" import govukFooter -%}
+
+{%- set _rebrand = govukRebrand() if govukRebrand is callable else govukRebrand -%}
+
+{# Hardcoded value is $govuk-brand-blue if rebrand, otherwise govuk-colour("black") -#}
+{% set themeColor = themeColor | default("#1d70b8" if _rebrand else "#0b0c0c", true) -%}
+{% set assetPath = assetPath | default("/assets/rebrand" if _rebrand else "/assets", true) -%}
+
 <!DOCTYPE html>
-<html lang="{{ htmlLang | default("en", true) }}" class="govuk-template {%- if htmlClasses %} {{ htmlClasses }}{% endif %}">
+<html lang="{{ htmlLang | default("en", true) }}" class="govuk-template {%- if _rebrand %} govuk-template--rebranded{% endif %} {%- if htmlClasses %} {{ htmlClasses }}{% endif %}">
   <head>
     <meta charset="utf-8">
     <title {%- if pageTitleLang %} lang="{{ pageTitleLang }}"{% endif %}>{% block pageTitle %}GOV.UK - The best place to find government services and information{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <meta name="theme-color" content="{{ themeColor | default("#0b0c0c", true) }}"> {#- Hardcoded value of $govuk-black #}
+    <meta name="theme-color" content="{{ themeColor }}">
 
     {% block headIcons %}
-      <link rel="icon" sizes="48x48" href="{{ assetPath | default("/assets", true) }}/images/favicon.ico">
-      <link rel="icon" sizes="any" href="{{ assetPath | default("/assets", true) }}/images/favicon.svg" type="image/svg+xml">
-      <link rel="mask-icon" href="{{ assetPath | default("/assets", true) }}/images/govuk-icon-mask.svg" color="{{ themeColor | default("#0b0c0c") }}"> {#- Hardcoded value of $govuk-black #}
-      <link rel="apple-touch-icon" href="{{ assetPath | default("/assets", true) }}/images/govuk-icon-180.png">
-      <link rel="manifest" href="{{ assetPath | default("/assets", true) }}/manifest.json">
+      <link rel="icon" sizes="48x48" href="{{ assetPath }}/images/favicon.ico">
+      <link rel="icon" sizes="any" href="{{ assetPath }}/images/favicon.svg" type="image/svg+xml">
+      <link rel="mask-icon" href="{{ assetPath }}/images/govuk-icon-mask.svg" color="{{ themeColor }}">
+      <link rel="apple-touch-icon" href="{{ assetPath }}/images/govuk-icon-180.png">
+      <link rel="manifest" href="{{ assetPath }}/manifest.json">
     {% endblock %}
 
     {% block head %}{% endblock %}
@@ -37,7 +44,9 @@
     {% endblock %}
 
     {% block header %}
-      {{ govukHeader({}) }}
+      {{ govukHeader({
+        rebrand: _rebrand
+      }) }}
     {% endblock %}
 
     {% block main %}
@@ -50,7 +59,9 @@
     {% endblock %}
 
     {% block footer %}
-      {{ govukFooter({}) }}
+      {{ govukFooter({
+        rebrand: _rebrand
+      }) }}
     {% endblock %}
 
     {% block bodyEnd %}{% endblock %}
