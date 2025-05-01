@@ -65,6 +65,20 @@ describe('Character count', () => {
         )
         expect(messageClasses).toContain('govuk-visually-hidden')
       })
+
+      it('retains error class if there is already an error', async () => {
+        await render(
+          page,
+          'character-count',
+          examples['custom classes with error message']
+        )
+
+        const textAreaclasses = await page.$eval(
+          '.govuk-textarea',
+          (el) => el.className
+        )
+        expect(textAreaclasses).toContain('govuk-textarea--error')
+      })
     })
 
     describe('when counting characters', () => {
@@ -144,6 +158,33 @@ describe('Character count', () => {
           (el) => el.innerHTML.trim()
         )
         expect(srMessage).toBe('You have 1 character remaining')
+      })
+
+      it('retains error class if there is already an error', async () => {
+        await render(
+          page,
+          'character-count',
+          examples['custom classes with error message']
+        )
+
+        await page.type('.govuk-js-character-count', 'A', {
+          delay: 50
+        })
+
+        const textAreaClasses = await page.$eval(
+          '.govuk-textarea',
+          (el) => el.className
+        )
+        expect(textAreaClasses).toContain('govuk-textarea--error')
+
+        // Wait for debounced update to happen
+        await setTimeout(debouncedWaitTime)
+
+        const srTextAreaClasses = await page.$eval(
+          '.govuk-textarea',
+          (el) => el.className
+        )
+        expect(srTextAreaClasses).toContain('govuk-textarea--error')
       })
 
       describe('when the character limit is exceeded', () => {
