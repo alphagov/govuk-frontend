@@ -34,7 +34,7 @@ jobs:
         with:
           script: |
             const { validateVersion } = await import('${{ github.workspace }}/.github/workflows/scripts/changelog-release-helper.mjs')
-            const frontendPackage = await import('../../../packages/govuk-frontend/package.json', { with: { type: 'json' })
+            const frontendPackage = await import('../../../packages/govuk-frontend/package.json', { with: { type: 'json' }})
 
             validateVersion('${{ inputs.version }}', frontendPackage.version)
 
@@ -46,7 +46,7 @@ jobs:
         with:
           script: |
             const { updateChangelog } = await import('${{ github.workspace }}/.github/workflows/scripts/changelog-release-helper.mjs')
-            const frontendPackage = await import('../../../packages/govuk-frontend/package.json', { with: { type: 'json' })
+            const frontendPackage = await import('../../../packages/govuk-frontend/package.json', { with: { type: 'json' }})
 
             updateChangelog('${{ inputs.version }}', frontendPackage.version)
 
