@@ -123,6 +123,9 @@ export class CharacterCount extends ConfigurableComponent {
       })
     }
 
+    // Pre-existing validation error rendered from server
+    this.$errorMessage = this.$root.querySelector('.govuk-error-message')
+
     // Inject a description for the textarea if none is present already
     // for when the component was rendered with no maxlength, maxwords
     // nor custom textareaDescriptionText
@@ -288,7 +291,12 @@ export class CharacterCount extends ConfigurableComponent {
     )
 
     // Update styles
-    this.$textarea.classList.toggle('govuk-textarea--error', isError)
+    if (!this.$errorMessage) {
+      // Only toggle the textarea error class if there isn't an error message
+      // already, as it may be unrelated to the limit (eg: allowed characters)
+      // and would set the border colour back to black.
+      this.$textarea.classList.toggle('govuk-textarea--error', isError)
+    }
     this.$visibleCountMessage.classList.toggle('govuk-error-message', isError)
     this.$visibleCountMessage.classList.toggle('govuk-hint', !isError)
 
