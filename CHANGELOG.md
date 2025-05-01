@@ -6,40 +6,81 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 ### New features
 
-#### Use the refreshed GOV.UK brand
+#### Prepare to use the refreshed GOV.UK brand
 
-> Placeholder for instructions on enabling the brand and when it's allowed to be deployed to live.
+We’ve added features to GOV.UK Frontend to implement GOV.UK’s refreshed brand. Ahead of the brand’s go-live date of 25 June 2025, prepare your service by updating its code. You’ll then need to deploy the changes to production on 25 June 2025 or as soon after this date as possible.
 
-If you're not using our page template:
+These changes affect these components:
 
-1. Add the `govuk-template--rebranded` to the `<html>` element of your page to use the rebranded styles of Footer and Cookie banner components.
+- [GOV.UK header](https://design-system.service.gov.uk/components/header/)
+- [GOV.UK footer](https://design-system.service.gov.uk/components/footer/)
+- [Service navigation](https://design-system.service.gov.uk/components/service-navigation/)
+- [Cookie banner](https://design-system.service.gov.uk/components/cookie-banner/)
 
-We've added a new `govukRebrand` ['variable' option to our page template](https://design-system.service.gov.uk/styles/page-template/#changing-template-content). It makes the Header, Footer, Service navigation and Cookie banner components use new styles for the brand refresh and display updated content (new logo in the Header component, crown in the Footer component).
+These changes also affect the `theme-color` metadata and assets, including:
 
-Use [`set`](https://mozilla.github.io/nunjucks/templating.html#set) to assign it `true` and enable the new styles:
+- icons
+- Open Graph image
+- `manifest.json`
+
+To help you get ready, we've published this release, which includes several features to make the necessary updates across your service:
+
+- updated markup for the GOV.UK header component (with the refreshed logo) and GOV.UK footer component (adding the crown logo)
+- a new `govuk-template--rebranded` HTML class to apply updated styles from our CSS
+- a new set of assets for icons, Open Graph image and page metadata
+
+You’ll need to serve the new assets in your service. What you’ll need to do after that depends on the code in your service and if you use GOV.UK Frontend:
+
+- with its Nunjucks page template and macros
+- with its Nunjucks macros (without the page template)
+- without using Nunjucks
+- using the Prototype Kit
+
+##### Add the brand refresh assets to your project
+
+GOV.UK Frontend provides updated assets for the icons, Open Graph image and `manifest.json` to reflect the refreshed brand. These assets are available in the `dist/govuk/assets/rebrand` folder of the package.
+
+If you [serve the assets from the GOV.UK Frontend assets folder](https://frontend.design-system.service.gov.uk/import-font-and-images-assets/#serve-the-assets-from-the-gov-uk-frontend-assets-folder-recommended), make sure the assets inside the `dist/govuk/assets/rebrand` folder are served correctly at `<YOUR-SITE-URL>/assets/rebrand`.
+
+If you [copy the font and image files into your application](https://frontend.design-system.service.gov.uk/import-font-and-images-assets/#copy-the-font-and-image-files-into-your-application), you’ll need to copy the `dist/govuk/assets/rebrand` folder to `<YOUR-APP>/assets/rebrand`. If you use an automated task to copy the files, you may need to update your task to automatically copy our new folder.
+
+##### Use the refreshed GOV.UK brand if you're using our Nunjucks page template
+
+If you can edit your Nunjucks environment, you can add a `govukRebrand` [global value](https://mozilla.github.io/nunjucks/api.html#addglobal) to your environment, with a value of `true`. This global value makes the affected components use new styles for the brand refresh and display updated assets (such as the refreshed logo in the GOV.UK header component and the crown in the GOV.UK footer component).
+
+```js
+nunjucksEnv.addGlobal(‘govukRebrand’, true)
+```
+
+If you cannot edit your Nunjucks environment, you can use our new `govukRebrand` ['variable' option from our page template](https://design-system.service.gov.uk/styles/page-template/#changing-template-content), which makes:
+
+- the Service navigation and Cookie banner components use new styles for the brand refresh
+- the GOV.UK header and GOV.UK footer components rendered in the [`header` and `footer` blocks](https://design-system.service.gov.uk/styles/page-template/#exploded-view-of-the-page-template-block-areas) display updated assets (such as the refreshed logo in the GOV.UK header component and the crown in the GOV.UK footer component)
+
+If you’ve overridden the `header` or `footer` block, see the next sections to make sure your header or footer displays the updated assets.
+
+Use [`set`](https://mozilla.github.io/nunjucks/templating.html#set) to assign the `govukRebrand` variable a value of `true` and enable the new styles:
 
 ```nunjucks
 {% set govukRebrand = true %}
 ```
 
-This snippet should not be placed between any `block` and `endblock` lines and instead be a separate line.
+Do not place this snippet between any `block` and `endblock` lines. Place it on a separate line.
 
-These changes affect the Header, Footer, Service navigation, and Cookie banner components. Make sure they still work as expected after enabling the refreshed brand.
+If you’ve previously customised the template's `assetPath`, `assetUrl` or `opengraphImageUrl` options, you may need to update these to point to the location of the updated icons, Open Graph image and `manifest.json`.
 
-These changes were made in the following pull requests:
+##### Use the refreshed GOV.UK brand if you're using Nunjucks macro (without the page template)
 
-- [#5796: Update template background colour and components using it](https://github.com/alphagov/govuk-frontend/pull/5796)
-- [#5806: Update background colour of Cookie banner for brand refresh](https://github.com/alphagov/govuk-frontend/pull/5806)
-- [#5797: Add refreshed brand to service navigation component](https://github.com/alphagov/govuk-frontend/pull/5797)
-- [#5798: Add mixin to help rebrand specific properties](https://github.com/alphagov/govuk-frontend/pull/5798)
-- [#5793: Add GOV.UK logo macro](https://github.com/alphagov/govuk-frontend/pull/5793)
-- [#5794: Add redesigned header component](https://github.com/alphagov/govuk-frontend/pull/5794)
+You can do this by adding the updated styles for these components:
 
-#### Update to the new GOV.UK logo
+- [GOV.UK header](https://design-system.service.gov.uk/components/header/)
+- [GOV.UK footer](https://design-system.service.gov.uk/components/footer/)
+- [Service navigation](https://design-system.service.gov.uk/components/service-navigation/)
+- [Cookie banner](https://design-system.service.gov.uk/components/cookie-banner/)
 
-The GOV.UK logo has been updated to introduce a refreshed logotype design. This can be enabled using the feature flag described in the previous section.
+Add the `govuk-template--rebranded` class to the `<html>` element of your page to apply the updated styles to all affected components.
 
-If you're not using the GOV.UK template, but are using the [GOV.UK header](https://design-system.service.gov.uk/components/header/) Nunjucks macro, you can enable this new logo by inserting `rebrand: true` into the component configuration.
+Enable the refreshed GOV.UK logo by adding `rebrand: true` to the GOV.UK header component configuration.
 
 ```nunjucks
 {{ govukHeader({
@@ -47,10 +88,52 @@ If you're not using the GOV.UK template, but are using the [GOV.UK header](https
 }) }}
 ```
 
-If you're not using our Nunjucks macros, update your logo HTML to use the new SVG code.
+Enable the GOV.UK crown in the GOV.UK footer component by adding`rebrand: true` to the component configuration.
+
+```nunjucks
+{{ govukFooter({
+  rebrand: true
+}) }}
+```
+
+Update the links to the assets. Change the HTML inside your `<head>` element to use the new file locations (from `/assets/` to `/assets/rebrand/`) and `theme-color`. Replace any existing definitions.
 
 ```html
-<svg focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 324 60" height="30" width="162" class="govuk-header__logotype" aria-label="GOV.UK">
+<meta name="theme-color" content="#1d70b8">
+<link rel="icon" sizes="48x48" href="/assets/rebrand/images/favicon.ico">
+<link rel="icon" sizes="any" href="/assets/rebrand/images/favicon.svg" type="image/svg+xml">
+<link rel="mask-icon" href="/assets/rebrand/images/govuk-icon-mask.svg" color="#1d70b8">
+<link rel="apple-touch-icon" href="/assets/rebrand/images/govuk-icon-180.png">
+<link rel="manifest" href="/assets/rebrand/manifest.json">
+<meta property="og:image" content="<SERVICE URL>/assets/rebrand/images/govuk-opengraph-image.png">
+```
+
+##### Use the refreshed GOV.UK brand if you're not using Nunjucks
+
+You also can use the refreshed GOV.UK brand if you’re not using Nunjucks.
+
+Start by adding the `govuk-template--rebranded` class to the `<html>` element of your page to apply the updated styles to all affected components.
+
+As you make changes, use the examples on our website to check your updates:
+
+- [GOV.UK header](https://design-system.service.gov.uk/components/header/)
+- [GOV.UK footer](https://design-system.service.gov.uk/components/footer/)
+- [Service navigation](https://design-system.service.gov.uk/components/service-navigation/)
+- [Cookie banner](https://design-system.service.gov.uk/components/cookie-banner/)
+
+Replace the `<svg>` element in your header with the following SVG code to display the refreshed GOV.UK logo:
+
+```html
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  focusable="false"
+  role="img"
+  viewBox="0 0 324 60"
+  height="30"
+  width="162"
+  fill="currentcolor"
+  class="govuk-header__logotype"
+  aria-label="GOV.UK">
   <title>GOV.UK</title>
   <g>
     <circle cx="20" cy="17.6" r="3.7"></circle>
@@ -68,61 +151,33 @@ If you're not using our Nunjucks macros, update your logo HTML to use the new SV
 </svg>
 ```
 
-These changes were made in the following pull requests:
-
-- [#5793: Add GOV.UK logo macro](https://github.com/alphagov/govuk-frontend/pull/5793)
-- [#5857: Increase spacing in logo to 3 dots, increase viewbox size](https://github.com/alphagov/govuk-frontend/pull/5857)
-- [#5794: Add redesigned header component](https://github.com/alphagov/govuk-frontend/pull/5794)
-
-#### Display the GOV.UK crown in the Footer component
-
-The GOV.UK Footer has been updated to display the GOV.UK crown before its content, as a visual 'full stop' at the end of the page. This can be enabled using the feature flag described in the previous section.
-
-If you're not using the GOV.UK template, but are using the [GOV.UK footer](https://design-system.service.gov.uk/components/footer/) Nunjucks macro, you can display the crown by inserting `rebrand: true` into the component configuration.
-
-```nunjucks
-{{ govukFooter({
-  rebrand: true
-}) }}
-```
-
-If you're not using our Nunjucks macros, update your footer HTML by adding the following SVG code inside the `<div>` with the `govuk-width-container` class which is a child of the `<footer>` element with the `govuk-footer` class.
+Update the HTML inside your `<footer>` element by adding the following SVG code at the start of the `<div>` with the `govuk-width-container` class.
 
 ```html
 <svg
+  xmlns="http://www.w3.org/2000/svg"
   focusable="false"
   role="presentation"
-  xmlns="http://www.w3.org/2000/svg"
-  viewBox="0 0 32 30"
+  viewBox="0 0 64 60"
   height="30"
   width="32"
-  class="govuk-footer__crown"
->
+  fill="currentcolor"
+  class="govuk-footer__crown">
   <g>
-    <circle cx="10.1" cy="8.8" r="1.8"></circle>
-    <circle cx="5.2" cy="11.7" r="1.8"></circle>
-    <circle cx="1.9" cy="16.6" r="1.8"></circle>
-    <circle cx="16" cy="15.3" r="1.8"></circle>
-    <circle cx="21.9" cy="8.8" r="1.8"></circle>
-    <circle cx="26.8" cy="11.7" r="1.8"></circle>
-    <circle cx="30.1" cy="16.6" r="1.8"></circle>
-    <circle cx="16" cy="15.3" r="1.8"></circle>
-    <path d="m16.7 4.9.2-.2 2.3 1.2V2.5l-2.3.7s-.1-.2-.2-.2l.9-2.9h-3.4l.9 2.9s-.2.1-.2.2l-2.3-.7v3.4l2.3-1.2.2.2-1.3 4c-.5 1.4.6 2.9 2.1 2.9s2.5-1.4 2.1-2.9l-1.3-4Zm2 14s-1.7 1.9-2.1 3c1.1 0 2.1-.3 3.2-1.4l-.4 4.3c-1-1.4-2.2-2-2.9-1.9 0 1.5.2 3.4 2.9 3.6 1.9.2 3.4-.8 3.5-1.9.2-1.3-1-2.2-1.9-.8-.7-2.3 1.2-3 2.5-1.6-1-2.2-.9-3.8 1.2-5.4 1.5 2 1.3 3.7-.6 5.5 1.2-.7 3.1 0 2 2.3-.6-1.4-1.8-1.1-2.1.1-.2.9.3 1.9 1.5 2.1.9.2 2.4-.5 3.5-2.9-.6 0-1.2.3-2 .8l1.2-4c.3 1.1.7 1.9 1.1 2.3.3-.8.2-1.4 0-2.7l2.5.9c-1.3 1.8-2.6 4.3-3.7 8.8-3.7-.5-7.9-.8-12.3-.8s-8.6.3-12.3.8c-1.1-4.4-2.3-7-3.7-8.8l2.5-.9c-.2 1.3-.3 1.9 0 2.7.4-.4.8-1.1 1.1-2.3l1.2 4c-.7-.5-1.3-.8-2-.8 1.2 2.5 2.6 3.1 3.5 2.9 1.1-.2 1.7-1.2 1.5-2.1-.3-1.2-1.5-1.5-2.1-.1-1.1-2.3.8-3 2-2.3-1.9-1.9-2.1-3.5-.6-5.5C9 18.4 9 20 8.1 22.2c1.2-1.4 3.2-.7 2.5 1.6-.9-1.4-2.1-.5-1.9.8.2 1.1 1.7 2.1 3.5 1.9 2.7-.2 2.9-2.1 2.9-3.6-.7-.1-1.9.5-2.9 1.9l-.4-4.3c1.1 1.1 2.1 1.4 3.2 1.4-.4-1.2-2.1-3-2.1-3h5.3Z"></path>
+    <circle cx="20" cy="17.6" r="3.7"></circle>
+    <circle cx="10.2" cy="23.5" r="3.7"></circle>
+    <circle cx="3.7" cy="33.2" r="3.7"></circle>
+    <circle cx="31.7" cy="30.6" r="3.7"></circle>
+    <circle cx="43.3" cy="17.6" r="3.7"></circle>
+    <circle cx="53.2" cy="23.5" r="3.7"></circle>
+    <circle cx="59.7" cy="33.2" r="3.7"></circle>
+    <circle cx="31.7" cy="30.6" r="3.7"></circle>
+    <path d="M33.1,9.8c.2-.1.3-.3.5-.5l4.6,2.4v-6.8l-4.6,1.5c-.1-.2-.3-.3-.5-.5l1.9-5.9h-6.7l1.9,5.9c-.2.1-.3.3-.5.5l-4.6-1.5v6.8l4.6-2.4c.1.2.3.3.5.5l-2.6,8c-.9,2.8,1.2,5.7,4.1,5.7h0c3,0,5.1-2.9,4.1-5.7l-2.6-8ZM37,37.9s-3.4,3.8-4.1,6.1c2.2,0,4.2-.5,6.4-2.8l-.7,8.5c-2-2.8-4.4-4.1-5.7-3.8.1,3.1.5,6.7,5.8,7.2,3.7.3,6.7-1.5,7-3.8.4-2.6-2-4.3-3.7-1.6-1.4-4.5,2.4-6.1,4.9-3.2-1.9-4.5-1.8-7.7,2.4-10.9,3,4,2.6,7.3-1.2,11.1,2.4-1.3,6.2,0,4,4.6-1.2-2.8-3.7-2.2-4.2.2-.3,1.7.7,3.7,3,4.2,1.9.3,4.7-.9,7-5.9-1.3,0-2.4.7-3.9,1.7l2.4-8c.6,2.3,1.4,3.7,2.2,4.5.6-1.6.5-2.8,0-5.3l5,1.8c-2.6,3.6-5.2,8.7-7.3,17.5-7.4-1.1-15.7-1.7-24.5-1.7h0c-8.8,0-17.1.6-24.5,1.7-2.1-8.9-4.7-13.9-7.3-17.5l5-1.8c-.5,2.5-.6,3.7,0,5.3.8-.8,1.6-2.3,2.2-4.5l2.4,8c-1.5-1-2.6-1.7-3.9-1.7,2.3,5,5.2,6.2,7,5.9,2.3-.4,3.3-2.4,3-4.2-.5-2.4-3-3.1-4.2-.2-2.2-4.6,1.6-6,4-4.6-3.7-3.7-4.2-7.1-1.2-11.1,4.2,3.2,4.3,6.4,2.4,10.9,2.5-2.8,6.3-1.3,4.9,3.2-1.8-2.7-4.1-1-3.7,1.6.3,2.3,3.3,4.1,7,3.8,5.4-.5,5.7-4.2,5.8-7.2-1.3-.2-3.7,1-5.7,3.8l-.7-8.5c2.2,2.3,4.2,2.7,6.4,2.8-.7-2.3-4.1-6.1-4.1-6.1h10.6,0Z"></path>
   </g>
 </svg>
 ```
 
-#### Update the GOV.UK icons, OpenGraph image, manifest file, and theme colour
-
-The icon and OpenGraph image assets have been updated to reflect the refreshed brand.
-
-If you're using the GOV.UK template and use these assets directly from GOV.UK Frontend, this can be enabled using the feature flag described in the previous section.
-
-If you normally copy these assets from Frontend to a location within your service, the changed files are located in the `/assets/rebrand` directory.
-
-If you have previously customised the template's `assetPath`, `assetUrl` or `opengraphImageUrl` options, you may need to update these to point to the new assets.
-
-If you're not using the GOV.UK template, update your HTML to use the new file locations and `theme-color`, replacing any existing definitions.
+Update the links to the assets. Change the HTML inside your `<head>` element to use the new file locations (from `/assets/` to `/assets/rebrand/`) and `theme-color`. Replace any existing definitions.
 
 ```html
 <meta name="theme-color" content="#1d70b8">
@@ -134,15 +189,47 @@ If you're not using the GOV.UK template, update your HTML to use the new file lo
 <meta property="og:image" content="<SERVICE URL>/assets/rebrand/images/govuk-opengraph-image.png">
 ```
 
-This change was introduced in [pull request #5800: Update favicons, app icons and OpenGraph image](https://github.com/alphagov/govuk-frontend/pull/5800)
+##### Use the refreshed GOV.UK brand in your Prototype Kit prototype
 
-#### Footer component top border is now consistent with GOV.UK
+If you use GOV.UK Frontend in a Prototype Kit prototype, enable the refreshed brand by adding the following to your prototype's `app/config.json` :
 
-We've updated the border of the Footer component so it matches the border used on GOV.UK. This will provide a more consistent experience for users as they navigate from GOV.UK to services.
+```json
+"plugins": {
+  "govuk-frontend": {
+	"rebrand": true
+  }
+}
+```
 
-This change was introduced in [pull request #5792: Update footer top border to be consistent with GOV.UK](https://github.com/alphagov/govuk-frontend/pull/5792)
+##### Pull requests
 
-#### Royal Arms in the Footer component now matches the text's colour
+These changes were made in the following pull requests:
+
+- [#5794: Add redesigned header component](https://github.com/alphagov/govuk-frontend/pull/5794)
+- [#5796: Update template background colour and components using it](https://github.com/alphagov/govuk-frontend/pull/5796)
+- [#5797: Add refreshed brand to service navigation component](https://github.com/alphagov/govuk-frontend/pull/5797)
+- [#5798: Add mixin to help rebrand specific properties](https://github.com/alphagov/govuk-frontend/pull/5798)
+- [#5800: Update favicons, app icons and OpenGraph image](https://github.com/alphagov/govuk-frontend/pull/5800)
+- [#5804: Use logo in new Footer design](https://github.com/alphagov/govuk-frontend/pull/5804)
+- [#5806: Update background colour of Cookie banner for brand refresh](https://github.com/alphagov/govuk-frontend/pull/5806)
+- [#5810: Update logo SVG](https://github.com/alphagov/govuk-frontend/pull/5810)
+- [#5853: Add rebrand variable to page template](https://github.com/alphagov/govuk-frontend/pull/5853)
+- [#5857: Increase spacing in logo to 3 dots, increase viewbox size](https://github.com/alphagov/govuk-frontend/pull/5857)
+- [#5870: Service navigation spacing adjustments](https://github.com/alphagov/govuk-frontend/pull/5870)
+- [#5872: Improvements to the rebranded footer in forced colors mode](https://github.com/alphagov/govuk-frontend/pull/5872)
+- [#5874: Add checks for `govukRebrand` Nunjucks global](https://github.com/alphagov/govuk-frontend/pull/5874)
+- [#5877: Update prototype kit plugin rebrand function to be specific to govuk-frontend](https://github.com/alphagov/govuk-frontend/pull/5877)
+- [#5883: Fix old wordmark using incorrect coordinates](https://github.com/alphagov/govuk-frontend/pull/5883)
+
+### Other changes
+
+#### The GOV.UK footer component top border is now consistent with GOV.UK
+
+We've updated the border of the GOV.UK footer component so it matches the border used on the GOV.UK website. This will provide a more consistent experience for users as they navigate from the GOV.UK website and into services.
+
+This change was introduced in [pull request #5792: Update footer top border to be consistent with GOV.UK](https://github.com/alphagov/govuk-frontend/pull/5792).
+
+#### The Royal Arms in the GOV.UK footer component now matches the text colour
 
 We've updated the colour of the Royal Arms in the [GOV.UK footer](https://design-system.service.gov.uk/components/footer/) so it matches the text colour in browsers supporting the `mask-image` CSS property.
 
@@ -154,13 +241,15 @@ This change was introduced in [pull request #5801: Update colour of the copyrigh
 
 #### Deprecation of `$govuk-canvas-background-colour`
 
-The responsibilities of the `$govuk-canvas-background-colour` were unclear due to its naming and use by components outside of its description.
+The responsibilities of the `$govuk-canvas-background-colour` variable were unclear, as the variable name and the description in the Sass API did not reflect how we were using it.
 
-We're replacing it with a `$govuk-template-background-colour` variable, with a more appropriate name and better defined role to control only the background colour of the `<html>` element and background colour of elements that need to match for visual continuity, such as in the Footer and Cookie banner components.
+We’re replacing it with the `$govuk-template-background-colour` variable, which you can use to get the background colour of the `<html>` elements and of elements that need to match for visual continuity, such as the GOV.UK footer and Cookie banner components.
 
-If you were using `$govuk-canvas-background-colour` to match the background colour of the `<html>` element then use `$govuk-template-background-colour` instead.
+If you were using `$govuk-canvas-background-colour` to match the background colour of the `<html>` element, use `$govuk-template-background-colour` instead.
 
-If you were using `$govuk-canvas-background-colour` to set the background colour in your custom styling to `light-grey` then use `govuk-colour('light-grey')` instead.
+If you were using `$govuk-canvas-background-colour` to set the background colour in your custom styling to `light-grey`, use `govuk-colour('light-grey')` instead.
+
+This change was introduced in [pull request #5790: Deprecate `$govuk-canvas-background-colour`, use `$govuk-template-background-colour` instead](https://github.com/alphagov/govuk-frontend/pull/5790)
 
 ### Fixes
 
