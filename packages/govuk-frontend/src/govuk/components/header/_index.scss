@@ -94,6 +94,11 @@
     @include _govuk-rebrand {
       margin-right: govuk-px-to-rem(7px); // 1 'dot'
       margin-bottom: $govuk-header-rebrand-logo-bottom-margin;
+
+      // Remove right-margin if there's no product name
+      &:last-child {
+        margin-right: 0;
+      }
     }
   }
 
