@@ -30,9 +30,6 @@ export class FileUpload extends ConfigurableComponent {
   /** @private */
   i18n
 
-  /** @private */
-  id
-
   /**
    * @param {Element | null} $root - File input element
    * @param {FileUploadConfig} [config] - File Upload config
@@ -61,37 +58,36 @@ export class FileUpload extends ConfigurableComponent {
     this.$input = /** @type {HTMLFileInputElement} */ ($input)
     this.$input.setAttribute('hidden', 'true')
 
-    if (!this.$input.id) {
+    const fieldId = this.$input.id
+    if (!fieldId) {
       throw new ElementError({
         component: FileUpload,
         identifier: 'File input (`<input type="file">`) attribute (`id`)'
       })
     }
 
-    this.id = this.$input.id
-
     this.i18n = new I18n(this.config.i18n, {
       // Read the fallback if necessary rather than have it set in the defaults
       locale: closestAttributeValue(this.$root, 'lang')
     })
 
-    const $label = this.findLabel()
+    const $label = this.findLabel(fieldId)
     // Add an ID to the label if it doesn't have one already
     // so it can be referenced by `aria-labelledby`
     if (!$label.id) {
-      $label.id = `${this.id}-label`
+      $label.id = `${fieldId}-label`
     }
 
     // we need to copy the 'id' of the root element
     // to the new button replacement element
     // so that focus will work in the error summary
-    this.$input.id = `${this.id}-input`
+    this.$input.id = `${fieldId}-input`
 
     // Create the file selection button
     const $button = document.createElement('button')
     $button.classList.add('govuk-file-upload-button')
     $button.type = 'button'
-    $button.id = this.id
+    $button.id = fieldId
     $button.classList.add('govuk-file-upload-button--empty')
 
     // Copy `aria-describedby` if present so hints and errors
@@ -112,7 +108,7 @@ export class FileUpload extends ConfigurableComponent {
     const commaSpan = document.createElement('span')
     commaSpan.className = 'govuk-visually-hidden'
     commaSpan.innerText = ', '
-    commaSpan.id = `${this.id}-comma`
+    commaSpan.id = `${fieldId}-comma`
 
     $button.appendChild(commaSpan)
 
@@ -152,9 +148,6 @@ export class FileUpload extends ConfigurableComponent {
     // Assemble these all together
     this.$root.insertAdjacentElement('afterbegin', $button)
 
-    this.$input.setAttribute('tabindex', '-1')
-    this.$input.setAttribute('aria-hidden', 'true')
-
     // Make all these new variables available to the module
     this.$button = $button
     this.$status = $status
@@ -163,8 +156,7 @@ export class FileUpload extends ConfigurableComponent {
     this.$input.addEventListener('change', this.onChange.bind(this))
 
     // Synchronise the `disabled` state between the button and underlying input
-    this.updateDisabledState()
-    this.observeDisabledState()
+    this.synchroniseDisabledState()
 
     // Handle drop zone visibility
     // A live region to announce when users enter or leave the drop zone
@@ -178,92 +170,73 @@ export class FileUpload extends ConfigurableComponent {
     // button will need to handle drop event
     this.$button.addEventListener('drop', this.onDrop.bind(this))
 
-    // While user is dragging, it gets a little more complex because of Safari.
-    // Safari doesn't fill `relatedTarget` on `dragleave` (nor `dragenter`).
-    // This means we can't use `relatedTarget` to:
-    // - check if the user is still within the wrapper
-    //   (`relatedTarget` being a descendant of the wrapper)
-    // - check if the user is still over the viewport
-    //   (`relatedTarget` being null if outside)
-
-    // Thanks to `dragenter` bubbling, we can listen on the `document` with a
-    // single function and update the visibility based on whether we entered a
-    // node inside or outside the wrapper.
-    document.addEventListener(
-      'dragenter',
-      this.updateDropzoneVisibility.bind(this)
-    )
-
-    // To detect if we're outside the document, we can track if there was a
-    // `dragenter` event preceding a `dragleave`. If there wasn't, this means
-    // we're outside the document.
-    //
-    // The order of events is guaranteed by the HTML specs:
-    // https://html.spec.whatwg.org/multipage/dnd.html#drag-and-drop-processing-model
-    document.addEventListener('dragenter', () => {
-      this.enteredAnotherElement = true
-    })
-
-    document.addEventListener('dragleave', () => {
-      if (!this.enteredAnotherElement && !this.$button.disabled) {
-        this.hideDraggingState()
-        this.$announcements.innerText = this.i18n.t('leftDropZone')
-      }
-
-      this.enteredAnotherElement = false
+    this.dropZone = new DropZone(this.$root, {
+      onEnter: this.onDropZoneEnter.bind(this),
+      onLeave: this.onDropZoneLeave.bind(this)
     })
   }
 
   /**
-   * Updates the visibility of the dropzone as users enters the various elements on the page
+   * @returns {boolean} - Whether the component is disabled
+   */
+  get disabled() {
+    return this.$button.disabled
+  }
+
+  /**
+   * @private
+   * @param {boolean} value - Whether the component is disabled
+   */
+  set disabled(value) {
+    this.$button.disabled = value
+    this.$root.classList.toggle('govuk-drop-zone--disabled', value)
+  }
+
+  /**
+   * @returns {boolean} Whether the user is dragging
+   */
+  get dragging() {
+    return this.$button.classList.contains('govuk-file-upload-button--dragging')
+  }
+
+  /**
+   * @param {boolean} value - Whether the user is dragging
+   */
+  set dragging(value) {
+    this.$button.classList.toggle('govuk-file-upload-button--dragging', value)
+  }
+
+  /**
+   * Shows the dropzone if user is not already dragging
    *
    * @param {DragEvent} event - The `dragenter` event
    */
-  updateDropzoneVisibility(event) {
-    if (this.$button.disabled) return
+  onDropZoneEnter(event) {
+    if (this.disabled) return
 
-    // DOM interfaces only type `event.target` as `EventTarget`
-    // so we first need to make sure it's a `Node`
-    if (event.target instanceof Node) {
-      if (this.$root.contains(event.target)) {
-        if (event.dataTransfer && isContainingFiles(event.dataTransfer)) {
-          // Only update the class and make the announcement if not already visible
-          // to avoid repeated announcements on NVDA (2024.4) + Firefox (133)
-          if (
-            !this.$button.classList.contains(
-              'govuk-file-upload-button--dragging'
-            )
-          ) {
-            this.showDraggingState()
-            this.$announcements.innerText = this.i18n.t('enteredDropZone')
-          }
-        }
-      } else {
-        // Only hide the dropzone if it is visible to prevent announcing user
-        // left the drop zone when they enter the page but haven't reached yet
-        // the file upload component
-        if (
-          this.$button.classList.contains('govuk-file-upload-button--dragging')
-        ) {
-          this.hideDraggingState()
-          this.$announcements.innerText = this.i18n.t('leftDropZone')
-        }
+    if (event.dataTransfer && isContainingFiles(event.dataTransfer)) {
+      // Only update the class and make the announcement if not already visible
+      // to avoid repeated announcements on NVDA (2024.4) + Firefox (133)
+      if (!this.dragging) {
+        this.dragging = true
+        this.$announcements.innerText = this.i18n.t('enteredDropZone')
       }
     }
   }
 
   /**
-   * Show the drop zone visually
+   * Hides the dropzone if the user is already dragging
    */
-  showDraggingState() {
-    this.$button.classList.add('govuk-file-upload-button--dragging')
-  }
+  onDropZoneLeave() {
+    if (this.disabled) return
 
-  /**
-   * Hides the drop zone visually
-   */
-  hideDraggingState() {
-    this.$button.classList.remove('govuk-file-upload-button--dragging')
+    // Only hide the dropzone if it is visible to prevent announcing user
+    // left the drop zone when they enter the page but haven't reached yet
+    // the file upload component
+    if (this.dragging) {
+      this.dragging = false
+      this.$announcements.innerText = this.i18n.t('leftDropZone')
+    }
   }
 
   /**
@@ -282,7 +255,7 @@ export class FileUpload extends ConfigurableComponent {
       // Use a `CustomEvent` so our events are distinguishable from browser's native events
       this.$input.dispatchEvent(new CustomEvent('change'))
 
-      this.hideDraggingState()
+      this.dragging = false
     }
   }
 
@@ -317,17 +290,18 @@ export class FileUpload extends ConfigurableComponent {
    * Looks up the `<label>` element associated to the field
    *
    * @private
+   * @param {string} fieldId - The `id` of the field
    * @returns {HTMLElement} The `<label>` element associated to the field
    * @throws {ElementError} If the `<label>` cannot be found
    */
-  findLabel() {
+  findLabel(fieldId) {
     // Use `label` in the selector so TypeScript knows the type fo `HTMLElement`
-    const $label = document.querySelector(`label[for="${this.$input.id}"]`)
+    const $label = document.querySelector(`label[for="${fieldId}"]`)
 
     if (!$label) {
       throw new ElementError({
         component: FileUpload,
-        identifier: `Field label (\`<label for=${this.$input.id}>\`)`
+        identifier: `Field label (\`<label for=${fieldId}>\`)`
       })
     }
 
@@ -344,14 +318,16 @@ export class FileUpload extends ConfigurableComponent {
   /**
    * Create a mutation observer to check if the input's attributes altered.
    */
-  observeDisabledState() {
+  synchroniseDisabledState() {
+    this.disabled = this.$input.disabled
+
     const observer = new MutationObserver((mutationList) => {
       for (const mutation of mutationList) {
         if (
           mutation.type === 'attributes' &&
           mutation.attributeName === 'disabled'
         ) {
-          this.updateDisabledState()
+          this.disabled = this.$input.disabled
         }
       }
     })
@@ -359,18 +335,6 @@ export class FileUpload extends ConfigurableComponent {
     observer.observe(this.$input, {
       attributes: true
     })
-  }
-
-  /**
-   * Synchronise the `disabled` state between the input and replacement button.
-   */
-  updateDisabledState() {
-    this.$button.disabled = this.$input.disabled
-
-    this.$root.classList.toggle(
-      'govuk-drop-zone--disabled',
-      this.$button.disabled
-    )
   }
 
   /**
@@ -413,6 +377,94 @@ export class FileUpload extends ConfigurableComponent {
     }
   })
 }
+
+/**
+ * A DropZone that monitors when users enter or leave
+ * a given element while dragging, taking care of the
+ * difference of implementation of drag and drop events
+ * across browsers
+ *
+ * @internal
+ */
+class DropZone {
+  /** @private */
+  $root
+
+  /**
+   * @private
+   */
+  onEnter
+
+  /** @private */
+  onLeave
+
+  /**
+   * @param {HTMLElement} $root - The root element of the dropzone
+   * @param {DropZoneOptions} options - The options for the dropzone
+   */
+  constructor($root, { onEnter, onLeave }) {
+    this.$root = $root
+    this.onEnter = onEnter
+    this.onLeave = onLeave
+
+    // While user is dragging, it gets a little more complex because of Safari.
+    // Safari doesn't fill `relatedTarget` on `dragleave` (nor `dragenter`).
+    // This means we can't use `relatedTarget` to:
+    // - check if the user is still within the wrapper
+    //   (`relatedTarget` being a descendant of the wrapper)
+    // - check if the user is still over the viewport
+    //   (`relatedTarget` being null if outside)
+
+    // Thanks to `dragenter` bubbling, we can listen on the `document` with a
+    // single function and update the visibility based on whether we entered a
+    // node inside or outside the wrapper.
+    document.addEventListener(
+      'dragenter',
+      this.updateDropzoneVisibility.bind(this)
+    )
+
+    // To detect if we're outside the document, we can track if there was a
+    // `dragenter` event preceding a `dragleave`. If there wasn't, this means
+    // we're outside the document.
+    //
+    // The order of events is guaranteed by the HTML specs:
+    // https://html.spec.whatwg.org/multipage/dnd.html#drag-and-drop-processing-model
+    document.addEventListener('dragenter', () => {
+      this.enteredAnotherElement = true
+    })
+
+    document.addEventListener('dragleave', (event) => {
+      if (!this.enteredAnotherElement) {
+        this.onLeave(event)
+      }
+
+      this.enteredAnotherElement = false
+    })
+  }
+
+  /**
+   * Updates the visibility of the dropzone as users enters the various elements on the page
+   *
+   * @param {DragEvent} event - The `dragenter` event
+   */
+  updateDropzoneVisibility(event) {
+    // DOM interfaces only type `event.target` as `EventTarget`
+    // so we first need to make sure it's a `Node`
+    if (event.target instanceof Node) {
+      if (this.$root.contains(event.target)) {
+        this.onEnter(event)
+      } else {
+        this.onLeave(event)
+      }
+    }
+  }
+}
+
+/**
+ * @typedef DropZoneOptions
+ * @property {(event: DragEvent) => void} onEnter - Callback invoked when user enters the dropzone while dragging
+ * @property {(event?: DragEvent) => void} onLeave - Callback invoked when user leaves the dropzone while dragging
+ */
 
 /**
  * Checks if the given `DataTransfer` contains files
