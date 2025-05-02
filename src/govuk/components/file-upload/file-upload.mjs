@@ -33,6 +33,15 @@ export class FileUpload extends ConfigurableComponent {
   /** @private */
   id
 
+  /** @private */
+  $announcements
+
+  /**
+   * @private
+   * @type {boolean | undefined}
+   */
+  enteredAnotherElement
+
   /**
    * @param {Element | null} $root - File input element
    * @param {FileUploadConfig} [config] - File Upload config
@@ -217,6 +226,7 @@ export class FileUpload extends ConfigurableComponent {
   /**
    * Updates the visibility of the dropzone as users enters the various elements on the page
    *
+   * @private
    * @param {DragEvent} event - The `dragenter` event
    */
   updateDropzoneVisibility(event) {
@@ -254,6 +264,8 @@ export class FileUpload extends ConfigurableComponent {
 
   /**
    * Show the drop zone visually
+   *
+   * @private
    */
   showDraggingState() {
     this.$button.classList.add('govuk-file-upload-button--dragging')
@@ -261,6 +273,8 @@ export class FileUpload extends ConfigurableComponent {
 
   /**
    * Hides the drop zone visually
+   *
+   * @private
    */
   hideDraggingState() {
     this.$button.classList.remove('govuk-file-upload-button--dragging')
@@ -269,6 +283,7 @@ export class FileUpload extends ConfigurableComponent {
   /**
    * Handles user dropping on the component
    *
+   * @private
    * @param {DragEvent} event - The `dragenter` event
    */
   onDrop(event) {
@@ -288,6 +303,8 @@ export class FileUpload extends ConfigurableComponent {
 
   /**
    * Check if the value of the underlying input has changed
+   *
+   * @private
    */
   onChange() {
     const fileCount = this.$input.files.length
@@ -336,6 +353,8 @@ export class FileUpload extends ConfigurableComponent {
 
   /**
    * When the button is clicked, emulate clicking the actual, hidden file input
+   *
+   * @private
    */
   onClick() {
     this.$input.click()
@@ -343,6 +362,8 @@ export class FileUpload extends ConfigurableComponent {
 
   /**
    * Create a mutation observer to check if the input's attributes altered.
+   *
+   * @private
    */
   observeDisabledState() {
     const observer = new MutationObserver((mutationList) => {
@@ -363,6 +384,8 @@ export class FileUpload extends ConfigurableComponent {
 
   /**
    * Synchronise the `disabled` state between the input and replacement button.
+   *
+   * @private
    */
   updateDisabledState() {
     this.$button.disabled = this.$input.disabled
