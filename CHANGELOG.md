@@ -9,6 +9,7 @@ For advice on how to use these release notes see [our guidance on staying up to 
 We've made fixes to GOV.UK Frontend in the following pull requests:
 
 - [#5905: Fix unnecessary whitespace after logo](https://github.com/alphagov/govuk-frontend/pull/5905)
+- [#5908: Fix footer licence link reflowing on focus in Safari](https://github.com/alphagov/govuk-frontend/pull/5908)
 
 ## v5.10.0 (Feature release)
 
