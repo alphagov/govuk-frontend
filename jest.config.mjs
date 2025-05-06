@@ -90,6 +90,13 @@ export default {
     },
     {
       ...config,
+      displayName: 'JavaScript jsdom behaviour tests',
+      testEnvironment: 'govuk-frontend-helpers/jest/environment/jsdom.mjs',
+      testMatch: ['**/*.jsdom.test.{js,mjs}'],
+      setupFilesAfterEnv: ['@testing-library/jest-dom']
+    },
+    {
+      ...config,
       displayName: 'JavaScript behaviour tests',
       testMatch: [
         '**/*.test.{js,mjs}',
@@ -97,6 +104,7 @@ export default {
         // Exclude macro/unit tests
         '!**/(*.)?template.test.{js,mjs}',
         '!**/*.unit.test.{js,mjs}',
+        '!**/*.jsdom.test.{js,mjs}',
 
         // Exclude other tests
         '!**/components/globals.test.mjs',
