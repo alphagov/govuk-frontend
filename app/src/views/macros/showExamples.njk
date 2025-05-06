@@ -6,8 +6,9 @@
 {% set componentName = componentData.name | replace("-", " ") %}
 
 {% for example in componentData.examples | rejectattr('hidden') %}
+  {% set exampleStates = exampleStates | default([false]) %}
+
   {% set exampleSlug = (example.name | replace(" ", "-")) %}
-  {% set iframePathQuery = legacyQuery + '&iframe=true' if legacyQuery != '' else '?iframe=true' %}
 
   {% if example.name == 'default' %}
     {% set heading = componentName | capitalize %}
@@ -19,28 +20,31 @@
 
   <section aria-labelledby="heading-{{ exampleSlug }}" class="govuk-!-margin-bottom-9">
     <div class="govuk-width-container">
-      <div class="govuk-heading-m">
-        <h3 id="heading-{{ exampleSlug }}" class="app-!-di">{{ heading | safe }}</h3>
-        <a href="{{ path }}{{ legacyQuery }}" class="govuk-link govuk-!-margin-left-1 govuk-!-font-size-16">
-          (open in a new window)
-        </a>
+      <h3 id="heading-{{ exampleSlug }}" class="govuk-heading-m">{{ heading | safe }}</h3>
+      {% if example.description %}
+        <p class="govuk-body">
+          {{ example.description }}
+        </p>
+      {% endif %}
+    </div>
+    {% for state in exampleStates %}
+      <div class="app-component-preview">
+        <div class="govuk-width-container">
+          <a href="{{ path }}{{ legacyQuery }}" class="govuk-link govuk-!-margin-left-1 govuk-!-font-size-16">
+            Open this example in a new tab<span class="govuk-visually-hidden">
+              : {{ heading + (', rebrand flag ' + 'on' if state else 'off') | safe | lower }}
+            </span>
+          </a>
+        </div>
+        <iframe
+        class="js-component-preview app-component-preview__iframe"
+        src="{{ path }}?iframe=true{{ '&rebrandOverride=' + state }}"
+        frameBorder="0"
+        allowTransparency="true"
+        scrolling="auto"
+        ></iframe>
       </div>
-
-    {% if example.description %}
-      <p class="govuk-body">
-        {{ example.description }}
-      </p>
-    {% endif %}
-    </div>
-    <div class="app-component-preview">
-      <iframe
-      class="js-component-preview app-component-preview__iframe"
-      src="{{ path + iframePathQuery }}"
-      frameBorder="0"
-      allowTransparency="true"
-      scrolling="auto"
-      ></iframe>
-    </div>
+    {% endfor %}
 
     <div class="govuk-width-container">
       {% set detailsHtml %}{% include "partials/code.njk" %}{% endset %}
