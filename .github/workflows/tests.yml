@@ -111,7 +111,7 @@ jobs:
 
       - name: Cache linter
         if: ${{ matrix.task.cache }}
-        uses: actions/cache@v3.3.1
+        uses: actions/cache@v4.2.3
         with:
           enableCrossOsArchive: true
           key: ${{ matrix.task.name }}-${{ runner.os }}
@@ -185,7 +185,7 @@ jobs:
 
       - name: Cache task
         if: ${{ matrix.task.cache }}
-        uses: actions/cache@v3.3.1
+        uses: actions/cache@v4.2.3
         with:
           enableCrossOsArchive: true
           key: ${{ matrix.task.name }}-${{ runner.os }}
