@@ -24,9 +24,19 @@
   // box shadow adds the "underline"
   text-decoration: none;
 
-  // When a focused box is broken by e.g. a line break, ensure that the
-  // box-shadow is applied to each fragment independently.
-  box-decoration-break: clone;
+  // Fixes an issue in Chromium 108–111 where the box-shadow on the focus state
+  // is missing on links that wrap across multiple lines [1].
+  //
+  // However, text-wrap: balance doesn't play nicely with box-decoration-break:
+  // clone, causing links to re-flow when focused [2]. As text-wrap: balance
+  // wasn't introduced until Chromium 114 we can use it as a way to target
+  // this fix to just 108–111.
+  //
+  // [1]: http://crbug.com/40884971
+  // [2]: https://github.com/alphagov/govuk-frontend/issues/5878
+  @supports not (text-wrap: balance) {
+    box-decoration-break: clone;
+  }
 }
 
 /// Focused box
