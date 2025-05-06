@@ -160,6 +160,29 @@ examples:
         text: Don't include personal or financial information, eg your
           National Insurance number or credit card details.
 
+  - name: with error
+    options:
+      name: with-error
+      id: with-error
+      maxlength: 10
+      label:
+        text: Can you provide more detail?
+      errorMessage:
+        text: Please provide more detail
+
+  - name: with hint and error
+    options:
+      name: with-error
+      id: with-error
+      maxlength: 10
+      label:
+        text: Can you provide more detail?
+      errorMessage:
+        text: Please provide more detail
+      hint:
+        text: Don't include personal or financial information, eg your
+          National Insurance number or credit card details.
+
   - name: with default value
     options:
       id: with-default-value
