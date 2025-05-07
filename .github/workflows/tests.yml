@@ -157,6 +157,12 @@ jobs:
             projects:
               - JavaScript behaviour tests
 
+          - description: JavaScript jsdom behaviour tests
+            name: test-jsdom-behaviour
+            cache: .cache/jest
+            projects:
+              - JavaScript jsdom behaviour tests
+
           - description: JavaScript component tests
             name: test-component
             cache: |
