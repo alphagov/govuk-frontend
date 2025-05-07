@@ -1,6 +1,10 @@
 {
   "name": "@govuk-frontend/bundler-integrations",
   "description": "Boilerplate to verify that GOV.UK Frontend works OK with main bundlers",
+  "engines": {
+    "node": "^22.11.0",
+    "npm": "^10.1.0"
+  },
   "private": true,
   "scripts": {
     "rollup": "npm run rollup:single-component && npm run rollup:initAll",
