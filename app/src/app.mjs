@@ -37,6 +37,7 @@ export default async () => {
   app.use(middleware.legacy)
   app.use(middleware.request)
   app.use(middleware.robots)
+  app.use(middleware.featureFlags)
 
   // Handle the banner component serverside.
   routes.banner(app)

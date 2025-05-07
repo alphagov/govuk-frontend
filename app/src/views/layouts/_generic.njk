@@ -1,5 +1,7 @@
 {% extends "template.njk" %}
 
+{% set htmlClasses = ["govuk-template--rebranded", htmlClasses] | join(" ") if useRebrand else htmlClasses %}
+
 {% block head %}
 
   {% if legacy %}
@@ -32,6 +34,7 @@
 {% block bodyStart %}
   {% block banner %}
     {% include "../partials/banner.njk" %}
+    {% include "../partials/feature-flags.njk" %}
   {% endblock %}
 {% endblock %}
 
