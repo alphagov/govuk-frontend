@@ -32,17 +32,29 @@ export async function screenshots () {
   const browser = await launch()
   const componentNames = await getDirectories(join(paths.src, 'govuk/components'))
   const exampleNames = ['text-alignment', 'typography']
+  const rebrandExamples = [
+    {
+      component: 'header',
+      example: 'full-width-with-navigation'
+    },
+    {
+      component: 'footer'
+    },
+    {
+      component: 'cookie-banner'
+    }
+  ]
 
   // Screenshot stack
   const input = []
 
   // Add components to screenshot
   input.push(...componentNames.map((screenshotName) =>
-    /** @type {const} */ ([screenshotComponent, screenshotName])))
+    /** @type {const} */([screenshotComponent, screenshotName])))
 
   // Add examples to screenshot
   input.push(...exampleNames.map((screenshotName) =>
-    /** @type {const} */ ([screenshotExample, screenshotName])))
+    /** @type {const} */([screenshotExample, screenshotName])))
 
   // Batch 4x concurrent screenshots
   while (input.length) {
@@ -56,6 +68,31 @@ export async function screenshots () {
     await Promise.all(screenshotTasks)
   }
 
+  // Extra 'manual' set of screenshots for rebrand examples
+  for (const rebrandExample of rebrandExamples) {
+    let page = await browser.newPage()
+    const cookie = {
+      name: 'use_rebrand',
+      value: 'true'
+    }
+
+    if (rebrandExample?.example) {
+      await screenshotComponent(page, rebrandExample.component, {
+        screenshotName: `${rebrandExample.example}/${rebrandExample.component} (rebranded)`,
+        exampleName: rebrandExample.example,
+        cookie
+      })
+
+      // reinitialise page that gets closed by running screenshotComponent
+      page = await browser.newPage()
+    }
+
+    await screenshotComponent(page, rebrandExample.component, {
+      screenshotName: `${rebrandExample.component} (rebranded)`,
+      cookie
+    })
+  }
+
   // Close browser
   return browser.close()
 }
@@ -66,16 +103,26 @@ export async function screenshots () {
  *
  * @param {import('puppeteer').Page} page - Puppeteer page object
  * @param {string} componentName - Component name
+ * @param {object} [options] - optional extra options
  * @returns {Promise<void>}
  */
-export async function screenshotComponent (page, componentName) {
+export async function screenshotComponent (page, componentName, options) {
   const componentFiles = await getListing(join(paths.src, 'govuk/components', componentName))
 
   // Navigate to component
-  await goToComponent(page, componentName)
+  await goToComponent(page, componentName, { exampleName: options?.exampleName })
+
+  if (options?.cookie) {
+    await page.setCookie({
+      ...options.cookie,
+      url: page.url()
+    })
+
+    await page.reload({ waitUntil: 'load' })
+  }
 
   // Screenshot preview page (with JavaScript)
-  await percySnapshot(page, `js: ${componentName}`)
+  await percySnapshot(page, `js: ${options?.screenshotName ?? componentName}`)
 
   // Check for "JavaScript enabled" components
   if (componentFiles.some(filterPath([`**/${componentName}.mjs`]))) {
@@ -83,7 +130,7 @@ export async function screenshotComponent (page, componentName) {
 
     // Screenshot preview page (without JavaScript)
     await page.reload({ waitUntil: 'load' })
-    await percySnapshot(page, `no-js: ${componentName}`)
+    await percySnapshot(page, `no-js: ${options?.screenshotName ?? componentName}`)
   }
 
   // Close page
