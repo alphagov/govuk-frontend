@@ -146,7 +146,8 @@ function goToExample (page, exampleName) {
  * @param {import('puppeteer').Page} page - Puppeteer page object
  * @param {string} componentName - Component name
  * @param {object} [options] - Component options
- * @param {string} options.exampleName - Example name
+ * @param {string} [options.exampleName] - Example name
+ * @param {string} [options.queryParam] - Query param
  * @returns {Promise<import('puppeteer').Page>} Puppeteer page object
  */
 function goToComponent (page, componentName, options) {
@@ -154,7 +155,7 @@ function goToComponent (page, componentName, options) {
     ? `/components/${componentName}/${options.exampleName}/preview`
     : `/components/${componentName}/preview`
 
-  return goTo(page, componentPath)
+  return goTo(page, options?.queryParam ? `${componentPath}?${options.queryParam}` : componentPath)
 }
 
 /**
