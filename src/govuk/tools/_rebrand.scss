@@ -21,9 +21,9 @@
 ///   }
 ///
 ///
-/// @param {String} [$property] - The name of the property being rebranded
-/// @param {String} [$from] - The original value of the property
-/// @param {String} [$to] - The rebranded value of the property
+/// @param {String} $property - The name of the property being rebranded
+/// @param {String} $from - The original value of the property
+/// @param {String} $to - The rebranded value of the property
 /// @throw if `$property` is set but `$from` or `$to` are missing
 /// @access private
 @mixin _govuk-rebrand($property: null, $from: null, $to: null) {
