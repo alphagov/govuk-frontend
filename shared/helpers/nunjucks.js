@@ -71,6 +71,36 @@ function callMacro (macroName, macroPath, params = [], callBlock) {
 }
 
 /**
+ * Render macro HTML
+ *
+ * Included for compatibility with v5 macro rendering
+ *
+ * @param {string} macroName - The name of the macro
+ * @param {string} macroPath - The path to the file containing the macro
+ * @param {object} [options] - Nunjucks macro render options
+ * @returns {string} HTML rendered by the macro
+ */
+function renderMacro (macroName, macroPath, options) {
+  const paramsFormatted = JSON.stringify(options?.context ?? {}, undefined, 2)
+
+  // v5 tests use `[./]govuk/macros/[macro]` as the path to the macro
+  // We need to get rid of the first bit for backwards compatibility
+  const compatibleMacroPath = macroPath.includes('govuk/')
+    ? macroPath.replace(/^.*govuk\//, '')
+    : macroPath
+
+  let macroString = `{%- from "${compatibleMacroPath}" import ${macroName} -%}`
+
+  // If we're nesting child components or text, pass the children to the macro
+  // using the 'caller' Nunjucks feature
+  macroString += options?.callBlock
+    ? `{%- call ${macroName}(${paramsFormatted}) -%}${options.callBlock}{%- endcall -%}`
+    : `{{- ${macroName}(${paramsFormatted}) -}}`
+
+  return nunjucksEnv.renderString(macroString, options?.context ?? {})
+}
+
+/**
  * Render Nunjucks template HTML into cheerio
  *
  * @param {object} [context] - Nunjucks context
@@ -95,6 +125,7 @@ module.exports = {
   nunjucksEnv,
   callMacro,
   render,
+  renderMacro,
   renderHTML,
   renderTemplate
 }
