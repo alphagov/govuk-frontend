@@ -49,8 +49,8 @@
     "prepare": "node -e \"try { (await import('husky')).default() } catch (e) { if (e.code !== 'ERR_MODULE_NOT_FOUND') throw e }\" --input-type module"
   },
   "devDependencies": {
-    "@babel/core": "^7.26.10",
-    "@babel/preset-env": "^7.26.9",
+    "@babel/core": "^7.27.1",
+    "@babel/preset-env": "^7.27.2",
     "@govuk-frontend/config": "*",
     "@govuk-frontend/helpers": "*",
     "@govuk-frontend/lib": "*",
