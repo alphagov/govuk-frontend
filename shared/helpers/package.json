@@ -28,7 +28,7 @@
     "mime-types": "^3.0.1",
     "outdent": "^0.8.0",
     "puppeteer": "^24.6.0",
-    "sass-embedded": "^1.85.1",
+    "sass-embedded": "^1.87.0",
     "slug": "^9.1.0"
   },
   "peerDependencies": {
