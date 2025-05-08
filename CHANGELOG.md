@@ -11,6 +11,7 @@ We've made fixes to GOV.UK Frontend in the following pull requests:
 - [#5905: Fix unnecessary whitespace after logo](https://github.com/alphagov/govuk-frontend/pull/5905)
 - [#5908: Fix footer licence link reflowing on focus in Safari](https://github.com/alphagov/govuk-frontend/pull/5908)
 - [#5919: Update deprecation warning message to make it clearer how to update to new organisation colour palette](https://github.com/alphagov/govuk-frontend/pull/5919)
+- [#5920: Fix transparency around edge of rebranded favicon.ico](https://github.com/alphagov/govuk-frontend/pull/5920)
 
 ## v5.10.0 (Feature release)
 
