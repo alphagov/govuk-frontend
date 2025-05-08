@@ -10,6 +10,7 @@ We've made fixes to GOV.UK Frontend in the following pull requests:
 
 - [#5905: Fix unnecessary whitespace after logo](https://github.com/alphagov/govuk-frontend/pull/5905)
 - [#5908: Fix footer licence link reflowing on focus in Safari](https://github.com/alphagov/govuk-frontend/pull/5908)
+- [#5896: Fix character count not having error border colour when rendered with error message](https://github.com/alphagov/govuk-frontend/pull/5896)
 
 ## v5.10.0 (Feature release)
 
