@@ -80,7 +80,7 @@ describe('Organisation colours', () => {
       // Expect our mocked @warn function to have been called once with a single
       // argument, which should be the deprecation notice
       expect(mockWarnFunction).toHaveBeenCalledWith(
-        'The legacy organisation colour palette has been deprecated and will be removed in the next major version. To silence this warning, update $govuk-suppressed-warnings with key: "legacy-organisation-colours"',
+        'We\'ve updated the organisation colour palette. Opt in to the new colours using `$govuk-new-organisation-colours: true`. The old palette is deprecated and we\'ll remove it in the next major version. To silence this warning, update $govuk-suppressed-warnings with key: "legacy-organisation-colours"',
         expect.anything()
       )
     })
