@@ -15,7 +15,7 @@
   "dependencies": {
     "@govuk-frontend/config": "*",
     "filesize": "^10.1.6",
-    "glob": "^11.0.1",
+    "glob": "^11.0.2",
     "js-yaml": "^4.1.0",
     "minimatch": "^10.0.1",
     "nunjucks": "^3.2.4",
