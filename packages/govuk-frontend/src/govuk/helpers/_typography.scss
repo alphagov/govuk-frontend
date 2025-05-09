@@ -190,7 +190,7 @@
   // No match? Try with string type (e.g. $size: "16" not 16)
   @if not $font-map {
     @each $font-size in map-keys($govuk-typography-scale) {
-      @if not $font-map and #{$font-size} == #{$size} {
+      @if not $font-map and "#{$font-size}" == "#{$size}" {
         $font-map: map-get($govuk-typography-scale, $font-size);
       }
     }
