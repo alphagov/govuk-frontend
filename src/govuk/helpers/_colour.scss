@@ -66,6 +66,17 @@
     @error "Unknown organisation `#{$organisation}`";
   }
 
+  // Output a deprecation warning if the legacy colour palette is being used.
+  // Remove in next major version.
+  $is-legacy: $govuk-colours-organisations == $_govuk-legacy-organisation-colours;
+  @if $is-legacy and _should-warn("legacy-organisation-colours") {
+    @warn _warning-text("legacy-organisation-colours",
+      "We've updated the organisation colour palette. Opt in to the new " +
+      "colours using `$govuk-new-organisation-colours: true`. The old " +
+      "palette is deprecated and we'll remove it in the next major version."
+    );
+  }
+
   // Output a warning if $websafe is set.
   @if $websafe and _should-warn("organisation-colour-websafe-param") {
     @warn _warning-text("organisation-colour-websafe-param",

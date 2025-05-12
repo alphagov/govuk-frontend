@@ -318,4 +318,57 @@ describe('@function govuk-organisation-colour', () => {
       })
     })
   })
+
+  describe('legacy deprecation message', () => {
+    it('throws a deprecation warning if the legacy palette is being used', async () => {
+      const sass = `
+      @import "helpers/colour";
+
+      .dft {
+        border-color: govuk-organisation-colour('department-for-transport');
+      }
+    `
+
+      await compileSassString(sass, sassConfig)
+
+      // Expect our mocked @warn function to have been called once with a single
+      // argument, which should be the deprecation notice
+      expect(mockWarnFunction).toHaveBeenCalledWith(
+        "We've updated the organisation colour palette. Opt in to the new " +
+          'colours using `$govuk-new-organisation-colours: true`. The old ' +
+          "palette is deprecated and we'll remove it in the next major " +
+          'version. To silence this warning, update $govuk-suppressed-warnings ' +
+          'with key: "legacy-organisation-colours"',
+        expect.anything()
+      )
+    })
+
+    it('does not throw a deprecation warning if the new palette is being used', async () => {
+      const sass = `
+      $govuk-new-organisation-colours: true;
+      @import "settings/colours-organisations";
+    `
+
+      await compileSassString(sass, sassConfig)
+
+      // Expect our mocked @warn function to have not been called
+      expect(mockWarnFunction).not.toHaveBeenCalled()
+    })
+
+    it('does not throw a deprecation warning if the palette has been customised', async () => {
+      const sass = `
+      $govuk-colours-organisations: (
+        "department-of-administrative-affairs": (
+          colour: "#226623"
+        )
+      );
+      @import "settings/colours-organisations";
+    `
+
+      await compileSassString(sass, sassConfig)
+
+      // Expect our mocked @warn function to have not been called
+      expect(mockWarnFunction).not.toHaveBeenCalled()
+    })
+  })
 })
