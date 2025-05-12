@@ -15,6 +15,15 @@ describe('header', () => {
       const $component = $('.govuk-header')
       expect($component.attr('role')).toEqual('banner')
     })
+
+    it('renders the logo inside span.govuk-header__logotype', () => {
+      const $ = render('header', examples.default)
+
+      const $component = $('.govuk-header')
+
+      expect($component.find('span.govuk-header__logotype').length).not.toBe(0)
+      expect($component.find('svg.govuk-header__logotype-crown')).not.toBe(0)
+    })
   })
 
   describe('custom options', () => {
@@ -238,56 +247,24 @@ describe('header', () => {
     })
   })
 
-  describe('St. Edward\'s crown logo', () => {
-    let $
-    let $svg
+  describe('rebrand', () => {
+    describe('when local `rebrand` parameter is enabled', () => {
+      it('renders the new GOV.UK logotype', () => {
+        const $ = render('header', examples.rebrand)
 
-    beforeAll(() => {
-      $ = render('header', examples.default)
-      $svg = $('.govuk-header__logotype-crown')
-    })
+        const $component = $('.govuk-header')
 
-    it('sets focusable="false" so that IE does not treat it as an interactive element', () => {
-      expect($svg.attr('focusable')).toEqual('false')
-    })
-
-    it('sets aria-hidden="true" so that it is ignored by assistive technologies', () => {
-      expect($svg.attr('aria-hidden')).toEqual('true')
-    })
-
-    describe('fallback PNG', () => {
-      it('is invisible to modern browsers', () => {
-        const $fallbackImage = $('.govuk-header__logotype-crown-fallback-image')
-        expect($fallbackImage.length).toEqual(0)
+        expect($component.find('.govuk-logo-dot').length).not.toBe(0)
       })
-    })
-  })
 
-  describe('Tudor crown logo', () => {
-    let $
-    let $svg
+      it('renders the logotype as a single <svg>', () => {
+        const $ = render('header', examples.rebrand)
 
-    beforeAll(() => {
-      $ = render('header', examples['with Tudor crown'])
-      $svg = $('.govuk-header__logotype-crown')
-    })
+        const $component = $('.govuk-header')
 
-    it('uses Tudor crown if configured to do so', () => {
-      expect($svg.attr('viewBox')).toEqual('0 0 32 30')
-    })
-
-    it('sets focusable="false" so that IE does not treat it as an interactive element', () => {
-      expect($svg.attr('focusable')).toEqual('false')
-    })
-
-    it('sets aria-hidden="true" so that it is ignored by assistive technologies', () => {
-      expect($svg.attr('aria-hidden')).toEqual('true')
-    })
-
-    describe('fallback PNG', () => {
-      it('is invisible to modern browsers', () => {
-        const $fallbackImage = $('.govuk-header__logotype-crown-fallback-image')
-        expect($fallbackImage.length).toEqual(0)
+        expect($component.find('svg.govuk-header__logotype').length).not.toBe(0)
+        expect($component.find('.govuk-header__logotype-crown').length).toBe(0)
+        expect($component.find('.govuk-header__logotype-text').length).toBe(0)
       })
     })
   })
