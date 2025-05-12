@@ -25,7 +25,9 @@ module.exports = {
 
   // Configure paths
   basePath,
-  entryPoints: [packageResolveToPath('govuk-frontend/src/govuk/all.mjs')],
+  entryPoints: [
+    slash(packageResolveToPath('govuk-frontend/src/govuk/all.mjs'))
+  ],
   tsconfig: packageResolveToPath('govuk-frontend/tsconfig.build.json'),
   out: './dist/docs/jsdoc',
 
