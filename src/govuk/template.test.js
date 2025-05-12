@@ -63,14 +63,21 @@ describe('Template', () => {
 
     it('uses a default assets path of /assets', () => {
       const $ = renderTemplate()
-      const $icon = $('link[rel="shortcut icon"]')
+      const $icon = $('link[rel="icon"]')
 
       expect($icon.attr('href')).toEqual('/assets/images/favicon.ico')
     })
 
+    it('uses a default assets path of /assets/rebrand if govukRebrand is true', () => {
+      const $ = renderTemplate({ govukRebrand: true })
+      const $icon = $('link[rel="icon"][sizes="48x48"]')
+
+      expect($icon.attr('href')).toEqual('/assets/rebrand/images/favicon.ico')
+    })
+
     it('can have the assets path overridden using assetPath', () => {
       const $ = renderTemplate({ assetPath: '/whatever' })
-      const $icon = $('link[rel="shortcut icon"]')
+      const $icon = $('link[rel="icon"]')
 
       expect($icon.attr('href')).toEqual('/whatever/images/favicon.ico')
     })
@@ -102,6 +109,13 @@ describe('Template', () => {
       it('has a default content of #0b0c0c', () => {
         const $ = renderTemplate()
         expect($('meta[name="theme-color"]').attr('content')).toEqual('#0b0c0c')
+      })
+
+      it('has a default content of #1d70b8 if govukRebrand is true', () => {
+        const $ = renderTemplate({ govukRebrand: true })
+        const $themeColor = $('meta[name="theme-color"]')
+
+        expect($themeColor.attr('content')).toEqual('#1d70b8')
       })
 
       it('can be overridden using themeColor', () => {
