@@ -33,6 +33,8 @@ describe('Organisation colours', () => {
 
   it('should define websafe colours that meet contrast requirements (legacy colours)', async () => {
     const sass = `
+      $govuk-suppressed-warnings: ("legacy-organisation-colours");
+
       @import "settings/colours-palette";
       @import "settings/colours-organisations";
       @import "settings/colours-applied";
