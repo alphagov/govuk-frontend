@@ -57,7 +57,7 @@
     "gulp-cli": "^3.0.0",
     "nodemon": "^3.1.10",
     "postcss-pseudo-classes": "^0.4.0",
-    "puppeteer": "^24.6.0",
+    "puppeteer": "^24.8.2",
     "rollup": "^4.19.1",
     "sassdoc": "^2.7.4",
     "supertest": "^7.1.0",
