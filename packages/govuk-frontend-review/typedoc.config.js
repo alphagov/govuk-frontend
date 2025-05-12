@@ -66,5 +66,9 @@ module.exports = {
   // We don't want typedoc to render a 'Preserve' tag
   // as it's only for controlling which comments get rendered or not
   // after transpilation
-  excludeTags: ['@preserve']
+  excludeTags: ['@preserve'],
+
+  // We have an `scss` example in our README which causes typedoc to error
+  // unless we ignore it.
+  ignoredHighlightLanguages: ['scss']
 }
