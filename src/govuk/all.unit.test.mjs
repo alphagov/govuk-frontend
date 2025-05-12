@@ -10,7 +10,7 @@ describe('GOV.UK Frontend', () => {
   describe('global styles', () => {
     it('are disabled by default', async () => {
       const sass = `
-        @import "all";
+        @import "index";
       `
       const results = compileSassString(sass)
 
@@ -26,7 +26,7 @@ describe('GOV.UK Frontend', () => {
     it('are enabled if $global-styles variable is set to true', async () => {
       const sass = `
         $govuk-global-styles: true;
-        @import "all";
+        @import "index";
       `
 
       const results = compileSassString(sass)
@@ -72,7 +72,7 @@ describe('GOV.UK Frontend', () => {
   // the compiled CSS - if it finds anything, it will result in the test
   // failing.
   it('does not contain any unexpected govuk- function calls', async () => {
-    const sass = '@import "all"'
+    const sass = '@import "index"'
 
     await expect(compileSassString(sass)).resolves.toMatchObject({
       css: expect.not.stringMatching(/_?govuk-[\w-]+\(.*?\)/g)
