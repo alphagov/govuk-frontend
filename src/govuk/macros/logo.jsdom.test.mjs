@@ -14,7 +14,7 @@ describe('logo.njk', () => {
     })
 
     it('defaults to St Edwards crown', () => {
-      expect($svg).toHaveAttribute('viewBox', '0 0 72 60')
+      expect($svg).toHaveAttribute('viewBox', '0 0 132 97')
       expect($svg).toHaveAttribute('width', '36')
     })
 
