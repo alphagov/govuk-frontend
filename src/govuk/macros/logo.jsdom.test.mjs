@@ -13,14 +13,22 @@ describe('logo.njk', () => {
       $svg = document.querySelector('svg')
     })
 
-    it('defaults to Tudor crown', () => {
-      expect($svg).toHaveAttribute('viewBox', '0 0 296 60')
+    it('defaults to St Edwards crown', () => {
+      expect($svg).toHaveAttribute('viewBox', '0 0 72 60')
+      expect($svg).toHaveAttribute('width', '36')
     })
 
-    it('defaults to old logotype', () => {
-      const $logotypeDot = $svg.querySelector('.govuk-logo-dot')
+    it('only renders the default crown path', () => {
+      // The St Edward's crown is just a flat path whilst the tudor crown and
+      // rebranded logo use an svg group (`g` tag) for the crown and a path for
+      // the logotype
+      const $stEdsCrown = $svg.querySelector('path')
+      const $crownGroup = $svg.querySelector('g')
+      const $logotype = $svg.querySelector('g + path')
 
-      expect($logotypeDot).toBeNull()
+      expect($stEdsCrown).not.toBeNull()
+      expect($crownGroup).toBeNull()
+      expect($logotype).toBeNull()
     })
 
     it('sets `focusable="false"` so that IE does not treat it as an interactive element', () => {
@@ -98,7 +106,7 @@ describe('logo.njk', () => {
     })
   })
 
-  describe('if `useLogotype` is false', () => {
+  describe('if `useTudorCrown` is true', () => {
     let $svg
 
     beforeAll(() => {
@@ -107,62 +115,19 @@ describe('logo.njk', () => {
         './govuk/macros/logo.njk',
         {
           context: {
-            useLogotype: false
+            useTudorCrown: true
           }
         }
       )
       $svg = document.querySelector('svg')
     })
 
-    it('reduces the `viewBox` width', () => {
+    it('increases the `viewbox` width', () => {
       expect($svg).toHaveAttribute('viewBox', '0 0 64 60')
     })
 
-    it('reduces the image width', () => {
+    it('increases the image width', () => {
       expect($svg).toHaveAttribute('width', '32')
-    })
-
-    it('does not render the logotype element', () => {
-      const $crown = $svg.querySelector('g')
-      const $logotype = $svg.querySelector('g + path')
-
-      expect($crown).not.toBeNull()
-      expect($logotype).toBeNull()
-    })
-  })
-
-  describe('if `useTudorCrown` is false', () => {
-    it("uses the St Edward's Crown with logotype", () => {
-      document.body.innerHTML = renderMacro(
-        'govukLogo',
-        './govuk/macros/logo.njk',
-        {
-          context: {
-            useTudorCrown: false
-          }
-        }
-      )
-      const $svg = document.querySelector('svg')
-
-      expect($svg).toHaveAttribute('viewBox', '0 0 304 60')
-    })
-  })
-
-  describe('if `useTudorCrown` and `useLogotype` are false', () => {
-    it("uses the St Edward's Crown in isolation", () => {
-      document.body.innerHTML = renderMacro(
-        'govukLogo',
-        './govuk/macros/logo.njk',
-        {
-          context: {
-            useTudorCrown: false,
-            useLogotype: false
-          }
-        }
-      )
-      const $svg = document.querySelector('svg')
-
-      expect($svg).toHaveAttribute('viewBox', '0 0 72 60')
     })
   })
 
@@ -182,7 +147,7 @@ describe('logo.njk', () => {
       $svg = document.querySelector('svg')
     })
 
-    it('uses the Dot logotype if `rebrand` is true', () => {
+    it('uses the logotype', () => {
       const $logotypeDot = $svg.querySelector('g ~ circle')
 
       expect($logotypeDot).not.toBeNull()
@@ -191,6 +156,34 @@ describe('logo.njk', () => {
 
     it('forces use of the Tudor Crown if `rebrand` is true', () => {
       expect($svg).toHaveAttribute('viewBox', '0 0 324 60')
+    })
+  })
+
+  describe('if `useText` is true', () => {
+    let $span
+
+    beforeAll(() => {
+      document.body.innerHTML = renderMacro(
+        'govukLogo',
+        './govuk/macros/logo.njk',
+        {
+          context: {
+            useText: {
+              text: 'My logo text',
+              class: 'my-span-class'
+            }
+          }
+        }
+      )
+      $span = document.querySelector('svg + span')
+    })
+
+    it('renders the logo text', () => {
+      expect($span.innerHTML).toContain('My logo text')
+    })
+
+    it('applies the class to the span', () => {
+      expect($span).toHaveClass('my-span-class')
     })
   })
 })
