@@ -32,6 +32,21 @@ export async function screenshots () {
   const browser = await launch()
   const componentNames = await getDirectories(join(paths.src, 'govuk/components'))
   const exampleNames = ['text-alignment', 'typography']
+  const rebrandedComponentNames = [
+    'header',
+    'footer',
+    'cookie-banner'
+  ]
+  const extraComponentExamples = [
+    {
+      component: 'header',
+      example: 'full-width-with-navigation'
+    },
+    {
+      component: 'header',
+      example: 'with-service-name-and-navigation'
+    }
+  ]
 
   // Screenshot stack
   const input = []
@@ -44,13 +59,35 @@ export async function screenshots () {
   input.push(...exampleNames.map((screenshotName) =>
     /** @type {const} */ ([screenshotExample, screenshotName])))
 
+  // Add rebranded components to screenshot
+  input.push(...rebrandedComponentNames.map((screenshotName) =>
+    /** @type {const} */ ([screenshotComponent, screenshotName, {
+      screenshotName: `${screenshotName} (rebranded)`,
+      queryParam: 'rebrandOverride=true'
+    }])))
+
+  // Add specific component examples to screenshot
+  input.push(...extraComponentExamples.map((screenshotName) =>
+    /** @type {const} */ ([screenshotComponent, screenshotName.component, {
+      exampleName: screenshotName.example,
+      screenshotName: `${screenshotName.component}/${screenshotName.example}`
+    }])))
+
+  // Repeat specific examples again with rebrand options
+  input.push(...extraComponentExamples.map((screenshotName) =>
+    /** @type {const} */ ([screenshotComponent, screenshotName.component, {
+      exampleName: screenshotName.example,
+      screenshotName: `${screenshotName.component}/${screenshotName.example} (rebranded)`,
+      queryParam: 'rebrandOverride=true'
+    }])))
+
   // Batch 4x concurrent screenshots
   while (input.length) {
     const batch = input.splice(0, 4)
 
     // Take screenshots
-    const screenshotTasks = batch.map(async ([screenshotFn, screenshotName]) =>
-      screenshotFn(await browser.newPage(), screenshotName))
+    const screenshotTasks = batch.map(async ([screenshotFn, screenshotName, options]) =>
+      screenshotFn(await browser.newPage(), screenshotName, options))
 
     // Wait until batch finishes
     await Promise.all(screenshotTasks)
@@ -66,16 +103,23 @@ export async function screenshots () {
  *
  * @param {import('puppeteer').Page} page - Puppeteer page object
  * @param {string} componentName - Component name
+ * @param {object} [options] - Optional extra options
+ * @param {string} [options.screenshotName] - Name of screenshot (overrides default name)
+ * @param {string} [options.queryParam] - Query param to pass to goToComponent
+ * @param {string} [options.exampleName] - Component example to pass to goToComponent
  * @returns {Promise<void>}
  */
-export async function screenshotComponent (page, componentName) {
+export async function screenshotComponent (page, componentName, options) {
   const componentFiles = await getListing(join(paths.src, 'govuk/components', componentName))
 
   // Navigate to component
-  await goToComponent(page, componentName)
+  await goToComponent(page, componentName, {
+    queryParam: options?.queryParam,
+    exampleName: options?.exampleName
+  })
 
   // Screenshot preview page (with JavaScript)
-  await percySnapshot(page, `js: ${componentName}`)
+  await percySnapshot(page, `js: ${options?.screenshotName ?? componentName}`)
 
   // Check for "JavaScript enabled" components
   if (componentFiles.some(filterPath([`**/${componentName}.mjs`]))) {
@@ -83,7 +127,7 @@ export async function screenshotComponent (page, componentName) {
 
     // Screenshot preview page (without JavaScript)
     await page.reload({ waitUntil: 'load' })
-    await percySnapshot(page, `no-js: ${componentName}`)
+    await percySnapshot(page, `no-js: ${options?.screenshotName ?? componentName}`)
   }
 
   // Close page
