@@ -1,2 +1,8 @@
 # Ensure any changes to GitHub Actions workflows are reviewed by developers
 .github/workflows/  @alphagov/design-system-developers
+
+# Track changes to package.json or package-lock.json
+/package*.json  @alphagov/design-system-developers
+
+# Protect the CODEOWNERS file itself against malicious changes
+CODEOWNERS  @alphagov/design-system-developers
