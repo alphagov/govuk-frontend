@@ -104,7 +104,7 @@
 
   // Colour in the Dot
   .govuk-logo-dot {
-    fill: #11e0f1;
+    fill: #00ffe0;
 
     // Override Dot colour when printing
     @include govuk-media-query($media-type: print) {
