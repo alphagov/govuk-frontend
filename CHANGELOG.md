@@ -15,6 +15,7 @@ We've made fixes to GOV.UK Frontend in the following pull requests:
 - [#5920: Fix transparency around edge of rebranded favicon.ico](https://github.com/alphagov/govuk-frontend/pull/5920)
 - [#5918: Fix `govuk-font-size` mixin outputting the wrong font properties for size 14 text when compiled using libsass](https://github.com/alphagov/govuk-frontend/pull/5918)
 - [#5962: Fix colour of refreshed GOV.UK logo's dot](https://github.com/alphagov/govuk-frontend/pull/5962)
+- [#5896: Fix character count not having error border colour when rendered with error message](https://github.com/alphagov/govuk-frontend/pull/5896)
 
 ## v5.10.0 (Feature release)
 
