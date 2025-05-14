@@ -103,22 +103,33 @@ function renderMacro (macroName, macroPath, options) {
 /**
  * Render Nunjucks template HTML into cheerio
  *
- * @param {object} [context] - Nunjucks context
- * @param {Object<string, string>} [blocks] - Nunjucks blocks
+ * @param {object} [options] - Nunjucks context
+ * @param {object} [options.context] - Nunjucks context
+ * @param {Object<string, string>} [options.blocks] - Nunjucks blocks
+ * @param {object} [options.set] - Variables to set in the template
  * @returns {import('cheerio').CheerioAPI} Nunjucks template output
  */
-function renderTemplate (context = {}, blocks = {}) {
+function renderTemplate (options) {
   let viewString = '{% extends "template.njk" %}'
 
-  for (const [blockName, blockContent] of Object.entries(blocks)) {
-    viewString += outdent`
-
-      {% block ${blockName} -%}
-        ${blockContent}
-      {%- endblock %}`
+  if (options?.set) {
+    for (const [name, content] of Object.entries(options.set)) {
+      viewString += outdent`
+        {% set ${name} = ${content} %}`
+    }
   }
 
-  return cheerio.load(nunjucksEnv.renderString(viewString, context))
+  if (options?.blocks) {
+    for (const [blockName, blockContent] of Object.entries(options.blocks)) {
+      viewString += outdent`
+
+        {% block ${blockName} -%}
+          ${blockContent}
+        {%- endblock %}`
+    }
+  }
+
+  return cheerio.load(nunjucksEnv.renderString(viewString, options?.context ?? {}))
 }
 
 module.exports = {
