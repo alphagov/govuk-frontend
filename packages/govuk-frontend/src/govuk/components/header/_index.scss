@@ -30,6 +30,16 @@
     color: $govuk-header-text;
   }
 
+  .govuk-header--with-js-navigation {
+    @include govuk-media-query($until: desktop) {
+      .govuk-header__logo {
+        // Protect the absolute positioned menu button from overlapping with the
+        // logo with right padding using the button's width
+        padding-right: $govuk-header-menu-button-width;
+      }
+    }
+  }
+
   .govuk-header__container--full-width {
     padding: 0 govuk-spacing(3);
     border-color: $govuk-header-border-color;
@@ -283,10 +293,6 @@
 
   .govuk-header__logo {
     @include govuk-responsive-margin($govuk-header-vertical-spacing-value, "bottom");
-
-    // Protect the absolute positioned menu button from overlapping with the
-    // logo with right padding using the button's width
-    padding-right: $govuk-header-menu-button-width;
 
     @include govuk-media-query($from: desktop) {
       width: 33.33%;
