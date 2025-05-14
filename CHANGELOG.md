@@ -25,6 +25,7 @@ We've made fixes to GOV.UK Frontend in the following pull requests:
 - [#5953: Move organisation legacy colour palette warning into the govuk-organisation-colour mixin](https://github.com/alphagov/govuk-frontend/pull/5953)
 - [#5918: Fix `govuk-font-size` mixin outputting the wrong font properties for size 14 text when compiled using libsass](https://github.com/alphagov/govuk-frontend/pull/5918), thanks to @oscarduignan for reporting this issue
 - [#5896: Fix character count not having error border colour when rendered with error message](https://github.com/alphagov/govuk-frontend/pull/5896), thanks to @gunjam for fixing this issue
+- [#5968: Apply header logo right padding only when menu button is visible](https://github.com/alphagov/govuk-frontend/pull/5968)
 
 ## v5.10.0 (Feature release)
 
