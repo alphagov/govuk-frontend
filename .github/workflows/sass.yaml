@@ -46,7 +46,7 @@ jobs:
           ! grep "\$govuk-" .tmp/index.css
 
       - name: Save compiled Sass
-        uses: actions/upload-artifact@v4.3.1
+        uses: actions/upload-artifact@v4.6.2
         if: ${{ !cancelled() }}
         with:
           name: Dart Sass v1.0.0 output
@@ -89,7 +89,7 @@ jobs:
           ! grep "\$govuk-" .tmp/index.css
 
       - name: Save compiled Sass
-        uses: actions/upload-artifact@v4.3.1
+        uses: actions/upload-artifact@v4.6.2
         if: ${{ !cancelled() }}
         with:
           name: Dart Sass v1 (latest) output
@@ -131,7 +131,7 @@ jobs:
           ! grep "\$govuk-" .tmp/index.css
 
       - name: Save compiled Sass
-        uses: actions/upload-artifact@v4.3.1
+        uses: actions/upload-artifact@v4.6.2
         if: ${{ !cancelled() }}
         with:
           name: LibSass v3.5.5 (deprecated) output
@@ -169,7 +169,7 @@ jobs:
           ! grep "\$govuk-" .tmp/index.css
 
       - name: Save compiled Sass
-        uses: actions/upload-artifact@v4.3.1
+        uses: actions/upload-artifact@v4.6.2
         if: ${{ !cancelled() }}
         with:
           name: LibSass v3 (latest, deprecated) output
@@ -205,7 +205,7 @@ jobs:
           ! grep "\$govuk-" .tmp/index.css
 
       - name: Save compiled Sass
-        uses: actions/upload-artifact@v4.3.1
+        uses: actions/upload-artifact@v4.6.2
         if: ${{ !cancelled() }}
         with:
           name: Ruby Sass v3.4.0 (deprecated) output
@@ -241,7 +241,7 @@ jobs:
           ! grep "\$govuk-" .tmp/index.css
 
       - name: Save compiled Sass
-        uses: actions/upload-artifact@v4.3.1
+        uses: actions/upload-artifact@v4.6.2
         if: ${{ !cancelled() }}
         with:
           name: Ruby Sass v3 (latest, deprecated) output
