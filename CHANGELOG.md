@@ -6,16 +6,25 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 ### Fixes
 
+To install this version with npm, run `npm install govuk-frontend@5.10.1`. You can also find more information about [how to stay up to date](https://frontend.design-system.service.gov.uk/staying-up-to-date/) in our documentation.
+
+### Brand refresh fixes
+
+We’ve fixed the colour of the dot in the refreshed GOV.UK logo as well as made some fixes to the implementation of the brand refresh in GOV.UK Frontend. We did this in the following pull requests:
+
+- [#5962: Fix colour of refreshed GOV.UK logo's dot](https://github.com/alphagov/govuk-frontend/pull/5962)
+- [#5905: Fix unnecessary whitespace after logo](https://github.com/alphagov/govuk-frontend/pull/5905)
+- [#5920: Fix transparency around edge of rebranded favicon.ico](https://github.com/alphagov/govuk-frontend/pull/5920), thanks to @matteason for reporting and fixing this issue
+
+### Fixes
+
 We've made fixes to GOV.UK Frontend in the following pull requests:
 
-- [#5905: Fix unnecessary whitespace after logo](https://github.com/alphagov/govuk-frontend/pull/5905)
 - [#5908: Fix footer licence link reflowing on focus in Safari](https://github.com/alphagov/govuk-frontend/pull/5908)
 - [#5919: Update deprecation warning message to make it clearer how to update to new organisation colour palette](https://github.com/alphagov/govuk-frontend/pull/5919)
 - [#5953: Move organisation legacy colour palette warning into the govuk-organisation-colour mixin](https://github.com/alphagov/govuk-frontend/pull/5953)
-- [#5920: Fix transparency around edge of rebranded favicon.ico](https://github.com/alphagov/govuk-frontend/pull/5920)
-- [#5918: Fix `govuk-font-size` mixin outputting the wrong font properties for size 14 text when compiled using libsass](https://github.com/alphagov/govuk-frontend/pull/5918)
-- [#5962: Fix colour of refreshed GOV.UK logo's dot](https://github.com/alphagov/govuk-frontend/pull/5962)
-- [#5896: Fix character count not having error border colour when rendered with error message](https://github.com/alphagov/govuk-frontend/pull/5896)
+- [#5918: Fix `govuk-font-size` mixin outputting the wrong font properties for size 14 text when compiled using libsass](https://github.com/alphagov/govuk-frontend/pull/5918), thanks to @oscarduignan for reporting this issue
+- [#5896: Fix character count not having error border colour when rendered with error message](https://github.com/alphagov/govuk-frontend/pull/5896), thanks to @gunjam for fixing this issue
 
 ## v5.10.0 (Feature release)
 
