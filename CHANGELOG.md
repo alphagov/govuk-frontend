@@ -4,7 +4,7 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 ## Unreleased
 
-### Fixes
+## v5.10.1 (Patch release)
 
 To install this version with npm, run `npm install govuk-frontend@5.10.1`. You can also find more information about [how to stay up to date](https://frontend.design-system.service.gov.uk/staying-up-to-date/) in our documentation.
 
@@ -16,7 +16,7 @@ We’ve fixed the colour of the dot in the refreshed GOV.UK logo as well as made
 - [#5905: Fix unnecessary whitespace after logo](https://github.com/alphagov/govuk-frontend/pull/5905)
 - [#5920: Fix transparency around edge of rebranded favicon.ico](https://github.com/alphagov/govuk-frontend/pull/5920), thanks to @matteason for reporting and fixing this issue
 
-### Fixes
+### Other fixes
 
 We've made fixes to GOV.UK Frontend in the following pull requests:
 
