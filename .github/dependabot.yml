@@ -72,9 +72,6 @@ updates:
       - dependency-name: 'iframe-resizer'
         update-types: ['version-update:semver-major']
 
-    reviewers:
-      - alphagov/design-system-developers
-
     # Schedule run every Monday, local time
     schedule:
       interval: monthly
@@ -94,8 +91,6 @@ updates:
   # Update GitHub Actions
   - package-ecosystem: github-actions
     directory: /
-    reviewers:
-      - alphagov/design-system-developers
 
     # Schedule run every Monday, local time
     schedule:
@@ -106,8 +101,6 @@ updates:
   # Update GitHub Actions (Build)
   - package-ecosystem: github-actions
     directory: /.github/workflows/actions/build
-    reviewers:
-      - alphagov/design-system-developers
 
     # Schedule run every Monday, local time
     schedule:
@@ -118,8 +111,6 @@ updates:
   # Update GitHub Actions (Install dependencies)
   - package-ecosystem: github-actions
     directory: /.github/workflows/actions/install-node
-    reviewers:
-      - alphagov/design-system-developers
 
     # Schedule run every Monday, local time
     schedule:
@@ -130,8 +121,6 @@ updates:
   # Update GitHub Actions (Setup Node.js)
   - package-ecosystem: github-actions
     directory: /.github/workflows/actions/setup-node
-    reviewers:
-      - alphagov/design-system-developers
 
     # Schedule run every Monday, local time
     schedule:
