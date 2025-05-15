@@ -97,6 +97,19 @@ describe('Header navigation', () => {
 
         expect(ariaExpanded).toBe('false')
       })
+
+      it('prevents overlap between the logo and the menu button', async () => {
+        const hidden = await page.$eval('.govuk-js-header-toggle', (el) =>
+          el.hasAttribute('hidden')
+        )
+
+        const logoPadding = await page.$eval('.govuk-header__logo', (el) =>
+          window.getComputedStyle(el).getPropertyValue('padding-right')
+        )
+
+        expect(hidden).toBe(false)
+        expect(logoPadding).toBe('80px')
+      })
     })
 
     describe('when menu button is pressed', () => {

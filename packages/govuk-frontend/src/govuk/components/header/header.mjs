@@ -51,6 +51,9 @@ export class Header extends Component {
       return this
     }
 
+    // Pad the header logo so it doesn't overlap the menu button
+    this.$root.classList.add('govuk-header--with-js-navigation')
+
     const menuId = $menuButton.getAttribute('aria-controls')
     if (!menuId) {
       throw new ElementError({
