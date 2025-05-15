@@ -12,7 +12,8 @@
       text: "GOV.UK",
       class: "govuk-header__logotype-text"
     } if not _rebrand else false,
-    rebrand: _rebrand
+    rebrand: _rebrand,
+    logotype: true
   }) | trim | indent(8) }}
 {%- endset -%}
 

@@ -1,4 +1,4 @@
-const { render } = require('govuk-frontend-helpers/nunjucks')
+const { render, nunjucksEnv } = require('govuk-frontend-helpers/nunjucks')
 const { getExamples } = require('govuk-frontend-lib/files')
 
 describe('footer', () => {
@@ -242,6 +242,31 @@ describe('footer', () => {
 
       const $copyrightMessage = $('.govuk-footer__copyright-logo')
       expect($copyrightMessage.html()).toContain('&lt;span&gt;Hawlfraint y Goron&lt;/span&gt;')
+    })
+  })
+
+  describe('rebrand', () => {
+    it('Does not show the crown in the footer by default', () => {
+      const $ = render('footer', examples.default)
+
+      const $crown = $('.govuk-footer__crown')
+      expect($crown).toHaveLength(0)
+    })
+
+    it('Does render the crown if the `rebrand` option is set', () => {
+      const $ = render('footer', examples.rebrand)
+
+      const $crown = $('.govuk-footer__crown')
+      expect($crown).toHaveLength(1)
+    })
+
+    it('Does render the crown if the `govukRebrand` nunjucks global is set to true', () => {
+      nunjucksEnv.addGlobal('govukRebrand', true)
+
+      const $ = render('footer', examples.default)
+
+      const $crown = $('.govuk-footer__crown')
+      expect($crown).toHaveLength(1)
     })
   })
 })

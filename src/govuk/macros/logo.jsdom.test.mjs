@@ -147,7 +147,19 @@ describe('logo.njk', () => {
       $svg = document.querySelector('svg')
     })
 
-    it('uses the logotype', () => {
+    it('uses the logotype if logotype is also true', () => {
+      document.body.innerHTML = renderMacro(
+        'govukLogo',
+        './govuk/macros/logo.njk',
+        {
+          context: {
+            rebrand: true,
+            logotype: true
+          }
+        }
+      )
+      $svg = document.querySelector('svg')
+
       const $logotypeDot = $svg.querySelector('g ~ circle')
 
       expect($logotypeDot).not.toBeNull()
