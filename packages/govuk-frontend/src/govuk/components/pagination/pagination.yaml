@@ -7,15 +7,15 @@ params:
       - name: number
         type: string
         required: false
-        description: The pagination item text – usually a page number.
+        description: The pagination item text – usually a page number.  Required unless the item is an ellipsis.
       - name: visuallyHiddenText
         type: string
         required: false
-        description: The visually hidden label (for the pagination item) which will be applied to an `aria-label` and announced by screen readers on the pagination item link. Should include page number.
+        description: The visually hidden label for the pagination item, which will be applied to an `aria-label` and announced by screen readers on the pagination item link. Should include page number. Defaults to, for example "Page 1".
       - name: href
         type: string
-        required: true
-        description: The link's URL.
+        required: false
+        description: The link's URL. Required unless the item is an ellipsis.
       - name: current
         type: boolean
         required: false
