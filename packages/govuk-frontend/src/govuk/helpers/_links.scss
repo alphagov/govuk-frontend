@@ -1,9 +1,9 @@
-@use "../settings/colours-applied" as *;
-@use "../settings/links" as *;
-@use "colour" as *;
-@use "focused" as *;
-@use "media-queries" as *;
-@use "typography" as *;
+@import "../settings/colours-applied";
+@import "../settings/links";
+@import "colour";
+@import "focused";
+@import "media-queries";
+@import "typography";
 
 ////
 /// @group helpers/links

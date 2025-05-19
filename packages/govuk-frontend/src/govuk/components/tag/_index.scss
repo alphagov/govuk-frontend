@@ -1,7 +1,7 @@
-@use "../../helpers/colour" as *;
-@use "../../helpers/typography" as *;
-@use "../../settings/media-queries" as *;
-@use "../../tools/exports" as *;
+@import "../../helpers/colour";
+@import "../../helpers/typography";
+@import "../../settings/media-queries";
+@import "../../tools/exports";
 
 @include govuk-exports("govuk/component/tag") {
   $govuk-tag-max-width: if(map-has-key($govuk-breakpoints, "mobile"), map-get($govuk-breakpoints, "mobile") / 2, 160px);

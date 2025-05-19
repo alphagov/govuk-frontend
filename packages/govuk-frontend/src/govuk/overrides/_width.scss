@@ -1,5 +1,5 @@
-@use "../helpers/media-queries" as *;
-@use "../tools/exports" as *;
+@import "../helpers/media-queries";
+@import "../tools/exports";
 
 // stylelint-disable declaration-no-important
 @include govuk-exports("govuk/overrides/width") {

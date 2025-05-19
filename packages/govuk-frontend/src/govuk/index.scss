@@ -1,9 +1,9 @@
-@forward "base";
+@import "base";
 
-@forward "core/index";
-@forward "objects/index";
+@import "core/index";
+@import "objects/index";
 
-@forward "components/index";
+@import "components/index";
 
-@forward "utilities/index";
-@forward "overrides/index";
+@import "utilities/index";
+@import "overrides/index";

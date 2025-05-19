@@ -1,5 +1,5 @@
-@use "warnings" as *;
-@forward "index";
+@import "warnings";
+@import "index";
 
 @include govuk-warning(
   "import-using-all",

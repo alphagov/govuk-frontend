@@ -1,5 +1,5 @@
-@use "../helpers/links" as *;
-@use "../tools/exports" as *;
+@import "../helpers/links";
+@import "../tools/exports";
 
 @include govuk-exports("govuk/core/links") {
   %govuk-link {

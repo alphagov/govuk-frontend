@@ -1,6 +1,6 @@
-@use "../helpers/typography" as *;
-@use "../settings/typography-responsive" as *;
-@use "../tools/exports" as *;
+@import "../helpers/typography";
+@import "../settings/typography-responsive";
+@import "../tools/exports";
 
 @include govuk-exports("govuk/overrides/typography") {
   // Font size and line height

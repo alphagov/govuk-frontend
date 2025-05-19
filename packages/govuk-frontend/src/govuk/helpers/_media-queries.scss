@@ -1,6 +1,5 @@
-@use "../settings/media-queries" as *;
-@use "../vendor/sass-mq" as *;
-@forward "../vendor/sass-mq";
+@import "../settings/media-queries";
+@import "../vendor/sass-mq";
 
 ////
 /// @group helpers/layout

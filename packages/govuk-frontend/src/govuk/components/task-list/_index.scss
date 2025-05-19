@@ -1,9 +1,9 @@
-@use "../../helpers/colour" as *;
-@use "../../helpers/spacing" as *;
-@use "../../helpers/typography" as *;
-@use "../../settings/colours-applied" as *;
-@use "../../tools/exports" as *;
-@forward "../tag/index";
+@import "../../helpers/colour";
+@import "../../helpers/spacing";
+@import "../../helpers/typography";
+@import "../../settings/colours-applied";
+@import "../../tools/exports";
+@import "../tag/index";
 
 @include govuk-exports("govuk/component/task-list") {
   $govuk-task-list-hover-colour: govuk-colour("light-grey");

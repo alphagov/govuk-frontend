@@ -1,9 +1,9 @@
-@use "../../helpers/media-queries" as *;
-@use "../../helpers/spacing" as *;
-@use "../../helpers/typography" as *;
-@use "../../settings/colours-applied" as *;
-@use "../../settings/typography-responsive" as *;
-@use "../../tools/exports" as *;
+@import "../../helpers/media-queries";
+@import "../../helpers/spacing";
+@import "../../helpers/typography";
+@import "../../settings/colours-applied";
+@import "../../settings/typography-responsive";
+@import "../../tools/exports";
 
 @include govuk-exports("govuk/component/table") {
   .govuk-table {

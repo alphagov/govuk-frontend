@@ -1,11 +1,11 @@
-@use "../../helpers/links" as *;
-@use "../../helpers/spacing" as *;
-@use "../../helpers/typography" as *;
-@use "../../helpers/visually-hidden" as *;
-@use "../../settings/colours-applied" as *;
-@use "../../settings/global-styles" as *;
-@use "../../settings/measurements" as *;
-@use "../../tools/exports" as *;
+@import "../../helpers/links";
+@import "../../helpers/spacing";
+@import "../../helpers/typography";
+@import "../../helpers/visually-hidden";
+@import "../../settings/colours-applied";
+@import "../../settings/global-styles";
+@import "../../settings/measurements";
+@import "../../tools/exports";
 
 @include govuk-exports("govuk/component/skip-link") {
   .govuk-skip-link {

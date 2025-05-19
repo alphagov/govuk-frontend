@@ -1,8 +1,8 @@
-@use "../../helpers/spacing" as *;
-@use "../../settings/colours-applied" as *;
-@use "../../tools/exports" as *;
-@use "../../tools/rebrand" as *;
-@forward "../button/index";
+@import "../../helpers/spacing";
+@import "../../settings/colours-applied";
+@import "../../tools/exports";
+@import "../../tools/rebrand";
+@import "../button/index";
 
 @include govuk-exports("govuk/component/cookie-banner") {
   // This needs to be kept in sync with the header component's styles

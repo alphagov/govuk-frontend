@@ -1,6 +1,6 @@
-@use "../helpers/media-queries" as *;
-@use "../helpers/spacing" as *;
-@use "../tools/exports" as *;
+@import "../helpers/media-queries";
+@import "../helpers/spacing";
+@import "../tools/exports";
 
 ////
 /// @group objects/layout

@@ -1,6 +1,6 @@
-@use "../settings/colours-organisations" as *;
-@use "../settings/colours-palette" as *;
-@use "../settings/warnings" as *;
+@import "../settings/colours-organisations";
+@import "../settings/colours-palette";
+@import "../settings/warnings";
 
 ////
 /// @group helpers/colour

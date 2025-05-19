@@ -1,11 +1,11 @@
-@use "../../helpers/colour" as *;
-@use "../../helpers/links" as *;
-@use "../../helpers/media-queries" as *;
-@use "../../helpers/spacing" as *;
-@use "../../helpers/typography" as *;
-@use "../../settings/colours-applied" as *;
-@use "../../tools/exports" as *;
-@use "../../tools/px-to-rem" as *;
+@import "../../helpers/colour";
+@import "../../helpers/links";
+@import "../../helpers/media-queries";
+@import "../../helpers/spacing";
+@import "../../helpers/typography";
+@import "../../settings/colours-applied";
+@import "../../tools/exports";
+@import "../../tools/px-to-rem";
 
 @include govuk-exports("govuk/component/pagination") {
   // Flexbox enhancement for small screen visual design

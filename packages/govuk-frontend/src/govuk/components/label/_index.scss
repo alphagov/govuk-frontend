@@ -1,6 +1,6 @@
-@use "../../helpers/spacing" as *;
-@use "../../helpers/typography" as *;
-@use "../../tools/exports" as *;
+@import "../../helpers/spacing";
+@import "../../helpers/typography";
+@import "../../tools/exports";
 
 @include govuk-exports("govuk/component/label") {
   .govuk-label {

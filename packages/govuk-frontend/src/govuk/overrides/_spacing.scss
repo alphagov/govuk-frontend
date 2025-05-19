@@ -1,6 +1,6 @@
-@use "../helpers/spacing" as *;
-@use "../settings/spacing" as *;
-@use "../tools/exports" as *;
+@import "../helpers/spacing";
+@import "../settings/spacing";
+@import "../tools/exports";
 
 ////
 /// @group overrides

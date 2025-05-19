@@ -1,5 +1,5 @@
-@use "../settings/measurements" as *;
-@use "media-queries" as *;
+@import "../settings/measurements";
+@import "media-queries";
 
 ////
 /// @group helpers/layout

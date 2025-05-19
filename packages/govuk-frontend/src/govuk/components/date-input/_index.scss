@@ -1,11 +1,11 @@
-@use "../../helpers/clearfix" as *;
-@use "../../helpers/spacing" as *;
-@use "../../tools/exports" as *;
-@forward "../error-message/index";
-@forward "../input/index";
-@forward "../hint/index";
-@forward "../label/index";
-@forward "../fieldset/index";
+@import "../../helpers/clearfix";
+@import "../../helpers/spacing";
+@import "../../tools/exports";
+@import "../error-message/index";
+@import "../input/index";
+@import "../hint/index";
+@import "../label/index";
+@import "../fieldset/index";
 
 @include govuk-exports("govuk/component/date-input") {
   .govuk-date-input {

@@ -1,13 +1,13 @@
-@use "../../helpers/media-queries" as *;
-@use "../../helpers/spacing" as *;
-@use "../../helpers/typography" as *;
-@use "../../settings/colours-applied" as *;
-@use "../../settings/measurements" as *;
-@use "../../tools/exports" as *;
-@forward "../error-message/index";
-@forward "../fieldset/index";
-@forward "../hint/index";
-@forward "../label/index";
+@import "../../helpers/media-queries";
+@import "../../helpers/spacing";
+@import "../../helpers/typography";
+@import "../../settings/colours-applied";
+@import "../../settings/measurements";
+@import "../../tools/exports";
+@import "../error-message/index";
+@import "../fieldset/index";
+@import "../hint/index";
+@import "../label/index";
 
 @include govuk-exports("govuk/component/radios") {
   $govuk-touch-target-gutter: 4px;

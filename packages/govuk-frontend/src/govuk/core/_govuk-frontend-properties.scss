@@ -1,5 +1,5 @@
-@use "../settings/media-queries" as *;
-@use "../tools/px-to-rem" as *;
+@import "../settings/media-queries";
+@import "../tools/px-to-rem";
 
 :root {
   // This variable is automatically overwritten during builds and releases.

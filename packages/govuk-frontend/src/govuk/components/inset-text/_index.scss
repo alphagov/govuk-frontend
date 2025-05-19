@@ -1,8 +1,8 @@
-@use "../../helpers/spacing" as *;
-@use "../../helpers/typography" as *;
-@use "../../settings/colours-applied" as *;
-@use "../../settings/measurements" as *;
-@use "../../tools/exports" as *;
+@import "../../helpers/spacing";
+@import "../../helpers/typography";
+@import "../../settings/colours-applied";
+@import "../../settings/measurements";
+@import "../../tools/exports";
 
 @include govuk-exports("govuk/component/inset-text") {
   .govuk-inset-text {

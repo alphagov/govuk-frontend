@@ -1,7 +1,7 @@
-@use "../helpers/clearfix" as *;
-@use "../helpers/grid" as *;
-@use "../settings/measurements" as *;
-@use "../tools/exports" as *;
+@import "../helpers/clearfix";
+@import "../helpers/grid";
+@import "../settings/measurements";
+@import "../tools/exports";
 
 @include govuk-exports("govuk/objects/grid") {
   .govuk-grid-row {
