@@ -26,7 +26,7 @@
 .app-search-result-list__children {
   margin-left: govuk-spacing(4);
 
-  @include mq($from: tablet) {
+  @include govuk-media-query($from: tablet) {
     display: grid;
     grid-template-columns: 1fr 1fr;
     column-gap: 15px;
