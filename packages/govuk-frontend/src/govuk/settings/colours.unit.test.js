@@ -3,15 +3,12 @@ const { compileSassString } = require('@govuk-frontend/helpers/tests')
 describe('Organisation colours', () => {
   it('should define contrast-safe colours that meet contrast requirements', async () => {
     const sass = `
-      $govuk-new-organisation-colours: true;
-      $govuk-suppressed-warnings: ("organisation-colours");
+      @use "sass-color-helpers/stylesheets/color-helpers" as *;
 
-      @import "settings/colours-palette";
-      @import "settings/colours-organisations";
-      @import "settings/colours-applied";
-      @import "helpers/colour";
-
-      @import "sass-color-helpers/stylesheets/color-helpers";
+      @use "settings/colours-applied" as * with (
+        $govuk-new-organisation-colours: true,
+        $govuk-suppressed-warnings: ("organisation-colours")
+      );
 
       $minimum-contrast: 4.5;
 
@@ -33,14 +30,11 @@ describe('Organisation colours', () => {
 
   it('should define websafe colours that meet contrast requirements (legacy colours)', async () => {
     const sass = `
-      $govuk-suppressed-warnings: ("legacy-organisation-colours");
+      @use "sass-color-helpers/stylesheets/color-helpers" as *;
 
-      @import "settings/colours-palette";
-      @import "settings/colours-organisations";
-      @import "settings/colours-applied";
-      @import "helpers/colour";
-
-      @import "sass-color-helpers/stylesheets/color-helpers";
+      @use "settings/colours-applied" as * with (
+        $govuk-suppressed-warnings: ("legacy-organisation-colours")
+      );
 
       $minimum-contrast: 4.5;
 

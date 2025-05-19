@@ -2,7 +2,7 @@ const { compileSassString } = require('@govuk-frontend/helpers/tests')
 const { outdent } = require('outdent')
 
 const sassBootstrap = `
-  $govuk-breakpoints: (
+  $app-breakpoints: (
     mobile:  320px,
     tablet:  740px,
     desktop: 980px,
@@ -13,7 +13,7 @@ const sassBootstrap = `
 describe('@mixin govuk-media-query', () => {
   it('allows you to target min-width using a numeric value', async () => {
     const sass = `
-      @import "helpers/media-queries";
+      @use "helpers/media-queries" as *;
 
       .foo {
         @include govuk-media-query($from: 20em) {
@@ -36,7 +36,10 @@ describe('@mixin govuk-media-query', () => {
   it('allows you to target min-width using a predefined breakpoint', async () => {
     const sass = `
       ${sassBootstrap}
-      @import "helpers/media-queries";
+
+      @use "helpers/media-queries" as * with (
+        $govuk-breakpoints: $app-breakpoints
+      );
 
       .foo {
         @include govuk-media-query($from: mobile) {
@@ -58,7 +61,7 @@ describe('@mixin govuk-media-query', () => {
 
   it('allows you to target max-width using a numeric value', async () => {
     const sass = `
-      @import "helpers/media-queries";
+      @use "helpers/media-queries" as *;
 
       .foo {
         @include govuk-media-query($until: 20em) {
@@ -80,7 +83,10 @@ describe('@mixin govuk-media-query', () => {
   it('allows you to target max-width using a predefined breakpoint', async () => {
     const sass = `
       ${sassBootstrap}
-      @import "helpers/media-queries";
+
+      @use "helpers/media-queries" as * with (
+        $govuk-breakpoints: $app-breakpoints
+      );
 
       .foo {
         @include govuk-media-query($until: desktop) {
@@ -102,7 +108,7 @@ describe('@mixin govuk-media-query', () => {
 
   it('allows you to target combined min-width and max-width using numeric values', async () => {
     const sass = `
-      @import "helpers/media-queries";
+      @use "helpers/media-queries" as *;
 
       .foo {
         @include govuk-media-query($from: 20em, $until: 40em) {
@@ -125,7 +131,10 @@ describe('@mixin govuk-media-query', () => {
   it('allows you to target combined min-width and max-width using predefined breakpoints', async () => {
     const sass = `
       ${sassBootstrap}
-      @import "helpers/media-queries";
+
+      @use "helpers/media-queries" as * with (
+        $govuk-breakpoints: $app-breakpoints
+      );
 
       .foo {
         @include govuk-media-query($from: mobile, $until: tablet) {
@@ -147,7 +156,7 @@ describe('@mixin govuk-media-query', () => {
 
   it('allows you to target using custom directives', async () => {
     const sass = `
-      @import "helpers/media-queries";
+      @use "helpers/media-queries" as *;
 
       .foo {
         @include govuk-media-query($until: 40em, $and: '(orientation: landscape)') {
@@ -169,7 +178,7 @@ describe('@mixin govuk-media-query', () => {
 
   it('allows you to target particular media types', async () => {
     const sass = `
-        @import "helpers/media-queries";
+      @use "helpers/media-queries" as *;
 
       .foo {
         @include govuk-media-query($until: 40em, $media-type: 'aural') {
@@ -230,7 +239,7 @@ describe('Active breakpoint', () => {
 
   it('hides active breakpoint by default', async () => {
     const sass = `
-      @import "helpers/media-queries";
+      @use "helpers/media-queries" as *;
     `
 
     await expect(compileSassString(sass)).resolves.toMatchObject({
@@ -241,7 +250,10 @@ describe('Active breakpoint', () => {
   it('hides active breakpoint if $govuk-breakpoints variable is set', async () => {
     const sass = `
       ${sassBootstrap}
-      @import "helpers/media-queries";
+
+      @use "helpers/media-queries" as * with (
+        $govuk-breakpoints: $app-breakpoints
+      );
     `
 
     await expect(compileSassString(sass)).resolves.toMatchObject({
@@ -252,8 +264,11 @@ describe('Active breakpoint', () => {
   it('hides active breakpoint if $govuk-show-breakpoints variable is set to false', async () => {
     const sass = `
       ${sassBootstrap}
-      $govuk-show-breakpoints: false;
-      @import "helpers/media-queries";
+
+      @use "helpers/media-queries" as * with (
+        $govuk-breakpoints: $app-breakpoints,
+        $govuk-show-breakpoints: false
+      );
     `
 
     await expect(compileSassString(sass)).resolves.toMatchObject({
@@ -264,8 +279,11 @@ describe('Active breakpoint', () => {
   it('shows active breakpoint if $govuk-show-breakpoints variable is set to true', async () => {
     const sass = `
       ${sassBootstrap}
-      $govuk-show-breakpoints: true;
-      @import "helpers/media-queries";
+
+      @use "helpers/media-queries" as * with (
+        $govuk-breakpoints: $app-breakpoints,
+        $govuk-show-breakpoints: true
+      );
     `
 
     await expect(compileSassString(sass)).resolves.toMatchObject({
@@ -273,9 +291,11 @@ describe('Active breakpoint', () => {
     })
   })
 
-  it('adds active breakpoint styles only once', async () => {
+  it('adds active breakpoint styles only once using @import', async () => {
     const sass = `
       ${sassBootstrap}
+
+      $govuk-breakpoints: $app-breakpoints;
       $govuk-show-breakpoints: true;
 
       @import "helpers/media-queries";
