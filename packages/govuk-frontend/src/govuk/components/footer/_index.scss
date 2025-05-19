@@ -1,3 +1,15 @@
+@use "../../helpers/clearfix" as *;
+@use "../../helpers/links" as *;
+@use "../../helpers/media-queries" as *;
+@use "../../helpers/spacing" as *;
+@use "../../helpers/typography" as *;
+@use "../../settings/colours-applied" as *;
+@use "../../settings/measurements" as *;
+@use "../../settings/typography-responsive" as *;
+@use "../../tools/exports" as *;
+@use "../../tools/image-url" as *;
+@use "../../tools/rebrand" as *;
+
 @include govuk-exports("govuk/component/footer") {
   $govuk-footer-background: $govuk-template-background-colour;
   $govuk-footer-text: $govuk-text-colour;

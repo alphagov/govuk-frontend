@@ -1,3 +1,8 @@
+@use "../../helpers/clearfix" as *;
+@use "../../helpers/spacing" as *;
+@use "../../helpers/typography" as *;
+@use "../../tools/exports" as *;
+
 @include govuk-exports("govuk/component/fieldset") {
   .govuk-fieldset {
     min-width: 0;

@@ -1,3 +1,6 @@
+@use "../helpers/links" as *;
+@use "../tools/exports" as *;
+
 @include govuk-exports("govuk/core/links") {
   %govuk-link {
     @include govuk-link-common;

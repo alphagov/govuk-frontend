@@ -1,22 +1,21 @@
+@use "../settings/media-queries" as *;
+@use "../vendor/sass-mq" as *;
+@forward "../vendor/sass-mq";
+
 ////
 /// @group helpers/layout
 ////
-
-@import "../vendor/sass-mq";
 
 // =========================================================
 // Wrangle sass-mq config...
 // =========================================================
 
 // Pass our breakpoint definitions through to sass-mq.
-$mq-breakpoints: ();
+$mq-breakpoints: $govuk-breakpoints;
+$mq-show-breakpoints: ();
 
-@if variable-exists(govuk-breakpoints) {
-  $mq-breakpoints: $govuk-breakpoints !global;
-
-  @if variable-exists(govuk-show-breakpoints) and $govuk-show-breakpoints {
-    $mq-show-breakpoints: map-keys($govuk-breakpoints) !global;
-  }
+@if $govuk-show-breakpoints {
+  $mq-show-breakpoints: map-keys($govuk-breakpoints) !global;
 }
 
 // This is a horrible, horrible hack to prevent the 'dev mode' CSS to display

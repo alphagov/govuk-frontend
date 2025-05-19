@@ -1,4 +1,5 @@
-@import "index";
+@use "settings/warnings" as *;
+@forward "index";
 
 @include _warning(
   "import-using-all",

@@ -1,5 +1,5 @@
-@import "../settings/warnings";
-@import "index";
+@use "warnings" as *;
+@forward "index";
 
 @include _warning(
   "import-using-all",

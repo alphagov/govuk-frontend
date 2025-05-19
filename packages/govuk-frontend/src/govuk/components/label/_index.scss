@@ -1,3 +1,7 @@
+@use "../../helpers/spacing" as *;
+@use "../../helpers/typography" as *;
+@use "../../tools/exports" as *;
+
 @include govuk-exports("govuk/component/label") {
   .govuk-label {
     @include govuk-font($size: 19);

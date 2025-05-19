@@ -1,4 +1,8 @@
-@import "../base";
+@use "../helpers/media-queries" as *;
+@use "../helpers/spacing" as *;
+@use "../settings/colours-applied" as *;
+@use "../tools/exports" as *;
+@use "../tools/rebrand" as *;
 
 @include govuk-exports("govuk/objects/template") {
   // Applied to the <html> element

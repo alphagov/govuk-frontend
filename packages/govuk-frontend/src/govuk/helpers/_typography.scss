@@ -1,8 +1,13 @@
+@use "../settings/colours-applied" as *;
+@use "../settings/typography-font" as *;
+@use "../settings/typography-responsive" as *;
+@use "../tools/px-to-rem" as *;
+@use "font-faces" as *;
+@use "media-queries" as *;
+
 ////
 /// @group helpers/typography
 ////
-
-@import "../tools/px-to-rem";
 
 /// 'Common typography' helper
 ///

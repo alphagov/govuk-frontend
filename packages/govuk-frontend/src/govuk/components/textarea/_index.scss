@@ -1,6 +1,11 @@
-@import "../error-message/index";
-@import "../hint/index";
-@import "../label/index";
+@use "../../helpers/spacing" as *;
+@use "../../helpers/typography" as *;
+@use "../../settings/colours-applied" as *;
+@use "../../settings/measurements" as *;
+@use "../../tools/exports" as *;
+@forward "../error-message/index";
+@forward "../hint/index";
+@forward "../label/index";
 
 @include govuk-exports("govuk/component/textarea") {
   .govuk-textarea {

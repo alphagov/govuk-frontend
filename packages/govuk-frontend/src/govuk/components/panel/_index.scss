@@ -1,3 +1,12 @@
+@use "../../helpers/colour" as *;
+@use "../../helpers/media-queries" as *;
+@use "../../helpers/spacing" as *;
+@use "../../helpers/typography" as *;
+@use "../../settings/colours-applied" as *;
+@use "../../settings/measurements" as *;
+@use "../../settings/typography-responsive" as *;
+@use "../../tools/exports" as *;
+
 @include govuk-exports("govuk/component/panel") {
   .govuk-panel {
     @include govuk-font($size: 36);
