@@ -105,6 +105,10 @@ params:
     type: object
     required: false
     description: HTML attributes (for example data attributes) to add to the footer component container.
+  - name: rebrand
+    type: boolean
+    required: false
+    description: If `true`, use the redesigned footer with the GOV.UK crown. Default is `false`.
 
 previewLayout: full-width
 accessibilityCriteria: |
@@ -470,3 +474,7 @@ examples:
               attributes:
                 data-attribute: my-attribute
                 data-attribute-2: my-attribute-2
+  - name: rebrand
+    hidden: true
+    data:
+      rebrand: true
