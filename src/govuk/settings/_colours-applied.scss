@@ -153,3 +153,13 @@ $govuk-link-hover-colour: govuk-colour("dark-blue", $legacy: "light-blue") !defa
 /// @access public
 
 $govuk-link-active-colour: govuk-colour("black", $legacy: "light-blue") !default;
+
+// =============================================================================
+// Brand refresh
+// =============================================================================
+
+/// Updated template background colour
+///
+/// @type Colour
+/// @access private
+$_govuk-rebrand-template-background-colour: #f4f8fb; // Blue tint 95%
