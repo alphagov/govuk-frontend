@@ -2,17 +2,21 @@
 /// @group helpers/layout
 ////
 
+@import "../vendor/sass-mq";
+
 // =========================================================
 // Wrangle sass-mq config...
 // =========================================================
 
 // Pass our breakpoint definitions through to sass-mq.
-$mq-breakpoints: if(variable-exists(govuk-breakpoints), $govuk-breakpoints, ());
+$mq-breakpoints: ();
 
-$mq-show-breakpoints: ();
+@if variable-exists(govuk-breakpoints) {
+  $mq-breakpoints: $govuk-breakpoints !global;
 
-@if variable-exists(govuk-show-breakpoints) and $govuk-show-breakpoints {
-  $mq-show-breakpoints: map-keys($govuk-breakpoints);
+  @if variable-exists(govuk-show-breakpoints) and $govuk-show-breakpoints {
+    $mq-show-breakpoints: map-keys($govuk-breakpoints) !global;
+  }
 }
 
 // This is a horrible, horrible hack to prevent the 'dev mode' CSS to display
@@ -22,11 +26,9 @@ $mq-show-breakpoints: ();
 // used within control directives 😠
 $sass-mq-already-included: false !default;
 
-@if $sass-mq-already-included {
-  $mq-show-breakpoints: ();
+@if not $sass-mq-already-included and length($mq-show-breakpoints) > 0 {
+  @include mq-show-breakpoints;
 }
-
-@import "../vendor/sass-mq";
 
 $sass-mq-already-included: true;
 

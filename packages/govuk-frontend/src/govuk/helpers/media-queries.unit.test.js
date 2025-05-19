@@ -189,3 +189,103 @@ describe('@mixin govuk-media-query', () => {
     })
   })
 })
+
+describe('Active breakpoint', () => {
+  const expectedSass = outdent`
+    @charset \"UTF-8\";
+    body::before {
+      background-color: #FCF8E3;
+      border-bottom: 1px solid #FBEED5;
+      border-left: 1px solid #FBEED5;
+      color: #C09853;
+      font: small-caption;
+      padding: 3px 6px;
+      pointer-events: none;
+      position: fixed;
+      right: 0;
+      top: 0;
+      z-index: 100;
+    }
+    @media (min-width: 20em) {
+      body::before {
+        content: \"mobile ≥ 320px (20em)\";
+      }
+    }
+    @media (min-width: 46.25em) {
+      body::before {
+        content: \"tablet ≥ 740px (46.25em)\";
+      }
+    }
+    @media (min-width: 61.25em) {
+      body::before {
+        content: \"desktop ≥ 980px (61.25em)\";
+      }
+    }
+    @media (min-width: 81.25em) {
+      body::before {
+        content: \"wide ≥ 1300px (81.25em)\";
+      }
+    }
+  `
+
+  it('hides active breakpoint by default', async () => {
+    const sass = `
+      @import "helpers/media-queries";
+    `
+
+    await expect(compileSassString(sass)).resolves.toMatchObject({
+      css: ''
+    })
+  })
+
+  it('hides active breakpoint if $govuk-breakpoints variable is set', async () => {
+    const sass = `
+      ${sassBootstrap}
+      @import "helpers/media-queries";
+    `
+
+    await expect(compileSassString(sass)).resolves.toMatchObject({
+      css: ''
+    })
+  })
+
+  it('hides active breakpoint if $govuk-show-breakpoints variable is set to false', async () => {
+    const sass = `
+      ${sassBootstrap}
+      $govuk-show-breakpoints: false;
+      @import "helpers/media-queries";
+    `
+
+    await expect(compileSassString(sass)).resolves.toMatchObject({
+      css: ''
+    })
+  })
+
+  it('shows active breakpoint if $govuk-show-breakpoints variable is set to true', async () => {
+    const sass = `
+      ${sassBootstrap}
+      $govuk-show-breakpoints: true;
+      @import "helpers/media-queries";
+    `
+
+    await expect(compileSassString(sass)).resolves.toMatchObject({
+      css: expectedSass
+    })
+  })
+
+  it('adds active breakpoint styles only once', async () => {
+    const sass = `
+      ${sassBootstrap}
+      $govuk-show-breakpoints: true;
+
+      @import "helpers/media-queries";
+      @import "helpers/media-queries";
+      @import "helpers/media-queries";
+      @import "helpers/media-queries";
+    `
+
+    await expect(compileSassString(sass)).resolves.toMatchObject({
+      css: expectedSass
+    })
+  })
+})
