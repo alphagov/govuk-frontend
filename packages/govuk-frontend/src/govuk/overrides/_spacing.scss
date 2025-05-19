@@ -35,18 +35,18 @@ $_spacing-directions: ("top", "right", "bottom", "left") !default;
 ///
 /// @access private
 
-@mixin _govuk-generate-responsive-spacing-overrides($property) {
+@mixin govuk-generate-responsive-spacing-overrides($property) {
   // For each point in the spacing scale (defined in settings), create an
   // override that affects all directions...
   @each $scale-point, $scale-map in $govuk-spacing-responsive-scale {
     .govuk-\!-#{$property}-#{$scale-point} {
-      @include _govuk-responsive-spacing($scale-point, $property, "all", true);
+      @include govuk-responsive-spacing($scale-point, $property, "all", true);
     }
 
     // ... and then an override for each individual direction
     @each $direction in $_spacing-directions {
       .govuk-\!-#{$property}-#{$direction}-#{$scale-point} {
-        @include _govuk-responsive-spacing($scale-point, $property, $direction, true);
+        @include govuk-responsive-spacing($scale-point, $property, $direction, true);
       }
     }
   }
@@ -65,7 +65,7 @@ $_spacing-directions: ("top", "right", "bottom", "left") !default;
 ///   }
 ///
 /// @access private
-@mixin _govuk-generate-static-spacing-overrides($property) {
+@mixin govuk-generate-static-spacing-overrides($property) {
   @each $spacing-point in map-keys($govuk-spacing-points) {
     .govuk-\!-static-#{$property}-#{$spacing-point} {
       #{$property}: govuk-spacing($spacing-point) !important;
@@ -80,9 +80,9 @@ $_spacing-directions: ("top", "right", "bottom", "left") !default;
 }
 
 @include govuk-exports("govuk/overrides/spacing") {
-  @include _govuk-generate-responsive-spacing-overrides("margin");
-  @include _govuk-generate-responsive-spacing-overrides("padding");
+  @include govuk-generate-responsive-spacing-overrides("margin");
+  @include govuk-generate-responsive-spacing-overrides("padding");
 
-  @include _govuk-generate-static-spacing-overrides("margin");
-  @include _govuk-generate-static-spacing-overrides("padding");
+  @include govuk-generate-static-spacing-overrides("margin");
+  @include govuk-generate-static-spacing-overrides("padding");
 }

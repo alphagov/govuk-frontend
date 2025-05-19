@@ -71,7 +71,7 @@
 ///
 /// @access private
 
-@mixin _govuk-responsive-spacing(
+@mixin govuk-responsive-spacing(
   $responsive-spacing-point,
   $property,
   $direction: "all",
@@ -125,9 +125,9 @@
 ///
 /// Adds responsive margin by fetching a 'spacing map' from the responsive
 /// spacing scale, which defines different spacing values at different
-/// breakpoints. Wrapper for the `_govuk-responsive-spacing` mixin.
+/// breakpoints. Wrapper for the `govuk-responsive-spacing` mixin.
 ///
-/// @see {mixin} _govuk-responsive-spacing
+/// @see {mixin} govuk-responsive-spacing
 ///
 /// @param {Number} $responsive-spacing-point - Point on the responsive spacing
 /// scale, corresponds to a map of breakpoints and spacing values
@@ -144,16 +144,16 @@
 /// @access public
 
 @mixin govuk-responsive-margin($responsive-spacing-point, $direction: "all", $important: false, $adjustment: false) {
-  @include _govuk-responsive-spacing($responsive-spacing-point, "margin", $direction, $important, $adjustment);
+  @include govuk-responsive-spacing($responsive-spacing-point, "margin", $direction, $important, $adjustment);
 }
 
 /// Responsive padding
 ///
 /// Adds responsive padding by fetching a 'spacing map' from the responsive
 /// spacing scale, which defines different spacing values at different
-/// breakpoints. Wrapper for the `_govuk-responsive-spacing` mixin.
+/// breakpoints. Wrapper for the `govuk-responsive-spacing` mixin.
 ///
-/// @see {mixin} _govuk-responsive-spacing
+/// @see {mixin} govuk-responsive-spacing
 ///
 /// @param {Number} $responsive-spacing-point - Point on the responsive spacing
 ///   scale, corresponds to a map of breakpoints and spacing values
@@ -170,5 +170,5 @@
 /// @access public
 
 @mixin govuk-responsive-padding($responsive-spacing-point, $direction: "all", $important: false, $adjustment: false) {
-  @include _govuk-responsive-spacing($responsive-spacing-point, "padding", $direction, $important, $adjustment);
+  @include govuk-responsive-spacing($responsive-spacing-point, "padding", $direction, $important, $adjustment);
 }

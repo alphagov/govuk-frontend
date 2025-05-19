@@ -26,10 +26,10 @@
 
     border-top: 10px solid $govuk-brand-colour;
     color: $govuk-footer-text;
-    @include _govuk-rebrand(
+    @include govuk-rebrand(
       "background",
       $from: $govuk-footer-background,
-      $to: $_govuk-rebrand-template-background-colour
+      $to: $govuk-rebrand-template-background-colour
     );
   }
 
@@ -47,10 +47,10 @@
     @include govuk-responsive-margin(8, "bottom");
     border: 0; // Reset `<hr>` default borders
     border-bottom: 1px solid;
-    @include _govuk-rebrand(
+    @include govuk-rebrand(
       "border-bottom-color",
       $from: $govuk-footer-content-border,
-      $to: $_govuk-rebrand-border-colour-on-blue-tint-95
+      $to: $govuk-rebrand-border-colour-on-blue-tint-95
     );
   }
 
@@ -154,10 +154,10 @@
     }
 
     border-bottom: 1px solid;
-    @include _govuk-rebrand(
+    @include govuk-rebrand(
       "border-bottom-color",
       $from: $govuk-footer-content-border,
-      $to: $_govuk-rebrand-border-colour-on-blue-tint-95
+      $to: $govuk-rebrand-border-colour-on-blue-tint-95
     );
   }
 

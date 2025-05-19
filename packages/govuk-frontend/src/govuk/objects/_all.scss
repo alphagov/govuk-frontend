@@ -1,7 +1,7 @@
 @use "../settings/warnings" as *;
 @forward "index";
 
-@include _warning(
+@include govuk-warning(
   "import-using-all",
   "Importing using 'govuk/objects/all' is deprecated. Update your import statement to import 'govuk/objects/index'.",
   $silence-further-warnings: false

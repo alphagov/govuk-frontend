@@ -38,7 +38,7 @@ $govuk-canvas-background-colour: govuk-colour("light-grey") !default;
 // Output a deprecation warning if $govuk-canvas-background-colour is being overridden
 // Remove in next major version.
 @if $govuk-canvas-background-colour != govuk-colour("light-grey") {
-  @include _warning(
+  @include govuk-warning(
     "$govuk-canvas-background-colour",
     "$govuk-canvas-background-colour has been deprecated and will be removed in the next major version."
   );
@@ -184,10 +184,10 @@ $govuk-link-active-colour: govuk-colour("black") !default;
 ///
 /// @type Colour
 /// @access private
-$_govuk-rebrand-template-background-colour: #f4f8fb; // Blue tint 95%
+$govuk-rebrand-template-background-colour: #f4f8fb; // Blue tint 95%
 
 /// Border colour for areas on a light-blue background
 ///
 /// @type Colour
 /// @access private
-$_govuk-rebrand-border-colour-on-blue-tint-95: #8eb8dc; // Blue tint 50%
+$govuk-rebrand-border-colour-on-blue-tint-95: #8eb8dc; // Blue tint 50%

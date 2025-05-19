@@ -55,9 +55,9 @@ In the annotation description include:
 - the suggested alternative, if there is one
 - a link to the GitHub issue for its removal
 
-If possible, update the code to output a warning using the `_warning` mixin or its associated functions (see section below on allowing users to suppress warnings).
+If possible, update the code to output a warning using the `govuk-warning` mixin or its associated functions (see section below on allowing users to suppress warnings).
 
-Use the `_warning` mixin when deprecating a mixin:
+Use the `govuk-warning` mixin when deprecating a mixin:
 
 ```scss
 /// XL headings
@@ -65,12 +65,12 @@ Use the `_warning` mixin when deprecating a mixin:
 /// @deprecated Use govuk-font-size($size: 80) instead.
 ///   See https://github.com/alphagov/govuk-frontend/issues/1234
 @mixin govuk-heading-xl {
-  @include _warning("heading-xl", "govuk-heading-xl is deprecated. Use govuk-font-size(80) instead.");
+  @include govuk-warning("heading-xl", "govuk-heading-xl is deprecated. Use govuk-font-size(80) instead.");
   @include govuk-font-size($size: 80);
 }
 ```
 
-Mixins cannot be invoked within functions, so we use the `_should-warn` and `_warning-message` functions directly when deprecating a function:
+Mixins cannot be invoked within functions, so we use the `_should-warn` and `govuk-warning-message` functions directly when deprecating a function:
 
 ```scss
 /// Double a number
@@ -81,14 +81,14 @@ Mixins cannot be invoked within functions, so we use the `_should-warn` and `_wa
 ///   See https://github.com/alphagov/govuk-frontend/issues/1234
 @function govuk-double($number) {
   @if _should-warn("double") {
-    @warn _warning-message("double", "govuk-double($number) is deprecated. Use govuk-multiply($number, 2) instead.");
+    @warn govuk-warning-message("double", "govuk-double($number) is deprecated. Use govuk-multiply($number, 2) instead.");
   }
 
   @return govuk-multiply($number, 2);
 }
 ```
 
-Unlike the `_warning` mixin, producing warnings in this way doesn't suppress future instances of the same warning. This may be preferred in cases where a user may need to change their code in multiple places (such as if a parameter has been deprecated).
+Unlike the `govuk-warning` mixin, producing warnings in this way doesn't suppress future instances of the same warning. This may be preferred in cases where a user may need to change their code in multiple places (such as if a parameter has been deprecated).
 
 ### Deprecating a parameter for a Sass mixin or function
 
@@ -104,7 +104,7 @@ If possible, update the mixin or function to maintain the existing functionality
 /// @param {Boolean} $rightAngle Deprecated. Use $angle: 90 instead.
 @mixin govuk-reticulate-splines($spline, $angle: 180, $rightAngle: false) {
   @if $rightAngle != false {
-    @include _warning("right-angle", "Passing $rightAngle to govuk-reticulate-splines is deprecated. Pass $angle: 90 instead.");
+    @include govuk-warning("right-angle", "Passing $rightAngle to govuk-reticulate-splines is deprecated. Pass $angle: 90 instead.");
 
     $angle: 90;
   }
@@ -166,7 +166,7 @@ For example:
 /// @alias the-new-name
 /// @deprecated Use the-new-name($foo) instead.
 @function the-old-name($foo) {
-  @include _warning("the-old-name", "the-old-name is deprecated. Use the-new-name instead.");
+  @include govuk-warning("the-old-name", "the-old-name is deprecated. Use the-new-name instead.");
   @return the-new-name($foo);
 }
 
@@ -194,7 +194,7 @@ Add 'Deprecated.' to the description for the parameter.
 /// @param {String} $spilne Deprecated. Use $spline instead.
 @function govuk-reticulate-splines($spline, $spilne: false) {
   @if $spilne != false {
-    @include _warning("spilne", "Passing $spilne to govuk-reticulate-splines is deprecated. Pass $spline instead.");
+    @include govuk-warning("spilne", "Passing $spilne to govuk-reticulate-splines is deprecated. Pass $spline instead.");
 
     $spline: $spilne;
   }
@@ -215,10 +215,10 @@ Keep the old name in the selector list, and mark it as deprecated.
 }
 ```
 
-### The `_warning` mixin and allowing users to suppress warnings
+### The `govuk-warning` mixin and allowing users to suppress warnings
 
-In the above examples we've used `@include _warning(...)` instead of the native sass `@warn` at-rule. We use this instead of `@warn` because it gives users the option to suppress deprecation warnings by interacting with the `$govuk-suppressed-warnings` map.
+In the above examples we've used `@include govuk-warning(...)` instead of the native sass `@warn` at-rule. We use this instead of `@warn` because it gives users the option to suppress deprecation warnings by interacting with the `$govuk-suppressed-warnings` map.
 
-You can read more about how `$govuk-suppressed-warnings` and `_warning` work by reading their respective sassdocs in [`packages/govuk-frontend/src/govuk/settings/_warnings.scss`](/packages/govuk-frontend/src/govuk/settings/_warnings.scss).
+You can read more about how `$govuk-suppressed-warnings` and `govuk-warning` work by reading their respective sassdocs in [`packages/govuk-frontend/src/govuk/settings/govuk-warnings.scss`](/packages/govuk-frontend/src/govuk/settings/govuk-warnings.scss).
 
 We make this option available for users because they can not always action deprecation warnings or upgrade their codebase beyond a specific version of GOV.UK Frontend. For example, a legacy codebase that does not have the resource to upgrade to the latest breaking change where a deprecated feature will be removed. This feature allows those users to continue to operate their codebase without having to repeatedly see non-actionable deprecation warnings in their testing.

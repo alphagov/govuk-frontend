@@ -36,12 +36,12 @@
     @include govuk-font($size: 16, $line-height: 1);
 
     // Add a transparent bottom border for forced-colour modes
-    @include _govuk-rebrand(
+    @include govuk-rebrand(
       "border-bottom",
       $from: govuk-spacing(2) solid govuk-colour("white"),
       $to: 1px solid transparent
     );
-    @include _govuk-rebrand("background", $from: $govuk-header-background, $to: $govuk-header-rebrand-background);
+    @include govuk-rebrand("background", $from: $govuk-header-background, $to: $govuk-header-rebrand-background);
 
     color: $govuk-header-text;
   }
@@ -62,7 +62,7 @@
     padding-top: govuk-spacing($govuk-header-vertical-spacing-value);
     border-bottom: $govuk-header-border-width solid $govuk-header-border-color;
 
-    @include _govuk-rebrand {
+    @include govuk-rebrand {
       // Remove the space allocated to the blue bar
       margin-bottom: 0;
 
@@ -74,7 +74,7 @@
     }
   }
 
-  // TODO: Remove this when _govuk-rebrand becomes the default
+  // TODO: Remove this when govuk-rebrand becomes the default
   .govuk-header--full-width-border {
     border-bottom-color: $govuk-header-border-color;
 
@@ -107,7 +107,7 @@
       margin-right: 0;
     }
 
-    @include _govuk-rebrand {
+    @include govuk-rebrand {
       margin-right: govuk-px-to-rem(7px); // 1 'dot'
       margin-bottom: $govuk-header-rebrand-logo-bottom-margin;
 
@@ -165,7 +165,7 @@
       }
     }
 
-    @include _govuk-rebrand {
+    @include govuk-rebrand {
       // Remove top margin
       margin-top: 0;
 
@@ -255,7 +255,7 @@
       border-bottom: 0;
     }
 
-    @include _govuk-rebrand {
+    @include govuk-rebrand {
       display: inline;
 
       // Remove word-spacing from within the logo so we can ignore
@@ -279,7 +279,7 @@
     @include govuk-font-size($size: 24);
     @include govuk-typography-weight-bold;
 
-    @include _govuk-rebrand {
+    @include govuk-rebrand {
       // Apply margins to internal elements to emulate padding
       margin-bottom: govuk-spacing(3);
 
@@ -318,7 +318,7 @@
       }
     }
 
-    @include _govuk-rebrand {
+    @include govuk-rebrand {
       // Apply margins to internal elements to emulate padding
       margin-bottom: 0;
 
@@ -399,7 +399,7 @@
 
   .govuk-header__navigation {
     @include govuk-media-query($until: mobile) {
-      @include _govuk-rebrand {
+      @include govuk-rebrand {
         padding-bottom: govuk-spacing(3);
       }
     }
@@ -407,7 +407,7 @@
     @include govuk-media-query($from: desktop) {
       margin-bottom: govuk-spacing(2);
 
-      @include _govuk-rebrand {
+      @include govuk-rebrand {
         // Magic number so that the bottom of the nav links aligns with the
         // baseline of the GOV.UK logo
         $navigation-offset: 7px;
@@ -420,7 +420,7 @@
   }
 
   .govuk-header__service-name + .govuk-header__navigation {
-    @include _govuk-rebrand {
+    @include govuk-rebrand {
       @include govuk-media-query($from: desktop) {
         // If there's both a service name and navigation,
         // remove the extra padding between them on desktop
@@ -442,7 +442,7 @@
       display: none;
     }
 
-    @include _govuk-rebrand {
+    @include govuk-rebrand {
       @include govuk-media-query($from: mobile, $until: desktop) {
         padding-bottom: govuk-spacing(3);
       }
@@ -474,7 +474,7 @@
       white-space: nowrap;
     }
 
-    @include _govuk-rebrand {
+    @include govuk-rebrand {
       // Increase top padding of nav items...
       padding-top: govuk-spacing(3);
 
@@ -495,7 +495,7 @@
 
   .govuk-header__navigation-item--active {
     a {
-      @include _govuk-rebrand {
+      @include govuk-rebrand {
         // Change active links to use bold text instead of changing colour
         @include govuk-typography-weight-bold;
       }
@@ -505,7 +505,7 @@
       &:visited {
         color: $govuk-header-link-active;
 
-        @include _govuk-rebrand {
+        @include govuk-rebrand {
           color: inherit;
         }
       }
@@ -521,7 +521,7 @@
       &:focus {
         color: $govuk-focus-text-colour;
 
-        @include _govuk-rebrand {
+        @include govuk-rebrand {
           color: $govuk-focus-text-colour;
         }
       }
