@@ -131,6 +131,56 @@
     background-size: $govuk-footer-crest-image-width $govuk-footer-crest-image-height;
     text-align: center;
     white-space: nowrap;
+
+    // To replicate the implementation in 5.10.0 where we move most of this CSS
+    // into the :before element, reset all of these rules, or make them
+    // redundant, except display. We keep display: inline-block so that on IE9,
+    // the crest is left-aligned
+    @include _govuk-rebrand {
+      min-width: 0;
+      padding-top: 0;
+      background-image: none;
+      @include govuk-device-pixel-ratio {
+        background-image: none;
+      }
+    }
+  }
+
+  .govuk-footer__copyright-logo:before {
+    @include _govuk-rebrand {
+      content: "";
+      display: block;
+      width: 100%;
+      padding-top: ($govuk-footer-crest-image-height + govuk-spacing(2));
+      background-image: govuk-image-url("govuk-crest.svg");
+      background-repeat: no-repeat;
+      background-position: 50% 0%;
+      background-size: $govuk-footer-crest-image-width $govuk-footer-crest-image-height;
+      text-align: center;
+      white-space: nowrap;
+
+      // Where possible use the crest as a mask instead. This lets us use
+      // currentColor, increasing the contrast of the image and matching the
+      // user's prefered foreground colour in e.g. forced colors mode.
+      // We test for `mask-position` rather than `mask-image` because of a false
+      // positive in Edge 17.
+      @supports (mask-position: initial) {
+        background: currentcolor;
+        mask-image: govuk-image-url("govuk-crest.svg");
+        mask-repeat: no-repeat;
+        mask-position: 50% 0%;
+        mask-size: $govuk-footer-crest-image-width $govuk-footer-crest-image-height;
+
+        // currentcolor doesn't seem to be computed correctly in forced colors
+        // mode so force the background color to match the system link color
+        // (matching the text in the link)
+        // stylelint-disable max-nesting-depth
+        @media screen and (forced-colors: active) {
+          background: linktext;
+        }
+        // stylelint-enable max-nesting-depth
+      }
+    }
   }
 
   .govuk-footer__inline-list {
