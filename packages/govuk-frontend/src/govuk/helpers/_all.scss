@@ -1,7 +1,7 @@
 @import "../settings/warnings";
 @import "index";
 
-@include govuk-warning(
+@include _warning(
   "import-using-all",
   "Importing using 'govuk/helpers/all' is deprecated. Update your import statement to import 'govuk/helpers/index'.",
   $silence-further-warnings: false

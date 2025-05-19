@@ -13,7 +13,7 @@
 ///
 /// @access private
 
-@mixin govuk-visually-hide-content($important: true) {
+@mixin _govuk-visually-hide-content($important: true) {
   position: absolute if($important, !important, null);
 
   width: 1px if($important, !important, null);
@@ -49,7 +49,7 @@
 /// @access public
 
 @mixin govuk-visually-hidden($important: true) {
-  @include govuk-visually-hide-content($important: $important);
+  @include _govuk-visually-hide-content($important: $important);
 
   // Absolute positioning has the unintended consequence of removing any
   // whitespace surrounding visually hidden text from the accessibility tree.
@@ -75,6 +75,6 @@
 @mixin govuk-visually-hidden-focusable($important: true) {
   // IE 11 doesn't support the combined `:not(:active, :focus)` syntax.
   &:not(:active):not(:focus) {
-    @include govuk-visually-hide-content($important: $important);
+    @include _govuk-visually-hide-content($important: $important);
   }
 }

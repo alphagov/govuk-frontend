@@ -9,7 +9,7 @@
 ///     border-width: 1px;
 ///     border-colour: #fff;
 ///
-///     @include govuk-rebrand() {
+///     @include _govuk-rebrand() {
 ///       border-width: 10px;
 ///       border-colour: #000;
 ///     }
@@ -17,7 +17,7 @@
 ///
 /// @example scss - Wrap a single property
 ///   .foo {
-///     @include govuk-rebrand("background-color", $from: #fff, $to: #000)
+///     @include _govuk-rebrand("background-color", $from: #fff, $to: #000)
 ///   }
 ///
 ///
@@ -26,29 +26,29 @@
 /// @param {String} $to - The rebranded value of the property
 /// @throw if `$property` is set but `$from` or `$to` are missing
 /// @access private
-@mixin govuk-rebrand($property: null, $from: null, $to: null) {
+@mixin _govuk-rebrand($property: null, $from: null, $to: null) {
   @if $property {
     @if not $from {
-      @error "`govuk-rebrand` needs the original value, `$from`";
+      @error "`_govuk-rebrand` needs the original value, `$from`";
     }
 
     @if not $to {
-      @error "`govuk-rebrand` needs the rebranded value, `$to`";
+      @error "`_govuk-rebrand` needs the rebranded value, `$to`";
     }
 
     #{$property}: #{$from};
 
-    @include govuk-rebrand-wrapper {
+    @include _govuk-rebrand-wrapper {
       #{$property}: #{$to};
     }
   } @else {
-    @include govuk-rebrand-wrapper {
+    @include _govuk-rebrand-wrapper {
       @content;
     }
   }
 }
 
-@mixin govuk-rebrand-wrapper() {
+@mixin _govuk-rebrand-wrapper() {
   $selector: "#{&}";
 
   @if $selector == ".govuk-template" {

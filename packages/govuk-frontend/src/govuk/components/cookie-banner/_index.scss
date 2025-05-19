@@ -17,10 +17,10 @@
     // changes colours in their browser.
     border-bottom: $border-bottom-width solid transparent;
 
-    @include govuk-rebrand(
+    @include _govuk-rebrand(
       "background-color",
       $govuk-template-background-colour,
-      $govuk-rebrand-template-background-colour
+      $_govuk-rebrand-template-background-colour
     );
   }
 

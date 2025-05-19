@@ -1,7 +1,7 @@
 const { compileSassString } = require('@govuk-frontend/helpers/tests')
 const { outdent } = require('outdent')
 
-describe('@mixin govuk-rebrand', () => {
+describe('@mixin _govuk-rebrand', () => {
   it('wraps arbitrary properties in a class', async () => {
     const sass = `
       $govuk-suppressed-warnings: ("legacy-organisation-colours");
@@ -13,7 +13,7 @@ describe('@mixin govuk-rebrand', () => {
         border-width: 1px;
         border-colour: #fff;
 
-        @include govuk-rebrand() {
+        @include _govuk-rebrand() {
           border-width: 10px;
           border-colour: #000;
         }
@@ -43,7 +43,7 @@ describe('@mixin govuk-rebrand', () => {
         @import "base";
 
         .foo {
-          @include govuk-rebrand("background-color", $from: #fff, $to: #000)
+          @include _govuk-rebrand("background-color", $from: #fff, $to: #000)
         }
       `
 
@@ -67,12 +67,12 @@ describe('@mixin govuk-rebrand', () => {
         @import "base";
 
         .foo {
-          @include govuk-rebrand("background-color", $to: #000)
+          @include _govuk-rebrand("background-color", $to: #000)
         }
       `
 
       await expect(compileSassString(sass)).rejects.toThrow(
-        '`govuk-rebrand` needs the original value, `$from`'
+        '`_govuk-rebrand` needs the original value, `$from`'
       )
     })
 
@@ -84,12 +84,12 @@ describe('@mixin govuk-rebrand', () => {
         @import "base";
 
         .foo {
-          @include govuk-rebrand("background-color", $from: #fff)
+          @include _govuk-rebrand("background-color", $from: #fff)
         }
       `
 
       await expect(compileSassString(sass)).rejects.toThrow(
-        '`govuk-rebrand` needs the rebranded value, `$to`'
+        '`_govuk-rebrand` needs the rebranded value, `$to`'
       )
     })
   })
@@ -106,7 +106,7 @@ describe('@mixin govuk-rebrand', () => {
           border-width: 1px;
           border-colour: #fff;
 
-          @include govuk-rebrand {
+          @include _govuk-rebrand {
             border-width: 10px;
             border-colour: #000;
           }
@@ -135,7 +135,7 @@ describe('@mixin govuk-rebrand', () => {
         @import "base";
 
         .govuk-template {
-          @include govuk-rebrand("background-color",
+          @include _govuk-rebrand("background-color",
             $from: #fff,
             $to: #000)
         }

@@ -21,15 +21,15 @@
   .govuk-service-navigation {
     border-bottom-width: 1px;
     border-bottom-style: solid;
-    @include govuk-rebrand(
+    @include _govuk-rebrand(
       "border-bottom-color",
       $from: $govuk-service-navigation-border-colour,
-      $to: $govuk-rebrand-border-colour-on-blue-tint-95
+      $to: $_govuk-rebrand-border-colour-on-blue-tint-95
     );
-    @include govuk-rebrand(
+    @include _govuk-rebrand(
       "background-color",
       $from: $govuk-service-navigation-background,
-      $to: $govuk-rebrand-template-background-colour
+      $to: $_govuk-rebrand-template-background-colour
     );
   }
 
@@ -57,7 +57,7 @@
       margin-bottom: 0;
       padding: govuk-spacing(4) 0;
 
-      @include govuk-rebrand {
+      @include _govuk-rebrand {
         padding: govuk-spacing(3) 0;
         line-height: 1.5;
       }
@@ -78,7 +78,7 @@
     }
 
     @include govuk-media-query($from: tablet) {
-      @include govuk-rebrand(
+      @include _govuk-rebrand(
         "padding-bottom",
         $from: govuk-spacing(4) - $govuk-service-navigation-active-link-border-width,
         $to: govuk-spacing(3) - $govuk-service-navigation-active-link-border-width

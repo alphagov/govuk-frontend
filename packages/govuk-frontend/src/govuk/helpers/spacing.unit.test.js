@@ -119,7 +119,7 @@ describe('@function govuk-spacing', () => {
   })
 })
 
-describe('@mixin govuk-responsive-spacing', () => {
+describe('@mixin _govuk-responsive-spacing', () => {
   it('outputs CSS for a property based on the given spacing map', async () => {
     const sass = `
       ${sassBootstrap}
@@ -128,7 +128,7 @@ describe('@mixin govuk-responsive-spacing', () => {
       @import "helpers/spacing";
 
       .foo {
-        @include govuk-responsive-spacing($spacing-point, 'margin')
+        @include _govuk-responsive-spacing($spacing-point, 'margin')
       }
     `
 
@@ -154,7 +154,7 @@ describe('@mixin govuk-responsive-spacing', () => {
       @import "helpers/spacing";
 
       .foo {
-        @include govuk-responsive-spacing($spacing-point, 'padding', 'top');
+        @include _govuk-responsive-spacing($spacing-point, 'padding', 'top');
       }
     `
 
@@ -180,7 +180,7 @@ describe('@mixin govuk-responsive-spacing', () => {
       @import "helpers/spacing";
 
       .foo {
-        @include govuk-responsive-spacing(14px, 'margin')
+        @include _govuk-responsive-spacing(14px, 'margin')
       }
     `
 
@@ -198,7 +198,7 @@ describe('@mixin govuk-responsive-spacing', () => {
         @import "helpers/spacing";
 
         .foo {
-          @include govuk-responsive-spacing(
+          @include _govuk-responsive-spacing(
             $spacing-point,
             'margin',
             $important: true
@@ -228,7 +228,7 @@ describe('@mixin govuk-responsive-spacing', () => {
         @import "helpers/spacing";
 
         .foo {
-          @include govuk-responsive-spacing(
+          @include _govuk-responsive-spacing(
             $spacing-point,
             'margin',
             'top',
@@ -261,7 +261,7 @@ describe('@mixin govuk-responsive-spacing', () => {
         @import "helpers/spacing";
 
         .foo {
-          @include govuk-responsive-spacing(
+          @include _govuk-responsive-spacing(
             $spacing-point,
             'margin',
             $adjustment: 2px
@@ -291,7 +291,7 @@ describe('@mixin govuk-responsive-spacing', () => {
         @import "helpers/spacing";
 
         .foo {
-          @include govuk-responsive-spacing(
+          @include _govuk-responsive-spacing(
             $spacing-point,
             'margin',
             'top',

@@ -9,10 +9,10 @@
   .govuk-template {
     // Set the overall page background colour to the same colour as used by the
     // footer to give the illusion of a long footer.
-    @include govuk-rebrand(
+    @include _govuk-rebrand(
       background-color,
       $from: $govuk-template-background-colour,
-      $to: $govuk-rebrand-template-background-colour
+      $to: $_govuk-rebrand-template-background-colour
     );
 
     // Prevent automatic text sizing, as we already cater for small devices and
