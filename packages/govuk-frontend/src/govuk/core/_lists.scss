@@ -2,6 +2,7 @@
 @use "../helpers/spacing" as *;
 @use "../helpers/typography" as *;
 @use "../tools/exports" as *;
+@use "typography" as *;
 
 @include govuk-exports("govuk/core/lists") {
   %govuk-list {
