@@ -128,22 +128,22 @@ describe('Template', () => {
       const expectedTitle = 'GOV.UK - The best place to find government services and information'
       it(`defaults to '${expectedTitle}'`, () => {
         const $ = renderTemplate()
-        expect($('title').text()).toEqual(expectedTitle)
+        expect($('head title').text()).toEqual(expectedTitle)
       })
 
       it('can be overridden using the pageTitle block', () => {
         const $ = renderTemplate({}, { pageTitle: 'Foo' })
-        expect($('title').text()).toEqual('Foo')
+        expect($('head title').text()).toEqual('Foo')
       })
 
       it('does not have a lang attribute by default', () => {
         const $ = renderTemplate()
-        expect($('title').attr('lang')).toBeUndefined()
+        expect($('head title').attr('lang')).toBeUndefined()
       })
 
       it('can have a lang attribute specified using pageTitleLang', () => {
         const $ = renderTemplate({ pageTitleLang: 'zu' })
-        expect($('title').attr('lang')).toEqual('zu')
+        expect($('head title').attr('lang')).toEqual('zu')
       })
     })
   })
