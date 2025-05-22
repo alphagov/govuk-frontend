@@ -2,7 +2,7 @@ const crypto = require('crypto')
 const { join } = require('path')
 
 const { paths } = require('govuk-frontend-config')
-const { renderTemplate } = require('govuk-frontend-helpers/nunjucks')
+const { renderTemplate, nunjucksEnv } = require('govuk-frontend-helpers/nunjucks')
 const nunjucks = require('nunjucks')
 
 describe('Template', () => {
@@ -26,6 +26,11 @@ describe('Template', () => {
   })
 
   describe('<html>', () => {
+    afterEach(() => {
+      // Clear the value of the govukRebrand global
+      nunjucksEnv.addGlobal('govukRebrand', undefined)
+    })
+
     it('defaults to lang="en"', () => {
       const $ = renderTemplate()
       expect($('html').attr('lang')).toEqual('en')
@@ -39,6 +44,20 @@ describe('Template', () => {
     it('can have custom classes added using htmlClasses', () => {
       const $ = renderTemplate({ htmlClasses: 'my-custom-class' })
       expect($('html').hasClass('my-custom-class')).toBeTruthy()
+    })
+
+    it('adds the rebrand class if govukRebrand is set to true', () => {
+      const $ = renderTemplate({ govukRebrand: true })
+
+      expect($('html').hasClass('govuk-template--rebranded')).toBeTruthy()
+    })
+
+    it('adds the rebrand class if govukRebrand is set to true via the nunjucks global', () => {
+      nunjucksEnv.addGlobal('govukRebrand', true)
+
+      const $ = renderTemplate()
+
+      expect($('html').hasClass('govuk-template--rebranded')).toBeTruthy()
     })
   })
 
@@ -221,6 +240,12 @@ describe('Template', () => {
         expect($('.my-header').length).toEqual(1)
         expect($('.govuk-header').length).toEqual(0)
       })
+
+      it('sets the rebrand param to true by default if govukRebrand is true', () => {
+        const $ = renderTemplate({ govukRebrand: true })
+
+        expect($('.govuk-header .govuk-logo-dot').length).toEqual(1)
+      })
     })
 
     describe('<main>', () => {
@@ -278,6 +303,12 @@ describe('Template', () => {
 
         expect($('.my-footer').length).toEqual(1)
         expect($('.govuk-footer').length).toEqual(0)
+      })
+
+      it('sets the rebrand param to true by default if govukRebrand is true', () => {
+        const $ = renderTemplate({ govukRebrand: true })
+
+        expect($('.govuk-footer .govuk-footer__crown').length).toEqual(1)
       })
     })
   })
