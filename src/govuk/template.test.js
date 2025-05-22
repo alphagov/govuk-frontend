@@ -52,6 +52,12 @@ describe('Template', () => {
       expect($('html').hasClass('govuk-template--rebranded')).toBeTruthy()
     })
 
+    it('adds the rebrand class if govukRebrand is set to true in a nunjucks template `set`', () => {
+      const $ = renderTemplate({}, {}, { govukRebrand: true })
+
+      expect($('html').hasClass('govuk-template--rebranded')).toBeTruthy()
+    })
+
     it('adds the rebrand class if govukRebrand is set to true via the nunjucks global', () => {
       nunjucksEnv.addGlobal('govukRebrand', true)
 
