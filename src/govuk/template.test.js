@@ -88,9 +88,16 @@ describe('Template', () => {
 
     it('uses a default assets path of /assets', () => {
       const $ = renderTemplate()
-      const $icon = $('link[rel="icon"]')
+      const $icon = $('link[rel="shortcut icon"]')
 
       expect($icon.attr('href')).toEqual('/assets/images/favicon.ico')
+    })
+
+    it('uses `rel="icon"` instead of `shortcut icon` if govukRebrand is true', () => {
+      const $ = renderTemplate({ govukRebrand: true })
+
+      expect($('link[rel="icon"]').length).toBeGreaterThan(0)
+      expect($('link[rel="shortcut icon"]').length).toEqual(0)
     })
 
     it('uses a default assets path of /assets/rebrand if govukRebrand is true', () => {
@@ -102,7 +109,7 @@ describe('Template', () => {
 
     it('can have the assets path overridden using assetPath', () => {
       const $ = renderTemplate({ assetPath: '/whatever' })
-      const $icon = $('link[rel="icon"]')
+      const $icon = $('link[rel="shortcut icon"]')
 
       expect($icon.attr('href')).toEqual('/whatever/images/favicon.ico')
     })
