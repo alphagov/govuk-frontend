@@ -107,7 +107,7 @@ function renderMacro (macroName, macroPath, options) {
  * @param {Object<string, string>} [blocks] - Nunjucks blocks
  * @returns {import('cheerio').CheerioAPI} Nunjucks template output
  */
-function renderTemplate (context = {}, blocks = {}) {
+function renderTemplate (context = {}, blocks = {}, set = {}) {
   let viewString = '{% extends "template.njk" %}'
 
   for (const [blockName, blockContent] of Object.entries(blocks)) {
@@ -116,6 +116,12 @@ function renderTemplate (context = {}, blocks = {}) {
       {% block ${blockName} -%}
         ${blockContent}
       {%- endblock %}`
+  }
+
+  for (const [setName, setContent] of Object.entries(set)) {
+    viewString += outdent`
+
+      {% set ${setName} = ${setContent} %}`
   }
 
   return cheerio.load(nunjucksEnv.renderString(viewString, context))

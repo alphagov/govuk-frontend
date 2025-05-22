@@ -1,4 +1,4 @@
-const { render } = require('govuk-frontend-helpers/nunjucks')
+const { render, nunjucksEnv } = require('govuk-frontend-helpers/nunjucks')
 const { getExamples } = require('govuk-frontend-lib/files')
 
 describe('header', () => {
@@ -265,6 +265,22 @@ describe('header', () => {
         expect($component.find('svg.govuk-header__logotype').length).not.toBe(0)
         expect($component.find('.govuk-header__logotype-crown').length).toBe(0)
         expect($component.find('.govuk-header__logotype-text').length).toBe(0)
+      })
+    })
+
+    describe('when the `govukRebrand` parameter is set to `true`', () => {
+      afterEach(() => {
+        // Clear the value of the govukRebrand global
+        nunjucksEnv.addGlobal('govukRebrand', undefined)
+      })
+
+      it('renders the new GOV.UK logotype', () => {
+        nunjucksEnv.addGlobal('govukRebrand', true)
+
+        const $ = render('header', examples.rebrand)
+        const $component = $('.govuk-header')
+
+        expect($component.find('.govuk-logo-dot').length).not.toBe(0)
       })
     })
   })

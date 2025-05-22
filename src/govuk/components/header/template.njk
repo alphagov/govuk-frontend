@@ -1,6 +1,6 @@
 {% from "../../macros/logo.njk" import govukLogo -%}
 
-{%- set _rebrand = params.rebrand | default(govukRebrand() if govukRebrand is callable else govukRebrand) -%}
+{%- set _rebrand = params.rebrand | default(govukRebrand) -%}
 {%- set menuButtonText = params.menuButtonText if params.menuButtonText else 'Menu' -%}
 
 {%- set logo -%}
