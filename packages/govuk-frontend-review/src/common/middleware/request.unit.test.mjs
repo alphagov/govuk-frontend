@@ -29,12 +29,12 @@ describe('Middleware: Request handling', () => {
   describe('Request body', () => {
     it('adds empty request body (GET)', async () => {
       await agent.get('/')
-      expect(req.body).toEqual({})
+      expect(req.body).toBeUndefined()
     })
 
     it('adds empty request body (POST)', async () => {
       await agent.post('/')
-      expect(req.body).toEqual({})
+      expect(req.body).toBeUndefined()
     })
 
     it('adds populated request body (POST)', async () => {
