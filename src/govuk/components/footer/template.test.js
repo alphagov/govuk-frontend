@@ -246,6 +246,11 @@ describe('footer', () => {
   })
 
   describe('rebrand', () => {
+    afterEach(() => {
+      // Clear the value of the govukRebrand global
+      nunjucksEnv.addGlobal('govukRebrand', undefined)
+    })
+
     it('Does not show the crown in the footer by default', () => {
       const $ = render('footer', examples.default)
 
