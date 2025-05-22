@@ -1,7 +1,5 @@
 {% extends "template.njk" %}
 
-{% set htmlClasses = ["govuk-template--rebranded", htmlClasses] | join(" ") if useRebrand else htmlClasses %}
-
 {% block head %}
 
   {% if legacy %}
