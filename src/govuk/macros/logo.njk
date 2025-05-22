@@ -8,6 +8,7 @@ releases of Frontend. #}
   {#- Default options #}
   {%- set rebrand = params.rebrand | default(false) %}
   {%- set useText = params.useText | default(false) %}
+  {%- set logotype = params.logotype | default(false) %}
   {%- set useTudorCrown = params.useTudorCrown | default(false) %}
 
   {# Force use of Tudor Crown if rebrand flag is on. #}
@@ -69,7 +70,7 @@ releases of Frontend. #}
   >
     {%- if params.ariaLabelText %}<title>{{ params.ariaLabelText }}</title>{% endif %}
     {{ (_stEdwardsCrown if not useTudorCrown else _tudorCrown) | safe | trim | indent(2) }}
-    {% if rebrand %}
+    {% if rebrand and logotype %}
       {{ _logotype | safe | trim | indent(2) }}
     {% endif %}
   </svg>
