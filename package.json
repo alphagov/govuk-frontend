@@ -99,7 +99,7 @@
     "@octokit/rest": "21.1.1",
     "@percy/core": "^1.30.10",
     "@types/browser-sync": "^2.29.0",
-    "@types/express": "^5.0.0",
+    "@types/express": "^5.0.1",
     "@types/gulp": "^4.0.17",
     "@types/jest": "^29.5.14",
     "@types/jest-axe": "^3.5.9",
