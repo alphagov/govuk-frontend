@@ -4,9 +4,9 @@ const { outdent } = require('outdent')
 describe('@function font-url', () => {
   it('by default concatenates the font path and the filename', async () => {
     const sass = `
-      @import "tools/font-url";
-
-      $govuk-fonts-path: '/path/to/fonts/';
+      @use "tools/font-url" as * with (
+        $govuk-fonts-path: '/path/to/fonts/'
+      );
 
       @font-face {
         font-family: "whatever";
@@ -26,10 +26,10 @@ describe('@function font-url', () => {
 
   it('can be overridden to use a defined Sass function', async () => {
     const sass = `
-      @import "tools/font-url";
-
-      $govuk-fonts-path: '/path/to/fonts/';
-      $govuk-font-url-function: 'to-upper-case';
+      @use "tools/font-url" as * with (
+        $govuk-fonts-path: '/path/to/fonts/',
+        $govuk-font-url-function: 'to-upper-case'
+      );
 
       @font-face {
         font-family: "whatever";
@@ -47,7 +47,7 @@ describe('@function font-url', () => {
     })
   })
 
-  it('can be overridden to use a custom function', async () => {
+  it('can be overridden to use a custom function using @import', async () => {
     const sass = `
       @import "tools/font-url";
 
