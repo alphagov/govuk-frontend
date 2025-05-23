@@ -1,4 +1,6 @@
-@import "../base";
+@use "../helpers/media-queries" as *;
+@use "../settings/measurements" as *;
+@use "../tools/exports" as *;
 
 ////
 /// @group objects/layout

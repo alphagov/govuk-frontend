@@ -1,3 +1,6 @@
+@use "../helpers/clearfix" as *;
+@use "../tools/exports" as *;
+
 @include govuk-exports("govuk/utilities/clearfix") {
   .govuk-clearfix {
     @include govuk-clearfix;

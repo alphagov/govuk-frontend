@@ -1,3 +1,15 @@
+@use "../../helpers/clearfix" as *;
+@use "../../helpers/links" as *;
+@use "../../helpers/media-queries" as *;
+@use "../../helpers/spacing" as *;
+@use "../../helpers/typography" as *;
+@use "../../settings/colours-applied" as *;
+@use "../../settings/measurements" as *;
+@use "../../settings/typography-responsive" as *;
+@use "../../tools/exports" as *;
+@use "../../tools/image-url" as *;
+@use "../../tools/rebrand" as *;
+
 @include govuk-exports("govuk/component/footer") {
   $govuk-footer-background: $govuk-template-background-colour;
   $govuk-footer-text: $govuk-text-colour;
@@ -14,10 +26,10 @@
 
     border-top: 10px solid $govuk-brand-colour;
     color: $govuk-footer-text;
-    @include _govuk-rebrand(
+    @include govuk-rebrand(
       "background",
       $from: $govuk-footer-background,
-      $to: $_govuk-rebrand-template-background-colour
+      $to: $govuk-rebrand-template-background-colour
     );
   }
 
@@ -35,10 +47,10 @@
     @include govuk-responsive-margin(8, "bottom");
     border: 0; // Reset `<hr>` default borders
     border-bottom: 1px solid;
-    @include _govuk-rebrand(
+    @include govuk-rebrand(
       "border-bottom-color",
       $from: $govuk-footer-content-border,
-      $to: $_govuk-rebrand-border-colour-on-blue-tint-95
+      $to: $govuk-rebrand-border-colour-on-blue-tint-95
     );
   }
 
@@ -142,10 +154,10 @@
     }
 
     border-bottom: 1px solid;
-    @include _govuk-rebrand(
+    @include govuk-rebrand(
       "border-bottom-color",
       $from: $govuk-footer-content-border,
-      $to: $_govuk-rebrand-border-colour-on-blue-tint-95
+      $to: $govuk-rebrand-border-colour-on-blue-tint-95
     );
   }
 
