@@ -171,7 +171,8 @@
     padding-left: $conditional-padding-left;
     border-left: $conditional-border-width solid $govuk-border-colour;
 
-    .govuk-frontend-supported &--hidden {
+    // Hide the conditional reveal if the checkbox is unchecked
+    .govuk-frontend-supported .govuk-checkboxes__item:has(input[type="checkbox"]:not(:checked)) + & {
       display: none;
     }
 

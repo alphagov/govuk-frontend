@@ -190,7 +190,8 @@
     padding-left: $conditional-padding-left;
     border-left: $conditional-border-width solid $govuk-border-colour;
 
-    .govuk-frontend-supported &--hidden {
+    // Hide the conditional reveal if the radio is unchecked
+    .govuk-frontend-supported .govuk-radios__item:has(input[type="radio"]:not(:checked)) + & {
       display: none;
     }
 

@@ -87,8 +87,8 @@ export class Checkboxes extends Component {
   /**
    * Sync conditional reveal with the input state
    *
-   * Synchronise the visibility of the conditional reveal, and its accessible
-   * state, with the input's checked state.
+   * Synchronise the accessible state of the conditional reveal with the input's
+   * checked state.
    *
    * @private
    * @param {HTMLInputElement} $input - Checkbox input
@@ -104,10 +104,6 @@ export class Checkboxes extends Component {
       const inputIsChecked = $input.checked
 
       $input.setAttribute('aria-expanded', inputIsChecked.toString())
-      $target.classList.toggle(
-        'govuk-checkboxes__conditional--hidden',
-        !inputIsChecked
-      )
     }
   }
 
