@@ -4,6 +4,12 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 ## Unreleased
 
+### Fixes
+
+We've made fixes to GOV.UK Frontend in the following pull requests:
+
+- [#5968: Apply header logo right padding only when menu button is visible](https://github.com/alphagov/govuk-frontend/pull/5968)
+
 ## v5.10.1 (Patch release)
 
 To install this version with npm, run `npm install govuk-frontend@5.10.1`. You can also find more information about [how to stay up to date](https://frontend.design-system.service.gov.uk/staying-up-to-date/) in our documentation.
@@ -25,7 +31,6 @@ We've made fixes to GOV.UK Frontend in the following pull requests:
 - [#5953: Move organisation legacy colour palette warning into the govuk-organisation-colour mixin](https://github.com/alphagov/govuk-frontend/pull/5953)
 - [#5918: Fix `govuk-font-size` mixin outputting the wrong font properties for size 14 text when compiled using libsass](https://github.com/alphagov/govuk-frontend/pull/5918), thanks to @oscarduignan for reporting this issue
 - [#5896: Fix character count not having error border colour when rendered with error message](https://github.com/alphagov/govuk-frontend/pull/5896), thanks to @gunjam for fixing this issue
-- [#5968: Apply header logo right padding only when menu button is visible](https://github.com/alphagov/govuk-frontend/pull/5968)
 
 ## v5.10.0 (Feature release)
 
