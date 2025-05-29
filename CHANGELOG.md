@@ -45,14 +45,16 @@ GOV.UK Frontend provides updated assets for the icons, Open Graph image and `man
 Additionally, for the brand refresh, we’ve changed the names, formats and sizes of icon assets we distribute in Frontend.
 
 Check that you’ve copied the following files from the /assets/rebrand/ directory to the correct place and are serving them at the correct URLs:
-manifest.json
-images/favicon.ico
-images/favicon.svg
-images/govuk-icon-180.png
-images/govuk-icon-192.png
-images/govuk-icon-512.png
-images/govuk-icon-mask.svg
-images/govuk-opengraph-image.png
+
+- `manifest.json`
+- `images/favicon.ico`
+- `images/favicon.svg`
+- `images/govuk-icon-180.png`
+- `images/govuk-icon-192.png`
+- `images/govuk-icon-512.png`
+- `images/govuk-icon-mask.svg`
+- `images/govuk-opengraph-image.png`
+
 If you [serve the assets from the GOV.UK Frontend assets folder](https://frontend.design-system.service.gov.uk/v4/importing-css-assets-and-javascript/#serve-the-assets-from-the-gov-uk-frontend-assets-folder-recommended), make sure you’re serving the assets inside the `dist/govuk/assets/rebrand` folder correctly at `<YOUR-SITE-URL>/assets/rebrand`.
 
 If you [copy the font and image files into your application](https://frontend.design-system.service.gov.uk/v4/importing-css-assets-and-javascript/#serve-the-assets-from-the-gov-uk-frontend-assets-folder-recommended), you’ll need to copy the `dist/govuk/assets/rebrand` folder to `<YOUR-APP>/assets/rebrand`. If you use an automated task to copy the files, you may need to update your task to automatically copy our new folder.
