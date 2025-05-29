@@ -2,6 +2,234 @@
 
 ## Unreleased
 
+## v4.10.0 (Feature release)
+
+We do not plan to make any further updates to GOV.UK Frontend v4. Consider [upgrading to GOV.UK Frontend v5](https://frontend.design-system.service.gov.uk/changes-to-govuk-frontend-v5/) to get the latest changes.
+
+To install this version with npm, run `npm install govuk-frontend@4.10.0`. You can also find more information about [how to stay up to date](https://frontend.design-system.service.gov.uk/staying-up-to-date/#updating-to-the-latest-version) in our documentation.
+
+### New features
+
+#### Prepare to use the refreshed GOV.UK brand
+
+We’ve added features from the latest version of GOV.UK Frontend to help more services implement GOV.UK’s refreshed brand. Ahead of the brand’s go-live date of 25 June 2025, you should prepare your service by updating its code. You’ll then need to deploy the changes to production on 25 June 2025 or as soon after this date as possible.
+
+The changes affect these components:
+
+- [GOV.UK header](https://design-system.service.gov.uk/components/header/)
+- [GOV.UK footer](https://design-system.service.gov.uk/components/footer/)
+- [Cookie banner](https://design-system.service.gov.uk/components/cookie-banner/)
+
+The changes also affect the `theme-color` metadata and updated assets, including:
+
+- icons
+- Open Graph image
+- `manifest.json`
+
+To help you get ready, we've published this release, which includes several features to make the necessary updates across your service:
+
+- updated markup for the GOV.UK header component (with the refreshed logo) and GOV.UK footer component (adding the crown logo)
+- a new `govuk-template--rebranded` HTML class to apply updated styles from our CSS
+- a new set of assets for icons, Open Graph image and page metadata
+
+You’ll need to serve the new assets in your service. After that, what you’ll need to do depends on the code in your service and if you use GOV.UK Frontend:
+
+- with its Nunjucks page template and macros
+- with its Nunjucks macros (without the page template)
+- without using Nunjucks
+
+##### Add the brand refresh assets to your project
+
+GOV.UK Frontend provides updated assets for the icons, Open Graph image and `manifest.json` to reflect the refreshed brand. These assets are available in the `dist/govuk/assets/rebrand` folder of the package.
+
+Additionally, for the brand refresh, we’ve changed the names, formats and sizes of icon assets we distribute in Frontend.
+
+Check that you’ve copied the following files from the /assets/rebrand/ directory to the correct place and are serving them at the correct URLs:
+manifest.json
+images/favicon.ico
+images/favicon.svg
+images/govuk-icon-180.png
+images/govuk-icon-192.png
+images/govuk-icon-512.png
+images/govuk-icon-mask.svg
+images/govuk-opengraph-image.png
+If you [serve the assets from the GOV.UK Frontend assets folder](https://frontend.design-system.service.gov.uk/v4/importing-css-assets-and-javascript/#serve-the-assets-from-the-gov-uk-frontend-assets-folder-recommended), make sure you’re serving the assets inside the `dist/govuk/assets/rebrand` folder correctly at `<YOUR-SITE-URL>/assets/rebrand`.
+
+If you [copy the font and image files into your application](https://frontend.design-system.service.gov.uk/v4/importing-css-assets-and-javascript/#serve-the-assets-from-the-gov-uk-frontend-assets-folder-recommended), you’ll need to copy the `dist/govuk/assets/rebrand` folder to `<YOUR-APP>/assets/rebrand`. If you use an automated task to copy the files, you may need to update your task to automatically copy our new folder.
+
+##### Use the refreshed GOV.UK brand if you're using our Nunjucks page template
+
+If you can edit your Nunjucks environment, you can add a `govukRebrand` [global value](https://mozilla.github.io/nunjucks/api.html#addglobal) to your environment, with a value of `true`. This global value makes the affected components use new styles for the brand refresh and display the updated assets (such as the refreshed logo in the GOV.UK header component and the crown in the GOV.UK footer component).
+
+```js
+nunjucksEnv.addGlobal('govukRebrand', true)
+```
+
+If you cannot edit your Nunjucks environment, you can use our new `govukRebrand` ['variable' option from our page template](https://design-system.service.gov.uk/styles/page-template/#changing-template-content), which makes:
+
+- the Cookie banner component use new styles for the brand refresh
+- the GOV.UK header and GOV.UK footer components rendered in the [`header` and `footer` blocks](https://design-system.service.gov.uk/styles/page-template/#exploded-view-of-the-page-template-block-areas) display updated assets (such as the refreshed logo in the GOV.UK header component and the crown in the GOV.UK footer component)
+
+If you’ve overridden the `header` or `footer` block, see the next sections to make sure your header or footer displays the updated assets.
+
+Use [`set`](https://mozilla.github.io/nunjucks/templating.html#set) to assign the `govukRebrand` variable a value of `true` and enable the new styles:
+
+```nunjucks
+{% set govukRebrand = true %}
+```
+
+Do not place this code snippet between any `block` and `endblock` lines. Place it on a separate line.
+
+If you’ve previously customised the template's `assetPath`, `assetUrl` or `opengraphImageUrl` options, you may need to update these to point to the location of the updated icons, Open Graph image and `manifest.json`.
+
+##### Use the refreshed GOV.UK brand if you're using Nunjucks macro (without the page template)
+
+You can do this by adding the updated styles for these components:
+
+- [GOV.UK header](https://design-system.service.gov.uk/components/header/)
+- [GOV.UK footer](https://design-system.service.gov.uk/components/footer/)
+- [Cookie banner](https://design-system.service.gov.uk/components/cookie-banner/)
+
+Add the `govuk-template--rebranded` class to the `<html>` element of your page to apply the updated styles to all affected components.
+
+Enable the refreshed GOV.UK logo by adding `rebrand: true` to the GOV.UK header component configuration.
+
+```nunjucks
+{{ govukHeader({
+  rebrand: true
+}) }}
+```
+
+Enable the GOV.UK crown in the GOV.UK footer component by adding`rebrand: true` to the component configuration.
+
+```nunjucks
+{{ govukFooter({
+  rebrand: true
+}) }}
+```
+
+To use our updated social icon assets, change the HTML inside your <head> element to use the new file path (from /assets/ to /assets/rebrand/) and `theme-color` metadata.
+
+```html
+<meta name="theme-color" content="#1d70b8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="icon" sizes="48x48" href="/assets/rebrand/images/favicon.ico">
+<link rel="icon" sizes="any" href="/assets/rebrand/images/favicon.svg" type="image/svg+xml">
+<link rel="mask-icon" href="/assets/rebrand/images/govuk-icon-mask.svg" color="#1d70b8">
+<link rel="apple-touch-icon" href="/assets/rebrand/images/govuk-icon-180.png">
+<link rel="manifest" href="/assets/rebrand/manifest.json">
+<meta property="og:image" content="<SERVICE URL>/assets/rebrand/images/govuk-opengraph-image.png">
+```
+
+##### Use the refreshed GOV.UK brand if you're not using Nunjucks
+
+To use the refreshed GOV.UK brand if you’re not using Nunjucks, start by adding the `govuk-template--rebranded` class to the `<html>` element of your page to apply the updated styles to all affected components.
+
+As you make changes, use the examples on our website to check your updates:
+
+- [GOV.UK header](https://design-system.service.gov.uk/components/header/)
+- [GOV.UK footer](https://design-system.service.gov.uk/components/footer/)
+- [Cookie banner](https://design-system.service.gov.uk/components/cookie-banner/)
+
+We've updated the GOV.UK logo to merge the GOV.UK text with the crown graphic. This makes sure the full logo is always rendered correctly even if parts of the page, such as CSS or the Transport webfont, fail to load. To use the updated logo, replace the `<svg>` element and ‘GOV.UK’ text inside `govuk-header__logotype-text` `<span>` element in your header with the following SVG code to display the refreshed GOV.UK logo:
+
+```html
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  focusable="false"
+  role="img"
+  viewBox="0 0 324 60"
+  height="30"
+  width="162"
+  fill="currentcolor"
+  class="govuk-header__logotype"
+  aria-label="GOV.UK">
+  <title>GOV.UK</title>
+  <g>
+    <circle cx="20" cy="17.6" r="3.7"></circle>
+    <circle cx="10.2" cy="23.5" r="3.7"></circle>
+    <circle cx="3.7" cy="33.2" r="3.7"></circle>
+    <circle cx="31.7" cy="30.6" r="3.7"></circle>
+    <circle cx="43.3" cy="17.6" r="3.7"></circle>
+    <circle cx="53.2" cy="23.5" r="3.7"></circle>
+    <circle cx="59.7" cy="33.2" r="3.7"></circle>
+    <circle cx="31.7" cy="30.6" r="3.7"></circle>
+    <path d="M33.1,9.8c.2-.1.3-.3.5-.5l4.6,2.4v-6.8l-4.6,1.5c-.1-.2-.3-.3-.5-.5l1.9-5.9h-6.7l1.9,5.9c-.2.1-.3.3-.5.5l-4.6-1.5v6.8l4.6-2.4c.1.2.3.3.5.5l-2.6,8c-.9,2.8,1.2,5.7,4.1,5.7h0c3,0,5.1-2.9,4.1-5.7l-2.6-8ZM37,37.9s-3.4,3.8-4.1,6.1c2.2,0,4.2-.5,6.4-2.8l-.7,8.5c-2-2.8-4.4-4.1-5.7-3.8.1,3.1.5,6.7,5.8,7.2,3.7.3,6.7-1.5,7-3.8.4-2.6-2-4.3-3.7-1.6-1.4-4.5,2.4-6.1,4.9-3.2-1.9-4.5-1.8-7.7,2.4-10.9,3,4,2.6,7.3-1.2,11.1,2.4-1.3,6.2,0,4,4.6-1.2-2.8-3.7-2.2-4.2.2-.3,1.7.7,3.7,3,4.2,1.9.3,4.7-.9,7-5.9-1.3,0-2.4.7-3.9,1.7l2.4-8c.6,2.3,1.4,3.7,2.2,4.5.6-1.6.5-2.8,0-5.3l5,1.8c-2.6,3.6-5.2,8.7-7.3,17.5-7.4-1.1-15.7-1.7-24.5-1.7h0c-8.8,0-17.1.6-24.5,1.7-2.1-8.9-4.7-13.9-7.3-17.5l5-1.8c-.5,2.5-.6,3.7,0,5.3.8-.8,1.6-2.3,2.2-4.5l2.4,8c-1.5-1-2.6-1.7-3.9-1.7,2.3,5,5.2,6.2,7,5.9,2.3-.4,3.3-2.4,3-4.2-.5-2.4-3-3.1-4.2-.2-2.2-4.6,1.6-6,4-4.6-3.7-3.7-4.2-7.1-1.2-11.1,4.2,3.2,4.3,6.4,2.4,10.9,2.5-2.8,6.3-1.3,4.9,3.2-1.8-2.7-4.1-1-3.7,1.6.3,2.3,3.3,4.1,7,3.8,5.4-.5,5.7-4.2,5.8-7.2-1.3-.2-3.7,1-5.7,3.8l-.7-8.5c2.2,2.3,4.2,2.7,6.4,2.8-.7-2.3-4.1-6.1-4.1-6.1h10.6,0Z"></path>
+  </g>
+  <circle class="govuk-logo-dot" cx="227" cy="36" r="7.3"></circle>
+  <path d="M94.7,36.1c0,1.9.2,3.6.7,5.4.5,1.7,1.2,3.2,2.1,4.5.9,1.3,2.2,2.4,3.6,3.2,1.5.8,3.2,1.2,5.3,1.2s3.6-.3,4.9-.9c1.3-.6,2.3-1.4,3.1-2.3.8-.9,1.3-2,1.6-3,.3-1.1.5-2.1.5-3v-.4h-11v-6.6h19.5v24h-7.7v-5.4c-.5.8-1.2,1.6-2,2.3-.8.7-1.7,1.3-2.7,1.8-1,.5-2.1.9-3.3,1.2-1.2.3-2.5.4-3.8.4-3.2,0-6-.6-8.4-1.7-2.5-1.1-4.5-2.7-6.2-4.7-1.7-2-3-4.4-3.8-7.1-.9-2.7-1.3-5.6-1.3-8.7s.5-6,1.5-8.7,2.4-5.1,4.2-7.1c1.8-2,4-3.6,6.5-4.7s5.4-1.7,8.6-1.7,4,.2,5.9.7c1.8.5,3.5,1.1,5.1,2,1.5.9,2.9,1.9,4,3.2,1.2,1.2,2.1,2.6,2.8,4.1l-7.7,4.3c-.5-.9-1-1.8-1.6-2.6-.6-.8-1.3-1.5-2.2-2.1-.8-.6-1.7-1-2.8-1.4-1-.3-2.2-.5-3.5-.5-2,0-3.8.4-5.3,1.2s-2.7,1.9-3.6,3.2c-.9,1.3-1.7,2.8-2.1,4.6s-.7,3.5-.7,5.3v.3h0ZM152.9,13.7c3.2,0,6.1.6,8.7,1.7,2.6,1.2,4.7,2.7,6.5,4.7,1.8,2,3.1,4.4,4.1,7.1s1.4,5.6,1.4,8.7-.5,6-1.4,8.7c-.9,2.7-2.3,5.1-4.1,7.1s-4,3.6-6.5,4.7c-2.6,1.1-5.5,1.7-8.7,1.7s-6.1-.6-8.7-1.7c-2.6-1.1-4.7-2.7-6.5-4.7-1.8-2-3.1-4.4-4.1-7.1-.9-2.7-1.4-5.6-1.4-8.7s.5-6,1.4-8.7,2.3-5.1,4.1-7.1c1.8-2,4-3.6,6.5-4.7s5.4-1.7,8.7-1.7h0ZM152.9,50.4c1.9,0,3.6-.4,5-1.1,1.4-.7,2.7-1.7,3.6-3,1-1.3,1.7-2.8,2.2-4.5.5-1.7.8-3.6.8-5.7v-.2c0-2-.3-3.9-.8-5.7-.5-1.7-1.3-3.3-2.2-4.5-1-1.3-2.2-2.3-3.6-3-1.4-.7-3.1-1.1-5-1.1s-3.6.4-5,1.1c-1.5.7-2.7,1.7-3.6,3s-1.7,2.8-2.2,4.5c-.5,1.7-.8,3.6-.8,5.7v.2c0,2.1.3,4,.8,5.7.5,1.7,1.2,3.2,2.2,4.5,1,1.3,2.2,2.3,3.6,3,1.5.7,3.1,1.1,5,1.1ZM189.1,58l-12.3-44h9.8l8.4,32.9h.3l8.2-32.9h9.7l-12.3,44M262.9,50.4c1.3,0,2.5-.2,3.6-.6,1.1-.4,2-.9,2.8-1.7.8-.8,1.4-1.7,1.9-2.9.5-1.2.7-2.5.7-4.1V14h8.6v28.5c0,2.4-.4,4.6-1.3,6.6-.9,2-2.1,3.6-3.7,5-1.6,1.4-3.4,2.4-5.6,3.2-2.2.7-4.5,1.1-7.1,1.1s-4.9-.4-7.1-1.1c-2.2-.7-4-1.8-5.6-3.2s-2.8-3-3.7-5c-.9-2-1.3-4.1-1.3-6.6V14h8.7v27.2c0,1.6.2,2.9.7,4.1.5,1.2,1.1,2.1,1.9,2.9.8.8,1.7,1.3,2.8,1.7s2.3.6,3.6.6h0ZM288.5,14h8.7v19.1l15.5-19.1h10.8l-15.1,17.6,16.1,26.4h-10.2l-11.5-19.7-5.6,6.3v13.5h-8.7"></path>
+</svg>
+```
+
+Update the HTML inside your `<footer>` element by adding the following SVG code at the start of the `<div>` with the `govuk-width-container` class.
+
+```html
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  focusable="false"
+  role="presentation"
+  viewBox="0 0 64 60"
+  height="30"
+  width="32"
+  fill="currentcolor"
+  class="govuk-footer__crown">
+  <g>
+    <circle cx="20" cy="17.6" r="3.7"></circle>
+    <circle cx="10.2" cy="23.5" r="3.7"></circle>
+    <circle cx="3.7" cy="33.2" r="3.7"></circle>
+    <circle cx="31.7" cy="30.6" r="3.7"></circle>
+    <circle cx="43.3" cy="17.6" r="3.7"></circle>
+    <circle cx="53.2" cy="23.5" r="3.7"></circle>
+    <circle cx="59.7" cy="33.2" r="3.7"></circle>
+    <circle cx="31.7" cy="30.6" r="3.7"></circle>
+    <path d="M33.1,9.8c.2-.1.3-.3.5-.5l4.6,2.4v-6.8l-4.6,1.5c-.1-.2-.3-.3-.5-.5l1.9-5.9h-6.7l1.9,5.9c-.2.1-.3.3-.5.5l-4.6-1.5v6.8l4.6-2.4c.1.2.3.3.5.5l-2.6,8c-.9,2.8,1.2,5.7,4.1,5.7h0c3,0,5.1-2.9,4.1-5.7l-2.6-8ZM37,37.9s-3.4,3.8-4.1,6.1c2.2,0,4.2-.5,6.4-2.8l-.7,8.5c-2-2.8-4.4-4.1-5.7-3.8.1,3.1.5,6.7,5.8,7.2,3.7.3,6.7-1.5,7-3.8.4-2.6-2-4.3-3.7-1.6-1.4-4.5,2.4-6.1,4.9-3.2-1.9-4.5-1.8-7.7,2.4-10.9,3,4,2.6,7.3-1.2,11.1,2.4-1.3,6.2,0,4,4.6-1.2-2.8-3.7-2.2-4.2.2-.3,1.7.7,3.7,3,4.2,1.9.3,4.7-.9,7-5.9-1.3,0-2.4.7-3.9,1.7l2.4-8c.6,2.3,1.4,3.7,2.2,4.5.6-1.6.5-2.8,0-5.3l5,1.8c-2.6,3.6-5.2,8.7-7.3,17.5-7.4-1.1-15.7-1.7-24.5-1.7h0c-8.8,0-17.1.6-24.5,1.7-2.1-8.9-4.7-13.9-7.3-17.5l5-1.8c-.5,2.5-.6,3.7,0,5.3.8-.8,1.6-2.3,2.2-4.5l2.4,8c-1.5-1-2.6-1.7-3.9-1.7,2.3,5,5.2,6.2,7,5.9,2.3-.4,3.3-2.4,3-4.2-.5-2.4-3-3.1-4.2-.2-2.2-4.6,1.6-6,4-4.6-3.7-3.7-4.2-7.1-1.2-11.1,4.2,3.2,4.3,6.4,2.4,10.9,2.5-2.8,6.3-1.3,4.9,3.2-1.8-2.7-4.1-1-3.7,1.6.3,2.3,3.3,4.1,7,3.8,5.4-.5,5.7-4.2,5.8-7.2-1.3-.2-3.7,1-5.7,3.8l-.7-8.5c2.2,2.3,4.2,2.7,6.4,2.8-.7-2.3-4.1-6.1-4.1-6.1h10.6,0Z"></path>
+  </g>
+</svg>
+```
+
+To use our updated social icon assets, change the HTML inside your <head> element to use the new file path (from /assets/ to /assets/rebrand/) and `theme-color` metadata.
+You’ll need to replace the list of icons in the template's head with the following:
+
+```html
+<meta name="theme-color" content="#1d70b8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="icon" sizes="48x48" href="/assets/rebrand/images/favicon.ico">
+<link rel="icon" sizes="any" href="/assets/rebrand/images/favicon.svg" type="image/svg+xml">
+<link rel="mask-icon" href="/assets/rebrand/images/govuk-icon-mask.svg" color="#1d70b8">
+<link rel="apple-touch-icon" href="/assets/rebrand/images/govuk-icon-180.png">
+<link rel="manifest" href="/assets/rebrand/manifest.json">
+<meta property="og:image" content="<SERVICE URL>/assets/rebrand/images/govuk-opengraph-image.png">
+```
+
+### Other changes
+
+#### The GOV.UK footer component top border is now consistent with GOV.UK
+
+We've updated the border of the GOV.UK footer component so it matches the border used on the GOV.UK website. This will provide a more consistent experience for users as they navigate from the GOV.UK website and into services.
+
+#### The Royal Arms image file has been updated
+
+We've updated the colour of the Royal Arms in the [GOV.UK footer](https://design-system.service.gov.uk/components/footer/) so it matches the text colour in browsers supporting the `mask-image` CSS property.
+
+This improves its accessibility and reduces the number of colours used in the footer.
+
+This change only happens when you apply the `govuk-template–rebranded` class to the `<html>` element of your page.
+
+If your service does not use the image directly from the Frontend package, copy the new image to your service’s image assets folder. By default, this folder is located at `/assets/images`.
+
+If you’re using Nunjucks, the asset path may have been changed by the `assetPath` global variable or `assetsPath` parameter on the header component.
+
+You can safely delete the old image files, named `govuk-crest.png` and `govuk-crest-2x.png`.
+
+##### Pull requests
+
+These changes were made in the following pull requests:
+
+- [#5955: Backport assets to v4](https://github.com/alphagov/govuk-frontend/pull/5955)
+- [#5956: Backport rebrand header changes to v4](https://github.com/alphagov/govuk-frontend/pull/5956)
+- [#5980: Backport rebrand footer and canvas colour changes to v4](https://github.com/alphagov/govuk-frontend/pull/5980)
+- [#5984: Backport nunjucks shortcut rebrand feature to v4](https://github.com/alphagov/govuk-frontend/pull/5984)
+
 ## v4.9.0 (Feature release)
 
 To install this version with npm, run `npm install govuk-frontend@4.9.0`. You can also find more information about [how to stay up to date](https://frontend.design-system.service.gov.uk/v4/staying-up-to-date/#updating-to-the-latest-version) in our documentation.
