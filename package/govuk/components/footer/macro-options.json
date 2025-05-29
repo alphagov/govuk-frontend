@@ -160,5 +160,11 @@
         "type": "object",
         "required": false,
         "description": "HTML attributes (for example data attributes) to add to the footer component container."
+    },
+    {
+        "name": "rebrand",
+        "type": "boolean",
+        "required": false,
+        "description": "If `true`, use the redesigned footer with the GOV.UK crown. Default is `false`."
     }
 ]
