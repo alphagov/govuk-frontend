@@ -1,6 +1,17 @@
+{% from "../../macros/logo.njk" import govukLogo -%}
+
+{%- set _rebrand = params.rebrand | default(govukRebrand) -%}
+
 <footer class="govuk-footer {{ params.classes if params.classes }}" role="contentinfo"
         {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
   <div class="govuk-width-container {{ params.containerClasses if params.containerClasses }}">
+    {% if _rebrand %}
+      {{- govukLogo({
+        classes: 'govuk-footer__crown',
+        useTudorCrown: true,
+        rebrand: true
+      }) }}
+    {% endif %}
     {% if params.navigation | length %}
       <div class="govuk-footer__navigation">
         {% for nav in params.navigation %}

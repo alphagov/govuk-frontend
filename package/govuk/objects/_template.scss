@@ -12,6 +12,7 @@
     // would like the browser to stay on 100% text zoom by default.
     -webkit-text-size-adjust: 100%;
        -moz-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
             text-size-adjust: 100%;
 
     // Add scroll padding to the top of govuk-template but remove it if the

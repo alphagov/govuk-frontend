@@ -12,7 +12,11 @@
     // when user changes colours in their browser.
     border-bottom: $border-bottom-width solid transparent;
 
-    background-color: govuk-colour("light-grey", $legacy: "grey-3");
+    @include _govuk-rebrand(
+      "background-color",
+      $govuk-canvas-background-colour,
+      $_govuk-rebrand-template-background-colour
+    );
   }
 
   // Support older browsers which don't hide elements with the `hidden` attribute
