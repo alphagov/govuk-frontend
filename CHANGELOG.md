@@ -4,6 +4,10 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 ## Unreleased
 
+## v5.10.2 (Patch release)
+
+To install this version with npm, run `npm install govuk-frontend@5.10.2`. You can also find more information about [how to stay up to date](https://frontend.design-system.service.gov.uk/staying-up-to-date/) in our documentation.
+
 ### Fixes
 
 We've made fixes to GOV.UK Frontend in the following pull requests:
