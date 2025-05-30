@@ -35,6 +35,8 @@ We should update both internal and x-gov slack channels:
 
 The message we send on Slack is usually a shorter version of the email.
 
+We also need to review the GOV.UK Design System overview canvases we have on each support channel, updating the version number of GOV.UK Frontend in [GDS: #govuk-design-system](https://gds.slack.com/docs/T8GT9416G/F08UG2X7BFD) and [x-gov: #govuk-design-system](https://ukgovernmentdigital.slack.com/docs/T04V6EBTR/F058W5T94ET)
+
 ### Design System website
 
 We should check if we need to update the following places on the website:
