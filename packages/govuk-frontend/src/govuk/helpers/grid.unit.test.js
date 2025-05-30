@@ -2,21 +2,14 @@ const { compileSassString } = require('@govuk-frontend/helpers/tests')
 const { outdent } = require('outdent')
 
 describe('grid system', () => {
-  const sassImports = `
-    @import "settings/media-queries";
-    @import "settings/spacing";
-    @import "settings/measurements";
-
-    @import "helpers/grid";
-    @import "helpers/media-queries";
-
-    @import "tools/exports";
+  const sassModules = `
+    @use "helpers/grid" as *;
   `
 
   describe('govuk-grid-width function', () => {
     it('outputs the specified key value from the map of widths', async () => {
       const sass = `
-        ${sassImports}
+        ${sassModules}
 
         .foo {
           content: govuk-grid-width(one-quarter);
@@ -34,7 +27,7 @@ describe('grid system', () => {
 
     it('throws an error that the specified key does not exist in the map of widths', async () => {
       const sass = `
-        ${sassImports}
+        ${sassModules}
 
         $value: govuk-grid-width(seven-fifths);
         `
@@ -48,7 +41,7 @@ describe('grid system', () => {
   describe('@govuk-grid-column mixin', () => {
     it('outputs the CSS required for a column in the grid', async () => {
       const sass = `
-        ${sassImports}
+        ${sassModules}
 
         .govuk-grid-column-full {
           @include govuk-grid-column();
@@ -74,7 +67,7 @@ describe('grid system', () => {
 
     it('allows different widths to be specified using $width', async () => {
       const sass = `
-        ${sassImports}
+        ${sassModules}
 
         .govuk-grid-column-two-thirds {
           @include govuk-grid-column(two-thirds);
@@ -100,7 +93,7 @@ describe('grid system', () => {
 
     it('allows predefined breakpoints to be specified using $at', async () => {
       const sass = `
-        ${sassImports}
+        ${sassModules}
 
         .govuk-grid-column-one-quarter-at-desktop {
           @include govuk-grid-column(one-quarter, $at: desktop);
@@ -124,7 +117,7 @@ describe('grid system', () => {
 
     it('allows custom breakpoints to be specified using $at', async () => {
       const sass = `
-        ${sassImports}
+        ${sassModules}
 
         .govuk-grid-column-one-quarter-at-500px {
           @include govuk-grid-column(one-quarter, $at: 500px);
@@ -150,7 +143,7 @@ describe('grid system', () => {
 
     it('allows columns to float right using $float: right', async () => {
       const sass = `
-        ${sassImports}
+        ${sassModules}
 
         .govuk-grid-column-one-half-right {
           @include govuk-grid-column(one-half, $float: right);
