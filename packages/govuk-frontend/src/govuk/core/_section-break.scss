@@ -1,3 +1,7 @@
+@use "../helpers/spacing" as *;
+@use "../settings/colours-applied" as *;
+@use "../tools/exports" as *;
+
 @include govuk-exports("govuk/core/section-break") {
   %govuk-section-break {
     margin: 0;

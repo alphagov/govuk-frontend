@@ -1,6 +1,6 @@
-@import "../settings/colours-palette";
-@import "../settings/colours-organisations";
-@import "../settings/warnings";
+@use "../settings/colours-organisations" as *;
+@use "../settings/colours-palette" as *;
+@use "../settings/warnings" as *;
 
 ////
 /// @group helpers/colour
@@ -22,7 +22,7 @@
 @function govuk-colour($colour, $legacy: false) {
   // Output a warning if $legacy is set to anything.
   @if $legacy and _should-warn("legacy-colour-param") {
-    @warn _warning-text("legacy-colour-param", "The `$legacy` parameter of " +
+    @warn govuk-warning-text("legacy-colour-param", "The `$legacy` parameter of " +
     "`govuk-colour` is deprecated and is non-operational. It will be " +
     "removed in the next major version.");
   }
@@ -57,8 +57,8 @@
 @function govuk-organisation-colour($organisation, $websafe: null, $contrast-safe: true) {
   // Check if the $organisation exists in the aliases map. If so, change the
   // value of $organisation to the aliased value.
-  @if map-has-key($_govuk_colours-organisations-aliases, $organisation) {
-    $organisation: map-get($_govuk_colours-organisations-aliases, $organisation);
+  @if map-has-key($govuk_colours-organisations-aliases, $organisation) {
+    $organisation: map-get($govuk_colours-organisations-aliases, $organisation);
   }
 
   // Check to see if the organisation exists
@@ -68,9 +68,9 @@
 
   // Output a deprecation warning if the legacy colour palette is being used.
   // Remove in next major version.
-  $is-legacy: $govuk-colours-organisations == $_govuk-legacy-organisation-colours;
+  $is-legacy: $govuk-colours-organisations == $govuk-legacy-organisation-colours;
   @if $is-legacy and _should-warn("legacy-organisation-colours") {
-    @warn _warning-text("legacy-organisation-colours",
+    @warn govuk-warning-text("legacy-organisation-colours",
       "We've updated the organisation colour palette. Opt in to the new " +
       "colours using `$govuk-new-organisation-colours: true`. The old " +
       "palette is deprecated and we'll remove it in the next major version."
@@ -79,7 +79,7 @@
 
   // Output a warning if $websafe is set.
   @if $websafe and _should-warn("organisation-colour-websafe-param") {
-    @warn _warning-text("organisation-colour-websafe-param",
+    @warn govuk-warning-text("organisation-colour-websafe-param",
       "The `$websafe` parameter of `govuk-organisation-colour` has been " +
       "renamed to `$contrast-safe`. The old parameter name will be removed in " +
       "the next major version."
@@ -89,7 +89,7 @@
   $org-colour: map-get($govuk-colours-organisations, $organisation);
 
   @if map-has-key($org-colour, deprecation-message) and _should-warn("organisation-colours") {
-    @warn _warning-text(
+    @warn govuk-warning-text(
       "organisation-colours",
       map-get($org-colour, deprecation-message)
     );

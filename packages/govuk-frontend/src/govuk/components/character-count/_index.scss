@@ -1,7 +1,12 @@
-@import "../error-message/index";
-@import "../hint/index";
-@import "../label/index";
-@import "../textarea/index";
+@use "../../helpers/spacing" as *;
+@use "../../helpers/typography" as *;
+@use "../../settings/colours-applied" as *;
+@use "../../settings/measurements" as *;
+@use "../../tools/exports" as *;
+@forward "../error-message/index";
+@forward "../hint/index";
+@forward "../label/index";
+@forward "../textarea/index";
 
 @include govuk-exports("govuk/component/character-count") {
   .govuk-character-count {

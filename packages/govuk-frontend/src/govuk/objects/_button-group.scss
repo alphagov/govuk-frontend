@@ -1,4 +1,8 @@
-@import "../base";
+@use "../helpers/media-queries" as *;
+@use "../helpers/spacing" as *;
+@use "../helpers/typography" as *;
+@use "../settings/measurements" as *;
+@use "../tools/exports" as *;
 
 @include govuk-exports("govuk/objects/button-group") {
   // Button groups can be used to group buttons and links together as a group.

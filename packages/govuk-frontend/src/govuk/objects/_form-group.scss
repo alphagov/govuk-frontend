@@ -1,4 +1,8 @@
-@import "../base";
+@use "../helpers/clearfix" as *;
+@use "../helpers/spacing" as *;
+@use "../settings/colours-applied" as *;
+@use "../settings/measurements" as *;
+@use "../tools/exports" as *;
 
 @include govuk-exports("govuk/objects/form-group") {
   .govuk-form-group {
