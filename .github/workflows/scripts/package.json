@@ -11,6 +11,6 @@
     "@govuk-frontend/lib": "*",
     "@govuk-frontend/stats": "*",
     "outdent": "^0.8.0",
-    "semver": "^7.6.2"
+    "semver": "^7.7.2"
   }
 }
