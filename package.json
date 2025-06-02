@@ -97,6 +97,7 @@
     "@actions/github": "^6.0.1",
     "@jest/environment": "^29.5.0",
     "@percy/core": "^1.30.11",
+    "@octokit/plugin-rest-endpoint-methods": "^16.0.0",
     "@octokit/rest": "22.0.0",
     "@types/browser-sync": "^2.29.0",
     "@types/express": "^5.0.2",
