@@ -1,3 +1,6 @@
+@import "../helpers/links";
+@import "../tools/exports";
+
 @include govuk-exports("govuk/core/links") {
   %govuk-link {
     @include govuk-link-common;
