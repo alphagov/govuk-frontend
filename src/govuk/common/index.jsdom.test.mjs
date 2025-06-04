@@ -78,12 +78,12 @@ describe('Common JS utilities', () => {
       const stylesheet = document.createElement('style')
       stylesheet.innerHTML = outdent`
         :root {
-          --govuk-frontend-breakpoint-mobile: 40em;
-          --govuk-frontend-breakpoint-tablet: 80em;
+          --govuk-breakpoint-mobile: 40em;
+          --govuk-breakpoint-tablet: 80em;
         }
 
         body {
-          --govuk-frontend-breakpoint-tablet: 90em;
+          --govuk-breakpoint-tablet: 90em;
         }
       `
       document.body.appendChild(stylesheet)
@@ -91,21 +91,21 @@ describe('Common JS utilities', () => {
 
     it('returns the breakpoint value if it exists', () => {
       expect(getBreakpoint('mobile')).toEqual({
-        property: '--govuk-frontend-breakpoint-mobile',
+        property: '--govuk-breakpoint-mobile',
         value: '40em'
       })
     })
 
     it('returns the value as set on the HTML (root) element', () => {
       expect(getBreakpoint('tablet')).toEqual({
-        property: '--govuk-frontend-breakpoint-tablet',
+        property: '--govuk-breakpoint-tablet',
         value: '80em'
       })
     })
 
     it('returns an undefined value if the breakpoint does not exist', () => {
       expect(getBreakpoint('giant-video-wall')).toEqual({
-        property: '--govuk-frontend-breakpoint-giant-video-wall',
+        property: '--govuk-breakpoint-giant-video-wall',
         value: undefined
       })
     })
