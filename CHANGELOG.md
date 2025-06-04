@@ -4,6 +4,22 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 ## Unreleased
 
+### Deprecated features
+
+#### Replace references to CSS custom properties for breakpoints
+
+We've renamed the CSS custom properties for breakpoints to simplify the prefix from `--govuk-frontend` to just `--govuk`.
+
+| Old name                            | New name                   |
+| ----------------------------------- | -------------------------- |
+| --govuk-frontend-breakpoint-mobile  | --govuk-breakpoint-mobile  |
+| --govuk-frontend-breakpoint-tablet  | --govuk-breakpoint-tablet  |
+| --govuk-frontend-breakpoint-desktop | --govuk-breakpoint-desktop |
+
+You can still use the old names, but we'll remove them in the next breaking release (GOV.UK Frontend v6.0.0).
+
+This change was introduced in [pull request #6014: Simplify prefix for breakpoint custom properties](https://github.com/alphagov/govuk-frontend/pull/6014).
+
 ## v5.10.2 (Patch release)
 
 To install this version with npm, run `npm install govuk-frontend@5.10.2`. You can also find more information about [how to stay up to date](https://frontend.design-system.service.gov.uk/staying-up-to-date/) in our documentation.
