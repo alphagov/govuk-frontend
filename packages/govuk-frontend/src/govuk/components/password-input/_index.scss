@@ -1,5 +1,8 @@
-@import "../button/index";
-@import "../input/index";
+@use "../../helpers/media-queries" as *;
+@use "../../helpers/spacing" as *;
+@use "../../tools/exports" as *;
+@forward "../button/index";
+@forward "../input/index";
 
 @include govuk-exports("govuk/component/password-input") {
   .govuk-password-input__wrapper {

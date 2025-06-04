@@ -1,3 +1,8 @@
+@use "../../helpers/spacing" as *;
+@use "../../helpers/typography" as *;
+@use "../../settings/colours-applied" as *;
+@use "../../tools/exports" as *;
+
 @include govuk-exports("govuk/component/hint") {
   .govuk-hint {
     @include govuk-font($size: 19);

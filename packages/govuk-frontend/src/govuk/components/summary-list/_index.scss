@@ -1,3 +1,10 @@
+@use "../../helpers/colour" as *;
+@use "../../helpers/media-queries" as *;
+@use "../../helpers/spacing" as *;
+@use "../../helpers/typography" as *;
+@use "../../settings/colours-applied" as *;
+@use "../../tools/exports" as *;
+
 @include govuk-exports("govuk/component/summary-list") {
   .govuk-summary-list {
     @include govuk-font($size: 19);

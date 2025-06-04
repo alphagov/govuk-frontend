@@ -1,4 +1,10 @@
-@import "../../core/lists";
+@use "../../helpers/links" as *;
+@use "../../helpers/spacing" as *;
+@use "../../helpers/typography" as *;
+@use "../../settings/colours-applied" as *;
+@use "../../settings/measurements" as *;
+@use "../../tools/exports" as *;
+@forward "../../core/lists";
 
 @include govuk-exports("govuk/component/error-summary") {
   .govuk-error-summary {

@@ -1,4 +1,8 @@
-@import "../button/index";
+@use "../../helpers/colour" as *;
+@use "../../helpers/media-queries" as *;
+@use "../../helpers/spacing" as *;
+@use "../../tools/exports" as *;
+@forward "../button/index";
 
 @include govuk-exports("govuk/component/exit-this-page") {
   $indicator-size: 0.75em;

@@ -1,8 +1,9 @@
+@use "../tools/exports" as *;
+@use "../tools/font-url" as *;
+
 ////
 /// @group helpers
 ////
-
-@import "../tools/exports";
 
 /// Font Face - GDS Transport
 ///
@@ -11,7 +12,7 @@
 ///
 /// @access private
 
-@mixin _govuk-font-face-gds-transport {
+@mixin govuk-font-face-gds-transport {
   @include govuk-exports("govuk/helpers/font-faces") {
     @at-root {
       /*! Copyright (c) 2011 by Margaret Calvert & Henrik Kubel. All rights reserved. The font has been customised for exclusive use on gov.uk. This cut is not commercially available. */ /* stylelint-disable-line scss/comment-no-loud  */
