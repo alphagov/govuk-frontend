@@ -58,13 +58,9 @@ describe('dist/', () => {
       expect(stylesheet).toContain(`--govuk-frontend-version:"${pkg.version}"`)
 
       // Breakpoints for `window.matchMedia()` in Header, Tabs components
-      expect(stylesheet).toContain('--govuk-frontend-breakpoint-mobile:20rem')
-      expect(stylesheet).toContain(
-        '--govuk-frontend-breakpoint-tablet:40.0625rem'
-      )
-      expect(stylesheet).toContain(
-        '--govuk-frontend-breakpoint-desktop:48.0625rem'
-      )
+      expect(stylesheet).toContain('--govuk-breakpoint-mobile:20rem')
+      expect(stylesheet).toContain('--govuk-breakpoint-tablet:40.0625rem')
+      expect(stylesheet).toContain('--govuk-breakpoint-desktop:48.0625rem')
     })
   })
 

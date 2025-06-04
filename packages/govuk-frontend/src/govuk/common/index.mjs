@@ -32,7 +32,7 @@ export function getFragmentFromUrl(url) {
  * @returns {{ property: string, value?: string }} Breakpoint object
  */
 export function getBreakpoint(name) {
-  const property = `--govuk-frontend-breakpoint-${name}`
+  const property = `--govuk-breakpoint-${name}`
 
   // Get value from `<html>` with breakpoints on CSS :root
   const value = window
