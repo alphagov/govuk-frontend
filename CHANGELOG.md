@@ -4,6 +4,18 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 ## Unreleased
 
+### New features
+
+#### The Service Navigation component no longer uses a menu on mobile for a single link
+
+If you're using our Nunjucks macros, the Service Navigation component will no longer collapse the navigation behind a 'Menu' toggle if there is only one navigation item.
+
+You can control this behaviour using the new `collapseNavigationOnMobile` Nunjucks option.
+
+If you are not using our Nunjucks macros, you can recreate this behaviour by omitting the 'Menu' `<button>` element if there is only one navigation item.
+
+This change was introduced in [pull request #6016: Don’t use menu for service nav with a single link](https://github.com/alphagov/govuk-frontend/pull/6016).
+
 ## v5.10.2 (Patch release)
 
 To install this version with npm, run `npm install govuk-frontend@5.10.2`. You can also find more information about [how to stay up to date](https://frontend.design-system.service.gov.uk/staying-up-to-date/) in our documentation.
