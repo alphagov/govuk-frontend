@@ -31,6 +31,10 @@ params:
     type: string
     required: false
     description: Classes to add to the navigation menu container.
+  - name: collapseNavigationOnMobile
+    type: boolean
+    required: false
+    description: Whether the navigation should be collapsed inside a menu on mobile. Defaults to true if there is more than one navigation item.
   - name: serviceName
     type: string
     required: false
@@ -223,6 +227,36 @@ examples:
           text: Navigation item 3
         - href: '#/4'
           text: Navigation item 4
+  - name: with collapseNavigationOnMobile set to false
+    options:
+      serviceName: Apply for a juggling license
+      serviceUrl: '#/'
+      navigation:
+        - href: '#/1'
+          text: Navigation item 1
+        - href: '#/2'
+          text: Navigation item 2
+          active: true
+        - href: '#/3'
+          text: Navigation item 3
+        - href: '#/4'
+          text: Navigation item 4
+      collapseNavigationOnMobile: false
+  - name: with a single navigation item
+    options:
+      serviceName: Apply for a juggling license
+      serviceUrl: '#/'
+      navigation:
+        - href: '#/1'
+          text: Log out
+  - name: with a single navigation item and collapseNavigationOnMobile set to true
+    options:
+      serviceName: Apply for a juggling license
+      serviceUrl: '#/'
+      navigation:
+        - href: '#/1'
+          text: Log out
+      collapseNavigationOnMobile: true
 
   # Hidden examples
   - name: with no options set
@@ -253,6 +287,8 @@ examples:
       navigation:
         - href: '#/1'
           text: Navigation item 1
+        - href: '#/2'
+          text: Navigation item 2
   - name: with custom navigation toggle label
     hidden: true
     options:
@@ -260,6 +296,8 @@ examples:
       navigation:
         - href: '#/1'
           text: Navigation item 1
+        - href: '#/2'
+          text: Navigation item 2
   - name: with identical navigation toggle text and label
     hidden: true
     options:
@@ -268,6 +306,8 @@ examples:
       navigation:
         - href: '#/1'
           text: Navigation item 1
+        - href: '#/2'
+          text: Navigation item 2
   - name: with custom navigation label
     hidden: true
     options:
@@ -275,6 +315,8 @@ examples:
       navigation:
         - href: '#/1'
           text: Navigation item 1
+        - href: '#/2'
+          text: Navigation item 2
   - name: with custom navigation toggle text and navigation label
     hidden: true
     options:
@@ -283,6 +325,8 @@ examples:
       navigation:
         - href: '#/1'
           text: Navigation item 1
+        - href: '#/2'
+          text: Navigation item 2
   - name: with custom navigation classes
     hidden: true
     options:
@@ -290,6 +334,8 @@ examples:
       navigation:
         - href: '#/1'
           text: Navigation item 1
+        - href: '#/2'
+          text: Navigation item 2
   - name: with custom navigation ID
     hidden: true
     options:
@@ -297,6 +343,8 @@ examples:
       navigation:
         - href: '#/1'
           text: Navigation item 1
+        - href: '#/2'
+          text: Navigation item 2
   - name: with navigation having empty values
     hidden: true
     options:

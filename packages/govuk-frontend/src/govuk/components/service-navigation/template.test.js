@@ -163,8 +163,48 @@ describe('Service Navigation', () => {
     })
 
     describe('toggle button', () => {
-      it('renders the navigation toggle button', () => {
+      it('is included for navigation with multiple items', () => {
         const $ = render('service-navigation', examples.default)
+        const $component = $('.govuk-service-navigation')
+
+        const $navToggle = $component.find('.govuk-service-navigation__toggle')
+
+        expect($navToggle).toHaveLength(1)
+        expect($navToggle.get(0).tagName).toBe('button')
+        expect($navToggle.attr('type')).toBe('button')
+      })
+
+      it('is not included if collapseNavigationOnMobile is `false`', () => {
+        const $ = render(
+          'service-navigation',
+          examples['with collapseNavigationOnMobile set to false']
+        )
+        const $component = $('.govuk-service-navigation')
+
+        const $navToggle = $component.find('.govuk-service-navigation__toggle')
+
+        expect($navToggle).toHaveLength(0)
+      })
+
+      it('is not included if the navigation only has one item', () => {
+        const $ = render(
+          'service-navigation',
+          examples['with a single navigation item']
+        )
+        const $component = $('.govuk-service-navigation')
+
+        const $navToggle = $component.find('.govuk-service-navigation__toggle')
+
+        expect($navToggle).toHaveLength(0)
+      })
+
+      it('is included if the navigation only has one item but `collapseNavigationOnMobile` is true', () => {
+        const $ = render(
+          'service-navigation',
+          examples[
+            'with a single navigation item and collapseNavigationOnMobile set to true'
+          ]
+        )
         const $component = $('.govuk-service-navigation')
 
         const $navToggle = $component.find('.govuk-service-navigation__toggle')
