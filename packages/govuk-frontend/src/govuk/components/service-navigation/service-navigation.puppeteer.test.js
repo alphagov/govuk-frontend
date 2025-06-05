@@ -57,6 +57,19 @@ describe('/components/service-navigation', () => {
       })
     })
 
+    describe('when navigation is present but the menu button is not', () => {
+      it('exits gracefully with no errors', async () => {
+        // Errors logged to the console will cause this test to fail
+        return expect(
+          render(
+            page,
+            'service-navigation',
+            examples['with collapseNavigationOnMobile set to false']
+          )
+        ).resolves.not.toThrow()
+      })
+    })
+
     describe('errors at instantiation', () => {
       it('can throw a SupportError if appropriate', async () => {
         await expect(
