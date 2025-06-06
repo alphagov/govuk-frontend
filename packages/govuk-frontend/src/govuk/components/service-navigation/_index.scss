@@ -48,7 +48,13 @@
 
       @include _govuk-rebrand {
         padding: govuk-spacing(3) 0;
-        line-height: 1.5;
+
+        // More magic numbers ahoy:
+        // 29 is the desired height of the element (60), minus top and bottom
+        // padding (2×15), minus bottom border (1); 19 is the font-size at this
+        // point. This gives us the perfect fractional line height to make the
+        // overall component 60px high
+        line-height: (29 / 19);
       }
 
       &:not(:last-child) {
@@ -181,5 +187,41 @@
   // inherit the parent font-weight.
   .govuk-service-navigation__active-fallback {
     font-weight: inherit;
+  }
+
+  // Inverted colour scheme style intended for product pages
+  .govuk-service-navigation--inverse {
+    @include _govuk-rebrand {
+      // Remove bottom border to add width-container ones
+      border-bottom: none;
+      background-color: $govuk-brand-colour;
+
+      .govuk-width-container {
+        border-width: 1px 0;
+        border-style: solid;
+        border-color: $_govuk-rebrand-border-colour-on-blue-tint-95;
+      }
+
+      // Subtract 1px of space to account for the extra border-top
+      .govuk-service-navigation__container {
+        margin-top: -1px;
+      }
+
+      // Override the 'active' border colour
+      .govuk-service-navigation__item,
+      .govuk-service-navigation__service-name {
+        border-color: govuk-colour("white");
+      }
+
+      // Override link styles
+      .govuk-service-navigation__link {
+        @include govuk-link-style-inverse;
+      }
+
+      // Override mobile menu toggle colour when not focused
+      .govuk-service-navigation__toggle:not(:focus) {
+        color: govuk-colour("white");
+      }
+    }
   }
 }
