@@ -9,6 +9,7 @@ For advice on how to use these release notes see [our guidance on staying up to 
 We've made fixes to GOV.UK Frontend in the following pull requests:
 
 - [#6018: Fix layout of Service navigation in Edge when forced colours are enabled](https://github.com/alphagov/govuk-frontend/pull/6018)
+- [#6019: Fix service nav wrapper not filling available width](https://github.com/alphagov/govuk-frontend/pull/6019), thanks to @joelanman for reporting and fixing this issue
 
 ## v5.10.2 (Patch release)
 
