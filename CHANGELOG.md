@@ -4,6 +4,12 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 ## Unreleased
 
+### Fixes
+
+We've made fixes to GOV.UK Frontend in the following pull requests:
+
+- [#6019: Fix service nav wrapper not filling available width](https://github.com/alphagov/govuk-frontend/pull/6019), thanks to @joelanman for reporting and fixing this issue
+
 ## v5.10.2 (Patch release)
 
 To install this version with npm, run `npm install govuk-frontend@5.10.2`. You can also find more information about [how to stay up to date](https://frontend.design-system.service.gov.uk/staying-up-to-date/) in our documentation.
