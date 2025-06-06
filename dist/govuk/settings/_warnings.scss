@@ -1,0 +1,78 @@
+////
+/// @group settings/warnings
+////
+
+/// Suppressed warnings map
+///
+/// This map is used to determine which deprecation warnings to **not** show
+/// to users when compiling sass. This is in place for codebases that do not
+/// have the necessary capacity to upgrade and remove the deprecation,
+/// particularly if the deprecation is significant. For example, the removal of
+/// mixins and functions that were previously available to users of Frontend.
+///
+/// You can add to this map and define which warnings to suppress by appending to
+/// it using the warning key, found in the warning message. For example:
+///
+/// @example scss:
+///   // warning message:
+///   //  $foobar is no longer supported. To silence this warning, update
+///   //  $govuk-suppressed-warnings with key: "foobar"
+///   $govuk-suppressed-warnings: (
+///     foobar
+///   );
+///
+/// @type List
+/// @access public
+
+$govuk-suppressed-warnings: () !default;
+
+/// Warnings
+///
+/// Acts as a wrapper for the built in `@warn` sass function
+///
+/// We use this instead of using `@warn` for 3 reasons:
+///
+/// - To check if a warning is being suppressed through `$govuk-suppressed-warnings`,
+/// in which case we don't call `@warn` and printing the warning to the user
+/// - To format the passed warning `$message` with the warning key at the end
+/// - To prevent duplicate warnings by adding the passed `$key` to
+/// `$govuk-suppressed-warnings` after `@warn` is called to ensure it only runs
+/// once per sass compilation (unless $silence-further-warnings is false)
+///
+/// @param {String} $key - The key to be checked against `$govuk-suppressed-warnings`
+/// and then passed to it to prevent multiple of the same warning.
+/// @param {String} $message - The message to use when calling `@warn`
+/// @param {Boolean} $silence-further-warnings - Whether to silence future
+/// warnings that use the same $key
+/// @access private
+
+@mixin _warning($key, $message, $silence-further-warnings: true) {
+  @if _should-warn($key) {
+    @warn _warning-text($key, $message);
+
+    @if $silence-further-warnings {
+      $govuk-suppressed-warnings: append($govuk-suppressed-warnings, $key) !global;
+    }
+  }
+}
+
+/// Check whether a key is present in the suppressed warnings list.
+///
+/// @param {String} $key - The key to be checked against `$govuk-suppressed-warnings`.
+/// @access private
+
+@function _should-warn($key) {
+  @return index($govuk-suppressed-warnings, $key) == null;
+}
+
+/// Format a warning by appending information on how to suppress it.
+///
+/// @param {String} $key - The key needed to suppress the warning.
+/// @param {String} $message - The warning text.
+/// @access private
+
+@function _warning-text($key, $message) {
+  @return $message + " To silence this warning, update $govuk-suppressed-warnings " + 'with key: "#{$key}"';
+}
+
+/*# sourceMappingURL=_warnings.scss.map */

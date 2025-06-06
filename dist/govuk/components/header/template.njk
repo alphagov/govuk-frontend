@@ -1,0 +1,66 @@
+{% from "../../macros/attributes.njk" import govukAttributes -%}
+{% from "../../macros/logo.njk" import govukLogo -%}
+
+{%- set _rebrand = params.rebrand | default(govukRebrand() if govukRebrand is callable else govukRebrand) -%}
+
+{%- set menuButtonText = params.menuButtonText if params.menuButtonText else 'Menu' -%}
+
+<header class="govuk-header {%- if params.classes %} {{ params.classes }}{% endif %}" data-module="govuk-header"
+  {{- govukAttributes(params.attributes) }}>
+  <div class="govuk-header__container {{ params.containerClasses | default("govuk-width-container", true) }}">
+    <div class="govuk-header__logo">
+      <a href="{{ params.homepageUrl | default("/", true) }}" class="govuk-header__link govuk-header__link--homepage">
+        {{ govukLogo({
+          classes: "govuk-header__logotype",
+          ariaLabelText: "GOV.UK",
+          useTudorCrown: params.useTudorCrown,
+          rebrand: _rebrand
+        }) | trim | indent(8) }}
+        {% if (params.productName) %}
+        <span class="govuk-header__product-name">
+          {{- params.productName -}}
+        </span>
+        {% endif %}
+      </a>
+    </div>
+  {% if params.serviceName or params.navigation | length %}
+    <div class="govuk-header__content">
+    {% if params.serviceName %}
+      {% if params.serviceUrl %}
+      <a href="{{ params.serviceUrl }}" class="govuk-header__link govuk-header__service-name">
+        {{ params.serviceName }}
+      </a>
+      {% else %}
+      <span class="govuk-header__service-name">
+        {{ params.serviceName }}
+      </span>
+      {% endif %}
+    {% endif %}
+    {% if params.navigation | length %}
+      <nav aria-label="{{ params.navigationLabel | default(menuButtonText, true) }}" class="govuk-header__navigation {%- if params.navigationClasses %} {{ params.navigationClasses }}{% endif %}">
+        <button type="button" class="govuk-header__menu-button govuk-js-header-toggle" aria-controls="navigation" {%- if params.menuButtonLabel and params.menuButtonLabel != menuButtonText %} aria-label="{{ params.menuButtonLabel }}"{% endif %} hidden>
+          {{ menuButtonText }}
+        </button>
+
+        <ul id="navigation" class="govuk-header__navigation-list">
+        {% for item in params.navigation %}
+          {% if item.text or item.html %}
+          <li class="govuk-header__navigation-item {%- if item.active %} govuk-header__navigation-item--active{% endif %}">
+            {% if item.href %}
+            <a class="govuk-header__link" href="{{ item.href }}"
+              {{- govukAttributes(item.attributes) -}}>
+            {% endif %}
+              {{ item.html | safe | trim | indent(14) if item.html else item.text }}
+            {% if item.href %}
+            </a>
+            {% endif %}
+          </li>
+          {% endif %}
+        {% endfor %}
+        </ul>
+      </nav>
+    {% endif %}
+    </div>
+  {% endif %}
+  </div>
+</header>

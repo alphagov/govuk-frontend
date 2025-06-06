@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../src/govuk/core/_index.scss"],"names":[],"mappings":"AAAA,mCAAmC;AACnC,eAAe;AACf,eAAe;AACf,oBAAoB;AACpB,uBAAuB;AACvB,uBAAuB","file":"_index.scss","sourcesContent":["@import \"govuk-frontend-properties\";\n@import \"links\";\n@import \"lists\";\n@import \"typography\";\n@import \"section-break\";\n@import \"global-styles\";\n"]}
