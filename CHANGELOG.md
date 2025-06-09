@@ -24,6 +24,14 @@ This allows the rebranded GOV.UK header and Service navigation to flow seamlessl
 
 This change was made in [pull request #6015: Add inverse variant to Service navigation component](https://github.com/alphagov/govuk-frontend/pull/6015).
 
+#### You'll now see a deprecation warning if you're using LibSass
+
+You will now see a deprecation warning when compiling your Sass if you're using the deprecated LibSass library:
+
+> It looks like you may be using LibSass to compile your Sass. LibSass is deprecated and will not be supported by the next major version of GOV.UK Frontend. See https://sass-lang.com/libsass/ for more information. To silence this warning, update `$govuk-suppressed-warnings` with key: "libsass"
+
+This change was introduced in [pull request #5993: Warn if Sass is compiled using libsass](https://github.com/alphagov/govuk-frontend/pull/5993).
+
 ### Deprecated features
 
 #### Replace references to CSS custom properties for breakpoints
