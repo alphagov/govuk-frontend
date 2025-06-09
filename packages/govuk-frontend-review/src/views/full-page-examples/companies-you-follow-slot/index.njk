@@ -21,12 +21,12 @@ notes: Based on Companies House "Find an update company information" service
 {% block head %}
   {{ super() }}
   <style>
-    .app-service-navigation .govuk-service-navigation__wrapper {
-      flex-grow: 1;
-    }
     .app-sign-out {
       margin-left: auto;
       padding: 15px 0 10px;
+    }
+    .govuk-template--rebranded .app-sign-out {
+      padding: 10px 0;
     }
     .app-sign-out .govuk-button {
       margin: 0;
@@ -52,7 +52,6 @@ notes: Based on Companies House "Find an update company information" service
     serviceUrl: "#0"
   }) }}
   {{ govukServiceNavigation({
-    classes: "app-service-navigation",
     navigation: [
       {
         href: '#1',
