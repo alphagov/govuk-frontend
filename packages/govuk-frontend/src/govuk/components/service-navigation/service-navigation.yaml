@@ -205,6 +205,24 @@ examples:
           text: Navigation item 3
         - href: '#/4'
           text: Navigation item 4
+  - name: inverse
+    description: Service navigation that appears between other areas of brand blue. Rebrand only.
+    previewLayoutModifiers:
+      - inverse
+    options:
+      classes: govuk-service-navigation--inverse
+      serviceName: Apply for a juggling license
+      serviceUrl: '#/'
+      navigation:
+        - href: '#/1'
+          text: Navigation item 1
+        - href: '#/2'
+          text: Navigation item 2
+          active: true
+        - href: '#/3'
+          text: Navigation item 3
+        - href: '#/4'
+          text: Navigation item 4
 
   # Hidden examples
   - name: with no options set
