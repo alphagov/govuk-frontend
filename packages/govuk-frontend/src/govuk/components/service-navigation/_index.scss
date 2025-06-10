@@ -111,6 +111,13 @@
     @include govuk-link-style-text;
   }
 
+  // Allow navigation section to always take up maximum available space,
+  // rather than sizing to fit the content. This makes it easier to right align
+  // nav items and use slots.
+  .govuk-service-navigation__wrapper {
+    flex-grow: 1;
+  }
+
   //
   // Navigation list specific code
   //
