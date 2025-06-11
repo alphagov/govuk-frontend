@@ -66,6 +66,17 @@
     }
   }
 
+  // Remove the top margin of the first nav item if there is a service name but
+  // there's no menu button (either because it doesn't exist or it's hidden)
+  .govuk-service-navigation__service-name + .govuk-service-navigation__wrapper {
+    .govuk-service-navigation__list:first-child,
+    .govuk-service-navigation__toggle[hidden] + .govuk-service-navigation__list {
+      .govuk-service-navigation__item:first-child {
+        margin-top: 0;
+      }
+    }
+  }
+
   .govuk-service-navigation__item--active {
     @include govuk-media-query($until: tablet) {
       // Negative offset the left margin so we can place a current page indicator
