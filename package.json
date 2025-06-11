@@ -62,7 +62,7 @@
     "version": "echo $npm_package_version"
   },
   "devDependencies": {
-    "@babel/core": "^7.27.1",
+    "@babel/core": "^7.27.4",
     "@babel/preset-env": "^7.27.2",
     "@govuk-frontend/config": "*",
     "@govuk-frontend/helpers": "*",
