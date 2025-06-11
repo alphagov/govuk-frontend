@@ -12,12 +12,15 @@ const sassConfig = {
 }
 
 describe('Warnings mixin', () => {
-  const sassBootstrap = '@import "settings/warnings";'
+  const sassBootstrap = `
+    // Use legacy import for private members
+    @import "settings/warnings";
+  `
 
   it('Fires a @warn with the message plus the key suffix text', async () => {
     const sass = `
       ${sassBootstrap}
-      @include _warning('test', 'This is a warning.');
+      @include govuk-warning('test', 'This is a warning.');
     `
 
     await compileSassString(sass, sassConfig)
@@ -34,8 +37,8 @@ describe('Warnings mixin', () => {
   it('Only fires one @warn per warning key', async () => {
     const sass = `
       ${sassBootstrap}
-      @include _warning('test', 'This is a warning.');
-      @include _warning('test', 'This is a warning.');
+      @include govuk-warning('test', 'This is a warning.');
+      @include govuk-warning('test', 'This is a warning.');
     `
 
     await compileSassString(sass, sassConfig)
@@ -48,8 +51,8 @@ describe('Warnings mixin', () => {
   it('fires every @warn if $silence-further-warnings is false', async () => {
     const sass = `
       ${sassBootstrap}
-      @include _warning('test', 'This is a warning.', $silence-further-warnings: false);
-      @include _warning('test', 'This is a warning.');
+      @include govuk-warning('test', 'This is a warning.', $silence-further-warnings: false);
+      @include govuk-warning('test', 'This is a warning.');
     `
 
     await compileSassString(sass, sassConfig)
@@ -62,7 +65,7 @@ describe('Warnings mixin', () => {
       ${sassBootstrap}
 
       $govuk-suppressed-warnings: append($govuk-suppressed-warnings, 'test');
-      @include _warning('test', 'This is a warning.');
+      @include govuk-warning('test', 'This is a warning.');
     `
 
     await compileSassString(sass, sassConfig)

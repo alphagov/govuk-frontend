@@ -1,8 +1,13 @@
+@use "../settings/colours-applied" as *;
+@use "../settings/typography-font" as *;
+@use "../settings/typography-responsive" as *;
+@use "../tools/px-to-rem" as *;
+@use "font-faces" as *;
+@use "media-queries" as *;
+
 ////
 /// @group helpers/typography
 ////
-
-@import "../tools/px-to-rem";
 
 /// 'Common typography' helper
 ///
@@ -20,7 +25,7 @@
   // If the user is using the default GDS Transport font we need to include
   // the font-face declarations.
   @if $govuk-include-default-font-face {
-    @include _govuk-font-face-gds-transport;
+    @include govuk-font-face-gds-transport;
   }
 
   @include govuk-media-query($media-type: print) {
@@ -131,7 +136,7 @@
 /// @deprecated Use `govuk-font-size` instead
 
 @mixin govuk-typography-responsive($size, $override-line-height: false, $important: false) {
-  @include _warning(
+  @include govuk-warning(
     "govuk-typography-responsive",
     "govuk-typography-responsive is deprecated. Use govuk-font-size instead."
   );
@@ -207,7 +212,7 @@
   @if $deprecation {
     // Warn on deprecated font sizes unless flagged for internal use
     @if not $size-internal-use-only {
-      @include _warning(map-get($deprecation, "key"), map-get($deprecation, "message"));
+      @include govuk-warning(map-get($deprecation, "key"), map-get($deprecation, "message"));
     }
 
     // remove the deprecation map keys so they do not break the breakpoint loop

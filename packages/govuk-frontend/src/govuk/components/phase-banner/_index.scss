@@ -1,4 +1,10 @@
-@import "../tag/index";
+@use "../../helpers/media-queries" as *;
+@use "../../helpers/spacing" as *;
+@use "../../helpers/typography" as *;
+@use "../../settings/colours-applied" as *;
+@use "../../settings/typography-responsive" as *;
+@use "../../tools/exports" as *;
+@forward "../tag/index";
 
 @include govuk-exports("govuk/component/phase-banner") {
   .govuk-phase-banner {

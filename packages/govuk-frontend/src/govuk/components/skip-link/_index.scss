@@ -1,3 +1,12 @@
+@use "../../helpers/links" as *;
+@use "../../helpers/spacing" as *;
+@use "../../helpers/typography" as *;
+@use "../../helpers/visually-hidden" as *;
+@use "../../settings/colours-applied" as *;
+@use "../../settings/global-styles" as *;
+@use "../../settings/measurements" as *;
+@use "../../tools/exports" as *;
+
 @include govuk-exports("govuk/component/skip-link") {
   .govuk-skip-link {
     @include govuk-visually-hidden-focusable;

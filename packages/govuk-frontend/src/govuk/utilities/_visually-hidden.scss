@@ -1,3 +1,6 @@
+@use "../helpers/visually-hidden" as *;
+@use "../tools/exports" as *;
+
 @include govuk-exports("govuk/utilities/visually-hidden") {
   .govuk-visually-hidden {
     @include govuk-visually-hidden;

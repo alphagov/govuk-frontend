@@ -1,5 +1,7 @@
-@import "links";
-@import "typography";
+@use "../settings/global-styles" as *;
+@use "../tools/exports" as *;
+@use "links" as *;
+@use "typography" as *;
 
 @mixin govuk-global-styles {
   a {

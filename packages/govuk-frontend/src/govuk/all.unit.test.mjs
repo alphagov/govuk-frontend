@@ -10,8 +10,9 @@ describe('GOV.UK Frontend', () => {
   describe('global styles', () => {
     it('are disabled by default', async () => {
       const sass = `
-        @import "index";
+        @forward "index";
       `
+
       const results = compileSassString(sass)
 
       await expect(results).resolves.toMatchObject({
@@ -25,8 +26,9 @@ describe('GOV.UK Frontend', () => {
 
     it('are enabled if $global-styles variable is set to true', async () => {
       const sass = `
-        $govuk-global-styles: true;
-        @import "index";
+        @forward "index" with (
+          $govuk-global-styles: true;
+        );
       `
 
       const results = compileSassString(sass)
@@ -72,7 +74,9 @@ describe('GOV.UK Frontend', () => {
   // the compiled CSS - if it finds anything, it will result in the test
   // failing.
   it('does not contain any unexpected govuk- function calls', async () => {
-    const sass = '@import "index"'
+    const sass = `
+      @forward "index"
+    `
 
     await expect(compileSassString(sass)).resolves.toMatchObject({
       css: expect.not.stringMatching(/_?govuk-[\w-]+\(.*?\)/g)
@@ -116,7 +120,7 @@ describe('GOV.UK Frontend', () => {
 
     it('outputs a warning when importing the "all" file at root', async () => {
       const sass = `
-      @import "all";
+        @forward "all";
       `
 
       await compileSassString(sass, sassConfig)
@@ -129,18 +133,18 @@ describe('GOV.UK Frontend', () => {
 
     it('outputs a warning for each layer that has an "all" file', async () => {
       const sass = `
-      /* equivalent to importing 'base' */
-      @import "settings/all";
-      @import "tools/all";
-      @import "helpers/all";
+        /* equivalent to importing 'base' */
+        @forward "settings/all";
+        @forward "tools/all";
+        @forward "helpers/all";
 
-      @import "core/all";
-      @import "objects/all";
+        @forward "core/all";
+        @forward "objects/all";
 
-      @import "components/all";
+        @forward "components/all";
 
-      @import "utilities/all";
-      @import "overrides/all";
+        @forward "utilities/all";
+        @forward "overrides/all";
       `
 
       await compileSassString(sass, sassConfig)

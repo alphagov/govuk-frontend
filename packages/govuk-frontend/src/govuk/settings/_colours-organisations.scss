@@ -1,4 +1,4 @@
-@import "../settings/warnings";
+@use "warnings" as *;
 
 ////
 /// @group settings/colours
@@ -32,7 +32,7 @@ $govuk-new-organisation-colours: false !default;
 ///
 /// @access private
 
-$_govuk-organisation-colours: (
+$govuk-organisation-colours: (
   "attorney-generals-office": (
     colour: #a91c8e
   ),
@@ -216,7 +216,7 @@ $_govuk-organisation-colours: (
 /// @access private
 /// @deprecated Migrate to using the new organisation colour palette instead.
 
-$_govuk-legacy-organisation-colours: (
+$govuk-legacy-organisation-colours: (
   "attorney-generals-office": (
     colour: #9f1888,
     colour-websafe: #a03a88
@@ -353,10 +353,10 @@ $_govuk-legacy-organisation-colours: (
 /// @type Map
 /// @access public
 
-$govuk-colours-organisations: $_govuk-legacy-organisation-colours !default;
+$govuk-colours-organisations: $govuk-legacy-organisation-colours !default;
 
-@if $govuk-new-organisation-colours and $govuk-colours-organisations == $_govuk-legacy-organisation-colours {
-  $govuk-colours-organisations: $_govuk-organisation-colours;
+@if $govuk-new-organisation-colours and $govuk-colours-organisations == $govuk-legacy-organisation-colours {
+  $govuk-colours-organisations: $govuk-organisation-colours;
 }
 
 /// Organisation colour aliases
@@ -373,7 +373,7 @@ $govuk-colours-organisations: $_govuk-legacy-organisation-colours !default;
 ///
 /// @access private
 
-$_govuk-colours-organisations-aliases: (
+$govuk-colours-organisations-aliases: (
   "department-for-business-and-trade": "department-for-business-trade",
   "department-for-communities-and-local-government": "department-for-communities-local-government",
   "department-for-levelling-up-housing-and-communities": "department-for-levelling-up-housing-communities"
