@@ -19,3 +19,16 @@
 @import "typography-responsive";
 
 @import "links";
+
+// LibSass evaluates this as a single unquoted string, equivalent to
+// "true == false", whereas Dart Sass evaluates it as "true" == "false".
+// Because a string in Sass is truthy, LibSass will output the warning; Dart
+// Sass will not.
+@if #{true} == #{false} {
+  @include _warning(
+    "libsass",
+    "It looks like you may be using LibSass to compile your Sass. LibSass is " +
+      "deprecated and will not be supported by the next major version of " +
+      "GOV.UK Frontend. See https://sass-lang.com/libsass/ for more information."
+  );
+}
