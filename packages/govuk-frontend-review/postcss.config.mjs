@@ -1,6 +1,4 @@
 import autoprefixer from 'autoprefixer'
-import cssnano from 'cssnano'
-import cssnanoPresetDefault from 'cssnano-preset-default'
 import pseudoclasses from 'postcss-pseudo-classes'
 
 /**
@@ -18,13 +16,6 @@ export default {
     pseudoclasses({
       allCombinations: true,
       restrictTo: [':link', ':visited', ':hover', ':active', ':focus']
-    }),
-
-    // Always minify CSS
-    cssnano({
-      preset: cssnanoPresetDefault({
-        env: 'stylesheets'
-      })
     })
   ]
 }
