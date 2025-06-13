@@ -15,7 +15,7 @@
     @include _govuk-rebrand(
       "background-color",
       $govuk-canvas-background-colour,
-      $_govuk-rebrand-template-background-colour
+      $_govuk-rebrand-canvas-background-colour
     );
   }
 
