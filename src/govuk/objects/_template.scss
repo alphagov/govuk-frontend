@@ -9,7 +9,7 @@
     @include _govuk-rebrand(
       background-color,
       $govuk-canvas-background-colour,
-      $_govuk-rebrand-template-background-colour
+      $_govuk-rebrand-canvas-background-colour
     );
 
     // Prevent automatic text sizing, as we already cater for small devices and

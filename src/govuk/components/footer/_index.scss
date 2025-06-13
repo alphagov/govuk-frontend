@@ -33,7 +33,7 @@
     @include _govuk-rebrand(
       "background",
       $from: $govuk-footer-background,
-      $to: $_govuk-rebrand-template-background-colour
+      $to: $_govuk-rebrand-canvas-background-colour
     );
   }
 
