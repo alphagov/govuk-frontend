@@ -25,6 +25,6 @@
     "sass-embedded": "^1.88.0",
     "slash": "^5.1.0",
     "slug": "^9.1.0",
-    "yargs-parser": "^21.1.1"
+    "yargs-parser": "^22.0.0"
   }
 }
