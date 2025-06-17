@@ -25,36 +25,7 @@ describe('PostCSS config', () => {
     it('Uses expected plugins', () => {
       expect(getPluginNames(config)).toEqual([
         'autoprefixer',
-        'postcss-pseudo-classes',
-        'postcss-discard-comments',
-        'postcss-minify-gradients',
-        'postcss-reduce-initial',
-        'postcss-svgo',
-        'postcss-normalize-display-values',
-        'postcss-reduce-transforms',
-        'postcss-colormin',
-        'postcss-normalize-timing-functions',
-        'postcss-calc',
-        'postcss-convert-values',
-        'postcss-ordered-values',
-        'postcss-minify-selectors',
-        'postcss-minify-params',
-        'postcss-normalize-charset',
-        'postcss-discard-overridden',
-        'postcss-normalize-string',
-        'postcss-normalize-unicode',
-        'postcss-minify-font-values',
-        'postcss-normalize-url',
-        'postcss-normalize-repeat-style',
-        'postcss-normalize-positions',
-        'postcss-normalize-whitespace',
-        'postcss-merge-longhand',
-        'postcss-discard-duplicates',
-        'postcss-merge-rules',
-        'postcss-discard-empty',
-        'postcss-unique-selectors',
-        'css-declaration-sorter',
-        'cssnano-util-raw-cache'
+        'postcss-pseudo-classes'
       ])
     })
   })
