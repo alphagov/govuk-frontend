@@ -38,9 +38,6 @@ jobs:
 
             validateVersion('${{ inputs.version }}', frontendPackage.default.version)
 
-      - name: Update package version
-        run: npm version --no-git-tag-version --workspace govuk-frontend ${{ inputs.version }}
-
       - name: Update CHANGELOG
         uses: actions/github-script@v7.0.1
         with:
@@ -49,6 +46,9 @@ jobs:
             const frontendPackage = await import('${{ github.workspace }}/packages/govuk-frontend/package.json', { with: { type: 'json' }})
 
             updateChangelog('${{ inputs.version }}', frontendPackage.default.version)
+
+      - name: Update package version
+        run: npm version --no-git-tag-version --workspace govuk-frontend ${{ inputs.version }}
 
       - name: Generate release notes
         uses: actions/github-script@v7.0.1
