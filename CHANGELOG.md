@@ -4,6 +4,8 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 ## Unreleased
 
+## v5.11.0 (Feature release)
+
 ### New features
 
 #### The Service navigation component no longer uses a menu on mobile for a single link
