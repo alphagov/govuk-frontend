@@ -9,7 +9,7 @@
    * It doesn't need to be updated manually.
    */
 
-  var version = '4.10.0';
+  var version = '4.10.1';
 
   /**
    * Common helpers which do not require polyfill.
