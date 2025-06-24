@@ -8,37 +8,51 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 #### The Service navigation component no longer uses a menu on mobile for a single link
 
-If you're using our Nunjucks macros, the Service navigation component will no longer collapse the navigation behind a 'Menu' toggle if there is only one navigation item.
+If you're using our Nunjucks macros, the Service navigation component will no longer collapse the navigation behind a **Menu** toggle on mobile if there's only one navigation link.
 
 You can control this behaviour using the new `collapseNavigationOnMobile` Nunjucks option.
 
-If you are not using our Nunjucks macros, you can recreate this behaviour by omitting the 'Menu' `<button>` element if there is only one navigation item.
+If you're not using our Nunjucks macros, you can recreate this behaviour by omitting the **Menu** `<button>` element when there is only one navigation item.
 
-This change was introduced in [pull request #6016: Don’t use menu for service nav with a single link](https://github.com/alphagov/govuk-frontend/pull/6016).
+We made this change in [pull request #6016: Don’t use menu for service nav with a single link](https://github.com/alphagov/govuk-frontend/pull/6016).
 
-#### Added inverse styling to Service navigation for use on product pages
+#### Add inverse styling to Service navigation for use on product pages
 
-When the GOV.UK rebrand is enabled, you can now add the `govuk-service-navigation--inverse` class to the Service navigation component to use white links on a blue background.
+If you enable the GOV.UK rebrand, you can now add the `govuk-service-navigation--inverse` class to the Service navigation component to use white links on a blue background.
 
-This allows the rebranded GOV.UK header and Service navigation to flow seamlessly with subsequent components that have a blue background, as is common on [GOV.UK Digital Service Platform](https://platforms.service.gov.uk/) pages.
+This allows the rebranded GOV.UK header and Service navigation components to flow seamlessly with any following components that have a blue background, as is common on [GOV.UK Digital Service Platform](https://platforms.service.gov.uk/) pages.
 
-This change was made in [pull request #6015: Add inverse variant to Service navigation component](https://github.com/alphagov/govuk-frontend/pull/6015).
+We made this change in [pull request #6015: Add inverse variant to Service navigation component](https://github.com/alphagov/govuk-frontend/pull/6015).
 
 #### You'll now see a deprecation warning if you're using LibSass
 
-You will now see a deprecation warning when compiling your Sass if you're using the deprecated LibSass library:
+If you're using the deprecated LibSass library, you'll now see this deprecation warning when compiling your Sass:
 
 > It looks like you may be using LibSass to compile your Sass. LibSass is deprecated and will not be supported by the next major version of GOV.UK Frontend. See https://sass-lang.com/libsass/ for more information. To silence this warning, update `$govuk-suppressed-warnings` with key: "libsass"
 
-This change was introduced in [pull request #5993: Warn if Sass is compiled using libsass](https://github.com/alphagov/govuk-frontend/pull/5993).
+We made this change in [pull request #5993: Warn if Sass is compiled using libsass](https://github.com/alphagov/govuk-frontend/pull/5993).
 
-### Recommended changes
+### Deprecated features
 
-#### Update the new GOV.UK logo's SVG code
+#### Replace references to CSS custom properties for breakpoints
 
-We've made updates to the refreshed GOV.UK logo's code to fix distortions that became visible at high zoom levels.
+We've renamed the CSS custom properties for breakpoints to simplify the prefix from `--govuk-frontend` to just `--govuk`.
 
-If you're using the `govukHeader` Nunjucks macro, you don't need to update anything. If you're not using the macro, find and update the logo's SVG code in the header with the following code.
+| Old name                            | New name                   |
+| ----------------------------------- | -------------------------- |
+| --govuk-frontend-breakpoint-mobile  | --govuk-breakpoint-mobile  |
+| --govuk-frontend-breakpoint-tablet  | --govuk-breakpoint-tablet  |
+| --govuk-frontend-breakpoint-desktop | --govuk-breakpoint-desktop |
+
+You can still use the old names, but we'll remove them in the next breaking release (GOV.UK Frontend v6.0.0).
+
+We made this change in [pull request #6014: Simplify prefix for breakpoint custom properties](https://github.com/alphagov/govuk-frontend/pull/6014).
+
+### Fixes
+
+We've updated the SVG (Scalable Vector Graphics) file of the GOV.UK logo to fix some imperfections visible at high zoom levels. Thanks to @matteason for reporting this.
+
+If you're using the `govukHeader` Nunjucks macro, you do not need to update anything. If you're not using the macro, replace the logo's SVG code in the header with the following code:
 
 ```html
 <svg
@@ -63,36 +77,18 @@ If you're using the `govukHeader` Nunjucks macro, you don't need to update anyth
     <circle cx="31.7" cy="30.6" r="3.7"></circle>
     <path d="M33.1,9.8c.2-.1.3-.3.5-.5l4.6,2.4v-6.8l-4.6,1.5c-.1-.2-.3-.3-.5-.5l1.9-5.9h-6.7l1.9,5.9c-.2.1-.3.3-.5.5l-4.6-1.5v6.8l4.6-2.4c.1.2.3.3.5.5l-2.6,8c-.9,2.8,1.2,5.7,4.1,5.7h0c3,0,5.1-2.9,4.1-5.7l-2.6-8ZM37,37.9s-3.4,3.8-4.1,6.1c2.2,0,4.2-.5,6.4-2.8l-.7,8.5c-2-2.8-4.4-4.1-5.7-3.8.1,3.1.5,6.7,5.8,7.2,3.7.3,6.7-1.5,7-3.8.4-2.6-2-4.3-3.7-1.6-1.4-4.5,2.4-6.1,4.9-3.2-1.9-4.5-1.8-7.7,2.4-10.9,3,4,2.6,7.3-1.2,11.1,2.4-1.3,6.2,0,4,4.6-1.2-2.8-3.7-2.2-4.2.2-.3,1.7.7,3.7,3,4.2,1.9.3,4.7-.9,7-5.9-1.3,0-2.4.7-3.9,1.7l2.4-8c.6,2.3,1.4,3.7,2.2,4.5.6-1.6.5-2.8,0-5.3l5,1.8c-2.6,3.6-5.2,8.7-7.3,17.5-7.4-1.1-15.7-1.7-24.5-1.7h0c-8.8,0-17.1.6-24.5,1.7-2.1-8.9-4.7-13.9-7.3-17.5l5-1.8c-.5,2.5-.6,3.7,0,5.3.8-.8,1.6-2.3,2.2-4.5l2.4,8c-1.5-1-2.6-1.7-3.9-1.7,2.3,5,5.2,6.2,7,5.9,2.3-.4,3.3-2.4,3-4.2-.5-2.4-3-3.1-4.2-.2-2.2-4.6,1.6-6,4-4.6-3.7-3.7-4.2-7.1-1.2-11.1,4.2,3.2,4.3,6.4,2.4,10.9,2.5-2.8,6.3-1.3,4.9,3.2-1.8-2.7-4.1-1-3.7,1.6.3,2.3,3.3,4.1,7,3.8,5.4-.5,5.7-4.2,5.8-7.2-1.3-.2-3.7,1-5.7,3.8l-.7-8.5c2.2,2.3,4.2,2.7,6.4,2.8-.7-2.3-4.1-6.1-4.1-6.1h10.6,0Z"></path>
   </g>
-  <circle class="govuk-logo-dot" cx="227" cy="36" r="7.3"></circle>
+  <circle class="govuk-logo-dot" cx="226" cy="36" r="7.3"></circle>
   <path d="M93.94 41.25c.4 1.81 1.2 3.21 2.21 4.62 1 1.4 2.21 2.41 3.61 3.21s3.21 1.2 5.22 1.2 3.61-.4 4.82-1c1.4-.6 2.41-1.4 3.21-2.41.8-1 1.4-2.01 1.61-3.01s.4-2.01.4-3.01v.14h-10.86v-7.02h20.07v24.08h-8.03v-5.56c-.6.8-1.38 1.61-2.19 2.41-.8.8-1.81 1.2-2.81 1.81-1 .4-2.21.8-3.41 1.2s-2.41.4-3.81.4a18.56 18.56 0 0 1-14.65-6.63c-1.6-2.01-3.01-4.41-3.81-7.02s-1.4-5.62-1.4-8.83.4-6.02 1.4-8.83a20.45 20.45 0 0 1 19.46-13.65c3.21 0 4.01.2 5.82.8 1.81.4 3.61 1.2 5.02 2.01 1.61.8 2.81 2.01 4.01 3.21s2.21 2.61 2.81 4.21l-7.63 4.41c-.4-1-1-1.81-1.61-2.61-.6-.8-1.4-1.4-2.21-2.01-.8-.6-1.81-1-2.81-1.4-1-.4-2.21-.4-3.61-.4-2.01 0-3.81.4-5.22 1.2-1.4.8-2.61 1.81-3.61 3.21s-1.61 2.81-2.21 4.62c-.4 1.81-.6 3.71-.6 5.42s.8 5.22.8 5.22Zm57.8-27.9c3.21 0 6.22.6 8.63 1.81 2.41 1.2 4.82 2.81 6.62 4.82S170.2 24.39 171 27s1.4 5.62 1.4 8.83-.4 6.02-1.4 8.83-2.41 5.02-4.01 7.02-4.01 3.61-6.62 4.82-5.42 1.81-8.63 1.81-6.22-.6-8.63-1.81-4.82-2.81-6.42-4.82-3.21-4.41-4.01-7.02-1.4-5.62-1.4-8.83.4-6.02 1.4-8.83 2.41-5.02 4.01-7.02 4.01-3.61 6.42-4.82 5.42-1.81 8.63-1.81Zm0 36.73c1.81 0 3.61-.4 5.02-1s2.61-1.81 3.61-3.01 1.81-2.81 2.21-4.41c.4-1.81.8-3.61.8-5.62 0-2.21-.2-4.21-.8-6.02s-1.2-3.21-2.21-4.62c-1-1.2-2.21-2.21-3.61-3.01s-3.21-1-5.02-1-3.61.4-5.02 1c-1.4.8-2.61 1.81-3.61 3.01s-1.81 2.81-2.21 4.62c-.4 1.81-.8 3.61-.8 5.62 0 2.41.2 4.21.8 6.02.4 1.81 1.2 3.21 2.21 4.41s2.21 2.21 3.61 3.01c1.4.8 3.21 1 5.02 1Zm36.32 7.96-12.24-44.15h9.83l8.43 32.77h.4l8.23-32.77h9.83L200.3 58.04h-12.24Zm74.14-7.96c2.18 0 3.51-.6 3.51-.6 1.2-.6 2.01-1 2.81-1.81s1.4-1.81 1.81-2.81a13 13 0 0 0 .8-4.01V13.9h8.63v28.15c0 2.41-.4 4.62-1.4 6.62-.8 2.01-2.21 3.61-3.61 5.02s-3.41 2.41-5.62 3.21-4.62 1.2-7.02 1.2-5.02-.4-7.02-1.2c-2.21-.8-4.01-1.81-5.62-3.21s-2.81-3.01-3.61-5.02-1.4-4.21-1.4-6.62V13.9h8.63v26.95c0 1.61.2 3.01.8 4.01.4 1.2 1.2 2.21 2.01 2.81.8.8 1.81 1.4 2.81 1.81 0 0 1.34.6 3.51.6Zm34.22-36.18v18.92l15.65-18.92h10.82l-15.03 17.32 16.03 26.83h-10.21l-11.44-20.21-5.62 6.22v13.99h-8.83V13.9"></path>
 </svg>
 ```
 
-This change was introduced in [pull request #6036: Fix some wordmark artifacts at high zoom levels](https://github.com/alphagov/govuk-frontend/pull/6036).
+We made this change in [pull request #6036: Fix some wordmark artifacts at high zoom levels](https://github.com/alphagov/govuk-frontend/pull/6036).
 
-### Deprecated features
+We've also made fixes to GOV.UK Frontend in the following pull requests:
 
-#### Replace references to CSS custom properties for breakpoints
-
-We've renamed the CSS custom properties for breakpoints to simplify the prefix from `--govuk-frontend` to just `--govuk`.
-
-| Old name                            | New name                   |
-| ----------------------------------- | -------------------------- |
-| --govuk-frontend-breakpoint-mobile  | --govuk-breakpoint-mobile  |
-| --govuk-frontend-breakpoint-tablet  | --govuk-breakpoint-tablet  |
-| --govuk-frontend-breakpoint-desktop | --govuk-breakpoint-desktop |
-
-You can still use the old names, but we'll remove them in the next breaking release (GOV.UK Frontend v6.0.0).
-
-This change was introduced in [pull request #6014: Simplify prefix for breakpoint custom properties](https://github.com/alphagov/govuk-frontend/pull/6014).
-
-### Fixes
-
-We've made fixes to GOV.UK Frontend in the following pull requests:
-
-- [#6011: #Derive rebranded tints from $govuk-brand-colour](https://github.com/alphagov/govuk-frontend/pull/6011), thanks to @tamoreton for proposing this change
+- [#6011: Derive rebranded tints from $govuk-brand-colour](https://github.com/alphagov/govuk-frontend/pull/6011) – thanks to @tamoreton for proposing this change
 - [#6018: Fix layout of Service navigation in Edge when forced colours are enabled](https://github.com/alphagov/govuk-frontend/pull/6018)
-- [#6019: Fix service nav wrapper not filling available width](https://github.com/alphagov/govuk-frontend/pull/6019), thanks to @joelanman for reporting and fixing this issue
+- [#6019: Fix service nav wrapper not filling available width](https://github.com/alphagov/govuk-frontend/pull/6019) – thanks to @joelanman for reporting and fixing this issue
 
 ## v5.10.2 (Patch release)
 
