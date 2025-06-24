@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## v4.10.1 (Fix release)
+
 ### Fixes
 
 We've updated the SVG (Scalable Vector Graphics) file of the GOV.UK logo to fix some imperfections visible at high zoom levels. Thanks to @matteason for reporting this.
