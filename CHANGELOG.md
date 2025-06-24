@@ -2,13 +2,11 @@
 
 ## Unreleased
 
-### Recommended changes
+### Fixes
 
-#### Update the new GOV.UK logo's SVG code
+We've updated the SVG (Scalable Vector Graphics) file of the GOV.UK logo to fix some imperfections visible at high zoom levels. Thanks to @matteason for reporting this.
 
-We've made updates to the refreshed GOV.UK logo's code to fix distortions that became visible at high zoom levels.
-
-If you're using the `govukHeader` Nunjucks macro, you don't need to update anything. If you're not using the macro, find and update the logo's SVG code in the header with the following code.
+If you're using the `govukHeader` Nunjucks macro, you do not need to update anything. If you're not using the macro, replace the logo's SVG code in the header with the following code:
 
 ```html
 <svg
@@ -38,7 +36,11 @@ If you're using the `govukHeader` Nunjucks macro, you don't need to update anyth
 </svg>
 ```
 
-This change was introduced in [pull request #6036: Fix some wordmark artifacts at high zoom levels](https://github.com/alphagov/govuk-frontend/pull/6036).
+We made this change in [pull request #6036: Fix some wordmark artifacts at high zoom levels](https://github.com/alphagov/govuk-frontend/pull/6036).
+
+We've also made fixes to GOV.UK Frontend in the following pull requests:
+
+- [#6029: Fix background colour of .govuk-template--rebranded](https://github.com/alphagov/govuk-frontend/pull/6029)
 
 ## v4.10.0 (Feature release)
 
