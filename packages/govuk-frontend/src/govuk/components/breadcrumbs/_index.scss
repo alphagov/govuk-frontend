@@ -1,3 +1,13 @@
+@import "../../helpers/clearfix";
+@import "../../helpers/colour";
+@import "../../helpers/links";
+@import "../../helpers/media-queries";
+@import "../../helpers/spacing";
+@import "../../helpers/typography";
+@import "../../settings/colours-applied";
+@import "../../tools/exports";
+@import "../../tools/px-to-em";
+
 @include govuk-exports("govuk/component/breadcrumbs") {
   // Component font-size on the Frontend (used for calculations)
   $font-size: 16;
