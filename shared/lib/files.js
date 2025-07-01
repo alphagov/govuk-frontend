@@ -66,22 +66,44 @@ async function getDirectories(directoryPath) {
  *
  * @param {string} directoryPath - Minimatch pattern to directory
  * @param {import('glob').GlobOptionsWithFileTypesUnset} [options] - Glob options
- * @returns {Promise<[string, string][]>} - File entries with name and size
+ * @returns {Promise<(string|number)[][]>} - File entries with name and size
  */
 async function getFileSizes(directoryPath, options = {}) {
   const filesForAnalysis = await getListing(directoryPath, options)
-  return Promise.all(filesForAnalysis.map(getFileSize))
+
+  return Promise.all(
+    filesForAnalysis.map((fileSize) => {
+      const comparisonData = options?.comparisonData?.find(
+        (row) => row[0] === fileSize
+      )[1]
+
+      return getFileSize(fileSize, {
+        ...options,
+        comparisonData
+      })
+    })
+  )
 }
 
 /**
  * Get file size entry
  *
  * @param {string} filePath - File path
- * @returns {Promise<[string, string]>} - File entry with name and size
+ * @param {object} options - Options object
+ * @returns {Promise<(string|number)[]>} - File entry with name, size and percentage difference if required
  */
-async function getFileSize(filePath) {
+async function getFileSize(filePath, options) {
   const { size } = await stat(filePath)
-  return [filePath, `${filesize(size, { base: 2 })}`]
+  const fileSizeRow = [
+    filePath,
+    options?.rawDataOnly ? size : `${filesize(size, { base: 2 })}`
+  ]
+
+  if (options.comparisonData) {
+    fileSizeRow.push(`${(size / options.comparisonData) * 100 - 100}%`)
+  }
+
+  return fileSizeRow
 }
 
 /**

@@ -38,15 +38,22 @@ export const modulePaths = [packageOptions.modulePath].concat(
  * Rollup module stats by path
  *
  * @param {string} modulePath - Rollup input path
- * @returns {Promise<[string, { bundled: string; minified: string }]>} Rollup module stats
+ * @param {object} options - Options object
+ * @returns {Promise<[string, { bundled: string|number; minified: string|number }]>} Rollup module stats
  */
-export async function getStats(modulePath) {
+export async function getStats(modulePath, options = {}) {
   const { dir, name } = parse(modulePath)
 
   // Totals from Rollup `npm run build:stats` YAML output
   const [bundled, minified] = await Promise.all([
-    getStatsByYaml(modulePath, `${dir}/${name}.yaml`),
-    getStatsByYaml(modulePath, `${dir}/${name}.min.yaml`)
+    getStatsByYaml(modulePath, `${dir}/${name}.yaml`, {
+      ...options,
+      comparisonData: options?.comparisonData?.bundled
+    }),
+    getStatsByYaml(modulePath, `${dir}/${name}.min.yaml`, {
+      ...options,
+      comparisonData: options?.comparisonData?.minified
+    })
   ])
 
   return [modulePath, { bundled, minified }]
@@ -57,9 +64,10 @@ export async function getStats(modulePath) {
  *
  * @param {string} modulePath - Rollup input path
  * @param {string} statsPath - Rollup stats output path
- * @returns {Promise<string>} Total size (formatted)
+ * @param {object} options - Options object
+ * @returns {Promise<string|number>} Total size (formatted)
  */
-async function getStatsByYaml(modulePath, statsPath) {
+async function getStatsByYaml(modulePath, statsPath, options = {}) {
   const { base } = parse(modulePath)
 
   const stats = /** @type {Record<string, ModulesList> | undefined} */ (
@@ -71,7 +79,14 @@ async function getStatsByYaml(modulePath, statsPath) {
     .map(({ rendered }) => rendered)
     .reduce((total, rendered) => total + rendered, 0)
 
-  return `${filesize(total, { base: 2 })}`
+  if (options.comparisonData) {
+    return [
+      `${filesize(total, { base: 2 })}`,
+      `${(total / options.comparisonData) * 100 - 100}%`
+    ]
+  }
+
+  return options?.rawDataOnly ? total : `${filesize(total, { base: 2 })}`
 }
 
 /**
