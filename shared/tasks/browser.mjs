@@ -72,6 +72,13 @@ export async function screenshots() {
 export async function screenshotComponent(browser, componentName, options) {
   const componentFiles = await getComponentFiles(componentName)
 
+  // Percy snapshot options
+  // Scope is .app-wihtespace-highlight rather than .govuk-main-wrapper like with
+  // the examples so that margin that isn't part of the component doesn't get
+  // included in the screenshot
+  /** @type {SnapshotOptions} */
+  const snapshotOptions = { scope: '.app-whitespace-highlight' }
+
   // Navigate to component
   const page = await goToComponent(browser, componentName, options)
 
@@ -81,7 +88,7 @@ export async function screenshotComponent(browser, componentName, options) {
     : componentName
 
   // Screenshot preview page (with JavaScript)
-  await percySnapshot(page, `js: ${screenshotName}`)
+  await percySnapshot(page, `js: ${screenshotName}`, snapshotOptions)
 
   // Check for "JavaScript enabled" components
   if (componentFiles.some(filterPath([`**/${componentName}.mjs`]))) {
@@ -89,7 +96,7 @@ export async function screenshotComponent(browser, componentName, options) {
 
     // Screenshot preview page (without JavaScript)
     await page.reload({ waitUntil: 'load' })
-    await percySnapshot(page, `no-js: ${screenshotName}`)
+    await percySnapshot(page, `no-js: ${screenshotName}`, snapshotOptions)
   }
 
   // Close page
@@ -126,7 +133,9 @@ export async function screenshotExample(browser, exampleName) {
   })
 
   // Screenshot preview page
-  await percySnapshot(page, `js: ${exampleName} (example)`)
+  await percySnapshot(page, `js: ${exampleName} (example)`, {
+    scope: '.govuk-main-wrapper'
+  })
 
   // Close page
   return page.close()
@@ -134,4 +143,5 @@ export async function screenshotExample(browser, exampleName) {
 
 /**
  * @import { Browser } from 'puppeteer'
+ * @import { SnapshotOptions } from '@percy/core'
  */
