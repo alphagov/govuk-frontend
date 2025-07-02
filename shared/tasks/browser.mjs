@@ -114,24 +114,6 @@ export async function screenshotComponent(browser, componentName, options) {
 export async function screenshotExample(browser, exampleName) {
   const page = await goToExample(browser, exampleName)
 
-  // Dismiss app banner
-  await page.setCookie({
-    name: 'dismissed-app-banner',
-    value: 'yes',
-    url: page.url()
-  })
-
-  await page.reload({ waitUntil: 'load' })
-
-  // Remove feature flag banner
-  await page.evaluate(() => {
-    const featureFlagBanner = document.querySelector('.app-feature-flag-banner')
-
-    if (featureFlagBanner) {
-      featureFlagBanner.remove()
-    }
-  })
-
   // Screenshot preview page
   await percySnapshot(page, `js: ${exampleName} (example)`, {
     scope: '.govuk-main-wrapper'
