@@ -1,11 +1,6 @@
 import { download } from '@govuk-frontend/helpers/jest/browser/download.mjs'
 import { goToComponent, goToExample } from '@govuk-frontend/helpers/puppeteer'
-import {
-  getComponentFiles,
-  getComponentNames,
-  getExamples
-} from '@govuk-frontend/lib/components'
-import { filterPath } from '@govuk-frontend/lib/files'
+import { getComponentNames, getExamples } from '@govuk-frontend/lib/components'
 import percySnapshot from '@percy/puppeteer'
 import puppeteer from 'puppeteer'
 
@@ -33,20 +28,15 @@ export async function screenshots() {
 
   // Screenshot components
   for (const componentName of componentNames) {
-    const componentExamples = await getExamples(componentName)
+    const allExamples = await getExamples(componentName)
 
-    // Screenshot "default" example
-    await screenshotComponent(browser, componentName)
-
-    // Screenshot any other examples with 'screenshot: true'
-    const otherExamples = Object.keys(componentExamples).filter(
-      (key) => componentExamples[key].fixture.screenshot
-    )
-
-    for (const exampleName of otherExamples) {
-      await screenshotComponent(browser, componentName, {
-        exampleName
-      })
+    for (const exampleName of Object.keys(allExamples)) {
+      if (allExamples[exampleName].fixture.screenshot) {
+        await screenshotComponent(browser, componentName, {
+          screenshot: allExamples[exampleName].fixture.screenshot,
+          exampleName
+        })
+      }
     }
   }
 
@@ -60,20 +50,43 @@ export async function screenshots() {
 }
 
 /**
+ * Current screenshot variants include:
+ *
+ * - `default` - Default screenshot with JavaScript enabled
+ * - `no-js` - Screenshot with JavaScript disabled
+ *
+ * @overload
+ * @param {Browser} browser - Puppeteer browser object
+ * @param {string} componentName - Component name
+ * @param {object} options - Component options
+ * @param {string} options.exampleName - Example name
+ * @param {object} options.screenshot - Screenshot options
+ * @param {Array} [options.screenshot.variants] - Screenshot variants
+ */
+
+/**
+ * @overload
+ * @param {Browser} browser - Puppeteer browser object
+ * @param {string} componentName - Component name
+ * @param {object} options - Component options
+ * @param {string} options.exampleName - Example name
+ * @param {boolean} options.screenshot - Whether to take a screenshot
+ */
+
+/**
  * Send single component screenshots to Percy
  * for visual regression testing
  *
  * @param {Browser} browser - Puppeteer browser object
  * @param {string} componentName - Component name
- * @param {object} [options] - Component options
+ * @param {object} options - Component options
  * @param {string} options.exampleName - Example name
+ * @param {object | boolean} options.screenshot - Screenshot options
  * @returns {Promise<void>}
  */
 export async function screenshotComponent(browser, componentName, options) {
-  const componentFiles = await getComponentFiles(componentName)
-
   // Percy snapshot options
-  // Scope is .app-wihtespace-highlight rather than .govuk-main-wrapper like with
+  // Scope is .app-whitespace-highlight rather than .govuk-main-wrapper like with
   // the examples so that margin that isn't part of the component doesn't get
   // included in the screenshot
   /** @type {SnapshotOptions} */
@@ -82,25 +95,38 @@ export async function screenshotComponent(browser, componentName, options) {
   // Navigate to component
   const page = await goToComponent(browser, componentName, options)
 
-  // Add optional example to screenshot name
-  const screenshotName = options?.exampleName
-    ? `${componentName} (${options.exampleName})`
-    : componentName
+  const screenshotName = `${componentName} (${options.exampleName})`
 
-  // Screenshot preview page (with JavaScript)
-  await percySnapshot(page, `js: ${screenshotName}`, snapshotOptions)
+  // Disable JavaScript
+  if (options.screenshot.variants?.includes('no-js')) {
+    await percySnapshotNoJs(page, screenshotName, snapshotOptions)
+  }
 
-  // Check for "JavaScript enabled" components
-  if (componentFiles.some(filterPath([`**/${componentName}.mjs`]))) {
-    await page.setJavaScriptEnabled(false)
-
-    // Screenshot preview page (without JavaScript)
-    await page.reload({ waitUntil: 'load' })
-    await percySnapshot(page, `no-js: ${screenshotName}`, snapshotOptions)
+  // Default screenshot
+  if (
+    options.screenshot === true ||
+    options.screenshot.variants?.includes('default')
+  ) {
+    await percySnapshot(page, screenshotName, snapshotOptions)
   }
 
   // Close page
   return page.close()
+}
+
+/**
+ *
+ * @param {Page} page - Puppeteer page object
+ * @param {string} screenshotName - The name of the screenshot
+ * @param {SnapshotOptions} snapShotOptions - Percy snapshot options
+ */
+export async function percySnapshotNoJs(page, screenshotName, snapShotOptions) {
+  await page.setJavaScriptEnabled(false)
+  await page.reload({ waitUntil: 'load' })
+  screenshotName = `no-js: ${screenshotName}`
+  await percySnapshot(page, screenshotName, snapShotOptions)
+  await page.setJavaScriptEnabled(true)
+  await page.reload({ waitUntil: 'load' })
 }
 
 /**
@@ -124,6 +150,6 @@ export async function screenshotExample(browser, exampleName) {
 }
 
 /**
- * @import { Browser } from 'puppeteer'
+ * @import { Browser, Page } from 'puppeteer'
  * @import { SnapshotOptions } from '@percy/core'
  */
