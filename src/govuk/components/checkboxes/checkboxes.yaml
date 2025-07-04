@@ -163,12 +163,28 @@ accessibilityCriteria: |
 
 examples:
   - name: default
-    screenshot:
-      variants:
-        - default
-        - no-js
+    screenshot: true
     options:
       name: nationality
+      fieldset:
+        legend:
+          text: What is your nationality?
+      items:
+        - value: british
+          text: British
+        - value: irish
+          text: Irish
+        - value: other
+          text: Citizen of another country
+
+  - name: with hint
+    options:
+      name: nationality
+      fieldset:
+        legend:
+          text: What is your nationality?
+      hint:
+        text: Select all that apply
       items:
         - value: british
           text: British
@@ -178,36 +194,49 @@ examples:
           text: Citizen of another country
 
   - name: with pre-checked values
+    screenshot:
+      variants:
+        - default
+        - no-js
     options:
-      name: nationality
+      name: how-contacted-checked
+      idPrefix: how-contacted-checked
+      fieldset:
+        legend:
+          text: How do you want to be contacted?
+      values:
+        - email
+        - text
       items:
-        - value: british
-          text: British
-        - value: irish
-          text: Irish
-        - value: other
-          text: Citizen of another country
+        - value: email
+          text: Email
           conditional:
             html: |
-              <div class="govuk-form-group">
-                <label class="govuk-label" for="other-country">
-                  Country
-                </label>
-                <input class="govuk-input" id="other-country" name="other-country" type="text" value="Ravka">
-              </div>
-      values:
-        - british
-        - other
+              <label class="govuk-label" for="context-email">Email address</label>
+              <input class="govuk-input govuk-!-width-one-third" name="context-email" type="text" id="context-email">
+        - value: phone
+          text: Phone
+          conditional:
+            html: |
+              <label class="govuk-label" for="contact-phone">Phone number</label>
+              <input class="govuk-input govuk-!-width-one-third" name="contact-phone" type="text" id="contact-phone">
+        - value: text
+          text: Text message
+          conditional:
+            html: |
+              <label class="govuk-label" for="contact-text-message">Mobile phone number</label>
+              <input class="govuk-input govuk-!-width-one-third" name="contact-text-message" type="text" id="contact-text-message">
 
   - name: with divider and None
-    screenshot: true
+    screenshot:
+      variants:
+        - default
+        - no-js
     options:
       name: with-divider-and-none
       fieldset:
         legend:
           text: Which types of waste do you transport regularly?
-          classes: govuk-fieldset__legend--l
-          isPageHeading: true
       items:
         - value: animal
           text: Waste from animal carcasses
@@ -226,8 +255,6 @@ examples:
       fieldset:
         legend:
           text: Do you have any access needs?
-          classes: govuk-fieldset__legend--l
-          isPageHeading: true
       items:
         - value: accessible-toilets
           text: Accessible toilets available
@@ -246,36 +273,12 @@ examples:
           text: None of these
           behaviour: exclusive
 
-  - name: with id and name
-    options:
-      name: with-id-and-name
-      fieldset:
-        legend:
-          text: What is your nationality?
-      hint:
-        text: If you have dual nationality, select all options that are relevant to you.
-      items:
-        - name: british
-          id: item_british
-          value: yes
-          text: British
-        - name: irish
-          id: item_irish
-          value: irish
-          text: Irish
-        - name: custom-name-scottish
-          text: Scottish
-          value: scottish
-
   - name: with hints on items
     options:
       name: with-hints-on-items
-      screenshot: true
       fieldset:
         legend:
           text: How do you want to sign in?
-          classes: govuk-fieldset__legend--l
-          isPageHeading: true
       items:
         - name: gateway
           id: government-gateway
@@ -289,29 +292,6 @@ examples:
           text: Sign in with GOV.UK Verify
           hint:
             text: You'll have an account if you've already proved your identity with either Barclays, CitizenSafe, Digidentity, Experian, Post Office, Royal Mail or SecureIdentity.
-
-  - name: with disabled item
-    options:
-      name: sign-in
-      fieldset:
-        legend:
-          text: How do you want to sign in?
-          classes: govuk-fieldset__legend--l
-          isPageHeading: true
-      items:
-        - name: gateway
-          id: government-gateway
-          value: gov-gateway
-          text: Sign in with Government Gateway
-          hint:
-            text: You'll have a user ID if you've registered for Self Assessment or filed a tax return online before.
-        - name: verify
-          id: govuk-verify
-          value: gov-verify
-          text: Sign in with GOV.UK Verify
-          hint:
-            text: You'll have an account if you've already proved your identity with either Barclays, CitizenSafe, Digidentity, Experian, Post Office, Royal Mail or SecureIdentity.
-          disabled: true
 
   - name: with legend as a page heading
     options:
@@ -331,89 +311,7 @@ examples:
         - value: farm
           text: Farm or agricultural waste
 
-  - name: with a medium legend
-    options:
-      name: waste
-      fieldset:
-        legend:
-          text: Which types of waste do you transport regularly?
-          classes: govuk-fieldset__legend--m
-      hint:
-        text: Select all that apply
-      errorMessage:
-        text: Select which types of waste you transport regularly
-      items:
-        - value: animal
-          text: Waste from animal carcasses
-        - value: mines
-          text: Waste from mines or quarries
-        - value: farm
-          text: Farm or agricultural waste
-
-  - name: without fieldset
-    options:
-      name: colours
-      items:
-        - value: red
-          text: Red
-        - value: green
-          text: Green
-        - value: blue
-          text: Blue
-
-  - name: with single option set 'aria-describedby' on input
-    options:
-      name: t-and-c
-      errorMessage:
-        text: Please accept the terms and conditions
-      items:
-        - value: yes
-          text: I agree to the terms and conditions
-
-  - name: with single option (and hint) set 'aria-describedby' on input
-    options:
-      name: t-and-c-with-hint
-      errorMessage:
-        text: Please accept the terms and conditions
-      items:
-        - value: yes
-          text: I agree to the terms and conditions
-          hint:
-            text: Go on, you know you want to!
-
-  - name: with fieldset and error message
-    options:
-      name: nationality
-      errorMessage:
-        text: Please accept the terms and conditions
-      fieldset:
-        legend:
-          text: What is your nationality?
-      items:
-        - value: british
-          text: British
-        - value: irish
-          text: Irish
-        - value: other
-          text: Citizen of another country
-
   - name: with error message
-    options:
-      name: waste
-      errorMessage:
-        text: Please select an option
-      fieldset:
-        legend:
-          text: Which types of waste do you transport regularly?
-      items:
-        - value: animal
-          text: Waste from animal carcasses
-        - value: mines
-          text: Waste from mines or quarries
-        - value: farm
-          text: Farm or agricultural waste
-
-  - name: with error message and hints on items
     options:
       name: waste
       errorMessage:
@@ -440,8 +338,6 @@ examples:
       name: waste
       hint:
         text: Nullam id dolor id nibh ultricies vehicula ut id elit.
-      errorMessage:
-        text: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
       fieldset:
         legend:
           text: Maecenas faucibus mollis interdum?
@@ -480,62 +376,6 @@ examples:
       items:
         - value: email
           text: Email
-          conditional:
-            html: |
-              <label class="govuk-label" for="context-email">Email address</label>
-              <input class="govuk-input govuk-!-width-one-third" name="context-email" type="text" id="context-email">
-        - value: phone
-          text: Phone
-          conditional:
-            html: |
-              <label class="govuk-label" for="contact-phone">Phone number</label>
-              <input class="govuk-input govuk-!-width-one-third" name="contact-phone" type="text" id="contact-phone">
-        - value: text
-          text: Text message
-          conditional:
-            html: |
-              <label class="govuk-label" for="contact-text-message">Mobile phone number</label>
-              <input class="govuk-input govuk-!-width-one-third" name="contact-text-message" type="text" id="contact-text-message">
-
-  - name: with conditional items with special characters
-    options:
-      name: contact-prefs
-      idPrefix: user.profile[contact-prefs]
-      fieldset:
-        legend:
-          text: How do you want to be contacted?
-      items:
-        - value: email
-          text: Email
-          conditional:
-            html: |
-              <label class="govuk-label" for="context-email">Email address</label>
-              <input class="govuk-input govuk-!-width-one-third" name="context-email" type="text" id="context-email">
-        - value: phone
-          text: Phone
-          conditional:
-            html: |
-              <label class="govuk-label" for="contact-phone">Phone number</label>
-              <input class="govuk-input govuk-!-width-one-third" name="contact-phone" type="text" id="contact-phone">
-        - value: text
-          text: Text message
-          conditional:
-            html: |
-              <label class="govuk-label" for="contact-text-message">Mobile phone number</label>
-              <input class="govuk-input govuk-!-width-one-third" name="contact-text-message" type="text" id="contact-text-message">
-
-  - name: with conditional item checked
-    screenshot: true
-    options:
-      name: how-contacted-checked
-      idPrefix: how-contacted-checked
-      fieldset:
-        legend:
-          text: How do you want to be contacted?
-      items:
-        - value: email
-          text: Email
-          checked: true
           conditional:
             html: |
               <label class="govuk-label" for="context-email">Email address</label>
@@ -670,23 +510,6 @@ examples:
         - value: c
           text: this thing
 
-  - name: small with disabled
-    options:
-      idPrefix: nationality
-      name: nationality
-      classes: govuk-checkboxes--small
-      fieldset:
-        legend:
-          text: Filter by
-      items:
-        - value: a
-          text: a thing
-        - value: b
-          text: another thing
-        - value: c
-          text: this thing
-          disabled: true
-
   - name: small with conditional reveal
     options:
       name: how-contacted
@@ -706,7 +529,6 @@ examples:
           text: another thing
 
   - name: small with divider and None
-    screenshot: true
     options:
       name: small-with-divider-and-none
       classes: govuk-checkboxes--small
@@ -726,6 +548,50 @@ examples:
           behaviour: exclusive
 
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
+  - name: with id and name
+    hidden: true
+    options:
+      name: with-id-and-name
+      fieldset:
+        legend:
+          text: What is your nationality?
+      hint:
+        text: If you have dual nationality, select all options that are relevant to you.
+      items:
+        - name: british
+          id: item_british
+          value: yes
+          text: British
+        - name: irish
+          id: item_irish
+          value: irish
+          text: Irish
+        - name: custom-name-scottish
+          text: Scottish
+          value: scottish
+  - name: with disabled item
+    hidden: true
+    options:
+      name: sign-in
+      fieldset:
+        legend:
+          text: How do you want to sign in?
+          classes: govuk-fieldset__legend--l
+          isPageHeading: true
+      items:
+        - name: gateway
+          id: government-gateway
+          value: gov-gateway
+          text: Sign in with Government Gateway
+          hint:
+            text: You'll have a user ID if you've registered for Self Assessment or filed a tax return online before.
+        - name: verify
+          id: govuk-verify
+          value: gov-verify
+          text: Sign in with GOV.UK Verify
+          hint:
+            text: You'll have an account if you've already proved your identity with either Barclays, CitizenSafe, Digidentity, Experian, Post Office, Royal Mail or SecureIdentity.
+          disabled: true
   - name: with idPrefix
     hidden: true
     options:
@@ -848,6 +714,33 @@ examples:
           text: Citizen of another country
           hint:
             text: Hint for other option here
+  - name: with conditional items with special characters
+    hidden: true
+    options:
+      name: contact-prefs
+      idPrefix: user.profile[contact-prefs]
+      fieldset:
+        legend:
+          text: How do you want to be contacted?
+      items:
+        - value: email
+          text: Email
+          conditional:
+            html: |
+              <label class="govuk-label" for="context-email">Email address</label>
+              <input class="govuk-input govuk-!-width-one-third" name="context-email" type="text" id="context-email">
+        - value: phone
+          text: Phone
+          conditional:
+            html: |
+              <label class="govuk-label" for="contact-phone">Phone number</label>
+              <input class="govuk-input govuk-!-width-one-third" name="contact-phone" type="text" id="contact-phone">
+        - value: text
+          text: Text message
+          conditional:
+            html: |
+              <label class="govuk-label" for="contact-text-message">Mobile phone number</label>
+              <input class="govuk-input govuk-!-width-one-third" name="contact-text-message" type="text" id="contact-text-message">
   - name: with error message and hint
     hidden: true
     options:
@@ -927,7 +820,7 @@ examples:
     options:
       describedBy: test-target-element
       name: t-and-c
-      errorMessage:
+      hint:
         text: Please accept the terms and conditions
       items:
         - value: yes
@@ -937,7 +830,7 @@ examples:
     options:
       describedBy: test-target-element
       name: t-and-c-with-hint
-      errorMessage:
+      hint:
         text: Please accept the terms and conditions
       items:
         - value: yes
@@ -969,7 +862,34 @@ examples:
           text: British
         - value: irish
           text: Irish
-
+  - name: with conditional item checked
+    hidden: true
+    options:
+      name: how-contacted-checked
+      idPrefix: how-contacted-checked
+      fieldset:
+        legend:
+          text: How do you want to be contacted?
+      items:
+        - value: email
+          text: Email
+          checked: true
+          conditional:
+            html: |
+              <label class="govuk-label" for="context-email">Email address</label>
+              <input class="govuk-input govuk-!-width-one-third" name="context-email" type="text" id="context-email">
+        - value: phone
+          text: Phone
+          conditional:
+            html: |
+              <label class="govuk-label" for="contact-phone">Phone number</label>
+              <input class="govuk-input govuk-!-width-one-third" name="contact-phone" type="text" id="contact-phone">
+        - value: text
+          text: Text message
+          conditional:
+            html: |
+              <label class="govuk-label" for="contact-text-message">Mobile phone number</label>
+              <input class="govuk-input govuk-!-width-one-third" name="contact-text-message" type="text" id="contact-text-message">
   - name: item checked overrides values
     hidden: true
     options:
