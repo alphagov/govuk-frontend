@@ -83,7 +83,7 @@ describe('Date input', () => {
 
       const $items = $('.govuk-date-input__item')
       const $firstItemInput = $(
-        '.govuk-date-input:first-child .govuk-date-input__input'
+        '.govuk-date-input__item:first-child .govuk-date-input__input'
       )
 
       expect($items).toHaveLength(3)
@@ -91,7 +91,7 @@ describe('Date input', () => {
     })
 
     it('renders item with suffixed name for input', () => {
-      const $ = render('date-input', examples['complete question'])
+      const $ = render('date-input', examples['with items'])
 
       const $firstItems = $('.govuk-date-input__item:first-child input')
       expect($firstItems.attr('name')).toBe('dob-day')
@@ -182,12 +182,12 @@ describe('Date input', () => {
 
   describe('when it includes a hint', () => {
     it('renders the hint', () => {
-      const $ = render('date-input', examples['complete question'])
+      const $ = render('date-input', examples.default)
       expect(htmlWithClassName($, '.govuk-hint')).toMatchSnapshot()
     })
 
     it('associates the fieldset as "described by" the hint', () => {
-      const $ = render('date-input', examples['complete question'])
+      const $ = render('date-input', examples.default)
 
       const $fieldset = $('.govuk-fieldset')
       const hintId = $('.govuk-hint').attr('id')
@@ -294,7 +294,7 @@ describe('Date input', () => {
 
   describe('nested dependant components', () => {
     it('have correct nesting order', () => {
-      const $ = render('date-input', examples['complete question'])
+      const $ = render('date-input', examples.default)
 
       const $component = $(
         '.govuk-form-group > .govuk-fieldset > .govuk-date-input'
@@ -309,7 +309,7 @@ describe('Date input', () => {
     })
 
     it('passes through fieldset params without breaking', () => {
-      const $ = render('date-input', examples['complete question'])
+      const $ = render('date-input', examples.default)
 
       expect(htmlWithClassName($, '.govuk-fieldset')).toMatchSnapshot()
     })
