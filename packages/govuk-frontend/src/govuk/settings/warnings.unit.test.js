@@ -12,7 +12,10 @@ const sassConfig = {
 }
 
 describe('Warnings mixin', () => {
-  const sassBootstrap = '@import "settings/warnings";'
+  const sassBootstrap = `
+    // Use legacy import for private members
+    @import "settings/warnings";
+  `
 
   it('Fires a @warn with the message plus the key suffix text', async () => {
     const sass = `
