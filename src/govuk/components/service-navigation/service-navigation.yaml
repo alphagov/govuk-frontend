@@ -125,19 +125,6 @@ examples:
           text: Navigation item 3
         - href: '#/4'
           text: Navigation item 4
-  - name: with navigation with an active item
-    description: The active item indicates that the user is within that section, but not on the exact page being linked. It looks the same as a current item, but marks this item as an ancestor to the one the user is viewing in ARIA (e.g. a parent section).
-    options:
-      navigation:
-        - href: '#/1'
-          text: Navigation item 1
-        - href: '#/2'
-          text: Navigation item 2
-          active: true
-        - href: '#/3'
-          text: Navigation item 3
-        - href: '#/4'
-          text: Navigation item 4
   - name: with large navigation
     options:
       navigation:
@@ -373,6 +360,20 @@ examples:
     hidden: true
     options:
       navigation: []
+  - name: with navigation with an active item
+    hidden: true
+    description: The active item indicates that the user is within that section, but not on the exact page being linked. It looks the same as a current item, but marks this item as an ancestor to the one the user is viewing in ARIA (e.g. a parent section).
+    options:
+      navigation:
+        - href: '#/1'
+          text: Navigation item 1
+        - href: '#/2'
+          text: Navigation item 2
+          active: true
+        - href: '#/3'
+          text: Navigation item 3
+        - href: '#/4'
+          text: Navigation item 4
   - name: with slotted content
     hidden: true
     options:
