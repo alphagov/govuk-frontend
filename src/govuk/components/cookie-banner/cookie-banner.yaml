@@ -88,6 +88,7 @@ params:
 
 examples:
   - name: default
+    screenshot: true
     options:
       messages:
         - headingText: Cookies on this government service

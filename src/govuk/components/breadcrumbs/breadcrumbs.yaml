@@ -39,6 +39,7 @@ params:
 
 examples:
   - name: default
+    screenshot: true
     options:
       items:
         - text: Section

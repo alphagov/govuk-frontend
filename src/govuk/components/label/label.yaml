@@ -26,6 +26,7 @@ params:
 
 examples:
   - name: default
+    screenshot: true
     options:
       text: National Insurance number
   - name: with bold text

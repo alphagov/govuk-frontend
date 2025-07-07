@@ -96,6 +96,7 @@ params:
 
 examples:
   - name: default
+    screenshot: true
     options:
       name: more-detail
       label:

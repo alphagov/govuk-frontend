@@ -93,6 +93,7 @@ params:
 
 examples:
   - name: default
+    screenshot: true
     options:
       previous:
         href: '/previous'
