@@ -95,7 +95,10 @@ export async function screenshotComponent(browser, componentName, options) {
   // Navigate to component
   const page = await goToComponent(browser, componentName, options)
 
-  const screenshotName = `${componentName} (${options.exampleName})`
+  const printExampleName =
+    options.exampleName === 'default' ? '' : ` (${options.exampleName})`
+
+  const screenshotName = `${componentName}${printExampleName}`
 
   // Disable JavaScript
   if (options.screenshot.variants?.includes('no-js')) {
@@ -107,7 +110,7 @@ export async function screenshotComponent(browser, componentName, options) {
     options.screenshot === true ||
     options.screenshot.variants?.includes('default')
   ) {
-    await percySnapshot(page, screenshotName, snapshotOptions)
+    await percySnapshot(page, `js: ${screenshotName}`, snapshotOptions)
   }
 
   // Close page
