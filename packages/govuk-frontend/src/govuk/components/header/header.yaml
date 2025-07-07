@@ -142,20 +142,6 @@ examples:
         - href: '#4'
           text: Navigation item 4
 
-  - name: with custom navigation label
-    options:
-      navigationLabel: Custom navigation label
-      navigation:
-        - href: '#1'
-          text: Navigation item 1
-          active: true
-        - href: '#2'
-          text: Navigation item 2
-        - href: '#3'
-          text: Navigation item 3
-        - href: '#4'
-          text: Navigation item 4
-
   - name: with custom menu button text
     description: Button translated into Welsh
     options:
@@ -170,20 +156,6 @@ examples:
           text: Eitem llywio 3
         - href: '#4'
           text: Eitem llywio 4
-
-  - name: with custom menu button label
-    options:
-      menuButtonLabel: Custom button label
-      navigation:
-        - href: '#1'
-          text: Navigation item 1
-          active: true
-        - href: '#2'
-          text: Navigation item 2
-        - href: '#3'
-          text: Navigation item 3
-        - href: '#4'
-          text: Navigation item 4
 
   - name: with service name and navigation
     description: If you need to include basic navigation, contact or account management links.
@@ -247,13 +219,11 @@ examples:
     options:
       containerClasses: govuk-header__container--full-width
       navigationClasses: govuk-header__navigation--end
-      productName: Product Name
 
   - name: full width with navigation
     options:
       containerClasses: govuk-header__container--full-width
       navigationClasses: govuk-header__navigation--end
-      productName: Product Name
       navigation:
         - href: '#1'
           text: Navigation item 1
@@ -267,12 +237,9 @@ examples:
     description: Makes the header's bottom border full width without affecting the header's content. Removed with redesign.
     options:
       classes: govuk-header--full-width-border
-      productName: Product Name
 
   - name: navigation item with html
     options:
-      serviceName: Service Name
-      serviceUrl: '/components/header'
       navigation:
         - href: '#1'
           html: <em>Navigation item 1</em>
@@ -284,8 +251,6 @@ examples:
 
   - name: navigation item with text without link
     options:
-      serviceName: Service Name
-      serviceUrl: '/components/header'
       navigation:
         - text: Navigation item 1
         - text: Navigation item 2
@@ -311,6 +276,20 @@ examples:
     hidden: true
     options:
       homepageUrl: /
+  - name: with custom navigation label
+    hidden: true
+    options:
+      navigationLabel: Custom navigation label
+      navigation:
+        - href: '#1'
+          text: Navigation item 1
+          active: true
+        - href: '#2'
+          text: Navigation item 2
+        - href: '#3'
+          text: Navigation item 3
+        - href: '#4'
+          text: Navigation item 4
   - name: navigation item with attributes
     hidden: true
     options:
@@ -343,6 +322,19 @@ examples:
           active: true
         - html: <em>Navigation item 2</em>
         - html: <em>Navigation item 3</em>
+  - name: with custom menu button label
+    options:
+      menuButtonLabel: Custom button label
+      navigation:
+        - href: '#1'
+          text: Navigation item 1
+          active: true
+        - href: '#2'
+          text: Navigation item 2
+        - href: '#3'
+          text: Navigation item 3
+        - href: '#4'
+          text: Navigation item 4
   - name: with custom navigation label and custom menu button text
     hidden: true
     options:
