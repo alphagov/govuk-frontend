@@ -163,19 +163,6 @@ examples:
       copyright:
         text: '© Hawlfraint y Goron'
 
-  - name: with meta
-    description: Secondary navigation with meta information relating to the site
-    options:
-      meta:
-        visuallyHiddenTitle: Items
-        items:
-          - href: '#1'
-            text: Item 1
-          - href: '#2'
-            text: Item 2
-          - href: '#3'
-            text: Item 3
-
   - name: with custom meta
     description: Custom meta section
     options:
@@ -204,12 +191,6 @@ examples:
           - href: '#8'
             text: Ligula Nullam Ultricies
         html: Built by the <a href="#" class="govuk-footer__link">Department of Magical Law Enforcement</a>
-
-  - name: with custom meta
-    description: Custom meta section
-    options:
-      meta:
-        text: GOV.UK Prototype Kit v7.0.1
 
   - name: with default width navigation (one column)
     options:
@@ -440,6 +421,19 @@ examples:
     options:
       meta:
         items: []
+  - name: with meta
+    hidden: true
+    description: Secondary navigation with meta information relating to the site
+    options:
+      meta:
+        visuallyHiddenTitle: Items
+        items:
+          - href: '#1'
+            text: Item 1
+          - href: '#2'
+            text: Item 2
+          - href: '#3'
+            text: Item 3
   - name: meta html as text
     hidden: true
     options:
