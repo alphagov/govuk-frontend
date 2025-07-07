@@ -101,6 +101,7 @@ examples:
       name: more-detail
       label:
         text: Can you provide more detail?
+
   - name: with hint
     options:
       name: more-detail
@@ -146,39 +147,6 @@ examples:
         text: Full address
         classes: govuk-label--l
         isPageHeading: true
-
-  - name: with optional form-group classes
-    options:
-      id: textarea-with-page-heading
-      name: address
-      label:
-        text: Full address
-      formGroup:
-        classes: extra-class
-
-  - name: with autocomplete attribute
-    options:
-      id: textarea-with-autocomplete-attribute
-      name: address
-      label:
-        text: Full address
-      autocomplete: street-address
-
-  - name: with spellcheck enabled
-    options:
-      label:
-        text: Spellcheck is enabled
-      id: textarea-with-spellcheck-enabled
-      name: spellcheck
-      spellcheck: true
-
-  - name: with spellcheck disabled
-    options:
-      label:
-        text: Spellcheck is disabled
-      id: textarea-with-spellcheck-disabled
-      name: spellcheck
-      spellcheck: false
 
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: id
@@ -256,3 +224,36 @@ examples:
         text: Error message
       hint:
         text: Hint
+  - name: with optional form-group classes
+    hidden: true
+    options:
+      id: textarea-with-page-heading
+      name: address
+      label:
+        text: Full address
+      formGroup:
+        classes: extra-class
+  - name: with autocomplete attribute
+    hidden: true
+    options:
+      id: textarea-with-autocomplete-attribute
+      name: address
+      label:
+        text: Full address
+      autocomplete: street-address
+  - name: with spellcheck enabled
+    hidden: true
+    options:
+      label:
+        text: Spellcheck is enabled
+      id: textarea-with-spellcheck-enabled
+      name: spellcheck
+      spellcheck: true
+  - name: with spellcheck disabled
+    hidden: true
+    options:
+      label:
+        text: Spellcheck is disabled
+      id: textarea-with-spellcheck-disabled
+      name: spellcheck
+      spellcheck: false
