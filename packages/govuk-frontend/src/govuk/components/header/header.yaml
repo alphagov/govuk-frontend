@@ -112,6 +112,10 @@ accessibilityCriteria: |
 
 examples:
   - name: default
+    screenshot:
+      variants:
+        - default
+        - no-js
     description: The standard header as used on information pages on GOV.UK
     options: {}
 

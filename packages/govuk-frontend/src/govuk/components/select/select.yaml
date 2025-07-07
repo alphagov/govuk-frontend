@@ -109,6 +109,7 @@ params:
 
 examples:
   - name: default
+    screenshot: true
     options:
       name: select-1
       label:

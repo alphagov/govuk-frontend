@@ -163,6 +163,10 @@ accessibilityCriteria: |
 
 examples:
   - name: default
+    screenshot:
+      variants:
+        - default
+        - no-js
     options:
       name: nationality
       items:

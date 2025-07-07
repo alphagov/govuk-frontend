@@ -34,6 +34,7 @@ params:
 
 examples:
   - name: default
+    screenshot: true
     options:
       titleHtml: Application complete
       text: 'Your reference number: HDJ2123F'

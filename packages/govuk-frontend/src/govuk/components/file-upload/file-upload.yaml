@@ -117,6 +117,10 @@ params:
 
 examples:
   - name: default
+    screenshot:
+      variants:
+        - default
+        - no-js
     options:
       name: file-upload-1
       label:
@@ -187,7 +191,10 @@ examples:
       formGroup:
         classes: extra-class
   - name: enhanced
-    screenshot: true
+    screenshot:
+      variants:
+        - default
+        - no-js
     options:
       id: file-upload-1
       name: file-upload-1

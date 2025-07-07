@@ -18,6 +18,7 @@ params:
 
 examples:
   - name: default
+    screenshot: true
     options:
       text: Alpha
   - name: grey

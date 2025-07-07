@@ -98,6 +98,10 @@ previewLayout: full-width
 
 examples:
   - name: default
+    screenshot:
+      variants:
+        - default
+        - no-js
     options:
       navigation:
         - href: '#/1'

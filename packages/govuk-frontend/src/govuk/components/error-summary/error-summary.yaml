@@ -58,6 +58,10 @@ accessibilityCriteria: |
 
 examples:
   - name: default
+    screenshot:
+      variants:
+        - default
+        - no-js
     options:
       titleText: There is a problem
       errorList:

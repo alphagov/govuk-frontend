@@ -144,6 +144,7 @@ accessibilityCriteria: |
 
 examples:
   - name: default
+    screenshot: true
     options: {}
 
   - name: with custom HTML content licence and copyright notice

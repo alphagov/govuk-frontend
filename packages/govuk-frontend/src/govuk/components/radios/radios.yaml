@@ -151,6 +151,10 @@ accessibilityCriteria: |
 
 examples:
   - name: default
+    screenshot:
+      variants:
+        - default
+        - no-js
     options:
       name: example-default
       hint:
@@ -242,7 +246,10 @@ examples:
             For properties that are within a geographical area defined by a local council
 
   - name: with a divider
-    screenshot: true
+    screenshot:
+      variants:
+        - default
+        - no-js
     options:
       idPrefix: example-divider
       name: example
@@ -259,7 +266,10 @@ examples:
           text: Create an account
 
   - name: with hints on items
-    screenshot: true
+    screenshot:
+      variants:
+        - default
+        - no-js
     options:
       idPrefix: gov
       name: gov
@@ -397,7 +407,10 @@ examples:
               <input class="govuk-input govuk-!-width-one-third" name="contact-text-message" type="text" id="contact-text-message">
 
   - name: with conditional item checked
-    screenshot: true
+    screenshot:
+      variants:
+        - default
+        - no-js
     options:
       idPrefix: 'how-contacted-checked'
       name: 'how-contacted-checked'
@@ -507,7 +520,10 @@ examples:
               <input class="govuk-input govuk-!-width-one-third" name="contact-text-message" type="text" id="contact-text-message">
 
   - name: small
-    screenshot: true
+    screenshot:
+      variants:
+        - default
+        - no-js
     options:
       idPrefix: 'how-contacted-2'
       name: 'how-contacted-2'
@@ -681,7 +697,10 @@ examples:
           text: funkiness
 
   - name: small with a divider
-    screenshot: true
+    screenshot:
+      variants:
+        - default
+        - no-js
     options:
       idPrefix: example-small-divider
       name: example
