@@ -24,13 +24,6 @@ examples:
   - name: default
     screenshot: true
     options: {}
-  - name: with custom text
-    options:
-      text: Back to home
-  - name: with custom link
-    options:
-      href: '/home'
-      text: Back to home
   - name: inverse
     screenshot: true
     previewLayoutModifiers:
@@ -51,6 +44,11 @@ examples:
     hidden: true
     options:
       html: <b>Back</b>
+  - name: with custom text and link
+    hidden: true
+    options:
+      href: '/home'
+      text: Back to home
   - name: attributes
     hidden: true
     options:
