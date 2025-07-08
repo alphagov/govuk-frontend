@@ -53,18 +53,6 @@ examples:
         you’re entitled to vote in. If you can’t provide your nationality,
         you’ll have to send copies of identity documents through the post.
       open: true
-  - name: with html
-    options:
-      summaryText: Where to find your National Insurance Number
-      html: |
-        Your National Insurance number can be found on
-        <ul>
-          <li>your National Insurance card</li>
-          <li>your payslip</li>
-          <li>P60</li>
-          <li>benefits information</li>
-          <li>tax return</li>
-        </ul>
 
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: id
@@ -107,3 +95,15 @@ examples:
       attributes:
         data-some-data-attribute: i-love-data
         another-attribute: foo
+  - name: with html
+    options:
+      summaryText: Where to find your National Insurance Number
+      html: |
+        Your National Insurance number can be found on
+        <ul>
+          <li>your National Insurance card</li>
+          <li>your payslip</li>
+          <li>P60</li>
+          <li>benefits information</li>
+          <li>tax return</li>
+        </ul>

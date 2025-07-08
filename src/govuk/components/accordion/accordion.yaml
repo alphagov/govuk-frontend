@@ -162,26 +162,6 @@ examples:
                 <li>Example item 2</li>
               </ul>
 
-  - name: with one section open
-    options:
-      id: one-section-open-example
-      items:
-        - heading:
-            text: Section A
-          expanded: true
-          content:
-            html: |
-              <ul class="govuk-list govuk-list--bullet">
-                <li>Example item 1</li>
-              </ul>
-        - heading:
-            text: Section B
-          content:
-            html: |
-              <ul class="govuk-list govuk-list--bullet">
-                <li>Example item 2</li>
-              </ul>
-
   - name: with all sections already open
     options:
       id: all-sections-open-example
@@ -197,41 +177,6 @@ examples:
         - heading:
             text: Section B
           expanded: true
-          content:
-            html: |
-              <ul class="govuk-list govuk-list--bullet">
-                <li>Example item 2</li>
-              </ul>
-
-  - name: with focusable elements inside
-    options:
-      id: with-focusable-elements
-      items:
-        - heading:
-            text: Section A
-          content:
-            html: <a class="govuk-link" href="#">Link A</a>
-        - heading:
-            text: Section B
-          content:
-            html: <a class="govuk-link" href="#">Link B</a>
-
-  - name: with translations
-    options:
-      id: with-translations
-      hideAllSectionsText: Collapse all sections
-      showAllSectionsText: Expand all sections
-      hideSectionText: Collapse
-      hideSectionAriaLabelText: Collapse this section
-      showSectionText: Expand
-      showSectionAriaLabelText: Expand this section
-      items:
-        - heading:
-            text: Section A
-          content:
-            text: We need to know your nationality so we can work out which elections you’re entitled to vote in. If you cannot provide your nationality, you’ll have to send copies of identity documents through the post.
-        - heading:
-            text: Section B
           content:
             html: |
               <ul class="govuk-list govuk-list--bullet">
@@ -305,3 +250,58 @@ examples:
             text: Section A
           content:
             text: Some content
+  - name: with focusable elements inside
+    hidden: true
+    options:
+      id: with-focusable-elements
+      items:
+        - heading:
+            text: Section A
+          content:
+            html: <a class="govuk-link" href="#">Link A</a>
+        - heading:
+            text: Section B
+          content:
+            html: <a class="govuk-link" href="#">Link B</a>
+  - name: with one section open
+    hidden: true
+    options:
+      id: one-section-open-example
+      items:
+        - heading:
+            text: Section A
+          expanded: true
+          content:
+            html: |
+              <ul class="govuk-list govuk-list--bullet">
+                <li>Example item 1</li>
+              </ul>
+        - heading:
+            text: Section B
+          content:
+            html: |
+              <ul class="govuk-list govuk-list--bullet">
+                <li>Example item 2</li>
+              </ul>
+  - name: with translations
+    hidden: true
+    options:
+      id: with-translations
+      hideAllSectionsText: Collapse all sections
+      showAllSectionsText: Expand all sections
+      hideSectionText: Collapse
+      hideSectionAriaLabelText: Collapse this section
+      showSectionText: Expand
+      showSectionAriaLabelText: Expand this section
+      items:
+        - heading:
+            text: Section A
+          content:
+            text: We need to know your nationality so we can work out which elections you’re entitled to vote in. If you cannot provide your nationality, you’ll have to send copies of identity documents through the post.
+        - heading:
+            text: Section B
+          content:
+            html: |
+              <ul class="govuk-list govuk-list--bullet">
+                <li>Example item 2</li>
+              </ul>
