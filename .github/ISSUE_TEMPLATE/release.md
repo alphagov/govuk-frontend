@@ -45,13 +45,13 @@ Technical writers, Developers
 
 ### Design System site
 
-- [ ] [Run dependabot](https://github.com/alphagov/govuk-design-system/network/updates/194539/jobs) to bump the version of `govuk-frontend`
+- [ ] Bump the version of `govuk-frontend`
 - [ ] Update [the "What's new" section on the homepage](https://github.com/alphagov/govuk-design-system/blob/main/views/partials/_whats-new.njk)
 - [ ] Update [the "Recently shipped" section of the roadmap](https://github.com/alphagov/govuk-design-system/blob/main/src/community/roadmap/index.md#recently-shipped)
 
 ### Frontend docs
 
-- [ ] [Run dependabot](https://github.com/alphagov/govuk-frontend-docs/network/updates/4008122/jobs) to bump the version of `govuk-frontend`
+- [ ] Bump the version of `govuk-frontend`
 
 ### Comms
 
