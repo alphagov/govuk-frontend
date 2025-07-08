@@ -55,6 +55,10 @@ params:
 
 examples:
   - name: default
+    screenshot:
+      variants:
+        - default
+        - no-js
     options:
       text: Save and continue
   - name: disabled

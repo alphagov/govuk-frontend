@@ -109,6 +109,7 @@ params:
 
 examples:
   - name: default
+    screenshot: true
     options:
       id: dob
   - name: complete question

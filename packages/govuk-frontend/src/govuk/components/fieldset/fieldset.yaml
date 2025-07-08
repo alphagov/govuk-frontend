@@ -47,6 +47,7 @@ params:
 
 examples:
   - name: default
+    screenshot: true
     options:
       legend:
         text: What is your address?

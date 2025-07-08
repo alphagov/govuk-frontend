@@ -79,6 +79,7 @@ params:
 
 examples:
   - name: default
+    screenshot: true
     options:
       items:
         - title:

@@ -23,6 +23,7 @@ params:
 
 examples:
   - name: default
+    screenshot: true
     options:
       tag:
         text: Alpha
