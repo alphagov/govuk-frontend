@@ -214,6 +214,11 @@
     @include _govuk-rebrand {
       // Remove bottom border to add width-container ones
       border-bottom: none;
+
+      // Set colour here so non-link text (service name, slot content) can
+      // use it too.
+      color: govuk-colour("white");
+
       background-color: $govuk-brand-colour;
 
       .govuk-width-container {
@@ -240,7 +245,7 @@
 
       // Override mobile menu toggle colour when not focused
       .govuk-service-navigation__toggle:not(:focus) {
-        color: govuk-colour("white");
+        color: currentcolor;
       }
     }
   }
