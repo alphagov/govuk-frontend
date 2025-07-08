@@ -38,11 +38,6 @@ examples:
     options:
       titleHtml: Application complete
       text: 'Your reference number: HDJ2123F'
-  - name: custom heading level
-    options:
-      titleText: Application complete
-      headingLevel: 2
-      text: 'Your reference number: HDJ2123F'
 
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: title html as text
@@ -83,3 +78,9 @@ examples:
     hidden: true
     options:
       titleText: Application complete
+  - name: custom heading level
+    hidden: true
+    options:
+      titleText: Application complete
+      headingLevel: 2
+      text: 'Your reference number: HDJ2123F'
