@@ -111,7 +111,7 @@ describe('Task List', () => {
     it('does not link the task title', () => {
       document.body.innerHTML = render(
         'task-list',
-        examples['example with hint text and additional states']
+        examples['with hint text and additional states']
       )
 
       const $itemWithNoLink = document.querySelector(
@@ -228,7 +228,7 @@ describe('Task List', () => {
     beforeAll(function () {
       document.body.innerHTML = render(
         'task-list',
-        examples['example with hint text and additional states']
+        examples['with hint text and additional states']
       )
       $component = document.querySelector('.govuk-task-list')
     })

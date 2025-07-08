@@ -79,62 +79,32 @@ params:
 
 examples:
   - name: default
+    options:
+      items:
+        - title:
+            text: Company Directors
+          href: '#'
+          status:
+            text: Completed
+
+        - title:
+            text: Registered company details
+          href: '#'
+          status:
+            tag:
+              text: Incomplete
+              classes: govuk-tag--blue
+
+        - title:
+            text: Business plan
+          href: '#'
+          status:
+            tag:
+              text: Incomplete
+              classes: govuk-tag--blue
+
+  - name: with hint text and additional states
     screenshot: true
-    options:
-      items:
-        - title:
-            text: Company Directors
-          href: '#'
-          status:
-            text: Completed
-
-        - title:
-            text: Registered company details
-          href: '#'
-          status:
-            tag:
-              text: Incomplete
-              classes: govuk-tag--blue
-
-        - title:
-            text: Business plan
-          href: '#'
-          status:
-            tag:
-              text: Incomplete
-              classes: govuk-tag--blue
-
-  - name: example with 3 states
-    options:
-      items:
-        - title:
-            text: Company Directors
-          href: '#'
-          status:
-            text: Completed
-        - title:
-            text: Registered company details
-          href: '#'
-          status:
-            tag:
-              text: Not started
-              classes: govuk-tag--light-blue
-        - title:
-            text: Business plan
-          href: '#'
-          status:
-            tag:
-              text: In progress
-              classes: govuk-tag--blue
-        - title:
-            text: Documentation
-          href: '#'
-          status:
-            tag:
-              text: Not started
-              classes: govuk-tag--light-blue
-
-  - name: example with hint text and additional states
     options:
       items:
         - title:
@@ -180,7 +150,7 @@ examples:
             text: Cannot start yet
             classes: govuk-task-list__status--cannot-start-yet
 
-  - name: example with all possible colours
+  - name: with all possible colours
     options:
       items:
         - title:
@@ -265,7 +235,7 @@ examples:
               text: Yellow
               classes: govuk-tag--yellow
 
-  - name: example with very long single word tags
+  - name: with very long single word tags
     options:
       items:
         - title:
@@ -289,6 +259,7 @@ examples:
             tag:
               text: Thisisaverylongwaytosaythatsomethingisincomplete
               classes: govuk-tag--blue
+
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: custom classes
     hidden: true
