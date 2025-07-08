@@ -263,7 +263,7 @@ async function goTo(page, path, options) {
     : path
 
   const response = await page.goto(href, {
-    waitUntil: options?.waitUntil
+    waitUntil: ['load', 'networkidle0']
   })
   const code = response.status()
 
