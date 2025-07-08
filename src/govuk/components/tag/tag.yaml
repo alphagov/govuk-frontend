@@ -25,10 +25,6 @@ examples:
     options:
       text: Grey
       classes: govuk-tag--grey
-  - name: blue
-    options:
-      text: Blue
-      classes: govuk-tag--blue
   - name: light blue
     options:
       text: Light blue
