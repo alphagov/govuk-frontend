@@ -1,6 +1,10 @@
+import { join } from 'path'
+
+import { paths } from '@govuk-frontend/config'
 import { download } from '@govuk-frontend/helpers/jest/browser/download.mjs'
 import { goToComponent, goToExample } from '@govuk-frontend/helpers/puppeteer'
 import { getComponentNames, getExamples } from '@govuk-frontend/lib/components'
+import { getListing, getYaml } from '@govuk-frontend/lib/files'
 import percySnapshot from '@percy/puppeteer'
 import puppeteer from 'puppeteer'
 
@@ -40,9 +44,20 @@ export async function screenshots() {
     }
   }
 
-  // Screenshot specific example pages
-  for (const exampleName of ['text-alignment', 'typography']) {
-    await screenshotExample(browser, exampleName)
+  // Screenshot non component examples
+  const nonComponentExamples = await getListing(
+    join(paths.app, 'src/views/examples/**/*.yaml')
+  )
+
+  for (const examplePath of nonComponentExamples) {
+    const exampleConfig = await getYaml(join(paths.root, examplePath))
+    const exampleName = examplePath
+      .split('/')
+      .pop()
+      .replace(/\.yaml$/, '')
+    if (exampleConfig.screenshot) {
+      await screenshotExample(browser, exampleName)
+    }
   }
 
   // Close browser
