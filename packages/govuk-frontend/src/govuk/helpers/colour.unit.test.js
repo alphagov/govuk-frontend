@@ -386,7 +386,7 @@ describe('@function govuk-shade', () => {
     await expect(compileSassString(sass, sassConfig)).resolves.toMatchObject({
       css: outdent`
           .foo {
-            color: rgb(141.93, 170.15, 198.37);
+            color: #8eaac6;
           }
         `
     })
@@ -406,7 +406,7 @@ describe('@function govuk-tint', () => {
     await expect(compileSassString(sass, sassConfig)).resolves.toMatchObject({
       css: outdent`
           .foo {
-            color: rgb(58.29, 86.51, 114.73);
+            color: #3a5773;
           }
         `
     })
