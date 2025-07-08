@@ -19,9 +19,13 @@
     {% set path = '/components/' + componentName + '/' + exampleName + "/preview" %}
   {% endif %}
 
+  {% set exampleScreenshot %}
+  {% if example.screenshot %}<span style="margin-left: 10px;" title="Included in visual regression tests {%- if example.screenshot !== true %} ({{ example.screenshot.variants | join(', ') }}){% endif %}"%}>📸</span>{% endif %}
+  {% endset %}
+
   <section aria-labelledby="heading-{{ exampleName }}" class="govuk-!-margin-bottom-9">
     <div class="govuk-width-container">
-      <h3 id="heading-{{ exampleName }}" class="govuk-heading-m govuk-!-margin-bottom-2">{{ heading | safe }}</h3>
+      <h3 id="heading-{{ exampleName }}" class="govuk-heading-m govuk-!-margin-bottom-2">{{ heading | safe }} {{ exampleScreenshot | safe }}</h3>
       {% if example.description %}
         <p class="govuk-body">
           {{ example.description }}
