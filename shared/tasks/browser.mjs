@@ -34,7 +34,8 @@ export async function screenshots() {
       if (allExamples[exampleName].fixture.screenshot) {
         await screenshotComponent(browser, componentName, {
           screenshot: allExamples[exampleName].fixture.screenshot,
-          exampleName
+          exampleName,
+          waitUntil: ['load', 'networkidle2']
         })
       }
     }
@@ -71,6 +72,7 @@ export async function screenshots() {
  * @param {object} options - Component options
  * @param {string} options.exampleName - Example name
  * @param {boolean} options.screenshot - Whether to take a screenshot
+ * @param {Array<PuppeteerLifeCycleEvent>} [options.waitUntil] - waitUntil options to pass to our 'goTo' methods
  */
 
 /**
@@ -129,7 +131,7 @@ export async function percySnapshotNoJs(page, screenshotName, snapShotOptions) {
   screenshotName = `no-js: ${screenshotName}`
   await percySnapshot(page, screenshotName, snapShotOptions)
   await page.setJavaScriptEnabled(true)
-  await page.reload({ waitUntil: 'load' })
+  await page.reload({ waitUntil: ['load', 'domcontentloaded'] })
 }
 
 /**
@@ -153,6 +155,6 @@ export async function screenshotExample(browser, exampleName) {
 }
 
 /**
- * @import { Browser, Page } from 'puppeteer'
+ * @import { Browser, Page, PuppeteerLifeCycleEvent } from 'puppeteer'
  * @import { SnapshotOptions } from '@percy/core'
  */

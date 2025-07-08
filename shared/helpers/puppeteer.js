@@ -254,6 +254,7 @@ async function requestHandler(request) {
  * @param {URL | string} path - Path or URL to navigate to
  * @param {object} [options] - Navigation options
  * @param {URL} [options.baseURL] - Base URL to override
+ * @param {Array<PuppeteerLifeCycleEvent>} [options.waitUntil] - Puppeteer waitUntil options
  * @returns {Promise<Page>} Puppeteer page object
  */
 async function goTo(page, path, options) {
@@ -261,7 +262,9 @@ async function goTo(page, path, options) {
     ? new URL(path, options?.baseURL ?? urls.app)
     : path
 
-  const response = await page.goto(href)
+  const response = await page.goto(href, {
+    waitUntil: options?.waitUntil
+  })
   const code = response.status()
 
   // Throw on HTTP errors (e.g. component URL typo)
@@ -297,7 +300,11 @@ async function goToExample(browser, exampleName, options) {
  * @returns {Promise<Page>} Puppeteer page object
  */
 async function goToComponent(browser, componentName, options) {
-  return goTo(await browser.newPage(), getComponentURL(componentName, options))
+  return goTo(
+    await browser.newPage(),
+    getComponentURL(componentName, options),
+    options
+  )
 }
 
 /**
@@ -412,5 +419,5 @@ module.exports = {
  * @import { MacroRenderOptions } from '@govuk-frontend/lib/components'
  * @import { AxeResults, RuleObject, RunOptions } from 'axe-core'
  * @import { Config, ConfigKey } from 'govuk-frontend'
- * @import { Browser, ElementHandle, EvaluateFuncWith, HTTPRequest, Page } from 'puppeteer'
+ * @import { Browser, ElementHandle, EvaluateFuncWith, HTTPRequest, Page, PuppeteerLifeCycleEvent } from 'puppeteer'
  */
