@@ -54,6 +54,10 @@ params:
 
 examples:
   - name: default
+    screenshot:
+      variants:
+        - default
+        - no-js
     options:
       text: This publication was withdrawn on 7 March 2014.
   - name: paragraph as html heading

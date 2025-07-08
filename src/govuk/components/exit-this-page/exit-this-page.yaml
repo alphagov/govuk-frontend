@@ -42,6 +42,10 @@ params:
 
 examples:
   - name: default
+    screenshot:
+      variants:
+        - default
+        - no-js
     options:
       redirectUrl: '/full-page-examples/announcements'
       id: null

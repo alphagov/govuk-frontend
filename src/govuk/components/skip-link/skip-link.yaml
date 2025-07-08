@@ -22,6 +22,10 @@ params:
 
 examples:
   - name: default
+    screenshot:
+      variants:
+        - default
+        - no-js
     options:
       text: Skip to main content
       href: '#test-target-element'

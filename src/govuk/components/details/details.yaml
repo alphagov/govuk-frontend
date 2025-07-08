@@ -38,6 +38,7 @@ params:
 
 examples:
   - name: default
+    screenshot: true
     options:
       summaryText: Help with nationality
       text: We need to know your nationality so we can work out which elections

@@ -163,6 +163,7 @@ params:
 
 examples:
   - name: default
+    screenshot: true
     options:
       rows:
         - key:

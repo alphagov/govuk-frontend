@@ -133,6 +133,10 @@ params:
 
 examples:
   - name: default
+    screenshot:
+      variants:
+        - default
+        - no-js
     options:
       name: more-detail
       maxlength: 10
