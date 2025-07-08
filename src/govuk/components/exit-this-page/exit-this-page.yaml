@@ -42,23 +42,12 @@ params:
 
 examples:
   - name: default
-    screenshot:
-      variants:
-        - default
-        - no-js
+    screenshot: true
     options:
       redirectUrl: '/full-page-examples/announcements'
       id: null
       classes: null
       attributes: {}
-
-  - name: translated
-    options:
-      text: Gadael y dudalen
-      activatedText: Tudalen ymadael
-      timedOutText: Wedi'i amseru
-      pressTwoMoreTimesText: Pwyswch 'Shift' 2 gwaith arall
-      pressOneMoreTimeText: Pwyswch 'Shift' 1 mwy o amser
 
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: testing
@@ -74,3 +63,11 @@ examples:
     hidden: true
     options:
       html: 'Exit <em>this</em> test'
+  - name: translated
+    hidden: true
+    options:
+      text: Gadael y dudalen
+      activatedText: Tudalen ymadael
+      timedOutText: Wedi'i amseru
+      pressTwoMoreTimesText: Pwyswch 'Shift' 2 gwaith arall
+      pressOneMoreTimeText: Pwyswch 'Shift' 1 mwy o amser
