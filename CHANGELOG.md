@@ -4,6 +4,12 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 ## Unreleased
 
+### Fixes
+
+We've made fixes to GOV.UK Frontend in the following pull requests:
+
+- [#6047: Fix text within the inverse Service navigation variant not appearing in white](https://github.com/alphagov/govuk-frontend/pull/6047) – thanks to @peteryates for reporting this issue
+
 ## v5.11.0 (Feature release)
 
 ### New features
