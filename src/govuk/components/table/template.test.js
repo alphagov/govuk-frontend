@@ -26,14 +26,14 @@ describe('Table', () => {
 
   describe('captions', () => {
     it('can have custom text', () => {
-      const $ = render('table', examples['table with head and caption'])
+      const $ = render('table', examples['with head and caption'])
       const $caption = $('.govuk-table__caption')
 
       expect($caption.text()).toBe('Caption 1: Months and rates')
     })
 
     it('can have additional classes', () => {
-      const $ = render('table', examples['table with head and caption'])
+      const $ = render('table', examples['with head and caption'])
       const $caption = $('.govuk-table__caption')
 
       expect($caption.hasClass('govuk-table__caption--m')).toBeTruthy()
@@ -46,7 +46,7 @@ describe('Table', () => {
 
   describe('column headers', () => {
     it('can be specified', () => {
-      const args = examples['table with head']
+      const args = examples['with head']
       const $ = render('table', args)
 
       const headings = $('.govuk-table')
@@ -80,7 +80,7 @@ describe('Table', () => {
     })
 
     it('can have a format specified', () => {
-      const $ = render('table', examples['table with head'])
+      const $ = render('table', examples['with head'])
 
       const $th = $('.govuk-table thead tr th')
 
