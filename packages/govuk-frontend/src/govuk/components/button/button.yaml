@@ -55,10 +55,7 @@ params:
 
 examples:
   - name: default
-    screenshot:
-      variants:
-        - default
-        - no-js
+    screenshot: true
     options:
       text: Save and continue
   - name: disabled
@@ -74,80 +71,22 @@ examples:
     options:
       text: Start now button
       isStartButton: true
-  - name: start link
-    options:
-      text: Start now link button
-      href: '/'
-      isStartButton: true
   - name: input
     options:
       element: input
       name: start-now
       text: Start now
-  - name: input disabled
-    options:
-      element: input
-      text: Explicit input button disabled
-      disabled: true
-  - name: prevent double click
-    options:
-      text: Submit
-      preventDoubleClick: true
-  - name: with active state
-    description: Simulate triggering the :active CSS pseudo-class, not available in the production build.
-    options:
-      name: active
-      text: Active
-      classes: :active
-  - name: with hover state
-    description: Simulate triggering the :hover CSS pseudo-class, not available in the production build.
-    options:
-      name: hover
-      text: Hovered
-      classes: :hover
-  - name: with focus state
-    description: Simulate triggering the :focus CSS pseudo-class, not available in the production build.
-    options:
-      name: focus
-      text: Focussed
-      classes: :focus
   - name: secondary
     description: A button for secondary actions
     options:
       name: secondary
       text: Secondary button
       classes: govuk-button--secondary
-  - name: secondary disabled
-    options:
-      name: secondary
-      text: Secondary button disabled
-      classes: govuk-button--secondary
-      disabled: true
-  - name: secondary link
-    description: A link button for secondary actions
-    options:
-      name: secondary
-      text: Secondary button
-      href: '/'
-      classes: govuk-button--secondary
   - name: warning
     description: A button for actions that need a warning
     options:
       name: Warning
       text: Warning button
-      classes: govuk-button--warning
-  - name: warning disabled
-    options:
-      name: warning
-      text: Warning button disabled
-      classes: govuk-button--warning
-      disabled: true
-  - name: warning link
-    description: A link button for actions that need a warning
-    options:
-      name: Warning
-      text: Warning button
-      href: '/'
       classes: govuk-button--warning
   - name: inverse
     screenshot: true
@@ -158,34 +97,6 @@ examples:
       name: Inverse
       text: Inverse button
       classes: govuk-button--inverse
-  - name: inverse disabled
-    previewLayoutModifiers:
-      - inverse
-    options:
-      name: Inverse
-      text: Inverse button disabled
-      classes: govuk-button--inverse
-      disabled: true
-  - name: inverse link
-    description: A link button for actions that appear on dark backgrounds
-    previewLayoutModifiers:
-      - inverse
-    options:
-      name: Inverse
-      text: Inverse button
-      href: '/'
-      classes: govuk-button--inverse
-  - name: inverse start
-    screenshot: true
-    description: A start button that appears on dark backgrounds
-    previewLayoutModifiers:
-      - inverse
-    options:
-      name: Inverse
-      text: Inverse start button
-      href: '/'
-      classes: govuk-button--inverse
-      isStartButton: true
 
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: attributes
@@ -290,3 +201,20 @@ examples:
       text: Submit
       element: input
       id: submit
+  - name: start link
+    hidden: true
+    options:
+      text: Start now link button
+      href: '/'
+      isStartButton: true
+  - name: input disabled
+    hidden: true
+    options:
+      element: input
+      text: Explicit input button disabled
+      disabled: true
+  - name: prevent double click
+    hidden: true
+    options:
+      text: Submit
+      preventDoubleClick: true
