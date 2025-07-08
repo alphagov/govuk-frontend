@@ -42,18 +42,6 @@ examples:
     screenshot: true
     options:
       items:
-        - text: Section
-          href: '/section'
-        - text: Sub-section
-          href: '/section/sub-section'
-  - name: with one level
-    options:
-      items:
-        - text: Section
-          href: '/section'
-  - name: with multiple levels
-    options:
-      items:
         - text: Home
           href: '/'
         - text: Section
@@ -62,6 +50,11 @@ examples:
           href: '/section/sub-section'
         - text: Sub Sub-section
           href: '/section/sub-section/sub-sub-section'
+  - name: with one level
+    options:
+      items:
+        - text: Section
+          href: '/section'
   - name: without the home section
     options:
       items:
@@ -78,6 +71,7 @@ examples:
           href: '/browse/abroad'
         - text: Travel abroad
   - name: with collapse on mobile
+    screenshot: true
     options:
       collapseOnMobile: true
       items:
