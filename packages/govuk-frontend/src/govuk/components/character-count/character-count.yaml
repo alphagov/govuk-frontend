@@ -143,16 +143,6 @@ examples:
       label:
         text: Can you provide more detail?
 
-  - name: with custom textarea description
-    description: with textarea description translated into Welsh.
-    options:
-      name: custom-textarea-description
-      id: custom-textarea-description
-      maxlength: 10
-      label:
-        text: Can you provide more detail?
-      textareaDescriptionText: Gallwch ddefnyddio hyd at %{count} nod
-
   - name: with hint
     options:
       name: with-hint
@@ -163,16 +153,6 @@ examples:
       hint:
         text: Don't include personal or financial information, eg your
           National Insurance number or credit card details.
-
-  - name: with error
-    options:
-      name: with-error
-      id: with-error
-      maxlength: 10
-      label:
-        text: Can you provide more detail?
-      errorMessage:
-        text: Please provide more detail
 
   - name: with hint and error
     options:
@@ -249,29 +229,17 @@ examples:
       label:
         text: Full address
 
-  - name: with translations
+  # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
+  - name: with custom textarea description
+    hidden: true
+    description: with textarea description translated into Welsh.
     options:
-      id: with-translations
-      name: with-translations
+      name: custom-textarea-description
+      id: custom-textarea-description
       maxlength: 10
       label:
-        text: Full address
-      charactersUnderLimitText:
-        other: '%{count} characters to go'
-        one: 'One character to go'
-      charactersAtLimitText: 'Zero characters left'
-      charactersOverLimitText:
-        other: '%{count} characters too many'
-        one: 'One character too many'
-      wordsUnderLimitText:
-        other: '%{count} words to go'
-        one: 'One word to go'
-      wordsAtLimitText: 'Zero words left'
-      wordsOverLimitText:
-        other: '%{count} words too many'
-        one: 'One word too many'
-
-  # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
+        text: Can you provide more detail?
+      textareaDescriptionText: Gallwch ddefnyddio hyd at %{count} nod
   - name: classes
     hidden: true
     options:
@@ -396,3 +364,25 @@ examples:
       name: no-maximum
       label:
         text: Full address
+  - name: with translations
+    hidden: true
+    options:
+      id: with-translations
+      name: with-translations
+      maxlength: 10
+      label:
+        text: Full address
+      charactersUnderLimitText:
+        other: '%{count} characters to go'
+        one: 'One character to go'
+      charactersAtLimitText: 'Zero characters left'
+      charactersOverLimitText:
+        other: '%{count} characters too many'
+        one: 'One character too many'
+      wordsUnderLimitText:
+        other: '%{count} words to go'
+        one: 'One word to go'
+      wordsAtLimitText: 'Zero words left'
+      wordsOverLimitText:
+        other: '%{count} words too many'
+        one: 'One word too many'

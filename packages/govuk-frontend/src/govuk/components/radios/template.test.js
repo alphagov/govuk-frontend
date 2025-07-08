@@ -125,11 +125,13 @@ describe('Radios', () => {
     })
 
     it('render checked', () => {
-      const $ = render('radios', examples.prechecked)
+      const $ = render('radios', examples['with conditional item checked'])
 
       const $component = $('.govuk-radios')
-      const $lastInput = $component.find('.govuk-radios__item:last-child input')
-      expect($lastInput.attr('checked')).toBe('checked')
+      const $firstInput = $component.find(
+        '.govuk-radios__item:first-child input'
+      )
+      expect($firstInput.attr('checked')).toBe('checked')
     })
 
     it('checks the radio that matches value', () => {

@@ -123,35 +123,6 @@ examples:
         - value: 3
           text: GOV.UK frontend option 3
           disabled: true
-  - name: id
-    options:
-      id: select-id
-      name: test-name
-      label:
-        text: Horse with no name
-      items: []
-  - name: with no items
-    options:
-      id: select-1
-      name: select-1
-      label:
-        text: Horse with no name
-      items: []
-  - name: with selected value
-    options:
-      id: select-1
-      name: select-1
-      label:
-        text: Label text goes here
-      items:
-        - value: 1
-          text: GOV.UK frontend option 1
-        - value: 2
-          text: GOV.UK frontend option 2
-        - value: 3
-          text: GOV.UK frontend option 3
-          disabled: true
-      value: 2
   - name: with hint text and error message
     options:
       id: select-2
@@ -193,24 +164,6 @@ examples:
       classes: govuk-!-width-full
       label:
         text: Label text goes here
-      items:
-        - value: 1
-          text: GOV.UK frontend option 1
-        - value: 2
-          text: GOV.UK frontend option 2
-          selected: true
-        - value: 3
-          text: GOV.UK frontend option 3
-          disabled: true
-  - name: with optional form-group classes
-    options:
-      id: select-1
-      name: select-1
-      classes: govuk-!-width-full
-      label:
-        text: Label text goes here
-      formGroup:
-        classes: extra-class
       items:
         - value: 1
           text: GOV.UK frontend option 1
@@ -336,7 +289,6 @@ examples:
           text: GOV.UK frontend option 1
         - value: 2
           text: GOV.UK frontend option 2
-
   - name: without values
     hidden: true
     options:
@@ -348,7 +300,6 @@ examples:
         - text: Red
         - text: Green
         - text: Blue
-
   - name: without values with selected value
     hidden: true
     options:
@@ -361,7 +312,6 @@ examples:
         - text: Green
         - text: Blue
       value: Green
-
   - name: with falsy values
     hidden: true
     options:
@@ -376,7 +326,6 @@ examples:
           value: false
         - text: Number zero
           value: 0
-
   - name: item selected overrides value
     hidden: true
     options:
@@ -393,3 +342,46 @@ examples:
         - value: blue
           text: Blue
       value: green
+  - name: id
+    hidden: true
+    options:
+      id: select-id
+      name: test-name
+      label:
+        text: Horse with no name
+      items: []
+  - name: with selected value
+    hidden: true
+    options:
+      id: select-1
+      name: select-1
+      label:
+        text: Label text goes here
+      items:
+        - value: 1
+          text: GOV.UK frontend option 1
+        - value: 2
+          text: GOV.UK frontend option 2
+        - value: 3
+          text: GOV.UK frontend option 3
+          disabled: true
+      value: 2
+  - name: with optional form-group classes
+    hidden: true
+    options:
+      id: select-1
+      name: select-1
+      classes: govuk-!-width-full
+      label:
+        text: Label text goes here
+      formGroup:
+        classes: extra-class
+      items:
+        - value: 1
+          text: GOV.UK frontend option 1
+        - value: 2
+          text: GOV.UK frontend option 2
+          selected: true
+        - value: 3
+          text: GOV.UK frontend option 3
+          disabled: true

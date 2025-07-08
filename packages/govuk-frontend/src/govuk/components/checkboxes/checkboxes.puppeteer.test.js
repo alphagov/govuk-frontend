@@ -90,11 +90,7 @@ describe('Checkboxes', () => {
         let $inputs
 
         beforeAll(async () => {
-          await render(
-            page,
-            'checkboxes',
-            examples['with conditional item checked']
-          )
+          await render(page, 'checkboxes', examples['with pre-checked values'])
 
           $component = await page.$('.govuk-checkboxes')
           $inputs = await $component.$$('.govuk-checkboxes__input')
@@ -111,7 +107,7 @@ describe('Checkboxes', () => {
         })
 
         it('has no conditional content revealed that is associated with an unchecked input', async () => {
-          const $input = $inputs[$inputs.length - 1] // Last input, unchecked
+          const $input = $inputs[1] // second input, unchecked
           const $conditional = await $component.$(
             `[id="${await getAttribute($input, 'aria-controls')}"]`
           )

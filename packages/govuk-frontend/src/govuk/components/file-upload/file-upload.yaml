@@ -117,45 +117,12 @@ params:
 
 examples:
   - name: default
-    screenshot:
-      variants:
-        - default
-        - no-js
+    screenshot: true
     options:
       name: file-upload-1
       label:
         text: Upload a file
-  - name: allows multiple files
-    options:
-      id: file-upload-1
-      name: file-upload-1
-      label:
-        text: Upload a file
-      multiple: true
-  - name: allows image files only
-    options:
-      id: file-upload-1
-      name: file-upload-1
-      label:
-        text: Upload a file
-      attributes:
-        accept: 'image/*'
-  - name: allows direct media capture
-    description: Currently only works on mobile devices.
-    options:
-      id: file-upload-1
-      name: file-upload-1
-      label:
-        text: Upload a file
-      attributes:
-        capture: 'user'
-  - name: disabled
-    options:
-      id: file-upload-1
-      name: file-upload-1
-      label:
-        text: Upload a file
-      disabled: true
+
   - name: with hint text
     options:
       id: file-upload-2
@@ -164,6 +131,7 @@ examples:
         text: Upload your photo
       hint:
         text: Your photo may be in your Pictures, Photos, Downloads or Desktop folder. Or in an app like iPhoto.
+
   - name: with error message and hint
     options:
       id: file-upload-3
@@ -174,6 +142,7 @@ examples:
         text: Your photo may be in your Pictures, Photos, Downloads or Desktop folder. Or in an app like iPhoto.
       errorMessage:
         text: Error message goes here
+
   - name: with label as page heading
     options:
       id: file-upload-1
@@ -182,14 +151,7 @@ examples:
         text: Upload a file
         classes: govuk-label--l
         isPageHeading: true
-  - name: with optional form-group classes
-    options:
-      id: file-upload-1
-      name: file-upload-1
-      label:
-        text: Upload a file
-      formGroup:
-        classes: extra-class
+
   - name: enhanced
     screenshot:
       variants:
@@ -201,16 +163,7 @@ examples:
       label:
         text: Upload a file
       javascript: true
-  - name: enhanced, disabled
-    options:
-      javascript: true
-      disabled: true
-      id: file-upload-error
-      name: file-upload-error
-      label:
-        text: Upload a file
-      hint:
-        text: Your photo may be in your Pictures, Photos, Downloads or Desktop folder. Or in an app like iPhoto.
+
   - name: enhanced, with error message and hint
     options:
       javascript: true
@@ -222,22 +175,6 @@ examples:
         text: Your photo may be in your Pictures, Photos, Downloads or Desktop folder. Or in an app like iPhoto.
       errorMessage:
         text: Error message goes here
-  - name: translated
-    options:
-      id: file-upload-1
-      name: file-upload-1
-      label:
-        text: Llwythwch ffeil i fyny
-      multiple: true
-      javascript: true
-      chooseFilesButtonText: Dewiswch ffeil
-      dropInstructionText: neu ollwng ffeil
-      noFileChosenText: Dim ffeil wedi'i dewis
-      multipleFilesChosenText:
-        other: "%{count} ffeil wedi'u dewis"
-        one: "%{count} ffeil wedi'i dewis"
-      enteredDropZoneText: Wedi mynd i mewn i'r parth gollwng
-      leftDropZoneText: Parth gollwng i'r chwith
 
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: with value
@@ -329,6 +266,47 @@ examples:
       label:
         text: Llwythwch ffeil i fyny
       multiple: true
+      chooseFilesButtonText: Dewiswch ffeil
+      dropInstructionText: neu ollwng ffeil
+      noFileChosenText: Dim ffeil wedi'i dewis
+      multipleFilesChosenText:
+        other: "%{count} ffeil wedi'u dewis"
+        one: "%{count} ffeil wedi'i dewis"
+      enteredDropZoneText: Wedi mynd i mewn i'r parth gollwng
+      leftDropZoneText: Parth gollwng i'r chwith
+  - name: allows multiple files
+    hidden: true
+    options:
+      id: file-upload-1
+      name: file-upload-1
+      label:
+        text: Upload a file
+      multiple: true
+  - name: disabled
+    hidden: true
+    options:
+      id: file-upload-1
+      name: file-upload-1
+      label:
+        text: Upload a file
+      disabled: true
+  - name: with optional form-group classes
+    hidden: true
+    options:
+      id: file-upload-1
+      name: file-upload-1
+      label:
+        text: Upload a file
+      formGroup:
+        classes: extra-class
+  - name: translated
+    options:
+      id: file-upload-1
+      name: file-upload-1
+      label:
+        text: Llwythwch ffeil i fyny
+      multiple: true
+      javascript: true
       chooseFilesButtonText: Dewiswch ffeil
       dropInstructionText: neu ollwng ffeil
       noFileChosenText: Dim ffeil wedi'i dewis

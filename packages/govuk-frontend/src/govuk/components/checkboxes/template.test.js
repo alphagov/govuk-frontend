@@ -220,11 +220,11 @@ describe('Checkboxes', () => {
       const $ = render('checkboxes', examples['with pre-checked values'])
 
       const $component = $('.govuk-checkboxes')
-      const $british = $component.find('input[value="british"]')
-      expect($british.attr('checked')).toBe('checked')
+      const $email = $component.find('input[value="email"]')
+      expect($email.attr('checked')).toBe('checked')
 
-      const $other = $component.find('input[value="other"]')
-      expect($other.attr('checked')).toBe('checked')
+      const $text = $component.find('input[value="text"]')
+      expect($text.attr('checked')).toBe('checked')
     })
 
     it('allows item.checked to override values', () => {
@@ -297,7 +297,7 @@ describe('Checkboxes', () => {
       ).toBeTruthy()
     })
     it('visible by default when checked', () => {
-      const $ = render('checkboxes', examples['with conditional item checked'])
+      const $ = render('checkboxes', examples['with pre-checked values'])
 
       const $component = $('.govuk-checkboxes')
 
@@ -318,7 +318,7 @@ describe('Checkboxes', () => {
       const $firstConditional = $component
         .find('.govuk-checkboxes__conditional')
         .first()
-      expect($firstConditional.text().trim()).toContain('Country')
+      expect($firstConditional.text().trim()).toContain('Email address')
       expect(
         $firstConditional.hasClass('govuk-checkboxes__conditional--hidden')
       ).toBeFalsy()
@@ -386,10 +386,7 @@ describe('Checkboxes', () => {
     })
 
     it('associates the fieldset as "described by" the error message', () => {
-      const $ = render(
-        'checkboxes',
-        examples['with fieldset and error message']
-      )
+      const $ = render('checkboxes', examples['with error message'])
 
       const $fieldset = $('.govuk-fieldset')
       const errorMessageId = $('.govuk-error-message').attr('id')
@@ -540,12 +537,13 @@ describe('Checkboxes', () => {
 
   describe('single checkbox without a fieldset', () => {
     it('adds aria-describedby to input if there is an error', () => {
-      const exampleName = "with single option set 'aria-describedby' on input"
+      const exampleName =
+        "with single option set 'aria-describedby' on input, and describedBy"
 
       const $ = render('checkboxes', examples[exampleName])
       const $input = $('input')
 
-      expect($input.attr('aria-describedby')).toMatch('t-and-c-error')
+      expect($input.attr('aria-describedby')).toMatch('t-and-c-hint')
     })
 
     it('adds aria-describedby to input if there is an error and parent fieldset', () => {
@@ -556,7 +554,7 @@ describe('Checkboxes', () => {
       const $input = $('input')
 
       expect($input.attr('aria-describedby')).toMatch(
-        'test-target-element t-and-c-error'
+        'test-target-element t-and-c-hint'
       )
     })
   })
@@ -564,13 +562,13 @@ describe('Checkboxes', () => {
   describe('single checkbox (with hint) without a fieldset', () => {
     it('adds aria-describedby to input if there is an error and a hint', () => {
       const exampleName =
-        "with single option (and hint) set 'aria-describedby' on input"
+        "with single option (and hint) set 'aria-describedby' on input, and describedBy"
 
       const $ = render('checkboxes', examples[exampleName])
       const $input = $('input')
 
       expect($input.attr('aria-describedby')).toMatch(
-        't-and-c-with-hint-error t-and-c-with-hint-item-hint'
+        't-and-c-with-hint-hint t-and-c-with-hint-item-hint'
       )
     })
 
@@ -582,7 +580,7 @@ describe('Checkboxes', () => {
       const $input = $('input')
 
       expect($input.attr('aria-describedby')).toMatch(
-        'test-target-element t-and-c-with-hint-error t-and-c-with-hint-item-hint'
+        'test-target-element t-and-c-with-hint-hint t-and-c-with-hint-item-hint'
       )
     })
   })

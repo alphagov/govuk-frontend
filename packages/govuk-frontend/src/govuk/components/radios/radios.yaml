@@ -151,12 +151,24 @@ accessibilityCriteria: |
 
 examples:
   - name: default
-    screenshot:
-      variants:
-        - default
-        - no-js
+    screenshot: true
     options:
       name: example-default
+      fieldset:
+        legend:
+          text: Have you changed your name?
+      items:
+        - value: yes
+          text: Yes
+        - value: no
+          text: No
+
+  - name: with hint
+    options:
+      name: example-with-hint
+      fieldset:
+        legend:
+          text: Have you changed your name?
       hint:
         text: This includes changing your last name or spelling your name differently.
       items:
@@ -166,6 +178,7 @@ examples:
           text: No
 
   - name: inline
+    screenshot: true
     options:
       idPrefix: example
       classes: govuk-radios--inline
@@ -182,28 +195,6 @@ examples:
           text: No
           checked: true
 
-  - name: with disabled
-    options:
-      idPrefix: gov
-      name: gov
-      fieldset:
-        legend:
-          text: How do you want to sign in?
-          classes: govuk-fieldset__legend--l
-          isPageHeading: true
-      items:
-        - value: gateway
-          text: Sign in with Government Gateway
-          id: gateway
-          hint:
-            text: You’ll have a user ID if you’ve registered for Self Assessment or filed a tax return online before.
-        - value: verify
-          text: Sign in with GOV.UK Verify
-          id: verify
-          hint:
-            text: You’ll have an account if you’ve already proved your identity with either Barclays, CitizenSafe, Digidentity, Experian, Post Office, Royal Mail or SecureIdentity.
-          disabled: true
-
   - name: with legend as page heading
     options:
       idPrefix: housing-act
@@ -213,26 +204,6 @@ examples:
           text: Which part of the Housing Act was your licence issued under?
           classes: govuk-fieldset__legend--l
           isPageHeading: true
-      hint:
-        text: Select one of the options below.
-      items:
-        - value: part-2
-          html:
-            <span class="govuk-heading-s govuk-!-margin-bottom-1">Part 2 of the Housing Act 2004</span>
-            For properties that are 3 or more stories high and occupied by 5 or more people
-        - value: part-3
-          html:
-            <span class="govuk-heading-s govuk-!-margin-bottom-1">Part 3 of the Housing Act 2004</span>
-            For properties that are within a geographical area defined by a local council
-
-  - name: with a medium legend
-    options:
-      idPrefix: housing-act
-      name: housing-act
-      fieldset:
-        legend:
-          text: Which part of the Housing Act was your licence issued under?
-          classes: govuk-fieldset__legend--m
       hint:
         text: Select one of the options below.
       items:
@@ -266,10 +237,6 @@ examples:
           text: Create an account
 
   - name: with hints on items
-    screenshot:
-      variants:
-        - default
-        - no-js
     options:
       idPrefix: gov
       name: gov
@@ -379,33 +346,6 @@ examples:
               <label class="govuk-label" for="contact-text-message">Mobile phone number</label>
               <input class="govuk-input govuk-!-width-one-third" name="contact-text-message" type="text" id="contact-text-message">
 
-  - name: with conditional items with special characters
-    options:
-      idPrefix: user.profile[contact-prefs]
-      name: contact-prefs
-      fieldset:
-        legend:
-          text: How do you want to be contacted?
-      items:
-        - value: email
-          text: Email
-          conditional:
-            html: |
-              <label class="govuk-label" for="context-email">Email address</label>
-              <input class="govuk-input govuk-!-width-one-third" name="context-email" type="text" id="context-email">
-        - value: phone
-          text: Phone
-          conditional:
-            html: |
-              <label class="govuk-label" for="contact-phone">Phone number</label>
-              <input class="govuk-input govuk-!-width-one-third" name="contact-phone" type="text" id="contact-phone">
-        - value: text
-          text: Text message
-          conditional:
-            html: |
-              <label class="govuk-label" for="contact-text-message">Mobile phone number</label>
-              <input class="govuk-input govuk-!-width-one-third" name="contact-text-message" type="text" id="contact-text-message">
-
   - name: with conditional item checked
     screenshot:
       variants:
@@ -437,56 +377,6 @@ examples:
             html: |
               <label class="govuk-label" for="contact-text-message">Mobile phone number</label>
               <input class="govuk-input govuk-!-width-one-third" name="contact-text-message" type="text" id="contact-text-message">
-
-  - name: prechecked
-    options:
-      name: example-default
-      hint:
-        text: This includes changing your last name or spelling your name differently.
-      items:
-        - value: yes
-          text: Yes
-        - value: no
-          text: No
-          checked: true
-
-  - name: prechecked using value
-    options:
-      name: example-default
-      items:
-        - value: yes
-          text: Yes
-        - value: no
-          text: No
-      value: no
-
-  - name: with conditional items and pre-checked value
-    options:
-      idPrefix: 'how-contacted-checked'
-      name: 'how-contacted-checked'
-      fieldset:
-        legend:
-          text: How do you want to be contacted?
-      items:
-        - value: email
-          text: Email
-          conditional:
-            html: |
-              <label class="govuk-label" for="context-email">Email</label>
-              <input class="govuk-input govuk-!-width-one-third" name="context-email" type="text" id="context-email">
-        - value: phone
-          text: Phone
-          conditional:
-            html: |
-              <label class="govuk-label" for="contact-phone">Phone number</label>
-              <input class="govuk-input govuk-!-width-one-third" name="contact-phone" type="text" id="contact-phone">
-        - value: text
-          text: Text message
-          conditional:
-            html: |
-              <label class="govuk-label" for="contact-text-message">Mobile phone number</label>
-              <input class="govuk-input govuk-!-width-one-third" name="contact-text-message" type="text" id="contact-text-message">
-      value: text
 
   - name: with optional form-group classes showing group error
     options:
@@ -520,10 +410,7 @@ examples:
               <input class="govuk-input govuk-!-width-one-third" name="contact-text-message" type="text" id="contact-text-message">
 
   - name: small
-    screenshot:
-      variants:
-        - default
-        - no-js
+    screenshot: true
     options:
       idPrefix: 'how-contacted-2'
       name: 'how-contacted-2'
@@ -611,24 +498,6 @@ examples:
         - value: text
           text: Text message
 
-  - name: small with disabled
-    options:
-      idPrefix: 'how-contacted-2'
-      name: 'how-contacted-2'
-      formGroup:
-        classes: 'govuk-radios--small'
-      fieldset:
-        legend:
-          text: How do you want to be contacted?
-      items:
-        - value: email
-          text: Email
-        - value: phone
-          text: Phone
-        - value: text
-          text: Text message
-          disabled: true
-
   - name: small with conditional reveal
     options:
       idPrefix: 'how-contacted-2'
@@ -666,41 +535,7 @@ examples:
         - value: created
           text: created
 
-  - name: small inline extreme
-    options:
-      idPrefix: sort
-      classes: govuk-radios--small govuk-radios--inline
-      name: example
-      fieldset:
-        legend:
-          text: Sort by
-      items:
-        - value: relevance
-          text: relevance
-        - value: title
-          text: title
-        - value: created
-          text: created
-        - value: modified
-          text: modified
-        - value: category
-          text: category
-        - value: votes
-          text: votes
-        - value: flavour
-          text: flavour
-        - value: hue
-          text: hue
-        - value: happiness
-          text: happiness
-        - value: funkiness
-          text: funkiness
-
   - name: small with a divider
-    screenshot:
-      variants:
-        - default
-        - no-js
     options:
       idPrefix: example-small-divider
       name: example
@@ -719,6 +554,7 @@ examples:
 
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: with idPrefix
+    hidden: true
     options:
       name: example-radio
       idPrefix: example-id-prefix
@@ -954,7 +790,6 @@ examples:
         - value: no
           text: No
           checked: true
-
   - name: item checked overrides value
     hidden: true
     options:
@@ -981,3 +816,89 @@ examples:
               <textarea class="govuk-textarea govuk-!-width-one-third" name="conditional-textarea" id="conditional-textarea">
               test
               </textarea>
+  - name: with disabled
+    hidden: true
+    options:
+      idPrefix: gov
+      name: gov
+      fieldset:
+        legend:
+          text: How do you want to sign in?
+          classes: govuk-fieldset__legend--l
+          isPageHeading: true
+      items:
+        - value: gateway
+          text: Sign in with Government Gateway
+          id: gateway
+          hint:
+            text: You’ll have a user ID if you’ve registered for Self Assessment or filed a tax return online before.
+        - value: verify
+          text: Sign in with GOV.UK Verify
+          id: verify
+          hint:
+            text: You’ll have an account if you’ve already proved your identity with either Barclays, CitizenSafe, Digidentity, Experian, Post Office, Royal Mail or SecureIdentity.
+          disabled: true
+  - name: prechecked using value
+    hidden: true
+    options:
+      name: example-default
+      items:
+        - value: yes
+          text: Yes
+        - value: no
+          text: No
+      value: no
+  - name: with conditional items with special characters
+    hidden: true
+    options:
+      idPrefix: user.profile[contact-prefs]
+      name: contact-prefs
+      fieldset:
+        legend:
+          text: How do you want to be contacted?
+      items:
+        - value: email
+          text: Email
+          conditional:
+            html: |
+              <label class="govuk-label" for="context-email">Email address</label>
+              <input class="govuk-input govuk-!-width-one-third" name="context-email" type="text" id="context-email">
+        - value: phone
+          text: Phone
+          conditional:
+            html: |
+              <label class="govuk-label" for="contact-phone">Phone number</label>
+              <input class="govuk-input govuk-!-width-one-third" name="contact-phone" type="text" id="contact-phone">
+        - value: text
+          text: Text message
+          conditional:
+            html: |
+              <label class="govuk-label" for="contact-text-message">Mobile phone number</label>
+              <input class="govuk-input govuk-!-width-one-third" name="contact-text-message" type="text" id="contact-text-message">
+  - name: with conditional items and pre-checked value
+    options:
+      idPrefix: 'how-contacted-checked'
+      name: 'how-contacted-checked'
+      fieldset:
+        legend:
+          text: How do you want to be contacted?
+      items:
+        - value: email
+          text: Email
+          conditional:
+            html: |
+              <label class="govuk-label" for="context-email">Email</label>
+              <input class="govuk-input govuk-!-width-one-third" name="context-email" type="text" id="context-email">
+        - value: phone
+          text: Phone
+          conditional:
+            html: |
+              <label class="govuk-label" for="contact-phone">Phone number</label>
+              <input class="govuk-input govuk-!-width-one-third" name="contact-phone" type="text" id="contact-phone">
+        - value: text
+          text: Text message
+          conditional:
+            html: |
+              <label class="govuk-label" for="contact-text-message">Mobile phone number</label>
+              <input class="govuk-input govuk-!-width-one-third" name="contact-text-message" type="text" id="contact-text-message">
+      value: text

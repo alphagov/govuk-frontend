@@ -112,22 +112,11 @@ examples:
     screenshot: true
     options:
       id: dob
-  - name: complete question
-    options:
-      id: dob
-      namePrefix: dob
       fieldset:
         legend:
           text: What is your date of birth?
       hint:
         text: For example, 31 3 1980
-      items:
-        - name: day
-          classes: govuk-input--width-2
-        - name: month
-          classes: govuk-input--width-2
-        - name: year
-          classes: govuk-input--width-4
   - name: day and month
     options:
       id: bday
@@ -242,67 +231,6 @@ examples:
           classes: govuk-input--width-2
         - name: year
           classes: govuk-input--width-4 govuk-input--error
-  - name: with default items
-    options:
-      id: dob
-      namePrefix: dob
-      fieldset:
-        legend:
-          text: What is your date of birth?
-      hint:
-        text: For example, 31 3 1980
-  - name: with optional form-group classes
-    options:
-      id: dob
-      namePrefix: dob
-      fieldset:
-        legend:
-          text: What is your date of birth?
-      hint:
-        text: For example, 31 3 1980
-      formGroup:
-        classes: extra-class
-  - name: with autocomplete values
-    options:
-      id: dob-with-autocomplete-attribute
-      namePrefix: dob-with-autocomplete
-      fieldset:
-        legend:
-          text: What is your date of birth?
-      hint:
-        text: For example, 31 3 1980
-      items:
-        - name: day
-          classes: govuk-input--width-2
-          autocomplete: bday-day
-        - name: month
-          classes: govuk-input--width-2
-          autocomplete: bday-month
-        - name: year
-          classes: govuk-input--width-4
-          autocomplete: bday-year
-  - name: with input attributes
-    options:
-      id: dob-with-input-attributes
-      namePrefix: dob-with-input-attributes
-      fieldset:
-        legend:
-          text: What is your date of birth?
-      hint:
-        text: For example, 31 3 1980
-      items:
-        - name: day
-          classes: govuk-input--width-2
-          attributes:
-            data-example-day: day
-        - name: month
-          classes: govuk-input--width-2
-          attributes:
-            data-example-month: month
-        - name: year
-          classes: govuk-input--width-4
-          attributes:
-            data-example-year: year
 
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: classes
@@ -316,6 +244,23 @@ examples:
       id: with-attributes
       attributes:
         data-attribute: my data value
+  - name: with items
+    hidden: false
+    options:
+      id: dob
+      namePrefix: dob
+      fieldset:
+        legend:
+          text: What is your date of birth?
+      hint:
+        text: For example, 31 3 1980
+      items:
+        - name: day
+          classes: govuk-input--width-2
+        - name: month
+          classes: govuk-input--width-2
+        - name: year
+          classes: govuk-input--width-4
   - name: with empty items
     hidden: true
     options:
@@ -421,3 +366,58 @@ examples:
         - name: day
         - name: month
         - name: year
+  - name: with optional form-group classes
+    hidden: true
+    options:
+      id: dob
+      namePrefix: dob
+      fieldset:
+        legend:
+          text: What is your date of birth?
+      hint:
+        text: For example, 31 3 1980
+      formGroup:
+        classes: extra-class
+  - name: with autocomplete values
+    hidden: true
+    options:
+      id: dob-with-autocomplete-attribute
+      namePrefix: dob-with-autocomplete
+      fieldset:
+        legend:
+          text: What is your date of birth?
+      hint:
+        text: For example, 31 3 1980
+      items:
+        - name: day
+          classes: govuk-input--width-2
+          autocomplete: bday-day
+        - name: month
+          classes: govuk-input--width-2
+          autocomplete: bday-month
+        - name: year
+          classes: govuk-input--width-4
+          autocomplete: bday-year
+  - name: with input attributes
+    hidden: true
+    options:
+      id: dob-with-input-attributes
+      namePrefix: dob-with-input-attributes
+      fieldset:
+        legend:
+          text: What is your date of birth?
+      hint:
+        text: For example, 31 3 1980
+      items:
+        - name: day
+          classes: govuk-input--width-2
+          attributes:
+            data-example-day: day
+        - name: month
+          classes: govuk-input--width-2
+          attributes:
+            data-example-month: month
+        - name: year
+          classes: govuk-input--width-4
+          attributes:
+            data-example-year: year
