@@ -372,3 +372,43 @@ describe('@function govuk-organisation-colour', () => {
     })
   })
 })
+
+describe('@function govuk-shade', () => {
+  it('outputs hexadecimal values', async () => {
+    const sass = `
+      @import "helpers/colour";
+
+      .foo {
+        color: govuk-shade(rgb(171, 205, 239), 17);
+      }
+    `
+
+    await expect(compileSassString(sass, sassConfig)).resolves.toMatchObject({
+      css: outdent`
+          .foo {
+            color: rgb(141.93, 170.15, 198.37);
+          }
+        `
+    })
+  })
+})
+
+describe('@function govuk-tint', () => {
+  it('outputs hexadecimal values', async () => {
+    const sass = `
+      @import "helpers/colour";
+
+      .foo {
+        color: govuk-tint(rgb(18, 52, 86), 17);
+      }
+    `
+
+    await expect(compileSassString(sass, sassConfig)).resolves.toMatchObject({
+      css: outdent`
+          .foo {
+            color: rgb(58.29, 86.51, 114.73);
+          }
+        `
+    })
+  })
+})
