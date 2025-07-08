@@ -20,7 +20,7 @@
   {% endif %}
 
   {% set exampleScreenshot %}
-  {% if example.screenshot %}<span style="margin-left: 10px;" title="Included in visual regression tests {%- if example.screenshot !== true %} ({{ example.screenshot.variants | join(', ') }}){% endif %}"%}>📸</span>{% endif %}
+  {% if example.screenshot %}<span style="margin-left: 10px;" title="Included in visual regression tests {%- if example.screenshot !== true %} ({{ example.screenshot.variants | join(', ') }}){% endif %}">📸</span>{% endif %}
   {% endset %}
 
   <section aria-labelledby="heading-{{ exampleName }}" class="govuk-!-margin-bottom-9">
