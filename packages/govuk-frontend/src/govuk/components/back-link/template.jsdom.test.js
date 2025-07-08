@@ -39,7 +39,7 @@ describe('back-link component', () => {
     it('allows the link to be customised', () => {
       document.body.innerHTML = render(
         'back-link',
-        examples['with custom link']
+        examples['with custom text and link']
       )
 
       const $component = document.querySelector('.govuk-back-link')
@@ -58,7 +58,7 @@ describe('back-link component', () => {
     it('allows the text to be customised', () => {
       document.body.innerHTML = render(
         'back-link',
-        examples['with custom text']
+        examples['with custom text and link']
       )
 
       const $component = document.querySelector('.govuk-back-link')

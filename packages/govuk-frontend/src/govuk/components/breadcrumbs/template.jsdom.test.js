@@ -30,16 +30,22 @@ describe('Breadcrumbs', () => {
       expect($component).toContainElement($list)
     })
 
-    it('includes 2 list items within the list', () => {
-      expect($listItems).toHaveLength(2)
+    it('includes 4 list items within the list', () => {
+      expect($listItems).toHaveLength(4)
     })
 
     describe.each([
-      { index: 0, expectedText: 'Section', expectedHref: '/section' },
+      { index: 0, expectedText: 'Home', expectedHref: '/' },
+      { index: 1, expectedText: 'Section', expectedHref: '/section' },
       {
-        index: 1,
+        index: 2,
         expectedText: 'Sub-section',
         expectedHref: '/section/sub-section'
+      },
+      {
+        index: 3,
+        expectedText: 'Sub Sub-section',
+        expectedHref: '/section/sub-section/sub-sub-section'
       }
     ])(
       'the "$expectedText" breadcrumb',

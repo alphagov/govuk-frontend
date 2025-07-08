@@ -123,35 +123,6 @@ examples:
             - text: Hide cookie message
               type: button
 
-  - name: client-side implementation
-    options:
-      messages:
-        - headingText: Cookies on this service
-          text: We use cookies to help understand how users use our service.
-          actions:
-            - text: Accept analytics cookies
-              type: submit
-              name: cookies
-              value: accept
-            - text: Reject analytics cookies
-              type: submit
-              name: cookies
-              value: reject
-            - text: View cookie preferences
-              href: /cookie-preferences
-        - text: Your cookie preferences have been saved. You have accepted cookies.
-          role: alert
-          hidden: true
-          actions:
-            - text: Hide cookie message
-              type: button
-        - text: Your cookie preferences have been saved. You have rejected cookies.
-          role: alert
-          hidden: true
-          actions:
-            - text: Hide cookie message
-              type: button
-
   - name: with html
     options:
       messages:
@@ -283,6 +254,35 @@ examples:
               href: /link
               attributes:
                 'data-link-attribute': 'my-value'
+  - name: client-side implementation
+    hidden: true
+    options:
+      messages:
+        - headingText: Cookies on this service
+          text: We use cookies to help understand how users use our service.
+          actions:
+            - text: Accept analytics cookies
+              type: submit
+              name: cookies
+              value: accept
+            - text: Reject analytics cookies
+              type: submit
+              name: cookies
+              value: reject
+            - text: View cookie preferences
+              href: /cookie-preferences
+        - text: Your cookie preferences have been saved. You have accepted cookies.
+          role: alert
+          hidden: true
+          actions:
+            - text: Hide cookie message
+              type: button
+        - text: Your cookie preferences have been saved. You have rejected cookies.
+          role: alert
+          hidden: true
+          actions:
+            - text: Hide cookie message
+              type: button
   - name: full banner hidden
     hidden: true
     options:
