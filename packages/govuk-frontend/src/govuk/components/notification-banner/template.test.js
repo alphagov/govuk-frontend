@@ -211,8 +211,14 @@ describe('Notification-banner', () => {
               This publication was withdrawn on 7 March 2014
             </h3>
             <p class="govuk-body">
-              Archived and replaced by the <a href="#" class="govuk-notification-banner__link">new planning guidance</a> launched 6 March 2014 on an external website
+              The following 4 files are available
             </p>
+            <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-0">
+              <li><a href="#" class="govuk-notification-banner__link">government-strategy.pdf</a></li>
+              <li><a href="#" class="govuk-notification-banner__link">government-strategy-v2.pdf</a></li>
+              <li><a href="#" class="govuk-notification-banner__link">government-strategy-v3-FINAL.pdf</a></li>
+              <li><a href="#" class="govuk-notification-banner__link">government-strategy-v4-FINAL-v2.pdf</a></li>
+            </ul>
           `
         )
       )
