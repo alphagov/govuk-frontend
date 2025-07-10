@@ -97,38 +97,46 @@ export async function commentDiff(
 export async function commentStats(
   githubActionContext,
   issueNumber,
-  { path, titleText, markerText }
+  { path, titleText, markerText, fileSizeCompData, moduleCompData }
 ) {
   const reviewAppURL = getReviewAppUrl(issueNumber)
 
-  const distPath = join(path, 'dist')
-  const packagePath = join(path, 'packages/govuk-frontend/dist/govuk')
-
   // File sizes
   const fileSizeTitle = '### File sizes'
-  const fileSizeRows = [
-    ...(await getFileSizes(join(distPath, '**/*.{css,js,mjs}'))),
-    ...(await getFileSizes(join(packagePath, '*.{css,js,mjs}')))
-  ]
+  const fileSizeRows = await getFileSizeRows(path, {
+    comparisonData: fileSizeCompData
+  })
 
-  const fileSizeHeaders = ['File', 'Size']
+  const fileSizeHeaders = ['File', 'Size', 'Percentage change']
   const fileSizeTable = renderTable(fileSizeHeaders, fileSizeRows)
   const fileSizeText = [fileSizeTitle, fileSizeTable].join('\n')
 
   // Module sizes
   const modulesTitle = '### Modules'
-  const modulesRows = (await Promise.all(modulePaths.map(getStats))).map(
-    ([modulePath, moduleSize]) => {
-      const { base, dir, name } = parse(modulePath)
+  const modulesRows = (
+    await getModulePathStats({ comparisonData: moduleCompData })
+  ).map(([modulePath, moduleSize]) => {
+    const { base, dir, name } = parse(modulePath)
 
-      const statsPath = `docs/stats/${dir}/${name}.html`
-      const statsURL = new URL(statsPath, reviewAppURL)
+    const statsPath = `docs/stats/${dir}/${name}.html`
+    const statsURL = new URL(statsPath, reviewAppURL)
 
-      return [`[${base}](${statsURL})`, moduleSize.bundled, moduleSize.minified]
-    }
-  )
+    return [
+      `[${base}](${statsURL})`,
+      moduleSize.bundled[0],
+      moduleSize.bundled[1],
+      moduleSize.minified[0],
+      moduleSize.minified[1]
+    ]
+  })
 
-  const modulesHeaders = ['File', 'Size (bundled)', 'Size (minified)']
+  const modulesHeaders = [
+    'File',
+    'Size (bundled)',
+    'Percentage change (bundled)',
+    'Size (minified)',
+    'Percentage change (minified)'
+  ]
   const modulesTable = renderTable(modulesHeaders, modulesRows)
   const modulesFooter = `[View stats and visualisations on the review app](${reviewAppURL})`
   const modulesText = [modulesTitle, modulesTable, modulesFooter].join('\n')
@@ -201,7 +209,7 @@ function renderCommentFooter({ context, commit }) {
  * Renders a GitHub Markdown table.
  *
  * @param {string[]} headers - An array containing the table headers.
- * @param {string[][]} rows - An array of arrays containing the row data for the table.
+ * @param {(string|number)[][]} rows - An array of arrays containing the row data for the table.
  * @returns {string} The GitHub Markdown table as a string.
  */
 function renderTable(headers, rows) {
@@ -311,6 +319,38 @@ function getReviewAppUrl(prNumber, path = '/') {
 }
 
 /**
+ * Build file size row data for stats comment and comparison between base and head
+ *
+ * @param {string} path - Github workspace path
+ * @param {object} options - Options object
+ * @returns {Promise<Array<Array<string|number>>>} - Set of Arrays of file sizes for dist and package
+ */
+export async function getFileSizeRows(path, options = {}) {
+  const distPath = join(path, 'dist')
+  const packagePath = join(path, 'packages/govuk-frontend/dist/govuk')
+
+  return [
+    ...(await getFileSizes(join(distPath, '**/*.{css,js,mjs}'), options)),
+    ...(await getFileSizes(join(packagePath, '*.{css,js,mjs}'), options))
+  ]
+}
+
+export async function getModulePathStats(options = {}) {
+  return Promise.all(
+    modulePaths.map((path) => {
+      const comparisonData = options?.comparisonData?.find(
+        (row) => row[0] === path
+      )[1]
+
+      return getStats(path, {
+        ...options,
+        comparisonData
+      })
+    })
+  )
+}
+
+/**
  * @typedef {object} GithubActionContext
  * @property {import('@octokit/rest').Octokit} github - The pre-authenticated Octokit provided by GitHub actions
  * @property {import('@actions/github').context} context - The context of the GitHub action
@@ -329,6 +369,7 @@ function getReviewAppUrl(prNumber, path = '/') {
  * @property {string} markerText - The marker to identify the comment
  * @property {string} titleText - The title of the comment
  * @property {string} path - The path of the file to post as a comment
+ * @property {Array<Array<string>>} comparisonData - Data from the pull request base to compare to head
  * @property {boolean} [skipEmpty] - Whether to skip PR comments for empty diffs
  */
 

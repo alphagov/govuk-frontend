@@ -14,13 +14,49 @@ jobs:
     if: ${{ github.event.pull_request && !github.event.pull_request.head.repo.fork }}
 
     steps:
-      - name: Checkout code
+      - name: Checkout pull request base
         uses: actions/checkout@v4.2.2
+        with:
+          ref: ${{ github.head_ref }}
 
-      - name: Restore dependencies
+      - name: Restore dependencies (base)
         uses: ./.github/workflows/actions/install-node
 
-      - name: Build npm package and GitHub release
+      - name: Build npm package and GitHub release (base)
+        run: |
+          npm run build:package --workspace govuk-frontend
+          npm run build:release --workspace govuk-frontend
+
+      - id: base-file-size
+        uses: actions/github-script@v7.0.1
+        with:
+          script: |
+            const { getFileSizeRows, getModulePathStats } = await import('${{ github.workspace }}/.github/workflows/scripts/comments.mjs')
+            const options = { rawDataOnly: true }
+
+            const dataObject = {
+              fileSizes: await getFileSizeRows('${{ github.workspace }}', options),
+              modules: await getModulePathStats(options)
+            }
+
+            return dataObject
+
+      - name: Set base_data variable
+        run: |
+          echo "FILE_DATA=${{ steps.base-file-size.outputs.result.fileSizes }}" >> $GITHUB_ENV
+          echo "MODULE_DATA=${{ steps.base-file-size.outputs.result.modules }}" >> $GITHUB_ENV
+          echo "$FILE_DATA"
+          echo "$MODULE_DATA"
+
+      - name: Checkout pull request head
+        uses: actions/checkout@v4.2.2
+        with:
+          ref: ${{ github.head_ref }}
+
+      - name: Restore dependencies (head)
+        uses: ./.github/workflows/actions/install-node
+
+      - name: Build npm package and GitHub release (head)
         run: |
           npm run build:package --workspace govuk-frontend
           npm run build:release --workspace govuk-frontend
@@ -39,7 +75,9 @@ jobs:
             const options = {
               path: '${{ github.workspace }}',
               titleText: ':clipboard: Stats',
-              markerText: 'stats'
+              markerText: 'stats',
+              fileSizeCompData: '${{ env.FILE_DATA }}',
+              moduleCompData: '${{ env.MODULE_DATA }}'
             }
 
             await commentStats({ github, context, commit }, issueNumber, options)
