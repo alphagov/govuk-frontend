@@ -145,7 +145,10 @@ export async function percySnapshotNoJs(page, screenshotName, snapShotOptions) {
   await page.setJavaScriptEnabled(false)
   await page.reload({ waitUntil: 'load' })
   screenshotName = `no-js: ${screenshotName}`
-  await percySnapshot(page, screenshotName, snapShotOptions)
+  await percySnapshot(page, screenshotName, {
+    ...snapShotOptions,
+    labels: `${snapShotOptions.labels}, No-JS`
+  })
   await page.setJavaScriptEnabled(true)
   await page.reload({ waitUntil: 'load' })
 }
