@@ -166,7 +166,8 @@ export async function screenshotExample(browser, exampleName) {
 
   // Screenshot preview page
   await percySnapshot(page, `js: ${exampleName} (example)`, {
-    scope: '.govuk-main-wrapper'
+    scope: '.govuk-main-wrapper',
+    labels: 'Examples'
   })
 
   // Close page
