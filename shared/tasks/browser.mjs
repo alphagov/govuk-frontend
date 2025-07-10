@@ -105,7 +105,10 @@ export async function screenshotComponent(browser, componentName, options) {
   // the examples so that margin that isn't part of the component doesn't get
   // included in the screenshot
   /** @type {SnapshotOptions} */
-  const snapshotOptions = { scope: '.app-whitespace-highlight' }
+  const snapshotOptions = {
+    scope: '.app-whitespace-highlight',
+    labels: componentName
+  }
 
   // Navigate to component
   const page = await goToComponent(browser, componentName, options)
@@ -142,7 +145,10 @@ export async function percySnapshotNoJs(page, screenshotName, snapShotOptions) {
   await page.setJavaScriptEnabled(false)
   await page.reload({ waitUntil: 'load' })
   screenshotName = `no-js: ${screenshotName}`
-  await percySnapshot(page, screenshotName, snapShotOptions)
+  await percySnapshot(page, screenshotName, {
+    ...snapShotOptions,
+    labels: `${snapShotOptions.labels}, No-JS`
+  })
   await page.setJavaScriptEnabled(true)
   await page.reload({ waitUntil: 'load' })
 }
@@ -160,7 +166,8 @@ export async function screenshotExample(browser, exampleName) {
 
   // Screenshot preview page
   await percySnapshot(page, `js: ${exampleName} (example)`, {
-    scope: '.govuk-main-wrapper'
+    scope: '.govuk-main-wrapper',
+    labels: 'Examples'
   })
 
   // Close page
