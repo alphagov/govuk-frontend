@@ -40,7 +40,7 @@
     "marked-smartypants": "^1.1.10",
     "outdent": "^0.8.0",
     "shuffle-seed": "^1.1.6",
-    "slash": "^5.1.0",
+    "slash": "^3.0.0",
     "slug": "^9.1.0"
   },
   "devDependencies": {
