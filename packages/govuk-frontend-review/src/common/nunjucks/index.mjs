@@ -38,11 +38,13 @@ export function renderer(app) {
 
   // Custom filters
   for (const key in filters) {
+    // eslint-disable-next-line import/namespace
     env.addFilter(key, filters[key])
   }
 
   // Custom globals
   for (const key in globals) {
+    // eslint-disable-next-line import/namespace
     env.addGlobal(key, globals[key])
   }
 

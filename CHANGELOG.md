@@ -3755,7 +3755,6 @@ This is because IE8 requires a very large Embedded Open Type (.eot) font file fo
   ([Pull request #1392](https://github.com/alphagov/govuk-frontend/pull/1392))
 
 - The crown logo image in the header now:
-
   - has height and width attributes set
   - aligns better with 'GOV.UK' in IE8
 
@@ -3826,7 +3825,6 @@ This is because IE8 requires a very large Embedded Open Type (.eot) font file fo
 🔧 Fixes:
 
 - Add various fixes to the summary list component:
-
   1. Fixes the 1px row height change when borders are removed
      Padding is now adjusted by 1px instead
 
@@ -4132,7 +4130,6 @@ If you're using your own components that rely on the overflow state of the docum
   'check your answers' pattern.
 
   It is mostly the same as in the original pattern with some notable differences:
-
   - On smaller screens it wraps by default
   - It's possible to have multiple actions
 
@@ -4887,7 +4884,6 @@ If you're using your own components that rely on the overflow state of the docum
 
 - All sass-mq settings have now been made private. We are now exposing new
   settings to allow you to customise breakpoints and responsive behaviour:
-
   - `$govuk-breakpoints` - Map of breakpoint definitions
   - `$govuk-show-breakpoints` - Whether to show the current breakpoint in the
     top right corner
@@ -4899,7 +4895,6 @@ If you're using your own components that rely on the overflow state of the docum
   ([PR #748](https://github.com/alphagov/govuk-frontend/pull/748))
 
 - Font settings have been renamed:
-
   - `$govuk-font-stack` has been renamed to `$govuk-font-family`
   - `$govuk-font-stack-tabular` has been renamed to `$govuk-font-family-tabular`
   - `$govuk-font-stack-print` has been renamed to `$govuk-font-family-print`
@@ -4907,7 +4902,6 @@ If you're using your own components that rely on the overflow state of the docum
   ([PR #748](https://github.com/alphagov/govuk-frontend/pull/748))
 
 - Spacing has been refactored. You will need to update Sass that currently uses GOV.UK Frontend spacing:
-
   - Instead of
 
   ```css
@@ -4921,7 +4915,6 @@ If you're using your own components that rely on the overflow state of the docum
   ```
 
   where `*` is the number on the spacing scale. The scale itself has remained the same so that `$govuk-spacing-scale-3` corresponds to `govuk-spacing(3)`. This change allows us to control the error messaging when incorrect values are used and to deprecate variables. The values of spacing variables can also be overridden by consumers.
-
   - Instead of:
 
   ```css
@@ -4996,7 +4989,6 @@ If you're using your own components that rely on the overflow state of the docum
   palette.
 
 - A number of the colours have been renamed to use more neutral names:
-
   - `mauve` → `light-purple`
   - `fuchsia` → `bright-purple`
   - `baby-pink` → `light-pink`
@@ -5030,14 +5022,12 @@ If you're using your own components that rely on the overflow state of the docum
   We've made the decision to remove the 'r' for responsive, this was hard to remember and users found this confusing.
 
   To migrate you will need to replace any instances of:
-
   - `.govuk-!-f-{size}` with `.govuk-!-font-size-{size}`
   - `.govuk-!-w-{weight}` with `.govuk-!-font-weight-{weight}`
   - `.govuk-!-m{direction}-r{scale}` with `.govuk-!-margin-{direction}-{scale}`
   - `.govuk-!-p{direction}-r{scale}` with `.govuk-!-padding-{direction}-{scale}`
 
   For example if you were using:
-
   - `.govuk-!-mb-r5` you would need to change this to `.govuk-!-margin-bottom-5`
   - `.govuk-!-f-24` you would need to change this to `.govuk-!-font-size-24`
 
@@ -5234,7 +5224,6 @@ If you're using your own components that rely on the overflow state of the docum
   The [new project structure](<(./src/README.md)>) matches our ITCSS inspired layers and is published as a single package as `@govuk-frontend/frontend`.
 
   You will need to:
-
   - Update your npm dependencies to use `@govuk-frontend/frontend`
   - Update your SCSS import paths to match the new package name and folder structure.
 
@@ -5418,7 +5407,6 @@ If you're using your own components that rely on the overflow state of the docum
   having to remember which suffix the classname contains.
 
   If you're using markup, you will need to:
-
   - Remove -o, -c and -h prefixes from class names in your markup
 
   For example, change:
@@ -5439,7 +5427,6 @@ If you're using your own components that rely on the overflow state of the docum
   to a more concise naming structure.
 
   You will need to:
-
   - Change grid class names in your markup
 
   For example, change:
@@ -5556,7 +5543,6 @@ Missing files were:
 - Prefix `$global-images` variable
   (PR [#615](https://github.com/alphagov/govuk-frontend/pull/615))
 - Simplified how we build stylesheets that target old versions of IE:
-
   - Removed styles that target IE6 and IE7
   - Replaced IE mixins with a simpler version for targeting IE8 specifically
     without having to specify versions

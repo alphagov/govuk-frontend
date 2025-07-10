@@ -13,11 +13,9 @@
   Documentation files.
 
 - `packages/`
-
   - `govuk-frontend-review/`
 
     [Express.js](https://github.com/expressjs/express) review app [deployed to Heroku](https://govuk-frontend-review.herokuapp.com) with configuration in [app.json](/app.json) and [Procfile](/Procfile).
-
     - `dist/` **contains auto-generated files**
 
       Builds of govuk-frontend-review served by [Express.js](https://github.com/expressjs/express).
@@ -38,7 +36,6 @@
 
     Package published on npm.
     Consume all of govuk-frontend through a single package.
-
     - `dist/` **contains auto-generated files**
 
       Builds of govuk-frontend published and exported from the npm package.
@@ -58,7 +55,6 @@
 - `shared/`
 
   Shared packages used by tests, build tools and the [review app](/packages/govuk-frontend-review).
-
   - `config/`
 
     Configuration files for common paths and port numbers.
