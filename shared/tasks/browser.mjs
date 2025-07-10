@@ -105,7 +105,10 @@ export async function screenshotComponent(browser, componentName, options) {
   // the examples so that margin that isn't part of the component doesn't get
   // included in the screenshot
   /** @type {SnapshotOptions} */
-  const snapshotOptions = { scope: '.app-whitespace-highlight' }
+  const snapshotOptions = {
+    scope: '.app-whitespace-highlight',
+    labels: componentName
+  }
 
   // Navigate to component
   const page = await goToComponent(browser, componentName, options)
