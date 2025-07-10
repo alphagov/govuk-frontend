@@ -17,14 +17,14 @@
     "build:all": "concurrently \"npm run rollup\" \"npm run webpack\" \"npm run vite\" --names \"rollup,webpack,vite\" --prefix-colors \"red.dim,blue.dim,yellow.dim\""
   },
   "devDependencies": {
-    "@rollup/plugin-node-resolve": "^15.2.3",
-    "concurrently": "^9.1.2",
+    "@rollup/plugin-node-resolve": "^15.3.1",
+    "concurrently": "^9.2.0",
     "cross-env": "^7.0.3",
     "del-cli": "^6.0.0",
     "govuk-frontend": "*",
-    "rollup": "^4.40.2",
+    "rollup": "^4.44.2",
     "terser-webpack-plugin": "^5.3.14",
     "vite": "^6.3.5",
-    "webpack": "^5.99.9"
+    "webpack": "^5.100.0"
   }
 }
