@@ -13,55 +13,56 @@ const sassConfig = {
 }
 
 const sassBootstrap = `
-  $govuk-breakpoints: (
-    desktop: 30em
-  );
+  $app-include-default-font-face: true !default;
 
-  $govuk-typography-scale: (
-    12: (
-      null: (
-        font-size: 12px,
-        line-height: 15px
+  @use "base" as * with (
+    $govuk-breakpoints: (
+      desktop: 30em
+    ),
+    $govuk-typography-scale: (
+      12: (
+        null: (
+          font-size: 12px,
+          line-height: 15px
+        ),
+        print: (
+          font-size: 14pt,
+          line-height: 1.5
+        )
       ),
-      print: (
-        font-size: 14pt,
-        line-height: 1.5
+      14: (
+        null: (
+          font-size: 12px,
+          line-height: 15px
+        ),
+        desktop: (
+          font-size: 14px,
+          line-height: 20px
+        )
+      ),
+      16: (
+        null: (
+          font-size: 14px,
+          line-height: 15px
+        ),
+        desktop: (
+          font-size: 16px,
+          line-height: 20px
+        ),
+        deprecation: (
+          key: "test-key",
+          message: "This point on the scale is deprecated."
+        )
       )
     ),
-    14: (
-      null: (
-        font-size: 12px,
-        line-height: 15px
-      ),
-      desktop: (
-        font-size: 14px,
-        line-height: 20px
-      )
-    ),
-    16: (
-      null: (
-        font-size: 14px,
-        line-height: 15px
-      ),
-      desktop: (
-        font-size: 16px,
-        line-height: 20px
-      ),
-      deprecation: (
-        key: "test-key",
-        message: "This point on the scale is deprecated."
-      )
-    )
+    $govuk-include-default-font-face: $app-include-default-font-face
   );
-
-  @import "base";
 `
 
 describe('@mixin govuk-typography-common', () => {
   it('should output a @font-face declaration by default', async () => {
     const sass = `
-      @import "settings";
-      @import "helpers";
+      @use "helpers" as *;
 
       :root {
         @include govuk-typography-common;
@@ -84,16 +85,17 @@ describe('@mixin govuk-typography-common', () => {
 
   it('should not output a @font-face declaration when the user has changed their font', async () => {
     const sass = `
-      $govuk-font-family: Helvetica, Arial, sans-serif;
-      $govuk-font-family-tabular: monospace;
-      @import "settings";
-      @import "helpers";
+      $app-font-family: Helvetica, Arial, sans-serif;
+
+      @use "helpers" as * with (
+        $govuk-font-family: $app-font-family
+      );
 
       :root {
         @include govuk-typography-common;
       }
       :root {
-        @include govuk-typography-common($font-family: $govuk-font-family-tabular);
+        @include govuk-typography-common;
       }
     `
 
@@ -110,9 +112,9 @@ describe('@mixin govuk-typography-common', () => {
 
   it('should not output a @font-face declaration when the user has turned off this feature', async () => {
     const sass = `
-      $govuk-include-default-font-face: false;
-      @import "settings";
-      @import "helpers";
+      @use "helpers" as * with (
+        $govuk-include-default-font-face: false
+      );
 
       :root {
         @include govuk-typography-common;
@@ -217,6 +219,7 @@ describe('@mixin govuk-text-break-word', () => {
 describe('@function _govuk-line-height', () => {
   it('preserves line-height if already unitless', async () => {
     const sass = `
+      // Use legacy import for private members
       @import "helpers/typography";
 
       .foo {
@@ -235,6 +238,7 @@ describe('@function _govuk-line-height', () => {
 
   it('preserves line-height if using different units', async () => {
     const sass = `
+      // Use legacy import for private members
       @import "helpers/typography";
 
       .foo {
@@ -253,6 +257,7 @@ describe('@function _govuk-line-height', () => {
 
   it('converts line-height to a relative number', async () => {
     const sass = `
+      // Use legacy import for private members
       @import "helpers/typography";
 
       .foo {
@@ -348,24 +353,23 @@ describe('@mixin govuk-font-size', () => {
 
   it('outputs CSS using points as strings', async () => {
     const sass = `
-      $govuk-breakpoints: (
-        desktop: 30em
-      );
-
-      $govuk-typography-scale: (
-        "small": (
-          null: (
-            font-size: 12px,
-            line-height: 15px
-          ),
-          print: (
-            font-size: 14pt,
-            line-height: 1.5
+      @use "base" as * with (
+        $govuk-breakpoints: (
+          desktop: 30em
+        ),
+        $govuk-typography-scale: (
+          "small": (
+            null: (
+              font-size: 12px,
+              line-height: 15px
+            ),
+            print: (
+              font-size: 14pt,
+              line-height: 1.5
+            )
           )
         )
       );
-
-      @import "base";
 
       .foo {
         @include govuk-font-size($size: "small")
@@ -504,7 +508,7 @@ describe('@mixin govuk-font-size', () => {
     it('outputs all required typographic CSS properties', async () => {
       const sass = `
         // Avoid font face being output in tests
-        $govuk-include-default-font-face: false;
+        $app-include-default-font-face: false;
         ${sassBootstrap}
 
         .foo {
@@ -590,7 +594,7 @@ describe('@mixin govuk-font-size', () => {
     it('sets font-weight based on $weight', async () => {
       const sass = `
         // Avoid font face being output in tests
-        $govuk-include-default-font-face: false;
+        $app-include-default-font-face: false;
         ${sassBootstrap}
 
         .foo {
@@ -606,7 +610,7 @@ describe('@mixin govuk-font-size', () => {
     it('does not output font-weight if $weight: false', async () => {
       const sass = `
         // Avoid font face being output in tests
-        $govuk-include-default-font-face: false;
+        $app-include-default-font-face: false;
         ${sassBootstrap}
 
         .foo {
@@ -622,7 +626,7 @@ describe('@mixin govuk-font-size', () => {
     it('ignores undefined font-weights', async () => {
       const sass = `
         // Avoid font face being output in tests
-        $govuk-include-default-font-face: false;
+        $app-include-default-font-face: false;
         ${sassBootstrap}
 
         .foo {
@@ -638,7 +642,7 @@ describe('@mixin govuk-font-size', () => {
     it('sets line-height based on $line-height', async () => {
       const sass = `
         // Avoid font face being output in tests
-        $govuk-include-default-font-face: false;
+        $app-include-default-font-face: false;
         ${sassBootstrap}
 
         .foo {

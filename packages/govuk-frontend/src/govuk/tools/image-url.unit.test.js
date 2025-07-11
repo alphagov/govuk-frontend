@@ -4,9 +4,9 @@ const { outdent } = require('outdent')
 describe('@function image-url', () => {
   it('by default concatenates the image path and the filename', async () => {
     const sass = `
-      @import "tools/image-url";
-
-      $govuk-images-path: '/path/to/images/';
+      @use "tools/image-url" as * with (
+        $govuk-images-path: '/path/to/images/'
+      );
 
       .foo {
         background-image: govuk-image-url("baz.png");
@@ -24,9 +24,9 @@ describe('@function image-url', () => {
 
   it('can be overridden to use a defined Sass function', async () => {
     const sass = `
-      @import "tools/image-url";
-
-      $govuk-image-url-function: 'to-upper-case';
+      @use "tools/image-url" as * with (
+        $govuk-image-url-function: 'to-upper-case'
+      );
 
       .foo {
         background-image: govuk-image-url("baz.png");
@@ -42,7 +42,7 @@ describe('@function image-url', () => {
     })
   })
 
-  it('can be overridden to use a custom function', async () => {
+  it('can be overridden to use a custom function using @import', async () => {
     const sass = `
       @import "tools/image-url";
 

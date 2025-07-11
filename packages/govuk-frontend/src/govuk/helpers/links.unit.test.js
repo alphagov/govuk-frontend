@@ -3,8 +3,9 @@ const { compileSassString } = require('@govuk-frontend/helpers/tests')
 describe('@mixin govuk-link-decoration', () => {
   it('sets text-decoration-thickness', async () => {
     const sass = `
-      $govuk-link-underline-thickness: 1px;
-      @import "base";
+      @use "base" as * with (
+        $govuk-link-underline-thickness: 1px
+      );
 
       .foo {
         @include govuk-link-decoration;
@@ -18,8 +19,9 @@ describe('@mixin govuk-link-decoration', () => {
 
   it('sets text-underline-offset', async () => {
     const sass = `
-      $govuk-link-underline-offset: .1em;
-      @import "base";
+      @use "base" as * with (
+        $govuk-link-underline-offset: .1em
+      );
 
       .foo {
         @include govuk-link-decoration;
@@ -34,8 +36,9 @@ describe('@mixin govuk-link-decoration', () => {
   describe('when $govuk-link-underline-thickness is falsy', () => {
     it('does not set text-decoration-thickness', async () => {
       const sass = `
-        $govuk-link-underline-thickness: false;
-        @import "base";
+        @use "base" as * with (
+          $govuk-link-underline-thickness: false
+        );
 
         .foo {
           @include govuk-link-decoration;
@@ -51,13 +54,14 @@ describe('@mixin govuk-link-decoration', () => {
   describe('when $govuk-link-underline-offset is falsy', () => {
     it('does not set text-decoration-offset', async () => {
       const sass = `
-      $govuk-link-underline-offset: false;
-      @import "base";
+        @use "base" as * with (
+          $govuk-link-underline-offset: false
+        );
 
-      .foo {
+        .foo {
           @include govuk-link-decoration;
-      }
-    `
+        }
+      `
 
       await expect(compileSassString(sass)).resolves.toMatchObject({
         css: expect.not.stringContaining('text-underline-offset')
@@ -69,7 +73,7 @@ describe('@mixin govuk-link-decoration', () => {
 describe('@mixin govuk-link-hover-decoration', () => {
   it('sets a hover state', async () => {
     const sass = `
-      @import "base";
+      @use "base" as *;
 
       .foo:hover {
         @include govuk-link-hover-decoration;
@@ -84,15 +88,16 @@ describe('@mixin govuk-link-hover-decoration', () => {
   describe('when $govuk-link-hover-underline-thickness is falsy', () => {
     it('does not set a hover state', async () => {
       const sass = `
-      $govuk-link-hover-underline-thickness: false;
-      @import "base";
+        @use "base" as * with (
+          $govuk-link-hover-underline-thickness: false
+        );
 
-      // The mixin shouldn't return anything, so this selector ends up empty and
-      // is omitted from the CSS
-      .foo:hover {
+        // The mixin shouldn't return anything, so this selector ends up empty and
+        // is omitted from the CSS
+        .foo:hover {
           @include govuk-link-hover-decoration;
-      }
-    `
+        }
+      `
 
       await expect(compileSassString(sass)).resolves.toMatchObject({
         css: expect.not.stringContaining('.foo:hover')
@@ -105,11 +110,12 @@ describe('@mixin govuk-link-style-text', () => {
   describe('when $govuk-text-colour is a colour', () => {
     it('applies the rgba function', async () => {
       const sass = `
-        $govuk-text-colour: black;
-        @import "base";
+        @use "base" as * with (
+          $govuk-text-colour: black
+        );
 
         a {
-            @include govuk-link-style-text;
+          @include govuk-link-style-text;
         }
       `
 
@@ -132,11 +138,12 @@ describe('@mixin govuk-link-style-text', () => {
   describe('when $govuk-text-colour is inherit', () => {
     it('does NOT apply the rgba function', async () => {
       const sass = `
-        $govuk-text-colour: inherit;
-        @import "base";
+        @use "base" as * with (
+          $govuk-text-colour: inherit
+        );
 
         a {
-            @include govuk-link-style-text;
+          @include govuk-link-style-text;
         }
       `
 
