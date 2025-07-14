@@ -121,7 +121,9 @@
 /// @access public
 
 @function govuk-shade($colour, $percentage) {
-  @return mix(#000000, $colour, $percentage);
+  // Ensure the output is a hex string so that Safari <12 can render the colour
+  // without issues from float values in `rgb()`
+  @return _as-hexadecimal(mix(#000000, $colour, $percentage));
 }
 
 /// Make a colour lighter by mixing it with white
@@ -132,5 +134,32 @@
 /// @access public
 
 @function govuk-tint($colour, $percentage) {
-  @return mix(govuk-colour("white"), $colour, $percentage);
+  // Ensure the output is a hex string so that Safari <12 can render the colour
+  // without issues from float values in `rgb()`
+  @return _as-hexadecimal(mix(govuk-colour("white"), $colour, $percentage));
+}
+
+/// Converts a colour with potential float values for its RGB channels
+/// into hexadecimal notation
+///
+/// This ensures the colour is rendered properly by Safari < 12
+///
+/// @param {Colour} $colour - The colour to convert
+/// @return {Colour}
+/// @access private
+@function _as-hexadecimal($colour) {
+  @if not function-exists(change-color) {
+    @return $colour;
+  }
+
+  // `red`,`green` and `blue` functions are limited to 'legacy' colour spaces
+  // ensuring we don't get floating computations on them
+  $parts: (
+    "red": red($colour),
+    "green": green($colour),
+    "blue": blue($colour),
+    "alpha": alpha($colour)
+  );
+
+  @return change-color($colour, $parts...);
 }
