@@ -22,8 +22,14 @@ params:
 
 examples:
   - name: default
-    screenshot: true
     options:
+      text: Skip to main content
+      href: '#test-target-element'
+  - name: with focus
+    screenshot: true
+    description: Simulate triggering the :focus CSS pseudo-class, not available in the production build.
+    options:
+      classes: :focus
       text: Skip to main content
       href: '#test-target-element'
 
@@ -61,10 +67,3 @@ examples:
       attributes:
         data-test: attribute
         aria-label: Skip to content
-  - name: with focus
-    hidden: true
-    description: Simulate triggering the :focus CSS pseudo-class, not available in the production build.
-    options:
-      classes: :focus
-      text: Skip to main content
-      href: '#test-target-element'
