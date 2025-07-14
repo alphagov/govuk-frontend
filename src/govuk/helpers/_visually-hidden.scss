@@ -74,7 +74,10 @@
 
 @mixin govuk-visually-hidden-focusable($important: true) {
   // IE 11 doesn't support the combined `:not(:active, :focus)` syntax.
-  &:not(:active):not(:focus) {
+  // Also allows for ':focus' companion classes from postcss-pseudo-classes
+  // which the plugin unfortunately doesn't handle automatically.
+  // stylelint-disable-next-line selector-class-pattern
+  &:not(:active):not(:focus):not(.\:focus) {
     @include _govuk-visually-hide-content($important: $important);
   }
 }
