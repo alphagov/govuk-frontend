@@ -228,10 +228,7 @@ examples:
               <input class="govuk-input govuk-!-width-one-third" name="contact-text-message" type="text" id="contact-text-message">
 
   - name: with divider and None
-    screenshot:
-      variants:
-        - default
-        - no-js
+    screenshot: true
     options:
       name: with-divider-and-none
       fieldset:
