@@ -158,6 +158,7 @@ examples:
           text: Eitem llywio 4
 
   - name: with service name and navigation
+    screenshot: true
     description: If you need to include basic navigation, contact or account management links.
     options:
       serviceName: Service Name
@@ -211,6 +212,7 @@ examples:
           text: Working, jobs and pensions
 
   - name: with product name
+    screenshot: true
     options:
       navigationClasses: govuk-header__navigation--end
       productName: Product Name
