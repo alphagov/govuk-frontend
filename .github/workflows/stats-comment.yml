@@ -30,6 +30,9 @@ jobs:
         # Skip build when we’ve built this SHA before
         if: steps.stats-cache.outputs.cache-hit != 'true'
         uses: actions/checkout@v4.2.2
+        # should be base_ref
+        with:
+          ref: ${{ github.base_ref }}
 
         with:
           ref: ${{ github.base_ref }}
@@ -70,6 +73,7 @@ jobs:
           clean: false # So that we retain the stats generated from base
 
       - name: Restore dependencies
+
         # Skip build when we’ve built this SHA before
         if: steps.stats-cache.outputs.cache-hit != 'true'
         uses: ./.github/workflows/actions/install-node
