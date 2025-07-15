@@ -84,8 +84,8 @@ examples:
   - name: inverse
     screenshot: true
     description: Breadcrumbs that appear on dark backgrounds
-    previewLayoutModifiers:
-      - inverse
+    pageTemplateOptions:
+      bodyClasses: app-template__body--inverse
     options:
       classes: govuk-breadcrumbs--inverse
       items:
