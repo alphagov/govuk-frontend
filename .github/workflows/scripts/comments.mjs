@@ -1,8 +1,7 @@
 import { readFile } from 'node:fs/promises'
-import { basename, join, parse } from 'path'
+import { basename, parse } from 'path'
 
-import { getFileSizes } from '@govuk-frontend/lib/files'
-import { getStats, modulePaths } from '@govuk-frontend/stats'
+import { getReadableFileSizes } from '@govuk-frontend/lib/files'
 import { outdent } from 'outdent'
 
 /**
@@ -90,53 +89,100 @@ export async function commentDiff(
 /**
  * Generates comment for stats
  *
+ * @param {FileSize[]} fileSizeData
+ * @param {FileSize[]} modulesData
  * @param {GithubActionContext} githubActionContext
  * @param {number} issueNumber
  * @param {DiffComment} statComment
  */
 export async function commentStats(
+  fileSizeData,
+  modulesData,
   githubActionContext,
   issueNumber,
-  { path, titleText, markerText }
+  { titleText, markerText }
 ) {
   const reviewAppURL = getReviewAppUrl(issueNumber)
+  let bodyText = ''
+  let fileSizeText = ''
+  let modulesText = ''
 
-  const distPath = join(path, 'dist')
-  const packagePath = join(path, 'packages/govuk-frontend/dist/govuk')
+  if (!fileSizeData.length && !modulesData.length) {
+    bodyText = 'No changes to any file sizes!'
+  } else {
+    if (fileSizeData.length) {
+      // File sizes
+      const fileSizeTitle = '### File sizes'
+      const fileSizeRows = (await getReadableFileSizes(fileSizeData)).map(
+        (fileSize) => Object.values(fileSize)
+      )
 
-  // File sizes
-  const fileSizeTitle = '### File sizes'
-  const fileSizeRows = [
-    ...(await getFileSizes(join(distPath, '**/*.{css,js,mjs}'))),
-    ...(await getFileSizes(join(packagePath, '*.{css,js,mjs}')))
-  ]
-
-  const fileSizeHeaders = ['File', 'Size']
-  const fileSizeTable = renderTable(fileSizeHeaders, fileSizeRows)
-  const fileSizeText = [fileSizeTitle, fileSizeTable].join('\n')
-
-  // Module sizes
-  const modulesTitle = '### Modules'
-  const modulesRows = (await Promise.all(modulePaths.map(getStats))).map(
-    ([modulePath, moduleSize]) => {
-      const { base, dir, name } = parse(modulePath)
-
-      const statsPath = `docs/stats/${dir}/${name}.html`
-      const statsURL = new URL(statsPath, reviewAppURL)
-
-      return [`[${base}](${statsURL})`, moduleSize.bundled, moduleSize.minified]
+      const fileSizeHeaders = ['File', 'Size', 'Percentage change']
+      const fileSizeTable = renderTable(fileSizeHeaders, fileSizeRows)
+      fileSizeText = [fileSizeTitle, fileSizeTable].join('\n')
+    } else {
+      fileSizeText = 'No changes to asset file sizes.'
     }
-  )
 
-  const modulesHeaders = ['File', 'Size (bundled)', 'Size (minified)']
-  const modulesTable = renderTable(modulesHeaders, modulesRows)
-  const modulesFooter = `[View stats and visualisations on the review app](${reviewAppURL})`
-  const modulesText = [modulesTitle, modulesTable, modulesFooter].join('\n')
+    if (modulesData.length) {
+      // Module sizes
+      const modulesTitle = '### Modules'
+      // Create an empty array to pass to the reducer so that jsdoc doesn't thing
+      // that the default accumulator value is `never[]`
+      /** @type {Array<Array<string|number>>} */
+      const modulesRowsEmpty = []
+      const modulesRows = (await getReadableFileSizes(modulesData)).reduce(
+        (accumulator, module) => {
+          const { base, dir, name } = parse(module.path)
+          const statsPath = `docs/stats/${dir}/${name}.html`
+          const statsURL = new URL(statsPath, reviewAppURL)
+          const moduleLink = `[${base}](${statsURL})`
+          const rowAlreadyExists = accumulator?.find(
+            (row) => row[0] === moduleLink
+          )
+
+          if (rowAlreadyExists) {
+            const existingRowIndex = accumulator.findIndex(
+              (row) => row === rowAlreadyExists
+            )
+
+            if (module.type === 'bundled') {
+              accumulator[existingRowIndex].splice(1, 0, module.size)
+              accumulator[existingRowIndex].splice(2, 0, module.percentage)
+            } else {
+              accumulator[existingRowIndex].push(module.size)
+              accumulator[existingRowIndex].push(module.percentage)
+            }
+          } else {
+            accumulator.push([moduleLink, module.size, module.percentage])
+          }
+
+          return accumulator
+        },
+        modulesRowsEmpty
+      )
+
+      const modulesHeaders = [
+        'File',
+        'Size (bundled)',
+        'Percentage change (bundled)',
+        'Size (minified)',
+        'Percentage change (bundled)'
+      ]
+      const modulesTable = renderTable(modulesHeaders, modulesRows)
+      const modulesFooter = `[View stats and visualisations on the review app](${reviewAppURL})`
+      modulesText = [modulesTitle, modulesTable, modulesFooter].join('\n')
+    } else {
+      modulesText = 'No changes to module sizes.'
+    }
+
+    bodyText = [fileSizeText, modulesText].join('\n')
+  }
 
   await comment(githubActionContext, issueNumber, {
     markerText,
     titleText,
-    bodyText: [fileSizeText, modulesText].join('\n')
+    bodyText
   })
 }
 
@@ -337,4 +383,8 @@ function getReviewAppUrl(prNumber, path = '/') {
  * @typedef {RestEndpointMethodTypes["issues"]} IssuesEndpoint
  * @typedef {IssuesEndpoint["listComments"]["parameters"]} IssueCommentsListParams
  * @typedef {IssuesEndpoint["getComment"]["response"]["data"]} IssueCommentData
+ */
+
+/**
+ * @import {FileSize} from '@govuk-frontend/stats'
  */

@@ -7,8 +7,13 @@ import {
   getComponentNamesFiltered,
   render
 } from '@govuk-frontend/lib/components'
-import { filterPath, getDirectories, hasPath } from '@govuk-frontend/lib/files'
-import { getStats, modulePaths } from '@govuk-frontend/stats'
+import {
+  filterPath,
+  getDirectories,
+  getReadableFileSizes,
+  hasPath
+} from '@govuk-frontend/lib/files'
+import { getModuleFileSizes } from '@govuk-frontend/stats'
 import express from 'express'
 
 import { getFullPageExamples } from './common/lib/files.mjs'
@@ -70,9 +75,25 @@ export default async () => {
   app.use(middleware.featureFlags)
 
   // Add build stats
-  app.locals.stats = Object.fromEntries(
-    await Promise.all(modulePaths.map(getStats))
+  const moduleFileSizes = await getReadableFileSizes(await getModuleFileSizes())
+  const allBundles = moduleFileSizes.filter(
+    (module) => module.path === 'all.mjs'
   )
+
+  app.locals.stats = componentNamesWithJavaScript.sort().map((name) => {
+    const componentSizes = moduleFileSizes.filter(
+      (module) => module.path === `components/${name}/${name}.mjs`
+    )
+    return {
+      componentName: name,
+      bundled: componentSizes.find((size) => size.type === 'bundled').size,
+      minified: componentSizes.find((size) => size.type === 'minified').size
+    }
+  })
+  app.locals.allBundle = {
+    bundled: allBundles.find((size) => size.type === 'bundled').size,
+    minified: allBundles.find((size) => size.type === 'minified').size
+  }
 
   // Configure nunjucks
   const env = nunjucks.renderer(app)

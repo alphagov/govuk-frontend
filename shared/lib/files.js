@@ -66,7 +66,7 @@ async function getDirectories(directoryPath) {
  *
  * @param {string} directoryPath - Minimatch pattern to directory
  * @param {import('glob').GlobOptionsWithFileTypesUnset} [options] - Glob options
- * @returns {Promise<[string, string][]>} - File entries with name and size
+ * @returns {Promise<FileSize[]>} - File entries with name and size
  */
 async function getFileSizes(directoryPath, options = {}) {
   const filesForAnalysis = await getListing(directoryPath, options)
@@ -77,11 +77,14 @@ async function getFileSizes(directoryPath, options = {}) {
  * Get file size entry
  *
  * @param {string} filePath - File path
- * @returns {Promise<[string, string]>} - File entry with name and size
+ * @returns {Promise<FileSize>} - File entry with name and size
  */
 async function getFileSize(filePath) {
   const { size } = await stat(filePath)
-  return [filePath, `${filesize(size, { base: 2 })}`]
+  return {
+    path: filePath,
+    size
+  }
 }
 
 /**
@@ -120,13 +123,63 @@ async function getYaml(configPath) {
   return yaml.load(await readFile(configPath, 'utf8'), { json: true })
 }
 
+/**
+ * Compare arrays of FileSize types from the base and the head branch and add a
+ * percentage difference to the object. If there's no percentage difference,
+ * return a blank row.
+ *
+ * @param {FileSize[]} headFiles
+ * @param {FileSize[]} baseFiles
+ * @returns {FileSize[]|[]} FileSize array with a percentage attribute, potentially reduced, or an empty array
+ */
+function getFileSizeComparison(headFiles, baseFiles) {
+  return headFiles
+    .map((file, i) => {
+      const headFileSize = file.size
+      const baseFileSize = baseFiles[i].size
+      if (
+        typeof headFileSize === 'number' &&
+        typeof baseFileSize === 'number'
+      ) {
+        file.percentage = `${Math.round((headFileSize / baseFileSize) * 100 - 100)}%`
+        return file.percentage === '0%' ? null : file
+      }
+
+      // Can only be reached if the if fails
+      throw new Error(
+        'FileSize objects should not be passed to getFileSizeComparison after running getReadableFileSizes. Please ensure you are passing raw file size numbers to getFileSizeComparison.'
+      )
+    })
+    .filter((file) => file)
+}
+
+/**
+ * Convert the number values of the size param on FileSize types to readable file
+ * size strings with filesize.
+ *
+ * @param {FileSize[]} filesizeData
+ * @returns {Promise<FileSize[]>} FileSize array with readable file size strings on size attributes
+ */
+async function getReadableFileSizes(filesizeData) {
+  return filesizeData.map((file) => {
+    file.size = `${filesize(file.size, { base: 2 })}`
+    return file
+  })
+}
+
 module.exports = {
   filterPath,
   hasPath,
   getDirectories,
   getFileSizes,
   getFileSize,
+  getFileSizeComparison,
   getListing,
+  getReadableFileSizes,
   getYaml,
   mapPathTo
 }
+
+/**
+ * @import {FileSize} from '@govuk-frontend/stats'
+ */

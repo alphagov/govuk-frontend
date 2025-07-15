@@ -14,32 +14,115 @@ jobs:
     if: ${{ github.event.pull_request && !github.event.pull_request.head.repo.fork }}
 
     steps:
-      - name: Checkout code
+      - name: Cache base stats
+        uses: actions/cache@v4.2.3
+        id: stats-cache
+        with:
+          # Restore build cache (unless commit SHA changes)
+          key: build-stats-${{ github.sha }}
+          path: |
+            ./file-sizes-base.json
+            ./modules-sizes-base.json
+            ./file-sizes-head.json
+            ./modules-sizes-head.json
+
+      - name: Checkout base branch
+        # Skip build when we’ve built this SHA before
+        if: steps.stats-cache.outputs.cache-hit != 'true'
         uses: actions/checkout@v4.2.2
 
+        with:
+          ref: ${{ github.base_ref }}
+
       - name: Restore dependencies
+        # Skip build when we’ve built this SHA before
+        if: steps.stats-cache.outputs.cache-hit != 'true'
         uses: ./.github/workflows/actions/install-node
 
       - name: Build npm package and GitHub release
+        # Skip build when we’ve built this SHA before
+        if: steps.stats-cache.outputs.cache-hit != 'true'
         run: |
           npm run build:package --workspace govuk-frontend
           npm run build:release --workspace govuk-frontend
 
-      - name: Add comment to PR
+      - name: Get base file stats
+        # Skip build when we’ve built this SHA before
+        if: steps.stats-cache.outputs.cache-hit != 'true'
+        uses: actions/github-script@v7.0.1
+        with:
+          script: |
+            const { writeFileSync } = await import('fs')
+            const { getModuleFileSizes, getAllFileSizes } = await import('${{ github.workspace }}/shared/stats/src/index.mjs')
+
+            const fileSizes = await getAllFileSizes('${{ github.workspace }}')
+            const modulesSizes = await getModuleFileSizes()
+
+            writeFileSync('./file-sizes-base.json', JSON.stringify(fileSizes))
+            writeFileSync('./modules-sizes-base.json', JSON.stringify(modulesSizes))
+
+      - name: Checkout head
+        # Skip build when we’ve built this SHA before
+        if: steps.stats-cache.outputs.cache-hit != 'true'
+        uses: actions/checkout@v4.2.2
+        with:
+          ref: ${{ github.head_ref }}
+          clean: false # So that we retain the stats generated from base
+
+      - name: Restore dependencies
+        # Skip build when we’ve built this SHA before
+        if: steps.stats-cache.outputs.cache-hit != 'true'
+        uses: ./.github/workflows/actions/install-node
+
+      - name: Build npm package and GitHub release
+        # Skip build when we’ve built this SHA before
+        if: steps.stats-cache.outputs.cache-hit != 'true'
+        run: |
+          npm run build:package --workspace govuk-frontend
+          npm run build:release --workspace govuk-frontend
+
+      - name: Get head file stats
+        # Skip build when we’ve built this SHA before
+        if: steps.stats-cache.outputs.cache-hit != 'true'
+        uses: actions/github-script@v7.0.1
+        with:
+          script: |
+            const { writeFileSync } = await import('fs')
+            const { getModuleFileSizes, getAllFileSizes } = await import('${{ github.workspace }}/shared/stats/src/index.mjs')
+
+            const fileSizes = await getAllFileSizes('${{ github.workspace }}')
+            const modulesSizes = await getModuleFileSizes()
+
+            writeFileSync('./file-sizes-head.json', JSON.stringify(fileSizes))
+            writeFileSync('./modules-sizes-head.json', JSON.stringify(modulesSizes))
+
+      - name: Compare base and head and add comment to PR
+        # Skip build when we’ve built this SHA before
+        if: steps.stats-cache.outputs.cache-hit != 'true'
         uses: actions/github-script@v7.0.1
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
+            const { readFileSync } = await import('fs')
             const { commentStats } = await import('${{ github.workspace }}/.github/workflows/scripts/comments.mjs')
+            const { getFileSizeComparison } = await import('${{ github.workspace }}/shared/lib/files.js')
+
+            // Get base and head temp files and compare
+            const baseFileSizes = JSON.parse(readFileSync('./file-sizes-base.json', 'utf8'))
+            const baseModulesSizes = JSON.parse(readFileSync('./modules-sizes-base.json', 'utf8'))
+            const headFileSizes = JSON.parse(readFileSync('./file-sizes-head.json', 'utf8'))
+            const headModulesSizes = JSON.parse(readFileSync('./modules-sizes-head.json', 'utf8'))
+
+            const comparedFileSizes = getFileSizeComparison(headFileSizes, baseFileSizes)
+            const comparedModulesSizes = getFileSizeComparison(headModulesSizes, baseModulesSizes)
 
             // PR information
             const issueNumber = ${{ github.event.pull_request.number }}
             const commit = '${{ github.event.pull_request.head.sha }}'
 
             const options = {
-              path: '${{ github.workspace }}',
               titleText: ':clipboard: Stats',
               markerText: 'stats'
             }
 
-            await commentStats({ github, context, commit }, issueNumber, options)
+            await commentStats(comparedFileSizes, comparedModulesSizes, { github, context, commit }, issueNumber, options)

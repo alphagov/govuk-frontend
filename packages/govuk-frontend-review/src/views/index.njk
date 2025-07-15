@@ -110,11 +110,8 @@
       <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
       <h2 class="govuk-heading-l govuk-!-margin-bottom-2">JavaScript modules</h2>
 
-      {% set bundleKey = "all" %}
-      {% set bundleSize = stats[bundleKey + ".mjs"] %}
-
       {% set bundleHtml %}
-        <a href="/docs/stats/{{ bundleKey }}.html" class="govuk-body-s govuk-link govuk-!-font-weight-regular"><code>{{ bundleKey }}.mjs</code></a>
+        <a href="/docs/stats/all.html" class="govuk-body-s govuk-link govuk-!-font-weight-regular"><code>all.mjs</code></a>
       {% endset %}
 
       {{ govukSummaryList({
@@ -134,25 +131,22 @@
             },
             value: {
               html:
-                bundleSize.bundled + " (bundled) <br>" +
-                bundleSize.minified + " (minified)"
+                allBundle.bundled + " (bundled) <br>" +
+                allBundle.minified + " (minified)"
             }
           }
         ]
       }) }}
 
-      {% for componentName in componentNamesWithJavaScript | sort %}
-        {% set componentKey = "components/" + componentName + "/" + componentName %}
-        {% set componentSize = stats[componentKey + ".mjs"] %}
-
+      {% for stat in stats %}
         {% set componentHtml %}
-          <a href="/docs/stats/{{ componentKey }}.html" class="govuk-body-s govuk-link govuk-!-font-weight-regular"><code>{{ componentName }}.mjs</code></a>
+          <a href="/docs/stats/components/{{ stat.componentName }}/{{ stat.componentName }}.html" class="govuk-body-s govuk-link govuk-!-font-weight-regular"><code>{{ stat.componentName }}.mjs</code></a>
         {% endset %}
 
         {{ govukSummaryList({
           card: {
             title: {
-              text: componentName | unslugify,
+              text: stat.componentName | unslugify,
               headingLevel: 3
             }
           },
@@ -171,8 +165,8 @@
               },
               value: {
                 html:
-                  componentSize.bundled + " (bundled) <br>" +
-                  componentSize.minified + " (minified)"
+                  stat.bundled + " (bundled) <br>" +
+                  stat.minified + " (minified)"
               }
             }
           ]
