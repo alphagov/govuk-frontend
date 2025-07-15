@@ -323,6 +323,7 @@ examples:
         - html: <em>Navigation item 2</em>
         - html: <em>Navigation item 3</em>
   - name: with custom menu button label
+    hidden: true
     options:
       menuButtonLabel: Custom button label
       navigation:
