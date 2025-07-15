@@ -126,7 +126,7 @@ async function generateFixture(componentDataPath, options) {
 
         // Add defaults to optional fields
         description: example.description ?? '',
-        previewLayoutModifiers: example.previewLayoutModifiers ?? [],
+        pageTemplateOptions: example.pageTemplateOptions ?? {},
         screenshot: example.screenshot ?? false,
 
         // Add rendered Nunjucks example to fixture
