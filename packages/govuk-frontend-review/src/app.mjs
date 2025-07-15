@@ -215,20 +215,19 @@ export default async () => {
         fixture
       })
 
-      let bodyClasses = 'app-template__body'
+      const pageTemplateOptions = fixture.pageTemplateOptions ?? {}
 
-      for (const modifier of fixture.previewLayoutModifiers) {
-        bodyClasses += ` app-template__body--${modifier}`
-      }
+      let bodyClasses = `${pageTemplateOptions.bodyClasses ?? ''} app-template__body`
 
       if ('iframe' in req.query) {
         bodyClasses += ' app-template__body--component-preview'
       }
 
       res.render('component-preview', {
-        bodyClasses,
         componentView,
-        previewLayout: fixtures.previewLayout
+        previewLayout: fixtures.previewLayout,
+        ...pageTemplateOptions,
+        bodyClasses
       })
     }
   )

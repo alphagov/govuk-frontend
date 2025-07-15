@@ -322,7 +322,7 @@ module.exports = {
  * @property {string} [description] - Example description
  * @property {boolean} [hidden] - Example hidden from review app
  * @property {boolean} [screenshot] - Screenshot and include in visual regression tests
- * @property {string[]} [previewLayoutModifiers] - Component preview layout class modifiers
+ * @property {PageTemplateOptions} [pageTemplateOptions] - Page template options for render
  * @property {MacroOptions} options - Nunjucks macro options (or params)
  */
 
@@ -330,6 +330,12 @@ module.exports = {
  * Nunjucks macro options
  *
  * @typedef {{ [param: string]: unknown }} MacroOptions
+ */
+
+/**
+ * Page template options
+ *
+ * @typedef {{ [param: string]: unknown }} PageTemplateOptions
  */
 
 /**

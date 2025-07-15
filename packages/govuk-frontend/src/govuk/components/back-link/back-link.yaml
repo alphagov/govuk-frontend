@@ -26,8 +26,8 @@ examples:
     options: {}
   - name: inverse
     screenshot: true
-    previewLayoutModifiers:
-      - inverse
+    pageTemplateOptions:
+      bodyClasses: app-template__body--inverse
     options:
       classes: govuk-back-link--inverse
 

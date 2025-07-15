@@ -202,8 +202,8 @@ examples:
           text: Navigation item 4
   - name: inverse
     description: Service navigation that appears between other areas of brand blue. Rebrand only.
-    previewLayoutModifiers:
-      - inverse
+    pageTemplateOptions:
+      bodyClasses: app-template__body--inverse
     options:
       classes: govuk-service-navigation--inverse
       serviceName: Apply for a juggling license
