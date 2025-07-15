@@ -214,7 +214,6 @@ examples:
   - name: with product name
     screenshot: true
     options:
-      navigationClasses: govuk-header__navigation--end
       productName: Product Name
 
   - name: full width
