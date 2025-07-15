@@ -34,9 +34,6 @@ jobs:
         with:
           ref: ${{ github.base_ref }}
 
-        with:
-          ref: ${{ github.base_ref }}
-
       - name: Restore dependencies
         # Skip build when we’ve built this SHA before
         if: steps.stats-cache.outputs.cache-hit != 'true'
