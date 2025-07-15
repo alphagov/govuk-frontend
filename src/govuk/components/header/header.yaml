@@ -112,10 +112,7 @@ accessibilityCriteria: |
 
 examples:
   - name: default
-    screenshot:
-      variants:
-        - default
-        - no-js
+    screenshot: true
     description: The standard header as used on information pages on GOV.UK
     options: {}
 
@@ -158,7 +155,10 @@ examples:
           text: Eitem llywio 4
 
   - name: with service name and navigation
-    screenshot: true
+    screenshot:
+      variants:
+        - default
+        - no-js
     description: If you need to include basic navigation, contact or account management links.
     options:
       serviceName: Service Name
@@ -363,10 +363,7 @@ examples:
   - name: rebrand
     description: The standard header as used on information pages on GOV.UK
     hidden: true
-    screenshot:
-      variants:
-        - default
-        - no-js
+    screenshot: true
     pageTemplateOptions:
       htmlClasses: govuk-template--rebranded
     options:
@@ -375,7 +372,10 @@ examples:
   - name: with service name and navigation and rebrand
     description: If you need to include basic navigation, contact or account management links.
     hidden: true
-    screenshot: true
+    screenshot:
+      variants:
+        - default
+        - no-js
     pageTemplateOptions:
       htmlClasses: govuk-template--rebranded
     options:
