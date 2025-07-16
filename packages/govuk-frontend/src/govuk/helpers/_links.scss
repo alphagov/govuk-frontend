@@ -9,7 +9,6 @@
 /// @access public
 
 @mixin govuk-link-common {
-  @include govuk-typography-common;
   @include govuk-link-decoration;
 
   &:hover {

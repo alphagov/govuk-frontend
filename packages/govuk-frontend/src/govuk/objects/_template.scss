@@ -49,5 +49,7 @@
     margin: 0;
     // Set the overall body of the page back to the typical background colour.
     background-color: $govuk-body-background-colour;
+
+    @include govuk-typography-common;
   }
 }

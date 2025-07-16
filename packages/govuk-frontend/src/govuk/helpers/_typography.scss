@@ -268,8 +268,6 @@
 /// @access public
 
 @mixin govuk-font($size, $weight: regular, $tabular: false, $line-height: false) {
-  @include govuk-typography-common;
-
   @if $tabular {
     @include govuk-font-tabular-numbers;
   }
