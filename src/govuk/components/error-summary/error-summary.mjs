@@ -1,5 +1,5 @@
 import { ConfigurableComponent } from '../../common/configuration.mjs'
-import { getFragmentFromUrl, setFocus } from '../../common/index.mjs'
+import { setFocus } from '../../common/index.mjs'
 
 /**
  * Error summary component
@@ -66,7 +66,7 @@ export class ErrorSummary extends ConfigurableComponent {
       return false
     }
 
-    const inputId = getFragmentFromUrl($target.href)
+    const inputId = $target.hash.replace('#', '')
     if (!inputId) {
       return false
     }
