@@ -112,10 +112,7 @@ accessibilityCriteria: |
 
 examples:
   - name: default
-    screenshot:
-      variants:
-        - default
-        - no-js
+    screenshot: true
     description: The standard header as used on information pages on GOV.UK
     options: {}
 
@@ -158,6 +155,10 @@ examples:
           text: Eitem llywio 4
 
   - name: with service name and navigation
+    screenshot:
+      variants:
+        - default
+        - no-js
     description: If you need to include basic navigation, contact or account management links.
     options:
       serviceName: Service Name
@@ -211,8 +212,8 @@ examples:
           text: Working, jobs and pensions
 
   - name: with product name
+    screenshot: true
     options:
-      navigationClasses: govuk-header__navigation--end
       productName: Product Name
 
   - name: full width
@@ -323,6 +324,7 @@ examples:
         - html: <em>Navigation item 2</em>
         - html: <em>Navigation item 3</em>
   - name: with custom menu button label
+    hidden: true
     options:
       menuButtonLabel: Custom button label
       navigation:
@@ -354,7 +356,48 @@ examples:
     hidden: true
     options:
       navigation: []
+
+  # these examples are included in screenshots but hidden in the app because the
+  # interaction with the 'rebrand' feature flag is confusing.
+
   - name: rebrand
+    description: The standard header as used on information pages on GOV.UK
     hidden: true
+    screenshot: true
+    pageTemplateOptions:
+      htmlClasses: govuk-template--rebranded
     options:
+      rebrand: true
+
+  - name: with service name and navigation and rebrand
+    description: If you need to include basic navigation, contact or account management links.
+    hidden: true
+    screenshot:
+      variants:
+        - default
+        - no-js
+    pageTemplateOptions:
+      htmlClasses: govuk-template--rebranded
+    options:
+      serviceName: Service Name
+      serviceUrl: '/components/header'
+      navigation:
+        - href: '#1'
+          text: Navigation item 1
+          active: true
+        - href: '#2'
+          text: Navigation item 2
+        - href: '#3'
+          text: Navigation item 3
+        - href: '#4'
+          text: Navigation item 4
+      rebrand: true
+
+  - name: with product name and rebrand
+    hidden: true
+    screenshot: true
+    pageTemplateOptions:
+      htmlClasses: govuk-template--rebranded
+    options:
+      productName: Product Name
       rebrand: true
