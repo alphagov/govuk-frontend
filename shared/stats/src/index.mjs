@@ -3,7 +3,6 @@ import { join, parse } from 'path'
 import { paths } from '@govuk-frontend/config'
 import { getComponentNamesFiltered } from '@govuk-frontend/lib/components'
 import { filterPath, getFileSizes, getYaml } from '@govuk-frontend/lib/files'
-import { filesize } from 'filesize'
 
 /**
  * Components with JavaScript
@@ -35,43 +34,29 @@ export const modulePaths = [packageOptions.modulePath].concat(
 )
 
 /**
- * Rollup module stats by path
- *
- * @param {string} modulePath - Rollup input path
- * @returns {Promise<[string, { bundled: string; minified: string }]>} Rollup module stats
- */
-export async function getStats(modulePath) {
-  const { dir, name } = parse(modulePath)
-
-  // Totals from Rollup `npm run build:stats` YAML output
-  const [bundled, minified] = await Promise.all([
-    getStatsByYaml(modulePath, `${dir}/${name}.yaml`),
-    getStatsByYaml(modulePath, `${dir}/${name}.min.yaml`)
-  ])
-
-  return [modulePath, { bundled, minified }]
-}
-
-/**
  * Rollup module stats by YAML path
  *
  * @param {string} modulePath - Rollup input path
- * @param {string} statsPath - Rollup stats output path
- * @returns {Promise<string>} Total size (formatted)
+ * @param {('bundled'|'minified')} type - Rollup stats output path
+ * @returns {Promise<FileSize>} Total size (formatted)
  */
-async function getStatsByYaml(modulePath, statsPath) {
-  const { base } = parse(modulePath)
-
+async function getStatsByYaml(modulePath, type) {
+  const { base, dir, name } = parse(modulePath)
+  const statsPath = `${dir}/${name}${type === 'minified' ? '.min' : ''}.yaml`
   const stats = /** @type {Record<string, ModulesList> | undefined} */ (
     await getYaml(join(paths.stats, `dist/${statsPath}`)).catch(() => undefined)
   )
 
   // Modules total size
-  const total = Object.values(stats?.[base] ?? {})
+  const size = Object.values(stats?.[base] ?? {})
     .map(({ rendered }) => rendered)
     .reduce((total, rendered) => total + rendered, 0)
 
-  return `${filesize(total, { base: 2 })}`
+  return {
+    path: modulePath,
+    size,
+    type
+  }
 }
 
 /**
