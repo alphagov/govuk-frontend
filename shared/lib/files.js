@@ -2,7 +2,6 @@ const { readFile, stat } = require('fs/promises')
 const { parse, relative, basename } = require('path')
 
 const { paths } = require('@govuk-frontend/config')
-const { filesize } = require('filesize')
 const { glob } = require('glob')
 const yaml = require('js-yaml')
 const { minimatch } = require('minimatch')
