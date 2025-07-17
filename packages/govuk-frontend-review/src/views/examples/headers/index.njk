@@ -1,6 +1,6 @@
 {% extends "layouts/examples.njk" %}
 
-{% from "govuk/components/header/macro.njk" import govukHeader %}
+{% from "govuk/components/breader/macro.njk" import govukBreader %}
 {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
 {% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
 {% from "govuk/components/cookie-banner/macro.njk" import govukCookieBanner %}
@@ -17,7 +17,7 @@
 
     <div class="govuk-grid-column-full-width">
       <h2 class="govuk-heading-l">Header and Back link</h2>
-        {{ govukHeader({
+        {{ govukBreader({
         navigationClasses: "govuk-header__navigation--end",
         productName: "Product Name"
         }) }}
@@ -35,7 +35,7 @@
 
     <div class="govuk-grid-column-full-width">
       <h2 class="govuk-heading-l">Header and Breadcrumbs</h2>
-        {{ govukHeader({
+        {{ govukBreader({
         navigationClasses: "govuk-header__navigation--end",
         productName: "Product Name"
         }) }}
@@ -89,7 +89,7 @@
         </div>
       </div>
     </div>
-        {{ govukHeader({
+        {{ govukBreader({
         navigationClasses: "govuk-header__navigation--end",
         productName: "Product Name"
         }) }}
@@ -108,7 +108,7 @@
 
     <div class="govuk-grid-column-full-width">
       <h2 class="govuk-heading-l">Header and Exit this page</h2>
-        {{ govukHeader({
+        {{ govukBreader({
         navigationClasses: "govuk-header__navigation--end",
         productName: "Product Name"
         }) }}
@@ -129,7 +129,7 @@
 
     <div class="govuk-grid-column-full-width">
       <h2 class="govuk-heading-l">Header and Notification banner</h2>
-        {{ govukHeader({
+        {{ govukBreader({
         navigationClasses: "govuk-header__navigation--end",
         productName: "Product Name"
         }) }}
@@ -156,7 +156,7 @@
 
     <div class="govuk-grid-column-full-width">
       <h2 class="govuk-heading-l">Header and Panel</h2>
-        {{ govukHeader({
+        {{ govukBreader({
         navigationClasses: "govuk-header__navigation--end",
         productName: "Product Name"
         }) }}
@@ -179,7 +179,7 @@
 
     <div class="govuk-grid-column-full-width">
       <h2 class="govuk-heading-l">Header and Phase banner</h2>
-        {{ govukHeader({
+        {{ govukBreader({
         navigationClasses: "govuk-header__navigation--end",
         productName: "Product Name"
         }) }}
@@ -233,9 +233,9 @@
         }
       ]
     }) }}
-      {{ govukHeader({
+      {{ govukBreader({
       serviceName: "Service Name",
-      serviceUrl: "/components/header",
+      serviceUrl: "/components/breader",
       navigation: [
         {
           href: "#1",

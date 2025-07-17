@@ -1,4 +1,4 @@
-@include govuk-exports("govuk/component/header") {
+@include govuk-exports("govuk/component/breader") {
   $govuk-header-background: govuk-colour("black");
   $govuk-header-border-color: $govuk-brand-colour;
   $govuk-header-border-width: govuk-spacing(2);

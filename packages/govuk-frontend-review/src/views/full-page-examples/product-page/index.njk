@@ -5,7 +5,7 @@ title: GOV.UK Pay
 
 {% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
-{% from "govuk/components/header/macro.njk" import govukHeader %}
+{% from "govuk/components/breader/macro.njk" import govukBreader %}
 {% from "govuk/components/service-navigation/macro.njk" import govukServiceNavigation %}
 
 {% set pageTitle = example.title %}
@@ -18,7 +18,7 @@ title: GOV.UK Pay
 {% endblock %}
 
 {% block header %}
-  {{ govukHeader({
+  {{ govukBreader({
     productName: "Pay",
     classes: "govuk-header--full-width-border"
   }) }}
