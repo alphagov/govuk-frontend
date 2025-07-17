@@ -75,5 +75,28 @@ async function getStatsByYaml(modulePath, statsPath) {
 }
 
 /**
+ * Get both bundled and minified module file sizes
+ *
+ * @returns {Promise<FileSize[]>} Array of file size objects
+ */
+export async function getModuleFileSizes() {
+  return [
+    ...(await Promise.all(
+      modulePaths.map((path) => getStatsByYaml(path, 'bundled'))
+    )),
+    ...(await Promise.all(
+      modulePaths.map((path) => getStatsByYaml(path, 'minified'))
+    ))
+  ]
+}
+
+/**
  * @typedef {{ [modulePath: string]: { rendered: number } }} ModulesList
+ */
+
+/**
+ * @typedef {object} FileSize
+ * @property {string} path - File path
+ * @property {number|string} size - File size, as a raw number or human-readable string
+ * @property {('bundled'|'minified')} [type] - Type of file size. Only used by module sizes
  */
