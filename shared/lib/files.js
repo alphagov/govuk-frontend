@@ -122,17 +122,78 @@ async function getYaml(configPath) {
   return yaml.load(await readFile(configPath, 'utf8'), { json: true })
 }
 
+/**
+ * Compare arrays of FileSize types from the base and the head branch and add a
+ * percentage difference to the object.
+ *
+ * If there's no percentage difference, return a blank row.
+ *
+ * If a file is present in head or base but not the other, mark it as a new file
+ * or a deletion.
+ *
+ * @param {(FileSize & {size: number})[]} headFiles
+ * @param {(FileSize & {size: number})[]} baseFiles
+ * @returns {(FileSizeWithPercentage|null)[]} FileSize array with a percentage attribute, potentially reduced, or an empty array
+ */
+function getFileSizeComparison(headFiles, baseFiles) {
+  // Get initial percentage differences and check for deletions
+  const comparedFileSizes = baseFiles.map((file) => {
+    const headFile = findFileSizeRow(headFiles, file)
+    const percentage = headFile
+      ? `${Math.round((headFile.size / file.size) * 100 - 100)}%`
+      : 'Deleted'
+
+    // Return null if there's no percentage difference
+    return percentage === '0%'
+      ? null
+      : {
+          ...file,
+          percentage
+        }
+  })
+
+  // Look for additions
+  headFiles.forEach((file) => {
+    if (!findFileSizeRow(baseFiles, file)) {
+      comparedFileSizes.push({
+        ...file,
+        percentage: 'New file'
+      })
+    }
+  })
+
+  // remove null rows before returning
+  return comparedFileSizes.filter((file) => file)
+}
+
+/**
+ * Private function used by getFileSizeComparison to find the same FileSize
+ * between two arrays of FileSizes.
+ *
+ * @param {(FileSize & {size: number})[]} fileSizes
+ * @param {(FileSize & {size: number})} searchFileSize
+ * @returns {(FileSize & {size: number})|undefined} The located FileSize in the compare array, or undefined if not present
+ */
+function findFileSizeRow(fileSizes, searchFileSize) {
+  return fileSizes.find((fileSize) =>
+    fileSize.type
+      ? fileSize.path === searchFileSize.path &&
+        fileSize.type === searchFileSize.type
+      : fileSize.path === searchFileSize.path
+  )
+}
 module.exports = {
   filterPath,
   hasPath,
   getDirectories,
   getFileSizes,
   getFileSize,
+  getFileSizeComparison,
   getListing,
   getYaml,
   mapPathTo
 }
 
 /**
- * @import { FileSize } from '@govuk-frontend/stats'
+ * @import {FileSize, FileSizeWithPercentage} from '@govuk-frontend/stats'
  */
