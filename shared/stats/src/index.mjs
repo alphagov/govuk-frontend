@@ -2,7 +2,7 @@ import { join, parse } from 'path'
 
 import { paths } from '@govuk-frontend/config'
 import { getComponentNamesFiltered } from '@govuk-frontend/lib/components'
-import { filterPath, getYaml } from '@govuk-frontend/lib/files'
+import { filterPath, getFileSizes, getYaml } from '@govuk-frontend/lib/files'
 import { filesize } from 'filesize'
 
 /**
@@ -86,6 +86,21 @@ export async function getModuleFileSizes() {
     )),
     ...(await Promise.all(
       modulePaths.map((path) => getStatsByYaml(path, 'minified'))
+    ))
+  ]
+}
+
+/**
+ * Get all distributed file sizes
+ *
+ * @param {string} path - Root path of project to retrieve files from
+ * @returns {Promise<FileSize[]>} Array of file size objects
+ */
+export async function getAllFileSizes(path) {
+  return [
+    ...(await getFileSizes(join(join(path, 'dist'), '**/*.{css,js,mjs}'))),
+    ...(await getFileSizes(
+      join(join(path, 'packages/govuk-frontend/dist/govuk'), '*.{css,js,mjs}')
     ))
   ]
 }
