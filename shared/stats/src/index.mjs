@@ -99,4 +99,5 @@ export async function getAllFileSizes(path) {
  * @property {string} path - File path
  * @property {number|string} size - File size, as a raw number or human-readable string
  * @property {('bundled'|'minified')} [type] - Type of file size. Only used by module sizes
+ * @typedef {FileSize & {percentage: string}} FileSizeWithPercentage - The FileSize type with an extra attribute representing increase or decrease in percentage
  */
