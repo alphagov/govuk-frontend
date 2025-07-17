@@ -2,6 +2,7 @@ const { readFile, stat } = require('fs/promises')
 const { parse, relative, basename } = require('path')
 
 const { paths } = require('@govuk-frontend/config')
+const { filesize } = require('filesize')
 const { glob } = require('glob')
 const yaml = require('js-yaml')
 const { minimatch } = require('minimatch')
@@ -188,6 +189,21 @@ function findFileSizeRow(fileSizes, searchFileSize) {
     return fileSize.path === searchFileSize.path
   })
 }
+
+/**
+ * Convert the number values of the size param on FileSize types to readable file
+ * size strings with filesize.
+ *
+ * @param {(FileSize|FileSizeWithPercentage)[]} filesizeData
+ * @returns {(FileSize|FileSizeWithPercentage)[]} FileSize array with readable file size strings on size attributes
+ */
+function getReadableFileSizes(filesizeData) {
+  return filesizeData.map((file) => ({
+    ...file,
+    size: `${filesize(file.size, { base: 2 })}`
+  }))
+}
+
 module.exports = {
   filterPath,
   hasPath,
@@ -196,6 +212,7 @@ module.exports = {
   getFileSize,
   getFileSizeComparison,
   getListing,
+  getReadableFileSizes,
   getYaml,
   mapPathTo
 }
