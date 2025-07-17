@@ -55,7 +55,7 @@ describe('Pagination', () => {
     it('marks up pagination items as ellipses when specified', () => {
       const $ = render('pagination', examples['with many pages'])
       const $firstEllipsis = $(
-        '.govuk-pagination__item:nth-child(2).govuk-pagination__item--ellipses'
+        '.govuk-pagination__item:nth-child(2).govuk-pagination__item--ellipsis'
       )
 
       expect($firstEllipsis).toBeTruthy()
