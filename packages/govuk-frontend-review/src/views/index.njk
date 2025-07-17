@@ -117,6 +117,12 @@
         <a href="/docs/stats/{{ bundleKey }}.html" class="govuk-body-s govuk-link govuk-!-font-weight-regular"><code>{{ bundleKey }}.mjs</code></a>
       {% endset %}
 
+      {% set bundleSizeHtml %}
+        {% for bundle in bundleSize %}
+          {{ bundle.size }} ({{ bundle.type }})<br>
+        {% endfor %}
+      {% endset %}
+
       {{ govukSummaryList({
         classes: "govuk-summary-list--no-border",
         rows: [
@@ -133,9 +139,7 @@
               text: "Total file size"
             },
             value: {
-              html:
-                bundleSize.bundled + " (bundled) <br>" +
-                bundleSize.minified + " (minified)"
+              html: bundleSizeHtml
             }
           }
         ]
@@ -144,6 +148,12 @@
       {% for componentName in componentNamesWithJavaScript | sort %}
         {% set componentKey = "components/" + componentName + "/" + componentName %}
         {% set componentSize = stats[componentKey + ".mjs"] %}
+
+        {% set componentSizeHtml %}
+          {% for bundle in componentSize %}
+            {{ bundle.size }} ({{ bundle.type }})<br>
+          {% endfor %}
+        {% endset %}
 
         {% set componentHtml %}
           <a href="/docs/stats/{{ componentKey }}.html" class="govuk-body-s govuk-link govuk-!-font-weight-regular"><code>{{ componentName }}.mjs</code></a>
@@ -170,9 +180,7 @@
                 text: "File size"
               },
               value: {
-                html:
-                  componentSize.bundled + " (bundled) <br>" +
-                  componentSize.minified + " (minified)"
+                html: componentSizeHtml
               }
             }
           ]
