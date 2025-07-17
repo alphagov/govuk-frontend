@@ -4,6 +4,8 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 ## Unreleased
 
+## v5.11.1 (Fix release)
+
 ### Fixes
 
 We've made fixes to GOV.UK Frontend in the following pull requests:
