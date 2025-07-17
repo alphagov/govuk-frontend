@@ -1,10 +1,9 @@
 @include govuk-exports("govuk/component/skip-link") {
   .govuk-skip-link {
     @include govuk-visually-hidden-focusable;
-    @include govuk-typography-common;
     @include govuk-link-decoration;
     @include govuk-link-style-text;
-    @include govuk-font-size($size: 16);
+    @include govuk-font($size: 16);
 
     display: block;
     padding: govuk-spacing(2) govuk-spacing(3);
