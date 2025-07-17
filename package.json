@@ -105,7 +105,7 @@
     "@types/jest": "^29.5.14",
     "@types/jest-axe": "^3.5.9",
     "@types/js-yaml": "^4.0.9",
-    "@types/mime-types": "^3.0.0",
+    "@types/mime-types": "^3.0.1",
     "@types/node": "^22.15.29",
     "@types/nunjucks": "^3.2.6",
     "@types/slug": "^5.0.9",
