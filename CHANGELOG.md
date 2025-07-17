@@ -63,7 +63,7 @@ We made this change in [pull request #6014: Simplify prefix for breakpoint custo
 
 We've updated the SVG (Scalable Vector Graphics) file of the GOV.UK logo to fix some imperfections visible at high zoom levels. Thanks to @matteason for reporting this.
 
-If you're using the `govukHeader` Nunjucks macro, you do not need to update anything. If you're not using the macro, replace the logo's SVG code in the header with the following code:
+If you're using the `govukBreader` Nunjucks macro, you do not need to update anything. If you're not using the macro, replace the logo's SVG code in the header with the following code:
 
 ```html
 <svg
@@ -216,7 +216,7 @@ Add the `govuk-template--rebranded` class to the `<html>` element of your page t
 Enable the refreshed GOV.UK logo by adding `rebrand: true` to the GOV.UK header component configuration.
 
 ```nunjucks
-{{ govukHeader({
+{{ govukBreader({
   rebrand: true
 }) }}
 ```
@@ -1002,10 +1002,10 @@ Copy the following files from `/dist/assets/images` into your assets folder. Any
 
 #### Update the logo in the header of your page
 
-If you’re using the `govukHeader` Nunjucks macro in your service, add the `useTudorCrown` parameter to the macro instantiation. This will become the default in a future version of GOV.UK Frontend.
+If you’re using the `govukBreader` Nunjucks macro in your service, add the `useTudorCrown` parameter to the macro instantiation. This will become the default in a future version of GOV.UK Frontend.
 
 ```nunjucks
-{{ govukHeader({
+{{ govukBreader({
   ...
   useTudorCrown: true
 }) }}
@@ -1418,7 +1418,7 @@ This change was introduced in:
 
 We've updated the GOV.UK logo to merge the GOV.UK text with the crown graphic. This is to make sure the full logo is always rendered correctly even if parts of the page, such as CSS or the Transport webfont, fail to load. We've also modified styles relating to the logo.
 
-If you're using the `govukHeader` Nunjucks macro you don't need to change anything.
+If you're using the `govukBreader` Nunjucks macro you don't need to change anything.
 
 Otherwise, to update to the new logo:
 
@@ -2994,7 +2994,7 @@ You can use the new:
 For example:
 
 ```javascript
-{{ govukHeader({
+{{ govukBreader({
     navigationLabel: "Custom navigation section aria-label",
     menuButtonLabel: "Custom menu button aria-label"
 }) }}
@@ -3017,7 +3017,7 @@ To add a navigation item without a link, use the `text` or `html` option to add 
 For example:
 
 ```javascript
-{{ govukHeader({
+{{ govukBreader({
     navigation: [
     {
       html: "<form method='post' action='url.com'>

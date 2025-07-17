@@ -24,7 +24,7 @@ scenario: |
 {% block pageTitle %}{{ "Error: " if errorSummary | length }}{{ pageTitle }} - GOV.UK{% endblock %}
 
 {% block header %}
-  {{ govukHeader({
+  {{ govukBreader({
     serviceName: "Apply for a passport"
   }) }}
 {% endblock %}

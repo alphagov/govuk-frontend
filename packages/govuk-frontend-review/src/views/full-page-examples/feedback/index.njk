@@ -32,7 +32,7 @@ notes: Based on https://www.signin.service.gov.uk/feedback
 {% block pageTitle %}{{ "Error: " if errorSummary | length }}{{ pageTitle }} - GOV.UK{% endblock %}
 
 {% block header %}
-  {{ govukHeader({
+  {{ govukBreader({
     productName: "Verify"
   }) }}
 {% endblock %}

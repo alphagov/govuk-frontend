@@ -11,7 +11,7 @@ notes: Based on Companies House "Find an update company information" service
 
 {% from "govuk/components/button/macro.njk" import govukButton %}
 {% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
-{% from "govuk/components/header/macro.njk" import govukHeader %}
+{% from "govuk/components/breader/macro.njk" import govukBreader %}
 {% from "govuk/components/service-navigation/macro.njk" import govukServiceNavigation %}
 {% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
 
@@ -19,7 +19,7 @@ notes: Based on Companies House "Find an update company information" service
 {% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
 
 {% block header %}
-  {{ govukHeader({
+  {{ govukBreader({
     classes: "govuk-header--full-width-border"
   }) }}
   {{ govukServiceNavigation({
