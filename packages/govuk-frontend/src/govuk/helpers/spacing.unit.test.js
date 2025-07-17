@@ -2,31 +2,24 @@ const { compileSassString } = require('@govuk-frontend/helpers/tests')
 const { outdent } = require('outdent')
 
 const sassBootstrap = `
-  @import "settings/media-queries";
-
   $spacing-point: 2;
 
-  // Emulates data from _settings/media-queries.scss
-  $govuk-breakpoints: (
-    my_breakpoint: 30em
-  );
-
-  // Emulates data from _settings/spacing.scss
-  $govuk-spacing-points: (
-    0: 0,
-    2: 15px
-  );
-
-  // Emulates data from _settings/spacing.scss
-  $govuk-spacing-responsive-scale: (
-    2: (
-      null: 15px,
-      my_breakpoint: 25px
+  @use "helpers/spacing" as * with (
+    $govuk-breakpoints: (
+      my_breakpoint: 30em
+    ),
+    $govuk-spacing-points: (
+      0: 0,
+      2: 15px
+    ),
+    $govuk-spacing-responsive-scale: (
+      2: (
+        null: 15px,
+        my_breakpoint: 25px
+      )
     )
   );
-
-  @import "helpers/media-queries";
-  @import "helpers/spacing";`
+`
 
 describe('@function govuk-spacing', () => {
   it('returns CSS for a property based on the given spacing point', async () => {
@@ -131,6 +124,9 @@ describe('@mixin _govuk-responsive-spacing', () => {
     const sass = `
       ${sassBootstrap}
 
+      // Use legacy import for private members
+      @import "helpers/spacing";
+
       .foo {
         @include _govuk-responsive-spacing($spacing-point, 'margin')
       }
@@ -153,6 +149,9 @@ describe('@mixin _govuk-responsive-spacing', () => {
   it('outputs CSS for a property and direction based on the spacing map', async () => {
     const sass = `
       ${sassBootstrap}
+
+      // Use legacy import for private members
+      @import "helpers/spacing";
 
       .foo {
         @include _govuk-responsive-spacing($spacing-point, 'padding', 'top');
@@ -177,6 +176,9 @@ describe('@mixin _govuk-responsive-spacing', () => {
     const sass = `
       ${sassBootstrap}
 
+      // Use legacy import for private members
+      @import "helpers/spacing";
+
       .foo {
         @include _govuk-responsive-spacing(14px, 'margin')
       }
@@ -191,6 +193,9 @@ describe('@mixin _govuk-responsive-spacing', () => {
     it('marks the rule as important for the property', async () => {
       const sass = `
         ${sassBootstrap}
+
+        // Use legacy import for private members
+        @import "helpers/spacing";
 
         .foo {
           @include _govuk-responsive-spacing(
@@ -218,6 +223,9 @@ describe('@mixin _govuk-responsive-spacing', () => {
     it('marks the rule as important for the property and direction', async () => {
       const sass = `
         ${sassBootstrap}
+
+        // Use legacy import for private members
+        @import "helpers/spacing";
 
         .foo {
           @include _govuk-responsive-spacing(
@@ -249,6 +257,9 @@ describe('@mixin _govuk-responsive-spacing', () => {
       const sass = `
         ${sassBootstrap}
 
+        // Use legacy import for private members
+        @import "helpers/spacing";
+
         .foo {
           @include _govuk-responsive-spacing(
             $spacing-point,
@@ -275,6 +286,9 @@ describe('@mixin _govuk-responsive-spacing', () => {
     it('adjusts the value for the property and direction', async () => {
       const sass = `
         ${sassBootstrap}
+
+        // Use legacy import for private members
+        @import "helpers/spacing";
 
         .foo {
           @include _govuk-responsive-spacing(
