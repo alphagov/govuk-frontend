@@ -14,21 +14,41 @@ jobs:
     if: ${{ github.event.pull_request && !github.event.pull_request.head.repo.fork }}
 
     steps:
+      - name: Cache stats
+        uses: actions/cache@v4.2.3
+        id: stats-cache
+        with:
+          # Restore build cache, unless commit SHA or base ref changes
+          key: build-stats-${{ github.base_ref }}-${{ github.sha }}
+          path: |
+            ./file-sizes-base.json
+            ./modules-sizes-base.json
+            ./file-sizes-head.json
+            ./modules-sizes-head.json
+
       - name: Checkout base branch
+        # Skip build when we’ve built this SHA before
+        if: steps.stats-cache.outputs.cache-hit != 'true'
         uses: actions/checkout@v4.2.2
 
         with:
           ref: ${{ github.base_ref }}
 
       - name: Restore base dependencies
+        # Skip build when we’ve built this SHA before
+        if: steps.stats-cache.outputs.cache-hit != 'true'
         uses: ./.github/workflows/actions/install-node
 
       - name: Build npm package and GitHub release for base
+        # Skip build when we’ve built this SHA before
+        if: steps.stats-cache.outputs.cache-hit != 'true'
         run: |
           npm run build:package --workspace govuk-frontend
           npm run build:release --workspace govuk-frontend
 
       - name: Get base file stats
+        # Skip build when we’ve built this SHA before
+        if: steps.stats-cache.outputs.cache-hit != 'true'
         uses: actions/github-script@v7.0.1
         with:
           script: |
@@ -42,20 +62,28 @@ jobs:
             writeFileSync('./modules-sizes-base.json', JSON.stringify(modulesSizes))
 
       - name: Checkout head
+        # Skip build when we’ve built this SHA before
+        if: steps.stats-cache.outputs.cache-hit != 'true'
         uses: actions/checkout@v4.2.2
         with:
           ref: ${{ github.head_ref }}
           clean: false # So that we retain the stats generated from base
 
       - name: Restore head dependencies
+        # Skip build when we’ve built this SHA before
+        if: steps.stats-cache.outputs.cache-hit != 'true'
         uses: ./.github/workflows/actions/install-node
 
       - name: Build npm package and GitHub release for head
+        # Skip build when we’ve built this SHA before
+        if: steps.stats-cache.outputs.cache-hit != 'true'
         run: |
           npm run build:package --workspace govuk-frontend
           npm run build:release --workspace govuk-frontend
 
       - name: Get head file stats
+        # Skip build when we’ve built this SHA before
+        if: steps.stats-cache.outputs.cache-hit != 'true'
         uses: actions/github-script@v7.0.1
         with:
           script: |
@@ -69,6 +97,8 @@ jobs:
             writeFileSync('./modules-sizes-head.json', JSON.stringify(modulesSizes))
 
       - name: Compare base and head and add comment to PR
+        # Skip build when we’ve built this SHA before
+        if: steps.stats-cache.outputs.cache-hit != 'true'
         uses: actions/github-script@v7.0.1
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
