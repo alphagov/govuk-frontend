@@ -134,8 +134,8 @@
             },
             value: {
               html:
-                bundleSize.bundled + " (bundled) <br>" +
-                bundleSize.minified + " (minified)"
+                bundleSize[0].size + " (bundled) <br>" +
+                bundleSize[1].size + " (minified)"
             }
           }
         ]
@@ -171,8 +171,8 @@
               },
               value: {
                 html:
-                  componentSize.bundled + " (bundled) <br>" +
-                  componentSize.minified + " (minified)"
+                  componentSize[0].size + " (bundled) <br>" +
+                  componentSize[1].size + " (minified)"
               }
             }
           ]
