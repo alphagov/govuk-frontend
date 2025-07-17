@@ -1,6 +1,6 @@
 import { outdent } from 'outdent'
 
-import { isSupported, getFragmentFromUrl, getBreakpoint } from './index.mjs'
+import { isSupported, getBreakpoint } from './index.mjs'
 
 describe('Common JS utilities', () => {
   describe('isSupported', () => {
@@ -24,49 +24,6 @@ describe('Common JS utilities', () => {
       // For example, running `initAll()` in `<head>` without `type="module"`
       // will see support checks run when document.body is still `null`
       expect(isSupported(null)).toBe(false)
-    })
-  })
-
-  describe('getFragmentFromUrl', () => {
-    it.each([
-      {
-        url: 'https://www.gov.uk/#content',
-        fragment: 'content'
-      },
-      {
-        url: 'https://www.gov.uk/example/#content',
-        fragment: 'content'
-      },
-      {
-        url: 'https://www.gov.uk/example/?keywords=123#content',
-        fragment: 'content'
-      },
-      {
-        url: '/#content',
-        fragment: 'content'
-      },
-      {
-        url: '/example/#content',
-        fragment: 'content'
-      },
-      {
-        url: '/?keywords=123#content',
-        fragment: 'content'
-      },
-      {
-        url: '#content',
-        fragment: 'content'
-      },
-      {
-        url: '/',
-        fragment: undefined
-      },
-      {
-        url: '',
-        fragment: undefined
-      }
-    ])("returns '$fragment' for '$url'", ({ url, fragment }) => {
-      expect(getFragmentFromUrl(url)).toBe(fragment)
     })
   })
 
