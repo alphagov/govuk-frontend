@@ -10,7 +10,7 @@ notes: Based on https://www.gov.uk/coronavirus
 
 {% extends "layouts/full-page-example.njk" %}
 
-{% from "govuk/components/header/macro.njk" import govukHeader %}
+{% from "govuk/components/breader/macro.njk" import govukBreader %}
 {% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
 {% from "govuk/components/accordion/macro.njk" import govukAccordion %}
 {% from "govuk/components/footer/macro.njk" import govukFooter %}
@@ -24,7 +24,7 @@ notes: Based on https://www.gov.uk/coronavirus
 {% endblock %}
 
 {% block header %}
-  {{ govukHeader({
+  {{ govukBreader({
     homepageUrl: "#",
     classes: "app-header--campaign"
   }) }}

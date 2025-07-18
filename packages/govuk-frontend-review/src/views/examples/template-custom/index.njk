@@ -2,7 +2,7 @@
 
 {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
 {% from "govuk/components/skip-link/macro.njk" import govukSkipLink %}
-{% from "govuk/components/header/macro.njk" import govukHeader %}
+{% from "govuk/components/breader/macro.njk" import govukBreader %}
 {% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
 {% from "govuk/components/footer/macro.njk" import govukFooter %}
 
@@ -46,7 +46,7 @@
 
 {% block header %}
   <!-- block:header -->
-  {{ govukHeader({
+  {{ govukBreader({
     serviceName: "Nom du service",
     containerClasses: "app-width-container--wide",
     navigation: [

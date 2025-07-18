@@ -23,7 +23,7 @@ scenario: |
 {% set pageTitle = example.title %}
 {% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
 
-{% from "govuk/components/header/macro.njk" import govukHeader %}
+{% from "govuk/components/breader/macro.njk" import govukBreader %}
 
 {% block bodyStart %}
   {{ super() }}
@@ -53,7 +53,7 @@ scenario: |
 {% endblock %}
 
 {% block header %}
-  {{ govukHeader({
+  {{ govukBreader({
     navigationClasses: "govuk-header__navigation--end",
     productName: "Product Name"
   }) }}
