@@ -469,7 +469,14 @@ examples:
               attributes:
                 data-attribute: my-attribute
                 data-attribute-2: my-attribute-2
+
+  # this rebrand example is included in screenshots but hidden in the app because
+  # the interaction with the 'rebrand' feature flag is confusing.
+
   - name: rebrand
     hidden: true
+    screenshot: true
+    pageTemplateOptions:
+      htmlClasses: govuk-template--rebranded
     options:
       rebrand: true
