@@ -400,5 +400,5 @@ function getReviewAppUrl(prNumber, path = '/') {
  */
 
 /**
- * @import {FileSizeWithPercentage} from '@govuk-frontend/stats'
+ * @import {FileSizeWithPercentage} from '@govuk-frontend/lib/files'
  */
