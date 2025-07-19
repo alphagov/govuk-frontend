@@ -141,11 +141,23 @@ This will update the snapshot file. Commit this file separately with a commit me
 
 ## Visual regression testing with [Percy](https://percy.io/)
 
-We generate 2 screenshots for each default example of every component. One example has JavaScript enabled, the other has JavaScript disabled. Screenshots are not taken for all the different variations of each component. This tool is not a replacement for manual testing.
+We generate at least one screenshot per component. Typically this will be the default example but also screenshot additional examples for distinct states of components eg: small radios or checkboxes.
+
+We tell Percy we want to screenshot an example by adding the `screenshot` attribute to an example in a component's yaml fixture. If `screenshot` is either true or has a `variants` attribute containing an array of valid options ('default' or 'No-JS') then Percy will screenshot that example.
 
 The screenshots are public, so you can check them without logging in. A BrowserStack account is needed to approve or reject any changes (if you don't have access, ask your tech lead for help). If you're the reviewer of the pull request code, it's your responsibility to approve or request changes for any visual changes Percy highlights.
 
 When you run the tests locally (for example, using `npm run test:screenshots --workspace @govuk-frontend/review`), Percy commands are ignored and Percy does not generate any screenshots. You will see the following message in your command line output: `[percy] Percy is not running, disabling snapshots`.
+
+### No-JS variants
+
+We take additional versions of some component examples with javascript turned off at the point the screenshot is taken. This is to account for when javascript being on or off impacts how the component looks. For example the accordion without js is just headings with text.
+
+We don't take no-js screenshots for every component with js, only where there's a distinct visual difference. For example the button component's js is just a set of enhancement features and never changes anything in the DOM, so js being on or off isn't going to impact how a button looks.
+
+### Examples
+
+We also screenshot constructed examples in the review app such as an example including all our typography or all our form inputs. This is controlled by yaml files in examples we want to screenshot with the attribute `screenshot: true`
 
 ### PRs from forks
 
