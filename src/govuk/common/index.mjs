@@ -7,24 +7,6 @@
  */
 
 /**
- * Get hash fragment from URL
- *
- * Extract the hash fragment (everything after the hash) from a URL,
- * but not including the hash symbol
- *
- * @private
- * @param {string} url - URL
- * @returns {string | undefined} Fragment from URL, without the hash
- */
-export function getFragmentFromUrl(url) {
-  if (!url.includes('#')) {
-    return undefined
-  }
-
-  return url.split('#').pop()
-}
-
-/**
  * Get GOV.UK Frontend breakpoint value from CSS custom property
  *
  * @private

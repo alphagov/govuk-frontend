@@ -1,4 +1,4 @@
-import { getFragmentFromUrl, setFocus } from '../../common/index.mjs'
+import { setFocus } from '../../common/index.mjs'
 import { Component } from '../../component.mjs'
 import { ElementError } from '../../errors/index.mjs'
 
@@ -23,33 +23,15 @@ export class SkipLink extends Component {
     const hash = this.$root.hash
     const href = this.$root.getAttribute('href') ?? ''
 
-    /** @type {URL | undefined} */
-    let url
-
-    /**
-     * Check for valid link URL
-     *
-     * {@link https://caniuse.com/url}
-     * {@link https://url.spec.whatwg.org}
-     *
-     */
-    try {
-      url = new window.URL(this.$root.href)
-    } catch (error) {
-      throw new ElementError(
-        `Skip link: Target link (\`href="${href}"\`) is invalid`
-      )
-    }
-
     // Return early for external URLs or links to other pages
     if (
-      url.origin !== window.location.origin ||
-      url.pathname !== window.location.pathname
+      this.$root.origin !== window.location.origin ||
+      this.$root.pathname !== window.location.pathname
     ) {
       return
     }
 
-    const linkedElementId = getFragmentFromUrl(hash)
+    const linkedElementId = hash.replace('#', '')
 
     // Check link path matching current page
     if (!linkedElementId) {
