@@ -25,7 +25,6 @@ Projects can point to this branch in their package.json, instead of to the publi
 2. Make any required changes and commit them.
 
 3. Ensure you're running the version of NodeJS matching [`.nvmrc`](/.nvmrc).
-
    - If you use NVM, run `nvm use` to set up the right version
    - If you use another management system (like [`asdf`](https://asdf-vm.com/guide/getting-started.html)), compare the output of `node --version` and install the right one if necessary
 
