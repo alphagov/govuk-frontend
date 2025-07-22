@@ -98,7 +98,7 @@
     "@jest/environment": "^29.5.0",
     "@octokit/plugin-rest-endpoint-methods": "^16.0.0",
     "@octokit/rest": "22.0.0",
-    "@percy/core": "^1.30.11",
+    "@percy/core": "^1.31.1",
     "@types/browser-sync": "^2.29.0",
     "@types/express": "^5.0.2",
     "@types/gulp": "^4.0.17",
