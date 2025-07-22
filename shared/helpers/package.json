@@ -18,7 +18,7 @@
     "@govuk-frontend/config": "*",
     "@govuk-frontend/lib": "*",
     "axe-core": "^4.10.3",
-    "cheerio": "^1.0.0",
+    "cheerio": "^1.1.2",
     "govuk-frontend": "*",
     "jest-axe": "^10.0.0",
     "jest-dev-server": "^11.0.0",
