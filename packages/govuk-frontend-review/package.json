@@ -51,7 +51,7 @@
     "@rollup/plugin-terser": "^0.4.4",
     "autoprefixer": "^10.4.21",
     "browser-sync": "^3.0.4",
-    "gulp": "^5.0.0",
+    "gulp": "^5.0.1",
     "gulp-cli": "^3.0.0",
     "nodemon": "^3.1.10",
     "postcss-pseudo-classes": "^0.4.0",
