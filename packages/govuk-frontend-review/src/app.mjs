@@ -7,8 +7,13 @@ import {
   getComponentNamesFiltered,
   render
 } from '@govuk-frontend/lib/components'
-import { filterPath, getDirectories, hasPath } from '@govuk-frontend/lib/files'
-import { getStats, modulePaths } from '@govuk-frontend/stats'
+import {
+  filterPath,
+  getDirectories,
+  getReadableFileSizes,
+  hasPath
+} from '@govuk-frontend/lib/files'
+import { getModuleFileSizes } from '@govuk-frontend/stats'
 import express from 'express'
 
 import { getFullPageExamples } from './common/lib/files.mjs'
@@ -70,8 +75,9 @@ export default async () => {
   app.use(middleware.featureFlags)
 
   // Add build stats
-  app.locals.stats = Object.fromEntries(
-    await Promise.all(modulePaths.map(getStats))
+  app.locals.stats = Object.groupBy(
+    getReadableFileSizes(await getModuleFileSizes()),
+    ({ path }) => path
   )
 
   // Configure nunjucks

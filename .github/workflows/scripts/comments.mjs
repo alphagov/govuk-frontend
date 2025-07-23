@@ -1,8 +1,7 @@
 import { readFile } from 'node:fs/promises'
-import { basename, join, parse } from 'path'
+import { basename, parse } from 'path'
 
-import { getFileSizes } from '@govuk-frontend/lib/files'
-import { getStats, modulePaths } from '@govuk-frontend/stats'
+import { getReadableFileSizes } from '@govuk-frontend/lib/files'
 import { outdent } from 'outdent'
 
 /**
@@ -90,53 +89,116 @@ export async function commentDiff(
 /**
  * Generates comment for stats
  *
+ * @param {FileSizeWithPercentage[]} fileSizeData
+ * @param {FileSizeWithPercentage[]} modulesData
  * @param {GithubActionContext} githubActionContext
  * @param {number} issueNumber
  * @param {DiffComment} statComment
  */
 export async function commentStats(
+  fileSizeData,
+  modulesData,
   githubActionContext,
   issueNumber,
-  { path, titleText, markerText }
+  { titleText, markerText }
 ) {
   const reviewAppURL = getReviewAppUrl(issueNumber)
+  let bodyText = ''
+  let fileSizeText = ''
+  let modulesText = ''
 
-  const distPath = join(path, 'dist')
-  const packagePath = join(path, 'packages/govuk-frontend/dist/govuk')
+  if (!fileSizeData.length && !modulesData.length) {
+    bodyText = 'No changes to any file sizes!'
+  } else {
+    if (fileSizeData.length) {
+      // File sizes
+      const fileSizeTitle = '### File sizes'
+      // We cast the type to both specify explicitly that getReadableFileSizes
+      // is FileSizeWithPercentage and it's size attribute is a string to appease
+      // typescript when calling renderTable
+      const fileSizeRows =
+        /** @type {(FileSizeWithPercentage & {size: string})[]} */ (
+          getReadableFileSizes(fileSizeData)
+        ).map((fileSize) => Object.values(fileSize))
 
-  // File sizes
-  const fileSizeTitle = '### File sizes'
-  const fileSizeRows = [
-    ...(await getFileSizes(join(distPath, '**/*.{css,js,mjs}'))),
-    ...(await getFileSizes(join(packagePath, '*.{css,js,mjs}')))
-  ]
-
-  const fileSizeHeaders = ['File', 'Size']
-  const fileSizeTable = renderTable(fileSizeHeaders, fileSizeRows)
-  const fileSizeText = [fileSizeTitle, fileSizeTable].join('\n')
-
-  // Module sizes
-  const modulesTitle = '### Modules'
-  const modulesRows = (await Promise.all(modulePaths.map(getStats))).map(
-    ([modulePath, moduleSize]) => {
-      const { base, dir, name } = parse(modulePath)
-
-      const statsPath = `docs/stats/${dir}/${name}.html`
-      const statsURL = new URL(statsPath, reviewAppURL)
-
-      return [`[${base}](${statsURL})`, moduleSize.bundled, moduleSize.minified]
+      const fileSizeHeaders = ['File', 'Size', 'Percentage change']
+      const fileSizeTable = renderTable(fileSizeHeaders, fileSizeRows)
+      fileSizeText = [fileSizeTitle, fileSizeTable].join('\n')
+    } else {
+      fileSizeText = 'No changes to asset file sizes.'
     }
-  )
 
-  const modulesHeaders = ['File', 'Size (bundled)', 'Size (minified)']
-  const modulesTable = renderTable(modulesHeaders, modulesRows)
-  const modulesFooter = `[View stats and visualisations on the review app](${reviewAppURL})`
-  const modulesText = [modulesTitle, modulesTable, modulesFooter].join('\n')
+    if (modulesData.length) {
+      // Module sizes
+      const modulesTitle = '### Modules'
+
+      // Group modules data by path
+      // This could use Object.groupBy, however this will be run within the stats
+      // comment github-script which currently uses it's own node env which is
+      // tied to node v20. Object.groupBy is only available from node 21.
+      // Therefore we use a reduce to replicate Object.groupBy.
+      //
+      // We cast the type to both specify explicitly that getReadableFileSizes
+      // is FileSizeWithPercentage and it's size attribute is a string to appease
+      // typescript when calling renderTable
+      const modulesDataByPath =
+        /** @type {(FileSizeWithPercentage & {size: string})[]} */ (
+          getReadableFileSizes(modulesData)
+        ).reduce((pathData, module) => {
+          if (!pathData[module.path]) {
+            pathData[module.path] = [module]
+          } else {
+            pathData[module.path] = [...pathData[module.path], module]
+          }
+
+          return pathData
+        }, /** @type {{[index: string]: (FileSizeWithPercentage & {size: string})[]}} */ ({}))
+
+      // ...then iterate through it to get table rows
+      const modulesRows = Object.keys(modulesDataByPath).map((path) => {
+        const { base, dir, name } = parse(path)
+        const statsPath = `docs/stats/${dir}/${name}.html`
+        const statsURL = new URL(statsPath, reviewAppURL)
+        const pathData = modulesDataByPath[path]
+
+        // Check that there isn't a mismatch between Object.keys and the path
+        // group and that they could find the grouped object by type, just in case
+        // (also to appease JSDoc)
+        const bundled =
+          pathData && pathData.find((bundle) => bundle.type === 'bundled')
+        const minified =
+          pathData && pathData.find((bundle) => bundle.type === 'minified')
+
+        return [
+          `[${base}](${statsURL})`,
+          bundled ? bundled.size : 'Could not find bundle size',
+          bundled ? bundled.percentage : 'Could not find bundle percentage',
+          minified ? minified.size : 'Could not find bundle size',
+          minified ? minified.percentage : 'Could not find bundle percentage'
+        ]
+      })
+
+      const modulesHeaders = [
+        'File',
+        'Size (bundled)',
+        'Percentage change (bundled)',
+        'Size (minified)',
+        'Percentage change (bundled)'
+      ]
+      const modulesTable = renderTable(modulesHeaders, modulesRows)
+      const modulesFooter = `[View stats and visualisations on the review app](${reviewAppURL})`
+      modulesText = [modulesTitle, modulesTable, modulesFooter].join('\n')
+    } else {
+      modulesText = 'No changes to module sizes.'
+    }
+
+    bodyText = [fileSizeText, modulesText].join('\n')
+  }
 
   await comment(githubActionContext, issueNumber, {
     markerText,
     titleText,
-    bodyText: [fileSizeText, modulesText].join('\n')
+    bodyText
   })
 }
 
@@ -201,7 +263,7 @@ function renderCommentFooter({ context, commit }) {
  * Renders a GitHub Markdown table.
  *
  * @param {string[]} headers - An array containing the table headers.
- * @param {string[][]} rows - An array of arrays containing the row data for the table.
+ * @param {(string)[][]} rows - An array of arrays containing the row data for the table.
  * @returns {string} The GitHub Markdown table as a string.
  */
 function renderTable(headers, rows) {
@@ -337,4 +399,8 @@ function getReviewAppUrl(prNumber, path = '/') {
  * @typedef {RestEndpointMethodTypes["issues"]} IssuesEndpoint
  * @typedef {IssuesEndpoint["listComments"]["parameters"]} IssueCommentsListParams
  * @typedef {IssuesEndpoint["getComment"]["response"]["data"]} IssueCommentData
+ */
+
+/**
+ * @import {FileSizeWithPercentage} from '@govuk-frontend/lib/files'
  */

@@ -66,7 +66,7 @@ async function getDirectories(directoryPath) {
  *
  * @param {string} directoryPath - Minimatch pattern to directory
  * @param {import('glob').GlobOptionsWithFileTypesUnset} [options] - Glob options
- * @returns {Promise<[string, string][]>} - File entries with name and size
+ * @returns {Promise<FileSize[]>} - File entries with name and size
  */
 async function getFileSizes(directoryPath, options = {}) {
   const filesForAnalysis = await getListing(directoryPath, options)
@@ -77,11 +77,14 @@ async function getFileSizes(directoryPath, options = {}) {
  * Get file size entry
  *
  * @param {string} filePath - File path
- * @returns {Promise<[string, string]>} - File entry with name and size
+ * @returns {Promise<FileSize>} - File entry with name and size
  */
 async function getFileSize(filePath) {
   const { size } = await stat(filePath)
-  return [filePath, `${filesize(size, { base: 2 })}`]
+  return {
+    path: filePath,
+    size
+  }
 }
 
 /**
@@ -120,13 +123,104 @@ async function getYaml(configPath) {
   return yaml.load(await readFile(configPath, 'utf8'), { json: true })
 }
 
+/**
+ * Compare arrays of FileSize types from the base and the head branch and add a
+ * percentage difference to the object.
+ *
+ * If there's no percentage difference, return a blank row.
+ *
+ * If a file is present in head or base but not the other, mark it as a new file
+ * or a deletion.
+ *
+ * @param {(FileSize & {size: number})[]} headFiles
+ * @param {(FileSize & {size: number})[]} baseFiles
+ * @returns {(FileSizeWithPercentage|null)[]} FileSize array with a percentage attribute, potentially reduced, or an empty array
+ */
+function getFileSizeComparison(headFiles, baseFiles) {
+  // Get initial percentage differences and check for deletions
+  const comparedFileSizes = baseFiles.map((file) => {
+    const headFile = findFileSizeRow(headFiles, file)
+    const percentage = headFile
+      ? `${Math.round((headFile.size / file.size) * 100 - 100)}%`
+      : 'Deleted'
+
+    // Return null if there's no percentage difference
+    if (percentage === '0%') {
+      return null
+    }
+
+    return {
+      ...file,
+      percentage
+    }
+  })
+
+  // Look for additions
+  headFiles.forEach((file) => {
+    if (!findFileSizeRow(baseFiles, file)) {
+      comparedFileSizes.push({
+        ...file,
+        percentage: 'New file'
+      })
+    }
+  })
+
+  // remove null rows before returning
+  return comparedFileSizes.filter((file) => file)
+}
+
+/**
+ * Private function used by getFileSizeComparison to find the same FileSize
+ * between two arrays of FileSizes.
+ *
+ * @param {(FileSize & {size: number})[]} fileSizes
+ * @param {(FileSize & {size: number})} searchFileSize
+ * @returns {(FileSize & {size: number})|undefined} The located FileSize in the compare array, or undefined if not present
+ */
+function findFileSizeRow(fileSizes, searchFileSize) {
+  return fileSizes.find((fileSize) => {
+    if (fileSize.type) {
+      return (
+        fileSize.path === searchFileSize.path &&
+        fileSize.type === searchFileSize.type
+      )
+    }
+
+    return fileSize.path === searchFileSize.path
+  })
+}
+
+/**
+ * Convert the number values of the size param on FileSize types to readable file
+ * size strings with filesize.
+ *
+ * @param {(FileSize|FileSizeWithPercentage)[]} filesizeData
+ * @returns {(FileSize|FileSizeWithPercentage)[]} FileSize array with readable file size strings on size attributes
+ */
+function getReadableFileSizes(filesizeData) {
+  return filesizeData.map((file) => ({
+    ...file,
+    size: `${filesize(file.size, { base: 2 })}`
+  }))
+}
+
 module.exports = {
   filterPath,
   hasPath,
   getDirectories,
   getFileSizes,
   getFileSize,
+  getFileSizeComparison,
   getListing,
+  getReadableFileSizes,
   getYaml,
   mapPathTo
 }
+
+/**
+ * @typedef {object} FileSize
+ * @property {string} path - File path
+ * @property {number|string} size - File size, as a raw number or human-readable string
+ * @property {('bundled'|'minified')} [type] - Type of file size. Only used by module sizes
+ * @typedef {FileSize & {percentage: string}} FileSizeWithPercentage - The FileSize type with an extra attribute representing increase or decrease in percentage
+ */
