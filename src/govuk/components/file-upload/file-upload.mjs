@@ -68,7 +68,6 @@ export class FileUpload extends ConfigurableComponent {
     }
 
     this.$input = /** @type {HTMLFileInputElement} */ ($input)
-    this.$input.setAttribute('hidden', 'true')
 
     if (!this.$input.id) {
       throw new ElementError({
@@ -95,6 +94,9 @@ export class FileUpload extends ConfigurableComponent {
     // to the new button replacement element
     // so that focus will work in the error summary
     this.$input.id = `${this.id}-input`
+
+    // Hide the native input
+    this.$input.setAttribute('hidden', 'true')
 
     // Create the file selection button
     const $button = document.createElement('button')
