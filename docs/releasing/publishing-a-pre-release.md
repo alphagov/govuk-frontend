@@ -22,21 +22,18 @@ Developers should pair on pre-releases. When working remotely, it can be useful 
 1. Check out the **main** branch and pull the latest changes.
 
 2. Ensure you're running the version of NodeJS matching [`.nvmrc`](/.nvmrc).
-
    - If you use NVM, run `nvm use` to set up the right version
    - If you use another management system (like [`asdf`](https://asdf-vm.com/guide/getting-started.html)), compare the output of `node --version` and install the right one if necessary
 
 3. Run `npm ci` to make sure you have the exact dependencies installed.
 
 4. Determine the `< PRE_RELEASE_IDENTIFIER >`
-
    - Use `internal` for internal pre-releases
    - Use `beta` for beta pre-releases
 
 5. Determine the `< PRE_RELEASE_VERSION_TYPE >`
 
    As examples with a `beta` pre-release identifier:
-
    - Use `premajor` to bump from `v4.7.0` to `v5.0.0-beta.0`
    - Use `preminor` to bump from `v4.7.0` to `v4.8.0-beta.0`
    - Use `prepatch` to bump from `v4.7.0` to `v4.7.1-beta.0`
@@ -44,7 +41,6 @@ Developers should pair on pre-releases. When working remotely, it can be useful 
    See the [versioning documentation](/docs/contributing/versioning.md) for more information.
 
    Alternatively, when publishing an update to an existing pre-release:
-
    - Use `prerelease` to bump from `v5.0.0-beta.0` to `v5.0.0-beta.1`
    - Use `prerelease` to move from `v5.0.0-internal.X` to `v5.0.0-beta.0`.
      Note that this resets the final number to `.0`, so prefer setting the version manually if a pre-release of the kind you're running has already gone through.
@@ -66,13 +62,11 @@ Developers should pair on pre-releases. When working remotely, it can be useful 
    ```
 
 8. If you're publishing a beta pre-release, update the [`CHANGELOG.md`](/CHANGELOG.md) by:
-
    - changing the 'Unreleased' heading to the new version number and release type. For example, '5.0.0-beta.0 (Pre-release)'
    - adding a new 'Unreleased' heading above the new version number and release type, so users will know where to add PRs to the changelog
    - saving your changes
 
 9. Run `npm run build-release` to:
-
    - build GOV.UK Frontend into [the package's `/dist`](/packages/govuk-frontend/dist) and [root `/dist`](/dist) directories
    - commit the changes
    - push a branch to GitHub
@@ -98,7 +92,6 @@ Developers should pair on pre-releases. When working remotely, it can be useful 
 2. Sign in to npm (`npm login`), using the credentials for the govuk-patterns-and-tools npm user from Bitwarden.
 
 3. Run `npm run publish-prerelease`, which will prompt you to enter an NPM tag. Set the npm tag corresponding to the kind of release you're publishing:
-
    - `internal` for internal pre-releases
    - `next` for beta pre-releases
 
