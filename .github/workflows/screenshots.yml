@@ -55,11 +55,11 @@ jobs:
           script: |
             console.log('Checking if Percy needs to run.')
 
-            const changedFiles = JSON.parse('${{ steps.files.outputs.changed_files }}')
             if ('${{ github.event_name }}' === 'workflow_dispatch') {
               console.log('workflow_dispatch - running Percy')
               core.setOutput('relevant_changes', 'true')
             } else {
+              const changedFiles = JSON.parse('${{ steps.files.outputs.changed_files }}')
               const { checkRelevantChanges } = await import('${{ github.workspace }}/.github/workflows/scripts/check-percy-files.mjs')
 
               const relevantChanges = checkRelevantChanges(changedFiles)
