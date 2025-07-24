@@ -9,7 +9,7 @@ import { I18n } from '../../i18n.mjs'
  * their headers. Sections can be expanded or collapsed individually by clicking
  * their headers. A "Show all sections" button is also added to the top of the
  * accordion, which switches to "Hide all sections" when all the sections are
- * expanded.
+ * expanded. NO VISUAL CHANGE.
  *
  * The state of each section is saved to the DOM via the `aria-expanded`
  * attribute, which also provides accessibility.
