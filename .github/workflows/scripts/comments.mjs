@@ -108,7 +108,7 @@ export async function commentStats(
   let modulesText = ''
 
   if (!fileSizeData.length && !modulesData.length) {
-    bodyText = 'No changes to any file sizes!'
+    bodyText = 'No changes to any distributed file sizes!'
   } else {
     if (fileSizeData.length) {
       // File sizes
