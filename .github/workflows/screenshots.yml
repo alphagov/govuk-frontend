@@ -28,11 +28,52 @@ jobs:
 
       - name: Checkout
         uses: actions/checkout@v4.2.2
+        with:
+          fetch-depth: 0
+
+      - name: Get changed files
+        id: files
+        if: github.event_name != 'workflow_dispatch'
+        run: |
+          BASE_REF="${{ github.base_ref || 'main' }}"
+          echo "Comparing with base branch: $BASE_REF"
+
+          git fetch origin $BASE_REF:$BASE_REF 2>/dev/null || true
+          CHANGED_FILES=$(git diff --name-only origin/$BASE_REF..HEAD)
+
+          echo "Changed files:"
+          echo "$CHANGED_FILES"
+
+          CHANGED_FILES_JSON=$(echo "$CHANGED_FILES" | jq -R -s -c 'split("\n") | map(select(. != ""))')
+          echo "changed_files=$CHANGED_FILES_JSON" >> $GITHUB_OUTPUT
+
+      - name: Check for relevant changes
+        id: changes
+        uses: actions/github-script@v7.0.1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            console.log('Checking if Percy needs to run.')
+
+            const changedFiles = JSON.parse('${{ steps.files.outputs.changed_files }}')
+            if ('${{ github.event_name }}' === 'workflow_dispatch') {
+              console.log('workflow_dispatch - running Percy')
+              core.setOutput('relevant_changes', 'true')
+            } else {
+              const { checkRelevantChanges } = await import('${{ github.workspace }}/.github/workflows/scripts/check-percy-files.mjs')
+
+              const relevantChanges = checkRelevantChanges(changedFiles)
+              core.setOutput('relevant_changes', relevantChanges)
+
+              console.log('Relevant changes detected:', relevantChanges)
+            }
 
       - name: Install dependencies
+        if: steps.changes.outputs.relevant_changes == 'true'
         uses: ./.github/workflows/actions/install-node
 
       - name: Cache browser download
+        if: steps.changes.outputs.relevant_changes == 'true'
         uses: actions/cache@v4.2.3
         with:
           # Use faster GNU tar for all runners
@@ -41,10 +82,13 @@ jobs:
           path: .cache/puppeteer
 
       - name: Build
+        if: steps.changes.outputs.relevant_changes == 'true'
         uses: ./.github/workflows/actions/build
 
       - name: Start review app
+        if: steps.changes.outputs.relevant_changes == 'true'
         run: npm start --workspace @govuk-frontend/review &
 
       - name: Send screenshots to Percy
+        if: steps.changes.outputs.relevant_changes == 'true'
         run: npx --workspace @govuk-frontend/review percy exec -- npm run test:screenshots
