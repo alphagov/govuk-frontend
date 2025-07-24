@@ -4,6 +4,12 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 ## Unreleased
 
+### Fixes
+
+We've made fixes to GOV.UK Frontend in the following pull requests:
+
+- [#6138: Fix file upload being invisible when using the 'JavaScript enhanced' version with an empty label](https://github.com/alphagov/govuk-frontend/pull/6138) – thanks to @JoPintoPaul for reporting this issue
+
 ## v5.11.1 (Fix release)
 
 ### Fixes

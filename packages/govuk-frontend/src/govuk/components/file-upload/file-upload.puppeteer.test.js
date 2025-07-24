@@ -720,6 +720,9 @@ describe('/components/file-upload', () => {
                   'govuk-file-upload: Field label (`<label for=file-upload-1>`) not found'
               }
             })
+
+            // Expect the input to still be visible
+            await page.waitForSelector('input', { visible: true, timeout: 100 })
           })
         })
       })
