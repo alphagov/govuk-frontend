@@ -58,6 +58,7 @@ describe('initAll', () => {
 
       initAll()
 
+      // eslint-disable-next-line import/namespace
       expect(GOVUKFrontend[className]).toHaveBeenCalledWith(
         document.querySelector(`[data-module="govuk-${componentName}"]`)
       )
@@ -77,6 +78,7 @@ describe('initAll', () => {
         [configName]: { __test: true }
       })
 
+      // eslint-disable-next-line import/namespace
       expect(GOVUKFrontend[className]).toHaveBeenCalledWith(
         document.querySelector(`[data-module="govuk-${componentName}"]`),
         { __test: true }
