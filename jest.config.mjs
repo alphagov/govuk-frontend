@@ -1,5 +1,4 @@
-import { packageResolveToPath } from '@govuk-frontend/lib/names'
-import { replacePathSepForRegex } from 'jest-regex-util'
+import path from 'path'
 
 import jestPuppeteerConfig from './jest-puppeteer.config.js'
 
@@ -36,25 +35,21 @@ const config = {
         rootMode: 'upward'
       }
     ],
-
-    // Transform some `*.js` to compatible CommonJS
-    ...Object.fromEntries(
-      ['slash'].map((packagePath) => [
-        replacePathSepForRegex(`${packageResolveToPath(packagePath)}$`),
-        [
-          'babel-jest',
-          {
-            rootMode: 'upward'
-          }
-        ]
-      ])
-    )
+    // Transform newer Slash js files to compatible CommonJS
+    [path
+      .normalize('packages/govuk-frontend/node_modules/slash/')
+      .replace(/\\/g, '\\\\')]: [
+      'babel-jest',
+      {
+        rootMode: 'upward'
+      }
+    ]
   },
 
   // Enable Babel transforms for ESM-only node_modules
   // See: https://jestjs.io/docs/ecmascript-modules
   transformIgnorePatterns: [
-    `<rootDir>/node_modules/(?!${['slash'].join('|')}/)`
+    `<rootDir>/packages/govuk-frontend/node_modules/(?!${['slash'].join('|')}/)`
   ]
 }
 
