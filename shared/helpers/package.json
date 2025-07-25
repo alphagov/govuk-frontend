@@ -14,7 +14,7 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@axe-core/puppeteer": "^4.10.1",
+    "@axe-core/puppeteer": "^4.10.2",
     "@govuk-frontend/config": "*",
     "@govuk-frontend/lib": "*",
     "axe-core": "^4.10.3",
@@ -22,12 +22,12 @@
     "govuk-frontend": "*",
     "jest-axe": "^10.0.0",
     "jest-dev-server": "^11.0.0",
-    "jest-environment-jsdom": "^29.7.0",
+    "jest-environment-jsdom": "^30.0.5",
     "jest-environment-node-single-context": "^29.4.0",
     "jest-environment-puppeteer": "^11.0.0",
     "mime-types": "^3.0.1",
     "outdent": "^0.8.0",
-    "puppeteer": "^24.9.0",
+    "puppeteer": "^24.15.0",
     "sass-embedded": "^1.88.0",
     "slug": "^9.1.0"
   },

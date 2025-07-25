@@ -26,15 +26,6 @@ const config = {
     '<rootDir>/packages/govuk-frontend/dist/'
   ],
 
-  /**
-   * Default single context Node.js environment
-   * Supports Node.js globals for Dart Sass tests
-   *
-   * {@link https://github.com/sass/dart-sass#using-sass-with-jest}
-   * {@link https://github.com/facebook/jest/issues/2549}
-   */
-  testEnvironment: 'jest-environment-node-single-context',
-
   // Enable Babel transforms until Jest supports ESM and `import()`
   // See: https://jestjs.io/docs/ecmascript-modules
   transform: {
