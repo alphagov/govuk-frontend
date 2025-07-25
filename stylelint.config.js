@@ -35,10 +35,10 @@ module.exports = {
         // Allow markdown `*.md` Sass bad examples
         'scss/at-if-no-null': null,
         'scss/at-import-no-partial-leading-underscore': null,
-        'scss/at-import-partial-extension': null,
         'scss/at-mixin-pattern': null,
         'scss/at-rule-conditional-no-parentheses': null,
         'scss/load-no-partial-leading-underscore': null,
+        'scss/load-partial-extension': null,
         'scss/operator-no-unspaced': null
       }
     },
