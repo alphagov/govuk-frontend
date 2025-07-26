@@ -7,7 +7,7 @@
 /// @type Colour
 /// @access public
 
-$govuk-button-background-colour: govuk-colour("green") !default;
+$govuk-button-background-colour: govuk-colour("blue") !default;
 
 /// Button component text colour
 ///
@@ -60,7 +60,7 @@ $govuk-inverse-button-text-colour: $govuk-brand-colour !default;
   $button-shadow-size: $govuk-border-width-form-element;
 
   .govuk-button {
-    @include govuk-font($size: 19, $line-height: 19px);
+    @include govuk-font($size: 24, $line-height: 26px);
 
     box-sizing: border-box;
     display: inline-block;
