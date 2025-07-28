@@ -3,7 +3,7 @@
   "description": "Boilerplate to verify that GOV.UK Frontend works OK with main bundlers",
   "engines": {
     "node": "^22.11.0",
-    "npm": "^10.1.0"
+    "npm": "^10.5.0"
   },
   "private": true,
   "scripts": {
