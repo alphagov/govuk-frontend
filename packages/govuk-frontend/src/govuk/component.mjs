@@ -38,10 +38,10 @@ export class Component {
    * Constructs a new component, validating that GOV.UK Frontend is supported
    *
    * @internal
-   * @param {Element | null} [$root] - HTML element to use for component
+   * @param {Element | null} $root - HTML element to use for component
    */
   constructor($root) {
-    const childConstructor = /** @type {ChildClassConstructor} */ (
+    const ChildConstructor = /** @type {ComponentConstructor} */ (
       this.constructor
     )
 
@@ -50,28 +50,28 @@ export class Component {
     // While we trust users to do this correctly, we do a little check to provide them
     // a helpful error message.
     //
-    // After this, we'll be sure that `childConstructor` has a `moduleName`
-    // as expected of the `ChildClassConstructor` we've cast `this.constructor` to.
-    if (typeof childConstructor.moduleName !== 'string') {
+    // After this, we'll be sure that `ChildConstructor` has a `moduleName`
+    // as expected of the `ComponentConstructor` we've cast `this.constructor` to.
+    if (typeof ChildConstructor.moduleName !== 'string') {
       throw new InitError(`\`moduleName\` not defined in component`)
     }
 
-    if (!($root instanceof childConstructor.elementType)) {
+    if (!($root instanceof ChildConstructor.elementType)) {
       throw new ElementError({
         element: $root,
-        component: childConstructor,
+        component: ChildConstructor,
         identifier: 'Root element (`$root`)',
-        expectedType: childConstructor.elementType.name
+        expectedType: ChildConstructor.elementType.name
       })
     } else {
       this._$root = /** @type {RootElementType} */ ($root)
     }
 
-    childConstructor.checkSupport()
+    ChildConstructor.checkSupport()
 
     this.checkInitialised()
 
-    const moduleName = childConstructor.moduleName
+    const moduleName = ChildConstructor.moduleName
 
     this.$root.setAttribute(`data-${moduleName}-init`, '')
   }
@@ -83,11 +83,14 @@ export class Component {
    * @throws {InitError} when component is already initialised
    */
   checkInitialised() {
-    const constructor = /** @type {ChildClassConstructor} */ (this.constructor)
-    const moduleName = constructor.moduleName
+    const ChildConstructor = /** @type {ComponentConstructor} */ (
+      this.constructor
+    )
+
+    const moduleName = ChildConstructor.moduleName
 
     if (moduleName && isInitialised(this.$root, moduleName)) {
-      throw new InitError(constructor)
+      throw new InitError(ChildConstructor)
     }
   }
 
@@ -104,10 +107,13 @@ export class Component {
 }
 
 /**
- * @typedef ChildClass
- * @property {string} moduleName - The module name that'll be looked for in the DOM when initialising the component
+ * Component constructor
+ *
+ * @template {typeof Component | typeof ConfigurableComponent} [ChildConstructor=typeof Component]
+ * @typedef {CompatibleClass & ChildConstructor} ComponentConstructor
  */
 
 /**
- * @typedef {typeof Component & ChildClass} ChildClassConstructor
+ * @import { ConfigurableComponent } from './common/configuration.mjs'
+ * @import { CompatibleClass } from './init.mjs'
  */

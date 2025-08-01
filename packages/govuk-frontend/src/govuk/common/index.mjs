@@ -120,7 +120,7 @@ function isArray(option) {
  * Check for an object
  *
  * @internal
- * @template {Partial<Record<keyof ObjectType, unknown>>} [ObjectType=ObjectNested]
+ * @template {Partial<Record<keyof ObjectType, unknown>>} ObjectType
  * @param {unknown | ObjectType} option - Option to check
  * @returns {option is ObjectType} Whether the option is an object
  */
@@ -129,10 +129,22 @@ export function isObject(option) {
 }
 
 /**
+ * Check for valid scope
+ *
+ * @internal
+ * @template {Element | Document} ScopeType
+ * @param {unknown | ScopeType} $scope - Scope of the document to search within
+ * @returns {$scope is ScopeType} Whether the scope can be queried
+ */
+export function isScope($scope) {
+  return !!$scope && ($scope instanceof Element || $scope instanceof Document)
+}
+
+/**
  * Format error message
  *
  * @internal
- * @param {ComponentWithModuleName} Component - Component that threw the error
+ * @param {CompatibleClass} Component - Component that threw the error
  * @param {string} message - Error message
  * @returns {string} - Formatted error message
  */
@@ -140,19 +152,6 @@ export function formatErrorMessage(Component, message) {
   return `${Component.moduleName}: ${message}`
 }
 
-/* eslint-disable jsdoc/valid-types --
- * `{new(...args: any[] ): object}` is not recognised as valid
- * https://github.com/gajus/eslint-plugin-jsdoc/issues/145#issuecomment-1308722878
- * https://github.com/jsdoc-type-pratt-parser/jsdoc-type-pratt-parser/issues/131
- **/
-
 /**
- * @typedef ComponentWithModuleName
- * @property {string} moduleName - Name of the component
- */
-
-/* eslint-enable jsdoc/valid-types */
-
-/**
- * @import { ObjectNested } from './configuration.mjs'
+ * @import { CompatibleClass } from '../init.mjs'
  */
