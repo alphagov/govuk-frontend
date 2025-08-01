@@ -26,7 +26,7 @@
     "@govuk-frontend/config": "*",
     "@govuk-frontend/lib": "*",
     "@govuk-frontend/stats": "*",
-    "@prettier/sync": "^0.5.5",
+    "@prettier/sync": "^0.6.1",
     "cookie-parser": "^1.4.7",
     "express": "^5.1.0",
     "express-validator": "^7.2.1",
