@@ -44,6 +44,11 @@ describe('initAll', () => {
     'password-input'
   ]
 
+  beforeEach(() => {
+    // Silence warnings in test output, and allow us to 'expect' them
+    jest.spyOn(console, 'log').mockImplementation()
+  })
+
   afterEach(() => {
     document.body.innerHTML = ''
     document.body.className = ''
@@ -85,11 +90,6 @@ describe('initAll', () => {
   )
 
   describe('govuk-frontend-supported not present', () => {
-    beforeAll(() => {
-      // Silence warnings in test output, and allow us to 'expect' them
-      jest.spyOn(global.console, 'log').mockImplementation()
-    })
-
     it('returns early', () => {
       document.body.innerHTML = '<div data-module="govuk-accordion"></div>'
 
@@ -102,7 +102,7 @@ describe('initAll', () => {
       initAll()
 
       // Only validate the message as it's the important part for the user
-      expect(global.console.log).toHaveBeenCalledWith(
+      expect(console.log).toHaveBeenCalledWith(
         expect.objectContaining({
           message: 'GOV.UK Frontend is not supported in this browser'
         })
@@ -119,7 +119,7 @@ describe('initAll', () => {
         onError: errorCallback
       })
 
-      expect(global.console.log).not.toHaveBeenCalled()
+      expect(console.log).not.toHaveBeenCalled()
 
       expect(errorCallback).toHaveBeenCalledWith(
         expect.objectContaining({
@@ -167,15 +167,12 @@ describe('initAll', () => {
       throw new Error('Error thrown from accordion')
     })
 
-    // Silence warnings in test output, and allow us to 'expect' them
-    jest.spyOn(global.console, 'log').mockImplementation()
-
     expect(() => {
       initAll()
     }).not.toThrow()
 
-    expect(global.console.log).toHaveBeenCalledWith(expect.any(Error))
-    expect(global.console.log).toHaveBeenCalledWith(
+    expect(console.log).toHaveBeenCalledWith(expect.any(Error))
+    expect(console.log).toHaveBeenCalledWith(
       expect.objectContaining({
         message: 'Error thrown from accordion'
       })
@@ -203,7 +200,7 @@ describe('initAll', () => {
       }
     })
 
-    expect(global.console.log).not.toHaveBeenCalled()
+    expect(console.log).not.toHaveBeenCalled()
 
     expect(errorCallback).toHaveBeenCalledWith(
       expect.objectContaining({
@@ -223,6 +220,9 @@ describe('initAll', () => {
 describe('createAll', () => {
   beforeEach(() => {
     document.body.classList.add('govuk-frontend-supported')
+
+    // Silence warnings in test output, and allow us to 'expect' them
+    jest.spyOn(console, 'log').mockImplementation()
   })
 
   afterEach(() => {
@@ -265,7 +265,7 @@ describe('createAll', () => {
 
     const result = createAll(MockComponent)
 
-    expect(global.console.log).toHaveBeenCalledWith(
+    expect(console.log).toHaveBeenCalledWith(
       expect.objectContaining({
         message: 'GOV.UK Frontend is not supported in this browser'
       })
@@ -287,7 +287,7 @@ describe('createAll', () => {
       )
     }).not.toThrow()
 
-    expect(global.console.log).not.toHaveBeenCalled()
+    expect(console.log).not.toHaveBeenCalled()
 
     expect(errorCallback).toHaveBeenCalledWith(
       expect.objectContaining({
@@ -318,9 +318,6 @@ describe('createAll', () => {
     componentRoot.setAttribute('data-module', 'mock-component')
     document.body.appendChild(componentRoot)
 
-    // Silence warnings in test output, and allow us to 'expect' them
-    jest.spyOn(global.console, 'log').mockImplementation()
-
     const checkSupportMock = jest.fn(() => {
       throw Error('Mock error')
     })
@@ -334,7 +331,7 @@ describe('createAll', () => {
     const result = createAll(MockComponentWithCheckSupport)
     expect(checkSupportMock).toHaveBeenCalled()
     expect(result).toStrictEqual([])
-    expect(global.console.log).toHaveBeenCalledWith(
+    expect(console.log).toHaveBeenCalledWith(
       expect.objectContaining({
         message: 'Mock error'
       })
@@ -456,9 +453,6 @@ describe('createAll', () => {
         console.log(context)
       })
 
-      // Silence warnings in test output, and allow us to 'expect' them
-      jest.spyOn(global.console, 'log').mockImplementation()
-
       expect(() => {
         createAll(
           MockComponentThatErrors,
@@ -469,8 +463,8 @@ describe('createAll', () => {
 
       expect(errorCallback).toHaveBeenCalled()
 
-      expect(global.console.log).toHaveBeenCalledWith(expect.any(Error))
-      expect(global.console.log).toHaveBeenCalledWith(
+      expect(console.log).toHaveBeenCalledWith(expect.any(Error))
+      expect(console.log).toHaveBeenCalledWith(
         expect.objectContaining({
           component: MockComponentThatErrors,
           config: { attribute: 'random' },
@@ -487,9 +481,6 @@ describe('createAll', () => {
         console.log(context)
       })
 
-      // Silence warnings in test output, and allow us to 'expect' them
-      jest.spyOn(global.console, 'log').mockImplementation()
-
       expect(() => {
         createAll(
           MockComponentThatErrors,
@@ -500,8 +491,8 @@ describe('createAll', () => {
 
       expect(errorCallback).toHaveBeenCalled()
 
-      expect(global.console.log).toHaveBeenCalledWith(expect.any(Error))
-      expect(global.console.log).toHaveBeenCalledWith(
+      expect(console.log).toHaveBeenCalledWith(expect.any(Error))
+      expect(console.log).toHaveBeenCalledWith(
         expect.objectContaining({
           component: MockComponentThatErrors,
           config: { attribute: 'random' },
@@ -513,15 +504,12 @@ describe('createAll', () => {
     it('catches errors thrown by components and logs them to the console', () => {
       document.body.innerHTML = `<div data-module="mock-component" data-boom></div>`
 
-      // Silence warnings in test output, and allow us to 'expect' them
-      jest.spyOn(global.console, 'log').mockImplementation()
-
       expect(() => {
         createAll(MockComponentThatErrors)
       }).not.toThrow()
 
-      expect(global.console.log).toHaveBeenCalledWith(expect.any(Error))
-      expect(global.console.log).toHaveBeenCalledWith(
+      expect(console.log).toHaveBeenCalledWith(expect.any(Error))
+      expect(console.log).toHaveBeenCalledWith(
         expect.objectContaining({
           message: 'Error thrown from constructor'
         })
