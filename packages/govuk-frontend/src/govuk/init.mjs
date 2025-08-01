@@ -86,10 +86,10 @@ function initAll(config) {
  */
 function createAll(Component, config, createAllOptions) {
   let /** @type {Element | Document} */ $scope = document
-  let /** @type {OnErrorCallback<Component> | undefined} */ onError
+  let /** @type {OnErrorCallback<ComponentClass> | undefined} */ onError
 
   if (typeof createAllOptions === 'object') {
-    createAllOptions = /** @type {CreateAllOptions<Component>} */ (
+    createAllOptions = /** @type {CreateAllOptions<ComponentClass>} */ (
       // eslint-disable-next-line no-self-assign
       createAllOptions
     )
