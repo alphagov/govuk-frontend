@@ -1,3 +1,9 @@
+@import "../../helpers/spacing";
+@import "../../helpers/typography";
+@import "../../settings/colours-applied";
+@import "../../settings/measurements";
+@import "../../tools/exports";
+
 @include govuk-exports("govuk/component/inset-text") {
   .govuk-inset-text {
     @include govuk-font($size: 19);
