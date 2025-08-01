@@ -157,7 +157,7 @@ function createAll(Component, config, createAllOptions) {
         return null
       }
     })
-    .filter(Boolean) // Exclude components that errored
+    .filter((instance) => !!instance) // Exclude components that errored
 }
 
 export { initAll, createAll }
