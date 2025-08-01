@@ -4,6 +4,7 @@ import {
 } from '@govuk-frontend/lib/names'
 
 import * as GOVUKFrontend from './all.mjs'
+import { ConfigurableComponent } from './common/configuration.mjs'
 import { Component } from './component.mjs'
 import { ElementError } from './errors/index.mjs'
 import { initAll, createAll } from './init.mjs'
@@ -158,7 +159,8 @@ describe('initAll', () => {
     // Expect to have been called exactly once with the accordion in .my-scope
     expect(GOVUKFrontend.Accordion).toHaveBeenCalledTimes(1)
     expect(GOVUKFrontend.Accordion).toHaveBeenCalledWith(
-      document.querySelector('.my-scope [data-module="govuk-accordion"]')
+      document.querySelector('.my-scope [data-module="govuk-accordion"]'),
+      undefined
     )
   })
 
@@ -275,6 +277,34 @@ describe('createAll', () => {
     static moduleName = 'mock-component'
   }
 
+  /**
+   * @augments ConfigurableComponent<MockConfig>
+   */
+  class MockConfigurableComponent extends ConfigurableComponent {
+    constructor($root, config) {
+      super($root, config)
+      this.args = [$root, config]
+    }
+
+    static moduleName = 'mock-component'
+
+    /**
+     * @satisfies {Schema<MockConfig>}
+     */
+    static schema = {
+      properties: {
+        __test: { type: 'boolean' }
+      }
+    }
+
+    /**
+     * @satisfies {MockConfig}
+     */
+    static defaults = {
+      __test: false
+    }
+  }
+
   it('initialises a component, passing the component root', () => {
     const componentRoot = document.createElement('div')
     componentRoot.setAttribute('data-module', 'mock-component')
@@ -314,8 +344,8 @@ describe('createAll', () => {
     const errorCallback = jest.fn((_error, _context) => {})
 
     const result = createAll(
-      MockComponent,
-      { attribute: 'random' },
+      MockConfigurableComponent,
+      { __test: true },
       { onError: errorCallback }
     )
 
@@ -327,8 +357,8 @@ describe('createAll', () => {
         message: 'GOV.UK Frontend is not supported in this browser'
       }),
       expect.objectContaining({
-        component: MockComponent,
-        config: { attribute: 'random' }
+        component: MockConfigurableComponent,
+        config: { __test: true }
       })
     )
 
@@ -408,11 +438,11 @@ describe('createAll', () => {
       componentRoot.setAttribute('data-module', 'mock-component')
       document.body.appendChild(componentRoot)
 
-      const result = createAll(MockComponent, {
+      const result = createAll(MockConfigurableComponent, {
         __test: true
       })
 
-      expect(result).toStrictEqual([expect.any(MockComponent)])
+      expect(result).toStrictEqual([expect.any(MockConfigurableComponent)])
 
       expect(result[0].args).toStrictEqual([
         componentRoot,
@@ -542,8 +572,8 @@ describe('createAll', () => {
       jest.spyOn(global.console, 'log').mockImplementation()
 
       const result = createAll(
-        MockComponent,
-        { attribute: 'random' },
+        MockConfigurableComponent,
+        { __test: true },
         {
           scope: document.querySelector('.unknown-scope'),
           onError: errorCallback
@@ -555,11 +585,11 @@ describe('createAll', () => {
       expect(errorCallback).toHaveBeenCalledWith(
         expect.objectContaining({
           name: 'ElementError',
-          message: `${MockComponent.moduleName}: Scope element (\`$scope\`) not found`
+          message: `${MockConfigurableComponent.moduleName}: Scope element (\`$scope\`) not found`
         }),
         expect.objectContaining({
-          component: MockComponent,
-          config: { attribute: 'random' }
+          component: MockConfigurableComponent,
+          config: { __test: true }
         })
       )
 
@@ -568,9 +598,10 @@ describe('createAll', () => {
   })
 
   describe('when components throw errors', () => {
-    class MockComponentThatErrors extends MockComponent {
-      constructor($root) {
-        super($root)
+    class MockComponentThatErrors extends MockConfigurableComponent {
+      constructor($root, config) {
+        super($root, config)
+
         if ($root.hasAttribute('data-boom')) {
           throw new Error('Error thrown from constructor')
         }
@@ -588,7 +619,7 @@ describe('createAll', () => {
       expect(() => {
         createAll(
           MockComponentThatErrors,
-          { attribute: 'random' },
+          { __test: true },
           { onError: errorCallback }
         )
       }).not.toThrow()
@@ -599,7 +630,7 @@ describe('createAll', () => {
       expect(console.log).toHaveBeenCalledWith(
         expect.objectContaining({
           component: MockComponentThatErrors,
-          config: { attribute: 'random' },
+          config: { __test: true },
           element: document.querySelector('[data-module="mock-component"]')
         })
       )
@@ -614,11 +645,7 @@ describe('createAll', () => {
       })
 
       expect(() => {
-        createAll(
-          MockComponentThatErrors,
-          { attribute: 'random' },
-          errorCallback
-        )
+        createAll(MockComponentThatErrors, { __test: true }, errorCallback)
       }).not.toThrow()
 
       expect(errorCallback).toHaveBeenCalled()
@@ -627,7 +654,7 @@ describe('createAll', () => {
       expect(console.log).toHaveBeenCalledWith(
         expect.objectContaining({
           component: MockComponentThatErrors,
-          config: { attribute: 'random' },
+          config: { __test: true },
           element: document.querySelector('[data-module="mock-component"]')
         })
       )
@@ -690,8 +717,24 @@ describe('createAll', () => {
         expect.any(MockComponentThatErrors)
       ])
 
-      expect(result[0].args).toStrictEqual([document.getElementById('a')])
-      expect(result[1].args).toStrictEqual([document.getElementById('c')])
+      expect(result[0].args).toStrictEqual([
+        document.getElementById('a'),
+        undefined
+      ])
+
+      expect(result[1].args).toStrictEqual([
+        document.getElementById('c'),
+        undefined
+      ])
     })
   })
 })
+
+/**
+ * @typedef {object} MockConfig
+ * @property {boolean} __test - Test flag
+ */
+
+/**
+ * @import { Schema } from './common/configuration.mjs'
+ */
