@@ -148,15 +148,33 @@ describe('initAll', () => {
         <div data-module="govuk-accordion"></div>
       </div>`
 
-    initAll({
-      scope: document.querySelector('.my-scope')
-    })
+    const $scope = document.querySelector('.my-scope')
+
+    initAll({ scope: $scope })
 
     // Expect to have been called exactly once with the accordion in .my-scope
     expect(GOVUKFrontend.Accordion).toHaveBeenCalledTimes(1)
     expect(GOVUKFrontend.Accordion).toHaveBeenCalledWith(
       document.querySelector('.my-scope [data-module="govuk-accordion"]')
     )
+  })
+
+  it('skips initialising components when a given scope is null', () => {
+    document.body.classList.add('govuk-frontend-supported')
+    document.body.innerHTML = `
+      <div data-module="govuk-accordion"></div>
+      <div class="not-in-scope">
+        <div data-module="govuk-accordion"></div>
+      </div>'
+      <div class="my-scope">
+        <div data-module="govuk-accordion"></div>
+      </div>`
+
+    const $scope = document.querySelector('.unknown-scope')
+
+    initAll({ scope: $scope })
+
+    expect(GOVUKFrontend.Accordion).not.toHaveBeenCalled()
   })
 
   it('catches errors thrown by components and logs them to the console', () => {
@@ -399,11 +417,8 @@ describe('createAll', () => {
           <div data-module="mock-component"></div>
         </div>`
 
-      const result = createAll(
-        MockComponent,
-        undefined,
-        document.querySelector('.my-scope')
-      )
+      const $scope = document.querySelector('.my-scope')
+      const result = createAll(MockComponent, undefined, $scope)
 
       expect(result).toStrictEqual([expect.any(MockComponent)])
 
@@ -412,7 +427,7 @@ describe('createAll', () => {
       ])
     })
 
-    it('only initialises components within that scope if scope passed as options attribute', () => {
+    it('only initialises components within that scope if scope passed as options property', () => {
       document.body.innerHTML = `
         <div data-module="mock-component"></div>
         <div class="not-in-scope">
@@ -422,9 +437,11 @@ describe('createAll', () => {
           <div data-module="mock-component"></div>
         </div>`
 
+      const $scope = document.querySelector('.my-scope')
+
       const result = createAll(MockComponent, undefined, {
         onError: (e, x) => {},
-        scope: document.querySelector('.my-scope')
+        scope: $scope
       })
 
       expect(result).toStrictEqual([expect.any(MockComponent)])
@@ -432,6 +449,41 @@ describe('createAll', () => {
       expect(result[0].args).toStrictEqual([
         document.querySelector('.my-scope [data-module="mock-component"]')
       ])
+    })
+
+    it('returns an empty array when scope is null', () => {
+      document.body.innerHTML = `
+        <div data-module="mock-component"></div>
+        <div class="not-in-scope">
+          <div data-module="mock-component"></div>
+        </div>'
+        <div class="my-scope">
+          <div data-module="mock-component"></div>
+        </div>`
+
+      const $scope = document.querySelector('.unknown-scope')
+      const result = createAll(MockComponent, undefined, $scope)
+
+      expect(result).toStrictEqual([])
+    })
+
+    it('returns an empty array when scope as options property is null', () => {
+      document.body.innerHTML = `
+        <div data-module="mock-component"></div>
+        <div class="not-in-scope">
+          <div data-module="mock-component"></div>
+        </div>'
+        <div class="my-scope">
+          <div data-module="mock-component"></div>
+        </div>`
+
+      const $scope = document.querySelector('.unknown-scope')
+      const result = createAll(MockComponent, undefined, {
+        onError: (e, x) => {},
+        scope: $scope
+      })
+
+      expect(result).toStrictEqual([])
     })
   })
 
@@ -506,6 +558,30 @@ describe('createAll', () => {
 
       expect(() => {
         createAll(MockComponentThatErrors)
+      }).not.toThrow()
+
+      expect(console.log).toHaveBeenCalledWith(expect.any(Error))
+      expect(console.log).toHaveBeenCalledWith(
+        expect.objectContaining({
+          message: 'Error thrown from constructor'
+        })
+      )
+    })
+
+    it('catches errors thrown by components and logs them to the console, when scope is passed', () => {
+      document.body.innerHTML = `
+        <div data-module="mock-component"></div>
+        <div class="not-in-scope">
+          <div data-module="mock-component"></div>
+        </div>
+        <div class="my-scope">
+          <div data-module="mock-component" data-boom></div>
+        </div>`
+
+      const $scope = document.querySelector('.my-scope')
+
+      expect(() => {
+        createAll(MockComponentThatErrors, undefined, $scope)
       }).not.toThrow()
 
       expect(console.log).toHaveBeenCalledWith(expect.any(Error))

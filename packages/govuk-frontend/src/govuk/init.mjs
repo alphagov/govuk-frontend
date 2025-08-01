@@ -1,4 +1,4 @@
-import { isSupported } from './common/index.mjs'
+import { isObject, isScope, isSupported } from './common/index.mjs'
 import { Accordion } from './components/accordion/accordion.mjs'
 import { Button } from './components/button/button.mjs'
 import { CharacterCount } from './components/character-count/character-count.mjs'
@@ -21,15 +21,26 @@ import { SupportError } from './errors/index.mjs'
  * Use the `data-module` attributes to find, instantiate and init all of the
  * components provided as part of GOV.UK Frontend.
  *
- * @param {Config & { scope?: Element, onError?: OnErrorCallback<CompatibleClass> }} [config] - Config for all components (with optional scope)
+ * @param {Config & { scope?: Document | Element | null, onError?: OnErrorCallback<CompatibleClass> }} [config] - Config for all components (with optional scope)
  */
-function initAll(config) {
-  config = typeof config !== 'undefined' ? config : {}
+function initAll(config = {}) {
+  let /** @type {Element | Document | null} */ $scope = document
+  let /** @type {OnErrorCallback<CompatibleClass> | undefined} */ onError
+
+  // Scope must be valid or null
+  if (isScope(config.scope) || config.scope === null) {
+    $scope = config.scope
+  }
+
+  // Error handler must be a function
+  if (typeof config.onError === 'function') {
+    onError = config.onError
+  }
 
   // Skip initialisation when GOV.UK Frontend is not supported
   if (!isSupported()) {
-    if (config.onError) {
-      config.onError(new SupportError(), {
+    if (onError) {
+      onError(new SupportError(), {
         config
       })
     } else {
@@ -56,16 +67,14 @@ function initAll(config) {
   ])
 
   // Allow the user to initialise GOV.UK Frontend in only certain sections of the page
-  // Defaults to the entire document if nothing is set.
-  // const $scope = config.scope ?? document
-
+  // Defaults to the entire document in `createAll` if scope is undefined but not null
   const options = {
-    scope: config.scope ?? document,
-    onError: config.onError
+    scope: $scope,
+    onError
   }
 
-  components.forEach(([Component, config]) => {
-    createAll(Component, config, options)
+  components.forEach(([Component, componentConfig]) => {
+    createAll(Component, componentConfig, options)
   })
 }
 
@@ -81,34 +90,38 @@ function initAll(config) {
  * @template {CompatibleClass} ComponentClass
  * @param {ComponentClass} Component - class of the component to create
  * @param {ComponentConfig<ComponentClass>} [config] - Config supplied to component
- * @param {OnErrorCallback<ComponentClass> | Element | Document | CreateAllOptions<ComponentClass> } [createAllOptions] - options for createAll including scope of the document to search within and callback function if error throw by component on init
+ * @param {OnErrorCallback<ComponentClass> | Element | Document | null | CreateAllOptions<ComponentClass>} [scopeOrOptions] - options for createAll including scope of the document to search within and callback function if error throw by component on init
  * @returns {Array<InstanceType<ComponentClass>>} - array of instantiated components
  */
-function createAll(Component, config, createAllOptions) {
-  let /** @type {Element | Document} */ $scope = document
+function createAll(Component, config, scopeOrOptions = {}) {
+  let /** @type {Element | Document | null} */ $scope = document
   let /** @type {OnErrorCallback<ComponentClass> | undefined} */ onError
 
-  if (typeof createAllOptions === 'object') {
-    createAllOptions = /** @type {CreateAllOptions<ComponentClass>} */ (
-      // eslint-disable-next-line no-self-assign
-      createAllOptions
-    )
+  // Handle options object
+  if (isObject(scopeOrOptions)) {
+    const options = scopeOrOptions
 
-    $scope = createAllOptions.scope ?? $scope
-    onError = createAllOptions.onError
+    // Scope must be valid or null
+    if (isScope(options.scope) || options.scope === null) {
+      $scope = options.scope
+    }
+
+    // Error handler must be a function
+    if (typeof options.onError === 'function') {
+      onError = options.onError
+    }
   }
 
-  if (typeof createAllOptions === 'function') {
-    onError = createAllOptions
+  if (isScope(scopeOrOptions)) {
+    $scope = scopeOrOptions
+  } else if (scopeOrOptions === null) {
+    $scope = null
+  } else if (typeof scopeOrOptions === 'function') {
+    onError = scopeOrOptions
   }
 
-  if (createAllOptions instanceof HTMLElement) {
-    $scope = createAllOptions
-  }
-
-  const $elements = $scope.querySelectorAll(
-    `[data-module="${Component.moduleName}"]`
-  )
+  const $elements =
+    $scope?.querySelectorAll(`[data-module="${Component.moduleName}"]`) ?? []
 
   // Skip initialisation when GOV.UK Frontend is not supported
   if (!isSupported()) {
@@ -225,6 +238,6 @@ export { initAll, createAll }
 /**
  * @template {CompatibleClass} ComponentClass
  * @typedef {object} CreateAllOptions
- * @property {Element | Document} [scope] - scope of the document to search within
+ * @property {Element | Document | null} [scope] - scope of the document to search within
  * @property {OnErrorCallback<ComponentClass>} [onError] - callback function if error throw by component on init
  */
