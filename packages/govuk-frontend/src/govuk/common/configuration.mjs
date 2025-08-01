@@ -57,7 +57,7 @@ export class ConfigurableComponent extends Component {
    * Constructs a new component, validating that GOV.UK Frontend is supported
    *
    * @internal
-   * @param {Element | null} [$root] - HTML element to use for component
+   * @param {Element | null} $root - HTML element to use for component
    * @param {ConfigurationType} [config] - HTML element to use for component
    */
   constructor($root, config) {
