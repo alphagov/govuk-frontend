@@ -144,7 +144,7 @@ export function isScope($scope) {
  * Format error message
  *
  * @internal
- * @param {ComponentWithModuleName} Component - Component that threw the error
+ * @param {CompatibleClass} Component - Component that threw the error
  * @param {string} message - Error message
  * @returns {string} - Formatted error message
  */
@@ -152,15 +152,6 @@ export function formatErrorMessage(Component, message) {
   return `${Component.moduleName}: ${message}`
 }
 
-/* eslint-disable jsdoc/valid-types --
- * `{new(...args: any[] ): object}` is not recognised as valid
- * https://github.com/gajus/eslint-plugin-jsdoc/issues/145#issuecomment-1308722878
- * https://github.com/jsdoc-type-pratt-parser/jsdoc-type-pratt-parser/issues/131
- **/
-
 /**
- * @typedef ComponentWithModuleName
- * @property {string} moduleName - Name of the component
+ * @import { CompatibleClass } from '../init.mjs'
  */
-
-/* eslint-enable jsdoc/valid-types */

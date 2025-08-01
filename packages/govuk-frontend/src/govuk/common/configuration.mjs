@@ -64,7 +64,9 @@ export class ConfigurableComponent extends Component {
     super($root)
 
     const ChildConstructor =
-      /** @type {ChildClassConstructor<ConfigurationType>} */ (this.constructor)
+      /** @type {ComponentConstructor<typeof ConfigurableComponent>} */ (
+        this.constructor
+      )
 
     if (!isObject(ChildConstructor.defaults)) {
       throw new ConfigError(
@@ -150,7 +152,7 @@ export function normaliseString(value, property) {
  * @internal
  * @template {Partial<Record<keyof ConfigurationType, unknown>>} ConfigurationType
  * @template {[keyof ConfigurationType, SchemaProperty | undefined][]} SchemaEntryType
- * @param {{ schema?: Schema<ConfigurationType>, moduleName: string }} Component - Component class
+ * @param {CompatibleClass & { schema?: Schema<ConfigurationType> }} Component - Component class
  * @param {DOMStringMap} dataset - HTML element dataset
  * @returns {ObjectNested} Normalised dataset
  */
@@ -362,14 +364,6 @@ export function extractConfigByNamespace(schema, dataset, namespace) {
  */
 
 /**
- * @template {Partial<Record<keyof ConfigurationType, unknown>>} [ConfigurationType=ObjectNested]
- * @typedef ChildClass
- * @property {string} moduleName - The module name that'll be looked for in the DOM when initialising the component
- * @property {Schema<ConfigurationType>} [schema] - The schema of the component configuration
- * @property {ConfigurationType} [defaults] - The default values of the configuration of the component
- */
-
-/**
- * @template {Partial<Record<keyof ConfigurationType, unknown>>} [ConfigurationType=ObjectNested]
- * @typedef {typeof Component & ChildClass<ConfigurationType>} ChildClassConstructor<ConfigurationType>
+ * @import { ComponentConstructor } from '../component.mjs'
+ * @import { CompatibleClass } from '../init.mjs'
  */
