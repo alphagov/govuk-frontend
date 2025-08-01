@@ -72,7 +72,6 @@ updates:
       - dependency-name: 'iframe-resizer'
         update-types: ['version-update:semver-major']
 
-    # Schedule run every Monday, local time
     schedule:
       interval: monthly
       time: '10:30'
@@ -92,7 +91,6 @@ updates:
   - package-ecosystem: github-actions
     directory: /
 
-    # Schedule run every Monday, local time
     schedule:
       interval: monthly
       time: '10:30'
@@ -102,7 +100,6 @@ updates:
   - package-ecosystem: github-actions
     directory: /.github/workflows/actions/build
 
-    # Schedule run every Monday, local time
     schedule:
       interval: monthly
       time: '10:30'
@@ -112,7 +109,6 @@ updates:
   - package-ecosystem: github-actions
     directory: /.github/workflows/actions/install-node
 
-    # Schedule run every Monday, local time
     schedule:
       interval: monthly
       time: '10:30'
@@ -122,7 +118,6 @@ updates:
   - package-ecosystem: github-actions
     directory: /.github/workflows/actions/setup-node
 
-    # Schedule run every Monday, local time
     schedule:
       interval: monthly
       time: '10:30'
