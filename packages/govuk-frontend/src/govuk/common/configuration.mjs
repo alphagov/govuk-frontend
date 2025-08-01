@@ -63,25 +63,25 @@ export class ConfigurableComponent extends Component {
   constructor($root, config) {
     super($root)
 
-    const childConstructor =
+    const ChildConstructor =
       /** @type {ChildClassConstructor<ConfigurationType>} */ (this.constructor)
 
-    if (!isObject(childConstructor.defaults)) {
+    if (!isObject(ChildConstructor.defaults)) {
       throw new ConfigError(
         formatErrorMessage(
-          childConstructor,
+          ChildConstructor,
           'Config passed as parameter into constructor but no defaults defined'
         )
       )
     }
 
     const datasetConfig = /** @type {ConfigurationType} */ (
-      normaliseDataset(childConstructor, this._$root.dataset)
+      normaliseDataset(ChildConstructor, this._$root.dataset)
     )
 
     this._config = /** @type {ConfigurationType} */ (
       mergeConfigs(
-        childConstructor.defaults,
+        ChildConstructor.defaults,
         config ?? {},
         this[configOverride](datasetConfig),
         datasetConfig
