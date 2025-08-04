@@ -36,16 +36,16 @@ jobs:
 
       # Check output for modules that should not be included
       - name: Check absence of unused modules in `single-component.js`
-        working-directory: ./.github/workflows/bundler-integrations
+        working-directory: ./shared/bundler-integrations
         run: |
           ! grep "Accordion" dist/${{matrix.bundler}}/single-component.js -q
 
       - name: Check absence of unused utility functions in `single-component.js`
-        working-directory: ./.github/workflows/bundler-integrations
+        working-directory: ./shared/bundler-integrations
         run: |
           ! grep "getFragmentFromUrl" dist/${{matrix.bundler}}/single-component.js -q
 
       - name: Check presence of modules in `initAll.js`
-        working-directory: ./.github/workflows/bundler-integrations
+        working-directory: ./shared/bundler-integrations
         run: |
           grep "Accordion" dist/${{matrix.bundler}}/initAll.js -q
