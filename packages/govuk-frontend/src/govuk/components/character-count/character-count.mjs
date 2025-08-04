@@ -129,7 +129,7 @@ export class CharacterCount extends ConfigurableComponent {
     // Inject a description for the textarea if none is present already
     // for when the component was rendered with no maxlength, maxwords
     // nor custom textareaDescriptionText
-    if (`${$textareaDescription.textContent}`.match(/^\s*$/)) {
+    if ($textareaDescription.textContent.match(/^\s*$/)) {
       $textareaDescription.textContent = this.i18n.t('textareaDescription', {
         count: this.maxLength
       })
