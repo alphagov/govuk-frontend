@@ -409,12 +409,12 @@ export class Accordion extends ConfigurableComponent {
       `.${this.sectionHeadingTextClass}`
     )
     if ($headingText) {
-      ariaLabelParts.push(`${$headingText.textContent}`.trim())
+      ariaLabelParts.push($headingText.textContent.trim())
     }
 
     const $summary = $section.querySelector(`.${this.sectionSummaryClass}`)
     if ($summary) {
-      ariaLabelParts.push(`${$summary.textContent}`.trim())
+      ariaLabelParts.push($summary.textContent.trim())
     }
 
     const ariaLabelMessage = expanded
