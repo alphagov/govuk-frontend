@@ -1,4 +1,5 @@
-import { isObject, isScope, isSupported } from './common/index.mjs'
+import { normaliseOptions } from './common/configuration.mjs'
+import { isSupported } from './common/index.mjs'
 import { Accordion } from './components/accordion/accordion.mjs'
 import { Button } from './components/button/button.mjs'
 import { CharacterCount } from './components/character-count/character-count.mjs'
@@ -23,8 +24,8 @@ import { SupportError } from './errors/index.mjs'
  *
  * @param {Config} [config] - Config for all components (with optional scope)
  */
-function initAll(config) {
-  config = typeof config !== 'undefined' ? config : {}
+function initAll(config = {}) {
+  const options = normaliseOptions(config)
 
   try {
     // Skip initialisation when GOV.UK Frontend is not supported
@@ -32,8 +33,8 @@ function initAll(config) {
       throw new SupportError()
     }
   } catch (error) {
-    if (config.onError) {
-      config.onError(error, {
+    if (options.onError) {
+      options.onError(error, {
         config
       })
     } else {
@@ -60,17 +61,8 @@ function initAll(config) {
     [Tabs]
   ])
 
-  // Allow the user to initialise GOV.UK Frontend in only certain sections of the page
-  // Defaults to the entire document if nothing is set.
-  // const $scope = config.scope ?? document
-
-  const options = {
-    scope: config.scope ?? document,
-    onError: config.onError
-  }
-
-  components.forEach(([Component, config]) => {
-    createAll(Component, config, options)
+  components.forEach(([Component, componentConfig]) => {
+    createAll(Component, componentConfig, options)
   })
 }
 
@@ -90,23 +82,9 @@ function initAll(config) {
  * @returns {Array<InstanceType<ComponentClass>>} - array of instantiated components
  */
 function createAll(Component, config, createAllOptions) {
-  let /** @type {Element | Document} */ $scope = document
-  let /** @type {OnErrorCallback<ComponentClass> | undefined} */ onError
+  const options = normaliseOptions(createAllOptions)
 
-  if (isObject(createAllOptions)) {
-    $scope = createAllOptions.scope ?? $scope
-    onError = createAllOptions.onError
-  }
-
-  if (typeof createAllOptions === 'function') {
-    onError = createAllOptions
-  }
-
-  if (isScope(createAllOptions)) {
-    $scope = createAllOptions
-  }
-
-  const $elements = $scope.querySelectorAll(
+  const $elements = options.scope?.querySelectorAll(
     `[data-module="${Component.moduleName}"]`
   )
 
@@ -116,8 +94,8 @@ function createAll(Component, config, createAllOptions) {
       throw new SupportError()
     }
   } catch (error) {
-    if (onError) {
-      onError(error, {
+    if (options.onError) {
+      options.onError(error, {
         component: Component,
         config
       })
@@ -135,7 +113,7 @@ function createAll(Component, config, createAllOptions) {
    * This means we have to set the constructor of `CompatibleClass` as `{new(): any}`,
    * leading to ESLint frowning that we're returning `any[]`.
    */
-  return Array.from($elements)
+  return Array.from($elements ?? [])
     .map(($element) => {
       try {
         // Only pass config to components that accept it
@@ -144,8 +122,8 @@ function createAll(Component, config, createAllOptions) {
           ? new Component($element, config)
           : new Component($element)
       } catch (error) {
-        if (onError) {
-          onError(error, {
+        if (options.onError) {
+          options.onError(error, {
             element: $element,
             component: Component,
             config
