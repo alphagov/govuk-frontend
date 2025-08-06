@@ -60,7 +60,7 @@ jobs:
               core.setOutput('relevant_changes', 'true')
             } else {
               const changedFiles = JSON.parse('${{ steps.files.outputs.changed_files }}')
-              const { checkRelevantChanges } = await import('${{ github.workspace }}/.github/workflows/scripts/check-percy-files.mjs')
+              const { checkRelevantChanges } = await import('${{ github.workspace }}/shared/github-scripts/check-percy-files.mjs')
 
               const relevantChanges = checkRelevantChanges(changedFiles)
               core.setOutput('relevant_changes', relevantChanges)
