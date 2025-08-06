@@ -5,6 +5,7 @@
  */
 module.exports = function (api) {
   // Assume browser environment via webpack 'web' target
+  // @ts-expect-error - Property 'target' does not exist
   const isBrowser = api.caller((caller) => caller?.target === 'web')
 
   // Apply Browserslist environment for supported targets
