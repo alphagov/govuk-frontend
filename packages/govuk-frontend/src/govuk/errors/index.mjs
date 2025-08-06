@@ -92,7 +92,10 @@ export class ElementError extends GOVUKFrontendError {
         ? ` is not of type ${expectedType ?? 'HTMLElement'}`
         : ' not found'
 
-      message = formatErrorMessage(component, message)
+      // Prepend with module name (optional)
+      if (component) {
+        message = formatErrorMessage(component, message)
+      }
     }
 
     super(message)
@@ -127,10 +130,10 @@ export class InitError extends GOVUKFrontendError {
  *
  * @internal
  * @typedef {object} ElementErrorOptions
+ * @property {Element | Document | null} [element] - The element in error (optional)
+ * @property {ComponentWithModuleName} [component] - Component throwing the error (optional)
  * @property {string} identifier - An identifier that'll let the user understand which element has an error. This is whatever makes the most sense
- * @property {Element | Document | null} [element] - The element in error
- * @property {string} [expectedType] - The type that was expected for the identifier
- * @property {ComponentWithModuleName} component - Component throwing the error
+ * @property {string} [expectedType] - The type that was expected for the identifier (optional)
  */
 
 /**
