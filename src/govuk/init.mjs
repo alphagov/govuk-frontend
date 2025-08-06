@@ -1,4 +1,4 @@
-import { isObject, isSupported } from './common/index.mjs'
+import { isObject, isScope, isSupported } from './common/index.mjs'
 import { Accordion } from './components/accordion/accordion.mjs'
 import { Button } from './components/button/button.mjs'
 import { CharacterCount } from './components/character-count/character-count.mjs'
@@ -102,7 +102,7 @@ function createAll(Component, config, createAllOptions) {
     onError = createAllOptions
   }
 
-  if (createAllOptions instanceof HTMLElement) {
+  if (isScope(createAllOptions)) {
     $scope = createAllOptions
   }
 
