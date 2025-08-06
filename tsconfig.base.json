@@ -12,6 +12,7 @@
     "strict": false,
     "strictBindCallApply": true,
     "strictFunctionTypes": true,
+    "strictNullChecks": true,
     "target": "ESNext",
     "types": [],
     "paths": {

@@ -1,6 +1,7 @@
 {
   "extends": "./tsconfig.base.json",
   "compilerOptions": {
+    "strictNullChecks": false,
     "types": [
       "jest",
       "jest-axe",
