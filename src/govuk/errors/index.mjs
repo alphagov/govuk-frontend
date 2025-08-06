@@ -1,4 +1,4 @@
-import { formatErrorMessage } from '../common/index.mjs'
+import { formatErrorMessage, isObject } from '../common/index.mjs'
 
 /**
  * GOV.UK Frontend error
@@ -82,7 +82,7 @@ export class ElementError extends GOVUKFrontendError {
     let message = typeof messageOrOptions === 'string' ? messageOrOptions : ''
 
     // Build message from options
-    if (typeof messageOrOptions === 'object') {
+    if (isObject(messageOrOptions)) {
       const { component, identifier, element, expectedType } = messageOrOptions
 
       message = identifier
