@@ -26,15 +26,20 @@ import { SupportError } from './errors/index.mjs'
 function initAll(config) {
   config = typeof config !== 'undefined' ? config : {}
 
-  // Skip initialisation when GOV.UK Frontend is not supported
-  if (!isSupported()) {
+  try {
+    // Skip initialisation when GOV.UK Frontend is not supported
+    if (!isSupported()) {
+      throw new SupportError()
+    }
+  } catch (error) {
     if (config.onError) {
-      config.onError(new SupportError(), {
+      config.onError(error, {
         config
       })
     } else {
-      console.log(new SupportError())
+      console.log(error)
     }
+
     return
   }
 
@@ -105,16 +110,21 @@ function createAll(Component, config, createAllOptions) {
     `[data-module="${Component.moduleName}"]`
   )
 
-  // Skip initialisation when GOV.UK Frontend is not supported
-  if (!isSupported()) {
+  try {
+    // Skip initialisation when GOV.UK Frontend is not supported
+    if (!isSupported()) {
+      throw new SupportError()
+    }
+  } catch (error) {
     if (onError) {
-      onError(new SupportError(), {
+      onError(error, {
         component: Component,
         config
       })
     } else {
-      console.log(new SupportError())
+      console.log(error)
     }
+
     return []
   }
 
