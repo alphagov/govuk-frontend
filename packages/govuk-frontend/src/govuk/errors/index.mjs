@@ -110,7 +110,7 @@ export class InitError extends GOVUKFrontendError {
 
   /**
    * @internal
-   * @param {ComponentWithModuleName | string} componentOrMessage - name of the component module
+   * @param {CompatibleClass | string} componentOrMessage - name of the component module
    */
   constructor(componentOrMessage) {
     const message =
@@ -131,11 +131,11 @@ export class InitError extends GOVUKFrontendError {
  * @internal
  * @typedef {object} ElementErrorOptions
  * @property {Element | Document | null} [element] - The element in error (optional)
- * @property {ComponentWithModuleName} [component] - Component throwing the error (optional)
+ * @property {CompatibleClass} [component] - Component throwing the error (optional)
  * @property {string} identifier - An identifier that'll let the user understand which element has an error. This is whatever makes the most sense
- * @property {string} [expectedType] - The type that was expected for the identifier (optional)
+ * @property {string} [expectedType] - The type that was expected for the identifier
  */
 
 /**
- * @import { ComponentWithModuleName } from '../common/index.mjs'
+ * @import { CompatibleClass } from '../init.mjs'
  */

@@ -263,9 +263,9 @@ describe('createAll', () => {
   })
 
   class MockComponent extends Component {
-    constructor(...args) {
-      super(...args)
-      this.args = args
+    constructor($root) {
+      super($root)
+      this.args = [$root]
     }
 
     static checkSupport() {
@@ -569,9 +569,9 @@ describe('createAll', () => {
 
   describe('when components throw errors', () => {
     class MockComponentThatErrors extends MockComponent {
-      constructor($element, ...otherArgs) {
-        super($element, ...otherArgs)
-        if ($element.hasAttribute('data-boom')) {
+      constructor($root) {
+        super($root)
+        if ($root.hasAttribute('data-boom')) {
           throw new Error('Error thrown from constructor')
         }
       }

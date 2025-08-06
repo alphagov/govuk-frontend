@@ -84,7 +84,7 @@ function initAll(config = {}) {
  *
  * Any component errors will be caught and logged to the console.
  *
- * @template {CompatibleClass} ComponentClass
+ * @template {CompatibleClass | CompatibleClass<typeof ConfigurableComponent>} ComponentClass
  * @param {ComponentClass} Component - class of the component to create
  * @param {ComponentConfig<ComponentClass>} [config] - Config supplied to component
  * @param {OnErrorCallback<ComponentClass> | Element | Document | null | CreateAllOptions<ComponentClass>} [createAllOptions] - options for createAll including scope of the document to search within and callback function if error throw by component on init
@@ -128,21 +128,15 @@ function createAll(Component, config, createAllOptions) {
     return []
   }
 
-  /* eslint-disable-next-line @typescript-eslint/no-unsafe-return --
-   * We can't define CompatibleClass as `{new(): CompatibleClass, moduleName: string}`,
-   * as when doing `typeof Accordion` (or any component), TypeScript doesn't seem
-   * to acknowledge the static `moduleName` that's set in our component classes.
-   * This means we have to set the constructor of `CompatibleClass` as `{new(): any}`,
-   * leading to ESLint frowning that we're returning `any[]`.
-   */
   return Array.from($elements ?? [])
     .map(($element) => {
       try {
-        // Only pass config to components that accept it
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-        return typeof config !== 'undefined'
-          ? new Component($element, config)
-          : new Component($element)
+        return /** @type {InstanceType<ComponentClass>} */ (
+          // Only pass config to components that accept it
+          'defaults' in Component
+            ? new Component($element, config)
+            : new Component($element)
+        )
       } catch (error) {
         if (options.onError) {
           options.onError(error, {
@@ -163,13 +157,21 @@ function createAll(Component, config, createAllOptions) {
 export { initAll, createAll }
 
 /* eslint-disable jsdoc/valid-types --
- * `{new(...args: any[] ): object}` is not recognised as valid
+ * `{new(...args: any[] ): any}` is not recognised as valid
  * https://github.com/gajus/eslint-plugin-jsdoc/issues/145#issuecomment-1308722878
  * https://github.com/jsdoc-type-pratt-parser/jsdoc-type-pratt-parser/issues/131
  **/
 
 /**
- * @typedef {{new (...args: any[]): any, moduleName: string}} CompatibleClass
+ * Component compatible class
+ *
+ * @template {typeof Component | typeof ConfigurableComponent} [ChildConstructor=typeof Component]
+ * @typedef {{
+ *   new(...args: ConstructorParameters<ChildConstructor>): InstanceType<ChildConstructor>,
+ *   defaults?: ObjectNested,
+ *   schema?: Schema<ObjectNested>
+ *   moduleName: string
+ * }} CompatibleClass
  */
 
 /* eslint-enable jsdoc/valid-types */
@@ -221,4 +223,9 @@ export { initAll, createAll }
  * @typedef {object} CreateAllOptions
  * @property {Element | Document | null} [scope] - scope of the document to search within
  * @property {OnErrorCallback<ComponentClass>} [onError] - callback function if error throw by component on init
+ */
+
+/**
+ * @import { ConfigurableComponent, ObjectNested, Schema } from './common/configuration.mjs'
+ * @import { Component } from './component.mjs'
  */
