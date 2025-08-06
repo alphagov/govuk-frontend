@@ -48,7 +48,7 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const { commentDiffs } = await import('${{ github.workspace }}/.github/workflows/scripts/comments.mjs')
+            const { commentDiffs } = await import('${{ github.workspace }}/shared/github-scripts/comments.mjs')
 
             // PR information
             const issueNumber = ${{ github.event.pull_request.number }}
