@@ -26,6 +26,7 @@
       "govuk-frontend": ["./packages/govuk-frontend/src/govuk/all.mjs"]
     }
   },
+  "exclude": ["**/dist", "**/node_modules"],
   "typeAcquisition": {
     "enable": false
   }

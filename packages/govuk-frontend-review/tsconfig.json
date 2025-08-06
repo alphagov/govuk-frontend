@@ -1,12 +1,8 @@
 {
   "extends": "../../tsconfig.base.json",
-  "files": [],
-  "references": [
-    {
-      "path": "./tsconfig.dev.json"
-    },
-    {
-      "path": "./tsconfig.build.json"
-    }
-  ]
+  "include": ["./src/**/*.mjs"],
+  "exclude": ["**/*.test.*"],
+  "compilerOptions": {
+    "types": ["express", "node", "nunjucks", "slug", "typed-query-selector"]
+  }
 }
