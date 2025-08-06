@@ -78,7 +78,7 @@ function initAll(config = {}) {
  * @template {CompatibleClass} ComponentClass
  * @param {ComponentClass} Component - class of the component to create
  * @param {ComponentConfig<ComponentClass>} [config] - Config supplied to component
- * @param {OnErrorCallback<ComponentClass> | Element | Document | CreateAllOptions<ComponentClass> } [createAllOptions] - options for createAll including scope of the document to search within and callback function if error throw by component on init
+ * @param {OnErrorCallback<ComponentClass> | Element | Document | null | CreateAllOptions<ComponentClass>} [createAllOptions] - options for createAll including scope of the document to search within and callback function if error throw by component on init
  * @returns {Array<InstanceType<ComponentClass>>} - array of instantiated components
  */
 function createAll(Component, config, createAllOptions) {
@@ -210,6 +210,6 @@ export { initAll, createAll }
 /**
  * @template {CompatibleClass} ComponentClass
  * @typedef {object} CreateAllOptions
- * @property {Element | Document} [scope] - scope of the document to search within
+ * @property {Element | Document | null} [scope] - scope of the document to search within
  * @property {OnErrorCallback<ComponentClass>} [onError] - callback function if error throw by component on init
  */

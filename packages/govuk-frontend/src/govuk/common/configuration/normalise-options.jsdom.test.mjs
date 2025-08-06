@@ -17,6 +17,14 @@ describe('normaliseOptions', () => {
     {
       name: 'article element',
       $scope: document.createElement('article')
+    },
+    {
+      name: 'null selector',
+      $scope: document.querySelector('.unknown-scope')
+    },
+    {
+      name: 'null',
+      $scope: null
     }
   ]
 
@@ -82,6 +90,18 @@ describe('normaliseOptions', () => {
       })
     ).toMatchObject({
       scope: document,
+      onError: undefined
+    })
+  })
+
+  it("preserves 'null' scope", () => {
+    expect(normaliseOptions(null)).toMatchObject({
+      scope: null,
+      onError: undefined
+    })
+
+    expect(normaliseOptions({ scope: null })).toMatchObject({
+      scope: null,
       onError: undefined
     })
   })
