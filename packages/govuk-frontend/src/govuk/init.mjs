@@ -1,4 +1,4 @@
-import { isSupported } from './common/index.mjs'
+import { isObject, isSupported } from './common/index.mjs'
 import { Accordion } from './components/accordion/accordion.mjs'
 import { Button } from './components/button/button.mjs'
 import { CharacterCount } from './components/character-count/character-count.mjs'
@@ -88,12 +88,7 @@ function createAll(Component, config, createAllOptions) {
   let /** @type {Element | Document} */ $scope = document
   let /** @type {OnErrorCallback<ComponentClass> | undefined} */ onError
 
-  if (typeof createAllOptions === 'object') {
-    createAllOptions = /** @type {CreateAllOptions<ComponentClass>} */ (
-      // eslint-disable-next-line no-self-assign
-      createAllOptions
-    )
-
+  if (isObject(createAllOptions)) {
     $scope = createAllOptions.scope ?? $scope
     onError = createAllOptions.onError
   }

@@ -120,7 +120,7 @@ function isArray(option) {
  * Check for an object
  *
  * @internal
- * @template {Partial<Record<keyof ObjectType, unknown>>} [ObjectType=ObjectNested]
+ * @template {Partial<Record<keyof ObjectType, unknown>>} ObjectType
  * @param {unknown | ObjectType} option - Option to check
  * @returns {option is ObjectType} Whether the option is an object
  */
@@ -152,7 +152,3 @@ export function formatErrorMessage(Component, message) {
  */
 
 /* eslint-enable jsdoc/valid-types */
-
-/**
- * @import { ObjectNested } from './configuration.mjs'
- */
