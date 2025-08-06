@@ -79,66 +79,79 @@ describe('errors', () => {
       expect(
         new ElementError({
           component: Accordion,
-          identifier: 'variableName'
+          identifier: 'Element name'
         })
       ).toBeInstanceOf(GOVUKFrontendError)
     })
+
     it('has its own name set', () => {
       expect(
         new ElementError({
           component: Accordion,
-          identifier: 'variableName'
+          identifier: 'Element name'
         }).name
       ).toBe('ElementError')
     })
-    it('has name set by Component', () => {
-      expect(
-        new ElementError({
-          component: Accordion,
-          identifier: 'variableName'
-        }).name
-      ).toBe('ElementError')
-    })
+
     it('accepts a string and does not process it in any way', () => {
       expect(new ElementError('Complex custom error message').message).toBe(
         'Complex custom error message'
       )
     })
-    it('formats the message when the element is not found', () => {
-      expect(
-        new ElementError({
-          component: Accordion,
-          identifier: 'variableName'
-        }).message
-      ).toBe(`${Accordion.moduleName}: variableName not found`)
-    })
-    it('formats the message when the element is not the right type', () => {
-      const $element = document.createElement('div')
 
-      expect(
-        new ElementError({
+    describe('with component', () => {
+      it('formats the message when the element is not found', () => {
+        const error = new ElementError({
           component: Accordion,
-          element: $element,
-          expectedType: 'HTMLAnchorElement',
-          identifier: 'variableName'
-        }).message
-      ).toBe(
-        `${Accordion.moduleName}: variableName is not of type HTMLAnchorElement`
-      )
-    })
-    it('formats the message when the element is not the right type and Component in config', () => {
-      const $element = document.createElement('div')
+          identifier: 'Element name'
+        })
 
-      expect(
-        new ElementError({
-          component: Accordion,
+        expect(error).toHaveProperty(
+          'message',
+          `${Accordion.moduleName}: Element name not found`
+        )
+      })
+
+      it('formats the message when the element is not the right type', () => {
+        const $element = document.createElement('div')
+
+        const error = new ElementError({
           element: $element,
-          expectedType: 'HTMLAnchorElement',
-          identifier: 'variableName'
-        }).message
-      ).toBe(
-        `${Accordion.moduleName}: variableName is not of type HTMLAnchorElement`
-      )
+          component: Accordion,
+          identifier: 'Element name',
+          expectedType: 'HTMLAnchorElement'
+        })
+
+        expect(error).toHaveProperty(
+          'message',
+          `${Accordion.moduleName}: Element name is not of type HTMLAnchorElement`
+        )
+      })
+    })
+
+    describe('without component', () => {
+      it('formats the message when the element is not found', () => {
+        const error = new ElementError({
+          identifier: 'Element name'
+        })
+
+        expect(error).toHaveProperty('message', 'Element name not found')
+      })
+
+      it('formats the message when the element is not the right type', () => {
+        const $element = document.createElement('div')
+
+        const error = new ElementError({
+          element: $element,
+          identifier: 'Element name',
+          expectedType: 'HTMLAnchorElement'
+        })
+
+        expect(error).toHaveProperty(
+          'message',
+          'Element name is not of type HTMLAnchorElement'
+        )
+      })
     })
   })
 })
