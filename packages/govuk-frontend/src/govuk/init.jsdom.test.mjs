@@ -5,6 +5,7 @@ import {
 
 import * as GOVUKFrontend from './all.mjs'
 import { Component } from './component.mjs'
+import { ElementError } from './errors/index.mjs'
 import { initAll, createAll } from './init.mjs'
 
 // Annoyingly these don't get hoisted if done in a loop
@@ -104,6 +105,7 @@ describe('initAll', () => {
       // Only validate the message as it's the important part for the user
       expect(global.console.log).toHaveBeenCalledWith(
         expect.objectContaining({
+          name: 'SupportError',
           message: 'GOV.UK Frontend is not supported in this browser'
         })
       )
@@ -123,6 +125,7 @@ describe('initAll', () => {
 
       expect(errorCallback).toHaveBeenCalledWith(
         expect.objectContaining({
+          name: 'SupportError',
           message: 'GOV.UK Frontend is not supported in this browser'
         }),
         expect.objectContaining({
@@ -159,7 +162,7 @@ describe('initAll', () => {
     )
   })
 
-  it('skips initialising components when a given scope is null', () => {
+  it('catches errors thrown when a given scope is null and logs them to the console', () => {
     document.body.classList.add('govuk-frontend-supported')
     document.body.innerHTML = `
       <div data-module="govuk-accordion"></div>
@@ -170,9 +173,21 @@ describe('initAll', () => {
         <div data-module="govuk-accordion"></div>
       </div>`
 
-    initAll({
-      scope: document.querySelector('.unknown-scope')
-    })
+    // Silence warnings in test output, and allow us to 'expect' them
+    jest.spyOn(global.console, 'log').mockImplementation()
+
+    expect(() => {
+      initAll({
+        scope: document.querySelector('.unknown-scope')
+      })
+    }).not.toThrow()
+
+    expect(global.console.log).toHaveBeenCalledWith(
+      expect.objectContaining({
+        name: 'ElementError',
+        message: 'GOV.UK Frontend scope element (`$scope`) not found'
+      })
+    )
 
     expect(GOVUKFrontend.Accordion).not.toHaveBeenCalled()
   })
@@ -285,6 +300,7 @@ describe('createAll', () => {
 
     expect(global.console.log).toHaveBeenCalledWith(
       expect.objectContaining({
+        name: 'SupportError',
         message: 'GOV.UK Frontend is not supported in this browser'
       })
     )
@@ -297,18 +313,17 @@ describe('createAll', () => {
 
     const errorCallback = jest.fn((_error, _context) => {})
 
-    expect(() => {
-      createAll(
-        MockComponent,
-        { attribute: 'random' },
-        { onError: errorCallback }
-      )
-    }).not.toThrow()
+    const result = createAll(
+      MockComponent,
+      { attribute: 'random' },
+      { onError: errorCallback }
+    )
 
     expect(global.console.log).not.toHaveBeenCalled()
 
     expect(errorCallback).toHaveBeenCalledWith(
       expect.objectContaining({
+        name: 'SupportError',
         message: 'GOV.UK Frontend is not supported in this browser'
       }),
       expect.objectContaining({
@@ -316,6 +331,8 @@ describe('createAll', () => {
         config: { attribute: 'random' }
       })
     )
+
+    expect(result).toStrictEqual([])
   })
 
   it('executes overloaded checkSupport of component', () => {
@@ -455,7 +472,7 @@ describe('createAll', () => {
       ])
     })
 
-    it('returns an empty array when scope is null', () => {
+    it('returns an empty array when scope is null and logs error to the console', () => {
       document.body.innerHTML = `
         <div data-module="mock-component"></div>
         <div class="not-in-scope">
@@ -464,6 +481,9 @@ describe('createAll', () => {
         <div class="my-scope">
           <div data-module="mock-component"></div>
         </div>`
+
+      // Silence warnings in test output, and allow us to 'expect' them
+      jest.spyOn(global.console, 'log').mockImplementation()
 
       const result = createAll(
         MockComponent,
@@ -471,10 +491,18 @@ describe('createAll', () => {
         document.querySelector('.unknown-scope')
       )
 
+      expect(global.console.log).toHaveBeenCalledWith(expect.any(ElementError))
+      expect(global.console.log).toHaveBeenCalledWith(
+        expect.objectContaining({
+          name: 'ElementError',
+          message: `${MockComponent.moduleName}: Scope element (\`$scope\`) not found`
+        })
+      )
+
       expect(result).toStrictEqual([])
     })
 
-    it('returns an empty array when scope as options property is null', () => {
+    it('returns an empty array when scope as options property is null and logs error to the console', () => {
       document.body.innerHTML = `
         <div data-module="mock-component"></div>
         <div class="not-in-scope">
@@ -484,10 +512,59 @@ describe('createAll', () => {
           <div data-module="mock-component"></div>
         </div>`
 
+      // Silence warnings in test output, and allow us to 'expect' them
+      jest.spyOn(global.console, 'log').mockImplementation()
+
       const result = createAll(MockComponent, undefined, {
-        onError: (e, x) => {},
         scope: document.querySelector('.unknown-scope')
       })
+
+      expect(global.console.log).toHaveBeenCalledWith(
+        expect.objectContaining({
+          name: 'ElementError',
+          message: `${MockComponent.moduleName}: Scope element (\`$scope\`) not found`
+        })
+      )
+
+      expect(result).toStrictEqual([])
+    })
+
+    it('executes specified onError callback and returns empty array when scope as options property is null', () => {
+      document.body.innerHTML = `
+        <div data-module="mock-component"></div>
+        <div class="not-in-scope">
+          <div data-module="mock-component"></div>
+        </div>'
+        <div class="my-scope">
+          <div data-module="mock-component"></div>
+        </div>`
+
+      const errorCallback = jest.fn((_error, _context) => {})
+
+      // Silence warnings in test output, and allow us to 'expect' them
+      jest.spyOn(global.console, 'log').mockImplementation()
+
+      const result = createAll(
+        MockComponent,
+        { attribute: 'random' },
+        {
+          scope: document.querySelector('.unknown-scope'),
+          onError: errorCallback
+        }
+      )
+
+      expect(global.console.log).not.toHaveBeenCalled()
+
+      expect(errorCallback).toHaveBeenCalledWith(
+        expect.objectContaining({
+          name: 'ElementError',
+          message: `${MockComponent.moduleName}: Scope element (\`$scope\`) not found`
+        }),
+        expect.objectContaining({
+          component: MockComponent,
+          config: { attribute: 'random' }
+        })
+      )
 
       expect(result).toStrictEqual([])
     })
