@@ -57,6 +57,7 @@ export class I18n {
 
     if (typeof translation === 'string') {
       // Check for ${} placeholders in the translation string
+      // eslint-disable-next-line @typescript-eslint/prefer-regexp-exec
       if (translation.match(/%{(.\S+)}/)) {
         if (!options) {
           throw new Error(
@@ -171,6 +172,7 @@ export class I18n {
     //
     // Number(count) will turn anything that can't be converted to a Number type
     // into 'NaN'. isFinite filters out NaN, as it isn't a finite number.
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-conversion
     count = Number(count)
     if (!isFinite(count)) {
       return 'other'
