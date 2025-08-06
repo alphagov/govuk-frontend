@@ -21,7 +21,7 @@ import { SupportError } from './errors/index.mjs'
  * Use the `data-module` attributes to find, instantiate and init all of the
  * components provided as part of GOV.UK Frontend.
  *
- * @param {Config & { scope?: Element, onError?: OnErrorCallback<CompatibleClass> }} [config] - Config for all components (with optional scope)
+ * @param {Config} [config] - Config for all components (with optional scope)
  */
 function initAll(config) {
   config = typeof config !== 'undefined' ? config : {}
@@ -173,6 +173,8 @@ export { initAll, createAll }
  * Config for all components via `initAll()`
  *
  * @typedef {object} Config
+ * @property {Element | Document | null} [scope] - Scope of the document to search within
+ * @property {OnErrorCallback<CompatibleClass>} [onError] - Initialisation error callback
  * @property {AccordionConfig} [accordion] - Accordion config
  * @property {ButtonConfig} [button] - Button config
  * @property {CharacterCountConfig} [characterCount] - Character Count config
@@ -212,7 +214,7 @@ export { initAll, createAll }
  * @typedef {object} ErrorContext
  * @property {Element} [element] - Element used for component module initialisation
  * @property {ComponentClass} [component] - Class of component
- * @property {ComponentConfig<ComponentClass>} config - Config supplied to component
+ * @property {Config | ComponentConfig<ComponentClass>} [config] - Config supplied to components
  */
 
 /**
