@@ -107,6 +107,7 @@
     "@types/mime-types": "^3.0.1",
     "@types/node": "^24.2.0",
     "@types/nunjucks": "^3.2.6",
+    "@types/semver": "^7.7.0",
     "@types/slug": "^5.0.9",
     "@types/vinyl": "^2.0.12",
     "puppeteer": "^24.15.0",
