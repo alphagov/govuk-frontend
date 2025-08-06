@@ -14,7 +14,7 @@ import { Radios } from './components/radios/radios.mjs'
 import { ServiceNavigation } from './components/service-navigation/service-navigation.mjs'
 import { SkipLink } from './components/skip-link/skip-link.mjs'
 import { Tabs } from './components/tabs/tabs.mjs'
-import { SupportError } from './errors/index.mjs'
+import { ElementError, SupportError } from './errors/index.mjs'
 
 /**
  * Initialise all components
@@ -31,6 +31,15 @@ function initAll(config = {}) {
     // Skip initialisation when GOV.UK Frontend is not supported
     if (!isSupported()) {
       throw new SupportError()
+    }
+
+    // Users can initialise GOV.UK Frontend in certain sections of the page
+    // unless the scope is null (for example, query selector not found)
+    if (options.scope === null) {
+      throw new ElementError({
+        element: options.scope,
+        identifier: 'GOV.UK Frontend scope element (`$scope`)'
+      })
     }
   } catch (error) {
     if (options.onError) {
@@ -82,17 +91,30 @@ function initAll(config = {}) {
  * @returns {Array<InstanceType<ComponentClass>>} - array of instantiated components
  */
 function createAll(Component, config, createAllOptions) {
-  const options = normaliseOptions(createAllOptions)
+  let /** @type {NodeListOf<Element> | undefined} */ $elements
 
-  const $elements = options.scope?.querySelectorAll(
-    `[data-module="${Component.moduleName}"]`
-  )
+  // Extract initialisation options
+  const options = normaliseOptions(createAllOptions)
 
   try {
     // Skip initialisation when GOV.UK Frontend is not supported
     if (!isSupported()) {
       throw new SupportError()
     }
+
+    // Users can initialise GOV.UK Frontend in certain sections of the page
+    // unless the scope is null (for example, query selector not found)
+    if (options.scope === null) {
+      throw new ElementError({
+        element: options.scope,
+        component: Component,
+        identifier: 'Scope element (`$scope`)'
+      })
+    }
+
+    $elements = options.scope?.querySelectorAll(
+      `[data-module="${Component.moduleName}"]`
+    )
   } catch (error) {
     if (options.onError) {
       options.onError(error, {
