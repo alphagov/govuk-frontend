@@ -131,11 +131,6 @@ export default {
       // Web server and browser required
       globalSetup: '@govuk-frontend/helpers/jest/browser/open.mjs',
       globalTeardown: '@govuk-frontend/helpers/jest/browser/close.mjs'
-    },
-    {
-      ...config,
-      displayName: 'Workflow helper tests',
-      testMatch: ['**/workflows/scripts/*.test.{js,mjs}']
     }
   ],
 
