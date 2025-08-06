@@ -43,6 +43,12 @@ module.exports = {
         // Babel transpiles ES2020 class fields
         'es-x/no-class-fields': 'off',
 
+        // Babel transpiles ES2022 class instance fields
+        'es-x/no-class-instance-fields': 'off',
+
+        // Babel transpiles ES2022 class static fields
+        'es-x/no-class-static-fields': 'off',
+
         // ES modules include ES2016 '[].includes()' coverage
         // https://browsersl.ist/#q=supports+es6-module+and+not+supports+array-includes
         'es-x/no-array-prototype-includes': 'off',
