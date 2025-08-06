@@ -8,7 +8,6 @@
   },
   "license": "MIT",
   "workspaces": [
-    ".github/workflows/scripts",
     "packages/govuk-frontend",
     "packages/govuk-frontend-review",
     "shared/*",
