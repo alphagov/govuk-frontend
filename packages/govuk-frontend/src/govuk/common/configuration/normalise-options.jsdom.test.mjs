@@ -3,6 +3,14 @@ import { normaliseOptions } from '../configuration.mjs'
 describe('normaliseOptions', () => {
   const scopes = [
     {
+      name: 'document',
+      $scope: document
+    },
+    {
+      name: 'document (new)',
+      $scope: document.implementation.createHTMLDocument()
+    },
+    {
       name: 'div element',
       $scope: document.createElement('div')
     },
