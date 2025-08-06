@@ -129,6 +129,18 @@ export function isObject(option) {
 }
 
 /**
+ * Check for valid scope
+ *
+ * @internal
+ * @template {Element} ScopeType
+ * @param {unknown | ScopeType} $scope - Scope of the document to search within
+ * @returns {$scope is ScopeType} Whether the scope can be queried
+ */
+export function isScope($scope) {
+  return !!$scope && $scope instanceof Element
+}
+
+/**
  * Format error message
  *
  * @internal
