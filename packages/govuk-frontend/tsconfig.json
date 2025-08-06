@@ -1,12 +1,11 @@
 {
   "extends": "../../tsconfig.base.json",
-  "files": [],
-  "references": [
-    {
-      "path": "./tsconfig.dev.json"
-    },
-    {
-      "path": "./tsconfig.build.json"
-    }
-  ]
+  "include": ["./src/govuk/**/*.js", "./src/govuk/**/*.mjs"],
+  "exclude": ["**/*.test.*"],
+  "compilerOptions": {
+    "lib": ["ESNext", "DOM"],
+    "strict": true,
+    "target": "ES2015",
+    "types": ["node", "typed-query-selector"]
+  }
 }
