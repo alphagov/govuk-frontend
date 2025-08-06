@@ -1,5 +1,3 @@
-const { join } = require('path')
-
 module.exports = {
   settings: {
     node: {
@@ -10,11 +8,9 @@ module.exports = {
     {
       files: ['src/govuk/**/*.mjs'],
       excludedFiles: ['**/*.test.mjs'],
-      parser: '@typescript-eslint/parser',
       parserOptions: {
         // Note: Allow ES2015 for import/export syntax
-        ecmaVersion: '2015',
-        project: [join(__dirname, 'tsconfig.json')]
+        ecmaVersion: '2015'
       },
       plugins: ['@typescript-eslint', 'es-x'],
       extends: [
@@ -82,6 +78,7 @@ module.exports = {
       }
     },
     {
+      extends: ['plugin:@typescript-eslint/disable-type-checked'],
       files: ['src/govuk-prototype-kit/**/*.js'],
       parserOptions: {
         sourceType: 'module'
