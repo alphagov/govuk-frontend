@@ -3,6 +3,9 @@
   "files": [],
   "references": [
     {
+      "path": "./tsconfig.dev.json"
+    },
+    {
       "path": "./.github/workflows/scripts/tsconfig.json"
     },
     {
@@ -12,19 +15,7 @@
       "path": "./packages/govuk-frontend/tsconfig.json"
     },
     {
-      "path": "./shared/config/tsconfig.json"
-    },
-    {
-      "path": "./shared/helpers/tsconfig.json"
-    },
-    {
-      "path": "./shared/lib/tsconfig.json"
-    },
-    {
-      "path": "./shared/stats/tsconfig.json"
-    },
-    {
-      "path": "./shared/tasks/tsconfig.json"
+      "path": "./shared/tsconfig.json"
     }
   ]
 }

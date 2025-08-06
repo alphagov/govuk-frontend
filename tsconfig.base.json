@@ -12,6 +12,7 @@
     "strict": false,
     "strictBindCallApply": true,
     "strictFunctionTypes": true,
+    "strictNullChecks": true,
     "target": "ESNext",
     "types": [],
     "paths": {
@@ -26,6 +27,7 @@
       "govuk-frontend": ["./packages/govuk-frontend/src/govuk/all.mjs"]
     }
   },
+  "exclude": ["**/dist", "**/node_modules"],
   "typeAcquisition": {
     "enable": false
   }

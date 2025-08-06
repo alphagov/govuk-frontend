@@ -28,7 +28,7 @@ module.exports = {
   entryPoints: [
     slash(packageResolveToPath('govuk-frontend/src/govuk/all.mjs'))
   ],
-  tsconfig: packageResolveToPath('govuk-frontend/tsconfig.build.json'),
+  tsconfig: packageResolveToPath('govuk-frontend/tsconfig.json'),
   out: './dist/docs/jsdoc',
 
   // Turn off strict checks for JSDoc output

@@ -1,7 +1,7 @@
 import { Component } from '../component.mjs'
 import { ConfigError } from '../errors/index.mjs'
 
-import { isObject, formatErrorMessage } from './index.mjs'
+import { isObject, isScope, formatErrorMessage } from './index.mjs'
 
 export const configOverride = Symbol.for('configOverride')
 
@@ -57,14 +57,16 @@ export class ConfigurableComponent extends Component {
    * Constructs a new component, validating that GOV.UK Frontend is supported
    *
    * @internal
-   * @param {Element | null} [$root] - HTML element to use for component
+   * @param {Element | null} $root - HTML element to use for component
    * @param {ConfigurationType} [config] - HTML element to use for component
    */
   constructor($root, config) {
     super($root)
 
     const childConstructor =
-      /** @type {ChildClassConstructor<ConfigurationType>} */ (this.constructor)
+      /** @type {ComponentConstructor<typeof ConfigurableComponent>} */ (
+        this.constructor
+      )
 
     if (!isObject(childConstructor.defaults)) {
       throw new ConfigError(
@@ -150,7 +152,7 @@ export function normaliseString(value, property) {
  * @internal
  * @template {Partial<Record<keyof ConfigurationType, unknown>>} ConfigurationType
  * @template {[keyof ConfigurationType, SchemaProperty | undefined][]} SchemaEntryType
- * @param {{ schema?: Schema<ConfigurationType>, moduleName: string }} Component - Component class
+ * @param {CompatibleClass & { schema?: Schema<ConfigurationType> }} Component - Component class
  * @param {DOMStringMap} dataset - HTML element dataset
  * @returns {ObjectNested} Normalised dataset
  */
@@ -194,6 +196,46 @@ export function normaliseDataset(Component, dataset) {
   }
 
   return out
+}
+
+/**
+ * Normalise options passed to `initAll` or `createAll`
+ *
+ * @template {CompatibleClass} ComponentClass
+ * @param {Config | CreateAllOptions<ComponentClass> | OnErrorCallback<ComponentClass> | Element | Document | null} [scopeOrOptions] - Scope of the document to search within, initialisation options or error callback function
+ * @returns {CreateAllOptions<ComponentClass>} Normalised options
+ */
+export function normaliseOptions(scopeOrOptions) {
+  let /** @type {Element | Document | null} */ $scope = document
+  let /** @type {OnErrorCallback<ComponentClass> | undefined} */ onError
+
+  // Handle options object
+  if (isObject(scopeOrOptions)) {
+    const options = scopeOrOptions
+
+    // Scope must be valid or null
+    if (isScope(options.scope) || options.scope === null) {
+      $scope = options.scope
+    }
+
+    // Error handler must be a function
+    if (typeof options.onError === 'function') {
+      onError = options.onError
+    }
+  }
+
+  if (isScope(scopeOrOptions)) {
+    $scope = scopeOrOptions
+  } else if (scopeOrOptions === null) {
+    $scope = null
+  } else if (typeof scopeOrOptions === 'function') {
+    onError = scopeOrOptions
+  }
+
+  return {
+    scope: $scope,
+    onError
+  }
 }
 
 /**
@@ -362,14 +404,6 @@ export function extractConfigByNamespace(schema, dataset, namespace) {
  */
 
 /**
- * @template {Partial<Record<keyof ConfigurationType, unknown>>} [ConfigurationType=ObjectNested]
- * @typedef ChildClass
- * @property {string} moduleName - The module name that'll be looked for in the DOM when initialising the component
- * @property {Schema<ConfigurationType>} [schema] - The schema of the component configuration
- * @property {ConfigurationType} [defaults] - The default values of the configuration of the component
- */
-
-/**
- * @template {Partial<Record<keyof ConfigurationType, unknown>>} [ConfigurationType=ObjectNested]
- * @typedef {typeof Component & ChildClass<ConfigurationType>} ChildClassConstructor<ConfigurationType>
+ * @import { ComponentConstructor } from '../component.mjs'
+ * @import { CompatibleClass, Config, CreateAllOptions, OnErrorCallback } from '../init.mjs'
  */
