@@ -199,6 +199,7 @@ export function normaliseDataset(Component, dataset) {
 /**
  * Normalise options passed to `initAll` or `createAll`
  *
+ * @internal
  * @template {CompatibleClass} ComponentClass
  * @param {Config | CreateAllOptions<ComponentClass> | OnErrorCallback<ComponentClass> | Element | Document | null} [scopeOrOptions] - Scope of the document to search within, initialisation options or error callback function
  * @returns {CreateAllOptions<ComponentClass>} Normalised options
