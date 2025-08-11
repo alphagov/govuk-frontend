@@ -120,12 +120,24 @@ function isArray(option) {
  * Check for an object
  *
  * @internal
- * @template {Partial<Record<keyof ObjectType, unknown>>} [ObjectType=ObjectNested]
+ * @template {Partial<Record<keyof ObjectType, unknown>>} ObjectType
  * @param {unknown | ObjectType} option - Option to check
  * @returns {option is ObjectType} Whether the option is an object
  */
 export function isObject(option) {
   return !!option && typeof option === 'object' && !isArray(option)
+}
+
+/**
+ * Check for valid scope
+ *
+ * @internal
+ * @template {Element | Document} ScopeType
+ * @param {unknown | ScopeType} $scope - Scope of the document to search within
+ * @returns {$scope is ScopeType} Whether the scope can be queried
+ */
+export function isScope($scope) {
+  return !!$scope && ($scope instanceof Element || $scope instanceof Document)
 }
 
 /**
@@ -152,7 +164,3 @@ export function formatErrorMessage(Component, message) {
  */
 
 /* eslint-enable jsdoc/valid-types */
-
-/**
- * @import { ObjectNested } from './configuration.mjs'
- */

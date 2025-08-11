@@ -1,5 +1,3 @@
-const { join } = require('path')
-
 module.exports = {
   settings: {
     node: {
@@ -10,11 +8,9 @@ module.exports = {
     {
       files: ['src/govuk/**/*.mjs'],
       excludedFiles: ['**/*.test.mjs'],
-      parser: '@typescript-eslint/parser',
       parserOptions: {
         // Note: Allow ES2015 for import/export syntax
-        ecmaVersion: '2015',
-        project: [join(__dirname, 'tsconfig.build.json')]
+        ecmaVersion: '2015'
       },
       plugins: ['@typescript-eslint', 'es-x'],
       extends: [
@@ -46,6 +42,12 @@ module.exports = {
 
         // Babel transpiles ES2020 class fields
         'es-x/no-class-fields': 'off',
+
+        // Babel transpiles ES2022 class instance fields
+        'es-x/no-class-instance-fields': 'off',
+
+        // Babel transpiles ES2022 class static fields
+        'es-x/no-class-static-fields': 'off',
 
         // ES modules include ES2016 '[].includes()' coverage
         // https://browsersl.ist/#q=supports+es6-module+and+not+supports+array-includes
@@ -82,6 +84,7 @@ module.exports = {
       }
     },
     {
+      extends: ['plugin:@typescript-eslint/disable-type-checked'],
       files: ['src/govuk-prototype-kit/**/*.js'],
       parserOptions: {
         sourceType: 'module'

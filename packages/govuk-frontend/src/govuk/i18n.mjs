@@ -1,3 +1,5 @@
+import { isObject } from './common/index.mjs'
+
 /**
  * Internal support for selecting messages to render, with placeholder
  * interpolation and locale-aware number formatting and pluralisation
@@ -45,7 +47,7 @@ export class I18n {
     // If the `count` option is set, determine which plural suffix is needed and
     // change the lookupKey to match. We check to see if it's numeric instead of
     // falsy, as this could legitimately be 0.
-    if (typeof options?.count === 'number' && typeof translation === 'object') {
+    if (typeof options?.count === 'number' && isObject(translation)) {
       const translationPluralForm =
         translation[this.getPluralSuffix(lookupKey, options.count)]
 
@@ -57,6 +59,7 @@ export class I18n {
 
     if (typeof translation === 'string') {
       // Check for ${} placeholders in the translation string
+      // eslint-disable-next-line @typescript-eslint/prefer-regexp-exec
       if (translation.match(/%{(.\S+)}/)) {
         if (!options) {
           throw new Error(
@@ -171,6 +174,7 @@ export class I18n {
     //
     // Number(count) will turn anything that can't be converted to a Number type
     // into 'NaN'. isFinite filters out NaN, as it isn't a finite number.
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-conversion
     count = Number(count)
     if (!isFinite(count)) {
       return 'other'
@@ -187,7 +191,7 @@ export class I18n {
       : this.selectPluralFormUsingFallbackRules(count)
 
     // Use the correct plural form if provided
-    if (typeof translation === 'object') {
+    if (isObject(translation)) {
       if (preferredForm in translation) {
         return preferredForm
         // Fall back to `other` if the plural form is missing, but log a warning
