@@ -17,13 +17,13 @@ describe('@function govuk-colour', () => {
 
   beforeEach(() => {
     sassBootstrap = `
-      $govuk-colours: (
-        "red": #ff0000,
-        "green": #00ff00,
-        "blue": #0000ff
+      @use "helpers/colour" as * with (
+        $govuk-colours: (
+          "red": #ff0000,
+          "green": #00ff00,
+          "blue": #0000ff
+        )
       );
-
-      @import "helpers/colour";
     `
   })
 
@@ -102,22 +102,22 @@ describe('@function govuk-colour', () => {
 
 describe('@function govuk-organisation-colour', () => {
   const sassBootstrap = `
-    $govuk-new-organisation-colours: true;
-    $govuk-colours-organisations: (
-      'floo-network-authority': (
-        colour: #EC22FF,
-        contrast-safe: #9A00A8
-      ),
-      'broom-regulatory-control': (
-        colour: #A81223
-      ),
-      'house-elf-equalities-office': (
-        colour: #786999,
-        deprecation-message: 'The House Elf Equalities Office was disbanded in 2007.'
+    @use "helpers/colour" as * with (
+      $govuk-new-organisation-colours: true,
+      $govuk-colours-organisations: (
+        'floo-network-authority': (
+          colour: #EC22FF,
+          contrast-safe: #9A00A8
+        ),
+        'broom-regulatory-control': (
+          colour: #A81223
+        ),
+        'house-elf-equalities-office': (
+          colour: #786999,
+          deprecation-message: 'The House Elf Equalities Office was disbanded in 2007.'
+        )
       )
     );
-
-    @import "helpers/colour";
   `
 
   it('returns the contrast-safe colour for a given organisation by default', async () => {
@@ -227,13 +227,13 @@ describe('@function govuk-organisation-colour', () => {
 
   it('aliases renamed organisation keys to the equivalent key', async () => {
     const sass = `
-      $govuk-colours-organisations: (
-        'department-for-business-trade': (
-          colour: #e52d13
+      @use "helpers/colour" as * with (
+        $govuk-colours-organisations: (
+          'department-for-business-trade': (
+            colour: #e52d13
+          )
         )
       );
-
-      @import "helpers/colour";
 
       .foo {
         color: govuk-organisation-colour('department-for-business-and-trade');
@@ -251,17 +251,17 @@ describe('@function govuk-organisation-colour', () => {
 
   describe('legacy palette', () => {
     const sassBootstrapLegacy = `
-      $govuk-colours-organisations: (
-        'floo-network-authority': (
-          colour: #EC22FF,
-          colour-websafe: #9A00A8
-        ),
-        'broom-regulatory-control': (
-          colour: #A81223
+      @use "helpers/colour" as * with (
+        $govuk-colours-organisations: (
+          'floo-network-authority': (
+            colour: #EC22FF,
+            colour-websafe: #9A00A8
+          ),
+          'broom-regulatory-control': (
+            colour: #A81223
+          )
         )
       );
-
-      @import "helpers/colour";
     `
 
     it('returns the contrast-safe colour for a given organisation by default', async () => {
@@ -322,12 +322,12 @@ describe('@function govuk-organisation-colour', () => {
   describe('legacy deprecation message', () => {
     it('throws a deprecation warning if the legacy palette is being used', async () => {
       const sass = `
-      @import "helpers/colour";
+        @use "helpers/colour" as *;
 
-      .dft {
-        border-color: govuk-organisation-colour('department-for-transport');
-      }
-    `
+        .dft {
+          border-color: govuk-organisation-colour('department-for-transport');
+        }
+      `
 
       await compileSassString(sass, sassConfig)
 
@@ -345,9 +345,10 @@ describe('@function govuk-organisation-colour', () => {
 
     it('does not throw a deprecation warning if the new palette is being used', async () => {
       const sass = `
-      $govuk-new-organisation-colours: true;
-      @import "settings/colours-organisations";
-    `
+        @forward "settings/colours-organisations" with (
+          $govuk-new-organisation-colours: true
+        );
+      `
 
       await compileSassString(sass, sassConfig)
 
@@ -357,13 +358,14 @@ describe('@function govuk-organisation-colour', () => {
 
     it('does not throw a deprecation warning if the palette has been customised', async () => {
       const sass = `
-      $govuk-colours-organisations: (
-        "department-of-administrative-affairs": (
-          colour: "#226623"
-        )
-      );
-      @import "settings/colours-organisations";
-    `
+        @forward "settings/colours-organisations" with (
+          $govuk-colours-organisations: (
+            "department-of-administrative-affairs": (
+              colour: "#226623"
+            )
+          )
+        );
+      `
 
       await compileSassString(sass, sassConfig)
 
