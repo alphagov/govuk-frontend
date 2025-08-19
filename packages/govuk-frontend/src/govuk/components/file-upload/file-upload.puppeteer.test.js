@@ -144,9 +144,8 @@ describe('/components/file-upload', () => {
 
             const inputElementValue = await page.$eval(
               inputSelector,
-              (el) =>
-                // @ts-ignore
-                el.value
+              // @ts-expect-error - Property 'value' does not exist
+              (el) => el.value
             )
 
             // For Windows and backward compatibility, the values of file inputs
@@ -172,16 +171,14 @@ describe('/components/file-upload', () => {
         it('updates the file input value', async () => {
           const inputElementValue = await page.$eval(
             inputSelector,
-            (el) =>
-              // @ts-ignore
-              el.value
+            // @ts-expect-error - Property 'value' does not exist
+            (el) => el.value
           )
 
           const inputElementFiles = await page.$eval(
             inputSelector,
-            (el) =>
-              // @ts-ignore
-              el.files
+            // @ts-expect-error - Property 'files' does not exist
+            (el) => el.files
           )
 
           // For Windows and backward compatibility, the values of file inputs
@@ -221,16 +218,14 @@ describe('/components/file-upload', () => {
         it('updates the file input value', async () => {
           const inputElementValue = await page.$eval(
             inputSelector,
-            (el) =>
-              // @ts-ignore
-              el.value
+            // @ts-expect-error - Property 'value' does not exist
+            (el) => el.value
           )
 
           const inputElementFiles = await page.$eval(
             inputSelector,
-            (el) =>
-              // @ts-ignore
-              el.files
+            // @ts-expect-error - Property 'files' does not exist
+            (el) => el.files
           )
 
           // For Windows and backward compatibility, the values of file inputs

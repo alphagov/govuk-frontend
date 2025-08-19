@@ -30,7 +30,7 @@ const eslint = new ESLint()
  * Removes files ignored by ESLint from a list of files provided by lint-staged
  *
  * @param {string} task - The task `lint-staged` wants to execute
- * @returns {Promise<(paths: string[]) => string[]>} Tasks to run with files argument
+ * @returns {(paths: string[]) => Promise<string[]>} Tasks to run with files argument
  */
 function filterTask(task) {
   return async (files) => {

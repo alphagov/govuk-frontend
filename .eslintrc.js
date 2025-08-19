@@ -31,11 +31,30 @@ module.exports = {
         // https://github.com/eslint/eslint-plugin-markdown#advanced-configuration
         '**/*.md/*.{cjs,js,mjs}'
       ],
+      parser: '@typescript-eslint/parser',
       parserOptions: {
-        ecmaVersion: 'latest'
+        ecmaVersion: 'latest',
+        projectService: true,
+        tsconfigRootDir: __dirname
       },
-      plugins: ['import', 'jsdoc', 'n', 'promise', 'jest', 'jest-dom'],
+      plugins: [
+        '@typescript-eslint',
+        'import',
+        'jsdoc',
+        'n',
+        'promise',
+        'jest',
+        'jest-dom'
+      ],
       rules: {
+        // Access import namespace (e.g. GOVUKFrontend) using string keys
+        'import/namespace': [
+          'error',
+          {
+            allowComputed: true
+          }
+        ],
+
         // Check import or require statements are A-Z ordered
         'import/order': [
           'error',
@@ -154,6 +173,10 @@ module.exports = {
       processor: 'markdown/markdown'
     },
     {
+      extends: ['plugin:@typescript-eslint/disable-type-checked'],
+      files: ['**/*.md/*.{cjs,js,mjs}']
+    },
+    {
       files: [
         '**/coding-standards/component-options.md/*.{cjs,js,mjs}',
         '**/coding-standards/js.md/*.{cjs,js,mjs}'
@@ -175,8 +198,5 @@ module.exports = {
       }
     }
   ],
-  parserOptions: {
-    project: './tsconfig.json'
-  },
   root: true
 }

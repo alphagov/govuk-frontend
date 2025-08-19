@@ -9,7 +9,7 @@ const { headless = 'new' } = jestPuppeteerConfig.launch
 /**
  * Jest project config defaults
  *
- * @type {import('@jest/types').Config.ProjectConfig}
+ * @type {import('@jest/types').Config.InitialProjectOptions}
  */
 const config = {
   cacheDirectory: '<rootDir>/.cache/jest/',
