@@ -141,7 +141,27 @@ describe('initAll', () => {
     })
   })
 
-  it('only initialises components within a given scope', () => {
+  it('only initialises components within a given scope parameter', () => {
+    document.body.classList.add('govuk-frontend-supported')
+    document.body.innerHTML = `
+      <div data-module="govuk-accordion"></div>
+      <div class="not-in-scope">
+        <div data-module="govuk-accordion"></div>
+      </div>'
+      <div class="my-scope">
+        <div data-module="govuk-accordion"></div>
+      </div>`
+
+    initAll(document.querySelector('.my-scope'))
+
+    // Expect to have been called exactly once with the accordion in .my-scope
+    expect(GOVUKFrontend.Accordion).toHaveBeenCalledTimes(1)
+    expect(GOVUKFrontend.Accordion).toHaveBeenCalledWith(
+      document.querySelector('.my-scope [data-module="govuk-accordion"]')
+    )
+  })
+
+  it('only initialises components within a given scope option', () => {
     document.body.classList.add('govuk-frontend-supported')
     document.body.innerHTML = `
       <div data-module="govuk-accordion"></div>

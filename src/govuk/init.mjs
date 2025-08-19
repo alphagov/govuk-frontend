@@ -1,5 +1,5 @@
 import { normaliseOptions } from './common/configuration.mjs'
-import { isSupported } from './common/index.mjs'
+import { isObject, isSupported } from './common/index.mjs'
 import { Accordion } from './components/accordion/accordion.mjs'
 import { Button } from './components/button/button.mjs'
 import { CharacterCount } from './components/character-count/character-count.mjs'
@@ -22,10 +22,13 @@ import { ElementError, SupportError } from './errors/index.mjs'
  * Use the `data-module` attributes to find, instantiate and init all of the
  * components provided as part of GOV.UK Frontend.
  *
- * @param {Config} [config] - Config for all components (with optional scope)
+ * @param {Config | Element | Document | null} [scopeOrConfig] - Scope of the document to search within or config for all components (with optional scope)
  */
-function initAll(config = {}) {
-  const options = normaliseOptions(config)
+function initAll(scopeOrConfig = {}) {
+  const config = isObject(scopeOrConfig) ? scopeOrConfig : {}
+
+  // Extract initialisation options
+  const options = normaliseOptions(scopeOrConfig)
 
   try {
     // Skip initialisation when GOV.UK Frontend is not supported
@@ -87,14 +90,14 @@ function initAll(config = {}) {
  * @template {CompatibleClass} ComponentClass
  * @param {ComponentClass} Component - class of the component to create
  * @param {ComponentConfig<ComponentClass>} [config] - Config supplied to component
- * @param {OnErrorCallback<ComponentClass> | Element | Document | null | CreateAllOptions<ComponentClass>} [createAllOptions] - options for createAll including scope of the document to search within and callback function if error throw by component on init
+ * @param {OnErrorCallback<ComponentClass> | Element | Document | null | CreateAllOptions<ComponentClass>} [scopeOrOptions] - options for createAll including scope of the document to search within and callback function if error throw by component on init
  * @returns {Array<InstanceType<ComponentClass>>} - array of instantiated components
  */
-function createAll(Component, config, createAllOptions) {
+function createAll(Component, config, scopeOrOptions) {
   let /** @type {NodeListOf<Element> | undefined} */ $elements
 
   // Extract initialisation options
-  const options = normaliseOptions(createAllOptions)
+  const options = normaliseOptions(scopeOrOptions)
 
   try {
     // Skip initialisation when GOV.UK Frontend is not supported
