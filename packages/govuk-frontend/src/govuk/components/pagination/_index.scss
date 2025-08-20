@@ -147,6 +147,10 @@
     }
   }
 
+  .govuk-pagination__link-title {
+    text-decoration-thickness: inherit;
+  }
+
   .govuk-pagination__link-label {
     @include govuk-typography-weight-regular;
     @include govuk-link-decoration;
