@@ -518,8 +518,7 @@ export class Accordion extends ConfigurableComponent {
     if (id) {
       try {
         window.sessionStorage.setItem(id, isExpanded.toString())
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      } catch (exception) {}
+      } catch {}
     }
   }
 
@@ -543,8 +542,7 @@ export class Accordion extends ConfigurableComponent {
         if (state !== null) {
           this.setExpanded(state === 'true', $section)
         }
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      } catch (exception) {}
+      } catch {}
     }
   }
 
