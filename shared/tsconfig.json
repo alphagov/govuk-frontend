@@ -3,6 +3,7 @@
   "include": ["**/*.js", "**/*.mjs"],
   "exclude": ["**/dist", "**/node_modules", "**/*.test.*"],
   "compilerOptions": {
+    "strictNullChecks": false,
     "types": ["node", "typed-query-selector"]
   }
 }

@@ -1,7 +1,7 @@
 import { Component } from '../component.mjs'
 import { ConfigError } from '../errors/index.mjs'
 
-import { isObject, formatErrorMessage } from './index.mjs'
+import { isObject, isScope, formatErrorMessage } from './index.mjs'
 
 export const configOverride = Symbol.for('configOverride')
 
@@ -197,6 +197,47 @@ export function normaliseDataset(Component, dataset) {
 }
 
 /**
+ * Normalise options passed to `initAll` or `createAll`
+ *
+ * @internal
+ * @template {CompatibleClass} ComponentClass
+ * @param {Config | CreateAllOptions<ComponentClass> | OnErrorCallback<ComponentClass> | Element | Document | null} [scopeOrOptions] - Scope of the document to search within, initialisation options or error callback function
+ * @returns {CreateAllOptions<ComponentClass>} Normalised options
+ */
+export function normaliseOptions(scopeOrOptions) {
+  let /** @type {Element | Document | null} */ $scope = document
+  let /** @type {OnErrorCallback<ComponentClass> | undefined} */ onError
+
+  // Handle options object
+  if (isObject(scopeOrOptions)) {
+    const options = scopeOrOptions
+
+    // Scope must be valid or null
+    if (isScope(options.scope) || options.scope === null) {
+      $scope = options.scope
+    }
+
+    // Error handler must be a function
+    if (typeof options.onError === 'function') {
+      onError = options.onError
+    }
+  }
+
+  if (isScope(scopeOrOptions)) {
+    $scope = scopeOrOptions
+  } else if (scopeOrOptions === null) {
+    $scope = null
+  } else if (typeof scopeOrOptions === 'function') {
+    onError = scopeOrOptions
+  }
+
+  return {
+    scope: $scope,
+    onError
+  }
+}
+
+/**
  * Config merging function
  *
  * Takes any number of objects and combines them together, with
@@ -372,4 +413,8 @@ export function extractConfigByNamespace(schema, dataset, namespace) {
 /**
  * @template {Partial<Record<keyof ConfigurationType, unknown>>} [ConfigurationType=ObjectNested]
  * @typedef {typeof Component & ChildClass<ConfigurationType>} ChildClassConstructor<ConfigurationType>
+ */
+
+/**
+ * @import { CompatibleClass, Config, CreateAllOptions, OnErrorCallback } from '../init.mjs'
  */

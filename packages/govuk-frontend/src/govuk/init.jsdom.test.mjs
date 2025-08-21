@@ -4,7 +4,9 @@ import {
 } from '@govuk-frontend/lib/names'
 
 import * as GOVUKFrontend from './all.mjs'
+import { ConfigurableComponent } from './common/configuration.mjs'
 import { Component } from './component.mjs'
+import { ElementError } from './errors/index.mjs'
 import { initAll, createAll } from './init.mjs'
 
 // Annoyingly these don't get hoisted if done in a loop
@@ -43,6 +45,11 @@ describe('initAll', () => {
     'notification-banner',
     'password-input'
   ]
+
+  beforeEach(() => {
+    // Silence warnings in test output, and allow us to 'expect' them
+    jest.spyOn(console, 'log').mockImplementation()
+  })
 
   afterEach(() => {
     document.body.innerHTML = ''
@@ -85,11 +92,6 @@ describe('initAll', () => {
   )
 
   describe('govuk-frontend-supported not present', () => {
-    beforeAll(() => {
-      // Silence warnings in test output, and allow us to 'expect' them
-      jest.spyOn(global.console, 'log').mockImplementation()
-    })
-
     it('returns early', () => {
       document.body.innerHTML = '<div data-module="govuk-accordion"></div>'
 
@@ -102,8 +104,9 @@ describe('initAll', () => {
       initAll()
 
       // Only validate the message as it's the important part for the user
-      expect(global.console.log).toHaveBeenCalledWith(
+      expect(console.log).toHaveBeenCalledWith(
         expect.objectContaining({
+          name: 'SupportError',
           message: 'GOV.UK Frontend is not supported in this browser'
         })
       )
@@ -119,10 +122,11 @@ describe('initAll', () => {
         onError: errorCallback
       })
 
-      expect(global.console.log).not.toHaveBeenCalled()
+      expect(console.log).not.toHaveBeenCalled()
 
       expect(errorCallback).toHaveBeenCalledWith(
         expect.objectContaining({
+          name: 'SupportError',
           message: 'GOV.UK Frontend is not supported in this browser'
         }),
         expect.objectContaining({
@@ -137,7 +141,27 @@ describe('initAll', () => {
     })
   })
 
-  it('only initialises components within a given scope', () => {
+  it('only initialises components within a given scope parameter', () => {
+    document.body.classList.add('govuk-frontend-supported')
+    document.body.innerHTML = `
+      <div data-module="govuk-accordion"></div>
+      <div class="not-in-scope">
+        <div data-module="govuk-accordion"></div>
+      </div>'
+      <div class="my-scope">
+        <div data-module="govuk-accordion"></div>
+      </div>`
+
+    initAll(document.querySelector('.my-scope'))
+
+    // Expect to have been called exactly once with the accordion in .my-scope
+    expect(GOVUKFrontend.Accordion).toHaveBeenCalledTimes(1)
+    expect(GOVUKFrontend.Accordion).toHaveBeenCalledWith(
+      document.querySelector('.my-scope [data-module="govuk-accordion"]')
+    )
+  })
+
+  it('only initialises components within a given scope option', () => {
     document.body.classList.add('govuk-frontend-supported')
     document.body.innerHTML = `
       <div data-module="govuk-accordion"></div>
@@ -159,6 +183,33 @@ describe('initAll', () => {
     )
   })
 
+  it('catches errors thrown when a given scope is null and logs them to the console', () => {
+    document.body.classList.add('govuk-frontend-supported')
+    document.body.innerHTML = `
+      <div data-module="govuk-accordion"></div>
+      <div class="not-in-scope">
+        <div data-module="govuk-accordion"></div>
+      </div>'
+      <div class="my-scope">
+        <div data-module="govuk-accordion"></div>
+      </div>`
+
+    expect(() => {
+      initAll({
+        scope: document.querySelector('.unknown-scope')
+      })
+    }).not.toThrow()
+
+    expect(console.log).toHaveBeenCalledWith(
+      expect.objectContaining({
+        name: 'ElementError',
+        message: 'GOV.UK Frontend scope element (`$scope`) not found'
+      })
+    )
+
+    expect(GOVUKFrontend.Accordion).not.toHaveBeenCalled()
+  })
+
   it('catches errors thrown by components and logs them to the console', () => {
     document.body.classList.add('govuk-frontend-supported')
     document.body.innerHTML = '<div data-module="govuk-accordion"></div>'
@@ -167,15 +218,12 @@ describe('initAll', () => {
       throw new Error('Error thrown from accordion')
     })
 
-    // Silence warnings in test output, and allow us to 'expect' them
-    jest.spyOn(global.console, 'log').mockImplementation()
-
     expect(() => {
       initAll()
     }).not.toThrow()
 
-    expect(global.console.log).toHaveBeenCalledWith(expect.any(Error))
-    expect(global.console.log).toHaveBeenCalledWith(
+    expect(console.log).toHaveBeenCalledWith(expect.any(Error))
+    expect(console.log).toHaveBeenCalledWith(
       expect.objectContaining({
         message: 'Error thrown from accordion'
       })
@@ -203,7 +251,7 @@ describe('initAll', () => {
       }
     })
 
-    expect(global.console.log).not.toHaveBeenCalled()
+    expect(console.log).not.toHaveBeenCalled()
 
     expect(errorCallback).toHaveBeenCalledWith(
       expect.objectContaining({
@@ -223,6 +271,9 @@ describe('initAll', () => {
 describe('createAll', () => {
   beforeEach(() => {
     document.body.classList.add('govuk-frontend-supported')
+
+    // Silence warnings in test output, and allow us to 'expect' them
+    jest.spyOn(console, 'log').mockImplementation()
   })
 
   afterEach(() => {
@@ -230,9 +281,9 @@ describe('createAll', () => {
   })
 
   class MockComponent extends Component {
-    constructor(...args) {
-      super(...args)
-      this.args = args
+    constructor($root) {
+      super($root)
+      this.args = [$root]
     }
 
     static checkSupport() {
@@ -240,6 +291,34 @@ describe('createAll', () => {
     }
 
     static moduleName = 'mock-component'
+  }
+
+  /**
+   * @augments ConfigurableComponent<MockConfig>
+   */
+  class MockConfigurableComponent extends ConfigurableComponent {
+    constructor($root, config) {
+      super($root, config)
+      this.args = [$root, config]
+    }
+
+    static moduleName = 'mock-component'
+
+    /**
+     * @satisfies {Schema<MockConfig>}
+     */
+    static schema = {
+      properties: {
+        __test: { type: 'boolean' }
+      }
+    }
+
+    /**
+     * @satisfies {MockConfig}
+     */
+    static defaults = {
+      __test: false
+    }
   }
 
   it('initialises a component, passing the component root', () => {
@@ -265,8 +344,9 @@ describe('createAll', () => {
 
     const result = createAll(MockComponent)
 
-    expect(global.console.log).toHaveBeenCalledWith(
+    expect(console.log).toHaveBeenCalledWith(
       expect.objectContaining({
+        name: 'SupportError',
         message: 'GOV.UK Frontend is not supported in this browser'
       })
     )
@@ -279,25 +359,26 @@ describe('createAll', () => {
 
     const errorCallback = jest.fn((_error, _context) => {})
 
-    expect(() => {
-      createAll(
-        MockComponent,
-        { attribute: 'random' },
-        { onError: errorCallback }
-      )
-    }).not.toThrow()
+    const result = createAll(
+      MockConfigurableComponent,
+      { __test: true },
+      { onError: errorCallback }
+    )
 
-    expect(global.console.log).not.toHaveBeenCalled()
+    expect(console.log).not.toHaveBeenCalled()
 
     expect(errorCallback).toHaveBeenCalledWith(
       expect.objectContaining({
+        name: 'SupportError',
         message: 'GOV.UK Frontend is not supported in this browser'
       }),
       expect.objectContaining({
-        component: MockComponent,
-        config: { attribute: 'random' }
+        component: MockConfigurableComponent,
+        config: { __test: true }
       })
     )
+
+    expect(result).toStrictEqual([])
   })
 
   it('executes overloaded checkSupport of component', () => {
@@ -318,9 +399,6 @@ describe('createAll', () => {
     componentRoot.setAttribute('data-module', 'mock-component')
     document.body.appendChild(componentRoot)
 
-    // Silence warnings in test output, and allow us to 'expect' them
-    jest.spyOn(global.console, 'log').mockImplementation()
-
     const checkSupportMock = jest.fn(() => {
       throw Error('Mock error')
     })
@@ -334,7 +412,7 @@ describe('createAll', () => {
     const result = createAll(MockComponentWithCheckSupport)
     expect(checkSupportMock).toHaveBeenCalled()
     expect(result).toStrictEqual([])
-    expect(global.console.log).toHaveBeenCalledWith(
+    expect(console.log).toHaveBeenCalledWith(
       expect.objectContaining({
         message: 'Mock error'
       })
@@ -376,11 +454,11 @@ describe('createAll', () => {
       componentRoot.setAttribute('data-module', 'mock-component')
       document.body.appendChild(componentRoot)
 
-      const result = createAll(MockComponent, {
+      const result = createAll(MockConfigurableComponent, {
         __test: true
       })
 
-      expect(result).toStrictEqual([expect.any(MockComponent)])
+      expect(result).toStrictEqual([expect.any(MockConfigurableComponent)])
 
       expect(result[0].args).toStrictEqual([
         componentRoot,
@@ -415,7 +493,7 @@ describe('createAll', () => {
       ])
     })
 
-    it('only initialises components within that scope if scope passed as options attribute', () => {
+    it('only initialises components within that scope if scope passed as options property', () => {
       document.body.innerHTML = `
         <div data-module="mock-component"></div>
         <div class="not-in-scope">
@@ -436,13 +514,102 @@ describe('createAll', () => {
         document.querySelector('.my-scope [data-module="mock-component"]')
       ])
     })
+
+    it('returns an empty array when scope is null and logs error to the console', () => {
+      document.body.innerHTML = `
+        <div data-module="mock-component"></div>
+        <div class="not-in-scope">
+          <div data-module="mock-component"></div>
+        </div>'
+        <div class="my-scope">
+          <div data-module="mock-component"></div>
+        </div>`
+
+      const result = createAll(
+        MockComponent,
+        undefined,
+        document.querySelector('.unknown-scope')
+      )
+
+      expect(console.log).toHaveBeenCalledWith(expect.any(ElementError))
+      expect(console.log).toHaveBeenCalledWith(
+        expect.objectContaining({
+          name: 'ElementError',
+          message: `${MockComponent.moduleName}: Scope element (\`$scope\`) not found`
+        })
+      )
+
+      expect(result).toStrictEqual([])
+    })
+
+    it('returns an empty array when scope as options property is null and logs error to the console', () => {
+      document.body.innerHTML = `
+        <div data-module="mock-component"></div>
+        <div class="not-in-scope">
+          <div data-module="mock-component"></div>
+        </div>'
+        <div class="my-scope">
+          <div data-module="mock-component"></div>
+        </div>`
+
+      const result = createAll(MockComponent, undefined, {
+        scope: document.querySelector('.unknown-scope')
+      })
+
+      expect(console.log).toHaveBeenCalledWith(
+        expect.objectContaining({
+          name: 'ElementError',
+          message: `${MockComponent.moduleName}: Scope element (\`$scope\`) not found`
+        })
+      )
+
+      expect(result).toStrictEqual([])
+    })
+
+    it('executes specified onError callback and returns empty array when scope as options property is null', () => {
+      document.body.innerHTML = `
+        <div data-module="mock-component"></div>
+        <div class="not-in-scope">
+          <div data-module="mock-component"></div>
+        </div>'
+        <div class="my-scope">
+          <div data-module="mock-component"></div>
+        </div>`
+
+      const errorCallback = jest.fn((_error, _context) => {})
+
+      const result = createAll(
+        MockConfigurableComponent,
+        { __test: true },
+        {
+          scope: document.querySelector('.unknown-scope'),
+          onError: errorCallback
+        }
+      )
+
+      expect(console.log).not.toHaveBeenCalled()
+
+      expect(errorCallback).toHaveBeenCalledWith(
+        expect.objectContaining({
+          name: 'ElementError',
+          message: `${MockConfigurableComponent.moduleName}: Scope element (\`$scope\`) not found`
+        }),
+        expect.objectContaining({
+          component: MockConfigurableComponent,
+          config: { __test: true }
+        })
+      )
+
+      expect(result).toStrictEqual([])
+    })
   })
 
   describe('when components throw errors', () => {
-    class MockComponentThatErrors extends MockComponent {
-      constructor($element, ...otherArgs) {
-        super($element, ...otherArgs)
-        if ($element.hasAttribute('data-boom')) {
+    class MockComponentThatErrors extends MockConfigurableComponent {
+      constructor($root, config) {
+        super($root, config)
+
+        if ($root.hasAttribute('data-boom')) {
           throw new Error('Error thrown from constructor')
         }
       }
@@ -456,24 +623,21 @@ describe('createAll', () => {
         console.log(context)
       })
 
-      // Silence warnings in test output, and allow us to 'expect' them
-      jest.spyOn(global.console, 'log').mockImplementation()
-
       expect(() => {
         createAll(
           MockComponentThatErrors,
-          { attribute: 'random' },
+          { __test: true },
           { onError: errorCallback }
         )
       }).not.toThrow()
 
       expect(errorCallback).toHaveBeenCalled()
 
-      expect(global.console.log).toHaveBeenCalledWith(expect.any(Error))
-      expect(global.console.log).toHaveBeenCalledWith(
+      expect(console.log).toHaveBeenCalledWith(expect.any(Error))
+      expect(console.log).toHaveBeenCalledWith(
         expect.objectContaining({
           component: MockComponentThatErrors,
-          config: { attribute: 'random' },
+          config: { __test: true },
           element: document.querySelector('[data-module="mock-component"]')
         })
       )
@@ -487,24 +651,17 @@ describe('createAll', () => {
         console.log(context)
       })
 
-      // Silence warnings in test output, and allow us to 'expect' them
-      jest.spyOn(global.console, 'log').mockImplementation()
-
       expect(() => {
-        createAll(
-          MockComponentThatErrors,
-          { attribute: 'random' },
-          errorCallback
-        )
+        createAll(MockComponentThatErrors, { __test: true }, errorCallback)
       }).not.toThrow()
 
       expect(errorCallback).toHaveBeenCalled()
 
-      expect(global.console.log).toHaveBeenCalledWith(expect.any(Error))
-      expect(global.console.log).toHaveBeenCalledWith(
+      expect(console.log).toHaveBeenCalledWith(expect.any(Error))
+      expect(console.log).toHaveBeenCalledWith(
         expect.objectContaining({
           component: MockComponentThatErrors,
-          config: { attribute: 'random' },
+          config: { __test: true },
           element: document.querySelector('[data-module="mock-component"]')
         })
       )
@@ -513,15 +670,38 @@ describe('createAll', () => {
     it('catches errors thrown by components and logs them to the console', () => {
       document.body.innerHTML = `<div data-module="mock-component" data-boom></div>`
 
-      // Silence warnings in test output, and allow us to 'expect' them
-      jest.spyOn(global.console, 'log').mockImplementation()
-
       expect(() => {
         createAll(MockComponentThatErrors)
       }).not.toThrow()
 
-      expect(global.console.log).toHaveBeenCalledWith(expect.any(Error))
-      expect(global.console.log).toHaveBeenCalledWith(
+      expect(console.log).toHaveBeenCalledWith(expect.any(Error))
+      expect(console.log).toHaveBeenCalledWith(
+        expect.objectContaining({
+          message: 'Error thrown from constructor'
+        })
+      )
+    })
+
+    it('catches errors thrown by components and logs them to the console, when scope is passed', () => {
+      document.body.innerHTML = `
+        <div data-module="mock-component"></div>
+        <div class="not-in-scope">
+          <div data-module="mock-component"></div>
+        </div>
+        <div class="my-scope">
+          <div data-module="mock-component" data-boom></div>
+        </div>`
+
+      expect(() => {
+        createAll(
+          MockComponentThatErrors,
+          undefined,
+          document.querySelector('.my-scope')
+        )
+      }).not.toThrow()
+
+      expect(console.log).toHaveBeenCalledWith(expect.any(Error))
+      expect(console.log).toHaveBeenCalledWith(
         expect.objectContaining({
           message: 'Error thrown from constructor'
         })
@@ -541,8 +721,24 @@ describe('createAll', () => {
         expect.any(MockComponentThatErrors)
       ])
 
-      expect(result[0].args).toStrictEqual([document.getElementById('a')])
-      expect(result[1].args).toStrictEqual([document.getElementById('c')])
+      expect(result[0].args).toStrictEqual([
+        document.getElementById('a'),
+        undefined
+      ])
+
+      expect(result[1].args).toStrictEqual([
+        document.getElementById('c'),
+        undefined
+      ])
     })
   })
 })
+
+/**
+ * @typedef {object} MockConfig
+ * @property {boolean} __test - Test flag
+ */
+
+/**
+ * @import { Schema } from './common/configuration.mjs'
+ */

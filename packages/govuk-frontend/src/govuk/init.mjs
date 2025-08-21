@@ -1,4 +1,5 @@
-import { isSupported } from './common/index.mjs'
+import { normaliseOptions } from './common/configuration.mjs'
+import { isObject, isSupported } from './common/index.mjs'
 import { Accordion } from './components/accordion/accordion.mjs'
 import { Button } from './components/button/button.mjs'
 import { CharacterCount } from './components/character-count/character-count.mjs'
@@ -13,7 +14,7 @@ import { Radios } from './components/radios/radios.mjs'
 import { ServiceNavigation } from './components/service-navigation/service-navigation.mjs'
 import { SkipLink } from './components/skip-link/skip-link.mjs'
 import { Tabs } from './components/tabs/tabs.mjs'
-import { SupportError } from './errors/index.mjs'
+import { ElementError, SupportError } from './errors/index.mjs'
 
 /**
  * Initialise all components
@@ -21,20 +22,37 @@ import { SupportError } from './errors/index.mjs'
  * Use the `data-module` attributes to find, instantiate and init all of the
  * components provided as part of GOV.UK Frontend.
  *
- * @param {Config & { scope?: Element, onError?: OnErrorCallback<CompatibleClass> }} [config] - Config for all components (with optional scope)
+ * @param {Config | Element | Document | null} [scopeOrConfig] - Scope of the document to search within or config for all components (with optional scope)
  */
-function initAll(config) {
-  config = typeof config !== 'undefined' ? config : {}
+function initAll(scopeOrConfig = {}) {
+  const config = isObject(scopeOrConfig) ? scopeOrConfig : {}
 
-  // Skip initialisation when GOV.UK Frontend is not supported
-  if (!isSupported()) {
-    if (config.onError) {
-      config.onError(new SupportError(), {
+  // Extract initialisation options
+  const options = normaliseOptions(scopeOrConfig)
+
+  try {
+    // Skip initialisation when GOV.UK Frontend is not supported
+    if (!isSupported()) {
+      throw new SupportError()
+    }
+
+    // Users can initialise GOV.UK Frontend in certain sections of the page
+    // unless the scope is null (for example, query selector not found)
+    if (options.scope === null) {
+      throw new ElementError({
+        element: options.scope,
+        identifier: 'GOV.UK Frontend scope element (`$scope`)'
+      })
+    }
+  } catch (error) {
+    if (options.onError) {
+      options.onError(error, {
         config
       })
     } else {
-      console.log(new SupportError())
+      console.log(error)
     }
+
     return
   }
 
@@ -55,17 +73,8 @@ function initAll(config) {
     [Tabs]
   ])
 
-  // Allow the user to initialise GOV.UK Frontend in only certain sections of the page
-  // Defaults to the entire document if nothing is set.
-  // const $scope = config.scope ?? document
-
-  const options = {
-    scope: config.scope ?? document,
-    onError: config.onError
-  }
-
-  components.forEach(([Component, config]) => {
-    createAll(Component, config, options)
+  components.forEach(([Component, componentConfig]) => {
+    createAll(Component, componentConfig, options)
   })
 }
 
@@ -81,45 +90,44 @@ function initAll(config) {
  * @template {CompatibleClass} ComponentClass
  * @param {ComponentClass} Component - class of the component to create
  * @param {ComponentConfig<ComponentClass>} [config] - Config supplied to component
- * @param {OnErrorCallback<ComponentClass> | Element | Document | CreateAllOptions<ComponentClass> } [createAllOptions] - options for createAll including scope of the document to search within and callback function if error throw by component on init
+ * @param {OnErrorCallback<ComponentClass> | Element | Document | null | CreateAllOptions<ComponentClass>} [scopeOrOptions] - options for createAll including scope of the document to search within and callback function if error throw by component on init
  * @returns {Array<InstanceType<ComponentClass>>} - array of instantiated components
  */
-function createAll(Component, config, createAllOptions) {
-  let /** @type {Element | Document} */ $scope = document
-  let /** @type {OnErrorCallback<Component> | undefined} */ onError
+function createAll(Component, config, scopeOrOptions) {
+  let /** @type {NodeListOf<Element> | undefined} */ $elements
 
-  if (typeof createAllOptions === 'object') {
-    createAllOptions = /** @type {CreateAllOptions<Component>} */ (
-      // eslint-disable-next-line no-self-assign
-      createAllOptions
+  // Extract initialisation options
+  const options = normaliseOptions(scopeOrOptions)
+
+  try {
+    // Skip initialisation when GOV.UK Frontend is not supported
+    if (!isSupported()) {
+      throw new SupportError()
+    }
+
+    // Users can initialise GOV.UK Frontend in certain sections of the page
+    // unless the scope is null (for example, query selector not found)
+    if (options.scope === null) {
+      throw new ElementError({
+        element: options.scope,
+        component: Component,
+        identifier: 'Scope element (`$scope`)'
+      })
+    }
+
+    $elements = options.scope?.querySelectorAll(
+      `[data-module="${Component.moduleName}"]`
     )
-
-    $scope = createAllOptions.scope ?? $scope
-    onError = createAllOptions.onError
-  }
-
-  if (typeof createAllOptions === 'function') {
-    onError = createAllOptions
-  }
-
-  if (createAllOptions instanceof HTMLElement) {
-    $scope = createAllOptions
-  }
-
-  const $elements = $scope.querySelectorAll(
-    `[data-module="${Component.moduleName}"]`
-  )
-
-  // Skip initialisation when GOV.UK Frontend is not supported
-  if (!isSupported()) {
-    if (onError) {
-      onError(new SupportError(), {
+  } catch (error) {
+    if (options.onError) {
+      options.onError(error, {
         component: Component,
         config
       })
     } else {
-      console.log(new SupportError())
+      console.log(error)
     }
+
     return []
   }
 
@@ -130,7 +138,7 @@ function createAll(Component, config, createAllOptions) {
    * This means we have to set the constructor of `CompatibleClass` as `{new(): any}`,
    * leading to ESLint frowning that we're returning `any[]`.
    */
-  return Array.from($elements)
+  return Array.from($elements ?? [])
     .map(($element) => {
       try {
         // Only pass config to components that accept it
@@ -139,8 +147,8 @@ function createAll(Component, config, createAllOptions) {
           ? new Component($element, config)
           : new Component($element)
       } catch (error) {
-        if (onError) {
-          onError(error, {
+        if (options.onError) {
+          options.onError(error, {
             element: $element,
             component: Component,
             config
@@ -173,6 +181,8 @@ export { initAll, createAll }
  * Config for all components via `initAll()`
  *
  * @typedef {object} Config
+ * @property {Element | Document | null} [scope] - Scope of the document to search within
+ * @property {OnErrorCallback<CompatibleClass>} [onError] - Initialisation error callback
  * @property {AccordionConfig} [accordion] - Accordion config
  * @property {ButtonConfig} [button] - Button config
  * @property {CharacterCountConfig} [characterCount] - Character Count config
@@ -199,7 +209,7 @@ export { initAll, createAll }
 /**
  * Component config keys, e.g. `accordion` and `characterCount`
  *
- * @typedef {keyof Config} ConfigKey
+ * @typedef {keyof Omit<Config, 'scope' | 'onError'>} ConfigKey
  */
 
 /**
@@ -212,7 +222,7 @@ export { initAll, createAll }
  * @typedef {object} ErrorContext
  * @property {Element} [element] - Element used for component module initialisation
  * @property {ComponentClass} [component] - Class of component
- * @property {ComponentConfig<ComponentClass>} config - Config supplied to component
+ * @property {Config | ComponentConfig<ComponentClass>} [config] - Config supplied to components
  */
 
 /**
@@ -225,6 +235,6 @@ export { initAll, createAll }
 /**
  * @template {CompatibleClass} ComponentClass
  * @typedef {object} CreateAllOptions
- * @property {Element | Document} [scope] - scope of the document to search within
+ * @property {Element | Document | null} [scope] - scope of the document to search within
  * @property {OnErrorCallback<ComponentClass>} [onError] - callback function if error throw by component on init
  */
