@@ -9,6 +9,7 @@ For advice on how to use these release notes see [our guidance on staying up to 
 We've made fixes to GOV.UK Frontend in the following pull requests:
 
 - [#6138: Fix file upload being invisible when using the 'JavaScript enhanced' version with an empty label](https://github.com/alphagov/govuk-frontend/pull/6138) – thanks to @JoPintoPaul for reporting this issue
+- [#6164: Fix handling of scope being null when calling `createAll()` or `initAll()`](https://github.com/alphagov/govuk-frontend/pull/6164) – thanks to @colinrotherham for reporting and fixing this issue
 - [#6184: Fix thickness of underlines on previous and next pagination links in Safari](https://github.com/alphagov/govuk-frontend/pull/6184) – thanks to @frankieroberto for reporting this issue
 
 ## v5.11.1 (Fix release)
