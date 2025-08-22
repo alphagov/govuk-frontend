@@ -19,7 +19,7 @@ export default async () => {
 
   // GitHub URL without `.git` suffix
   const { href } = new URL(pkg.repository.url)
-  const githubURL = new URL(href.replace(/\.git$/, ''))
+  const githubURL = new URL(href.replace(/^git\+/, '').replace(/\.git$/, ''))
 
   // Locate component names and macros
   const componentNames = await getComponentNames()
