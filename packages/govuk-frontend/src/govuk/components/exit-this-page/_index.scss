@@ -1,3 +1,7 @@
+@import "../../helpers/colour";
+@import "../../helpers/media-queries";
+@import "../../helpers/spacing";
+@import "../../tools/exports";
 @import "../button/index";
 
 @include govuk-exports("govuk/component/exit-this-page") {
