@@ -1,8 +1,0 @@
-{
-  "extends": "../../../tsconfig.base.json",
-  "include": ["**/*.mjs"],
-  "compilerOptions": {
-    "strict": true,
-    "types": ["@actions/github", "@octokit/rest", "node", "jest"]
-  }
-}
