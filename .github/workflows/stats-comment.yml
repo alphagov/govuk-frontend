@@ -104,7 +104,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const { readFileSync } = await import('fs')
-            const { commentStats } = await import('${{ github.workspace }}/.github/workflows/scripts/comments.mjs')
+            const { commentStats } = await import('${{ github.workspace }}/shared/github-scripts/comments.mjs')
             const { getFileSizeComparison } = await import('${{ github.workspace }}/shared/lib/files.js')
 
             // Get base and head temp files and compare

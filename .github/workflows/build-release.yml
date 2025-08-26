@@ -33,7 +33,7 @@ jobs:
         uses: actions/github-script@v7.0.1
         with:
           script: |
-            const { validateVersion } = await import('${{ github.workspace }}/.github/workflows/scripts/changelog-release-helper.mjs')
+            const { validateVersion } = await import('${{ github.workspace }}/shared/github-scripts/changelog-release-helper.mjs')
             const frontendPackage = await import('${{ github.workspace }}/packages/govuk-frontend/package.json', { with: { type: 'json' }})
 
             validateVersion('${{ inputs.version }}', frontendPackage.default.version)
@@ -42,7 +42,7 @@ jobs:
         uses: actions/github-script@v7.0.1
         with:
           script: |
-            const { updateChangelog } = await import('${{ github.workspace }}/.github/workflows/scripts/changelog-release-helper.mjs')
+            const { updateChangelog } = await import('${{ github.workspace }}/shared/github-scripts/changelog-release-helper.mjs')
             const frontendPackage = await import('${{ github.workspace }}/packages/govuk-frontend/package.json', { with: { type: 'json' }})
 
             updateChangelog('${{ inputs.version }}', frontendPackage.default.version)
@@ -54,7 +54,7 @@ jobs:
         uses: actions/github-script@v7.0.1
         with:
           script: |
-            const { generateReleaseNotes } = await import('${{ github.workspace }}/.github/workflows/scripts/changelog-release-helper.mjs')
+            const { generateReleaseNotes } = await import('${{ github.workspace }}/shared/github-scripts/changelog-release-helper.mjs')
 
             generateReleaseNotes('${{ inputs.version }}')
 
