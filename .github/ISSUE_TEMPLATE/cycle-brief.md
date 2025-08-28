@@ -12,7 +12,7 @@ assignees: ""
 
 ## Squad
 
-<!-- Using @ feature to tag your fellow squad members. You can discover everyone's GitHub usernames pinned to our team Slack channel -->
+<!-- Use the @ feature to tag your fellow squad members. You can discover everyone's GitHub usernames pinned to our team Slack channel -->
 
 ## Further detail
 
