@@ -68,9 +68,9 @@ params:
             required: false
             description: HTML attributes (for example data attributes) to add to the anchor in the footer navigation section.
   - name: contentLicence
-    type: object
+    type: object or boolean
     required: false
-    description: The content licence information within the footer component. Defaults to Open Government Licence (OGL) v3 licence.
+    description: The content licence information within the footer component. Is hidden when set to `false`. Defaults to Open Government Licence (OGL) v3 licence.
     params:
       - name: text
         type: string
@@ -162,6 +162,11 @@ examples:
         text: 'Mae’r holl gynnwys ar gael dan Drwydded y Llywodraeth Agored v3.0, ac eithrio lle nodir yn wahanol'
       copyright:
         text: '© Hawlfraint y Goron'
+
+  - name: with no content licence
+    description: Open Government Licence turned off
+    options:
+      contentLicence: false
 
   - name: with custom meta
     description: Custom meta section
