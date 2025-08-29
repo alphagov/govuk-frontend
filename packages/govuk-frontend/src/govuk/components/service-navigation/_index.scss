@@ -212,7 +212,7 @@
   // Inverted colour scheme style intended for product pages
   .govuk-service-navigation--inverse {
     @include _govuk-rebrand {
-      // Remove bottom border to add width-container ones
+      // Remove bottom border
       border-bottom: none;
 
       // Set colour here so non-link text (service name, slot content) can
@@ -221,15 +221,9 @@
 
       background-color: $govuk-brand-colour;
 
+      // Remove borders
       .govuk-width-container {
-        border-width: 1px 0;
-        border-style: solid;
-        border-color: $_govuk-rebrand-border-colour-on-blue-tint-95;
-      }
-
-      // Subtract 1px of space to account for the extra border-top
-      .govuk-service-navigation__container {
-        margin-top: -1px;
+        border-width: 0;
       }
 
       // Override the 'active' border colour
