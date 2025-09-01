@@ -7,6 +7,11 @@
 /// Provides an outline to clearly indicate when the target element is focused.
 /// Used for interactive text-based elements.
 ///
+/// @example scss - Styling the focus state for a link
+///   .govuk-link:focus {
+///     @include govuk-focused-text;
+///   }
+///
 /// @access public
 
 @mixin govuk-focused-text {
@@ -46,6 +51,11 @@
 /// govuk-focused-box draws an outline around all sides of the element.
 /// Best used for non-text content contained within links.
 ///
+/// @example scss - Styling the focus state for a linked image
+///   .govuk-link-image:focus {
+///     @include govuk-focused-box;
+///   }
+///
 /// @access public
 
 @mixin govuk-focused-box {
@@ -59,6 +69,11 @@
 ///
 /// Provides an outline to clearly indicate when the target element is focused.
 /// Used for form inputs.
+///
+/// @example scss - Styling the focus state for a form input
+///   .govuk-input:focus {
+///     @include govuk-focused-form-input;
+///   }
 ///
 /// @access public
 
