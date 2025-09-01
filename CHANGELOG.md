@@ -4,6 +4,14 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 ## Unreleased
 
+### New features
+
+#### Style focus states for form inputs with the `govuk-focused-form-input` mixin
+
+You can now use the `govuk-focused-form-input` mixin to style the focus state in your own form input components.
+
+Thanks to @patrickpatrickpatrick for suggesting this change.
+
 ## v5.11.2 (Fix release)
 
 ### Fixes
