@@ -15,8 +15,8 @@ Check with your IT or digital team about which platform to use.
 
 Some hosting services automatically publish every time you push to GitHub. For example:
 
-- [Railway](https://railway.app/new/github)
 - [Render](https://render.com/docs/github)
+- [Railway](https://railway.app/new/github) (requires payment)
 - [Heroku](https://devcenter.heroku.com/articles/github-integration) (requires payment)
 
 ## Configuring the deployment
