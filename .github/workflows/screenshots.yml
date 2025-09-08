@@ -59,7 +59,7 @@ jobs:
               console.log('workflow_dispatch - running Percy')
               core.setOutput('relevant_changes', 'true')
             } else if (context.eventName === 'push') {
-              console.log('Merging to ${{github.base_ref}} - running Percy')
+              console.log(`Merging to ${context.ref} - running Percy`)
               core.setOutput('relevant_changes', 'true')
             } else {
               const changedFiles = JSON.parse('${{ steps.files.outputs.changed_files }}')
