@@ -303,6 +303,8 @@ jobs:
     # Run existing "Percy screenshots" workflow
     # (after install and build have been cached)
     uses: ./.github/workflows/screenshots.yml
+    with:
+      trigger_event: ${{ github.event_name }}
     secrets: inherit
 
   generate-diff-package:
