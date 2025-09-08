@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Date input nested dependant components passes through fieldset params without breaking 1`] = `
 <fieldset class="govuk-fieldset"

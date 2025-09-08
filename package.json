@@ -75,7 +75,7 @@
     "gulp": "^5.0.1",
     "gulp-cli": "^3.0.0",
     "husky": "^9.1.7",
-    "jest": "^30.0.5",
+    "jest": "^30.1.3",
     "jest-environment-node-single-context": "^29.4.0",
     "jest-puppeteer": "^11.0.0",
     "jest-regex-util": "^30.0.1",
@@ -93,7 +93,7 @@
   },
   "optionalDependencies": {
     "@actions/github": "^6.0.1",
-    "@jest/environment": "^30.0.5",
+    "@jest/environment": "^30.1.2",
     "@octokit/plugin-rest-endpoint-methods": "^16.0.0",
     "@octokit/rest": "22.0.0",
     "@percy/core": "^1.31.1",
@@ -109,7 +109,7 @@
     "@types/semver": "^7.7.0",
     "@types/slug": "^5.0.9",
     "@types/vinyl": "^2.0.12",
-    "puppeteer": "^24.15.0",
+    "puppeteer": "^24.19.0",
     "typed-query-selector": "^2.12.0"
   },
   "overrides": {
