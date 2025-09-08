@@ -2,11 +2,6 @@ name: Percy screenshots
 
 on:
   workflow_call:
-    inputs:
-      trigger_event:
-        description: 'The event that the tests workflow was triggered by (push, pull_request, workflow_dispatch)'
-        required: true
-        type: string
   workflow_dispatch:
 
 concurrency:
@@ -60,10 +55,10 @@ jobs:
           script: |
             console.log('Checking if Percy needs to run.')
 
-            if ('${{ github.event_name }}' === 'workflow_dispatch') {
+            if (context.eventName === 'workflow_dispatch') {
               console.log('workflow_dispatch - running Percy')
               core.setOutput('relevant_changes', 'true')
-            } else if ('${{ github.event_name }}' === 'workflow_call' && '${{ inputs.trigger_event }}' === 'push') {
+            } else if (context.eventName === 'push') {
               console.log('Merging to ${{github.base_ref}} - running Percy')
               core.setOutput('relevant_changes', 'true')
             } else {
