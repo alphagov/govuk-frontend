@@ -77,6 +77,23 @@ module.exports = {
         {
           emptyLineBefore: 'threshold',
           properties: [
+            'flex',
+            'flex-basis',
+            'flex-direction',
+            'flex-flow',
+            'flex-grow',
+            'flex-shrink',
+            'flex-wrap',
+            'align-content',
+            'align-items',
+            'align-self',
+            'justify-content',
+            'order'
+          ]
+        },
+        {
+          emptyLineBefore: 'threshold',
+          properties: [
             'width',
             'min-width',
             'max-width',
