@@ -56,159 +56,189 @@ module.exports = {
      * https://github.com/hudochenkov/stylelint-order/blob/master/rules/properties-order/README.md
      */
     'order/properties-order': [
-      'content',
-      'quotes',
+      [
+        {
+          emptyLineBefore: 'threshold',
+          properties: ['content', 'quotes']
+        },
+        {
+          // Box-sizing - Allow here until global is decided
+          emptyLineBefore: 'threshold',
+          properties: ['box-sizing']
+        },
+        {
+          emptyLineBefore: 'threshold',
+          properties: ['display', 'visibility']
+        },
+        {
+          emptyLineBefore: 'threshold',
+          properties: ['position', 'z-index', 'top', 'right', 'bottom', 'left']
+        },
+        {
+          emptyLineBefore: 'threshold',
+          properties: [
+            'width',
+            'min-width',
+            'max-width',
+            'height',
+            'min-height',
+            'max-height',
 
-      // Box-sizing - Allow here until global is decided
-      'box-sizing',
+            'margin',
+            'margin-top',
+            'margin-right',
+            'margin-bottom',
+            'margin-left',
 
-      'display',
-      'visibility',
+            'padding',
+            'padding-top',
+            'padding-right',
+            'padding-bottom',
+            'padding-left'
+          ]
+        },
+        {
+          emptyLineBefore: 'threshold',
+          properties: ['float', 'clear', 'overflow', 'overflow-x', 'overflow-y']
+        },
+        {
+          emptyLineBefore: 'threshold',
+          properties: ['clip', 'clip-path', 'zoom', 'resize']
+        },
+        {
+          emptyLineBefore: 'threshold',
+          properties: ['columns']
+        },
+        {
+          emptyLineBefore: 'threshold',
+          properties: [
+            'table-layout',
+            'empty-cells',
+            'caption-side',
+            'border-spacing',
+            'border-collapse'
+          ]
+        },
+        {
+          emptyLineBefore: 'threshold',
+          properties: [
+            'list-style',
+            'list-style-position',
+            'list-style-type',
+            'list-style-image'
+          ]
+        },
+        {
+          emptyLineBefore: 'threshold',
+          properties: ['transform', 'transition', 'animation']
+        },
+        {
+          emptyLineBefore: 'threshold',
+          properties: [
+            'border',
+            'border-top',
+            'border-right',
+            'border-bottom',
+            'border-left',
 
-      'position',
-      'z-index',
-      'top',
-      'right',
-      'bottom',
-      'left',
+            'border-width',
+            'border-top-width',
+            'border-right-width',
+            'border-bottom-width',
+            'border-left-width',
 
-      'width',
-      'min-width',
-      'max-width',
-      'height',
-      'min-height',
-      'max-height',
+            'border-style',
+            'border-top-style',
+            'border-right-style',
+            'border-bottom-style',
+            'border-left-style',
 
-      'margin',
-      'margin-top',
-      'margin-right',
-      'margin-bottom',
-      'margin-left',
+            'border-radius',
+            'border-top-left-radius',
+            'border-top-right-radius',
+            'border-bottom-left-radius',
+            'border-bottom-right-radius',
 
-      'padding',
-      'padding-top',
-      'padding-right',
-      'padding-bottom',
-      'padding-left',
+            'border-color',
+            'border-top-color',
+            'border-right-color',
+            'border-bottom-color',
+            'border-left-color',
 
-      'float',
-      'clear',
+            'outline',
+            'outline-color',
+            'outline-offset',
+            'outline-style',
+            'outline-width'
+          ]
+        },
+        {
+          emptyLineBefore: 'threshold',
+          properties: ['opacity']
+        },
+        {
+          // Color has been moved to ensure it appears before background
+          emptyLineBefore: 'threshold',
+          properties: [
+            'color',
+            'background',
+            'background-color',
+            'background-image',
+            'background-repeat',
+            'background-position',
+            'background-size',
+            'box-shadow',
+            'fill'
+          ]
+        },
+        {
+          emptyLineBefore: 'threshold',
+          properties: [
+            'font',
+            'font-family',
+            'font-size',
+            'font-style',
+            'font-variant',
+            'font-weight',
+            'font-emphasize',
 
-      'overflow',
-      'overflow-x',
-      'overflow-y',
+            'letter-spacing',
+            'line-height',
+            'word-spacing',
 
-      'clip',
-      'clip-path',
-      'zoom',
-      'resize',
+            'text-align',
+            'text-align-last',
+            'text-decoration',
+            'text-indent',
+            'text-justify',
+            'text-overflow',
+            'text-overflow-ellipsis',
+            'text-overflow-mode',
+            'text-rendering',
+            'text-outline',
+            'text-shadow',
+            'text-transform',
+            'text-wrap',
+            'word-wrap',
+            'word-break',
 
-      'columns',
+            'text-emphasis',
 
-      'table-layout',
-      'empty-cells',
-      'caption-side',
-      'border-spacing',
-      'border-collapse',
-
-      'list-style',
-      'list-style-position',
-      'list-style-type',
-      'list-style-image',
-
-      'transform',
-      'transition',
-      'animation',
-
-      'border',
-      'border-top',
-      'border-right',
-      'border-bottom',
-      'border-left',
-
-      'border-width',
-      'border-top-width',
-      'border-right-width',
-      'border-bottom-width',
-      'border-left-width',
-
-      'border-style',
-      'border-top-style',
-      'border-right-style',
-      'border-bottom-style',
-      'border-left-style',
-
-      'border-radius',
-      'border-top-left-radius',
-      'border-top-right-radius',
-      'border-bottom-left-radius',
-      'border-bottom-right-radius',
-
-      'border-color',
-      'border-top-color',
-      'border-right-color',
-      'border-bottom-color',
-      'border-left-color',
-
-      'outline',
-      'outline-color',
-      'outline-offset',
-      'outline-style',
-      'outline-width',
-
-      'opacity',
-
-      // Color has been moved to ensure it appears before background
-      'color',
-      'background',
-      'background-color',
-      'background-image',
-      'background-repeat',
-      'background-position',
-      'background-size',
-      'box-shadow',
-      'fill',
-
-      'font',
-      'font-family',
-      'font-size',
-      'font-style',
-      'font-variant',
-      'font-weight',
-
-      'font-emphasize',
-
-      'letter-spacing',
-      'line-height',
-      'list-style',
-      'word-spacing',
-
-      'text-align',
-      'text-align-last',
-      'text-decoration',
-      'text-indent',
-      'text-justify',
-      'text-overflow',
-      'text-overflow-ellipsis',
-      'text-overflow-mode',
-      'text-rendering',
-      'text-outline',
-      'text-shadow',
-      'text-transform',
-      'text-wrap',
-      'word-wrap',
-      'word-break',
-
-      'text-emphasis',
-
-      'vertical-align',
-      'white-space',
-      'word-spacing',
-      'hyphens',
-
-      'src',
-      'cursor',
-      '-webkit-appearance'
+            'vertical-align',
+            'white-space',
+            'word-spacing',
+            'hyphens'
+          ]
+        },
+        {
+          emptyLineBefore: 'threshold',
+          properties: ['src', 'cursor', '-webkit-appearance']
+        }
+      ],
+      {
+        emptyLineBeforeUnspecified: 'threshold',
+        emptyLineMinimumPropertyThreshold: 6
+      }
     ]
   }
 }
