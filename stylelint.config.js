@@ -88,7 +88,19 @@ module.exports = {
             'align-items',
             'align-self',
             'justify-content',
-            'order'
+            'order',
+
+            'columns',
+            'column-count',
+            'column-fill',
+            'column-gap',
+            'column-rule',
+            'column-rule-color',
+            'column-rule-style',
+            'column-rule-width',
+            'column-span',
+            'column-width',
+            'row-gap'
           ]
         },
         {
@@ -121,10 +133,6 @@ module.exports = {
         {
           emptyLineBefore: 'threshold',
           properties: ['clip', 'clip-path', 'zoom', 'resize']
-        },
-        {
-          emptyLineBefore: 'threshold',
-          properties: ['columns']
         },
         {
           emptyLineBefore: 'threshold',
