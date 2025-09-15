@@ -229,7 +229,25 @@ module.exports = {
             'background-position',
             'background-size',
             'box-shadow',
-            'fill'
+            'fill',
+
+            'mask',
+            'mask-border',
+            'mask-border-mode',
+            'mask-border-outset',
+            'mask-border-repeat',
+            'mask-border-slice',
+            'mask-border-source',
+            'mask-border-width',
+            'mask-clip',
+            'mask-composite',
+            'mask-image',
+            'mask-mode',
+            'mask-origin',
+            'mask-repeat',
+            'mask-position',
+            'mask-size',
+            'mask-type'
           ]
         },
         {
