@@ -25,7 +25,9 @@
     // 1. IE9-11 & Edge 12-13
     // 2. IE8-11
     box-sizing: border-box; // 1
+
     display: table; // 2
+
     max-width: 100%; // 1
     margin-bottom: govuk-spacing(2);
     padding: 0;

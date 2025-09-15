@@ -87,6 +87,7 @@
       background: none;
 
       cursor: pointer;
+
       -webkit-appearance: none;
 
       @media #{govuk-from-breakpoint(tablet)} {
@@ -143,6 +144,7 @@
     // Create Chevron icon aligned with text
     .govuk-accordion-nav__chevron {
       box-sizing: border-box;
+
       display: inline-block;
 
       position: relative;
@@ -159,7 +161,9 @@
       // Create inner chevron arrow
       &::after {
         content: "";
+
         box-sizing: border-box;
+
         display: block;
 
         position: absolute;
@@ -201,6 +205,7 @@
       text-align: left;
       // Section headers have a pointer cursor as an additional affordance
       cursor: pointer;
+
       -webkit-appearance: none;
 
       @media #{govuk-from-breakpoint(tablet)} {
@@ -356,7 +361,6 @@
     @media (hover: none) {
       .govuk-accordion__section-header:hover {
         border-top-color: govuk-functional-colour(border);
-
         box-shadow: inset 0 3px 0 0 govuk-functional-colour(link);
 
         .govuk-accordion__section-button {

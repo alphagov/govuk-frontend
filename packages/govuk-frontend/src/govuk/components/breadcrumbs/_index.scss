@@ -36,6 +36,7 @@
 
   .govuk-breadcrumbs__list-item {
     display: inline-block;
+
     position: relative;
 
     margin-bottom: govuk-spacing(1);
@@ -50,6 +51,7 @@
     // Create a chevron using a box with borders on two sides, rotated 45deg.
     &::before {
       content: "";
+
       display: block;
 
       position: absolute;

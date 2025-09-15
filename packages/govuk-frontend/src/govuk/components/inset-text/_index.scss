@@ -9,7 +9,6 @@
     @include govuk-responsive-margin(6, "bottom");
 
     clear: both;
-
     border-left: $govuk-border-width-wide solid govuk-functional-colour(border);
 
     > :first-child {
