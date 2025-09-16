@@ -65,6 +65,7 @@ We introduced this change in [pull request #5882: Rename ellipses html class to 
 
 ### Fixes
 
+- [#6223: Account for multiple attribute when enhancing a File Input](https://github.com/alphagov/govuk-frontend/pull/6223)
 - [#6297: Output deprecation warning if $govuk-show-breakpoints is true](https://github.com/alphagov/govuk-frontend/pull/6297)
 
 ## v5.12.0 (Feature release)
