@@ -12,6 +12,12 @@ You can now use the `govuk-focused-form-input` mixin to style the focus state in
 
 Thanks to @patrickpatrickpatrick for suggesting this change.
 
+### Fixes
+
+We've made fixes to GOV.UK Frontend in the following pull requests:
+
+- [#6222: Fall back to the 'other' translation in older browsers that do not support `Intl.PluralRules` and remove fallback logic](https://github.com/alphagov/govuk-frontend/pull/6222)
+
 ## v5.11.2 (Fix release)
 
 ### Fixes
