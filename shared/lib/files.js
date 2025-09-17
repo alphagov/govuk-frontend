@@ -140,13 +140,21 @@ function getFileSizeComparison(headFiles, baseFiles) {
   // Get initial percentage differences and check for deletions
   const comparedFileSizes = baseFiles.map((file) => {
     const headFile = findFileSizeRow(headFiles, file)
-    const percentage = headFile
-      ? `${Math.round((headFile.size / file.size) * 100 - 100)}%`
-      : 'Deleted'
+    let percentage
 
-    // Return null if there's no percentage difference
-    if (percentage === '0%') {
-      return null
+    if (!headFile) {
+      percentage = 'Deleted'
+    } else {
+      const sizeDiff = ((headFile.size - file.size) / file.size) * 100
+
+      // Remove '.0' here rather than check for it in the proceeding if to strip
+      // out instances of '4.0%'
+      percentage = sizeDiff.toFixed(1).replace('.0', '')
+
+      // Return null if there's no percentage difference
+      if (percentage === '0%') {
+        return null
+      }
     }
 
     return {
