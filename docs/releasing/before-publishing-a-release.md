@@ -47,7 +47,4 @@ At this stage, the person leading the release should agree the publishing date. 
 
 ## Make sure access tokens are up to date
 
-Before each release, we need to make sure our access tokens are up to date.
-
-1. Sign into the `govuk-patterns-and-tools` npm account and follow the instructions in the team's password management tool to check and/or update the access token.
-2. Sign into the `govuk-design-system-ci` GitHub account and follow the instructions in the team's password management tool to check and/or update the access token.
+Before each release, we need to make sure our GitHub access token is up to date. Sign into the `govuk-design-system-ci` GitHub account and follow the instructions in the team's password management tool to check and/or update the access token.
