@@ -33,6 +33,4 @@ jobs:
         run: npm run build:package
 
       - name: Publish to npm
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npm publish --workspace govuk-frontend --provenance --tag ${{steps.generate_tag.outputs.NPM_TAG}}
