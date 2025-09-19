@@ -152,14 +152,15 @@ function getFileSizeComparison(headFiles, baseFiles) {
       percentage = sizeDiff.toFixed(1).replace('.0', '')
 
       // Return null if there's no percentage difference
-      if (percentage === '0%') {
+      // Test as string because toFixed returns a string
+      if (percentage === '0') {
         return null
       }
     }
 
     return {
       ...file,
-      percentage
+      percentage: `${percentage}%`
     }
   })
 
