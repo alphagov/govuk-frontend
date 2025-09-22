@@ -4,6 +4,8 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 ## Unreleased
 
+## v5.12.0 (Feature release)
+
 ### New features
 
 #### Use the `govuk-focused-form-input` mixin to style focus states for form inputs
