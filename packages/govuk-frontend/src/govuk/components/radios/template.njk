@@ -108,7 +108,7 @@
     attributes: params.fieldset.attributes,
     legend: params.fieldset.legend,
     html: innerHtml | trim
-  }) | trim | indent(2) }}
+  }) | trim }}
 {% else %}
   {{ innerHtml | safe | trim }}
 {% endif %}
