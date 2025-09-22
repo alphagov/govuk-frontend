@@ -17,6 +17,7 @@ Thanks to @patrickpatrickpatrick for suggesting this change.
 We've made fixes to GOV.UK Frontend in the following pull requests:
 
 - [#6222: Fall back to the 'other' translation in older browsers that do not support `Intl.PluralRules` and remove fallback logic](https://github.com/alphagov/govuk-frontend/pull/6222)
+- [#6232: Remove fieldset indentation from checkboxes and radios](https://github.com/alphagov/govuk-frontend/pull/6232) – thanks to @RichardBradley, @devkokov and @nathdolan for reporting this issue
 
 ## v5.11.2 (Fix release)
 
