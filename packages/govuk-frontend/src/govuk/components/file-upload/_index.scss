@@ -41,7 +41,6 @@
     // when it's a selector.
     &:focus-within {
       outline: $govuk-focus-width solid $govuk-focus-colour;
-
       box-shadow: inset 0 0 0 4px $govuk-input-border-colour;
     }
 
@@ -66,10 +65,10 @@
   }
 
   .govuk-file-upload-button__pseudo-button {
+    flex-shrink: 0;
     width: auto;
     margin-right: govuk-spacing(2);
     margin-bottom: $govuk-border-width-form-element + 1;
-    flex-shrink: 0;
   }
 
   .govuk-file-upload-button__instruction {
@@ -91,8 +90,8 @@
   // so we need a container here
   .govuk-file-upload-button__pseudo-button-container {
     display: flex;
-    align-items: baseline;
     flex-wrap: wrap;
+    align-items: baseline;
   }
 
   .govuk-file-upload-button {
@@ -202,7 +201,6 @@
   .govuk-file-upload-button:disabled {
     pointer-events: none;
     opacity: 0.5;
-
     background-color: $empty-button-background-colour;
 
     .govuk-file-upload-button__pseudo-button {
