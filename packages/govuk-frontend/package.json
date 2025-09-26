@@ -86,7 +86,7 @@
     "puppeteer": "^24.19.0",
     "rollup": "^4.50.0",
     "sass-color-helpers": "^2.1.1",
-    "sass-embedded": "^1.89.2",
+    "sass-embedded": "^1.92.1",
     "sassdoc": "^2.7.4",
     "slash": "^5.1.0"
   }
