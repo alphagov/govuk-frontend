@@ -16,7 +16,7 @@
     display: none !important;
   }
 
-  @include govuk-media-query($media-type: print) {
+  @media print {
     .govuk-\!-display-none-print {
       display: none !important;
     }
