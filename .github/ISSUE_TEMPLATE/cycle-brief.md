@@ -8,12 +8,12 @@ assignees: ""
 
 ## Brief
 
-<!-- Use this format if it helps: [Action + Outcome/Output + For User Type + To Solve User Problem] e.g. reinstate the Friday call for contributors to provide an opportunity to engage with the team -->
-
-## Epic lead
+<!-- Describe the outcome we expect to achieve working on this brief. It should also include why we are doing this work, and the expected tasks -->
 
 ## Squad
 
+<!-- Use the @ feature to tag your fellow squad members. You can discover everyone's GitHub usernames pinned to our team Slack channel -->
+
 ## Further detail
 
-<!-- Any extra context that might help – can include things that are out of scope, things to consider, related work, references -->
+<!-- Any extra context that might help – can include things that are out of scope, useful links, things to consider, related work, references -->
