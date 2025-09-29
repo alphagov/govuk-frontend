@@ -7,3 +7,13 @@
 
 @import "utilities/index";
 @import "overrides/index";
+
+@function media-query() {
+  @return "(min-width: 40em)";
+}
+
+@media #{media-query()} {
+  body {
+    color: govuk-colour("blue");
+  }
+}
