@@ -23,7 +23,7 @@
     @include _govuk-font-face-gds-transport;
   }
 
-  @include govuk-media-query($media-type: print) {
+  @media print {
     font-family: $govuk-font-family-print;
   }
 }
@@ -37,7 +37,7 @@
 @mixin govuk-text-colour {
   color: $govuk-text-colour;
 
-  @include govuk-media-query($media-type: print) {
+  @media print {
     color: $govuk-print-text-colour;
   }
 }
@@ -240,7 +240,7 @@
       font-size: $font-size-rem;
       line-height: $calculated-line-height;
     } @else if $breakpoint == "print" {
-      @include govuk-media-query($media-type: print) {
+      @media print {
         font-size: $font-size;
         line-height: $calculated-line-height;
       }

@@ -36,7 +36,7 @@
     color: govuk-colour("white");
     background: govuk-colour("green");
 
-    @include govuk-media-query($media-type: print) {
+    @media print {
       border-color: currentcolor;
       color: $govuk-print-text-colour;
       background: none;

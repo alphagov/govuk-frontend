@@ -117,7 +117,7 @@
     fill: #00ffe0;
 
     // Override Dot colour when printing
-    @include govuk-media-query($media-type: print) {
+    @media print {
       fill: currentcolor;
     }
 
@@ -502,7 +502,7 @@
 
       // When printing, use the normal blue as this contrasts better with the
       // white printing header
-      @include govuk-media-query($media-type: print) {
+      @media print {
         color: $govuk-brand-colour;
       }
 
@@ -523,7 +523,7 @@
     border-bottom: 0;
   }
 
-  @include govuk-media-query($media-type: print) {
+  @media print {
     .govuk-header {
       border-bottom-width: 0;
       color: govuk-colour("black");
