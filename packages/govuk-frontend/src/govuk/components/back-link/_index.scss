@@ -1,3 +1,10 @@
+@import "../../helpers/links";
+@import "../../helpers/spacing";
+@import "../../helpers/typography";
+@import "../../settings/colours-applied";
+@import "../../tools/exports";
+@import "../../tools/px-to-em";
+
 @include govuk-exports("govuk/component/back-link") {
   // Component font-size on the Frontend (used for calculations)
   $font-size: 16;

@@ -1,3 +1,6 @@
+@import "../settings/media-queries";
+@import "../tools/px-to-rem";
+
 :root {
   // This variable is automatically overwritten during builds and releases.
   // It doesn't need to be updated manually.

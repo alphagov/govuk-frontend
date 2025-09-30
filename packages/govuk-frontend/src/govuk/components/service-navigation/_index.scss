@@ -1,3 +1,14 @@
+@import "../../helpers/colour";
+@import "../../helpers/focused";
+@import "../../helpers/links";
+@import "../../helpers/media-queries";
+@import "../../helpers/shape-arrow";
+@import "../../helpers/spacing";
+@import "../../helpers/typography";
+@import "../../settings/colours-applied";
+@import "../../tools/exports";
+@import "../../tools/rebrand";
+
 @include govuk-exports("govuk/component/service-navigation") {
   $govuk-service-navigation-active-link-border-width: govuk-spacing(1);
   $govuk-service-navigation-background: govuk-colour("light-grey");

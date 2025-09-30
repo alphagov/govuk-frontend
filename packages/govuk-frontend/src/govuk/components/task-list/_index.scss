@@ -1,3 +1,8 @@
+@import "../../helpers/colour";
+@import "../../helpers/spacing";
+@import "../../helpers/typography";
+@import "../../settings/colours-applied";
+@import "../../tools/exports";
 @import "../tag/index";
 
 @include govuk-exports("govuk/component/task-list") {

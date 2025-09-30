@@ -5,6 +5,8 @@ describe('@mixin _govuk-rebrand', () => {
   it('wraps arbitrary properties in a class', async () => {
     const sass = `
       $govuk-suppressed-warnings: ("legacy-organisation-colours");
+
+      // Use legacy import for private members
       @import "base";
 
       .foo {
@@ -36,6 +38,8 @@ describe('@mixin _govuk-rebrand', () => {
     it('renders both original and rebranded version', async () => {
       const sass = `
         $govuk-suppressed-warnings: ("legacy-organisation-colours");
+
+        // Use legacy import for private members
         @import "base";
 
         .foo {
@@ -58,6 +62,8 @@ describe('@mixin _govuk-rebrand', () => {
     it('throws an error if not provided the original value', async () => {
       const sass = `
         $govuk-suppressed-warnings: ("legacy-organisation-colours");
+
+        // Use legacy import for private members
         @import "base";
 
         .foo {
@@ -73,6 +79,8 @@ describe('@mixin _govuk-rebrand', () => {
     it('throws an error if not provided the rebranded value', async () => {
       const sass = `
         $govuk-suppressed-warnings: ("legacy-organisation-colours");
+
+        // Use legacy import for private members
         @import "base";
 
         .foo {
@@ -90,6 +98,8 @@ describe('@mixin _govuk-rebrand', () => {
     it('when styling a block', async () => {
       const sass = `
         $govuk-suppressed-warnings: ("legacy-organisation-colours");
+
+        // Use legacy import for private members
         @import "base";
 
         .govuk-template {
@@ -120,6 +130,8 @@ describe('@mixin _govuk-rebrand', () => {
     it('when styling a specific property', async () => {
       const sass = `
         $govuk-suppressed-warnings: ("legacy-organisation-colours");
+
+        // Use legacy import for private members
         @import "base";
 
         .govuk-template {
