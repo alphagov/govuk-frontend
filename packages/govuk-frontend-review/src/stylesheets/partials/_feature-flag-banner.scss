@@ -1,5 +1,5 @@
 .app-feature-flag-banner {
   padding: govuk-spacing(4) 0;
-  border-bottom: 1px solid govuk-colour("mid-grey");
-  background-color: govuk-colour("light-grey");
+  border-bottom: 1px solid govuk-colour("black", $variant: "tint-80");
+  background-color: govuk-colour("black", $variant: "tint-95");
 }

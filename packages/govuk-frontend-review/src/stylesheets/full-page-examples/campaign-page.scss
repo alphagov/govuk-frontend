@@ -48,7 +48,7 @@
   margin-bottom: govuk-spacing(8);
   padding: govuk-spacing(4) govuk-spacing(4) govuk-spacing(2);
   border: 1px solid $govuk-border-colour;
-  background-color: govuk-colour("light-grey");
+  background-color: govuk-colour("black", $variant: "tint-95");
 }
 
 .app-nhs-box {
