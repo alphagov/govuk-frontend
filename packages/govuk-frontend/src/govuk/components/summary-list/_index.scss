@@ -188,7 +188,7 @@
     // Ensures the card header appears separate to the summary list in forced
     // colours mode
     border-bottom: 1px solid transparent;
-    background-color: govuk-colour("light-grey");
+    background-color: govuk-colour("black", $variant: "tint-95");
 
     @include govuk-media-query($from: "tablet") {
       display: flex;
