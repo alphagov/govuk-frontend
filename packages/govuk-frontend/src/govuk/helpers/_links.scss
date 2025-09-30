@@ -346,7 +346,7 @@
 /// @access public
 
 @mixin govuk-link-print-friendly {
-  @include govuk-media-query($media-type: print) {
+  @media print {
     &[href^="/"],
     &[href^="http://"],
     &[href^="https://"]
