@@ -55,7 +55,7 @@
 
   // As soon as the viewport is greater than the width of the page plus the
   // gutters, just centre the content instead of adding gutters.
-  @include govuk-media-query($and: "(min-width: #{($width + $govuk-gutter * 2)})") {
+  @media (min-width: #{($width + $govuk-gutter * 2)}) {
     margin-right: auto;
     margin-left: auto;
 
