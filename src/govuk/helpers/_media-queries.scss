@@ -30,9 +30,92 @@ $sass-mq-already-included: false !default;
 
 $sass-mq-already-included: true;
 
+@import "../settings/media-queries";
+@import "../tools/px-to-em";
+
 // =========================================================
 // Helpers
 // =========================================================
+
+/// Get the value of a breakpoint by name.
+///
+/// @param {String | Number} $value - If a string, the name of a breakpoint
+///   in $breakpoints. If a number, it will use that number directly.
+/// @param {Map} $breakpoints [$govuk-breakpoints] - The map to look for $name.
+/// @returns {Number} - The set (minimum) value of the breakpoint
+///
+/// @access public
+
+@function govuk-breakpoint-value($value, $breakpoints: $govuk-breakpoints) {
+  // If $breakpoint is a number
+  @if type-of($value) == "number" {
+    // If $breakpoint is unitless, cast it to a pixel value
+    @if unitless($value) {
+      $value: $value * 1px;
+    }
+
+    @return $value;
+  }
+
+  // If $breakpoint is a string, look it up in the map
+  @if type-of($value) == "string" and map-has-key($breakpoints, $value) {
+    @return map-get($breakpoints, $value);
+  }
+
+  // If we get this far, we can't use the value, so return an error
+  @error "Could not find a breakpoint given `#{$value}`.";
+}
+
+/// Generate the `min-width` segment of a media query given a breakpoint key
+///
+/// Pixel values are converted to ems for backwards compatibility with
+/// sass-mq. Unlike sass-mq, non-px and em values can be used as well.
+///
+/// @param {String | Number} $from - If a string, expects the name of a
+///   breakpoint in $breakpoints. If a number, it will use that number.
+/// @param {Map} $breakpoints [$govuk-breakpoints] - The map to look for $from.
+/// @returns {String} - A `min-width` media query segment
+///
+/// @access public
+
+@function govuk-from-breakpoint($from, $breakpoints: $govuk-breakpoints) {
+  $value: govuk-breakpoint-value($from, $breakpoints);
+
+  @if type-of($value) == "number" and unit($value) == "px" {
+    $value: govuk-em($value);
+  }
+
+  @return "(min-width: #{$value})";
+}
+
+/// Generate the `max-width` segment of a media query given a breakpoint key
+///
+/// sass-mq converted pixel values to ems, and only performed subtractions on
+/// on named breakpoints. These have been retained for backwards compatibility,
+/// though unlike sass-mq, this also supports using non-px and em values.
+///
+/// @param {String | Number} $until - If a string, expects the name of a
+///   breakpoint in $breakpoints. If a number, it will use that number.
+/// @param {Map} $breakpoints [$govuk-breakpoints] - The map to look for $until.
+/// @returns {String} - A `max-width` media query segment
+///
+/// @access public
+
+@function govuk-until-breakpoint($until, $breakpoints: $govuk-breakpoints) {
+  $value: govuk-breakpoint-value($until, $breakpoints);
+
+  @if type-of($value) == "number" and unit($value) == "px" {
+    // If it's a pixel value, convert it to ems.
+    $value: govuk-em($value);
+  }
+
+  // If the value derives from a named breakpoint, additionally subtract .01em
+  @if type-of($until) != "number" and unit($value) == "em" {
+    $value: $value - 0.01em;
+  }
+
+  @return "(max-width: #{$value})";
+}
 
 /// Media Query
 ///
