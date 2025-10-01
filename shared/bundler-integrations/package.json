@@ -25,6 +25,6 @@
     "rollup": "^4.52.3",
     "terser-webpack-plugin": "^5.3.14",
     "vite": "^7.0.7",
-    "webpack": "^5.101.0"
+    "webpack": "^5.102.0"
   }
 }
