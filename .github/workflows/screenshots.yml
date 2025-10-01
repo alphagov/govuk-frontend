@@ -77,7 +77,7 @@ jobs:
 
       - name: Cache browser download
         if: steps.changes.outputs.relevant_changes == 'true'
-        uses: actions/cache@v4.2.3
+        uses: actions/cache@v4.3.0
         with:
           # Use faster GNU tar for all runners
           enableCrossOsArchive: true
