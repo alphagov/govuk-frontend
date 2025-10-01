@@ -10,6 +10,73 @@ const sassBootstrap = `
   );
 `
 
+describe('govuk-breakpoint-value', () => {
+  it.each([
+    ['20em', '20em'],
+    ['20px', '20px'],
+    ['20', '20px'],
+    ['0', '0px'],
+    [20, '20px']
+  ])('returns value for numeric input: %s', async (value, expected) => {
+    const sass = `
+      @import "helpers/media-queries";
+
+      .foo {
+        width: govuk-breakpoint-value(${value});
+      }
+    `
+
+    await expect(compileSassString(sass)).resolves.toMatchObject({
+      css: outdent`
+        .foo {
+          width: ${expected};
+        }
+      `
+    })
+  })
+
+  it.each([
+    ['mobile', '320px'],
+    ['tablet', '740px'],
+    ['desktop', '980px'],
+    ['wide', '1300px']
+  ])(
+    'returns px value for predefined breakpoint: %s',
+    async (breakpoint, expected) => {
+      const sass = `
+      ${sassBootstrap}
+      @import "helpers/media-queries";
+
+      .foo {
+        width: govuk-breakpoint-value(${breakpoint});
+      }
+    `
+
+      await expect(compileSassString(sass)).resolves.toMatchObject({
+        css: outdent`
+        .foo {
+          width: ${expected};
+        }
+      `
+      })
+    }
+  )
+
+  it('throws an error if an invalid breakpoint is used', async () => {
+    const sass = `
+      @import "helpers/media-queries";
+
+      .foo {
+        width: govuk-breakpoint-value('');
+      }
+    `
+
+    await expect(compileSassString(sass)).rejects.toThrow(
+      'Error: "Could not find a breakpoint given ``."'
+    )
+  })
+})
+
 describe('@mixin govuk-media-query', () => {
   it.each([
     ['20em', '20em'],
