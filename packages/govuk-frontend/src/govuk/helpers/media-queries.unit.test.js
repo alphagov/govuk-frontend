@@ -11,27 +11,35 @@ const sassBootstrap = `
 `
 
 describe('@mixin govuk-media-query', () => {
-  it('allows you to target min-width using a numeric value', async () => {
-    const sass = `
+  it.each([
+    ['20em', '20em'],
+    ['20px', '1.25em'],
+    ['20', '1.25em'],
+    [20, '1.25em']
+  ])(
+    'allows you to target min-width using a numeric value: %s',
+    async (value, expected) => {
+      const sass = `
       @import "helpers/media-queries";
 
       .foo {
-        @include govuk-media-query($from: 20em) {
+        @include govuk-media-query($from: ${value}) {
           color: red;
         }
       }
     `
 
-    await expect(compileSassString(sass)).resolves.toMatchObject({
-      css: outdent`
-        @media (min-width: 20em) {
+      await expect(compileSassString(sass)).resolves.toMatchObject({
+        css: outdent`
+        @media (min-width: ${expected}) {
           .foo {
             color: red;
           }
         }
       `
-    })
-  })
+      })
+    }
+  )
 
   it('allows you to target min-width using a predefined breakpoint', async () => {
     const sass = `
@@ -56,26 +64,34 @@ describe('@mixin govuk-media-query', () => {
     })
   })
 
-  it('allows you to target max-width using a numeric value', async () => {
-    const sass = `
+  it.each([
+    ['20em', '20em'],
+    ['20px', '1.25em'],
+    ['20', '1.25em'],
+    [20, '1.25em']
+  ])(
+    'allows you to target max-width using a numeric value: %s',
+    async (value, expected) => {
+      const sass = `
       @import "helpers/media-queries";
 
       .foo {
-        @include govuk-media-query($until: 20em) {
+        @include govuk-media-query($until: ${value}) {
           color: red;
         }
       }
     `
-    await expect(compileSassString(sass)).resolves.toMatchObject({
-      css: outdent`
-        @media (max-width: 20em) {
+      await expect(compileSassString(sass)).resolves.toMatchObject({
+        css: outdent`
+        @media (max-width: ${expected}) {
           .foo {
             color: red;
           }
         }
       `
-    })
-  })
+      })
+    }
+  )
 
   it('allows you to target max-width using a predefined breakpoint', async () => {
     const sass = `
@@ -100,27 +116,34 @@ describe('@mixin govuk-media-query', () => {
     })
   })
 
-  it('allows you to target combined min-width and max-width using numeric values', async () => {
-    const sass = `
+  it.each([
+    ['20em', '40em', '20em', '40em'],
+    ['20px', '40px', '1.25em', '2.5em'],
+    [20, '40px', '1.25em', '2.5em']
+  ])(
+    'allows you to target combined min-width and max-width using numeric values: (%s, %s)',
+    async (min, max, expectedMin, expectedMax) => {
+      const sass = `
       @import "helpers/media-queries";
 
       .foo {
-        @include govuk-media-query($from: 20em, $until: 40em) {
+        @include govuk-media-query($from: ${min}, $until: ${max}) {
           color: red;
         }
       }
     `
 
-    await expect(compileSassString(sass)).resolves.toMatchObject({
-      css: outdent`
-        @media (min-width: 20em) and (max-width: 40em) {
+      await expect(compileSassString(sass)).resolves.toMatchObject({
+        css: outdent`
+        @media (min-width: ${expectedMin}) and (max-width: ${expectedMax}) {
           .foo {
             color: red;
           }
         }
       `
-    })
-  })
+      })
+    }
+  )
 
   it('allows you to target combined min-width and max-width using predefined breakpoints', async () => {
     const sass = `
@@ -187,5 +210,33 @@ describe('@mixin govuk-media-query', () => {
         }
       `
     })
+  })
+
+  it('throws an error if an invalid breakpoint is used', async () => {
+    const sass = `
+      @import "helpers/media-queries";
+
+      .foo {
+        @include govuk-media-query($until: '') {
+          color: red;
+        }
+      }
+    `
+
+    await expect(compileSassString(sass)).rejects.toThrow()
+  })
+
+  it('throws an error if an invalid unit is used', async () => {
+    const sass = `
+      @import "helpers/media-queries";
+
+      .foo {
+        @include govuk-media-query($until: 20rem) {
+          color: red;
+        }
+      }
+    `
+
+    await expect(compileSassString(sass)).rejects.toThrow()
   })
 })
