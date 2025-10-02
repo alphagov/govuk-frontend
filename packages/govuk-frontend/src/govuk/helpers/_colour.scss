@@ -27,9 +27,11 @@
     "removed in the next major version.");
   }
 
+  // Sass parses unquoted colours as colours, so we need to turn them into
+  // strings before looking them up in the colour palette
+  // https://sass-lang.com/documentation/values/strings#unquoted
   @if type-of($colour) == "color" {
-    // stylelint-disable-next-line scss/function-quote-no-quoted-strings-inside
-    $colour: quote("#{$colour}");
+    $colour: "#{$colour}";
   }
 
   @if not map-has-key($govuk-colours, $colour) {
