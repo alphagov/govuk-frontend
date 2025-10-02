@@ -15,7 +15,8 @@ describe('@mixin govuk-media-query', () => {
     ['20em', '20em'],
     ['20px', '1.25em'],
     ['20', '1.25em'],
-    [20, '1.25em']
+    [20, '1.25em'],
+    ['20rem', '20rem']
   ])(
     'allows you to target min-width using a numeric value: %s',
     async (value, expected) => {
@@ -68,7 +69,8 @@ describe('@mixin govuk-media-query', () => {
     ['20em', '20em'],
     ['20px', '1.25em'],
     ['20', '1.25em'],
-    [20, '1.25em']
+    [20, '1.25em'],
+    ['20rem', '20rem']
   ])(
     'allows you to target max-width using a numeric value: %s',
     async (value, expected) => {
@@ -119,7 +121,8 @@ describe('@mixin govuk-media-query', () => {
   it.each([
     ['20em', '40em', '20em', '40em'],
     ['20px', '40px', '1.25em', '2.5em'],
-    [20, '40px', '1.25em', '2.5em']
+    [20, '40px', '1.25em', '2.5em'],
+    ['20rem', '30rem', '20rem', '30rem']
   ])(
     'allows you to target combined min-width and max-width using numeric values: (%s, %s)',
     async (min, max, expectedMin, expectedMax) => {
@@ -218,20 +221,6 @@ describe('@mixin govuk-media-query', () => {
 
       .foo {
         @include govuk-media-query($until: '') {
-          color: red;
-        }
-      }
-    `
-
-    await expect(compileSassString(sass)).rejects.toThrow()
-  })
-
-  it('throws an error if an invalid unit is used', async () => {
-    const sass = `
-      @import "helpers/media-queries";
-
-      .foo {
-        @include govuk-media-query($until: 20rem) {
           color: red;
         }
       }
