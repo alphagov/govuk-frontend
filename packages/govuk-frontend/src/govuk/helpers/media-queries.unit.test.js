@@ -15,8 +15,8 @@ describe('govuk-breakpoint-value', () => {
     ['20em', '20em'],
     ['20px', '20px'],
     ['20', '20px'],
-    ['0', '0px'],
-    [20, '20px']
+    [20, '20px'],
+    ['20rem', '20rem']
   ])('returns value for numeric input: %s', async (value, expected) => {
     const sass = `
       @import "helpers/media-queries";
@@ -82,8 +82,8 @@ describe('govuk-from-breakpoint', () => {
     ['20em', '20em'],
     ['20px', '1.25em'],
     ['20', '1.25em'],
-    ['0', '0em'],
-    [20, '1.25em']
+    [20, '1.25em'],
+    ['20rem', '20rem']
   ])(
     'allows you to target min-width using a numeric value: %s',
     async (value, expected) => {
@@ -138,8 +138,8 @@ describe('govuk-until-breakpoint', () => {
     ['20em', '20em'],
     ['20px', '1.25em'],
     ['20', '1.25em'],
-    ['0', '0em'],
-    [20, '1.25em']
+    [20, '1.25em'],
+    ['20rem', '20rem']
   ])(
     'allows you to target max-width using a numeric value: %s',
     async (value, expected) => {
