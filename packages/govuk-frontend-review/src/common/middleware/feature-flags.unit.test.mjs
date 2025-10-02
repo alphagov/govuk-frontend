@@ -26,28 +26,28 @@ describe('Middleware: Feature flag toggling', () => {
   })
 
   describe('Response locals', () => {
-    it('sets feature flag locals as falsy by default', async () => {
+    it('sets feature flat default values', async () => {
       await agent.get('/')
 
       expect(res.locals).toEqual({
-        useRebrand: false,
+        useRebrand: true,
         showAllFlagStates: false,
-        exampleStates: [false]
+        exampleStates: [true]
       })
     })
 
-    it("updates 'useRebrand' using cookie value", async () => {
-      await agent.get('/').set('Cookie', ['use_rebrand=true'])
-      expect(res.locals.useRebrand).toBe(true)
-
-      await agent.get('/').set('Cookie', ['use_rebrand=false'])
+    it("updates 'useRebrand' opposite to cookie value", async () => {
+      await agent.get('/').set('Cookie', ['use_old_brand=true'])
       expect(res.locals.useRebrand).toBe(false)
+
+      await agent.get('/').set('Cookie', ['use_old_brand=false'])
+      expect(res.locals.useRebrand).toBe(true)
     })
 
     it("updates 'useRebrand' based on 'rebrandOverride' param, superseding the cookie", async () => {
       await agent
         .get('/?rebrandOverride=true')
-        .set('Cookie', ['use_rebrand=true'])
+        .set('Cookie', ['use_old_brand=true'])
       expect(res.locals.useRebrand).toBe(true)
     })
 
@@ -56,9 +56,9 @@ describe('Middleware: Feature flag toggling', () => {
       expect(res.locals.showAllFlagStates).toBe(true)
     })
 
-    it("updates 'exampleStates' based on 'useRebrand'", async () => {
-      await agent.get('/').set('Cookie', ['use_rebrand=true'])
-      expect(res.locals.exampleStates).toEqual([true])
+    it("updates 'exampleStates' based on 'useRebrand' via cookie", async () => {
+      await agent.get('/').set('Cookie', ['use_old_brand=true'])
+      expect(res.locals.exampleStates).toEqual([false])
     })
 
     it("updates 'exampleStates' based on 'showAllFlagStates'", async () => {
@@ -74,30 +74,30 @@ describe('Middleware: Feature flag toggling', () => {
     })
 
     it("does not set cookie via GET to '/set-rebrand'", async () => {
-      const res = await agent.get('/set-rebrand')
+      const res = await agent.get('/unset-rebrand')
       expect(res.header['set-cookie']).toBeUndefined()
     })
 
-    it("sets and unsets cookie via POST to '/set-rebrand'", async () => {
+    it("sets and unsets cookie via POST to '/unset-rebrand'", async () => {
       // With setRebrand param
-      let res = await agent.post('/set-rebrand').send('setRebrand')
-      expect(res.header['set-cookie'][0]).toContain('use_rebrand=true;')
+      let res = await agent.post('/unset-rebrand').send('unsetRebrand')
+      expect(res.header['set-cookie'][0]).toContain('use_old_brand=true;')
 
       // Without setRebrand param
-      res = await agent.post('/set-rebrand').send('')
-      expect(res.header['set-cookie'][0]).not.toContain('use_rebrand=true;')
+      res = await agent.post('/unset-rebrand').send('')
+      expect(res.header['set-cookie'][0]).not.toContain('use_old_brand=true;')
     })
   })
 
   describe('Nunjucks global', () => {
-    it('sets a `govukRebrand` nunjucks global if the nunjucks env has been set', async () => {
+    it('sets a `govukRebrand` nunjucks global by default', async () => {
       // Mock nunjucks env so it can be pulled from the req in the middleware
       const mockEnv = {
         addGlobal: jest.fn()
       }
       app.set('nunjucksEnv', mockEnv)
 
-      await agent.get('/').set('Cookie', ['use_rebrand=true'])
+      await agent.get('/')
 
       expect(mockEnv.addGlobal.mock.calls).toHaveLength(1)
     })

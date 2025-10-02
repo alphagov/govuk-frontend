@@ -83,9 +83,11 @@ examples:
       items:
         - title:
             text: Company Directors
+            classes: ':hover'
           href: '#'
           status:
             text: Completed
+          classes: ':hover'
 
         - title:
             text: Registered company details
