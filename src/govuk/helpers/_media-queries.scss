@@ -40,16 +40,37 @@ $sass-mq-already-included: true;
 /// Get the value of a breakpoint by name.
 ///
 /// @param {String | Number} $value - If a string, the name of a breakpoint
-///   in $breakpoints. If a number, it will use that number directly.
-/// @param {Map} $breakpoints [$govuk-breakpoints] - The map to look for $name.
+///   in $breakpoints. If a number without units, it will convert to px. If a
+///   number with units, it will return the value unaltered.
+/// @param {Map} $breakpoints [$govuk-breakpoints] - The map to look for $value.
 /// @returns {Number} - The set (minimum) value of the breakpoint
+///
+/// @example scss
+///  .element {
+///    width: govuk-breakpoint-value(tablet);
+///    @media (min-width: #{govuk-breakpoint-value(desktop)}) {
+///      color: red;
+///    }
+///    @media (min-width: #{govuk-breakpoint-value(400px)}) {
+///      color: green;
+///    }
+///    $custom-breakpoint-map: (
+///      small: 350px,
+///      medium: 769px,
+///      large: 1100px,
+///      extra-large: 1600px
+///    );
+///    @media (orientation: landscape) and (min-width: #{govuk-breakpoint-value(extra-large, $custom-breakpoint-map)}) {
+///      color: blue;
+///    }
+///  }
 ///
 /// @access public
 
 @function govuk-breakpoint-value($value, $breakpoints: $govuk-breakpoints) {
-  // If $breakpoint is a number
+  // If $value is a number
   @if type-of($value) == "number" {
-    // If $breakpoint is unitless, cast it to a pixel value
+    // If the number is unitless, coerce it into a pixel value
     @if unitless($value) {
       $value: $value * 1px;
     }
@@ -57,7 +78,8 @@ $sass-mq-already-included: true;
     @return $value;
   }
 
-  // If $breakpoint is a string, look it up in the map
+  // If $value is a string and exists as a key in in $breakpoints,
+  // look up and use the value of it
   @if type-of($value) == "string" and map-has-key($breakpoints, $value) {
     @return map-get($breakpoints, $value);
   }
@@ -76,6 +98,28 @@ $sass-mq-already-included: true;
 /// @param {Map} $breakpoints [$govuk-breakpoints] - The map to look for $from.
 /// @returns {String} - A `min-width` media query segment
 ///
+/// @example scss
+///  .example {
+///    @media #{govuk-from-breakpoint(tablet)} {
+///      color: red;
+///    }
+///    @media #{govuk-from-breakpoint(30em)} {
+///      color: green;
+///    }
+///    @media #{govuk-from-breakpoint(tablet)} and (orientation: landscape) {
+///      color: blue;
+///    }
+///    $custom-breakpoint-map: (
+///      small: 350px,
+///      medium: 769px,
+///      large: 1100px,
+///      extra-large: 1600px
+///    );
+///    @media #{govuk-from-breakpoint(extra-large, $custom-breakpoint-map)} {
+///      color: cyan;
+///    }
+///  }
+///
 /// @access public
 
 @function govuk-from-breakpoint($from, $breakpoints: $govuk-breakpoints) {
@@ -91,13 +135,35 @@ $sass-mq-already-included: true;
 /// Generate the `max-width` segment of a media query given a breakpoint key
 ///
 /// sass-mq converted pixel values to ems, and only performed subtractions on
-/// on named breakpoints. These have been retained for backwards compatibility,
+/// named breakpoints. These have been retained for backwards compatibility,
 /// though unlike sass-mq, this also supports using non-px and em values.
 ///
 /// @param {String | Number} $until - If a string, expects the name of a
 ///   breakpoint in $breakpoints. If a number, it will use that number.
 /// @param {Map} $breakpoints [$govuk-breakpoints] - The map to look for $until.
 /// @returns {String} - A `max-width` media query segment
+///
+/// @example scss
+///  .example {
+///    @media #{govuk-until-breakpoint(desktop)} {
+///      color: red;
+///    }
+///    @media #{govuk-until-breakpoint(40em)} {
+///      color: green;
+///    }
+///    @media #{govuk-until-breakpoint(tablet)} and (orientation: landscape) {
+///      color: blue;
+///    }
+///    $custom-breakpoint-map: (
+///      small: 350px,
+///      medium: 769px,
+///      large: 1100px,
+///      extra-large: 1600px
+///    );
+///    @media #{govuk-until-breakpoint(extra-large, $custom-breakpoint-map)} {
+///      color: cyan;
+///    }
+///  }
 ///
 /// @access public
 
@@ -109,7 +175,7 @@ $sass-mq-already-included: true;
     $value: govuk-em($value);
   }
 
-  // If the value derives from a named breakpoint, additionally subtract .01em
+  // If $value derives from a named breakpoint, additionally subtract .01em
   @if type-of($until) != "number" and unit($value) == "em" {
     $value: $value - 0.01em;
   }
@@ -150,7 +216,7 @@ $sass-mq-already-included: true;
 ///      color: hotpink;
 ///    }
 ///    @include govuk-media-query(tablet, $media-type: screen) {
-///      color: hotpink;
+///      color: rebeccapurple;
 ///    }
 ///  }
 ///
