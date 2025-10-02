@@ -2,6 +2,8 @@
 /// @group settings/layout
 ////
 
+@import "../settings/warnings";
+
 /// Breakpoint definitions
 ///
 /// @type Map
@@ -19,5 +21,10 @@ $govuk-breakpoints: (
 ///
 /// @type Boolean
 /// @access public
+/// @deprecated The variable is non-operational and will be removed in Frontend v6.0.
 
 $govuk-show-breakpoints: false !default;
+
+@if $govuk-show-breakpoints and _should-warn("govuk-show-breakpoints") {
+  @warn _warning-text("govuk-show-breakpoints", "The `$govuk-show-breakpoints` variable is deprecated and is non-operational. It will be removed in the next major version.");
+}

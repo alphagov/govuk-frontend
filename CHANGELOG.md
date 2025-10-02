@@ -55,6 +55,10 @@ We made these changes in the following pull requests:
 - [#6264: Add media query functions](https://github.com/alphagov/govuk-frontend/pull/6264).
 - [#6265: Rewrite `govuk-media-query`, remove dependency on `sass-mq`](https://github.com/alphagov/govuk-frontend/pull/#6265).
 
+### Fixes
+
+- [#6297: Output deprecation warning if $govuk-show-breakpoints is true](https://github.com/alphagov/govuk-frontend/pull/6297)
+
 ## v5.12.0 (Feature release)
 
 ### New features
