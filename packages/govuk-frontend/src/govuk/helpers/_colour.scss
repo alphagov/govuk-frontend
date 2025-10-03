@@ -27,9 +27,11 @@
     "removed in the next major version.");
   }
 
+  // Sass parses unquoted colours as colours, so we need to turn them into
+  // strings before looking them up in the colour palette
+  // https://sass-lang.com/documentation/values/strings#unquoted
   @if type-of($colour) == "color" {
-    // stylelint-disable-next-line scss/function-quote-no-quoted-strings-inside
-    $colour: quote("#{$colour}");
+    $colour: "#{$colour}";
   }
 
   @if not map-has-key($govuk-colours, $colour) {
@@ -37,6 +39,42 @@
   }
 
   @return map-get($govuk-colours, $colour);
+}
+
+/// Get brand colour
+///
+/// @param {String | Colour} $colour - Name of brand colour from the palette
+///   (`$govuk-colour`)
+/// @param {String } $variant - Name of the colour variant from the palette
+/// @return {Colour} Representation of the variant of the brand colour
+///
+/// @throw if `$variant` is not a variant from the colour
+/// @access private
+@function _govuk-brand-colour($colour, $variant: null) {
+  // Sass parses unquoted colours as colours, so we need to turn them into
+  // strings before looking them up in the colour palette
+  // https://sass-lang.com/documentation/values/strings#unquoted
+  @if type-of($colour) == "color" {
+    $colour: "#{$colour}";
+  }
+
+  @if $colour == "white" {
+    @return #fff;
+  }
+
+  $colour-variants: map-get($govuk-brand-colours, $colour);
+
+  @if not $colour-variants {
+    @error "Unknown colour `#{$colour}` (available colours: #{map-keys($govuk-brand-colours)}, white)";
+  }
+
+  $result: map-get($colour-variants, $variant);
+
+  @if not $result {
+    @error "Unknown variant `#{$variant}` for colour `#{$colour}` (available variants: #{map-keys($colour-variants)})";
+  }
+
+  @return $result;
 }
 
 /// Get the colour for a government organisation

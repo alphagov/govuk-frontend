@@ -33,3 +33,93 @@ $govuk-colours: (
   "light-green": #85994b,
   "turquoise": #28a197
 ) !default;
+
+/// Colour palette
+///
+/// @type Map
+///
+/// @prop $colour.$variant - Representation for the given $variant of $colour, where $colour is the
+///   friendly name for the colour, and $variant the friendly name for the variant
+///   (e.g. `"red": ("primary": #ff0000)`)
+/// @access private
+
+$govuk-brand-colours: (
+  "blue": (
+    "primary": #1d70b8,
+    "tint-25": #5694ca,
+    "tint-50": #8eb8dc,
+    "tint-80": #d2e2f1,
+    "tint-95": #f4f8fb,
+    "shade-50": #0f385c
+  ),
+  "green": (
+    "primary": #11875a,
+    "tint-25": #4da583,
+    "tint-50": #88c3ad,
+    "tint-80": #cfe7de,
+    "tint-95": #f3f9f7,
+    "shade-50": #09442d
+  ),
+  "teal": (
+    "primary": #158187,
+    "tint-25": #50a1a5,
+    "tint-50": #8ac0c3,
+    "tint-80": #d0e6e7,
+    "tint-95": #f3f9f9,
+    "shade-50": #0b4144,
+    "accent": #00ffe0
+  ),
+  "purple": (
+    "primary": #54319f,
+    "tint-25": #7f65b7,
+    "tint-50": #aa98cf,
+    "tint-80": #ddd6ec,
+    "tint-95": #f6f5fa,
+    "shade-50": #2a1950
+  ),
+  "magenta": (
+    "primary": #ca357c,
+    "tint-25": #d7689d,
+    "tint-50": #e59abe,
+    "tint-80": #f4d7e5,
+    "tint-95": #fcf5f8,
+    "shade-50": #651b3e
+  ),
+  "red": (
+    "primary": #ca3535,
+    "tint-25": #d76868,
+    "tint-50": #e59a9a,
+    "tint-80": #f4d7d7,
+    "tint-95": #fcf5f5,
+    "shade-50": #651b1b
+  ),
+  "orange": (
+    "primary": #f47738,
+    "tint-25": #f7996a,
+    "tint-50": #fabb9c,
+    "tint-80": #fde4d7,
+    "tint-95": #fef8f5,
+    "shade-50": #7a3c1c
+  ),
+  "yellow": (
+    "primary": #ffdd00,
+    "tint-25": #ffe640,
+    "tint-50": #ffee80,
+    "tint-80": #fff8cc,
+    "tint-95": #fffdf2,
+    "shade-50": #806f00
+  ),
+  "brown": (
+    "primary": #99704a,
+    "tint-25": #b39477,
+    "tint-50": #ccb8a5,
+    "tint-95": #faf8f6
+  ),
+  "black": (
+    "primary": #0b0c0c,
+    "tint-25": #484949,
+    "tint-50": #858686,
+    "tint-80": #cecece,
+    "tint-95": #f3f3f3
+  )
+) !default;
