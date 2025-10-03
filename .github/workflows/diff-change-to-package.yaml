@@ -34,7 +34,7 @@ jobs:
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
-          bin/package-diff.sh $GITHUB_BASE_REF $GITHUB_WORKSPACE
+          bin/package-diff.sh ${{ github.event.pull_request.base.ref }} $GITHUB_WORKSPACE
 
       - name: Save npm package diffs
         uses: actions/upload-artifact@v4.6.2
