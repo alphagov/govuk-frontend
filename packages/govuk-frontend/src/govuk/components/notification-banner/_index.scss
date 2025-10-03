@@ -4,7 +4,6 @@
     @include govuk-responsive-margin(8, "bottom");
 
     border: $govuk-border-width solid $govuk-brand-colour;
-
     background-color: $govuk-brand-colour;
 
     &:focus {
@@ -38,7 +37,6 @@
     $padding-tablet: govuk-spacing(4);
     @include govuk-text-colour;
     padding: govuk-spacing(3);
-
     background-color: $govuk-body-background-colour;
 
     @include govuk-media-query($from: tablet) {
@@ -81,7 +79,6 @@
 
   .govuk-notification-banner--success {
     border-color: $govuk-success-colour;
-
     background-color: $govuk-success-colour;
 
     .govuk-notification-banner__link {
