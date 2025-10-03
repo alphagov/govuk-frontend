@@ -100,6 +100,186 @@ describe('@function govuk-colour', () => {
   })
 })
 
+describe('@function govuk-colour-variant', () => {
+  const sassBootstrap = `
+    $colours: (
+      "blue": (
+        "primary": #1d70b8,
+        "tint-25": #5694ca,
+      ),
+      "green": (
+        "primary": #11875a,
+        "tint-25": #4da583,
+      ),
+      "red": (
+        "primary": #ca3535,
+        "tint-25": #d76868,
+      ),
+      "white": #fff
+    );
+
+    @import "helpers/colour";
+  `
+
+  it('returns the variant of the colour if it exits', async () => {
+    const sass = `
+      ${sassBootstrap}
+
+      .foo {
+        color: govuk-colour-variant('red', 'tint-25', $colours);
+      }
+    `
+
+    await expect(compileSassString(sass, sassConfig)).resolves.toMatchObject({
+      css: outdent`
+        .foo {
+          color: #d76868;
+        }
+      `
+    })
+  })
+
+  it('accepts unquoted strings', async () => {
+    const sass = `
+      ${sassBootstrap}
+
+      .foo {
+        color: govuk-colour-variant(red, tint-25, $colours);
+      }
+    `
+
+    await expect(compileSassString(sass, sassConfig)).resolves.toMatchObject({
+      css: outdent`
+        .foo {
+          color: #d76868;
+        }
+      `
+    })
+  })
+
+  it("returns the colour if there's no variant", async () => {
+    const sass = `
+      ${sassBootstrap}
+
+      .foo {
+        color: govuk-colour-variant(white, $colours: $colours);
+        border-color: govuk-colour-variant(white, any-variant, $colours);
+      }
+    `
+
+    await expect(compileSassString(sass, sassConfig)).resolves.toMatchObject({
+      css: outdent`
+        .foo {
+          color: #fff;
+          border-color: #fff;
+        }
+      `
+    })
+  })
+
+  describe('defaults', () => {
+    it('defaults the variant to "primary"', async () => {
+      const sass = `
+        ${sassBootstrap}
+
+        .foo {
+          color: govuk-colour-variant(red, $colours: $colours);
+        }
+      `
+
+      await expect(compileSassString(sass, sassConfig)).resolves.toMatchObject({
+        css: outdent`
+          .foo {
+            color: #ca3535;
+          }
+        `
+      })
+    })
+
+    it('defaults the colours to $govuk-brand-colours', async () => {
+      const sass = `
+        @import "helpers/colour";
+
+        .foo {
+          color: govuk-colour-variant(red, tint-25);
+        }
+      `
+
+      await expect(compileSassString(sass, sassConfig)).resolves.toMatchObject({
+        css: outdent`
+          .foo {
+            color: #d76868;
+          }
+        `
+      })
+    })
+  })
+
+  describe('errors', () => {
+    it('throws an error if the colour is not found', async () => {
+      const sass = `
+        ${sassBootstrap}
+
+        .foo {
+          color: govuk-colour-variant('unknown-colour', 'tint-25', $colours);
+        }
+      `
+
+      await expect(compileSassString(sass, sassConfig)).rejects.toThrow(
+        'Unknown colour `unknown-colour` (available colours: blue, green, red, white)'
+      )
+    })
+
+    it('throws an error if the found colour is not a Map or Color', async () => {
+      const sass = `
+        ${sassBootstrap}
+
+        .foo {
+          color: govuk-colour-variant('a-colour', 'tint-25', ("a-colour": "not-a-map-or-colour"));
+        }
+      `
+
+      await expect(compileSassString(sass, sassConfig)).rejects.toThrow(
+        'Colour `a-colour` should either be a `map` or `color`, not a `string`'
+      )
+    })
+
+    it('throws an error if the variant is not found', async () => {
+      const sass = `
+        ${sassBootstrap}
+
+        .foo {
+          color: govuk-colour-variant('red', 'unknown-variant', $colours);
+        }
+      `
+
+      await expect(compileSassString(sass, sassConfig)).rejects.toThrow(
+        'Unknown variant `unknown-variant` for colour `red` (available variants: primary, tint-25)'
+      )
+    })
+  })
+
+  describe('shorthand', () => {
+    it('allows using a positional argument for the list of colours', async () => {
+      const sass = `
+        ${sassBootstrap}
+
+        .foo {
+          color: govuk-colour-variant(white, $colours);
+        }
+      `
+
+      await expect(compileSassString(sass, sassConfig)).resolves.toMatchObject({
+        css: outdent`
+          .foo {
+            color: #fff;
+          }
+        `
+      })
+    })
+  })
+})
+
 describe('@function govuk-organisation-colour', () => {
   const sassBootstrap = `
     $govuk-new-organisation-colours: true;

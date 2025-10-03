@@ -39,6 +39,53 @@
   @return map-get($govuk-colours, $colour);
 }
 
+/// Get the $variant of the given $colour among the given $colours
+///
+/// @param {String | Colour} $colour - Name of brand colour from the palette
+///   (`$govuk-colour`)
+/// @param {String } $variant - Name of the colour variant from the palette
+/// @param {Map} $colours - A map of available colours
+/// @return {Colour} Representation of the variant of the brand colour
+///
+/// @throw if `$variant` is not a variant from the colour
+/// @access private
+@function govuk-colour-variant($colour, $variant: primary, $colours: $govuk-brand-colours) {
+  @if type-of($variant) == "map" {
+    $colours: $variant;
+    $variant: primary;
+  }
+
+  // Sass parses unquoted colours as colours, so we need to turn them into
+  // strings before looking them up in the colour palette
+  // https://sass-lang.com/documentation/values/strings#unquoted
+  @if type-of($colour) != "string" {
+    $colour: "#{$colour}";
+  }
+
+  $colour-variants: map-get($colours, $colour);
+
+  @if not $colour-variants {
+    @error "Unknown colour `#{$colour}` (available colours: #{map-keys($colours)})";
+  }
+
+  // Some colours may not have variants, if that's the case, we can return the colour straight away
+  @if type-of($colour-variants) == "color" {
+    @return $colour-variants;
+  }
+
+  @if type-of($colour-variants) != "map" {
+    @error "Colour `#{$colour}` should either be a `map` or `color`, not a `#{type-of($colour-variants)}`";
+  }
+
+  $result: map-get($colour-variants, $variant);
+
+  @if not $result {
+    @error "Unknown variant `#{$variant}` for colour `#{$colour}` (available variants: #{map-keys($colour-variants)})";
+  }
+
+  @return $result;
+}
+
 /// Get the colour for a government organisation
 ///
 /// @param {String} $organisation - Organisation name, lowercase, hyphenated
