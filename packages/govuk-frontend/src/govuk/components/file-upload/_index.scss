@@ -6,7 +6,7 @@
   $file-upload-border-width: 2px;
   $component-padding: govuk-spacing(1);
   $empty-button-background-colour: govuk-colour("white");
-  $empty-status-background-colour: govuk-tint(govuk-colour("blue"), 70%);
+  $empty-status-background-colour: govuk-colour("blue", $variant: "tint-80");
   $empty-pseudo-button-background-colour: govuk-colour("black", $variant: "tint-95");
 
   .govuk-file-upload {
@@ -112,14 +112,14 @@
     }
 
     &:hover {
-      background-color: govuk-tint(govuk-colour("mid-grey"), 20%);
+      background-color: govuk-colour("black", $variant: "tint-80");
 
       .govuk-file-upload-button__pseudo-button {
-        background-color: govuk-shade(govuk-colour("light-grey"), 10%);
+        background-color: govuk-colour("black", $variant: "tint-80");
       }
 
       .govuk-file-upload-button__status {
-        background-color: govuk-tint(govuk-colour("blue"), 80%);
+        background-color: govuk-colour("blue", $variant: "tint-80");
       }
     }
 
@@ -129,7 +129,7 @@
       outline: $govuk-focus-width solid $govuk-focus-colour;
       // Ensure outline appears outside of the element
       outline-offset: 0;
-      background-color: govuk-tint(govuk-colour("mid-grey"), 20%);
+      background-color: govuk-colour("black", $variant: "tint-80");
       // Double the border by adding its width again. Use `box-shadow` for this
       // instead of changing `border-width` - this is for consistency with
       // components such as textarea where we avoid changing `border-width` as
@@ -145,7 +145,7 @@
       &:hover .govuk-file-upload-button__pseudo-button {
         border-color: $govuk-focus-colour;
         outline: 3px solid transparent;
-        background-color: govuk-colour("black", $variant: "tint-95");
+        background-color: govuk-colour("black", $variant: "tint-80");
         box-shadow: inset 0 0 0 1px $govuk-focus-colour;
       }
     }
@@ -160,7 +160,7 @@
     }
 
     .govuk-file-upload-button__status {
-      color: govuk-shade(govuk-colour("blue"), 60%);
+      color: govuk-colour("blue", $variant: "shade-50");
       background-color: $empty-status-background-colour;
     }
 
@@ -170,7 +170,7 @@
       background-color: govuk-colour("black", $variant: "tint-95");
 
       .govuk-file-upload-button__status {
-        background-color: govuk-tint(govuk-colour("blue"), 80%);
+        background-color: govuk-colour("blue", $variant: "tint-80");
       }
     }
   }
@@ -182,7 +182,7 @@
     // extra specificity to apply when
     // empty
     &.govuk-file-upload-button {
-      background-color: govuk-tint(govuk-colour("mid-grey"), 20%);
+      background-color: govuk-colour("black", $variant: "tint-80");
     }
 
     &.govuk-file-upload-button--empty {
