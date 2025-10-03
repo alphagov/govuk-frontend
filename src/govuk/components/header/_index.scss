@@ -31,7 +31,7 @@
   }
 
   .govuk-header--with-js-navigation {
-    @include govuk-media-query($until: desktop) {
+    @media #{govuk-until-breakpoint(desktop)} {
       .govuk-header__logo {
         // Protect the absolute positioned menu button from overlapping with the
         // logo with right padding using the button's width
@@ -152,7 +152,7 @@
     // Align vertically with logo when not wrapped
     vertical-align: top;
 
-    @include govuk-media-query($from: tablet) {
+    @media #{govuk-from-breakpoint(tablet)} {
       margin-top: $product-name-offset-tablet;
       @-moz-document url-prefix() {
         margin-top: $product-name-offset-tablet - 0.5px;
@@ -184,11 +184,11 @@
       }
 
       // Remove top margin on the breakpoints too
-      @include govuk-media-query($from: tablet) {
+      @media #{govuk-from-breakpoint(tablet)} {
         margin-top: 0;
       }
 
-      @include govuk-media-query($from: desktop) {
+      @media #{govuk-from-breakpoint(desktop)} {
         margin-top: 0;
       }
     }
@@ -227,7 +227,7 @@
     margin-right: govuk-spacing(2);
     font-size: 30px; // We don't have a mixin that produces 30px font size
 
-    @include govuk-media-query($from: desktop) {
+    @media #{govuk-from-breakpoint(desktop)} {
       display: inline;
     }
 
@@ -277,7 +277,7 @@
       // Apply margins to internal elements to emulate padding
       margin-bottom: govuk-spacing(3);
 
-      @include govuk-media-query($from: desktop) {
+      @media #{govuk-from-breakpoint(desktop)} {
         // Magic number to align service name baseline with the GOV.UK logo
         $service-name-offset: 4px;
 
@@ -294,7 +294,7 @@
   .govuk-header__logo {
     @include govuk-responsive-margin($govuk-header-vertical-spacing-value, "bottom");
 
-    @include govuk-media-query($from: desktop) {
+    @media #{govuk-from-breakpoint(desktop)} {
       width: 33.33%;
       padding-right: $govuk-gutter-half;
       float: left;
@@ -319,7 +319,7 @@
   }
 
   .govuk-header__content {
-    @include govuk-media-query($from: desktop) {
+    @media #{govuk-from-breakpoint(desktop)} {
       width: 66.66%;
       padding-left: $govuk-gutter-half;
       float: left;
@@ -360,7 +360,7 @@
       @include govuk-shape-arrow($direction: up, $base: 10px, $display: inline-block);
     }
 
-    @include govuk-media-query($from: mobile) {
+    @media #{govuk-from-breakpoint(mobile)} {
       position: absolute;
       // calculate top offset by:
       // - getting the vertical spacing for the top and the bottom of the header
@@ -373,7 +373,7 @@
       margin: 0;
     }
 
-    @include govuk-media-query($from: tablet) {
+    @media #{govuk-from-breakpoint(tablet)} {
       top: govuk-spacing(3);
     }
 
@@ -388,13 +388,13 @@
   }
 
   .govuk-header__navigation {
-    @include govuk-media-query($until: mobile) {
+    @media #{govuk-until-breakpoint(mobile)} {
       @include _govuk-rebrand {
         padding-bottom: govuk-spacing(3);
       }
     }
 
-    @include govuk-media-query($from: desktop) {
+    @media #{govuk-from-breakpoint(desktop)} {
       margin-bottom: govuk-spacing(2);
 
       @include _govuk-rebrand {
@@ -411,7 +411,7 @@
 
   .govuk-header__service-name + .govuk-header__navigation {
     @include _govuk-rebrand {
-      @include govuk-media-query($from: desktop) {
+      @media #{govuk-from-breakpoint(desktop)} {
         // If there's both a service name and navigation,
         // remove the extra padding between them on desktop
         padding-top: 0;
@@ -433,14 +433,14 @@
     }
 
     @include _govuk-rebrand {
-      @include govuk-media-query($from: mobile, $until: desktop) {
+      @media #{govuk-from-breakpoint(mobile)} and #{govuk-until-breakpoint(desktop)} {
         padding-bottom: govuk-spacing(3);
       }
     }
   }
 
   .govuk-header__navigation--end {
-    @include govuk-media-query($from: desktop) {
+    @media #{govuk-from-breakpoint(desktop)} {
       margin: 0;
       padding: govuk-spacing(1) 0;
       text-align: right;
@@ -451,7 +451,7 @@
     padding: govuk-spacing(2) 0;
     border-bottom: 1px solid $govuk-header-nav-item-border-color;
 
-    @include govuk-media-query($from: desktop) {
+    @media #{govuk-from-breakpoint(desktop)} {
       display: inline-block;
       margin-right: govuk-spacing(3);
       padding: govuk-spacing(1) 0;
@@ -469,7 +469,7 @@
       padding-top: govuk-spacing(3);
 
       // ...except on desktop
-      @include govuk-media-query($from: desktop) {
+      @media #{govuk-from-breakpoint(desktop)} {
         padding-top: govuk-spacing(1);
       }
 

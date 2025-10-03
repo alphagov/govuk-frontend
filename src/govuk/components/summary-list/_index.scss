@@ -2,7 +2,7 @@
   .govuk-summary-list {
     @include govuk-font($size: 19);
     @include govuk-text-colour;
-    @include govuk-media-query($from: tablet) {
+    @media #{govuk-from-breakpoint(tablet)} {
       display: table;
       width: 100%;
       table-layout: fixed; // Required to allow us to wrap words that overflow.
@@ -15,10 +15,10 @@
   .govuk-summary-list__row {
     border-bottom: 1px solid $govuk-border-colour;
 
-    @include govuk-media-query($until: tablet) {
+    @media #{govuk-until-breakpoint(tablet)} {
       margin-bottom: govuk-spacing(3);
     }
-    @include govuk-media-query($from: tablet) {
+    @media #{govuk-from-breakpoint(tablet)} {
       display: table-row;
     }
   }
@@ -31,7 +31,7 @@
   // Provide an empty 'cell' for rows that don't have actions – otherwise the
   // bottom border is not drawn for that part of the row in some browsers.
   .govuk-summary-list__row--no-actions {
-    @include govuk-media-query($from: tablet) {
+    @media #{govuk-from-breakpoint(tablet)} {
       &::after {
         content: "";
         display: table-cell;
@@ -45,7 +45,7 @@
   .govuk-summary-list__actions {
     margin: 0; // Reset default user agent styles
 
-    @include govuk-media-query($from: tablet) {
+    @media #{govuk-from-breakpoint(tablet)} {
       display: table-cell;
       padding-top: govuk-spacing(2);
       padding-right: govuk-spacing(4);
@@ -55,7 +55,7 @@
 
   .govuk-summary-list__actions {
     margin-bottom: govuk-spacing(3);
-    @include govuk-media-query($from: tablet) {
+    @media #{govuk-from-breakpoint(tablet)} {
       width: 20%;
       text-align: right;
     }
@@ -71,13 +71,13 @@
   .govuk-summary-list__key {
     margin-bottom: govuk-spacing(1);
     @include govuk-typography-weight-bold;
-    @include govuk-media-query($from: tablet) {
+    @media #{govuk-from-breakpoint(tablet)} {
       width: 30%;
     }
   }
 
   .govuk-summary-list__value {
-    @include govuk-media-query($until: tablet) {
+    @media #{govuk-until-breakpoint(tablet)} {
       margin-bottom: govuk-spacing(3);
     }
   }
@@ -101,7 +101,7 @@
     display: inline-block;
   }
 
-  @include govuk-media-query($until: tablet) {
+  @media #{govuk-until-breakpoint(tablet)} {
     .govuk-summary-list__actions-list-item,
     .govuk-summary-card__action {
       margin-right: govuk-spacing(2);
@@ -117,7 +117,7 @@
     }
   }
 
-  @include govuk-media-query($from: tablet) {
+  @media #{govuk-from-breakpoint(tablet)} {
     .govuk-summary-list__actions-list-item,
     .govuk-summary-card__action {
       margin-left: govuk-spacing(2);
@@ -153,7 +153,7 @@
     }
 
     // Increase padding by 1px to compensate for 'missing' border
-    @include govuk-media-query($from: tablet) {
+    @media #{govuk-from-breakpoint(tablet)} {
       .govuk-summary-list__key,
       .govuk-summary-list__value,
       .govuk-summary-list__actions {
@@ -167,7 +167,7 @@
     border: 0;
 
     // Increase padding by 1px to compensate for 'missing' border
-    @include govuk-media-query($from: tablet) {
+    @media #{govuk-from-breakpoint(tablet)} {
       .govuk-summary-list__key,
       .govuk-summary-list__value,
       .govuk-summary-list__actions {
@@ -190,7 +190,7 @@
     border-bottom: 1px solid transparent;
     background-color: govuk-colour("light-grey");
 
-    @include govuk-media-query($from: "tablet") {
+    @media #{govuk-from-breakpoint(tablet)} {
       display: flex;
       justify-content: space-between;
       flex-wrap: nowrap;
@@ -203,7 +203,7 @@
     @include govuk-text-colour;
     margin: govuk-spacing(1) govuk-spacing(4) govuk-spacing(2) 0;
 
-    @include govuk-media-query($from: "tablet") {
+    @media #{govuk-from-breakpoint(tablet)} {
       margin-bottom: govuk-spacing(1);
     }
   }
@@ -218,7 +218,7 @@
     padding: 0;
     list-style: none;
 
-    @include govuk-media-query($from: "tablet") {
+    @media #{govuk-from-breakpoint(tablet)} {
       justify-content: right;
       text-align: right;
     }
@@ -251,7 +251,7 @@
   .govuk-summary-card__content {
     padding: govuk-spacing(3) govuk-spacing(3) 0;
 
-    @include govuk-media-query($from: "tablet") {
+    @media #{govuk-from-breakpoint(tablet)} {
       padding: govuk-spacing(3) govuk-spacing(4);
     }
 

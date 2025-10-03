@@ -82,7 +82,7 @@ $govuk-inverse-button-text-colour: $govuk-brand-colour !default;
     cursor: pointer;
     -webkit-appearance: none;
 
-    @include govuk-media-query($from: tablet) {
+    @media #{govuk-from-breakpoint(tablet)} {
       width: auto;
     }
 
@@ -247,7 +247,7 @@ $govuk-inverse-button-text-colour: $govuk-brand-colour !default;
   .govuk-button__start-icon {
     margin-left: govuk-spacing(1);
 
-    @include govuk-media-query($from: desktop) {
+    @media #{govuk-from-breakpoint(desktop)} {
       margin-left: govuk-spacing(2);
     }
     vertical-align: middle;

@@ -19,7 +19,7 @@
     // text in high contrast mode
     border-bottom: 1px solid transparent;
 
-    @include govuk-media-query($from: tablet) {
+    @media #{govuk-from-breakpoint(tablet)} {
       padding: 2px govuk-spacing(4) govuk-spacing(1);
     }
   }
@@ -41,7 +41,7 @@
 
     background-color: $govuk-body-background-colour;
 
-    @include govuk-media-query($from: tablet) {
+    @media #{govuk-from-breakpoint(tablet)} {
       padding: $padding-tablet;
     }
 
