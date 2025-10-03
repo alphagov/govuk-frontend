@@ -3,16 +3,16 @@ import express from 'express'
 const router = express.Router()
 
 const FEATURE_NAME = 'rebrand'
-const COOKIE_NAME = `use_${FEATURE_NAME}`
+const COOKIE_NAME = `use_old_brand`
 
 /**
- * Control rebrand cookie setting and unsetting
+ * Control old brand cookie setting and unsetting
  *
- * Sets the rebrand cookie if setRebrand is present in request body,
- * otherwise unsets the cookie, then redirect.
+ * Sets the old brand cookie if unsetRebrand is present in request body,
+ * otherwise unsets the cookie, then redirects.
  */
-router.post(`/set-${FEATURE_NAME}`, (req, res) => {
-  const queryName = `set${FEATURE_NAME.charAt(0).toUpperCase() + FEATURE_NAME.slice(1)}`
+router.post(`/unset-${FEATURE_NAME}`, (req, res) => {
+  const queryName = `unset${FEATURE_NAME.charAt(0).toUpperCase() + FEATURE_NAME.slice(1)}`
 
   if (queryName in req.body) {
     const maxAgeInDays = 28
@@ -42,7 +42,7 @@ router.use((req, res, next) => {
   res.locals[localVarName] =
     overrideQuery in req.query
       ? req.query[overrideQuery] === 'true'
-      : req.cookies?.[COOKIE_NAME] === 'true'
+      : req.cookies?.[COOKIE_NAME] !== 'true'
   res.locals.showAllFlagStates = 'showAllFlagStates' in req.query
 
   res.locals.exampleStates = res.locals.showAllFlagStates
