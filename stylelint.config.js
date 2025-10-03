@@ -45,6 +45,14 @@ module.exports = {
     {
       customSyntax: 'postcss-scss',
       files: ['**/*.scss']
+    },
+    {
+      files: ['packages/**/*'],
+      plugins: ['@govuk-frontend/stylelint-plugin'],
+      rules: {
+        // 'govuk-frontend/govuk-media-query-use-breakpoints': true,
+        'govuk-frontend/prefer-media-query-functions': true
+      }
     }
   ],
   plugins: ['stylelint-order'],

@@ -1,0 +1,8 @@
+{
+  "name": "@govuk-frontend/stylelint-plugin",
+  "private": true,
+  "main": "index.mjs",
+  "dependencies": {
+    "stylelint": "^16.23.1"
+  }
+}
