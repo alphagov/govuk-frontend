@@ -2,34 +2,6 @@
 /// @group helpers/layout
 ////
 
-// =========================================================
-// Wrangle sass-mq config...
-// =========================================================
-
-// Pass our breakpoint definitions through to sass-mq.
-$mq-breakpoints: if(variable-exists(govuk-breakpoints), $govuk-breakpoints, ());
-
-$mq-show-breakpoints: ();
-
-@if variable-exists(govuk-show-breakpoints) and $govuk-show-breakpoints {
-  $mq-show-breakpoints: map-keys($govuk-breakpoints);
-}
-
-// This is a horrible, horrible hack to prevent the 'dev mode' CSS to display
-// the current breakpoint from being included multiple times.
-//
-// We can't use the `exports` mixin for this because import directives cannot be
-// used within control directives 😠
-$sass-mq-already-included: false !default;
-
-@if $sass-mq-already-included {
-  $mq-show-breakpoints: ();
-}
-
-@import "../vendor/sass-mq";
-
-$sass-mq-already-included: true;
-
 @import "../settings/media-queries";
 @import "../tools/px-to-em";
 
@@ -183,20 +155,15 @@ $sass-mq-already-included: true;
   @return "(max-width: #{$value})";
 }
 
-/// Media Query
+/// Media query
 ///
-/// This is a currently a wrapper for sass-mq - abstracted so that we can
-/// replace it in the future if we so choose.
-///
-/// @param {String | Boolean} $from [false] - One of $govuk-breakpoints
-/// @param {String | Boolean} $until [false] - One of $govuk-breakpoints
+/// @param {String | Boolean} $from [false] - One of $breakpoints
+/// @param {String | Boolean} $until [false] - One of $breakpoints
 /// @param {String | Boolean} $and [false] - Additional media query parameters
-/// @param {String} $media-type [all] - Media type: screen, print…
+/// @param {String} $media-type [all] - Override media type: screen, print…
+/// @param {Map} $breakpoints [$govuk-breakpoints] - Map of breakpoints to use
 ///
-/// @ignore Undocumented mq API, for advanced use only:
-/// @ignore @param {Map} $breakpoints [$govuk-breakpoints]
-///
-/// @content styling rules, wrapped into a @media query when $responsive is true
+/// @content styling rules to use for the given media query range
 ///
 /// @example scss
 ///  .element {
@@ -222,8 +189,31 @@ $sass-mq-already-included: true;
 ///
 /// @access public
 
-@mixin govuk-media-query($args...) {
-  @include mq($args...) {
+@mixin govuk-media-query($from: null, $until: null, $and: null, $media-type: "all", $breakpoints: $govuk-breakpoints) {
+  $media-query: "";
+  $min-width: if($from, govuk-from-breakpoint($from, $breakpoints), null);
+  $max-width: if($until, govuk-until-breakpoint($until, $breakpoints), null);
+
+  // Assemble the media query string
+  @if $media-type != "all" {
+    $media-query: "#{$media-type}";
+  }
+  @if $min-width {
+    $media-query: "#{$media-query} and #{$min-width}";
+  }
+  @if $max-width {
+    $media-query: "#{$media-query} and #{$max-width}";
+  }
+  @if $and {
+    $media-query: "#{$media-query} and #{$and}";
+  }
+
+  // If $media-query currently begins with an orphaned ' and ', remove it.
+  @if str-index($media-query, " and ") == 1 {
+    $media-query: str-slice($media-query, 6);
+  }
+
+  @media #{$media-query} {
     @content;
   }
 }

@@ -48,7 +48,12 @@ $component-breakpoints: (
 }
 ```
 
-We made this change in [pull request #6264: Add media query functions](https://github.com/alphagov/govuk-frontend/pull/6264).
+We've rewritten the internals of the `govuk-media-query` mixin to make use of these new functions. The rewritten mixin should work identically and return the same CSS as the previous version, but you may want to make sure that your existing media queries work as expected.
+
+We made these changes in the following pull requests:
+
+- [#6264: Add media query functions](https://github.com/alphagov/govuk-frontend/pull/6264).
+- [#6265: Rewrite `govuk-media-query`, remove dependency on `sass-mq`](https://github.com/alphagov/govuk-frontend/pull/#6265).
 
 ## v5.12.0 (Feature release)
 
