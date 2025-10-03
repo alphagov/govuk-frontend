@@ -14,6 +14,8 @@
 ///   The `$legacy` parameter is deprecated and is non-operational, as the
 ///   legacy colour palette has been removed. The parameter will be removed in
 ///   the next major version.
+/// @param {String | Colour} $variant - The variant of the colour to look up
+/// @param {Map} $colours - The map of colours to look into
 /// @return {Colour} Representation of named colour
 ///
 /// @throw if `$colour` is not a colour from the colour palette
