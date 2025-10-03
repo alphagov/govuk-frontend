@@ -184,10 +184,10 @@ $govuk-link-active-colour: govuk-colour("black") !default;
 ///
 /// @type Colour
 /// @access private
-$_govuk-rebrand-template-background-colour: govuk-tint($govuk-brand-colour, 95%);
+$_govuk-rebrand-template-background-colour: govuk-colour("blue", $variant: tint-95);
 
 /// Border colour for areas on a light-blue background
 ///
 /// @type Colour
 /// @access private
-$_govuk-rebrand-border-colour-on-blue-tint-95: govuk-tint($govuk-brand-colour, 50%);
+$_govuk-rebrand-border-colour-on-blue-tint-95: govuk-colour("blue", $variant: tint-50);

@@ -14,12 +14,14 @@
 ///   The `$legacy` parameter is deprecated and is non-operational, as the
 ///   legacy colour palette has been removed. The parameter will be removed in
 ///   the next major version.
+/// @param {String | Colour} $variant - The variant of the colour to look up
+/// @param {Map} $colours - The map of colours to look into
 /// @return {Colour} Representation of named colour
 ///
 /// @throw if `$colour` is not a colour from the colour palette
 /// @access public
 
-@function govuk-colour($colour, $legacy: false) {
+@function govuk-colour($colour, $legacy: false, $variant: null, $colours: null) {
   // Output a warning if $legacy is set to anything.
   @if $legacy and _should-warn("legacy-colour-param") {
     @warn _warning-text("legacy-colour-param", "The `$legacy` parameter of " +
@@ -27,16 +29,61 @@
     "removed in the next major version.");
   }
 
-  @if type-of($colour) == "color" {
-    // stylelint-disable-next-line scss/function-quote-no-quoted-strings-inside
-    $colour: quote("#{$colour}");
+  @if $colours or $variant {
+    @return govuk-colour-variant($colour, $variant: $variant, $colours: $colours);
   }
 
-  @if not map-has-key($govuk-colours, $colour) {
-    @error "Unknown colour `#{$colour}`";
+  @return govuk-colour-variant($colour, $govuk-colours);
+}
+
+/// Get the $variant of the given $colour among the given $colours
+///
+/// @param {String | Colour} $colour - Name of brand colour from the palette
+///   (`$govuk-colour`)
+/// @param {String } $variant [primary] - Name of the colour variant from the palette
+/// @param {Map} $colours [$govuk-brand-colours] - A map of available colours
+/// @return {Colour} Representation of the variant of the brand colour
+///
+/// @throw if `$variant` is not a variant from the colour
+/// @access private
+@function govuk-colour-variant($colour, $variant: null, $colours: null) {
+  // Handle positional arguments
+  @if type-of($variant) == "map" {
+    $colours: $variant;
   }
 
-  @return map-get($govuk-colours, $colour);
+  $variant: $variant or primary;
+  $colours: $colours or $govuk-brand-colours;
+
+  // Sass parses unquoted colours as colours, so we need to turn them into
+  // strings before looking them up in the colour palette
+  // https://sass-lang.com/documentation/values/strings#unquoted
+  @if type-of($colour) != "string" {
+    $colour: "#{$colour}";
+  }
+
+  $colour-variants: map-get($colours, $colour);
+
+  @if not $colour-variants {
+    @error "Unknown colour `#{$colour}` (available colours: #{map-keys($colours)})";
+  }
+
+  // Some colours may not have variants, if that's the case, we can return the colour straight away
+  @if type-of($colour-variants) == "color" {
+    @return $colour-variants;
+  }
+
+  @if type-of($colour-variants) != "map" {
+    @error "Colour `#{$colour}` should either be a `map` or `color`, not a `#{type-of($colour-variants)}`";
+  }
+
+  $result: map-get($colour-variants, $variant);
+
+  @if not $result {
+    @error "Unknown variant `#{$variant}` for colour `#{$colour}` (available variants: #{map-keys($colour-variants)})";
+  }
+
+  @return $result;
 }
 
 /// Get the colour for a government organisation
