@@ -122,7 +122,7 @@
     height: govuk-px-to-rem(40px);
     padding: govuk-spacing(1);
     border: $govuk-border-width-form-element solid $govuk-input-border-colour;
-    background-color: govuk-colour("light-grey");
+    background-color: govuk-colour("black", $variant: "tint-95");
     text-align: center;
     white-space: nowrap;
     // Emphasise non-editable status of prefixes and suffixes
