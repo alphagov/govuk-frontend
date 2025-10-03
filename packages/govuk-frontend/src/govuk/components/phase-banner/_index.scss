@@ -21,7 +21,7 @@
     margin-right: govuk-spacing(if($govuk-new-typography-scale, 3, 2));
 
     @if $govuk-new-typography-scale {
-      @include govuk-media-query($from: tablet) {
+      @media #{govuk-from-breakpoint(tablet)} {
         margin-right: govuk-spacing(2);
       }
     }

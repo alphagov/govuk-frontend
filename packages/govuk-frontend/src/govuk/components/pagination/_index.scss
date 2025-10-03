@@ -8,7 +8,7 @@
     align-items: center;
     flex-wrap: wrap;
 
-    @include govuk-media-query($from: tablet) {
+    @media #{govuk-from-breakpoint(tablet)} {
       flex-direction: row;
       align-items: flex-start;
     }
@@ -45,7 +45,7 @@
     // visually sit in the middle of their touch area
     text-align: center;
 
-    @include govuk-media-query($from: tablet) {
+    @media #{govuk-from-breakpoint(tablet)} {
       display: block;
     }
   }

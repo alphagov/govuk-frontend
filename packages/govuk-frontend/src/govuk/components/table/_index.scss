@@ -13,7 +13,7 @@
     // Modifier for tables with a lot of data. Tables with lots of data benefit
     // from a smaller font size on small screens.
     .govuk-table--small-text-until-tablet {
-      @include govuk-media-query($until: tablet) {
+      @media #{govuk-until-breakpoint(tablet)} {
         @include govuk-font-size($size: 16);
       }
     }

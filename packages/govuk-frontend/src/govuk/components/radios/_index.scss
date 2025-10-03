@@ -145,7 +145,7 @@
   // =========================================================
 
   .govuk-radios--inline {
-    @include govuk-media-query($from: tablet) {
+    @media #{govuk-from-breakpoint(tablet)} {
       display: flex;
       flex-wrap: wrap;
       align-items: flex-start;
