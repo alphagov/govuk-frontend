@@ -65,13 +65,13 @@
   $colour-variants: map-get($govuk-brand-colours, $colour);
 
   @if not $colour-variants {
-    @error "Unknown colour `#{$colour}`";
+    @error "Unknown colour `#{$colour}` (available colours: #{map-keys($govuk-brand-colours)}, white)";
   }
 
   $result: map-get($colour-variants, $variant);
 
   @if not $result {
-    @error "Unknown variant `#{$variant}` for colour `#{$colour}`";
+    @error "Unknown variant `#{$variant}` for colour `#{$colour}` (available variants: #{map-keys($colour-variants)})";
   }
 
   @return $result;

@@ -186,7 +186,7 @@ describe('@function _govuk-brand-colour', () => {
     `
 
     await expect(compileSassString(sass, sassConfig)).rejects.toThrow(
-      'Unknown colour `unknown-colour`'
+      'Unknown colour `unknown-colour` (available colours: blue, green, red, white)'
     )
   })
 
@@ -200,7 +200,7 @@ describe('@function _govuk-brand-colour', () => {
     `
 
     await expect(compileSassString(sass, sassConfig)).rejects.toThrow(
-      'Unknown variant `unknown-variant` for colour `red`'
+      'Unknown variant `unknown-variant` for colour `red` (available variants: primary, tint-25)'
     )
   })
 })
