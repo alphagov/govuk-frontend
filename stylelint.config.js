@@ -47,7 +47,7 @@ module.exports = {
       files: ['**/*.scss']
     },
     {
-      files: ['packages/govuk-frontend/**/*'],
+      files: ['packages/**/*'],
       plugins: ['@govuk-frontend/stylelint-plugin'],
       rules: {
         // 'govuk-frontend/govuk-media-query-use-breakpoints': true,
