@@ -191,3 +191,61 @@ $_govuk-rebrand-template-background-colour: govuk-colour("blue", $variant: tint-
 /// @type Colour
 /// @access private
 $_govuk-rebrand-border-colour-on-blue-tint-95: govuk-colour("blue", $variant: tint-50);
+
+/// How colours are applied across GOV.UK Frontend
+///
+/// @type Map
+/// @access public
+
+$govuk-applied-colours: (
+  // Semantic -> Associate a name with some meaning in the Design System to the colours
+  "brand": govuk-colour("blue"),
+  // Groups -> Regroup colours related to each other without any semantics
+  "light-blue": (
+      "background": govuk-colour("blue", $variant: tint-50),
+      "border-within": govuk-colour("blue", $variant: tint-50)
+    ),
+  // Applications -> What the colours are applied to
+  "text": (
+      "default": govuk-colour("black"),
+      "secondary": govuk-colour("dark-grey"),
+      "print": #000000
+    ),
+  "border": govuk-colour("mid-grey"),
+  // States -> Colours related to specific states, broken down by Applications
+  "focus": (
+      "text": govuk-colour("black"),
+      "background": govuk-colour("yellow")
+    ),
+  // Components -> Colours related to components, broken down by states then applications
+  "input": (
+      "border": govuk-colour("black"),
+      "hover": govuk-colour("mid-grey")
+    ),
+  "link": (
+    "default": (
+      text: govuk-colour("blue")
+    ),
+    "visited": (
+      text: govuk-colour("purple")
+    ),
+    "hover": (
+      text: govuk-colour("dark-blue")
+    ),
+    "active": (
+      text: govuk-colour("black")
+    )
+  ),
+  "template": (
+    "background": govuk-colour("light-grey")
+  ),
+  "body": (
+    "background": govuk-colour("white")
+  ),
+  // Theme -> Colour changes across components
+  "rebrand": (
+      "template": (
+        "background": govuk-colour("blue", $variant: tint-50)
+      )
+    )
+);
