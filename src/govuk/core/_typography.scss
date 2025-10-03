@@ -77,7 +77,7 @@
     margin-bottom: govuk-spacing(1);
     color: $govuk-secondary-text-colour;
 
-    @include govuk-media-query($from: tablet) {
+    @media #{govuk-from-breakpoint(tablet)} {
       margin-bottom: 0;
     }
   }
@@ -161,7 +161,7 @@
   %govuk-body-l + %govuk-heading-l {
     padding-top: govuk-spacing(1);
 
-    @include govuk-media-query($from: tablet) {
+    @media #{govuk-from-breakpoint(tablet)} {
       padding-top: govuk-spacing(2);
     }
   }
@@ -180,7 +180,7 @@
   %govuk-list + %govuk-heading-s {
     padding-top: govuk-spacing(1);
 
-    @include govuk-media-query($from: tablet) {
+    @media #{govuk-from-breakpoint(tablet)} {
       padding-top: govuk-spacing(2);
     }
   }
