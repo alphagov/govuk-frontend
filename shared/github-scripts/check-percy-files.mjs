@@ -26,6 +26,11 @@ function isRelevantFile(file) {
     return false
   }
 
+  // Package file changes always trigger screenshots
+  if (file.endsWith('package.json') || file.endsWith('package-lock.json')) {
+    return true
+  }
+
   // Asset changes always trigger screenshots
   if (
     file.startsWith('packages/govuk-frontend/src/govuk/assets/') ||
