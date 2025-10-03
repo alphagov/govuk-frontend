@@ -84,6 +84,7 @@
     padding: govuk-spacing(3) govuk-spacing(2);
     background-color: govuk-colour("white");
     text-align: left;
+    @include govuk-text-break-word;
   }
 
   // bugs documented with button using flex

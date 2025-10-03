@@ -57,7 +57,10 @@ We made these changes in the following pull requests:
 
 ### Fixes
 
-- [#6297: Output deprecation warning if $govuk-show-breakpoints is true](https://github.com/alphagov/govuk-frontend/pull/6297)
+We've made fixes to GOV.UK Frontend in the following pull requests:
+
+- [#6297: Output deprecation warning if `$govuk-show-breakpoints` is true](https://github.com/alphagov/govuk-frontend/pull/6297)
+- [#6304: Fix long filenames in enhanced file upload not wrapping](https://github.com/alphagov/govuk-frontend/pull/6304)
 
 ## v5.12.0 (Feature release)
 
