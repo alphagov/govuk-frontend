@@ -38,7 +38,7 @@
   %govuk-list--number > li {
     margin-bottom: 0;
 
-    @include govuk-media-query($from: tablet) {
+    @media #{govuk-from-breakpoint(tablet)} {
       margin-bottom: govuk-spacing(1);
     }
   }
@@ -46,7 +46,7 @@
   %govuk-list--spaced > li {
     margin-bottom: govuk-spacing(2);
 
-    @include govuk-media-query($from: tablet) {
+    @media #{govuk-from-breakpoint(tablet)} {
       margin-bottom: govuk-spacing(3);
     }
   }

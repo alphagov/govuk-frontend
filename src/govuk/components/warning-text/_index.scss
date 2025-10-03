@@ -19,7 +19,7 @@
     min-height: 35px;
     margin-top: -7px;
 
-    @include govuk-media-query($from: tablet) {
+    @media #{govuk-from-breakpoint(tablet)} {
       margin-top: -5px;
     }
 

@@ -11,7 +11,7 @@
 
     text-align: center;
 
-    @include govuk-media-query($until: tablet) {
+    @media #{govuk-until-breakpoint(tablet)} {
       padding: govuk-spacing(if($govuk-new-typography-scale, 4, 3)) - $govuk-border-width;
 
       // This is an if-all-else-fails attempt to stop long words from

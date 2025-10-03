@@ -89,7 +89,7 @@
       cursor: pointer;
       -webkit-appearance: none;
 
-      @include govuk-media-query($from: tablet) {
+      @media #{govuk-from-breakpoint(tablet)} {
         margin-bottom: 14px;
       }
 
@@ -203,7 +203,7 @@
       cursor: pointer;
       -webkit-appearance: none;
 
-      @include govuk-media-query($from: tablet) {
+      @media #{govuk-from-breakpoint(tablet)} {
         padding-bottom: govuk-spacing(2);
       }
 
@@ -266,7 +266,7 @@
       padding-bottom: govuk-spacing(3);
       border-bottom: 0;
 
-      @include govuk-media-query($from: tablet) {
+      @media #{govuk-from-breakpoint(tablet)} {
         padding-bottom: govuk-spacing(4);
       }
     }
@@ -276,7 +276,7 @@
     .govuk-accordion__section-button:focus .govuk-accordion__section-toggle-focus {
       padding-bottom: 3px;
 
-      @include govuk-media-query($from: desktop) {
+      @media #{govuk-from-breakpoint(desktop)} {
         padding-bottom: 2px;
       }
     }

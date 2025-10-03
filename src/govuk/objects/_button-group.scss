@@ -57,7 +57,7 @@
 
     // On tablet and above, we also introduce a 'column gap' between the
     // buttons and links in each row and left align links
-    @include govuk-media-query($from: tablet) {
+    @media #{govuk-from-breakpoint(tablet)} {
       // Cancel out the column gap for the last item in each row
       margin-right: ($horizontal-gap * -1);
 

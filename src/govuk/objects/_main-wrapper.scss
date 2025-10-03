@@ -30,7 +30,7 @@
     padding-top: govuk-spacing(4);
     padding-bottom: govuk-spacing(4);
 
-    @include govuk-media-query($from: tablet) {
+    @media #{govuk-from-breakpoint(tablet)} {
       // This spacing is manually adjusted to replicate the margin of
       // govuk-heading-xl (50px) minus the spacing of back link and
       // breadcrumbs (10px)
