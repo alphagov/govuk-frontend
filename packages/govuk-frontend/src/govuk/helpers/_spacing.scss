@@ -107,7 +107,7 @@
         #{$property}-#{$direction}: $breakpoint-value if($important, !important, null);
       }
     } @else {
-      @include govuk-media-query($from: $breakpoint) {
+      @media #{govuk-from-breakpoint($breakpoint)} {
         @if $direction == all {
           #{$property}: $breakpoint-value if($important, !important, null);
         } @else {

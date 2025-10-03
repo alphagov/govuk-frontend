@@ -100,7 +100,7 @@
     }
 
     // Split prefix/suffix onto separate lines on narrow screens
-    @include govuk-media-query($until: mobile) {
+    @media #{govuk-until-breakpoint(mobile)} {
       display: block;
 
       .govuk-input {
@@ -129,7 +129,7 @@
     cursor: default;
     flex: 0 0 auto;
     // Split prefix/suffix onto separate lines on narrow screens
-    @include govuk-media-query($until: mobile) {
+    @media #{govuk-until-breakpoint(mobile)} {
       display: block;
       height: 100%;
       white-space: normal;
@@ -137,20 +137,20 @@
   }
 
   .govuk-input__prefix {
-    @include govuk-media-query($until: mobile) {
+    @media #{govuk-until-breakpoint(mobile)} {
       border-bottom: 0;
     }
-    @include govuk-media-query($from: mobile) {
+    @media #{govuk-from-breakpoint(mobile)} {
       border-right: 0;
     }
   }
 
   // Split prefix/suffix onto separate lines on narrow screens
   .govuk-input__suffix {
-    @include govuk-media-query($until: mobile) {
+    @media #{govuk-until-breakpoint(mobile)} {
       border-top: 0;
     }
-    @include govuk-media-query($from: mobile) {
+    @media #{govuk-from-breakpoint(mobile)} {
       border-left: 0;
     }
   }

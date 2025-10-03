@@ -103,7 +103,7 @@
     background-color: govuk-colour("light-grey");
     cursor: pointer;
 
-    @include govuk-media-query($from: tablet) {
+    @media #{govuk-from-breakpoint(tablet)} {
       padding: (govuk-spacing(4) + $govuk-border-width - $file-upload-border-width);
     }
 

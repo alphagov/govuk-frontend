@@ -54,7 +54,7 @@
     width: 100%;
   }
   padding: 0 $govuk-gutter-half;
-  @include govuk-media-query($from: $at) {
+  @media #{govuk-from-breakpoint($at)} {
     width: govuk-grid-width($width);
     float: $float;
   }
