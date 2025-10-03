@@ -19,12 +19,16 @@
 /// @throw if `$colour` is not a colour from the colour palette
 /// @access public
 
-@function govuk-colour($colour, $legacy: false) {
+@function govuk-colour($colour, $legacy: false, $variant: null, $colours: null) {
   // Output a warning if $legacy is set to anything.
   @if $legacy and _should-warn("legacy-colour-param") {
     @warn _warning-text("legacy-colour-param", "The `$legacy` parameter of " +
     "`govuk-colour` is deprecated and is non-operational. It will be " +
     "removed in the next major version.");
+  }
+
+  @if $colours or $variant {
+    @return govuk-colour-variant($colour, $variant: $variant, $colours: $colours);
   }
 
   @return govuk-colour-variant($colour, $govuk-colours);
@@ -34,17 +38,20 @@
 ///
 /// @param {String | Colour} $colour - Name of brand colour from the palette
 ///   (`$govuk-colour`)
-/// @param {String } $variant - Name of the colour variant from the palette
-/// @param {Map} $colours - A map of available colours
+/// @param {String } $variant [primary] - Name of the colour variant from the palette
+/// @param {Map} $colours [$govuk-brand-colours] - A map of available colours
 /// @return {Colour} Representation of the variant of the brand colour
 ///
 /// @throw if `$variant` is not a variant from the colour
 /// @access private
-@function govuk-colour-variant($colour, $variant: primary, $colours: $govuk-brand-colours) {
+@function govuk-colour-variant($colour, $variant: null, $colours: null) {
+  // Handle positional arguments
   @if type-of($variant) == "map" {
     $colours: $variant;
-    $variant: primary;
   }
+
+  $variant: $variant or primary;
+  $colours: $colours or $govuk-brand-colours;
 
   // Sass parses unquoted colours as colours, so we need to turn them into
   // strings before looking them up in the colour palette

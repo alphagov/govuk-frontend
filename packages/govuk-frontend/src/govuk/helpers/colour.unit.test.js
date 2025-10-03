@@ -98,6 +98,69 @@ describe('@function govuk-colour', () => {
       expect.anything()
     )
   })
+
+  describe('access to arbitrary colour maps', () => {
+    it('looks up in the provided colour map if receiving a colour map', async () => {
+      const sass = `
+        ${sassBootstrap}
+
+        .foo {
+          color: govuk-colour(red, $colours: ("red": #ca3535));
+        }
+      `
+
+      await expect(compileSassString(sass, sassConfig)).resolves.toMatchObject({
+        css: outdent`
+          .foo {
+            color: #ca3535;
+          }
+        `
+      })
+    })
+
+    it('allows to pass a variant when looking up arbitrary colour maps', async () => {
+      const sass = `
+        ${sassBootstrap}
+
+        $colours: (
+          "red": (
+            "primary": #ca3535,
+            "tint-25": #d76868,
+          ),
+        );
+
+        .foo {
+          color: govuk-colour(red, $variant: tint-25, $colours: $colours);
+        }
+      `
+
+      await expect(compileSassString(sass, sassConfig)).resolves.toMatchObject({
+        css: outdent`
+          .foo {
+            color: #d76868;
+          }
+        `
+      })
+    })
+
+    it('looks up in `$govuk-brand-colours` if receiving only `$variant`', async () => {
+      const sass = `
+        ${sassBootstrap}
+
+        .foo {
+          color: govuk-colour(red, $variant: tint-25);
+        }
+      `
+
+      await expect(compileSassString(sass, sassConfig)).resolves.toMatchObject({
+        css: outdent`
+          .foo {
+            color: #d76868;
+          }
+        `
+      })
+    })
+  })
 })
 
 describe('@function govuk-colour-variant', () => {
