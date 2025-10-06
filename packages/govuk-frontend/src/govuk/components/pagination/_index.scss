@@ -81,10 +81,10 @@
   .govuk-pagination__item--current {
     @include govuk-typography-weight-bold;
     outline: 1px solid transparent;
-    background-color: $govuk-link-colour;
+    background-color: govuk-applied-colour(link, default, text);
 
     &:hover {
-      background-color: $govuk-link-colour;
+      background-color: govuk-applied-colour(link, default, text);
     }
 
     .govuk-pagination__link {

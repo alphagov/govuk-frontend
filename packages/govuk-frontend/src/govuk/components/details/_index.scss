@@ -80,11 +80,11 @@
       padding-left: govuk-spacing(4) + $govuk-border-width;
 
       // Style the summary to look like a link...
-      color: $govuk-link-colour;
+      color: govuk-applied-colour(link, default, text);
       cursor: pointer;
 
       &:hover {
-        color: $govuk-link-hover-colour;
+        color: govuk-applied-colour(link, hover, text);
       }
 
       &:focus {

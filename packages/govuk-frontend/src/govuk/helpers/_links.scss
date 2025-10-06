@@ -74,19 +74,19 @@
 
 @mixin govuk-link-style-default {
   &:link {
-    color: $govuk-link-colour;
+    color: govuk-applied-colour(link, default, text);
   }
 
   &:visited {
-    color: $govuk-link-visited-colour;
+    color: govuk-applied-colour(link, visited, text);
   }
 
   &:hover {
-    color: $govuk-link-hover-colour;
+    color: govuk-applied-colour(link, hover, text);
   }
 
   &:active {
-    color: $govuk-link-active-colour;
+    color: govuk-applied-colour(link, active, text);
   }
 
   // When focussed, the text colour needs to be darker to ensure that colour
@@ -296,19 +296,19 @@
 
 @mixin govuk-link-style-no-visited-state {
   &:link {
-    color: $govuk-link-colour;
+    color: govuk-applied-colour(link, default, text);
   }
 
   &:visited {
-    color: $govuk-link-colour;
+    color: govuk-applied-colour(link, default, text);
   }
 
   &:hover {
-    color: $govuk-link-hover-colour;
+    color: govuk-applied-colour(link, hover, text);
   }
 
   &:active {
-    color: $govuk-link-active-colour;
+    color: govuk-applied-colour(link, active, text);
   }
 
   // When focussed, the text colour needs to be darker to ensure that colour
