@@ -28,7 +28,7 @@ $govuk-inverse-button-background-colour: govuk-colour("white") !default;
 /// @type Colour
 /// @access public
 
-$govuk-inverse-button-text-colour: $govuk-brand-colour !default;
+$govuk-inverse-button-text-colour: govuk-applied-colour(brand) !default;
 
 @include govuk-exports("govuk/component/button") {
   $govuk-button-colour: $govuk-button-background-colour;

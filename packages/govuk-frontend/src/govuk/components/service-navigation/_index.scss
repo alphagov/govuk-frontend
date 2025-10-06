@@ -219,7 +219,7 @@
       // use it too.
       color: govuk-colour("white");
 
-      background-color: $govuk-brand-colour;
+      background-color: govuk-applied-colour(brand);
 
       .govuk-width-container {
         border-width: 1px 0;
