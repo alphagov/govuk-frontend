@@ -20,7 +20,7 @@
 
     // Default user agent colours for selects can have low contrast,
     // and may look disabled (#2435)
-    color: $govuk-text-colour;
+    color: govuk-applied-colour(text, default);
     background-color: govuk-colour("white");
 
     &:focus {

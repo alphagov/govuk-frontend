@@ -195,7 +195,7 @@
       // https://github.com/alphagov/govuk-frontend/issues/2321#issuecomment-924201488
       border-bottom: govuk-spacing(2) solid transparent;
 
-      color: $govuk-text-colour;
+      color: govuk-applied-colour(text, default);
       background: none;
 
       text-align: left;

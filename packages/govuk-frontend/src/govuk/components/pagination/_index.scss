@@ -94,7 +94,7 @@
 
   .govuk-pagination__item--ellipses {
     @include govuk-typography-weight-bold;
-    color: $govuk-secondary-text-colour;
+    color: govuk-applied-colour(text, secondary);
 
     // Remove hover state for ellipsis items as they don't contain links
     &:hover {
@@ -161,7 +161,7 @@
     // Set size using rems to make the icon scale with text
     width: govuk-px-to-rem(15px);
     height: govuk-px-to-rem(13px);
-    color: $govuk-secondary-text-colour;
+    color: govuk-applied-colour(text, secondary);
     fill: currentcolor;
     forced-color-adjust: auto;
   }

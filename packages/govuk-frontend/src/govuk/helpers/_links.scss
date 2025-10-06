@@ -189,12 +189,12 @@
 @mixin govuk-link-style-muted {
   &:link,
   &:visited {
-    color: $govuk-secondary-text-colour;
+    color: govuk-applied-colour(text, secondary);
   }
 
   &:hover,
   &:active {
-    color: $govuk-text-colour;
+    color: govuk-applied-colour(text, default);
   }
 
   // When focussed, the text colour needs to be darker to ensure that colour
