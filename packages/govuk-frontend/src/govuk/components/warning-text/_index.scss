@@ -28,7 +28,7 @@
     border: 3px solid $govuk-text-colour;
     border-radius: 50%;
 
-    color: $govuk-body-background-colour;
+    color: govuk-applied-colour(body, background);
     background: govuk-applied-colour(text, default);
 
     font-size: 30px;

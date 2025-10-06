@@ -1,5 +1,5 @@
 @include govuk-exports("govuk/component/footer") {
-  $govuk-footer-background: $govuk-template-background-colour;
+  $govuk-footer-background: govuk-applied-colour(template, background);
   $govuk-footer-text: govuk-applied-colour(text, default);
   $govuk-footer-content-border: govuk-applied-colour(border);
 

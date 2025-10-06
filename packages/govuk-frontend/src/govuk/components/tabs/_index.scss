@@ -91,7 +91,7 @@
         border: $border-width solid $govuk-border-colour;
         border-bottom: 0;
 
-        background-color: $govuk-body-background-colour;
+        background-color: govuk-applied-colour(body, background);
 
         .govuk-tabs__tab {
           text-decoration: none;

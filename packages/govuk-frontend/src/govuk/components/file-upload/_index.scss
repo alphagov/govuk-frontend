@@ -55,7 +55,7 @@
     display: block;
     position: relative;
     z-index: 0;
-    background-color: $govuk-body-background-colour;
+    background-color: govuk-applied-colour(body, background);
   }
 
   // required because disabling pointer events
