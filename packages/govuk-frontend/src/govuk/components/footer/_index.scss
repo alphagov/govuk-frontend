@@ -1,7 +1,7 @@
 @include govuk-exports("govuk/component/footer") {
   $govuk-footer-background: $govuk-template-background-colour;
   $govuk-footer-text: govuk-applied-colour(text, default);
-  $govuk-footer-content-border: $govuk-border-colour;
+  $govuk-footer-content-border: govuk-applied-colour(border);
 
   // Royal Arms image dimensions
   $govuk-footer-crest-image-width: 125px;

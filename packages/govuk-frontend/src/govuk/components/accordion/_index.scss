@@ -355,12 +355,12 @@
     // remove hover state as it can be stuck in that state (iOS).
     @media (hover: none) {
       .govuk-accordion__section-header:hover {
-        border-top-color: $govuk-border-colour;
+        border-top-color: govuk-applied-colour(border);
 
         box-shadow: inset 0 3px 0 0 $govuk-link-colour;
 
         .govuk-accordion__section-button {
-          border-top-color: $govuk-border-colour;
+          border-top-color: govuk-applied-colour(border);
         }
       }
     }
