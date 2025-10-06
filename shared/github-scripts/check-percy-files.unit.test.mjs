@@ -51,6 +51,16 @@ describe('checkRelevantChanges', () => {
     })
   })
 
+  describe('package files', () => {
+    test.each([
+      ['govuk-frontend package file', ['packages/govuk-frontend/package.json']],
+      ['root package.json', ['package.json']],
+      ['root package-lock', ['package-lock.json']]
+    ])('returns true for %s', (description, changedFiles) => {
+      expect(checkRelevantChanges(changedFiles)).toBe(true)
+    })
+  })
+
   describe('with irrelevant files', () => {
     it('returns true when relevant files mixed with irrelevant files', () => {
       const changedFiles = [
