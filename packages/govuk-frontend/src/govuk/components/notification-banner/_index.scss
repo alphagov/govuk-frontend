@@ -8,7 +8,7 @@
     background-color: govuk-applied-colour(brand);
 
     &:focus {
-      outline: $govuk-focus-width solid $govuk-focus-colour;
+      outline: $govuk-focus-width solid govuk-applied-colour(focus, background);
     }
   }
 

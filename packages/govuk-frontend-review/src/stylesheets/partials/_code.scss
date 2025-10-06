@@ -16,6 +16,6 @@
 
   &:focus {
     border: $govuk-focus-width solid $govuk-input-border-colour;
-    outline: $govuk-focus-width solid $govuk-focus-colour;
+    outline: $govuk-focus-width solid govuk-applied-colour(focus, background);
   }
 }

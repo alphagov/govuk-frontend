@@ -134,7 +134,7 @@
 
     &:focus {
       .govuk-pagination__icon {
-        color: $govuk-focus-text-colour;
+        color: govuk-applied-colour(focus, text);
       }
 
       .govuk-pagination__link-label {

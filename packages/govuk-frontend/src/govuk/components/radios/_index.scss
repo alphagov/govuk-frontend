@@ -121,7 +121,7 @@
       outline-color: Highlight;
     }
 
-    box-shadow: 0 0 0 $govuk-radios-focus-width $govuk-focus-colour;
+    box-shadow: 0 0 0 $govuk-radios-focus-width govuk-applied-colour(focus, background);
   }
 
   // Selected state
@@ -303,7 +303,7 @@
       }
       // prettier-ignore
       box-shadow:
-        0 0 0 $govuk-radios-focus-width $govuk-focus-colour // 1,
+        0 0 0 $govuk-radios-focus-width govuk-applied-colour(focus, background) // 1,
         0 0 0 $govuk-hover-width $govuk-hover-colour; // 2
     }
 
@@ -319,7 +319,7 @@
       }
 
       .govuk-radios__item:hover .govuk-radios__input:focus + .govuk-radios__label::before {
-        box-shadow: 0 0 0 $govuk-radios-focus-width $govuk-focus-colour;
+        box-shadow: 0 0 0 $govuk-radios-focus-width govuk-applied-colour(focus, background);
       }
     }
   }

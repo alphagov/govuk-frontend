@@ -59,7 +59,7 @@
   }
 
   .govuk-back-link:focus::before {
-    border-color: $govuk-focus-text-colour;
+    border-color: govuk-applied-colour(focus, text);
   }
 
   .govuk-back-link::after {

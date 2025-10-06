@@ -119,7 +119,7 @@
       outline-color: Highlight;
     }
 
-    box-shadow: 0 0 0 $govuk-focus-width $govuk-focus-colour;
+    box-shadow: 0 0 0 $govuk-focus-width govuk-applied-colour(focus, background);
   }
 
   // Selected state
@@ -286,7 +286,7 @@
       }
       // prettier-ignore
       box-shadow:
-        0 0 0 $govuk-focus-width $govuk-focus-colour, // 1
+        0 0 0 $govuk-focus-width govuk-applied-colour(focus, background), // 1
         0 0 0 $govuk-hover-width $govuk-hover-colour; // 2
     }
 
@@ -302,7 +302,7 @@
       }
 
       .govuk-checkboxes__item:hover .govuk-checkboxes__input:focus + .govuk-checkboxes__label::before {
-        box-shadow: 0 0 0 $govuk-focus-width $govuk-focus-colour;
+        box-shadow: 0 0 0 $govuk-focus-width govuk-applied-colour(focus, background);
       }
     }
   }

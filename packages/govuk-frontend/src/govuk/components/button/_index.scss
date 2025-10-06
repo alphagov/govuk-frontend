@@ -111,16 +111,16 @@ $govuk-inverse-button-text-colour: govuk-applied-colour(brand) !default;
     }
 
     &:focus {
-      border-color: $govuk-focus-colour;
+      border-color: govuk-applied-colour(focus, background);
       outline: $govuk-focus-width solid transparent;
-      box-shadow: inset 0 0 0 1px $govuk-focus-colour;
+      box-shadow: inset 0 0 0 1px govuk-applied-colour(focus, background);
     }
 
     &:focus:not(:active):not(:hover) {
-      border-color: $govuk-focus-colour;
-      color: $govuk-focus-text-colour;
-      background-color: $govuk-focus-colour;
-      box-shadow: 0 2px 0 $govuk-focus-text-colour;
+      border-color: govuk-applied-colour(focus, background);
+      color: govuk-applied-colour(focus, text);
+      background-color: govuk-applied-colour(focus, background);
+      box-shadow: 0 2px 0 govuk-applied-colour(focus, text);
     }
 
     // The following adjustments do not work for <input type="button"> as

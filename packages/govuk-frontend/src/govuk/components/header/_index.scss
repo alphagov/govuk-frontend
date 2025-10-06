@@ -509,10 +509,10 @@
       // When focussed, the text colour needs to be darker to ensure that colour
       // contrast is still acceptable
       &:focus {
-        color: $govuk-focus-text-colour;
+        color: govuk-applied-colour(focus, text);
 
         @include _govuk-rebrand {
-          color: $govuk-focus-text-colour;
+          color: govuk-applied-colour(focus, text);
         }
       }
     }
