@@ -1,5 +1,6 @@
 const crypto = require('crypto')
 
+// @ts-expect-error - html-validate/jest export moduleResolution
 require('html-validate/jest')
 
 const {
@@ -121,6 +122,7 @@ describe('Template', () => {
     })
 
     it('renders valid HTML', () => {
+      // @ts-expect-error - html-validate/jest export moduleResolution
       expect(renderTemplate('govuk/template.njk')).toHTMLValidate({
         extends: ['html-validate:document'],
         rules: {
