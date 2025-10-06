@@ -15,7 +15,7 @@
   @include govuk-responsive-margin(4, "bottom");
 
   &:focus {
-    border: $govuk-focus-width solid $govuk-input-border-colour;
+    border: $govuk-focus-width solid govuk-applied-colour(input, border);
     outline: $govuk-focus-width solid govuk-applied-colour(focus, background);
   }
 }

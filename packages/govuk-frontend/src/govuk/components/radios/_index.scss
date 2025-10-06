@@ -288,7 +288,7 @@
       // Apply an outline for those modes to use instead.
       outline: $govuk-radios-focus-width dashed transparent;
       outline-offset: 1px;
-      box-shadow: 0 0 0 $govuk-hover-width $govuk-hover-colour;
+      box-shadow: 0 0 0 $govuk-hover-width govuk-applied-colour(input, hover);
     }
 
     // Because we've overridden the border-shadow provided by the focus state,
@@ -304,7 +304,7 @@
       // prettier-ignore
       box-shadow:
         0 0 0 $govuk-radios-focus-width govuk-applied-colour(focus, background) // 1,
-        0 0 0 $govuk-hover-width $govuk-hover-colour; // 2
+        0 0 0 $govuk-hover-width govuk-applied-colour(input, hover); // 2
     }
 
     // For devices that explicitly don't support hover, don't provide a hover

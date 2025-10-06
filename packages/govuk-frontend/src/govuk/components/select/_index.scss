@@ -16,7 +16,7 @@
     max-width: 100%;
     height: govuk-px-to-rem(40px);
     padding: govuk-spacing(1);
-    border: $govuk-border-width-form-element solid $govuk-input-border-colour;
+    border: $govuk-border-width-form-element solid govuk-applied-colour(input, border);
 
     // Default user agent colours for selects can have low contrast,
     // and may look disabled (#2435)
@@ -45,7 +45,7 @@
     border-color: govuk-applied-colour(levels, error);
 
     &:focus {
-      border-color: $govuk-input-border-colour;
+      border-color: govuk-applied-colour(input, border);
     }
   }
 }
