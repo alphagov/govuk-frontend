@@ -3,7 +3,7 @@
     @include govuk-font($size: 19);
     @include govuk-responsive-margin(8, "bottom");
 
-    border: $govuk-border-width solid $govuk-brand-colour;
+    border: $govuk-border-width solid govuk-applied-colour(levels, info);
 
     background-color: govuk-applied-colour(brand);
 
@@ -80,9 +80,9 @@
   }
 
   .govuk-notification-banner--success {
-    border-color: $govuk-success-colour;
+    border-color: govuk-applied-colour(levels, success);
 
-    background-color: $govuk-success-colour;
+    background-color: govuk-applied-colour(levels, success);
 
     .govuk-notification-banner__link {
       @include govuk-link-style-success;

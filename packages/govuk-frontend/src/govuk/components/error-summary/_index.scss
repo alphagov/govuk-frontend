@@ -7,7 +7,7 @@
     @include govuk-responsive-padding(4);
     @include govuk-responsive-margin(8, "bottom");
 
-    border: $govuk-border-width solid $govuk-error-colour;
+    border: $govuk-border-width solid govuk-applied-colour(levels, error);
 
     &:focus {
       outline: $govuk-focus-width solid govuk-applied-colour(focus, background);

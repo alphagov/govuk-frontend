@@ -115,15 +115,15 @@
 @mixin govuk-link-style-error {
   &:link,
   &:visited {
-    color: $govuk-error-colour;
+    color: govuk-applied-colour(levels, error);
   }
 
   &:hover {
-    color: scale-color($govuk-error-colour, $lightness: -30%);
+    color: scale-color(govuk-applied-colour(levels, success), $lightness: -30%);
   }
 
   &:active {
-    color: $govuk-error-colour;
+    color: govuk-applied-colour(levels, error);
   }
 
   // When focussed, the text colour needs to be darker to ensure that colour
@@ -152,15 +152,15 @@
 @mixin govuk-link-style-success {
   &:link,
   &:visited {
-    color: $govuk-success-colour;
+    color: govuk-applied-colour(levels, success);
   }
 
   &:hover {
-    color: scale-color($govuk-success-colour, $lightness: -30%);
+    color: scale-color(govuk-applied-colour(levels, success), $lightness: -30%);
   }
 
   &:active {
-    color: $govuk-success-colour;
+    color: govuk-applied-colour(levels, success);
   }
 
   // When focussed, the text colour needs to be darker to ensure that colour

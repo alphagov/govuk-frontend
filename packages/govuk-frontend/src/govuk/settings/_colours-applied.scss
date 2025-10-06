@@ -200,6 +200,11 @@ $_govuk-rebrand-border-colour-on-blue-tint-95: govuk-colour("blue", $variant: ti
 $govuk-applied-colours: (
   // Semantic -> Associate a name with some meaning in the Design System to the colours
   "brand": govuk-colour("blue"),
+  "levels": (
+    "success": govuk-colour("green"),
+    "error": govuk-colour("red"),
+    "info": govuk-colour("blue")
+  ),
   // Groups -> Regroup colours related to each other without any semantics
   "light-blue": (
       "background": govuk-colour("blue", $variant: tint-50),

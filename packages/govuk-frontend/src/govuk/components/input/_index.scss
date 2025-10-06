@@ -44,7 +44,7 @@
   }
 
   .govuk-input--error {
-    border-color: $govuk-error-colour;
+    border-color: govuk-applied-colour(levels, error);
 
     &:focus {
       border-color: $govuk-input-border-colour;
