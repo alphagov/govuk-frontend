@@ -6,13 +6,11 @@ labels: "epic"
 assignees: ""
 ---
 
+<!-- List the squad members as "Assignees" on the issue. You can discover everyone's GitHub usernames pinned to our team Slack channel -->
+
 ## Brief
 
 <!-- Describe the outcome we expect to achieve working on this brief. It should also include why we are doing this work, and the expected tasks -->
-
-## Squad
-
-<!-- Use the @ feature to tag your fellow squad members. You can discover everyone's GitHub usernames pinned to our team Slack channel -->
 
 ## Further detail
 

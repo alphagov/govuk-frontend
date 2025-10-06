@@ -34,7 +34,7 @@
     "govuk-frontend": "*",
     "highlight.js": "^11.11.1",
     "iframe-resizer": "^4.4.5",
-    "marked": "^16.2.1",
+    "marked": "^16.3.0",
     "marked-linkify-it": "^3.1.13",
     "marked-smartypants": "^1.1.10",
     "outdent": "^0.8.0",
@@ -45,7 +45,7 @@
   "devDependencies": {
     "@govuk-frontend/helpers": "*",
     "@govuk-frontend/tasks": "*",
-    "@percy/cli": "^1.31.1",
+    "@percy/cli": "^1.31.2",
     "@rollup/plugin-commonjs": "^28.0.6",
     "@rollup/plugin-node-resolve": "^16.0.1",
     "@rollup/plugin-terser": "^0.4.4",
@@ -56,10 +56,10 @@
     "nodemon": "^3.1.10",
     "postcss-pseudo-classes": "^0.4.0",
     "puppeteer": "^24.19.0",
-    "rollup": "^4.50.0",
+    "rollup": "^4.52.3",
     "sassdoc": "^2.7.4",
     "supertest": "^7.1.4",
-    "typedoc": "^0.28.12",
+    "typedoc": "^0.28.13",
     "typedoc-plugin-missing-exports": "^4.1.0"
   },
   "optionalDependencies": {

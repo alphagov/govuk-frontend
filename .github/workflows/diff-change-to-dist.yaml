@@ -32,9 +32,11 @@ jobs:
 
       - name: Generate diff
         run: |
-          # Using `origin/$GITHUB_BASE_REF` to avoid actually checking out the branch
+          # Using `origin/<BASE_REF>` to avoid actually checking out the branch
           # as all we need is to let Git diff the two references
-          bin/dist-diff.sh origin/$GITHUB_BASE_REF $GITHUB_WORKSPACE
+          # Using the even to get a more accurate reference when the base changes
+          # as $GITHUB_BASE_REF seems to keep referencing the old base
+          bin/dist-diff.sh origin/${{ github.event.pull_request.base.ref }} $GITHUB_WORKSPACE
 
       - name: Save GitHub release diffs
         uses: actions/upload-artifact@v4.6.2

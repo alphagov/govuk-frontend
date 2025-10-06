@@ -11,7 +11,7 @@
     left: 0;
     width: 100%;
 
-    @include govuk-media-query($from: tablet) {
+    @media #{govuk-from-breakpoint(tablet)} {
       display: inline-block;
       right: 0;
       left: auto;

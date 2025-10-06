@@ -4,6 +4,61 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 ## Unreleased
 
+### New features
+
+#### Use Sass functions to create custom media queries
+
+We've added new Sass functions to help write `@media` and `@container` queries, mixins and functions whilst still using GOV.UK Frontend's `$govuk-breakpoints` setting.
+
+You can create `min-width` and `max-width` queries using the `govuk-from-breakpoint` and `govuk-until-breakpoint` functions:
+
+```scss
+.element {
+  color: red;
+
+  @media #{govuk-from-breakpoint(mobile)} and #{govuk-until-breakpoint(desktop)} {
+    color: blue;
+  }
+}
+```
+
+You can get the configured value of a breakpoint using `govuk-breakpoint-value`:
+
+```scss
+@function wider-than-tablet($width) {
+  @return $width > govuk-breakpoint-value(tablet);
+}
+```
+
+Each of these functions allows for passing a custom breakpoint map. This can be useful if a particular component needs to change layout at different dimensions to the rest of the site and for authoring `@container` queries.
+
+```scss
+$component-breakpoints: (
+  small: 300px,
+  medium: 500px,
+  large: 750px
+);
+
+.element {
+  color: red;
+
+  @container #{govuk-from-breakpoint(small, $component-breakpoints)} {
+    color: blue;
+  }
+}
+```
+
+We've rewritten the internals of the `govuk-media-query` mixin to make use of these new functions. The rewritten mixin should work identically and return the same CSS as the previous version, but you may want to make sure that your existing media queries work as expected.
+
+We made these changes in the following pull requests:
+
+- [#6264: Add media query functions](https://github.com/alphagov/govuk-frontend/pull/6264).
+- [#6265: Rewrite `govuk-media-query`, remove dependency on `sass-mq`](https://github.com/alphagov/govuk-frontend/pull/#6265).
+
+### Fixes
+
+- [#6297: Output deprecation warning if $govuk-show-breakpoints is true](https://github.com/alphagov/govuk-frontend/pull/6297)
+
 ## v5.12.0 (Feature release)
 
 ### New features

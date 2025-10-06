@@ -1,4 +1,3 @@
-$govuk-show-breakpoints: true;
 $govuk-new-typography-scale: true;
 $govuk-new-organisation-colours: true;
 
@@ -6,8 +5,9 @@ $govuk-suppressed-warnings: ("organisation-colours");
 
 @import "govuk";
 @import "partials/app";
-@import "partials/code";
 @import "partials/banner";
+@import "partials/code";
 @import "partials/feature-flag-banner";
+@import "partials/links";
 @import "partials/organisation-swatch";
 @import "partials/prose";

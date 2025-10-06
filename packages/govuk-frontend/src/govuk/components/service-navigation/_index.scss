@@ -27,7 +27,7 @@
     flex-direction: column;
     align-items: start;
 
-    @include govuk-media-query($from: tablet) {
+    @media #{govuk-from-breakpoint(tablet)} {
       flex-direction: row;
       flex-wrap: wrap;
     }
@@ -41,7 +41,7 @@
     margin: govuk-spacing(2) 0;
     border: 0 solid $govuk-service-navigation-link-colour;
 
-    @include govuk-media-query($from: tablet) {
+    @media #{govuk-from-breakpoint(tablet)} {
       // inline-block is used as a fallback for browsers that don't support flexbox
       display: inline-block;
 
@@ -78,7 +78,7 @@
   }
 
   .govuk-service-navigation__item--active {
-    @include govuk-media-query($until: tablet) {
+    @media #{govuk-until-breakpoint(tablet)} {
       // Negative offset the left margin so we can place a current page indicator
       // to the left without misaligning the list item text.
       margin-left: ((govuk-spacing(2) + $govuk-service-navigation-active-link-border-width) * -1);
@@ -86,7 +86,7 @@
       border-left-width: $govuk-service-navigation-active-link-border-width;
     }
 
-    @include govuk-media-query($from: tablet) {
+    @media #{govuk-from-breakpoint(tablet)} {
       @include _govuk-rebrand(
         "padding-bottom",
         $from: govuk-spacing(4) - $govuk-service-navigation-active-link-border-width,
@@ -184,7 +184,7 @@
     //   readers would pointlessly announce.
     // - Fixes an NVDA issue in Firefox and Chrome <= 124 where it would read
     //   all of the links as a run-on sentence.
-    @include govuk-media-query($from: tablet) {
+    @media #{govuk-from-breakpoint(tablet)} {
       display: flex;
       flex-wrap: wrap;
       margin-bottom: 0;

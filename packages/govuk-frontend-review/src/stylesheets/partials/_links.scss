@@ -1,0 +1,10 @@
+// Custom links specifically for the links page to test our error and success
+// link styles, since we don't provide these as link classes
+
+.app-link--error {
+  @include govuk-link-style-error;
+}
+
+.app-link--success {
+  @include govuk-link-style-success;
+}

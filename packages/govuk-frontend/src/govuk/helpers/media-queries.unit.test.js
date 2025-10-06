@@ -10,13 +10,112 @@ const sassBootstrap = `
   );
 `
 
-describe('@mixin govuk-media-query', () => {
-  it('allows you to target min-width using a numeric value', async () => {
+describe('govuk-breakpoint-value', () => {
+  it.each([
+    ['20em', '20em'],
+    ['20px', '20px'],
+    ['20', '20px'],
+    [20, '20px'],
+    ['20rem', '20rem']
+  ])('returns value for numeric input: %s', async (value, expected) => {
     const sass = `
       @import "helpers/media-queries";
 
       .foo {
-        @include govuk-media-query($from: 20em) {
+        width: govuk-breakpoint-value(${value});
+      }
+    `
+
+    await expect(compileSassString(sass)).resolves.toMatchObject({
+      css: outdent`
+        .foo {
+          width: ${expected};
+        }
+      `
+    })
+  })
+
+  it.each([
+    ['mobile', '320px'],
+    ['tablet', '740px'],
+    ['desktop', '980px'],
+    ['wide', '1300px']
+  ])(
+    'returns px value for predefined breakpoint: %s',
+    async (breakpoint, expected) => {
+      const sass = `
+      ${sassBootstrap}
+      @import "helpers/media-queries";
+
+      .foo {
+        width: govuk-breakpoint-value(${breakpoint});
+      }
+    `
+
+      await expect(compileSassString(sass)).resolves.toMatchObject({
+        css: outdent`
+        .foo {
+          width: ${expected};
+        }
+      `
+      })
+    }
+  )
+
+  it('throws an error if an invalid breakpoint is used', async () => {
+    const sass = `
+      @import "helpers/media-queries";
+
+      .foo {
+        width: govuk-breakpoint-value('');
+      }
+    `
+
+    await expect(compileSassString(sass)).rejects.toThrow(
+      'Error: "Could not find a breakpoint given ``."'
+    )
+  })
+})
+
+describe('govuk-from-breakpoint', () => {
+  it.each([
+    ['20em', '20em'],
+    ['20px', '1.25em'],
+    ['20', '1.25em'],
+    [20, '1.25em'],
+    ['20rem', '20rem']
+  ])(
+    'allows you to target min-width using a numeric value: %s',
+    async (value, expected) => {
+      const sass = `
+      @import "helpers/media-queries";
+
+      .foo {
+        @media #{govuk-from-breakpoint(${value})} {
+          color: red;
+        }
+      }
+    `
+
+      await expect(compileSassString(sass)).resolves.toMatchObject({
+        css: outdent`
+        @media (min-width: ${expected}) {
+          .foo {
+            color: red;
+          }
+        }
+      `
+      })
+    }
+  )
+
+  it('allows you to target min-width using a predefined breakpoint', async () => {
+    const sass = `
+      ${sassBootstrap}
+      @import "helpers/media-queries";
+
+      .foo {
+        @media #{govuk-from-breakpoint(mobile)} {
           color: red;
         }
       }
@@ -32,6 +131,95 @@ describe('@mixin govuk-media-query', () => {
       `
     })
   })
+})
+
+describe('govuk-until-breakpoint', () => {
+  it.each([
+    ['20em', '20em'],
+    ['20px', '1.25em'],
+    ['20', '1.25em'],
+    [20, '1.25em'],
+    ['20rem', '20rem']
+  ])(
+    'allows you to target max-width using a numeric value: %s',
+    async (value, expected) => {
+      const sass = `
+      @import "helpers/media-queries";
+
+      .foo {
+        @media #{govuk-until-breakpoint(${value})} {
+          color: red;
+        }
+      }
+    `
+
+      await expect(compileSassString(sass)).resolves.toMatchObject({
+        css: outdent`
+        @media (max-width: ${expected}) {
+          .foo {
+            color: red;
+          }
+        }
+      `
+      })
+    }
+  )
+
+  it('allows you to target max-width using a predefined breakpoint', async () => {
+    const sass = `
+      ${sassBootstrap}
+      @import "helpers/media-queries";
+
+      .foo {
+        @media #{govuk-until-breakpoint(mobile)} {
+          color: red;
+        }
+      }
+    `
+
+    await expect(compileSassString(sass)).resolves.toMatchObject({
+      css: outdent`
+        @media (max-width: 19.99em) {
+          .foo {
+            color: red;
+          }
+        }
+      `
+    })
+  })
+})
+
+describe('@mixin govuk-media-query', () => {
+  it.each([
+    ['20em', '20em'],
+    ['20px', '1.25em'],
+    ['20', '1.25em'],
+    [20, '1.25em'],
+    ['20rem', '20rem']
+  ])(
+    'allows you to target min-width using a numeric value: %s',
+    async (value, expected) => {
+      const sass = `
+      @import "helpers/media-queries";
+
+      .foo {
+        @include govuk-media-query($from: ${value}) {
+          color: red;
+        }
+      }
+    `
+
+      await expect(compileSassString(sass)).resolves.toMatchObject({
+        css: outdent`
+        @media (min-width: ${expected}) {
+          .foo {
+            color: red;
+          }
+        }
+      `
+      })
+    }
+  )
 
   it('allows you to target min-width using a predefined breakpoint', async () => {
     const sass = `
@@ -56,26 +244,35 @@ describe('@mixin govuk-media-query', () => {
     })
   })
 
-  it('allows you to target max-width using a numeric value', async () => {
-    const sass = `
+  it.each([
+    ['20em', '20em'],
+    ['20px', '1.25em'],
+    ['20', '1.25em'],
+    [20, '1.25em'],
+    ['20rem', '20rem']
+  ])(
+    'allows you to target max-width using a numeric value: %s',
+    async (value, expected) => {
+      const sass = `
       @import "helpers/media-queries";
 
       .foo {
-        @include govuk-media-query($until: 20em) {
+        @include govuk-media-query($until: ${value}) {
           color: red;
         }
       }
     `
-    await expect(compileSassString(sass)).resolves.toMatchObject({
-      css: outdent`
-        @media (max-width: 20em) {
+      await expect(compileSassString(sass)).resolves.toMatchObject({
+        css: outdent`
+        @media (max-width: ${expected}) {
           .foo {
             color: red;
           }
         }
       `
-    })
-  })
+      })
+    }
+  )
 
   it('allows you to target max-width using a predefined breakpoint', async () => {
     const sass = `
@@ -100,27 +297,35 @@ describe('@mixin govuk-media-query', () => {
     })
   })
 
-  it('allows you to target combined min-width and max-width using numeric values', async () => {
-    const sass = `
+  it.each([
+    ['20em', '40em', '20em', '40em'],
+    ['20px', '40px', '1.25em', '2.5em'],
+    [20, '40px', '1.25em', '2.5em'],
+    ['20rem', '30rem', '20rem', '30rem']
+  ])(
+    'allows you to target combined min-width and max-width using numeric values: (%s, %s)',
+    async (min, max, expectedMin, expectedMax) => {
+      const sass = `
       @import "helpers/media-queries";
 
       .foo {
-        @include govuk-media-query($from: 20em, $until: 40em) {
+        @include govuk-media-query($from: ${min}, $until: ${max}) {
           color: red;
         }
       }
     `
 
-    await expect(compileSassString(sass)).resolves.toMatchObject({
-      css: outdent`
-        @media (min-width: 20em) and (max-width: 40em) {
+      await expect(compileSassString(sass)).resolves.toMatchObject({
+        css: outdent`
+        @media (min-width: ${expectedMin}) and (max-width: ${expectedMax}) {
           .foo {
             color: red;
           }
         }
       `
-    })
-  })
+      })
+    }
+  )
 
   it('allows you to target combined min-width and max-width using predefined breakpoints', async () => {
     const sass = `
@@ -187,5 +392,19 @@ describe('@mixin govuk-media-query', () => {
         }
       `
     })
+  })
+
+  it('throws an error if an invalid breakpoint is used', async () => {
+    const sass = `
+      @import "helpers/media-queries";
+
+      .foo {
+        @include govuk-media-query($until: '') {
+          color: red;
+        }
+      }
+    `
+
+    await expect(compileSassString(sass)).rejects.toThrow()
   })
 })

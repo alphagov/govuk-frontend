@@ -59,7 +59,7 @@
 
   .govuk-footer__meta-item--grow {
     flex: 1; // Support: Flexbox
-    @include govuk-media-query($until: tablet) {
+    @media #{govuk-until-breakpoint(tablet)} {
       flex-basis: 320px; // Support: Flexbox
     }
   }
@@ -67,7 +67,7 @@
   .govuk-footer__licence-logo {
     display: inline-block;
     margin-right: govuk-spacing(2);
-    @include govuk-media-query($until: desktop) {
+    @media #{govuk-until-breakpoint(desktop)} {
       margin-bottom: govuk-spacing(3);
     }
     vertical-align: top;
@@ -137,7 +137,7 @@
     margin-bottom: govuk-spacing(6);
     padding-bottom: govuk-spacing(4);
 
-    @include govuk-media-query($until: tablet) {
+    @media #{govuk-until-breakpoint(tablet)} {
       padding-bottom: govuk-spacing(2);
     }
 
@@ -168,7 +168,7 @@
     column-gap: $govuk-gutter; // Support: Columns
   }
 
-  @include govuk-media-query($from: desktop) {
+  @media #{govuk-from-breakpoint(desktop)} {
     .govuk-footer__list--columns-2 {
       column-count: 2; // Support: Columns
     }
