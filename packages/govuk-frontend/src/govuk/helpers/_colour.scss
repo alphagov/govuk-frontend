@@ -36,6 +36,37 @@
   @return govuk-colour-variant($colour, $govuk-colours);
 }
 
+/// Gets the representation of an applied colour
+///
+/// @param {List} $path... - The path to the applied colour
+/// @returns A representation of the applied colour
+/// @throws If any part of the path does not exist
+/// @throws If the path is longer than what exists in $govuk-applied-colours
+@function govuk-applied-colour($path...) {
+  $colours: $govuk-applied-colours;
+  $traversed: ();
+  $number-of-parts: length($path);
+
+  @each $pathPart in $path {
+    @if not map-has-key($colours, $pathPart) {
+      @error 'Unknown colour #{$pathPart} for #{traversed}';
+    }
+
+    $colours: map-get($colours, $pathPart);
+    $traversed: append($traversed, $pathPart);
+
+    @if type-of($colours) != "map" {
+      @if length($traversed) < $number-of-parts {
+        @error 'Expected #{traversed} to be a map';
+      }
+
+      @return $colours;
+    }
+  }
+
+  @return $colours;
+}
+
 /// Get the $variant of the given $colour among the given $colours
 ///
 /// @param {String | Colour} $colour - Name of brand colour from the palette
