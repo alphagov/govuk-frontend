@@ -103,6 +103,32 @@ examples:
               text: Incomplete
               classes: govuk-tag--blue
 
+  - name: forced hover state
+    options:
+      items:
+        - title:
+            text: Company Directors
+          href: '#'
+          status:
+            text: Completed
+          classes: :hover
+
+        - title:
+            text: Registered company details
+          href: '#'
+          status:
+            tag:
+              text: Incomplete
+              classes: govuk-tag--blue
+
+        - title:
+            text: Business plan
+          href: '#'
+          status:
+            tag:
+              text: Incomplete
+              classes: govuk-tag--blue
+
   - name: with hint text and additional states
     screenshot: true
     options:
