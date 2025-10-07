@@ -84,6 +84,8 @@ $govuk-inverse-button-text-colour: $govuk-brand-colour !default;
 
     @include govuk-media-query($from: tablet) {
       width: auto;
+
+      border-radius: 4px;
     }
 
     // Ensure that any global link styles are overridden
