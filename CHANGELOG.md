@@ -55,6 +55,14 @@ We made these changes in the following pull requests:
 - [#6264: Add media query functions](https://github.com/alphagov/govuk-frontend/pull/6264).
 - [#6265: Rewrite `govuk-media-query`, remove dependency on `sass-mq`](https://github.com/alphagov/govuk-frontend/pull/#6265).
 
+### Recommended changes
+
+#### Rename ellipses HTML class in pagination to ellipsis
+
+Within the pagination component, change the `govuk-pagination__item--ellipses` class to `govuk-pagination__item--ellipsis`.
+
+We introduced this change in [pull request #5882: Rename ellipses html class to ellipsis](https://github.com/alphagov/govuk-frontend/pull/5882).
+
 ### Fixes
 
 - [#6297: Output deprecation warning if $govuk-show-breakpoints is true](https://github.com/alphagov/govuk-frontend/pull/6297)
