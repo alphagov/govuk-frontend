@@ -1,0 +1,65 @@
+////
+/// @group tools
+////
+
+/// Wraps rebranded properties in the feature flag selector
+///
+/// @example scss - Wrap a block of multiple properties
+///   .foo {
+///     border-width: 1px;
+///     border-colour: #fff;
+///
+///     @include _govuk-rebrand() {
+///       border-width: 10px;
+///       border-colour: #000;
+///     }
+///   }
+///
+/// @example scss - Wrap a single property
+///   .foo {
+///     @include _govuk-rebrand("background-color", $from: #fff, $to: #000)
+///   }
+///
+///
+/// @param {String} $property - The name of the property being rebranded
+/// @param {String} $from - The original value of the property
+/// @param {String} $to - The rebranded value of the property
+/// @throw if `$property` is set but `$from` or `$to` are missing
+/// @access private
+@mixin _govuk-rebrand($property: null, $from: null, $to: null) {
+  @if $property {
+    @if not $from {
+      @error "`_govuk-rebrand` needs the original value, `$from`";
+    }
+
+    @if not $to {
+      @error "`_govuk-rebrand` needs the rebranded value, `$to`";
+    }
+
+    #{$property}: #{$from};
+
+    @include _govuk-rebrand-wrapper {
+      #{$property}: #{$to};
+    }
+  } @else {
+    @include _govuk-rebrand-wrapper {
+      @content;
+    }
+  }
+}
+
+@mixin _govuk-rebrand-wrapper() {
+  $selector: "#{&}";
+
+  @if $selector == ".govuk-template" {
+    @at-root .govuk-template--rebranded {
+      @content;
+    }
+  } @else {
+    .govuk-template--rebranded & {
+      @content;
+    }
+  }
+}
+
+/*# sourceMappingURL=_rebrand.scss.map */

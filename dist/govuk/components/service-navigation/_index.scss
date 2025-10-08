@@ -1,0 +1,254 @@
+@include govuk-exports("govuk/component/service-navigation") {
+  $govuk-service-navigation-active-link-border-width: govuk-spacing(1);
+  $govuk-service-navigation-background: govuk-colour("light-grey");
+  $govuk-service-navigation-border-colour: $govuk-border-colour;
+
+  // We make the link colour a little darker than normal here so that it has
+  // better perceptual contrast with the navigation background.
+  $govuk-service-navigation-link-colour: govuk-shade($govuk-link-colour, 10%);
+
+  .govuk-service-navigation {
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    @include _govuk-rebrand(
+      "border-bottom-color",
+      $from: $govuk-service-navigation-border-colour,
+      $to: $_govuk-rebrand-border-colour-on-blue-tint-95
+    );
+    @include _govuk-rebrand(
+      "background-color",
+      $from: $govuk-service-navigation-background,
+      $to: $_govuk-rebrand-template-background-colour
+    );
+  }
+
+  .govuk-service-navigation__container {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+
+    @media #{govuk-from-breakpoint(tablet)} {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+  }
+
+  // These styles are shared between nav items and the service name, they
+  // ensure that both of them remain vertically aligned with one another
+  .govuk-service-navigation__item,
+  .govuk-service-navigation__service-name {
+    position: relative;
+    margin: govuk-spacing(2) 0;
+    border: 0 solid $govuk-service-navigation-link-colour;
+
+    @media #{govuk-from-breakpoint(tablet)} {
+      // inline-block is used as a fallback for browsers that don't support flexbox
+      display: inline-block;
+
+      margin-top: 0;
+      margin-bottom: 0;
+      padding: govuk-spacing(4) 0;
+
+      @include _govuk-rebrand {
+        padding: govuk-spacing(3) 0;
+
+        // More magic numbers ahoy:
+        // 29 is the desired height of the element (60), minus top and bottom
+        // padding (2×15), minus bottom border (1); 19 is the font-size at this
+        // point. This gives us the perfect fractional line height to make the
+        // overall component 60px high
+        line-height: (29 / 19);
+      }
+
+      &:not(:last-child) {
+        @include govuk-responsive-margin(6, $direction: right);
+      }
+    }
+  }
+
+  // Remove the top margin of the first nav item if there is a service name but
+  // there's no menu button (either because it doesn't exist or it's hidden)
+  .govuk-service-navigation__service-name + .govuk-service-navigation__wrapper {
+    .govuk-service-navigation__list:first-child,
+    .govuk-service-navigation__toggle[hidden] + .govuk-service-navigation__list {
+      .govuk-service-navigation__item:first-child {
+        margin-top: 0;
+      }
+    }
+  }
+
+  .govuk-service-navigation__item--active {
+    @media #{govuk-until-breakpoint(tablet)} {
+      // Negative offset the left margin so we can place a current page indicator
+      // to the left without misaligning the list item text.
+      margin-left: ((govuk-spacing(2) + $govuk-service-navigation-active-link-border-width) * -1);
+      padding-left: govuk-spacing(2);
+      border-left-width: $govuk-service-navigation-active-link-border-width;
+    }
+
+    @media #{govuk-from-breakpoint(tablet)} {
+      @include _govuk-rebrand(
+        "padding-bottom",
+        $from: govuk-spacing(4) - $govuk-service-navigation-active-link-border-width,
+        $to: govuk-spacing(3) - $govuk-service-navigation-active-link-border-width
+      );
+      border-bottom-width: $govuk-service-navigation-active-link-border-width;
+    }
+  }
+
+  .govuk-service-navigation__link {
+    @include govuk-link-common;
+    @include govuk-link-style-no-underline;
+    @include govuk-link-style-no-visited-state;
+
+    &:not(:hover):not(:focus) {
+      // We set the colour here as we don't want to override the hover or
+      // focus colours
+      color: $govuk-service-navigation-link-colour;
+    }
+  }
+
+  //
+  // Service name specific code
+  //
+
+  .govuk-service-navigation__service-name {
+    @include govuk-font($size: 19, $weight: bold);
+  }
+
+  // Annoyingly this requires a compound selector in order to overcome the
+  // specificity of the other link colour override we're doing
+  .govuk-service-navigation__service-name .govuk-service-navigation__link {
+    @include govuk-link-style-text;
+  }
+
+  // Allow navigation section to always take up maximum available space,
+  // rather than sizing to fit the content. This makes it easier to right align
+  // nav items and use slots.
+  .govuk-service-navigation__wrapper {
+    flex-grow: 1;
+  }
+
+  //
+  // Navigation list specific code
+  //
+
+  .govuk-service-navigation__toggle {
+    @include govuk-font($size: 19, $weight: bold);
+    display: inline-flex;
+    margin: govuk-spacing(2) 0;
+    padding: 0;
+    border: 0;
+    color: $govuk-service-navigation-link-colour;
+    background: none;
+    word-break: break-all;
+    cursor: pointer;
+    align-items: center;
+
+    &:focus {
+      @include govuk-focused-text;
+    }
+
+    &::after {
+      @include govuk-shape-arrow($direction: down, $base: 10px, $display: inline-block);
+      content: "";
+      margin-left: govuk-spacing(1);
+    }
+
+    &[aria-expanded="true"]::after {
+      @include govuk-shape-arrow($direction: up, $base: 10px, $display: inline-block);
+    }
+
+    // Ensure the button stays hidden if the hidden attribute is present
+    &[hidden] {
+      display: none;
+    }
+
+    // If we have both a service name and navigation toggle, remove the
+    // margin-top so that there isn't a bunch of space between them
+    .govuk-service-navigation__service-name + .govuk-service-navigation__wrapper & {
+      margin-top: 0;
+    }
+  }
+
+  .govuk-service-navigation__list {
+    @include govuk-font($size: 19);
+    margin: 0;
+    margin-bottom: govuk-spacing(3);
+    padding: 0;
+    list-style: none;
+
+    // Make the navigation list a flexbox. Doing so resolves a couple of
+    // accessibility problems caused by the list items being inline-blocks:
+    // - Removes the extra whitespace from between each list item that screen
+    //   readers would pointlessly announce.
+    // - Fixes an NVDA issue in Firefox and Chrome <= 124 where it would read
+    //   all of the links as a run-on sentence.
+    @media #{govuk-from-breakpoint(tablet)} {
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 0;
+
+      // However... IE11 totally trips over flexbox and doesn't wrap anything,
+      // making all of the items into a single, horizontally scrolling row,
+      // which is no good. This CSS hack removes the flexbox definition for
+      // IE 9–11, reverting it to the flawed, but OK, non-flexbox version.
+      //
+      // CSS hack from http://browserhacks.com/#hack-a60b03e301a67f76a5a22221c739dc64
+      @media screen and (min-width: 0\0) {
+        display: block;
+      }
+    }
+  }
+
+  // This is a <strong> element that is used as a fallback mechanism for
+  // visually indicating the current page in scenarios where CSS isn't
+  // available. We don't actually want it to be bold normally, so set it to
+  // inherit the parent font-weight.
+  .govuk-service-navigation__active-fallback {
+    font-weight: inherit;
+  }
+
+  // Inverted colour scheme style intended for product pages
+  .govuk-service-navigation--inverse {
+    @include _govuk-rebrand {
+      // Remove bottom border to add width-container ones
+      border-bottom: none;
+
+      // Set colour here so non-link text (service name, slot content) can
+      // use it too.
+      color: govuk-colour("white");
+
+      background-color: $govuk-brand-colour;
+
+      .govuk-width-container {
+        border-width: 1px 0;
+        border-style: solid;
+        border-color: $_govuk-rebrand-border-colour-on-blue-tint-95;
+      }
+
+      // Subtract 1px of space to account for the extra border-top
+      .govuk-service-navigation__container {
+        margin-top: -1px;
+      }
+
+      // Override the 'active' border colour
+      .govuk-service-navigation__item,
+      .govuk-service-navigation__service-name {
+        border-color: govuk-colour("white");
+      }
+
+      // Override link styles
+      .govuk-service-navigation__link {
+        @include govuk-link-style-inverse;
+      }
+
+      // Override mobile menu toggle colour when not focused
+      .govuk-service-navigation__toggle:not(:focus) {
+        color: currentcolor;
+      }
+    }
+  }
+}
+
+/*# sourceMappingURL=_index.scss.map */

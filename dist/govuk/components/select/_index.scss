@@ -1,0 +1,53 @@
+@import "../error-message/index";
+@import "../hint/index";
+@import "../label/index";
+
+@include govuk-exports("govuk/component/select") {
+  .govuk-select {
+    @include govuk-font($size: 19, $line-height: 1.25);
+
+    box-sizing: border-box;
+
+    // This min-width was chosen because:
+    // - it makes the Select wider than it is tall (which is what users expect)
+    // - 11.5em matches the 'length-10' variant of the input component
+    // - it fits comfortably on screens as narrow as 240px wide
+    min-width: 11.5em;
+    max-width: 100%;
+    height: govuk-px-to-rem(40px);
+    padding: govuk-spacing(1);
+    border: $govuk-border-width-form-element solid $govuk-input-border-colour;
+
+    // Default user agent colours for selects can have low contrast,
+    // and may look disabled (#2435)
+    color: $govuk-text-colour;
+    background-color: govuk-colour("white");
+
+    &:focus {
+      @include govuk-focused-form-input;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      color: inherit;
+      cursor: not-allowed;
+    }
+  }
+
+  .govuk-select option:active,
+  .govuk-select option:checked,
+  .govuk-select:focus::-ms-value {
+    color: govuk-colour("white");
+    background-color: govuk-colour("blue");
+  }
+
+  .govuk-select--error {
+    border-color: $govuk-error-colour;
+
+    &:focus {
+      border-color: $govuk-input-border-colour;
+    }
+  }
+}
+
+/*# sourceMappingURL=_index.scss.map */

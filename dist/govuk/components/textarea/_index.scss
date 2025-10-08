@@ -1,0 +1,44 @@
+@import "../error-message/index";
+@import "../hint/index";
+@import "../label/index";
+
+@include govuk-exports("govuk/component/textarea") {
+  .govuk-textarea {
+    @include govuk-font($size: 19, $line-height: 1.25);
+
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    min-height: 40px;
+    @include govuk-responsive-margin(6, "bottom");
+    padding: govuk-spacing(1);
+
+    resize: vertical;
+
+    border: $govuk-border-width-form-element solid $govuk-input-border-colour;
+    border-radius: 0;
+
+    -webkit-appearance: none;
+
+    &:focus {
+      @include govuk-focused-form-input;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      color: inherit;
+      background-color: transparent;
+      cursor: not-allowed;
+    }
+  }
+
+  .govuk-textarea--error {
+    border-color: $govuk-error-colour;
+
+    &:focus {
+      border-color: $govuk-input-border-colour;
+    }
+  }
+}
+
+/*# sourceMappingURL=_index.scss.map */

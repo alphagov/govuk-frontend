@@ -1,0 +1,49 @@
+{% from "../../macros/attributes.njk" import govukAttributes %}
+
+{%- if params.type == "success" %}
+  {% set successBanner = true %}
+{% endif %}
+
+{%- if successBanner %}
+  {% set typeClass = "govuk-notification-banner--" + params.type %}
+{% endif %}
+
+{%- if params.role %}
+  {% set role = params.role %}
+{% elif successBanner %}
+  {#- If type is success, add `role="alert"` to prioritise the information in the notification banner to users of assistive technologies -#}
+  {% set role = "alert" %}
+{% else %}
+  {#- Otherwise add `role="region"` to make the notification banner a landmark to help users of assistive technologies to navigate to the banner -#}
+  {% set role = "region" %}
+{% endif %}
+
+{%- if params.titleHtml %}
+  {% set title = params.titleHtml | safe %}
+{%- elif params.titleText %}
+  {% set title = params.titleText %}
+{%- elif successBanner %}
+  {% set title = "Success" %}
+{%- else %}
+  {% set title = "Important" %}
+{%- endif -%}
+
+<div class="govuk-notification-banner {%- if typeClass %} {{ typeClass }}{% endif %}{% if params.classes %} {{ params.classes }}{% endif %}" role="{{ role }}" aria-labelledby="{{ params.titleId | default("govuk-notification-banner-title", true) }}" data-module="govuk-notification-banner"
+  {%- if params.disableAutoFocus !== undefined %} data-disable-auto-focus="{{ params.disableAutoFocus }}"{% endif %}
+  {{- govukAttributes(params.attributes) }}>
+  <div class="govuk-notification-banner__header">
+    <h{{ params.titleHeadingLevel | default(2, true) }} class="govuk-notification-banner__title" id="{{ params.titleId | default("govuk-notification-banner-title", true) }}">
+      {{ title }}
+    </h{{ params.titleHeadingLevel | default(2, true) }}>
+  </div>
+  <div class="govuk-notification-banner__content">
+  {% if caller or params.html %}
+    {{ caller() if caller else params.html | safe | trim | indent(4) }}
+  {% elif params.text %}
+    {# Set default style for single line content -#}
+    <p class="govuk-notification-banner__heading">
+      {{ params.text | trim | indent(6) }}
+    </p>
+  {% endif %}
+  </div>
+</div>

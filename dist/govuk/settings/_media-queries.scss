@@ -1,0 +1,32 @@
+////
+/// @group settings/layout
+////
+
+@import "../settings/warnings";
+
+/// Breakpoint definitions
+///
+/// @type Map
+/// @access public
+
+$govuk-breakpoints: (
+  mobile: 320px,
+  tablet: 641px,
+  desktop: 769px
+) !default;
+
+/// Show active breakpoint in top-right corner.
+///
+/// Only use this during local development.
+///
+/// @type Boolean
+/// @access public
+/// @deprecated The variable is non-operational and will be removed in Frontend v6.0.
+
+$govuk-show-breakpoints: false !default;
+
+@if $govuk-show-breakpoints and _should-warn("govuk-show-breakpoints") {
+  @warn _warning-text("govuk-show-breakpoints", "The `$govuk-show-breakpoints` variable is deprecated and is non-operational. It will be removed in the next major version.");
+}
+
+/*# sourceMappingURL=_media-queries.scss.map */
