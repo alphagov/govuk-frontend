@@ -273,6 +273,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4.2.2
 
+      - name: Restore dependencies
+        uses: ./.github/workflows/actions/install-node
+
       - name: Restore build
         uses: ./.github/workflows/actions/build
 
