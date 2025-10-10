@@ -4,6 +4,8 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 ## Unreleased
 
+## v5.13.0 (Feature release)
+
 ### New features
 
 #### Use Sass functions to create custom media queries
