@@ -63,13 +63,13 @@ We made these changes in the following pull requests:
 
 Within the pagination component, change the `govuk-pagination__item--ellipses` class to `govuk-pagination__item--ellipsis`.
 
-We introduced this change in [pull request #5882: Rename ellipses html class to ellipsis](https://github.com/alphagov/govuk-frontend/pull/5882).
+We introduced this change in [pull request #5882: Rename ellipses html class to ellipsis](https://github.com/alphagov/govuk-frontend/pull/5882). Thanks to @frankieroberto for making this change.
 
 ### Fixes
 
-- [#6223: Account for multiple attribute when enhancing a File Input](https://github.com/alphagov/govuk-frontend/pull/6223)
-- [#6297: Output deprecation warning if `$govuk-show-breakpoints` is true](https://github.com/alphagov/govuk-frontend/pull/6297)
-- [#6304: Fix long filenames in enhanced file upload not wrapping](https://github.com/alphagov/govuk-frontend/pull/6304)
+- [#6223: Account for multiple attribute when enhancing a File Input](https://github.com/alphagov/govuk-frontend/pull/6223). Thanks to @deberny for reporting this issue.
+- [#6297: Output deprecation warning if $govuk-show-breakpoints is true](https://github.com/alphagov/govuk-frontend/pull/6297)
+- [#6304: Fix long filenames in enhanced file upload not wrapping](https://github.com/alphagov/govuk-frontend/pull/6304). Thanks to @wardt7 for reporting this issue.
 
 ## v5.12.0 (Feature release)
 
