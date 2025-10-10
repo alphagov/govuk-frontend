@@ -48,6 +48,18 @@ By default, the local server will only accept connections from the same machine.
 ALLOW_EXTERNAL_CONNECTIONS=true npm start
 ```
 
+The review app uses BrowserSync, which allows you to:
+
+- sync interactions across multiple browsers
+- add outlines and grids to the page to aid debugging
+- throttle the network speed
+
+The user interface for this is disabled by default. To enable it, set the `ENABLE_BROWSERSYNC_UI` environment variable to true:
+
+```shell
+ENABLE_BROWSERSYNC_UI=true npm start
+```
+
 ## Deploying
 
 You can deploy your project straight to a Heroku instance.
