@@ -226,6 +226,15 @@ describe('footer', () => {
         '&lt;a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence-cymraeg/version/3/" rel="license"&gt;Drwydded y Llywodraeth Agored v3.0&lt;/a&gt;'
       )
     })
+
+    it('can be turned off by setting it to `false`', () => {
+      const $ = render('footer', examples['with no content licence'])
+
+      const $licenceLogo = $('.govuk-footer__licence-logo')
+      const $licenceMessage = $('.govuk-footer__licence-description')
+      expect($licenceLogo).toHaveLength(0)
+      expect($licenceMessage).toHaveLength(0)
+    })
   })
 
   describe('crown copyright', () => {
