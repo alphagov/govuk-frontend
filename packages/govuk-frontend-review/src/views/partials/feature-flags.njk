@@ -5,14 +5,14 @@
 {%- set featureFlagHtml -%}
   <h2 class="govuk-heading-m">Feature flag control</h2>
   <p class="govuk-body">This is an experimental feature for turning the 'rebrand' feature flag on and off only.</p>
-  <form method="post" action="/set-rebrand">
+  <form method="post" action="/unset-rebrand">
     {{ govukCheckboxes({
-      name: 'setRebrand',
+      name: 'unsetRebrand',
       items: [
         {
-          text: 'Rebrand feature flag on',
+          text: 'Use the old brand',
           value: 'true',
-          checked: useRebrand
+          checked: not useRebrand
         }
       ]
     }) }}
