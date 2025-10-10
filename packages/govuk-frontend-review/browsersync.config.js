@@ -18,6 +18,11 @@ const frontendPath = packageTypeToPath('govuk-frontend', {
 module.exports = {
   proxy: urls.app,
 
+  // Bind to localhost only by default
+  ...(process.env.ALLOW_EXTERNAL_CONNECTIONS === 'true'
+    ? {}
+    : { listen: 'localhost' }),
+
   // Prevent browser mirroring
   ghostMode: false,
 

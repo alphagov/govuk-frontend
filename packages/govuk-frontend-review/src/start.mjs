@@ -4,4 +4,7 @@ import app from './app.mjs'
 
 const server = await app()
 
-server.listen(ports.app)
+server.listen({
+  host: 'localhost',
+  port: ports.app
+})
