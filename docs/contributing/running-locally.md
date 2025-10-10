@@ -42,6 +42,12 @@ This will build sources, serve pages and watch for changes.
 npm start
 ```
 
+By default, the local server will only accept connections from the same machine. If you need to allow external connections, for example if you want to test from another device, you'll need to set the `ALLOW_EXTERNAL_CONNECTIONS` environment variable to `true`:
+
+```shell
+ALLOW_EXTERNAL_CONNECTIONS=true npm start
+```
+
 ## Deploying
 
 You can deploy your project straight to a Heroku instance.
