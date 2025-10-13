@@ -5,6 +5,9 @@ const { ports } = require('@govuk-frontend/config')
  */
 module.exports = {
   command: 'npm start --workspace @govuk-frontend/review',
+
+  host: 'localhost',
+
   port: ports.app,
 
   // Allow 30 seconds to start server
