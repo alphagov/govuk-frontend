@@ -10,23 +10,12 @@
 ///
 /// @param {String | Colour} $colour - Name of colour from the colour palette
 ///   (`$govuk-colours`)
-/// @param {String | Colour | Boolean} $legacy [false] - Deprecated.
-///   The `$legacy` parameter is deprecated and is non-operational, as the
-///   legacy colour palette has been removed. The parameter will be removed in
-///   the next major version.
 /// @return {Colour} Representation of named colour
 ///
 /// @throw if `$colour` is not a colour from the colour palette
 /// @access public
 
-@function govuk-colour($colour, $legacy: false) {
-  // Output a warning if $legacy is set to anything.
-  @if $legacy and _should-warn("legacy-colour-param") {
-    @warn _warning-text("legacy-colour-param", "The `$legacy` parameter of " +
-    "`govuk-colour` is deprecated and is non-operational. It will be " +
-    "removed in the next major version.");
-  }
-
+@function govuk-colour($colour) {
   @if type-of($colour) == "color" {
     // stylelint-disable-next-line scss/function-quote-no-quoted-strings-inside
     $colour: quote("#{$colour}");
