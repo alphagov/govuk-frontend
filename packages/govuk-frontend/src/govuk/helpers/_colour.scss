@@ -69,6 +69,12 @@
 
     $corresponding-govuk-colour-call: 'govuk-colour("#{$corresponding-colour}", $variant: "#{$corresponding-variant}")';
 
+    @warn _warning-text("pre-brand-colour",
+      "We've updated GOV.UK Frontend's colour palette. Use `#{$corresponding-govuk-colour-call}` " +
+      "instead of `govuk-colour(\"#{$colour}\")`. The `#{$colour}` colour is deprecated and " +
+      "we'll remove it in the next major version."
+    );
+
     @return govuk-colour($corresponding-colour, $variant: $corresponding-variant);
   }
 }
