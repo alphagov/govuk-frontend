@@ -94,19 +94,51 @@ describe('@function govuk-colour', () => {
   })
 
   describe.each([
-    ['light-pink', '#e59abe'],
-    ['pink', '#ca357c'],
-    ['light-green', '#4da583'],
-    ['turquoise', '#158187'],
-    ['light-blue', '#5694ca'],
-    ['dark-blue', '#0f385c'],
-    ['light-purple', '#7f65b7'],
-    ['bright-purple', '#98285d'],
-    ['dark-grey', '#484949'],
-    ['mid-grey', '#cecece'],
-    ['light-grey', '#f3f3f3'],
-  ])("returns the equivalent brand colour for `%s`", (colour, expected) => {
-
+    [
+      'light-pink',
+      { output: '#e59abe', alternative: '"magenta", $variant: "tint-50"' }
+    ],
+    [
+      'pink',
+      { output: '#ca357c', alternative: '"magenta", $variant: "primary"' }
+    ],
+    [
+      'light-green',
+      { output: '#4da583', alternative: '"green", $variant: "tint-25"' }
+    ],
+    [
+      'turquoise',
+      { output: '#158187', alternative: '"teal", $variant: "primary"' }
+    ],
+    [
+      'light-blue',
+      { output: '#5694ca', alternative: '"blue", $variant: "tint-25"' }
+    ],
+    [
+      'dark-blue',
+      { output: '#0f385c', alternative: '"blue", $variant: "shade-50"' }
+    ],
+    [
+      'light-purple',
+      { output: '#7f65b7', alternative: '"purple", $variant: "tint-25"' }
+    ],
+    [
+      'bright-purple',
+      { output: '#98285d', alternative: '"magenta", $variant: "shade-25"' }
+    ],
+    [
+      'dark-grey',
+      { output: '#484949', alternative: '"black", $variant: "tint-25"' }
+    ],
+    [
+      'mid-grey',
+      { output: '#cecece', alternative: '"black", $variant: "tint-80"' }
+    ],
+    [
+      'light-grey',
+      { output: '#f3f3f3', alternative: '"black", $variant: "tint-95"' }
+    ]
+  ])('returns the equivalent brand colour for `%s`', (colour, expected) => {
     it('returns the equivalent colour', async () => {
       const sass = `
         @import "settings/colours-palette";
@@ -120,13 +152,34 @@ describe('@function govuk-colour', () => {
       await expect(compileSassString(sass, sassConfig)).resolves.toMatchObject({
         css: outdent`
           .foo {
-            color: ${expected};
+            color: ${expected.output};
           }
         `
       })
     })
 
-    it.todo('warns the users of the deprecation')
+    it('warns the users of the deprecation and offers alternative parameters', async () => {
+      const sass = `
+        @import "settings/colours-palette";
+        @import "helpers/colour";
+
+        .foo {
+          color: govuk-colour("#{${colour}}");
+        }
+      `
+
+      await compileSassString(sass, sassConfig)
+
+      // Expect our mocked @warn function to have been called once with a single
+      // argument, which should be the deprecation notice
+      expect(mockWarnFunction).toHaveBeenCalledWith(
+        `We've updated GOV.UK Frontend's colour palette. Use \`govuk-colour(${expected.alternative})\` ` +
+          `instead of \`govuk-colour("${colour}")\`. The \`${colour}\` colour is deprecated ` +
+          `and we'll remove it in the next major version. To silence this warning, ` +
+          `update $govuk-suppressed-warnings with key: "pre-brand-colour"`,
+        expect.anything()
+      )
+    })
   })
 
   describe('defaults', () => {
