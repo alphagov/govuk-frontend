@@ -132,3 +132,26 @@ $_govuk-palette: (
   ),
   "white": #ffffff
 );
+
+/// Pre-brand colours correspondence table
+///
+/// @type Map
+///
+/// @prop {List} $colour - Colour name and variant in the brand colours
+///   that correspond to the `$colour` in GOV.UK Frontend colours before
+///   the brand colours were introduced
+///
+/// @access private
+$_govuk-pre-brand-colours: (
+  "light-pink": "magenta" "tint-50",
+  "pink": "magenta" "primary",
+  "light-green": "green" "tint-25",
+  "turquoise": "teal" "primary",
+  "light-blue": "blue" "tint-25",
+  "dark-blue": "blue" "shade-50",
+  "light-purple": "purple" "tint-25",
+  "bright-purple": "magenta" "shade-25",
+  "dark-grey": "black" "tint-25",
+  "mid-grey": "black" "tint-80",
+  "light-grey": "black" "tint-95"
+);
