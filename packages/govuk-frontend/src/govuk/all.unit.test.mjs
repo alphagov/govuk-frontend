@@ -7,6 +7,26 @@ import slash from 'slash'
 let mockWarnFunction, sassConfig
 
 describe('GOV.UK Frontend', () => {
+  it('compiles without deprecation warnings', async () => {
+    // Create a mock warn function that we can use to override the native @warn
+    // function, that we can make assertions about post-render.
+    mockWarnFunction = jest.fn().mockReturnValue(sassNull)
+
+    sassConfig = {
+      logger: {
+        warn: mockWarnFunction
+      }
+    }
+
+    const sass = `
+        @import "index";
+      `
+    await compileSassString(sass, sassConfig)
+
+    // Expect our mocked @warn function to have not been called
+    expect(mockWarnFunction).not.toHaveBeenCalled()
+  })
+
   describe('global styles', () => {
     it('are disabled by default', async () => {
       const sass = `
