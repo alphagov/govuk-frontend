@@ -18,7 +18,7 @@
     @include _govuk-rebrand(
       "background-color",
       $from: $govuk-service-navigation-background,
-      $to: $_govuk-rebrand-template-background-colour
+      $to: govuk-colour("blue", "tint-95")
     );
   }
 
