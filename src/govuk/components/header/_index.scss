@@ -114,7 +114,7 @@
 
   // Colour in the Dot
   .govuk-logo-dot {
-    fill: #00ffe0;
+    fill: govuk-colour("teal", "accent");
 
     // Override Dot colour when printing
     @media print {
