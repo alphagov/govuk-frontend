@@ -7,7 +7,7 @@
   $component-padding: govuk-spacing(1);
   $empty-button-background-colour: govuk-colour("white");
   $empty-pseudo-button-background-colour: govuk-colour("black", $variant: "tint-95");
-  $empty-status-background-colour: govuk-tint(govuk-colour("blue"), 70%);
+  $empty-status-background-colour: govuk-colour("blue", $variant: "tint-80");
 
   .govuk-file-upload {
     @include govuk-font($size: 19);
@@ -82,7 +82,8 @@
     display: block;
     margin-bottom: govuk-spacing(2);
     padding: govuk-spacing(3) govuk-spacing(2);
-    background-color: govuk-colour("white");
+    color: govuk-colour("white");
+    background-color: govuk-colour("blue");
     text-align: left;
     @include govuk-text-break-word;
   }
@@ -101,7 +102,7 @@
     // align the padding to be same as notification banner and error summary accounting for the thicker borders
     padding: (govuk-spacing(3) + $govuk-border-width - $file-upload-border-width);
     border: $file-upload-border-width govuk-colour("black", $variant: "tint-80") solid;
-    background-color: govuk-colour("black", $variant: "tint-95");
+    background-color: govuk-colour("white");
     cursor: pointer;
 
     @media #{govuk-from-breakpoint(tablet)} {
@@ -109,18 +110,18 @@
     }
 
     .govuk-file-upload-button__pseudo-button {
-      background-color: govuk-colour("white");
+      background-color: govuk-colour("black", $variant: "tint-95");
     }
 
     &:hover {
-      background-color: govuk-tint(govuk-colour("black", $variant: "tint-80"), 20%);
+      border-color: govuk-colour("black", $variant: "tint-50");
 
       .govuk-file-upload-button__pseudo-button {
-        background-color: govuk-shade(govuk-colour("black", $variant: "tint-95"), 10%);
+        background-color: govuk-colour("black", $variant: "tint-80");
       }
 
       .govuk-file-upload-button__status {
-        background-color: govuk-tint(govuk-colour("blue"), 80%);
+        background-color: govuk-colour("blue");
       }
     }
 
@@ -130,7 +131,7 @@
       outline: $govuk-focus-width solid $govuk-focus-colour;
       // Ensure outline appears outside of the element
       outline-offset: 0;
-      background-color: govuk-tint(govuk-colour("black", $variant: "tint-80"), 20%);
+      background-color: govuk-colour("black", $variant: "tint-95");
       // Double the border by adding its width again. Use `box-shadow` for this
       // instead of changing `border-width` - this is for consistency with
       // components such as textarea where we avoid changing `border-width` as
@@ -146,7 +147,7 @@
       &:hover .govuk-file-upload-button__pseudo-button {
         border-color: $govuk-focus-colour;
         outline: 3px solid transparent;
-        background-color: govuk-colour("black", $variant: "tint-95");
+        background-color: govuk-colour("black", $variant: "tint-80");
         box-shadow: inset 0 0 0 1px $govuk-focus-colour;
       }
     }
@@ -161,7 +162,7 @@
     }
 
     .govuk-file-upload-button__status {
-      color: govuk-shade(govuk-colour("blue"), 60%);
+      color: govuk-colour("black");
       background-color: $empty-status-background-colour;
     }
 
@@ -171,7 +172,7 @@
       background-color: govuk-colour("black", $variant: "tint-95");
 
       .govuk-file-upload-button__status {
-        background-color: govuk-tint(govuk-colour("blue"), 80%);
+        background-color: govuk-colour("blue", $variant: "tint-80");
       }
     }
   }
@@ -182,21 +183,8 @@
 
     // extra specificity to apply when
     // empty
-    &.govuk-file-upload-button {
-      background-color: govuk-tint(govuk-colour("black", $variant: "tint-80"), 20%);
-    }
-
     &.govuk-file-upload-button--empty {
       background-color: govuk-colour("black", $variant: "tint-95");
-    }
-
-    &.govuk-file-upload-button--empty:not(:disabled) .govuk-file-upload-button__status,
-    &.govuk-file-upload-button--empty .govuk-file-upload-button__pseudo-button {
-      background-color: govuk-colour("white");
-    }
-
-    .govuk-file-upload-button__pseudo-button {
-      background-color: govuk-shade(govuk-colour("black", $variant: "tint-95"), 10%);
     }
   }
 
