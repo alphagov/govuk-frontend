@@ -167,6 +167,10 @@
 /// @deprecated Will be removed in 6.0
 
 @function govuk-shade($colour, $percentage: false) {
+  @if _should-warn("govuk-shade") {
+    @warn _warning-text("govuk-shade", "The govuk-shade function is deprecated. It now just returns the colour passed to it. Use the new GOV.UK colour palette instead.");
+  }
+
   @return $colour;
 }
 
@@ -181,6 +185,10 @@
 /// @deprecated Will be removed in 6.0
 
 @function govuk-tint($colour, $percentage: false) {
+  @if _should-warn("govuk-tint") {
+    @warn _warning-text("govuk-tint", "The govuk-tint function is deprecated. It now just returns the colour passed to it. Use the new GOV.UK colour palette instead.");
+  }
+
   @return $colour;
 }
 
