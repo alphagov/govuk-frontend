@@ -559,19 +559,19 @@ describe('@function govuk-organisation-colour', () => {
 })
 
 describe('@function govuk-shade', () => {
-  it('outputs hexadecimal values', async () => {
+  it('outputs the colour value passed to it', async () => {
     const sass = `
       @import "helpers/colour";
 
       .foo {
-        color: govuk-shade(rgb(171, 205, 239), 17);
+        color: govuk-shade(rgb(171, 205, 239), 67);
       }
     `
 
     await expect(compileSassString(sass, sassConfig)).resolves.toMatchObject({
       css: outdent`
           .foo {
-            color: #8eaac6;
+            color: rgb(171, 205, 239);
           }
         `
     })
@@ -579,19 +579,19 @@ describe('@function govuk-shade', () => {
 })
 
 describe('@function govuk-tint', () => {
-  it('outputs hexadecimal values', async () => {
+  it('outputs the colour value passed to it', async () => {
     const sass = `
       @import "helpers/colour";
 
       .foo {
-        color: govuk-tint(rgb(18, 52, 86), 17);
+        color: govuk-tint(rgb(18, 52, 86), 67);
       }
     `
 
     await expect(compileSassString(sass, sassConfig)).resolves.toMatchObject({
       css: outdent`
           .foo {
-            color: #3a5773;
+            color: rgb(18, 52, 86);
           }
         `
     })
