@@ -159,27 +159,29 @@
 /// Make a colour darker by mixing it with black
 ///
 /// @param {Colour} $colour - colour to shade
-/// @param {Number} $percentage - percentage of black to mix with $colour
+/// @param {Number} $percentage - percentage of black to mix with $colour.
+///   Not used.
 /// @return {Colour}
 /// @access public
+///
+/// @deprecated Will be removed in 6.0
 
-@function govuk-shade($colour, $percentage) {
-  // Ensure the output is a hex string so that Safari <12 can render the colour
-  // without issues from float values in `rgb()`
-  @return _as-hexadecimal(mix(#000000, $colour, $percentage));
+@function govuk-shade($colour, $percentage: false) {
+  @return $colour;
 }
 
-/// Make a colour lighter by mixing it with white
+/// No longer operable. Only returns the colour passed to it
 ///
 /// @param {Colour} $colour - colour to tint
-/// @param {Number} $percentage - percentage of white to mix with $colour
+/// @param {Number} $percentage - percentage of white to mix with $colour.
+///   Not used.
 /// @return {Colour}
 /// @access public
+///
+/// @deprecated Will be removed in 6.0
 
-@function govuk-tint($colour, $percentage) {
-  // Ensure the output is a hex string so that Safari <12 can render the colour
-  // without issues from float values in `rgb()`
-  @return _as-hexadecimal(mix(govuk-colour("white"), $colour, $percentage));
+@function govuk-tint($colour, $percentage: false) {
+  @return $colour;
 }
 
 /// Converts a colour with potential float values for its RGB channels
