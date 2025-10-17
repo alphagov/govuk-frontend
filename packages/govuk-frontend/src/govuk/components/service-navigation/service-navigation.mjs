@@ -127,9 +127,9 @@ export class ServiceNavigation extends Component {
 
     if (this.mql.matches) {
       this.$menu.removeAttribute('hidden')
-      this.$menuButton.setAttribute('hidden', '')
+      setAttributes(this.$menuButton, attributesForHidingButton)
     } else {
-      this.$menuButton.removeAttribute('hidden')
+      removeAttributes(this.$menuButton, Object.keys(attributesForHidingButton))
       this.$menuButton.setAttribute('aria-expanded', this.menuIsOpen.toString())
 
       if (this.menuIsOpen) {
@@ -157,4 +157,40 @@ export class ServiceNavigation extends Component {
    * Name for the component used when initialising using data-module attributes.
    */
   static moduleName = 'govuk-service-navigation'
+}
+
+/**
+ * Collection of attributes that needs setting on a `<button>`
+ * to fully hide it, both visually and from screen-readers,
+ * and prevent its activation while hidden
+ */
+const attributesForHidingButton = {
+  hidden: '',
+  // Fix button still appearing in VoiceOver's form control's menu despite being hidden
+  // https://bugs.webkit.org/show_bug.cgi?id=300899
+  'aria-hidden': 'true'
+}
+
+/**
+ * Sets a group of attributes on the given element
+ *
+ * @param {Element} $element - The element to set the attribute on
+ * @param {{[attributeName: string]: string}} attributes - The attributes to set
+ */
+function setAttributes($element, attributes) {
+  for (const attributeName in attributes) {
+    $element.setAttribute(attributeName, attributes[attributeName])
+  }
+}
+
+/**
+ * Removes a list of attributes from the given element
+ *
+ * @param {Element} $element - The element to remove the attributes from
+ * @param {string[]} attributeNames - The names of the attributes to remove
+ */
+function removeAttributes($element, attributeNames) {
+  for (const attributeName of attributeNames) {
+    $element.removeAttribute(attributeName)
+  }
 }
