@@ -85,7 +85,7 @@ describe('Service Navigation', () => {
       const navId = $nav.attr('id')
 
       expect(navId).toBe('navigation')
-      expect($navToggle.attr('aria-controls')).toBe(navId)
+      expect($navToggle.attr('data-aria-controls')).toBe(navId)
     })
 
     it('omits empty items from the navigation', () => {
@@ -158,7 +158,7 @@ describe('Service Navigation', () => {
         const navId = $nav.attr('id')
 
         expect(navId).toBe('main-nav')
-        expect($navToggle.attr('aria-controls')).toBe(navId)
+        expect($navToggle.attr('data-aria-controls')).toBe(navId)
       })
     })
 
