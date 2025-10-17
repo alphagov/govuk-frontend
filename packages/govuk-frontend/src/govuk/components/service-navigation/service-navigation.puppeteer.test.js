@@ -229,5 +229,79 @@ describe('/components/service-navigation', () => {
         expect(toggleExpandedAttribute).toBe('false')
       })
     })
+
+    describe('on wide viewports', () => {
+      beforeAll(async () => {
+        // First let's reset the viewport to a desktop one
+        await page.setViewport({
+          width: 1280,
+          height: 720
+        })
+      })
+
+      afterAll(async () => {
+        // After tests have run reset teh viewport to a phone
+        await page.emulate(iPhone)
+      })
+
+      describe('on page load', () => {
+        beforeAll(async () => {
+          await render(page, 'service-navigation', examples.default)
+        })
+
+        it('shows the navigation', async () => {
+          const navigationHiddenAttribute = await page.$eval(
+            navigationSelector,
+            (el) => el.hasAttribute('hidden')
+          )
+
+          expect(navigationHiddenAttribute).toBeFalsy()
+        })
+
+        it('keeps the toggle button hidden', async () => {
+          const buttonHiddenAttribute = await page.$eval(
+            toggleButtonSelector,
+            (el) => el.hasAttribute('hidden')
+          )
+
+          expect(buttonHiddenAttribute).toBeTruthy()
+        })
+      })
+
+      describe('when page is resized to a narrow viewport', () => {
+        beforeAll(async () => {
+          await render(page, 'service-navigation', examples.default)
+
+          // Once the page is loaded resize the viewport to a narrow one
+          // Only set the width and height to avoid the page getting wiped
+          await page.setViewport({
+            width: iPhone.viewport.width,
+            height: iPhone.viewport.height
+          })
+
+          // Wait that the page got updated after the resize,
+          // as sometimes the tests run too early
+          await page.waitForSelector(`${navigationSelector}[hidden]`)
+        })
+
+        it('hides the navigation', async () => {
+          const navigationHiddenAttribute = await page.$eval(
+            `${navigationSelector}`,
+            (el) => el.hasAttribute('hidden')
+          )
+
+          expect(navigationHiddenAttribute).toBeTruthy()
+        })
+
+        it('reveals the toggle button', async () => {
+          const buttonHiddenAttribute = await page.$eval(
+            toggleButtonSelector,
+            (el) => el.hasAttribute('hidden')
+          )
+
+          expect(buttonHiddenAttribute).toBeFalsy()
+        })
+      })
+    })
   })
 })
