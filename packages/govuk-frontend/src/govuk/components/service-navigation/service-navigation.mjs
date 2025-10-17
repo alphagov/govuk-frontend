@@ -49,12 +49,13 @@ export class ServiceNavigation extends Component {
       return this
     }
 
-    const menuId = $menuButton.getAttribute('aria-controls')
+    const menuId = $menuButton.getAttribute('data-aria-controls')
+
     if (!menuId) {
       throw new ElementError({
         component: ServiceNavigation,
         identifier:
-          'Navigation button (`<button class="govuk-js-service-navigation-toggle">`) attribute (`aria-controls`)'
+          'Navigation button (`<button class="govuk-js-service-navigation-toggle">`) attribute (`data-aria-controls`)'
       })
     }
 
@@ -69,6 +70,7 @@ export class ServiceNavigation extends Component {
 
     this.$menu = $menu
     this.$menuButton = $menuButton
+    this.$menuButton.setAttribute('aria-controls', this.$menu.id)
 
     this.setupResponsiveChecks()
 

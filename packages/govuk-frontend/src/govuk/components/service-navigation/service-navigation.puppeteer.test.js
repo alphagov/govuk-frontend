@@ -109,7 +109,9 @@ describe('/components/service-navigation', () => {
         await expect(
           render(page, 'service-navigation', examples.default, {
             beforeInitialisation($root, { selector }) {
-              $root.querySelector(selector).removeAttribute('aria-controls')
+              $root
+                .querySelector(selector)
+                .removeAttribute('data-aria-controls')
             },
             context: {
               selector: toggleButtonSelector
@@ -119,7 +121,7 @@ describe('/components/service-navigation', () => {
           cause: {
             name: 'ElementError',
             message:
-              'govuk-service-navigation: Navigation button (`<button class="govuk-js-service-navigation-toggle">`) attribute (`aria-controls`) not found'
+              'govuk-service-navigation: Navigation button (`<button class="govuk-js-service-navigation-toggle">`) attribute (`data-aria-controls`) not found'
           }
         })
       })
@@ -174,6 +176,15 @@ describe('/components/service-navigation', () => {
         )
 
         expect(toggleExpandedAttribute).toBe('false')
+      })
+
+      it('adds the `aria-controls` attribute to the toggle', async () => {
+        const toggleExpandedAttribute = await page.$eval(
+          toggleButtonSelector,
+          (el) => el.getAttribute('aria-controls')
+        )
+
+        expect(toggleExpandedAttribute).toBe('navigation')
       })
     })
 
