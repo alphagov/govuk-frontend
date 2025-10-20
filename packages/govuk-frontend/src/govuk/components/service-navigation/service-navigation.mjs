@@ -1,13 +1,16 @@
+import { closestAttributeValue } from '../../common/closest-attribute-value.mjs'
+import { ConfigurableComponent } from '../../common/configuration.mjs'
 import { getBreakpoint } from '../../common/index.mjs'
-import { Component } from '../../component.mjs'
 import { ElementError } from '../../errors/index.mjs'
+import { I18n } from '../../i18n.mjs'
 
 /**
  * Service Navigation component
  *
  * @preserve
+ * @augments ConfigurableComponent<ServiceNavigationConfig>
  */
-export class ServiceNavigation extends Component {
+export class ServiceNavigation extends ConfigurableComponent {
   /** @private */
   $menuButton
 
@@ -38,39 +41,45 @@ export class ServiceNavigation extends Component {
   constructor($root) {
     super($root)
 
-    const $menuButton = this.$root.querySelector(
-      '.govuk-js-service-navigation-toggle'
-    )
-
-    // Headers don't necessarily have a navigation. When they don't, the menu
-    // toggle won't be rendered by our macro (or may be omitted when writing
-    // plain HTML)
-    if (!$menuButton) {
-      return this
+    // The only job of this component is to collapse the navigation on mobile
+    // so if asked not to, we can skip initialisation altogether
+    if (!this.config.collapseOnMobile) {
+      return
     }
 
-    const menuId = $menuButton.getAttribute('data-aria-controls')
+    // First let's check we do have a navigation to collapse
+    const $menu = this.$root.querySelector('.govuk-js-service-navigation-menu')
 
-    if (!menuId) {
-      throw new ElementError({
-        component: ServiceNavigation,
-        identifier:
-          'Navigation button (`<button class="govuk-js-service-navigation-toggle">`) attribute (`data-aria-controls`)'
-      })
-    }
-
-    const $menu = document.getElementById(menuId)
     if (!$menu) {
       throw new ElementError({
         component: ServiceNavigation,
-        element: $menu,
-        identifier: `Navigation (\`<ul id="${menuId}">\`)`
+        identifier:
+          'Navigation menu (`<ul class="govuk-js-service-navigation-menu">`)'
       })
     }
 
+    if (!$menu.id) {
+      throw new ElementError({
+        component: ServiceNavigation,
+        identifier:
+          'Navigation menu (`<ul class="govuk-js-service-navigation-menu">`) attribute (`id`)'
+      })
+    }
+
+    this.i18n = new I18n(this.config.i18n, {
+      // Read the fallback if necessary rather than have it set in the defaults
+      locale: closestAttributeValue(this.$root, 'lang')
+    })
+
+    const $menuButton = createMenuButton({
+      menuId: $menu.id,
+      text: this.i18n.t('menuText'),
+      ariaLabel: this.i18n.t('menuAriaLabel')
+    })
+    $menu.insertAdjacentElement('beforebegin', $menuButton)
+
     this.$menu = $menu
     this.$menuButton = $menuButton
-    this.$menuButton.setAttribute('aria-controls', this.$menu.id)
 
     this.setupResponsiveChecks()
 
@@ -154,9 +163,50 @@ export class ServiceNavigation extends Component {
   }
 
   /**
+   * @type {ServiceNavigationConfig}
+   */
+  static defaults = {
+    collapseOnMobile: true,
+    i18n: {
+      menuText: 'Menu',
+      menuAriaLabel: undefined
+    }
+  }
+
+  /**
+   * @constant
+   * @satisfies {Schema<ServiceNavigationConfig>}
+   */
+  static schema = Object.freeze({
+    properties: {
+      i18n: { type: 'object' },
+      collapseOnMobile: { type: 'boolean' }
+    }
+  })
+
+  /**
    * Name for the component used when initialising using data-module attributes.
    */
   static moduleName = 'govuk-service-navigation'
+}
+
+/**
+ * Creates the `<button>` element controlling the menu visibility
+ *
+ * @param {{menuId: string, text: string, ariaLabel?: string}} options - Options for rendering the button
+ * @returns {HTMLButtonElement} The menu button
+ */
+function createMenuButton({ menuId, text, ariaLabel }) {
+  const $button = document.createElement('button')
+  $button.classList.add('govuk-service-navigation__toggle')
+  $button.type = 'button'
+  $button.textContent = text
+  if (ariaLabel) {
+    $button.setAttribute('aria-label', ariaLabel)
+  }
+  $button.setAttribute('aria-controls', menuId)
+
+  return $button
 }
 
 /**
@@ -196,3 +246,20 @@ function removeAttributes($element, attributeNames) {
     $element.removeAttribute(attributeName)
   }
 }
+
+/**
+ * @typedef ServiceNavigationConfig
+ * @property {boolean} [collapseOnMobile=true] - Whether to collapse the navigation on mobile
+ * @property {ServiceNavigationTranslations} [i18n] - Service Navigation translation
+ */
+
+/**
+ * @see {@link ServiceNavigation.defaults.i18n}
+ * @typedef {object} ServiceNavigationTranslations
+ * @property {string} menuText - Visible text displayed on the menu
+ * @property {string} [menuAriaLabel] - Optional text for the `aria-label` attribute of the menu
+ */
+
+/**
+ * @import { Schema } from '../../common/configuration.mjs'
+ */

@@ -1,11 +1,29 @@
 {% from "../../macros/attributes.njk" import govukAttributes %}
+{% from "../../macros/i18n.njk" import govukI18nAttributes %}
+
 
 {%- set menuButtonText = params.menuButtonText | default("Menu", true) -%}
 {%- set navigationId = params.navigationId | default("navigation", true) %}
+{%- set navigationItems = params.navigation | default([]) | select("truthy") %}
+{%- set collapseNavigationOnMobile = params.collapseNavigationOnMobile | default(navigationItems.length > 1) %}
 
 {%- set commonAttributes %}
 class="govuk-service-navigation {%- if params.classes %} {{ params.classes }}{% endif %}"
 data-module="govuk-service-navigation"
+{# Default is to collapse on mobile, so we only want to output if falsy #}
+{%- if not collapseNavigationOnMobile %}
+data-collapse-on-mobile="false"
+{% endif -%}
+{{- govukI18nAttributes({
+  key: 'menu-text',
+  message: params.menuButtonText
+}) -}}
+{%- if params.menuButtonLabel %}
+{{- govukI18nAttributes({
+  key: 'menu-aria-label',
+  message: params.menuButtonLabel
+}) -}}
+{% endif %}
 {{- govukAttributes(params.attributes) }}
 {% endset -%}
 
@@ -32,17 +50,11 @@ data-module="govuk-service-navigation"
       {% endif %}
 
       {# Navigation #}
-      {% set navigationItems = params.navigation | default([]) | select("truthy") %}
-      {% set collapseNavigationOnMobile = params.collapseNavigationOnMobile | default(navigationItems.length > 1) %}
+
       {% if navigationItems | length or params.slots.navigationStart or params.slots.navigationEnd %}
         <nav aria-label="{{ params.navigationLabel | default(menuButtonText, true) }}" class="govuk-service-navigation__wrapper {%- if params.navigationClasses %} {{ params.navigationClasses }}{% endif %}">
-          {% if collapseNavigationOnMobile %}
-          <button type="button" class="govuk-service-navigation__toggle govuk-js-service-navigation-toggle" data-aria-controls="{{ navigationId }}" {%- if params.menuButtonLabel and params.menuButtonLabel != menuButtonText %} aria-label="{{ params.menuButtonLabel }}"{% endif %} hidden>
-            {{ menuButtonText }}
-          </button>
-          {% endif %}
 
-          <ul class="govuk-service-navigation__list" id="{{ navigationId }}" >
+          <ul class="govuk-service-navigation__list govuk-js-service-navigation-menu" id="{{ navigationId }}" >
 
             {# Slot: navigationStart #}
             {%- if params.slots.navigationStart %}{{ params.slots.navigationStart | safe }}{% endif -%}
