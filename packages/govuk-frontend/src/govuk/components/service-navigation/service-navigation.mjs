@@ -33,8 +33,8 @@ export class ServiceNavigation extends ConfigurableComponent {
   constructor($root) {
     super($root)
 
-    // The only job of this component is to collapse the navigation on mobile
-    // so if asked not to, we can skip initialisation altogether
+    // // The only job of this component is to collapse the navigation on mobile
+    // // so if asked not to, we can skip initialisation altogether
     if (!this.config.collapseOnMobile) {
       return
     }
@@ -126,10 +126,26 @@ export class ServiceNavigation extends ConfigurableComponent {
       return
     }
 
-    if (this.mql.matches) {
-      this.$menu.removeAttribute('hidden')
-      setAttributes(this.$menuButton, attributesForHidingButton)
-    } else {
+    this.available = !this.mql.matches
+  }
+
+  /**
+   * @returns {boolean} - Whether the menu is available to the user
+   */
+  get available() {
+    return !!this.$menuButton && !this.$menuButton.hasAttribute('hidden')
+  }
+
+  /**
+   * @private
+   * @param {boolean} value - Whether to make the menu available to the user
+   */
+  set available(value) {
+    if (!this.$menu || !this.$menuButton) {
+      return
+    }
+
+    if (value) {
       removeAttributes(this.$menuButton, Object.keys(attributesForHidingButton))
 
       if (this.expanded) {
@@ -137,6 +153,9 @@ export class ServiceNavigation extends ConfigurableComponent {
       } else {
         this.$menu.setAttribute('hidden', '')
       }
+    } else {
+      this.$menu.removeAttribute('hidden')
+      setAttributes(this.$menuButton, attributesForHidingButton)
     }
   }
 
