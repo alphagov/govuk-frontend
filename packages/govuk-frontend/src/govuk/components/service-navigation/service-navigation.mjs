@@ -18,14 +18,6 @@ export class ServiceNavigation extends ConfigurableComponent {
   $menu
 
   /**
-   * Remember the open/closed state of the nav so we can maintain it when the
-   * screen is resized.
-   *
-   * @private
-   */
-  menuIsOpen = false
-
-  /**
    * A global const for storing a matchMedia instance which we'll use to detect
    * when a screen size change happens. We rely on it being null if the feature
    * isn't available to initially apply hidden attributes
@@ -83,9 +75,9 @@ export class ServiceNavigation extends ConfigurableComponent {
 
     this.setupResponsiveChecks()
 
-    this.$menuButton.addEventListener('click', () =>
-      this.handleMenuButtonClick()
-    )
+    this.$menuButton.addEventListener('click', () => {
+      this.expanded = !this.expanded
+    })
   }
 
   /**
@@ -139,9 +131,8 @@ export class ServiceNavigation extends ConfigurableComponent {
       setAttributes(this.$menuButton, attributesForHidingButton)
     } else {
       removeAttributes(this.$menuButton, Object.keys(attributesForHidingButton))
-      this.$menuButton.setAttribute('aria-expanded', this.menuIsOpen.toString())
 
-      if (this.menuIsOpen) {
+      if (this.expanded) {
         this.$menu.removeAttribute('hidden')
       } else {
         this.$menu.setAttribute('hidden', '')
@@ -150,15 +141,17 @@ export class ServiceNavigation extends ConfigurableComponent {
   }
 
   /**
-   * Handle menu button click
-   *
-   * When the menu button is clicked, change the visibility of the menu and then
-   * sync the accessibility state and menu button state
-   *
-   * @private
+   * @returns {boolean} Whether the menu is expanded or not
    */
-  handleMenuButtonClick() {
-    this.menuIsOpen = !this.menuIsOpen
+  get expanded() {
+    return this.$menuButton?.getAttribute('aria-expanded') === 'true'
+  }
+
+  /**
+   * @param {boolean} value -
+   */
+  set expanded(value) {
+    this.$menuButton?.setAttribute('aria-expanded', value.toString())
     this.checkMode()
   }
 
@@ -205,6 +198,7 @@ function createMenuButton({ menuId, text, ariaLabel }) {
     $button.setAttribute('aria-label', ariaLabel)
   }
   $button.setAttribute('aria-controls', menuId)
+  $button.setAttribute('aria-expanded', 'false')
 
   return $button
 }
