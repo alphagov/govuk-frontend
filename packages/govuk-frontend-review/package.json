@@ -9,7 +9,7 @@
   },
   "license": "MIT",
   "scripts": {
-    "dev": "gulp dev --color",
+    "dev": "cross-env-shell REVIEW_APP_SILENT_START=true gulp dev --color",
     "prebuild": "npm run clean",
     "build": "gulp build --color",
     "build:sassdoc": "sassdoc --config sassdoc.config.yaml ../govuk-frontend/src/govuk",
