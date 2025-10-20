@@ -4,6 +4,87 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 ## Unreleased
 
+### Breaking changes
+
+#### Use GOV.UK brand colours
+
+We’ve updated GOV.UK Frontend to use the web palette defined by the [GOV.UK Brand guidelines](https://www.gov.uk/government/publications/govuk-brand-guidelines), as well as the 25% and 50% shades when they exist for a given colour.
+
+##### Check your service’s colours
+
+Our components now use the colours of the GOV.UK web palette. If you’re using any custom colours, you’ll need to make sure they still work well with the new web palette in terms of accessibility and design. If possible, you should use the GOV.UK brand colours instead.
+
+##### Use the `govuk-colour` function to access GOV.UK brand colours
+
+You can use the `govuk-colour` function to fetch colours from the GOV.UK web palette. This function allows you to access both primary colours and their variants, such as tints and shades.
+
+When the function receives only the colour name, it’ll return the primary variant of that colour. For example:
+
+```scss
+$app-colour: govuk-colour(‘blue’); // Returns the ‘Primary blue’ colour
+```
+
+Use the new `$variant` parameter of the `govuk-colour` function to access the tints and shades of a colour defined by the GOV.UK brand.
+
+```scss
+$component-colour: govuk-colour(‘red’, $variant: ‘tint-25’) // Returns the “Red tint 25%” colour
+$other-component-colour: govuk-colour(‘green’, $variant: ‘shade-50’) // Returns the “Green shade 50%” colour
+```
+
+You can find the list of possible colour names in the GOV.UK brand guidelines.
+
+##### If you’re already using the `govuk-colour` function
+
+If you’re already using the `govuk-colour` function in your project, colours from the GOV.UK web palette will now be applied automatically when you call the function.
+
+If the colour name exists in the GOV.UK web palette, the function returns the primary variant for that colour. The colour remains the same for`‘blue`, `yellow` and `orange`, but the following colours will see a slight change:
+
+| Colour   | Old colour hex | New colour hex |
+| -------- | -------------- | -------------- |
+| `green`  | `#00703c`      | `#11875a`      |
+| `red`    | `#d4351c`      | `#ca3535`      |
+| `purple` | `#4c2c92`      | `#54319f`      |
+| `brown`  | `#b58840`      | `#99704a`      |
+
+Some of the GOV.UK brand colours are slightly different from the colours that were returned by `govuk-colour` before GOV.UK Frontend v6.0. That means you’ll need to check that the colours still work correctly where you applied them in your project, in terms of accessibility and design.
+
+To make it easier to upgrade, in cases where a colour name does not exist in the GOV.UK brand palette (for example, `bright-purple`), the function will return the closest colour from the GOV.UK brand palette but produce a deprecation warning. We recommend that you update your calls to `govuk-colour` with deprecated colour names to use a colour from the GOV.UK brand, such as the one suggested in the deprecation warning message.
+
+`govuk-colour` now maps colour names that no longer exist from the old palette to the new palette, as described in the following table. You can use this list to assess and update your use of `govuk-colour`.
+
+| Old colour name | Old colour hex | New colour name   | New colour hex |
+| --------------- | -------------- | ----------------- | -------------- |
+| `light-pink`    | `#f499be`      | Magenta tint 50%  | `#e59abe`      |
+| `pink`          | `#d53880`      | Primary magenta   | `#ca357c`      |
+| `light-green`   | `#85994b`      | Green tint 25%    | `#4da583`      |
+| `turquoise`     | `#28a197`      | Primary teal      | `#158187`      |
+| `light-blue`    | `#5694ca`      | Blue tint 50%     | `#5694ca`      |
+| `dark-blue`     | `#003078`      | Blue shade 50%    | `#0f385c`      |
+| `light-purple`  | `#6f72af`      | Purple tint 25%   | `#7f65b7`      |
+| `bright-purple` | `#912b88`      | Magenta shade 25% | `#98285d`      |
+| `dark-grey`     | `#505a5f`      | Black tint 25%    | `#484949`      |
+| `mid-grey`      | `#b1b4b6`      | Black tint 80%    | `#cecece`      |
+| `light-grey`    | `#f3f2f1`      | Black tint 95%    | `#f3f3f3`      |
+
+##### If you’re using the `$govuk-colours` variable
+
+We’ve removed the `$govuk-colours` variable from GOV.UK Frontend, to only allow access to the colours through the `govuk-colour` function.
+
+If you were accessing the GOV.UK Frontend colours with `map-get($govuk-colours, <COLOUR_NAME>)`, you’ll now need to use `govuk-colour(<COLOUR_NAME>)`.
+
+We made these changes in the following pull requests:
+
+- [#6326: Use brand palette through `govuk-colour`](https://github.com/alphagov/govuk-frontend/pull/6326)
+- [#6335: Update button colours to use `govuk_palette`](https://github.com/alphagov/govuk-frontend/pull/6335)
+- [#6336: Update tag colours to use `govuk_palette`](https://github.com/alphagov/govuk-frontend/pull/6336)
+- [#6337: Update file upload colours to use `govuk_palette`](https://github.com/alphagov/govuk-frontend/pull/6337)
+
+#### Stop using the `$legacy` parameter in the `govuk-colour` function
+
+We’ve removed the `$legacy` parameter of the `govuk-colour` function, so you should remove any usage of it.
+
+We made this change in [pull request #6326: Use brand palette through `govuk-colour`](https://github.com/alphagov/govuk-frontend/pull/6326).
+
 ### Fixes
 
 We've made fixes to GOV.UK Frontend in the following pull requests:

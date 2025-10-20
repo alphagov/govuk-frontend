@@ -9,34 +9,77 @@
 /// Get colour
 ///
 /// @param {String | Colour} $colour - Name of colour from the colour palette
-///   (`$govuk-colours`)
-/// @param {String | Colour | Boolean} $legacy [false] - Deprecated.
-///   The `$legacy` parameter is deprecated and is non-operational, as the
-///   legacy colour palette has been removed. The parameter will be removed in
-///   the next major version.
+///   (`$_govuk-palette`)
+/// @param {String | Colour} $variant - Name of the variant from the colour palette
+///   (`$_govuk-palette`)
 /// @return {Colour} Representation of named colour
 ///
 /// @throw if `$colour` is not a colour from the colour palette
+/// @throw if `$variant` is not a variant of the `$colour` in the colour palette
+/// @throw if the palette is misformatted and doesn't associate a colour or map to `$colour`
 /// @access public
 
-@function govuk-colour($colour, $legacy: false) {
-  // Output a warning if $legacy is set to anything.
-  @if $legacy and _should-warn("legacy-colour-param") {
-    @warn _warning-text("legacy-colour-param", "The `$legacy` parameter of " +
-    "`govuk-colour` is deprecated and is non-operational. It will be " +
-    "removed in the next major version.");
+@function govuk-colour($colour, $variant: primary, $colours: $_govuk-palette) {
+  // Sass parses unquoted colours as colours, so we need to turn them into
+  // strings before looking them up in the colour palette
+  // https://sass-lang.com/documentation/values/strings#unquoted
+  @if type-of($colour) != "string" {
+    $colour: "#{$colour}";
   }
 
-  @if type-of($colour) == "color" {
-    // stylelint-disable-next-line scss/function-quote-no-quoted-strings-inside
-    $colour: quote("#{$colour}");
+  $colour-variants: map-get($colours, $colour);
+
+  @if not $colour-variants {
+    // To ease the transition between the brand palette and old GOV.UK Frontend colours
+    // we'll automatically convert old colour names into their equivalent in the palette
+    @if $colours == $_govuk-palette {
+      $corresponding-colour: _govuk-corresponding-brand-colour($colour);
+      @if $corresponding-colour {
+        @return $corresponding-colour;
+      }
+    }
+
+    @error "Unknown colour `#{$colour}` (available colours: #{map-keys($colours)})";
   }
 
-  @if not map-has-key($govuk-colours, $colour) {
-    @error "Unknown colour `#{$colour}`";
+  // Some colours may not have variants, if that's the case, we can return the colour straight away
+  @if type-of($colour-variants) == "color" {
+    @return $colour-variants;
   }
 
-  @return map-get($govuk-colours, $colour);
+  @if type-of($colour-variants) != "map" {
+    @error "Colour `#{$colour}` should either be a `map` or `color`, not a `#{type-of($colour-variants)}`";
+  }
+
+  $result: map-get($colour-variants, $variant);
+
+  @if not $result {
+    @error "Unknown variant `#{$variant}` for colour `#{$colour}` (available variants: #{map-keys($colour-variants)})";
+  }
+
+  @return $result;
+}
+
+@function _govuk-corresponding-brand-colour($colour) {
+  $pre-brand-colour: map-get($_govuk-pre-brand-colours, $colour);
+
+  @if $pre-brand-colour {
+    $corresponding-colour: nth($pre-brand-colour, 1);
+    $corresponding-variant: nth($pre-brand-colour, 2);
+
+    $corresponding-govuk-colour-call: 'govuk-colour("#{$corresponding-colour}", $variant: "#{$corresponding-variant}")';
+
+    @if _should-warn("pre-brand-colour") {
+      @warn _warning-text("pre-brand-colour",
+        "We've updated GOV.UK Frontend's colour palette. Use " +
+        "`#{$corresponding-govuk-colour-call}` instead of " +
+        "`govuk-colour(\"#{$colour}\")`. The `#{$colour}` colour is " +
+        "deprecated and we'll remove it in the next major version."
+      );
+    }
+
+    @return govuk-colour($corresponding-colour, $variant: $corresponding-variant);
+  }
 }
 
 /// Get the colour for a government organisation
