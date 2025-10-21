@@ -6,6 +6,8 @@
  * the components that do not need that helper
  */
 
+import { ElementError } from '../errors/index.mjs'
+
 /**
  * Get GOV.UK Frontend breakpoint value from CSS custom property
  *
@@ -25,6 +27,36 @@ export function getBreakpoint(name) {
     property,
     value: value || undefined
   }
+}
+
+/**
+ *
+ * @param {string} name - Breakpoint name
+ * @param {(mql:MediaQueryList) => void} handler - The callback invoked when the MQL changes
+ */
+export function onBreakpoint(name, handler) {
+  const breakpoint = getBreakpoint(name)
+
+  if (!breakpoint.value) {
+    throw new ElementError({
+      identifier: `CSS custom property (\`${breakpoint.property}\`) on pseudo-class \`:root\``
+    })
+  }
+
+  // Media query list for GOV.UK Frontend desktop breakpoint
+  const mql = window.matchMedia(`(min-width: ${breakpoint.value})`)
+
+  // MediaQueryList.addEventListener isn't supported by Safari < 14 so we need
+  // to be able to fall back to the deprecated MediaQueryList.addListener
+  if ('addEventListener' in mql) {
+    mql.addEventListener('change', () => handler(mql))
+  } else {
+    // @ts-expect-error Property 'addListener' does not exist
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+    mql.addListener(() => handler(mql))
+  }
+
+  handler(mql)
 }
 
 /**

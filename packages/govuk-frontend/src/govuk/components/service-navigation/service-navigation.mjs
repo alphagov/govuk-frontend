@@ -1,6 +1,6 @@
 import { closestAttributeValue } from '../../common/closest-attribute-value.mjs'
 import { ConfigurableComponent } from '../../common/configuration.mjs'
-import { getBreakpoint } from '../../common/index.mjs'
+import { onBreakpoint } from '../../common/index.mjs'
 import { ElementError } from '../../errors/index.mjs'
 import { I18n } from '../../i18n.mjs'
 
@@ -18,23 +18,13 @@ export class ServiceNavigation extends ConfigurableComponent {
   $menu
 
   /**
-   * A global const for storing a matchMedia instance which we'll use to detect
-   * when a screen size change happens. We rely on it being null if the feature
-   * isn't available to initially apply hidden attributes
-   *
-   * @private
-   * @type {MediaQueryList | null}
-   */
-  mql = null
-
-  /**
    * @param {Element | null} $root - HTML element to use for header
    */
   constructor($root) {
     super($root)
 
-    // // The only job of this component is to collapse the navigation on mobile
-    // // so if asked not to, we can skip initialisation altogether
+    // The only job of this component is to collapse the navigation on mobile
+    // so if asked not to, we can skip initialisation altogether
     if (!this.config.collapseOnMobile) {
       return
     }
@@ -73,60 +63,13 @@ export class ServiceNavigation extends ConfigurableComponent {
     this.$menu = $menu
     this.$menuButton = $menuButton
 
-    this.setupResponsiveChecks()
+    onBreakpoint('tablet', (mql) => {
+      this.available = !mql.matches
+    })
 
     this.$menuButton.addEventListener('click', () => {
       this.expanded = !this.expanded
     })
-  }
-
-  /**
-   * Setup viewport resize check
-   *
-   * @private
-   */
-  setupResponsiveChecks() {
-    const breakpoint = getBreakpoint('tablet')
-
-    if (!breakpoint.value) {
-      throw new ElementError({
-        component: ServiceNavigation,
-        identifier: `CSS custom property (\`${breakpoint.property}\`) on pseudo-class \`:root\``
-      })
-    }
-
-    // Media query list for GOV.UK Frontend desktop breakpoint
-    this.mql = window.matchMedia(`(min-width: ${breakpoint.value})`)
-
-    // MediaQueryList.addEventListener isn't supported by Safari < 14 so we need
-    // to be able to fall back to the deprecated MediaQueryList.addListener
-    if ('addEventListener' in this.mql) {
-      this.mql.addEventListener('change', () => this.checkMode())
-    } else {
-      // @ts-expect-error Property 'addListener' does not exist
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-      this.mql.addListener(() => this.checkMode())
-    }
-
-    this.checkMode()
-  }
-
-  /**
-   * Sync menu state
-   *
-   * Uses the global variable menuIsOpen to correctly set the accessible and
-   * visual states of the menu and the menu button.
-   * Additionally will force the menu to be visible and the menu button to be
-   * hidden if the matchMedia is triggered to desktop.
-   *
-   * @private
-   */
-  checkMode() {
-    if (!this.mql || !this.$menu || !this.$menuButton) {
-      return
-    }
-
-    this.available = !this.mql.matches
   }
 
   /**
@@ -138,9 +81,17 @@ export class ServiceNavigation extends ConfigurableComponent {
 
   /**
    * @private
-   * @param {boolean} value - Whether to make the menu available to the user
+   * @param {boolean} value - Whether the menu is available to the user
    */
   set available(value) {
+    this.renderAvailable(value)
+  }
+
+  /**
+   * @private
+   * @param {boolean} value - Whether to make the menu available to the user
+   */
+  renderAvailable(value) {
     if (!this.$menu || !this.$menuButton) {
       return
     }
@@ -148,11 +99,7 @@ export class ServiceNavigation extends ConfigurableComponent {
     if (value) {
       removeAttributes(this.$menuButton, Object.keys(attributesForHidingButton))
 
-      if (this.expanded) {
-        this.$menu.removeAttribute('hidden')
-      } else {
-        this.$menu.setAttribute('hidden', '')
-      }
+      this.renderExpanded(this.expanded)
     } else {
       this.$menu.removeAttribute('hidden')
       setAttributes(this.$menuButton, attributesForHidingButton)
@@ -171,7 +118,25 @@ export class ServiceNavigation extends ConfigurableComponent {
    */
   set expanded(value) {
     this.$menuButton?.setAttribute('aria-expanded', value.toString())
-    this.checkMode()
+    this.renderExpanded(value)
+  }
+
+  /**
+   * Renders whether the component is expanded or not
+   *
+   * @param {boolean} value - Whether the menu is expanded
+   * @private
+   */
+  renderExpanded(value) {
+    if (!this.$menu) {
+      return
+    }
+
+    if (value) {
+      this.$menu.removeAttribute('hidden')
+    } else {
+      this.$menu.setAttribute('hidden', '')
+    }
   }
 
   /**
