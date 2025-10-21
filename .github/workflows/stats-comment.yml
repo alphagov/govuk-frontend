@@ -4,6 +4,10 @@ on:
   workflow_call:
   workflow_dispatch:
 
+permissions:
+  contents: read
+  pull-requests: write # For writing comments
+
 jobs:
   generate-stats:
     name: Generate stats

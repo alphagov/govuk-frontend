@@ -9,6 +9,9 @@ jobs:
     name: Test tree shaking
     runs-on: ubuntu-22.04
 
+    permissions:
+      contents: read
+
     env:
       PUPPETEER_SKIP_DOWNLOAD: true
 
