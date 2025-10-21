@@ -85,6 +85,14 @@ We’ve removed the `$legacy` parameter of the `govuk-colour` function, so you s
 
 We made this change in [pull request #6326: Use brand palette through `govuk-colour`](https://github.com/alphagov/govuk-frontend/pull/6326).
 
+#### Stop using `govuk-tint` and `govuk-shade`
+
+The `govuk-tint` and `govuk-shade` functions for applying tints and shades to colours by percentage are now deprecated and no longer work. They now only return the colour you pass to them, as well as a Sass warning. We’ll remove the `govuk-tint` and `govuk-shade` functions in the final release of 6.0.0.
+
+We recommend replacing them with tints and shades from the new GOV.UK colour palette that are as close as possible to your existing implementation.
+
+We made this change in [pull request #6341: Deactivate `govuk-tint` and `govuk-shade` functions](https://github.com/alphagov/govuk-frontend/pull/6341).
+
 ### Fixes
 
 We've made fixes to GOV.UK Frontend in the following pull requests:

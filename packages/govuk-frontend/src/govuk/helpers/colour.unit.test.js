@@ -559,41 +559,83 @@ describe('@function govuk-organisation-colour', () => {
 })
 
 describe('@function govuk-shade', () => {
-  it('outputs hexadecimal values', async () => {
+  it('outputs the colour value passed to it', async () => {
     const sass = `
       @import "helpers/colour";
 
       .foo {
-        color: govuk-shade(rgb(171, 205, 239), 17);
+        color: govuk-shade(rgb(171, 205, 239), 67);
       }
     `
 
     await expect(compileSassString(sass, sassConfig)).resolves.toMatchObject({
       css: outdent`
           .foo {
-            color: #8eaac6;
+            color: rgb(171, 205, 239);
           }
         `
     })
   })
-})
 
-describe('@function govuk-tint', () => {
-  it('outputs hexadecimal values', async () => {
+  it('outputs a warning when used', async () => {
     const sass = `
       @import "helpers/colour";
 
       .foo {
-        color: govuk-tint(rgb(18, 52, 86), 17);
+        color: govuk-shade(rgb(171, 205, 239), 67);
+      }
+    `
+
+    await compileSassString(sass, sassConfig)
+
+    // Expect our mocked @warn function to have been called once with a single
+    // argument, which should be the deprecation notice
+    expect(mockWarnFunction).toHaveBeenCalledWith(
+      'The govuk-shade function is deprecated. It now just returns the colour ' +
+        'passed to it. Use the new GOV.UK colour palette instead. To silence ' +
+        'this warning, update $govuk-suppressed-warnings with key: "govuk-shade"',
+      expect.anything()
+    )
+  })
+})
+
+describe('@function govuk-tint', () => {
+  it('outputs the colour value passed to it', async () => {
+    const sass = `
+      @import "helpers/colour";
+
+      .foo {
+        color: govuk-tint(rgb(18, 52, 86), 67);
       }
     `
 
     await expect(compileSassString(sass, sassConfig)).resolves.toMatchObject({
       css: outdent`
           .foo {
-            color: #3a5773;
+            color: rgb(18, 52, 86);
           }
         `
     })
+  })
+
+  it('outputs a warning when used', async () => {
+    const sass = `
+      @import "helpers/colour";
+
+      .foo {
+        color: govuk-tint(rgb(18, 52, 86), 67);
+      }
+    `
+
+    await compileSassString(sass, sassConfig)
+
+    // Expect our mocked @warn function to have been called once with a single
+    // argument, which should be the deprecation notice
+    expect(mockWarnFunction).toHaveBeenCalledWith(
+      'The govuk-tint function is deprecated. It now just returns the colour ' +
+        'passed to it. Use the new GOV.UK colour palette instead. To silence ' +
+        'this warning, update $govuk-suppressed-warnings with key: "govuk-tint"',
+      expect.anything()
+    )
   })
 })
