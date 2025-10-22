@@ -59,8 +59,7 @@ export class I18n {
 
     if (typeof translation === 'string') {
       // Check for %{} placeholders in the translation string
-      // eslint-disable-next-line @typescript-eslint/prefer-regexp-exec
-      if (translation.match(/%{(\S+)}/)) {
+      if (/%{(\S+)}/.test(translation)) {
         if (!options) {
           throw new Error(
             'i18n: cannot replace placeholders in string if no option data provided'
