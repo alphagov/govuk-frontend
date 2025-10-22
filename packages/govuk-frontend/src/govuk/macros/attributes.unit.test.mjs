@@ -1,5 +1,5 @@
-import { renderMacro } from '@govuk-frontend/lib/components'
-import nunjucks from 'nunjucks'
+import { renderMacro, renderString } from '@govuk-frontend/lib/components'
+import { outdent } from 'outdent'
 
 describe('attributes.njk', () => {
   describe('govukAttributes', () => {
@@ -265,21 +265,23 @@ describe('attributes.njk', () => {
     })
 
     it('outputs values that are passed from the `safe` filter', () => {
-      // Set up a tiny Nunjucks environment, just so we can get the native `safe` filter
-      const nunjucksEnv = nunjucks.configure([])
+      // Render directly otherwise nunjucks `renderMacro()` will stringify
+      // safe `is escaped` instances into plain `is mapping` objects
+      const attributes = renderString(outdent`
+        {%- from "govuk/macros/attributes.njk" import govukAttributes -%}
 
-      const attributes = renderMacro(
-        'govukAttributes',
-        'govuk/macros/attributes.njk',
-        {
-          context: {
-            'data-text': 'Testing',
-            'data-safe-text': nunjucksEnv.getFilter('safe')('Testing')
-          }
-        }
+        {{- govukAttributes({
+          'data-text': 'Testing',
+          'data-unsafe-text': 'Testing & more',
+          'data-safe-text': 'Testing &amp; more' | safe,
+          'data-escaped-text': 'Testing & more' | escape,
+          'data-double-escaped-text': 'Testing &amp; more' | escape
+        }) -}}
+      `)
+
+      expect(attributes).toBe(
+        ' data-text="Testing" data-unsafe-text="Testing &amp; more" data-safe-text="Testing &amp; more" data-escaped-text="Testing &amp; more" data-double-escaped-text="Testing &amp;amp; more"'
       )
-
-      expect(attributes).toBe(' data-text="Testing" data-safe-text="Testing"')
     })
   })
 })
