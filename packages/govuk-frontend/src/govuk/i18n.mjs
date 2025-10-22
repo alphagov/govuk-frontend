@@ -33,7 +33,7 @@ export class I18n {
    * @param {{ [key: string]: unknown }} [options] - Any options passed with the translation string, e.g: for string interpolation.
    * @returns {string} The appropriate translation string.
    * @throws {Error} Lookup key required
-   * @throws {Error} Options required for `${}` placeholders
+   * @throws {Error} Options required for `%{}` placeholders
    */
   t(lookupKey, options) {
     if (!lookupKey) {
@@ -58,7 +58,7 @@ export class I18n {
     }
 
     if (typeof translation === 'string') {
-      // Check for ${} placeholders in the translation string
+      // Check for %{} placeholders in the translation string
       // eslint-disable-next-line @typescript-eslint/prefer-regexp-exec
       if (translation.match(/%{(.\S+)}/)) {
         if (!options) {
