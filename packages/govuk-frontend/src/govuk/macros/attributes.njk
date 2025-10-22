@@ -70,7 +70,7 @@
     {% for name, value in attributes %}
       {#- Detect if this is a `safe` filtered value. Just pass the value through if so. -#}
       {#- https://github.com/alphagov/govuk-frontend/issues/4937 -#}
-      {% if value is mapping and not [undefined, null].includes(value.val) and value.length %}
+      {% if value is mapping and not value.val in [undefined, null] and value.length %}
         {% set value = value.val %}
       {% endif %}
 
@@ -84,7 +84,7 @@
       {% if options.optional === true and options.value === true %}
         {% set attributesHtml = attributesHtml + " " + name | escape %}
       {#- Skip optional empty attributes or output ` name="value"` pair by default -#}
-      {% elif (options.optional === true and not [undefined, null, false].includes(options.value)) or options.optional !== true %}
+      {% elif (options.optional === true and options.value not in [undefined, null, false]) or options.optional !== true %}
         {% set attributesHtml = attributesHtml + " " + name | escape + '="' + options.value | escape + '"' %}
       {% endif %}
     {% endfor %}
