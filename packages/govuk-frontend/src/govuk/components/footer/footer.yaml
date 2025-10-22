@@ -70,7 +70,7 @@ params:
   - name: contentLicence
     type: object or boolean
     required: false
-    description: The content licence information within the footer component. Is hidden when set to `false`. Defaults to Open Government Licence (OGL) v3 licence.
+    description: The content licence information within the footer component. If your service provides content under a different license than OGL, use `false` to hide the OGL logo and licence text. Defaults to Open Government Licence (OGL) v3 licence.
     params:
       - name: text
         type: string
