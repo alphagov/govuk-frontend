@@ -110,6 +110,22 @@ We recommend replacing them with tints and shades from the new GOV.UK colour pal
 
 We made this change in [pull request #6341: Deactivate `govuk-tint` and `govuk-shade` functions](https://github.com/alphagov/govuk-frontend/pull/6341).
 
+### New features
+
+#### The GOV.UK footer component now allows the removal of OGL Content Licence information
+
+If your service's content is not covered by the OGL content licence you can now remove it from the GOV.UK footer.
+
+If you're using Nunjucks, set the `contentLicence` parameter to `false`:
+
+```nunjucks
+{{ govukFooter({
+  contentLicence: false
+}) }}
+```
+
+This change was introduced in [#6191: Allow removal of Content Licence information in the GOV.UK footer component](https://github.com/alphagov/govuk-frontend/pull/6191). Thanks to @NickColley for making this change.
+
 ### Fixes
 
 We've made fixes to GOV.UK Frontend in the following pull requests:
