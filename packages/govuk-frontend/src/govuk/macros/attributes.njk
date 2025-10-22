@@ -68,24 +68,26 @@
   {#- Append attribute name/value pairs -#}
   {%- if attributes is mapping %}
     {% for name, value in attributes %}
-      {#- Detect if this is a `safe` filtered value. Just pass the value through if so. -#}
-      {#- https://github.com/alphagov/govuk-frontend/issues/4937 -#}
-      {% if value is mapping and not value.val in [undefined, null] and value.length %}
-        {% set value = value.val %}
-      {% endif %}
-
       {#- Set default attribute options -#}
-      {% set options = value if value is mapping else {
+      {% set options = value if value is mapping and value is not escaped else {
         value: value,
         optional: false
       } %}
 
+      {#- Extract unescaped value when `safe` filtered -#}
+      {#- https://github.com/alphagov/govuk-frontend/issues/4937 -#}
+      {%- set unescaped = options.value.val if options.value is escaped else options.value %}
+
+      {#- Preserve already escaped value to prevent double escaping -#}
+      {#- https://github.com/alphagov/govuk-frontend/issues/4940 -#}
+      {%- set escaped = options.value if options.value is escaped else options.value | escape %}
+
       {#- Output ` name` only (no value) for boolean attributes -#}
-      {% if options.optional === true and options.value === true %}
+      {% if options.optional === true and unescaped === true %}
         {% set attributesHtml = attributesHtml + " " + name | escape %}
       {#- Skip optional empty attributes or output ` name="value"` pair by default -#}
-      {% elif (options.optional === true and options.value not in [undefined, null, false]) or options.optional !== true %}
-        {% set attributesHtml = attributesHtml + " " + name | escape + '="' + options.value | escape + '"' %}
+      {% elif (options.optional === true and unescaped not in [undefined, null, false]) or options.optional !== true %}
+        {% set attributesHtml = attributesHtml + " " + name | escape + '="' + escaped + '"' %}
       {% endif %}
     {% endfor %}
   {% endif -%}
