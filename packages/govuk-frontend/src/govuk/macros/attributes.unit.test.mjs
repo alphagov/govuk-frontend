@@ -245,11 +245,22 @@ describe('attributes.njk', () => {
         'govukAttributes',
         'govuk/macros/attributes.njk',
         {
-          context: ' data-attribute="value"'
+          context: ' data-attribute="Testing &amp; more"'
         }
       )
 
-      expect(attributes).toBe(' data-attribute="value"')
+      expect(attributes).toBe(' data-attribute="Testing &amp; more"')
+    })
+
+    it('outputs attributes from the `safe` filter if already stringified', () => {
+      // Render directly otherwise nunjucks `renderMacro()` will stringify
+      // safe `is escaped` instances into plain `is mapping` objects
+      const attributes = renderString(outdent`
+        {%- from "govuk/macros/attributes.njk" import govukAttributes -%}
+        {{- govukAttributes(' data-attribute="Testing &amp; more"' | safe) -}}
+      `)
+
+      expect(attributes).toBe(' data-attribute="Testing &amp; more"')
     })
 
     it('outputs nothing if there are no attributes', () => {
