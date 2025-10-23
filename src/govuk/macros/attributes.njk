@@ -62,11 +62,15 @@
   @param {{ [attribute: string]: string | { value: string, optional?: boolean } } | string} attributes - Component attributes param
 #}
 {% macro govukAttributes(attributes) -%}
-  {#- Default attributes output -#}
+  {#- Default attributes output as string -#}
   {% set attributesHtml = attributes if attributes is string else "" %}
 
+  {#- Default attributes output as `safe` filtered string -#}
+  {%- if attributes is escaped and attributes.val is string %}
+    {% set attributesHtml = attributes %}
+
   {#- Append attribute name/value pairs -#}
-  {%- if attributes is mapping %}
+  {%- elif attributes is mapping and attributes is not escaped %}
     {% for name, item in attributes %}
       {#- Set default attribute options -#}
       {% set options = item if item is mapping and item is not escaped else {
