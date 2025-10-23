@@ -6,6 +6,8 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 ## v6.0.0-beta.0 (Beta breaking release)
 
+To install this version with npm, run `npm install govuk-frontend@6.0.0-beta.0`. You can also find more information about [how to stay up to date](https://frontend.design-system.service.gov.uk/staying-up-to-date/#updating-to-the-latest-version) in our documentation.
+
 ### Breaking changes
 
 #### Use GOV.UK brand colours
