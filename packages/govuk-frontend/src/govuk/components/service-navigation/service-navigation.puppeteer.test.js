@@ -109,7 +109,9 @@ describe('/components/service-navigation', () => {
         await expect(
           render(page, 'service-navigation', examples.default, {
             beforeInitialisation($root, { selector }) {
-              $root.querySelector(selector).removeAttribute('aria-controls')
+              $root
+                .querySelector(selector)
+                .removeAttribute('data-aria-controls')
             },
             context: {
               selector: toggleButtonSelector
@@ -119,7 +121,7 @@ describe('/components/service-navigation', () => {
           cause: {
             name: 'ElementError',
             message:
-              'govuk-service-navigation: Navigation button (`<button class="govuk-js-service-navigation-toggle">`) attribute (`aria-controls`) not found'
+              'govuk-service-navigation: Navigation button (`<button class="govuk-js-service-navigation-toggle">`) attribute (`data-aria-controls`) not found'
           }
         })
       })
@@ -167,6 +169,15 @@ describe('/components/service-navigation', () => {
         expect(buttonHiddenAttribute).toBeFalsy()
       })
 
+      it('does not add an `aria-hidden` attribute to the button for Voice Over', async () => {
+        const buttonHiddenAttribute = await page.$eval(
+          toggleButtonSelector,
+          (el) => el.hasAttribute('aria-hidden')
+        )
+
+        expect(buttonHiddenAttribute).toBeFalsy()
+      })
+
       it('renders the toggle button with `aria-expanded` set to false', async () => {
         const toggleExpandedAttribute = await page.$eval(
           toggleButtonSelector,
@@ -174,6 +185,15 @@ describe('/components/service-navigation', () => {
         )
 
         expect(toggleExpandedAttribute).toBe('false')
+      })
+
+      it('adds the `aria-controls` attribute to the toggle', async () => {
+        const toggleExpandedAttribute = await page.$eval(
+          toggleButtonSelector,
+          (el) => el.getAttribute('aria-controls')
+        )
+
+        expect(toggleExpandedAttribute).toBe('navigation')
       })
     })
 
@@ -227,6 +247,98 @@ describe('/components/service-navigation', () => {
         )
 
         expect(toggleExpandedAttribute).toBe('false')
+      })
+    })
+
+    describe('on wide viewports', () => {
+      beforeAll(async () => {
+        // First let's reset the viewport to a desktop one
+        await page.setViewport({
+          width: 1280,
+          height: 720
+        })
+      })
+
+      afterAll(async () => {
+        // After tests have run reset teh viewport to a phone
+        await page.emulate(iPhone)
+      })
+
+      describe('on page load', () => {
+        beforeAll(async () => {
+          await render(page, 'service-navigation', examples.default)
+        })
+
+        it('shows the navigation', async () => {
+          const navigationHiddenAttribute = await page.$eval(
+            navigationSelector,
+            (el) => el.hasAttribute('hidden')
+          )
+
+          expect(navigationHiddenAttribute).toBeFalsy()
+        })
+
+        it('keeps the toggle button hidden', async () => {
+          const buttonHiddenAttribute = await page.$eval(
+            toggleButtonSelector,
+            (el) => el.hasAttribute('hidden')
+          )
+
+          expect(buttonHiddenAttribute).toBeTruthy()
+        })
+
+        it('adds an `aria-hidden` attribute for Voice Over', async () => {
+          const buttonHiddenAttribute = await page.$eval(
+            toggleButtonSelector,
+            (el) => el.getAttribute('aria-hidden')
+          )
+
+          expect(buttonHiddenAttribute).toBe('true')
+        })
+      })
+
+      describe('when page is resized to a narrow viewport', () => {
+        beforeAll(async () => {
+          await render(page, 'service-navigation', examples.default)
+
+          // Once the page is loaded resize the viewport to a narrow one
+          // Only set the width and height to avoid the page getting wiped
+          await page.setViewport({
+            width: iPhone.viewport.width,
+            height: iPhone.viewport.height
+          })
+
+          // Wait that the page got updated after the resize,
+          // as sometimes the tests run too early
+          await page.waitForSelector(`${navigationSelector}[hidden]`)
+        })
+
+        it('hides the navigation', async () => {
+          const navigationHiddenAttribute = await page.$eval(
+            `${navigationSelector}[hidden]`,
+            (el) => el.hasAttribute('hidden')
+          )
+
+          expect(navigationHiddenAttribute).toBeTruthy()
+        })
+
+        it('reveals the toggle button', async () => {
+          const buttonHiddenAttribute = await page.$eval(
+            toggleButtonSelector,
+            (el) => el.hasAttribute('hidden')
+          )
+
+          expect(buttonHiddenAttribute).toBeFalsy()
+        })
+
+        it('removes the `aria-hidden` attribute on the toggle', async () => {
+          const buttonHiddenAttribute = await page.$eval(
+            toggleButtonSelector,
+            (el) => el.hasAttribute('aria-hidden')
+          )
+
+          expect(buttonHiddenAttribute).toBeFalsy()
+        })
       })
     })
   })
