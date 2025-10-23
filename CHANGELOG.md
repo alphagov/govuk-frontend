@@ -4,6 +4,8 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 ## Unreleased
 
+## v6.0.0-beta.0 (Beta breaking release)
+
 ### Breaking changes
 
 #### Use GOV.UK brand colours
