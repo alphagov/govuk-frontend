@@ -67,27 +67,37 @@
 
   {#- Append attribute name/value pairs -#}
   {%- if attributes is mapping %}
-    {% for name, value in attributes %}
+    {% for name, item in attributes %}
       {#- Set default attribute options -#}
-      {% set options = value if value is mapping and value is not escaped else {
-        value: value,
+      {% set options = item if item is mapping and item is not escaped else {
+        value: item,
         optional: false
       } %}
 
+      {#- Remove values when not provided -#}
+      {%- if options.value in [undefined, null] %}
+        {% set value = null %}
+        {% set valueEscaped = "" %}
+
       {#- Extract unescaped value when `safe` filtered -#}
       {#- https://github.com/alphagov/govuk-frontend/issues/4937 -#}
-      {%- set unescaped = options.value.val if options.value is escaped else options.value %}
+      {%- elif options.value is escaped %}
+        {% set value = options.value.val %}
+        {% set valueEscaped = options.value %}
 
-      {#- Preserve already escaped value to prevent double escaping -#}
+      {#- Otherwise assume escaping is necessary -#}
       {#- https://github.com/alphagov/govuk-frontend/issues/4940 -#}
-      {%- set escaped = options.value if options.value is escaped else options.value | escape %}
+      {%- else %}
+        {% set value = options.value %}
+        {% set valueEscaped = options.value | escape %}
+      {% endif %}
 
       {#- Output ` name` only (no value) for boolean attributes -#}
-      {% if options.optional === true and unescaped === true %}
+      {% if options.optional === true and value === true %}
         {% set attributesHtml = attributesHtml + " " + name | escape %}
       {#- Skip optional empty attributes or output ` name="value"` pair by default -#}
-      {% elif (options.optional === true and unescaped not in [undefined, null, false]) or options.optional !== true %}
-        {% set attributesHtml = attributesHtml + " " + name | escape + '="' + escaped + '"' %}
+      {% elif (options.optional === true and value not in [undefined, null, false]) or options.optional !== true %}
+        {% set attributesHtml = attributesHtml + " " + name | escape + '="' + valueEscaped + '"' %}
       {% endif %}
     {% endfor %}
   {% endif -%}
