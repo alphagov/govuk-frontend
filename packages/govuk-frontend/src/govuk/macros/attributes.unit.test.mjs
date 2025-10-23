@@ -283,5 +283,35 @@ describe('attributes.njk', () => {
         ' data-text="Testing" data-unsafe-text="Testing &amp; more" data-safe-text="Testing &amp; more" data-escaped-text="Testing &amp; more" data-double-escaped-text="Testing &amp;amp; more"'
       )
     })
+
+    it('outputs values from mappings that are passed from the `safe` filter', () => {
+      // Render directly otherwise nunjucks `renderMacro()` will stringify
+      // safe `is escaped` instances into plain `is mapping` objects
+      const attributes = renderString(outdent`
+        {%- from "govuk/macros/attributes.njk" import govukAttributes -%}
+
+        {{- govukAttributes({
+          'data-text': {
+            value: 'Testing'
+          },
+          'data-unsafe-text': {
+            value: 'Testing & more'
+          },
+          'data-safe-text': {
+            value: 'Testing &amp; more' | safe
+          },
+          'data-escaped-text': {
+            value: 'Testing & more' | escape
+          },
+          'data-double-escaped-text': {
+            value: 'Testing &amp; more' | escape
+          }
+        }) -}}
+      `)
+
+      expect(attributes).toBe(
+        ' data-text="Testing" data-unsafe-text="Testing &amp; more" data-safe-text="Testing &amp; more" data-escaped-text="Testing &amp; more" data-double-escaped-text="Testing &amp;amp; more"'
+      )
+    })
   })
 })
