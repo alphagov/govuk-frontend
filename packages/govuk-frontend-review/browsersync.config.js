@@ -29,6 +29,9 @@ module.exports = {
   // Prevent browser opening
   open: false,
 
+  // Disable BrowserSync UI
+  ui: false,
+
   // Allow for Express.js restart
   reloadDelay: 1000,
 
