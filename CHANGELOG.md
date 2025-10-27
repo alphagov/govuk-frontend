@@ -10,6 +10,19 @@ To install this version with npm, run `npm install govuk-frontend@6.0.0-beta.0`.
 
 ### Breaking changes
 
+#### We've ended support for Ruby Sass and LibSass
+
+GOV.UK Frontend no longer supports Ruby Sass and LibSass. You must update your project to [Dart Sass](https://sass-lang.com/dart-sass/) to continue using GOV.UK Frontend.
+
+Support for Ruby Sass ended in 2019, and LibSass was deprecated in 2020. A number of Sass implementations, including Node Sass, SassC and sass-rs, are dependent upon LibSass. GOV.UK Frontend also no longer supports these implementations.
+
+The Sass developers have provided guides for:
+
+- [migrating from Ruby Sass to Dart Sass](https://sass-lang.com/ruby-sass/)
+- [migrating from LibSass to Dart Sass](https://sass-lang.com/blog/libsass-is-deprecated/#how-do-i-migrate)
+
+This change was introduced in [pull request #6311: Remove support for Ruby Sass and LibSass](https://github.com/alphagov/govuk-frontend/pull/6311).
+
 #### Use GOV.UK brand colours
 
 We’ve updated GOV.UK Frontend to use the web palette defined by the [GOV.UK Brand guidelines](https://www.gov.uk/government/publications/govuk-brand-guidelines), as well as the 25% and 50% shades when they exist for a given colour.
