@@ -20,7 +20,7 @@ concurrency:
 
 jobs:
   dart-sass:
-    name: Dart Sass v1.0.0
+    name: Dart Sass v1.79.0
     runs-on: ubuntu-22.04
 
     steps:
@@ -31,11 +31,11 @@ jobs:
         uses: actions/setup-node@v4.4.0
         with:
           cache: npm
-          node-version: 8 # Node.js 8 supported by Dart Sass v1.0.0
+          node-version: 18 # Node.js 18 is the oldest supported by Dart Sass v1.79.0
 
       - name: Install package
         run: |
-          npm install -g sass@v1.0.0
+          npm install -g sass@v1.79.0
           sass --version
 
       - name: Run command
