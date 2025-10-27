@@ -23,6 +23,12 @@ npm scripts are defined in `package.json`. These trigger a number of Gulp tasks.
   GOVUK_DS_FRONTEND_NO_LINTING=scss,js npm start
   ```
 
+  By default, the local development environment will reject external connection requests. To test changes with other devices, or the local testing features of [Browserstack](https://www.browserstack.com/) and [AssistivLabs](https://assistivlabs.com/), external connections must be enabled using the `ALLOW_EXTERNAL_CONNECTIONS` environment variable.
+
+  ```sh
+  ALLOW_EXTERNAL_CONNECTIONS=true npm start
+  ```
+
 **`npm test` will do the following:**
 
 - run Nunjucks macros tests
