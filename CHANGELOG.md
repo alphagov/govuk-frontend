@@ -4,10 +4,6 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 ## Unreleased
 
-## v6.0.0-beta.0 (Beta breaking release)
-
-To install this version with npm, run `npm install govuk-frontend@6.0.0-beta.0`. You can also find more information about [how to stay up to date](https://frontend.design-system.service.gov.uk/staying-up-to-date/#updating-to-the-latest-version) in our documentation.
-
 ### Breaking changes
 
 #### We've ended support for Ruby Sass and LibSass
@@ -22,6 +18,12 @@ The Sass developers have provided guides for:
 - [migrating from LibSass to Dart Sass](https://sass-lang.com/blog/libsass-is-deprecated/#how-do-i-migrate)
 
 This change was introduced in [pull request #6311: Remove support for Ruby Sass and LibSass](https://github.com/alphagov/govuk-frontend/pull/6311).
+
+## v6.0.0-beta.0 (Beta breaking release)
+
+To install this version with npm, run `npm install govuk-frontend@6.0.0-beta.0`. You can also find more information about [how to stay up to date](https://frontend.design-system.service.gov.uk/staying-up-to-date/#updating-to-the-latest-version) in our documentation.
+
+### Breaking changes
 
 #### Use GOV.UK brand colours
 
