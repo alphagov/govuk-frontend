@@ -74,25 +74,25 @@
 
 @mixin govuk-link-style-default {
   &:link {
-    color: $govuk-link-colour;
+    color: govuk-applied-colour(link);
   }
 
   &:visited {
-    color: $govuk-link-visited-colour;
+    color: govuk-applied-colour(link-visited);
   }
 
   &:hover {
-    color: $govuk-link-hover-colour;
+    color: govuk-applied-colour(link-hover);
   }
 
   &:active {
-    color: $govuk-link-active-colour;
+    color: govuk-applied-colour(link-active);
   }
 
   // When focussed, the text colour needs to be darker to ensure that colour
   // contrast is still acceptable
   &:focus {
-    color: $govuk-focus-text-colour;
+    color: govuk-applied-colour(focus-text);
   }
 }
 
@@ -115,7 +115,7 @@
 @mixin govuk-link-style-error {
   &:link,
   &:visited {
-    color: $govuk-error-colour;
+    color: govuk-applied-colour(error);
   }
 
   &:hover {
@@ -123,13 +123,13 @@
   }
 
   &:active {
-    color: $govuk-error-colour;
+    color: govuk-applied-colour(error);
   }
 
   // When focussed, the text colour needs to be darker to ensure that colour
   // contrast is still acceptable
   &:focus {
-    color: $govuk-focus-text-colour;
+    color: govuk-applied-colour(focus-text);
   }
 }
 
@@ -152,7 +152,7 @@
 @mixin govuk-link-style-success {
   &:link,
   &:visited {
-    color: $govuk-success-colour;
+    color: govuk-applied-colour(success);
   }
 
   &:hover {
@@ -160,13 +160,13 @@
   }
 
   &:active {
-    color: $govuk-success-colour;
+    color: govuk-applied-colour(success);
   }
 
   // When focussed, the text colour needs to be darker to ensure that colour
   // contrast is still acceptable
   &:focus {
-    color: $govuk-focus-text-colour;
+    color: govuk-applied-colour(focus-text);
   }
 }
 
@@ -189,18 +189,18 @@
 @mixin govuk-link-style-muted {
   &:link,
   &:visited {
-    color: $govuk-secondary-text-colour;
+    color: govuk-applied-colour(secondary-text);
   }
 
   &:hover,
   &:active {
-    color: $govuk-text-colour;
+    color: govuk-applied-colour(text);
   }
 
   // When focussed, the text colour needs to be darker to ensure that colour
   // contrast is still acceptable
   &:focus {
-    color: $govuk-focus-text-colour;
+    color: govuk-applied-colour(focus-text);
   }
 }
 
@@ -229,8 +229,8 @@
   // Force a colour change on hover to work around a bug in Safari
   // https://webkit.org/b/224483
   &:hover {
-    @if type-of($govuk-text-colour) == color {
-      color: rgba($govuk-text-colour, 0.99);
+    @if type-of(govuk-applied-colour(text)) == color {
+      color: rgba(govuk-applied-colour(text), 0.99);
     }
   }
 
@@ -270,7 +270,7 @@
   }
 
   &:focus {
-    color: $govuk-focus-text-colour;
+    color: govuk-applied-colour(focus-text);
   }
 }
 
@@ -296,25 +296,25 @@
 
 @mixin govuk-link-style-no-visited-state {
   &:link {
-    color: $govuk-link-colour;
+    color: govuk-applied-colour(link);
   }
 
   &:visited {
-    color: $govuk-link-colour;
+    color: govuk-applied-colour(link);
   }
 
   &:hover {
-    color: $govuk-link-hover-colour;
+    color: govuk-applied-colour(link-hover);
   }
 
   &:active {
-    color: $govuk-link-active-colour;
+    color: govuk-applied-colour(link-active);
   }
 
   // When focussed, the text colour needs to be darker to ensure that colour
   // contrast is still acceptable
   &:focus {
-    color: $govuk-focus-text-colour;
+    color: govuk-applied-colour(focus-text);
   }
 }
 

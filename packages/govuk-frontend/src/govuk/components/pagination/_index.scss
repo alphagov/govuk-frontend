@@ -81,10 +81,10 @@
   .govuk-pagination__item--current {
     @include govuk-typography-weight-bold;
     outline: 1px solid transparent;
-    background-color: $govuk-link-colour;
+    background-color: govuk-applied-colour(link);
 
     &:hover {
-      background-color: $govuk-link-colour;
+      background-color: govuk-applied-colour(link);
     }
 
     .govuk-pagination__link {
@@ -94,7 +94,7 @@
 
   .govuk-pagination__item--ellipsis {
     @include govuk-typography-weight-bold;
-    color: $govuk-secondary-text-colour;
+    color: govuk-applied-colour(secondary-text);
 
     // Remove hover state for ellipsis items as they don't contain links
     &:hover {
@@ -134,7 +134,7 @@
 
     &:focus {
       .govuk-pagination__icon {
-        color: $govuk-focus-text-colour;
+        color: govuk-applied-colour(focus-text);
       }
 
       .govuk-pagination__link-label {
@@ -161,7 +161,7 @@
     // Set size using rems to make the icon scale with text
     width: govuk-px-to-rem(15px);
     height: govuk-px-to-rem(13px);
-    color: $govuk-secondary-text-colour;
+    color: govuk-applied-colour(secondary-text);
     fill: currentcolor;
     forced-color-adjust: auto;
   }
@@ -194,7 +194,7 @@
 
     // Only apply a border between prev and next if both are present
     .govuk-pagination__prev + .govuk-pagination__next {
-      border-top: 1px solid $govuk-border-colour;
+      border-top: 1px solid govuk-applied-colour(border);
     }
 
     // Set the after pseudo element to a block which makes the title visually

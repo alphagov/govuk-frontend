@@ -2,7 +2,7 @@
 
 .app-masthead {
   display: flow-root;
-  background: $govuk-brand-colour;
+  background: govuk-applied-colour(brand);
 }
 
 .app-breadcrumbs__underline {

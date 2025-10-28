@@ -40,7 +40,7 @@
   // Visible variant
 
   %govuk-section-break--visible {
-    border-bottom: 1px solid $govuk-border-colour;
+    border-bottom: 1px solid govuk-applied-colour(border);
   }
 
   .govuk-section-break--visible {
