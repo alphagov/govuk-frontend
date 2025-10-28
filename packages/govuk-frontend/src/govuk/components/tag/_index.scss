@@ -1,3 +1,32 @@
+/// Get tag text colour
+/// Almost all tags should use the 50% shade of their colour for their text
+///
+/// @param {String} $colour - name of colour from the colour palette
+/// @return {Colour} Representation of the named colour for use in tags
+@function _govuk-tag-text-colour($colour) {
+  @return govuk-colour($colour, $variant: "shade-50");
+}
+
+/// Get tag background colour
+/// Almost all tags should use the 80% tint of their colour for their background
+///
+/// @param {String} $colour - name of colour from the colour palette
+/// @return {Colour} Representation of the named colour for use in tags
+@function _govuk-tag-background-colour($colour) {
+  @return govuk-colour($colour, $variant: "tint-80");
+}
+
+/// Generate colour CSS for tag and tag modifiers
+/// Applies standard rules from the tag colour functions as well as setting
+/// border colour to `currentcolor` so that it follows the text
+///
+/// @param {String} $colour - name of colour from the colour palette
+@mixin _govuk-tag-colours($colour) {
+  border-color: currentcolor;
+  color: _govuk-tag-text-colour($colour);
+  background-color: _govuk-tag-background-colour($colour);
+}
+
 @include govuk-exports("govuk/component/tag") {
   $govuk-tag-max-width: if(map-has-key($govuk-breakpoints, "mobile"), map-get($govuk-breakpoints, "mobile") / 2, 160px);
 
@@ -20,10 +49,10 @@
     // added.
     margin: -4px 0;
     padding: 4px 8px;
-    border: 1px solid govuk-colour("blue", $variant: "shade-50");
+    border: 1px solid _govuk-tag-text-colour("blue");
     border-radius: 1px;
-    color: govuk-colour("black");
-    background-color: govuk-colour("blue", $variant: "tint-80");
+    color: govuk-color("black");
+    background-color: _govuk-tag-background-colour("blue");
     text-decoration: none;
     overflow-wrap: break-word;
 
@@ -40,53 +69,52 @@
     }
   }
 
-  .govuk-tag--grey {
-    color: govuk-colour("black", $variant: "tint-25");
-    background-color: govuk-colour("black", $variant: "tint-95");
+  // Tag colour modifiers. Use the _govuk-tag-colours mixin to define consistent
+  // colour rules per modifier
+  .govuk-tag--green {
+    @include _govuk-tag-colours("green");
   }
 
   .govuk-tag--purple {
-    color: govuk-colour("purple", $variant: "shade-50");
-    background-color: govuk-colour("purple", $variant: "tint-80");
-  }
-
-  .govuk-tag--turquoise {
-    color: govuk-colour("teal", $variant: "shade-50");
-    background-color: govuk-colour("teal", $variant: "tint-80");
-  }
-
-  .govuk-tag--blue {
-    color: govuk-colour("black");
-    background-color: govuk-colour("blue", $variant: "tint-80");
-  }
-
-  .govuk-tag--light-blue {
-    color: govuk-colour("blue", $variant: "shade-50");
-    background-color: govuk-colour("blue", $variant: "tint-95");
-  }
-
-  .govuk-tag--yellow {
-    color: govuk-colour("yellow", $variant: "shade-50");
-    background-color: govuk-colour("yellow", $variant: "tint-80");
-  }
-
-  .govuk-tag--orange {
-    color: govuk-colour("orange", $variant: "shade-50");
-    background-color: govuk-colour("orange", $variant: "tint-80");
+    @include _govuk-tag-colours("purple");
   }
 
   .govuk-tag--red {
-    color: govuk-colour("red", $variant: "shade-50");
-    background-color: govuk-colour("red", $variant: "tint-80");
+    @include _govuk-tag-colours("red");
+  }
+
+  .govuk-tag--orange {
+    @include _govuk-tag-colours("orange");
+  }
+
+  .govuk-tag--yellow {
+    @include _govuk-tag-colours("yellow");
+  }
+
+  // Turquoise and pink use consistent tag colour rules but a different colour
+  // name; teal for turquoise and magenta for pink
+  .govuk-tag--turquoise {
+    @include _govuk-tag-colours("teal");
   }
 
   .govuk-tag--pink {
-    color: govuk-colour("magenta", $variant: "shade-50");
-    background-color: govuk-colour("magenta", $variant: "tint-80");
+    @include _govuk-tag-colours("magenta");
   }
 
-  .govuk-tag--green {
-    color: govuk-colour("green", $variant: "shade-50");
-    background-color: govuk-colour("green", $variant: "tint-80");
+  // Light blue doesn't follow the tag colour rules because it uses the 95% tint
+  // blue for its background colour
+  .govuk-tag--light-blue {
+    border-color: currentcolor;
+    color: _govuk-tag-text-colour("blue");
+    background-color: govuk-colour("blue", $variant: "tint-95");
+  }
+
+  // Grey can't follow the tag colour rules because `black` follows a different
+  // colour system to other colours where black is the primary colour and greys
+  // are tints traveling up
+  .govuk-tag--grey {
+    border-color: currentcolor;
+    color: govuk-colour("black", "tint-25");
+    background-color: govuk-colour("black", "tint-95");
   }
 }
