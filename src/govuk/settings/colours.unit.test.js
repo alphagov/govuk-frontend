@@ -77,11 +77,11 @@ describe('Organisation colours', () => {
       @each $organisation in map-keys($govuk-colours-organisations) {
 
         $colour: govuk-organisation-colour($organisation);
-        $contrast: ch-color-contrast($govuk-body-background-colour, $colour);
+        $contrast: ch-color-contrast(govuk-applied-colour(body-background), $colour);
 
         @if ($contrast < $minimum-contrast) {
           @error "Contrast ratio for #{$organisation} too low."
-          + " #{$colour} on #{$govuk-body-background-colour} has a contrast of: #{$contrast}."
+          + " #{$colour} on #{govuk-applied-colour('body-background')} has a contrast of: #{$contrast}."
           + " Must be higher than #{$minimum-contrast} for WCAG AA support.";
         }
       }
