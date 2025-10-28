@@ -285,6 +285,73 @@ describe('@function govuk-colour', () => {
   })
 })
 
+describe('@function govuk-applied-colour', () => {
+  let sassBootstrap = ''
+
+  beforeEach(() => {
+    sassBootstrap = `
+      $govuk-applied-colours: (
+        "error": #ff0000,
+        "success": #00ff00,
+        "link": #0000ff,
+        "rebeccapurple": #663399
+      );
+
+      @import "helpers/colour";
+    `
+  })
+
+  it('returns a colour from the applied colour map', async () => {
+    const sass = `
+      ${sassBootstrap}
+
+      .foo {
+        color: govuk-applied-colour('error');
+      }
+    `
+
+    await expect(compileSassString(sass, sassConfig)).resolves.toMatchObject({
+      css: outdent`
+        .foo {
+          color: #ff0000;
+        }
+      `
+    })
+  })
+
+  it('works with unquoted strings', async () => {
+    const sass = `
+      ${sassBootstrap}
+
+      .foo {
+        color: govuk-applied-colour(rebeccapurple);
+      }
+    `
+
+    await expect(compileSassString(sass, sassConfig)).resolves.toMatchObject({
+      css: outdent`
+        .foo {
+          color: #663399;
+        }
+      `
+    })
+  })
+
+  it('throws an error if a non-existent colour is requested', async () => {
+    const sass = `
+      ${sassBootstrap}
+
+      .foo {
+        color: govuk-applied-colour('hooloovoo');
+      }
+    `
+
+    await expect(compileSassString(sass, sassConfig)).rejects.toThrow(
+      'Unknown colour `hooloovoo` (available colours: error, success, link, rebeccapurple)'
+    )
+  })
+})
+
 describe('@function govuk-organisation-colour', () => {
   const sassBootstrap = `
     $govuk-colours-organisations: (
