@@ -5,6 +5,6 @@ import app from './app.mjs'
 const server = await app()
 
 server.listen({
-  host: 'localhost',
+  host: process.env.ALLOW_EXTERNAL_CONNECTIONS ? null : 'localhost',
   port: ports.app
 })
