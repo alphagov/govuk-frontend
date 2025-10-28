@@ -15,7 +15,7 @@
 
     resize: vertical;
 
-    border: $govuk-border-width-form-element solid $govuk-input-border-colour;
+    border: $govuk-border-width-form-element solid govuk-applied-colour(input-border);
     border-radius: 0;
 
     -webkit-appearance: none;
@@ -33,10 +33,10 @@
   }
 
   .govuk-textarea--error {
-    border-color: $govuk-error-colour;
+    border-color: govuk-applied-colour(error);
 
     &:focus {
-      border-color: $govuk-input-border-colour;
+      border-color: govuk-applied-colour(input-border);
     }
   }
 }

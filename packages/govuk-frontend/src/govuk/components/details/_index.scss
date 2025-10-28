@@ -46,7 +46,7 @@
   // like inset text
   @media screen\0 {
     .govuk-details {
-      border-left: $govuk-border-width-wide solid $govuk-border-colour;
+      border-left: $govuk-border-width-wide solid govuk-applied-colour(border);
     }
 
     .govuk-details__summary {
@@ -80,11 +80,11 @@
       padding-left: govuk-spacing(4) + $govuk-border-width;
 
       // Style the summary to look like a link...
-      color: $govuk-link-colour;
+      color: govuk-applied-colour(link);
       cursor: pointer;
 
       &:hover {
-        color: $govuk-link-hover-colour;
+        color: govuk-applied-colour(link-hover);
       }
 
       &:focus {
@@ -130,7 +130,7 @@
     }
 
     .govuk-details__text {
-      border-left: $govuk-border-width solid $govuk-border-colour;
+      border-left: $govuk-border-width solid govuk-applied-colour(border);
     }
   }
 }

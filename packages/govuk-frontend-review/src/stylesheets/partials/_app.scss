@@ -1,5 +1,5 @@
 .app-template {
-  background-color: $govuk-body-background-colour;
+  background-color: govuk-applied-colour(body-background);
 }
 
 // Injected into the preview page, that is then put in an iframe
