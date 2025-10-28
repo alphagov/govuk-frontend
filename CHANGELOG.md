@@ -27,6 +27,16 @@ If you're using an earlier version of Dart Sass than 1.79, see [the Dart Sass re
 
 This change was introduced in [pull request #6366: Update Dart Sass tests minimum version to 1.79.0](https://github.com/alphagov/govuk-frontend/pull/6366)
 
+### New features
+
+#### Tags now have borders for improved legibility
+
+We've reviewed the design of the tag component in response to changes from the new GOV.UK brand colour palette.
+
+Tags now have a 1px border, coloured based on the background colour of the tag, making them easier to distinguish from text.
+
+This change was introduced in [pull request #6379: Add borders to tags](https://github.com/alphagov/govuk-frontend/pull/6379)
+
 ## v6.0.0-beta.0 (Beta breaking release)
 
 To install this version with npm, run `npm install govuk-frontend@6.0.0-beta.0`. You can also find more information about [how to stay up to date](https://frontend.design-system.service.gov.uk/staying-up-to-date/#updating-to-the-latest-version) in our documentation.
