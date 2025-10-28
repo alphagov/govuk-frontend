@@ -18,13 +18,9 @@
     //
     // The negative margin added to the top and bottom matches the extra padding
     // added.
-    margin-top: -2px;
-    margin-bottom: -3px;
 
-    padding-top: 2px;
-    padding-right: 8px;
-    padding-bottom: 3px;
-    padding-left: 8px;
+    margin: -4px 0;
+    padding: 4px 8px;
     border: 1px solid currentcolor;
     border-radius: 1px;
     color: govuk-colour("blue", $variant: "shade-50");
