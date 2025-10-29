@@ -119,7 +119,7 @@
   }
 
   &:hover {
-    color: scale-color($govuk-error-colour, $lightness: -30%);
+    color: govuk-colour("red", $variant: "shade-50");
   }
 
   &:active {
@@ -156,7 +156,7 @@
   }
 
   &:hover {
-    color: scale-color($govuk-success-colour, $lightness: -30%);
+    color: govuk-colour("green", $variant: "shade-50");
   }
 
   &:active {
