@@ -4,10 +4,6 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 ## Unreleased
 
-## v6.0.0-beta.0 (Beta breaking release)
-
-To install this version with npm, run `npm install govuk-frontend@6.0.0-beta.0`. You can also find more information about [how to stay up to date](https://frontend.design-system.service.gov.uk/staying-up-to-date/#updating-to-the-latest-version) in our documentation.
-
 ### Breaking changes
 
 #### We've ended support for Ruby Sass and LibSass
@@ -22,6 +18,20 @@ The Sass developers have provided guides for:
 - [migrating from LibSass to Dart Sass](https://sass-lang.com/blog/libsass-is-deprecated/#how-do-i-migrate)
 
 This change was introduced in [pull request #6311: Remove support for Ruby Sass and LibSass](https://github.com/alphagov/govuk-frontend/pull/6311).
+
+#### We've set our minimum Dart Sass version to 1.79
+
+GOV.UK Frontend will no longer support services using Dart Sass versions earlier than 1.79. If you're using an earlier version of Dart Sass, your service's Sass may break, as GOV.UK Frontend may use features in Dart Sass that are not available in earlier versions.
+
+If you're using an earlier version of Dart Sass than 1.79, see [the Dart Sass releases](https://github.com/sass/dart-sass/releases) and follow their release notes to upgrade to version 1.79 or later to continue using GOV.UK Frontend.
+
+This change was introduced in [pull request #6366: Update Dart Sass tests minimum version to 1.79.0](https://github.com/alphagov/govuk-frontend/pull/6366)
+
+## v6.0.0-beta.0 (Beta breaking release)
+
+To install this version with npm, run `npm install govuk-frontend@6.0.0-beta.0`. You can also find more information about [how to stay up to date](https://frontend.design-system.service.gov.uk/staying-up-to-date/#updating-to-the-latest-version) in our documentation.
+
+### Breaking changes
 
 #### Use GOV.UK brand colours
 
