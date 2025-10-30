@@ -10,12 +10,10 @@ The developers of Sass discontinued Ruby Sass in 2019. LibSass was subsequently 
 
 ## How we determine the minimum Dart Sass version we support
 
-We will update the minimum supported version of Dart Sass with each major release of GOV.UK Frontend, starting from version 6.0.0.
-
-When doing so, we will:
+We'll update the minimum supported version of Dart Sass with each major release of GOV.UK Frontend, starting from version 6.0.0. We plan to do this by following the steps below.
 
 1. Select a version of Dart Sass that was released at least 12 months before the planned release date of the major GOV.UK Frontend version.
 2. Request feedback from the community to find any issues preventing the use of that version of Dart Sass.
-3. If no major problems are identified, update Frontend's documentation and automated tests to use the selected version of Dart Sass.
+3. If no major problems are identified, update GOV.UK Frontend's documentation and automated tests to use the selected version of Dart Sass.
 
-The version of Dart Sass chosen is at the team's discretion, but will take into account factors such as major feature additions, deprecations, or bugfixes included in the version.
+The version of Dart Sass chosen is at the team's discretion, but will take into account factors such as major feature additions, deprecations, or bug fixes included in the version.
