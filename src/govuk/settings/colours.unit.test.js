@@ -62,6 +62,46 @@ describe('Colour palette', () => {
   })
 })
 
+describe('Applied colours', () => {
+  it('should allow people to define custom colours before `@import`', async () => {
+    const sass = `
+      $govuk-applied-colours: (text: rebeccapurple);
+      @import "settings/colours-applied";
+
+      :root {
+        value: map-get($govuk-applied-colours, text);
+      }
+    `
+
+    await expect(compileSassString(sass)).resolves.toMatchObject({
+      css: outdent`
+        :root {
+          value: rebeccapurple;
+        }
+      `
+    })
+  })
+  it('should allow people to define custom colours with `@use`', async () => {
+    const sass = `
+      @use "settings/colours-applied" with (
+        $govuk-applied-colours: (text: rebeccapurple)
+      );
+
+      :root {
+        value: map-get(colours-applied.$govuk-applied-colours, text);
+      }
+    `
+
+    await expect(compileSassString(sass)).resolves.toMatchObject({
+      css: outdent`
+        :root {
+          value: rebeccapurple;
+        }
+      `
+    })
+  })
+})
+
 describe('Organisation colours', () => {
   it('should define contrast-safe colours that meet contrast requirements', async () => {
     const sass = `
