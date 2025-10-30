@@ -104,6 +104,18 @@
   @error "Unknown colour `#{$colour}` (available colours: #{map-keys($govuk-applied-colours)})";
 }
 
+@function _govuk-define-applied-colours($colours, $defaults) {
+  $existing-colours: map-keys($defaults);
+
+  @each $colour-name, $colour in $colours {
+    @if not index($existing-colours, $colour-name) {
+      @error 'Unknown colour `#{$colour-name}` (available colours: #{$existing-colours})';
+    }
+  }
+
+  @return map-merge($defaults, $colours);
+}
+
 /// Get the colour for a government organisation
 ///
 /// @param {String} $organisation - Organisation name, lowercase, hyphenated

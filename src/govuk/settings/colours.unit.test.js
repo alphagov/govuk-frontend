@@ -100,6 +100,19 @@ describe('Applied colours', () => {
       `
     })
   })
+
+  it('prevents people from adding new colours to the applied colours', async () => {
+    const sass = `
+      $govuk-applied-colours: (non-existing-colour: rebeccapurple);
+      @import "settings/colours-applied";
+    `
+
+    await expect(compileSassString(sass)).rejects.toThrow(
+      'Unknown colour `non-existing-colour` (available colours: brand, text, template-background,' +
+        ' body-background, print-text, secondary-text, focus, focus-text, error,' +
+        ' success, border, input-border, hover, link, link-visited, link-hover, link-active)'
+    )
+  })
 })
 
 describe('Organisation colours', () => {
