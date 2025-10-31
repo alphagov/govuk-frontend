@@ -85,7 +85,6 @@
 /// Get the colour for a government organisation
 ///
 /// @param {String} $organisation - Organisation name, lowercase, hyphenated
-/// @param {Boolean} $websafe - Deprecated. Use $contrast-safe instead.
 /// @param {Boolean} $contrast-safe [true] - By default a version of the colour
 ///   will be returned which has a minimum 4.5:1 contrast ratio when used with
 ///   white, as per the WCAG 2.1 Level AA guidelines. If you want to use the
@@ -97,7 +96,7 @@
 /// @throw if `$organisation` is not a known organisation
 /// @access public
 
-@function govuk-organisation-colour($organisation, $websafe: null, $contrast-safe: true) {
+@function govuk-organisation-colour($organisation, $contrast-safe: true) {
   // Check if the $organisation exists in the aliases map. If so, change the
   // value of $organisation to the aliased value.
   @if map-has-key($_govuk_colours-organisations-aliases, $organisation) {
@@ -109,50 +108,21 @@
     @error "Unknown organisation `#{$organisation}`";
   }
 
-  // Output a deprecation warning if the legacy colour palette is being used.
-  // Remove in next major version.
-  $is-legacy: $govuk-colours-organisations == $_govuk-legacy-organisation-colours;
-  @if $is-legacy and _should-warn("legacy-organisation-colours") {
-    @warn _warning-text("legacy-organisation-colours",
-      "We've updated the organisation colour palette. Opt in to the new " +
-      "colours using `$govuk-new-organisation-colours: true`. The old " +
-      "palette is deprecated and we'll remove it in the next major version."
-    );
-  }
-
-  // Output a warning if $websafe is set.
-  @if $websafe and _should-warn("organisation-colour-websafe-param") {
-    @warn _warning-text("organisation-colour-websafe-param",
-      "The `$websafe` parameter of `govuk-organisation-colour` has been " +
-      "renamed to `$contrast-safe`. The old parameter name will be removed in " +
-      "the next major version."
-    );
-  }
-
   $org-colour: map-get($govuk-colours-organisations, $organisation);
 
-  @if map-has-key($org-colour, deprecation-message) and _should-warn("organisation-colours") {
+  // If the organisation has a deprecation message associated with it
+  // (e.g. it has ceased to exist) then output a warning.
+  @if map-has-key($org-colour, "deprecation-message") and _should-warn("organisation-colours") {
     @warn _warning-text(
       "organisation-colours",
-      map-get($org-colour, deprecation-message)
+      map-get($org-colour, "deprecation-message")
     );
   }
 
-  // If the $websafe parameter is being used (it has been explicitly set as true
-  // or false), assume the user hasn't updated to use $contrast-safe yet and map
-  // the old parameter's value onto the new parameter.
-  @if type-of($websafe) != "null" {
-    $contrast-safe: $websafe;
-  }
-
-  // Determine the contrast-safe key to use depending on whether it's the new
-  // palette or the legacy palette
-  $safe-key: if($govuk-new-organisation-colours, "contrast-safe", "colour-websafe");
-
-  @if $contrast-safe and map-has-key($org-colour, $safe-key) {
-    @return map-get($org-colour, $safe-key);
+  @if $contrast-safe and map-has-key($org-colour, "contrast-safe") {
+    @return map-get($org-colour, "contrast-safe");
   } @else {
-    @return map-get($org-colour, colour);
+    @return map-get($org-colour, "colour");
   }
 }
 

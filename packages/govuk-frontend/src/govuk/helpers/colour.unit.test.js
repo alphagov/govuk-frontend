@@ -289,16 +289,16 @@ describe('@function govuk-organisation-colour', () => {
   const sassBootstrap = `
     $govuk-new-organisation-colours: true;
     $govuk-colours-organisations: (
-      'floo-network-authority': (
+      'department-of-social-affairs-citizenship': (
         colour: #EC22FF,
         contrast-safe: #9A00A8
       ),
-      'broom-regulatory-control': (
+      'department-of-administrative-affairs': (
         colour: #A81223
       ),
-      'house-elf-equalities-office': (
+      'ministry-of-silly-walks': (
         colour: #786999,
-        deprecation-message: 'The House Elf Equalities Office was disbanded in 2007.'
+        deprecation-message: 'The Ministry of Silly Walks became the Department for Silly Walks in 2007.'
       )
     );
 
@@ -310,7 +310,7 @@ describe('@function govuk-organisation-colour', () => {
       ${sassBootstrap}
 
       .foo {
-        color: govuk-organisation-colour('floo-network-authority');
+        color: govuk-organisation-colour('department-of-social-affairs-citizenship');
       }
     `
 
@@ -328,7 +328,7 @@ describe('@function govuk-organisation-colour', () => {
       ${sassBootstrap}
 
       .foo {
-        color: govuk-organisation-colour('broom-regulatory-control');
+        color: govuk-organisation-colour('department-of-administrative-affairs');
       }
     `
 
@@ -341,12 +341,12 @@ describe('@function govuk-organisation-colour', () => {
     })
   })
 
-  it('can be overridden to return the non-contrast-safe colour ($contrast-safe parameter)', async () => {
+  it('can be overridden to return the non-contrast-safe colour', async () => {
     const sass = `
       ${sassBootstrap}
 
       .foo {
-        border-color: govuk-organisation-colour('floo-network-authority', $contrast-safe: false);
+        border-color: govuk-organisation-colour('department-of-social-affairs-citizenship', $contrast-safe: false);
       }
     `
 
@@ -359,30 +359,12 @@ describe('@function govuk-organisation-colour', () => {
     })
   })
 
-  it('can be overridden to return the non-contrast-safe colour (deprecated $websafe parameter)', async () => {
-    const sass = `
-      ${sassBootstrap}
-
-      .foo {
-        border-color: govuk-organisation-colour('floo-network-authority', $websafe: false);
-      }
-    `
-
-    await expect(compileSassString(sass, sassConfig)).resolves.toMatchObject({
-      css: outdent`
-        .foo {
-          border-color: #EC22FF;
-        }
-      `
-    })
-  })
-
   it('outputs a warning if the organisation has been deprecated', async () => {
     const sass = `
       ${sassBootstrap}
 
       .foo {
-        color: govuk-organisation-colour('house-elf-equalities-office');
+        color: govuk-organisation-colour('ministry-of-silly-walks');
       }
     `
 
@@ -391,7 +373,7 @@ describe('@function govuk-organisation-colour', () => {
     // Expect our mocked @warn function to have been called once with a single
     // argument, which should be the deprecation notice
     expect(mockWarnFunction).toHaveBeenCalledWith(
-      'The House Elf Equalities Office was disbanded in 2007. To silence this warning, update $govuk-suppressed-warnings with key: "organisation-colours"',
+      'The Ministry of Silly Walks became the Department for Silly Walks in 2007. To silence this warning, update $govuk-suppressed-warnings with key: "organisation-colours"',
       expect.anything()
     )
   })
@@ -401,12 +383,12 @@ describe('@function govuk-organisation-colour', () => {
       ${sassBootstrap}
 
       .foo {
-        color: govuk-organisation-colour('muggle-born-registration-commission');
+        color: govuk-organisation-colour('ministry-of-love');
       }
     `
 
     await expect(compileSassString(sass, sassConfig)).rejects.toThrow(
-      'Unknown organisation `muggle-born-registration-commission`'
+      'Unknown organisation `ministry-of-love`'
     )
   })
 
@@ -431,129 +413,6 @@ describe('@function govuk-organisation-colour', () => {
             color: #e52d13;
           }
         `
-    })
-  })
-
-  describe('legacy palette', () => {
-    const sassBootstrapLegacy = `
-      $govuk-colours-organisations: (
-        'floo-network-authority': (
-          colour: #EC22FF,
-          colour-websafe: #9A00A8
-        ),
-        'broom-regulatory-control': (
-          colour: #A81223
-        )
-      );
-
-      @import "helpers/colour";
-    `
-
-    it('returns the contrast-safe colour for a given organisation by default', async () => {
-      const sass = `
-        ${sassBootstrapLegacy}
-
-        .foo {
-          color: govuk-organisation-colour('floo-network-authority');
-        }
-      `
-
-      await expect(compileSassString(sass, sassConfig)).resolves.toMatchObject({
-        css: outdent`
-          .foo {
-            color: #9A00A8;
-          }
-        `
-      })
-    })
-
-    it('falls back to the default colour if a contrast-safe colour is not explicitly defined', async () => {
-      const sass = `
-        ${sassBootstrapLegacy}
-
-        .foo {
-          color: govuk-organisation-colour('broom-regulatory-control');
-        }
-      `
-
-      await expect(compileSassString(sass, sassConfig)).resolves.toMatchObject({
-        css: outdent`
-          .foo {
-            color: #A81223;
-          }
-        `
-      })
-    })
-
-    it('can be overridden to return the non-contrast-safe colour ($websafe parameter)', async () => {
-      const sass = `
-        ${sassBootstrapLegacy}
-
-        .foo {
-          border-color: govuk-organisation-colour('floo-network-authority', $websafe: false);
-        }
-      `
-
-      await expect(compileSassString(sass, sassConfig)).resolves.toMatchObject({
-        css: outdent`
-          .foo {
-            border-color: #EC22FF;
-          }
-        `
-      })
-    })
-  })
-
-  describe('legacy deprecation message', () => {
-    it('throws a deprecation warning if the legacy palette is being used', async () => {
-      const sass = `
-      @import "helpers/colour";
-
-      .dft {
-        border-color: govuk-organisation-colour('department-for-transport');
-      }
-    `
-
-      await compileSassString(sass, sassConfig)
-
-      // Expect our mocked @warn function to have been called once with a single
-      // argument, which should be the deprecation notice
-      expect(mockWarnFunction).toHaveBeenCalledWith(
-        "We've updated the organisation colour palette. Opt in to the new " +
-          'colours using `$govuk-new-organisation-colours: true`. The old ' +
-          "palette is deprecated and we'll remove it in the next major " +
-          'version. To silence this warning, update $govuk-suppressed-warnings ' +
-          'with key: "legacy-organisation-colours"',
-        expect.anything()
-      )
-    })
-
-    it('does not throw a deprecation warning if the new palette is being used', async () => {
-      const sass = `
-      $govuk-new-organisation-colours: true;
-      @import "settings/colours-organisations";
-    `
-
-      await compileSassString(sass, sassConfig)
-
-      // Expect our mocked @warn function to have not been called
-      expect(mockWarnFunction).not.toHaveBeenCalled()
-    })
-
-    it('does not throw a deprecation warning if the palette has been customised', async () => {
-      const sass = `
-      $govuk-colours-organisations: (
-        "department-of-administrative-affairs": (
-          colour: "#226623"
-        )
-      );
-      @import "settings/colours-organisations";
-    `
-
-      await compileSassString(sass, sassConfig)
-
-      // Expect our mocked @warn function to have not been called
-      expect(mockWarnFunction).not.toHaveBeenCalled()
     })
   })
 })

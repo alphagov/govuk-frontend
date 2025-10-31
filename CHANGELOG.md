@@ -27,6 +27,16 @@ If you're using an earlier version of Dart Sass than 1.79, see [the Dart Sass re
 
 This change was introduced in [pull request #6366: Update Dart Sass tests minimum version to 1.79.0](https://github.com/alphagov/govuk-frontend/pull/6366)
 
+#### Update to the new organisation colour palette
+
+The organisation colour palette was updated in [GOV.UK Frontend 5.9.0](https://github.com/alphagov/govuk-frontend/releases/tag/v5.9.0).
+
+The new palette was initially opt-in using the `$govuk-new-organisation-colours` feature flag. The updated palette is now the only palette available, so the feature flag can be removed from your code.
+
+As part of this work, the deprecated `$websafe` parameter of the `govuk-organisation-colour` function has been removed. Use the `$contrast-safe` parameter when calling the function instead.
+
+This change was introduced in [pull request #6390: Remove legacy organisation colour palette](https://github.com/alphagov/govuk-frontend/pull/6390).
+
 ## v6.0.0-beta.0 (Beta breaking release)
 
 To install this version with npm, run `npm install govuk-frontend@6.0.0-beta.0`. You can also find more information about [how to stay up to date](https://frontend.design-system.service.gov.uk/staying-up-to-date/#updating-to-the-latest-version) in our documentation.
