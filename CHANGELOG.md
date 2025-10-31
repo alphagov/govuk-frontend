@@ -33,6 +33,12 @@ We renamed the `govuk-responsive-typography` Sass mixin to `govuk-font-size` in 
 
 This change was introduced in [pull request #6387: Remove `govuk-responsive-typography` mixin](https://github.com/alphagov/govuk-frontend/pull/6387).
 
+#### Stop using the `--govuk-frontend-breakpoint` CSS custom properties
+
+We renamed CSS custom properties starting `--govuk-frontend-breakpoint` to begin with `--govuk-breakpoint` in [GOV.UK Frontend 5.11.0](https://github.com/alphagov/govuk-frontend/releases/tag/v5.11.0). We've now removed the previous names for these properties.
+
+This change was introduced in [pull request #6385: Remove `--govuk-frontend-breakpoint` CSS properties](https://github.com/alphagov/govuk-frontend/pull/6385).
+
 ## v6.0.0-beta.0 (Beta breaking release)
 
 To install this version with npm, run `npm install govuk-frontend@6.0.0-beta.0`. You can also find more information about [how to stay up to date](https://frontend.design-system.service.gov.uk/staying-up-to-date/#updating-to-the-latest-version) in our documentation.
