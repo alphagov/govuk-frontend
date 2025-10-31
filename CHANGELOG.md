@@ -27,6 +27,12 @@ If you're using an earlier version of Dart Sass than 1.79, see [the Dart Sass re
 
 This change was introduced in [pull request #6366: Update Dart Sass tests minimum version to 1.79.0](https://github.com/alphagov/govuk-frontend/pull/6366)
 
+#### Stop using the `govuk-responsive-typography` Sass mixin
+
+The `govuk-responsive-typography` Sass mixin was renamed to `govuk-font-size` in GOV.UK Frontend 5.1.0](https://github.com/alphagov/govuk-frontend/releases/tag/v5.1.0). The previous name continued to be available, but has now been removed.
+
+This change was introduced in [pull request #6387: Remove `govuk-responsive-typography` mixin](https://github.com/alphagov/govuk-frontend/pull/6387).
+
 ## v6.0.0-beta.0 (Beta breaking release)
 
 To install this version with npm, run `npm install govuk-frontend@6.0.0-beta.0`. You can also find more information about [how to stay up to date](https://frontend.design-system.service.gov.uk/staying-up-to-date/#updating-to-the-latest-version) in our documentation.
