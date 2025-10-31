@@ -123,9 +123,6 @@ $govuk-inverse-button-text-colour: $govuk-brand-colour !default;
       box-shadow: 0 2px 0 $govuk-focus-text-colour;
     }
 
-    // The following adjustments do not work for <input type="button"> as
-    // non-container elements cannot include pseudo elements (i.e. ::before).
-
     // Use a pseudo element to expand the click target area to include the
     // button's shadow as well, in case users try to click it.
     &::before {

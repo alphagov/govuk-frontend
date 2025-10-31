@@ -27,6 +27,16 @@ If you're using an earlier version of Dart Sass than 1.79, see [the Dart Sass re
 
 This change was introduced in [pull request #6366: Update Dart Sass tests minimum version to 1.79.0](https://github.com/alphagov/govuk-frontend/pull/6366)
 
+#### Stop using the `element` parameter of the Button component
+
+The `element` parameter of the Button component Nunjucks macro was deprecated in [GOV.UK Frontend 5.1.0](https://github.com/alphagov/govuk-frontend/releases/tag/v5.1.0) and has been removed.
+
+The component is now output as a link if the `href` parameter is set, otherwise it's a `button` element.
+
+This makes it no longer possible to use `input` elements for buttons. Buttons using `input` are less flexible than `button` elements in terms of styling and content allowed within them, so we want to avoid using them going forward.
+
+This change was introduced in [pull request #6383: Remove element parameter from Button component](https://github.com/alphagov/govuk-frontend/pull/6383)
+
 ## v6.0.0-beta.0 (Beta breaking release)
 
 To install this version with npm, run `npm install govuk-frontend@6.0.0-beta.0`. You can also find more information about [how to stay up to date](https://frontend.design-system.service.gov.uk/staying-up-to-date/#updating-to-the-latest-version) in our documentation.
