@@ -47,6 +47,16 @@ This flag was only intended to be used as a local development aid and not used o
 
 This change was introduced in [pull request #6384: Remove `$govuk-show-breakpoints` feature flag](https://github.com/alphagov/govuk-frontend/pull/6384).
 
+#### Stop using the `element` parameter of the Button component
+
+The `element` parameter of the Button component Nunjucks macro was deprecated in [GOV.UK Frontend 5.1.0](https://github.com/alphagov/govuk-frontend/releases/tag/v5.1.0), and we've now removed it.
+
+The component is now output as a link if the `href` parameter is set. Otherwise, it's a `button` element.
+
+This means it's no longer possible to use `input` elements for buttons. Buttons using `input` are less flexible than `button` elements in terms of styling and content allowed within them, so we want to avoid using them.
+
+This change was introduced in [pull request #6383: Remove element parameter from Button component](https://github.com/alphagov/govuk-frontend/pull/6383)
+
 ## v6.0.0-beta.0 (Beta breaking release)
 
 To install this version with npm, run `npm install govuk-frontend@6.0.0-beta.0`. You can also find more information about [how to stay up to date](https://frontend.design-system.service.gov.uk/staying-up-to-date/#updating-to-the-latest-version) in our documentation.
