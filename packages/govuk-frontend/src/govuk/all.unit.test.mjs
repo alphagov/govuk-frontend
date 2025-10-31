@@ -94,9 +94,12 @@ describe('GOV.UK Frontend', () => {
   it('does not contain any unexpected govuk- function calls', async () => {
     const sass = '@import "index"'
 
-    await expect(compileSassString(sass)).resolves.toMatchObject({
-      css: expect.not.stringMatching(/_?govuk-[\w-]+\(.*?\)/g)
-    })
+    const { css } = await compileSassString(sass)
+    const matches = css.matchAll(/_?govuk-[\w-]+\(.*?\)/g)
+
+    // `matchAll` does not return an actual `Array` so we need
+    // a little conversion before we can check its length
+    expect(Array.from(matches)).toHaveLength(0)
   })
 
   describe('Sass documentation', () => {
