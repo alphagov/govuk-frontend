@@ -85,7 +85,7 @@ To make it easier to upgrade, in cases where a colour name does not exist in the
 | `pink`          | `#d53880`      | Primary magenta   | `#ca357c`      |
 | `light-green`   | `#85994b`      | Green tint 25%    | `#4da583`      |
 | `turquoise`     | `#28a197`      | Primary teal      | `#158187`      |
-| `light-blue`    | `#5694ca`      | Blue tint 50%     | `#5694ca`      |
+| `light-blue`    | `#5694ca`      | Blue tint 25%     | `#5694ca`      |
 | `dark-blue`     | `#003078`      | Blue shade 50%    | `#0f385c`      |
 | `light-purple`  | `#6f72af`      | Purple tint 25%   | `#7f65b7`      |
 | `bright-purple` | `#912b88`      | Magenta shade 25% | `#98285d`      |
