@@ -6,8 +6,5 @@
   // CSS custom property for each breakpoint
   @each $name, $value in $govuk-breakpoints {
     --govuk-breakpoint-#{$name}: #{govuk-px-to-rem($value)};
-
-    // Deprecated, use `--govuk-breakpoint-[name]` instead
-    --govuk-frontend-breakpoint-#{$name}: var(--govuk-breakpoint-#{$name});
   }
 }
