@@ -3,12 +3,12 @@
     @include govuk-font($size: 19);
     @include govuk-responsive-margin(8, "bottom");
 
-    border: $govuk-border-width solid $govuk-brand-colour;
+    border: $govuk-border-width solid govuk-applied-colour(brand);
 
-    background-color: $govuk-brand-colour;
+    background-color: govuk-applied-colour(brand);
 
     &:focus {
-      outline: $govuk-focus-width solid $govuk-focus-colour;
+      outline: $govuk-focus-width solid govuk-applied-colour(focus);
     }
   }
 
@@ -39,7 +39,7 @@
     @include govuk-text-colour;
     padding: govuk-spacing(3);
 
-    background-color: $govuk-body-background-colour;
+    background-color: govuk-applied-colour(body-background);
 
     @media #{govuk-from-breakpoint(tablet)} {
       padding: $padding-tablet;
@@ -80,9 +80,9 @@
   }
 
   .govuk-notification-banner--success {
-    border-color: $govuk-success-colour;
+    border-color: govuk-applied-colour(success);
 
-    background-color: $govuk-success-colour;
+    background-color: govuk-applied-colour(success);
 
     .govuk-notification-banner__link {
       @include govuk-link-style-success;

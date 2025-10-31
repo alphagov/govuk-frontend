@@ -119,7 +119,7 @@
       outline-color: Highlight;
     }
 
-    box-shadow: 0 0 0 $govuk-focus-width $govuk-focus-colour;
+    box-shadow: 0 0 0 $govuk-focus-width govuk-applied-colour(focus);
   }
 
   // Selected state
@@ -169,7 +169,7 @@
     @include govuk-responsive-margin(4, "bottom");
     margin-left: $conditional-margin-left;
     padding-left: $conditional-padding-left;
-    border-left: $conditional-border-width solid $govuk-border-colour;
+    border-left: $conditional-border-width solid govuk-applied-colour(border);
 
     .govuk-frontend-supported &--hidden {
       display: none;
@@ -271,7 +271,7 @@
       // Apply an outline for those modes to use instead.
       outline: $govuk-focus-width dashed transparent;
       outline-offset: 1px;
-      box-shadow: 0 0 0 $govuk-hover-width $govuk-hover-colour;
+      box-shadow: 0 0 0 $govuk-hover-width govuk-applied-colour(hover);
     }
 
     // Because we've overridden the border-shadow provided by the focus state,
@@ -286,8 +286,8 @@
       }
       // prettier-ignore
       box-shadow:
-        0 0 0 $govuk-focus-width $govuk-focus-colour, // 1
-        0 0 0 $govuk-hover-width $govuk-hover-colour; // 2
+        0 0 0 $govuk-focus-width govuk-applied-colour(focus), // 1
+        0 0 0 $govuk-hover-width govuk-applied-colour(hover); // 2
     }
 
     // For devices that explicitly don't support hover, don't provide a hover
@@ -302,7 +302,7 @@
       }
 
       .govuk-checkboxes__item:hover .govuk-checkboxes__input:focus + .govuk-checkboxes__label::before {
-        box-shadow: 0 0 0 $govuk-focus-width $govuk-focus-colour;
+        box-shadow: 0 0 0 $govuk-focus-width govuk-applied-colour(focus);
       }
     }
   }
