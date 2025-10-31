@@ -73,7 +73,6 @@
   // Only show first, last and non-link items on mobile
   .govuk-pagination__item--current,
   .govuk-pagination__item--ellipsis,
-  .govuk-pagination__item--ellipses,
   .govuk-pagination__item:first-child,
   .govuk-pagination__item:last-child {
     display: block;
@@ -93,8 +92,7 @@
     }
   }
 
-  .govuk-pagination__item--ellipsis,
-  .govuk-pagination__item--ellipses {
+  .govuk-pagination__item--ellipsis {
     @include govuk-typography-weight-bold;
     color: $govuk-secondary-text-colour;
 
