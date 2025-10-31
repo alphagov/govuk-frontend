@@ -58,6 +58,14 @@ examples:
     screenshot: true
     options:
       text: Save and continue
+  - name: default hover state
+    options:
+      text: Save and continue
+      classes: :hover
+  - name: focus state
+    options:
+      text: Save and continue
+      classes: :focus
   - name: disabled
     options:
       text: Disabled button
@@ -82,12 +90,36 @@ examples:
       name: secondary
       text: Secondary button
       classes: govuk-button--secondary
+  - name: secondary hover state
+    description: A button for secondary actions
+    options:
+      name: secondary
+      text: Secondary button
+      classes: govuk-button--secondary :hover
+  - name: secondary disabled
+    options:
+      name: secondary
+      text: Secondary button disabled
+      classes: govuk-button--secondary
+      disabled: true
   - name: warning
     description: A button for actions that need a warning
     options:
       name: Warning
       text: Warning button
       classes: govuk-button--warning
+  - name: warning hover state
+    description: A button for actions that need a warning
+    options:
+      name: Warning
+      text: Warning button
+      classes: govuk-button--warning :hover
+  - name: warning disabled
+    options:
+      name: warning
+      text: Warning button disabled
+      classes: govuk-button--warning
+      disabled: true
   - name: inverse
     screenshot: true
     description: A button that appears on dark backgrounds
@@ -97,6 +129,23 @@ examples:
       name: Inverse
       text: Inverse button
       classes: govuk-button--inverse
+  - name: inverse hover state
+    description: A button that appears on dark backgrounds
+    pageTemplateOptions:
+      bodyClasses: app-template__body--inverse
+    options:
+      name: Inverse
+      text: Inverse button
+      classes: govuk-button--inverse :hover
+  - name: inverse disabled
+    description: A button that appears on dark backgrounds
+    pageTemplateOptions:
+      bodyClasses: app-template__body--inverse
+    options:
+      name: Inverse
+      text: Inverse button
+      classes: govuk-button--inverse
+      disabled: true
 
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: attributes
