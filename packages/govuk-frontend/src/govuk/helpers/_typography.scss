@@ -116,30 +116,6 @@
 
 /// Font size and line height helper
 ///
-/// @param {Number} $size - Point from the type scale (the size as it would
-///   appear on tablet and above)
-/// @param {Number} $override-line-height [false] - Non responsive custom line
-///   height. Omit to use the line height from the font map.
-/// @param {Boolean} $important [false] - Whether to mark declarations as
-///   `!important`.
-///
-/// @throw if `$size` is not a valid point from the type scale
-///
-/// @access public
-///
-/// @alias govuk-font-size
-/// @deprecated Use `govuk-font-size` instead
-
-@mixin govuk-typography-responsive($size, $override-line-height: false, $important: false) {
-  @include _warning(
-    "govuk-typography-responsive",
-    "govuk-typography-responsive is deprecated. Use govuk-font-size instead."
-  );
-  @include govuk-font-size($size, $override-line-height, $important);
-}
-
-/// Font size and line height helper
-///
 /// Takes a point from the responsive 'font map' as an argument (the size as it
 /// would appear on tablet and above), and uses it to create font-size and
 /// line-height declarations for different breakpoints, and print.
