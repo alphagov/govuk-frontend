@@ -27,6 +27,16 @@ If you're using an earlier version of Dart Sass than 1.79, see [the Dart Sass re
 
 This change was introduced in [pull request #6366: Update Dart Sass tests minimum version to 1.79.0](https://github.com/alphagov/govuk-frontend/pull/6366)
 
+#### Update references to `govuk-pagination__item--ellipses` class from the HTML for the Pagination component
+
+The `govuk-pagination__item--ellipses` class was deprecated in [GOV.UK Frontend 5.13.0](https://github.com/alphagov/govuk-frontend/releases/tag/v5.13.0) and has now been removed.
+
+If you are not using Nunjucks macros, you should update instances of this class to use the `govuk-pagination__item--ellipsis` class instead.
+
+Users of Nunjucks macros don't need to change anything.
+
+We introduced this change in [pull request #6382: Remove deprecated `govuk-pagination__item--ellipses` class](https://github.com/alphagov/govuk-frontend/pull/6382).
+
 #### Stop using the `govuk-responsive-typography` Sass mixin
 
 We renamed the `govuk-responsive-typography` Sass mixin to `govuk-font-size` in GOV.UK Frontend 5.1.0](https://github.com/alphagov/govuk-frontend/releases/tag/v5.1.0). We've now removed the previous name entirely.
