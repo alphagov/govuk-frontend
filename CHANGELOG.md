@@ -37,6 +37,16 @@ Users of Nunjucks macros don't need to change anything.
 
 We introduced this change in [pull request #6382: Remove deprecated `govuk-pagination__item--ellipses` class](https://github.com/alphagov/govuk-frontend/pull/6382).
 
+#### Update to the new organisation colour palette
+
+We updated the organisation colour palette in [GOV.UK Frontend 5.9.0](https://github.com/alphagov/govuk-frontend/releases/tag/v5.9.0).
+
+The new palette was initially opt-in using the `$govuk-new-organisation-colours` feature flag. The updated palette is now the only palette available, so you can remove the feature flag from your code.
+
+As part of this work, we removed the deprecated `$websafe` parameter of the `govuk-organisation-colour` function. Use the `$contrast-safe` parameter when calling the function instead.
+
+This change was introduced in [pull request #6390: Remove legacy organisation colour palette](https://github.com/alphagov/govuk-frontend/pull/6390).
+
 #### Stop using the `govuk-responsive-typography` Sass mixin
 
 We renamed the `govuk-responsive-typography` Sass mixin to `govuk-font-size` in GOV.UK Frontend 5.1.0](https://github.com/alphagov/govuk-frontend/releases/tag/v5.1.0). We've now removed the previous name entirely.
