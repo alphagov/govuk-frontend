@@ -27,6 +27,16 @@ If you're using an earlier version of Dart Sass than 1.79, see [the Dart Sass re
 
 This change was introduced in [pull request #6366: Update Dart Sass tests minimum version to 1.79.0](https://github.com/alphagov/govuk-frontend/pull/6366)
 
+#### Update references to `govuk-pagination__item--ellipses` class from the HTML for the Pagination component
+
+The `govuk-pagination__item--ellipses` class was deprecated in [GOV.UK Frontend 5.13.0](https://github.com/alphagov/govuk-frontend/releases/tag/v5.13.0) and has now been removed.
+
+If you are not using Nunjucks macros, you should update instances of this class to use the `govuk-pagination__item--ellipsis` class instead.
+
+Users of Nunjucks macros don't need to change anything.
+
+We introduced this change in [pull request #6382: Remove deprecated `govuk-pagination__item--ellipses` class](https://github.com/alphagov/govuk-frontend/pull/6382).
+
 ## v6.0.0-beta.0 (Beta breaking release)
 
 To install this version with npm, run `npm install govuk-frontend@6.0.0-beta.0`. You can also find more information about [how to stay up to date](https://frontend.design-system.service.gov.uk/staying-up-to-date/#updating-to-the-latest-version) in our documentation.
