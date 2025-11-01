@@ -59,7 +59,7 @@
     "concurrently": "^9.2.1",
     "cross-env": "^10.0.0",
     "del-cli": "^6.0.0",
-    "editorconfig-checker": "^6.1.0",
+    "editorconfig-checker": "^6.1.1",
     "eslint": "^8.57.1",
     "eslint-config-prettier": "^10.1.8",
     "eslint-config-standard": "^17.1.0",
@@ -85,7 +85,7 @@
     "prettier": "^3.6.2",
     "semver": "^7.7.2",
     "standard": "^17.1.2",
-    "stylelint": "^16.24.0",
+    "stylelint": "^16.25.0",
     "stylelint-config-gds": "^2.0.0",
     "stylelint-order": "^7.0.0",
     "typescript": "^5.9.3"
