@@ -14,7 +14,7 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@axe-core/puppeteer": "^4.10.2",
+    "@axe-core/puppeteer": "^4.11.0",
     "@govuk-frontend/config": "*",
     "@govuk-frontend/lib": "*",
     "axe-core": "^4.10.3",
@@ -27,7 +27,7 @@
     "jest-environment-puppeteer": "^11.0.0",
     "mime-types": "^3.0.1",
     "outdent": "^0.8.0",
-    "puppeteer": "^24.23.0",
+    "puppeteer": "^24.27.0",
     "sass-embedded": "^1.89.2",
     "slug": "^9.1.0"
   },
