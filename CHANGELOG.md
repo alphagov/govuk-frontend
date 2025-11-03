@@ -29,7 +29,7 @@ This change was introduced in [pull request #6366: Update Dart Sass tests minimu
 
 #### Stop using the `govuk-responsive-typography` Sass mixin
 
-The `govuk-responsive-typography` Sass mixin was renamed to `govuk-font-size` in GOV.UK Frontend 5.1.0](https://github.com/alphagov/govuk-frontend/releases/tag/v5.1.0). The previous name continued to be available, but has now been removed.
+We renamed the `govuk-responsive-typography` Sass mixin to `govuk-font-size` in GOV.UK Frontend 5.1.0](https://github.com/alphagov/govuk-frontend/releases/tag/v5.1.0). We've now removed the previous name entirely.
 
 This change was introduced in [pull request #6387: Remove `govuk-responsive-typography` mixin](https://github.com/alphagov/govuk-frontend/pull/6387).
 
