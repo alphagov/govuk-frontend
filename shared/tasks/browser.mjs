@@ -6,19 +6,7 @@ import { goToComponent, goToExample } from '@govuk-frontend/helpers/puppeteer'
 import { getComponentNames, getExamples } from '@govuk-frontend/lib/components'
 import { getListing, getYaml } from '@govuk-frontend/lib/files'
 import percySnapshot from '@percy/puppeteer'
-import puppeteer from 'puppeteer'
-
-/**
- * Puppeteer browser launcher
- *
- * @returns {Promise<Browser>} Puppeteer browser object
- */
-export async function launch() {
-  await download()
-
-  // Open browser
-  return puppeteer.launch({ headless: true })
-}
+import { launch } from 'puppeteer'
 
 /**
  * Send screenshots in concurrent batches to Percy
@@ -27,7 +15,9 @@ export async function launch() {
  * @returns {Promise<void>}
  */
 export async function screenshots() {
-  const browser = await launch()
+  await download()
+
+  const browser = await launch({ headless: true })
   const componentNames = await getComponentNames()
 
   // Screenshot components
