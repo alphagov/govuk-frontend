@@ -37,6 +37,24 @@ Users of Nunjucks macros don't need to change anything.
 
 We introduced this change in [pull request #6382: Remove deprecated `govuk-pagination__item--ellipses` class](https://github.com/alphagov/govuk-frontend/pull/6382).
 
+#### Stop importing GOV.UK Frontend's Sass using `all`
+
+GOV.UK Frontend's `all.scss` file and partials were deprecated in [GOV.UK Frontend 5.8.0](https://github.com/alphagov/govuk-frontend/releases/tag/v5.8.0) and were replaced by equivalent [Sass `index` files](https://sass-lang.com/documentation/at-rules/use/#index-files). We've now removed the files entirely.
+
+With the move to Dart Sass, you can now simplify how you import Sass from GOV.UK Frontend.
+
+```scss
+// Before
+@import "govuk/all";
+@import "govuk/components/all"
+
+// After
+@import "govuk";
+@import "govuk/components"
+```
+
+This change was introduced in [pull request #6412: Remove `all.scss` file and partials](https://github.com/alphagov/govuk-frontend/pull/6412).
+
 #### Update to the new organisation colour palette
 
 We updated the organisation colour palette in [GOV.UK Frontend 5.9.0](https://github.com/alphagov/govuk-frontend/releases/tag/v5.9.0).
@@ -49,7 +67,7 @@ This change was introduced in [pull request #6390: Remove legacy organisation co
 
 #### Stop using the `govuk-responsive-typography` Sass mixin
 
-We renamed the `govuk-responsive-typography` Sass mixin to `govuk-font-size` in GOV.UK Frontend 5.1.0](https://github.com/alphagov/govuk-frontend/releases/tag/v5.1.0). We've now removed the previous name entirely.
+We renamed the `govuk-responsive-typography` Sass mixin to `govuk-font-size` in [GOV.UK Frontend 5.1.0](https://github.com/alphagov/govuk-frontend/releases/tag/v5.1.0). We've now removed the previous name entirely.
 
 This change was introduced in [pull request #6387: Remove `govuk-responsive-typography` mixin](https://github.com/alphagov/govuk-frontend/pull/6387).
 

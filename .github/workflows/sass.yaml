@@ -84,7 +84,7 @@ jobs:
       - name: Run command
         run: |
           mkdir -p .tmp
-          time sh -c 'echo "@import "\""govuk/all"\"";" | sass --stdin --quiet-deps --load-path=packages/govuk-frontend/src > .tmp/index.css'
+          time sh -c 'echo "@import "\""govuk/index"\"";" | sass --stdin --quiet-deps --load-path=packages/govuk-frontend/src > .tmp/index.css'
 
       # Check output for uncompiled Sass
       - name: Check output
