@@ -22,28 +22,6 @@ $govuk-brand-colour: govuk-colour("blue") !default;
 
 $govuk-text-colour: govuk-colour("black") !default;
 
-/// Canvas background colour
-///
-/// Used by the footer component and template to give the illusion of a long
-/// footer.
-///
-/// @type Colour
-/// @access public
-/// @deprecated "$govuk-canvas-background-colour has been deprecated and will be removed in the next major
-/// version. Use `$govuk-template-background-colour` if you want to change the background of
-/// the `<html>` element and background colour of elements that need to match for visual
-/// continuity.
-$govuk-canvas-background-colour: govuk-colour("black", $variant: "tint-95") !default;
-
-// Output a deprecation warning if $govuk-canvas-background-colour is being overridden
-// Remove in next major version.
-@if $govuk-canvas-background-colour != govuk-colour("black", $variant: "tint-95") {
-  @include _warning(
-    "$govuk-canvas-background-colour",
-    "$govuk-canvas-background-colour has been deprecated and will be removed in the next major version."
-  );
-}
-
 /// Template background colour
 ///
 /// Used by components that want to give the illusion of extending

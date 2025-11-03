@@ -77,6 +77,12 @@ This means it's no longer possible to use `input` elements for buttons. Buttons 
 
 This change was introduced in [pull request #6383: Remove element parameter from Button component](https://github.com/alphagov/govuk-frontend/pull/6383)
 
+#### Stop using `$govuk-canvas-background-colour`
+
+We renamed `$govuk-canvas-background-colour` to `$govuk-template-background-colour` in [GOV.UK Frontend 5.10.0](https://github.com/alphagov/govuk-frontend/releases/tag/v5.10.0). We've now removed the previous variable entirely.
+
+This change was introduced in [pull request #6413: Remove `$govuk-canvas-background-colour`](https://github.com/alphagov/govuk-frontend/pull/6413)
+
 ## v6.0.0-beta.0 (Beta breaking release)
 
 To install this version with npm, run `npm install govuk-frontend@6.0.0-beta.0`. You can also find more information about [how to stay up to date](https://frontend.design-system.service.gov.uk/staying-up-to-date/#updating-to-the-latest-version) in our documentation.
