@@ -172,7 +172,7 @@ describe('packages/govuk-frontend/dist/', () => {
     // as the root for compilation
     describe('all.scss', () => {
       it('should compile without throwing an exception', async () => {
-        const file = join(paths.package, 'dist/govuk/all.scss')
+        const file = join(paths.package, 'dist/govuk/index.scss')
         await expect(compileSassFile(file)).resolves.not.toThrow()
       })
     })
