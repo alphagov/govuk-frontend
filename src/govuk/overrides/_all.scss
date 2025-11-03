@@ -1,7 +1,0 @@
-@import "../settings/warnings";
-@import "index";
-
-@include _warning(
-  "import-using-all",
-  "Importing using 'govuk/overrides/all' is deprecated. Update your import statement to import 'govuk/overrides/index'."
-);
