@@ -1,8 +1,0 @@
-@import "../settings/warnings";
-@import "index";
-
-@include _warning(
-  "import-using-all",
-  "Importing using 'govuk/components/all' is deprecated. Update your import statement to import 'govuk/components/index'.",
-  $silence-further-warnings: false
-);
