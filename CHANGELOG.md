@@ -39,6 +39,14 @@ We renamed CSS custom properties starting `--govuk-frontend-breakpoint` to begin
 
 This change was introduced in [pull request #6385: Remove `--govuk-frontend-breakpoint` CSS properties](https://github.com/alphagov/govuk-frontend/pull/6385).
 
+#### Remove references to the `$govuk-show-breakpoints` feature flag
+
+The `$govuk-show-breakpoints` feature flag was deprecated and rendered non-operational by the media query changes introduced in [GOV.UK Frontend 5.13.0](https://github.com/alphagov/govuk-frontend/releases/tag/v5.13.0).
+
+This flag was only intended to be used as a local development aid and not used on production services, and we've now removed it.
+
+This change was introduced in [pull request #6384: Remove `$govuk-show-breakpoints` feature flag](https://github.com/alphagov/govuk-frontend/pull/6384).
+
 ## v6.0.0-beta.0 (Beta breaking release)
 
 To install this version with npm, run `npm install govuk-frontend@6.0.0-beta.0`. You can also find more information about [how to stay up to date](https://frontend.design-system.service.gov.uk/staying-up-to-date/#updating-to-the-latest-version) in our documentation.
