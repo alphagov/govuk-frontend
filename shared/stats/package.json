@@ -19,10 +19,10 @@
     "filesize": "^11.0.13"
   },
   "devDependencies": {
-    "@rollup/plugin-node-resolve": "^16.0.1",
+    "@rollup/plugin-node-resolve": "^16.0.3",
     "@rollup/plugin-terser": "^0.4.4",
     "govuk-frontend": "*",
-    "rollup": "^4.52.3",
-    "rollup-plugin-visualizer": "^6.0.3"
+    "rollup": "^4.52.5",
+    "rollup-plugin-visualizer": "^6.0.5"
   }
 }
