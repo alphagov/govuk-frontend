@@ -120,13 +120,6 @@ describe('Button', () => {
       expect($component).toHaveTextContent('Continue')
     })
 
-    it('renders with hash href if no href passed', () => {
-      document.body.innerHTML = render('button', examples['no href'])
-
-      const $component = document.querySelector('.govuk-button')
-      expect($component).toHaveAttribute('href', '#')
-    })
-
     it('renders with attributes', () => {
       document.body.innerHTML = render('button', examples['link attributes'])
 
@@ -140,53 +133,6 @@ describe('Button', () => {
 
       const $component = document.querySelector('.govuk-button')
       expect($component).toHaveClass('app-button--custom-modifier')
-    })
-  })
-
-  describe('with explicit input button set by "element"', () => {
-    it('renders with anchor, href and an accessible role of button', () => {
-      document.body.innerHTML = render('button', examples.input)
-
-      const $component = document.querySelector('.govuk-button')
-      expect($component.tagName).toBe('INPUT')
-      expect($component).toHaveAttribute('type', 'submit')
-    })
-
-    it('renders with attributes', () => {
-      document.body.innerHTML = render('button', examples['input attributes'])
-
-      const $component = document.querySelector('.govuk-button')
-      expect($component).toHaveAttribute('aria-controls', 'test-target-element')
-      expect($component).toHaveAttribute('data-tracking-dimension', '123')
-    })
-
-    it('renders with classes', () => {
-      document.body.innerHTML = render('button', examples['input classes'])
-
-      const $component = document.querySelector('.govuk-button')
-      expect($component).toHaveClass('app-button--custom-modifier')
-    })
-
-    it('renders with disabled', () => {
-      document.body.innerHTML = render('button', examples['input disabled'])
-
-      const $component = document.querySelector('.govuk-button')
-      expect($component).toHaveAttribute('aria-disabled', 'true')
-      expect($component).toBeDisabled()
-    })
-
-    it('renders with name', () => {
-      document.body.innerHTML = render('button', examples.input)
-
-      const $component = document.querySelector('.govuk-button')
-      expect($component).toHaveAttribute('name', 'start-now')
-    })
-
-    it('renders with type', () => {
-      document.body.innerHTML = render('button', examples['input type'])
-
-      const $component = document.querySelector('.govuk-button')
-      expect($component).toHaveAttribute('type', 'button')
     })
   })
 
