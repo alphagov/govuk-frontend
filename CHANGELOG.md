@@ -101,6 +101,14 @@ We renamed `$govuk-canvas-background-colour` to `$govuk-template-background-colo
 
 This change was introduced in [pull request #6413: Remove `$govuk-canvas-background-colour`](https://github.com/alphagov/govuk-frontend/pull/6413)
 
+#### Stop using St. Edward's Crown and the `useTudorCrown` parameter
+
+GOV.UK updated its logo to replace the St. Edward's Crown with the Tudor Crown in [GOV.UK Frontend 5.1.0](https://github.com/alphagov/govuk-frontend/releases/tag/v5.1.0). The Tudor Crown became the default in [5.2.0](https://github.com/alphagov/govuk-frontend/releases/tag/v5.2.0), which is when the option to switch between crowns was deprecated.
+
+We've now removed the Header component's `useTudorCrown` parameter and assets relating to the St. Edward's Crown.
+
+This change was introduced in [pull request #6414: Remove `useTudorCrown` parameter and St. Edwards crown assets](https://github.com/alphagov/govuk-frontend/pull/6414)
+
 ### Fixes
 
 #### Tags now have borders for improved legibility
