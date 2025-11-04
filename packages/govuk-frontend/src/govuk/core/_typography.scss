@@ -128,20 +128,6 @@
     @extend %govuk-body-s;
   }
 
-  // @deprecated
-  %govuk-body-xs {
-    @include govuk-text-colour;
-    @include govuk-font($size: _14);
-
-    margin-top: 0;
-    @include govuk-responsive-margin(4, "bottom");
-  }
-
-  // @deprecated
-  .govuk-body-xs {
-    @extend %govuk-body-xs;
-  }
-
   // Usage aliases
 
   // Using extend to alias means we also inherit any contextual adjustments that
