@@ -9,13 +9,11 @@
     border-collapse: collapse;
   }
 
-  @if $govuk-new-typography-scale {
-    // Modifier for tables with a lot of data. Tables with lots of data benefit
-    // from a smaller font size on small screens.
-    .govuk-table--small-text-until-tablet {
-      @media #{govuk-until-breakpoint(tablet)} {
-        @include govuk-font-size($size: 16);
-      }
+  // Modifier for tables with a lot of data. Tables with lots of data benefit
+  // from a smaller font size on small screens.
+  .govuk-table--small-text-until-tablet {
+    @media #{govuk-until-breakpoint(tablet)} {
+      @include govuk-font-size($size: 16);
     }
   }
 

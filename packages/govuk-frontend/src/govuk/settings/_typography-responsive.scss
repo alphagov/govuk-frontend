@@ -16,19 +16,6 @@
 
 $govuk-root-font-size: 16px !default;
 
-/// Feature flag for new typography scale
-///
-/// When set to true, $govuk-typography-scale will use the new font map instead
-/// of the current/old one as well as apply changes in components to account
-/// for the updated scale.
-///
-/// Should be removed in 6.0.
-///
-/// @type Boolean
-/// @access public
-
-$govuk-new-typography-scale: false !default;
-
 /// Responsive typography font map
 ///
 /// This is used to generate responsive typography that adapts according to the
