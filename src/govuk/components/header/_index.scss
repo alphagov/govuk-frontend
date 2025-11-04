@@ -133,7 +133,7 @@
   }
 
   .govuk-header__product-name {
-    $product-name-offset: if($govuk-new-typography-scale, 7px, 10px);
+    $product-name-offset: 7px;
     $product-name-offset-tablet: 5px;
 
     @include govuk-font-size($size: 24, $line-height: 1);

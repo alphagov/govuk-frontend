@@ -8,7 +8,7 @@
   $govuk-footer-crest-image-height: 102px;
 
   .govuk-footer {
-    @include govuk-font($size: if($govuk-new-typography-scale, 19, 16));
+    @include govuk-font($size: 19);
     @include govuk-responsive-padding(7, "top");
     @include govuk-responsive-padding(5, "bottom");
 
