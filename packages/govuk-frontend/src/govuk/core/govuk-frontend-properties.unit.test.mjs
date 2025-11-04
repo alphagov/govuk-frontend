@@ -19,10 +19,10 @@ describe('GOV.UK Frontend custom properties', () => {
       @import "core/govuk-frontend-properties";
     `
 
-    const {css} = await compileSassString(sass);
-    const rootOccurrences = css.matchAll(/:root/g);
+    const { css } = await compileSassString(sass)
+    const rootOccurrences = css.matchAll(/:root/g)
 
-    expect(Array.from(rootOccurrences)).toHaveLength(1);
+    expect(Array.from(rootOccurrences)).toHaveLength(1)
   })
 
   describe('breakpoints', () => {
@@ -40,6 +40,25 @@ describe('GOV.UK Frontend custom properties', () => {
 
       await expect(css).toContain('--govuk-breakpoint-mobile: 20rem;')
       await expect(css).toContain('--govuk-breakpoint-desktop: 47.5rem;')
+    })
+  })
+
+  describe('applied colours', () => {
+    it('outputs one custom property for each applied colour', async () => {
+      const sass = `
+        @import "base";
+        $govuk-applied-colours: (
+          brand: govuk-colour('blue'),
+          text: govuk-colour('black')
+        );
+
+        @import "core/govuk-frontend-properties";
+      `
+
+      const { css } = await compileSassString(sass)
+
+      await expect(css).toContain('--_govuk-colour-brand: #1d70b8;')
+      await expect(css).toContain('--_govuk-colour-text: #0b0c0c;')
     })
   })
 })
