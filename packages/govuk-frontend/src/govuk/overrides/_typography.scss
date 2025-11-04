@@ -3,8 +3,6 @@
 
   // Generate typography override classes for each responsive font map in the
   // typography scale eg .govuk-\!-font-size-80
-  //
-  // govuk-!-font-size-14 is deprecated
   @each $size, $font-map in $govuk-typography-scale {
     .govuk-\!-font-size-#{$size} {
       $font-map: map-get($govuk-typography-scale, $size);
