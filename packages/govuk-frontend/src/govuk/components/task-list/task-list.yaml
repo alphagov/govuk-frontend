@@ -153,7 +153,7 @@ examples:
           status:
             tag:
               text: Review
-              classes: govuk-tag--pink
+              classes: govuk-tag--magenta
         - title:
             text: Documentation
           href: '#'
@@ -216,8 +216,8 @@ examples:
           href: '#'
           status:
             tag:
-              text: Turquoise
-              classes: govuk-tag--turquoise
+              text: Teal
+              classes: govuk-tag--teal
         - title:
             text: Task G
           href: '#'
@@ -237,8 +237,8 @@ examples:
           href: '#'
           status:
             tag:
-              text: Pink
-              classes: govuk-tag--pink
+              text: Magenta
+              classes: govuk-tag--magenta
         - title:
             text: Task J
           href: '#'

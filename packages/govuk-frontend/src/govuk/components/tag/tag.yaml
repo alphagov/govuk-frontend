@@ -31,8 +31,8 @@ examples:
       classes: govuk-tag--light-blue
   - name: turquoise
     options:
-      text: Turquoise
-      classes: govuk-tag--turquoise
+      text: Teal
+      classes: govuk-tag--teal
   - name: green
     options:
       text: Green
@@ -43,8 +43,8 @@ examples:
       classes: govuk-tag--purple
   - name: pink
     options:
-      text: Pink
-      classes: govuk-tag--pink
+      text: Magenta
+      classes: govuk-tag--magenta
   - name: red
     options:
       text: Red
