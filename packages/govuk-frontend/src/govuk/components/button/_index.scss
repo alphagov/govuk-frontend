@@ -77,7 +77,9 @@ $govuk-inverse-button-text-colour: $govuk-brand-colour !default;
     color: $govuk-button-text-colour;
     background-color: $govuk-button-colour;
     box-shadow: 0 $button-shadow-size 0 $govuk-button-shadow-colour; // s0
+    letter-spacing: 0.005em;
     text-align: center;
+    text-shadow: $govuk-button-shadow-colour 0 0 10px;
     vertical-align: top;
     cursor: pointer;
     -webkit-appearance: none;
@@ -114,6 +116,7 @@ $govuk-inverse-button-text-colour: $govuk-brand-colour !default;
       border-color: $govuk-focus-colour;
       outline: $govuk-focus-width solid transparent;
       box-shadow: inset 0 0 0 1px $govuk-focus-colour;
+      text-shadow: none;
     }
 
     &:focus:not(:active):not(:hover) {
@@ -171,6 +174,7 @@ $govuk-inverse-button-text-colour: $govuk-brand-colour !default;
   .govuk-button--secondary {
     background-color: $govuk-secondary-button-colour;
     box-shadow: 0 $button-shadow-size 0 $govuk-secondary-button-shadow-colour;
+    text-shadow: none;
 
     &,
     &:link,
@@ -192,6 +196,7 @@ $govuk-inverse-button-text-colour: $govuk-brand-colour !default;
   .govuk-button--warning {
     background-color: $govuk-warning-button-colour;
     box-shadow: 0 $button-shadow-size 0 $govuk-warning-button-shadow-colour;
+    text-shadow: $govuk-warning-button-shadow-colour 0 0 10px;
 
     &,
     &:link,
@@ -213,6 +218,7 @@ $govuk-inverse-button-text-colour: $govuk-brand-colour !default;
   .govuk-button--inverse {
     background-color: $govuk-inverse-button-colour;
     box-shadow: 0 $button-shadow-size 0 $govuk-inverse-button-shadow-colour;
+    text-shadow: none;
 
     &,
     &:link,
