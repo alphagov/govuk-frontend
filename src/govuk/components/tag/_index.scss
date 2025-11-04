@@ -98,12 +98,22 @@
     @include _govuk-tag-colours("yellow");
   }
 
-  // Turquoise and pink use consistent tag colour rules but a different colour
-  // name; teal for turquoise and magenta for pink
+  .govuk-tag--teal {
+    @include _govuk-tag-colours("teal");
+  }
+
+  .govuk-tag--magenta {
+    @include _govuk-tag-colours("magenta");
+  }
+
+  // Turquoise and pink are deprecated over teal and magenta respectively
+
+  // @deprecated
   .govuk-tag--turquoise {
     @include _govuk-tag-colours("teal");
   }
 
+  // @deprecated
   .govuk-tag--pink {
     @include _govuk-tag-colours("magenta");
   }
