@@ -109,6 +109,15 @@ We've now removed the Header component's `useTudorCrown` parameter and assets re
 
 This change was introduced in [pull request #6414: Remove `useTudorCrown` parameter and St. Edwards crown assets](https://github.com/alphagov/govuk-frontend/pull/6414)
 
+#### Stop using `govuk-body-xs`, `govuk-!-font-size-14` and '14' as a possible font size in `govuk-font`
+
+We deprecated 14 as a point on our [type scale](https://design-system.service.gov.uk/styles/type-scale/) in [GOV.UK Frontend 5.1.0](https://github.com/alphagov/govuk-frontend/releases/tag/v5.1.0). We've now removed it as an option, along with the typography classes that used it:
+
+- `govuk-body-xs`
+- `govuk-!-font-size-14`
+
+This change was introduced in [pull request #6417: Remove 14 from the type scale](https://github.com/alphagov/govuk-frontend/pull/6417)
+
 ### Recommended changes
 
 #### Rename turquoise and pink coloured tags
