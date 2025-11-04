@@ -7,11 +7,6 @@ params:
     type: string
     required: false
     description: The ID of the input. Defaults to the value of `name`.
-  - name: value
-    type: string
-    required: false
-    description: Optional initial value of the input.
-    deprecated: '5.7.1'
   - name: disabled
     type: boolean
     required: false
@@ -142,7 +137,6 @@ examples:
         text: Your photo may be in your Pictures, Photos, Downloads or Desktop folder. Or in an app like iPhoto.
       errorMessage:
         text: Error message goes here
-
   - name: with label as page heading
     options:
       id: file-upload-1
