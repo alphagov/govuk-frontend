@@ -101,6 +101,16 @@ We renamed `$govuk-canvas-background-colour` to `$govuk-template-background-colo
 
 This change was introduced in [pull request #6413: Remove `$govuk-canvas-background-colour`](https://github.com/alphagov/govuk-frontend/pull/6413)
 
+### Fixes
+
+#### Tags now have borders for improved legibility
+
+We've reviewed the design of the tag component in response to changes from the new GOV.UK brand colour palette.
+
+Tags now have a 1px border, with the colour based on the background colour of the tag. This makes tags easier to distinguish against white backgrounds.
+
+This change was introduced in [pull request #6379: Add borders to tags](https://github.com/alphagov/govuk-frontend/pull/6379)
+
 ## v6.0.0-beta.0 (Beta breaking release)
 
 To install this version with npm, run `npm install govuk-frontend@6.0.0-beta.0`. You can also find more information about [how to stay up to date](https://frontend.design-system.service.gov.uk/staying-up-to-date/#updating-to-the-latest-version) in our documentation.
