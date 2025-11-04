@@ -131,41 +131,6 @@ describe('logo.njk', () => {
     })
   })
 
-  describe('if `useTudorCrown` is false', () => {
-    it("uses the St Edward's Crown with logotype", () => {
-      document.body.innerHTML = renderMacro(
-        'govukLogo',
-        './govuk/macros/logo.njk',
-        {
-          context: {
-            useTudorCrown: false
-          }
-        }
-      )
-      const $svg = document.querySelector('svg')
-
-      expect($svg).toHaveAttribute('viewBox', '0 0 304 60')
-    })
-  })
-
-  describe('if `useTudorCrown` and `useLogotype` are false', () => {
-    it("uses the St Edward's Crown in isolation", () => {
-      document.body.innerHTML = renderMacro(
-        'govukLogo',
-        './govuk/macros/logo.njk',
-        {
-          context: {
-            useTudorCrown: false,
-            useLogotype: false
-          }
-        }
-      )
-      const $svg = document.querySelector('svg')
-
-      expect($svg).toHaveAttribute('viewBox', '0 0 72 60')
-    })
-  })
-
   describe('if `rebrand` is true', () => {
     let $svg
 
