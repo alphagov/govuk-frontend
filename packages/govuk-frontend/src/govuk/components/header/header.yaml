@@ -2,7 +2,7 @@ params:
   - name: homepageUrl
     type: string
     required: false
-    description: The URL of the homepage. Defaults to `"/"`.
+    description: The URL of the homepage. Defaults to the GOV.UK homepage.
   - name: productName
     type: string
     required: false
