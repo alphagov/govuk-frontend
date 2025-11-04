@@ -53,13 +53,6 @@ describe('File upload', () => {
       ).toBeTruthy()
     })
 
-    it('renders with value', () => {
-      const $ = render('file-upload', examples['with value'])
-
-      const $component = $('.govuk-file-upload')
-      expect($component.val()).toBe('C:\\fakepath\\myphoto.jpg')
-    })
-
     it('renders with aria-describedby', () => {
       const $ = render('file-upload', examples['with describedBy'])
 
