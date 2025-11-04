@@ -76,7 +76,6 @@
   >
 {% endif %}
   <input class="govuk-file-upload {%- if params.classes %} {{ params.classes }}{% endif %} {%- if params.errorMessage %} govuk-file-upload--error{% endif %}" id="{{ id }}" name="{{ params.name }}" type="file"
-  {%- if params.value %} value="{{ params.value }}"{% endif %}
   {%- if params.disabled %} disabled{% endif %}
   {%- if params.multiple %} multiple{% endif %}
   {%- if describedBy %} aria-describedby="{{ describedBy }}"{% endif %}

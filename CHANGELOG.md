@@ -93,7 +93,7 @@ The component is now output as a link if the `href` parameter is set. Otherwise,
 
 This means it's no longer possible to use `input` elements for buttons. Buttons using `input` are less flexible than `button` elements in terms of styling and content allowed within them, so we want to avoid using them.
 
-This change was introduced in [pull request #6383: Remove element parameter from Button component](https://github.com/alphagov/govuk-frontend/pull/6383)
+This change was introduced in [pull request #6383: Remove element parameter from Button component](https://github.com/alphagov/govuk-frontend/pull/6383).
 
 #### Stop using `$govuk-canvas-background-colour`
 
@@ -110,6 +110,12 @@ We've reviewed the design of the tag component in response to changes from the n
 Tags now have a 1px border, with the colour based on the background colour of the tag. This makes tags easier to distinguish against white backgrounds.
 
 This change was introduced in [pull request #6379: Add borders to tags](https://github.com/alphagov/govuk-frontend/pull/6379)
+
+#### Other fixes
+
+We've made fixes to GOV.UK Frontend in the following pull requests:
+
+- [#5311 Remove non-operational value parameter from file upload component](https://github.com/alphagov/govuk-frontend/pull/5311)
 
 ## v6.0.0-beta.0 (Beta breaking release)
 
