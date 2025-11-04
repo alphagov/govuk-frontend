@@ -109,6 +109,19 @@ We've now removed the Header component's `useTudorCrown` parameter and assets re
 
 This change was introduced in [pull request #6414: Remove `useTudorCrown` parameter and St. Edwards crown assets](https://github.com/alphagov/govuk-frontend/pull/6414)
 
+### Recommended changes
+
+#### Rename turquoise and pink coloured tags
+
+We've renamed 2 of the Tag component's colour modifier classes to be in line with GOV.UK Frontend's new colour palette:
+
+- `govuk-tag--turquoise` is now `govuk-tag--teal`
+- `govuk-tag--pink` is now `govuk-tag--magenta`
+
+Rename your tags to reflect these changes, as we'll be removing `govuk-tag--turquoise` and `govuk-tag--pink` in a future breaking release.
+
+This change was introduced in [pull request #6416: Deprecate turquoise and pink tag colour modifiers](https://github.com/alphagov/govuk-frontend/pull/6416)
+
 ### Fixes
 
 #### Tags now have borders for improved legibility
