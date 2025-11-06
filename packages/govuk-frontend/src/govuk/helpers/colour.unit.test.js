@@ -290,7 +290,7 @@ describe('@function govuk-applied-colour', () => {
 
   beforeEach(() => {
     sassBootstrap = `
-      $govuk-applied-colours: (
+      $_govuk-applied-colours: (
         "error": #ff0000,
         "success": #00ff00,
         "link": #0000ff,

@@ -13,7 +13,7 @@
 ///
 /// @access public
 $govuk-applied-colours: () !default;
-$govuk-applied-colours: _govuk-define-applied-colours(
+$_govuk-applied-colours: _govuk-define-applied-colours(
   $govuk-applied-colours,
   $defaults: (
     (
