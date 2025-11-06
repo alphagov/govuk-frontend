@@ -6,7 +6,7 @@
 <header class="govuk-header {%- if params.classes %} {{ params.classes }}{% endif %}" {{- govukAttributes(params.attributes) }}>
   <div class="govuk-header__container {{ params.containerClasses | default("govuk-width-container", true) }}">
     <div class="govuk-header__logo">
-      <a href="{{ params.homepageUrl | default("//gov.uk", true) }}" class="govuk-header__link govuk-header__link--homepage">
+      <a href="{{ params.homepageUrl | default("//gov.uk", true) }}" class="govuk-header__homepage-link">
         {{ govukLogo({
           classes: "govuk-header__logotype",
           ariaLabelText: "GOV.UK",

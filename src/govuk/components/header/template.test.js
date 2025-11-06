@@ -39,7 +39,7 @@ describe('header', () => {
       const $ = render('header', examples['custom homepage url'])
 
       const $component = $('.govuk-header')
-      const $homepageLink = $component.find('.govuk-header__link--homepage')
+      const $homepageLink = $component.find('.govuk-header__homepage-link')
       expect($homepageLink.attr('href')).toBe('/')
     })
   })
