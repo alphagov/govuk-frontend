@@ -131,6 +131,16 @@ Rename your tags to reflect these changes, as we'll be removing `govuk-tag--turq
 
 This change was introduced in [pull request #6416: Deprecate turquoise and pink tag colour modifiers](https://github.com/alphagov/govuk-frontend/pull/6416)
 
+#### Check that the GOV.UK logo links to the GOV.UK homepage
+
+We've updated the default value of `homepageUrl` to point to the GOV.UK homepage.
+
+The previous default value pointed at the root of the current domain. On services, this caused the GOV.UK logo to link to the homepage of the service, rather than the GOV.UK homepage.
+
+Unless you operate a GOV.UK branded product, the GOV.UK logo should always link to the homepage of GOV.UK. Use the [Service navigation component](https://design-system.service.gov.uk/components/service-navigation/) to provide a link to a local homepage.
+
+This change was introduced in [pull request #6418: Update default `homepageUrl` to point to GOV.UK homepage](https://github.com/alphagov/govuk-frontend/pull/6418)
+
 ### Fixes
 
 #### Tags now have borders for improved legibility

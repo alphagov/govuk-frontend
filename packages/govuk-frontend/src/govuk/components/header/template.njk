@@ -9,7 +9,7 @@
   {{- govukAttributes(params.attributes) }}>
   <div class="govuk-header__container {{ params.containerClasses | default("govuk-width-container", true) }}">
     <div class="govuk-header__logo">
-      <a href="{{ params.homepageUrl | default("/", true) }}" class="govuk-header__link govuk-header__link--homepage">
+      <a href="{{ params.homepageUrl | default("//gov.uk", true) }}" class="govuk-header__link govuk-header__link--homepage">
         {{ govukLogo({
           classes: "govuk-header__logotype",
           ariaLabelText: "GOV.UK",
