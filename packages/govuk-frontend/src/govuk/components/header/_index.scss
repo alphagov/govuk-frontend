@@ -63,6 +63,102 @@
     }
   }
 
+  .govuk-header__logo {
+    box-sizing: border-box;
+    @include govuk-responsive-margin($govuk-header-vertical-spacing-value, "bottom");
+
+    @media #{govuk-from-breakpoint(desktop)} {
+      width: 33.33%;
+      padding-right: $govuk-gutter-half;
+      float: left;
+      vertical-align: top;
+
+      // Reset float when logo is the last child, without a navigation
+      &:last-child {
+        width: auto;
+        padding-right: 0;
+        float: none;
+      }
+    }
+
+    @include _govuk-rebrand {
+      // Apply margins to internal elements to emulate padding
+      margin-bottom: 0;
+
+      // Magic numbers, set padding to vertically centre align the logo
+      padding-top: 16px;
+      padding-bottom: 14px - $govuk-header-rebrand-logo-bottom-margin;
+    }
+  }
+
+  .govuk-header__homepage-link {
+    // Avoid using the `govuk-link-common` mixin because the links in the
+    // header get a special treatment, because:
+    //
+    // - underlines are only visible on hover
+    // - all links get a 3px underline regardless of text size, as there are
+    //   multiple grouped elements close to one another and having slightly
+    //   different underline widths looks unbalanced
+    //
+    // Font size needs to be set on the link so that the box sizing is correct
+    // in Firefox
+    display: inline-block;
+    margin-right: govuk-spacing(2);
+    font-size: 30px; // We don't have a mixin that produces 30px font size
+    text-decoration: none;
+    @include govuk-link-style-inverse;
+
+    @media #{govuk-from-breakpoint(desktop)} {
+      display: inline;
+    }
+
+    &:link,
+    &:visited {
+      text-decoration: none;
+    }
+
+    &:hover,
+    &:active {
+      // Negate the added border
+      margin-bottom: $govuk-header-link-underline-thickness * -1;
+      border-bottom: $govuk-header-link-underline-thickness solid;
+    }
+
+    &:hover {
+      text-decoration: underline;
+      text-decoration-thickness: $govuk-header-link-underline-thickness;
+
+      @if $govuk-link-underline-offset {
+        text-underline-offset: $govuk-link-underline-offset;
+      }
+    }
+
+    &:focus {
+      // Remove any borders that show when focused and hovered.
+      margin-bottom: 0;
+      border-bottom: 0;
+
+      @include govuk-focused-text;
+    }
+
+    @include _govuk-rebrand {
+      display: inline;
+
+      // Remove word-spacing from within the logo so we can ignore
+      // whitespace characters in the HTML
+      word-spacing: govuk-px-to-rem(-6px);
+
+      // Reset word-spacing for child elements
+      > * {
+        word-spacing: 0;
+      }
+
+      &:not(:focus) {
+        background-color: $govuk-header-rebrand-background;
+      }
+    }
+  }
+
   .govuk-header__logotype {
     display: inline-block;
     position: relative;
@@ -180,107 +276,6 @@
     }
   }
 
-  .govuk-header__link {
-    // Avoid using the `govuk-link-common` mixin because the links in the header
-    // get a special treatment, because:
-    //
-    // - underlines are only visible on hover
-    // - all links get a 3px underline regardless of text size, as there are
-    //   multiple grouped elements close to one another and having slightly
-    //   different underline widths looks unbalanced
-    @include govuk-link-style-inverse;
-
-    text-decoration: none;
-
-    &:hover {
-      text-decoration: underline;
-      text-decoration-thickness: $govuk-header-link-underline-thickness;
-
-      @if $govuk-link-underline-offset {
-        text-underline-offset: $govuk-link-underline-offset;
-      }
-    }
-
-    &:focus {
-      @include govuk-focused-text;
-    }
-  }
-
-  .govuk-header__link--homepage {
-    // Font size needs to be set on the link so that the box sizing is correct
-    // in Firefox
-    display: inline-block;
-    margin-right: govuk-spacing(2);
-    font-size: 30px; // We don't have a mixin that produces 30px font size
-
-    @media #{govuk-from-breakpoint(desktop)} {
-      display: inline;
-    }
-
-    &:link,
-    &:visited {
-      text-decoration: none;
-    }
-
-    &:hover,
-    &:active {
-      // Negate the added border
-      margin-bottom: $govuk-header-link-underline-thickness * -1;
-      border-bottom: $govuk-header-link-underline-thickness solid;
-    }
-
-    // Remove any borders that show when focused and hovered.
-    &:focus {
-      margin-bottom: 0;
-      border-bottom: 0;
-    }
-
-    @include _govuk-rebrand {
-      display: inline;
-
-      // Remove word-spacing from within the logo so we can ignore
-      // whitespace characters in the HTML
-      word-spacing: govuk-px-to-rem(-6px);
-
-      // Reset word-spacing for child elements
-      > * {
-        word-spacing: 0;
-      }
-
-      &:not(:focus) {
-        background-color: $govuk-header-rebrand-background;
-      }
-    }
-  }
-
-  .govuk-header__logo {
-    box-sizing: border-box;
-    @include govuk-responsive-margin($govuk-header-vertical-spacing-value, "bottom");
-
-    @media #{govuk-from-breakpoint(desktop)} {
-      width: 33.33%;
-      padding-right: $govuk-gutter-half;
-      float: left;
-      vertical-align: top;
-
-      // Reset float when logo is the last child, without a navigation
-      &:last-child {
-        width: auto;
-        padding-right: 0;
-        float: none;
-      }
-    }
-
-    @include _govuk-rebrand {
-      // Apply margins to internal elements to emulate padding
-      margin-bottom: 0;
-
-      // Magic numbers, set padding to vertically centre align the logo
-      padding-top: 16px;
-      padding-bottom: 14px - $govuk-header-rebrand-logo-bottom-margin;
-    }
-  }
-
   @media print {
     .govuk-header {
       border-bottom-width: 0;
@@ -288,7 +283,7 @@
       background: transparent;
     }
 
-    .govuk-header__link {
+    .govuk-header__homepage-link {
       &:link,
       &:visited {
         color: govuk-colour("black");
