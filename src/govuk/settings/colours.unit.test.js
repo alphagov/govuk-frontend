@@ -126,15 +126,16 @@ describe('Organisation colours', () => {
       @import "sass-color-helpers/stylesheets/color-helpers";
 
       $minimum-contrast: 4.5;
+      $body-background-colour: map-get($_govuk-applied-colours, body-background);
 
       @each $organisation in map-keys($govuk-colours-organisations) {
 
         $colour: govuk-organisation-colour($organisation);
-        $contrast: ch-color-contrast(govuk-applied-colour(body-background), $colour);
+        $contrast: ch-color-contrast($body-background-colour, $colour);
 
         @if ($contrast < $minimum-contrast) {
           @error "Contrast ratio for #{$organisation} too low."
-          + " #{$colour} on #{govuk-applied-colour('body-background')} has a contrast of: #{$contrast}."
+          + " #{$colour} on #{$body-background-colour} has a contrast of: #{$contrast}."
           + " Must be higher than #{$minimum-contrast} for WCAG AA support.";
         }
       }
