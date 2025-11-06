@@ -4,7 +4,6 @@ const { outdent } = require('outdent')
 describe('@mixin _govuk-rebrand', () => {
   it('wraps arbitrary properties in a class', async () => {
     const sass = `
-      $govuk-suppressed-warnings: ("legacy-organisation-colours");
       @import "base";
 
       .foo {
@@ -35,7 +34,6 @@ describe('@mixin _govuk-rebrand', () => {
   describe('`$property` argument', () => {
     it('renders both original and rebranded version', async () => {
       const sass = `
-        $govuk-suppressed-warnings: ("legacy-organisation-colours");
         @import "base";
 
         .foo {
@@ -57,7 +55,6 @@ describe('@mixin _govuk-rebrand', () => {
 
     it('throws an error if not provided the original value', async () => {
       const sass = `
-        $govuk-suppressed-warnings: ("legacy-organisation-colours");
         @import "base";
 
         .foo {
@@ -72,7 +69,6 @@ describe('@mixin _govuk-rebrand', () => {
 
     it('throws an error if not provided the rebranded value', async () => {
       const sass = `
-        $govuk-suppressed-warnings: ("legacy-organisation-colours");
         @import "base";
 
         .foo {
@@ -89,7 +85,6 @@ describe('@mixin _govuk-rebrand', () => {
   describe('when used in `.govuk-template` it outputs a `.govuk-template--rebranded` class at root', () => {
     it('when styling a block', async () => {
       const sass = `
-        $govuk-suppressed-warnings: ("legacy-organisation-colours");
         @import "base";
 
         .govuk-template {
@@ -119,7 +114,6 @@ describe('@mixin _govuk-rebrand', () => {
 
     it('when styling a specific property', async () => {
       const sass = `
-        $govuk-suppressed-warnings: ("legacy-organisation-colours");
         @import "base";
 
         .govuk-template {

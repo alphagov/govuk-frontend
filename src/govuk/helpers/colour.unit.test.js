@@ -287,7 +287,6 @@ describe('@function govuk-colour', () => {
 
 describe('@function govuk-organisation-colour', () => {
   const sassBootstrap = `
-    $govuk-new-organisation-colours: true;
     $govuk-colours-organisations: (
       'department-of-social-affairs-citizenship': (
         colour: #EC22FF,
