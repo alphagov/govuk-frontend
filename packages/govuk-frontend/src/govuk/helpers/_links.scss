@@ -226,14 +226,6 @@
     @include govuk-text-colour;
   }
 
-  // Force a colour change on hover to work around a bug in Safari
-  // https://webkit.org/b/224483
-  &:hover {
-    @if type-of(govuk-applied-colour(text)) == color {
-      color: rgba(govuk-applied-colour(text), 0.99);
-    }
-  }
-
   &:active,
   &:focus {
     @include govuk-text-colour;
@@ -260,13 +252,6 @@
   &:link,
   &:visited {
     color: govuk-colour("white");
-  }
-
-  // Force a colour change on hover to work around a bug in Safari
-  // https://webkit.org/b/224483
-  &:hover,
-  &:active {
-    color: rgba(govuk-colour("white"), 0.99);
   }
 
   &:focus {
