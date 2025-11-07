@@ -32,6 +32,33 @@ If you were using the `_<COMPONENT_NAME>.scss` files, use the component's `_inde
 
 We made this change in [#6761: Deprecate `_<COMPONENT_NAME>.scss` files](https://github.com/alphagov/govuk-frontend/pull/6761).
 
+#### Use `color: govuk-functional-colour(text)` to set the text colour
+
+We've updated how the text colour changes to pure black when printing. Instead of each use of the text colour needing to be followed by an `@media print` query, GOV.UK Frontend now changes the value of the `--govuk-text-colour` custom property in a single media query:
+
+```scss
+// Previously
+// For each use of the `text` functional colour through `govuk-functional-colour('text')`
+color: var(--govuk-text-colour, #0b0c0c);
+
+@media print {
+  color: var(--govuk-print-text-colour, #000);
+}
+
+// Now
+// Only once at the start of the compiled CSS
+:root { --govuk-text-colour: #0b0c0c; }
+@media print {
+  :root { --govuk-text-colour: var(--govuk-print-text-colour, #000); }
+}
+```
+
+This change allows you to simplify how the text colour is applied to your CSS rulesets. You can now use a single `color` declaration rather than the previous `govuk-text-colour` mixin call.
+
+Replace your `@include govuk-text-colour;` mixin calls with `color: govuk-functional-colour(text)`, as we'll be removing the `govuk-text-colour` mixin in a future breaking release.
+
+We made this change in [pull request #6427: Use custom properties to switch print text to pure black](https://github.com/alphagov/govuk-frontend/pull/6427).
+
 ### Fixes
 
 We've made fixes to GOV.UK Frontend in the following pull requests:
