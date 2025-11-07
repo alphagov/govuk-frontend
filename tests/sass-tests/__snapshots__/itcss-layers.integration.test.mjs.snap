@@ -111,6 +111,11 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   --govuk-surface-text-colour: #0b0c0c;
   --govuk-surface-border-colour: #8eb8dc;
 }
+@media print {
+  :root {
+    --govuk-text-colour: var(--govuk-print-text-colour, #000000);
+  }
+}
 
 
 
@@ -337,11 +342,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   .govuk-accordion__section-button {
     font-size: 18pt;
     line-height: 1.15;
-  }
-}
-@media print {
-  .govuk-accordion__section-button {
-    color: var(--govuk-print-text-colour, #000000);
   }
 }
 
@@ -754,18 +754,8 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 .govuk-back-link:link, .govuk-back-link:visited {
   color: var(--govuk-text-colour, #0b0c0c);
 }
-@media print {
-  .govuk-back-link:link, .govuk-back-link:visited {
-    color: var(--govuk-print-text-colour, #000000);
-  }
-}
 .govuk-back-link:active, .govuk-back-link:focus {
   color: var(--govuk-text-colour, #0b0c0c);
-}
-@media print {
-  .govuk-back-link:active, .govuk-back-link:focus {
-    color: var(--govuk-print-text-colour, #000000);
-  }
 }
 
 .govuk-back-link::before {
@@ -916,11 +906,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     line-height: 1.2;
   }
 }
-@media print {
-  .govuk-breadcrumbs {
-    color: var(--govuk-print-text-colour, #000000);
-  }
-}
 
 .govuk-breadcrumbs__list {
   margin: 0;
@@ -1007,18 +992,8 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 .govuk-breadcrumbs__link:link, .govuk-breadcrumbs__link:visited {
   color: var(--govuk-text-colour, #0b0c0c);
 }
-@media print {
-  .govuk-breadcrumbs__link:link, .govuk-breadcrumbs__link:visited {
-    color: var(--govuk-print-text-colour, #000000);
-  }
-}
 .govuk-breadcrumbs__link:active, .govuk-breadcrumbs__link:focus {
   color: var(--govuk-text-colour, #0b0c0c);
-}
-@media print {
-  .govuk-breadcrumbs__link:active, .govuk-breadcrumbs__link:focus {
-    color: var(--govuk-print-text-colour, #000000);
-  }
 }
 
 @media (max-width: 40.0525em) {
@@ -1707,11 +1682,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   .govuk-label {
     font-size: 14pt;
     line-height: 1.15;
-  }
-}
-@media print {
-  .govuk-label {
-    color: var(--govuk-print-text-colour, #000000);
   }
 }
 
@@ -2477,11 +2447,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     line-height: 1.15;
   }
 }
-@media print {
-  .govuk-fieldset__legend {
-    color: var(--govuk-print-text-colour, #000000);
-  }
-}
 
 .govuk-fieldset__legend--xl,
 .govuk-fieldset__legend--l,
@@ -2831,11 +2796,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   .govuk-checkboxes__divider {
     font-size: 14pt;
     line-height: 1.15;
-  }
-}
-@media print {
-  .govuk-checkboxes__divider {
-    color: var(--govuk-print-text-colour, #000000);
   }
 }
 
@@ -4129,11 +4089,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     line-height: 1.15;
   }
 }
-@media print {
-  .govuk-details {
-    color: var(--govuk-print-text-colour, #000000);
-  }
-}
 @media (min-width: 40.0625em) {
   .govuk-details {
     margin-bottom: 30px;
@@ -4452,11 +4407,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     line-height: 1.15;
   }
 }
-@media print {
-  .govuk-list {
-    color: var(--govuk-print-text-colour, #000000);
-  }
-}
 @media (min-width: 40.0625em) {
   .govuk-list {
     margin-bottom: 20px;
@@ -4523,11 +4473,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   .govuk-error-summary {
     font-size: 14pt;
     line-height: 1.15;
-  }
-}
-@media print {
-  .govuk-error-summary {
-    color: var(--govuk-print-text-colour, #000000);
   }
 }
 @media (min-width: 40.0625em) {
@@ -5310,11 +5255,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     line-height: 1.15;
   }
 }
-@media print {
-  .govuk-file-upload {
-    color: var(--govuk-print-text-colour, #000000);
-  }
-}
 .govuk-file-upload::-webkit-file-upload-button {
   -webkit-appearance: button;
   color: inherit;
@@ -5685,18 +5625,8 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 .govuk-footer__copyright-logo:link, .govuk-footer__copyright-logo:visited {
   color: var(--govuk-text-colour, #0b0c0c);
 }
-@media print {
-  .govuk-footer__copyright-logo:link, .govuk-footer__copyright-logo:visited {
-    color: var(--govuk-print-text-colour, #000000);
-  }
-}
 .govuk-footer__copyright-logo:active, .govuk-footer__copyright-logo:focus {
   color: var(--govuk-text-colour, #0b0c0c);
-}
-@media print {
-  .govuk-footer__copyright-logo:active, .govuk-footer__copyright-logo:focus {
-    color: var(--govuk-print-text-colour, #000000);
-  }
 }
 
 .govuk-footer__copyright-logo::before {
@@ -6553,11 +6483,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     line-height: 1.15;
   }
 }
-@media print {
-  .govuk-inset-text {
-    color: var(--govuk-print-text-colour, #000000);
-  }
-}
 @media (min-width: 40.0625em) {
   .govuk-inset-text {
     margin-top: 30px;
@@ -6800,11 +6725,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   color: var(--govuk-text-colour, #0b0c0c);
   padding: 15px;
   background-color: var(--govuk-body-background-colour, #ffffff);
-}
-@media print {
-  .govuk-notification-banner__content {
-    color: var(--govuk-print-text-colour, #000000);
-  }
 }
 @media (min-width: 40.0625em) {
   .govuk-notification-banner__content {
@@ -8161,11 +8081,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     line-height: 1.2;
   }
 }
-@media print {
-  .govuk-phase-banner__content {
-    color: var(--govuk-print-text-colour, #000000);
-  }
-}
 
 .govuk-phase-banner__content__tag {
   font-size: 1rem;
@@ -8720,11 +8635,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   .govuk-radios__divider {
     font-size: 14pt;
     line-height: 1.15;
-  }
-}
-@media print {
-  .govuk-radios__divider {
-    color: var(--govuk-print-text-colour, #000000);
   }
 }
 
@@ -9403,18 +9313,8 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 .govuk-service-navigation__service-name .govuk-service-navigation__link:link, .govuk-service-navigation__service-name .govuk-service-navigation__link:visited {
   color: var(--govuk-text-colour, #0b0c0c);
 }
-@media print {
-  .govuk-service-navigation__service-name .govuk-service-navigation__link:link, .govuk-service-navigation__service-name .govuk-service-navigation__link:visited {
-    color: var(--govuk-print-text-colour, #000000);
-  }
-}
 .govuk-service-navigation__service-name .govuk-service-navigation__link:active, .govuk-service-navigation__service-name .govuk-service-navigation__link:focus {
   color: var(--govuk-text-colour, #0b0c0c);
-}
-@media print {
-  .govuk-service-navigation__service-name .govuk-service-navigation__link:active, .govuk-service-navigation__service-name .govuk-service-navigation__link:focus {
-    color: var(--govuk-print-text-colour, #000000);
-  }
 }
 
 .govuk-service-navigation__wrapper {
@@ -9656,18 +9556,8 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 .govuk-skip-link:link, .govuk-skip-link:visited {
   color: var(--govuk-text-colour, #0b0c0c);
 }
-@media print {
-  .govuk-skip-link:link, .govuk-skip-link:visited {
-    color: var(--govuk-print-text-colour, #000000);
-  }
-}
 .govuk-skip-link:active, .govuk-skip-link:focus {
   color: var(--govuk-text-colour, #0b0c0c);
-}
-@media print {
-  .govuk-skip-link:active, .govuk-skip-link:focus {
-    color: var(--govuk-print-text-colour, #000000);
-  }
 }
 @media print {
   .govuk-skip-link {
@@ -9803,11 +9693,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   .govuk-summary-list {
     font-size: 14pt;
     line-height: 1.15;
-  }
-}
-@media print {
-  .govuk-summary-list {
-    color: var(--govuk-print-text-colour, #000000);
   }
 }
 @media (min-width: 40.0625em) {
@@ -10024,11 +9909,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     line-height: 1.15;
   }
 }
-@media print {
-  .govuk-summary-card__title {
-    color: var(--govuk-print-text-colour, #000000);
-  }
-}
 @media (min-width: 40.0625em) {
   .govuk-summary-card__title {
     margin-bottom: 5px;
@@ -10193,11 +10073,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   .govuk-table {
     font-size: 14pt;
     line-height: 1.15;
-  }
-}
-@media print {
-  .govuk-table {
-    color: var(--govuk-print-text-colour, #000000);
   }
 }
 @media (min-width: 40.0625em) {
@@ -10430,11 +10305,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     line-height: 1.15;
   }
 }
-@media print {
-  .govuk-tabs__title {
-    color: var(--govuk-print-text-colour, #000000);
-  }
-}
 
 .govuk-tabs__list {
   margin: 0;
@@ -10456,11 +10326,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   content: "—";
   margin-left: -25px;
   padding-right: 5px;
-}
-@media print {
-  .govuk-tabs__list-item::before {
-    color: var(--govuk-print-text-colour, #000000);
-  }
 }
 
 .govuk-tabs__tab {
@@ -10572,23 +10437,9 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   .govuk-frontend-supported .govuk-tabs__tab:link, .govuk-frontend-supported .govuk-tabs__tab:visited {
     color: var(--govuk-text-colour, #0b0c0c);
   }
-}
-@media print and (min-width: 40.0625em) {
-  .govuk-frontend-supported .govuk-tabs__tab:link, .govuk-frontend-supported .govuk-tabs__tab:visited {
-    color: var(--govuk-print-text-colour, #000000);
-  }
-}
-@media (min-width: 40.0625em) {
   .govuk-frontend-supported .govuk-tabs__tab:active, .govuk-frontend-supported .govuk-tabs__tab:focus {
     color: var(--govuk-text-colour, #0b0c0c);
   }
-}
-@media print and (min-width: 40.0625em) {
-  .govuk-frontend-supported .govuk-tabs__tab:active, .govuk-frontend-supported .govuk-tabs__tab:focus {
-    color: var(--govuk-print-text-colour, #000000);
-  }
-}
-@media (min-width: 40.0625em) {
   .govuk-frontend-supported .govuk-tabs__tab::after {
     content: "";
     position: absolute;
@@ -10909,11 +10760,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   vertical-align: top;
   color: var(--govuk-text-colour, #0b0c0c);
 }
-@media print {
-  .govuk-task-list__name-and-hint {
-    color: var(--govuk-print-text-colour, #000000);
-  }
-}
 
 .govuk-task-list__status {
   display: table-cell;
@@ -10921,11 +10767,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   text-align: right;
   vertical-align: top;
   color: var(--govuk-text-colour, #0b0c0c);
-}
-@media print {
-  .govuk-task-list__status {
-    color: var(--govuk-print-text-colour, #000000);
-  }
 }
 
 .govuk-task-list__status--cannot-start-yet {
@@ -11421,11 +11262,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   padding-left: 45px;
   font-weight: inherit;
 }
-@media print {
-  .govuk-warning-text__text {
-    color: var(--govuk-print-text-colour, #000000);
-  }
-}
 
 
 "
@@ -11541,6 +11377,11 @@ exports[`ITCSS layers core works when user @imports the layer 1`] = `
   --govuk-surface-text-colour: #0b0c0c;
   --govuk-surface-border-colour: #8eb8dc;
 }
+@media print {
+  :root {
+    --govuk-text-colour: var(--govuk-print-text-colour, #000000);
+  }
+}
 
 
 
@@ -11629,18 +11470,8 @@ exports[`ITCSS layers core works when user @imports the layer 1`] = `
 .govuk-link--text-colour:link, .govuk-link--text-colour:visited {
   color: var(--govuk-text-colour, #0b0c0c);
 }
-@media print {
-  .govuk-link--text-colour:link, .govuk-link--text-colour:visited {
-    color: var(--govuk-print-text-colour, #000000);
-  }
-}
 .govuk-link--text-colour:active, .govuk-link--text-colour:focus {
   color: var(--govuk-text-colour, #0b0c0c);
-}
-@media print {
-  .govuk-link--text-colour:active, .govuk-link--text-colour:focus {
-    color: var(--govuk-print-text-colour, #000000);
-  }
 }
 
 .govuk-link--inverse:link, .govuk-link--inverse:visited {
@@ -11705,11 +11536,6 @@ exports[`ITCSS layers core works when user @imports the layer 1`] = `
     line-height: 1.15;
   }
 }
-@media print {
-  .govuk-list {
-    color: var(--govuk-print-text-colour, #000000);
-  }
-}
 @media (min-width: 40.0625em) {
   .govuk-list {
     margin-bottom: 20px;
@@ -11768,11 +11594,6 @@ exports[`ITCSS layers core works when user @imports the layer 1`] = `
 }
 @media print {
   .govuk-heading-xl {
-    color: var(--govuk-print-text-colour, #000000);
-  }
-}
-@media print {
-  .govuk-heading-xl {
     font-family: sans-serif;
   }
 }
@@ -11805,11 +11626,6 @@ exports[`ITCSS layers core works when user @imports the layer 1`] = `
   display: block;
   margin-top: 0;
   margin-bottom: 20px;
-}
-@media print {
-  .govuk-heading-l {
-    color: var(--govuk-print-text-colour, #000000);
-  }
 }
 @media print {
   .govuk-heading-l {
@@ -11848,11 +11664,6 @@ exports[`ITCSS layers core works when user @imports the layer 1`] = `
 }
 @media print {
   .govuk-heading-m {
-    color: var(--govuk-print-text-colour, #000000);
-  }
-}
-@media print {
-  .govuk-heading-m {
     font-family: sans-serif;
   }
 }
@@ -11885,11 +11696,6 @@ exports[`ITCSS layers core works when user @imports the layer 1`] = `
   display: block;
   margin-top: 0;
   margin-bottom: 15px;
-}
-@media print {
-  .govuk-heading-s {
-    color: var(--govuk-print-text-colour, #000000);
-  }
 }
 @media print {
   .govuk-heading-s {
@@ -12006,11 +11812,6 @@ exports[`ITCSS layers core works when user @imports the layer 1`] = `
 }
 @media print {
   .govuk-body-lead, .govuk-body-l {
-    color: var(--govuk-print-text-colour, #000000);
-  }
-}
-@media print {
-  .govuk-body-lead, .govuk-body-l {
     font-family: sans-serif;
   }
 }
@@ -12045,11 +11846,6 @@ exports[`ITCSS layers core works when user @imports the layer 1`] = `
 }
 @media print {
   .govuk-body, .govuk-body-m {
-    color: var(--govuk-print-text-colour, #000000);
-  }
-}
-@media print {
-  .govuk-body, .govuk-body-m {
     font-family: sans-serif;
   }
 }
@@ -12075,11 +11871,6 @@ exports[`ITCSS layers core works when user @imports the layer 1`] = `
   line-height: 1.25;
   margin-top: 0;
   margin-bottom: 15px;
-}
-@media print {
-  .govuk-body-s {
-    color: var(--govuk-print-text-colour, #000000);
-  }
 }
 @media print {
   .govuk-body-s {
@@ -12314,6 +12105,11 @@ exports[`ITCSS layers helpers works when user @imports the layer 1`] = `
   --govuk-surface-text-colour: #0b0c0c;
   --govuk-surface-border-colour: #8eb8dc;
 }
+@media print {
+  :root {
+    --govuk-text-colour: var(--govuk-print-text-colour, #000000);
+  }
+}
 
 
 
@@ -12455,6 +12251,11 @@ exports[`ITCSS layers objects works when user @imports the layer 1`] = `
   --govuk-surface-background-colour: #f4f8fb;
   --govuk-surface-text-colour: #0b0c0c;
   --govuk-surface-border-colour: #8eb8dc;
+}
+@media print {
+  :root {
+    --govuk-text-colour: var(--govuk-print-text-colour, #000000);
+  }
 }
 
 
@@ -13386,6 +13187,11 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
   --govuk-surface-background-colour: #f4f8fb;
   --govuk-surface-text-colour: #0b0c0c;
   --govuk-surface-border-colour: #8eb8dc;
+}
+@media print {
+  :root {
+    --govuk-text-colour: var(--govuk-print-text-colour, #000000);
+  }
 }
 
 
@@ -14815,6 +14621,11 @@ exports[`ITCSS layers settings works when user @imports the layer 1`] = `
   --govuk-surface-text-colour: #0b0c0c;
   --govuk-surface-border-colour: #8eb8dc;
 }
+@media print {
+  :root {
+    --govuk-text-colour: var(--govuk-print-text-colour, #000000);
+  }
+}
 
 
 
@@ -14952,6 +14763,11 @@ exports[`ITCSS layers tools works when user @imports the layer 1`] = `
   --govuk-surface-text-colour: #0b0c0c;
   --govuk-surface-border-colour: #8eb8dc;
 }
+@media print {
+  :root {
+    --govuk-text-colour: var(--govuk-print-text-colour, #000000);
+  }
+}
 
 
 
@@ -15077,6 +14893,11 @@ exports[`ITCSS layers utilities works when user @imports the layer 1`] = `
   --govuk-surface-background-colour: #f4f8fb;
   --govuk-surface-text-colour: #0b0c0c;
   --govuk-surface-border-colour: #8eb8dc;
+}
+@media print {
+  :root {
+    --govuk-text-colour: var(--govuk-print-text-colour, #000000);
+  }
 }
 
 

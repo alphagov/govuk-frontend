@@ -110,6 +110,11 @@ exports[`Individual components dist/govuk/components/accordion works when user @
   --govuk-surface-text-colour: #0b0c0c;
   --govuk-surface-border-colour: #8eb8dc;
 }
+@media print {
+  :root {
+    --govuk-text-colour: var(--govuk-print-text-colour, #000000);
+  }
+}
 
 
 
@@ -176,11 +181,6 @@ exports[`Individual components dist/govuk/components/accordion works when user @
   .govuk-accordion__section-button {
     font-size: 18pt;
     line-height: 1.15;
-  }
-}
-@media print {
-  .govuk-accordion__section-button {
-    color: var(--govuk-print-text-colour, #000000);
   }
 }
 
@@ -576,6 +576,11 @@ exports[`Individual components dist/govuk/components/back-link works when user @
   --govuk-surface-text-colour: #0b0c0c;
   --govuk-surface-border-colour: #8eb8dc;
 }
+@media print {
+  :root {
+    --govuk-text-colour: var(--govuk-print-text-colour, #000000);
+  }
+}
 
 
 
@@ -644,18 +649,8 @@ exports[`Individual components dist/govuk/components/back-link works when user @
 .govuk-back-link:link, .govuk-back-link:visited {
   color: var(--govuk-text-colour, #0b0c0c);
 }
-@media print {
-  .govuk-back-link:link, .govuk-back-link:visited {
-    color: var(--govuk-print-text-colour, #000000);
-  }
-}
 .govuk-back-link:active, .govuk-back-link:focus {
   color: var(--govuk-text-colour, #0b0c0c);
-}
-@media print {
-  .govuk-back-link:active, .govuk-back-link:focus {
-    color: var(--govuk-print-text-colour, #000000);
-  }
 }
 
 .govuk-back-link::before {
@@ -816,6 +811,11 @@ exports[`Individual components dist/govuk/components/breadcrumbs works when user
   --govuk-surface-text-colour: #0b0c0c;
   --govuk-surface-border-colour: #8eb8dc;
 }
+@media print {
+  :root {
+    --govuk-text-colour: var(--govuk-print-text-colour, #000000);
+  }
+}
 
 
 
@@ -855,11 +855,6 @@ exports[`Individual components dist/govuk/components/breadcrumbs works when user
   .govuk-breadcrumbs {
     font-size: 14pt;
     line-height: 1.2;
-  }
-}
-@media print {
-  .govuk-breadcrumbs {
-    color: var(--govuk-print-text-colour, #000000);
   }
 }
 
@@ -948,18 +943,8 @@ exports[`Individual components dist/govuk/components/breadcrumbs works when user
 .govuk-breadcrumbs__link:link, .govuk-breadcrumbs__link:visited {
   color: var(--govuk-text-colour, #0b0c0c);
 }
-@media print {
-  .govuk-breadcrumbs__link:link, .govuk-breadcrumbs__link:visited {
-    color: var(--govuk-print-text-colour, #000000);
-  }
-}
 .govuk-breadcrumbs__link:active, .govuk-breadcrumbs__link:focus {
   color: var(--govuk-text-colour, #0b0c0c);
-}
-@media print {
-  .govuk-breadcrumbs__link:active, .govuk-breadcrumbs__link:focus {
-    color: var(--govuk-print-text-colour, #000000);
-  }
 }
 
 @media (max-width: 40.0525em) {
@@ -1103,6 +1088,11 @@ exports[`Individual components dist/govuk/components/button works when user @imp
   --govuk-surface-background-colour: #f4f8fb;
   --govuk-surface-text-colour: #0b0c0c;
   --govuk-surface-border-colour: #8eb8dc;
+}
+@media print {
+  :root {
+    --govuk-text-colour: var(--govuk-print-text-colour, #000000);
+  }
 }
 
 
@@ -1410,6 +1400,11 @@ exports[`Individual components dist/govuk/components/character-count works when 
   --govuk-surface-background-colour: #f4f8fb;
   --govuk-surface-text-colour: #0b0c0c;
   --govuk-surface-border-colour: #8eb8dc;
+}
+@media print {
+  :root {
+    --govuk-text-colour: var(--govuk-print-text-colour, #000000);
+  }
 }
 
 
@@ -1751,11 +1746,6 @@ exports[`Individual components dist/govuk/components/character-count works when 
   .govuk-label {
     font-size: 14pt;
     line-height: 1.15;
-  }
-}
-@media print {
-  .govuk-label {
-    color: var(--govuk-print-text-colour, #000000);
   }
 }
 
@@ -2348,6 +2338,11 @@ exports[`Individual components dist/govuk/components/checkboxes works when user 
   --govuk-surface-text-colour: #0b0c0c;
   --govuk-surface-border-colour: #8eb8dc;
 }
+@media print {
+  :root {
+    --govuk-text-colour: var(--govuk-print-text-colour, #000000);
+  }
+}
 
 
 
@@ -2595,11 +2590,6 @@ exports[`Individual components dist/govuk/components/checkboxes works when user 
   .govuk-fieldset__legend {
     font-size: 14pt;
     line-height: 1.15;
-  }
-}
-@media print {
-  .govuk-fieldset__legend {
-    color: var(--govuk-print-text-colour, #000000);
   }
 }
 
@@ -2889,11 +2879,6 @@ exports[`Individual components dist/govuk/components/checkboxes works when user 
     line-height: 1.15;
   }
 }
-@media print {
-  .govuk-label {
-    color: var(--govuk-print-text-colour, #000000);
-  }
-}
 
 .govuk-label--xl,
 .govuk-label--l,
@@ -3079,11 +3064,6 @@ exports[`Individual components dist/govuk/components/checkboxes works when user 
   .govuk-checkboxes__divider {
     font-size: 14pt;
     line-height: 1.15;
-  }
-}
-@media print {
-  .govuk-checkboxes__divider {
-    color: var(--govuk-print-text-colour, #000000);
   }
 }
 
@@ -3273,6 +3253,11 @@ exports[`Individual components dist/govuk/components/cookie-banner works when us
   --govuk-surface-background-colour: #f4f8fb;
   --govuk-surface-text-colour: #0b0c0c;
   --govuk-surface-border-colour: #8eb8dc;
+}
+@media print {
+  :root {
+    --govuk-text-colour: var(--govuk-print-text-colour, #000000);
+  }
 }
 
 
@@ -3682,6 +3667,11 @@ exports[`Individual components dist/govuk/components/date-input works when user 
   --govuk-surface-text-colour: #0b0c0c;
   --govuk-surface-border-colour: #8eb8dc;
 }
+@media print {
+  :root {
+    --govuk-text-colour: var(--govuk-print-text-colour, #000000);
+  }
+}
 
 
 
@@ -4183,11 +4173,6 @@ exports[`Individual components dist/govuk/components/date-input works when user 
   .govuk-label {
     font-size: 14pt;
     line-height: 1.15;
-  }
-}
-@media print {
-  .govuk-label {
-    color: var(--govuk-print-text-colour, #000000);
   }
 }
 
@@ -4722,11 +4707,6 @@ exports[`Individual components dist/govuk/components/date-input works when user 
     line-height: 1.15;
   }
 }
-@media print {
-  .govuk-fieldset__legend {
-    color: var(--govuk-print-text-colour, #000000);
-  }
-}
 
 .govuk-fieldset__legend--xl,
 .govuk-fieldset__legend--l,
@@ -4934,6 +4914,11 @@ exports[`Individual components dist/govuk/components/details works when user @im
   --govuk-surface-text-colour: #0b0c0c;
   --govuk-surface-border-colour: #8eb8dc;
 }
+@media print {
+  :root {
+    --govuk-text-colour: var(--govuk-print-text-colour, #000000);
+  }
+}
 
 
 
@@ -4973,11 +4958,6 @@ exports[`Individual components dist/govuk/components/details works when user @im
   .govuk-details {
     font-size: 14pt;
     line-height: 1.15;
-  }
-}
-@media print {
-  .govuk-details {
-    color: var(--govuk-print-text-colour, #000000);
   }
 }
 @media (min-width: 40.0625em) {
@@ -5225,6 +5205,11 @@ exports[`Individual components dist/govuk/components/error-message works when us
   --govuk-surface-text-colour: #0b0c0c;
   --govuk-surface-border-colour: #8eb8dc;
 }
+@media print {
+  :root {
+    --govuk-text-colour: var(--govuk-print-text-colour, #000000);
+  }
+}
 
 
 
@@ -5382,6 +5367,11 @@ exports[`Individual components dist/govuk/components/error-summary works when us
   --govuk-surface-text-colour: #0b0c0c;
   --govuk-surface-border-colour: #8eb8dc;
 }
+@media print {
+  :root {
+    --govuk-text-colour: var(--govuk-print-text-colour, #000000);
+  }
+}
 
 
 
@@ -5423,11 +5413,6 @@ exports[`Individual components dist/govuk/components/error-summary works when us
   .govuk-list {
     font-size: 14pt;
     line-height: 1.15;
-  }
-}
-@media print {
-  .govuk-list {
-    color: var(--govuk-print-text-colour, #000000);
   }
 }
 @media (min-width: 40.0625em) {
@@ -5496,11 +5481,6 @@ exports[`Individual components dist/govuk/components/error-summary works when us
   .govuk-error-summary {
     font-size: 14pt;
     line-height: 1.15;
-  }
-}
-@media print {
-  .govuk-error-summary {
-    color: var(--govuk-print-text-colour, #000000);
   }
 }
 @media (min-width: 40.0625em) {
@@ -5725,6 +5705,11 @@ exports[`Individual components dist/govuk/components/exit-this-page works when u
   --govuk-surface-background-colour: #f4f8fb;
   --govuk-surface-text-colour: #0b0c0c;
   --govuk-surface-border-colour: #8eb8dc;
+}
+@media print {
+  :root {
+    --govuk-text-colour: var(--govuk-print-text-colour, #000000);
+  }
 }
 
 
@@ -6193,6 +6178,11 @@ exports[`Individual components dist/govuk/components/fieldset works when user @i
   --govuk-surface-text-colour: #0b0c0c;
   --govuk-surface-border-colour: #8eb8dc;
 }
+@media print {
+  :root {
+    --govuk-text-colour: var(--govuk-print-text-colour, #000000);
+  }
+}
 
 
 
@@ -6254,11 +6244,6 @@ exports[`Individual components dist/govuk/components/fieldset works when user @i
   .govuk-fieldset__legend {
     font-size: 14pt;
     line-height: 1.15;
-  }
-}
-@media print {
-  .govuk-fieldset__legend {
-    color: var(--govuk-print-text-colour, #000000);
   }
 }
 
@@ -6442,6 +6427,11 @@ exports[`Individual components dist/govuk/components/file-upload works when user
   --govuk-surface-background-colour: #f4f8fb;
   --govuk-surface-text-colour: #0b0c0c;
   --govuk-surface-border-colour: #8eb8dc;
+}
+@media print {
+  :root {
+    --govuk-text-colour: var(--govuk-print-text-colour, #000000);
+  }
 }
 
 
@@ -6785,11 +6775,6 @@ exports[`Individual components dist/govuk/components/file-upload works when user
     line-height: 1.15;
   }
 }
-@media print {
-  .govuk-label {
-    color: var(--govuk-print-text-colour, #000000);
-  }
-}
 
 .govuk-label--xl,
 .govuk-label--l,
@@ -6879,11 +6864,6 @@ exports[`Individual components dist/govuk/components/file-upload works when user
   .govuk-file-upload {
     font-size: 14pt;
     line-height: 1.15;
-  }
-}
-@media print {
-  .govuk-file-upload {
-    color: var(--govuk-print-text-colour, #000000);
   }
 }
 .govuk-file-upload::-webkit-file-upload-button {
@@ -7141,6 +7121,11 @@ exports[`Individual components dist/govuk/components/footer works when user @imp
   --govuk-surface-text-colour: #0b0c0c;
   --govuk-surface-border-colour: #8eb8dc;
 }
+@media print {
+  :root {
+    --govuk-text-colour: var(--govuk-print-text-colour, #000000);
+  }
+}
 
 
 
@@ -7307,18 +7292,8 @@ exports[`Individual components dist/govuk/components/footer works when user @imp
 .govuk-footer__copyright-logo:link, .govuk-footer__copyright-logo:visited {
   color: var(--govuk-text-colour, #0b0c0c);
 }
-@media print {
-  .govuk-footer__copyright-logo:link, .govuk-footer__copyright-logo:visited {
-    color: var(--govuk-print-text-colour, #000000);
-  }
-}
 .govuk-footer__copyright-logo:active, .govuk-footer__copyright-logo:focus {
   color: var(--govuk-text-colour, #0b0c0c);
-}
-@media print {
-  .govuk-footer__copyright-logo:active, .govuk-footer__copyright-logo:focus {
-    color: var(--govuk-print-text-colour, #000000);
-  }
 }
 
 .govuk-footer__copyright-logo::before {
@@ -7545,6 +7520,11 @@ exports[`Individual components dist/govuk/components/header works when user @imp
   --govuk-surface-background-colour: #f4f8fb;
   --govuk-surface-text-colour: #0b0c0c;
   --govuk-surface-border-colour: #8eb8dc;
+}
+@media print {
+  :root {
+    --govuk-text-colour: var(--govuk-print-text-colour, #000000);
+  }
 }
 
 
@@ -7827,6 +7807,11 @@ exports[`Individual components dist/govuk/components/hint works when user @impor
   --govuk-surface-text-colour: #0b0c0c;
   --govuk-surface-border-colour: #8eb8dc;
 }
+@media print {
+  :root {
+    --govuk-text-colour: var(--govuk-print-text-colour, #000000);
+  }
+}
 
 
 
@@ -7992,6 +7977,11 @@ exports[`Individual components dist/govuk/components/input works when user @impo
   --govuk-surface-background-colour: #f4f8fb;
   --govuk-surface-text-colour: #0b0c0c;
   --govuk-surface-border-colour: #8eb8dc;
+}
+@media print {
+  :root {
+    --govuk-text-colour: var(--govuk-print-text-colour, #000000);
+  }
 }
 
 
@@ -8333,11 +8323,6 @@ exports[`Individual components dist/govuk/components/input works when user @impo
   .govuk-label {
     font-size: 14pt;
     line-height: 1.15;
-  }
-}
-@media print {
-  .govuk-label {
-    color: var(--govuk-print-text-colour, #000000);
   }
 }
 
@@ -8698,6 +8683,11 @@ exports[`Individual components dist/govuk/components/inset-text works when user 
   --govuk-surface-text-colour: #0b0c0c;
   --govuk-surface-border-colour: #8eb8dc;
 }
+@media print {
+  :root {
+    --govuk-text-colour: var(--govuk-print-text-colour, #000000);
+  }
+}
 
 
 
@@ -8741,11 +8731,6 @@ exports[`Individual components dist/govuk/components/inset-text works when user 
   .govuk-inset-text {
     font-size: 14pt;
     line-height: 1.15;
-  }
-}
-@media print {
-  .govuk-inset-text {
-    color: var(--govuk-print-text-colour, #000000);
   }
 }
 @media (min-width: 40.0625em) {
@@ -8879,6 +8864,11 @@ exports[`Individual components dist/govuk/components/label works when user @impo
   --govuk-surface-text-colour: #0b0c0c;
   --govuk-surface-border-colour: #8eb8dc;
 }
+@media print {
+  :root {
+    --govuk-text-colour: var(--govuk-print-text-colour, #000000);
+  }
+}
 
 
 
@@ -8918,11 +8908,6 @@ exports[`Individual components dist/govuk/components/label works when user @impo
   .govuk-label {
     font-size: 14pt;
     line-height: 1.15;
-  }
-}
-@media print {
-  .govuk-label {
-    color: var(--govuk-print-text-colour, #000000);
   }
 }
 
@@ -9105,6 +9090,11 @@ exports[`Individual components dist/govuk/components/notification-banner works w
   --govuk-surface-text-colour: #0b0c0c;
   --govuk-surface-border-colour: #8eb8dc;
 }
+@media print {
+  :root {
+    --govuk-text-colour: var(--govuk-print-text-colour, #000000);
+  }
+}
 
 
 
@@ -9186,11 +9176,6 @@ exports[`Individual components dist/govuk/components/notification-banner works w
   color: var(--govuk-text-colour, #0b0c0c);
   padding: 15px;
   background-color: var(--govuk-body-background-colour, #ffffff);
-}
-@media print {
-  .govuk-notification-banner__content {
-    color: var(--govuk-print-text-colour, #000000);
-  }
 }
 @media (min-width: 40.0625em) {
   .govuk-notification-banner__content {
@@ -9403,6 +9388,11 @@ exports[`Individual components dist/govuk/components/pagination works when user 
   --govuk-surface-background-colour: #f4f8fb;
   --govuk-surface-text-colour: #0b0c0c;
   --govuk-surface-border-colour: #8eb8dc;
+}
+@media print {
+  :root {
+    --govuk-text-colour: var(--govuk-print-text-colour, #000000);
+  }
 }
 
 
@@ -9758,6 +9748,11 @@ exports[`Individual components dist/govuk/components/panel works when user @impo
   --govuk-surface-text-colour: #0b0c0c;
   --govuk-surface-border-colour: #8eb8dc;
 }
+@media print {
+  :root {
+    --govuk-text-colour: var(--govuk-print-text-colour, #000000);
+  }
+}
 
 
 
@@ -9963,6 +9958,11 @@ exports[`Individual components dist/govuk/components/password-input works when u
   --govuk-surface-background-colour: #f4f8fb;
   --govuk-surface-text-colour: #0b0c0c;
   --govuk-surface-border-colour: #8eb8dc;
+}
+@media print {
+  :root {
+    --govuk-text-colour: var(--govuk-print-text-colour, #000000);
+  }
 }
 
 
@@ -10641,11 +10641,6 @@ exports[`Individual components dist/govuk/components/password-input works when u
     line-height: 1.15;
   }
 }
-@media print {
-  .govuk-label {
-    color: var(--govuk-print-text-colour, #000000);
-  }
-}
 
 .govuk-label--xl,
 .govuk-label--l,
@@ -11033,6 +11028,11 @@ exports[`Individual components dist/govuk/components/phase-banner works when use
   --govuk-surface-text-colour: #0b0c0c;
   --govuk-surface-border-colour: #8eb8dc;
 }
+@media print {
+  :root {
+    --govuk-text-colour: var(--govuk-print-text-colour, #000000);
+  }
+}
 
 
 
@@ -11255,11 +11255,6 @@ exports[`Individual components dist/govuk/components/phase-banner works when use
     line-height: 1.2;
   }
 }
-@media print {
-  .govuk-phase-banner__content {
-    color: var(--govuk-print-text-colour, #000000);
-  }
-}
 
 .govuk-phase-banner__content__tag {
   font-size: 1rem;
@@ -11395,6 +11390,11 @@ exports[`Individual components dist/govuk/components/radios works when user @imp
   --govuk-surface-background-colour: #f4f8fb;
   --govuk-surface-text-colour: #0b0c0c;
   --govuk-surface-border-colour: #8eb8dc;
+}
+@media print {
+  :root {
+    --govuk-text-colour: var(--govuk-print-text-colour, #000000);
+  }
 }
 
 
@@ -11643,11 +11643,6 @@ exports[`Individual components dist/govuk/components/radios works when user @imp
   .govuk-fieldset__legend {
     font-size: 14pt;
     line-height: 1.15;
-  }
-}
-@media print {
-  .govuk-fieldset__legend {
-    color: var(--govuk-print-text-colour, #000000);
   }
 }
 
@@ -11937,11 +11932,6 @@ exports[`Individual components dist/govuk/components/radios works when user @imp
     line-height: 1.15;
   }
 }
-@media print {
-  .govuk-label {
-    color: var(--govuk-print-text-colour, #000000);
-  }
-}
 
 .govuk-label--xl,
 .govuk-label--l,
@@ -12138,11 +12128,6 @@ exports[`Individual components dist/govuk/components/radios works when user @imp
     line-height: 1.15;
   }
 }
-@media print {
-  .govuk-radios__divider {
-    color: var(--govuk-print-text-colour, #000000);
-  }
-}
 
 .govuk-radios__conditional {
   margin-bottom: 15px;
@@ -12328,6 +12313,11 @@ exports[`Individual components dist/govuk/components/select works when user @imp
   --govuk-surface-background-colour: #f4f8fb;
   --govuk-surface-text-colour: #0b0c0c;
   --govuk-surface-border-colour: #8eb8dc;
+}
+@media print {
+  :root {
+    --govuk-text-colour: var(--govuk-print-text-colour, #000000);
+  }
 }
 
 
@@ -12671,11 +12661,6 @@ exports[`Individual components dist/govuk/components/select works when user @imp
     line-height: 1.15;
   }
 }
-@media print {
-  .govuk-label {
-    color: var(--govuk-print-text-colour, #000000);
-  }
-}
 
 .govuk-label--xl,
 .govuk-label--l,
@@ -12911,6 +12896,11 @@ exports[`Individual components dist/govuk/components/service-navigation works wh
   --govuk-surface-text-colour: #0b0c0c;
   --govuk-surface-border-colour: #8eb8dc;
 }
+@media print {
+  :root {
+    --govuk-text-colour: var(--govuk-print-text-colour, #000000);
+  }
+}
 
 
 
@@ -13074,18 +13064,8 @@ exports[`Individual components dist/govuk/components/service-navigation works wh
 .govuk-service-navigation__service-name .govuk-service-navigation__link:link, .govuk-service-navigation__service-name .govuk-service-navigation__link:visited {
   color: var(--govuk-text-colour, #0b0c0c);
 }
-@media print {
-  .govuk-service-navigation__service-name .govuk-service-navigation__link:link, .govuk-service-navigation__service-name .govuk-service-navigation__link:visited {
-    color: var(--govuk-print-text-colour, #000000);
-  }
-}
 .govuk-service-navigation__service-name .govuk-service-navigation__link:active, .govuk-service-navigation__service-name .govuk-service-navigation__link:focus {
   color: var(--govuk-text-colour, #0b0c0c);
-}
-@media print {
-  .govuk-service-navigation__service-name .govuk-service-navigation__link:active, .govuk-service-navigation__service-name .govuk-service-navigation__link:focus {
-    color: var(--govuk-print-text-colour, #000000);
-  }
 }
 
 .govuk-service-navigation__wrapper {
@@ -13327,6 +13307,11 @@ exports[`Individual components dist/govuk/components/skip-link works when user @
   --govuk-surface-text-colour: #0b0c0c;
   --govuk-surface-border-colour: #8eb8dc;
 }
+@media print {
+  :root {
+    --govuk-text-colour: var(--govuk-print-text-colour, #000000);
+  }
+}
 
 
 
@@ -13363,18 +13348,8 @@ exports[`Individual components dist/govuk/components/skip-link works when user @
 .govuk-skip-link:link, .govuk-skip-link:visited {
   color: var(--govuk-text-colour, #0b0c0c);
 }
-@media print {
-  .govuk-skip-link:link, .govuk-skip-link:visited {
-    color: var(--govuk-print-text-colour, #000000);
-  }
-}
 .govuk-skip-link:active, .govuk-skip-link:focus {
   color: var(--govuk-text-colour, #0b0c0c);
-}
-@media print {
-  .govuk-skip-link:active, .govuk-skip-link:focus {
-    color: var(--govuk-print-text-colour, #000000);
-  }
 }
 /*! Copyright (c) 2011 by Margaret Calvert & Henrik Kubel. All rights reserved. The font has been customised for exclusive use on gov.uk. This cut is not commercially available. */ /* stylelint-disable-line scss/comment-no-loud  */
 @font-face {
@@ -13537,6 +13512,11 @@ exports[`Individual components dist/govuk/components/summary-list works when use
   --govuk-surface-text-colour: #0b0c0c;
   --govuk-surface-border-colour: #8eb8dc;
 }
+@media print {
+  :root {
+    --govuk-text-colour: var(--govuk-print-text-colour, #000000);
+  }
+}
 
 
 
@@ -13576,11 +13556,6 @@ exports[`Individual components dist/govuk/components/summary-list works when use
   .govuk-summary-list {
     font-size: 14pt;
     line-height: 1.15;
-  }
-}
-@media print {
-  .govuk-summary-list {
-    color: var(--govuk-print-text-colour, #000000);
   }
 }
 @media (min-width: 40.0625em) {
@@ -13797,11 +13772,6 @@ exports[`Individual components dist/govuk/components/summary-list works when use
     line-height: 1.15;
   }
 }
-@media print {
-  .govuk-summary-card__title {
-    color: var(--govuk-print-text-colour, #000000);
-  }
-}
 @media (min-width: 40.0625em) {
   .govuk-summary-card__title {
     margin-bottom: 5px;
@@ -13976,6 +13946,11 @@ exports[`Individual components dist/govuk/components/table works when user @impo
   --govuk-surface-text-colour: #0b0c0c;
   --govuk-surface-border-colour: #8eb8dc;
 }
+@media print {
+  :root {
+    --govuk-text-colour: var(--govuk-print-text-colour, #000000);
+  }
+}
 
 
 
@@ -14017,11 +13992,6 @@ exports[`Individual components dist/govuk/components/table works when user @impo
   .govuk-table {
     font-size: 14pt;
     line-height: 1.15;
-  }
-}
-@media print {
-  .govuk-table {
-    color: var(--govuk-print-text-colour, #000000);
   }
 }
 @media (min-width: 40.0625em) {
@@ -14247,6 +14217,11 @@ exports[`Individual components dist/govuk/components/tabs works when user @impor
   --govuk-surface-text-colour: #0b0c0c;
   --govuk-surface-border-colour: #8eb8dc;
 }
+@media print {
+  :root {
+    --govuk-text-colour: var(--govuk-print-text-colour, #000000);
+  }
+}
 
 
 
@@ -14306,11 +14281,6 @@ exports[`Individual components dist/govuk/components/tabs works when user @impor
     line-height: 1.15;
   }
 }
-@media print {
-  .govuk-tabs__title {
-    color: var(--govuk-print-text-colour, #000000);
-  }
-}
 
 .govuk-tabs__list {
   margin: 0;
@@ -14332,11 +14302,6 @@ exports[`Individual components dist/govuk/components/tabs works when user @impor
   content: "—";
   margin-left: -25px;
   padding-right: 5px;
-}
-@media print {
-  .govuk-tabs__list-item::before {
-    color: var(--govuk-print-text-colour, #000000);
-  }
 }
 
 .govuk-tabs__tab {
@@ -14448,23 +14413,9 @@ exports[`Individual components dist/govuk/components/tabs works when user @impor
   .govuk-frontend-supported .govuk-tabs__tab:link, .govuk-frontend-supported .govuk-tabs__tab:visited {
     color: var(--govuk-text-colour, #0b0c0c);
   }
-}
-@media print and (min-width: 40.0625em) {
-  .govuk-frontend-supported .govuk-tabs__tab:link, .govuk-frontend-supported .govuk-tabs__tab:visited {
-    color: var(--govuk-print-text-colour, #000000);
-  }
-}
-@media (min-width: 40.0625em) {
   .govuk-frontend-supported .govuk-tabs__tab:active, .govuk-frontend-supported .govuk-tabs__tab:focus {
     color: var(--govuk-text-colour, #0b0c0c);
   }
-}
-@media print and (min-width: 40.0625em) {
-  .govuk-frontend-supported .govuk-tabs__tab:active, .govuk-frontend-supported .govuk-tabs__tab:focus {
-    color: var(--govuk-print-text-colour, #000000);
-  }
-}
-@media (min-width: 40.0625em) {
   .govuk-frontend-supported .govuk-tabs__tab::after {
     content: "";
     position: absolute;
@@ -14600,6 +14551,11 @@ exports[`Individual components dist/govuk/components/tag works when user @import
   --govuk-surface-background-colour: #f4f8fb;
   --govuk-surface-text-colour: #0b0c0c;
   --govuk-surface-border-colour: #8eb8dc;
+}
+@media print {
+  :root {
+    --govuk-text-colour: var(--govuk-print-text-colour, #000000);
+  }
 }
 
 
@@ -14820,6 +14776,11 @@ exports[`Individual components dist/govuk/components/task-list works when user @
   --govuk-surface-background-colour: #f4f8fb;
   --govuk-surface-text-colour: #0b0c0c;
   --govuk-surface-border-colour: #8eb8dc;
+}
+@media print {
+  :root {
+    --govuk-text-colour: var(--govuk-print-text-colour, #000000);
+  }
 }
 
 
@@ -15063,11 +15024,6 @@ exports[`Individual components dist/govuk/components/task-list works when user @
   vertical-align: top;
   color: var(--govuk-text-colour, #0b0c0c);
 }
-@media print {
-  .govuk-task-list__name-and-hint {
-    color: var(--govuk-print-text-colour, #000000);
-  }
-}
 
 .govuk-task-list__status {
   display: table-cell;
@@ -15075,11 +15031,6 @@ exports[`Individual components dist/govuk/components/task-list works when user @
   text-align: right;
   vertical-align: top;
   color: var(--govuk-text-colour, #0b0c0c);
-}
-@media print {
-  .govuk-task-list__status {
-    color: var(--govuk-print-text-colour, #000000);
-  }
 }
 
 .govuk-task-list__status--cannot-start-yet {
@@ -15213,6 +15164,11 @@ exports[`Individual components dist/govuk/components/textarea works when user @i
   --govuk-surface-background-colour: #f4f8fb;
   --govuk-surface-text-colour: #0b0c0c;
   --govuk-surface-border-colour: #8eb8dc;
+}
+@media print {
+  :root {
+    --govuk-text-colour: var(--govuk-print-text-colour, #000000);
+  }
 }
 
 
@@ -15556,11 +15512,6 @@ exports[`Individual components dist/govuk/components/textarea works when user @i
     line-height: 1.15;
   }
 }
-@media print {
-  .govuk-label {
-    color: var(--govuk-print-text-colour, #000000);
-  }
-}
 
 .govuk-label--xl,
 .govuk-label--l,
@@ -15797,6 +15748,11 @@ exports[`Individual components dist/govuk/components/warning-text works when use
   --govuk-surface-text-colour: #0b0c0c;
   --govuk-surface-border-colour: #8eb8dc;
 }
+@media print {
+  :root {
+    --govuk-text-colour: var(--govuk-print-text-colour, #000000);
+  }
+}
 
 
 
@@ -15884,11 +15840,6 @@ exports[`Individual components dist/govuk/components/warning-text works when use
   display: block;
   padding-left: 45px;
   font-weight: inherit;
-}
-@media print {
-  .govuk-warning-text__text {
-    color: var(--govuk-print-text-colour, #000000);
-  }
 }
 
 "
