@@ -10,7 +10,7 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 We've restructured our applied colours in Sass, changing how you can access applied colours for use in your own code.
 
-If you were using the value of one of the variables in [`settings/_colours-applied.scss`](https://github.com/alphagov/govuk-frontend/blob/v5.13.0/packages/govuk-frontend/src/govuk/settings/_colours-applied.scss), use the new `govuk-applied-colour` function to access that value.
+If you were using the value of one of the variables in [`settings/_colours-applied.scss`](https://github.com/alphagov/govuk-frontend/blob/v5.13.0/packages/govuk-frontend/src/govuk/settings/_colours-applied.scss), use the new `govuk-applied-colour` function to output a [`var()` call](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/var) referencing the colour.
 
 ```scss
 .a-component {
