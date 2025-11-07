@@ -15,5 +15,10 @@
     @each $name, $value in $govuk-applied-colours {
       --_govuk-colour-#{$name}: #{$value};
     }
+
+    // Use 'true black' to avoid printers using colour ink to print body text
+    @media print {
+      --_govuk-colour-text: #000000;
+    }
   }
 }

@@ -20,7 +20,7 @@ describe('GOV.UK Frontend custom properties', () => {
     `
 
     const { css } = await compileSassString(sass)
-    const rootOccurrences = css.matchAll(/:root/g)
+    const rootOccurrences = css.matchAll(/--govuk-frontend-version/g)
 
     expect(Array.from(rootOccurrences)).toHaveLength(1)
   })
