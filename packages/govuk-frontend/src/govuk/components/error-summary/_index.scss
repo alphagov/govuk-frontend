@@ -3,11 +3,11 @@
 @include govuk-exports("govuk/component/error-summary") {
   .govuk-error-summary {
     @include govuk-font($size: 19);
-    @include govuk-text-colour;
-    @include govuk-responsive-padding(4);
-    @include govuk-responsive-margin(8, "bottom");
 
     border: $govuk-border-width solid govuk-applied-colour(error);
+    color: govuk-applied-colour(text);
+    @include govuk-responsive-padding(4);
+    @include govuk-responsive-margin(8, "bottom");
 
     &:focus {
       outline: $govuk-focus-width solid govuk-applied-colour(focus);

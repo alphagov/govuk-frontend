@@ -36,8 +36,8 @@
 
   .govuk-notification-banner__content {
     $padding-tablet: govuk-spacing(4);
-    @include govuk-text-colour;
     padding: govuk-spacing(3);
+    color: govuk-applied-colour(text);
 
     background-color: govuk-applied-colour(body-background);
 

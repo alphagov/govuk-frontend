@@ -52,9 +52,9 @@
   }
 
   .govuk-warning-text__text {
-    @include govuk-text-colour;
     display: block;
     padding-left: 45px;
+    color: govuk-applied-colour(text);
     // While `<strong>` is styled `bold` or `bolder` by user-agents
     // this can be reset by the app's stylesheet
     font-weight: inherit;

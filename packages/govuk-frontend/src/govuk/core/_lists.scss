@@ -1,11 +1,11 @@
 @include govuk-exports("govuk/core/lists") {
   %govuk-list {
     @include govuk-font($size: 19);
-    @include govuk-text-colour;
     margin-top: 0;
-    @include govuk-responsive-margin(4, "bottom");
     padding-left: 0;
     list-style-type: none;
+    color: govuk-applied-colour(text);
+    @include govuk-responsive-margin(4, "bottom");
 
     // Add a top margin for nested lists
     %govuk-list {

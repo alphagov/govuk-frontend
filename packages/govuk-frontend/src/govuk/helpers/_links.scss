@@ -223,12 +223,12 @@
 @mixin govuk-link-style-text {
   &:link,
   &:visited {
-    @include govuk-text-colour;
+    color: govuk-applied-colour(text);
   }
 
   &:active,
   &:focus {
-    @include govuk-text-colour;
+    color: govuk-applied-colour(text);
   }
 }
 
