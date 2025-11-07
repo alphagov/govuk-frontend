@@ -23,8 +23,6 @@ $_govuk-applied-colours: _govuk-define-applied-colours(
       // the template background (such as the footer and cookie banner).
       "template-background": govuk-colour("black", $variant: "tint-95"),
       "body-background": govuk-colour("white"),
-      // Use 'true black' to avoid printers using colour ink to print body text
-      "print-text": #000000,
       // Used in for example 'muted' text and help text.
       "secondary-text": govuk-colour("black", $variant: "tint-25"),
       // Used for outline (and background, where appropriate) when interactive
