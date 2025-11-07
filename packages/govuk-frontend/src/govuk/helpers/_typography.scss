@@ -32,9 +32,15 @@
 ///
 /// Sets the text colour, including a suitable override for print.
 ///
+/// @deprecated
 /// @access public
 
 @mixin govuk-text-colour {
+  @include _warning(
+    "govuk-text-colour",
+    "The `govuk-text-colour` mixin is deprecated. Use `color: govuk-colour(text)` instead."
+  );
+
   color: govuk-applied-colour(text);
 }
 

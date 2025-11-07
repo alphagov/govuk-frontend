@@ -182,6 +182,17 @@ This change was introduced in [pull request #6417: Remove 14 from the type scale
 
 ### Recommended changes
 
+#### Replace use of `govuk-text-colour` mixin with `color: govuk-applied-colour(text)`
+
+We've updated how the text colour changes to pure black when printing. This change allows to simplify
+how the text colour is applied to your CSS ruleset, which can now be a single `color` declaration rather
+than a mixin call.
+
+Replace your `@include govuk-text-colour;` mixin calls with `color: govuk-applied-colour(text)`,
+as we'll be removing the `govuk-text-colour` mixin in a future breaking release.
+
+This change was introduced in [pull request ...: ](https://github.com/alphagov/govuk-frontend/pull/....)
+
 #### Rename turquoise and pink coloured tags
 
 We've renamed 2 of the Tag component's colour modifier classes to be in line with GOV.UK Frontend's new colour palette:
