@@ -40,10 +40,6 @@
 
 @mixin govuk-text-colour {
   color: govuk-functional-colour(text);
-
-  @media print {
-    color: govuk-functional-colour(print-text);
-  }
 }
 
 /// Regular font weight helper
