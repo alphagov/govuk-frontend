@@ -32,6 +32,31 @@ If you were using the `_<COMPONENT_NAME>.scss` files, use the component's `_inde
 
 We made this change in [#6761: Deprecate `_<COMPONENT_NAME>.scss` files](https://github.com/alphagov/govuk-frontend/pull/6761).
 
+#### Use `color: govuk-functional-colour(text)` to set the text colour
+
+We've updated how the text colour changes to pure black when printing.
+
+Before, an additional print media query was included every time you used `@include govuk-text-colour`:
+
+````css
+.my-element {
+  color: var(--govuk-text-colour, #0b0c0c);
+}
+
+@media print {
+  .my-element {
+    color: var(--govuk-print-text-colour, #000);
+  }
+}
+
+This change allows you to simplify how the text colour is applied to your CSS rulesets.
+
+Replace any instances of `@include govuk-text-colour` with `color: govuk-functional-colour(text)`.
+
+We'll remove the `govuk-text-colour` mixin in a future breaking release.
+
+We made this change in [pull request #6427: Use custom properties to switch print text to pure black](https://github.com/alphagov/govuk-frontend/pull/6427).
+
 ### Fixes
 
 We've made fixes to GOV.UK Frontend in the following pull requests:
@@ -162,7 +187,7 @@ For example:
 $app-colour: govuk-colour('blue'); // Returns the 'Primary blue' colour
 
 $component-colour: govuk-colour('red', $variant: 'tint-25') // Returns the 'Red tint 25%' colour
-```
+````
 
 See the [GOV.UK web palette](https://design-system.service.gov.uk/styles/colour/#govuk-web-palette) on the GOV.UK Design System website for the list of available colours, tints and shades.
 
