@@ -114,7 +114,7 @@ We made this change in [pull request #6341: Deactivate `govuk-tint` and `govuk-s
 
 #### The GOV.UK footer component now allows the removal of OGL Content Licence information
 
-If your service's content is not covered by the OGL content licence you can now remove it from the GOV.UK footer.
+If your service does not provide information under the Open Government Licence (OGL), you can now remove it from the GOV.UK footer.
 
 If you're using Nunjucks, set the `contentLicence` parameter to `false`:
 
