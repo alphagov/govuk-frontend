@@ -6,7 +6,7 @@ params:
   - name: productName
     type: string
     required: false
-    description: Product name, used when the product name follows on directly from ‘GOV.UK’. For example, GOV.UK Pay or GOV.UK Design System. In most circumstances, you should use `serviceName`.
+    description: Product name, used when the product name follows on directly from ‘GOV.UK’. For example, GOV.UK Pay or GOV.UK Design System. In most circumstances, you should use `serviceName` in the [service navigation component](/components/service-navigation/).
   - name: serviceName
     type: string
     required: false
