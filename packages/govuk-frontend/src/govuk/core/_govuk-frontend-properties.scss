@@ -11,10 +11,10 @@
       --govuk-breakpoint-#{$name}: #{govuk-px-to-rem($value)};
     }
 
-    // CSS custom properties for each applied colour
-    @each $name, $value in $govuk-applied-colours {
-      --_govuk-colour-#{$name}: #{$value};
-    }
+    // // CSS custom properties for each applied colour
+    // @each $name, $value in $govuk-applied-colours {
+    //   --_govuk-colour-#{$name}: #{$value};
+    // }
 
     // Use 'true black' to avoid printers using colour ink to print body text
     @media print {

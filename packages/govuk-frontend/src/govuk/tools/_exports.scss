@@ -1,3 +1,5 @@
+@import "./custom-properties";
+
 ////
 /// @group tools
 ////
@@ -23,11 +25,14 @@ $_govuk-imported-modules: () !default;
 @mixin govuk-exports($name) {
   // If the mixin is not in the list of modules already exported...
   @if not index($_govuk-imported-modules, $name) {
-    // ... then add it to the list
-    $_govuk-imported-modules: append($_govuk-imported-modules, $name) !global;
-    // ... and output the CSS for that module
-    @content;
+    @include govuk-export-custom-properties {
+      // ... then add it to the list
+      $_govuk-imported-modules: append($_govuk-imported-modules, $name) !global;
+      // ... and output the CSS for that module
+      @content;
+    }
   }
   // The next time exports is called for the module of the same name, it will be
   // found in the list and so nothing will be outputted.
+  @include govuk-reset-custom-properties;
 }

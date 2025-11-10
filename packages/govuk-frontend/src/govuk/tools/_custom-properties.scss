@@ -1,0 +1,61 @@
+@use "sass:list";
+@use "sass:map";
+
+////
+/// @group tools/custom-properties
+////
+
+/// A list of the custom properties already exported
+///
+/// @type List
+/// @access private
+$_govuk-exported-custom-properties: ();
+
+/// A map of custom properties to exports with their value
+///
+/// @type Map
+/// @access private
+$_govuk-custom-properties-to-export: ();
+
+@function govuk-property-reference($property-name, $property-value) {
+  $_govuk-custom-properties-to-export: map.set(
+    $_govuk-custom-properties-to-export,
+    $property-name,
+    $property-value
+  ) !global;
+  @return #{"var(#{$property-name}, #{$property-value})"};
+}
+
+/// Track which custom properties should be exported
+///
+///
+@mixin govuk-export-custom-properties() {
+  @content;
+
+  // First filter out the properties that were already exported
+  // otherwise, we may output the :root selector without any properties
+  @each $property-name, $property-value in $_govuk-custom-properties-to-export {
+    @if list.index($_govuk-exported-custom-properties, $property-name) {
+      $_govuk-custom-properties-to-export: map.remove($_govuk-custom-properties-to-export, $property-name) !global;
+    } @else {
+      $_govuk-exported-custom-properties: list.append($_govuk-exported-custom-properties, $property-name) !global;
+    }
+  }
+
+  // Output the custom properties if any
+  @if list.length($_govuk-custom-properties-to-export) {
+    @at-root {
+      :root {
+        @each $property-name, $property-value in $_govuk-custom-properties-to-export {
+          #{$property-name}: $property-value;
+        }
+      }
+    }
+  }
+
+  $_govuk-custom-properties-to-export: () !global;
+}
+
+@mixin govuk-reset-custom-properties() {
+  $_govuk-custom-properties-to-export: () !global;
+}

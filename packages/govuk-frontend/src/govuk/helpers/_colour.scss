@@ -1,6 +1,7 @@
 @import "../settings/colours-palette";
 @import "../settings/colours-organisations";
 @import "../settings/warnings";
+@import "../tools/custom-properties";
 
 ////
 /// @group helpers/colour
@@ -99,7 +100,7 @@
 
   @if map-has-key($_govuk-applied-colours, $colour) {
     $value: map-get($_govuk-applied-colours, $colour);
-    @return var(--_govuk-colour-#{$colour}, #{$value});
+    @return govuk-property-reference(--_govuk-colour-#{$colour}, #{$value});
   }
 
   @error "Unknown colour `#{$colour}` (available colours: #{map-keys($_govuk-applied-colours)})";
