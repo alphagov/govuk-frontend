@@ -23,7 +23,8 @@ $_govuk-custom-properties-to-export: ();
     $property-name,
     $property-value
   ) !global;
-  @return #{"var(#{$property-name}, #{$property-value})"};
+  $default-property-value: govuk-custom-property-value($property-value);
+  @return #{"var(#{$property-name}, #{$default-property-value})"};
 }
 
 /// Track which custom properties should be exported
@@ -47,13 +48,32 @@ $_govuk-custom-properties-to-export: ();
     @at-root {
       :root {
         @each $property-name, $property-value in $_govuk-custom-properties-to-export {
-          #{$property-name}: $property-value;
+          #{$property-name}: govuk-custom-property-value($property-value);
+          @if type-of($property-value) == "map" {
+            @include govuk-responsive-custom-property($property-name, $property-value);
+          }
         }
       }
     }
   }
 
   $_govuk-custom-properties-to-export: () !global;
+}
+
+@mixin govuk-responsive-custom-property($property-name, $responsive-values) {
+  @each $media, $value-for-media in map.get($responsive-values, "media") {
+    @media #{$media} {
+      #{$property-name}: $value-for-media;
+    }
+  }
+}
+
+@function govuk-custom-property-value($value-or-map) {
+  @if type-of($value-or-map) == map {
+    @return map-get($value-or-map, "value");
+  }
+
+  @return $value-or-map;
 }
 
 @mixin govuk-reset-custom-properties() {

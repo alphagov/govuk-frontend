@@ -18,7 +18,12 @@ $_govuk-applied-colours: _govuk-define-applied-colours(
   $defaults: (
     (
       "brand": govuk-colour("blue"),
-      "text": govuk-colour("black"),
+      "text": (
+        value: govuk-colour("black"),
+        media: (
+          print: #000000
+        )
+      ),
       // Used by components that want to give the illusion of extending
       // the template background (such as the footer and cookie banner).
       "template-background": govuk-colour("black", $variant: "tint-95"),
