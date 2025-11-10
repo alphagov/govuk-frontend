@@ -82,6 +82,40 @@
   }
 }
 
+/// Get an applied colour
+///
+/// @param {String|Colour} $colour - Name of the colour amongst the applied colours
+/// @return {Colour} Representation of the named colour
+///
+/// @throw if `$colour` is not an applied colour of GOV.UK Frontend
+/// @access public
+@function govuk-applied-colour($colour) {
+  // Sass parses unquoted colours as colours, so we need to turn them into
+  // strings before looking them up in the colour palette
+  // https://sass-lang.com/documentation/values/strings#unquoted
+  @if type-of($colour) != "string" {
+    $colour: "#{$colour}";
+  }
+
+  @if map-has-key($_govuk-applied-colours, $colour) {
+    @return map-get($_govuk-applied-colours, $colour);
+  }
+
+  @error "Unknown colour `#{$colour}` (available colours: #{map-keys($_govuk-applied-colours)})";
+}
+
+@function _govuk-define-applied-colours($colours, $defaults) {
+  $existing-colours: map-keys($defaults);
+
+  @each $colour-name, $colour in $colours {
+    @if not index($existing-colours, $colour-name) {
+      @error 'Unknown colour `#{$colour-name}` (available colours: #{$existing-colours})';
+    }
+  }
+
+  @return map-merge($defaults, $colours);
+}
+
 /// Get the colour for a government organisation
 ///
 /// @param {String} $organisation - Organisation name, lowercase, hyphenated

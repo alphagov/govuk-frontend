@@ -1,7 +1,7 @@
 @include govuk-exports("govuk/component/accordion") {
   $govuk-accordion-base-colour: govuk-colour("black");
   $govuk-accordion-hover-colour: govuk-colour("black", $variant: "tint-95");
-  $govuk-accordion-icon-focus-colour: $govuk-focus-colour;
+  $govuk-accordion-icon-focus-colour: govuk-applied-colour(focus);
   $govuk-accordion-bottom-border-width: 1px;
 
   .govuk-accordion {
@@ -39,7 +39,7 @@
   .govuk-frontend-supported {
     .govuk-accordion {
       // Border at the bottom of the whole accordion
-      border-bottom: $govuk-accordion-bottom-border-width solid $govuk-border-colour;
+      border-bottom: $govuk-accordion-bottom-border-width solid govuk-applied-colour(border);
     }
 
     .govuk-accordion__section {
@@ -83,7 +83,7 @@
 
       border-width: 0;
 
-      color: $govuk-link-colour;
+      color: govuk-applied-colour(link);
       background: none;
 
       cursor: pointer;
@@ -188,14 +188,14 @@
 
       border: 0;
 
-      border-top: $govuk-accordion-bottom-border-width solid $govuk-border-colour;
+      border-top: $govuk-accordion-bottom-border-width solid govuk-applied-colour(border);
 
       // Visually separate the section from the one underneath when user changes
       // colours in their browser. See
       // https://github.com/alphagov/govuk-frontend/issues/2321#issuecomment-924201488
       border-bottom: govuk-spacing(2) solid transparent;
 
-      color: $govuk-text-colour;
+      color: govuk-applied-colour(text);
       background: none;
 
       text-align: left;
@@ -208,7 +208,7 @@
       }
 
       &:active {
-        color: $govuk-link-active-colour;
+        color: govuk-applied-colour(link-active);
         background: none;
       }
 
@@ -298,7 +298,7 @@
     .govuk-accordion__section-toggle {
       @include govuk-font-size($size: 19);
       @include govuk-typography-weight-regular;
-      color: $govuk-link-colour;
+      color: govuk-applied-colour(link);
     }
 
     // Add space between the icon and text. Avoid applying spacing directly to
@@ -355,12 +355,12 @@
     // remove hover state as it can be stuck in that state (iOS).
     @media (hover: none) {
       .govuk-accordion__section-header:hover {
-        border-top-color: $govuk-border-colour;
+        border-top-color: govuk-applied-colour(border);
 
-        box-shadow: inset 0 3px 0 0 $govuk-link-colour;
+        box-shadow: inset 0 3px 0 0 govuk-applied-colour(link);
 
         .govuk-accordion__section-button {
-          border-top-color: $govuk-border-colour;
+          border-top-color: govuk-applied-colour(border);
         }
       }
     }

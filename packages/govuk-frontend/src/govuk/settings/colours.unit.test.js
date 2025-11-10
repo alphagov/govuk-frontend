@@ -62,6 +62,59 @@ describe('Colour palette', () => {
   })
 })
 
+describe('Applied colours', () => {
+  it('should allow people to define custom colours before `@import`', async () => {
+    const sass = `
+      $govuk-applied-colours: (text: rebeccapurple);
+      @import "settings/colours-applied";
+
+      :root {
+        value: map-get($govuk-applied-colours, text);
+      }
+    `
+
+    await expect(compileSassString(sass)).resolves.toMatchObject({
+      css: outdent`
+        :root {
+          value: rebeccapurple;
+        }
+      `
+    })
+  })
+  it('should allow people to define custom colours with `@use`', async () => {
+    const sass = `
+      @use "settings/colours-applied" with (
+        $govuk-applied-colours: (text: rebeccapurple)
+      );
+
+      :root {
+        value: map-get(colours-applied.$govuk-applied-colours, text);
+      }
+    `
+
+    await expect(compileSassString(sass)).resolves.toMatchObject({
+      css: outdent`
+        :root {
+          value: rebeccapurple;
+        }
+      `
+    })
+  })
+
+  it('prevents people from adding new colours to the applied colours', async () => {
+    const sass = `
+      $govuk-applied-colours: (non-existing-colour: rebeccapurple);
+      @import "settings/colours-applied";
+    `
+
+    await expect(compileSassString(sass)).rejects.toThrow(
+      'Unknown colour `non-existing-colour` (available colours: brand, text, template-background,' +
+        ' body-background, print-text, secondary-text, focus, focus-text, error,' +
+        ' success, border, input-border, hover, link, link-visited, link-hover, link-active)'
+    )
+  })
+})
+
 describe('Organisation colours', () => {
   it('should define contrast-safe colours that meet contrast requirements', async () => {
     const sass = `
@@ -77,11 +130,11 @@ describe('Organisation colours', () => {
       @each $organisation in map-keys($govuk-colours-organisations) {
 
         $colour: govuk-organisation-colour($organisation);
-        $contrast: ch-color-contrast($govuk-body-background-colour, $colour);
+        $contrast: ch-color-contrast(govuk-applied-colour(body-background), $colour);
 
         @if ($contrast < $minimum-contrast) {
           @error "Contrast ratio for #{$organisation} too low."
-          + " #{$colour} on #{$govuk-body-background-colour} has a contrast of: #{$contrast}."
+          + " #{$colour} on #{govuk-applied-colour('body-background')} has a contrast of: #{$contrast}."
           + " Must be higher than #{$minimum-contrast} for WCAG AA support.";
         }
       }

@@ -105,7 +105,7 @@ describe('@mixin govuk-link-style-text', () => {
   describe('when $govuk-text-colour is a colour', () => {
     it('applies the rgba function', async () => {
       const sass = `
-        $govuk-text-colour: black;
+        $govuk-applied-colours: ('text': black);
         @import "base";
 
         a {
@@ -132,7 +132,7 @@ describe('@mixin govuk-link-style-text', () => {
   describe('when $govuk-text-colour is inherit', () => {
     it('does NOT apply the rgba function', async () => {
       const sass = `
-        $govuk-text-colour: inherit;
+        $govuk-applied-colours: (text: inherit);
         @import "base";
 
         a {

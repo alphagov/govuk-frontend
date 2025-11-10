@@ -38,7 +38,7 @@
 
     @media print {
       border-color: currentcolor;
-      color: $govuk-print-text-colour;
+      color: govuk-applied-colour(print-text);
       background: none;
     }
   }
