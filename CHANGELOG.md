@@ -8,7 +8,7 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 #### The GOV.UK footer component now allows the removal of OGL Content Licence information
 
-If your service's content is not covered by the OGL content licence you can now remove it from the GOV.UK footer.
+If your service does not provide information under the Open Government Licence (OGL), you can now remove it from the GOV.UK footer.
 
 If you're using Nunjucks, set the `contentLicence` parameter to `false`:
 
@@ -18,7 +18,7 @@ If you're using Nunjucks, set the `contentLicence` parameter to `false`:
 }) }}
 ```
 
-This change was introduced in [#6191: Allow removal of Content Licence information in the GOV.UK footer component](https://github.com/alphagov/govuk-frontend/pull/6191). Thanks to @NickColley for making this change.
+This change was introduced in [#6527: Allow false value to turn off contentLicence in GOV.UK Footer](https://github.com/alphagov/govuk-frontend/pull/6527). Thanks to @NickColley for making this change.
 
 ### Fixes
 
