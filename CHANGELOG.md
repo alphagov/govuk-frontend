@@ -9,6 +9,7 @@ For advice on how to use these release notes see [our guidance on staying up to 
 We've made fixes to GOV.UK Frontend in the following pull requests:
 
 - [#6351: Preserve already escaped `attributes` values to prevent double escaping](https://github.com/alphagov/govuk-frontend/pull/6351)
+- [#6438: Fix pagination outputting empty links when provided a null or empty value](https://github.com/alphagov/govuk-frontend/pull/6438) – thanks to @NikhilNanjappa for reporting this issue
 
 ## v5.13.0 (Feature release)
 
