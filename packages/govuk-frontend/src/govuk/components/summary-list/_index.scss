@@ -1,14 +1,14 @@
 @include govuk-exports("govuk/component/summary-list") {
   .govuk-summary-list {
     @include govuk-font($size: 19);
-    @include govuk-text-colour;
+    margin: 0; // Reset default user agent styles
+    color: govuk-applied-colour(text);
     @media #{govuk-from-breakpoint(tablet)} {
       display: table;
       width: 100%;
       table-layout: fixed; // Required to allow us to wrap words that overflow.
       border-collapse: collapse;
     }
-    margin: 0; // Reset default user agent styles
     @include govuk-responsive-margin(6, "bottom");
   }
 
@@ -200,8 +200,8 @@
 
   .govuk-summary-card__title {
     @include govuk-font($size: 19, $weight: bold);
-    @include govuk-text-colour;
     margin: govuk-spacing(1) govuk-spacing(4) govuk-spacing(2) 0;
+    color: govuk-applied-colour(text);
 
     @media #{govuk-from-breakpoint(tablet)} {
       margin-bottom: govuk-spacing(1);

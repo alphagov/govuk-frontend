@@ -144,10 +144,10 @@
 
   .govuk-checkboxes__divider {
     @include govuk-font($size: 19);
-    @include govuk-text-colour;
     $govuk-divider-size: $govuk-checkboxes-size !default;
     width: $govuk-divider-size;
     margin-bottom: govuk-spacing(2);
+    color: govuk-applied-colour(text);
     text-align: center;
   }
 

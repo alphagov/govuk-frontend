@@ -1,10 +1,10 @@
 @include govuk-exports("govuk/component/details") {
   .govuk-details {
     @include govuk-font($size: 19);
-    @include govuk-text-colour;
-    @include govuk-responsive-margin(6, "bottom");
 
     display: block;
+    color: govuk-applied-colour(text);
+    @include govuk-responsive-margin(6, "bottom");
   }
 
   .govuk-details__summary {

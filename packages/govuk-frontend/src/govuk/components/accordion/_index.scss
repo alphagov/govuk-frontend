@@ -23,11 +23,11 @@
 
   .govuk-accordion__section-button {
     @include govuk-font($size: 24, $weight: bold);
-    @include govuk-text-colour;
 
     display: block;
     margin-bottom: 0;
     padding-top: govuk-spacing(3);
+    color: govuk-applied-colour(text);
   }
 
   // Remove the bottom margin from the last item inside the content

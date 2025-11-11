@@ -41,16 +41,16 @@
 
   .govuk-task-list__name-and-hint {
     display: table-cell;
+    color: govuk-applied-colour(text);
     vertical-align: top;
-    @include govuk-text-colour;
   }
 
   .govuk-task-list__status {
     display: table-cell;
     padding-left: govuk-spacing(2);
+    color: govuk-applied-colour(text);
     text-align: right;
     vertical-align: top;
-    @include govuk-text-colour;
   }
 
   .govuk-task-list__status--cannot-start-yet {

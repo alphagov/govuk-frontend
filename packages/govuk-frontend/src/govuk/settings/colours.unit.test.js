@@ -73,13 +73,13 @@ describe('Applied colours', () => {
       }
     `
 
-    await expect(compileSassString(sass)).resolves.toMatchObject({
-      css: outdent`
+    const { css } = await compileSassString(sass)
+
+    await expect(css).toContain(outdent`
         :root {
           value: rebeccapurple;
         }
-      `
-    })
+      `)
   })
   it('should allow people to define custom colours with `@use`', async () => {
     const sass = `
@@ -92,13 +92,13 @@ describe('Applied colours', () => {
       }
     `
 
-    await expect(compileSassString(sass)).resolves.toMatchObject({
-      css: outdent`
+    const { css } = await compileSassString(sass)
+
+    await expect(css).toContain(outdent`
         :root {
           value: rebeccapurple;
         }
-      `
-    })
+      `)
   })
 
   it('prevents people from adding new colours to the applied colours', async () => {
@@ -109,9 +109,41 @@ describe('Applied colours', () => {
 
     await expect(compileSassString(sass)).rejects.toThrow(
       'Unknown colour `non-existing-colour` (available colours: brand, text, template-background,' +
-        ' body-background, print-text, secondary-text, focus, focus-text, error,' +
+        ' body-background, secondary-text, focus, focus-text, error,' +
         ' success, border, input-border, hover, link, link-visited, link-hover, link-active)'
     )
+  })
+
+  it('outputs each applied colour as a custom property', async () => {
+    const sass = `
+      @use "settings/colours-applied" with (
+        $govuk-applied-colours: (
+          text: rebeccapurple
+        )
+      );
+    `
+
+    const { css } = await compileSassString(sass)
+
+    // Check that defaults are output as intended
+    await expect(css).toContain('--_govuk-brand-colour: #1d70b8;')
+    // Check that overriden colours are output as intended
+    await expect(css).toContain('--_govuk-text-colour: rebeccapurple;')
+  })
+
+  it('only outputs custom property definitions once when imported multiple times', async () => {
+    const sass = `
+      @import "settings/colours-applied";
+      @import "settings/colours-applied";
+    `
+
+    const { css } = await compileSassString(sass)
+
+    // Use the `--govuk-frontend-version` property rather than `:root`
+    // as `:root` may appear multiple times due to media queries in the future
+    const occurrences = css.matchAll(/--_govuk-text-colour/g)
+
+    expect(Array.from(occurrences)).toHaveLength(1)
   })
 })
 

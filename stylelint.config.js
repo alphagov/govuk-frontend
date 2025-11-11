@@ -50,6 +50,17 @@ module.exports = {
   plugins: ['stylelint-order'],
   rules: {
     /**
+     * Relax custom property pattern to allow a leading `_`,
+     * enabling to mark some properties private by convention
+     */
+    'custom-property-pattern': [
+      '^_?([a-z][a-z0-9]*)(-[a-z0-9]+)*$',
+      {
+        message: (name) =>
+          `Expected custom property name "${name}" to be kebab-case`
+      }
+    ],
+    /**
      * GOV.UK Frontend has a specific ordering pattern
      * that should be applied to rules
      *

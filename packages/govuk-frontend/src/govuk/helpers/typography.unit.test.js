@@ -134,6 +134,27 @@ describe('@mixin govuk-typography-common', () => {
   })
 })
 
+describe('@mixin govuk-text-colour', () => {
+  it('throws a deprecation warning if used', async () => {
+    const sass = `
+      ${sassBootstrap}
+
+      .foo {
+        @include govuk-text-colour;
+      }
+    `
+
+    await compileSassString(sass, sassConfig)
+
+    // Expect our mocked @warn function to have been called once with a single
+    // argument, which should be the deprecation notice
+    expect(mockWarnFunction).toHaveBeenCalledWith(
+      'The `govuk-text-colour` mixin is deprecated. Use `color: govuk-colour(text)` instead. To silence this warning, update $govuk-suppressed-warnings with key: "govuk-text-colour"',
+      expect.anything()
+    )
+  })
+})
+
 describe('@mixin govuk-font-tabular-numbers', () => {
   it('enables tabular numbers opentype feature flags', async () => {
     const sass = `

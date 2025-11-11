@@ -1,11 +1,11 @@
 @include govuk-exports("govuk/component/label") {
   .govuk-label {
     @include govuk-font($size: 19);
-    @include govuk-text-colour;
 
     display: block;
 
     margin-bottom: govuk-spacing(1);
+    color: govuk-applied-colour(text);
   }
 
   // Modifiers that make labels look more like their equivalent headings

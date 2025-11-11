@@ -17,8 +17,9 @@ describe('@mixin _govuk-rebrand', () => {
       }
     `
 
-    await expect(compileSassString(sass)).resolves.toMatchObject({
-      css: outdent`
+    const { css } = await compileSassString(sass)
+
+    await expect(css).toContain(outdent`
         .foo {
           border-width: 1px;
           border-colour: #fff;
@@ -27,8 +28,7 @@ describe('@mixin _govuk-rebrand', () => {
           border-width: 10px;
           border-colour: #000;
         }
-      `
-    })
+      `)
   })
 
   describe('`$property` argument', () => {
@@ -41,16 +41,16 @@ describe('@mixin _govuk-rebrand', () => {
         }
       `
 
-      await expect(compileSassString(sass)).resolves.toMatchObject({
-        css: outdent`
+      const { css } = await compileSassString(sass)
+
+      await expect(css).toContain(outdent`
           .foo {
             background-color: #fff;
           }
           .govuk-template--rebranded .foo {
             background-color: #000;
           }
-        `
-      })
+        `)
     })
 
     it('throws an error if not provided the original value', async () => {
@@ -98,8 +98,9 @@ describe('@mixin _govuk-rebrand', () => {
         }
       `
 
-      await expect(compileSassString(sass)).resolves.toMatchObject({
-        css: outdent`
+      const { css } = await compileSassString(sass)
+
+      expect(css).toContain(outdent`
           .govuk-template {
             border-width: 1px;
             border-colour: #fff;
@@ -108,8 +109,7 @@ describe('@mixin _govuk-rebrand', () => {
             border-width: 10px;
             border-colour: #000;
           }
-        `
-      })
+        `)
     })
 
     it('when styling a specific property', async () => {
@@ -123,16 +123,16 @@ describe('@mixin _govuk-rebrand', () => {
         }
       `
 
-      await expect(compileSassString(sass)).resolves.toMatchObject({
-        css: outdent`
+      const { css } = await compileSassString(sass)
+
+      expect(css).toContain(outdent`
           .govuk-template {
             background-color: #fff;
           }
           .govuk-template--rebranded {
             background-color: #000;
           }
-        `
-      })
+        `)
     })
   })
 })

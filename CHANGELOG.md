@@ -19,25 +19,25 @@ If you were using the value of one of the variables in [`settings/_colours-appli
 }
 ```
 
-| Removed Sass variable               | `govuk-applied-colour` call                 |
-| ----------------------------------- | ------------------------------------------- |
-| `$govuk-brand-colour`               | `govuk-applied-colour(brand)`               |
-| `$govuk-text-colour`                | `govuk-applied-colour(text)`                |
-| `$govuk-template-background-colour` | `govuk-applied-colour(template-background)` |
-| `$govuk-body-background-colour`     | `govuk-applied-colour(body-background)`     |
-| `$govuk-print-text-colour`          | `govuk-applied-colour(print-text)`          |
-| `$govuk-secondary-text-colour`      | `govuk-applied-colour(secondary-text)`      |
-| `$govuk-focus-colour`               | `govuk-applied-colour(focus)`               |
-| `$govuk-focus-text-colour`          | `govuk-applied-colour(focus-text)`          |
-| `$govuk-error-colour`               | `govuk-applied-colour(error)`               |
-| `$govuk-success-colour`             | `govuk-applied-colour(success)`             |
-| `$govuk-border-colour`              | `govuk-applied-colour(border)`              |
-| `$govuk-input-border-colour`        | `govuk-applied-colour(input-border)`        |
-| `$govuk-hover-colour`               | `govuk-applied-colour(hover)`               |
-| `$govuk-link-colour`                | `govuk-applied-colour(link)`                |
-| `$govuk-link-visited-colour`        | `govuk-applied-colour(link-visited)`        |
-| `$govuk-link-hover-colour`          | `govuk-applied-colour(link-hover)`          |
-| `$govuk-link-active-colour`         | `govuk-applied-colour(link-active)`         |
+| Removed Sass variable               | `govuk-applied-colour` call                                                                                        |
+| ----------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| `$govuk-brand-colour`               | `govuk-applied-colour(brand)`                                                                                      |
+| `$govuk-text-colour`                | `govuk-applied-colour(text)`                                                                                       |
+| `$govuk-template-background-colour` | `govuk-applied-colour(template-background)`                                                                        |
+| `$govuk-body-background-colour`     | `govuk-applied-colour(body-background)`                                                                            |
+| `$govuk-print-text-colour`          | `govuk-applied-colour(text)`<br>**Note**: The `text` colour will automatically switch to pure black when printing. |
+| `$govuk-secondary-text-colour`      | `govuk-applied-colour(secondary-text)`                                                                             |
+| `$govuk-focus-colour`               | `govuk-applied-colour(focus)`                                                                                      |
+| `$govuk-focus-text-colour`          | `govuk-applied-colour(focus-text)`                                                                                 |
+| `$govuk-error-colour`               | `govuk-applied-colour(error)`                                                                                      |
+| `$govuk-success-colour`             | `govuk-applied-colour(success)`                                                                                    |
+| `$govuk-border-colour`              | `govuk-applied-colour(border)`                                                                                     |
+| `$govuk-input-border-colour`        | `govuk-applied-colour(input-border)`                                                                               |
+| `$govuk-hover-colour`               | `govuk-applied-colour(hover)`                                                                                      |
+| `$govuk-link-colour`                | `govuk-applied-colour(link)`                                                                                       |
+| `$govuk-link-visited-colour`        | `govuk-applied-colour(link-visited)`                                                                               |
+| `$govuk-link-hover-colour`          | `govuk-applied-colour(link-hover)`                                                                                 |
+| `$govuk-link-active-colour`         | `govuk-applied-colour(link-active)`                                                                                |
 
 #### Use `$govuk-applied-colours` to redefine applied colours
 
@@ -225,6 +225,17 @@ These type scale changes are now on by default, and we've removed the `$govuk-ne
 This change was introduced in [pull request #6421: Turn the new type scale on by default](https://github.com/alphagov/govuk-frontend/pull/6421)
 
 ### Recommended changes
+
+#### Replace use of `govuk-text-colour` mixin with `color: govuk-applied-colour(text)`
+
+We've updated how the text colour changes to pure black when printing. This change allows to simplify
+how the text colour is applied to your CSS ruleset, which can now be a single `color` declaration rather
+than a mixin call.
+
+Replace your `@include govuk-text-colour;` mixin calls with `color: govuk-applied-colour(text)`,
+as we'll be removing the `govuk-text-colour` mixin in a future breaking release.
+
+This change was introduced in [pull request ...: ](https://github.com/alphagov/govuk-frontend/pull/....)
 
 #### Rename turquoise and pink coloured tags
 

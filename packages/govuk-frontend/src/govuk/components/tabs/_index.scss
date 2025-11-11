@@ -10,8 +10,8 @@
     // user agent font size overrides the inherited font size
     @include govuk-font-size($size: 19);
     @include govuk-typography-weight-regular;
-    @include govuk-text-colour;
     margin-bottom: govuk-spacing(2);
+    color: govuk-applied-colour(text);
   }
 
   .govuk-tabs__list {
@@ -25,10 +25,10 @@
     margin-left: govuk-spacing(5);
 
     &::before {
-      @include govuk-text-colour;
       content: "\2014 "; // "— "
       margin-left: govuk-spacing(-5);
       padding-right: govuk-spacing(1);
+      color: govuk-applied-colour(text);
     }
   }
 

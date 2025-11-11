@@ -1,12 +1,12 @@
 @include govuk-exports("govuk/component/table") {
   .govuk-table {
     @include govuk-font($size: 19);
-    @include govuk-text-colour;
     width: 100%;
-    @include govuk-responsive-margin(6, "bottom");
 
     border-spacing: 0;
     border-collapse: collapse;
+    color: govuk-applied-colour(text);
+    @include govuk-responsive-margin(6, "bottom");
   }
 
   // Modifier for tables with a lot of data. Tables with lots of data benefit

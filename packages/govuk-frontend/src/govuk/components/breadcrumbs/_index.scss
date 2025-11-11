@@ -20,10 +20,10 @@
 
   .govuk-breadcrumbs {
     @include govuk-font($size: $font-size);
-    @include govuk-text-colour;
 
     margin-top: govuk-spacing(3);
     margin-bottom: govuk-spacing(2);
+    color: govuk-applied-colour(text);
   }
 
   .govuk-breadcrumbs__list {
