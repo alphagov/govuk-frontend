@@ -49,10 +49,6 @@ describe('GOV.UK Frontend custom properties', () => {
     it('outputs one custom property for each applied colour', async () => {
       const sass = `
         @import "base";
-        $govuk-applied-colours: (
-          brand: govuk-colour('blue'),
-          text: govuk-colour('black')
-        );
 
         @import "core/govuk-frontend-properties";
       `
