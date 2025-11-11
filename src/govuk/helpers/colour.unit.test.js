@@ -313,7 +313,7 @@ describe('@function govuk-applied-colour', () => {
     await expect(compileSassString(sass, sassConfig)).resolves.toMatchObject({
       css: outdent`
         .foo {
-          color: #ff0000;
+          color: var(--_govuk-error-colour, #ff0000);
         }
       `
     })
@@ -331,7 +331,7 @@ describe('@function govuk-applied-colour', () => {
     await expect(compileSassString(sass, sassConfig)).resolves.toMatchObject({
       css: outdent`
         .foo {
-          color: #663399;
+          color: var(--_govuk-rebeccapurple-colour, #663399);
         }
       `
     })
