@@ -37,7 +37,7 @@
         <div class="govuk-width-container">
           <p class="govuk-body">
             <a href="{{ path }}" class="govuk-link" rel="noreferrer noopener" target="_blank">
-              Open this example in a new tab<span class="govuk-visually-hidden">: {{ heading + (', rebrand flag ' + 'on' if state else 'off') | safe | lower }}</span>
+              Open this example in a new tab<span class="govuk-visually-hidden">: {{ heading + ', rebrand flag ' + ('on' if state else 'off') | safe }}</span>
             </a>
           </p>
         </div>
