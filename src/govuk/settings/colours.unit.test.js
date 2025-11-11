@@ -141,6 +141,19 @@ describe('Functional colours', () => {
   })
 
   describe('legacy variables', () => {
+    let mockWarnFunction
+    let sassConfig
+
+    beforeEach(() => {
+      mockWarnFunction = jest.fn().mockReturnValue(sassNull)
+
+      sassConfig = {
+        logger: {
+          warn: mockWarnFunction
+        }
+      }
+    })
+
     describe.each([
       'brand',
       'text',
@@ -157,8 +170,8 @@ describe('Functional colours', () => {
       'link',
       'link-visited',
       'link-hover',
-      'link-active',
-    ])("$govuk-%s-colour", (functionalColourName) => {
+      'link-active'
+    ])('$govuk-%s-colour', (functionalColourName) => {
       it('sets a Sass variable with the functional colour value', async () => {
         const sass = `
           @import "settings/colours-functional";
@@ -168,9 +181,55 @@ describe('Functional colours', () => {
           }
         `
 
-        const { css } = await compileSassString(sass)
+        const { css } = await compileSassString(sass, sassConfig)
+
+        expect(mockWarnFunction).not.toHaveBeenCalledWith(
+          `Using the \`$govuk-${functionalColourName}-colour\` variable to configure a new value is deprecated.` +
+            ` Please use \`$govuk-functional-colours: (${functionalColourName}: <NEW_COLOUR_VALUE>);\`.` +
+            ' To silence this warning, update $govuk-suppressed-warnings with key: "applied-colour-variables"',
+          expect.anything()
+        )
 
         expect(css).toContain(`result: true;`)
+      })
+
+      it('logs a deprecation warning if an applied colour variable was set by the user', async () => {
+        const sass = `
+          $govuk-${functionalColourName}-colour: rebeccapurple;
+          @import "settings/colours-functional";
+        `
+
+        await compileSassString(sass, sassConfig)
+
+        // Expect our mocked @warn function to have been called once with a single
+        // argument, which should be the deprecation notice
+        expect(mockWarnFunction).toHaveBeenCalledWith(
+          `Using the \`$govuk-${functionalColourName}-colour\` variable to configure a new value is deprecated.` +
+            ` Please use \`$govuk-functional-colours: (${functionalColourName}: <NEW_COLOUR_VALUE>);\`.` +
+            ' To silence this warning, update $govuk-suppressed-warnings with key: "applied-colour-variables"',
+          expect.anything()
+        )
+      })
+
+      // This will likely not happen from users explicitely `@import`ing the file twice (though it could)
+      // but will happen when importing GOV.UK Frontend as a whole, through object, core or component files
+      // importing files from settings, helpers or tools
+      it('does not log a deprecation if the file is imported twice without user configuration', async () => {
+        const sass = `
+          @import "settings/colours-functional";
+          @import "settings/colours-functional";
+        `
+
+        await compileSassString(sass, sassConfig)
+
+        // Expect our mocked @warn function to have been called once with a single
+        // argument, which should be the deprecation notice
+        expect(mockWarnFunction).not.toHaveBeenCalledWith(
+          `Using the \`$govuk-${functionalColourName}-colour\` variable to configure a new value is deprecated.` +
+            ` Please use \`$govuk-functional-colours: (${functionalColourName}: <NEW_COLOUR_VALUE>);\`.` +
+            ' To silence this warning, update $govuk-suppressed-warnings with key: "applied-colour-variables"',
+          expect.anything()
+        )
       })
     })
   })
