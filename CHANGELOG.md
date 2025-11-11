@@ -99,6 +99,36 @@ Users of Nunjucks macros don't need to change anything.
 
 We introduced this change in [pull request #6382: Remove deprecated `govuk-pagination__item--ellipses` class](https://github.com/alphagov/govuk-frontend/pull/6382).
 
+#### Update the class on the GOV.UK logo link in the Header component
+
+We've updated the value of the `class` attribute on the link to the GOV.UK homepage to `govuk-header__homepage-link`.
+
+If you're not using Nunjucks macros, you'll need to update this class manually.
+
+```html
+<!-- Before -->
+<a href="//gov.uk" class="govuk-header__link govuk-header__link--homepage">
+  [...]
+</a>
+
+<!-- After -->
+<a href="//gov.uk" class="govuk-header__homepage-link">
+  [...]
+</a>
+```
+
+This change was introduced in [pull request #6423: Remove service name and navigation from Header component](https://github.com/alphagov/govuk-frontend/pull/6423)
+
+#### Stop including the service name and navigation items in the Header component
+
+We deprecated including the service name and navigation in the Header in [GOV.UK Frontend 5.9.0](https://github.com/alphagov/govuk-frontend/releases/tag/v5.9.0).
+
+We've now removed this functionality.
+
+Service names and service-level navigation should now use the [Service navigation component](https://design-system.service.gov.uk/components/service-navigation/).
+
+This change was introduced in [pull request #6423: Remove service name and navigation from Header component](https://github.com/alphagov/govuk-frontend/pull/6423)
+
 #### Stop importing GOV.UK Frontend's Sass using `all`
 
 GOV.UK Frontend's `all.scss` file and partials were deprecated in [GOV.UK Frontend 5.8.0](https://github.com/alphagov/govuk-frontend/releases/tag/v5.8.0) and were replaced by equivalent [Sass `index` files](https://sass-lang.com/documentation/at-rules/use/#index-files). We've now removed the files entirely.
