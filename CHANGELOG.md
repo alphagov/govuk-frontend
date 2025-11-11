@@ -157,6 +157,12 @@ As part of this work, we removed the deprecated `$websafe` parameter of the `gov
 
 This change was introduced in [pull request #6390: Remove legacy organisation colour palette](https://github.com/alphagov/govuk-frontend/pull/6390).
 
+#### Update references to deprecated organisations in the organisation colour palette
+
+We've removed deprecated organisations from the organisation colour palette. These organisations had ceased to exist or had been renamed prior to the start of 2025.
+
+This change was introduced in [pull request #6426: Remove deprecated organisation colours](https://github.com/alphagov/govuk-frontend/pull/6426).
+
 #### Stop using the `govuk-responsive-typography` Sass mixin
 
 We renamed the `govuk-responsive-typography` Sass mixin to `govuk-font-size` in [GOV.UK Frontend 5.1.0](https://github.com/alphagov/govuk-frontend/releases/tag/v5.1.0). We've now removed the previous name entirely.
