@@ -12,7 +12,7 @@
     text-align: center;
 
     @media #{govuk-until-breakpoint(tablet)} {
-      padding: govuk-spacing(if($govuk-new-typography-scale, 4, 3)) - $govuk-border-width;
+      padding: govuk-spacing(4) - $govuk-border-width;
 
       // This is an if-all-else-fails attempt to stop long words from
       // overflowing the container on very narrow viewports by forcing them to

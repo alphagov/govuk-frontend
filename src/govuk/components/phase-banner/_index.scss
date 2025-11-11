@@ -18,12 +18,10 @@
 
   .govuk-phase-banner__content__tag {
     @include govuk-font-size($size: 16);
-    margin-right: govuk-spacing(if($govuk-new-typography-scale, 3, 2));
+    margin-right: govuk-spacing(3);
 
-    @if $govuk-new-typography-scale {
-      @media #{govuk-from-breakpoint(tablet)} {
-        margin-right: govuk-spacing(2);
-      }
+    @media #{govuk-from-breakpoint(tablet)} {
+      margin-right: govuk-spacing(2);
     }
   }
 
