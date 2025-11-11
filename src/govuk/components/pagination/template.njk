@@ -68,7 +68,9 @@
   {%- if params.items %}
   <ul class="govuk-pagination__list">
   {% for item in params.items %}
-    {{ _pageItem(item) | indent(2) }}
+    {% if item is not null and (item | length) > 0 %}
+      {{ _pageItem(item) | indent(2) }}
+    {% endif %}
   {% endfor %}
   </ul>
   {% endif %}
