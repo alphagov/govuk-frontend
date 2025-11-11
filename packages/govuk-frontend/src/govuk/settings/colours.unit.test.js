@@ -139,6 +139,41 @@ describe('Functional colours', () => {
         ' success, border, input-border, hover, link, link-visited, link-hover, link-active)'
     )
   })
+
+  describe('legacy variables', () => {
+    describe.each([
+      'brand',
+      'text',
+      'template-background',
+      'body-background',
+      'print-text',
+      'secondary-text',
+      'focus',
+      'focus-text',
+      'error',
+      'success',
+      'border',
+      'input-border',
+      'link',
+      'link-visited',
+      'link-hover',
+      'link-active',
+    ])("$govuk-%s-colour", (functionalColourName) => {
+      it('sets a Sass variable with the functional colour value', async () => {
+        const sass = `
+          @import "settings/colours-functional";
+
+          :root {
+            result: $govuk-${functionalColourName}-colour == govuk-functional-colour(${functionalColourName});
+          }
+        `
+
+        const { css } = await compileSassString(sass)
+
+        expect(css).toContain(`result: true;`)
+      })
+    })
+  })
 })
 
 describe('Organisation colours', () => {
