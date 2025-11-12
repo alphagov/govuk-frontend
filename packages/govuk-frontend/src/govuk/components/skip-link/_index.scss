@@ -20,9 +20,9 @@
     }
 
     &:focus {
-      outline: $govuk-focus-width solid govuk-applied-colour(focus);
+      outline: $govuk-focus-width solid govuk-functional-colour(focus);
       outline-offset: 0;
-      background-color: govuk-applied-colour(focus);
+      background-color: govuk-functional-colour(focus);
 
       // Undo unwanted changes when global styles are enabled
       @if $govuk-global-styles {

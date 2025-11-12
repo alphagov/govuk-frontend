@@ -62,14 +62,14 @@ describe('Colour palette', () => {
   })
 })
 
-describe('Applied colours', () => {
+describe('Functional colours', () => {
   it('should allow people to define custom colours before `@import`', async () => {
     const sass = `
-      $govuk-applied-colours: (text: rebeccapurple);
-      @import "settings/colours-applied";
+      $govuk-functional-colours: (text: rebeccapurple);
+      @import "settings/colours-functional";
 
       :root {
-        value: map-get($govuk-applied-colours, text);
+        value: map-get($govuk-functional-colours, text);
       }
     `
 
@@ -83,12 +83,12 @@ describe('Applied colours', () => {
   })
   it('should allow people to define custom colours with `@use`', async () => {
     const sass = `
-      @use "settings/colours-applied" with (
-        $govuk-applied-colours: (text: rebeccapurple)
+      @use "settings/colours-functional" with (
+        $govuk-functional-colours: (text: rebeccapurple)
       );
 
       :root {
-        value: map-get(colours-applied.$govuk-applied-colours, text);
+        value: map-get(colours-functional.$govuk-functional-colours, text);
       }
     `
 
@@ -101,10 +101,10 @@ describe('Applied colours', () => {
     })
   })
 
-  it('prevents people from adding new colours to the applied colours', async () => {
+  it('prevents people from adding new colours to the functional colours', async () => {
     const sass = `
-      $govuk-applied-colours: (non-existing-colour: rebeccapurple);
-      @import "settings/colours-applied";
+      $govuk-functional-colours: (non-existing-colour: rebeccapurple);
+      @import "settings/colours-functional";
     `
 
     await expect(compileSassString(sass)).rejects.toThrow(
@@ -120,13 +120,13 @@ describe('Organisation colours', () => {
     const sass = `
       @import "settings/colours-palette";
       @import "settings/colours-organisations";
-      @import "settings/colours-applied";
+      @import "settings/colours-functional";
       @import "helpers/colour";
 
       @import "sass-color-helpers/stylesheets/color-helpers";
 
       $minimum-contrast: 4.5;
-      $body-background-colour: map-get($_govuk-applied-colours, body-background);
+      $body-background-colour: map-get($_govuk-functional-colours, body-background);
 
       @each $organisation in map-keys($govuk-colours-organisations) {
 

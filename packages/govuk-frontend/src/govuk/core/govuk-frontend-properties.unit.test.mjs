@@ -45,8 +45,8 @@ describe('GOV.UK Frontend custom properties', () => {
     })
   })
 
-  describe('applied colours', () => {
-    it('outputs one custom property for each applied colour', async () => {
+  describe('functional colours', () => {
+    it('outputs one custom property for each functional colour', async () => {
       const sass = `
         @import "base";
 

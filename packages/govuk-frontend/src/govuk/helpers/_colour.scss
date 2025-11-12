@@ -82,14 +82,14 @@
   }
 }
 
-/// Get an applied colour
+/// Get a functional colour
 ///
-/// @param {String|Colour} $colour - Name of the colour amongst the applied colours
+/// @param {String|Colour} $colour - Name of the colour amongst the functional colours
 /// @return {Colour} Representation of the named colour
 ///
-/// @throw if `$colour` is not an applied colour of GOV.UK Frontend
+/// @throw if `$colour` is not an functional colour of GOV.UK Frontend
 /// @access public
-@function govuk-applied-colour($colour) {
+@function govuk-functional-colour($colour) {
   // Sass parses unquoted colours as colours, so we need to turn them into
   // strings before looking them up in the colour palette
   // https://sass-lang.com/documentation/values/strings#unquoted
@@ -97,15 +97,15 @@
     $colour: "#{$colour}";
   }
 
-  @if map-has-key($_govuk-applied-colours, $colour) {
-    $value: map-get($_govuk-applied-colours, $colour);
+  @if map-has-key($_govuk-functional-colours, $colour) {
+    $value: map-get($_govuk-functional-colours, $colour);
     @return var(--_govuk-#{$colour}-colour, #{$value});
   }
 
-  @error "Unknown colour `#{$colour}` (available colours: #{map-keys($_govuk-applied-colours)})";
+  @error "Unknown colour `#{$colour}` (available colours: #{map-keys($_govuk-functional-colours)})";
 }
 
-@function _govuk-define-applied-colours($colours, $defaults) {
+@function _govuk-define-functional-colours($colours, $defaults) {
   $existing-colours: map-keys($defaults);
 
   @each $colour-name, $colour in $colours {

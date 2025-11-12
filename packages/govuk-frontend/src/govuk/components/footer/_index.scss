@@ -1,7 +1,7 @@
 @include govuk-exports("govuk/component/footer") {
-  $govuk-footer-background: govuk-applied-colour(template-background);
-  $govuk-footer-text: govuk-applied-colour(text);
-  $govuk-footer-content-border: govuk-applied-colour(border);
+  $govuk-footer-background: govuk-functional-colour(template-background);
+  $govuk-footer-text: govuk-functional-colour(text);
+  $govuk-footer-content-border: govuk-functional-colour(border);
 
   // Royal Arms image dimensions
   $govuk-footer-crest-image-width: 125px;
@@ -12,7 +12,7 @@
     @include govuk-responsive-padding(7, "top");
     @include govuk-responsive-padding(5, "bottom");
 
-    border-top: 10px solid govuk-applied-colour(brand);
+    border-top: 10px solid govuk-functional-colour(brand);
     color: $govuk-footer-text;
     @include _govuk-rebrand(
       "background",

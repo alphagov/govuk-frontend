@@ -4,7 +4,7 @@
 
 @import "../helpers/colour";
 
-/// A map of applied colours for the GOV.UK palette.
+/// A map of functional colours for the GOV.UK palette.
 ///
 /// @type Map
 ///
@@ -12,9 +12,9 @@
 ///   friendly name for the colour (e.g. "red": govuk-colour("red");
 ///
 /// @access public
-$govuk-applied-colours: () !default;
-$_govuk-applied-colours: _govuk-define-applied-colours(
-  $govuk-applied-colours,
+$govuk-functional-colours: () !default;
+$_govuk-functional-colours: _govuk-define-functional-colours(
+  $govuk-functional-colours,
   $defaults: (
     (
       "brand": govuk-colour("blue"),
