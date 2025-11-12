@@ -74,25 +74,25 @@
 
 @mixin govuk-link-style-default {
   &:link {
-    color: govuk-applied-colour(link);
+    color: govuk-functional-colour(link);
   }
 
   &:visited {
-    color: govuk-applied-colour(link-visited);
+    color: govuk-functional-colour(link-visited);
   }
 
   &:hover {
-    color: govuk-applied-colour(link-hover);
+    color: govuk-functional-colour(link-hover);
   }
 
   &:active {
-    color: govuk-applied-colour(link-active);
+    color: govuk-functional-colour(link-active);
   }
 
   // When focussed, the text colour needs to be darker to ensure that colour
   // contrast is still acceptable
   &:focus {
-    color: govuk-applied-colour(focus-text);
+    color: govuk-functional-colour(focus-text);
   }
 }
 
@@ -115,7 +115,7 @@
 @mixin govuk-link-style-error {
   &:link,
   &:visited {
-    color: govuk-applied-colour(error);
+    color: govuk-functional-colour(error);
   }
 
   &:hover {
@@ -123,13 +123,13 @@
   }
 
   &:active {
-    color: govuk-applied-colour(error);
+    color: govuk-functional-colour(error);
   }
 
   // When focussed, the text colour needs to be darker to ensure that colour
   // contrast is still acceptable
   &:focus {
-    color: govuk-applied-colour(focus-text);
+    color: govuk-functional-colour(focus-text);
   }
 }
 
@@ -152,7 +152,7 @@
 @mixin govuk-link-style-success {
   &:link,
   &:visited {
-    color: govuk-applied-colour(success);
+    color: govuk-functional-colour(success);
   }
 
   &:hover {
@@ -160,13 +160,13 @@
   }
 
   &:active {
-    color: govuk-applied-colour(success);
+    color: govuk-functional-colour(success);
   }
 
   // When focussed, the text colour needs to be darker to ensure that colour
   // contrast is still acceptable
   &:focus {
-    color: govuk-applied-colour(focus-text);
+    color: govuk-functional-colour(focus-text);
   }
 }
 
@@ -189,18 +189,18 @@
 @mixin govuk-link-style-muted {
   &:link,
   &:visited {
-    color: govuk-applied-colour(secondary-text);
+    color: govuk-functional-colour(secondary-text);
   }
 
   &:hover,
   &:active {
-    color: govuk-applied-colour(text);
+    color: govuk-functional-colour(text);
   }
 
   // When focussed, the text colour needs to be darker to ensure that colour
   // contrast is still acceptable
   &:focus {
-    color: govuk-applied-colour(focus-text);
+    color: govuk-functional-colour(focus-text);
   }
 }
 
@@ -255,7 +255,7 @@
   }
 
   &:focus {
-    color: govuk-applied-colour(focus-text);
+    color: govuk-functional-colour(focus-text);
   }
 }
 
@@ -281,25 +281,25 @@
 
 @mixin govuk-link-style-no-visited-state {
   &:link {
-    color: govuk-applied-colour(link);
+    color: govuk-functional-colour(link);
   }
 
   &:visited {
-    color: govuk-applied-colour(link);
+    color: govuk-functional-colour(link);
   }
 
   &:hover {
-    color: govuk-applied-colour(link-hover);
+    color: govuk-functional-colour(link-hover);
   }
 
   &:active {
-    color: govuk-applied-colour(link-active);
+    color: govuk-functional-colour(link-active);
   }
 
   // When focussed, the text colour needs to be darker to ensure that colour
   // contrast is still acceptable
   &:focus {
-    color: govuk-applied-colour(focus-text);
+    color: govuk-functional-colour(focus-text);
   }
 }
 

@@ -285,12 +285,12 @@ describe('@function govuk-colour', () => {
   })
 })
 
-describe('@function govuk-applied-colour', () => {
+describe('@function govuk-functional-colour', () => {
   let sassBootstrap = ''
 
   beforeEach(() => {
     sassBootstrap = `
-      $_govuk-applied-colours: (
+      $_govuk-functional-colours: (
         "error": #ff0000,
         "success": #00ff00,
         "link": #0000ff,
@@ -301,12 +301,12 @@ describe('@function govuk-applied-colour', () => {
     `
   })
 
-  it('returns a colour from the applied colour map', async () => {
+  it('returns a colour from the functional colour map', async () => {
     const sass = `
       ${sassBootstrap}
 
       .foo {
-        color: govuk-applied-colour('error');
+        color: govuk-functional-colour('error');
       }
     `
 
@@ -324,7 +324,7 @@ describe('@function govuk-applied-colour', () => {
       ${sassBootstrap}
 
       .foo {
-        color: govuk-applied-colour(rebeccapurple);
+        color: govuk-functional-colour(rebeccapurple);
       }
     `
 
@@ -342,7 +342,7 @@ describe('@function govuk-applied-colour', () => {
       ${sassBootstrap}
 
       .foo {
-        color: govuk-applied-colour('hooloovoo');
+        color: govuk-functional-colour('hooloovoo');
       }
     `
 

@@ -15,7 +15,7 @@
 
     @include _govuk-rebrand(
       "background-color",
-      govuk-applied-colour(template-background),
+      govuk-functional-colour(template-background),
       $_govuk-rebrand-template-background-colour
     );
   }

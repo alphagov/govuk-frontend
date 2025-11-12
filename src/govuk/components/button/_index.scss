@@ -28,7 +28,7 @@ $govuk-inverse-button-background-colour: govuk-colour("white") !default;
 /// @type Colour
 /// @access public
 
-$govuk-inverse-button-text-colour: govuk-applied-colour(brand) !default;
+$govuk-inverse-button-text-colour: govuk-functional-colour(brand) !default;
 
 @include govuk-exports("govuk/component/button") {
   $govuk-button-colour: $govuk-button-background-colour;
@@ -111,16 +111,16 @@ $govuk-inverse-button-text-colour: govuk-applied-colour(brand) !default;
     }
 
     &:focus {
-      border-color: govuk-applied-colour(focus);
+      border-color: govuk-functional-colour(focus);
       outline: $govuk-focus-width solid transparent;
-      box-shadow: inset 0 0 0 1px govuk-applied-colour(focus);
+      box-shadow: inset 0 0 0 1px govuk-functional-colour(focus);
     }
 
     &:focus:not(:active):not(:hover) {
-      border-color: govuk-applied-colour(focus);
-      color: govuk-applied-colour(focus-text);
-      background-color: govuk-applied-colour(focus);
-      box-shadow: 0 2px 0 govuk-applied-colour(focus-text);
+      border-color: govuk-functional-colour(focus);
+      color: govuk-functional-colour(focus-text);
+      background-color: govuk-functional-colour(focus);
+      box-shadow: 0 2px 0 govuk-functional-colour(focus-text);
     }
 
     // Use a pseudo element to expand the click target area to include the

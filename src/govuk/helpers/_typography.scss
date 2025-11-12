@@ -35,10 +35,10 @@
 /// @access public
 
 @mixin govuk-text-colour {
-  color: govuk-applied-colour(text);
+  color: govuk-functional-colour(text);
 
   @media print {
-    color: govuk-applied-colour(print-text);
+    color: govuk-functional-colour(print-text);
   }
 }
 

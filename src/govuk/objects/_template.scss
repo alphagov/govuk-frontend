@@ -7,7 +7,7 @@
     // footer to give the illusion of a long footer.
     @include _govuk-rebrand(
       background-color,
-      $from: govuk-applied-colour(template-background),
+      $from: govuk-functional-colour(template-background),
       $to: $_govuk-rebrand-template-background-colour
     );
 
@@ -48,6 +48,6 @@
     // own containers.
     margin: 0;
     // Set the overall body of the page back to the typical background colour.
-    background-color: govuk-applied-colour(body-background);
+    background-color: govuk-functional-colour(body-background);
   }
 }
