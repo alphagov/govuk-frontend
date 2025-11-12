@@ -1,7 +1,7 @@
 {
   "name": "govuk-frontend",
   "description": "GOV.UK Frontend contains the code you need to start building a user interface for government platforms and services.",
-  "version": "6.0.0-beta.0",
+  "version": "6.0.0-beta.0-main",
   "main": "dist/govuk/all.bundle.js",
   "module": "dist/govuk/all.mjs",
   "sass": "dist/govuk/index.scss",
@@ -61,33 +61,5 @@
     "clean:release": "del-cli ../../dist --force",
     "postbuild:package": "npm run build:stats && govuk-prototype-kit validate-plugin .",
     "version": "echo $npm_package_version"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.28.5",
-    "@babel/preset-env": "^7.28.5",
-    "@govuk-frontend/config": "*",
-    "@govuk-frontend/helpers": "*",
-    "@govuk-frontend/lib": "*",
-    "@govuk-frontend/tasks": "*",
-    "@rollup/plugin-babel": "^6.1.0",
-    "@rollup/plugin-replace": "^6.0.3",
-    "@rollup/plugin-terser": "^0.4.4",
-    "autoprefixer": "^10.4.21",
-    "cssnano": "^7.1.2",
-    "cssnano-preset-default": "^7.0.1",
-    "govuk-prototype-kit": "^13.18.0",
-    "gulp": "^5.0.1",
-    "gulp-cli": "^3.0.0",
-    "html-validate": "10.1.0",
-    "nunjucks": "^3.2.4",
-    "outdent": "^0.8.0",
-    "postcss": "^8.5.6",
-    "postcss-scss": "^4.0.9",
-    "puppeteer": "^24.27.0",
-    "rollup": "^4.52.5",
-    "sass-color-helpers": "^2.1.1",
-    "sass-embedded": "^1.89.2",
-    "sassdoc": "^2.7.4",
-    "slash": "^5.1.0"
   }
 }

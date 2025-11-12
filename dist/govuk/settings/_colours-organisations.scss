@@ -1,0 +1,137 @@
+@import "../settings/warnings";
+
+////
+/// @group settings/colours
+////
+
+/// Organisation colour palette
+///
+/// @type Map
+///
+/// @prop $organisation.colour - Colour for the given `$organisation`
+/// @prop $organisation.contrast-safe - 'Contrast safe' colour for the given
+///   `$organisation`. This colour has at least a 4.5:1 contrast against
+///   white, to be used for copy and meet the AAA (large text) and AA (smaller
+///   copy) WCAG guidelines.
+/// @prop $organisation.deprecation-message - Marks this organisation as
+///   deprecated (usually because it has ceased to exist). The value is the
+///   deprecation message output to the terminal when compiling Sass.
+///
+/// @access public
+
+$govuk-colours-organisations: (
+  "attorney-generals-office": (
+    colour: #a91c8e
+  ),
+  "cabinet-office": (
+    colour: #0056b8
+  ),
+  "civil-service": (
+    colour: #b2292e
+  ),
+  "department-for-business-trade": (
+    colour: #e52d13,
+    contrast-safe: #e02c13
+  ),
+  "department-for-culture-media-sport": (
+    colour: #ed1588,
+    contrast-safe: #d6177a
+  ),
+  "department-for-education": (
+    colour: #003764
+  ),
+  "department-for-energy-security-net-zero": (
+    colour: #00a33b,
+    contrast-safe: #00852f
+  ),
+  "department-for-environment-food-rural-affairs": (
+    colour: #00a33b,
+    contrast-safe: #008531
+  ),
+  "department-for-science-innovation-technology": (
+    colour: #00f8f8,
+    contrast-safe: #008180
+  ),
+  "department-for-transport": (
+    colour: #006853
+  ),
+  "department-for-work-pensions": (
+    colour: #00bcb5,
+    contrast-safe: #00857e
+  ),
+  "department-of-health-social-care": (
+    colour: #00a990,
+    contrast-safe: #008674
+  ),
+  "foreign-commonwealth-development-office": (
+    colour: #012069
+  ),
+  "hm-government": (
+    colour: #266ebc
+  ),
+  "hm-revenue-customs": (
+    colour: #008476
+  ),
+  "hm-treasury": (
+    colour: #b2292e
+  ),
+  "home-office": (
+    colour: #732282
+  ),
+  "ministry-of-defence": (
+    colour: #532a45
+  ),
+  "ministry-of-housing-communities-local-government": (
+    colour: #00625e
+  ),
+  "ministry-of-justice": (
+    colour: #000000
+  ),
+  "northern-ireland-office": (
+    colour: #00205c
+  ),
+  "office-of-the-advocate-general-for-scotland": (
+    colour: #00205c
+  ),
+  "office-of-the-leader-of-the-house-of-commons": (
+    colour: #497629
+  ),
+  "office-of-the-leader-of-the-house-of-lords": (
+    colour: #9c182f
+  ),
+  "prime-ministers-office-10-downing-street": (
+    colour: #0b0c0c
+  ),
+  "scotland-office": (
+    colour: #00205c
+  ),
+  "serious-fraud-office": (
+    colour: #82368c
+  ),
+  "uk-export-finance": (
+    colour: #cf102d
+  ),
+  "wales-office": (
+    colour: #a33038
+  )
+) !default;
+
+/// Organisation colour aliases
+///
+/// Some organisations have been renamed within our code over time. Here we
+/// map the prior key to the new equivalent key.
+///
+/// Note: This is for internal renames only. If a department has changed name
+/// or brand colour in a machinery of government change, it should be added to
+/// $govuk-colours-organisations as a new entry with any superseded
+/// organisations marked deprecated.
+///
+/// @type Map
+///
+/// @access private
+
+$_govuk-colours-organisations-aliases: (
+  "department-for-business-and-trade": "department-for-business-trade"
+);
+
+/*# sourceMappingURL=_colours-organisations.scss.map */

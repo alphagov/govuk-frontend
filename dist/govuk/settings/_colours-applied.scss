@@ -1,0 +1,70 @@
+////
+/// @group settings/colours
+////
+
+@import "../helpers/colour";
+
+/// A map of applied colours for the GOV.UK palette.
+///
+/// @type Map
+///
+/// @prop $colour - Representation for the given $colour, where $colour is the
+///   friendly name for the colour (e.g. "red": govuk-colour("red");
+///
+/// @access public
+$govuk-applied-colours: () !default;
+$_govuk-applied-colours: _govuk-define-applied-colours(
+  $govuk-applied-colours,
+  $defaults: (
+    (
+      "brand": govuk-colour("blue"),
+      "text": govuk-colour("black"),
+      // Used by components that want to give the illusion of extending
+      // the template background (such as the footer and cookie banner).
+      "template-background": govuk-colour("black", $variant: "tint-95"),
+      "body-background": govuk-colour("white"),
+      // Use 'true black' to avoid printers using colour ink to print body text
+      "print-text": #000000,
+      // Used in for example 'muted' text and help text.
+      "secondary-text": govuk-colour("black", $variant: "tint-25"),
+      // Used for outline (and background, where appropriate) when interactive
+      // elements (links, form controls) have keyboard focus.
+      "focus": govuk-colour("yellow"),
+      // Ensure that the contrast between the text and background colour passes
+      // WCAG Level AA contrast requirements.
+      "focus-text": govuk-colour("black"),
+      // Used to highlight error messages and form controls in an error state
+      "error": govuk-colour("red"),
+      // Used to highlight success messages and banners
+      "success": govuk-colour("green"),
+      // Used in for example borders, separators, rules and keylines.
+      "border": govuk-colour("black", $variant: "tint-80"),
+      // Used for form inputs and controls
+      "input-border": govuk-colour("black"),
+      // Used for hover states on form controls
+      "hover": govuk-colour("black", $variant: "tint-80"),
+      "link": govuk-colour("blue"),
+      "link-visited": govuk-colour("purple"),
+      "link-hover": govuk-colour("blue", $variant: "shade-50"),
+      "link-active": govuk-colour("black")
+    )
+  )
+);
+
+// =============================================================================
+// Brand refresh
+// =============================================================================
+
+/// Updated template background colour
+///
+/// @type Colour
+/// @access private
+$_govuk-rebrand-template-background-colour: govuk-colour("blue", "tint-95");
+
+/// Border colour for areas on a light-blue background
+///
+/// @type Colour
+/// @access private
+$_govuk-rebrand-border-colour-on-blue-tint-95: govuk-colour("blue", "tint-50");
+
+/*# sourceMappingURL=_colours-applied.scss.map */
