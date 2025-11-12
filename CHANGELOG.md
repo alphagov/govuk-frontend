@@ -4,6 +4,12 @@ For advice on how to use these release notes, see [our guidance on staying up to
 
 ## Unreleased
 
+### Fixes
+
+We've made fixes to GOV.UK Frontend in the following pull requests:
+
+- [#6351: Preserve already escaped `attributes` values to prevent double escaping](https://github.com/alphagov/govuk-frontend/pull/6351) thanks to @colinrotherham for fixing this issue
+
 ## v6.0.0-beta.1 (Beta breaking release)
 
 ### Breaking changes
@@ -272,7 +278,6 @@ We've made fixes to GOV.UK Frontend in the following pull requests:
 
 - [#5311: Remove non-operational value parameter from file upload component](https://github.com/alphagov/govuk-frontend/pull/5311)
 - [#6434: Fix rebranded header background being visible when printed](https://github.com/alphagov/govuk-frontend/pull/6434) - thanks to @lewis-softwire for reporting this issue
-- [#6447: Fix pagination outputting empty links when provided a null or empty value](https://github.com/alphagov/govuk-frontend/pull/6447) – thanks to @NikhilNanjappa for reporting this issue
 
 ## v6.0.0-beta.0 (Beta breaking release)
 
