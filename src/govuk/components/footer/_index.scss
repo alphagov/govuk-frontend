@@ -123,8 +123,16 @@
     padding: 0;
   }
 
+  .govuk-footer__inline-list:last-child {
+    margin-bottom: 0;
+  }
+
   .govuk-footer__meta-custom {
     margin-bottom: govuk-spacing(4);
+  }
+
+  .govuk-footer__meta-custom:last-child {
+    margin-bottom: 0;
   }
 
   .govuk-footer__inline-list-item {
