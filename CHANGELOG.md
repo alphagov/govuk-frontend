@@ -247,6 +247,22 @@ Unless you operate a GOV.UK branded product, the GOV.UK logo should always link 
 
 This change was introduced in [pull request #6418: Update default `homepageUrl` to point to GOV.UK homepage](https://github.com/alphagov/govuk-frontend/pull/6418)
 
+### New features
+
+#### The GOV.UK footer component now allows the removal of OGL Content Licence information
+
+If your service does not provide information under the Open Government Licence (OGL), you can now remove it from the GOV.UK footer.
+
+If you're using Nunjucks, set the `contentLicence` parameter to `false`:
+
+```nunjucks
+{{ govukFooter({
+  contentLicence: false
+}) }}
+```
+
+This change was introduced in [#6191: Allow removal of Content Licence information in the GOV.UK footer component](https://github.com/alphagov/govuk-frontend/pull/6191). Thanks to @NickColley for making this change.
+
 ### Fixes
 
 #### Tags now have borders for improved legibility
@@ -356,22 +372,6 @@ The `govuk-tint` and `govuk-shade` functions for applying tints and shades to co
 We recommend replacing them with tints and shades from the new GOV.UK colour palette that are as close as possible to your existing implementation.
 
 We made this change in [pull request #6341: Deactivate `govuk-tint` and `govuk-shade` functions](https://github.com/alphagov/govuk-frontend/pull/6341).
-
-### New features
-
-#### The GOV.UK footer component now allows the removal of OGL Content Licence information
-
-If your service does not provide information under the Open Government Licence (OGL), you can now remove it from the GOV.UK footer.
-
-If you're using Nunjucks, set the `contentLicence` parameter to `false`:
-
-```nunjucks
-{{ govukFooter({
-  contentLicence: false
-}) }}
-```
-
-This change was introduced in [#6191: Allow removal of Content Licence information in the GOV.UK footer component](https://github.com/alphagov/govuk-frontend/pull/6191). Thanks to @NickColley for making this change.
 
 ### Fixes
 
