@@ -1,5 +1,16 @@
 const { compileSassString } = require('@govuk-frontend/helpers/tests')
 const { outdent } = require('outdent')
+const { sassNull } = require('sass-embedded')
+
+// Create a mock warn function that we can use to override the native @warn
+// function, that we can make assertions about post-render.
+const mockWarnFunction = jest.fn().mockReturnValue(sassNull)
+
+const sassConfig = {
+  logger: {
+    warn: mockWarnFunction
+  }
+}
 
 const allVariants = [
   'primary',
@@ -63,6 +74,21 @@ describe('Colour palette', () => {
 })
 
 describe('Functional colours', () => {
+  it('outputs a warning the old applied colours file is imported', async () => {
+    const sass = `
+      @import "settings/colours-applied";
+    `
+
+    await compileSassString(sass, sassConfig)
+
+    // Expect our mocked @warn function to have been called once with a single
+    // argument, which should be the deprecation notice
+    expect(mockWarnFunction).toHaveBeenCalledWith(
+      "The '_colours-applied' file is deprecated. Please import '_colours-functional' instead. See https://github.com/alphagov/govuk-frontend/releases/tag/v6.0.0 for more details.",
+      expect.anything()
+    )
+  })
+
   it('should allow people to define custom colours before `@import`', async () => {
     const sass = `
       $govuk-functional-colours: (text: rebeccapurple);

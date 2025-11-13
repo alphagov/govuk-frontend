@@ -1,0 +1,8 @@
+////
+/// @group settings/colours
+////
+
+@warn "The '_colours-applied' file is deprecated. Please import '_colours-functional' instead. "
+  + "See https://github.com/alphagov/govuk-frontend/releases/tag/v6.0.0 for more details.";
+
+@import "./colours-functional";
