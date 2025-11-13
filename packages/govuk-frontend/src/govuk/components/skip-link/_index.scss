@@ -24,6 +24,10 @@
       outline-offset: 0;
       background-color: $govuk-focus-colour;
 
+      @media (forced-colors: active) {
+        outline-offset: (0 - $govuk-focus-width);
+      }
+
       // Undo unwanted changes when global styles are enabled
       @if $govuk-global-styles {
         @include govuk-link-decoration;

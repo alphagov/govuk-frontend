@@ -40,6 +40,7 @@ We've made fixes to GOV.UK Frontend in the following pull requests:
 - [#6528: Fix hover state on focused small radios](https://github.com/alphagov/govuk-frontend/pull/6528)
 - [#6529: Fix rebranded header background being visible when printed](https://github.com/alphagov/govuk-frontend/pull/6529) - thanks to @lewis-softwire for reporting this issue
 - [#6462: Update HMRC brand colour](https://github.com/alphagov/govuk-frontend/pull/6462)
+- [#6539: Fix skip link outline being clipped in forced colours mode](https://github.com/alphagov/govuk-frontend/pull/6539)
 
 ## v5.13.0 (Feature release)
 
