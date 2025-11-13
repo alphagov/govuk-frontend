@@ -1,6 +1,6 @@
 # Changelog
 
-For advice on how to use these release notes see [our guidance on staying up to date with changes](https://frontend.design-system.service.gov.uk/staying-up-to-date/).
+For advice on how to use these release notes, see [our guidance on staying up to date with changes](https://frontend.design-system.service.gov.uk/staying-up-to-date/).
 
 ## Unreleased
 
@@ -70,16 +70,16 @@ Note that you can only redefine existing applied colours, not add new applied co
 
 #### We've ended support for Ruby Sass and LibSass
 
-GOV.UK Frontend no longer supports Ruby Sass and LibSass. You must update your project to [Dart Sass](https://sass-lang.com/dart-sass/) to continue using GOV.UK Frontend.
+GOV.UK Frontend no longer supports Ruby Sass or LibSass. You must update your project to [Dart Sass](https://sass-lang.com/dart-sass/) to continue using GOV.UK Frontend.
 
-Support for Ruby Sass ended in 2019, and LibSass was deprecated in 2020. A number of Sass implementations, including Node Sass, SassC and sass-rs, are dependent upon LibSass. GOV.UK Frontend also no longer supports these implementations.
+Support for Ruby Sass ended in 2019, and LibSass was deprecated in 2020. A number of Sass implementations, including Node Sass, SassC and sass-rs, are dependent upon LibSass. GOV.UK Frontend no longer supports these implementations.
 
 The Sass developers have provided guides for:
 
 - [migrating from Ruby Sass to Dart Sass](https://sass-lang.com/ruby-sass/)
 - [migrating from LibSass to Dart Sass](https://sass-lang.com/blog/libsass-is-deprecated/#how-do-i-migrate)
 
-This change was introduced in [pull request #6311: Remove support for Ruby Sass and LibSass](https://github.com/alphagov/govuk-frontend/pull/6311).
+We made this change in [pull request #6311: Remove support for Ruby Sass and LibSass](https://github.com/alphagov/govuk-frontend/pull/6311).
 
 #### We've set our minimum Dart Sass version to 1.79
 
@@ -87,17 +87,17 @@ GOV.UK Frontend will no longer support services using Dart Sass versions earlier
 
 If you're using an earlier version of Dart Sass than 1.79, see [the Dart Sass releases](https://github.com/sass/dart-sass/releases) and follow their release notes to upgrade to version 1.79 or later to continue using GOV.UK Frontend.
 
-This change was introduced in [pull request #6366: Update Dart Sass tests minimum version to 1.79.0](https://github.com/alphagov/govuk-frontend/pull/6366)
+We made this change in [pull request #6366: Update Dart Sass tests minimum version to 1.79.0](https://github.com/alphagov/govuk-frontend/pull/6366).
 
 #### Update references to `govuk-pagination__item--ellipses` class from the HTML for the Pagination component
 
-The `govuk-pagination__item--ellipses` class was deprecated in [GOV.UK Frontend 5.13.0](https://github.com/alphagov/govuk-frontend/releases/tag/v5.13.0) and has now been removed.
+We deprecated the `govuk-pagination__item--ellipses` class in [GOV.UK Frontend 5.13.0](https://github.com/alphagov/govuk-frontend/releases/tag/v5.13.0), and we've now removed it.
 
-If you are not using Nunjucks macros, you should update instances of this class to use the `govuk-pagination__item--ellipsis` class instead.
+If you're not using Nunjucks macros, you should update instances of this class to use the `govuk-pagination__item--ellipsis` class instead.
 
-Users of Nunjucks macros don't need to change anything.
+If you're using Nunjucks macros, you don't need to change anything.
 
-We introduced this change in [pull request #6382: Remove deprecated `govuk-pagination__item--ellipses` class](https://github.com/alphagov/govuk-frontend/pull/6382).
+We made this change in [pull request #6382: Remove deprecated `govuk-pagination__item--ellipses` class](https://github.com/alphagov/govuk-frontend/pull/6382).
 
 #### Update the class on the GOV.UK logo link in the Header component
 
@@ -117,7 +117,7 @@ If you're not using Nunjucks macros, you'll need to update this class manually.
 </a>
 ```
 
-This change was introduced in [pull request #6423: Remove service name and navigation from Header component](https://github.com/alphagov/govuk-frontend/pull/6423)
+We made this change in [pull request #6423: Remove service name and navigation from Header component](https://github.com/alphagov/govuk-frontend/pull/6423).
 
 #### Stop including the service name and navigation items in the Header component
 
@@ -127,11 +127,11 @@ We've now removed this functionality.
 
 Service names and service-level navigation should now use the [Service navigation component](https://design-system.service.gov.uk/components/service-navigation/).
 
-This change was introduced in [pull request #6423: Remove service name and navigation from Header component](https://github.com/alphagov/govuk-frontend/pull/6423)
+We made this change in [pull request #6423: Remove service name and navigation from Header component](https://github.com/alphagov/govuk-frontend/pull/6423).
 
 #### Stop importing GOV.UK Frontend's Sass using `all`
 
-GOV.UK Frontend's `all.scss` file and partials were deprecated in [GOV.UK Frontend 5.8.0](https://github.com/alphagov/govuk-frontend/releases/tag/v5.8.0) and were replaced by equivalent [Sass `index` files](https://sass-lang.com/documentation/at-rules/use/#index-files). We've now removed the files entirely.
+We deprecated GOV.UK Frontend's `all.scss` file and partials in [GOV.UK Frontend 5.8.0](https://github.com/alphagov/govuk-frontend/releases/tag/v5.8.0) and replaced them with equivalent [Sass `index` files](https://sass-lang.com/documentation/at-rules/use/#index-files). We've now removed the `all.scss` files entirely.
 
 With the move to Dart Sass, you can now simplify how you import Sass from GOV.UK Frontend.
 
@@ -145,7 +145,7 @@ With the move to Dart Sass, you can now simplify how you import Sass from GOV.UK
 @import "govuk/components"
 ```
 
-This change was introduced in [pull request #6412: Remove `all.scss` file and partials](https://github.com/alphagov/govuk-frontend/pull/6412).
+We made this change in [pull request #6412: Remove `all.scss` file and partials](https://github.com/alphagov/govuk-frontend/pull/6412).
 
 #### Update to the new organisation colour palette
 
@@ -155,57 +155,57 @@ The new palette was initially opt-in using the `$govuk-new-organisation-colours`
 
 As part of this work, we removed the deprecated `$websafe` parameter of the `govuk-organisation-colour` function. Use the `$contrast-safe` parameter when calling the function instead.
 
-This change was introduced in [pull request #6390: Remove legacy organisation colour palette](https://github.com/alphagov/govuk-frontend/pull/6390).
+We made this change in [pull request #6390: Remove legacy organisation colour palette](https://github.com/alphagov/govuk-frontend/pull/6390).
 
 #### Update references to deprecated organisations in the organisation colour palette
 
 We've removed deprecated organisations from the organisation colour palette. These organisations had ceased to exist or had been renamed prior to the start of 2025.
 
-This change was introduced in [pull request #6426: Remove deprecated organisation colours](https://github.com/alphagov/govuk-frontend/pull/6426).
+We made this change in [pull request #6426: Remove deprecated organisation colours](https://github.com/alphagov/govuk-frontend/pull/6426).
 
 #### Stop using the `govuk-responsive-typography` Sass mixin
 
 We renamed the `govuk-responsive-typography` Sass mixin to `govuk-font-size` in [GOV.UK Frontend 5.1.0](https://github.com/alphagov/govuk-frontend/releases/tag/v5.1.0). We've now removed the previous name entirely.
 
-This change was introduced in [pull request #6387: Remove `govuk-responsive-typography` mixin](https://github.com/alphagov/govuk-frontend/pull/6387).
+We made this change in [pull request #6387: Remove `govuk-responsive-typography` mixin](https://github.com/alphagov/govuk-frontend/pull/6387).
 
 #### Stop using the `--govuk-frontend-breakpoint` CSS custom properties
 
 We renamed CSS custom properties starting `--govuk-frontend-breakpoint` to begin with `--govuk-breakpoint` in [GOV.UK Frontend 5.11.0](https://github.com/alphagov/govuk-frontend/releases/tag/v5.11.0). We've now removed the previous names for these properties.
 
-This change was introduced in [pull request #6385: Remove `--govuk-frontend-breakpoint` CSS properties](https://github.com/alphagov/govuk-frontend/pull/6385).
+We made this change in [pull request #6385: Remove `--govuk-frontend-breakpoint` CSS properties](https://github.com/alphagov/govuk-frontend/pull/6385).
 
 #### Remove references to the `$govuk-show-breakpoints` feature flag
 
 The `$govuk-show-breakpoints` feature flag was deprecated and rendered non-operational by the media query changes introduced in [GOV.UK Frontend 5.13.0](https://github.com/alphagov/govuk-frontend/releases/tag/v5.13.0).
 
-This flag was only intended to be used as a local development aid and not used on production services, and we've now removed it.
+This flag was only intended for use as a local development aid and not for production services, and we've now removed it.
 
-This change was introduced in [pull request #6384: Remove `$govuk-show-breakpoints` feature flag](https://github.com/alphagov/govuk-frontend/pull/6384).
+We made this change in [pull request #6384: Remove `$govuk-show-breakpoints` feature flag](https://github.com/alphagov/govuk-frontend/pull/6384).
 
 #### Stop using the `element` parameter of the Button component
 
-The `element` parameter of the Button component Nunjucks macro was deprecated in [GOV.UK Frontend 5.1.0](https://github.com/alphagov/govuk-frontend/releases/tag/v5.1.0), and we've now removed it.
+We deprecated the `element` parameter of the Button component Nunjucks macro in [GOV.UK Frontend 5.1.0](https://github.com/alphagov/govuk-frontend/releases/tag/v5.1.0), and we've now removed it.
 
 The component is now output as a link if the `href` parameter is set. Otherwise, it's a `button` element.
 
 This means it's no longer possible to use `input` elements for buttons. Buttons using `input` are less flexible than `button` elements in terms of styling and content allowed within them, so we want to avoid using them.
 
-This change was introduced in [pull request #6383: Remove element parameter from Button component](https://github.com/alphagov/govuk-frontend/pull/6383).
+We made this change in [pull request #6383: Remove element parameter from Button component](https://github.com/alphagov/govuk-frontend/pull/6383).
 
 #### Stop using `$govuk-canvas-background-colour`
 
 We renamed `$govuk-canvas-background-colour` to `$govuk-template-background-colour` in [GOV.UK Frontend 5.10.0](https://github.com/alphagov/govuk-frontend/releases/tag/v5.10.0). We've now removed the previous variable entirely.
 
-This change was introduced in [pull request #6413: Remove `$govuk-canvas-background-colour`](https://github.com/alphagov/govuk-frontend/pull/6413)
+We made this change in [pull request #6413: Remove `$govuk-canvas-background-colour`](https://github.com/alphagov/govuk-frontend/pull/6413).
 
 #### Stop using St. Edward's Crown and the `useTudorCrown` parameter
 
-GOV.UK updated its logo to replace the St. Edward's Crown with the Tudor Crown in [GOV.UK Frontend 5.1.0](https://github.com/alphagov/govuk-frontend/releases/tag/v5.1.0). The Tudor Crown became the default in [5.2.0](https://github.com/alphagov/govuk-frontend/releases/tag/v5.2.0), which is when the option to switch between crowns was deprecated.
+GOV.UK updated its logo to replace the St. Edward's Crown with the Tudor Crown in [GOV.UK Frontend 5.1.0](https://github.com/alphagov/govuk-frontend/releases/tag/v5.1.0). The Tudor Crown became the default in [5.2.0](https://github.com/alphagov/govuk-frontend/releases/tag/v5.2.0), which is when we deprecated the option to switch between crowns.
 
 We've now removed the Header component's `useTudorCrown` parameter and assets relating to the St. Edward's Crown.
 
-This change was introduced in [pull request #6414: Remove `useTudorCrown` parameter and St. Edwards crown assets](https://github.com/alphagov/govuk-frontend/pull/6414)
+We made this change in [pull request #6414: Remove `useTudorCrown` parameter and St. Edwards crown assets](https://github.com/alphagov/govuk-frontend/pull/6414).
 
 #### Stop using `govuk-body-xs`, `govuk-!-font-size-14` and '14' as a possible font size in `govuk-font`
 
@@ -214,7 +214,7 @@ We deprecated 14 as a point on our [type scale](https://design-system.service.go
 - `govuk-body-xs`
 - `govuk-!-font-size-14`
 
-This change was introduced in [pull request #6417: Remove 14 from the type scale](https://github.com/alphagov/govuk-frontend/pull/6417)
+We made this change in [pull request #6417: Remove 14 from the type scale](https://github.com/alphagov/govuk-frontend/pull/6417).
 
 #### We've updated our responsive type scale
 
@@ -222,7 +222,7 @@ We updated our responsive type scale behind the feature flag `$govuk-new-typogra
 
 These type scale changes are now on by default, and we've removed the `$govuk-new-typography-scale` feature flag.
 
-This change was introduced in [pull request #6421: Turn the new type scale on by default](https://github.com/alphagov/govuk-frontend/pull/6421)
+We made this change in [pull request #6421: Turn the new type scale on by default](https://github.com/alphagov/govuk-frontend/pull/6421).
 
 ### Recommended changes
 
@@ -235,7 +235,7 @@ We've renamed 2 of the Tag component's colour modifier classes to be in line wit
 
 Rename your tags to reflect these changes, as we'll be removing `govuk-tag--turquoise` and `govuk-tag--pink` in a future breaking release.
 
-This change was introduced in [pull request #6416: Deprecate turquoise and pink tag colour modifiers](https://github.com/alphagov/govuk-frontend/pull/6416)
+We made this change in [pull request #6416: Deprecate turquoise and pink tag colour modifiers](https://github.com/alphagov/govuk-frontend/pull/6416).
 
 #### Check that the GOV.UK logo links to the GOV.UK homepage
 
@@ -245,7 +245,7 @@ The previous default value pointed at the root of the current domain. On service
 
 Unless you operate a GOV.UK branded product, the GOV.UK logo should always link to the homepage of GOV.UK. Use the [Service navigation component](https://design-system.service.gov.uk/components/service-navigation/) to provide a link to a local homepage.
 
-This change was introduced in [pull request #6418: Update default `homepageUrl` to point to GOV.UK homepage](https://github.com/alphagov/govuk-frontend/pull/6418)
+We made this change in [pull request #6418: Update default `homepageUrl` to point to GOV.UK homepage](https://github.com/alphagov/govuk-frontend/pull/6418).
 
 ### New features
 
@@ -261,7 +261,7 @@ If you're using Nunjucks, set the `contentLicence` parameter to `false`:
 }) }}
 ```
 
-This change was introduced in [#6191: Allow removal of Content Licence information in the GOV.UK footer component](https://github.com/alphagov/govuk-frontend/pull/6191). Thanks to @NickColley for making this change.
+We made this change in [#6191: Allow removal of Content Licence information in the GOV.UK footer component](https://github.com/alphagov/govuk-frontend/pull/6191). Thanks to @NickColley for making this change.
 
 ### Fixes
 
@@ -271,7 +271,7 @@ We've reviewed the design of the tag component in response to changes from the n
 
 Tags now have a 1px border, with the colour based on the background colour of the tag. This makes tags easier to distinguish against white backgrounds.
 
-This change was introduced in [pull request #6379: Add borders to tags](https://github.com/alphagov/govuk-frontend/pull/6379)
+We made this change in [pull request #6379: Add borders to tags](https://github.com/alphagov/govuk-frontend/pull/6379).
 
 #### Other fixes
 
