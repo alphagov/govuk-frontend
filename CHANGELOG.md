@@ -267,6 +267,7 @@ We've made fixes to GOV.UK Frontend in the following pull requests:
 
 - [#5311: Remove non-operational value parameter from file upload component](https://github.com/alphagov/govuk-frontend/pull/5311)
 - [#6434: Fix rebranded header background being visible when printed](https://github.com/alphagov/govuk-frontend/pull/6434) - thanks to @lewis-softwire for reporting this issue
+- [#6351: Preserve already escaped `attributes` values to prevent double escaping](https://github.com/alphagov/govuk-frontend/pull/6351) thanks to @colinrotherham for fixing this issue
 
 ## v6.0.0-beta.0 (Beta breaking release)
 
