@@ -131,7 +131,7 @@ We made this change in [pull request #6423: Remove service name and navigation f
 
 #### Stop importing GOV.UK Frontend's Sass using `all`
 
-We deprecated GOV.UK Frontend's `all.scss` file and partials in [GOV.UK Frontend 5.8.0](https://github.com/alphagov/govuk-frontend/releases/tag/v5.8.0) and replaced them with equivalent [Sass `index` files](https://sass-lang.com/documentation/at-rules/use/#index-files). We've now removed the files entirely.
+We deprecated GOV.UK Frontend's `all.scss` file and partials in [GOV.UK Frontend 5.8.0](https://github.com/alphagov/govuk-frontend/releases/tag/v5.8.0) and replaced them with equivalent [Sass `index` files](https://sass-lang.com/documentation/at-rules/use/#index-files). We've now removed the `all.scss` files entirely.
 
 With the move to Dart Sass, you can now simplify how you import Sass from GOV.UK Frontend.
 
