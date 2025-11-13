@@ -6,67 +6,55 @@ For advice on how to use these release notes, see [our guidance on staying up to
 
 ### Breaking changes
 
-#### Use the `govuk-applied-colour` function to access applied colours in Sass
+#### Use the `govuk-functional-colour` function to access functional (formerly applied) colours in Sass
 
-We've restructured our applied colours in Sass, changing how you can access applied colours for use in your own code.
+We've renamed and restructured our applied colours in Sass, and we've changed how you access them in your own code. They are now called functional colours.
 
-If you were using the value of one of the variables in [`settings/_colours-applied.scss`](https://github.com/alphagov/govuk-frontend/blob/v5.13.0/packages/govuk-frontend/src/govuk/settings/_colours-applied.scss), use the new `govuk-applied-colour` function to output a [`var()` call](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/var) referencing the colour.
+If you were using the value of one of the variables in [`settings/_colours-applied.scss`](https://github.com/alphagov/govuk-frontend/blob/v5.13.0/packages/govuk-frontend/src/govuk/settings/_colours-applied.scss), use the new `govuk-functional-colour` function to output a [`var()` call](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/var) referencing the colour.
 
 ```scss
 .a-component {
   // color: $govuk-text-colour
-  color: govuk-applied-colour(text);
+  color: govuk-functional-colour(text);
 }
 ```
 
-| Removed Sass variable               | `govuk-applied-colour` call                 |
-| ----------------------------------- | ------------------------------------------- |
-| `$govuk-brand-colour`               | `govuk-applied-colour(brand)`               |
-| `$govuk-text-colour`                | `govuk-applied-colour(text)`                |
-| `$govuk-template-background-colour` | `govuk-applied-colour(template-background)` |
-| `$govuk-body-background-colour`     | `govuk-applied-colour(body-background)`     |
-| `$govuk-print-text-colour`          | `govuk-applied-colour(print-text)`          |
-| `$govuk-secondary-text-colour`      | `govuk-applied-colour(secondary-text)`      |
-| `$govuk-focus-colour`               | `govuk-applied-colour(focus)`               |
-| `$govuk-focus-text-colour`          | `govuk-applied-colour(focus-text)`          |
-| `$govuk-error-colour`               | `govuk-applied-colour(error)`               |
-| `$govuk-success-colour`             | `govuk-applied-colour(success)`             |
-| `$govuk-border-colour`              | `govuk-applied-colour(border)`              |
-| `$govuk-input-border-colour`        | `govuk-applied-colour(input-border)`        |
-| `$govuk-hover-colour`               | `govuk-applied-colour(hover)`               |
-| `$govuk-link-colour`                | `govuk-applied-colour(link)`                |
-| `$govuk-link-visited-colour`        | `govuk-applied-colour(link-visited)`        |
-| `$govuk-link-hover-colour`          | `govuk-applied-colour(link-hover)`          |
-| `$govuk-link-active-colour`         | `govuk-applied-colour(link-active)`         |
+| Removed Sass variable               | `govuk-functional-colour` call                 |
+| ----------------------------------- | ---------------------------------------------- |
+| `$govuk-brand-colour`               | `govuk-functional-colour(brand)`               |
+| `$govuk-text-colour`                | `govuk-functional-colour(text)`                |
+| `$govuk-template-background-colour` | `govuk-functional-colour(template-background)` |
+| `$govuk-body-background-colour`     | `govuk-functional-colour(body-background)`     |
+| `$govuk-print-text-colour`          | `govuk-functional-colour(print-text)`          |
+| `$govuk-secondary-text-colour`      | `govuk-functional-colour(secondary-text)`      |
+| `$govuk-focus-colour`               | `govuk-functional-colour(focus)`               |
+| `$govuk-focus-text-colour`          | `govuk-functional-colour(focus-text)`          |
+| `$govuk-error-colour`               | `govuk-functional-colour(error)`               |
+| `$govuk-success-colour`             | `govuk-functional-colour(success)`             |
+| `$govuk-border-colour`              | `govuk-functional-colour(border)`              |
+| `$govuk-input-border-colour`        | `govuk-functional-colour(input-border)`        |
+| `$govuk-hover-colour`               | `govuk-functional-colour(hover)`               |
+| `$govuk-link-colour`                | `govuk-functional-colour(link)`                |
+| `$govuk-link-visited-colour`        | `govuk-functional-colour(link-visited)`        |
+| `$govuk-link-hover-colour`          | `govuk-functional-colour(link-hover)`          |
+| `$govuk-link-active-colour`         | `govuk-functional-colour(link-active)`         |
 
-#### Use `$govuk-applied-colours` to redefine applied colours
+#### Use `$govuk-functional-colours` to redefine functional (formerly applied) colours
 
-We've restructured our applied colours in Sass, changing how you can redefine applied colours.
+We've restructured our applied colours in Sass. They are now called functional colours, and we've changed the way you redefine them.
 
-If you were redefining a custom value for the applied colour before importing GOV.UK Frontend, you can still do this by assigning a map of the colours you want to change to the `$govuk-applied-colours` variable.
+If you were redefining a custom value for the functional colour before importing GOV.UK Frontend, you can still do this by assigning a map of the colours you want to change to the `$govuk-functional-colours` variable.
 
 ```scss
-// This will be merged with the default applied colours of GOV.UK Frontend
+// This will be merged with the default functional colours of GOV.UK Frontend
 // redefining the 'brand' colour to `rebeccapurple`
-$govuk-applied-colour: (
+$govuk-functional-colour: (
   brand: rebeccapurple
 );
 @import 'pkg:govuk-frontend';
 ```
 
-This also works if you use `@use` to load GOV.UK Frontend:
-
-```scss
-// This will be merged with the default applied colours of GOV.UK Frontend
-// redefining the 'brand' colour to `rebeccapurple`
-@use 'pkg:govuk-frontend' with (
-  $govuk-applied-colour: (
-    brand: rebeccapurple
-  )
-);
-```
-
-Note that you can only redefine existing applied colours, not add new applied colours. This is to make sure there's a clear separation between colours from GOV.UK Frontend and colours from your own project.
+Note that you can only redefine existing functional colours, not add new functional colours. This is to make sure there's a clear separation between colours from GOV.UK Frontend and colours from your own project.
 
 #### We've ended support for Ruby Sass and LibSass
 

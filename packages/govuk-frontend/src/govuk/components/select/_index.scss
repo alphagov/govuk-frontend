@@ -16,11 +16,11 @@
     max-width: 100%;
     height: govuk-px-to-rem(40px);
     padding: govuk-spacing(1);
-    border: $govuk-border-width-form-element solid govuk-applied-colour(input-border);
+    border: $govuk-border-width-form-element solid govuk-functional-colour(input-border);
 
     // Default user agent colours for selects can have low contrast,
     // and may look disabled (#2435)
-    color: govuk-applied-colour(text);
+    color: govuk-functional-colour(text);
     background-color: govuk-colour("white");
 
     &:focus {
@@ -42,10 +42,10 @@
   }
 
   .govuk-select--error {
-    border-color: govuk-applied-colour(error);
+    border-color: govuk-functional-colour(error);
 
     &:focus {
-      border-color: govuk-applied-colour(input-border);
+      border-color: govuk-functional-colour(input-border);
     }
   }
 }
