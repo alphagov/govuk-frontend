@@ -52,6 +52,227 @@ $_govuk-functional-colours: _govuk-define-functional-colours(
 );
 
 // =============================================================================
+// Legacy variables
+//
+// To help migrate to `govuk-functional-colour`, we're keeping the variables
+// which were previously storing the functional colours. This should reduce
+// breakage as teams upgrade
+// =============================================================================
+
+// Because the file may be imported multiple times,
+// subsequent imports will see the legacy variable
+// and warn when they shouldn't so we need to track those
+$_govuk-deprecated-applied-colour-variables: () !default;
+
+@mixin deprecate-applied-colour-variable($functional-colour-name) {
+  @if not index($_govuk-deprecated-applied-colour-variables, $functional-colour-name) {
+    @if variable-exists("govuk-#{$functional-colour-name}-colour") {
+      $deprecation-message: "Using the \`$govuk-#{$functional-colour-name}-colour\` variable to configure a new value is deprecated. Please use \`$govuk-functional-colours: (#{$functional-colour-name}: <NEW_COLOUR_VALUE>);\`.";
+
+      @include _warning("applied-colour-variables", $deprecation-message);
+    }
+
+    $_govuk-deprecated-applied-colour-variables: append(
+      $_govuk-deprecated-applied-colour-variables,
+      $functional-colour-name
+    ) !global;
+  }
+}
+
+@include deprecate-applied-colour-variable(brand);
+/// Brand colour
+///
+/// @type Colour
+/// @access public
+/// @deprecated
+///   Variables for applied colours are deprecated. Please use the `govuk-functional-colour`
+///   function instead: `govuk-functional-colour(brand)`.
+$govuk-brand-colour: govuk-functional-colour(brand);
+
+@include deprecate-applied-colour-variable(text);
+/// Text colour
+///
+/// @type Colour
+/// @access public
+/// @deprecated
+///   Variables for applied colours are deprecated. Please use the `govuk-functional-colour`
+///   function instead: `govuk-functional-colour(text)`.
+$govuk-text-colour: govuk-functional-colour(text);
+
+@include deprecate-applied-colour-variable(template-background);
+/// Template background colour
+///
+/// Used by components that want to give the illusion of extending
+/// the template background (such as the footer and cookie banner).
+///
+/// @type Colour
+/// @access public
+/// @deprecated
+///   Variables for applied colours are deprecated. Please use the `govuk-functional-colour`
+///   function instead: `govuk-functional-colour(template-background)`.
+$govuk-template-background-colour: govuk-functional-colour(template-background);
+
+@include deprecate-applied-colour-variable(body-background);
+/// Body background colour
+///
+/// @type Colour
+/// @access public
+/// @deprecated
+///   Variables for applied colours are deprecated. Please use the `govuk-functional-colour`
+///   function instead: `govuk-functional-colour(body-background)`.
+$govuk-body-background-colour: govuk-functional-colour(body-background);
+
+@include deprecate-applied-colour-variable(print-text);
+/// Text colour for print media
+///
+/// Use 'true black' to avoid printers using colour ink to print body text
+///
+/// @type Colour
+/// @access public
+/// @deprecated
+///   Variables for applied colours are deprecated. Please use the `govuk-functional-colour`
+///   function instead: `govuk-functional-colour(print-text)`.
+$govuk-print-text-colour: govuk-functional-colour(print-text);
+
+@include deprecate-applied-colour-variable(secondary-text);
+/// Secondary text colour
+///
+/// Used in for example 'muted' text and help text.
+///
+/// @type Colour
+/// @access public
+/// @deprecated
+///   Variables for applied colours are deprecated. Please use the `govuk-functional-colour`
+///   function instead: `govuk-functional-colour(secondary-text)`.
+$govuk-secondary-text-colour: govuk-functional-colour(secondary-text);
+
+@include deprecate-applied-colour-variable(focus);
+/// Focus colour
+///
+/// Used for outline (and background, where appropriate) when interactive
+/// elements (links, form controls) have keyboard focus.
+///
+/// @type Colour
+/// @access public
+/// @deprecated
+///   Variables for applied colours are deprecated. Please use the `govuk-functional-colour`
+///   function instead: `govuk-functional-colour(focus)`.
+$govuk-focus-colour: govuk-functional-colour(focus);
+
+@include deprecate-applied-colour-variable(focus-text);
+/// Focused text colour
+///
+/// Ensure that the contrast between the text and background colour passes
+/// WCAG Level AA contrast requirements.
+///
+/// @type Colour
+/// @access public
+/// @deprecated
+///   Variables for applied colours are deprecated. Please use the `govuk-functional-colour`
+///   function instead: `govuk-functional-colour(focus-text)`.
+$govuk-focus-text-colour: govuk-functional-colour(focus-text);
+
+@include deprecate-applied-colour-variable(error);
+/// Error colour
+///
+/// Used to highlight error messages and form controls in an error state
+///
+/// @type Colour
+/// @access public
+/// @deprecated
+///   Variables for applied colours are deprecated. Please use the `govuk-functional-colour`
+///   function instead: `govuk-functional-colour(error)`.
+$govuk-error-colour: govuk-functional-colour(error);
+
+@include deprecate-applied-colour-variable(success);
+/// Success colour
+///
+/// Used to highlight success messages and banners
+///
+/// @type Colour
+/// @access public
+/// @deprecated
+///   Variables for applied colours are deprecated. Please use the `govuk-functional-colour`
+///   function instead: `govuk-functional-colour(error)`.
+$govuk-success-colour: govuk-functional-colour(success);
+
+@include deprecate-applied-colour-variable(border);
+/// Border colour
+///
+/// Used in for example borders, separators, rules and keylines.
+///
+/// @type Colour
+/// @access public
+/// @deprecated
+///   Variables for applied colours are deprecated. Please use the `govuk-functional-colour`
+///   function instead: `govuk-functional-colour(border)`.
+$govuk-border-colour: govuk-functional-colour(border);
+
+@include deprecate-applied-colour-variable(input-border);
+/// Input border colour
+///
+/// Used for form inputs and controls
+///
+/// @type Colour
+/// @access public
+/// @deprecated
+///   Variables for applied colours are deprecated. Please use the `govuk-functional-colour`
+///   function instead: `govuk-functional-colour(input-border)`.
+$govuk-input-border-colour: govuk-functional-colour(input-border);
+
+@include deprecate-applied-colour-variable(hover);
+/// Input hover colour
+///
+/// Used for hover states on form controls
+///
+/// @type Colour
+/// @access public
+/// @deprecated
+///   Variables for applied colours are deprecated. Please use the `govuk-functional-colour`
+///   function instead: `govuk-functional-colour(hover)`.
+$govuk-hover-colour: govuk-functional-colour(hover);
+
+@include deprecate-applied-colour-variable(link);
+/// Link colour
+///
+/// @type Colour
+/// @access public
+/// @deprecated
+///   Variables for applied colours are deprecated. Please use the `govuk-functional-colour`
+///   function instead: `govuk-functional-colour(link)`.
+$govuk-link-colour: govuk-functional-colour(link);
+
+@include deprecate-applied-colour-variable(link-visited);
+/// Visited link colour
+///
+/// @type Colour
+/// @access public
+/// @deprecated
+///   Variables for applied colours are deprecated. Please use the `govuk-functional-colour`
+///   function instead: `govuk-functional-colour(link-visited)`.
+$govuk-link-visited-colour: govuk-functional-colour(link-visited);
+
+@include deprecate-applied-colour-variable(link-hover);
+/// Link hover colour
+///
+/// @type Colour
+/// @access public
+/// @deprecated
+///   Variables for applied colours are deprecated. Please use the `govuk-functional-colour`
+///   function instead: `govuk-functional-colour(link-hover)`.
+$govuk-link-hover-colour: govuk-functional-colour(link-hover);
+
+@include deprecate-applied-colour-variable(link-active);
+/// Active link colour
+///
+/// @type Colour
+/// @access public
+/// @deprecated
+///   Variables for applied colours are deprecated. Please use the `govuk-functional-colour`
+///   function instead: `govuk-functional-colour(link-active)`.
+$govuk-link-active-colour: govuk-functional-colour(link-active);
+
+// =============================================================================
 // Brand refresh
 // =============================================================================
 

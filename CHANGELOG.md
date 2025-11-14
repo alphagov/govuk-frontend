@@ -39,6 +39,9 @@ If you were using the value of one of the variables in [`settings/_colours-appli
 | `$govuk-link-hover-colour`          | `govuk-functional-colour(link-hover)`          |
 | `$govuk-link-active-colour`         | `govuk-functional-colour(link-active)`         |
 
+Although we've now deprecated the Sass variables, they're still available to make your migration easier.
+However, if your code was using the Sass variables to do computations using the [Sass colour API](https://sass-lang.com/documentation/modules/color/), a compilation error will occur. This is because the variables now store a Sass string with a `var()` call, rather than a Sass colour.
+
 #### Use `$govuk-functional-colours` to redefine functional (formerly applied) colours
 
 We've restructured our applied colours in Sass. They are now called functional colours, and we've changed the way you redefine them.
