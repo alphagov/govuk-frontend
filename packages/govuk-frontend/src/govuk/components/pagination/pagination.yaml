@@ -206,6 +206,7 @@ examples:
     options:
       next:
         href: '/next'
+
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: with custom classes
     hidden: true
@@ -275,3 +276,13 @@ examples:
         - number: 3
           href: '/page/3'
           visuallyHiddenText: '3rd page'
+  - name: with empty items
+    hidden: true
+    options:
+      items:
+        - number: 1
+          href: '/page/1'
+        - null
+        - {}
+        - number: 4
+          href: '/page/4'

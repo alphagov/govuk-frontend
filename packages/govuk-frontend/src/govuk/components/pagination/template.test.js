@@ -62,6 +62,13 @@ describe('Pagination', () => {
       // Test for the unicode character of &ctdot;
       expect($firstEllipsis.text().trim()).toBe('\u22ef')
     })
+
+    it('does not output empty list items', () => {
+      const $ = render('pagination', examples['with empty items'])
+      const $listItems = $('.govuk-pagination__item')
+
+      expect($listItems).toHaveLength(2)
+    })
   })
 
   describe('with custom text, labels and landmarks', () => {
