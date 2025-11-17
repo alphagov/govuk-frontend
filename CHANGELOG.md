@@ -4,6 +4,8 @@ For advice on how to use these release notes, see [our guidance on staying up to
 
 ## Unreleased
 
+## v6.0.0-beta.1 (Beta breaking release)
+
 ### Breaking changes
 
 #### Use the `govuk-functional-colour` function to access functional (formerly applied) colours in Sass
