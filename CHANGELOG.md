@@ -266,6 +266,15 @@ Tags now have a 1px border, with the colour based on the background colour of th
 
 We made this change in [pull request #6379: Add borders to tags](https://github.com/alphagov/govuk-frontend/pull/6379).
 
+#### Service Navigation's menu `<button>` no longer has an `aria-controls` attribute before JavaScript initialises
+
+We've removed the `aria-controls` attribute set on the hidden `<button>` element used for the Service Navigation's mobile menu
+before the component's JavaScript is initialised.
+
+The attribute was keeping the button accessible in VoiceOver's rotor on Desktop and focusable on iPadOS. You should now use the `data-aria-controls` attribute to reference the id of the list of navigation links.
+
+We made this change in [pull request #6342: Fix VoiceOver access to hidden Service Navigation menu button](https://github.com/alphagov/govuk-frontend/pull/6342)
+
 #### Other fixes
 
 We've made fixes to GOV.UK Frontend in the following pull requests:
