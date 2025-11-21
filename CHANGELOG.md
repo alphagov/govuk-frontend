@@ -4,6 +4,12 @@ For advice on how to use these release notes, see [our guidance on staying up to
 
 ## Unreleased
 
+### Fixes
+
+We've made fixes to GOV.UK Frontend in the following pull requests:
+
+- [#6454: Prevent date inputs shifting alignment on iOS 18](https://github.com/alphagov/govuk-frontend/pull/6454) – thanks to @rowellx68 for reporting this issue and @colinrotherham for suggesting the fix.
+
 ## v6.0.0-beta.1 (Beta breaking release)
 
 ### Breaking changes
