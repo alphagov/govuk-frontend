@@ -44,7 +44,6 @@
     @media #{govuk-from-breakpoint(tablet)} {
       // inline-block is used as a fallback for browsers that don't support flexbox
       display: inline-block;
-
       margin-top: 0;
       margin-bottom: 0;
       padding: govuk-spacing(4) 0;
@@ -136,14 +135,20 @@
   .govuk-service-navigation__toggle {
     @include govuk-font($size: 19, $weight: bold);
     display: inline-flex;
+
+    align-items: center;
+
     margin: govuk-spacing(2) 0;
     padding: 0;
+
     border: 0;
+
     color: $govuk-service-navigation-link-colour;
     background: none;
+
     word-break: break-all;
+
     cursor: pointer;
-    align-items: center;
 
     &:focus {
       @include govuk-focused-text;
