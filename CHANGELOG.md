@@ -4,6 +4,12 @@ For advice on how to use these release notes, see [our guidance on staying up to
 
 ## Unreleased
 
+### Fixes
+
+We've made fixes to GOV.UK Frontend in the following pull requests:
+
+- [#6449: Refactor Character count method to reduce repeated updates](https://github.com/alphagov/govuk-frontend/pull/6449)
+
 ## v6.0.0-beta.2 (Beta breaking release)
 
 ### Breaking changes
