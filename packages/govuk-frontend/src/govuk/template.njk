@@ -44,9 +44,15 @@
     {% endblock %}
 
     {% block header %}
-      {{ govukHeader({
-        rebrand: _rebrand
-      }) }}
+      <header class="govuk-template__header">
+      {% block headerStart %}{% endblock %}
+      {% block headerContent %}
+        {{ govukHeader({
+          rebrand: _rebrand
+        }) }}
+      {% endblock %}
+      {% block headerEnd %}{% endblock %}
+      </header>
     {% endblock %}
 
     {% block main %}
@@ -59,9 +65,15 @@
     {% endblock %}
 
     {% block footer %}
-      {{ govukFooter({
-        rebrand: _rebrand
-      }) }}
+      <footer class="govuk-template__footer">
+      {% block footerStart %}{% endblock %}
+      {% block footerContent %}
+        {{ govukFooter({
+          rebrand: _rebrand
+        }) }}
+      {% endblock %}
+      {% block footerEnd %}{% endblock %}
+      </footer>
     {% endblock %}
 
     {% block bodyEnd %}{% endblock %}
