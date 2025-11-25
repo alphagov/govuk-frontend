@@ -28,7 +28,7 @@ jobs:
         uses: actions/checkout@v6.0.0
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4.4.0
+        uses: actions/setup-node@v6.0.0
         with:
           cache: npm
           node-version: 18 # Node.js 18 is the oldest supported by Dart Sass v1.79.0
@@ -65,7 +65,7 @@ jobs:
         uses: actions/checkout@v6.0.0
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4.4.0
+        uses: actions/setup-node@v6.0.0
         with:
           cache: npm
           node-version-file: .nvmrc # Node.js project version must support Dart Sass v1
