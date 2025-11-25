@@ -43,10 +43,14 @@
       }) }}
     {% endblock %}
 
-    {% block header %}
-      {{ govukHeader({
-        rebrand: _rebrand
-      }) }}
+    {% block templateHeader %}
+      <header>
+      {% block header %}
+        {{ govukHeader({
+          rebrand: _rebrand
+        }) }}
+      {% endblock %}
+      </header>
     {% endblock %}
 
     {% block main %}
@@ -58,10 +62,14 @@
       </div>
     {% endblock %}
 
-    {% block footer %}
-      {{ govukFooter({
-        rebrand: _rebrand
-      }) }}
+    {% block templateFooter %}
+      <footer>
+      {% block footer %}
+        {{ govukFooter({
+          rebrand: _rebrand
+        }) }}
+      {% endblock %}
+      </footer>
     {% endblock %}
 
     {% block bodyEnd %}{% endblock %}
