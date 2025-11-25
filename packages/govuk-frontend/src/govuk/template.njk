@@ -43,11 +43,13 @@
       }) }}
     {% endblock %}
 
+    <header>
     {% block header %}
       {{ govukHeader({
         rebrand: _rebrand
       }) }}
     {% endblock %}
+    </header>
 
     {% block main %}
       <div class="govuk-width-container {%- if containerClasses %} {{ containerClasses }}{% endif %}">
@@ -58,11 +60,13 @@
       </div>
     {% endblock %}
 
+    <footer>
     {% block footer %}
       {{ govukFooter({
         rebrand: _rebrand
       }) }}
     {% endblock %}
+    </footer>
 
     {% block bodyEnd %}{% endblock %}
   </body>
