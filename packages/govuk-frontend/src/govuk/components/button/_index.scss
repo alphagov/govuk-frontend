@@ -63,8 +63,11 @@ $govuk-inverse-button-text-colour: govuk-functional-colour(brand) !default;
     @include govuk-font($size: 19, $line-height: 19px);
 
     box-sizing: border-box;
+
     display: inline-block;
+
     position: relative;
+
     width: 100%;
     margin-top: 0;
     margin-right: 0;
@@ -72,14 +75,19 @@ $govuk-inverse-button-text-colour: govuk-functional-colour(brand) !default;
     @include govuk-responsive-margin(6, "bottom", $adjustment: $button-shadow-size); // s2
     padding: (govuk-spacing(2) - $govuk-border-width-form-element) govuk-spacing(2)
       (govuk-spacing(2) - $govuk-border-width-form-element - ($button-shadow-size / 2)); // s1
+
     border: $govuk-border-width-form-element solid transparent;
     border-radius: 0;
+
     color: $govuk-button-text-colour;
     background-color: $govuk-button-colour;
     box-shadow: 0 $button-shadow-size 0 $govuk-button-shadow-colour; // s0
+
     text-align: center;
     vertical-align: top;
+
     cursor: pointer;
+
     -webkit-appearance: none;
 
     @media #{govuk-from-breakpoint(tablet)} {
@@ -127,6 +135,7 @@ $govuk-inverse-button-text-colour: govuk-functional-colour(brand) !default;
     // button's shadow as well, in case users try to click it.
     &::before {
       content: "";
+
       display: block;
 
       position: absolute;
@@ -236,22 +245,21 @@ $govuk-inverse-button-text-colour: govuk-functional-colour(brand) !default;
     @include govuk-font-size($size: 24, $line-height: 1);
 
     display: inline-flex;
-    min-height: auto;
-
     justify-content: center;
+    min-height: auto;
   }
 
   .govuk-button__start-icon {
+    flex-shrink: 0;
+    align-self: center;
     margin-left: govuk-spacing(1);
+    vertical-align: middle;
+    // Work around SVGs not inheriting color from parent in forced color mode
+    // (https://github.com/w3c/csswg-drafts/issues/6310)
+    forced-color-adjust: auto;
 
     @media #{govuk-from-breakpoint(desktop)} {
       margin-left: govuk-spacing(2);
     }
-    vertical-align: middle;
-    flex-shrink: 0;
-    align-self: center;
-    // Work around SVGs not inheriting color from parent in forced color mode
-    // (https://github.com/w3c/csswg-drafts/issues/6310)
-    forced-color-adjust: auto;
   }
 }
