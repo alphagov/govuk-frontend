@@ -31,7 +31,7 @@ jobs:
         run: echo "::warning title=GitHub Actions secrets::Workflow requires 'PERCY_TOKEN' secret"
 
       - name: Checkout
-        uses: actions/checkout@v4.2.2
+        uses: actions/checkout@v6.0.0
         with:
           fetch-depth: 0
 
