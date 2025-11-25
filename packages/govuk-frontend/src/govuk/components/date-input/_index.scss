@@ -14,6 +14,11 @@
     display: inline-block;
     margin-right: govuk-spacing(4);
     margin-bottom: 0;
+
+    // Prevents an issue in iOS Safari 18 where the items vertically
+    // shift when the value of inputs is changed.
+    // https://github.com/alphagov/reported-bugs/issues/90
+    vertical-align: bottom;
   }
 
   .govuk-date-input__label {
