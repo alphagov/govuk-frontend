@@ -9,6 +9,7 @@ For advice on how to use these release notes, see [our guidance on staying up to
 We've made fixes to GOV.UK Frontend in the following pull requests:
 
 - [#6351: Preserve already escaped `attributes` values to prevent double escaping](https://github.com/alphagov/govuk-frontend/pull/6351) thanks to @colinrotherham for fixing this issue
+- [#6462: Update HMRC brand colour](https://github.com/alphagov/govuk-frontend/pull/6462)
 
 ## v6.0.0-beta.1 (Beta breaking release)
 
