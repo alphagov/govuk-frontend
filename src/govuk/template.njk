@@ -43,25 +43,47 @@
       }) }}
     {% endblock %}
 
-    {% block header %}
-      {{ govukHeader({
-        rebrand: _rebrand
-      }) }}
+    {% block pageHeader %}
+      <header class="govuk-template__header">
+      {% block headerStart %}{% endblock %}
+      {% block header %}
+        {{ govukHeader({
+          rebrand: _rebrand
+        }) }}
+      {% endblock %}
+      {% block headerEnd %}{% endblock %}
+      </header>
     {% endblock %}
 
-    {% block main %}
-      <div class="govuk-width-container {%- if containerClasses %} {{ containerClasses }}{% endif %}">
-        {% block beforeContent %}{% endblock %}
-        <main class="govuk-main-wrapper {%- if mainClasses %} {{ mainClasses }}{% endif %}" id="main-content" {%- if mainLang %} lang="{{ mainLang }}"{% endif %}>
-          {% block content %}{% endblock %}
-        </main>
-      </div>
+    {% block container %}
+      {# `main` is deprecated, use `container` instead #}
+      {% block main %}
+        <div class="govuk-width-container {%- if containerClasses %} {{ containerClasses }}{% endif %}">
+          {# `beforeContent` is deprecated, use `containerStart` instead #}
+          {% block beforeContent %}{% endblock %}
+          {% block containerStart %}{% endblock %}
+
+          {% block pageMain %}
+            <main class="govuk-main-wrapper {%- if mainClasses %} {{ mainClasses }}{% endif %}" id="main-content" {%- if mainLang %} lang="{{ mainLang }}"{% endif %}>
+              {% block content %}{% endblock %}
+            </main>
+          {% endblock %}
+
+          {% block containerEnd %}{% endblock %}
+        </div>
+      {% endblock %}
     {% endblock %}
 
-    {% block footer %}
-      {{ govukFooter({
-        rebrand: _rebrand
-      }) }}
+    {% block pageFooter %}
+      <footer class="govuk-template__footer">
+      {% block footerStart %}{% endblock %}
+      {% block footer %}
+        {{ govukFooter({
+          rebrand: _rebrand
+        }) }}
+      {% endblock %}
+      {% block footerEnd %}{% endblock %}
+      </footer>
     {% endblock %}
 
     {% block bodyEnd %}{% endblock %}
