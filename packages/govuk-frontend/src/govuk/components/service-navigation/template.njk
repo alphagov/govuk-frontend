@@ -37,7 +37,7 @@ data-module="govuk-service-navigation"
       {% if navigationItems | length or params.slots.navigationStart or params.slots.navigationEnd %}
         <nav aria-label="{{ params.navigationLabel | default(menuButtonText, true) }}" class="govuk-service-navigation__wrapper {%- if params.navigationClasses %} {{ params.navigationClasses }}{% endif %}">
           {% if collapseNavigationOnMobile %}
-          <button type="button" class="govuk-service-navigation__toggle govuk-js-service-navigation-toggle" aria-controls="{{ navigationId }}" {%- if params.menuButtonLabel and params.menuButtonLabel != menuButtonText %} aria-label="{{ params.menuButtonLabel }}"{% endif %} hidden>
+          <button type="button" class="govuk-service-navigation__toggle govuk-js-service-navigation-toggle" aria-controls="{{ navigationId }}" {%- if params.menuButtonLabel and params.menuButtonLabel != menuButtonText %} aria-label="{{ params.menuButtonLabel }}"{% endif %} hidden aria-hidden="true">
             {{ menuButtonText }}
           </button>
           {% endif %}
