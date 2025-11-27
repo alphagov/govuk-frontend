@@ -6,6 +6,16 @@ For advice on how to use these release notes, see [our guidance on staying up to
 
 ### Fixes
 
+#### Add `aria-hidden="true"` to the Service navigation's menu toggle
+
+If you do not use Nunjucks macros to generate your components' HTML, add an `aria-hidden="true"` attribute to the hidden `<button>` element of the Service navigation component.
+
+The VoiceOver screen reader software for macOS and iPadOS contains bugs that make the button accessible to VoiceOver users, even if the button has a `hidden` attribute. Adding the `aria-hidden="true"` attribute means the button will remain hidden for VoiceOver users.
+
+We made this change in [pull request #6467: Fix VoiceOver access to `hidden` Service Navigation menu button](https://github.com/alphagov/govuk-frontend/pull/6467).
+
+#### Other fixes
+
 We've made fixes to GOV.UK Frontend in the following pull requests:
 
 - [#6351: Preserve already escaped `attributes` values to prevent double escaping](https://github.com/alphagov/govuk-frontend/pull/6351) thanks to @colinrotherham for fixing this issue
