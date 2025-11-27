@@ -1,0 +1,137 @@
+////
+/// @group components/tag
+////
+
+/// Get tag text colour
+/// Almost all tags should use the 50% shade of their colour for their text
+///
+/// @param {String} $colour - name of colour from the colour palette
+/// @return {Colour} Representation of the named colour for use in tags
+/// @access private
+@function _govuk-tag-text-colour($colour) {
+  @return govuk-colour($colour, $variant: "shade-50");
+}
+
+/// Get tag background colour
+/// Almost all tags should use the 80% tint of their colour for their background
+///
+/// @param {String} $colour - name of colour from the colour palette
+/// @return {Colour} Representation of the named colour for use in tags
+/// @access private
+@function _govuk-tag-background-colour($colour) {
+  @return govuk-colour($colour, $variant: "tint-80");
+}
+
+/// Generate colour CSS for tag and tag modifiers
+/// Applies standard rules from the tag colour functions as well as setting
+/// border colour to `currentcolor` so that it follows the text
+///
+/// @param {String} $colour - name of colour from the colour palette
+/// @access private
+@mixin _govuk-tag-colours($colour) {
+  color: _govuk-tag-text-colour($colour);
+  background-color: _govuk-tag-background-colour($colour);
+}
+
+@include govuk-exports("govuk/component/tag") {
+  $govuk-tag-max-width: if(map-has-key($govuk-breakpoints, "mobile"), map-get($govuk-breakpoints, "mobile") / 2, 160px);
+
+  .govuk-tag {
+    @include govuk-font($size: 19);
+    // Default tag colour is blue
+    @include _govuk-tag-colours("blue");
+
+    display: inline-block;
+
+    // set a max-width along with overflow-wrap: break-word below for instances
+    // where a tag has a single long word and could overflow its boundaries.
+    // The max-width is necessary as break-word requires a bounding box to base
+    // where to break off of.
+    max-width: $govuk-tag-max-width;
+
+    // These negative margins make sure that the tag component doesn’t increase
+    // the size of its container. Otherwise, for example, a table row containing
+    // a tag will be taller than one containing plain text.
+    //
+    // The negative margin added to the top and bottom matches the extra padding
+    // added.
+    margin: -4px 0;
+    padding: 4px 8px;
+    // The border colour always follows the text colour of tags
+    border: 1px solid currentcolor;
+    border-radius: 1px;
+    text-decoration: none;
+    overflow-wrap: break-word;
+
+    // When forced colour mode is active, for example to provide high contrast,
+    // the background colour of the tag is the same as the rest of the page. To
+    // ensure that the tag is perceived as separate from any surround text, it
+    // is made bold.
+    //
+    // Transparent outlines are no longer added, as they make the Tag look
+    // indistinguishable from a button – but the tag is not interactive in the
+    // same way.
+    @media screen and (forced-colors: active) {
+      font-weight: bold;
+    }
+  }
+
+  // Tag colour modifiers. Use the _govuk-tag-colours mixin to define consistent
+  // colour rules per modifier
+  .govuk-tag--green {
+    @include _govuk-tag-colours("green");
+  }
+
+  .govuk-tag--purple {
+    @include _govuk-tag-colours("purple");
+  }
+
+  .govuk-tag--red {
+    @include _govuk-tag-colours("red");
+  }
+
+  .govuk-tag--orange {
+    @include _govuk-tag-colours("orange");
+  }
+
+  .govuk-tag--yellow {
+    @include _govuk-tag-colours("yellow");
+  }
+
+  .govuk-tag--teal {
+    @include _govuk-tag-colours("teal");
+  }
+
+  .govuk-tag--magenta {
+    @include _govuk-tag-colours("magenta");
+  }
+
+  // Turquoise and pink are deprecated over teal and magenta respectively
+
+  // @deprecated
+  .govuk-tag--turquoise {
+    @include _govuk-tag-colours("teal");
+  }
+
+  // @deprecated
+  .govuk-tag--pink {
+    @include _govuk-tag-colours("magenta");
+  }
+
+  // Light blue doesn't follow the tag colour rules because it uses the 95% tint
+  // blue for its background colour
+  .govuk-tag--light-blue {
+    color: _govuk-tag-text-colour("blue");
+    background-color: govuk-colour("blue", $variant: "tint-95");
+  }
+
+  // Grey can't follow the tag colour rules because `black` follows a different
+  // colour system to other colours where black is the primary colour and greys
+  // are tints traveling up
+  .govuk-tag--grey {
+    color: govuk-colour("black", "tint-25");
+    background-color: govuk-colour("black", "tint-95");
+  }
+}
+
+/*# sourceMappingURL=_index.scss.map */

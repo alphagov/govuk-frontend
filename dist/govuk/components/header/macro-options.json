@@ -1,0 +1,38 @@
+[
+    {
+        "name": "homepageUrl",
+        "type": "string",
+        "required": false,
+        "description": "The URL of the homepage. Defaults to the GOV.UK homepage."
+    },
+    {
+        "name": "productName",
+        "type": "string",
+        "required": false,
+        "description": "Product name, used when the product name follows on directly from ‘GOV.UK’. For example, GOV.UK Pay or GOV.UK Design System. In most circumstances, you should use the [Service navigation component](https://design-system.service.gov.uk/components/service-navigation/)."
+    },
+    {
+        "name": "containerClasses",
+        "type": "string",
+        "required": false,
+        "description": "Classes for the container, useful if you want to make the header fixed width."
+    },
+    {
+        "name": "classes",
+        "type": "string",
+        "required": false,
+        "description": "Classes to add to the header container."
+    },
+    {
+        "name": "attributes",
+        "type": "object",
+        "required": false,
+        "description": "HTML attributes (for example data attributes) to add to the header container."
+    },
+    {
+        "name": "rebrand",
+        "type": "boolean",
+        "required": false,
+        "description": "If `true`, use the redesigned header and new GOV.UK logotype. Default is `false`."
+    }
+]
