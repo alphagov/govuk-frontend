@@ -542,6 +542,160 @@ describe('Template', () => {
       })
     })
 
+    describe('<div class="govuk-width-container">', () => {
+      it('can be overridden using the widthContainer block', () => {
+        replacePageWith(
+          renderTemplate('govuk/template.njk', {
+            blocks: {
+              widthContainer: '<mark>Overriding content</mark>'
+            }
+          })
+        )
+
+        // The header also contains a `.govuk-width-container` element
+        expect(
+          document.querySelector('header ~ .govuk-width-container')
+        ).not.toBeInTheDocument()
+        expect(document.querySelector('mark')).toBeInTheDocument()
+      })
+
+      describe('classes', () => {
+        it('accepts extra classes from the `widthContainerClasses` variable', () => {
+          replacePageWith(
+            renderTemplate('govuk/template.njk', {
+              context: {
+                widthContainerClasses: 'an-extra-class another-extra-class'
+              }
+            })
+          )
+
+          expect(
+            document.querySelector(
+              'header ~ .govuk-width-container.an-extra-class.another-extra-class'
+            )
+          ).toBeInTheDocument()
+        })
+
+        it('accepts extra classes from the legacy `containerClasses` variable', () => {
+          replacePageWith(
+            renderTemplate('govuk/template.njk', {
+              context: {
+                containerClasses: 'an-extra-class another-extra-class'
+              }
+            })
+          )
+
+          expect(
+            document.querySelector(
+              'header ~ .govuk-width-container.an-extra-class.another-extra-class'
+            )
+          ).toBeInTheDocument()
+        })
+
+        it('gives precedence to `widthContainerClasses` over `containerClasses`', () => {
+          replacePageWith(
+            renderTemplate('govuk/template.njk', {
+              context: {
+                containerClasses: 'from-container-classes',
+                widthContainerClasses: 'from-width-container-classes'
+              }
+            })
+          )
+
+          expect(
+            document.querySelector(
+              'header ~ .govuk-width-container.from-width-container-classes'
+            )
+          ).toBeInTheDocument()
+          expect(
+            document.querySelector(
+              'header ~ .govuk-width-container.from-container-classes'
+            )
+          ).not.toBeInTheDocument()
+        })
+      })
+
+      describe('start block', () => {
+        it('allows content to be injected at the start with the `widthContainerStart` block', () => {
+          replacePageWith(
+            renderTemplate('govuk/template.njk', {
+              blocks: {
+                widthContainerStart: '<mark>Overriding content</mark>'
+              }
+            })
+          )
+
+          // The header also contains a `.govuk-width-container` element
+          expect(
+            document.querySelector(
+              'header ~ .govuk-width-container mark:first-child'
+            )
+          ).toBeInTheDocument()
+        })
+
+        it('allows content to be injected at the start with the legacy `beforeContent` block', () => {
+          replacePageWith(
+            renderTemplate('govuk/template.njk', {
+              blocks: {
+                beforeContent: '<mark>Overriding content</mark>'
+              }
+            })
+          )
+
+          // The header also contains a `.govuk-width-container` element
+          expect(
+            document.querySelector(
+              'header ~ .govuk-width-container mark:first-child'
+            )
+          ).toBeInTheDocument()
+        })
+
+        it('gives precedences to `widthContainerStart` over `beforeContent`', () => {
+          replacePageWith(
+            renderTemplate('govuk/template.njk', {
+              blocks: {
+                beforeContent:
+                  '<mark class="from-before-content">Overriding content</mark>',
+                widthContainerStart:
+                  '<mark class="from-width-container-start">Overriding content</mark>'
+              }
+            })
+          )
+
+          // The header also contains a `.govuk-width-container` element
+          expect(
+            document.querySelector(
+              'header ~ .govuk-width-container .from-width-container-start:first-child'
+            )
+          ).toBeInTheDocument()
+          expect(
+            document.querySelector(
+              'header ~ .govuk-width-container .from-before-content:first-child'
+            )
+          ).not.toBeInTheDocument()
+        })
+      })
+
+      describe('end block', () => {
+        it('allows content to be injected at the start with the `widthContainerEnd` block', () => {
+          replacePageWith(
+            renderTemplate('govuk/template.njk', {
+              blocks: {
+                widthContainerEnd: '<mark>Overriding content</mark>'
+              }
+            })
+          )
+
+          // The header also contains a `.govuk-width-container` element
+          expect(
+            document.querySelector(
+              'header ~ .govuk-width-container mark:last-child'
+            )
+          ).toBeInTheDocument()
+        })
+      })
+    })
+
     describe('<main>', () => {
       it('can have custom classes added using mainClasses', () => {
         replacePageWith(
@@ -584,6 +738,22 @@ describe('Template', () => {
 
         expect(document.querySelectorAll('main')).toHaveLength(1)
         expect(document.querySelector('main')).toHaveClass('my-main')
+      })
+
+      it('can be overridden using the `pageMain` block', () => {
+        replacePageWith(
+          renderTemplate('govuk/template.njk', {
+            blocks: {
+              pageMain: '<mark>Overriding content</mark>'
+            }
+          })
+        )
+
+        expect(document.querySelector('main')).not.toBeInTheDocument()
+        // It only replaces the `main` tag, not the surrounding `.govuk-width-container`
+        expect(
+          document.querySelector('header ~ .govuk-width-container mark')
+        ).toBeInTheDocument()
       })
 
       it('can have content injected before it using the beforeContent block', () => {

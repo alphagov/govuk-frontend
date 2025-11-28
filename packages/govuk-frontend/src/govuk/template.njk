@@ -49,13 +49,19 @@
       }) }}
     {% endblock %}
 
-    {% block main %}
-      <div class="govuk-width-container {%- if containerClasses %} {{ containerClasses }}{% endif %}">
-        {% block beforeContent %}{% endblock %}
-        <main class="govuk-main-wrapper {%- if mainClasses %} {{ mainClasses }}{% endif %}" id="main-content" {%- if mainLang %} lang="{{ mainLang }}"{% endif %}>
-          {% block content %}{% endblock %}
-        </main>
-      </div>
+    {% block widthContainer %}
+      {% block main %}
+        {% set widthContainerClasses = widthContainerClasses | default(containerClasses) %}
+        <div class="govuk-width-container {%- if widthContainerClasses %} {{ widthContainerClasses }}{% endif %}">
+          {% block widthContainerStart %}{% block beforeContent %}{% endblock %}{% endblock %}
+          {% block pageMain %}
+          <main class="govuk-main-wrapper {%- if mainClasses %} {{ mainClasses }}{% endif %}" id="main-content" {%- if mainLang %} lang="{{ mainLang }}"{% endif %}>
+            {% block content %}{% endblock %}
+          </main>
+          {% endblock %}
+          {% block widthContainerEnd %}{% endblock %}
+        </div>
+      {% endblock %}
     {% endblock %}
 
     {% block footer %}
