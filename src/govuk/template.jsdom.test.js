@@ -558,6 +558,67 @@ describe('Template', () => {
         ).not.toBeInTheDocument()
         expect(document.querySelector('mark')).toBeInTheDocument()
       })
+
+      describe('start block', () => {
+        it('allows content to be injected at the start with the `widthContainerStart` block', () => {
+          replacePageWith(
+            renderTemplate('govuk/template.njk', {
+              blocks: {
+                widthContainerStart: '<mark>Overriding content</mark>'
+              }
+            })
+          )
+
+          // The header also contains a `.govuk-width-container` element
+          expect(
+            document.querySelector(
+              'header ~ .govuk-width-container mark:first-child'
+            )
+          ).toBeInTheDocument()
+        })
+
+        it('allows content to be injected at the start with the legacy `beforeContent` block', () => {
+          replacePageWith(
+            renderTemplate('govuk/template.njk', {
+              blocks: {
+                beforeContent: '<mark>Overriding content</mark>'
+              }
+            })
+          )
+
+          // The header also contains a `.govuk-width-container` element
+          expect(
+            document.querySelector(
+              'header ~ .govuk-width-container mark:first-child'
+            )
+          ).toBeInTheDocument()
+        })
+
+        it('gives precedences to `widthContainerStart` over `beforeContent`', () => {
+          replacePageWith(
+            renderTemplate('govuk/template.njk', {
+              blocks: {
+                beforeContent:
+                  '<mark class="from-before-content">Overriding content</mark>',
+                widthContainerStart:
+                  '<mark class="from-width-container-start">Overriding content</mark>'
+              }
+            })
+          )
+
+          // The header also contains a `.govuk-width-container` element
+          expect(
+            document.querySelector(
+              'header ~ .govuk-width-container .from-width-container-start:first-child'
+            )
+          ).toBeInTheDocument()
+          expect(
+            document.querySelector(
+              'header ~ .govuk-width-container .from-before-content:first-child'
+            )
+          ).not.toBeInTheDocument()
+        })
+      })
     })
 
     describe('<main>', () => {
