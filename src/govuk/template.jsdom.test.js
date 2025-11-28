@@ -542,6 +542,24 @@ describe('Template', () => {
       })
     })
 
+    describe('<div class="govuk-width-container">', () => {
+      it('can be overridden using the widthContainer block', () => {
+        replacePageWith(
+          renderTemplate('govuk/template.njk', {
+            blocks: {
+              widthContainer: '<mark>Overriding content</mark>'
+            }
+          })
+        )
+
+        // The header also contains a `.govuk-width-container` element
+        expect(
+          document.querySelector('header ~ .govuk-width-container')
+        ).not.toBeInTheDocument()
+        expect(document.querySelector('mark')).toBeInTheDocument()
+      })
+    })
+
     describe('<main>', () => {
       it('can have custom classes added using mainClasses', () => {
         replacePageWith(
