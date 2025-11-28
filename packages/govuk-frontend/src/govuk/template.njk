@@ -49,13 +49,15 @@
       }) }}
     {% endblock %}
 
-    {% block main %}
-      <div class="govuk-width-container {%- if containerClasses %} {{ containerClasses }}{% endif %}">
-        {% block beforeContent %}{% endblock %}
-        <main class="govuk-main-wrapper {%- if mainClasses %} {{ mainClasses }}{% endif %}" id="main-content" {%- if mainLang %} lang="{{ mainLang }}"{% endif %}>
-          {% block content %}{% endblock %}
-        </main>
-      </div>
+    {% block widthContainer %}
+      {% block main %}
+        <div class="govuk-width-container {%- if containerClasses %} {{ containerClasses }}{% endif %}">
+          {% block beforeContent %}{% endblock %}
+          <main class="govuk-main-wrapper {%- if mainClasses %} {{ mainClasses }}{% endif %}" id="main-content" {%- if mainLang %} lang="{{ mainLang }}"{% endif %}>
+            {% block content %}{% endblock %}
+          </main>
+        </div>
+      {% endblock %}
     {% endblock %}
 
     {% block footer %}
