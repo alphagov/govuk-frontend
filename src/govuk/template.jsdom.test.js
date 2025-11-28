@@ -559,6 +559,62 @@ describe('Template', () => {
         expect(document.querySelector('mark')).toBeInTheDocument()
       })
 
+      describe('classes', () => {
+        it('accepts extra classes from the `widthContainerClasses` variable', () => {
+          replacePageWith(
+            renderTemplate('govuk/template.njk', {
+              context: {
+                widthContainerClasses: 'an-extra-class another-extra-class'
+              }
+            })
+          )
+
+          expect(
+            document.querySelector(
+              'header ~ .govuk-width-container.an-extra-class.another-extra-class'
+            )
+          ).toBeInTheDocument()
+        })
+
+        it('accepts extra classes from the legacy `containerClasses` variable', () => {
+          replacePageWith(
+            renderTemplate('govuk/template.njk', {
+              context: {
+                containerClasses: 'an-extra-class another-extra-class'
+              }
+            })
+          )
+
+          expect(
+            document.querySelector(
+              'header ~ .govuk-width-container.an-extra-class.another-extra-class'
+            )
+          ).toBeInTheDocument()
+        })
+
+        it('gives precedence to `widthContainerClasses` over `containerClasses`', () => {
+          replacePageWith(
+            renderTemplate('govuk/template.njk', {
+              context: {
+                containerClasses: 'from-container-classes',
+                widthContainerClasses: 'from-width-container-classes'
+              }
+            })
+          )
+
+          expect(
+            document.querySelector(
+              'header ~ .govuk-width-container.from-width-container-classes'
+            )
+          ).toBeInTheDocument()
+          expect(
+            document.querySelector(
+              'header ~ .govuk-width-container.from-container-classes'
+            )
+          ).not.toBeInTheDocument()
+        })
+      })
+
       describe('start block', () => {
         it('allows content to be injected at the start with the `widthContainerStart` block', () => {
           replacePageWith(
