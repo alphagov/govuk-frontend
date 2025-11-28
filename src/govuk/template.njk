@@ -56,6 +56,7 @@
           <main class="govuk-main-wrapper {%- if mainClasses %} {{ mainClasses }}{% endif %}" id="main-content" {%- if mainLang %} lang="{{ mainLang }}"{% endif %}>
             {% block content %}{% endblock %}
           </main>
+          {% block widthContainerEnd %}{% endblock %}
         </div>
       {% endblock %}
     {% endblock %}
