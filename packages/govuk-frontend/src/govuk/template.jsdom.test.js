@@ -740,6 +740,22 @@ describe('Template', () => {
         expect(document.querySelector('main')).toHaveClass('my-main')
       })
 
+      it('can be overridden using the `pageMain` block', () => {
+        replacePageWith(
+          renderTemplate('govuk/template.njk', {
+            blocks: {
+              pageMain: '<mark>Overriding content</mark>'
+            }
+          })
+        )
+
+        expect(document.querySelector('main')).not.toBeInTheDocument()
+        // It only replaces the `main` tag, not the surrounding `.govuk-width-container`
+        expect(
+          document.querySelector('header ~ .govuk-width-container mark')
+        ).toBeInTheDocument()
+      })
+
       it('can have content injected before it using the beforeContent block', () => {
         replacePageWith(
           renderTemplate('govuk/template.njk', {

@@ -54,9 +54,11 @@
         {% set widthContainerClasses = widthContainerClasses | default(containerClasses) %}
         <div class="govuk-width-container {%- if widthContainerClasses %} {{ widthContainerClasses }}{% endif %}">
           {% block widthContainerStart %}{% block beforeContent %}{% endblock %}{% endblock %}
+          {% block pageMain %}
           <main class="govuk-main-wrapper {%- if mainClasses %} {{ mainClasses }}{% endif %}" id="main-content" {%- if mainLang %} lang="{{ mainLang }}"{% endif %}>
             {% block content %}{% endblock %}
           </main>
+          {% endblock %}
           {% block widthContainerEnd %}{% endblock %}
         </div>
       {% endblock %}
