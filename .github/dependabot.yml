@@ -77,8 +77,6 @@ updates:
       time: '10:30'
       timezone: 'Europe/London'
 
-    cooldown: 7
-
     versioning-strategy: increase
 
     allow:
@@ -107,8 +105,6 @@ updates:
       time: '10:30'
       timezone: 'Europe/London'
 
-    cooldown: 7
-
   # Update GitHub Actions (Install dependencies)
   - package-ecosystem: github-actions
     directory: /.github/workflows/actions/install-node
@@ -118,13 +114,9 @@ updates:
       time: '10:30'
       timezone: 'Europe/London'
 
-    cooldown: 7
-
   # Update GitHub Actions (Setup Node.js)
   - package-ecosystem: github-actions
     directory: /.github/workflows/actions/setup-node
-
-    cooldown: 7
 
     schedule:
       interval: monthly
