@@ -697,16 +697,52 @@ describe('Template', () => {
     })
 
     describe('<main>', () => {
-      it('can have custom classes added using mainClasses', () => {
-        replacePageWith(
-          renderTemplate('govuk/template.njk', {
-            context: {
-              mainClasses: 'custom-main-class'
-            }
-          })
-        )
+      describe('classes', () => {
+        it('can have custom classes added using `mainClasses`', () => {
+          replacePageWith(
+            renderTemplate('govuk/template.njk', {
+              context: {
+                mainClasses: 'custom-main-class'
+              }
+            })
+          )
 
-        expect(document.querySelector('main')).toHaveClass('custom-main-class')
+          expect(document.querySelector('main')).toHaveClass(
+            'custom-main-class'
+          )
+        })
+
+        it('can have custom classes added using `pageMainClasses`', () => {
+          replacePageWith(
+            renderTemplate('govuk/template.njk', {
+              context: {
+                pageMainClasses: 'custom-page-main-class'
+              }
+            })
+          )
+
+          expect(document.querySelector('main')).toHaveClass(
+            'custom-page-main-class'
+          )
+        })
+
+        it('gives precedence to `pageMainClasses` over `mainClasses`', () => {
+          replacePageWith(
+            renderTemplate('govuk/template.njk', {
+              context: {
+                mainClasses: 'custom-main-class',
+                pageMainClasses: 'custom-page-main-class'
+              }
+            })
+          )
+
+          expect(document.querySelector('main')).toHaveClass(
+            'custom-page-main-class'
+          )
+          expect(document.querySelector('main')).not.toHaveClass(
+            'custom-main-class'
+          )
+        })
       })
 
       describe('lang attribute', () => {
