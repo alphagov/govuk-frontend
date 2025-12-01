@@ -44,24 +44,40 @@
     {% endblock %}
 
     {% block header %}
-      {{ govukHeader({
-        rebrand: _rebrand
-      }) }}
+      <header class="govuk-template__header {%- if headerClasses %} {{ headerClasses }}{% endif %}" {{- govukAttributes(headerAttributes) }}>
+        {% block headerStart %}{% endblock %}
+        {% block govukHeader %}
+          {{ govukHeader({
+            rebrand: _rebrand
+          }) }}
+        {% endblock %}
+        {% block headerEnd %}{% endblock %}
+      </header>
     {% endblock %}
 
-    {% block main %}
-      <div class="govuk-width-container {%- if containerClasses %} {{ containerClasses }}{% endif %}">
+    {% block container %}
+      <div class="govuk-width-container {%- if containerClasses %} {{ containerClasses }}{% endif %}" {{- govukAttributes(containerAttributes) }}>
+        {% block containerStart %}{% endblock %}
         {% block beforeContent %}{% endblock %}
-        <main class="govuk-main-wrapper {%- if mainClasses %} {{ mainClasses }}{% endif %}" id="main-content" {%- if mainLang %} lang="{{ mainLang }}"{% endif %}>
-          {% block content %}{% endblock %}
-        </main>
+        {% block main %}
+          <main class="govuk-main-wrapper {%- if mainClasses %} {{ mainClasses }}{% endif %}" id="main-content" {%- if mainLang %} lang="{{ mainLang }}"{% endif %}>
+            {% block content %}{% endblock %}
+          </main>
+        {% endblock %}
+        {% block containerEnd %}{% endblock %}
       </div>
     {% endblock %}
 
     {% block footer %}
-      {{ govukFooter({
-        rebrand: _rebrand
-      }) }}
+      <footer class="govuk-template__footer {%- if footerClasses %} {{ footerClasses }}{% endif %}" {{- govukAttributes(footerAttributes) }}>
+        {% block footerStart %}{% endblock %}
+        {% block govukFooter %}
+          {{ govukFooter({
+            rebrand: _rebrand
+          }) }}
+        {% endblock %}
+        {% block footerEnd %}{% endblock %}
+      </footer>
     {% endblock %}
 
     {% block bodyEnd %}{% endblock %}
