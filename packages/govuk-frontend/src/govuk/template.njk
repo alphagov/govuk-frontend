@@ -54,8 +54,9 @@
         {% set widthContainerClasses = widthContainerClasses | default(containerClasses) %}
         <div class="govuk-width-container {%- if widthContainerClasses %} {{ widthContainerClasses }}{% endif %}">
           {% block widthContainerStart %}{% block beforeContent %}{% endblock %}{% endblock %}
+          {% set pageMainLang = pageMainLang | default(mainLang) %}
           {% block pageMain %}
-          <main class="govuk-main-wrapper {%- if mainClasses %} {{ mainClasses }}{% endif %}" id="main-content" {%- if mainLang %} lang="{{ mainLang }}"{% endif %}>
+          <main class="govuk-main-wrapper {%- if mainClasses %} {{ mainClasses }}{% endif %}" id="main-content" {%- if pageMainLang %} lang="{{ pageMainLang }}"{% endif %}>
             {% block content %}{% endblock %}
           </main>
           {% endblock %}

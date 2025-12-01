@@ -709,22 +709,49 @@ describe('Template', () => {
         expect(document.querySelector('main')).toHaveClass('custom-main-class')
       })
 
-      it('does not have a lang attribute by default', () => {
-        replacePageWith(renderTemplate('govuk/template.njk'))
+      describe('lang attribute', () => {
+        it('does not have a lang attribute by default', () => {
+          replacePageWith(renderTemplate('govuk/template.njk'))
 
-        expect(document.querySelector('main')).not.toHaveAttribute('lang')
-      })
+          expect(document.querySelector('main')).not.toHaveAttribute('lang')
+        })
 
-      it('can have a lang attribute specified using mainLang', () => {
-        replacePageWith(
-          renderTemplate('govuk/template.njk', {
-            context: {
-              mainLang: 'zu'
-            }
-          })
-        )
+        it('can have a lang attribute specified using `mainLang`', () => {
+          replacePageWith(
+            renderTemplate('govuk/template.njk', {
+              context: {
+                mainLang: 'zu'
+              }
+            })
+          )
 
-        expect(document.querySelector('main')).toHaveAttribute('lang', 'zu')
+          expect(document.querySelector('main')).toHaveAttribute('lang', 'zu')
+        })
+
+        it('can have a lang attribute specified using `pageMainLang`', () => {
+          replacePageWith(
+            renderTemplate('govuk/template.njk', {
+              context: {
+                pageMainLang: 'zu'
+              }
+            })
+          )
+
+          expect(document.querySelector('main')).toHaveAttribute('lang', 'zu')
+        })
+
+        it('gives precedences to `pageMainLang` over `mainLang`', () => {
+          replacePageWith(
+            renderTemplate('govuk/template.njk', {
+              context: {
+                mainLang: 'en',
+                pageMainLang: 'zu'
+              }
+            })
+          )
+
+          expect(document.querySelector('main')).toHaveAttribute('lang', 'zu')
+        })
       })
 
       it('can be overridden using the main block', () => {
