@@ -1,0 +1,127 @@
+////
+/// @group settings/colours
+////
+
+/// Colour palette
+///
+/// @type Map
+///
+/// @prop {Map|Colour} $colour - Representation for the `$colour` or a map associating
+///   name of `$variant`s of the colours to their representation
+///
+/// @access private
+
+$_govuk-palette: (
+  "blue": (
+    "primary": #1d70b8,
+    "tint-25": #5694ca,
+    "tint-50": #8eb8dc,
+    "tint-80": #d2e2f1,
+    "tint-95": #f4f8fb,
+    "shade-25": #16548a,
+    "shade-50": #0f385c
+  ),
+  "green": (
+    "primary": #11875a,
+    "tint-25": #4da583,
+    "tint-50": #88c3ad,
+    "tint-80": #cfe7de,
+    "tint-95": #f3f9f7,
+    "shade-25": #0d6544,
+    "shade-50": #09442d
+  ),
+  "teal": (
+    "primary": #158187,
+    "tint-25": #50a1a5,
+    "tint-50": #8ac0c3,
+    "tint-80": #d0e6e7,
+    "tint-95": #f3f9f9,
+    "shade-25": #106165,
+    "shade-50": #0b4144,
+    "accent": #00ffe0
+  ),
+  "purple": (
+    "primary": #54319f,
+    "tint-25": #7f65b7,
+    "tint-50": #aa98cf,
+    "tint-80": #ddd6ec,
+    "tint-95": #f6f5fa,
+    "shade-25": #3f2577,
+    "shade-50": #2a1950
+  ),
+  "magenta": (
+    "primary": #ca357c,
+    "tint-25": #d7689d,
+    "tint-50": #e59abe,
+    "tint-80": #f4d7e5,
+    "tint-95": #fcf5f8,
+    "shade-25": #98285d,
+    "shade-50": #651b3e
+  ),
+  "red": (
+    "primary": #ca3535,
+    "tint-25": #d76868,
+    "tint-50": #e59a9a,
+    "tint-80": #f4d7d7,
+    "tint-95": #fcf5f5,
+    "shade-25": #982828,
+    "shade-50": #651b1b
+  ),
+  "orange": (
+    "primary": #f47738,
+    "tint-25": #f7996a,
+    "tint-50": #fabb9c,
+    "tint-80": #fde4d7,
+    "tint-95": #fef8f5,
+    "shade-25": #b7592a,
+    "shade-50": #7a3c1c
+  ),
+  "yellow": (
+    "primary": #ffdd00,
+    "tint-25": #ffe640,
+    "tint-50": #ffee80,
+    "tint-80": #fff8cc,
+    "tint-95": #fffdf2,
+    "shade-25": #bfa600,
+    "shade-50": #806f00
+  ),
+  "brown": (
+    "primary": #99704a,
+    "tint-25": #b39477,
+    "tint-50": #ccb8a5,
+    "tint-95": #faf8f6
+  ),
+  "black": (
+    "primary": #0b0c0c,
+    "tint-25": #484949,
+    "tint-50": #858686,
+    "tint-80": #cecece,
+    "tint-95": #f3f3f3
+  ),
+  "white": #ffffff
+);
+
+/// Pre-brand colours correspondence table
+///
+/// @type Map
+///
+/// @prop {List} $colour - Colour name and variant in the brand colours
+///   that correspond to the `$colour` in GOV.UK Frontend colours before
+///   the brand colours were introduced
+///
+/// @access private
+$_govuk-pre-brand-colours: (
+  "light-pink": "magenta" "tint-50",
+  "pink": "magenta" "primary",
+  "light-green": "green" "tint-25",
+  "turquoise": "teal" "primary",
+  "light-blue": "blue" "tint-25",
+  "dark-blue": "blue" "shade-50",
+  "light-purple": "purple" "tint-25",
+  "bright-purple": "magenta" "shade-25",
+  "dark-grey": "black" "tint-25",
+  "mid-grey": "black" "tint-80",
+  "light-grey": "black" "tint-95"
+);
+
+/*# sourceMappingURL=_colours-palette.scss.map */
