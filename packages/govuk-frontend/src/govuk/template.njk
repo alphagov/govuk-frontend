@@ -17,6 +17,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="theme-color" content="{{ themeColor }}">
 
+    {% block head %}{% endblock %}
+
     {% block headIcons %}
       <link rel="icon" sizes="48x48" href="{{ assetPath }}/images/favicon.ico">
       <link rel="icon" sizes="any" href="{{ assetPath }}/images/favicon.svg" type="image/svg+xml">
@@ -24,8 +26,6 @@
       <link rel="apple-touch-icon" href="{{ assetPath }}/images/govuk-icon-180.png">
       <link rel="manifest" href="{{ assetPath }}/manifest.json">
     {% endblock %}
-
-    {% block head %}{% endblock %}
 
     {#- OpenGraph images needs to be absolute, so we need either a URL for the image or for assetUrl to be set #}
     {% if opengraphImageUrl or assetUrl %}
