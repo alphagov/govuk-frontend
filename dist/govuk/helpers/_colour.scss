@@ -1,0 +1,225 @@
+@import "../settings/colours-palette";
+@import "../settings/colours-organisations";
+@import "../settings/warnings";
+
+////
+/// @group helpers/colour
+////
+
+/// Get colour
+///
+/// @param {String | Colour} $colour - Name of colour from the colour palette
+///   (`$_govuk-palette`)
+/// @param {String | Colour} $variant - Name of the variant from the colour palette
+///   (`$_govuk-palette`)
+/// @return {Colour} Representation of named colour
+///
+/// @throw if `$colour` is not a colour from the colour palette
+/// @throw if `$variant` is not a variant of the `$colour` in the colour palette
+/// @throw if the palette is misformatted and doesn't associate a colour or map to `$colour`
+/// @access public
+
+@function govuk-colour($colour, $variant: primary, $colours: $_govuk-palette) {
+  // Sass parses unquoted colours as colours, so we need to turn them into
+  // strings before looking them up in the colour palette
+  // https://sass-lang.com/documentation/values/strings#unquoted
+  @if type-of($colour) != "string" {
+    $colour: "#{$colour}";
+  }
+
+  $colour-variants: map-get($colours, $colour);
+
+  @if not $colour-variants {
+    // To ease the transition between the brand palette and old GOV.UK Frontend colours
+    // we'll automatically convert old colour names into their equivalent in the palette
+    @if $colours == $_govuk-palette {
+      $corresponding-colour: _govuk-corresponding-brand-colour($colour);
+      @if $corresponding-colour {
+        @return $corresponding-colour;
+      }
+    }
+
+    @error "Unknown colour `#{$colour}` (available colours: #{map-keys($colours)})";
+  }
+
+  // Some colours may not have variants, if that's the case, we can return the colour straight away
+  @if type-of($colour-variants) == "color" {
+    @return $colour-variants;
+  }
+
+  @if type-of($colour-variants) != "map" {
+    @error "Colour `#{$colour}` should either be a `map` or `color`, not a `#{type-of($colour-variants)}`";
+  }
+
+  $result: map-get($colour-variants, $variant);
+
+  @if not $result {
+    @error "Unknown variant `#{$variant}` for colour `#{$colour}` (available variants: #{map-keys($colour-variants)})";
+  }
+
+  @return $result;
+}
+
+@function _govuk-corresponding-brand-colour($colour) {
+  $pre-brand-colour: map-get($_govuk-pre-brand-colours, $colour);
+
+  @if $pre-brand-colour {
+    $corresponding-colour: nth($pre-brand-colour, 1);
+    $corresponding-variant: nth($pre-brand-colour, 2);
+
+    $corresponding-govuk-colour-call: 'govuk-colour("#{$corresponding-colour}", $variant: "#{$corresponding-variant}")';
+
+    @if _should-warn("pre-brand-colour") {
+      @warn _warning-text("pre-brand-colour",
+        "We've updated GOV.UK Frontend's colour palette. Use " +
+        "`#{$corresponding-govuk-colour-call}` instead of " +
+        "`govuk-colour(\"#{$colour}\")`. The `#{$colour}` colour is " +
+        "deprecated and we'll remove it in the next major version."
+      );
+    }
+
+    @return govuk-colour($corresponding-colour, $variant: $corresponding-variant);
+  }
+}
+
+/// Get a functional colour
+///
+/// @param {String|Colour} $colour - Name of the colour amongst the functional colours
+/// @return {Colour} Representation of the named colour
+///
+/// @throw if `$colour` is not an functional colour of GOV.UK Frontend
+/// @access public
+@function govuk-functional-colour($colour) {
+  // Sass parses unquoted colours as colours, so we need to turn them into
+  // strings before looking them up in the colour palette
+  // https://sass-lang.com/documentation/values/strings#unquoted
+  @if type-of($colour) != "string" {
+    $colour: "#{$colour}";
+  }
+
+  @if map-has-key($_govuk-functional-colours, $colour) {
+    $value: map-get($_govuk-functional-colours, $colour);
+    @return var(--_govuk-#{$colour}-colour, #{$value});
+  }
+
+  @error "Unknown colour `#{$colour}` (available colours: #{map-keys($_govuk-functional-colours)})";
+}
+
+@function _govuk-define-functional-colours($colours, $defaults) {
+  $existing-colours: map-keys($defaults);
+
+  @each $colour-name, $colour in $colours {
+    @if not index($existing-colours, $colour-name) {
+      @error 'Unknown colour `#{$colour-name}` (available colours: #{$existing-colours})';
+    }
+  }
+
+  @return map-merge($defaults, $colours);
+}
+
+/// Get the colour for a government organisation
+///
+/// @param {String} $organisation - Organisation name, lowercase, hyphenated
+/// @param {Boolean} $contrast-safe [true] - By default a version of the colour
+///   will be returned which has a minimum 4.5:1 contrast ratio when used with
+///   white, as per the WCAG 2.1 Level AA guidelines. If you want to use the
+///   non-contrast safe version you can set this to `false` but your should
+///   ensure that you still meets contrast requirements for accessibility -
+///   for example, do not use the non-contrast safe version for text.
+///
+/// @return {Colour} Representation of colour for organisation
+/// @throw if `$organisation` is not a known organisation
+/// @access public
+
+@function govuk-organisation-colour($organisation, $contrast-safe: true) {
+  // Check if the $organisation exists in the aliases map. If so, change the
+  // value of $organisation to the aliased value.
+  @if map-has-key($_govuk_colours-organisations-aliases, $organisation) {
+    $organisation: map-get($_govuk_colours-organisations-aliases, $organisation);
+  }
+
+  // Check to see if the organisation exists
+  @if not map-has-key($govuk-colours-organisations, $organisation) {
+    @error "Unknown organisation `#{$organisation}`";
+  }
+
+  $org-colour: map-get($govuk-colours-organisations, $organisation);
+
+  // If the organisation has a deprecation message associated with it
+  // (e.g. it has ceased to exist) then output a warning.
+  @if map-has-key($org-colour, "deprecation-message") and _should-warn("organisation-colours") {
+    @warn _warning-text(
+      "organisation-colours",
+      map-get($org-colour, "deprecation-message")
+    );
+  }
+
+  @if $contrast-safe and map-has-key($org-colour, "contrast-safe") {
+    @return map-get($org-colour, "contrast-safe");
+  } @else {
+    @return map-get($org-colour, "colour");
+  }
+}
+
+/// Make a colour darker by mixing it with black
+///
+/// @param {Colour} $colour - colour to shade
+/// @param {Number} $percentage - percentage of black to mix with $colour.
+///   Not used.
+/// @return {Colour}
+/// @access public
+///
+/// @deprecated Will be removed in 6.0
+
+@function govuk-shade($colour, $percentage: false) {
+  @if _should-warn("govuk-shade") {
+    @warn _warning-text("govuk-shade", "The govuk-shade function is deprecated. It now just returns the colour passed to it. Use the new GOV.UK colour palette instead.");
+  }
+
+  @return $colour;
+}
+
+/// No longer operable. Only returns the colour passed to it
+///
+/// @param {Colour} $colour - colour to tint
+/// @param {Number} $percentage - percentage of white to mix with $colour.
+///   Not used.
+/// @return {Colour}
+/// @access public
+///
+/// @deprecated Will be removed in 6.0
+
+@function govuk-tint($colour, $percentage: false) {
+  @if _should-warn("govuk-tint") {
+    @warn _warning-text("govuk-tint", "The govuk-tint function is deprecated. It now just returns the colour passed to it. Use the new GOV.UK colour palette instead.");
+  }
+
+  @return $colour;
+}
+
+/// Converts a colour with potential float values for its RGB channels
+/// into hexadecimal notation
+///
+/// This ensures the colour is rendered properly by Safari < 12
+///
+/// @param {Colour} $colour - The colour to convert
+/// @return {Colour}
+/// @access private
+@function _as-hexadecimal($colour) {
+  @if not function-exists(change-color) {
+    @return $colour;
+  }
+
+  // `red`,`green` and `blue` functions are limited to 'legacy' colour spaces
+  // ensuring we don't get floating computations on them
+  $parts: (
+    "red": red($colour),
+    "green": green($colour),
+    "blue": blue($colour),
+    "alpha": alpha($colour)
+  );
+
+  @return change-color($colour, $parts...);
+}
+
+/*# sourceMappingURL=_colour.scss.map */

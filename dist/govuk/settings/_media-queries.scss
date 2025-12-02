@@ -1,0 +1,16 @@
+////
+/// @group settings/layout
+////
+
+/// Breakpoint definitions
+///
+/// @type Map
+/// @access public
+
+$govuk-breakpoints: (
+  mobile: 320px,
+  tablet: 641px,
+  desktop: 769px
+) !default;
+
+/*# sourceMappingURL=_media-queries.scss.map */
