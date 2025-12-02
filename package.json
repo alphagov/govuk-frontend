@@ -85,7 +85,7 @@
     "prettier": "^3.6.2",
     "semver": "^7.7.3",
     "standard": "^17.1.2",
-    "stylelint": "^16.25.0",
+    "stylelint": "^16.26.0",
     "stylelint-config-gds": "^2.0.0",
     "stylelint-order": "^7.0.0",
     "typescript": "^5.9.3"
