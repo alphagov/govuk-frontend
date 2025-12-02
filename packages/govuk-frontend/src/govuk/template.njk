@@ -1,6 +1,7 @@
 {% from "./macros/attributes.njk" import govukAttributes -%}
 {% from "./components/skip-link/macro.njk" import govukSkipLink -%}
 {% from "./components/header/macro.njk" import govukHeader -%}
+{% from "./components/service-navigation/macro.njk" import govukServiceNavigation -%}
 {% from "./components/footer/macro.njk" import govukFooter -%}
 
 {%- set _rebrand = govukRebrand() if govukRebrand is callable else govukRebrand -%}
