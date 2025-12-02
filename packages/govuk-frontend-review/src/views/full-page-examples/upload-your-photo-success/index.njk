@@ -21,13 +21,13 @@ scenario: |
 {% set pageTitle = example.title %}
 {% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
 
-{% block header %}
+{% block govukHeader %}
   {{ govukHeader({
     serviceName: "Apply for a passport"
   }) }}
 {% endblock %}
 
-{% block beforeContent %}
+{% block containerStart %}
   {{ govukPhaseBanner({
     tag: {
       text: "Beta"

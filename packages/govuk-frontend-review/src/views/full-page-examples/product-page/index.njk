@@ -17,12 +17,14 @@ title: GOV.UK Pay
     <link rel="stylesheet" href="/stylesheets/full-page-examples/product-page.min.css">
 {% endblock %}
 
-{% block header %}
+{% block govukHeader %}
   {{ govukHeader({
     productName: "Pay",
     classes: "govuk-header--full-width-border"
   }) }}
+{% endblock %}
 
+{% block serviceNavigation %}
   {{ govukServiceNavigation({
     classes: "govuk-service-navigation--inverse",
     navigation: [
@@ -53,7 +55,7 @@ title: GOV.UK Pay
 
 {% endblock%}
 
-{% block main %}
+{% block container %}
 
 <div class="app-masthead">
 

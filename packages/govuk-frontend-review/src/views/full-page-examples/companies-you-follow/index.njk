@@ -18,10 +18,13 @@ notes: Based on Companies House "Find an update company information" service
 {% set pageTitle = example.title %}
 {% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
 
-{% block header %}
+{% block govukHeader %}
   {{ govukHeader({
     classes: "govuk-header--full-width-border"
   }) }}
+{% endblock %}
+
+{% block serviceNavigation %}
   {{ govukServiceNavigation({
     classes: "app-service-navigation",
     serviceName: "Find company information",
@@ -48,7 +51,7 @@ notes: Based on Companies House "Find an update company information" service
   }) }}
 {% endblock %}
 
-{% block beforeContent %}
+{% block containerStart %}
   {{ govukPhaseBanner({
     tag: {
       text: "Alpha"

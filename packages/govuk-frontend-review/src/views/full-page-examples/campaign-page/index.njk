@@ -23,14 +23,14 @@ notes: Based on https://www.gov.uk/coronavirus
     <link rel="stylesheet" href="/stylesheets/full-page-examples/campaign-page.min.css">
 {% endblock %}
 
-{% block header %}
+{% block govukHeader %}
   {{ govukHeader({
     homepageUrl: "#",
     classes: "app-header--campaign"
   }) }}
 {% endblock %}
 
-{% block main %}
+{% block container %}
   <div class="app-covid-banner-top">
     <div class="govuk-width-container">
       <div class="govuk-grid-row">
@@ -232,9 +232,7 @@ notes: Based on https://www.gov.uk/coronavirus
   </div>
 {% endblock %}
 
-{% block footer %}
-
-
+{% block govukFooter %}
   {{ govukFooter({
     navigation: [
       {
