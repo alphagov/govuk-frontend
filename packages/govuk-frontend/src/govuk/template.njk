@@ -43,8 +43,17 @@
       }) }}
     {% endblock %}
 
+    {# Only output <header> if any of its child blocks have content. #}
+    {% macro _govukTemplateHeader() %}
+      {%- if caller() | trim | length > 0 %}
+        <header class="govuk-template__header {%- if headerClasses %} {{ headerClasses }}{% endif %}" {{- govukAttributes(headerAttributes) }}>
+          {{ caller() }}
+        </header>
+      {%- endif %}
+    {% endmacro %}
+
     {% block header %}
-      <header class="govuk-template__header {%- if headerClasses %} {{ headerClasses }}{% endif %}" {{- govukAttributes(headerAttributes) }}>
+      {% call _govukTemplateHeader() %}
         {% block headerStart %}{% endblock %}
         {% block govukHeader %}
           {{ govukHeader({
@@ -59,13 +68,15 @@
           {%- endif %}
         {% endblock %}
         {% block headerEnd %}{% endblock %}
-      </header>
+      {% endcall %}
     {% endblock %}
 
     {% block container %}
       <div class="govuk-width-container {%- if containerClasses %} {{ containerClasses }}{% endif %}" {{- govukAttributes(containerAttributes) }}>
-        {% block containerStart %}{% endblock %}
+        {# beforeContent is deprecated. Use `containerStart` instead. #}
         {% block beforeContent %}{% endblock %}
+
+        {% block containerStart %}{% endblock %}
         {% block main %}
           <main class="govuk-main-wrapper {%- if mainClasses %} {{ mainClasses }}{% endif %}" id="main-content" {%- if mainLang %} lang="{{ mainLang }}"{% endif %}>
             {% block content %}{% endblock %}
@@ -75,8 +86,17 @@
       </div>
     {% endblock %}
 
+    {# Only output <footer> if any of its child blocks have content. #}
+    {% macro _govukTemplateFooter() %}
+      {%- if caller() | trim | length > 0 %}
+        <footer class="govuk-template__footer {%- if footerClasses %} {{ footerClasses }}{% endif %}" {{- govukAttributes(footerAttributes) }}>
+          {{ caller() }}
+        </footer>
+      {%- endif %}
+    {% endmacro %}
+
     {% block footer %}
-      <footer class="govuk-template__footer {%- if footerClasses %} {{ footerClasses }}{% endif %}" {{- govukAttributes(footerAttributes) }}>
+      {% call _govukTemplateFooter() %}
         {% block footerStart %}{% endblock %}
         {% block govukFooter %}
           {{ govukFooter({
@@ -84,7 +104,7 @@
           }) }}
         {% endblock %}
         {% block footerEnd %}{% endblock %}
-      </footer>
+      {% endcall %}
     {% endblock %}
 
     {% block bodyEnd %}{% endblock %}
