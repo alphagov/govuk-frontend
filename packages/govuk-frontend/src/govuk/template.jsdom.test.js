@@ -513,18 +513,71 @@ describe('Template', () => {
       })
     })
 
-    describe('header', () => {
-      it('can be overridden using the header block', () => {
+    describe('<header>', () => {
+      it('renders the <header> element by default', () => {
+        replacePageWith(renderTemplate('govuk/template.njk'))
+        const $header = document.querySelector('header')
+
+        expect($header).toBeInTheDocument()
+        expect($header).toHaveClass('govuk-template__header')
+      })
+
+      it('does not render the <header> element if there is no content inside it', () => {
         replacePageWith(
           renderTemplate('govuk/template.njk', {
             blocks: {
-              header: '<div class="my-header">header</div>'
+              govukHeader: '',
+              headerStart: '',
+              headerEnd: ''
             }
           })
         )
 
-        expect(document.querySelector('.my-header')).toBeInTheDocument()
-        expect(document.querySelector('.govuk-header')).toBeNull()
+        expect(document.querySelector('header')).not.toBeInTheDocument()
+      })
+
+      it('can have custom classes added using headerClasses', () => {
+        replacePageWith(
+          renderTemplate('govuk/template.njk', {
+            context: {
+              headerClasses: 'custom-header-class'
+            }
+          })
+        )
+
+        expect(document.querySelector('header')).toHaveClass(
+          'custom-header-class'
+        )
+      })
+
+      it('can have custom attributes added using headerAttributes', () => {
+        replacePageWith(
+          renderTemplate('govuk/template.njk', {
+            context: {
+              headerAttributes: {
+                'data-foo': 'bar'
+              }
+            }
+          })
+        )
+
+        expect(document.querySelector('header')).toHaveAttribute(
+          'data-foo',
+          'bar'
+        )
+      })
+
+      it('can be overridden using the header block', () => {
+        replacePageWith(
+          renderTemplate('govuk/template.njk', {
+            blocks: {
+              header: '<mark>header</mark>'
+            }
+          })
+        )
+
+        expect(document.querySelector('mark')).toBeInTheDocument()
+        expect(document.querySelector('.govuk-header')).not.toBeInTheDocument()
       })
 
       it('sets the rebrand param to true by default if govukRebrand is true', () => {
@@ -539,6 +592,53 @@ describe('Template', () => {
         expect(
           document.querySelector('.govuk-header .govuk-logo-dot')
         ).toBeInTheDocument()
+      })
+
+      describe('govukHeader block', () => {
+        it('allows content to be inserted using govukHeader', () => {
+          replacePageWith(
+            renderTemplate('govuk/template.njk', {
+              blocks: {
+                govukHeader: '<mark>govukHeader</mark>'
+              }
+            })
+          )
+
+          expect(document.querySelector('mark')).toBeInTheDocument()
+          expect(
+            document.querySelector('.govuk-header')
+          ).not.toBeInTheDocument()
+        })
+      })
+
+      describe('headerStart block', () => {
+        it('allows content to be inserted using headerStart', () => {
+          replacePageWith(
+            renderTemplate('govuk/template.njk', {
+              blocks: {
+                headerStart: '<mark>headerStart</mark>'
+              }
+            })
+          )
+
+          expect(document.querySelector('mark')).toBeInTheDocument()
+          expect(document.querySelector('.govuk-header')).toBeInTheDocument()
+        })
+      })
+
+      describe('headerEnd block', () => {
+        it('allows content to be inserted using headerEnd', () => {
+          replacePageWith(
+            renderTemplate('govuk/template.njk', {
+              blocks: {
+                headerEnd: '<mark>headerEnd</mark>'
+              }
+            })
+          )
+
+          expect(document.querySelector('mark')).toBeInTheDocument()
+          expect(document.querySelector('.govuk-header')).toBeInTheDocument()
+        })
       })
     })
 
@@ -614,7 +714,7 @@ describe('Template', () => {
       })
     })
 
-    describe('footer', () => {
+    describe('<footer>', () => {
       it('can be overridden using the footer block', () => {
         replacePageWith(
           renderTemplate('govuk/template.njk', {
