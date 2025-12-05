@@ -11,7 +11,7 @@ notes: Based on https://www.gov.uk/foreign-travel-advice/iceland/entry-requireme
 {% set pageTitle = example.title %}
 {% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
 
-{% block beforeContent %}
+{% block containerStart %}
   {{ govukBreadcrumbs({
     items: [
       {
