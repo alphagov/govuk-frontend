@@ -20,11 +20,14 @@
   // can be clickable.
   .govuk-task-list__item {
     display: table;
+
     position: relative;
+
     width: 100%;
     margin-bottom: 0;
     padding-top: govuk-spacing(2);
     padding-bottom: govuk-spacing(2);
+
     border-bottom: 1px solid govuk-functional-colour(border);
   }
 
@@ -62,7 +65,9 @@
   // element, this allows the whole area to be clickable.
   .govuk-task-list__link::after {
     content: "";
+
     display: block;
+
     position: absolute;
     top: 0;
     right: 0;

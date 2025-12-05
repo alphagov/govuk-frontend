@@ -6,7 +6,6 @@
     @include govuk-font($size: 48, $weight: bold);
 
     display: block;
-
     margin-top: 0;
     @include govuk-responsive-margin(8, "bottom");
   }
@@ -20,7 +19,6 @@
     @include govuk-font($size: 36, $weight: bold);
 
     display: block;
-
     margin-top: 0;
     @include govuk-responsive-margin(6, "bottom");
   }
@@ -34,7 +32,6 @@
     @include govuk-font($size: 24, $weight: bold);
 
     display: block;
-
     margin-top: 0;
     @include govuk-responsive-margin(4, "bottom");
   }
@@ -48,7 +45,6 @@
     @include govuk-font($size: 19, $weight: bold);
 
     display: block;
-
     margin-top: 0;
     @include govuk-responsive-margin(4, "bottom");
   }
@@ -63,9 +59,7 @@
     @include govuk-font($size: 27);
 
     display: block;
-
     margin-bottom: govuk-spacing(1);
-
     color: govuk-functional-colour(secondary-text);
   }
 
@@ -73,7 +67,6 @@
     @include govuk-font($size: 24);
 
     display: block;
-
     margin-bottom: govuk-spacing(1);
     color: govuk-functional-colour(secondary-text);
 
@@ -86,7 +79,6 @@
     @include govuk-font($size: 19);
 
     display: block;
-
     color: govuk-functional-colour(secondary-text);
   }
 
