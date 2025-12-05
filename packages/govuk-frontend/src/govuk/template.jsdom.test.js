@@ -617,6 +617,22 @@ describe('Template', () => {
           ).not.toBeInTheDocument()
         })
       })
+
+      it('can have content injected at the end using the `containerEnd` block', () => {
+        replacePageWith(
+          renderTemplate('govuk/template.njk', {
+            blocks: {
+              containerEnd: '<mark>Overriding content</mark>'
+            }
+          })
+        )
+
+        expect(
+          document.querySelector(
+            'header ~ .govuk-width-container > mark:last-child'
+          )
+        ).toBeInTheDocument()
+      })
     })
 
     describe('<main>', () => {
