@@ -35,7 +35,7 @@
   <!-- endblock:bodyStart -->
 {% endblock %}
 
-{% block skipLink %}
+{% block govukSkipLink %}
   <!-- block:skipLink -->
   {{ govukSkipLink({
     href: '#main-content',
@@ -70,13 +70,13 @@
 
 {% set mainClasses = 'govuk-main-wrapper--auto-spacing app-main-class' %}
 
-{% block main %}
+{% block container %}
   <!-- block:main -->
   {{ super() }}
   <!-- endblock:main -->
 {% endblock %}
 
-{% block beforeContent %}
+{% block containerStart %}
   <!-- block:beforeContent -->
   {{ govukPhaseBanner({
     tag: {
