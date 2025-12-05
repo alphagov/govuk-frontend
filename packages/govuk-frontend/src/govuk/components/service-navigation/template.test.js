@@ -223,6 +223,15 @@ describe('Service Navigation', () => {
         expect($navToggle.attr('hidden')).toBeDefined()
       })
 
+      it('adds `aria-hidden` to fully hide the button from Voice Over', () => {
+        const $ = render('service-navigation', examples.default)
+        const $component = $('.govuk-service-navigation')
+
+        const $navToggle = $component.find('.govuk-service-navigation__toggle')
+
+        expect($navToggle.attr('aria-hidden')).toBe('true')
+      })
+
       describe('toggle label', () => {
         it("doesn't render the label by default", () => {
           const $ = render('service-navigation', examples.default)
