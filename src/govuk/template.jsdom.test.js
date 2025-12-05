@@ -715,17 +715,70 @@ describe('Template', () => {
     })
 
     describe('<footer>', () => {
-      it('can be overridden using the footer block', () => {
+      it('renders the <footer> element by default', () => {
+        replacePageWith(renderTemplate('govuk/template.njk'))
+        const $footer = document.querySelector('footer')
+
+        expect($footer).toBeInTheDocument()
+        expect($footer).toHaveClass('govuk-template__footer')
+      })
+
+      it('does not render the <footer> element if there is no content inside it', () => {
         replacePageWith(
           renderTemplate('govuk/template.njk', {
             blocks: {
-              footer: '<div class="my-footer">footer</div>'
+              govukFooter: '',
+              footerStart: '',
+              footerEnd: ''
             }
           })
         )
 
-        expect(document.querySelector('.my-footer')).toBeInTheDocument()
-        expect(document.querySelector('.govuk-footer')).toBeNull()
+        expect(document.querySelector('footer')).not.toBeInTheDocument()
+      })
+
+      it('can have custom classes added using footerClasses', () => {
+        replacePageWith(
+          renderTemplate('govuk/template.njk', {
+            context: {
+              footerClasses: 'custom-footer-class'
+            }
+          })
+        )
+
+        expect(document.querySelector('footer')).toHaveClass(
+          'custom-footer-class'
+        )
+      })
+
+      it('can have custom attributes added using footerAttributes', () => {
+        replacePageWith(
+          renderTemplate('govuk/template.njk', {
+            context: {
+              footerAttributes: {
+                'data-foo': 'bar'
+              }
+            }
+          })
+        )
+
+        expect(document.querySelector('footer')).toHaveAttribute(
+          'data-foo',
+          'bar'
+        )
+      })
+
+      it('can be overridden using the footer block', () => {
+        replacePageWith(
+          renderTemplate('govuk/template.njk', {
+            blocks: {
+              footer: '<mark>footer</mark>'
+            }
+          })
+        )
+
+        expect(document.querySelector('mark')).toBeInTheDocument()
+        expect(document.querySelector('.govuk-footer')).not.toBeInTheDocument()
       })
 
       it('sets the rebrand param to true by default if govukRebrand is true', () => {
@@ -740,6 +793,53 @@ describe('Template', () => {
         expect(
           document.querySelector('.govuk-footer .govuk-footer__crown')
         ).toBeInTheDocument()
+      })
+
+      describe('govukFooter block', () => {
+        it('allows content to be inserted using govukFooter', () => {
+          replacePageWith(
+            renderTemplate('govuk/template.njk', {
+              blocks: {
+                govukFooter: '<mark>govukFooter</mark>'
+              }
+            })
+          )
+
+          expect(document.querySelector('mark')).toBeInTheDocument()
+          expect(
+            document.querySelector('.govuk-footer')
+          ).not.toBeInTheDocument()
+        })
+      })
+
+      describe('footerStart block', () => {
+        it('allows content to be inserted using footerStart', () => {
+          replacePageWith(
+            renderTemplate('govuk/template.njk', {
+              blocks: {
+                footerStart: '<mark>footerStart</mark>'
+              }
+            })
+          )
+
+          expect(document.querySelector('mark')).toBeInTheDocument()
+          expect(document.querySelector('.govuk-footer')).toBeInTheDocument()
+        })
+      })
+
+      describe('footerEnd block', () => {
+        it('allows content to be inserted using footerEnd', () => {
+          replacePageWith(
+            renderTemplate('govuk/template.njk', {
+              blocks: {
+                footerEnd: '<mark>footerEnd</mark>'
+              }
+            })
+          )
+
+          expect(document.querySelector('mark')).toBeInTheDocument()
+          expect(document.querySelector('.govuk-footer')).toBeInTheDocument()
+        })
       })
     })
   })
