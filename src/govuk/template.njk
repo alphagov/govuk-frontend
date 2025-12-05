@@ -65,7 +65,7 @@
     {% endblock %}
 
     {% block container %}
-      <div class="govuk-width-container {%- if containerClasses %} {{ containerClasses }}{% endif %}">
+      <div class="govuk-width-container {%- if containerClasses %} {{ containerClasses }}{% endif %}" {{- govukAttributes(containerAttributes) }}>
         {% block containerStart %}{% block beforeContent %}{% endblock %}{% endblock %}
         {% block main %}
         <main class="govuk-main-wrapper {%- if mainClasses %} {{ mainClasses }}{% endif %}" id="main-content" {%- if mainLang %} lang="{{ mainLang }}"{% endif %}>

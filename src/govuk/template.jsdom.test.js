@@ -673,6 +673,20 @@ describe('Template', () => {
         ).toHaveClass('app-width-container')
       })
 
+      it('can have custom attributes added using `containerAttributes`', () => {
+        replacePageWith(
+          renderTemplate('govuk/template.njk', {
+            context: {
+              containerAttributes: { 'data-foo': 'bar' }
+            }
+          })
+        )
+
+        expect(
+          document.querySelector('header ~ .govuk-width-container')
+        ).toHaveAttribute('data-foo', 'bar')
+      })
+
       describe('adding content at the start', () => {
         it('can have content injected at the start using the `containerStart` block', () => {
           replacePageWith(
