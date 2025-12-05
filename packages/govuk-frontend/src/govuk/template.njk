@@ -73,10 +73,25 @@
       </div>
     {% endblock %}
 
+    {# Only output <footer> if any of its child blocks have content. #}
+    {% macro _govukTemplateFooter() %}
+      {%- if caller() | trim | length > 0 %}
+        <footer class="govuk-template__footer {%- if footerClasses %} {{ footerClasses }}{% endif %}" {{- govukAttributes(footerAttributes)}}>
+          {{ caller() }}
+        </footer>
+      {%- endif %}
+    {% endmacro %}
+
     {% block footer %}
-      {{ govukFooter({
-        rebrand: _rebrand
-      }) }}
+      {% call _govukTemplateFooter() %}
+        {% block footerStart %}{% endblock %}
+        {% block govukFooter %}
+          {{ govukFooter({
+            rebrand: _rebrand
+          }) }}
+        {% endblock %}
+        {% block footerEnd %}{% endblock %}
+      {% endcall %}
     {% endblock %}
 
     {% block bodyEnd %}{% endblock %}
