@@ -11,7 +11,7 @@
   {% include componentName + "/" + componentName + ".njk" ignore missing %}
 {% endset %}
 
-{% block beforeContent %}
+{% block containerStart %}
   {{ govukBreadcrumbs({
     items: [
       {
