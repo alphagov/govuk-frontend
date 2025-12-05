@@ -205,8 +205,8 @@ function renderPreview(componentName, options) {
       // Remove default template blocks
       skipLink: '',
       bodyStart: '',
-      header: '',
-      footer: '',
+      pageHeader: '',
+      pageFooter: '',
 
       main: outdent`
         <div id="content" class="govuk-width-container">
