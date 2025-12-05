@@ -4,6 +4,63 @@ For advice on how to use these release notes, see [our guidance on staying up to
 
 ## Unreleased
 
+### Breaking changes
+
+#### Update Nunjucks blocks around the GOV.UK footer
+
+We've changed the structure of pages around the footer to separate the `<footer>` element from the GOV.UK footer component. This allows other components can be included within the `<footer>` of each page.
+
+You will need to follow different upgrading instructions depending on the current state of your code. In all cases, you should ensure that the final page has a single `<footer>` element present.
+
+If you're using GOV.UK Frontend's template and overriding the `govukFooter` component, update references to the `footer` Nunjucks block to use `govukFooter` instead.
+
+```njk
+{# Previously #}
+{% block footer %}
+  {{ govukFooter() }}
+{% endblock %}
+
+{# Now #}
+{% block govukFooter %}
+  {{ govukFooter() }}
+{% endblock %}
+```
+
+If you're not using GOV.UK Frontend's template but are using the `govukFooter` component, update your template to include a `<footer>` element around the component.
+
+If you're not using the `footer` Nunjucks block at any point, or you're only using the block in order to remove it, you don't need to change anything.
+
+If you're not using Nunjucks, change the existing GOV.UK footer to a `<div>` element and wrap it with a `<footer>` element.
+
+```html
+<footer class="govuk-template__footer">
+  <div class="govuk-footer">
+    [...]
+  </div>
+</footer>
+```
+
+We made this change in [pull request #6537: Refactor footer to detach element from component](https://github.com/alphagov/govuk-frontend/pull/6537).
+
+### New features
+
+#### Customise the template's `<footer>` element
+
+Nunjucks users can customise the appearance and content of the template's `<footer>` element with new blocks and variables.
+
+New variables:
+
+- `footerClasses` applies custom classes to the element.
+- `footerAttributes` applies custom HTML attributes to the element.
+
+New Nunjucks blocks:
+
+- `footerStart` inserts HTML immediately after the element's opening tag.
+- `footerEnd` inserts HTML immediately before the element's closing tag.
+- `govukFooter` allows for customising the `govukFooter` component without affecting other parts of the footer.
+
+We made this change in [pull request #6537: Refactor footer to detach element from component](https://github.com/alphagov/govuk-frontend/pull/6537).
+
 ### Fixes
 
 #### Add `aria-hidden="true"` to the Service navigation's menu toggle
