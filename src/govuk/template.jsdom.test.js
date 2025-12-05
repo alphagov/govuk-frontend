@@ -658,6 +658,65 @@ describe('Template', () => {
         ).not.toBeInTheDocument()
         expect(document.querySelector('mark')).toBeInTheDocument()
       })
+
+      describe('adding content at the start', () => {
+        it('can have content injected at the start using the `containerStart` block', () => {
+          replacePageWith(
+            renderTemplate('govuk/template.njk', {
+              blocks: {
+                containerStart: '<mark>Overriding content</mark>'
+              }
+            })
+          )
+
+          expect(
+            document.querySelector(
+              'header ~ .govuk-width-container > mark:first-child'
+            )
+          ).toBeInTheDocument()
+        })
+
+        it('can have content injected at the start using the `beforeContent` block', () => {
+          replacePageWith(
+            renderTemplate('govuk/template.njk', {
+              blocks: {
+                beforeContent: '<mark>Overriding content</mark>'
+              }
+            })
+          )
+
+          expect(
+            document.querySelector(
+              'header ~ .govuk-width-container > mark:first-child'
+            )
+          ).toBeInTheDocument()
+        })
+
+        it('gives precedence to `containerStart` over `beforeContent`', () => {
+          replacePageWith(
+            renderTemplate('govuk/template.njk', {
+              blocks: {
+                containerStart:
+                  '<mark name="containerStart">Overriding content</mark>',
+                beforeContent:
+                  '<mark name="beforeContent">Overriding content</mark>'
+              }
+            })
+          )
+
+          expect(
+            document.querySelector(
+              'header ~ .govuk-width-container > [name="containerStart"]:first-child'
+            )
+          ).toBeInTheDocument()
+          // The content from `beforeContent` should not be injected at all, irrespective of its position
+          expect(
+            document.querySelector(
+              'header ~ .govuk-width-container > [name="beforeContent"]'
+            )
+          ).not.toBeInTheDocument()
+        })
+      })
     })
 
     describe('<main>', () => {
@@ -705,21 +764,6 @@ describe('Template', () => {
         ).toBeInTheDocument()
         expect(document.querySelector('mark')).toBeInTheDocument()
         expect(document.querySelector('main')).not.toBeInTheDocument()
-      })
-
-      it('can have content injected before it using the beforeContent block', () => {
-        replacePageWith(
-          renderTemplate('govuk/template.njk', {
-            blocks: {
-              beforeContent: '<div class="before-content">beforeContent</div>'
-            }
-          })
-        )
-
-        const $beforeContent = document.querySelector('.before-content')
-        const $main = document.querySelector('main')
-
-        expect($beforeContent.nextElementSibling).toBe($main)
       })
 
       it('can have content specified using the content block', () => {
