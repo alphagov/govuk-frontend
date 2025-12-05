@@ -659,6 +659,20 @@ describe('Template', () => {
         expect(document.querySelector('mark')).toBeInTheDocument()
       })
 
+      it('can have custom classes using the `containerClasses` variable', () => {
+        replacePageWith(
+          renderTemplate('govuk/template.njk', {
+            context: {
+              containerClasses: 'app-width-container'
+            }
+          })
+        )
+
+        expect(
+          document.querySelector('header ~ .govuk-width-container')
+        ).toHaveClass('app-width-container')
+      })
+
       describe('adding content at the start', () => {
         it('can have content injected at the start using the `containerStart` block', () => {
           replacePageWith(
