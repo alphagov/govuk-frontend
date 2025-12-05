@@ -17,13 +17,13 @@ notes: The links within each section are not functional.
 {% set pageTitle = example.title %}
 {% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
 
-{% block header %}
+{% block govukHeader %}
   {{ govukHeader({
     productName: "Service Manual"
   }) }}
 {% endblock %}
 
-{% block beforeContent %}
+{% block containerStart %}
   {{ govukBreadcrumbs({
     items: [
       {

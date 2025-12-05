@@ -1,6 +1,7 @@
 {% from "./macros/attributes.njk" import govukAttributes -%}
 {% from "./components/skip-link/macro.njk" import govukSkipLink -%}
 {% from "./components/header/macro.njk" import govukHeader -%}
+{% from "./components/service-navigation/macro.njk" import govukServiceNavigation -%}
 {% from "./components/footer/macro.njk" import govukFooter -%}
 
 {%- set _rebrand = govukRebrand() if govukRebrand is callable else govukRebrand -%}
@@ -36,32 +37,78 @@
     <script {%- if cspNonce %} nonce="{{ cspNonce }}"{% endif %}>document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');</script>
     {% block bodyStart %}{% endblock %}
 
-    {% block skipLink %}
-      {{ govukSkipLink({
-        href: '#main-content',
-        text: 'Skip to main content'
-      }) }}
+    {% block govukSkipLink %}
+      {# The `skipLink` block is deprecated. Use `govukSkipLink` instead.#}
+      {% block skipLink %}
+        {{ govukSkipLink({
+          href: '#main-content',
+          text: 'Skip to main content'
+        }) }}
+      {% endblock %}
     {% endblock %}
+
+    {# Only output <header> if any of its child blocks have content. #}
+    {% macro _govukTemplateHeader() %}
+      {%- if caller() | trim | length > 0 %}
+        <header class="govuk-template__header {%- if headerClasses %} {{ headerClasses }}{% endif %}" {{- govukAttributes(headerAttributes) }}>
+          {{ caller() }}
+        </header>
+      {%- endif %}
+    {% endmacro %}
 
     {% block header %}
-      {{ govukHeader({
-        rebrand: _rebrand
-      }) }}
+      {% call _govukTemplateHeader() %}
+        {% block headerStart %}{% endblock %}
+        {% block govukHeader %}
+          {{ govukHeader({
+            rebrand: _rebrand
+          }) }}
+        {% endblock %}
+        {% block govukServiceNavigation %}
+          {%- if serviceName %}
+            {{ govukServiceNavigation({
+              serviceName: serviceName
+            }) }}
+          {%- endif %}
+        {% endblock %}
+        {% block headerEnd %}{% endblock %}
+      {% endcall %}
     {% endblock %}
 
-    {% block main %}
-      <div class="govuk-width-container {%- if containerClasses %} {{ containerClasses }}{% endif %}">
+    {% block container %}
+      <div class="govuk-width-container {%- if containerClasses %} {{ containerClasses }}{% endif %}" {{- govukAttributes(containerAttributes) }}>
+        {# `beforeContent` is deprecated. Use `containerStart` instead. #}
         {% block beforeContent %}{% endblock %}
-        <main class="govuk-main-wrapper {%- if mainClasses %} {{ mainClasses }}{% endif %}" id="main-content" {%- if mainLang %} lang="{{ mainLang }}"{% endif %}>
-          {% block content %}{% endblock %}
-        </main>
+
+        {% block containerStart %}{% endblock %}
+        {% block main %}
+          <main class="govuk-main-wrapper {%- if mainClasses %} {{ mainClasses }}{% endif %}" id="main-content" {%- if mainLang %} lang="{{ mainLang }}"{% endif %}>
+            {% block content %}{% endblock %}
+          </main>
+        {% endblock %}
+        {% block containerEnd %}{% endblock %}
       </div>
     {% endblock %}
 
+    {# Only output <footer> if any of its child blocks have content. #}
+    {% macro _govukTemplateFooter() %}
+      {%- if caller() | trim | length > 0 %}
+        <footer class="govuk-template__footer {%- if footerClasses %} {{ footerClasses }}{% endif %}" {{- govukAttributes(footerAttributes) }}>
+          {{ caller() }}
+        </footer>
+      {%- endif %}
+    {% endmacro %}
+
     {% block footer %}
-      {{ govukFooter({
-        rebrand: _rebrand
-      }) }}
+      {% call _govukTemplateFooter() %}
+        {% block footerStart %}{% endblock %}
+        {% block govukFooter %}
+          {{ govukFooter({
+            rebrand: _rebrand
+          }) }}
+        {% endblock %}
+        {% block footerEnd %}{% endblock %}
+      {% endcall %}
     {% endblock %}
 
     {% block bodyEnd %}{% endblock %}

@@ -24,13 +24,13 @@ notes: The links to change your answers are not functional.
 {% set pageTitle = example.title %}
 {% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
 
-{% block header %}
+{% block govukHeader %}
   {{ govukHeader({
     serviceName: "Apply for teacher training"
   }) }}
 {% endblock %}
 
-{% block beforeContent %}
+{% block containerStart %}
   {{ govukBackLink({
     href: "/"
   }) }}

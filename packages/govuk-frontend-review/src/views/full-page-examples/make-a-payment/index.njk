@@ -19,7 +19,7 @@ scenario: |
 {% set pageTitle = example.title %}
 {% block pageTitle %}{{ "Error: " if errorSummary | length }}{{ pageTitle }} - GOV.UK{% endblock %}
 
-{% block beforeContent %}
+{% block containerStart %}
   {{ govukBackLink({
     text: "Back"
   }) }}

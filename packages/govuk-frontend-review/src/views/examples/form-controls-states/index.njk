@@ -29,7 +29,7 @@
 
 {% set examples = examples.concat([{ name: "X-Ray", xray: true }]) %}
 
-{% block beforeContent %}
+{% block containerStart %}
   {{ govukBackLink({
     href: "/"
   }) }}
