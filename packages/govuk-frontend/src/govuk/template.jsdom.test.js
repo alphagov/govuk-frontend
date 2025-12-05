@@ -499,17 +499,56 @@ describe('Template', () => {
     })
 
     describe('skip link', () => {
-      it('can be overridden using the skipLink block', () => {
+      it('can be overridden using the `skipLink` block', () => {
         replacePageWith(
           renderTemplate('govuk/template.njk', {
             blocks: {
-              skipLink: '<div class="my-skip-link">skipLink</div>'
+              skipLink: '<mark>Overriding content</mark>'
             }
           })
         )
 
-        expect(document.querySelector('.my-skip-link')).toBeInTheDocument()
-        expect(document.querySelector('.govuk-skip-link')).toBeNull()
+        expect(document.querySelector('mark')).toBeInTheDocument()
+        expect(
+          document.querySelector('.govuk-skip-link')
+        ).not.toBeInTheDocument()
+      })
+
+      it('can be overridden using the `govukSkipLink` block', () => {
+        replacePageWith(
+          renderTemplate('govuk/template.njk', {
+            blocks: {
+              govukSkipLink: '<mark>Overriding content</mark>'
+            }
+          })
+        )
+
+        expect(document.querySelector('mark')).toBeInTheDocument()
+        expect(
+          document.querySelector('.govuk-skip-link')
+        ).not.toBeInTheDocument()
+      })
+
+      it('gives precedence to the `govukSkipLink` over the `skipLink` block', () => {
+        replacePageWith(
+          renderTemplate('govuk/template.njk', {
+            blocks: {
+              govukSkipLink:
+                '<mark name="govukSkipLink">Overriding content</mark>',
+              skipLink: '<mark name="skipLink">Overriding content</mark>'
+            }
+          })
+        )
+
+        expect(
+          document.querySelector('[name="govukSkipLink"]')
+        ).toBeInTheDocument()
+        expect(
+          document.querySelector('[name="skipLink"]')
+        ).not.toBeInTheDocument()
+        expect(
+          document.querySelector('.govuk-skip-link')
+        ).not.toBeInTheDocument()
       })
     })
 
