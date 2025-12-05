@@ -43,10 +43,25 @@
       }) }}
     {% endblock %}
 
+    {# Only output <header> if any of its child blocks have content. #}
+    {% macro _govukTemplateHeader() %}
+      {%- if caller() | trim | length > 0 %}
+        <header class="govuk-template__header {%- if headerClasses %} {{ headerClasses }}{% endif %}" {{- govukAttributes(headerAttributes)}}>
+          {{ caller() }}
+        </header>
+      {%- endif %}
+    {% endmacro %}
+
     {% block header %}
-      {{ govukHeader({
-        rebrand: _rebrand
-      }) }}
+      {% call _govukTemplateHeader() %}
+        {% block headerStart %}{% endblock %}
+        {% block govukHeader %}
+          {{ govukHeader({
+            rebrand: _rebrand
+          }) }}
+        {% endblock %}
+        {% block headerEnd %}{% endblock %}
+      {% endcall %}
     {% endblock %}
 
     {% block main %}
