@@ -691,17 +691,20 @@ describe('Template', () => {
         expect(document.querySelector('main')).toHaveAttribute('lang', 'zu')
       })
 
-      it('can be overridden using the main block', () => {
+      it('can be overridden using the `main` block', () => {
         replacePageWith(
           renderTemplate('govuk/template.njk', {
             blocks: {
-              main: '<main class="my-main">header</main>'
+              main: '<mark>Overriding content</mark>'
             }
           })
         )
 
-        expect(document.querySelectorAll('main')).toHaveLength(1)
-        expect(document.querySelector('main')).toHaveClass('my-main')
+        expect(
+          document.querySelector('header ~ .govuk-width-container')
+        ).toBeInTheDocument()
+        expect(document.querySelector('mark')).toBeInTheDocument()
+        expect(document.querySelector('main')).not.toBeInTheDocument()
       })
 
       it('can have content injected before it using the beforeContent block', () => {
