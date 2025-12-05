@@ -794,6 +794,21 @@ describe('Template', () => {
         expect(document.querySelector('main')).toHaveAttribute('lang', 'zu')
       })
 
+      it('can have custom attributes added using `mainAttributes`', () => {
+        replacePageWith(
+          renderTemplate('govuk/template.njk', {
+            context: {
+              mainAttributes: { 'data-foo': 'bar' }
+            }
+          })
+        )
+
+        expect(document.querySelector('main')).toHaveAttribute(
+          'data-foo',
+          'bar'
+        )
+      })
+
       it('can be overridden using the `main` block', () => {
         replacePageWith(
           renderTemplate('govuk/template.njk', {

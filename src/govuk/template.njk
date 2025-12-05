@@ -68,7 +68,7 @@
       <div class="govuk-width-container {%- if containerClasses %} {{ containerClasses }}{% endif %}" {{- govukAttributes(containerAttributes) }}>
         {% block containerStart %}{% block beforeContent %}{% endblock %}{% endblock %}
         {% block main %}
-        <main class="govuk-main-wrapper {%- if mainClasses %} {{ mainClasses }}{% endif %}" id="main-content" {%- if mainLang %} lang="{{ mainLang }}"{% endif %}>
+        <main class="govuk-main-wrapper {%- if mainClasses %} {{ mainClasses }}{% endif %}" id="main-content" {%- if mainLang %} lang="{{ mainLang }}"{% endif %} {{- govukAttributes(mainAttributes) }}>
           {% block content %}{% endblock %}
         </main>
         {% endblock %}
