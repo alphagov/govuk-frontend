@@ -3,7 +3,7 @@
 
 {%- set _rebrand = params.rebrand | default(govukRebrand() if govukRebrand is callable else govukRebrand) -%}
 
-<footer class="govuk-footer {%- if params.classes %} {{ params.classes }}{% endif %}"
+<div class="govuk-footer {%- if params.classes %} {{ params.classes }}{% endif %}"
   {{- govukAttributes(params.attributes) }}>
   <div class="govuk-width-container {%- if params.containerClasses %} {{ params.containerClasses }}{% endif %}">
     {% if _rebrand %}
@@ -106,4 +106,4 @@
       </div>
     </div>
   </div>
-</footer>
+</div>
