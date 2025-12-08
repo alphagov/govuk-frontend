@@ -68,9 +68,9 @@ params:
             required: false
             description: HTML attributes (for example data attributes) to add to the anchor in the footer navigation section.
   - name: contentLicence
-    type: object
+    type: object or boolean
     required: false
-    description: The content licence information within the footer component. Defaults to Open Government Licence (OGL) v3 licence.
+    description: The content licence information within the footer component. If your service provides its information under a different license than OGL, use `false` to hide the OGL logo and licence text. Defaults to Open Government Licence (OGL) v3 licence.
     params:
       - name: text
         type: string
@@ -163,11 +163,23 @@ examples:
       copyright:
         text: '© Hawlfraint y Goron'
 
+  - name: with no content licence
+    description: Open Government Licence turned off
+    options:
+      contentLicence: false
+
   - name: with custom meta
     description: Custom meta section
     options:
       meta:
         text: GOV.UK Prototype Kit v7.0.1
+
+  - name: with only custom meta
+    description: custom meta without content licence
+    options:
+      meta:
+        text: GOV.UK Prototype Kit v7.0.1
+      contentLicence: false
 
   - name: with meta links and meta content
     description: Secondary navigation links and custom meta text
@@ -191,6 +203,29 @@ examples:
           - href: '#8'
             text: Ligula Nullam Ultricies
         html: Built by the <a href="#" class="govuk-footer__link">Department of Magical Law Enforcement</a>
+
+  - name: with only meta links
+    description: meta links without content licence
+    options:
+      meta:
+        items:
+          - href: '#1'
+            text: Bibendum Ornare
+          - href: '#2'
+            text: Nullam
+          - href: '#3'
+            text: Tortor Fringilla
+          - href: '#4'
+            text: Tellus
+          - href: '#5'
+            text: Egestas Nullam
+          - href: '#6'
+            text: Euismod Etiam
+          - href: '#7'
+            text: Fusce Sollicitudin
+          - href: '#8'
+            text: Ligula Nullam Ultricies
+      contentLicence: false
 
   - name: with default width navigation (one column)
     options:
