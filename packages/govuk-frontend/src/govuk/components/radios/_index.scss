@@ -303,7 +303,7 @@
       }
       // prettier-ignore
       box-shadow:
-        0 0 0 $govuk-radios-focus-width $govuk-focus-colour // 1,
+        0 0 0 $govuk-radios-focus-width $govuk-focus-colour, // 1
         0 0 0 $govuk-hover-width $govuk-hover-colour; // 2
     }
 
