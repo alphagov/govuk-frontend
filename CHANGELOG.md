@@ -4,6 +4,66 @@ For advice on how to use these release notes, see [our guidance on staying up to
 
 ## Unreleased
 
+### Breaking changes
+
+#### Update Nunjucks blocks around the GOV.UK header
+
+We've changed the structure of pages around the header to separate the `<header>` element from the GOV.UK header component. This allows other components can be included within the `<header>` of each page, such as the Service navigation and Phase banner components.
+
+You will need to follow different upgrading instructions depending on the current state of your code. In all cases, you should ensure that the final page has a single `<header>` element present.
+
+If you're using GOV.UK Frontend's template and overriding the `govukHeader` component, update references to the `header` Nunjucks block to use `govukHeader` instead.
+
+```njk
+{# Previously #}
+{% block header %}
+  {{ govukHeader() }}
+{% endblock %}
+
+{# Now #}
+{% block govukHeader %}
+  {{ govukHeader() }}
+{% endblock %}
+```
+
+If you're not using GOV.UK Frontend's template but are using the `govukHeader` component, update your template to include a `<header>` element around the component.
+
+If you're not using the `header` Nunjucks block at any point, or you're only using the block in order to remove it, you don't need to change anything.
+
+If you're not using Nunjucks, change the existing GOV.UK header to a `<div>` element and wrap it, along with any other header components, with a `<header>` element.
+
+```html
+<header class="govuk-template__header">
+  <div class="govuk-header">
+    [...]
+  </div>
+  <div class="govuk-service-navigation">
+    [...]
+  </div>
+</header>
+```
+
+We made this change in [pull request #6536: Refactor heading to detach element from component](https://github.com/alphagov/govuk-frontend/pull/6536).
+
+### New features
+
+#### Customise the template's `<header>` element
+
+Nunjucks users can customise the appearance and content of the template's `<header>` element with new blocks and variables.
+
+New variables:
+
+- `headerClasses` applies custom classes to the element.
+- `headerAttributes` applies custom HTML attributes to the element.
+
+New Nunjucks blocks:
+
+- `headerStart` inserts HTML immediately after the element's opening tag.
+- `headerEnd` inserts HTML immediately before the element's closing tag.
+- `govukHeader` allows for customising the `govukHeader` component without affecting other parts of the header.
+
+We made this change in [pull request #6536: Refactor heading to detach element from component](https://github.com/alphagov/govuk-frontend/pull/6536).
+
 ### Fixes
 
 #### Add `aria-hidden="true"` to the Service navigation's menu toggle
