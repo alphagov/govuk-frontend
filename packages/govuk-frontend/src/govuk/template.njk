@@ -64,7 +64,8 @@
         {% block govukServiceNavigation %}
           {%- if serviceName %}
             {{ govukServiceNavigation({
-              serviceName: serviceName
+              serviceName: serviceName,
+              serviceUrl: serviceUrl
             }) }}
           {%- endif  %}
         {% endblock %}
