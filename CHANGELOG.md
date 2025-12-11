@@ -83,6 +83,16 @@ We made this change in [pull request #6537: Refactor footer to detach element fr
 
 ### New features
 
+#### Easily include service navigation on your page
+
+We've added new ways to include Service navigation components on a page when using GOV.UK Frontend's Nunjucks template.
+
+If a `serviceName` variable is set, a Service navigation will automatically appear populated by the service name.
+
+For further customisations, we've added a `govukServiceNavigation` Nunjucks block to override the default component.
+
+We made this change in [pull request #6541: Add service navigation block to template](https://github.com/alphagov/govuk-frontend/pull/6541).
+
 #### Customise the template's `<header>` element
 
 Nunjucks users can customise the appearance and content of the template's `<header>` element with new blocks and variables.
