@@ -44,7 +44,3 @@ At this stage, the person leading the release should agree the publishing date. 
 - developers for changes to GOV.UK Frontend
 - technical writer for release notes
 - content designer, community manager and technical writer for announcements and engagement activities
-
-## Make sure access tokens are up to date
-
-Before each release, we need to make sure our GitHub access token is up to date. Sign into the `govuk-design-system-ci` GitHub account and follow the instructions in the team's password management tool to check and/or update the access token.
