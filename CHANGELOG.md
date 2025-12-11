@@ -45,6 +45,27 @@ If you're not using Nunjucks, change the existing GOV.UK header to a `<div>` ele
 
 We made this change in [pull request #6536: Refactor heading to detach element from component](https://github.com/alphagov/govuk-frontend/pull/6536).
 
+#### Use the `container` block instead of the `main` block to replace the width container
+
+We've reduced the scope of the `main` block to only replace the `<main>` element,
+rather than the whole `<div class="govuk-width-container">` element.
+
+If you are using the `main` block, use the new `container` block instead.
+
+```njk
+{# Previously #}
+{% block main %}
+  <!-- Your markup -->
+{% endblock %}
+
+{# Now #}
+{% block container %}
+  <!-- Your markup -->
+{% endblock %}
+```
+
+We made this change in [pull request #6538: Make Page template options besides header and footer follow conventions](https://github.com/alphagov/govuk-frontend/pull/6538).
+
 #### Update Nunjucks blocks around the GOV.UK footer
 
 We've changed the structure of pages around the footer to separate the `<footer>` element from the GOV.UK footer component. This allows other components can be included within the `<footer>` of each page.
@@ -100,6 +121,27 @@ New Nunjucks blocks:
 
 We made this change in [pull request #6536: Refactor heading to detach element from component](https://github.com/alphagov/govuk-frontend/pull/6536).
 
+#### Customise the `<div class="govuk-width-container">` element
+
+We've added new variables and blocks to let you further customise the `<div class="govuk-width-container">` element.
+
+New variables:
+
+- `containerAttributes` applies custom HTML attributes to the element.
+
+New blocks
+
+- `containerStart` inserts HTML immediately after the element's opening tag.
+- `containerEnd` inserts HTML immediately before the element's closing tag.
+
+We made this change in [pull request #6538: Make Page template options besides header and footer follow conventions](https://github.com/alphagov/govuk-frontend/pull/6538).
+
+#### Use the `mainAttributes` variable to add attributes to the `<main>` element
+
+We've added a new variables `mainAttributes` variable to applies custom HTML attributes to the `<main>` element.
+
+We made this change in [pull request #6538: Make Page template options besides header and footer follow conventions](https://github.com/alphagov/govuk-frontend/pull/6538).
+
 #### Customise the template's `<footer>` element
 
 Nunjucks users can customise the appearance and content of the template's `<footer>` element with new blocks and variables.
@@ -116,6 +158,34 @@ New Nunjucks blocks:
 - `govukFooter` allows for customising the `govukFooter` component without affecting other parts of the footer.
 
 We made this change in [pull request #6537: Refactor footer to detach element from component](https://github.com/alphagov/govuk-frontend/pull/6537).
+
+### Recommended changes
+
+#### Use the `govukSkipLink` block instead of `skipLink`
+
+So that all blocks replacing GOV.UK Frontend elements have the same name as the component's macro,
+we're deprecating the `skipLink` block and replacing it with a `govukSkipLink` block.
+
+```njk
+{# Previously #}
+{% block skipLink %}
+  {{ govukSkipLink()}}
+{% endblock %}
+
+{# Now #}
+{% block govukSkipLink %}
+  {{ govukSkipLink()}}
+{% endblock %}
+```
+
+We made this change in [pull request #6538: Make Page template options besides header and footer follow conventions](https://github.com/alphagov/govuk-frontend/pull/6538).
+
+#### Use the `containerStart` block instead of `beforeContent`
+
+So all blocks adding content at the start of an element are named `...Start` and so its name better matches its scope,
+we're deprecating the `beforeContent` block and replacing it with a `containerStart` block.
+
+We made this change in [pull request #6538: Make Page template options besides header and footer follow conventions](https://github.com/alphagov/govuk-frontend/pull/6538).
 
 ### Fixes
 

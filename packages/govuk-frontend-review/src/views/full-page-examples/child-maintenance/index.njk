@@ -29,7 +29,7 @@ scenario: |
 {% set pageTitle = example.title %}
 {% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
 
-{% block skipLink %}
+{% block govukSkipLink %}
   {{ super() }}
   {{ govukSkipLink({
     href: "https://bbc.co.uk/weather/",
@@ -41,7 +41,7 @@ scenario: |
   }) }}
 {% endblock %}
 
-{% block beforeContent %}
+{% block containerStart %}
   {{ govukPhaseBanner({
     tag: {
       text: "Beta"

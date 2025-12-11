@@ -20,7 +20,7 @@ notes: The buttons and links on this page are not functional.
 {% set pageTitle = example.title %}
 {% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
 
-{% block beforeContent %}
+{% block containerStart %}
   {{ govukBreadcrumbs({
     items: [
       {

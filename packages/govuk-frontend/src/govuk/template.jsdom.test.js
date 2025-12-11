@@ -499,17 +499,56 @@ describe('Template', () => {
     })
 
     describe('skip link', () => {
-      it('can be overridden using the skipLink block', () => {
+      it('can be overridden using the `skipLink` block', () => {
         replacePageWith(
           renderTemplate('govuk/template.njk', {
             blocks: {
-              skipLink: '<div class="my-skip-link">skipLink</div>'
+              skipLink: '<mark>Overriding content</mark>'
             }
           })
         )
 
-        expect(document.querySelector('.my-skip-link')).toBeInTheDocument()
-        expect(document.querySelector('.govuk-skip-link')).toBeNull()
+        expect(document.querySelector('mark')).toBeInTheDocument()
+        expect(
+          document.querySelector('.govuk-skip-link')
+        ).not.toBeInTheDocument()
+      })
+
+      it('can be overridden using the `govukSkipLink` block', () => {
+        replacePageWith(
+          renderTemplate('govuk/template.njk', {
+            blocks: {
+              govukSkipLink: '<mark>Overriding content</mark>'
+            }
+          })
+        )
+
+        expect(document.querySelector('mark')).toBeInTheDocument()
+        expect(
+          document.querySelector('.govuk-skip-link')
+        ).not.toBeInTheDocument()
+      })
+
+      it('gives precedence to the `govukSkipLink` over the `skipLink` block', () => {
+        replacePageWith(
+          renderTemplate('govuk/template.njk', {
+            blocks: {
+              govukSkipLink:
+                '<mark name="govukSkipLink">Overriding content</mark>',
+              skipLink: '<mark name="skipLink">Overriding content</mark>'
+            }
+          })
+        )
+
+        expect(
+          document.querySelector('[name="govukSkipLink"]')
+        ).toBeInTheDocument()
+        expect(
+          document.querySelector('[name="skipLink"]')
+        ).not.toBeInTheDocument()
+        expect(
+          document.querySelector('.govuk-skip-link')
+        ).not.toBeInTheDocument()
       })
     })
 
@@ -642,6 +681,127 @@ describe('Template', () => {
       })
     })
 
+    describe('<div class="govuk-width-container">', () => {
+      it('can be overridden using the `container` block', () => {
+        replacePageWith(
+          renderTemplate('govuk/template.njk', {
+            blocks: {
+              container: '<mark>Overriding content</mark>'
+            }
+          })
+        )
+
+        // The header also contains a `.govuk-width-container` element
+        expect(
+          document.querySelector('header ~ .govuk-width-container')
+        ).not.toBeInTheDocument()
+        expect(document.querySelector('mark')).toBeInTheDocument()
+      })
+
+      it('can have custom classes using the `containerClasses` variable', () => {
+        replacePageWith(
+          renderTemplate('govuk/template.njk', {
+            context: {
+              containerClasses: 'app-width-container'
+            }
+          })
+        )
+
+        expect(
+          document.querySelector('header ~ .govuk-width-container')
+        ).toHaveClass('app-width-container')
+      })
+
+      it('can have custom attributes added using `containerAttributes`', () => {
+        replacePageWith(
+          renderTemplate('govuk/template.njk', {
+            context: {
+              containerAttributes: { 'data-foo': 'bar' }
+            }
+          })
+        )
+
+        expect(
+          document.querySelector('header ~ .govuk-width-container')
+        ).toHaveAttribute('data-foo', 'bar')
+      })
+
+      describe('adding content at the start', () => {
+        it('can have content injected at the start using the `containerStart` block', () => {
+          replacePageWith(
+            renderTemplate('govuk/template.njk', {
+              blocks: {
+                containerStart: '<mark>Overriding content</mark>'
+              }
+            })
+          )
+
+          expect(
+            document.querySelector(
+              'header ~ .govuk-width-container > mark:first-child'
+            )
+          ).toBeInTheDocument()
+        })
+
+        it('can have content injected at the start using the `beforeContent` block', () => {
+          replacePageWith(
+            renderTemplate('govuk/template.njk', {
+              blocks: {
+                beforeContent: '<mark>Overriding content</mark>'
+              }
+            })
+          )
+
+          expect(
+            document.querySelector(
+              'header ~ .govuk-width-container > mark:first-child'
+            )
+          ).toBeInTheDocument()
+        })
+
+        it('gives precedence to `containerStart` over `beforeContent`', () => {
+          replacePageWith(
+            renderTemplate('govuk/template.njk', {
+              blocks: {
+                containerStart:
+                  '<mark name="containerStart">Overriding content</mark>',
+                beforeContent:
+                  '<mark name="beforeContent">Overriding content</mark>'
+              }
+            })
+          )
+
+          expect(
+            document.querySelector(
+              'header ~ .govuk-width-container > [name="containerStart"]:first-child'
+            )
+          ).toBeInTheDocument()
+          // The content from `beforeContent` should not be injected at all, irrespective of its position
+          expect(
+            document.querySelector(
+              'header ~ .govuk-width-container > [name="beforeContent"]'
+            )
+          ).not.toBeInTheDocument()
+        })
+      })
+
+      it('can have content injected at the end using the `containerEnd` block', () => {
+        replacePageWith(
+          renderTemplate('govuk/template.njk', {
+            blocks: {
+              containerEnd: '<mark>Overriding content</mark>'
+            }
+          })
+        )
+
+        expect(
+          document.querySelector(
+            'header ~ .govuk-width-container > mark:last-child'
+          )
+        ).toBeInTheDocument()
+      })
+    })
+
     describe('<main>', () => {
       it('can have custom classes added using mainClasses', () => {
         replacePageWith(
@@ -673,32 +833,35 @@ describe('Template', () => {
         expect(document.querySelector('main')).toHaveAttribute('lang', 'zu')
       })
 
-      it('can be overridden using the main block', () => {
+      it('can have custom attributes added using `mainAttributes`', () => {
         replacePageWith(
           renderTemplate('govuk/template.njk', {
-            blocks: {
-              main: '<main class="my-main">header</main>'
+            context: {
+              mainAttributes: { 'data-foo': 'bar' }
             }
           })
         )
 
-        expect(document.querySelectorAll('main')).toHaveLength(1)
-        expect(document.querySelector('main')).toHaveClass('my-main')
+        expect(document.querySelector('main')).toHaveAttribute(
+          'data-foo',
+          'bar'
+        )
       })
 
-      it('can have content injected before it using the beforeContent block', () => {
+      it('can be overridden using the `main` block', () => {
         replacePageWith(
           renderTemplate('govuk/template.njk', {
             blocks: {
-              beforeContent: '<div class="before-content">beforeContent</div>'
+              main: '<mark>Overriding content</mark>'
             }
           })
         )
 
-        const $beforeContent = document.querySelector('.before-content')
-        const $main = document.querySelector('main')
-
-        expect($beforeContent.nextElementSibling).toBe($main)
+        expect(
+          document.querySelector('header ~ .govuk-width-container')
+        ).toBeInTheDocument()
+        expect(document.querySelector('mark')).toBeInTheDocument()
+        expect(document.querySelector('main')).not.toBeInTheDocument()
       })
 
       it('can have content specified using the content block', () => {
