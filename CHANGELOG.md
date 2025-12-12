@@ -203,6 +203,31 @@ we're deprecating the `beforeContent` block and replacing it with a `containerSt
 
 We made this change in [pull request #6538: Make Page template options besides header and footer follow conventions](https://github.com/alphagov/govuk-frontend/pull/6538).
 
+#### Move Phase banner components to the `<header>` element
+
+We now recommend placing Phase banner components in the `<header>` element of the page.
+
+If you're using GOV.UK Frontend's Nunjucks template and macros, create a `headerEnd` block and move the `govukPhaseBanner` macro into it.
+
+```njk
+{% block headerEnd %}
+  {{ govukPhaseBanner({}) }}
+{% endblock %}
+```
+
+If you're not using Nunjucks, move the Phase banner's HTML to before the `</header>` closing tag. Add the `govuk-width-container` class to the component to prevent it from stretching wider than the page's content.
+
+```html
+<header class="govuk-template__header">
+  <!-- Other header content -->
+  <div class="govuk-phase-banner govuk-width-container">
+    <!-- Phase banner content -->
+  </div>
+</header>
+```
+
+We made this change in [pull request #6546: Add `govuk-width-container` class to Phase banner component](https://github.com/alphagov/govuk-frontend/pull/6546).
+
 ### Fixes
 
 #### Add `aria-hidden="true"` to the Service navigation's menu toggle
