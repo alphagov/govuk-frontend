@@ -650,6 +650,106 @@ describe('Template', () => {
         })
       })
 
+      describe('govukServiceNavigation block', () => {
+        it('does not render service navigation by default', () => {
+          replacePageWith(renderTemplate('govuk/template.njk'))
+
+          expect(
+            document.querySelector('.govuk-service-navigation')
+          ).not.toBeInTheDocument()
+        })
+
+        it('renders service navigation if `serviceName` is set', () => {
+          const testName = 'Test Service Name'
+
+          replacePageWith(
+            renderTemplate('govuk/template.njk', {
+              context: {
+                serviceName: testName
+              }
+            })
+          )
+
+          expect(
+            document.querySelector('.govuk-service-navigation')
+          ).toBeInTheDocument()
+          expect(
+            document
+              .querySelector('.govuk-service-navigation__service-name')
+              .textContent.trim()
+          ).toEqual(testName)
+        })
+
+        it('renders service navigation with link if `serviceName` and `serviceUrl` are set', () => {
+          const testName = 'Test Service Name'
+          const testUrl = 'https://gov.uk'
+
+          replacePageWith(
+            renderTemplate('govuk/template.njk', {
+              context: {
+                serviceName: testName,
+                serviceUrl: testUrl
+              }
+            })
+          )
+
+          expect(
+            document.querySelector('.govuk-service-navigation')
+          ).toBeInTheDocument()
+          expect(
+            document
+              .querySelector('.govuk-service-navigation__service-name')
+              .textContent.trim()
+          ).toEqual(testName)
+          expect(
+            document.querySelector('.govuk-service-navigation__link')
+          ).toHaveAttribute('href', testUrl)
+        })
+
+        it('does not render service navigation if only `serviceUrl` is set', () => {
+          const testUrl = 'https://gov.uk'
+
+          replacePageWith(
+            renderTemplate('govuk/template.njk', {
+              context: {
+                serviceUrl: testUrl
+              }
+            })
+          )
+
+          expect(
+            document.querySelector('.govuk-service-navigation')
+          ).not.toBeInTheDocument()
+        })
+
+        it('allows content to be inserted using govukServiceNavigation', () => {
+          replacePageWith(
+            renderTemplate('govuk/template.njk', {
+              blocks: {
+                govukServiceNavigation: '<mark>govukServiceNavigation</mark>'
+              }
+            })
+          )
+
+          expect(document.querySelector('mark')).toBeInTheDocument()
+          expect(
+            document.querySelector('.govuk-service-navigation')
+          ).not.toBeInTheDocument()
+        })
+
+        it('renders service navigation as a descendant of <header>', () => {
+          replacePageWith(
+            renderTemplate('govuk/template.njk', {
+              blocks: {
+                govukServiceNavigation: '<mark>govukServiceNavigation</mark>'
+              }
+            })
+          )
+
+          expect(document.querySelector('header > mark')).toBeInTheDocument()
+        })
+      })
+
       describe('headerStart block', () => {
         it('allows content to be inserted using headerStart', () => {
           replacePageWith(
