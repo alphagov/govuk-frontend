@@ -36,15 +36,26 @@
 {% endblock %}
 
 {% block govukSkipLink %}
-  <!-- block:skipLink -->
+  <!-- block:govukSkipLink -->
   {{ govukSkipLink({
     href: '#main-content',
     text: 'Passer au contenu principal'
   }) }}
-  <!-- endblock:skipLink -->
+  <!-- endblock:govukSkipLink -->
 {% endblock %}
 
 {% block header %}
+  <!-- block:header -->
+  {{ super() }}
+  <!-- endblock:header -->
+{% endblock %}
+
+{% block headerStart %}
+  <!-- block:headerStart -->
+  <!-- endblock:headerStart -->
+{% endblock %}
+
+{% block govukHeader %}
   <!-- block:header -->
   {{ govukHeader({
     serviceName: "Nom du service",
@@ -68,6 +79,22 @@
   <!-- endblock:header -->
 {% endblock %}
 
+{% block govukServiceNavigation %}
+  <!-- block:govukServiceNavigation -->
+  <!-- endblock:govukServiceNavigation -->
+{% endblock %}
+
+{% block headerEnd %}
+  <!-- block:headerEnd -->
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Alpha"
+    },
+    html: 'C\'est un nouveau service - vos <a class="govuk-link" href="#">commentaires</a> nous aideront à l\'améliorer.'
+  }) }}
+  <!-- endblock:headerEnd -->
+{% endblock %}
+
 {% set mainClasses = 'govuk-main-wrapper--auto-spacing app-main-class' %}
 
 {% block container %}
@@ -77,17 +104,17 @@
 {% endblock %}
 
 {% block containerStart %}
-  <!-- block:beforeContent -->
-  {{ govukPhaseBanner({
-    tag: {
-      text: "Alpha"
-    },
-    html: 'C\'est un nouveau service - vos <a class="govuk-link" href="#">commentaires</a> nous aideront à l\'améliorer.'
-  }) }}
+  <!-- block:containerStart -->
   {{ govukBackLink({
     href: "/"
   }) }}
-  <!-- endblock:beforeContent -->
+  <!-- endblock:containerStart -->
+{% endblock %}
+
+{% block main %}
+  <!-- block:main -->
+  {{ super() }}
+  <!-- endblock:main -->
 {% endblock %}
 
 {% block content %}
@@ -96,8 +123,19 @@
   <!-- endblock:content -->
 {% endblock %}
 
+{% block containerEnd %}
+  <!-- block:containerEnd -->
+  <!-- endblock:containerEnd -->
+{% endblock %}
+
 {% block footer %}
   <!-- block:footer -->
+  {{ super() }}
+  <!-- endblock:footer -->
+{% endblock %}
+
+{% block govukFooter %}
+  <!-- block:govukFooter -->
   {{ govukFooter({
     containerClasses: "app-width-container--wide",
     "meta": {
@@ -117,7 +155,7 @@
       ]
     }
   }) }}
-  <!-- endblock:footer -->
+  <!-- endblock:govukFooter -->
 {% endblock %}
 
 {% block bodyEnd %}
