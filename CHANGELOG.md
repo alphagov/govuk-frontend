@@ -8,11 +8,11 @@ For advice on how to use these release notes, see [our guidance on staying up to
 
 #### Update Nunjucks blocks around the GOV.UK header
 
-We've changed the structure of pages around the header to separate the `<header>` element from the GOV.UK header component. This allows other components can be included within the `<header>` of each page, such as the Service navigation and Phase banner components.
+We've changed the page structure around the header to separate the header element (`<header>`) from the GOV.UK header component. This lets you include other components, such as the Service navigation and Phase banner components, within the header element of each page.
 
-You will need to follow different upgrading instructions depending on the current state of your code. In all cases, you should ensure that the final page has a single `<header>` element present.
+You’ll need to follow different instructions to upgrade, depending on how you create the page headers in your service. In all cases, you should make sure your page includes a single `<header>` element after you’ve made the changes.
 
-If you're using GOV.UK Frontend's template and overriding the `govukHeader` component, update references to the `header` Nunjucks block to use `govukHeader` instead.
+If you use GOV.UK Frontend's template and override the `govukHeader` component, update references to the `header` Nunjucks block to use `govukHeader` instead.
 
 ```njk
 {# Previously #}
@@ -26,11 +26,11 @@ If you're using GOV.UK Frontend's template and overriding the `govukHeader` comp
 {% endblock %}
 ```
 
-If you're not using GOV.UK Frontend's template but are using the `govukHeader` component, update your template to include a `<header>` element around the component.
+If you do not use GOV.UK Frontend's template but use the `govukHeader` component, update your template to include a `<header>` element around the component.
 
-If you're not using the `header` Nunjucks block at any point, or you're only using the block in order to remove it, you don't need to change anything.
+If you do not use the `header` Nunjucks block at any point, or you're only using the block to remove it, you do not need to change anything.
 
-If you're not using Nunjucks, change the existing GOV.UK header to a `<div>` element and wrap it, along with any other header components, with a `<header>` element.
+If you do not use Nunjucks, change the existing GOV.UK header to a `<div>` element and wrap it, along with any other header components, with a `<header>` element.
 
 ```html
 <header class="govuk-template__header">
@@ -48,9 +48,9 @@ We made this change in [pull request #6536: Refactor heading to detach element f
 #### Use the `container` block instead of the `main` block to replace the width container
 
 We've reduced the scope of the `main` block to only replace the `<main>` element,
-rather than the whole `<div class="govuk-width-container">` element.
+rather than the whole `<div class="govuk-width-container"> element.
 
-If you are using the `main` block, use the new `container` block instead.
+If you’re using the `main` block, use the new `container` block instead.
 
 ```njk
 {# Previously #}
@@ -68,11 +68,11 @@ We made this change in [pull request #6538: Make Page template options besides h
 
 #### Update Nunjucks blocks around the GOV.UK footer
 
-We've changed the structure of pages around the footer to separate the `<footer>` element from the GOV.UK footer component. This allows other components can be included within the `<footer>` of each page.
+We've changed the page structure around the footer to separate the `<footer>` element from the GOV.UK footer component. This lets you include other components within the footer element (`<footer>`) of each page.
 
-You will need to follow different upgrading instructions depending on the current state of your code. In all cases, you should ensure that the final page has a single `<footer>` element present.
+You’ll need to follow different instructions to upgrade depending on how you create the page footers in your service. In all cases, you should make sure your page includes a single `<footer>` element after you’ve made the changes.
 
-If you're using GOV.UK Frontend's template and overriding the `govukFooter` component, update references to the `footer` Nunjucks block to use `govukFooter` instead.
+If you use GOV.UK Frontend's template and override the `govukFooter` component, update references to the `footer` Nunjucks block to use `govukFooter` instead.
 
 ```njk
 {# Previously #}
@@ -86,11 +86,11 @@ If you're using GOV.UK Frontend's template and overriding the `govukFooter` comp
 {% endblock %}
 ```
 
-If you're not using GOV.UK Frontend's template but are using the `govukFooter` component, update your template to include a `<footer>` element around the component.
+If you do not use GOV.UK Frontend's template but use the `govukFooter` component, update your template to include a `<footer>` element around the component.
 
-If you're not using the `footer` Nunjucks block at any point, or you're only using the block in order to remove it, you don't need to change anything.
+If you do not use the `footer` Nunjucks block at any point, or you're only using the block in order to remove it, you do not need to change anything.
 
-If you're not using Nunjucks, change the existing GOV.UK footer to a `<div>` element and wrap it with a `<footer>` element.
+If you do not use Nunjucks, change the existing GOV.UK footer to a `<div>` element and wrap it with a `<footer>` element.
 
 ```html
 <footer class="govuk-template__footer">
@@ -104,11 +104,27 @@ We made this change in [pull request #6537: Refactor footer to detach element fr
 
 ### New features
 
+#### Customise the template's `<header>` element
+
+If you use Nunjucks, you can customise the appearance and content of the template's `<header>` element with new blocks and variables.
+
+New variables:
+
+- `headerClasses` applies custom classes to the element
+- `headerAttributes` applies custom HTML attributes to the element
+
+New Nunjucks blocks:
+
+- `headerStart` inserts HTML immediately after the element's opening tag, and `headerEnd` inserts HTML immediately before the element's closing tag
+- `govukHeader` lets you customise the `govukHeader` component without affecting other parts of the header
+
+We made this change in [pull request #6536: Refactor heading to detach element from component](https://github.com/alphagov/govuk-frontend/pull/6536).
+
 #### Easily include Service navigation on your page
 
-We've added new ways to include Service navigation components on a page when using GOV.UK Frontend's Nunjucks template.
+We've added new ways to include the Service navigation component on a page when using GOV.UK Frontend's Nunjucks template.
 
-If you set the `serviceName` variable, the page template will add a Service Navigation component to the `<header>` element, displaying the service name. You can also set the `serviceUrl` variable to provide a link for the service name.
+If you set the `serviceName` variable, the page template will add the Service navigation component to the `<header>` element and show the service name. You can also set the `serviceUrl` variable to provide a link for the service name.
 
 ```njk
 {% extends "govuk/template.njk" %}
@@ -116,62 +132,45 @@ If you set the `serviceName` variable, the page template will add a Service Navi
 {% set serviceUrl = "YOUR_SERVICE_URL" %}
 ```
 
-For further customisations, we've added a `govukServiceNavigation` Nunjucks block to override the default component.
+To help you make further customisations, we've added a `govukServiceNavigation` Nunjucks block to override the default component.
 
 We made this change in [pull request #6541: Add service navigation block to template](https://github.com/alphagov/govuk-frontend/pull/6541).
 
-#### Customise the template's `<header>` element
-
-Nunjucks users can customise the appearance and content of the template's `<header>` element with new blocks and variables.
-
-New variables:
-
-- `headerClasses` applies custom classes to the element.
-- `headerAttributes` applies custom HTML attributes to the element.
-
-New Nunjucks blocks:
-
-- `headerStart` inserts HTML immediately after the element's opening tag.
-- `headerEnd` inserts HTML immediately before the element's closing tag.
-- `govukHeader` allows for customising the `govukHeader` component without affecting other parts of the header.
-
-We made this change in [pull request #6536: Refactor heading to detach element from component](https://github.com/alphagov/govuk-frontend/pull/6536).
-
 #### Customise the `<div class="govuk-width-container">` element
 
-We've added new variables and blocks to let you further customise the `<div class="govuk-width-container">` element.
+We've added new variables and blocks to allow you to further customise the `<div class="govuk-width-container">` element.
 
 New variables:
 
-- `containerAttributes` applies custom HTML attributes to the element.
+- `containerAttributes` applies custom HTML attributes to the element
 
 New blocks
 
-- `containerStart` inserts HTML immediately after the element's opening tag.
-- `containerEnd` inserts HTML immediately before the element's closing tag.
+- `containerStart` inserts HTML immediately after the element's opening tag
+- `containerEnd` inserts HTML immediately before the element's closing tag
 
 We made this change in [pull request #6538: Make Page template options besides header and footer follow conventions](https://github.com/alphagov/govuk-frontend/pull/6538).
 
 #### Use the `mainAttributes` variable to add attributes to the `<main>` element
 
-We've added a new variables `mainAttributes` variable to applies custom HTML attributes to the `<main>` element.
+We've added a new `mainAttributes` variable to apply custom HTML attributes to the `<main>` element.
 
 We made this change in [pull request #6538: Make Page template options besides header and footer follow conventions](https://github.com/alphagov/govuk-frontend/pull/6538).
 
 #### Customise the template's `<footer>` element
 
-Nunjucks users can customise the appearance and content of the template's `<footer>` element with new blocks and variables.
+If you use Nunjucks, you can customise the appearance and content of the template's `<footer>` element with new blocks and variables.
 
 New variables:
 
-- `footerClasses` applies custom classes to the element.
-- `footerAttributes` applies custom HTML attributes to the element.
+- `footerClasses` applies custom classes to the element
+- `footerAttributes` applies custom HTML attributes to the element
 
 New Nunjucks blocks:
 
-- `footerStart` inserts HTML immediately after the element's opening tag.
-- `footerEnd` inserts HTML immediately before the element's closing tag.
-- `govukFooter` allows for customising the `govukFooter` component without affecting other parts of the footer.
+- `footerStart` inserts HTML immediately after the element's opening tag
+- `footerEnd` inserts HTML immediately before the element's closing tag
+- `govukFooter` lets you customise the `govukFooter` component without affecting other parts of the footer
 
 We made this change in [pull request #6537: Refactor footer to detach element from component](https://github.com/alphagov/govuk-frontend/pull/6537).
 
@@ -179,8 +178,7 @@ We made this change in [pull request #6537: Refactor footer to detach element fr
 
 #### Use the `govukSkipLink` block instead of `skipLink`
 
-So that all blocks replacing GOV.UK Frontend elements have the same name as the component's macro,
-we're deprecating the `skipLink` block and replacing it with a `govukSkipLink` block.
+We're deprecating the `skipLink` block and replacing it with a `govukSkipLink` block so all blocks replacing GOV.UK Frontend elements have the same name as the component's macro.
 
 ```njk
 {# Previously #}
@@ -198,8 +196,7 @@ We made this change in [pull request #6538: Make Page template options besides h
 
 #### Use the `containerStart` block instead of `beforeContent`
 
-So all blocks adding content at the start of an element are named `...Start` and so its name better matches its scope,
-we're deprecating the `beforeContent` block and replacing it with a `containerStart` block.
+We're deprecating the `beforeContent` block and replacing it with a `containerStart` block so all blocks adding content at the start of an element are named `...Start` to make its name better match what it does.
 
 We made this change in [pull request #6538: Make Page template options besides header and footer follow conventions](https://github.com/alphagov/govuk-frontend/pull/6538).
 
