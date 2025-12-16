@@ -45,12 +45,15 @@ notes: Based on Companies House "Find an update company information" service
   </li>
 {% endset %}
 
-{% block header %}
+{% block govukHeader %}
   {{ govukHeader({
     classes: "govuk-header--full-width-border",
     serviceName: "Find and update company information",
     serviceUrl: "#0"
   }) }}
+{% endblock %}
+
+{% block govukServiceNavigation %}
   {{ govukServiceNavigation({
     navigation: [
       {
@@ -77,13 +80,17 @@ notes: Based on Companies House "Find an update company information" service
   }) }}
 {% endblock %}
 
-{% block containerStart %}
+{% block headerEnd %}
   {{ govukPhaseBanner({
+    classes: "govuk-width-container",
     tag: {
       text: "Alpha"
     },
     html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback by email</a>.'
   }) }}
+{% endblock %}
+
+{% block containerStart %}
   {{ govukBreadcrumbs({
     items: [
       {

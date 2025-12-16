@@ -31,7 +31,7 @@ notes: Based on https://www.signin.service.gov.uk/feedback
 {% set pageTitle = example.title %}
 {% block pageTitle %}{{ "Error: " if errorSummary | length }}{{ pageTitle }} - GOV.UK{% endblock %}
 
-{% block header %}
+{% block govukHeader %}
   {{ govukHeader({
     productName: "Verify"
   }) }}

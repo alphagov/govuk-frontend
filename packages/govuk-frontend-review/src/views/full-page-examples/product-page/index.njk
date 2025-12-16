@@ -17,12 +17,14 @@ title: GOV.UK Pay
     <link rel="stylesheet" href="/stylesheets/full-page-examples/product-page.min.css">
 {% endblock %}
 
-{% block header %}
+{% block govukHeader %}
   {{ govukHeader({
     productName: "Pay",
     classes: "govuk-header--full-width-border"
   }) }}
+{% endblock %}
 
+{% block govukServiceNavigation %}
   {{ govukServiceNavigation({
     classes: "govuk-service-navigation--inverse",
     navigation: [

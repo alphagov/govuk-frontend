@@ -52,12 +52,14 @@ scenario: |
   }) }}
 {% endblock %}
 
-{% block header %}
+{% block govukHeader %}
   {{ govukHeader({
     navigationClasses: "govuk-header__navigation--end",
     productName: "Product Name"
   }) }}
+{% endblock %}
 
+{% block govukServiceNavigation %}
   {{ govukServiceNavigation({
     classes: "app-service-navigation",
     serviceName: "Find company information",
@@ -96,14 +98,17 @@ scenario: |
   }) }}
 {% endblock %}
 
-{% block containerStart %}
+{% block headerEnd %}
   {{ govukPhaseBanner({
+    classes: "govuk-width-container",
     tag: {
       text: "Beta"
     },
     html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
   }) }}
+{% endblock %}
 
+{% block containerStart %}
   {{ govukBreadcrumbs({
     classes: "",
     collapseOnMobile: true,
@@ -222,7 +227,7 @@ scenario: |
 {% endblock %}
 
 
-{% block footer %}
+{% block govukFooter %}
 {{ govukFooter({
   navigation: [
     {

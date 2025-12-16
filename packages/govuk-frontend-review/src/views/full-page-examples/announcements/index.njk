@@ -12,8 +12,11 @@ notes: Based on https://www.gov.uk/government/news/strictly-vampires-and-sausage
 {% set pageTitle = example.title %}
 {% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
 
-{% block header %}
-{{ govukHeader({}) }}
+{% block govukHeader %}
+  {{ govukHeader({}) }}
+{% endblock %}
+
+{% block govukServiceNavigation %}
 {{ govukServiceNavigation({
   navigation: [
     {
@@ -71,6 +74,7 @@ notes: Based on https://www.gov.uk/government/news/strictly-vampires-and-sausage
     ]
   }) }}
 {% endblock %}
+
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds-from-desktop">
@@ -154,7 +158,7 @@ notes: Based on https://www.gov.uk/government/news/strictly-vampires-and-sausage
 </div>
 {% endblock %}
 
-{% block footer %}
+{% block govukFooter %}
 
 {{ govukFooter({
   navigation: [
