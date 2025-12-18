@@ -4,6 +4,8 @@ For advice on how to use these release notes, see [our guidance on staying up to
 
 ## Unreleased
 
+## v6.0.0-beta.2 (Beta breaking release)
+
 ### Breaking changes
 
 #### Update Nunjucks blocks around the GOV.UK header
