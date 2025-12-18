@@ -4,6 +4,8 @@ For advice on how to use these release notes, see [our guidance on staying up to
 
 ## Unreleased
 
+## v6.0.0-beta.2 (Beta breaking release)
+
 ### Breaking changes
 
 #### Update Nunjucks blocks around the GOV.UK header
@@ -48,7 +50,7 @@ We made this change in [pull request #6536: Refactor heading to detach element f
 #### Use the `container` block instead of the `main` block to replace the width container
 
 We've reduced the scope of the `main` block to only replace the `<main>` element,
-rather than the whole `<div class="govuk-width-container"> element.
+rather than the whole `<div class="govuk-width-container">` element.
 
 If you’re using the `main` block, use the new `container` block instead.
 
