@@ -270,7 +270,7 @@ If you were redefining a custom value for the functional colour before importing
 ```scss
 // This will be merged with the default functional colours of GOV.UK Frontend
 // redefining the 'brand' colour to `rebeccapurple`
-$govuk-functional-colour: (
+$govuk-functional-colours: (
   brand: rebeccapurple
 );
 @import 'pkg:govuk-frontend';
