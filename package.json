@@ -108,7 +108,7 @@
     "@types/semver": "^7.7.1",
     "@types/slug": "^5.0.9",
     "@types/vinyl": "^2.0.12",
-    "puppeteer": "^24.31.0",
+    "puppeteer": "^24.34.0",
     "typed-query-selector": "^2.12.0"
   },
   "overrides": {
