@@ -5,8 +5,8 @@
     @include govuk-responsive-margin(6, "bottom");
     display: flex;
     flex-direction: column;
-    align-items: center;
     flex-wrap: wrap;
+    align-items: center;
 
     @media #{govuk-from-breakpoint(tablet)} {
       flex-direction: row;
@@ -25,10 +25,13 @@
   .govuk-pagination__prev {
     @include govuk-font(19);
     box-sizing: border-box;
+
     position: relative;
+
     min-width: 45px;
     min-height: 45px;
     padding: govuk-spacing(2) govuk-spacing(3);
+
     float: left; // Float is ignored if flex is active for prev/next links
 
     &:hover {
@@ -110,6 +113,7 @@
     @media screen {
       &::after {
         content: "";
+
         position: absolute;
         top: 0;
         right: 0;

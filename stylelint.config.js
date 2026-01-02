@@ -30,12 +30,8 @@ module.exports = {
         'length-zero-no-unit': null,
         'rule-empty-line-before': null,
         'selector-max-id': null,
-        'shorthand-property-no-redundant-values': null,
 
         // Allow markdown `*.md` Sass bad examples
-        'scss/at-if-no-null': null,
-        'scss/at-import-no-partial-leading-underscore': null,
-        'scss/at-import-partial-extension': null,
         'scss/at-mixin-pattern': null,
         'scss/at-rule-conditional-no-parentheses': null,
         'scss/load-no-partial-leading-underscore': null,
@@ -56,159 +52,258 @@ module.exports = {
      * https://github.com/hudochenkov/stylelint-order/blob/master/rules/properties-order/README.md
      */
     'order/properties-order': [
-      'content',
-      'quotes',
+      [
+        {
+          emptyLineBefore: 'threshold',
+          properties: ['content', 'content-visibility', 'quotes']
+        },
+        {
+          // Box-sizing - Allow here until global is decided
+          emptyLineBefore: 'threshold',
+          properties: ['box-sizing']
+        },
+        {
+          emptyLineBefore: 'threshold',
+          properties: ['display', 'visibility']
+        },
+        {
+          emptyLineBefore: 'threshold',
+          properties: ['position', 'z-index', 'top', 'right', 'bottom', 'left']
+        },
+        {
+          emptyLineBefore: 'threshold',
+          properties: [
+            'flex',
+            'flex-basis',
+            'flex-direction',
+            'flex-flow',
+            'flex-grow',
+            'flex-shrink',
+            'flex-wrap',
+            'align-content',
+            'align-items',
+            'align-self',
+            'justify-content',
+            'order',
 
-      // Box-sizing - Allow here until global is decided
-      'box-sizing',
+            'grid',
+            'grid-area',
+            'grid-auto-columns',
+            'grid-auto-flow',
+            'grid-auto-rows',
+            'grid-column',
+            'grid-column-end',
+            'grid-column-start',
+            'grid-row',
+            'grid-row-end',
+            'grid-row-start',
+            'grid-template',
+            'grid-template-areas',
+            'grid-template-columns',
+            'grid-template-rows',
 
-      'display',
-      'visibility',
+            'columns',
+            'column-count',
+            'column-fill',
+            'column-gap',
+            'column-rule',
+            'column-rule-color',
+            'column-rule-style',
+            'column-rule-width',
+            'column-span',
+            'column-width',
+            'row-gap'
+          ]
+        },
+        {
+          emptyLineBefore: 'threshold',
+          properties: [
+            'width',
+            'min-width',
+            'max-width',
+            'height',
+            'min-height',
+            'max-height',
 
-      'position',
-      'z-index',
-      'top',
-      'right',
-      'bottom',
-      'left',
+            'margin',
+            'margin-top',
+            'margin-right',
+            'margin-bottom',
+            'margin-left',
 
-      'width',
-      'min-width',
-      'max-width',
-      'height',
-      'min-height',
-      'max-height',
+            'padding',
+            'padding-top',
+            'padding-right',
+            'padding-bottom',
+            'padding-left'
+          ]
+        },
+        {
+          emptyLineBefore: 'threshold',
+          properties: ['float', 'clear', 'overflow', 'overflow-x', 'overflow-y']
+        },
+        {
+          emptyLineBefore: 'threshold',
+          properties: ['clip', 'clip-path', 'zoom', 'resize']
+        },
+        {
+          emptyLineBefore: 'threshold',
+          properties: [
+            'table-layout',
+            'empty-cells',
+            'caption-side',
+            'border-spacing',
+            'border-collapse'
+          ]
+        },
+        {
+          emptyLineBefore: 'threshold',
+          properties: [
+            'list-style',
+            'list-style-position',
+            'list-style-type',
+            'list-style-image'
+          ]
+        },
+        {
+          emptyLineBefore: 'threshold',
+          properties: ['transform', 'transition', 'animation']
+        },
+        {
+          emptyLineBefore: 'threshold',
+          properties: [
+            'border',
+            'border-top',
+            'border-right',
+            'border-bottom',
+            'border-left',
 
-      'margin',
-      'margin-top',
-      'margin-right',
-      'margin-bottom',
-      'margin-left',
+            'border-width',
+            'border-top-width',
+            'border-right-width',
+            'border-bottom-width',
+            'border-left-width',
 
-      'padding',
-      'padding-top',
-      'padding-right',
-      'padding-bottom',
-      'padding-left',
+            'border-style',
+            'border-top-style',
+            'border-right-style',
+            'border-bottom-style',
+            'border-left-style',
 
-      'float',
-      'clear',
+            'border-radius',
+            'border-top-left-radius',
+            'border-top-right-radius',
+            'border-bottom-left-radius',
+            'border-bottom-right-radius',
 
-      'overflow',
-      'overflow-x',
-      'overflow-y',
+            'border-color',
+            'border-top-color',
+            'border-right-color',
+            'border-bottom-color',
+            'border-left-color',
 
-      'clip',
-      'clip-path',
-      'zoom',
-      'resize',
+            'border-image',
 
-      'columns',
+            'outline',
+            'outline-color',
+            'outline-offset',
+            'outline-style',
+            'outline-width'
+          ]
+        },
+        {
+          emptyLineBefore: 'threshold',
+          properties: ['pointer-events', 'opacity']
+        },
+        {
+          // Color has been moved to ensure it appears before background
+          emptyLineBefore: 'threshold',
+          properties: [
+            'color',
+            'background',
+            'background-color',
+            'background-image',
+            'background-repeat',
+            'background-position',
+            'background-size',
+            'box-shadow',
+            'fill',
 
-      'table-layout',
-      'empty-cells',
-      'caption-side',
-      'border-spacing',
-      'border-collapse',
+            'mask',
+            'mask-border',
+            'mask-border-mode',
+            'mask-border-outset',
+            'mask-border-repeat',
+            'mask-border-slice',
+            'mask-border-source',
+            'mask-border-width',
+            'mask-clip',
+            'mask-composite',
+            'mask-image',
+            'mask-mode',
+            'mask-origin',
+            'mask-repeat',
+            'mask-position',
+            'mask-size',
+            'mask-type'
+          ]
+        },
+        {
+          emptyLineBefore: 'threshold',
+          properties: [
+            'font',
+            'font-family',
+            'font-size',
+            'font-style',
+            'font-variant',
+            'font-weight',
+            'font-emphasize',
+            'font-display',
+            'src',
 
-      'list-style',
-      'list-style-position',
-      'list-style-type',
-      'list-style-image',
+            'letter-spacing',
+            'line-height',
+            'word-spacing',
 
-      'transform',
-      'transition',
-      'animation',
+            'text-align',
+            'text-align-last',
+            'text-decoration',
+            'text-decoration-thickness',
+            'text-decoration-skip-ink',
+            'text-decoration-skip',
+            'text-indent',
+            'text-justify',
+            'text-overflow',
+            'text-overflow-ellipsis',
+            'text-overflow-mode',
+            'text-rendering',
+            'text-outline',
+            'text-shadow',
+            'text-transform',
+            'text-wrap',
+            'word-wrap',
+            'word-break',
+            'overflow-wrap',
 
-      'border',
-      'border-top',
-      'border-right',
-      'border-bottom',
-      'border-left',
+            'text-emphasis',
 
-      'border-width',
-      'border-top-width',
-      'border-right-width',
-      'border-bottom-width',
-      'border-left-width',
-
-      'border-style',
-      'border-top-style',
-      'border-right-style',
-      'border-bottom-style',
-      'border-left-style',
-
-      'border-radius',
-      'border-top-left-radius',
-      'border-top-right-radius',
-      'border-bottom-left-radius',
-      'border-bottom-right-radius',
-
-      'border-color',
-      'border-top-color',
-      'border-right-color',
-      'border-bottom-color',
-      'border-left-color',
-
-      'outline',
-      'outline-color',
-      'outline-offset',
-      'outline-style',
-      'outline-width',
-
-      'opacity',
-
-      // Color has been moved to ensure it appears before background
-      'color',
-      'background',
-      'background-color',
-      'background-image',
-      'background-repeat',
-      'background-position',
-      'background-size',
-      'box-shadow',
-      'fill',
-
-      'font',
-      'font-family',
-      'font-size',
-      'font-style',
-      'font-variant',
-      'font-weight',
-
-      'font-emphasize',
-
-      'letter-spacing',
-      'line-height',
-      'list-style',
-      'word-spacing',
-
-      'text-align',
-      'text-align-last',
-      'text-decoration',
-      'text-indent',
-      'text-justify',
-      'text-overflow',
-      'text-overflow-ellipsis',
-      'text-overflow-mode',
-      'text-rendering',
-      'text-outline',
-      'text-shadow',
-      'text-transform',
-      'text-wrap',
-      'word-wrap',
-      'word-break',
-
-      'text-emphasis',
-
-      'vertical-align',
-      'white-space',
-      'word-spacing',
-      'hyphens',
-
-      'src',
-      'cursor',
-      '-webkit-appearance'
+            'vertical-align',
+            'white-space',
+            'word-spacing',
+            'hyphens',
+            'user-select',
+            'forced-color-adjust'
+          ]
+        },
+        {
+          emptyLineBefore: 'threshold',
+          properties: ['cursor', '-webkit-appearance']
+        }
+      ],
+      {
+        emptyLineBeforeUnspecified: 'threshold',
+        emptyLineMinimumPropertyThreshold: 6
+      }
     ]
   }
 }

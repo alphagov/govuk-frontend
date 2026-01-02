@@ -42,10 +42,10 @@
     }
 
     @media #{govuk-from-breakpoint(mobile)} {
+      flex-basis: 5em;
+      flex-shrink: 0;
       // Buttons are normally 100% wide on mobile, but we don't want that here
       width: auto;
-      flex-shrink: 0;
-      flex-basis: 5em;
 
       // Move the spacing from top to the left
       margin-top: 0;

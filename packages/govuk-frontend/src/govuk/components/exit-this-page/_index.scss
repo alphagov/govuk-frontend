@@ -27,11 +27,15 @@
   .govuk-exit-this-page__indicator {
     @include govuk-responsive-padding(2);
     display: none;
+
     padding-bottom: 0;
+
+    pointer-events: none;
+
     color: inherit;
+
     line-height: 0; // removes extra negative space below the indicators
     text-align: center;
-    pointer-events: none;
   }
 
   .govuk-exit-this-page__indicator--visible {
@@ -40,10 +44,13 @@
 
   .govuk-exit-this-page__indicator-light {
     box-sizing: border-box;
+
     display: inline-block;
+
     width: $indicator-size;
     height: $indicator-size;
     margin: 0 0.125em;
+
     border-width: 2px;
     border-style: solid;
     border-radius: 50%;
@@ -67,6 +74,7 @@
     right: 0;
     bottom: 0;
     left: 0;
+
     background-color: govuk-colour("white");
   }
 
