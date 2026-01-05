@@ -49,7 +49,7 @@ jobs:
           ! grep "\$govuk-" .tmp/index.css
 
       - name: Save compiled Sass
-        uses: actions/upload-artifact@v5.0.0
+        uses: actions/upload-artifact@v6.0.0
         if: ${{ !cancelled() }}
         with:
           name: Dart Sass v1.0.0 output
@@ -92,7 +92,7 @@ jobs:
           ! grep "\$govuk-" .tmp/index.css
 
       - name: Save compiled Sass
-        uses: actions/upload-artifact@v5.0.0
+        uses: actions/upload-artifact@v6.0.0
         if: ${{ !cancelled() }}
         with:
           name: Dart Sass v1 (latest) output
