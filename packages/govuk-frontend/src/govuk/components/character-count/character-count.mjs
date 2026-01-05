@@ -178,8 +178,9 @@ export class CharacterCount extends ConfigurableComponent {
     // event is fired, so we need to sync after the pageshow event.
     window.addEventListener('pageshow', () => {
       // If the current value of the textarea is the same as what's
-      // in the HTML, don't re-run.
-      if(this.$textarea.value !== this.$textarea.innerHTML) {
+      // in the HTML, don't re-run when users have not edited the field yet
+      // (new page load or BF cache navigation without having edited).
+      if (this.$textarea.value !== this.$textarea.textContent) {
         this.updateCount()
         this.updateCountMessage()
       }
