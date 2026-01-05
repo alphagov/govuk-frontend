@@ -334,8 +334,7 @@
   @media print {
     &[href^="/"],
     &[href^="http://"],
-    &[href^="https://"]
-    {
+    &[href^="https://"] {
       &::after {
         content: " (" attr(href) ")";
         font-size: 90%;
