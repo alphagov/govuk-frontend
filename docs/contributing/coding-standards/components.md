@@ -30,4 +30,4 @@ To help you build and initialise your own JavaScript components, GOV.UK Frontend
 
 Learn more about styling components in our [CSS style guide](./css.md). Our [JavaScript style guide](./js.md) has more information on coding components.
 
-If you need help building a component, [contact the Design System team](https://design-system.service.gov.uk/get-in-touch/) and we'll support you.
+If you need help building a component, [contact the Design System team](https://design-system.service.gov.uk/contact/) and we'll support you.

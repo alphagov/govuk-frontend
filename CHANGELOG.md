@@ -1742,7 +1742,7 @@ We've renamed the Sass mixin `govuk-typography-responsive` to `govuk-font-size` 
 
 This is an experimental change to see if the name `govuk-font-size` better communicates the Sass mixin's intended use than the name `govuk-typography-responsive`.
 
-We're interested in feedback from the community on this name change, so please let us know what you think [through our usual channels](https://design-system.service.gov.uk/get-in-touch/).
+We're interested in feedback from the community on this name change, so please let us know what you think [through our usual channels](https://design-system.service.gov.uk/contact/).
 
 This change was introduced in [pull request #4291: Rename `govuk-typography-responsive` to `govuk-font-size`](https://github.com/alphagov/govuk-frontend/pull/4291).
 
@@ -4389,7 +4389,7 @@ This will add the correct amount of padding depending on if there are elements a
 
 If you need to control the spacing manually, use the `.govuk-main-wrapper--l` modifier instead.
 
-The `govuk-main-wrapper` and `govuk-main-wrapper--l` Sass mixins are now deprecated. [Contact us](https://design-system.service.gov.uk/get-in-touch/) if you need to continue using these mixins.
+The `govuk-main-wrapper` and `govuk-main-wrapper--l` Sass mixins are now deprecated. [Contact us](https://design-system.service.gov.uk/contact/) if you need to continue using these mixins.
 
 [Pull request #1493: Add automatic vertical spacing modifier for main wrapper](https://github.com/alphagov/govuk-frontend/pull/1493)
 

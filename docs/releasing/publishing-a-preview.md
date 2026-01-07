@@ -1,6 +1,6 @@
 # Publishing a preview of GOV.UK Frontend
 
-This preview guidance is aimed at Design System team members. If you're an external contributor who needs to create a preview, please [contact the Design System team](https://design-system.service.gov.uk/get-in-touch/) and we'll do it for you.
+This preview guidance is aimed at Design System team members. If you're an external contributor who needs to create a preview, please [contact the Design System team](https://design-system.service.gov.uk/contact/) and we'll do it for you.
 
 Before you publish a preview, you need to have committed a code change to GOV.UK Frontend. Then follow these instructions.
 
