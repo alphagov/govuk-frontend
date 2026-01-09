@@ -122,8 +122,11 @@ export function updateChangelog(newVersion, previousVersion) {
  * following release heading if newVersion is tagged as internal
  *
  * @param {string} newVersion - Version used to find start point for release notes
+ * @param {object} [options] - Release notes options
+ * @param {string} [options.actor] - Github username of user who ran workflow
+ * @param {string} [options.runId] - ID of Build release workflow to reference
  */
-export function generateReleaseNotes(newVersion) {
+export function generateReleaseNotes(newVersion, options) {
   // Get the identifier from the version if there is one as we'll use this to
   // change what we pass to getChangelogLineIndexes if the version has an
   // 'internal' tag
@@ -143,6 +146,13 @@ export function generateReleaseNotes(newVersion) {
         ? line.replace(/^\s+/, '').substring(1)
         : line
     )
+
+  if (options && options.actor && options.runId) {
+    releaseNotes.push('')
+    releaseNotes.push(
+      `Pull request generated on behalf of @${options.actor} by [run ${options.runId}](https://github.com/alphagov/govuk-frontend/actions/runs/${options.runId}) of the [Build release workflow](https://github.com/alphagov/govuk-frontend/actions/workflows/build-release.yml)`
+    )
+  }
 
   writeFileSync('./release-notes-body', releaseNotes.join('\n'))
 }
