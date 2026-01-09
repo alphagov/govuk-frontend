@@ -4,6 +4,8 @@ For advice on how to use these release notes, see [our guidance on staying up to
 
 ## Unreleased
 
+## v6.0.0-beta.3 (Beta breaking release)
+
 This is some temporary content to test the build release user stuff
 
 ## v6.0.0-beta.2 (Beta breaking release)
