@@ -122,8 +122,9 @@ export function updateChangelog(newVersion, previousVersion) {
  * following release heading if newVersion is tagged as internal
  *
  * @param {string} newVersion - Version used to find start point for release notes
+ * @param {string|false} actor - Github user name of who ran workflow
  */
-export function generateReleaseNotes(newVersion) {
+export function generateReleaseNotes(newVersion, actor = false) {
   // Get the identifier from the version if there is one as we'll use this to
   // change what we pass to getChangelogLineIndexes if the version has an
   // 'internal' tag
@@ -143,6 +144,11 @@ export function generateReleaseNotes(newVersion) {
         ? line.replace(/^\s+/, '').substring(1)
         : line
     )
+
+  if (actor) {
+    releaseNotes.push('')
+    releaseNotes.push(`Pull request from workflow run triggered by @${actor}`)
+  }
 
   writeFileSync('./release-notes-body', releaseNotes.join('\n'))
 }
