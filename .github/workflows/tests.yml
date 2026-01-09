@@ -66,8 +66,8 @@ jobs:
         uses: ./.github/workflows/actions/build
 
   lint:
-    name: ${{ matrix.task.description }} (${{ matrix.runner }})
-    runs-on: ${{ matrix.runner }}
+    name: ${{ matrix.task.description }} (${{ matrix.runner.name }})
+    runs-on: ${{ matrix.runner.os }}
     needs: [install]
 
     # Disabled due to editorconfig-checker bug
@@ -81,8 +81,10 @@ jobs:
 
       matrix:
         runner:
-          - ubuntu-22.04
-          - windows-latest
+          - name: Ubuntu
+            os: ubuntu-22.04
+          - name: Windows
+            os: windows-latest
 
         task:
           - description: Lint Sass
@@ -130,8 +132,8 @@ jobs:
         run: ${{ matrix.task.run }}
 
   test:
-    name: ${{ matrix.task.description }} (${{ matrix.runner }})
-    runs-on: ${{ matrix.runner }}
+    name: ${{ matrix.task.description }} (${{ matrix.runner.name }})
+    runs-on: ${{ matrix.runner.os }}
     needs: [install, build]
 
     strategy:
@@ -139,8 +141,10 @@ jobs:
 
       matrix:
         runner:
-          - ubuntu-22.04
-          - windows-latest
+          - name: Ubuntu
+            os: ubuntu-22.04
+          - name: Windows
+            os: windows-latest
 
         task:
           - description: Nunjucks macro tests
@@ -207,13 +211,13 @@ jobs:
       - name: Save test coverage
         uses: actions/upload-artifact@v6.0.0
         with:
-          name: ${{ matrix.task.description }} coverage (${{ matrix.runner }})
+          name: ${{ matrix.task.description }} coverage (${{ matrix.runner.name }})
           path: coverage
           if-no-files-found: ignore
 
   verify:
-    name: ${{ matrix.task.description }} (${{ matrix.runner }})
-    runs-on: ${{ matrix.runner }}
+    name: ${{ matrix.task.description }} (${{ matrix.runner.name }})
+    runs-on: ${{ matrix.runner.os }}
     needs: [install, build]
 
     strategy:
@@ -221,8 +225,10 @@ jobs:
 
       matrix:
         runner:
-          - ubuntu-22.04
-          - windows-latest
+          - name: Ubuntu
+            os: ubuntu-22.04
+          - name: Windows
+            os: windows-latest
 
         task:
           - description: Verify package build
