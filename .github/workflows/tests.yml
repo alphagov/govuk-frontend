@@ -21,8 +21,8 @@ concurrency:
 
 jobs:
   install:
-    name: Install
-    runs-on: ${{ matrix.runner }}
+    name: Install (${{ matrix.runner.name }})
+    runs-on: ${{ matrix.runner.os }}
 
     env:
       PUPPETEER_SKIP_DOWNLOAD: true
@@ -32,8 +32,10 @@ jobs:
 
       matrix:
         runner:
-          - ubuntu-22.04
-          - windows-latest
+          - name: Ubuntu
+            os: ubuntu-22.04
+          - name: Windows
+            os: windows-latest
 
     steps:
       - name: Checkout code
@@ -43,8 +45,8 @@ jobs:
         uses: ./.github/workflows/actions/install-node
 
   build:
-    name: Build
-    runs-on: ${{ matrix.runner }}
+    name: Build (${{ matrix.runner.name }})
+    runs-on: ${{ matrix.runner.os }}
     needs: [install]
 
     strategy:
@@ -52,8 +54,10 @@ jobs:
 
       matrix:
         runner:
-          - ubuntu-22.04
-          - windows-latest
+          - name: Ubuntu
+            os: ubuntu-22.04
+          - name: Windows
+            os: windows-latest
 
     steps:
       - name: Checkout
