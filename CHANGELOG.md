@@ -469,7 +469,7 @@ We made this change in [pull request #6418: Update default `homepageUrl` to poin
 
 If your service does not provide information under the Open Government Licence (OGL), you can now remove it from the GOV.UK footer.
 
-If you're using Nunjucks, set the `contentLicence` parameter to `false`:
+If you're using Nunjucks, set the `contentLicence` parameter to `null`:
 
 ```nunjucks
 {{ govukFooter({
@@ -477,7 +477,12 @@ If you're using Nunjucks, set the `contentLicence` parameter to `false`:
 }) }}
 ```
 
-We made this change in [#6191: Allow removal of Content Licence information in the GOV.UK footer component](https://github.com/alphagov/govuk-frontend/pull/6191). Thanks to @NickColley for making this change.
+We introduced this feature in the following pull requests:
+
+- [#6191: Allow removal of Content Licence information in the GOV.UK footer component](https://github.com/alphagov/govuk-frontend/pull/6191). Thanks to @NickColley for making this change.
+- [#6587: Use null rather than false to hide the content licence](https://github.com/alphagov/govuk-frontend/pull/6587). Thanks to @gunndabad for reporting the issue.
+
+We made this change in . Thanks to @NickColley for making this change.
 
 ### Fixes
 

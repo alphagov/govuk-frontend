@@ -60,7 +60,7 @@
         </div>
         {% endif %}
         {% endif %}
-        {% if params.contentLicence !== false %}
+        {% if params.contentLicence !== null %}
           {# The SVG needs `focusable="false"` so that Internet Explorer does not
             treat it as an interactive element - without this it will be
             'focusable' when using the keyboard to navigate. -#}
