@@ -78,7 +78,8 @@
 /// @access public
 
 @mixin govuk-focused-form-input {
-  outline: $govuk-focus-width solid govuk-functional-colour(focus);
+  outline: $govuk-focus-width solid;
+  outline-color: govuk-functional-colour(focus);
   // Ensure outline appears outside of the element
   outline-offset: 0;
   // Double the border by adding its width again. Use `box-shadow` for this

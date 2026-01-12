@@ -15,8 +15,9 @@
     // to dark backgrounds in Firefox (https://bugzil.la/1335476). As
     // background-color and color need to always be set together, color should
     // not be set either
-    border: $govuk-border-width-form-element solid govuk-functional-colour(input-border);
+    border: $govuk-border-width-form-element solid;
     border-radius: 0;
+    border-color: govuk-functional-colour(input-border);
 
     // Disable inner shadow and remove rounded corners
     appearance: none;
@@ -121,7 +122,8 @@
     min-width: govuk-px-to-rem(40px);
     height: govuk-px-to-rem(40px);
     padding: govuk-spacing(1);
-    border: $govuk-border-width-form-element solid govuk-functional-colour(input-border);
+    border: $govuk-border-width-form-element solid;
+    border-color: govuk-functional-colour(input-border);
     background-color: govuk-colour("black", $variant: "tint-95");
     text-align: center;
     white-space: nowrap;

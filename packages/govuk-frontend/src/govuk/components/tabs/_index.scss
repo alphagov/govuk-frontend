@@ -50,7 +50,8 @@
       .govuk-tabs__list {
         @include govuk-clearfix;
         margin-bottom: 0;
-        border-bottom: 1px solid govuk-functional-colour(border);
+        border-bottom: 1px solid;
+        border-bottom-color: govuk-functional-colour(border);
       }
 
       .govuk-tabs__title {
@@ -88,8 +89,9 @@
         padding-bottom: govuk-spacing(3) + $border-width;
         padding-left: govuk-spacing(4) - $border-width;
 
-        border: $border-width solid govuk-functional-colour(border);
+        border: $border-width solid;
         border-bottom: 0;
+        border-color: govuk-functional-colour(border);
 
         background-color: govuk-functional-colour(body-background);
 
@@ -116,8 +118,9 @@
       .govuk-tabs__panel {
         @include govuk-responsive-margin(0, "bottom");
         padding: govuk-spacing(6) govuk-spacing(4);
-        border: 1px solid govuk-functional-colour(border);
+        border: 1px solid;
         border-top: 0;
+        border-color: govuk-functional-colour(border);
 
         & > :last-child {
           margin-bottom: 0;

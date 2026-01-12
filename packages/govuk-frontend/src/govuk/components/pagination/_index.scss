@@ -194,7 +194,8 @@
 
     // Only apply a border between prev and next if both are present
     .govuk-pagination__prev + .govuk-pagination__next {
-      border-top: 1px solid govuk-functional-colour(border);
+      border-top: 1px solid;
+      border-top-color: govuk-functional-colour(border);
     }
 
     // Set the after pseudo element to a block which makes the title visually

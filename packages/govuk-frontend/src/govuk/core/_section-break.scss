@@ -40,7 +40,8 @@
   // Visible variant
 
   %govuk-section-break--visible {
-    border-bottom: 1px solid govuk-functional-colour(border);
+    border-bottom: 1px solid;
+    border-bottom-color: govuk-functional-colour(border);
   }
 
   .govuk-section-break--visible {

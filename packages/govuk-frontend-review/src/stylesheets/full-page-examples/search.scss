@@ -4,7 +4,8 @@
 .app-document-list > li {
   padding-top: govuk-spacing(4);
   padding-bottom: govuk-spacing(2);
-  border-bottom: 1px solid govuk-functional-colour(border);
+  border-bottom: 1px solid;
+  border-bottom-color: govuk-functional-colour(border);
 }
 
 .app-metadata-list > li {
@@ -14,7 +15,8 @@
 
 .app-filter li {
   padding-bottom: govuk-spacing(4);
-  border-bottom: 1px solid govuk-functional-colour(border);
+  border-bottom: 1px solid;
+  border-bottom-color: govuk-functional-colour(border);
 }
 
 .app-open-fieldset {
