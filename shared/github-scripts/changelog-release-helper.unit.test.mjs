@@ -189,5 +189,18 @@ describe('Changelog release helper', () => {
         expect.not.stringContaining('### Fixes')
       )
     })
+
+    it('adds a note on the generation workflow if options param provided', () => {
+      generateReleaseNotes('3.1.0-internal.0', {
+        actor: 'bingbong',
+        runId: '12345'
+      })
+      expect(fs.writeFileSync).toHaveBeenCalledWith(
+        './release-notes-body',
+        expect.stringContaining(
+          'Pull request generated on behalf of @bingbong by [run 12345](https://github.com/alphagov/govuk-frontend/actions/runs/12345) of the [Build release workflow](https://github.com/alphagov/govuk-frontend/actions/workflows/build-release.yml)'
+        )
+      )
+    })
   })
 })
