@@ -68,9 +68,9 @@ params:
             required: false
             description: HTML attributes (for example data attributes) to add to the anchor in the footer navigation section.
   - name: contentLicence
-    type: object or boolean
+    type: object
     required: false
-    description: The content licence information within the footer component. If your service provides its information under a different license than OGL, use `false` to hide the OGL logo and licence text. Defaults to Open Government Licence (OGL) v3 licence.
+    description: The content licence information within the footer component. If your service provides its information under a different license than OGL, use `null` to hide both the OGL logo and licence text. Defaults to Open Government Licence (OGL) v3 licence.
     params:
       - name: text
         type: string
@@ -166,7 +166,7 @@ examples:
   - name: with no content licence
     description: Open Government Licence turned off
     options:
-      contentLicence: false
+      contentLicence: null
 
   - name: with custom meta
     description: Custom meta section
@@ -179,7 +179,7 @@ examples:
     options:
       meta:
         text: GOV.UK Prototype Kit v7.0.1
-      contentLicence: false
+      contentLicence: null
 
   - name: with meta links and meta content
     description: Secondary navigation links and custom meta text
@@ -225,7 +225,7 @@ examples:
             text: Fusce Sollicitudin
           - href: '#8'
             text: Ligula Nullam Ultricies
-      contentLicence: false
+      contentLicence: null
 
   - name: with default width navigation (one column)
     options:

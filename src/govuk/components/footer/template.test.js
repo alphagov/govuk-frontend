@@ -227,7 +227,7 @@ describe('footer', () => {
       )
     })
 
-    it('can be turned off by setting it to `false`', () => {
+    it('can be turned off by setting it to `null`', () => {
       const $ = render('footer', examples['with no content licence'])
 
       const $licenceLogo = $('.govuk-footer__licence-logo')
