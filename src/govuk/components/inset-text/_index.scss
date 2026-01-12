@@ -10,7 +10,8 @@
 
     clear: both;
 
-    border-left: $govuk-border-width-wide solid govuk-functional-colour(border);
+    border-left: $govuk-border-width-wide solid;
+    border-left-color: govuk-functional-colour(border);
 
     > :first-child {
       margin-top: 0;

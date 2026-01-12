@@ -40,7 +40,8 @@
     position: relative;
     margin-bottom: -$govuk-header-border-width;
     padding-top: govuk-spacing($govuk-header-vertical-spacing-value);
-    border-bottom: $govuk-header-border-width solid $govuk-header-border-color;
+    border-bottom: $govuk-header-border-width solid;
+    border-bottom-color: $govuk-header-border-color;
 
     @include _govuk-rebrand {
       // Remove the space allocated to the blue bar

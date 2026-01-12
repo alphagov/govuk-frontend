@@ -20,7 +20,8 @@
     }
 
     &:focus {
-      outline: $govuk-focus-width solid govuk-functional-colour(focus);
+      outline: $govuk-focus-width solid;
+      outline-color: govuk-functional-colour(focus);
       outline-offset: 0;
       background-color: govuk-functional-colour(focus);
 

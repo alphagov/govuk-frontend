@@ -25,8 +25,9 @@
 
     // When a user customises their colours the background colour will often be
     // removed. Adding a border to the component keeps it's shape as a circle.
-    border: 3px solid govuk-functional-colour(text);
+    border: 3px solid;
     border-radius: 50%;
+    border-color: govuk-functional-colour(text);
 
     color: govuk-functional-colour(body-background);
     background: govuk-functional-colour(text);

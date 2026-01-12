@@ -3,12 +3,14 @@
     @include govuk-font($size: 19);
     @include govuk-responsive-margin(8, "bottom");
 
-    border: $govuk-border-width solid govuk-functional-colour(brand);
+    border: $govuk-border-width solid;
+    border-color: govuk-functional-colour(brand);
 
     background-color: govuk-functional-colour(brand);
 
     &:focus {
-      outline: $govuk-focus-width solid govuk-functional-colour(focus);
+      outline: $govuk-focus-width solid;
+      outline-color: govuk-functional-colour(focus);
     }
   }
 

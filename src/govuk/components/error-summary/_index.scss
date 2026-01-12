@@ -7,10 +7,12 @@
     @include govuk-responsive-padding(4);
     @include govuk-responsive-margin(8, "bottom");
 
-    border: $govuk-border-width solid govuk-functional-colour(error);
+    border: $govuk-border-width solid;
+    border-color: govuk-functional-colour(error);
 
     &:focus {
-      outline: $govuk-focus-width solid govuk-functional-colour(focus);
+      outline: $govuk-focus-width solid;
+      outline-color: govuk-functional-colour(focus);
     }
   }
 
