@@ -7,6 +7,7 @@
     @include govuk-font($size: 19);
 
     box-sizing: border-box;
+
     width: 100%;
     height: govuk-px-to-rem(40px);
     margin-top: 0;
@@ -116,18 +117,23 @@
     box-sizing: border-box;
     // Use flexbox to align text within the prefix and suffix
     display: flex;
+
+    flex: 0 0 auto;
     align-items: center;
     justify-content: center;
+
     min-width: govuk-px-to-rem(40px);
     height: govuk-px-to-rem(40px);
     padding: govuk-spacing(1);
+
     border: $govuk-border-width-form-element solid govuk-functional-colour(input-border);
+
     background-color: govuk-colour("black", $variant: "tint-95");
+
     text-align: center;
     white-space: nowrap;
     // Emphasise non-editable status of prefixes and suffixes
     cursor: default;
-    flex: 0 0 auto;
     // Split prefix/suffix onto separate lines on narrow screens
     @media #{govuk-until-breakpoint(mobile)} {
       display: block;
