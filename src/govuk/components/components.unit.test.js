@@ -30,7 +30,7 @@ describe('Components', () => {
         })
       })
 
-      it.only('does not use custom properties in shorthand properties', async () => {
+      it('does not use custom properties in shorthand properties', async () => {
         const { css } = sassCompilationResult
 
         // Use a list of allowed properties rather than disallowed ones
