@@ -1,0 +1,102 @@
+params:
+  - name: homepageUrl
+    type: string
+    required: false
+    description: The URL of the homepage. Defaults to the GOV.UK homepage.
+  - name: productName
+    type: string
+    required: false
+    description: Product name, used when the product name follows on directly from ‘GOV.UK’. For example, GOV.UK Pay or GOV.UK Design System. In most circumstances, you should use the [Service navigation component](https://design-system.service.gov.uk/components/service-navigation/).
+  - name: containerClasses
+    type: string
+    required: false
+    description: Classes for the container, useful if you want to make the header fixed width.
+  - name: classes
+    type: string
+    required: false
+    description: Classes to add to the header container.
+  - name: attributes
+    type: object
+    required: false
+    description: HTML attributes (for example data attributes) to add to the header container.
+  - name: rebrand
+    type: boolean
+    required: false
+    description: If `true`, use the redesigned header and new GOV.UK logotype. Default is `false`.
+
+previewLayout: full-width
+accessibilityCriteria: |
+  Text and links in the Header must:
+  - have a text contrast ratio higher than 4.5:1 against the background colour to meet [WCAG AA](https://www.w3.org/TR/WCAG20/#visual-audio-contrast-contrast)
+
+  Links in the Header must:
+  - accept focus
+  - be focusable with a keyboard
+  - be usable with a keyboard
+  - indicate when they have focus
+  - change in appearance when touched (in the touch-down state)
+  - change in appearance when hovered
+  - have visible text
+
+  Images in the Header must:
+  - be presentational when linked to from accompanying text (crown icon).
+
+  Landmarks and Roles in the Header should:
+  - have a role of `"banner"` at the root of the component (<header>) (https://www.w3.org/TR/wai-aria-1.1/#banner)
+
+examples:
+  - name: default
+    screenshot: true
+    description: The standard header as used on information pages on GOV.UK
+    options: {}
+
+  - name: with product name
+    screenshot: true
+    options:
+      productName: Product Name
+
+  - name: full width
+    options:
+      containerClasses: govuk-basic-header__container--full-width
+
+  - name: with full width border
+    description: Makes the header's bottom border full width without affecting the header's content. Removed with redesign.
+    options:
+      classes: govuk-basic-header--full-width-border
+
+  # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
+  - name: attributes
+    hidden: true
+    options:
+      attributes:
+        data-test-attribute: value
+        data-test-attribute-2: value-2
+  - name: classes
+    hidden: true
+    options:
+      classes: app-header--custom-modifier
+  - name: custom homepage url
+    hidden: true
+    options:
+      homepageUrl: /
+
+  # these examples are included in screenshots but hidden in the app because the
+  # interaction with the 'rebrand' feature flag is confusing.
+
+  - name: rebrand
+    description: The standard header as used on information pages on GOV.UK
+    hidden: true
+    screenshot: true
+    pageTemplateOptions:
+      htmlClasses: govuk-template--rebranded
+    options:
+      rebrand: true
+
+  - name: with product name and rebrand
+    hidden: true
+    screenshot: true
+    pageTemplateOptions:
+      htmlClasses: govuk-template--rebranded
+    options:
+      productName: Product Name
+      rebrand: true

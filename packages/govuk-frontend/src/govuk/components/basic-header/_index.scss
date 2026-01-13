@@ -1,50 +1,39 @@
 @include govuk-exports("govuk/component/header") {
-  $govuk-header-border-color: govuk-functional-colour(brand);
-  $govuk-header-border-width: govuk-spacing(2);
-  $govuk-header-text: govuk-colour("white");
-  $govuk-header-link-active: #1d8feb;
-  $govuk-header-nav-item-border-color: #2e3133;
-  $govuk-header-link-underline-thickness: 3px;
-  $govuk-header-vertical-spacing-value: 2;
+  $govuk-basic-header-background: govuk-colour("black");
+  $govuk-basic-header-border-color: govuk-functional-colour(brand);
+  $govuk-basic-header-border-width: govuk-spacing(2);
+  $govuk-basic-header-text: govuk-colour("white");
+  $govuk-basic-header-link-active: #1d8feb;
+  $govuk-basic-header-nav-item-border-color: #2e3133;
+  $govuk-basic-header-link-underline-thickness: 3px;
+  $govuk-basic-header-vertical-spacing-value: 2;
   // This crown height is only used to calculate top offset of mobile menu button
   // as the crown svg height is the only thing that controls the height of the header
-  $govuk-header-crown-height: 30px;
-  $govuk-header-menu-button-height: 24px;
-  $govuk-header-menu-button-width: 80px;
+  $govuk-basic-header-crown-height: 30px;
+  $govuk-basic-header-menu-button-height: 24px;
+  $govuk-basic-header-menu-button-width: 80px;
 
-  $govuk-header-background: govuk-functional-colour(brand);
-  $govuk-header-logo-bottom-margin: 2px;
-
-  .govuk-header {
+  .govuk-basic-header {
     @include govuk-font($size: 16, $line-height: 1);
 
-    // Add a transparent bottom border for forced-colour modes
-    border-bottom: 1px solid transparent;
-
-    color: $govuk-header-text;
-    background: $govuk-header-background;
+    color: $govuk-basic-header-text;
+    background: $govuk-basic-header-background;
   }
 
-  .govuk-header__container--full-width {
+  .govuk-basic-header__container--full-width {
     padding: 0 govuk-spacing(3);
-    border-color: $govuk-header-border-color;
   }
 
-  .govuk-header__container {
+  .govuk-basic-header__container {
     @include govuk-clearfix;
     position: relative;
-    // Remove the space allocated to the blue bar
-    margin-bottom: 0;
-    // Remove padding as the child elements are now responsible for spacing
-    padding-top: 0;
-    // Remove the blue bar
-    border-bottom: none;
-    border-bottom-color: $govuk-header-border-color;
+    padding-top: govuk-spacing($govuk-basic-header-vertical-spacing-value);
+    padding-bottom: govuk-spacing(1);
   }
 
-  .govuk-header__logo {
+  .govuk-basic-header__logo {
     box-sizing: border-box;
-    @include govuk-responsive-margin($govuk-header-vertical-spacing-value, "bottom");
+    @include govuk-responsive-margin(1, "bottom");
 
     @media #{govuk-from-breakpoint(desktop)} {
       width: 33.33%;
@@ -59,16 +48,9 @@
         float: none;
       }
     }
-
-    // Apply margins to internal elements to emulate padding
-    margin-bottom: 0;
-
-    // Magic numbers, set padding to vertically centre align the logo
-    padding-top: 16px;
-    padding-bottom: 14px - $govuk-header-logo-bottom-margin;
   }
 
-  .govuk-header__homepage-link {
+  .govuk-basic-header__homepage-link {
     // Avoid using the `govuk-link-common` mixin because the links in the
     // header get a special treatment, because:
     //
@@ -79,20 +61,11 @@
     //
     // Font size needs to be set on the link so that the box sizing is correct
     // in Firefox
-    display: inline;
+    display: inline-block;
     margin-right: govuk-spacing(2);
     font-size: 30px; // We don't have a mixin that produces 30px font size
     text-decoration: none;
     @include govuk-link-style-inverse;
-
-    // Remove word-spacing from within the logo so we can ignore
-    // whitespace characters in the HTML
-    word-spacing: govuk-px-to-rem(-6px);
-
-    // Reset word-spacing for child elements
-    > * {
-      word-spacing: 0;
-    }
 
     @media #{govuk-from-breakpoint(desktop)} {
       display: inline;
@@ -106,13 +79,13 @@
     &:hover,
     &:active {
       // Negate the added border
-      margin-bottom: $govuk-header-link-underline-thickness * -1;
-      border-bottom: $govuk-header-link-underline-thickness solid;
+      margin-bottom: $govuk-basic-header-link-underline-thickness * -1;
+      border-bottom: $govuk-basic-header-link-underline-thickness solid;
     }
 
     &:hover {
       text-decoration: underline;
-      text-decoration-thickness: $govuk-header-link-underline-thickness;
+      text-decoration-thickness: $govuk-basic-header-link-underline-thickness;
 
       @if $govuk-link-underline-offset {
         text-underline-offset: $govuk-link-underline-offset;
@@ -126,21 +99,16 @@
 
       @include govuk-focused-text;
     }
-
-    &:not(:focus) {
-      background-color: $govuk-header-background;
-    }
   }
 
-  .govuk-header__logotype {
+  .govuk-basic-header__logotype {
     display: inline-block;
     position: relative;
     top: -3px;
 
     // Add a gap after the logo in case it's followed by a product name. This
     // gets removed later if the logotype is a :last-child.
-    margin-right: govuk-px-to-rem(7px); // 1 'dot'
-    margin-bottom: $govuk-header-logo-bottom-margin;
+    margin-right: govuk-spacing(1);
     fill: currentcolor;
     vertical-align: top;
 
@@ -178,7 +146,7 @@
     }
   }
 
-  .govuk-header__product-name {
+  .govuk-basic-header__product-name {
     $product-name-offset: 7px;
     $product-name-offset-tablet: 5px;
 
@@ -186,7 +154,8 @@
     @include govuk-typography-weight-regular;
     display: inline-table;
 
-    margin-top: 0;
+    // Maintain space below logo when wrapped
+    margin-top: $product-name-offset;
 
     // Firefox places the GOV.UK logo one pixel higher, due to how it rounds
     // subpixels, so nudge the product name in FF to still be aligned.
@@ -194,46 +163,25 @@
       margin-top: $product-name-offset - 0.5px;
     }
 
-    // Remove 1px from the bottom to account for the font-size being 1px
-    // larger than the logo height.
-    margin-bottom: govuk-px-to-rem(-1px);
-
-    // Magic number font-size that visually aligns with GOV.UK logo.
-    // Also stops reducing the product name size on narrow screens
-    font-size: govuk-px-to-rem(31px);
-
-    // Reduce letter spacing
-    letter-spacing: -0.015em;
-
     // Align vertically with logo when not wrapped
     vertical-align: top;
 
-    // Prevent forced colour modes from applying a background colour behind
-    // the product name, which cuts off the underline that appears on hover.
-    forced-color-adjust: none;
-
     @media #{govuk-from-breakpoint(tablet)} {
-      margin-top: 0;
-    }
-
-    @media #{govuk-from-breakpoint(desktop)} {
-      margin-top: 0;
-    }
-
-    @media screen and (forced-colors: active) {
-      color: LinkText;
-      background: transparent;
+      margin-top: $product-name-offset-tablet;
+      @-moz-document url-prefix() {
+        margin-top: $product-name-offset-tablet - 0.5px;
+      }
     }
   }
 
   @media print {
-    .govuk-header {
+    .govuk-basic-header {
       border-bottom-width: 0;
       color: govuk-colour("black");
       background: transparent;
     }
 
-    .govuk-header__homepage-link {
+    .govuk-basic-header__homepage-link {
       &:link,
       &:visited {
         color: govuk-colour("black");
@@ -242,10 +190,6 @@
       // Do not append link href to GOV.UK link when printing (e.g. '(/)')
       &::after {
         display: none;
-      }
-
-      &:not(:focus) {
-        background: transparent;
       }
     }
   }
