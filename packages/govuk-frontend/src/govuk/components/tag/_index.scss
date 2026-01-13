@@ -11,17 +11,6 @@
 @function _govuk-tag-text-colour($colour) {
   @return govuk-colour($colour, $variant: "shade-25");
 }
-
-/// Get tag background colour
-/// Almost all tags should use the 80% tint of their colour for their background
-///
-/// @param {String} $colour - name of colour from the colour palette
-/// @return {Colour} Representation of the named colour for use in tags
-/// @access private
-@function _govuk-tag-background-colour($colour) {
-  @return govuk-colour($colour, $variant: "tint-80");
-}
-
 /// Generate colour CSS for tag and tag modifiers
 /// Applies standard rules from the tag colour functions as well as setting
 /// border colour to `currentcolor` so that it follows the text
@@ -30,7 +19,7 @@
 /// @access private
 @mixin _govuk-tag-colours($colour, $variant: "shade-25") {
   color: _govuk-tag-text-colour($colour);
-  background-color: _govuk-tag-background-colour($colour);
+  background-color: #ffffff;
 }
 
 @include govuk-exports("govuk/component/tag") {
