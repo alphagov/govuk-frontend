@@ -13,7 +13,8 @@
   }
 
   .govuk-summary-list__row {
-    border-bottom: 1px solid govuk-functional-colour(border);
+    border-bottom: 1px solid;
+    border-bottom-color: govuk-functional-colour(border);
 
     @media #{govuk-until-breakpoint(tablet)} {
       margin-bottom: govuk-spacing(3);
@@ -106,7 +107,8 @@
     .govuk-summary-card__action {
       margin-right: govuk-spacing(2);
       padding-right: govuk-spacing(2);
-      border-right: 1px solid govuk-functional-colour(border);
+      border-right: 1px solid;
+      border-right-color: govuk-functional-colour(border);
     }
 
     .govuk-summary-list__actions-list-item:last-child,
@@ -126,7 +128,8 @@
 
     .govuk-summary-list__actions-list-item:not(:first-child),
     .govuk-summary-card__action:not(:first-child) {
-      border-left: 1px solid govuk-functional-colour(border);
+      border-left: 1px solid;
+      border-left-color: govuk-functional-colour(border);
     }
 
     .govuk-summary-list__actions-list-item:first-child,
@@ -179,7 +182,8 @@
   // Additional block for the summary card
   .govuk-summary-card {
     @include govuk-responsive-margin(6, "bottom");
-    border: 1px solid govuk-functional-colour(border);
+    border: 1px solid;
+    border-color: govuk-functional-colour(border);
   }
 
   .govuk-summary-card__title-wrapper {

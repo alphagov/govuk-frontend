@@ -46,7 +46,8 @@
   // like inset text
   @media screen\0 {
     .govuk-details {
-      border-left: $govuk-border-width-wide solid govuk-functional-colour(border);
+      border-left: $govuk-border-width-wide solid;
+      border-left-color: govuk-functional-colour(border);
     }
 
     .govuk-details__summary {
@@ -130,7 +131,8 @@
     }
 
     .govuk-details__text {
-      border-left: $govuk-border-width solid govuk-functional-colour(border);
+      border-left: $govuk-border-width solid;
+      border-left-color: govuk-functional-colour(border);
     }
   }
 }

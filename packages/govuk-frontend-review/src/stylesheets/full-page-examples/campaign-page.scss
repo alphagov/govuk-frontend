@@ -47,7 +47,8 @@
 .app-updates {
   margin-bottom: govuk-spacing(8);
   padding: govuk-spacing(4) govuk-spacing(4) govuk-spacing(2);
-  border: 1px solid govuk-functional-colour(border);
+  border: 1px solid;
+  border-color: govuk-functional-colour(border);
   background-color: govuk-colour("black", $variant: "tint-95");
 }
 

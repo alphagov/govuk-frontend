@@ -188,7 +188,8 @@
     @include govuk-responsive-margin(4, "bottom");
     margin-left: $conditional-margin-left;
     padding-left: $conditional-padding-left;
-    border-left: $conditional-border-width solid govuk-functional-colour(border);
+    border-left: $conditional-border-width solid;
+    border-left-color: govuk-functional-colour(border);
 
     .govuk-frontend-supported &--hidden {
       display: none;

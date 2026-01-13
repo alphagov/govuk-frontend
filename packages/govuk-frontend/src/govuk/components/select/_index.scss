@@ -16,7 +16,8 @@
     max-width: 100%;
     height: govuk-px-to-rem(40px);
     padding: govuk-spacing(1);
-    border: $govuk-border-width-form-element solid govuk-functional-colour(input-border);
+    border: $govuk-border-width-form-element solid;
+    border-color: govuk-functional-colour(input-border);
 
     // Default user agent colours for selects can have low contrast,
     // and may look disabled (#2435)

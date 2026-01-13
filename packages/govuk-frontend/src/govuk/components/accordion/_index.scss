@@ -39,7 +39,8 @@
   .govuk-frontend-supported {
     .govuk-accordion {
       // Border at the bottom of the whole accordion
-      border-bottom: $govuk-accordion-bottom-border-width solid govuk-functional-colour(border);
+      border-bottom: $govuk-accordion-bottom-border-width solid;
+      border-bottom-color: govuk-functional-colour(border);
     }
 
     .govuk-accordion__section {
@@ -188,12 +189,14 @@
 
       border: 0;
 
-      border-top: $govuk-accordion-bottom-border-width solid govuk-functional-colour(border);
+      border-top: $govuk-accordion-bottom-border-width solid;
 
       // Visually separate the section from the one underneath when user changes
       // colours in their browser. See
       // https://github.com/alphagov/govuk-frontend/issues/2321#issuecomment-924201488
       border-bottom: govuk-spacing(2) solid transparent;
+
+      border-top-color: govuk-functional-colour(border);
 
       color: govuk-functional-colour(text);
       background: none;

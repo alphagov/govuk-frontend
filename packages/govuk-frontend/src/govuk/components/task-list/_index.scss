@@ -25,11 +25,13 @@
     margin-bottom: 0;
     padding-top: govuk-spacing(2);
     padding-bottom: govuk-spacing(2);
-    border-bottom: 1px solid govuk-functional-colour(border);
+    border-bottom: 1px solid;
+    border-bottom-color: govuk-functional-colour(border);
   }
 
   .govuk-task-list__item:first-child {
-    border-top: 1px solid govuk-functional-colour(border);
+    border-top: 1px solid;
+    border-top-color: govuk-functional-colour(border);
   }
 
   // This class is added to the <li> elements where the task name is a link. The
