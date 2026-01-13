@@ -32,6 +32,13 @@ describe('footer', () => {
     expect($container.hasClass('app-width-container')).toBeTruthy()
   })
 
+  it('renders the crown in the footer by default', () => {
+    const $ = render('footer', examples.default)
+
+    const $crown = $('.govuk-footer__crown')
+    expect($crown)..toHaveLength(1)
+  })
+
   describe('meta', () => {
     it('renders heading', () => {
       const $ = render('footer', examples['with meta'])
@@ -277,32 +284,23 @@ describe('footer', () => {
     })
   })
 
-  describe('rebrand', () => {
-    it('Does not show the crown in the footer by default', () => {
-      const $ = render('footer', examples.default)
+  describe('unbranded', () => {
+    it('does not render the crown if the `unbranded` option is set', () => {
+      const $ = render('footer', examples.unbranded)
 
-      const $crown = $('.govuk-footer__crown')
-      expect($crown).toHaveLength(0)
+      expect($('.govuk-footer__crown')).toHaveLength(0)
     })
 
-    it('Does render the crown if the `rebrand` option is set', () => {
-      const $ = render('footer', examples.rebrand)
-
-      const $crown = $('.govuk-footer__crown')
-      expect($crown).toHaveLength(1)
-    })
-
-    it('Does render the crown if the `govukRebrand` nunjucks global is set to true', () => {
+    it('does not render the crown if the `govukUnbranded` nunjucks global is set to true', () => {
       const env = nunjucksEnv()
-      env.addGlobal('govukRebrand', true)
+      env.addGlobal('govukUnbranded', true)
 
       const $ = render('footer', {
         ...examples.default,
         env
       })
 
-      const $crown = $('.govuk-footer__crown')
-      expect($crown).toHaveLength(1)
+      expect($('.govuk-footer__crown')).toHaveLength(0)
     })
   })
 })

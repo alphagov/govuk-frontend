@@ -54,26 +54,26 @@ describe('header', () => {
     })
   })
 
-  describe('rebrand', () => {
-    describe('when local `rebrand` parameter is enabled', () => {
-      it('renders the new GOV.UK logotype', () => {
-        const $ = render('header', examples.rebrand)
+  describe('unbranded', () => {
+    describe('when local `unbranded` parameter is enabled', () => {
+      it('does not render the GOV.UK logotype', () => {
+        const $ = render('header', examples.unbranded)
 
-        expect($('.govuk-logo-dot')).not.toBeNull()
+        expect($('.govuk-header__logotype')).toHaveLength(0)
       })
     })
 
-    describe('when `govukRebrand` nunjucks global is set to `true`', () => {
-      it('renders the new GOV.UK logotype', () => {
+    describe('when `govukUnbranded` nunjucks global is set to `true`', () => {
+      it('does not render the GOV.UK logotype', () => {
         const env = nunjucksEnv()
-        env.addGlobal('govukRebrand', true)
+        env.addGlobal('govukUnbranded', true)
 
         const $ = render('header', {
           ...examples.default,
           env
         })
 
-        expect($('.govuk-logo-dot')).not.toBeNull()
+        expect($('.govuk-header__logotype')).toHaveLength(0)
       })
     })
   })

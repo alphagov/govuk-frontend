@@ -69,35 +69,35 @@ describe('Template', () => {
       expect(document.documentElement).toHaveClass('my-custom-class')
     })
 
-    it('adds the rebrand class if govukRebrand is set to true', () => {
+    it('adds the unbranded class if govukUnbranded is set to true', () => {
       replacePageWith(
         renderTemplate('govuk/template.njk', {
           context: {
-            govukRebrand: true
+            govukUnbranded: true
           }
         })
       )
 
-      expect(document.documentElement).toHaveClass('govuk-template--rebranded')
+      expect(document.documentElement).toHaveClass('govuk-template--unbranded')
     })
 
-    it('adds the rebrand class if govukRebrand is set to true in a nunjucks template `set`', () => {
+    it('adds the unbranded class if govukUnbranded is set to true in a nunjucks template `set`', () => {
       // Passing `set` applies a nunjucks `set` in `renderTemplate` rather
       // than just applying the context
       replacePageWith(
         renderTemplate('govuk/template.njk', {
           set: {
-            govukRebrand: true
+            govukUnbranded: true
           }
         })
       )
 
-      expect(document.documentElement).toHaveClass('govuk-template--rebranded')
+      expect(document.documentElement).toHaveClass('govuk-template--unbranded')
     })
 
-    it('adds the rebrand class if govukRebrand is set to true as a nunjucks global bool', () => {
+    it('adds the unbranded class if govukUnbranded is set to true as a nunjucks global bool', () => {
       const env = nunjucksEnv()
-      env.addGlobal('govukRebrand', true)
+      env.addGlobal('govukUnbranded', true)
 
       replacePageWith(
         renderTemplate('govuk/template.njk', {
@@ -105,12 +105,12 @@ describe('Template', () => {
         })
       )
 
-      expect(document.documentElement).toHaveClass('govuk-template--rebranded')
+      expect(document.documentElement).toHaveClass('govuk-template--unbranded')
     })
 
-    it('adds the rebrand class if govukRebrand is set to true as a nunjucks global function', () => {
+    it('adds the unbranded class if govukUnbranded is set to true as a nunjucks global function', () => {
       const env = nunjucksEnv()
-      env.addGlobal('govukRebrand', () => true)
+      env.addGlobal('govukUnbranded', () => true)
 
       replacePageWith(
         renderTemplate('govuk/template.njk', {
@@ -118,7 +118,7 @@ describe('Template', () => {
         })
       )
 
-      expect(document.documentElement).toHaveClass('govuk-template--rebranded')
+      expect(document.documentElement).toHaveClass('govuk-template--unbranded')
     })
 
     it('renders valid HTML', () => {
@@ -172,25 +172,22 @@ describe('Template', () => {
       expect($icon).toHaveAttribute('href', '/assets/images/favicon.ico')
     })
 
-    it('uses a default assets path of /assets/rebrand if govukRebrand is true', () => {
+    it('removes icon assets if govukUnbranded is true', () => {
       replacePageWith(
         renderTemplate('govuk/template.njk', {
           context: {
-            govukRebrand: true
+            govukUnbranded: true
           }
         })
       )
       const $icon = document.querySelector('link[rel="icon"][sizes="48x48"]')
 
-      expect($icon).toHaveAttribute(
-        'href',
-        '/assets/rebrand/images/favicon.ico'
-      )
+      expect($icon).toBeNull()
     })
 
-    it('uses a default assets path of /assets/rebrand if govukRebrand is true as a nunjucks global', () => {
+    it('removes icon assets if govukUnbranded is true as a nunjucks global', () => {
       const env = nunjucksEnv()
-      env.addGlobal('govukRebrand', true)
+      env.addGlobal('govukUnbranded', true)
 
       replacePageWith(
         renderTemplate('govuk/template.njk', {
@@ -199,10 +196,7 @@ describe('Template', () => {
       )
       const $icon = document.querySelector('link[rel="icon"][sizes="48x48"]')
 
-      expect($icon).toHaveAttribute(
-        'href',
-        '/assets/rebrand/images/favicon.ico'
-      )
+      expect($icon).toBeNull()
     })
 
     it('can have the assets path overridden using assetPath', () => {
@@ -240,7 +234,7 @@ describe('Template', () => {
       it('has a mask-icon', () => {
         const $icon = document.querySelector('link[rel="mask-icon"]')
 
-        expect($icon).toHaveAttribute('color', '#0b0c0c')
+        expect($icon).toHaveAttribute('color', '#1d70b8')
         expect($icon).toHaveAttribute(
           'href',
           '/assets/images/govuk-icon-mask.svg'
@@ -308,29 +302,29 @@ describe('Template', () => {
     })
 
     describe('<meta name="theme-color">', () => {
-      it('has a default content of #0b0c0c', () => {
+      it('has a default content of #1d70b8', () => {
         replacePageWith(renderTemplate('govuk/template.njk'))
-        const $themeColor = document.querySelector('meta[name="theme-color"]')
-
-        expect($themeColor).toHaveAttribute('content', '#0b0c0c')
-      })
-
-      it('has a default content of #1d70b8 if govukRebrand is true', () => {
-        replacePageWith(
-          renderTemplate('govuk/template.njk', {
-            context: {
-              govukRebrand: true
-            }
-          })
-        )
         const $themeColor = document.querySelector('meta[name="theme-color"]')
 
         expect($themeColor).toHaveAttribute('content', '#1d70b8')
       })
 
-      it('has a default content of #1d70b8 if govukRebrand is true as a nunjucks global', () => {
+      it('has a default content of #0b0c0c if govukUnbranded is true', () => {
+        replacePageWith(
+          renderTemplate('govuk/template.njk', {
+            context: {
+              govukUnbranded: true
+            }
+          })
+        )
+        const $themeColor = document.querySelector('meta[name="theme-color"]')
+
+        expect($themeColor).toHaveAttribute('content', '#0b0c0c')
+      })
+
+      it('has a default content of #0b0c0c if govukUnbranded is true as a nunjucks global', () => {
         const env = nunjucksEnv()
-        env.addGlobal('govukRebrand', true)
+        env.addGlobal('govukUnbranded', true)
 
         replacePageWith(
           renderTemplate('govuk/template.njk', {
@@ -339,7 +333,7 @@ describe('Template', () => {
         )
         const $themeColor = document.querySelector('meta[name="theme-color"]')
 
-        expect($themeColor).toHaveAttribute('content', '#1d70b8')
+        expect($themeColor).toHaveAttribute('content', '#0b0c0c')
       })
 
       it('can be overridden using themeColor', () => {
@@ -619,18 +613,18 @@ describe('Template', () => {
         expect(document.querySelector('.govuk-header')).not.toBeInTheDocument()
       })
 
-      it('sets the rebrand param to true by default if govukRebrand is true', () => {
+      it('sets the unbranded param to true by default if govukUnbranded is true', () => {
         replacePageWith(
           renderTemplate('govuk/template.njk', {
             context: {
-              govukRebrand: true
+              govukUnbranded: true
             }
           })
         )
 
         expect(
-          document.querySelector('.govuk-header .govuk-logo-dot')
-        ).toBeInTheDocument()
+          document.querySelector('.govuk-header__logotype')
+        ).toBeNull()
       })
 
       describe('govukHeader block', () => {
@@ -1044,18 +1038,18 @@ describe('Template', () => {
         expect(document.querySelector('.govuk-footer')).not.toBeInTheDocument()
       })
 
-      it('sets the rebrand param to true by default if govukRebrand is true', () => {
+      it('sets the unbranded param to true by default if govukUnbranded is true', () => {
         replacePageWith(
           renderTemplate('govuk/template.njk', {
             context: {
-              govukRebrand: true
+              govukUnbranded: true
             }
           })
         )
 
         expect(
-          document.querySelector('.govuk-footer .govuk-footer__crown')
-        ).toBeInTheDocument()
+          document.querySelector('.govuk-footer__crown')
+        ).toBeNull()
       })
 
       describe('govukFooter block', () => {

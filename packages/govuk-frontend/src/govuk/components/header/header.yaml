@@ -19,10 +19,10 @@ params:
     type: object
     required: false
     description: HTML attributes (for example data attributes) to add to the header container.
-  - name: rebrand
+  - name: unbranded
     type: boolean
     required: false
-    description: If `true`, use the redesigned header and new GOV.UK logotype. Default is `false`.
+    description: If `true`, removes the GOV.UK logo and brand blue from the component. Default is `false`.
 
 previewLayout: full-width
 accessibilityCriteria: |
@@ -83,20 +83,19 @@ examples:
   # these examples are included in screenshots but hidden in the app because the
   # interaction with the 'rebrand' feature flag is confusing.
 
-  - name: rebrand
-    description: The standard header as used on information pages on GOV.UK
+  - name: unbranded
     hidden: true
     screenshot: true
     pageTemplateOptions:
-      htmlClasses: govuk-template--rebranded
+      htmlClasses: govuk-template--unbranded
     options:
-      rebrand: true
+      unbranded: true
 
-  - name: with product name and rebrand
+  - name: with product name and unbranded
     hidden: true
     screenshot: true
     pageTemplateOptions:
-      htmlClasses: govuk-template--rebranded
+      htmlClasses: govuk-template--unbranded
     options:
       productName: Product Name
-      rebrand: true
+      unbranded: true

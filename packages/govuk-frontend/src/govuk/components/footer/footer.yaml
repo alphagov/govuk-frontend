@@ -508,10 +508,10 @@ examples:
   # this rebrand example is included in screenshots but hidden in the app because
   # the interaction with the 'rebrand' feature flag is confusing.
 
-  - name: rebrand
+  - name: unbranded
     hidden: true
     screenshot: true
     pageTemplateOptions:
-      htmlClasses: govuk-template--rebranded
+      htmlClasses: govuk-template--unbranded
     options:
-      rebrand: true
+      unbranded: true
