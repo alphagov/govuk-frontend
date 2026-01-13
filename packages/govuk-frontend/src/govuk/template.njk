@@ -4,14 +4,14 @@
 {% from "./components/service-navigation/macro.njk" import govukServiceNavigation -%}
 {% from "./components/footer/macro.njk" import govukFooter -%}
 
-{%- set _rebrand = govukRebrand() if govukRebrand is callable else govukRebrand -%}
+{%- set unbranded = govukUnbranded() if govukUnbranded is callable else govukUnbranded -%}
 
-{# Hardcoded value is $govuk-brand-blue if rebrand, otherwise govuk-colour("black") -#}
-{% set themeColor = themeColor | default("#1d70b8" if _rebrand else "#0b0c0c", true) -%}
-{% set assetPath = assetPath | default("/assets/rebrand" if _rebrand else "/assets", true) -%}
+{# Hardcoded to $govuk-brand-blue if using GOV.UK brand, black otherwise -#}
+{% set themeColor = themeColor | default("#000000" if unbranded else "#1d70b8", true) -%}
+{% set assetPath = assetPath | default("/assets/rebrand", true) -%}
 
 <!DOCTYPE html>
-<html lang="{{ htmlLang | default("en", true) }}" class="govuk-template {%- if _rebrand %} govuk-template--rebranded{% endif %} {%- if htmlClasses %} {{ htmlClasses }}{% endif %}">
+<html lang="{{ htmlLang | default("en", true) }}" class="govuk-template {%- if unbranded %} govuk-template--unbranded{% endif %} {%- if htmlClasses %} {{ htmlClasses }}{% endif %}">
   <head>
     <meta charset="utf-8">
     <title {%- if pageTitleLang %} lang="{{ pageTitleLang }}"{% endif %}>{% block pageTitle %}GOV.UK - The best place to find government services and information{% endblock %}</title>
@@ -21,11 +21,13 @@
     {% block head %}{% endblock %}
 
     {% block headIcons %}
-      <link rel="icon" sizes="48x48" href="{{ assetPath }}/images/favicon.ico">
-      <link rel="icon" sizes="any" href="{{ assetPath }}/images/favicon.svg" type="image/svg+xml">
-      <link rel="mask-icon" href="{{ assetPath }}/images/govuk-icon-mask.svg" color="{{ themeColor }}">
-      <link rel="apple-touch-icon" href="{{ assetPath }}/images/govuk-icon-180.png">
-      <link rel="manifest" href="{{ assetPath }}/manifest.json">
+      {% if not unbranded %}
+        <link rel="icon" sizes="48x48" href="{{ assetPath }}/images/favicon.ico">
+        <link rel="icon" sizes="any" href="{{ assetPath }}/images/favicon.svg" type="image/svg+xml">
+        <link rel="mask-icon" href="{{ assetPath }}/images/govuk-icon-mask.svg" color="{{ themeColor }}">
+        <link rel="apple-touch-icon" href="{{ assetPath }}/images/govuk-icon-180.png">
+        <link rel="manifest" href="{{ assetPath }}/manifest.json">
+      {% endif  %}
     {% endblock %}
 
     {#- OpenGraph images needs to be absolute, so we need either a URL for the image or for assetUrl to be set #}
@@ -60,7 +62,7 @@
         {% block headerStart %}{% endblock %}
         {% block govukHeader %}
           {{ govukHeader({
-            rebrand: _rebrand
+            unbranded: unbranded
           }) }}
         {% endblock %}
         {% block govukServiceNavigation %}
@@ -101,7 +103,7 @@
         {% block footerStart %}{% endblock %}
         {% block govukFooter %}
           {{ govukFooter({
-            rebrand: _rebrand
+            unbranded: unbranded
           }) }}
         {% endblock %}
         {% block footerEnd %}{% endblock %}

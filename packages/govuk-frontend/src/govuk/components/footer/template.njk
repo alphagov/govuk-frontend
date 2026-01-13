@@ -1,15 +1,14 @@
 {% from "../../macros/attributes.njk" import govukAttributes -%}
 {% from "../../macros/logo.njk" import govukLogo -%}
 
-{%- set _rebrand = params.rebrand | default(govukRebrand() if govukRebrand is callable else govukRebrand) -%}
+{%- set unbranded = params.unbranded | default(govukUnbranded() if govukUnbranded is callable else govukUnbranded) -%}
 
 <div class="govuk-footer {%- if params.classes %} {{ params.classes }}{% endif %}"
   {{- govukAttributes(params.attributes) }}>
   <div class="govuk-width-container {%- if params.containerClasses %} {{ params.containerClasses }}{% endif %}">
-    {% if _rebrand %}
+    {% if not unbranded %}
       {{- govukLogo({
         classes: 'govuk-footer__crown',
-        rebrand: true,
         useLogotype: false
       }) }}
     {% endif %}
