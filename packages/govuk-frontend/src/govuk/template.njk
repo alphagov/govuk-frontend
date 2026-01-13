@@ -8,7 +8,7 @@
 
 {# Hardcoded to $govuk-brand-blue if using GOV.UK brand, black otherwise -#}
 {% set themeColor = themeColor | default("#0b0c0c" if unbranded else "#1d70b8", true) -%}
-{% set assetPath = assetPath | default("/assets/rebrand", true) -%}
+{% set assetPath = assetPath | default("/assets", true) -%}
 
 <!DOCTYPE html>
 <html lang="{{ htmlLang | default("en", true) }}" class="govuk-template {%- if unbranded %} govuk-template--unbranded{% endif %} {%- if htmlClasses %} {{ htmlClasses }}{% endif %}">
