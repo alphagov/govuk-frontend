@@ -3,15 +3,8 @@
   $govuk-header-border-color: govuk-functional-colour(brand);
   $govuk-header-border-width: govuk-spacing(2);
   $govuk-header-text: govuk-colour("white");
-  $govuk-header-link-active: #1d8feb;
-  $govuk-header-nav-item-border-color: #2e3133;
   $govuk-header-link-underline-thickness: 3px;
   $govuk-header-vertical-spacing-value: 2;
-  // This crown height is only used to calculate top offset of mobile menu button
-  // as the crown svg height is the only thing that controls the height of the header
-  $govuk-header-crown-height: 30px;
-  $govuk-header-menu-button-height: 24px;
-  $govuk-header-menu-button-width: 80px;
 
   $govuk-header-rebrand-background: govuk-functional-colour(brand);
   $govuk-header-rebrand-logo-bottom-margin: 2px;
