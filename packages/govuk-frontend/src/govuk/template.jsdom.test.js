@@ -622,9 +622,7 @@ describe('Template', () => {
           })
         )
 
-        expect(
-          document.querySelector('.govuk-header__logotype')
-        ).toBeNull()
+        expect(document.querySelector('.govuk-header__logotype')).toBeNull()
       })
 
       describe('govukHeader block', () => {
@@ -1047,9 +1045,7 @@ describe('Template', () => {
           })
         )
 
-        expect(
-          document.querySelector('.govuk-footer__crown')
-        ).toBeNull()
+        expect(document.querySelector('.govuk-footer__crown')).toBeNull()
       })
 
       describe('govukFooter block', () => {

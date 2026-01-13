@@ -36,7 +36,7 @@ describe('footer', () => {
     const $ = render('footer', examples.default)
 
     const $crown = $('.govuk-footer__crown')
-    expect($crown)..toHaveLength(1)
+    expect($crown).toHaveLength(1)
   })
 
   describe('meta', () => {
