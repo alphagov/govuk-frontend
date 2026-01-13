@@ -1,0 +1,32 @@
+////
+/// @group tools
+////
+
+/// Wraps unbranded properties in the feature flag selector
+///
+/// @example scss - Wrap a block of multiple properties
+///   .foo {
+///     border-width: 1px;
+///     border-colour: #fff;
+///
+///     @include _govuk-unbranded {
+///       border-width: 10px;
+///       border-colour: #000;
+///     }
+///   }
+///
+/// @access private
+
+@mixin _govuk-unbranded {
+  $selector: "#{&}";
+
+  @if $selector == ".govuk-template" {
+    @at-root .govuk-template--unbranded {
+      @content;
+    }
+  } @else {
+    .govuk-template--unbranded & {
+      @content;
+    }
+  }
+}

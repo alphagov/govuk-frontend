@@ -91,11 +91,11 @@ examples:
     options:
       unbranded: true
 
-  - name: with product name and unbranded
+  - name: unbranded with product name
     hidden: true
     screenshot: true
     pageTemplateOptions:
       htmlClasses: govuk-template--unbranded
     options:
-      productName: Product Name
       unbranded: true
+      productName: Product Name
