@@ -16,7 +16,6 @@ describe('GOV.UK Frontend custom properties', () => {
     const sass = `
       @import "base";
       @import "core/govuk-frontend-properties";
-      @import "core/govuk-frontend-properties";
     `
 
     const { css } = await compileSassString(sass)
