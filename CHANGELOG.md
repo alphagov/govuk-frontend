@@ -6,11 +6,11 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 ### New features
 
-#### The GOV.UK footer component now allows the removal of OGL Content Licence information
+#### The GOV.UK footer component now allows the removal of content licence information
 
-If your service does not provide information under the Open Government Licence (OGL), you can now remove it from the GOV.UK footer.
+If your service does not provide information under the Open Government Licence (OGL), you can now remove the content licence information from the GOV.UK footer.
 
-If you're using Nunjucks, set the `contentLicence` parameter to `null`:
+If you use Nunjucks, set the `contentLicence` parameter to `null`:
 
 ```nunjucks
 {{ govukFooter({
@@ -20,28 +20,30 @@ If you're using Nunjucks, set the `contentLicence` parameter to `null`:
 
 We introduced this feature in the following pull requests:
 
-- [#6527: Allow false value to turn off contentLicence in GOV.UK Footer](https://github.com/alphagov/govuk-frontend/pull/6527). Thanks to @NickColley for making this change.
-- [#6586: Use null rather than false to hide the content licence](https://github.com/alphagov/govuk-frontend/pull/6586). Thanks to @gunndabad for reporting the issue.
+- [#6527: Allow false value to turn off contentLicence in GOV.UK Footer](https://github.com/alphagov/govuk-frontend/pull/6527) – thanks to @NickColley for making this change.
+- [#6586: Use `null` rather than `false` to hide the content licence](https://github.com/alphagov/govuk-frontend/pull/6586) – thanks to @gunndabad for reporting this issue.
 
-### Fixes
+### Recommended changes
 
 #### Add `aria-hidden="true"` to the Service navigation's menu toggle
 
-If you do not use Nunjucks macros to generate your components' HTML, add an `aria-hidden="true"` attribute to the hidden `<button>` element of the Service navigation.
+The VoiceOver screen reader software for macOS and iPadOS contains bugs that make the menu toggle in the Service navigation accessible to VoiceOver users, even if the button has a `hidden` attribute.
 
-The VoiceOver screen reader software for macOS and iPadOS contains bugs that make the button accessible to VoiceOver users, even if the button has a `hidden` attribute. Adding the `aria-hidden="true"` attribute means the button will remain hidden for VoiceOver users.
+If you use Nunjucks, you do not have to do anything.
 
-We made this change in [pull request #6469: \[v5\] Fix VoiceOver access to `hidden` Service Navigation menu button](https://github.com/alphagov/govuk-frontend/pull/6469).
+If you do not use Nunjucks to generate your components' HTML, add an `aria-hidden="true"` attribute to the hidden `<button>` element of the Service navigation. This means the button will remain hidden for VoiceOver users.
 
-#### Other fixes
+We made this change in [pull request #6469: Fix VoiceOver access to `hidden` Service Navigation menu button](https://github.com/alphagov/govuk-frontend/pull/6469).
+
+### Fixes
 
 We've made fixes to GOV.UK Frontend in the following pull requests:
 
 - [#6351: Preserve already escaped `attributes` values to prevent double escaping](https://github.com/alphagov/govuk-frontend/pull/6351)
-- [#6438: Fix pagination outputting empty links when provided a null or empty value](https://github.com/alphagov/govuk-frontend/pull/6438) – thanks to @NikhilNanjappa for reporting this issue
+- [#6438: Fix pagination outputting empty links when provided a null or empty value](https://github.com/alphagov/govuk-frontend/pull/6438) – thanks to @NikhilNanjappa for reporting this issue.
 - [#6531: Prevent date inputs shifting alignment on iOS 18](https://github.com/alphagov/govuk-frontend/pull/6531) – thanks to @rowellx68 for reporting this issue and @colinrotherham for suggesting the fix.
 - [#6528: Fix hover state on focused small radios](https://github.com/alphagov/govuk-frontend/pull/6528)
-- [#6529: Fix rebranded header background being visible when printed](https://github.com/alphagov/govuk-frontend/pull/6529) - thanks to @lewis-softwire for reporting this issue
+- [#6529: Fix rebranded header background being visible when printed](https://github.com/alphagov/govuk-frontend/pull/6529) – thanks to @lewis-softwire for reporting this issue.
 - [#6462: Update HMRC brand colour](https://github.com/alphagov/govuk-frontend/pull/6462)
 - [#6539: Fix skip link outline being clipped in forced colours mode](https://github.com/alphagov/govuk-frontend/pull/6539)
 
