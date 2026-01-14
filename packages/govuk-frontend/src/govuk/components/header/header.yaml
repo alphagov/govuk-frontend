@@ -19,10 +19,6 @@ params:
     type: object
     required: false
     description: HTML attributes (for example data attributes) to add to the header container.
-  - name: rebrand
-    type: boolean
-    required: false
-    description: If `true`, use the redesigned header and new GOV.UK logotype. Default is `false`.
 
 previewLayout: full-width
 accessibilityCriteria: |
@@ -59,11 +55,6 @@ examples:
     options:
       containerClasses: govuk-header__container--full-width
 
-  - name: with full width border
-    description: Makes the header's bottom border full width without affecting the header's content. Removed with redesign.
-    options:
-      classes: govuk-header--full-width-border
-
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: attributes
     hidden: true
@@ -79,24 +70,3 @@ examples:
     hidden: true
     options:
       homepageUrl: /
-
-  # these examples are included in screenshots but hidden in the app because the
-  # interaction with the 'rebrand' feature flag is confusing.
-
-  - name: rebrand
-    description: The standard header as used on information pages on GOV.UK
-    hidden: true
-    screenshot: true
-    pageTemplateOptions:
-      htmlClasses: govuk-template--rebranded
-    options:
-      rebrand: true
-
-  - name: with product name and rebrand
-    hidden: true
-    screenshot: true
-    pageTemplateOptions:
-      htmlClasses: govuk-template--rebranded
-    options:
-      productName: Product Name
-      rebrand: true
