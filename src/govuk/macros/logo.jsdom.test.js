@@ -13,14 +13,15 @@ describe('logo.njk', () => {
       $svg = document.querySelector('svg')
     })
 
-    it('defaults to Tudor crown', () => {
-      expect($svg).toHaveAttribute('viewBox', '0 0 296 60')
+    it('displays Tudor crown', () => {
+      expect($svg).toHaveAttribute('viewBox', '0 0 324 60')
     })
 
-    it('defaults to old logotype', () => {
-      const $logotypeDot = $svg.querySelector('.govuk-logo-dot')
+    it('displays logotype', () => {
+      const $logotypeDot = $svg.querySelector('g ~ circle')
 
-      expect($logotypeDot).toBeNull()
+      expect($logotypeDot).not.toBeNull()
+      expect($logotypeDot).toHaveClass('govuk-logo-dot')
     })
 
     it('sets `focusable="false"` so that IE does not treat it as an interactive element', () => {
@@ -128,34 +129,6 @@ describe('logo.njk', () => {
 
       expect($crown).not.toBeNull()
       expect($logotype).toBeNull()
-    })
-  })
-
-  describe('if `rebrand` is true', () => {
-    let $svg
-
-    beforeAll(() => {
-      document.body.innerHTML = renderMacro(
-        'govukLogo',
-        './govuk/macros/logo.njk',
-        {
-          context: {
-            rebrand: true
-          }
-        }
-      )
-      $svg = document.querySelector('svg')
-    })
-
-    it('uses the Dot logotype if `rebrand` is true', () => {
-      const $logotypeDot = $svg.querySelector('g ~ circle')
-
-      expect($logotypeDot).not.toBeNull()
-      expect($logotypeDot).toHaveClass('govuk-logo-dot')
-    })
-
-    it('forces use of the Tudor Crown if `rebrand` is true', () => {
-      expect($svg).toHaveAttribute('viewBox', '0 0 324 60')
     })
   })
 })
