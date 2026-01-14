@@ -4,6 +4,8 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 ## Unreleased
 
+## v5.14.0 (Feature release)
+
 ### New features
 
 #### The GOV.UK footer component now allows the removal of content licence information
