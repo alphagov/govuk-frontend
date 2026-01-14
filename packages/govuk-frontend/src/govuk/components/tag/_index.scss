@@ -22,13 +22,13 @@
     margin-bottom: -3px;
 
     padding-top: 4px;
-    padding-right: 8px;
+    padding-right: 12px;
     padding-bottom: 4px;
-    padding-left: 8px;
-    border: 2px solid govuk-colour("blue", $variant: "tint-50");
+    padding-left: 12px;
+    border: 1px solid govuk-colour("blue", $variant: "tint-50");
     border-radius: 20px;
     color: govuk-colour("blue", $variant: "shade-50");
-    background-color: govuk-colour("blue", $variant: "tint-50");
+    background-color: govuk-colour("blue", $variant: "tint-80");
     text-decoration: none;
     overflow-wrap: break-word;
 
