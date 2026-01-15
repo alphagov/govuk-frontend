@@ -4,7 +4,6 @@ describe('GOV.UK Frontend custom properties', () => {
   it('outputs a custom property with the package version', async () => {
     const sass = `
       @import "base";
-      @import "core/govuk-frontend-properties";
     `
 
     const { css } = await compileSassString(sass)
@@ -15,7 +14,6 @@ describe('GOV.UK Frontend custom properties', () => {
   it('does not output custom properties more than once when included multiple times', async () => {
     const sass = `
       @import "base";
-      @import "core/govuk-frontend-properties";
     `
 
     const { css } = await compileSassString(sass)
@@ -34,7 +32,6 @@ describe('GOV.UK Frontend custom properties', () => {
           desktop: 760px,
         );
         @import "base";
-        @import "core/govuk-frontend-properties";
       `
 
       const { css } = await compileSassString(sass)
@@ -48,8 +45,6 @@ describe('GOV.UK Frontend custom properties', () => {
     it('outputs one custom property for each functional colour', async () => {
       const sass = `
         @import "base";
-
-        @import "core/govuk-frontend-properties";
       `
 
       const { css } = await compileSassString(sass)

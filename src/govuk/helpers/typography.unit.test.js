@@ -54,7 +54,8 @@ const sassBootstrap = `
     )
   );
 
-  @import "base";
+  @import "settings";
+  @import "helpers";
 `
 
 describe('@mixin govuk-typography-common', () => {
@@ -365,7 +366,8 @@ describe('@mixin govuk-font-size', () => {
         )
       );
 
-      @import "base";
+      @import "settings";
+      @import "helpers";
 
       .foo {
         @include govuk-font-size($size: "small")
