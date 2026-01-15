@@ -18,7 +18,7 @@ describe('@mixin _govuk-rebrand', () => {
     `
 
     await expect(compileSassString(sass)).resolves.toMatchObject({
-      css: outdent`
+      css: expect.stringContaining(outdent`
         .foo {
           border-width: 1px;
           border-colour: #fff;
@@ -27,7 +27,7 @@ describe('@mixin _govuk-rebrand', () => {
           border-width: 10px;
           border-colour: #000;
         }
-      `
+      `)
     })
   })
 
@@ -42,14 +42,14 @@ describe('@mixin _govuk-rebrand', () => {
       `
 
       await expect(compileSassString(sass)).resolves.toMatchObject({
-        css: outdent`
+        css: expect.stringContaining(outdent`
           .foo {
             background-color: #fff;
           }
           .govuk-template--rebranded .foo {
             background-color: #000;
           }
-        `
+        `)
       })
     })
 
@@ -99,7 +99,7 @@ describe('@mixin _govuk-rebrand', () => {
       `
 
       await expect(compileSassString(sass)).resolves.toMatchObject({
-        css: outdent`
+        css: expect.stringContaining(outdent`
           .govuk-template {
             border-width: 1px;
             border-colour: #fff;
@@ -108,7 +108,7 @@ describe('@mixin _govuk-rebrand', () => {
             border-width: 10px;
             border-colour: #000;
           }
-        `
+        `)
       })
     })
 
@@ -124,14 +124,14 @@ describe('@mixin _govuk-rebrand', () => {
       `
 
       await expect(compileSassString(sass)).resolves.toMatchObject({
-        css: outdent`
+        css: expect.stringContaining(outdent`
           .govuk-template {
             background-color: #fff;
           }
           .govuk-template--rebranded {
             background-color: #000;
           }
-        `
+        `)
       })
     })
   })

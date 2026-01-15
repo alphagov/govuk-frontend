@@ -5,7 +5,6 @@ describe('$govuk-output-custom-properties', () => {
     const sass = `
       $govuk-output-custom-properties: true;
       @import "base";
-      @import "core/govuk-frontend-properties";
     `
 
     const { css } = await compileSassString(sass)
@@ -18,7 +17,6 @@ describe('$govuk-output-custom-properties', () => {
     const sass = `
       $govuk-output-custom-properties: false;
       @import "base";
-      @import "core/govuk-frontend-properties";
     `
 
     const { css } = await compileSassString(sass)
@@ -33,10 +31,9 @@ describe('$govuk-output-custom-properties', () => {
       const sass = `
       $govuk-output-custom-properties: ${state};
       @import "base";
-      @import "core/govuk-frontend-properties";
     `
 
-      let { css } = await compileSassString(sass)
+      const { css } = await compileSassString(sass)
 
       await expect(css).toContain('--govuk-frontend-version')
     }
