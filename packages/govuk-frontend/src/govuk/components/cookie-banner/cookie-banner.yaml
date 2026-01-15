@@ -314,27 +314,3 @@ examples:
           actions:
             - text: Hide cookie message
               type: button
-
-  # this rebrand example is included in screenshots but hidden in the app because
-  # the interaction with the 'rebrand' feature flag is confusing.
-
-  - name: rebrand
-    hidden: true
-    screenshot: true
-    pageTemplateOptions:
-      htmlClasses: govuk-template--rebranded
-    options:
-      messages:
-        - headingText: Cookies on this government service
-          text: We use analytics cookies to help understand how users use our service.
-          actions:
-            - text: Accept analytics cookies
-              type: submit
-              name: cookies
-              value: accept
-            - text: Reject analytics cookies
-              type: submit
-              name: cookies
-              value: reject
-            - text: View cookie preferences
-              href: /cookie-preferences
