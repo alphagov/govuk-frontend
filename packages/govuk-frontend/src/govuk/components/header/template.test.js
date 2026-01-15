@@ -1,5 +1,5 @@
 const { render } = require('@govuk-frontend/helpers/nunjucks')
-const { nunjucksEnv, getExamples } = require('@govuk-frontend/lib/components')
+const { getExamples } = require('@govuk-frontend/lib/components')
 
 describe('header', () => {
   let examples
@@ -51,30 +51,6 @@ describe('header', () => {
       const $component = $('.govuk-header')
       const $productName = $component.find('.govuk-header__product-name')
       expect($productName.text().trim()).toBe('Product Name')
-    })
-  })
-
-  describe('rebrand', () => {
-    describe('when local `rebrand` parameter is enabled', () => {
-      it('renders the new GOV.UK logotype', () => {
-        const $ = render('header', examples.rebrand)
-
-        expect($('.govuk-logo-dot')).not.toBeNull()
-      })
-    })
-
-    describe('when `govukRebrand` nunjucks global is set to `true`', () => {
-      it('renders the new GOV.UK logotype', () => {
-        const env = nunjucksEnv()
-        env.addGlobal('govukRebrand', true)
-
-        const $ = render('header', {
-          ...examples.default,
-          env
-        })
-
-        expect($('.govuk-logo-dot')).not.toBeNull()
-      })
     })
   })
 })
