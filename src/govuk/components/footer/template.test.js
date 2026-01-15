@@ -1,5 +1,5 @@
 const { render } = require('@govuk-frontend/helpers/nunjucks')
-const { nunjucksEnv, getExamples } = require('@govuk-frontend/lib/components')
+const { getExamples } = require('@govuk-frontend/lib/components')
 
 describe('footer', () => {
   let examples
@@ -30,6 +30,13 @@ describe('footer', () => {
     const $container = $component.find('.govuk-width-container')
 
     expect($container.hasClass('app-width-container')).toBeTruthy()
+  })
+
+  it('renders the crown in the footer by default', () => {
+    const $ = render('footer', examples.default)
+
+    const $crown = $('.govuk-footer__crown')
+    expect($crown).toHaveLength(1)
   })
 
   describe('meta', () => {
@@ -274,35 +281,6 @@ describe('footer', () => {
       expect($copyrightMessage.html()).toContain(
         '&lt;span&gt;Hawlfraint y Goron&lt;/span&gt;'
       )
-    })
-  })
-
-  describe('rebrand', () => {
-    it('Does not show the crown in the footer by default', () => {
-      const $ = render('footer', examples.default)
-
-      const $crown = $('.govuk-footer__crown')
-      expect($crown).toHaveLength(0)
-    })
-
-    it('Does render the crown if the `rebrand` option is set', () => {
-      const $ = render('footer', examples.rebrand)
-
-      const $crown = $('.govuk-footer__crown')
-      expect($crown).toHaveLength(1)
-    })
-
-    it('Does render the crown if the `govukRebrand` nunjucks global is set to true', () => {
-      const env = nunjucksEnv()
-      env.addGlobal('govukRebrand', true)
-
-      const $ = render('footer', {
-        ...examples.default,
-        env
-      })
-
-      const $crown = $('.govuk-footer__crown')
-      expect($crown).toHaveLength(1)
     })
   })
 })

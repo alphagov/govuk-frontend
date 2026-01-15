@@ -15,11 +15,7 @@
     border-top: 10px solid;
     border-top-color: govuk-functional-colour(brand);
     color: $govuk-footer-text;
-    @include _govuk-rebrand(
-      "background",
-      $from: $govuk-footer-background,
-      $to: $_govuk-rebrand-template-background-colour
-    );
+    background: $_govuk-rebrand-template-background-colour;
   }
 
   .govuk-footer__crown {
@@ -35,12 +31,7 @@
     margin: 0; // Reset `<hr>` default margins
     @include govuk-responsive-margin(8, "bottom");
     border: 0; // Reset `<hr>` default borders
-    border-bottom: 1px solid;
-    @include _govuk-rebrand(
-      "border-bottom-color",
-      $from: $govuk-footer-content-border,
-      $to: $_govuk-rebrand-border-colour-on-blue-tint-95
-    );
+    border-bottom: 1px solid $_govuk-rebrand-border-colour-on-blue-tint-95;
   }
 
   .govuk-footer__meta {
@@ -150,12 +141,7 @@
       padding-bottom: govuk-spacing(2);
     }
 
-    border-bottom: 1px solid;
-    @include _govuk-rebrand(
-      "border-bottom-color",
-      $from: $govuk-footer-content-border,
-      $to: $_govuk-rebrand-border-colour-on-blue-tint-95
-    );
+    border-bottom: 1px solid $_govuk-rebrand-border-colour-on-blue-tint-95;
   }
 
   .govuk-footer__navigation {
