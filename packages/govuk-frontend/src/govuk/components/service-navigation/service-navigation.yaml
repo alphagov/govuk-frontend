@@ -201,7 +201,7 @@ examples:
         - href: '#/4'
           text: Navigation item 4
   - name: inverse
-    description: Service navigation that appears between other areas of brand blue. Rebrand only.
+    description: Service navigation that appears sandwiched between other areas of brand blue, such as the GOV.UK header and a custom page masthead.
     pageTemplateOptions:
       bodyClasses: app-template__body--inverse
     options:
