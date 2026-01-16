@@ -5,6 +5,10 @@ describe('$govuk-output-custom-properties', () => {
     const sass = `
       $govuk-output-custom-properties: true;
       @import "base";
+
+      :root {
+        @include _govuk-custom-properties;
+      }
     `
 
     const { css } = await compileSassString(sass)
@@ -17,6 +21,10 @@ describe('$govuk-output-custom-properties', () => {
     const sass = `
       $govuk-output-custom-properties: false;
       @import "base";
+
+      :root {
+        @include _govuk-custom-properties;
+      }
     `
 
     const { css } = await compileSassString(sass)
@@ -31,6 +39,10 @@ describe('$govuk-output-custom-properties', () => {
       const sass = `
       $govuk-output-custom-properties: ${state};
       @import "base";
+
+      :root {
+        @include _govuk-custom-properties;
+      }
     `
 
       const { css } = await compileSassString(sass)

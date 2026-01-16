@@ -1,4 +1,11 @@
+@import "../settings/media-queries";
+@import "../settings/colours-functional";
 @import "../settings/custom-properties";
+@import "../tools/px-to-rem";
+
+////
+/// @group helpers/custom-properties
+////
 
 /// Outputs GOV.UK Frontend custom properties on `:root`
 ///
