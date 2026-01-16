@@ -279,7 +279,7 @@ If you were redefining a custom value for the functional colour before importing
 $govuk-functional-colours: (
   brand: rebeccapurple
 );
-@import 'pkg:govuk-frontend';
+@import "node_modules/govuk-frontend/dist/govuk/index";
 ```
 
 Note that you can only redefine existing functional colours, not add new functional colours. This is to make sure there's a clear separation between colours from GOV.UK Frontend and colours from your own project.
