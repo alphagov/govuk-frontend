@@ -1,8 +1,0 @@
-@import "../tools/exports";
-@import "../helpers/custom-properties";
-
-@include govuk-exports("govuk/core/govuk-frontend-properties") {
-  :root {
-    @include _govuk-custom-properties;
-  }
-}
