@@ -4,6 +4,16 @@ For advice on how to use these release notes, see [our guidance on staying up to
 
 ## Unreleased
 
+### New features
+
+#### Use `$govuk-output-custom-properties` to specify if custom properties are included in your CSS
+
+We've added a new Sass variable `$govuk-output-custom-properties` which controls if GOV.UK Frontend CSS custom properties are included in your processed CSS or not.
+
+If you import different parts of GOV.UK Frontend in separate stylesheets, this helps you avoid duplicating the CSS declarations for the custom properties.
+
+We made this change in [pull request #6606: Enable better control over custom property outputting](https://github.com/alphagov/govuk-frontend/pull/6606)
+
 ### Fixes
 
 We've made fixes to GOV.UK Frontend in the following pull requests:
