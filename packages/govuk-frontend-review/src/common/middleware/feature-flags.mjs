@@ -2,27 +2,57 @@ import express from 'express'
 
 const router = express.Router()
 
-const FEATURE_NAME = 'rebrand'
-const COOKIE_NAME = `use_${FEATURE_NAME}`
+// List of currently available flags. Used to name the associated flags.
+// Best kept to a single word.
+//
+// e.g. 'example' will become:
+// - 'use_example' for the cookie and query string name
+// - 'override_example' for the override query name
+// - 'govukExample' for the Nunjucks environment global
+const availableFeatureFlags = ['rebrand', 'test']
 
 /**
- * Control rebrand cookie setting and unsetting
+ * Control feature flag cookie setting and unsetting
  *
- * Sets the rebrand cookie if setRebrand is present in request body,
- * otherwise unsets the cookie, then redirect.
+ * If `setFeatureFlags` is present in request body, it will loop through the
+ * list of available flags, enabling the flag where included in
+ * `setFeatureFlags` and disabling it otherwise. If the query isn't in the
+ * request body, all flags are unset. It then redirects back to the referrer.
  */
-router.post(`/set-${FEATURE_NAME}`, (req, res) => {
-  const queryName = `set${FEATURE_NAME.charAt(0).toUpperCase() + FEATURE_NAME.slice(1)}`
+router.post('/set-feature-flags', (req, res) => {
+  const queryName = 'setFeatureFlags'
 
   if (queryName in req.body) {
     const maxAgeInDays = 28
+    let setFlags = req.body[queryName]
 
-    res.cookie(COOKIE_NAME, 'true', {
-      maxAge: maxAgeInDays * 24 * 60 * 60 * 1000,
-      httpOnly: true
+    // Form data can be provided in two ways:
+    // - a string with the name of a single flag
+    // - an array of strings with the names of flags
+
+    // If we get a string, turn it into a single value array for the next step
+    if (typeof setFlags === 'string') {
+      setFlags = [setFlags]
+    }
+
+    // Loop through all possible feature flags.
+    // If each id in the `setFlags` array, enable the cookie, otherwise, clear the cookie
+    availableFeatureFlags.forEach((flag) => {
+      if (setFlags.includes(flag)) {
+        res.cookie(`use_${flag}`, 'true', {
+          maxAge: maxAgeInDays * 86400000, // 1 day in milliseconds
+          httpOnly: true
+        })
+      } else {
+        res.clearCookie(`use_${flag}`)
+      }
     })
   } else {
-    res.clearCookie(COOKIE_NAME)
+    // req.body is empty or missing the key we want, in which case we can
+    // consider all flags to be unchecked
+    availableFeatureFlags.forEach((flag) => {
+      res.clearCookie(`use_${flag}`)
+    })
   }
 
   res.redirect(req.header('Referer') ?? '/')
@@ -35,22 +65,37 @@ router.post(`/set-${FEATURE_NAME}`, (req, res) => {
  * - showAllFlagStates is set via the query of the same name
  */
 router.use((req, res, next) => {
-  const localVarName = `use${FEATURE_NAME.charAt(0).toUpperCase() + FEATURE_NAME.slice(1)}`
-  const overrideQuery = `${FEATURE_NAME}Override`
-  const env = req.app.get('nunjucksEnv')
+  availableFeatureFlags.forEach((flag) => {
+    const queryFlagName = `use_${flag}`
+    const queryOverrideName = `override_${flag}`
 
-  res.locals[localVarName] =
-    overrideQuery in req.query
-      ? req.query[overrideQuery] === 'true'
-      : req.cookies?.[COOKIE_NAME] === 'true'
-  res.locals.showAllFlagStates = 'showAllFlagStates' in req.query
+    const env = req.app.get('nunjucksEnv')
 
-  res.locals.exampleStates = res.locals.showAllFlagStates
-    ? [true, false]
-    : [res.locals.useRebrand]
+    res.locals[queryFlagName] =
+      queryOverrideName in req.query
+        ? req.query[queryOverrideName] === 'true'
+        : req.cookies?.[queryFlagName] === 'true'
 
-  // set the govukRebrand global
-  env?.addGlobal('govukRebrand', res.locals[localVarName])
+    // Set the flag as a Nunjucks global
+    // CamelCased with `govuk` prefix e.g. `govukExample`
+    env?.addGlobal(
+      `govuk${flag.charAt(0).toUpperCase() + flag.slice(1)}`,
+      res.locals[queryFlagName]
+    )
+  })
+
+  // TODO: Commented out as this seems to be based on a binary system:
+  // `true` refers to all examples with the rebrand flag set and `false`
+  // refers to all other examples. This probably needs to be entirely rewritten
+  // to support multiple feature flags.
+
+  // Check for existence of `showAllFlagStates` in query body
+  // res.locals.showAllFlagStates = 'showAllFlagStates' in req.query
+
+  // If `showAllFlagStates` is true, render all examples, otherwise …?
+  // res.locals.exampleStates = res.locals.showAllFlagStates
+  //   ? [true, false]
+  //   : []
 
   next()
 })

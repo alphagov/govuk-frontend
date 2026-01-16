@@ -4,15 +4,19 @@
 
 {%- set featureFlagHtml -%}
   <h2 class="govuk-heading-m">Feature flag control</h2>
-  <p class="govuk-body">This is an experimental feature for turning the 'rebrand' feature flag on and off only.</p>
-  <form method="post" action="/set-rebrand">
+  <form method="post" action="/set-feature-flags">
     {{ govukCheckboxes({
-      name: 'setRebrand',
+      name: 'setFeatureFlags',
       items: [
         {
-          text: 'Rebrand feature flag on',
-          value: 'true',
-          checked: useRebrand
+          text: 'GOV.UK rebrand',
+          value: 'rebrand',
+          checked: use_rebrand
+        },
+        {
+          text: 'Test flag',
+          value: 'test',
+          checked: use_test
         }
       ]
     }) }}
@@ -21,11 +25,11 @@
       text: 'Submit'
     }) }}
   </form>
-  <p class="govuk-body">
+  {#<p class="govuk-body">
     <a href="{{ '?' if showAllFlagStates else '?showAllFlagStates' }}" class="govuk-link">
       {{'Only show one state' if showAllFlagStates else 'Show all flag states'}}
     </a>
-  </p>
+  </p>#}
 {%- endset -%}
 
 <div class="app-feature-flag-banner">
