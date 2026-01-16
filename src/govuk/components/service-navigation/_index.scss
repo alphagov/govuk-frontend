@@ -8,18 +8,8 @@
   $govuk-service-navigation-link-colour: govuk-colour("blue", "shade-25");
 
   .govuk-service-navigation {
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
-    @include _govuk-rebrand(
-      "border-bottom-color",
-      $from: $govuk-service-navigation-border-colour,
-      $to: $_govuk-rebrand-border-colour-on-blue-tint-95
-    );
-    @include _govuk-rebrand(
-      "background-color",
-      $from: $govuk-service-navigation-background,
-      $to: govuk-colour("blue", "tint-95")
-    );
+    border-bottom: 1px solid $_govuk-rebrand-border-colour-on-blue-tint-95;
+    background-color: govuk-colour("blue", "tint-95");
   }
 
   .govuk-service-navigation__container {
@@ -47,18 +37,14 @@
 
       margin-top: 0;
       margin-bottom: 0;
-      padding: govuk-spacing(4) 0;
+      padding: govuk-spacing(3) 0;
 
-      @include _govuk-rebrand {
-        padding: govuk-spacing(3) 0;
-
-        // More magic numbers ahoy:
-        // 29 is the desired height of the element (60), minus top and bottom
-        // padding (2×15), minus bottom border (1); 19 is the font-size at this
-        // point. This gives us the perfect fractional line height to make the
-        // overall component 60px high
-        line-height: (29 / 19);
-      }
+      // More magic numbers ahoy:
+      // 29 is the desired height of the element (60), minus top and bottom
+      // padding (2×15), minus bottom border (1); 19 is the font-size at this
+      // point. This gives us the perfect fractional line height to make the
+      // overall component 60px high
+      line-height: (29 / 19);
 
       &:not(:last-child) {
         @include govuk-responsive-margin(6, $direction: right);
@@ -87,11 +73,7 @@
     }
 
     @media #{govuk-from-breakpoint(tablet)} {
-      @include _govuk-rebrand(
-        "padding-bottom",
-        $from: govuk-spacing(4) - $govuk-service-navigation-active-link-border-width,
-        $to: govuk-spacing(3) - $govuk-service-navigation-active-link-border-width
-      );
+      padding-bottom: govuk-spacing(3) - $govuk-service-navigation-active-link-border-width;
       border-bottom-width: $govuk-service-navigation-active-link-border-width;
     }
   }
@@ -211,42 +193,40 @@
 
   // Inverted colour scheme style intended for product pages
   .govuk-service-navigation--inverse {
-    @include _govuk-rebrand {
-      // Remove bottom border to add width-container ones
-      border-bottom: none;
+    // Remove bottom border to add width-container ones
+    border-bottom: none;
 
-      // Set colour here so non-link text (service name, slot content) can
-      // use it too.
-      color: govuk-colour("white");
+    // Set colour here so non-link text (service name, slot content) can
+    // use it too.
+    color: govuk-colour("white");
 
-      background-color: govuk-functional-colour(brand);
+    background-color: govuk-functional-colour(brand);
 
-      .govuk-width-container {
-        border-width: 1px 0;
-        border-style: solid;
-        border-color: $_govuk-rebrand-border-colour-on-blue-tint-95;
-      }
+    .govuk-width-container {
+      border-width: 1px 0;
+      border-style: solid;
+      border-color: $_govuk-rebrand-border-colour-on-blue-tint-95;
+    }
 
-      // Subtract 1px of space to account for the extra border-top
-      .govuk-service-navigation__container {
-        margin-top: -1px;
-      }
+    // Subtract 1px of space to account for the extra border-top
+    .govuk-service-navigation__container {
+      margin-top: -1px;
+    }
 
-      // Override the 'active' border colour
-      .govuk-service-navigation__item,
-      .govuk-service-navigation__service-name {
-        border-color: govuk-colour("white");
-      }
+    // Override the 'active' border colour
+    .govuk-service-navigation__item,
+    .govuk-service-navigation__service-name {
+      border-color: govuk-colour("white");
+    }
 
-      // Override link styles
-      .govuk-service-navigation__link {
-        @include govuk-link-style-inverse;
-      }
+    // Override link styles
+    .govuk-service-navigation__link {
+      @include govuk-link-style-inverse;
+    }
 
-      // Override mobile menu toggle colour when not focused
-      .govuk-service-navigation__toggle:not(:focus) {
-        color: currentcolor;
-      }
+    // Override mobile menu toggle colour when not focused
+    .govuk-service-navigation__toggle:not(:focus) {
+      color: currentcolor;
     }
   }
 }
