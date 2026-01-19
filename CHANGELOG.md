@@ -14,6 +14,39 @@ Replace them with tints and shades from the new GOV.UK colour palette that are a
 
 We made this change in [pull request #6639: Remove `govuk-tint` and `govuk-shade` functions](https://github.com/alphagov/govuk-frontend/pull/6639)
 
+#### Stop using the old GOV.UK logo and colour palette
+
+We’ve made the refreshed (blue-based) GOV.UK branding the default appearance of the GOV.UK header and GOV.UK footer components, and removed the previous (mostly black) branding as an option.
+
+We've also updated the colour palette of the Service navigation and Cookie banner components.
+
+With these changes, the GOV.UK header and GOV.UK footer components should now only be used by [services on the GOV.UK website](https://www.gov.uk/service-manual/design/making-your-service-look-like-govuk). Services outside of [the GOV.UK proposition](https://www.gov.uk/government/publications/govuk-proposition) should stop using the header and footer components and instead create their own.
+
+If you use GOV.UK Frontend's Nunjucks template, you should now remove the `govukRebrand` feature flag.
+
+If you use GOV.UK Frontend's Nunjucks macros without the template, or have overridden the default header and footer components, you should remove the `rebrand` parameter from references to the `govukHeader` and `govukFooter` macros.
+
+If you do not use the Nunjucks template, remove the `govuk-template--rebranded` class from the `<html>` element and update the HTML for icons, Open Graph image, and theme colour to remove references to the `rebrand` folder.
+
+```html
+<meta name="theme-color" content="#1d70b8">
+<link rel="icon" sizes="48x48" href="/assets/images/favicon.ico">
+<link rel="icon" sizes="any" href="/assets/images/favicon.svg" type="image/svg+xml">
+<link rel="mask-icon" href="/assets/images/govuk-icon-mask.svg" color="#1d70b8">
+<link rel="apple-touch-icon" href="/assets/images/govuk-icon-180.png">
+<link rel="manifest" href="/assets/manifest.json">
+<meta property="og:image" content="<SERVICE URL>/assets/images/govuk-opengraph-image.png">
+```
+
+We made these changes in the following pull requests:
+
+- [#6617: Remove rebrand switch from govukLogo](https://github.com/alphagov/govuk-frontend/pull/6617)
+- [#6618: Remove rebrand switch logic from GOV.UK Header](https://github.com/alphagov/govuk-frontend/pull/6618)
+- [#6619: Remove rebrand switch from govukFooter](https://github.com/alphagov/govuk-frontend/pull/6619)
+- [#6621: Remove rebrand flag from template](https://github.com/alphagov/govuk-frontend/pull/6621)
+- [#6622: Remove rebrand flag from service navigation](https://github.com/alphagov/govuk-frontend/pull/6622)
+- [#6623: Remove rebrand flag from cookie banner](https://github.com/alphagov/govuk-frontend/pull/6623)
+
 ### New features
 
 #### Reference colour from the palette declaratively when redefining functional colours
