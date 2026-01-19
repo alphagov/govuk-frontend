@@ -2,8 +2,17 @@
 
 {% set headingLevel = params.headingLevel if params.headingLevel else 1 -%}
 
-<div class="govuk-panel govuk-panel--confirmation
-  {%- if params.classes %} {{ params.classes }}{% endif %}"
+{%- set classNames = "govuk-panel" -%}
+
+{%- if params.classes %}
+  {% set classNames = classNames + " " + params.classes %}
+{% endif %}
+
+{%- if (not params.classes) or (not "govuk-panel--interruption" in params.classes) %}
+  {% set classNames = classNames + " govuk-panel--confirmation" -%}
+{% endif %}
+
+<div class="{{ classNames }}"
   {{- govukAttributes(params.attributes) }}>
   <h{{ headingLevel }} class="govuk-panel__title">
     {{ params.titleHtml | safe if params.titleHtml else params.titleText }}
