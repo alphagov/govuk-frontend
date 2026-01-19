@@ -382,22 +382,3 @@ examples:
         end: '<div>[end]</div>'
         navigationStart: '<li>[navigation start]</li>'
         navigationEnd: '<li>[navigation end]</li>'
-
-  # this rebrand example is included in screenshots but hidden in the app because
-  # the interaction with the 'rebrand' feature flag is confusing.
-
-  - name: rebrand
-    hidden: true
-    screenshot: true
-    pageTemplateOptions:
-      htmlClasses: govuk-template--rebranded
-    options:
-      navigation:
-        - href: '#/1'
-          text: Navigation item 1
-        - href: '#/2'
-          text: Navigation item 2
-        - href: '#/3'
-          text: Navigation item 3
-        - href: '#/4'
-          text: Navigation item 4
