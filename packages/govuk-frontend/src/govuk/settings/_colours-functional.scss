@@ -13,7 +13,7 @@
 ///
 /// @access public
 $govuk-functional-colours: () !default;
-$_govuk-functional-colours: _govuk-define-functional-colours(
+$govuk-functional-colours: _govuk-define-functional-colours(
   $govuk-functional-colours,
   $defaults: (
     (
