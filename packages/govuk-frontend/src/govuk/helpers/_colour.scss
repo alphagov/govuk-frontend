@@ -97,12 +97,12 @@
     $colour: "#{$colour}";
   }
 
-  @if map-has-key($_govuk-functional-colours, $colour) {
-    $value: map-get($_govuk-functional-colours, $colour);
+  @if map-has-key($govuk-functional-colours, $colour) {
+    $value: map-get($govuk-functional-colours, $colour);
     @return var(--_govuk-#{$colour}-colour, #{$value});
   }
 
-  @error "Unknown colour `#{$colour}` (available colours: #{map-keys($_govuk-functional-colours)})";
+  @error "Unknown colour `#{$colour}` (available colours: #{map-keys($govuk-functional-colours)})";
 }
 
 @function _govuk-define-functional-colours($colours, $defaults) {
