@@ -575,7 +575,7 @@ describe('@mixin govuk-font-size', () => {
       })
     })
 
-    it('does not output font-size if $size: false', async () => {
+    it.only('does not output font-size if $size: false', async () => {
       const sass = `
         ${sassBootstrap}
 

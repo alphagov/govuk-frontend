@@ -1,3 +1,4 @@
+@import "../helpers/custom-properties";
 ////
 /// @group tools
 ////
@@ -25,6 +26,14 @@ $_govuk-imported-modules: () !default;
   @if not index($_govuk-imported-modules, $name) {
     // ... then add it to the list
     $_govuk-imported-modules: append($_govuk-imported-modules, $name) !global;
+
+    // Add the custom properties, ensuring they only appear once per compilation
+    @include govuk-exports('govuk-custom-properties') {
+      :root {
+        @include _govuk-custom-properties;
+      }
+    }
+
     // ... and output the CSS for that module
     @content;
   }
