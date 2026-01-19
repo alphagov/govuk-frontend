@@ -18,7 +18,7 @@
       }
 
       // CSS custom properties for each functional colour
-      @each $name, $value in $_govuk-functional-colours {
+      @each $name, $value in $govuk-functional-colours {
         --_govuk-#{$name}-colour: #{$value};
       }
     }
