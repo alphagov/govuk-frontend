@@ -161,42 +161,6 @@
   }
 }
 
-/// Make a colour darker by mixing it with black
-///
-/// @param {Colour} $colour - colour to shade
-/// @param {Number} $percentage - percentage of black to mix with $colour.
-///   Not used.
-/// @return {Colour}
-/// @access public
-///
-/// @deprecated Will be removed in 6.0
-
-@function govuk-shade($colour, $percentage: false) {
-  @if _should-warn("govuk-shade") {
-    @warn _warning-text("govuk-shade", "The govuk-shade function is deprecated. It now just returns the colour passed to it. Use the new GOV.UK colour palette instead.");
-  }
-
-  @return $colour;
-}
-
-/// No longer operable. Only returns the colour passed to it
-///
-/// @param {Colour} $colour - colour to tint
-/// @param {Number} $percentage - percentage of white to mix with $colour.
-///   Not used.
-/// @return {Colour}
-/// @access public
-///
-/// @deprecated Will be removed in 6.0
-
-@function govuk-tint($colour, $percentage: false) {
-  @if _should-warn("govuk-tint") {
-    @warn _warning-text("govuk-tint", "The govuk-tint function is deprecated. It now just returns the colour passed to it. Use the new GOV.UK colour palette instead.");
-  }
-
-  @return $colour;
-}
-
 /// Converts a colour with potential float values for its RGB channels
 /// into hexadecimal notation
 ///
