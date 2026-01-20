@@ -21,7 +21,7 @@ $govuk-functional-colours: _govuk-define-functional-colours(
       "text": govuk-colour("black"),
       // Used by components that want to give the illusion of extending
       // the template background (such as the footer and cookie banner).
-      "template-background": govuk-colour("black", $variant: "tint-95"),
+      "template-background": govuk-colour("blue", $variant: "tint-95"),
       "body-background": govuk-colour("white"),
       // Use 'true black' to avoid printers using colour ink to print body text
       "print-text": #000000,
@@ -275,12 +275,6 @@ $govuk-link-active-colour: govuk-functional-colour(link-active);
 // =============================================================================
 // Brand refresh
 // =============================================================================
-
-/// Updated template background colour
-///
-/// @type Colour
-/// @access private
-$_govuk-rebrand-template-background-colour: govuk-colour("blue", "tint-95");
 
 /// Border colour for areas on a light-blue background
 ///
