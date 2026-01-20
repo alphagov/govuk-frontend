@@ -144,7 +144,7 @@ examples:
           status:
             tag:
               text: Not started
-              classes: govuk-tag--light-blue
+              classes: govuk-tag--teal
         - title:
             text: Business plan
           href: '#'
@@ -209,52 +209,45 @@ examples:
           href: '#'
           status:
             tag:
-              text: Light blue
-              classes: govuk-tag--light-blue
-        - title:
-            text: Task F
-          href: '#'
-          status:
-            tag:
               text: Teal
               classes: govuk-tag--teal
         - title:
-            text: Task G
+            text: Task F
           href: '#'
           status:
             tag:
               text: Green
               classes: govuk-tag--green
         - title:
-            text: Task H
+            text: Task G
           href: '#'
           status:
             tag:
               text: Purple
               classes: govuk-tag--purple
         - title:
-            text: Task I
+            text: Task H
           href: '#'
           status:
             tag:
               text: Magenta
               classes: govuk-tag--magenta
         - title:
-            text: Task J
+            text: Task I
           href: '#'
           status:
             tag:
               text: Red
               classes: govuk-tag--red
         - title:
-            text: Task K
+            text: Task J
           href: '#'
           status:
             tag:
               text: Orange
               classes: govuk-tag--orange
         - title:
-            text: Task L
+            text: Task K
           href: '#'
           status:
             tag:
