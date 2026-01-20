@@ -5,7 +5,7 @@
 
   // We make the link colour a little darker than normal here so that it has
   // better perceptual contrast with the navigation background.
-  $govuk-service-navigation-link-colour: govuk-colour("blue", "shade-25");
+  $govuk-service-navigation-link-colour: govuk-colour("blue", "shade-10");
 
   .govuk-service-navigation {
     border-bottom: 1px solid $_govuk-rebrand-border-colour-on-blue-tint-95;

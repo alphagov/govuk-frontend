@@ -24,7 +24,7 @@ const allVariants = [
 
 describe('Colour palette', () => {
   it.each([
-    ['blue', allVariants],
+    ['blue', [...allVariants, 'shade-10']],
     ['green', allVariants],
     ['teal', [...allVariants, 'accent']],
     ['purple', allVariants],
