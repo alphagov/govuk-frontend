@@ -84,6 +84,16 @@ We made this change in [pull request #6606: Enable better control over custom pr
 
 ### Fixes
 
+#### Yellow and grey tags have updated colours
+
+The yellow tag's text colour has changed to Orange shade 50%. Its background colour has changed to Yellow tint 50%.
+
+The grey tag's text colour has change to Black. Its background colour has changed to Black tint 80%.
+
+These changes were made in [pull request #6646: Update tag colours and remove borders](https://github.com/alphagov/govuk-frontend/pull/6646).
+
+#### Other fixes
+
 We've made fixes to GOV.UK Frontend in the following pull requests:
 
 - [#6651: Update green palette](https://github.com/alphagov/govuk-frontend/pull/6651)
