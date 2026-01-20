@@ -21,13 +21,13 @@
     margin-top: -2px;
     margin-bottom: -3px;
 
-    padding-top: 4px;
-    padding-right: 8px;
-    padding-bottom: 4px;
-    padding-left: 8px;
+    padding-top: 5px;
+    padding-right: 9px;
+    padding-bottom: 5px;
+    padding-left: 9px;
     border-radius: 1px;
-    color: govuk-colour("blue", $variant: "tint-95");
-    background-color: govuk-colour("blue");
+    color: govuk-colour("blue", $variant: "shade-50");
+    background-color: govuk-colour("blue", $variant: "tint-80");
     text-decoration: none;
     overflow-wrap: break-word;
 
@@ -45,60 +45,46 @@
   }
 
   .govuk-tag--grey {
-    border-color: govuk-colour("black", $variant: "tint-80");
     color: govuk-colour("black");
     background-color: govuk-colour("black", $variant: "tint-80");
   }
 
   .govuk-tag--purple {
-    border-color: govuk-colour("purple", $variant: "tint-50");
     color: govuk-colour("purple", $variant: "shade-50");
     background-color: govuk-colour("purple", $variant: "tint-80");
   }
 
   .govuk-tag--turquoise {
-    border-color: govuk-colour("teal", $variant: "tint-50");
     color: govuk-colour("teal", $variant: "shade-50");
     background-color: govuk-colour("teal", $variant: "tint-80");
   }
 
   .govuk-tag--blue {
-    color: govuk-colour("blue", $variant: "tint-95");
-    background-color: govuk-colour("blue");
-  }
-
-  .govuk-tag--light-blue {
-    border-color: govuk-colour("blue", $variant: "tint-50");
     color: govuk-colour("blue", $variant: "shade-50");
     background-color: govuk-colour("blue", $variant: "tint-80");
   }
 
   .govuk-tag--yellow {
-    border-color: govuk-colour("yellow", $variant: "tint-50");
     color: govuk-colour("orange", $variant: "shade-50");
     background-color: govuk-colour("yellow", $variant: "tint-50");
   }
 
   .govuk-tag--orange {
-    border-color: govuk-colour("orange", $variant: "tint-50");
     color: govuk-colour("orange", $variant: "shade-50");
     background-color: govuk-colour("orange", $variant: "tint-80");
   }
 
   .govuk-tag--red {
-    border-color: govuk-colour("red", $variant: "tint-50");
     color: govuk-colour("red", $variant: "shade-50");
     background-color: govuk-colour("red", $variant: "tint-80");
   }
 
   .govuk-tag--pink {
-    border-color: govuk-colour("magenta", $variant: "tint-50");
     color: govuk-colour("magenta", $variant: "shade-50");
     background-color: govuk-colour("magenta", $variant: "tint-80");
   }
 
   .govuk-tag--green {
-    border-color: govuk-colour("green", $variant: "tint-50");
     color: govuk-colour("green", $variant: "shade-50");
     background-color: govuk-colour("green", $variant: "tint-80");
   }
