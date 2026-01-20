@@ -45,7 +45,7 @@ examples:
       text: 'Your reference number: HDJ2123F'
   - name: interruption
     options:
-      titleText: Is your weight correct?
+      titleText: Is your age correct?
       html: |
         <p>You entered your age as <strong>109</strong>.</p>
         <div class="govuk-button-group">
