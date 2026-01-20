@@ -105,18 +105,16 @@
     @include _govuk-tag-colours("magenta");
   }
 
-  // Yellow uses different colours to ensure its contrast ratio is good
+  // Yellow uses different colours to ensure it's legible
   .govuk-tag--yellow {
     color: govuk-colour("orange", $variant: "shade-50");
     background-color: govuk-colour("yellow", $variant: "tint-50");
   }
 
-  // Grey can't follow the tag colour rules because `black` follows a different
-  // colour system to other colours where black is the primary colour and greys
-  // are tints traveling up
+  // Grey uses different colours to ensure it's legible
   .govuk-tag--grey {
-    color: govuk-colour("black", $variant: "tint-25");
-    background-color: govuk-colour("black", $variant: "tint-95");
+    color: govuk-colour("black");
+    background-color: govuk-colour("black", $variant: "tint-80");
   }
 
   // Turquoise and pink are deprecated over teal and magenta respectively
