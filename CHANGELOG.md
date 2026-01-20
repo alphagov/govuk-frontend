@@ -47,6 +47,14 @@ We made these changes in the following pull requests:
 - [#6622: Remove rebrand flag from service navigation](https://github.com/alphagov/govuk-frontend/pull/6622)
 - [#6623: Remove rebrand flag from cookie banner](https://github.com/alphagov/govuk-frontend/pull/6623)
 
+### Recommended changes
+
+#### Stop using light-blue coloured tags
+
+We've removed the light-blue tag colour. You should remove all instances of `govuk-tag--light-blue`.
+
+We made this change in [pull request #6646: Update tag colours and remove borders](https://github.com/alphagov/govuk-frontend/pull/6646).
+
 ### New features
 
 #### Reference colour from the palette declaratively when redefining functional colours

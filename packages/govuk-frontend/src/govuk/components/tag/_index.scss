@@ -121,13 +121,6 @@
     @include _govuk-tag-colours("magenta");
   }
 
-  // Light blue doesn't follow the tag colour rules because it uses the 95% tint
-  // blue for its background colour
-  .govuk-tag--light-blue {
-    color: _govuk-tag-text-colour("blue");
-    background-color: govuk-colour("blue", $variant: "tint-95");
-  }
-
   // Grey can't follow the tag colour rules because `black` follows a different
   // colour system to other colours where black is the primary colour and greys
   // are tints traveling up
