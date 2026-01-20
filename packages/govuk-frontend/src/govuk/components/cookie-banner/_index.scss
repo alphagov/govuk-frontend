@@ -13,7 +13,7 @@
     // changes colours in their browser.
     border-bottom: $border-bottom-width solid transparent;
 
-    background-color: $_govuk-rebrand-template-background-colour;
+    background-color: govuk-functional-colour(template-background);
   }
 
   // Support older browsers which don't hide elements with the `hidden` attribute

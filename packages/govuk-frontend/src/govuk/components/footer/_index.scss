@@ -15,7 +15,7 @@
     border-top: 10px solid;
     border-top-color: govuk-functional-colour(brand);
     color: $govuk-footer-text;
-    background: $_govuk-rebrand-template-background-colour;
+    background: govuk-functional-colour(template-background);
   }
 
   .govuk-footer__crown {
