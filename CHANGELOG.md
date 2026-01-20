@@ -4,6 +4,16 @@ For advice on how to use these release notes, see [our guidance on staying up to
 
 ## Unreleased
 
+### Breaking changes
+
+#### Stop using `govuk-tint` and `govuk-shade`
+
+We have removed the `govuk-tint` and `govuk-shade` functions for applying tints and shades to colours by percentage.
+
+Replace them with tints and shades from the new GOV.UK colour palette that are as close as possible to your existing implementation.
+
+We made this change in [pull request #6639: Remove `govuk-tint` and `govuk-shade` functions](https://github.com/alphagov/govuk-frontend/pull/6639)
+
 ### New features
 
 #### Use `$govuk-output-custom-properties` to specify if custom properties are included in your CSS
