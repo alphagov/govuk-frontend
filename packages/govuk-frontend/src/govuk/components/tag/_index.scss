@@ -23,8 +23,7 @@
 }
 
 /// Generate colour CSS for tag and tag modifiers
-/// Applies standard rules from the tag colour functions as well as setting
-/// border colour to `currentcolor` so that it follows the text
+/// Applies standard rules from the tag colour functions
 ///
 /// @param {String} $colour - name of colour from the colour palette
 /// @access private
@@ -55,10 +54,14 @@
     //
     // The negative margin added to the top and bottom matches the extra padding
     // added.
-    margin: -4px 0;
-    padding: 4px 8px;
-    // The border colour always follows the text colour of tags
-    border: 1px solid currentcolor;
+    margin-top: -2px;
+    margin-bottom: -3px;
+
+    padding-top: 2px;
+    padding-right: 8px;
+    padding-bottom: 3px;
+    padding-left: 8px;
+
     border-radius: 1px;
     text-decoration: none;
     overflow-wrap: break-word;
