@@ -5,7 +5,7 @@
   .govuk-template {
     // Set the overall page background colour to the same colour as used by the
     // footer to give the illusion of a long footer.
-    background-color: $_govuk-rebrand-template-background-colour;
+    background-color: govuk-functional-colour(template-background);
 
     // Prevent automatic text sizing, as we already cater for small devices and
     // would like the browser to stay on 100% text zoom by default.
