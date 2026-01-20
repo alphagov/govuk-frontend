@@ -61,8 +61,7 @@ export default async () => {
       }
     ],
     nunjucksMacros,
-    nunjucksPaths: ['/dist'],
-    nunjucksFunctions: ['/dist/govuk-prototype-kit/functions.js']
+    nunjucksPaths: ['/dist']
   }
 }
 
@@ -76,7 +75,6 @@ export default async () => {
  * @property {string[] | { path: string, type?: string }[]} scripts - JavaScripts to serve
  * @property {{ importFrom: string, macroName: string }[]} nunjucksMacros - Nunjucks macros to include
  * @property {string[]} nunjucksPaths - Nunjucks paths
- * @property {string[]} nunjucksFunctions - Nunjucks functions
  */
 
 /**
