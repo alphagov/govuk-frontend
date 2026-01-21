@@ -104,7 +104,7 @@ describe('@function govuk-colour', () => {
     ],
     [
       'light-green',
-      { output: '#4da583', alternative: '"green", $variant: "tint-25"' }
+      { output: '#4b9b7d', alternative: '"green", $variant: "tint-25"' }
     ],
     [
       'turquoise',
