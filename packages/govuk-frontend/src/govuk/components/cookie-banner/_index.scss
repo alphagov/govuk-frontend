@@ -14,6 +14,10 @@
     border-bottom: $border-bottom-width solid transparent;
 
     background-color: govuk-functional-colour(template-background);
+
+    .govuk-link {
+      color: govuk-colour("blue", "shade-10");
+    }
   }
 
   // Support older browsers which don't hide elements with the `hidden` attribute
