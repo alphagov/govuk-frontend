@@ -1,0 +1,42 @@
+@import "../tools/exports";
+@import "../settings/spacing";
+@import "../helpers/media-queries";
+
+@include govuk-exports("govuk/core/govuk-frontend-properties") {
+  :root {
+    // This variable is automatically overwritten during builds and releases.
+    // It doesn't need to be updated manually.
+    --govuk-frontend-version: "development";
+
+    // CSS custom property for each breakpoint
+    @each $name, $value in $govuk-breakpoints {
+      --govuk-breakpoint-#{$name}: #{govuk-px-to-rem($value)};
+    }
+
+    // CSS custom properties for each functional colour
+    @each $name, $value in $_govuk-functional-colours {
+      --_govuk-#{$name}-colour: #{$value};
+    }
+
+    // CSS custom properties for responsive spacing
+    @each $level, $scale-map in $govuk-spacing-responsive-scale {
+      $null-value: map-get($scale-map, null);
+      @if $null-value {
+        --govuk-responsive-spacing-#{$level}: #{$null-value};
+      }
+    }
+  }
+
+  // Output media queries separately to avoid mixed-decls warnings
+  @each $level, $scale-map in $govuk-spacing-responsive-scale {
+    @each $breakpoint, $breakpoint-value in $scale-map {
+      @if $breakpoint {
+        @media #{govuk-from-breakpoint($breakpoint)} {
+          :root {
+            --govuk-responsive-spacing-#{$level}: #{$breakpoint-value};
+          }
+        }
+      }
+    }
+  }
+}
