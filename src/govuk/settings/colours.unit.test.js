@@ -246,7 +246,7 @@ describe('Organisation colours', () => {
       @import "sass-color-helpers/stylesheets/color-helpers";
 
       $minimum-contrast: 4.5;
-      $body-background-colour: map-get($govuk-functional-colours, body-background);
+      $body-background-colour: _govuk-resolve-colour(map-get($govuk-functional-colours, body-background));
 
       @each $organisation in map-keys($govuk-colours-organisations) {
 

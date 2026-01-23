@@ -17,36 +17,36 @@ $govuk-functional-colours: _govuk-define-functional-colours(
   $govuk-functional-colours,
   $defaults: (
     (
-      "brand": govuk-colour("blue"),
-      "text": govuk-colour("black"),
+      "brand": (name: "blue"),
+      "text": (name: "black"),
       // Used by components that want to give the illusion of extending
       // the template background (such as the footer and cookie banner).
-      "template-background": govuk-colour("blue", $variant: "tint-95"),
-      "body-background": govuk-colour("white"),
+      "template-background": (name: "blue", variant: "tint-95"),
+      "body-background": (name: "white"),
       // Use 'true black' to avoid printers using colour ink to print body text
       "print-text": #000000,
       // Used in for example 'muted' text and help text.
-      "secondary-text": govuk-colour("black", $variant: "tint-25"),
+      "secondary-text": (name: "black", variant: "tint-25"),
       // Used for outline (and background, where appropriate) when interactive
       // elements (links, form controls) have keyboard focus.
-      "focus": govuk-colour("yellow"),
+      "focus": (name: "yellow"),
       // Ensure that the contrast between the text and background colour passes
       // WCAG Level AA contrast requirements.
-      "focus-text": govuk-colour("black"),
+      "focus-text": (name: "black"),
       // Used to highlight error messages and form controls in an error state
-      "error": govuk-colour("red"),
+      "error": (name: "red"),
       // Used to highlight success messages and banners
-      "success": govuk-colour("green"),
+      "success": (name: "green"),
       // Used in for example borders, separators, rules and keylines.
-      "border": govuk-colour("black", $variant: "tint-80"),
+      "border": (name: "black", variant: "tint-80"),
       // Used for form inputs and controls
-      "input-border": govuk-colour("black"),
+      "input-border": (name: "black"),
       // Used for hover states on form controls
-      "hover": govuk-colour("black", $variant: "tint-80"),
-      "link": govuk-colour("blue"),
-      "link-visited": govuk-colour("purple"),
-      "link-hover": govuk-colour("blue", $variant: "shade-50"),
-      "link-active": govuk-colour("black")
+      "hover": (name: "black", variant: "tint-80"),
+      "link": (name: "blue"),
+      "link-visited": (name: "purple"),
+      "link-hover": (name: "blue", variant: "shade-50"),
+      "link-active": (name: "black")
     )
   )
 );
