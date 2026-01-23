@@ -49,6 +49,34 @@
   @return if($is-negative, $value * -1, $value);
 }
 
+/// Responsive spacing function
+///
+/// Returns a CSS custom property reference for the requested responsive spacing level.
+///
+/// @param {Number} $responsive-spacing-point - Point on the responsive spacing scale
+/// @returns {String} CSS custom property reference, e.g. `var(--govuk-responsive-spacing-6)`
+///
+/// @example scss
+///   .element {
+///     margin-bottom: govuk-responsive-spacing(6);
+///   }
+///
+/// @access public
+
+@function govuk-responsive-spacing($responsive-spacing-point) {
+  $actual-input-type: type-of($responsive-spacing-point);
+  @if $actual-input-type != "number" {
+    @error "Expected a number (integer), but got a " + "#{$actual-input-type}.";
+  }
+
+  @if not map-has-key($govuk-spacing-responsive-scale, $responsive-spacing-point) {
+    @error "Unknown spacing point `#{$responsive-spacing-point}`. Make sure you are using a point from the "
+      + "responsive spacing scale in `_settings/spacing.scss`.";
+  }
+
+  @return var(--govuk-responsive-spacing-#{$responsive-spacing-point});
+}
+
 /// Responsive spacing
 ///
 /// Adds responsive spacing (either padding or margin, depending on `$property`)
