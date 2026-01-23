@@ -9,7 +9,7 @@
 /// @type Map
 ///
 /// @prop $colour - Representation for the given $colour, where $colour is the
-///   friendly name for the colour (e.g. "red": govuk-colour("red");
+///   friendly name for the colour (e.g. "success": govuk-colour("green"))
 ///
 /// @access public
 $govuk-functional-colours: () !default;

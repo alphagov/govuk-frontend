@@ -98,11 +98,46 @@
   }
 
   @if map-has-key($govuk-functional-colours, $colour) {
-    $value: map-get($govuk-functional-colours, $colour);
+    $value: _govuk-resolve-colour(map-get($govuk-functional-colours, $colour));
+
     @return var(--_govuk-#{$colour}-colour, #{$value});
   }
 
   @error "Unknown colour `#{$colour}` (available colours: #{map-keys($govuk-functional-colours)})";
+}
+
+/// Resolves the given reference to a colour in the palette
+///
+/// @param {Map|Colour} $colour-reference - A map with the `name`, and optionally a `variant` for the colour in the palette
+/// @returns {Colour} The colour
+/// @throws if the `name` is present but falsy
+/// @throws if the `variant` is present but falsy
+/// @access private
+@function _govuk-resolve-colour($colour-reference) {
+  // If the reference is already a colour, return the colour
+  @if type-of($colour-reference) == "color" {
+    @return $colour-reference;
+  }
+
+  @if not type-of($colour-reference) == "map" {
+    @error 'Colour reference should be a Sass colour or a Sass map';
+  }
+
+  $name: map-get($colour-reference, "name");
+  @if not $name or $name == "" {
+    @error "Colour reference `name` shouldn't be empty.";
+  }
+
+  $variant: "primary";
+  @if map-has-key($colour-reference, "variant") {
+    $variant: map-get($colour-reference, "variant");
+  }
+
+  @if not $variant or $variant == "" {
+    @error "Colour reference `variant` shouldn't be empty.";
+  }
+
+  @return govuk-colour($name, $variant: $variant);
 }
 
 @function _govuk-define-functional-colours($colours, $defaults) {

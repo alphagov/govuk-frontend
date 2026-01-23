@@ -294,7 +294,12 @@ describe('@function govuk-functional-colour', () => {
         "error": #ff0000,
         "success": #00ff00,
         "link": #0000ff,
-        "rebeccapurple": #663399
+        "rebeccapurple": #663399,
+        "palette-reference": (name: "magenta"),
+        "palette-reference-with-variant": (name: "teal", variant: "tint-25"),
+        "palette-reference-with-empty-name": (name: ""),
+        "palette-reference-with-empty-variant": (name: "magenta", variant: "")
+
       );
 
       @import "helpers/colour";
@@ -337,6 +342,72 @@ describe('@function govuk-functional-colour', () => {
     })
   })
 
+  describe('reference colour palette', () => {
+    it('gets a colours from the palette if the value is a Sass Map', async () => {
+      const sass = `
+        ${sassBootstrap}
+
+        .foo {
+          color: govuk-functional-colour('palette-reference-with-variant');
+        }
+      `
+
+      await expect(compileSassString(sass, sassConfig)).resolves.toMatchObject({
+        css: expect.stringContaining(outdent`
+          .foo {
+            color: var(--_govuk-palette-reference-with-variant-colour, #50a1a5);
+          }
+        `)
+      })
+    })
+
+    it('gets the primary variant if the Sass Map has no `variant` key', async () => {
+      const sass = `
+        ${sassBootstrap}
+
+        .foo {
+          color: govuk-functional-colour('palette-reference');
+        }
+      `
+
+      await expect(compileSassString(sass, sassConfig)).resolves.toMatchObject({
+        css: expect.stringContaining(outdent`
+          .foo {
+            color: var(--_govuk-palette-reference-colour, #ca357c);
+          }
+        `)
+      })
+    })
+
+    it('throws an error if a `name` is set but empty', async () => {
+      const sass = `
+        ${sassBootstrap}
+
+        .foo {
+          color: govuk-functional-colour('palette-reference-with-empty-name');
+        }
+      `
+
+      await expect(compileSassString(sass, sassConfig)).rejects.toThrow(
+        "Colour reference `name` shouldn't be empty."
+      )
+    })
+
+    it('throws an error if a `variant` is set but empty', async () => {
+      const sass = `
+        ${sassBootstrap}
+
+        .foo {
+          color: govuk-functional-colour('palette-reference-with-empty-variant');
+        }
+      `
+
+      await expect(compileSassString(sass, sassConfig)).rejects.toThrow(
+        "Colour reference `variant` shouldn't be empty."
+      )
+    })
+  })
+
   it('throws an error if a non-existent colour is requested', async () => {
     const sass = `
       ${sassBootstrap}
@@ -347,7 +418,7 @@ describe('@function govuk-functional-colour', () => {
     `
 
     await expect(compileSassString(sass, sassConfig)).rejects.toThrow(
-      'Unknown colour `hooloovoo` (available colours: error, success, link, rebeccapurple)'
+      'Unknown colour `hooloovoo` (available colours: error, success, link, rebeccapurple'
     )
   })
 })
