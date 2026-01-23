@@ -80,7 +80,7 @@ describe('dist/', () => {
         '../packages/govuk-frontend/src/govuk/index.scss'
       )
       expect(sourcemap.sources).toContain(
-        '../packages/govuk-frontend/src/govuk/core/_govuk-frontend-properties.scss'
+        '../packages/govuk-frontend/src/govuk/custom-properties/_frontend-version.scss'
       )
     })
   })

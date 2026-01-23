@@ -26,7 +26,7 @@ describe('$govuk-output-custom-properties', () => {
   })
 
   it.each(['true', 'false'])(
-    'outputs --govuk-frontend-version if setting is `%s`',
+    'always outputs --govuk-frontend-version if setting is `%s`',
     async (state) => {
       const sass = `
       $govuk-output-custom-properties: ${state};
