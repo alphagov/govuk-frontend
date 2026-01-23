@@ -4,51 +4,101 @@
 
 @import "../helpers/colour";
 
-/// A map of functional colours for the GOV.UK palette.
+/// Default definitions of the functional colours
 ///
 /// @type Map
 ///
-/// @prop $colour - Representation for the given $colour, where $colour is the
-///   friendly name for the colour (e.g. "success": govuk-colour("green"))
+/// @see {variable} $govuk-functional-colours
 ///
 /// @access public
-$govuk-functional-colours: () !default;
-$govuk-functional-colours: _govuk-define-functional-colours(
-  $govuk-functional-colours,
-  $defaults: (
-    (
-      "brand": (name: "blue"),
-      "text": (name: "black"),
-      // Used by components that want to give the illusion of extending
-      // the template background (such as the footer and cookie banner).
-      "template-background": (name: "blue", variant: "tint-95"),
-      "body-background": (name: "white"),
-      // Use 'true black' to avoid printers using colour ink to print body text
-      "print-text": #000000,
-      // Used in for example 'muted' text and help text.
-      "secondary-text": (name: "black", variant: "tint-25"),
-      // Used for outline (and background, where appropriate) when interactive
-      // elements (links, form controls) have keyboard focus.
-      "focus": (name: "yellow"),
-      // Ensure that the contrast between the text and background colour passes
-      // WCAG Level AA contrast requirements.
-      "focus-text": (name: "black"),
-      // Used to highlight error messages and form controls in an error state
-      "error": (name: "red"),
-      // Used to highlight success messages and banners
-      "success": (name: "green"),
-      // Used in for example borders, separators, rules and keylines.
-      "border": (name: "black", variant: "tint-80"),
-      // Used for form inputs and controls
-      "input-border": (name: "black"),
-      // Used for hover states on form controls
-      "hover": (name: "black", variant: "tint-80"),
-      "link": (name: "blue"),
-      "link-visited": (name: "purple"),
-      "link-hover": (name: "blue", variant: "shade-50"),
-      "link-active": (name: "black")
+$govuk-default-functional-colours: (
+  (
+    "brand": (
+      name: "blue"
+    ),
+    "text": (
+      name: "black"
+    ),
+    // Used by components that want to give the illusion of extending
+    // the template background (such as the footer and cookie banner).
+    "template-background": (
+        name: "blue",
+        variant: "tint-95"
+      ),
+    "body-background": (
+      name: "white"
+    ),
+    // Use 'true black' to avoid printers using colour ink to print body text
+    "print-text": #000000,
+    // Used in for example 'muted' text and help text.
+    "secondary-text": (
+        name: "black",
+        variant: "tint-25"
+      ),
+    // Used for outline (and background, where appropriate) when interactive
+    // elements (links, form controls) have keyboard focus.
+    "focus": (
+        name: "yellow"
+      ),
+    // Ensure that the contrast between the text and background colour passes
+    // WCAG Level AA contrast requirements.
+    "focus-text": (
+        name: "black"
+      ),
+    // Used to highlight error messages and form controls in an error state
+    "error": (
+        name: "red"
+      ),
+    // Used to highlight success messages and banners
+    "success": (
+        name: "green"
+      ),
+    // Used in for example borders, separators, rules and keylines.
+    "border": (
+        name: "black",
+        variant: "tint-80"
+      ),
+    // Used for form inputs and controls
+    "input-border": (
+        name: "black"
+      ),
+    // Used for hover states on form controls
+    "hover": (
+        name: "black",
+        variant: "tint-80"
+      ),
+    "link": (
+      name: "blue"
+    ),
+    "link-visited": (
+      name: "purple"
+    ),
+    "link-hover": (
+      name: "blue",
+      variant: "shade-50"
+    ),
+    "link-active": (
+      name: "black"
     )
   )
+);
+
+/// Functional colours for the GOV.UK palette.
+///
+/// Each functional colour is represented by a friendly name (for example `'brand'`)
+/// to which the map associates either:
+///
+///   - a Sass colour (like `#1d70b8`)
+///   - a Sass map with a `name` and an optional `variant` properties, referring to one of the colours in the colour palette
+///     (like `(name: 'blue', variant: 'primary')`). `variant` defaults to `'primary'` if omitted.
+///
+/// @type Map
+///
+/// @access public
+$govuk-functional-colours: $govuk-default-functional-colours !default;
+$govuk-functional-colours: _govuk-define-functional-colours(
+  $govuk-functional-colours,
+  $defaults: $govuk-default-functional-colours
 );
 
 // =============================================================================
