@@ -1,0 +1,16 @@
+////
+/// @group settings/custom-properties
+////
+
+/// Output CSS custom properties
+///
+/// Whether to output CSS Custom Properties in the compiled stylesheet.
+///
+/// If you are compiling multiple stylesheets that will be used together on a
+/// page, set this to false in any secondary stylesheets to avoid including the
+/// Custom Properties multiple times.
+///
+/// @type Boolean
+/// @access public
+
+$govuk-output-custom-properties: true !default;

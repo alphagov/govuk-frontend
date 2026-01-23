@@ -4,14 +4,12 @@
 {% from "./components/service-navigation/macro.njk" import govukServiceNavigation -%}
 {% from "./components/footer/macro.njk" import govukFooter -%}
 
-{%- set _rebrand = govukRebrand() if govukRebrand is callable else govukRebrand -%}
-
-{# Hardcoded value is $govuk-brand-blue if rebrand, otherwise govuk-colour("black") -#}
-{% set themeColor = themeColor | default("#1d70b8" if _rebrand else "#0b0c0c", true) -%}
-{% set assetPath = assetPath | default("/assets/rebrand" if _rebrand else "/assets", true) -%}
+{# Hardcoded value is $govuk-brand-blue -#}
+{% set themeColor = themeColor | default("#1d70b8", true) -%}
+{% set assetPath = assetPath | default("/assets", true) -%}
 
 <!DOCTYPE html>
-<html lang="{{ htmlLang | default("en", true) }}" class="govuk-template {%- if _rebrand %} govuk-template--rebranded{% endif %} {%- if htmlClasses %} {{ htmlClasses }}{% endif %}">
+<html lang="{{ htmlLang | default("en", true) }}" class="govuk-template {%- if htmlClasses %} {{ htmlClasses }}{% endif %}">
   <head>
     <meta charset="utf-8">
     <title {%- if pageTitleLang %} lang="{{ pageTitleLang }}"{% endif %}>{% block pageTitle %}GOV.UK - The best place to find government services and information{% endblock %}</title>
@@ -59,9 +57,7 @@
       {% call _govukTemplateHeader() %}
         {% block headerStart %}{% endblock %}
         {% block govukHeader %}
-          {{ govukHeader({
-            rebrand: _rebrand
-          }) }}
+          {{ govukHeader() }}
         {% endblock %}
         {% block govukServiceNavigation %}
           {%- if serviceName %}
@@ -100,9 +96,7 @@
       {% call _govukTemplateFooter() %}
         {% block footerStart %}{% endblock %}
         {% block govukFooter %}
-          {{ govukFooter({
-            rebrand: _rebrand
-          }) }}
+          {{ govukFooter() }}
         {% endblock %}
         {% block footerEnd %}{% endblock %}
       {% endcall %}

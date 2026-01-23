@@ -4,6 +4,26 @@ For advice on how to use these release notes, see [our guidance on staying up to
 
 ## Unreleased
 
+### Breaking changes
+
+#### Stop using `govuk-tint` and `govuk-shade`
+
+We have removed the `govuk-tint` and `govuk-shade` functions for applying tints and shades to colours by percentage.
+
+Replace them with tints and shades from the new GOV.UK colour palette that are as close as possible to your existing implementation.
+
+We made this change in [pull request #6639: Remove `govuk-tint` and `govuk-shade` functions](https://github.com/alphagov/govuk-frontend/pull/6639)
+
+### New features
+
+#### Use `$govuk-output-custom-properties` to specify if custom properties are included in your CSS
+
+We've added a new Sass variable `$govuk-output-custom-properties` which controls if GOV.UK Frontend CSS custom properties are included in your processed CSS or not.
+
+If you import different parts of GOV.UK Frontend in separate stylesheets, this helps you avoid duplicating the CSS declarations for the custom properties.
+
+We made this change in [pull request #6606: Enable better control over custom property outputting](https://github.com/alphagov/govuk-frontend/pull/6606)
+
 ### Fixes
 
 We've made fixes to GOV.UK Frontend in the following pull requests:
@@ -279,7 +299,7 @@ If you were redefining a custom value for the functional colour before importing
 $govuk-functional-colours: (
   brand: rebeccapurple
 );
-@import 'pkg:govuk-frontend';
+@import "node_modules/govuk-frontend/dist/govuk/index";
 ```
 
 Note that you can only redefine existing functional colours, not add new functional colours. This is to make sure there's a clear separation between colours from GOV.UK Frontend and colours from your own project.
@@ -599,6 +619,51 @@ We made this change in [pull request #6341: Deactivate `govuk-tint` and `govuk-s
 We've made fixes to GOV.UK Frontend in the following pull requests:
 
 - [#6338: Fix hover state on focused small radios](https://github.com/alphagov/govuk-frontend/pull/6338)
+
+## v5.14.0 (Feature release)
+
+### New features
+
+#### The GOV.UK footer component now allows the removal of content licence information
+
+If your service does not provide information under the Open Government Licence (OGL), you can now remove the content licence information from the GOV.UK footer.
+
+If you use Nunjucks, set the `contentLicence` parameter to `null`:
+
+```nunjucks
+{{ govukFooter({
+  contentLicence: null
+}) }}
+```
+
+We introduced this feature in the following pull requests:
+
+- [#6527: Allow false value to turn off contentLicence in GOV.UK Footer](https://github.com/alphagov/govuk-frontend/pull/6527) – thanks to @NickColley for making this change.
+- [#6586: Use `null` rather than `false` to hide the content licence](https://github.com/alphagov/govuk-frontend/pull/6586) – thanks to @gunndabad for reporting this issue.
+
+### Recommended changes
+
+#### Add `aria-hidden="true"` to the Service navigation's menu toggle
+
+The VoiceOver screen reader software for macOS and iPadOS contains bugs that make the menu toggle in the Service navigation accessible to VoiceOver users, even if the button has a `hidden` attribute.
+
+If you use Nunjucks, you do not have to do anything.
+
+If you do not use Nunjucks to generate your components' HTML, add an `aria-hidden="true"` attribute to the hidden `<button>` element of the Service navigation. This means the button will remain hidden for VoiceOver users.
+
+We made this change in [pull request #6469: Fix VoiceOver access to `hidden` Service Navigation menu button](https://github.com/alphagov/govuk-frontend/pull/6469).
+
+### Fixes
+
+We've made fixes to GOV.UK Frontend in the following pull requests:
+
+- [#6351: Preserve already escaped `attributes` values to prevent double escaping](https://github.com/alphagov/govuk-frontend/pull/6351)
+- [#6438: Fix pagination outputting empty links when provided a null or empty value](https://github.com/alphagov/govuk-frontend/pull/6438) – thanks to @NikhilNanjappa for reporting this issue.
+- [#6531: Prevent date inputs shifting alignment on iOS 18](https://github.com/alphagov/govuk-frontend/pull/6531) – thanks to @rowellx68 for reporting this issue and @colinrotherham for suggesting the fix.
+- [#6528: Fix hover state on focused small radios](https://github.com/alphagov/govuk-frontend/pull/6528)
+- [#6529: Fix rebranded header background being visible when printed](https://github.com/alphagov/govuk-frontend/pull/6529) – thanks to @lewis-softwire for reporting this issue.
+- [#6462: Update HMRC brand colour](https://github.com/alphagov/govuk-frontend/pull/6462)
+- [#6539: Fix skip link outline being clipped in forced colours mode](https://github.com/alphagov/govuk-frontend/pull/6539)
 
 ## v5.13.0 (Feature release)
 

@@ -88,6 +88,7 @@
     "sass-color-helpers": "^2.1.1",
     "sass-embedded": "^1.89.2",
     "sassdoc": "^2.7.4",
-    "slash": "^5.1.0"
+    "slash": "^5.1.0",
+    "stylelint": "^16.26.1"
   }
 }
