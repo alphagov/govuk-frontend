@@ -228,25 +228,6 @@ We're deprecating the `beforeContent` block and replacing it with a `containerSt
 
 We made this change in [pull request #6538: Make Page template options besides header and footer follow conventions](https://github.com/alphagov/govuk-frontend/pull/6538).
 
-### Fixes
-
-#### Add `aria-hidden="true"` to the Service navigation's menu toggle
-
-If you do not use Nunjucks macros to generate your components' HTML, add an `aria-hidden="true"` attribute to the hidden `<button>` element of the Service navigation component.
-
-The VoiceOver screen reader software for macOS and iPadOS contains bugs that make the button accessible to VoiceOver users, even if the button has a `hidden` attribute. Adding the `aria-hidden="true"` attribute means the button will remain hidden for VoiceOver users.
-
-We made this change in [pull request #6467: Fix VoiceOver access to `hidden` Service Navigation menu button](https://github.com/alphagov/govuk-frontend/pull/6467).
-
-#### Other fixes
-
-We've made fixes to GOV.UK Frontend in the following pull requests:
-
-- [#6351: Preserve already escaped `attributes` values to prevent double escaping](https://github.com/alphagov/govuk-frontend/pull/6351) – thanks to @colinrotherham for fixing this issue
-- [#6462: Update HMRC brand colour](https://github.com/alphagov/govuk-frontend/pull/6462)
-- [#6454: Prevent date inputs shifting alignment on iOS 18](https://github.com/alphagov/govuk-frontend/pull/6454) – thanks to @rowellx68 for reporting this issue and @colinrotherham for suggesting the fix.
-- [#6445: Fix skip link outline being clipped in forced colours mode](https://github.com/alphagov/govuk-frontend/pull/6445)
-
 ## v6.0.0-beta.1 (Beta breaking release)
 
 ### Breaking changes
@@ -483,27 +464,6 @@ Unless you operate a GOV.UK branded product, the GOV.UK logo should always link 
 
 We made this change in [pull request #6418: Update default `homepageUrl` to point to GOV.UK homepage](https://github.com/alphagov/govuk-frontend/pull/6418).
 
-### New features
-
-#### The GOV.UK footer component now allows the removal of OGL Content Licence information
-
-If your service does not provide information under the Open Government Licence (OGL), you can now remove it from the GOV.UK footer.
-
-If you're using Nunjucks, set the `contentLicence` parameter to `null`:
-
-```nunjucks
-{{ govukFooter({
-  contentLicence: false
-}) }}
-```
-
-We introduced this feature in the following pull requests:
-
-- [#6191: Allow removal of Content Licence information in the GOV.UK footer component](https://github.com/alphagov/govuk-frontend/pull/6191). Thanks to @NickColley for making this change.
-- [#6587: Use null rather than false to hide the content licence](https://github.com/alphagov/govuk-frontend/pull/6587). Thanks to @gunndabad for reporting the issue.
-
-We made this change in . Thanks to @NickColley for making this change.
-
 ### Fixes
 
 #### Tags now have borders for improved legibility
@@ -519,7 +479,6 @@ We made this change in [pull request #6379: Add borders to tags](https://github.
 We've made fixes to GOV.UK Frontend in the following pull requests:
 
 - [#5311: Remove non-operational value parameter from file upload component](https://github.com/alphagov/govuk-frontend/pull/5311)
-- [#6434: Fix rebranded header background being visible when printed](https://github.com/alphagov/govuk-frontend/pull/6434) - thanks to @lewis-softwire for reporting this issue
 
 ## v6.0.0-beta.0 (Beta breaking release)
 
@@ -617,8 +576,6 @@ We made this change in [pull request #6341: Deactivate `govuk-tint` and `govuk-s
 ### Fixes
 
 We've made fixes to GOV.UK Frontend in the following pull requests:
-
-- [#6338: Fix hover state on focused small radios](https://github.com/alphagov/govuk-frontend/pull/6338)
 
 ## v5.14.0 (Feature release)
 
