@@ -2,6 +2,8 @@
 /// @group helpers/spacing
 ////
 
+@import "../settings/warnings";
+
 /// Single point spacing
 ///
 /// Returns measurement corresponding to the spacing point requested.
@@ -152,6 +154,9 @@
 /// spacing scale, which defines different spacing values at different
 /// breakpoints. Wrapper for the `_govuk-responsive-spacing` mixin.
 ///
+/// @deprecated Use `margin-*: govuk-responsive-spacing($responsive-spacing-point)` instead.
+///
+///
 /// @see {mixin} _govuk-responsive-spacing
 ///
 /// @param {Number} $responsive-spacing-point - Point on the responsive spacing
@@ -169,6 +174,7 @@
 /// @access public
 
 @mixin govuk-responsive-margin($responsive-spacing-point, $direction: "all", $important: false, $adjustment: false) {
+  @include _warning("responsive-margin", "govuk-responsive-margin is deprecated. Use margin-*: govuk-responsive-spacing($responsive-spacing-point) instead.");
   @include _govuk-responsive-spacing($responsive-spacing-point, "margin", $direction, $important, $adjustment);
 }
 
@@ -177,6 +183,9 @@
 /// Adds responsive padding by fetching a 'spacing map' from the responsive
 /// spacing scale, which defines different spacing values at different
 /// breakpoints. Wrapper for the `_govuk-responsive-spacing` mixin.
+///
+/// @deprecated Use `padding-*: govuk-responsive-spacing($responsive-spacing-point)` instead.
+///
 ///
 /// @see {mixin} _govuk-responsive-spacing
 ///
@@ -195,5 +204,6 @@
 /// @access public
 
 @mixin govuk-responsive-padding($responsive-spacing-point, $direction: "all", $important: false, $adjustment: false) {
+  @include _warning("responsive-padding", "govuk-responsive-padding is deprecated. Use padding-*: govuk-responsive-spacing($responsive-spacing-point) instead.");
   @include _govuk-responsive-spacing($responsive-spacing-point, "padding", $direction, $important, $adjustment);
 }
