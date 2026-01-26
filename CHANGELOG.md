@@ -16,6 +16,23 @@ We made this change in [pull request #6639: Remove `govuk-tint` and `govuk-shade
 
 ### New features
 
+#### Reference colour from the palette declaratively when redefining functional colours
+
+We've updated how colours can be defined in `$govuk-functional-colours` to reference colours from the palette
+without using `govuk-colour`.
+
+Alongside arbitrary Sass colours, you can now set the values of `$govuk-functional-colours` to Sass maps with a `name` and optional `variant` property matching one of the colours of the palette.
+
+```scss
+$govuk-functional-colours: (
+  brand: (name: 'purple'), // `variant` defaults to `primary`
+  template-background: (name: 'purple', variant: 'tint-95')
+);
+@import "node_modules/govuk-frontend/dist/govuk";
+```
+
+We made this change in [pull request #6655: Store references to colours in `$govuk-functional-colours`](https://github.com/alphagov/govuk-frontend/pull/6655)
+
 #### Use `$govuk-output-custom-properties` to specify if custom properties are included in your CSS
 
 We've added a new Sass variable `$govuk-output-custom-properties` which controls if GOV.UK Frontend CSS custom properties are included in your processed CSS or not.
