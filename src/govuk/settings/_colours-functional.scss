@@ -67,9 +67,10 @@ $govuk-default-functional-colours: (
         name: "black",
         variant: "tint-80"
       ),
+    // Standard links (on white)
     "link": (
-      name: "blue"
-    ),
+        name: "blue"
+      ),
     "link-visited": (
       name: "purple"
     ),
@@ -79,6 +80,25 @@ $govuk-default-functional-colours: (
     ),
     "link-active": (
       name: "black"
+    ),
+    // 'Brand surface' is our name for components that have brand coloured
+    // backgrounds, links and borders. Note that the Footer and Cookie banner
+    // components assume `template-background` and `brand-surface-background`
+    // to be identical.
+    "brand-surface-background": (
+        name: "blue",
+        variant: "tint-95"
+      ),
+    "brand-surface-text": (
+      name: "black"
+    ),
+    "brand-surface-border": (
+      name: "blue",
+      variant: "shade-50"
+    ),
+    "brand-surface-link": (
+      name: "blue",
+      variant: "shade-10"
     )
   )
 );
@@ -321,13 +341,3 @@ $govuk-link-hover-colour: govuk-functional-colour(link-hover);
 ///   Variables for applied colours are deprecated. Please use the `govuk-functional-colour`
 ///   function instead: `govuk-functional-colour(link-active)`.
 $govuk-link-active-colour: govuk-functional-colour(link-active);
-
-// =============================================================================
-// Brand refresh
-// =============================================================================
-
-/// Border colour for areas on a light-blue background
-///
-/// @type Colour
-/// @access private
-$_govuk-rebrand-border-colour-on-blue-tint-95: govuk-colour("blue", "tint-50");

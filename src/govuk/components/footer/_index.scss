@@ -1,7 +1,8 @@
 @include govuk-exports("govuk/component/footer") {
   $govuk-footer-background: govuk-functional-colour(template-background);
-  $govuk-footer-text: govuk-functional-colour(text);
-  $govuk-footer-content-border: govuk-functional-colour(border);
+  $govuk-footer-text: govuk-functional-colour(brand-surface-text);
+  $govuk-footer-content-border: govuk-functional-colour(brand-surface-border);
+  $govuk-footer-link-colour: govuk-functional-colour(brand-surface-link);
 
   // Royal Arms image dimensions
   $govuk-footer-crest-image-width: 125px;
@@ -24,14 +25,16 @@
 
   .govuk-footer__link {
     @include govuk-link-common;
-    @include govuk-link-style-text;
+    color: $govuk-footer-link-colour;
   }
 
   .govuk-footer__section-break {
     margin: 0; // Reset `<hr>` default margins
     @include govuk-responsive-margin(8, "bottom");
     border: 0; // Reset `<hr>` default borders
-    border-bottom: 1px solid $_govuk-rebrand-border-colour-on-blue-tint-95;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: $govuk-footer-content-border;
   }
 
   .govuk-footer__meta {
@@ -74,6 +77,10 @@
     // This prevents the description from having orphans when space is narrow enough
     // and makes the text reflow more nicely
     text-wrap: balance;
+  }
+
+  .govuk-footer__copyright-logo {
+    color: $govuk-footer-text;
   }
 
   .govuk-footer__copyright-logo::before {
@@ -141,7 +148,9 @@
       padding-bottom: govuk-spacing(2);
     }
 
-    border-bottom: 1px solid $_govuk-rebrand-border-colour-on-blue-tint-95;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: $govuk-footer-content-border;
   }
 
   .govuk-footer__navigation {
