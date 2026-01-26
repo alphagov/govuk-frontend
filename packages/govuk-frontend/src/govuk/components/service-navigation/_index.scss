@@ -1,15 +1,16 @@
 @include govuk-exports("govuk/component/service-navigation") {
   $govuk-service-navigation-active-link-border-width: govuk-spacing(1);
-  $govuk-service-navigation-background: govuk-colour("black", $variant: "tint-95");
-  $govuk-service-navigation-border-colour: govuk-functional-colour(border);
-
-  // We make the link colour a little darker than normal here so that it has
-  // better perceptual contrast with the navigation background.
-  $govuk-service-navigation-link-colour: govuk-colour("blue", "shade-10");
+  $govuk-service-navigation-text-colour: govuk-functional-colour(brand-surface-text);
+  $govuk-service-navigation-background: govuk-functional-colour(brand-surface-background);
+  $govuk-service-navigation-border-colour: govuk-functional-colour(brand-surface-border);
+  $govuk-service-navigation-link-colour: govuk-functional-colour(brand-surface-link);
 
   .govuk-service-navigation {
-    border-bottom: 1px solid $_govuk-rebrand-border-colour-on-blue-tint-95;
-    background-color: govuk-colour("blue", "tint-95");
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: $govuk-service-navigation-border-colour;
+    color: $govuk-service-navigation-text-colour;
+    background-color: $govuk-service-navigation-background;
   }
 
   .govuk-service-navigation__container {
@@ -29,7 +30,9 @@
   .govuk-service-navigation__service-name {
     position: relative;
     margin: govuk-spacing(2) 0;
-    border: 0 solid $govuk-service-navigation-link-colour;
+    border-width: 0;
+    border-style: solid;
+    border-color: $govuk-service-navigation-link-colour;
 
     @media #{govuk-from-breakpoint(tablet)} {
       // inline-block is used as a fallback for browsers that don't support flexbox
@@ -205,7 +208,7 @@
     .govuk-width-container {
       border-width: 1px 0;
       border-style: solid;
-      border-color: $_govuk-rebrand-border-colour-on-blue-tint-95;
+      border-color: $govuk-service-navigation-border-colour;
     }
 
     // Subtract 1px of space to account for the extra border-top
