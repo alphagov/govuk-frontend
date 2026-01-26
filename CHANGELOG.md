@@ -14,6 +14,33 @@ Replace them with tints and shades from the new GOV.UK colour palette that are a
 
 We made this change in [pull request #6639: Remove `govuk-tint` and `govuk-shade` functions](https://github.com/alphagov/govuk-frontend/pull/6639)
 
+### Recommended changes
+
+#### Move Phase banner components to the `<header>` element
+
+We now recommend placing Phase banner components in the `<header>` element of the page.
+
+If you're using GOV.UK Frontend's Nunjucks template and macros, create a `headerEnd` block and move the `govukPhaseBanner` macro into it.
+
+```njk
+{% block headerEnd %}
+  {{ govukPhaseBanner({}) }}
+{% endblock %}
+```
+
+If you're not using Nunjucks, move the Phase banner's HTML to before the `</header>` closing tag. Add the `govuk-width-container` class to the component to prevent it from stretching wider than the page's content.
+
+```html
+<header class="govuk-template__header">
+  <!-- Other header content -->
+  <div class="govuk-phase-banner govuk-width-container">
+    <!-- Phase banner content -->
+  </div>
+</header>
+```
+
+We made this change in [pull request #6546: Add `govuk-width-container` class to Phase banner component](https://github.com/alphagov/govuk-frontend/pull/6546).
+
 ### New features
 
 #### Reference colour from the palette declaratively when redefining functional colours
