@@ -45,6 +45,7 @@ We made this change in [pull request #6606: Enable better control over custom pr
 
 We've made fixes to GOV.UK Frontend in the following pull requests:
 
+- [#6651: Update green palette](https://github.com/alphagov/govuk-frontend/pull/6651)
 - [#6449: Refactor Character count method to reduce repeated updates](https://github.com/alphagov/govuk-frontend/pull/6449)
 
 ## v6.0.0-beta.2 (Beta breaking release)
