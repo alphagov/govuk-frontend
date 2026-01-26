@@ -19,7 +19,9 @@ $_govuk-palette: (
     "tint-80": #d2e2f1,
     "tint-95": #f4f8fb,
     "shade-25": #16548a,
-    "shade-50": #0f385c
+    "shade-50": #0f385c,
+    // Listed last as tests expect colours to be in a given order
+    "shade-10": #1a65a6
   ),
   "green": (
     "primary": #0f7a52,
