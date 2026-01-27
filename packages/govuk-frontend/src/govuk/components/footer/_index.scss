@@ -23,8 +23,10 @@
   }
 
   .govuk-footer__link {
-    @include govuk-link-common;
-    @include govuk-link-style-text;
+    // @include govuk-link-common;
+    // @include govuk-link-style-text;
+
+    color: govuk-colour("blue", "shade-10");
   }
 
   .govuk-footer__section-break {
@@ -76,6 +78,10 @@
     text-wrap: balance;
   }
 
+  .govuk-footer__copyright-logo {
+    color: $govuk-footer-text;
+  }
+
   .govuk-footer__copyright-logo::before {
     content: "";
     display: block;
@@ -94,17 +100,14 @@
     // We test for `mask-position` rather than `mask-image` because of a false
     // positive in Edge 17.
     @supports (mask-position: initial) {
-      background: currentcolor;
+      background: $govuk-footer-text;
       mask-image: govuk-image-url("govuk-crest.svg");
       mask-repeat: no-repeat;
       mask-position: 50% 0%;
       mask-size: $govuk-footer-crest-image-width $govuk-footer-crest-image-height;
 
-      // currentcolor doesn't seem to be computed correctly in forced colors
-      // mode so force the background color to match the system link color
-      // (matching the text in the link)
       @media screen and (forced-colors: active) {
-        background: linktext;
+        background: $govuk-footer-text;
       }
     }
   }
