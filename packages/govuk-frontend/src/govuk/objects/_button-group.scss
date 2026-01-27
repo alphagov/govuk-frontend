@@ -19,7 +19,7 @@
 
     $link-spacing: govuk-spacing(1);
 
-    @include govuk-responsive-margin(6, "bottom", $adjustment: $vertical-gap * -1);
+    margin-bottom: calc(#{govuk-responsive-spacing(6)} + #{$vertical-gap * -1});
 
     // Flexbox is used to center-align links on mobile, align everything along
     // the baseline on tablet and above, and to removes extra whitespace that

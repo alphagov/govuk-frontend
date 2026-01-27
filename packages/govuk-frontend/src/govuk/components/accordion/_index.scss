@@ -5,7 +5,7 @@
   $govuk-accordion-bottom-border-width: 1px;
 
   .govuk-accordion {
-    @include govuk-responsive-margin(6, "bottom");
+    margin-bottom: govuk-responsive-spacing(6);
   }
 
   .govuk-accordion__section {
@@ -52,8 +52,8 @@
     .govuk-accordion__section-content {
       display: none;
 
-      @include govuk-responsive-padding(3, "top");
-      @include govuk-responsive-padding(8, "bottom");
+      padding-top: govuk-responsive-spacing(3);
+      padding-bottom: govuk-responsive-spacing(8);
     }
 
     // Hide the body of collapsed sections using `content-visibility` to enable

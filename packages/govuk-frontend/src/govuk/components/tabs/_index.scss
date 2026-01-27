@@ -1,7 +1,7 @@
 @include govuk-exports("govuk/component/tabs") {
   .govuk-tabs {
-    @include govuk-responsive-margin(1, "top");
-    @include govuk-responsive-margin(6, "bottom");
+    margin-top: govuk-responsive-spacing(1);
+    margin-bottom: govuk-responsive-spacing(6);
     @include govuk-font($size: 19);
   }
 
@@ -18,7 +18,7 @@
     margin: 0;
     padding: 0;
     list-style: none;
-    @include govuk-responsive-margin(6, "bottom");
+    margin-bottom: govuk-responsive-spacing(6);
   }
 
   .govuk-tabs__list-item {
@@ -41,7 +41,7 @@
   }
 
   .govuk-tabs__panel {
-    @include govuk-responsive-margin(8, "bottom");
+    margin-bottom: govuk-responsive-spacing(8);
   }
 
   // GOV.UK Frontend JavaScript enabled
@@ -116,7 +116,7 @@
       }
 
       .govuk-tabs__panel {
-        @include govuk-responsive-margin(0, "bottom");
+        margin-bottom: govuk-responsive-spacing(0);
         padding: govuk-spacing(6) govuk-spacing(4);
         border: 1px solid;
         border-top: 0;

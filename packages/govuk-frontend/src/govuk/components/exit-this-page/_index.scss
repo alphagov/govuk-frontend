@@ -4,7 +4,7 @@
   $indicator-size: 0.75em;
 
   .govuk-exit-this-page {
-    @include govuk-responsive-margin(8, "bottom");
+    margin-bottom: govuk-responsive-spacing(8);
     position: sticky;
     z-index: 1000;
     top: 0;
@@ -25,7 +25,7 @@
   }
 
   .govuk-exit-this-page__indicator {
-    @include govuk-responsive-padding(2);
+    padding: govuk-responsive-spacing(2);
     display: none;
     padding-bottom: 0;
     color: inherit;

@@ -9,7 +9,7 @@
       border-collapse: collapse;
     }
     margin: 0; // Reset default user agent styles
-    @include govuk-responsive-margin(6, "bottom");
+    margin-bottom: govuk-responsive-spacing(6);
   }
 
   .govuk-summary-list__row {
@@ -181,7 +181,7 @@
 
   // Additional block for the summary card
   .govuk-summary-card {
-    @include govuk-responsive-margin(6, "bottom");
+    margin-bottom: govuk-responsive-spacing(6);
     border: 1px solid;
     border-color: govuk-functional-colour(border);
   }

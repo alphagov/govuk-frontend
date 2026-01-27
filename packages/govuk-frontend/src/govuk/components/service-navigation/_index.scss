@@ -47,7 +47,7 @@
       line-height: (29 / 19);
 
       &:not(:last-child) {
-        @include govuk-responsive-margin(6, $direction: right);
+        margin-right: govuk-responsive-spacing(6);
       }
     }
   }

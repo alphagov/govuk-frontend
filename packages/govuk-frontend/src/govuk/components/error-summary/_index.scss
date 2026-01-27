@@ -4,8 +4,8 @@
   .govuk-error-summary {
     @include govuk-font($size: 19);
     @include govuk-text-colour;
-    @include govuk-responsive-padding(4);
-    @include govuk-responsive-margin(8, "bottom");
+    padding: govuk-responsive-spacing(4);
+    margin-bottom: govuk-responsive-spacing(8);
 
     border: $govuk-border-width solid;
     border-color: govuk-functional-colour(error);
@@ -21,7 +21,7 @@
     @include govuk-typography-weight-bold;
 
     margin-top: 0;
-    @include govuk-responsive-margin(4, "bottom");
+    margin-bottom: govuk-responsive-spacing(4);
   }
 
   .govuk-error-summary__body {
@@ -30,11 +30,11 @@
     }
 
     > * + * {
-      @include govuk-responsive-margin(4, "top");
+      margin-top: govuk-responsive-spacing(4);
     }
 
     > :last-child {
-      @include govuk-responsive-margin(1, "bottom");
+      margin-bottom: govuk-responsive-spacing(1);
     }
   }
 

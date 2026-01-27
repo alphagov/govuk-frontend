@@ -2,7 +2,7 @@
   .govuk-details {
     @include govuk-font($size: 19);
     @include govuk-text-colour;
-    @include govuk-responsive-margin(6, "bottom");
+    margin-bottom: govuk-responsive-spacing(6);
 
     display: block;
   }
@@ -56,7 +56,7 @@
 
     .govuk-details__summary-text {
       @include govuk-typography-weight-bold;
-      @include govuk-responsive-margin(4, "bottom");
+      margin-bottom: govuk-responsive-spacing(4);
       padding-left: govuk-spacing(4);
     }
   }

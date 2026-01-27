@@ -2,7 +2,7 @@
   // Flexbox enhancement for small screen visual design
   // Falls back to a float: left layout on non-flex browsers
   .govuk-pagination {
-    @include govuk-responsive-margin(6, "bottom");
+    margin-bottom: govuk-responsive-spacing(6);
     display: flex;
     flex-direction: column;
     align-items: center;
