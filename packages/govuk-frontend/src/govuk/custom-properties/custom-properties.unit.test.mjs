@@ -10,6 +10,6 @@ describe('GOV.UK Frontend custom properties', () => {
 
     await expect(css).toContain('--govuk-frontend-version')
     await expect(css).toContain('--govuk-breakpoint-mobile')
-    await expect(css).toContain('--_govuk-brand-colour')
+    await expect(css).toContain('--govuk-brand-colour')
   })
 })
