@@ -81,22 +81,23 @@ $govuk-default-functional-colours: (
     "link-active": (
       name: "black"
     ),
-    // 'Brand surface' is our name for components that have brand coloured
-    // backgrounds, links and borders. Note that the Footer and Cookie banner
-    // components assume `template-background` and `brand-surface-background`
-    // to be identical.
-    "brand-surface-background": (
+    // 'Surfaces' are our name for components that have different colour
+    // palettes to typical page content. This is the 'generic' surface.
+    //
+    // Note that the Footer and Cookie banner components assumes
+    // `template-background` and `surface-background` to be identical.
+    "surface-background": (
         name: "blue",
         variant: "tint-95"
       ),
-    "brand-surface-text": (
+    "surface-text": (
       name: "black"
     ),
-    "brand-surface-border": (
+    "surface-border": (
       name: "blue",
       variant: "shade-50"
     ),
-    "brand-surface-link": (
+    "surface-link": (
       name: "blue",
       variant: "shade-10"
     )

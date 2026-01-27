@@ -1,9 +1,9 @@
 @include govuk-exports("govuk/component/service-navigation") {
   $govuk-service-navigation-active-link-border-width: govuk-spacing(1);
-  $govuk-service-navigation-text-colour: govuk-functional-colour(brand-surface-text);
-  $govuk-service-navigation-background: govuk-functional-colour(brand-surface-background);
-  $govuk-service-navigation-border-colour: govuk-functional-colour(brand-surface-border);
-  $govuk-service-navigation-link-colour: govuk-functional-colour(brand-surface-link);
+  $govuk-service-navigation-text-colour: govuk-functional-colour(surface-text);
+  $govuk-service-navigation-background: govuk-functional-colour(surface-background);
+  $govuk-service-navigation-border-colour: govuk-functional-colour(surface-border);
+  $govuk-service-navigation-link-colour: govuk-functional-colour(surface-link);
 
   .govuk-service-navigation {
     border-bottom-width: 1px;
