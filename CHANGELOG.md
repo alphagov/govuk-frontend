@@ -6,6 +6,22 @@ For advice on how to use these release notes, see [our guidance on staying up to
 
 ### Breaking changes
 
+#### We've replaced `core/govuk-frontend-properties` with a new `custom-properties` Sass layer
+
+We've moved the CSS custom properties previously outputted by `govuk-frontend-properties` from the `core` Sass layer in GOV.UK Frontend to a new Sass layer: `custom-properties`. This is in preparation for wider use of custom properties within GOV.UK Frontend in the future.
+
+If you are importing `govuk-frontend-properties` directly and not also importing `base`, replace your import statement to point to `custom-properties` instead of `core/govuk-frontend-properties`.
+
+This change was added in [pull request #6654: Add new `custom-properties` Sass layer](https://github.com/alphagov/govuk-frontend/pull/6654)
+
+#### `base` now outputs CSS when processed
+
+The new `custom-properties` Sass layer is included in `base.scss`. This means that `base` now outputs CSS when processed with Sass whereas before it was necessary for processing the Sass in other layers but didn't output any CSS itself. This is to ensure that custom properties are consistently available in all the places they need to be.
+
+If you're importing `base` but don't want it to output CSS, you can replicate `base` by importing the `settings`, `tools` and `helpers` layers individually.
+
+This change was added in [pull request #6606: Enable better control over custom property outputting](https://github.com/alphagov/govuk-frontend/pull/6606)
+
 #### Stop using `govuk-tint` and `govuk-shade`
 
 We have removed the `govuk-tint` and `govuk-shade` functions for applying tints and shades to colours by percentage.
