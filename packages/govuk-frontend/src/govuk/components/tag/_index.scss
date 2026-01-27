@@ -23,8 +23,7 @@
 }
 
 /// Generate colour CSS for tag and tag modifiers
-/// Applies standard rules from the tag colour functions as well as setting
-/// border colour to `currentcolor` so that it follows the text
+/// Applies standard rules from the tag colour functions
 ///
 /// @param {String} $colour - name of colour from the colour palette
 /// @access private
@@ -55,10 +54,14 @@
     //
     // The negative margin added to the top and bottom matches the extra padding
     // added.
-    margin: -4px 0;
-    padding: 4px 8px;
-    // The border colour always follows the text colour of tags
-    border: 1px solid currentcolor;
+    margin-top: -2px;
+    margin-bottom: -3px;
+
+    padding-top: 2px;
+    padding-right: 8px;
+    padding-bottom: 3px;
+    padding-left: 8px;
+
     border-radius: 1px;
     text-decoration: none;
     overflow-wrap: break-word;
@@ -94,10 +97,6 @@
     @include _govuk-tag-colours("orange");
   }
 
-  .govuk-tag--yellow {
-    @include _govuk-tag-colours("yellow");
-  }
-
   .govuk-tag--teal {
     @include _govuk-tag-colours("teal");
   }
@@ -106,8 +105,19 @@
     @include _govuk-tag-colours("magenta");
   }
 
-  // Turquoise and pink are deprecated over teal and magenta respectively
+  // Yellow uses different colours to ensure it's legible
+  .govuk-tag--yellow {
+    color: govuk-colour("orange", $variant: "shade-50");
+    background-color: govuk-colour("yellow", $variant: "tint-50");
+  }
 
+  // Grey uses different colours to ensure it's legible
+  .govuk-tag--grey {
+    color: govuk-colour("black");
+    background-color: govuk-colour("black", $variant: "tint-80");
+  }
+
+  // Turquoise and pink are deprecated over teal and magenta respectively
   // @deprecated
   .govuk-tag--turquoise {
     @include _govuk-tag-colours("teal");
@@ -116,20 +126,5 @@
   // @deprecated
   .govuk-tag--pink {
     @include _govuk-tag-colours("magenta");
-  }
-
-  // Light blue doesn't follow the tag colour rules because it uses the 95% tint
-  // blue for its background colour
-  .govuk-tag--light-blue {
-    color: _govuk-tag-text-colour("blue");
-    background-color: govuk-colour("blue", $variant: "tint-95");
-  }
-
-  // Grey can't follow the tag colour rules because `black` follows a different
-  // colour system to other colours where black is the primary colour and greys
-  // are tints traveling up
-  .govuk-tag--grey {
-    color: govuk-colour("black", "tint-25");
-    background-color: govuk-colour("black", "tint-95");
   }
 }

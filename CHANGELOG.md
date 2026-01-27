@@ -47,6 +47,14 @@ We made these changes in the following pull requests:
 - [#6622: Remove rebrand flag from service navigation](https://github.com/alphagov/govuk-frontend/pull/6622)
 - [#6623: Remove rebrand flag from cookie banner](https://github.com/alphagov/govuk-frontend/pull/6623)
 
+### Recommended changes
+
+#### Stop using light-blue coloured tags
+
+We've removed the light-blue tag colour. You should remove all instances of `govuk-tag--light-blue`.
+
+We made this change in [pull request #6646: Update tag colours and remove borders](https://github.com/alphagov/govuk-frontend/pull/6646).
+
 ### New features
 
 #### Reference colour from the palette declaratively when redefining functional colours
@@ -75,6 +83,16 @@ If you import different parts of GOV.UK Frontend in separate stylesheets, this h
 We made this change in [pull request #6606: Enable better control over custom property outputting](https://github.com/alphagov/govuk-frontend/pull/6606)
 
 ### Fixes
+
+#### Yellow and grey tags have updated colours
+
+The yellow tag's text colour has changed to Orange shade 50%. Its background colour has changed to Yellow tint 50%.
+
+The grey tag's text colour has change to Black. Its background colour has changed to Black tint 80%.
+
+These changes were made in [pull request #6646: Update tag colours and remove borders](https://github.com/alphagov/govuk-frontend/pull/6646).
+
+#### Other fixes
 
 We've made fixes to GOV.UK Frontend in the following pull requests:
 

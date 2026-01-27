@@ -35,9 +35,9 @@ or modifiers themselves can be hyphen delimited without causing ambiguity.
 For example:
 
 ```scss
-.govuk-phase-banner {}
-.govuk-phase-banner__phase-tag {}
-.govuk-phase-banner__phase-tag--light-blue {}
+.govuk-pagination {}
+.govuk-pagination__link-title {}
+.govuk-pagination__link-title--decorated {}
 ```
 
 ### Further reading:
