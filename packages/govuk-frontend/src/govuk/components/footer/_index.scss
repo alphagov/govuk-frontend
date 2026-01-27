@@ -9,8 +9,8 @@
 
   .govuk-footer {
     @include govuk-font($size: 19);
-    @include govuk-responsive-padding(7, "top");
-    @include govuk-responsive-padding(5, "bottom");
+    padding-top: govuk-responsive-spacing(7);
+    padding-bottom: govuk-responsive-spacing(5);
 
     border-top: 10px solid;
     border-top-color: govuk-functional-colour(brand);
@@ -29,7 +29,7 @@
 
   .govuk-footer__section-break {
     margin: 0; // Reset `<hr>` default margins
-    @include govuk-responsive-margin(8, "bottom");
+    margin-bottom: govuk-responsive-spacing(8);
     border: 0; // Reset `<hr>` default borders
     border-bottom: 1px solid $_govuk-rebrand-border-colour-on-blue-tint-95;
   }
@@ -174,7 +174,7 @@
   }
 
   .govuk-footer__list-item {
-    @include govuk-responsive-margin(4, "bottom");
+    margin-bottom: govuk-responsive-spacing(4);
   }
 
   .govuk-footer__list-item:last-child {

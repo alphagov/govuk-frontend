@@ -48,6 +48,6 @@
   // `govuk-main-wrapper--l` modifier instead.
   .govuk-main-wrapper--auto-spacing:first-child,
   .govuk-main-wrapper--l {
-    @include govuk-responsive-padding(8, "top");
+    padding-top: govuk-responsive-spacing(8);
   }
 }

@@ -3,7 +3,7 @@
     @include govuk-font($size: 19);
     @include govuk-text-colour;
     margin-top: 0;
-    @include govuk-responsive-margin(4, "bottom");
+    margin-bottom: govuk-responsive-spacing(4);
     padding-left: 0;
     list-style-type: none;
 

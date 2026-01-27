@@ -10,7 +10,7 @@
     display: block;
     width: 100%;
     min-height: 40px;
-    @include govuk-responsive-margin(6, "bottom");
+    margin-bottom: govuk-responsive-spacing(6);
     padding: govuk-spacing(1);
 
     resize: vertical;

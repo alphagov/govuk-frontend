@@ -1,7 +1,7 @@
 @include govuk-exports("govuk/component/notification-banner") {
   .govuk-notification-banner {
     @include govuk-font($size: 19);
-    @include govuk-responsive-margin(8, "bottom");
+    margin-bottom: govuk-responsive-spacing(8);
 
     border: $govuk-border-width solid;
     border-color: govuk-functional-colour(brand);
