@@ -137,8 +137,7 @@ describe('Functional colours', () => {
       'Unknown colour `non-existing-colour` (available colours: brand, text, template-background,' +
         ' body-background, print-text, secondary-text, focus, focus-text, error,' +
         ' success, border, input-border, hover, link, link-visited, link-hover,' +
-        ' link-active, brand-surface-background, brand-surface-text,' +
-        ' brand-surface-border, brand-surface-link)'
+        ' link-active, surface-background, surface-text, surface-border, surface-link)'
     )
   })
 
