@@ -19,8 +19,9 @@ $govuk-default-functional-colours: (
     "text": (
       name: "black"
     ),
-    // Used by components that want to give the illusion of extending
-    // the template background (such as the footer and cookie banner).
+    // The background colour of the template. This is intended to be the same
+    // as `surface-background` for the purposes of making the Footer and Cookie
+    // banner components merge seamlessly with the template.
     "template-background": (
         name: "blue",
         variant: "tint-95"
@@ -82,10 +83,7 @@ $govuk-default-functional-colours: (
       name: "black"
     ),
     // 'Surfaces' are our name for components that have different colour
-    // palettes to typical page content. This is the 'generic' surface.
-    //
-    // Note that the Footer and Cookie banner components assumes
-    // `template-background` and `surface-background` to be identical.
+    // palettes to typical page content. This is the generic surface.
     "surface-background": (
         name: "blue",
         variant: "tint-95"
