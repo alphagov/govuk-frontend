@@ -136,7 +136,9 @@ describe('Functional colours', () => {
     await expect(compileSassString(sass)).rejects.toThrow(
       'Unknown colour `non-existing-colour` (available colours: brand, text, template-background,' +
         ' body-background, print-text, secondary-text, focus, focus-text, error,' +
-        ' success, border, input-border, hover, link, link-visited, link-hover, link-active)'
+        ' success, border, input-border, hover, link, link-visited, link-hover,' +
+        ' link-active, brand-surface-background, brand-surface-text,' +
+        ' brand-surface-border, brand-surface-link)'
     )
   })
 
