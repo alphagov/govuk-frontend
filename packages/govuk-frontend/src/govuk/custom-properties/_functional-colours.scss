@@ -1,0 +1,15 @@
+@import "../settings/custom-properties";
+@import "../settings/colours-functional";
+@import "../tools/exports";
+@import "../helpers/colour";
+
+// CSS custom properties for each functional colour
+@include govuk-exports("govuk/custom-properties/functional-colours") {
+  :root {
+    @if $govuk-output-custom-properties {
+      @each $name, $value in $govuk-functional-colours {
+        --_govuk-#{$name}-colour: #{_govuk-resolve-colour($value)};
+      }
+    }
+  }
+}

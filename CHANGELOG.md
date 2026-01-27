@@ -6,6 +6,22 @@ For advice on how to use these release notes, see [our guidance on staying up to
 
 ### Breaking changes
 
+#### We've replaced `core/govuk-frontend-properties` with a new `custom-properties` Sass layer
+
+We've moved the CSS custom properties previously outputted by `govuk-frontend-properties` from the `core` Sass layer in GOV.UK Frontend to a new Sass layer: `custom-properties`. This is in preparation for wider use of custom properties within GOV.UK Frontend in the future.
+
+If you are importing `govuk-frontend-properties` directly and not also importing `base`, replace your import statement to point to `custom-properties` instead of `core/govuk-frontend-properties`.
+
+This change was added in [pull request #6654: Add new `custom-properties` Sass layer](https://github.com/alphagov/govuk-frontend/pull/6654)
+
+#### `base` now outputs CSS when processed
+
+The new `custom-properties` Sass layer is included in `base.scss`. This means that `base` now outputs CSS when processed with Sass whereas before it was necessary for processing the Sass in other layers but didn't output any CSS itself. This is to ensure that custom properties are consistently available in all the places they need to be.
+
+If you're importing `base` but don't want it to output CSS, you can replicate `base` by importing the `settings`, `tools` and `helpers` layers individually.
+
+This change was added in [pull request #6606: Enable better control over custom property outputting](https://github.com/alphagov/govuk-frontend/pull/6606)
+
 #### Stop using `govuk-tint` and `govuk-shade`
 
 We have removed the `govuk-tint` and `govuk-shade` functions for applying tints and shades to colours by percentage.
@@ -14,7 +30,65 @@ Replace them with tints and shades from the new GOV.UK colour palette that are a
 
 We made this change in [pull request #6639: Remove `govuk-tint` and `govuk-shade` functions](https://github.com/alphagov/govuk-frontend/pull/6639)
 
+#### Stop using the old GOV.UK logo and colour palette
+
+We’ve made the refreshed (blue-based) GOV.UK branding the default appearance of the GOV.UK header and GOV.UK footer components, and removed the previous (mostly black) branding as an option.
+
+We've also updated the colour palette of the Service navigation and Cookie banner components.
+
+With these changes, the GOV.UK header and GOV.UK footer components should now only be used by [services on the GOV.UK website](https://www.gov.uk/service-manual/design/making-your-service-look-like-govuk). Services outside of [the GOV.UK proposition](https://www.gov.uk/government/publications/govuk-proposition) should stop using the header and footer components and instead create their own.
+
+If you use GOV.UK Frontend's Nunjucks template, you should now remove the `govukRebrand` feature flag.
+
+If you use GOV.UK Frontend's Nunjucks macros without the template, or have overridden the default header and footer components, you should remove the `rebrand` parameter from references to the `govukHeader` and `govukFooter` macros.
+
+If you do not use the Nunjucks template, remove the `govuk-template--rebranded` class from the `<html>` element and update the HTML for icons, Open Graph image, and theme colour to remove references to the `rebrand` folder.
+
+```html
+<meta name="theme-color" content="#1d70b8">
+<link rel="icon" sizes="48x48" href="/assets/images/favicon.ico">
+<link rel="icon" sizes="any" href="/assets/images/favicon.svg" type="image/svg+xml">
+<link rel="mask-icon" href="/assets/images/govuk-icon-mask.svg" color="#1d70b8">
+<link rel="apple-touch-icon" href="/assets/images/govuk-icon-180.png">
+<link rel="manifest" href="/assets/manifest.json">
+<meta property="og:image" content="<SERVICE URL>/assets/images/govuk-opengraph-image.png">
+```
+
+We made these changes in the following pull requests:
+
+- [#6617: Remove rebrand switch from govukLogo](https://github.com/alphagov/govuk-frontend/pull/6617)
+- [#6618: Remove rebrand switch logic from GOV.UK Header](https://github.com/alphagov/govuk-frontend/pull/6618)
+- [#6619: Remove rebrand switch from govukFooter](https://github.com/alphagov/govuk-frontend/pull/6619)
+- [#6621: Remove rebrand flag from template](https://github.com/alphagov/govuk-frontend/pull/6621)
+- [#6622: Remove rebrand flag from service navigation](https://github.com/alphagov/govuk-frontend/pull/6622)
+- [#6623: Remove rebrand flag from cookie banner](https://github.com/alphagov/govuk-frontend/pull/6623)
+
+### Recommended changes
+
+#### Stop using light-blue coloured tags
+
+We've removed the light-blue tag colour. You should remove all instances of `govuk-tag--light-blue`.
+
+We made this change in [pull request #6646: Update tag colours and remove borders](https://github.com/alphagov/govuk-frontend/pull/6646).
+
 ### New features
+
+#### Reference colour from the palette declaratively when redefining functional colours
+
+We've updated how colours can be defined in `$govuk-functional-colours` to reference colours from the palette
+without using `govuk-colour`.
+
+Alongside arbitrary Sass colours, you can now set the values of `$govuk-functional-colours` to Sass maps with a `name` and optional `variant` property matching one of the colours of the palette.
+
+```scss
+$govuk-functional-colours: (
+  brand: (name: 'purple'), // `variant` defaults to `primary`
+  template-background: (name: 'purple', variant: 'tint-95')
+);
+@import "node_modules/govuk-frontend/dist/govuk";
+```
+
+We made this change in [pull request #6655: Store references to colours in `$govuk-functional-colours`](https://github.com/alphagov/govuk-frontend/pull/6655)
 
 #### Use `$govuk-output-custom-properties` to specify if custom properties are included in your CSS
 
@@ -26,8 +100,19 @@ We made this change in [pull request #6606: Enable better control over custom pr
 
 ### Fixes
 
+#### Yellow and grey tags have updated colours
+
+The yellow tag's text colour has changed to Orange shade 50%. Its background colour has changed to Yellow tint 50%.
+
+The grey tag's text colour has change to Black. Its background colour has changed to Black tint 80%.
+
+These changes were made in [pull request #6646: Update tag colours and remove borders](https://github.com/alphagov/govuk-frontend/pull/6646).
+
+#### Other fixes
+
 We've made fixes to GOV.UK Frontend in the following pull requests:
 
+- [#6651: Update green palette](https://github.com/alphagov/govuk-frontend/pull/6651)
 - [#6449: Refactor Character count method to reduce repeated updates](https://github.com/alphagov/govuk-frontend/pull/6449)
 
 ## v6.0.0-beta.2 (Beta breaking release)
