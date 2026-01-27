@@ -82,7 +82,7 @@ In this release, we're introducing generic surface colours. These can be used to
 The new colours are:
 
 - `surface-background`, which defaults to Blue tint 95% in the new colour palette.
-- `surface-border`, which defaults to Blue shade 50%.
+- `surface-border`, which defaults to Blue tint 50%.
 - `surface-text`, which defaults to Black.
 - `surface-link`, which defaults to Blue shade 10%.
 
