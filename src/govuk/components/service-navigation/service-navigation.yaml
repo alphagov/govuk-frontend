@@ -187,6 +187,10 @@ examples:
       serviceName: Apply to receive a rare holofoil Charizard Pokémon card from the King
       serviceUrl: '#/'
   - name: with service name and navigation
+    screenshot:
+      variants:
+        - default
+        - no-js
     options:
       serviceName: Apply for a juggling license
       serviceUrl: '#/'
