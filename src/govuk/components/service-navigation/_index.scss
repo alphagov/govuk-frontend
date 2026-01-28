@@ -6,6 +6,7 @@
   $govuk-service-navigation-link-colour: govuk-functional-colour(surface-link);
 
   .govuk-service-navigation {
+    @include govuk-font($size: 19);
     border-bottom-width: 1px;
     border-bottom-style: solid;
     border-bottom-color: $govuk-service-navigation-border-colour;
@@ -98,7 +99,7 @@
   //
 
   .govuk-service-navigation__service-name {
-    @include govuk-font($size: 19, $weight: bold);
+    @include govuk-typography-weight-bold;
   }
 
   // Annoyingly this requires a compound selector in order to overcome the
@@ -119,7 +120,7 @@
   //
 
   .govuk-service-navigation__toggle {
-    @include govuk-font($size: 19, $weight: bold);
+    @include govuk-typography-weight-bold;
     display: inline-flex;
     margin: govuk-spacing(2) 0;
     padding: 0;
@@ -157,7 +158,6 @@
   }
 
   .govuk-service-navigation__list {
-    @include govuk-font($size: 19);
     margin: 0;
     margin-bottom: govuk-spacing(3);
     padding: 0;
