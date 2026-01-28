@@ -25,7 +25,28 @@
 
   .govuk-footer__link {
     @include govuk-link-common;
-    color: $govuk-footer-link-colour;
+
+    &:link {
+      color: govuk-functional-colour(surface-link);
+    }
+
+    &:visited {
+      color: govuk-functional-colour(link-visited);
+    }
+
+    &:hover {
+      color: govuk-functional-colour(link-hover);
+    }
+
+    &:active {
+      color: govuk-functional-colour(link-active);
+    }
+
+    // When focussed, the text colour needs to be darker to ensure that colour
+    // contrast is still acceptable
+    &:focus {
+      color: govuk-functional-colour(focus-text);
+    }
   }
 
   .govuk-footer__section-break {
