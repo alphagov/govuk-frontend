@@ -8,7 +8,7 @@
   :root {
     @if $govuk-output-custom-properties {
       @each $name, $value in $govuk-functional-colours {
-        --_govuk-#{$name}-colour: #{_govuk-resolve-colour($value)};
+        --govuk-#{$name}-colour: #{_govuk-resolve-colour($value)};
       }
     }
   }

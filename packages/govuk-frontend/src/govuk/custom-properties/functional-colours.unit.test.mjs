@@ -8,8 +8,8 @@ describe('custom-properties/functional-colours', () => {
 
     const { css } = await compileSassString(sass)
 
-    await expect(css).toContain('--_govuk-brand-colour: #1d70b8;')
-    await expect(css).toContain('--_govuk-text-colour: #0b0c0c;')
+    await expect(css).toContain('--govuk-brand-colour: #1d70b8;')
+    await expect(css).toContain('--govuk-text-colour: #0b0c0c;')
   })
 
   it('outputs the properties only once when included multiple times', async () => {
@@ -20,7 +20,7 @@ describe('custom-properties/functional-colours', () => {
 
     const { css } = await compileSassString(sass)
 
-    const occurrences = css.matchAll(/--_govuk-brand-colour/g)
+    const occurrences = css.matchAll(/--govuk-brand-colour/g)
 
     expect(Array.from(occurrences)).toHaveLength(1)
   })
@@ -34,7 +34,7 @@ describe('custom-properties/functional-colours', () => {
 
       const { css } = await compileSassString(sass)
 
-      await expect(css).toContain('--_govuk-brand-colour')
+      await expect(css).toContain('--govuk-brand-colour')
     })
 
     it('does not output core custom properties if `false`', async () => {
@@ -45,7 +45,7 @@ describe('custom-properties/functional-colours', () => {
 
       const { css } = await compileSassString(sass)
 
-      await expect(css).not.toContain('--_govuk-brand-colour')
+      await expect(css).not.toContain('--govuk-brand-colour')
     })
   })
 })
