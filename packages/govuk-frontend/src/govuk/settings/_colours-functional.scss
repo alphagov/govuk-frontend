@@ -19,8 +19,9 @@ $govuk-default-functional-colours: (
     "text": (
       name: "black"
     ),
-    // Used by components that want to give the illusion of extending
-    // the template background (such as the footer and cookie banner).
+    // The background colour of the template. This is intended to be the same
+    // as `surface-background` for the purposes of making the Footer and Cookie
+    // banner components merge seamlessly with the template.
     "template-background": (
         name: "blue",
         variant: "tint-95"
@@ -67,9 +68,10 @@ $govuk-default-functional-colours: (
         name: "black",
         variant: "tint-80"
       ),
+    // Standard links (on white)
     "link": (
-      name: "blue"
-    ),
+        name: "blue"
+      ),
     "link-visited": (
       name: "purple"
     ),
@@ -79,6 +81,23 @@ $govuk-default-functional-colours: (
     ),
     "link-active": (
       name: "black"
+    ),
+    // 'Surfaces' are our name for components that have different colour
+    // palettes to typical page content. This is the generic surface.
+    "surface-background": (
+        name: "blue",
+        variant: "tint-95"
+      ),
+    "surface-text": (
+      name: "black"
+    ),
+    "surface-border": (
+      name: "blue",
+      variant: "tint-50"
+    ),
+    "surface-link": (
+      name: "blue",
+      variant: "shade-10"
     )
   )
 );
@@ -321,13 +340,3 @@ $govuk-link-hover-colour: govuk-functional-colour(link-hover);
 ///   Variables for applied colours are deprecated. Please use the `govuk-functional-colour`
 ///   function instead: `govuk-functional-colour(link-active)`.
 $govuk-link-active-colour: govuk-functional-colour(link-active);
-
-// =============================================================================
-// Brand refresh
-// =============================================================================
-
-/// Border colour for areas on a light-blue background
-///
-/// @type Colour
-/// @access private
-$_govuk-rebrand-border-colour-on-blue-tint-95: govuk-colour("blue", "tint-50");

@@ -75,8 +75,7 @@ We made this change in [pull request #6646: Update tag colours and remove border
 
 #### Reference colour from the palette declaratively when redefining functional colours
 
-We've updated how colours can be defined in `$govuk-functional-colours` to reference colours from the palette
-without using `govuk-colour`.
+We've updated how colours can be defined in `$govuk-functional-colours` to reference colours from the palette without using `govuk-colour`.
 
 Alongside arbitrary Sass colours, you can now set the values of `$govuk-functional-colours` to Sass maps with a `name` and optional `variant` property matching one of the colours of the palette.
 
@@ -89,6 +88,23 @@ $govuk-functional-colours: (
 ```
 
 We made this change in [pull request #6655: Store references to colours in `$govuk-functional-colours`](https://github.com/alphagov/govuk-frontend/pull/6655)
+
+#### Use the new surface functional colours for styling distinct content areas
+
+We've added four new functional colours for styling content that's visually distinct from the other content on the page. We're calling these 'surface' colours.
+
+In this release, we're introducing generic surface colours. These can be used to emphasise pieces of content without attaching a semantic meaning to them, whilst ensuring that the colours are used consistently and have accessible contrast when used together.
+
+The new colours are:
+
+- `surface-background`, which defaults to Blue tint 95% in the new colour palette.
+- `surface-border`, which defaults to Blue tint 50%.
+- `surface-text`, which defaults to Black.
+- `surface-link`, which defaults to Blue shade 10%.
+
+The new surface has been applied to the Service navigation, Cookie banner, and Footer components.
+
+We made this change in [pull request #6659: Add functional colours for Footer, Service navigation, and Cookie banner](https://github.com/alphagov/govuk-frontend/pull/6659)
 
 #### Use `$govuk-output-custom-properties` to specify if custom properties are included in your CSS
 
