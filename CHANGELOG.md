@@ -4,6 +4,12 @@ For advice on how to use these release notes, see [our guidance on staying up to
 
 ## Unreleased
 
+### Fixes
+
+We've made fixes to GOV.UK Frontend in the following pull requests:
+
+- [#6675: Remove unused logo code](https://github.com/alphagov/govuk-frontend/pull/6675)
+
 ## v6.0.0-rc.0 (Breaking release candidate)
 
 ### Breaking changes
