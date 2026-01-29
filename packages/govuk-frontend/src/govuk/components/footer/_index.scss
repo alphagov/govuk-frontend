@@ -101,7 +101,7 @@
   }
 
   .govuk-footer__copyright-logo {
-    color: $govuk-footer-text;
+    @include govuk-link-style-text;
   }
 
   .govuk-footer__copyright-logo::before {
