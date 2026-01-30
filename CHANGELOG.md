@@ -10,6 +10,7 @@ We've made fixes to GOV.UK Frontend in the following pull requests:
 
 - [#6675: Remove unused logo code](https://github.com/alphagov/govuk-frontend/pull/6675)
 - [#6677: Update DESZN organisation colour](https://github.com/alphagov/govuk-frontend/pull/6677)
+- [#6679: Fix summary list cells becoming vertically misaligned when a multi-line inline-block element is present](https://github.com/alphagov/govuk-frontend/pull/6679)
 
 ## v6.0.0-rc.0 (Breaking release candidate)
 
