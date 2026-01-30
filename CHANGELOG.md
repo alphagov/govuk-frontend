@@ -10,6 +10,7 @@ We've made fixes to GOV.UK Frontend in the following pull requests:
 
 - [#6675: Remove unused logo code](https://github.com/alphagov/govuk-frontend/pull/6675)
 - [#6677: Update DESZN organisation colour](https://github.com/alphagov/govuk-frontend/pull/6677)
+- [#6678: Explicitly set box-shadow colour for focused inputs](https://github.com/alphagov/govuk-frontend/pull/6678)
 
 ## v6.0.0-rc.0 (Breaking release candidate)
 
