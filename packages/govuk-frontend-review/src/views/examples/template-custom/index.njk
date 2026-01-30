@@ -59,7 +59,7 @@
   <!-- block:header -->
   {{ govukHeader({
     serviceName: "Nom du service",
-    containerClasses: "app-width-container--wide",
+    containerClasses: containerClasses,
     navigation: [
       {
         href: '#1',
@@ -87,7 +87,7 @@
 {% block headerEnd %}
   <!-- block:headerEnd -->
   {{ govukPhaseBanner({
-    classes: "govuk-width-container",
+    classes: containerClasses,
     tag: {
       text: "Alpha"
     },
