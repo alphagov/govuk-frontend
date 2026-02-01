@@ -91,7 +91,7 @@
     "typescript": "^5.9.3"
   },
   "optionalDependencies": {
-    "@actions/github": "^6.0.1",
+    "@actions/github": "^7.0.0",
     "@jest/environment": "^30.2.0",
     "@octokit/plugin-rest-endpoint-methods": "^17.0.0",
     "@octokit/rest": "22.0.1",
@@ -103,7 +103,7 @@
     "@types/jest-axe": "^3.5.9",
     "@types/js-yaml": "^4.0.9",
     "@types/mime-types": "^3.0.1",
-    "@types/node": "^25.0.3",
+    "@types/node": "^25.0.10",
     "@types/nunjucks": "^3.2.6",
     "@types/semver": "^7.7.1",
     "@types/slug": "^5.0.9",
