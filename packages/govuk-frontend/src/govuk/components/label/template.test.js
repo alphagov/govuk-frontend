@@ -58,7 +58,7 @@ describe('Label', () => {
       const $ = render('label', examples.for)
 
       const labelForAttr = $('.govuk-label').attr('for')
-      expect(labelForAttr).toBe('test-target-element')
+      expect(labelForAttr).toBe('test-target-input')
     })
 
     it('can be nested inside an H1 using isPageHeading', () => {
