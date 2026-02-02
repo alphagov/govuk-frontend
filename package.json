@@ -78,7 +78,7 @@
     "govuk-prototype-kit": "^13.18.1",
     "gulp": "^5.0.1",
     "gulp-cli": "^3.0.0",
-    "html-validate": "10.5.0",
+    "html-validate": "10.7.0",
     "nunjucks": "^3.2.4",
     "outdent": "^0.8.0",
     "postcss": "^8.5.6",
