@@ -4,6 +4,33 @@ For advice on how to use these release notes, see [our guidance on staying up to
 
 ## Unreleased
 
+### Recommended changes
+
+#### Move any Phase banner components to the `<header>` element
+
+We now recommend placing Phase banner components in the `<header>` element of the page.
+
+If you're using GOV.UK Frontend's Nunjucks template and macros, create a `headerEnd` block and move the `govukPhaseBanner` macro into it.
+
+```njk
+{% block headerEnd %}
+  {{ govukPhaseBanner({}) }}
+{% endblock %}
+```
+
+If you're not using Nunjucks, move the Phase banner's HTML to before the `</header>` closing tag and add the `govuk-width-container` class to prevent the banner from stretching wider than the page's content.
+
+```html
+<header class="govuk-template__header">
+  <!-- Other header content -->
+  <div class="govuk-phase-banner govuk-width-container">
+    <!-- Phase banner content -->
+  </div>
+</header>
+```
+
+We made this change in [pull request #6546: Add `govuk-width-container` class to Phase banner component](https://github.com/alphagov/govuk-frontend/pull/6546).
+
 ### Fixes
 
 We've made fixes to GOV.UK Frontend in the following pull requests:
