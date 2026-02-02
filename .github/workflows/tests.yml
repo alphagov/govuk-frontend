@@ -284,7 +284,7 @@ jobs:
         uses: ./.github/workflows/actions/build
 
       - name: Change Node.js version
-        uses: actions/setup-node@v6.1.0
+        uses: actions/setup-node@v6.2.0
         with:
           node-version: ${{ matrix.node-version }}
 
