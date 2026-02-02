@@ -9,6 +9,13 @@
     border-bottom-color: govuk-functional-colour(border);
   }
 
+  // If the phase banner is already contained within a .govuk-width-container,
+  // don't double up the left and right margins on narrow viewports.
+  .govuk-width-container .govuk-phase-banner.govuk-width-container {
+    margin-right: 0;
+    margin-left: 0;
+  }
+
   .govuk-phase-banner__content {
     @include govuk-font($size: 16);
     @include govuk-text-colour;
