@@ -18,9 +18,12 @@ updates:
           - 'editorconfig-checker'
           - 'standard'
           - 'prettier'
+          - 'typescript'
+
+      stylelint:
+        patterns:
           - 'stylelint'
           - 'stylelint-*'
-          - 'typescript'
 
       percy:
         patterns:
