@@ -98,11 +98,26 @@
 
 /// Get a functional colour
 ///
-/// @param {String|Colour} $colour - Name of the colour amongst the functional colours
-/// @return {Colour} Representation of the named colour
+/// @param {String|Colour} $colour - Name of the colour from the list of
+///   [functional colours](https://design-system.service.gov.uk/styles/colour/)
+/// @return {String} A reference to the functional colour's custom property
+///   wrapped in a var function, with the functional colour's hex value as a
+///   fallback value.
+///
+/// @example scss - Getting a functional colour
+///   .branded-element {
+///     color: govuk-functional-colour('brand');
+///   }
+///
+/// @example css - Output from getting a functional colour
+///   .branded-element {
+///     /* Assuming the 'brand' colour is hotpink */
+///     color: var(--_govuk-brand-colour, hotpink);
+///   }
 ///
 /// @throw if `$colour` is not an functional colour of GOV.UK Frontend
 /// @access public
+/// @see $govuk-functional-colours
 @function govuk-functional-colour($colour) {
   // Sass parses unquoted colours as colours, so we need to turn them into
   // strings before looking them up in the colour palette
