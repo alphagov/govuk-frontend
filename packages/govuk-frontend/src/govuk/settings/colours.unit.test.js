@@ -184,12 +184,7 @@ describe('Functional colours', () => {
 
         const { css } = await compileSassString(sass, sassConfig)
 
-        expect(mockWarnFunction).not.toHaveBeenCalledWith(
-          `Using the \`$govuk-${functionalColourName}-colour\` variable to configure a new value is deprecated.` +
-            ` Please use \`$govuk-functional-colours: (${functionalColourName}: <NEW_COLOUR_VALUE>);\`.` +
-            ' To silence this warning, update $govuk-suppressed-warnings with key: "applied-colour-variables"',
-          expect.anything()
-        )
+        expect(mockWarnFunction).not.toHaveBeenCalled()
 
         expect(css).toContain(`result: true;`)
       })
@@ -205,8 +200,8 @@ describe('Functional colours', () => {
         // Expect our mocked @warn function to have been called once with a single
         // argument, which should be the deprecation notice
         expect(mockWarnFunction).toHaveBeenCalledWith(
-          `Using the \`$govuk-${functionalColourName}-colour\` variable to configure a new value is deprecated.` +
-            ` Please use \`$govuk-functional-colours: (${functionalColourName}: <NEW_COLOUR_VALUE>);\`.` +
+          `Setting \`$govuk-${functionalColourName}-colour\` no longer has any effect.` +
+            ` Use \`$govuk-functional-colours: (${functionalColourName}: <NEW_COLOUR_VALUE>);\` instead.` +
             ' To silence this warning, update $govuk-suppressed-warnings with key: "applied-colour-variables"',
           expect.anything()
         )
@@ -225,12 +220,7 @@ describe('Functional colours', () => {
 
         // Expect our mocked @warn function to have been called once with a single
         // argument, which should be the deprecation notice
-        expect(mockWarnFunction).not.toHaveBeenCalledWith(
-          `Using the \`$govuk-${functionalColourName}-colour\` variable to configure a new value is deprecated.` +
-            ` Please use \`$govuk-functional-colours: (${functionalColourName}: <NEW_COLOUR_VALUE>);\`.` +
-            ' To silence this warning, update $govuk-suppressed-warnings with key: "applied-colour-variables"',
-          expect.anything()
-        )
+        expect(mockWarnFunction).not.toHaveBeenCalled()
       })
     })
   })
