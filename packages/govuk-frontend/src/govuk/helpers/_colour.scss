@@ -6,13 +6,27 @@
 /// @group helpers/colour
 ////
 
-/// Get colour
+/// Get a colour from the palette
+///
+/// Before using this function, check if your use case is covered by a
+/// functional colour. For example, use `govuk-functional-colour("link")` for
+/// links rather than `govuk-colour("blue")`.
 ///
 /// @param {String | Colour} $colour - Name of colour from the colour palette
 ///   (`$_govuk-palette`)
 /// @param {String | Colour} $variant - Name of the variant from the colour palette
 ///   (`$_govuk-palette`)
 /// @return {Colour} Representation of named colour
+///
+/// @example scss - Getting the primary variant of a colour
+///   .my-component {
+///     color: govuk-colour("blue");
+///   }
+///
+/// @example scss - Getting a 50% shade of blue
+///   .my-component {
+///     color: govuk-colour("blue", $variant: "shade-50")
+///   }
 ///
 /// @throw if `$colour` is not a colour from the colour palette
 /// @throw if `$variant` is not a variant of the `$colour` in the colour palette
