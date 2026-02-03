@@ -120,7 +120,7 @@
   //
 
   .govuk-service-navigation__toggle {
-    @include govuk-typography-weight-bold;
+    @include govuk-font($size: 19, $weight: bold);
     display: inline-flex;
     margin: govuk-spacing(2) 0;
     padding: 0;
