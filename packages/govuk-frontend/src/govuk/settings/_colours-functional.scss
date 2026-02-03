@@ -150,9 +150,8 @@ $govuk-functional-colours: _govuk-define-functional-colours(
 // breakage as teams upgrade
 // =============================================================================
 
-// Because the file may be imported multiple times,
-// subsequent imports will see the legacy variable
-// and warn when they shouldn't so we need to track those
+// Because the file may be imported multiple times, subsequent imports will see
+// the legacy variable and warn when they shouldn't so we need to track those
 $_govuk-deprecated-applied-colour-variables: () !default;
 
 @mixin deprecate-applied-colour-variable($functional-colour-name) {
