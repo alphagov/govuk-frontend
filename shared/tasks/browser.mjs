@@ -119,6 +119,8 @@ export async function screenshotComponent(browser, componentName, options) {
     options.screenshot.variants?.includes('default')
   ) {
     await percySnapshot(page, `js: ${screenshotName}`, snapshotOptions)
+    await page.setViewport({ width: 600, height: 1000 })
+    await percySnapshot(page, `js-600w: ${screenshotName}`, snapshotOptions)
   }
 
   // Close page
