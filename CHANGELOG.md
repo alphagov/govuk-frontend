@@ -37,6 +37,7 @@ We've made fixes to GOV.UK Frontend in the following pull requests:
 
 - [#6675: Remove unused logo code](https://github.com/alphagov/govuk-frontend/pull/6675)
 - [#6677: Update DESZN organisation colour](https://github.com/alphagov/govuk-frontend/pull/6677)
+- [#6706: Add govuk-font mixin back to nav menu toggle](https://github.com/alphagov/govuk-frontend/pull/6706)
 
 ## v6.0.0-rc.0 (Breaking release candidate)
 
