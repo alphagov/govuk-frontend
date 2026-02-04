@@ -3,7 +3,6 @@
   $govuk-service-navigation-text-colour: govuk-functional-colour(surface-text);
   $govuk-service-navigation-background: govuk-functional-colour(surface-background);
   $govuk-service-navigation-border-colour: govuk-functional-colour(surface-border);
-  $govuk-service-navigation-link-colour: govuk-functional-colour(surface-link);
 
   .govuk-service-navigation {
     @include govuk-font($size: 19);
@@ -31,9 +30,12 @@
   .govuk-service-navigation__service-name {
     position: relative;
     margin: govuk-spacing(2) 0;
+
+    // A border matching the link colour is used to mark the active section –
+    // see the `govuk-service-navigation__item--active` class
     border-width: 0;
     border-style: solid;
-    border-color: $govuk-service-navigation-link-colour;
+    border-color: govuk-functional-colour(link);
 
     @media #{govuk-from-breakpoint(tablet)} {
       // inline-block is used as a fallback for browsers that don't support flexbox
@@ -86,12 +88,6 @@
     @include govuk-link-common;
     @include govuk-link-style-no-underline;
     @include govuk-link-style-no-visited-state;
-
-    &:not(:hover):not(:focus) {
-      // We set the colour here as we don't want to override the hover or
-      // focus colours
-      color: $govuk-service-navigation-link-colour;
-    }
   }
 
   //
@@ -125,7 +121,7 @@
     margin: govuk-spacing(2) 0;
     padding: 0;
     border: 0;
-    color: $govuk-service-navigation-link-colour;
+    color: govuk-functional-colour(link);
     background: none;
     word-break: break-all;
     cursor: pointer;
