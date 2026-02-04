@@ -30,6 +30,9 @@
   .govuk-service-navigation__service-name {
     position: relative;
     margin: govuk-spacing(2) 0;
+
+    // A border matching the link colour is used to mark the active section –
+    // see the `govuk-service-navigation__item--active` class
     border-width: 0;
     border-style: solid;
     border-color: govuk-functional-colour(link);
