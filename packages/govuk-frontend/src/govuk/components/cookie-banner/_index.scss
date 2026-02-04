@@ -17,14 +17,6 @@
     background-color: govuk-functional-colour(surface-background);
   }
 
-  // Override the colour of links in the cookie banner to ensure good contrast
-  // against `template-background`.
-  .govuk-cookie-banner .govuk-link {
-    &:not(:hover):not(:focus) {
-      color: govuk-functional-colour(surface-link);
-    }
-  }
-
   // Support older browsers which don't hide elements with the `hidden` attribute
   // when user hides the whole cookie banner with a 'Hide' button.
   .govuk-cookie-banner[hidden] {
