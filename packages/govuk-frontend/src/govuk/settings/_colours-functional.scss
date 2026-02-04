@@ -70,7 +70,8 @@ $govuk-default-functional-colours: (
       ),
     // Standard links (on white)
     "link": (
-        name: "blue"
+        name: "blue",
+        variant: "shade-10"
       ),
     "link-visited": (
       name: "purple"
