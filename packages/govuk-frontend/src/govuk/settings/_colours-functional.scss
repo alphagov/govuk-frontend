@@ -104,12 +104,34 @@ $govuk-default-functional-colours: (
 
 /// Functional colours for the GOV.UK palette.
 ///
-/// Each functional colour is represented by a friendly name (for example `'brand'`)
-/// to which the map associates either:
+/// Each functional colour is represented by a name (for example `'brand'`) to
+/// which the map associates either:
 ///
 ///   - a Sass colour (like `#1d70b8`)
-///   - a Sass map with a `name` and an optional `variant` properties, referring to one of the colours in the colour palette
-///     (like `(name: 'blue', variant: 'primary')`). `variant` defaults to `'primary'` if omitted.
+///   - a Sass map with a `name` and an optional `variant` properties, referring
+///     to one of the colours in the colour palette (like `(name: 'blue',
+///     variant: 'primary')`). `variant` defaults to `'primary'` if omitted.
+///
+/// Use the `govuk-functional-colour` function to access these colours.
+///
+/// Customise functional colours by defining $govuk-functional-colours with a
+/// map of the colours that you want to change before importing GOV.UK Frontend.
+/// These will then be merged with the default colours. You can only redefine
+/// existing colours.
+///
+/// @example scss – Redefining functional colours by setting them before import
+///
+///   // These will be merged with the default functional colours
+///   $govuk-functional-colours: (
+///     // set the 'brand' colour to the 'primary' variant of 'purple'
+///     brand: (name: 'purple'),
+///     // set the 'template-background' colour to the 'tint-95' variant of 'purple'
+///     template-background: (name: 'purple', variant: 'tint-95'),
+///     // set the 'text' colour to an arbitrary colour `#221133`
+///     text: #221133
+///   );
+///
+/// @see {function} govuk-functional-colour
 ///
 /// @type Map
 ///
@@ -128,9 +150,8 @@ $govuk-functional-colours: _govuk-define-functional-colours(
 // breakage as teams upgrade
 // =============================================================================
 
-// Because the file may be imported multiple times,
-// subsequent imports will see the legacy variable
-// and warn when they shouldn't so we need to track those
+// Because the file may be imported multiple times, subsequent imports will see
+// the legacy variable and warn when they shouldn't so we need to track those
 $_govuk-deprecated-applied-colour-variables: () !default;
 
 @mixin deprecate-applied-colour-variable($functional-colour-name) {
