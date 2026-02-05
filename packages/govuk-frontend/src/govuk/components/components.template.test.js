@@ -69,12 +69,7 @@ describe('Components', () => {
               context: fixture.options,
               fixture
             })}
-
-            <!--
-              Target for references in examples (e.g. aria-controls)
-              https://html-validate.org/rules/no-missing-references.html
-            -->
-            <div id="test-target-element"></div>
+            ${fixture.supportingHTML ?? ''}
           `
 
           // Validate HTML
