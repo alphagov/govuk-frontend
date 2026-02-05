@@ -22,7 +22,7 @@
     "postcss-load-config": "^6.0.1",
     "puppeteer": "^24.34.0",
     "rollup": "^4.56.0",
-    "sass-embedded": "^1.89.2",
+    "sass-embedded": "^1.97.3",
     "slash": "^5.1.0",
     "slug": "^9.1.0"
   }
