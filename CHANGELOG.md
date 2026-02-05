@@ -4,33 +4,46 @@ For advice on how to use these release notes, see [our guidance on staying up to
 
 ## Unreleased
 
+### Recommended changes
+
+#### Move any Phase banner components to the `<header>` element
+
+We now recommend placing Phase banner components in the `<header>` element of the page.
+
+If you're using GOV.UK Frontend's Nunjucks template and macros, create a `headerEnd` block and move the `govukPhaseBanner` macro into it.
+
+```njk
+{% block headerEnd %}
+  {{ govukPhaseBanner({}) }}
+{% endblock %}
+```
+
+If you're not using Nunjucks, move the Phase banner's HTML to before the `</header>` closing tag and add the `govuk-width-container` class to prevent the banner from stretching wider than the page's content.
+
+```html
+<header class="govuk-template__header">
+  <!-- Other header content -->
+  <div class="govuk-phase-banner govuk-width-container">
+    <!-- Phase banner content -->
+  </div>
+</header>
+```
+
+We made this change in [pull request #6546: Add `govuk-width-container` class to Phase banner component](https://github.com/alphagov/govuk-frontend/pull/6546).
+
+### Fixes
+
+We've made fixes to GOV.UK Frontend in the following pull requests:
+
+- [#6675: Remove unused logo code](https://github.com/alphagov/govuk-frontend/pull/6675)
+- [#6677: Update DESZN organisation colour](https://github.com/alphagov/govuk-frontend/pull/6677)
+- [#6706: Add govuk-font mixin back to nav menu toggle](https://github.com/alphagov/govuk-frontend/pull/6706)
+
+## v6.0.0-rc.0 (Breaking release candidate)
+
 ### Breaking changes
 
-#### We've replaced `core/govuk-frontend-properties` with a new `custom-properties` Sass layer
-
-We've moved the CSS custom properties previously outputted by `govuk-frontend-properties` from the `core` Sass layer in GOV.UK Frontend to a new Sass layer: `custom-properties`. This is in preparation for wider use of custom properties within GOV.UK Frontend in the future.
-
-If you are importing `govuk-frontend-properties` directly and not also importing `base`, replace your import statement to point to `custom-properties` instead of `core/govuk-frontend-properties`.
-
-This change was added in [pull request #6654: Add new `custom-properties` Sass layer](https://github.com/alphagov/govuk-frontend/pull/6654)
-
-#### `base` now outputs CSS when processed
-
-The new `custom-properties` Sass layer is included in `base.scss`. This means that `base` now outputs CSS when processed with Sass whereas before it was necessary for processing the Sass in other layers but didn't output any CSS itself. This is to ensure that custom properties are consistently available in all the places they need to be.
-
-If you're importing `base` but don't want it to output CSS, you can replicate `base` by importing the `settings`, `tools` and `helpers` layers individually.
-
-This change was added in [pull request #6606: Enable better control over custom property outputting](https://github.com/alphagov/govuk-frontend/pull/6606)
-
-#### Stop using `govuk-tint` and `govuk-shade`
-
-We have removed the `govuk-tint` and `govuk-shade` functions for applying tints and shades to colours by percentage.
-
-Replace them with tints and shades from the new GOV.UK colour palette that are as close as possible to your existing implementation.
-
-We made this change in [pull request #6639: Remove `govuk-tint` and `govuk-shade` functions](https://github.com/alphagov/govuk-frontend/pull/6639)
-
-#### Stop using the old GOV.UK logo and colour palette
+#### Stop using the previous GOV.UK logo and colour palette
 
 We’ve made the refreshed (blue-based) GOV.UK branding the default appearance of the GOV.UK header and GOV.UK footer components, and removed the previous (mostly black) branding as an option.
 
@@ -63,20 +76,50 @@ We made these changes in the following pull requests:
 - [#6622: Remove rebrand flag from service navigation](https://github.com/alphagov/govuk-frontend/pull/6622)
 - [#6623: Remove rebrand flag from cookie banner](https://github.com/alphagov/govuk-frontend/pull/6623)
 
-### Recommended changes
+#### Stop using `govuk-tint` and `govuk-shade`
 
-#### Stop using light-blue coloured tags
+We’ve removed the `govuk-tint` and `govuk-shade` functions for applying tints and shades to colours by percentage.
 
-We've removed the light-blue tag colour. You should remove all instances of `govuk-tag--light-blue`.
+If you currently apply `govuk-tint` or `govuk-shade` to any colours, replace them with the closest possible tints and shades listed in the new GOV.UK [colour palette](https://github.com/alphagov/govuk-frontend/blob/main/packages/govuk-frontend/src/govuk/settings/_colours-palette.scss).
 
-We made this change in [pull request #6646: Update tag colours and remove borders](https://github.com/alphagov/govuk-frontend/pull/6646).
+We made this change in [pull request #6639: Remove `govuk-tint` and `govuk-shade` functions](https://github.com/alphagov/govuk-frontend/pull/6639).
+
+#### We've replaced `core/govuk-frontend-properties` with a new `custom-properties` Sass layer
+
+We've moved the CSS custom properties previously outputted by `govuk-frontend-properties` from the `core` Sass layer in GOV.UK Frontend to a new Sass layer: `custom-properties`. This is to prepare for wider use of custom properties within GOV.UK Frontend in the future.
+
+If you import `govuk-frontend-properties` directly but do not also import `base`, replace your import statement to point to `custom-properties` instead of `core/govuk-frontend-properties`.
+
+This change was added in [pull request #6654: Add new `custom-properties` Sass layer](https://github.com/alphagov/govuk-frontend/pull/6654).
+
+#### `base` now outputs CSS when processed
+
+The new `custom-properties` Sass layer is included within `base.scss`. This means that `base` now outputs CSS when processed with Sass, instead of before where it was necessary for processing the Sass in other layers but did not output any CSS itself. This is to ensure that custom properties are consistently available in all the places they need to be.
+
+If you're importing `base` but do not want it to output CSS, you can replicate `base` by importing the `settings`, `tools` and `helpers` layers individually.
+
+This change was added in [pull request #6606: Enable better control over custom property outputting](https://github.com/alphagov/govuk-frontend/pull/6606).
 
 ### New features
 
+#### Use the new ‘surface’ functional colours to style distinct content areas
+
+We’ve added a new functional colour set, for instances when areas of content need to be visually separated from other content on the page. We’re calling these ‘surface’ colours and they work together to meet minimum contrast requirements for accessibility.
+
+The new colours are:
+
+- `surface-background`, which defaults to Blue tint 95% in the GOV.UK colour palette.
+- `surface-border`, which defaults to Blue tint 50%.
+- `surface-text`, which defaults to Black.
+- `surface-link`, which defaults to Blue shade 10%.
+
+We’ve applied the new surface colour set to the Service navigation, Cookie banner, and Footer components.
+
+We made this change in [pull request #6659: Add functional colours for Footer, Service navigation, and Cookie banner](https://github.com/alphagov/govuk-frontend/pull/6659).
+
 #### Reference colour from the palette declaratively when redefining functional colours
 
-We've updated how colours can be defined in `$govuk-functional-colours` to reference colours from the palette
-without using `govuk-colour`.
+We've updated how colours can be defined in `$govuk-functional-colours` to reference colours from the palette without using `govuk-colour`.
 
 Alongside arbitrary Sass colours, you can now set the values of `$govuk-functional-colours` to Sass maps with a `name` and optional `variant` property matching one of the colours of the palette.
 
@@ -88,7 +131,7 @@ $govuk-functional-colours: (
 @import "node_modules/govuk-frontend/dist/govuk";
 ```
 
-We made this change in [pull request #6655: Store references to colours in `$govuk-functional-colours`](https://github.com/alphagov/govuk-frontend/pull/6655)
+We made this change in [pull request #6655: Store references to colours in `$govuk-functional-colours`](https://github.com/alphagov/govuk-frontend/pull/6655).
 
 #### Use `$govuk-output-custom-properties` to specify if custom properties are included in your CSS
 
@@ -96,13 +139,13 @@ We've added a new Sass variable `$govuk-output-custom-properties` which controls
 
 If you import different parts of GOV.UK Frontend in separate stylesheets, this helps you avoid duplicating the CSS declarations for the custom properties.
 
-We made this change in [pull request #6606: Enable better control over custom property outputting](https://github.com/alphagov/govuk-frontend/pull/6606)
+We made this change in [pull request #6606: Enable better control over custom property outputting](https://github.com/alphagov/govuk-frontend/pull/6606).
 
 ### Fixes
 
 #### Yellow and grey tags have updated colours
 
-The yellow tag's text colour has changed to Orange shade 50%. Its background colour has changed to Yellow tint 50%.
+Improving on the changes from v6.0.0-beta.1, the yellow tag's text colour has changed to Orange shade 50%. Its background colour has changed to Yellow tint 50%.
 
 The grey tag's text colour has change to Black. Its background colour has changed to Black tint 80%.
 

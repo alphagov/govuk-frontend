@@ -23,20 +23,6 @@
     // Magic numbers, set padding to vertically centre align the logo
     padding-top: 16px;
     padding-bottom: 14px - $govuk-header-logo-bottom-margin;
-
-    @media #{govuk-from-breakpoint(desktop)} {
-      width: 33.33%;
-      padding-right: $govuk-gutter-half;
-      float: left;
-      vertical-align: top;
-
-      // Reset float when logo is the last child, without a navigation
-      &:last-child {
-        width: auto;
-        padding-right: 0;
-        float: none;
-      }
-    }
   }
 
   .govuk-header__homepage-link {
@@ -62,10 +48,6 @@
       word-spacing: 0;
     }
     @include govuk-link-style-inverse;
-
-    @media #{govuk-from-breakpoint(desktop)} {
-      display: inline;
-    }
 
     &:link,
     &:visited {

@@ -94,7 +94,7 @@ examples:
   - name: for
     hidden: true
     options:
-      for: test-target-element
+      for: test-target-input
       text: National Insurance number
   - name: attributes
     hidden: true

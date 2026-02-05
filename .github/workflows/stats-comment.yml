@@ -33,7 +33,7 @@ jobs:
       - name: Checkout base branch
         # Skip build when we’ve built this SHA before
         if: steps.stats-cache.outputs.cache-hit != 'true'
-        uses: actions/checkout@v6.0.1
+        uses: actions/checkout@v6.0.2
 
         with:
           ref: ${{ github.base_ref }}
@@ -68,7 +68,7 @@ jobs:
       - name: Checkout head
         # Skip build when we’ve built this SHA before
         if: steps.stats-cache.outputs.cache-hit != 'true'
-        uses: actions/checkout@v6.0.1
+        uses: actions/checkout@v6.0.2
         with:
           ref: ${{ github.head_ref }}
           clean: false # So that we retain the stats generated from base

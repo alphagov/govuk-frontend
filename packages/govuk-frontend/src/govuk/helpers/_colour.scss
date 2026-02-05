@@ -6,13 +6,27 @@
 /// @group helpers/colour
 ////
 
-/// Get colour
+/// Get a colour from the palette
+///
+/// Before using this function, check if your use case is covered by a
+/// functional colour. For example, use `govuk-functional-colour("link")` for
+/// links rather than `govuk-colour("blue")`.
 ///
 /// @param {String | Colour} $colour - Name of colour from the colour palette
 ///   (`$_govuk-palette`)
 /// @param {String | Colour} $variant - Name of the variant from the colour palette
 ///   (`$_govuk-palette`)
 /// @return {Colour} Representation of named colour
+///
+/// @example scss - Getting the primary variant of a colour
+///   .my-component {
+///     color: govuk-colour("blue");
+///   }
+///
+/// @example scss - Getting a 50% shade of blue
+///   .my-component {
+///     color: govuk-colour("blue", $variant: "shade-50")
+///   }
 ///
 /// @throw if `$colour` is not a colour from the colour palette
 /// @throw if `$variant` is not a variant of the `$colour` in the colour palette
@@ -84,11 +98,26 @@
 
 /// Get a functional colour
 ///
-/// @param {String|Colour} $colour - Name of the colour amongst the functional colours
-/// @return {Colour} Representation of the named colour
+/// @param {String|Colour} $colour - Name of the colour from the list of
+///   [functional colours](https://design-system.service.gov.uk/styles/colour/)
+/// @return {String} A reference to the functional colour's custom property
+///   wrapped in a var function, with the functional colour's hex value as a
+///   fallback value.
+///
+/// @example scss - Getting a functional colour
+///   .branded-element {
+///     color: govuk-functional-colour('brand');
+///   }
+///
+/// @example css - Output from getting a functional colour
+///   .branded-element {
+///     /* Assuming the 'brand' colour is hotpink */
+///     color: var(--govuk-brand-colour, hotpink);
+///   }
 ///
 /// @throw if `$colour` is not an functional colour of GOV.UK Frontend
 /// @access public
+/// @see $govuk-functional-colours
 @function govuk-functional-colour($colour) {
   // Sass parses unquoted colours as colours, so we need to turn them into
   // strings before looking them up in the colour palette
@@ -100,7 +129,7 @@
   @if map-has-key($govuk-functional-colours, $colour) {
     $value: _govuk-resolve-colour(map-get($govuk-functional-colours, $colour));
 
-    @return var(--_govuk-#{$colour}-colour, #{$value});
+    @return var(--govuk-#{$colour}-colour, #{$value});
   }
 
   @error "Unknown colour `#{$colour}` (available colours: #{map-keys($govuk-functional-colours)})";
