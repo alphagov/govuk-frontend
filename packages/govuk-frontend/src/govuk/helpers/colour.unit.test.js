@@ -318,7 +318,7 @@ describe('@function govuk-functional-colour', () => {
     await expect(compileSassString(sass, sassConfig)).resolves.toMatchObject({
       css: outdent`
         .foo {
-          color: var(--_govuk-error-colour, #ff0000);
+          color: var(--govuk-error-colour, #ff0000);
         }
       `
     })
@@ -336,7 +336,7 @@ describe('@function govuk-functional-colour', () => {
     await expect(compileSassString(sass, sassConfig)).resolves.toMatchObject({
       css: outdent`
         .foo {
-          color: var(--_govuk-rebeccapurple-colour, #663399);
+          color: var(--govuk-rebeccapurple-colour, #663399);
         }
       `
     })
@@ -355,7 +355,7 @@ describe('@function govuk-functional-colour', () => {
       await expect(compileSassString(sass, sassConfig)).resolves.toMatchObject({
         css: expect.stringContaining(outdent`
           .foo {
-            color: var(--_govuk-palette-reference-with-variant-colour, #50a1a5);
+            color: var(--govuk-palette-reference-with-variant-colour, #50a1a5);
           }
         `)
       })
@@ -373,7 +373,7 @@ describe('@function govuk-functional-colour', () => {
       await expect(compileSassString(sass, sassConfig)).resolves.toMatchObject({
         css: expect.stringContaining(outdent`
           .foo {
-            color: var(--_govuk-palette-reference-colour, #ca357c);
+            color: var(--govuk-palette-reference-colour, #ca357c);
           }
         `)
       })
