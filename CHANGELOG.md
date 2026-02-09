@@ -4,6 +4,8 @@ For advice on how to use these release notes, see [our guidance on staying up to
 
 ## Unreleased
 
+## v6.0.0 (Breaking release)
+
 ### Breaking changes
 
 #### Make sure you're using Dart Sass v1.79.0 or newer to compile your Sass stylesheets
