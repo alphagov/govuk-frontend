@@ -1,27 +1,33 @@
-@import "../../core/lists";
+@use "../../core/lists";
+@use "helpers/colour";
+@use "helpers/links";
+@use "helpers/spacing";
+@use "helpers/typography";
+@use "settings/measurements";
+@use "tools/exports";
 
-@include govuk-exports("govuk/component/error-summary") {
+@include exports.govuk-exports("govuk/component/error-summary") {
   .govuk-error-summary {
-    @include govuk-font($size: 19);
-    @include govuk-text-colour;
-    @include govuk-responsive-padding(4);
-    @include govuk-responsive-margin(8, "bottom");
+    @include typography.govuk-font($size: 19);
+    @include typography.govuk-text-colour;
+    @include spacing.govuk-responsive-padding(4);
+    @include spacing.govuk-responsive-margin(8, "bottom");
 
-    border: $govuk-border-width solid;
-    border-color: govuk-functional-colour(error);
+    border: measurements.$govuk-border-width solid;
+    border-color: colour.govuk-functional-colour(error);
 
     &:focus {
-      outline: $govuk-focus-width solid;
-      outline-color: govuk-functional-colour(focus);
+      outline: measurements.$govuk-focus-width solid;
+      outline-color: colour.govuk-functional-colour(focus);
     }
   }
 
   .govuk-error-summary__title {
-    @include govuk-font-size($size: 24);
-    @include govuk-typography-weight-bold;
+    @include typography.govuk-font-size($size: 24);
+    @include typography.govuk-typography-weight-bold;
 
     margin-top: 0;
-    @include govuk-responsive-margin(4, "bottom");
+    @include spacing.govuk-responsive-margin(4, "bottom");
   }
 
   .govuk-error-summary__body {
@@ -30,11 +36,11 @@
     }
 
     > * + * {
-      @include govuk-responsive-margin(4, "top");
+      @include spacing.govuk-responsive-margin(4, "top");
     }
 
     > :last-child {
-      @include govuk-responsive-margin(1, "bottom");
+      @include spacing.govuk-responsive-margin(1, "bottom");
     }
   }
 
@@ -49,8 +55,8 @@
   }
 
   .govuk-error-summary__list a {
-    @include govuk-typography-weight-bold;
-    @include govuk-link-common;
-    @include govuk-link-style-error;
+    @include typography.govuk-typography-weight-bold;
+    @include links.govuk-link-common;
+    @include links.govuk-link-style-error;
   }
 }

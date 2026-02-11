@@ -2,8 +2,12 @@
 /// @group helpers/layout
 ////
 
-@import "../settings/media-queries";
-@import "../tools/px-to-em";
+@use "sass:map";
+@use "sass:math";
+@use "sass:meta";
+@use "sass:string";
+@use "../settings/media-queries";
+@use "../tools/px-to-em";
 
 // =========================================================
 // Helpers
@@ -39,11 +43,11 @@
 ///
 /// @access public
 
-@function govuk-breakpoint-value($value, $breakpoints: $govuk-breakpoints) {
+@function govuk-breakpoint-value($value, $breakpoints: media-queries.$govuk-breakpoints) {
   // If $value is a number
-  @if type-of($value) == "number" {
+  @if meta.type-of($value) == "number" {
     // If the number is unitless, coerce it into a pixel value
-    @if unitless($value) {
+    @if math.is-unitless($value) {
       $value: $value * 1px;
     }
 
@@ -52,8 +56,8 @@
 
   // If $value is a string and exists as a key in in $breakpoints,
   // look up and use the value of it
-  @if type-of($value) == "string" and map-has-key($breakpoints, $value) {
-    @return map-get($breakpoints, $value);
+  @if meta.type-of($value) == "string" and map.has-key($breakpoints, $value) {
+    @return map.get($breakpoints, $value);
   }
 
   // If we get this far, we can't use the value, so return an error
@@ -94,11 +98,11 @@
 ///
 /// @access public
 
-@function govuk-from-breakpoint($from, $breakpoints: $govuk-breakpoints) {
+@function govuk-from-breakpoint($from, $breakpoints: media-queries.$govuk-breakpoints) {
   $value: govuk-breakpoint-value($from, $breakpoints);
 
-  @if type-of($value) == "number" and unit($value) == "px" {
-    $value: govuk-em($value);
+  @if meta.type-of($value) == "number" and math.unit($value) == "px" {
+    $value: px-to-em.govuk-em($value);
   }
 
   @return "(min-width: #{$value})";
@@ -139,16 +143,16 @@
 ///
 /// @access public
 
-@function govuk-until-breakpoint($until, $breakpoints: $govuk-breakpoints) {
+@function govuk-until-breakpoint($until, $breakpoints: media-queries.$govuk-breakpoints) {
   $value: govuk-breakpoint-value($until, $breakpoints);
 
-  @if type-of($value) == "number" and unit($value) == "px" {
+  @if meta.type-of($value) == "number" and math.unit($value) == "px" {
     // If it's a pixel value, convert it to ems.
-    $value: govuk-em($value);
+    $value: px-to-em.govuk-em($value);
   }
 
   // If $value derives from a named breakpoint, additionally subtract .01em
-  @if type-of($until) != "number" and unit($value) == "em" {
+  @if meta.type-of($until) != "number" and math.unit($value) == "em" {
     $value: $value - 0.01em;
   }
 
@@ -189,7 +193,13 @@
 ///
 /// @access public
 
-@mixin govuk-media-query($from: null, $until: null, $and: null, $media-type: "all", $breakpoints: $govuk-breakpoints) {
+@mixin govuk-media-query(
+  $from: null,
+  $until: null,
+  $and: null,
+  $media-type: "all",
+  $breakpoints: media-queries.$govuk-breakpoints
+) {
   $media-query: "";
   $min-width: if($from, govuk-from-breakpoint($from, $breakpoints), null);
   $max-width: if($until, govuk-until-breakpoint($until, $breakpoints), null);
@@ -209,8 +219,8 @@
   }
 
   // If $media-query currently begins with an orphaned ' and ', remove it.
-  @if str-index($media-query, " and ") == 1 {
-    $media-query: str-slice($media-query, 6);
+  @if string.index($media-query, " and ") == 1 {
+    $media-query: string.slice($media-query, 6);
   }
 
   @media #{$media-query} {

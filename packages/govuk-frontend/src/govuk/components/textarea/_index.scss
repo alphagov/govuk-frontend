@@ -1,28 +1,34 @@
-@import "../error-message/index";
-@import "../hint/index";
-@import "../label/index";
+@use "../error-message/index";
+@use "../hint/index" as index2;
+@use "../label/index" as index3;
+@use "helpers/colour";
+@use "helpers/focused";
+@use "helpers/spacing";
+@use "helpers/typography";
+@use "settings/measurements";
+@use "tools/exports";
 
-@include govuk-exports("govuk/component/textarea") {
+@include exports.govuk-exports("govuk/component/textarea") {
   .govuk-textarea {
-    @include govuk-font($size: 19, $line-height: 1.25);
+    @include typography.govuk-font($size: 19, $line-height: 1.25);
 
     box-sizing: border-box;
     display: block;
     width: 100%;
     min-height: 40px;
-    @include govuk-responsive-margin(6, "bottom");
-    padding: govuk-spacing(1);
+    @include spacing.govuk-responsive-margin(6, "bottom");
+    padding: spacing.govuk-spacing(1);
 
     resize: vertical;
 
-    border: $govuk-border-width-form-element solid;
+    border: measurements.$govuk-border-width-form-element solid;
     border-radius: 0;
-    border-color: govuk-functional-colour(input-border);
+    border-color: colour.govuk-functional-colour(input-border);
 
     -webkit-appearance: none;
 
     &:focus {
-      @include govuk-focused-form-input;
+      @include focused.govuk-focused-form-input;
     }
 
     &:disabled {
@@ -34,10 +40,10 @@
   }
 
   .govuk-textarea--error {
-    border-color: govuk-functional-colour(error);
+    border-color: colour.govuk-functional-colour(error);
 
     &:focus {
-      border-color: govuk-functional-colour(input-border);
+      border-color: colour.govuk-functional-colour(input-border);
     }
   }
 }

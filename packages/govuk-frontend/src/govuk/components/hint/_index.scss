@@ -1,10 +1,15 @@
-@include govuk-exports("govuk/component/hint") {
+@use "helpers/colour";
+@use "helpers/spacing";
+@use "helpers/typography";
+@use "tools/exports";
+
+@include exports.govuk-exports("govuk/component/hint") {
   .govuk-hint {
-    @include govuk-font($size: 19);
+    @include typography.govuk-font($size: 19);
 
-    margin-bottom: govuk-spacing(3);
+    margin-bottom: spacing.govuk-spacing(3);
 
-    color: govuk-functional-colour(secondary-text);
+    color: colour.govuk-functional-colour(secondary-text);
   }
 
   // Reduces margin-bottom of hint when used after the default label (no class)
@@ -18,7 +23,7 @@
   // Users with these browsers will see the default size margin (5px larger).
 
   .govuk-label:not(.govuk-label--m):not(.govuk-label--l):not(.govuk-label--xl) + .govuk-hint {
-    margin-bottom: govuk-spacing(2);
+    margin-bottom: spacing.govuk-spacing(2);
   }
 
   // Reduces margin-bottom of hint when used after the default legend (no class)
@@ -33,11 +38,11 @@
 
   // prettier-ignore
   .govuk-fieldset__legend:not(.govuk-fieldset__legend--m):not(.govuk-fieldset__legend--l):not(.govuk-fieldset__legend--xl) + .govuk-hint {
-    margin-bottom: govuk-spacing(2);
+    margin-bottom: spacing.govuk-spacing(2);
   }
 
   // Reduces visual spacing of legend when there is a hint
   .govuk-fieldset__legend + .govuk-hint {
-    margin-top: govuk-spacing(-1);
+    margin-top: spacing.govuk-spacing(-1);
   }
 }

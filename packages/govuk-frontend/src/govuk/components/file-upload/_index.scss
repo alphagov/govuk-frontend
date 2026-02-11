@@ -1,17 +1,23 @@
-@import "../error-message/index";
-@import "../hint/index";
-@import "../label/index";
+@use "../error-message/index";
+@use "../hint/index" as index2;
+@use "../label/index" as index3;
+@use "helpers/colour";
+@use "helpers/media-queries";
+@use "helpers/spacing";
+@use "helpers/typography";
+@use "settings/measurements";
+@use "tools/exports";
 
-@include govuk-exports("govuk/component/file-upload") {
+@include exports.govuk-exports("govuk/component/file-upload") {
   $file-upload-border-width: 2px;
-  $component-padding: govuk-spacing(1);
-  $empty-button-background-colour: govuk-colour("white");
-  $empty-pseudo-button-background-colour: govuk-colour("black", $variant: "tint-95");
-  $empty-status-background-colour: govuk-colour("blue", $variant: "tint-80");
+  $component-padding: spacing.govuk-spacing(1);
+  $empty-button-background-colour: colour.govuk-colour("white");
+  $empty-pseudo-button-background-colour: colour.govuk-colour("black", $variant: "tint-95");
+  $empty-status-background-colour: colour.govuk-colour("blue", $variant: "tint-80");
 
   .govuk-file-upload {
-    @include govuk-font($size: 19);
-    @include govuk-text-colour;
+    @include typography.govuk-font($size: 19);
+    @include typography.govuk-text-colour;
     max-width: 100%;
     margin-left: -$component-padding;
     padding: $component-padding;
@@ -27,12 +33,12 @@
     }
 
     &:focus {
-      outline: $govuk-focus-width solid;
-      outline-color: govuk-functional-colour(focus);
+      outline: measurements.$govuk-focus-width solid;
+      outline-color: colour.govuk-functional-colour(focus);
       // Use `box-shadow` to add border instead of changing `border-width`
       // (which changes element size) and since `outline` is already used for
       // the yellow focus state.
-      box-shadow: inset 0 0 0 4px govuk-functional-colour(input-border);
+      box-shadow: inset 0 0 0 4px colour.govuk-functional-colour(input-border);
     }
 
     // Set "focus-within" to fix https://bugzil.la/1430196 so that component
@@ -41,10 +47,10 @@
     // to recognise `focus-within` and don't set any styles from the block
     // when it's a selector.
     &:focus-within {
-      outline: $govuk-focus-width solid;
-      outline-color: govuk-functional-colour(focus);
+      outline: measurements.$govuk-focus-width solid;
+      outline-color: colour.govuk-functional-colour(focus);
 
-      box-shadow: inset 0 0 0 4px govuk-functional-colour(input-border);
+      box-shadow: inset 0 0 0 4px colour.govuk-functional-colour(input-border);
     }
 
     &:disabled {
@@ -57,7 +63,7 @@
     display: block;
     position: relative;
     z-index: 0;
-    background-color: govuk-functional-colour(body-background);
+    background-color: colour.govuk-functional-colour(body-background);
   }
 
   // required because disabling pointer events
@@ -69,25 +75,25 @@
 
   .govuk-file-upload-button__pseudo-button {
     width: auto;
-    margin-right: govuk-spacing(2);
-    margin-bottom: $govuk-border-width-form-element + 1;
+    margin-right: spacing.govuk-spacing(2);
+    margin-bottom: measurements.$govuk-border-width-form-element + 1;
     flex-shrink: 0;
   }
 
   .govuk-file-upload-button__instruction {
-    margin-top: govuk-spacing(2) - ($govuk-border-width-form-element + 1);
+    margin-top: spacing.govuk-spacing(2) - (measurements.$govuk-border-width-form-element + 1);
     margin-bottom: 0;
     text-align: left;
   }
 
   .govuk-file-upload-button__status {
     display: block;
-    margin-bottom: govuk-spacing(2);
-    padding: govuk-spacing(3) govuk-spacing(2);
-    color: govuk-colour("white");
-    background-color: govuk-colour("blue");
+    margin-bottom: spacing.govuk-spacing(2);
+    padding: spacing.govuk-spacing(3) spacing.govuk-spacing(2);
+    color: colour.govuk-colour("white");
+    background-color: colour.govuk-colour("blue");
     text-align: left;
-    @include govuk-text-break-word;
+    @include typography.govuk-text-break-word;
   }
 
   // bugs documented with button using flex
@@ -102,56 +108,56 @@
   .govuk-file-upload-button {
     width: 100%;
     // align the padding to be same as notification banner and error summary accounting for the thicker borders
-    padding: (govuk-spacing(3) + $govuk-border-width - $file-upload-border-width);
-    border: $file-upload-border-width govuk-colour("black", $variant: "tint-80") solid;
-    background-color: govuk-colour("white");
+    padding: (spacing.govuk-spacing(3) + measurements.$govuk-border-width - $file-upload-border-width);
+    border: $file-upload-border-width colour.govuk-colour("black", $variant: "tint-80") solid;
+    background-color: colour.govuk-colour("white");
     cursor: pointer;
 
-    @media #{govuk-from-breakpoint(tablet)} {
-      padding: (govuk-spacing(4) + $govuk-border-width - $file-upload-border-width);
+    @media #{media-queries.govuk-from-breakpoint(tablet)} {
+      padding: (spacing.govuk-spacing(4) + measurements.$govuk-border-width - $file-upload-border-width);
     }
 
     .govuk-file-upload-button__pseudo-button {
-      background-color: govuk-colour("black", $variant: "tint-95");
+      background-color: colour.govuk-colour("black", $variant: "tint-95");
     }
 
     &:hover {
-      border-color: govuk-colour("black", $variant: "tint-50");
+      border-color: colour.govuk-colour("black", $variant: "tint-50");
 
       .govuk-file-upload-button__pseudo-button {
-        background-color: govuk-colour("black", $variant: "tint-80");
+        background-color: colour.govuk-colour("black", $variant: "tint-80");
       }
 
       .govuk-file-upload-button__status {
-        background-color: govuk-colour("blue");
+        background-color: colour.govuk-colour("blue");
       }
     }
 
     &:active,
     &:focus {
-      border: $file-upload-border-width solid govuk-colour("black");
-      outline: $govuk-focus-width solid;
-      outline-color: govuk-functional-colour(focus);
+      border: $file-upload-border-width solid colour.govuk-colour("black");
+      outline: measurements.$govuk-focus-width solid;
+      outline-color: colour.govuk-functional-colour(focus);
       // Ensure outline appears outside of the element
       outline-offset: 0;
-      background-color: govuk-colour("black", $variant: "tint-95");
+      background-color: colour.govuk-colour("black", $variant: "tint-95");
       // Double the border by adding its width again. Use `box-shadow` for this
       // instead of changing `border-width` - this is for consistency with
       // components such as textarea where we avoid changing `border-width` as
       // it will change the element size. Also, `outline` cannot be utilised
       // here as it is already used for the yellow focus state.
-      box-shadow: inset 0 0 0 $govuk-border-width-form-element;
+      box-shadow: inset 0 0 0 measurements.$govuk-border-width-form-element;
 
       .govuk-file-upload-button__pseudo-button {
-        background-color: govuk-functional-colour(focus);
-        box-shadow: 0 2px 0 govuk-colour("black");
+        background-color: colour.govuk-functional-colour(focus);
+        box-shadow: 0 2px 0 colour.govuk-colour("black");
       }
 
       &:hover .govuk-file-upload-button__pseudo-button {
-        border-color: govuk-functional-colour(focus);
+        border-color: colour.govuk-functional-colour(focus);
         outline: 3px solid transparent;
-        background-color: govuk-colour("black", $variant: "tint-80");
-        box-shadow: inset 0 0 0 1px govuk-functional-colour(focus);
+        background-color: colour.govuk-colour("black", $variant: "tint-80");
+        box-shadow: inset 0 0 0 1px colour.govuk-functional-colour(focus);
       }
     }
   }
@@ -165,29 +171,29 @@
     }
 
     .govuk-file-upload-button__status {
-      color: govuk-colour("black");
+      color: colour.govuk-colour("black");
       background-color: $empty-status-background-colour;
     }
 
     &:hover,
     &:focus,
     &:active {
-      background-color: govuk-colour("black", $variant: "tint-95");
+      background-color: colour.govuk-colour("black", $variant: "tint-95");
 
       .govuk-file-upload-button__status {
-        background-color: govuk-colour("blue", $variant: "tint-80");
+        background-color: colour.govuk-colour("blue", $variant: "tint-80");
       }
     }
   }
 
   .govuk-file-upload-button--dragging {
     border-style: solid;
-    border-color: govuk-colour("black");
+    border-color: colour.govuk-colour("black");
 
     // extra specificity to apply when
     // empty
     &.govuk-file-upload-button--empty {
-      background-color: govuk-colour("black", $variant: "tint-95");
+      background-color: colour.govuk-colour("black", $variant: "tint-95");
     }
   }
 

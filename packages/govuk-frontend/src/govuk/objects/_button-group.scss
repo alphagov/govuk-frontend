@@ -1,6 +1,11 @@
-@import "../base";
+@use "../base";
+@use "helpers/media-queries";
+@use "helpers/spacing";
+@use "helpers/typography";
+@use "settings/measurements";
+@use "tools/exports";
 
-@include govuk-exports("govuk/objects/button-group") {
+@include exports.govuk-exports("govuk/objects/button-group") {
   // Button groups can be used to group buttons and links together as a group.
   //
   // Within a button group:
@@ -10,16 +15,16 @@
   // - spacing between the buttons and links is handled automatically, including
   //   when they wrap across multiple lines
   .govuk-button-group {
-    $horizontal-gap: govuk-spacing(3);
-    $vertical-gap: govuk-spacing(3);
+    $horizontal-gap: spacing.govuk-spacing(3);
+    $vertical-gap: spacing.govuk-spacing(3);
 
     // These need to be kept in sync with the button component's styles
-    $button-padding: govuk-spacing(2);
-    $button-shadow-size: $govuk-border-width-form-element;
+    $button-padding: spacing.govuk-spacing(2);
+    $button-shadow-size: measurements.$govuk-border-width-form-element;
 
-    $link-spacing: govuk-spacing(1);
+    $link-spacing: spacing.govuk-spacing(1);
 
-    @include govuk-responsive-margin(6, "bottom", $adjustment: $vertical-gap * -1);
+    @include spacing.govuk-responsive-margin(6, "bottom", $adjustment: $vertical-gap * -1);
 
     // Flexbox is used to center-align links on mobile, align everything along
     // the baseline on tablet and above, and to removes extra whitespace that
@@ -39,7 +44,7 @@
     // Because we want the focus state to be tight around the link text, we use
     // margins where the buttons would use padding.
     .govuk-link {
-      @include govuk-font($size: 19, $line-height: 19px);
+      @include typography.govuk-font($size: 19, $line-height: 19px);
       display: inline-block;
       // Prevent links overflowing their container in IE10/11 because of bug
       // with align-items: center
@@ -57,7 +62,7 @@
 
     // On tablet and above, we also introduce a 'column gap' between the
     // buttons and links in each row and left align links
-    @media #{govuk-from-breakpoint(tablet)} {
+    @media #{media-queries.govuk-from-breakpoint(tablet)} {
       // Cancel out the column gap for the last item in each row
       margin-right: ($horizontal-gap * -1);
 

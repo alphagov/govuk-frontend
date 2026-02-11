@@ -1,11 +1,14 @@
-@import "../base";
+@use "../base";
+@use "helpers/colour";
+@use "helpers/spacing";
+@use "tools/exports";
 
-@include govuk-exports("govuk/objects/template") {
+@include exports.govuk-exports("govuk/objects/template") {
   // Applied to the <html> element
   .govuk-template {
     // Set the overall page background colour to the same colour as used by the
     // footer to give the illusion of a long footer.
-    background-color: govuk-functional-colour(template-background);
+    background-color: colour.govuk-functional-colour(template-background);
 
     // Prevent automatic text sizing, as we already cater for small devices and
     // would like the browser to stay on 100% text zoom by default.
@@ -24,7 +27,7 @@
     // scroll-padding unnecessarily is better than risking not having scroll-padding
     // and needing it to account for exit this page.
     @supports (position: sticky) {
-      scroll-padding-top: govuk-spacing(9);
+      scroll-padding-top: spacing.govuk-spacing(9);
 
       &:not(:has(.govuk-exit-this-page)) {
         scroll-padding-top: 0;
@@ -44,6 +47,6 @@
     // own containers.
     margin: 0;
     // Set the overall body of the page back to the typical background colour.
-    background-color: govuk-functional-colour(body-background);
+    background-color: colour.govuk-functional-colour(body-background);
   }
 }

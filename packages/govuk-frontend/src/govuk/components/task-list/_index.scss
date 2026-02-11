@@ -1,12 +1,16 @@
-@import "../tag/index";
+@use "../tag/index";
+@use "helpers/colour";
+@use "helpers/spacing";
+@use "helpers/typography";
+@use "tools/exports";
 
-@include govuk-exports("govuk/component/task-list") {
-  $govuk-task-list-hover-colour: govuk-colour("black", $variant: "tint-95");
+@include exports.govuk-exports("govuk/component/task-list") {
+  $govuk-task-list-hover-colour: colour.govuk-colour("black", $variant: "tint-95");
 
   .govuk-task-list {
-    @include govuk-font($size: 19);
+    @include typography.govuk-font($size: 19);
     margin-top: 0;
-    @include govuk-responsive-margin(6, "bottom");
+    @include spacing.govuk-responsive-margin(6, "bottom");
     padding: 0;
     list-style-type: none;
   }
@@ -23,15 +27,15 @@
     position: relative;
     width: 100%;
     margin-bottom: 0;
-    padding-top: govuk-spacing(2);
-    padding-bottom: govuk-spacing(2);
+    padding-top: spacing.govuk-spacing(2);
+    padding-bottom: spacing.govuk-spacing(2);
     border-bottom: 1px solid;
-    border-bottom-color: govuk-functional-colour(border);
+    border-bottom-color: colour.govuk-functional-colour(border);
   }
 
   .govuk-task-list__item:first-child {
     border-top: 1px solid;
-    border-top-color: govuk-functional-colour(border);
+    border-top-color: colour.govuk-functional-colour(border);
   }
 
   // This class is added to the <li> elements where the task name is a link. The
@@ -44,19 +48,19 @@
   .govuk-task-list__name-and-hint {
     display: table-cell;
     vertical-align: top;
-    @include govuk-text-colour;
+    @include typography.govuk-text-colour;
   }
 
   .govuk-task-list__status {
     display: table-cell;
-    padding-left: govuk-spacing(2);
+    padding-left: spacing.govuk-spacing(2);
     text-align: right;
     vertical-align: top;
-    @include govuk-text-colour;
+    @include typography.govuk-text-colour;
   }
 
   .govuk-task-list__status--cannot-start-yet {
-    color: govuk-functional-colour(secondary-text);
+    color: colour.govuk-functional-colour(secondary-text);
   }
 
   // This adds an empty transparent box covering the whole row, including the
@@ -73,7 +77,7 @@
   }
 
   .govuk-task-list__hint {
-    margin-top: govuk-spacing(1);
-    color: govuk-functional-colour(secondary-text);
+    margin-top: spacing.govuk-spacing(1);
+    color: colour.govuk-functional-colour(secondary-text);
   }
 }

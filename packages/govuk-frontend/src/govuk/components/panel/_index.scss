@@ -1,18 +1,25 @@
-@include govuk-exports("govuk/component/panel") {
+@use "helpers/colour";
+@use "helpers/media-queries";
+@use "helpers/spacing";
+@use "helpers/typography";
+@use "settings/measurements";
+@use "tools/exports";
+
+@include exports.govuk-exports("govuk/component/panel") {
   .govuk-panel {
-    @include govuk-font($size: 36);
+    @include typography.govuk-font($size: 36);
 
     box-sizing: border-box;
 
-    margin-bottom: govuk-spacing(3);
-    padding: govuk-spacing(7) - $govuk-border-width;
+    margin-bottom: spacing.govuk-spacing(3);
+    padding: spacing.govuk-spacing(7) - measurements.$govuk-border-width;
 
-    border: $govuk-border-width solid transparent;
+    border: measurements.$govuk-border-width solid transparent;
 
     text-align: center;
 
-    @media #{govuk-until-breakpoint(tablet)} {
-      padding: govuk-spacing(4) - $govuk-border-width;
+    @media #{media-queries.govuk-until-breakpoint(tablet)} {
+      padding: spacing.govuk-spacing(4) - measurements.$govuk-border-width;
 
       // This is an if-all-else-fails attempt to stop long words from
       // overflowing the container on very narrow viewports by forcing them to
@@ -33,21 +40,21 @@
   }
 
   .govuk-panel--confirmation {
-    color: govuk-colour("white");
-    background: govuk-colour("green");
+    color: colour.govuk-colour("white");
+    background: colour.govuk-colour("green");
 
     @media print {
       border-color: currentcolor;
-      color: govuk-functional-colour(print-text);
+      color: colour.govuk-functional-colour(print-text);
       background: none;
     }
   }
 
   .govuk-panel__title {
-    @include govuk-font-size($size: 48);
-    @include govuk-typography-weight-bold;
+    @include typography.govuk-font-size($size: 48);
+    @include typography.govuk-typography-weight-bold;
     margin-top: 0;
-    margin-bottom: govuk-spacing(6);
+    margin-bottom: spacing.govuk-spacing(6);
   }
 
   .govuk-panel__title:last-child {

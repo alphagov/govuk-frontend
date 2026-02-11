@@ -1,5 +1,7 @@
-@import "links";
-@import "typography";
+@use "links";
+@use "typography";
+@use "settings/global-styles";
+@use "tools/exports";
 
 @mixin govuk-global-styles {
   a {
@@ -11,8 +13,8 @@
   }
 }
 
-@include govuk-exports("govuk/core/global-styles") {
-  @if $govuk-global-styles == true {
+@include exports.govuk-exports("govuk/core/global-styles") {
+  @if global-styles.$govuk-global-styles == true {
     @include govuk-global-styles;
   }
 }

@@ -1,3 +1,8 @@
+@use "settings/links";
+@use "colour";
+@use "focused";
+@use "typography";
+
 ////
 /// @group helpers/links
 ////
@@ -9,7 +14,7 @@
 /// @access public
 
 @mixin govuk-link-common {
-  @include govuk-typography-common;
+  @include typography.govuk-typography-common;
   @include govuk-link-decoration;
 
   &:hover {
@@ -17,7 +22,7 @@
   }
 
   &:focus {
-    @include govuk-focused-text;
+    @include focused.govuk-focused-text;
   }
 }
 
@@ -30,12 +35,12 @@
 @mixin govuk-link-decoration {
   text-decoration: underline;
 
-  @if $govuk-link-underline-thickness {
-    text-decoration-thickness: $govuk-link-underline-thickness;
+  @if links.$govuk-link-underline-thickness {
+    text-decoration-thickness: links.$govuk-link-underline-thickness;
   }
 
-  @if $govuk-link-underline-offset {
-    text-underline-offset: $govuk-link-underline-offset;
+  @if links.$govuk-link-underline-offset {
+    text-underline-offset: links.$govuk-link-underline-offset;
   }
 }
 
@@ -48,8 +53,8 @@
 /// @access public
 
 @mixin govuk-link-hover-decoration {
-  @if $govuk-link-hover-underline-thickness {
-    text-decoration-thickness: $govuk-link-hover-underline-thickness;
+  @if links.$govuk-link-hover-underline-thickness {
+    text-decoration-thickness: links.$govuk-link-hover-underline-thickness;
     // Disable ink skipping on underlines on hover. Browsers haven't
     // standardised on this part of the spec yet, so set both properties
     text-decoration-skip-ink: none; // Chromium, Firefox
@@ -74,25 +79,25 @@
 
 @mixin govuk-link-style-default {
   &:link {
-    color: govuk-functional-colour(link);
+    color: colour.govuk-functional-colour(link);
   }
 
   &:visited {
-    color: govuk-functional-colour(link-visited);
+    color: colour.govuk-functional-colour(link-visited);
   }
 
   &:hover {
-    color: govuk-functional-colour(link-hover);
+    color: colour.govuk-functional-colour(link-hover);
   }
 
   &:active {
-    color: govuk-functional-colour(link-active);
+    color: colour.govuk-functional-colour(link-active);
   }
 
   // When focussed, the text colour needs to be darker to ensure that colour
   // contrast is still acceptable
   &:focus {
-    color: govuk-functional-colour(focus-text);
+    color: colour.govuk-functional-colour(focus-text);
   }
 }
 
@@ -115,21 +120,21 @@
 @mixin govuk-link-style-error {
   &:link,
   &:visited {
-    color: govuk-functional-colour(error);
+    color: colour.govuk-functional-colour(error);
   }
 
   &:hover {
-    color: govuk-colour("red", $variant: "shade-50");
+    color: colour.govuk-colour("red", $variant: "shade-50");
   }
 
   &:active {
-    color: govuk-functional-colour(error);
+    color: colour.govuk-functional-colour(error);
   }
 
   // When focussed, the text colour needs to be darker to ensure that colour
   // contrast is still acceptable
   &:focus {
-    color: govuk-functional-colour(focus-text);
+    color: colour.govuk-functional-colour(focus-text);
   }
 }
 
@@ -152,21 +157,21 @@
 @mixin govuk-link-style-success {
   &:link,
   &:visited {
-    color: govuk-functional-colour(success);
+    color: colour.govuk-functional-colour(success);
   }
 
   &:hover {
-    color: govuk-colour("green", $variant: "shade-50");
+    color: colour.govuk-colour("green", $variant: "shade-50");
   }
 
   &:active {
-    color: govuk-functional-colour(success);
+    color: colour.govuk-functional-colour(success);
   }
 
   // When focussed, the text colour needs to be darker to ensure that colour
   // contrast is still acceptable
   &:focus {
-    color: govuk-functional-colour(focus-text);
+    color: colour.govuk-functional-colour(focus-text);
   }
 }
 
@@ -189,18 +194,18 @@
 @mixin govuk-link-style-muted {
   &:link,
   &:visited {
-    color: govuk-functional-colour(secondary-text);
+    color: colour.govuk-functional-colour(secondary-text);
   }
 
   &:hover,
   &:active {
-    color: govuk-functional-colour(text);
+    color: colour.govuk-functional-colour(text);
   }
 
   // When focussed, the text colour needs to be darker to ensure that colour
   // contrast is still acceptable
   &:focus {
-    color: govuk-functional-colour(focus-text);
+    color: colour.govuk-functional-colour(focus-text);
   }
 }
 
@@ -223,12 +228,12 @@
 @mixin govuk-link-style-text {
   &:link,
   &:visited {
-    @include govuk-text-colour;
+    @include typography.govuk-text-colour;
   }
 
   &:active,
   &:focus {
-    @include govuk-text-colour;
+    @include typography.govuk-text-colour;
   }
 }
 
@@ -251,11 +256,11 @@
 @mixin govuk-link-style-inverse {
   &:link,
   &:visited {
-    color: govuk-colour("white");
+    color: colour.govuk-colour("white");
   }
 
   &:focus {
-    color: govuk-functional-colour(focus-text);
+    color: colour.govuk-functional-colour(focus-text);
   }
 }
 
@@ -281,25 +286,25 @@
 
 @mixin govuk-link-style-no-visited-state {
   &:link {
-    color: govuk-functional-colour(link);
+    color: colour.govuk-functional-colour(link);
   }
 
   &:visited {
-    color: govuk-functional-colour(link);
+    color: colour.govuk-functional-colour(link);
   }
 
   &:hover {
-    color: govuk-functional-colour(link-hover);
+    color: colour.govuk-functional-colour(link-hover);
   }
 
   &:active {
-    color: govuk-functional-colour(link-active);
+    color: colour.govuk-functional-colour(link-active);
   }
 
   // When focussed, the text colour needs to be darker to ensure that colour
   // contrast is still acceptable
   &:focus {
-    color: govuk-functional-colour(focus-text);
+    color: colour.govuk-functional-colour(focus-text);
   }
 }
 
@@ -366,6 +371,6 @@
   text-decoration: none;
 
   &:focus {
-    @include govuk-focused-box;
+    @include focused.govuk-focused-box;
   }
 }

@@ -11,7 +11,7 @@
 ///
 /// @access private
 
-$_govuk-palette: (
+$govuk-palette: (
   "blue": (
     "primary": #1d70b8,
     "tint-25": #5694ca,
@@ -112,7 +112,7 @@ $_govuk-palette: (
 ///   the brand colours were introduced
 ///
 /// @access private
-$_govuk-pre-brand-colours: (
+$govuk-pre-brand-colours: (
   "light-pink": "magenta" "tint-50",
   "pink": "magenta" "primary",
   "light-green": "green" "tint-25",

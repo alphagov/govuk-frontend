@@ -1,14 +1,22 @@
-@include govuk-exports("govuk/component/pagination") {
+@use "helpers/colour";
+@use "helpers/links";
+@use "helpers/media-queries";
+@use "helpers/spacing";
+@use "helpers/typography";
+@use "tools/exports";
+@use "tools/px-to-rem";
+
+@include exports.govuk-exports("govuk/component/pagination") {
   // Flexbox enhancement for small screen visual design
   // Falls back to a float: left layout on non-flex browsers
   .govuk-pagination {
-    @include govuk-responsive-margin(6, "bottom");
+    @include spacing.govuk-responsive-margin(6, "bottom");
     display: flex;
     flex-direction: column;
     align-items: center;
     flex-wrap: wrap;
 
-    @media #{govuk-from-breakpoint(tablet)} {
+    @media #{media-queries.govuk-from-breakpoint(tablet)} {
       flex-direction: row;
       align-items: flex-start;
     }
@@ -23,16 +31,16 @@
   .govuk-pagination__item,
   .govuk-pagination__next,
   .govuk-pagination__prev {
-    @include govuk-font(19);
+    @include typography.govuk-font(19);
     box-sizing: border-box;
     position: relative;
     min-width: 45px;
     min-height: 45px;
-    padding: govuk-spacing(2) govuk-spacing(3);
+    padding: spacing.govuk-spacing(2) spacing.govuk-spacing(3);
     float: left; // Float is ignored if flex is active for prev/next links
 
     &:hover {
-      background-color: govuk-colour("black", $variant: "tint-95");
+      background-color: colour.govuk-colour("black", $variant: "tint-95");
     }
   }
 
@@ -45,14 +53,14 @@
     // visually sit in the middle of their touch area
     text-align: center;
 
-    @media #{govuk-from-breakpoint(tablet)} {
+    @media #{media-queries.govuk-from-breakpoint(tablet)} {
       display: block;
     }
   }
 
   .govuk-pagination__prev,
   .govuk-pagination__next {
-    @include govuk-typography-weight-bold;
+    @include typography.govuk-typography-weight-bold;
 
     // Use flex to avoid extra space being introduced when whitespace exists
     // between the arrow svg and the link text
@@ -79,22 +87,22 @@
   }
 
   .govuk-pagination__item--current {
-    @include govuk-typography-weight-bold;
+    @include typography.govuk-typography-weight-bold;
     outline: 1px solid transparent;
-    background-color: govuk-functional-colour(link);
+    background-color: colour.govuk-functional-colour(link);
 
     &:hover {
-      background-color: govuk-functional-colour(link);
+      background-color: colour.govuk-functional-colour(link);
     }
 
     .govuk-pagination__link {
-      @include govuk-link-style-inverse;
+      @include links.govuk-link-style-inverse;
     }
   }
 
   .govuk-pagination__item--ellipsis {
-    @include govuk-typography-weight-bold;
-    color: govuk-functional-colour(secondary-text);
+    @include typography.govuk-typography-weight-bold;
+    color: colour.govuk-functional-colour(secondary-text);
 
     // Remove hover state for ellipsis items as they don't contain links
     &:hover {
@@ -104,7 +112,7 @@
 
   .govuk-pagination__link {
     display: block;
-    min-width: govuk-spacing(3);
+    min-width: spacing.govuk-spacing(3);
 
     // Increase the touch area for the link to the parent element.
     @media screen {
@@ -123,18 +131,18 @@
     &:hover,
     &:active {
       .govuk-pagination__link-title--decorated {
-        @include govuk-link-decoration;
+        @include links.govuk-link-decoration;
       }
 
       .govuk-pagination__link-label,
       .govuk-pagination__link-title--decorated {
-        @include govuk-link-hover-decoration;
+        @include links.govuk-link-hover-decoration;
       }
     }
 
     &:focus {
       .govuk-pagination__icon {
-        color: govuk-functional-colour(focus-text);
+        color: colour.govuk-functional-colour(focus-text);
       }
 
       .govuk-pagination__link-label {
@@ -152,26 +160,26 @@
   }
 
   .govuk-pagination__link-label {
-    @include govuk-typography-weight-regular;
-    @include govuk-link-decoration;
+    @include typography.govuk-typography-weight-regular;
+    @include links.govuk-link-decoration;
     display: inline-block;
   }
 
   .govuk-pagination__icon {
     // Set size using rems to make the icon scale with text
-    width: govuk-px-to-rem(15px);
-    height: govuk-px-to-rem(13px);
-    color: govuk-functional-colour(secondary-text);
+    width: px-to-rem.govuk-px-to-rem(15px);
+    height: px-to-rem.govuk-px-to-rem(13px);
+    color: colour.govuk-functional-colour(secondary-text);
     fill: currentcolor;
     forced-color-adjust: auto;
   }
 
   .govuk-pagination__icon--prev {
-    margin-right: govuk-spacing(3);
+    margin-right: spacing.govuk-spacing(3);
   }
 
   .govuk-pagination__icon--next {
-    margin-left: govuk-spacing(3);
+    margin-left: spacing.govuk-spacing(3);
   }
 
   // Block mode - position previous and next links above and below numbers
@@ -189,13 +197,13 @@
     }
 
     .govuk-pagination__next {
-      padding-right: govuk-spacing(3);
+      padding-right: spacing.govuk-spacing(3);
     }
 
     // Only apply a border between prev and next if both are present
     .govuk-pagination__prev + .govuk-pagination__next {
       border-top: 1px solid;
-      border-top-color: govuk-functional-colour(border);
+      border-top-color: colour.govuk-functional-colour(border);
     }
 
     // Set the after pseudo element to a block which makes the title visually
@@ -208,7 +216,7 @@
     }
 
     .govuk-pagination__link {
-      padding-left: govuk-spacing(6);
+      padding-left: spacing.govuk-spacing(6);
       text-align: left;
 
       &:not(:focus) {
@@ -224,7 +232,7 @@
       // This could have been done programmatically but we don't have functions
       // for grabbing the line-height of specific typography sizes just yet.
       margin-top: 0.326em;
-      margin-left: govuk-spacing(6) * -1;
+      margin-left: spacing.govuk-spacing(6) * -1;
       float: left;
     }
   }

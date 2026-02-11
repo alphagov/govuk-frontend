@@ -1,13 +1,22 @@
+@use "helpers/colour";
+@use "helpers/focused";
+@use "helpers/links";
+@use "helpers/media-queries";
+@use "helpers/shape-arrow";
+@use "helpers/spacing";
+@use "helpers/typography";
+@use "tools/exports";
+
 @use "sass:math";
 
-@include govuk-exports("govuk/component/service-navigation") {
-  $govuk-service-navigation-active-link-border-width: govuk-spacing(1);
-  $govuk-service-navigation-text-colour: govuk-functional-colour(surface-text);
-  $govuk-service-navigation-background: govuk-functional-colour(surface-background);
-  $govuk-service-navigation-border-colour: govuk-functional-colour(surface-border);
+@include exports.govuk-exports("govuk/component/service-navigation") {
+  $govuk-service-navigation-active-link-border-width: spacing.govuk-spacing(1);
+  $govuk-service-navigation-text-colour: colour.govuk-functional-colour(surface-text);
+  $govuk-service-navigation-background: colour.govuk-functional-colour(surface-background);
+  $govuk-service-navigation-border-colour: colour.govuk-functional-colour(surface-border);
 
   .govuk-service-navigation {
-    @include govuk-font($size: 19);
+    @include typography.govuk-font($size: 19);
     border-bottom-width: 1px;
     border-bottom-style: solid;
     border-bottom-color: $govuk-service-navigation-border-colour;
@@ -20,7 +29,7 @@
     flex-direction: column;
     align-items: start;
 
-    @media #{govuk-from-breakpoint(tablet)} {
+    @media #{media-queries.govuk-from-breakpoint(tablet)} {
       flex-direction: row;
       flex-wrap: wrap;
     }
@@ -31,21 +40,21 @@
   .govuk-service-navigation__item,
   .govuk-service-navigation__service-name {
     position: relative;
-    margin: govuk-spacing(2) 0;
+    margin: spacing.govuk-spacing(2) 0;
 
     // A border matching the link colour is used to mark the active section –
     // see the `govuk-service-navigation__item--active` class
     border-width: 0;
     border-style: solid;
-    border-color: govuk-functional-colour(link);
+    border-color: colour.govuk-functional-colour(link);
 
-    @media #{govuk-from-breakpoint(tablet)} {
+    @media #{media-queries.govuk-from-breakpoint(tablet)} {
       // inline-block is used as a fallback for browsers that don't support flexbox
       display: inline-block;
 
       margin-top: 0;
       margin-bottom: 0;
-      padding: govuk-spacing(3) 0;
+      padding: spacing.govuk-spacing(3) 0;
 
       // More magic numbers ahoy:
       // 29 is the desired height of the element (60), minus top and bottom
@@ -55,7 +64,7 @@
       line-height: math.div(29, 19);
 
       &:not(:last-child) {
-        @include govuk-responsive-margin(6, $direction: right);
+        @include spacing.govuk-responsive-margin(6, $direction: right);
       }
     }
   }
@@ -72,24 +81,24 @@
   }
 
   .govuk-service-navigation__item--active {
-    @media #{govuk-until-breakpoint(tablet)} {
+    @media #{media-queries.govuk-until-breakpoint(tablet)} {
       // Negative offset the left margin so we can place a current page indicator
       // to the left without misaligning the list item text.
-      margin-left: ((govuk-spacing(2) + $govuk-service-navigation-active-link-border-width) * -1);
-      padding-left: govuk-spacing(2);
+      margin-left: ((spacing.govuk-spacing(2) + $govuk-service-navigation-active-link-border-width) * -1);
+      padding-left: spacing.govuk-spacing(2);
       border-left-width: $govuk-service-navigation-active-link-border-width;
     }
 
-    @media #{govuk-from-breakpoint(tablet)} {
-      padding-bottom: govuk-spacing(3) - $govuk-service-navigation-active-link-border-width;
+    @media #{media-queries.govuk-from-breakpoint(tablet)} {
+      padding-bottom: spacing.govuk-spacing(3) - $govuk-service-navigation-active-link-border-width;
       border-bottom-width: $govuk-service-navigation-active-link-border-width;
     }
   }
 
   .govuk-service-navigation__link {
-    @include govuk-link-common;
-    @include govuk-link-style-no-underline;
-    @include govuk-link-style-no-visited-state;
+    @include links.govuk-link-common;
+    @include links.govuk-link-style-no-underline;
+    @include links.govuk-link-style-no-visited-state;
   }
 
   //
@@ -97,13 +106,13 @@
   //
 
   .govuk-service-navigation__service-name {
-    @include govuk-typography-weight-bold;
+    @include typography.govuk-typography-weight-bold;
   }
 
   // Annoyingly this requires a compound selector in order to overcome the
   // specificity of the other link colour override we're doing
   .govuk-service-navigation__service-name .govuk-service-navigation__link {
-    @include govuk-link-style-text;
+    @include links.govuk-link-style-text;
   }
 
   // Allow navigation section to always take up maximum available space,
@@ -118,29 +127,29 @@
   //
 
   .govuk-service-navigation__toggle {
-    @include govuk-font($size: 19, $weight: bold);
+    @include typography.govuk-font($size: 19, $weight: bold);
     display: inline-flex;
-    margin: govuk-spacing(2) 0;
+    margin: spacing.govuk-spacing(2) 0;
     padding: 0;
     border: 0;
-    color: govuk-functional-colour(link);
+    color: colour.govuk-functional-colour(link);
     background: none;
     word-break: break-all;
     cursor: pointer;
     align-items: center;
 
     &:focus {
-      @include govuk-focused-text;
+      @include focused.govuk-focused-text;
     }
 
     &::after {
-      @include govuk-shape-arrow($direction: down, $base: 10px, $display: inline-block);
+      @include shape-arrow.govuk-shape-arrow($direction: down, $base: 10px, $display: inline-block);
       content: "";
-      margin-left: govuk-spacing(1);
+      margin-left: spacing.govuk-spacing(1);
     }
 
     &[aria-expanded="true"]::after {
-      @include govuk-shape-arrow($direction: up, $base: 10px, $display: inline-block);
+      @include shape-arrow.govuk-shape-arrow($direction: up, $base: 10px, $display: inline-block);
     }
 
     // Ensure the button stays hidden if the hidden attribute is present
@@ -157,7 +166,7 @@
 
   .govuk-service-navigation__list {
     margin: 0;
-    margin-bottom: govuk-spacing(3);
+    margin-bottom: spacing.govuk-spacing(3);
     padding: 0;
     list-style: none;
 
@@ -167,7 +176,7 @@
     //   readers would pointlessly announce.
     // - Fixes an NVDA issue in Firefox and Chrome <= 124 where it would read
     //   all of the links as a run-on sentence.
-    @media #{govuk-from-breakpoint(tablet)} {
+    @media #{media-queries.govuk-from-breakpoint(tablet)} {
       display: flex;
       flex-wrap: wrap;
       margin-bottom: 0;
@@ -199,9 +208,9 @@
 
     // Set colour here so non-link text (service name, slot content) can
     // use it too.
-    color: govuk-colour("white");
+    color: colour.govuk-colour("white");
 
-    background-color: govuk-functional-colour(brand);
+    background-color: colour.govuk-functional-colour(brand);
 
     .govuk-width-container {
       border-width: 1px 0;
@@ -217,12 +226,12 @@
     // Override the 'active' border colour
     .govuk-service-navigation__item,
     .govuk-service-navigation__service-name {
-      border-color: govuk-colour("white");
+      border-color: colour.govuk-colour("white");
     }
 
     // Override link styles
     .govuk-service-navigation__link {
-      @include govuk-link-style-inverse;
+      @include links.govuk-link-style-inverse;
     }
 
     // Override mobile menu toggle colour when not focused

@@ -1,10 +1,16 @@
-@include govuk-exports("govuk/component/warning-text") {
+@use "helpers/colour";
+@use "helpers/media-queries";
+@use "helpers/spacing";
+@use "helpers/typography";
+@use "tools/exports";
+
+@include exports.govuk-exports("govuk/component/warning-text") {
   .govuk-warning-text {
-    @include govuk-font($size: 19);
-    @include govuk-responsive-margin(6, "bottom");
-    @include govuk-typography-weight-bold;
+    @include typography.govuk-font($size: 19);
+    @include spacing.govuk-responsive-margin(6, "bottom");
+    @include typography.govuk-typography-weight-bold;
     position: relative;
-    padding: govuk-spacing(2) 0;
+    padding: spacing.govuk-spacing(2) 0;
   }
 
   .govuk-warning-text__icon {
@@ -19,7 +25,7 @@
     min-height: 35px;
     margin-top: -7px;
 
-    @media #{govuk-from-breakpoint(tablet)} {
+    @media #{media-queries.govuk-from-breakpoint(tablet)} {
       margin-top: -5px;
     }
 
@@ -27,10 +33,10 @@
     // removed. Adding a border to the component keeps it's shape as a circle.
     border: 3px solid;
     border-radius: 50%;
-    border-color: govuk-functional-colour(text);
+    border-color: colour.govuk-functional-colour(text);
 
-    color: govuk-functional-colour(body-background);
-    background: govuk-functional-colour(text);
+    color: colour.govuk-functional-colour(body-background);
+    background: colour.govuk-functional-colour(text);
 
     font-size: 30px;
     line-height: 29px;
@@ -53,7 +59,7 @@
   }
 
   .govuk-warning-text__text {
-    @include govuk-text-colour;
+    @include typography.govuk-text-colour;
     display: block;
     padding-left: 45px;
     // While `<strong>` is styled `bold` or `bolder` by user-agents

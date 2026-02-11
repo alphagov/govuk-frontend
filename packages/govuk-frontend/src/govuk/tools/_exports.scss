@@ -1,3 +1,4 @@
+@use "sass:list";
 ////
 /// @group tools
 ////
@@ -22,9 +23,9 @@ $_govuk-imported-modules: () !default;
 
 @mixin govuk-exports($name) {
   // If the mixin is not in the list of modules already exported...
-  @if not index($_govuk-imported-modules, $name) {
+  @if not list.index($_govuk-imported-modules, $name) {
     // ... then add it to the list
-    $_govuk-imported-modules: append($_govuk-imported-modules, $name) !global;
+    $_govuk-imported-modules: list.append($_govuk-imported-modules, $name) !global;
     // ... and output the CSS for that module
     @content;
   }

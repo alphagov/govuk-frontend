@@ -1,29 +1,37 @@
-@import "../error-message/index";
-@import "../hint/index";
-@import "../label/index";
+@use "../error-message/index";
+@use "../hint/index" as index2;
+@use "../label/index" as index3;
+@use "helpers/colour";
+@use "helpers/focused";
+@use "helpers/media-queries";
+@use "helpers/spacing";
+@use "helpers/typography";
+@use "settings/measurements";
+@use "tools/exports";
+@use "tools/px-to-rem";
 
-@include govuk-exports("govuk/component/input") {
+@include exports.govuk-exports("govuk/component/input") {
   .govuk-input {
-    @include govuk-font($size: 19);
+    @include typography.govuk-font($size: 19);
 
     box-sizing: border-box;
     width: 100%;
-    height: govuk-px-to-rem(40px);
+    height: px-to-rem.govuk-px-to-rem(40px);
     margin-top: 0;
-    padding: govuk-spacing(1);
+    padding: spacing.govuk-spacing(1);
     // Setting any background-color makes text invisible when changing colours
     // to dark backgrounds in Firefox (https://bugzil.la/1335476). As
     // background-color and color need to always be set together, color should
     // not be set either
-    border: $govuk-border-width-form-element solid;
+    border: measurements.$govuk-border-width-form-element solid;
     border-radius: 0;
-    border-color: govuk-functional-colour(input-border);
+    border-color: colour.govuk-functional-colour(input-border);
 
     // Disable inner shadow and remove rounded corners
     appearance: none;
 
     &:focus {
-      @include govuk-focused-form-input;
+      @include focused.govuk-focused-form-input;
     }
 
     &:disabled {
@@ -45,15 +53,15 @@
   }
 
   .govuk-input--error {
-    border-color: govuk-functional-colour(error);
+    border-color: colour.govuk-functional-colour(error);
 
     &:focus {
-      border-color: govuk-functional-colour(input-border);
+      border-color: colour.govuk-functional-colour(input-border);
     }
   }
 
   .govuk-input--extra-letter-spacing {
-    @include govuk-font-tabular-numbers;
+    @include typography.govuk-font-tabular-numbers;
     letter-spacing: 0.05em;
   }
 
@@ -101,7 +109,7 @@
     }
 
     // Split prefix/suffix onto separate lines on narrow screens
-    @media #{govuk-until-breakpoint(mobile)} {
+    @media #{media-queries.govuk-until-breakpoint(mobile)} {
       display: block;
 
       .govuk-input {
@@ -113,25 +121,25 @@
 
   .govuk-input__prefix,
   .govuk-input__suffix {
-    @include govuk-font($size: 19);
+    @include typography.govuk-font($size: 19);
     box-sizing: border-box;
     // Use flexbox to align text within the prefix and suffix
     display: flex;
     align-items: center;
     justify-content: center;
-    min-width: govuk-px-to-rem(40px);
-    height: govuk-px-to-rem(40px);
-    padding: govuk-spacing(1);
-    border: $govuk-border-width-form-element solid;
-    border-color: govuk-functional-colour(input-border);
-    background-color: govuk-colour("black", $variant: "tint-95");
+    min-width: px-to-rem.govuk-px-to-rem(40px);
+    height: px-to-rem.govuk-px-to-rem(40px);
+    padding: spacing.govuk-spacing(1);
+    border: measurements.$govuk-border-width-form-element solid;
+    border-color: colour.govuk-functional-colour(input-border);
+    background-color: colour.govuk-colour("black", $variant: "tint-95");
     text-align: center;
     white-space: nowrap;
     // Emphasise non-editable status of prefixes and suffixes
     cursor: default;
     flex: 0 0 auto;
     // Split prefix/suffix onto separate lines on narrow screens
-    @media #{govuk-until-breakpoint(mobile)} {
+    @media #{media-queries.govuk-until-breakpoint(mobile)} {
       display: block;
       height: 100%;
       white-space: normal;
@@ -139,20 +147,20 @@
   }
 
   .govuk-input__prefix {
-    @media #{govuk-until-breakpoint(mobile)} {
+    @media #{media-queries.govuk-until-breakpoint(mobile)} {
       border-bottom: 0;
     }
-    @media #{govuk-from-breakpoint(mobile)} {
+    @media #{media-queries.govuk-from-breakpoint(mobile)} {
       border-right: 0;
     }
   }
 
   // Split prefix/suffix onto separate lines on narrow screens
   .govuk-input__suffix {
-    @media #{govuk-until-breakpoint(mobile)} {
+    @media #{media-queries.govuk-until-breakpoint(mobile)} {
       border-top: 0;
     }
-    @media #{govuk-from-breakpoint(mobile)} {
+    @media #{media-queries.govuk-from-breakpoint(mobile)} {
       border-left: 0;
     }
   }

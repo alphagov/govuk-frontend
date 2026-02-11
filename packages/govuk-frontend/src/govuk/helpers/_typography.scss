@@ -4,7 +4,15 @@
 
 @use "sass:math";
 
-@import "../tools/px-to-rem";
+@use "sass:map";
+@use "sass:string";
+@use "../tools/px-to-rem";
+@use "settings/typography-font";
+@use "settings/typography-responsive";
+@use "settings/warnings";
+@use "colour";
+@use "font-faces";
+@use "media-queries";
 
 /// 'Common typography' helper
 ///
@@ -14,19 +22,19 @@
 /// @param {List} $font-family [$govuk-font-family] Font family to use
 /// @access public
 
-@mixin govuk-typography-common($font-family: $govuk-font-family) {
+@mixin govuk-typography-common($font-family: typography-font.$govuk-font-family) {
   font-family: $font-family;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
   // If the user is using the default GDS Transport font we need to include
   // the font-face declarations.
-  @if $govuk-include-default-font-face {
-    @include _govuk-font-face-gds-transport;
+  @if typography-font.$govuk-include-default-font-face {
+    @include font-faces.govuk-font-face-gds-transport;
   }
 
   @media print {
-    font-family: $govuk-font-family-print;
+    font-family: typography-font.$govuk-font-family-print;
   }
 }
 
@@ -37,10 +45,10 @@
 /// @access public
 
 @mixin govuk-text-colour {
-  color: govuk-functional-colour(text);
+  color: colour.govuk-functional-colour(text);
 
   @media print {
-    color: govuk-functional-colour(print-text);
+    color: colour.govuk-functional-colour(print-text);
   }
 }
 
@@ -51,7 +59,7 @@
 /// @access public
 
 @mixin govuk-typography-weight-regular($important: false) {
-  font-weight: $govuk-font-weight-regular if($important, !important, null);
+  font-weight: typography-font.$govuk-font-weight-regular if($important, !important, null);
 }
 
 /// Bold font weight helper
@@ -61,7 +69,7 @@
 /// @access public
 
 @mixin govuk-typography-weight-bold($important: false) {
-  font-weight: $govuk-font-weight-bold if($important, !important, null);
+  font-weight: typography-font.$govuk-font-weight-bold if($important, !important, null);
 }
 
 /// Tabular number helper
@@ -109,7 +117,7 @@
 /// @access private
 
 @function _govuk-line-height($line-height, $font-size) {
-  @if not unitless($line-height) and unit($line-height) == unit($font-size) {
+  @if not math.is-unitless($line-height) and math.unit($line-height) == math.unit($font-size) {
     $line-height: math.div($line-height, $font-size);
   }
 
@@ -155,21 +163,21 @@
 @mixin govuk-font-size($size, $line-height: false, $important: false) {
   // Flag font sizes that start with underscores so we can suppress warnings on
   // deprecated sizes used internally, for example `govuk-font($size: "_14")`
-  $size-internal-use-only: str-slice(#{$size}, 1, 1) == "_";
+  $size-internal-use-only: string.slice(#{$size}, 1, 1) == "_";
 
   // Remove underscore from font sizes flagged for internal use
   @if $size-internal-use-only {
-    $size: str-slice(#{$size}, 2);
+    $size: string.slice(#{$size}, 2);
   }
 
   // Check for a font map exactly matching the given size
-  $font-map: map-get($govuk-typography-scale, $size);
+  $font-map: map.get(typography-responsive.$govuk-typography-scale, $size);
 
   // No match? Try with string type (e.g. $size: "16" not 16)
   @if not $font-map {
-    @each $font-size in map-keys($govuk-typography-scale) {
+    @each $font-size in map.keys(typography-responsive.$govuk-typography-scale) {
       @if not $font-map and "#{$font-size}" == "#{$size}" {
-        $font-map: map-get($govuk-typography-scale, $font-size);
+        $font-map: map.get(typography-responsive.$govuk-typography-scale, $font-size);
       }
     }
   }
@@ -180,21 +188,21 @@
   }
 
   // Check for a deprecation within the type scale
-  $deprecation: map-get($font-map, "deprecation");
+  $deprecation: map.get($font-map, "deprecation");
 
   @if $deprecation {
     // Warn on deprecated font sizes unless flagged for internal use
     @if not $size-internal-use-only {
-      @include _warning(map-get($deprecation, "key"), map-get($deprecation, "message"));
+      @include warnings.warning(map.get($deprecation, "key"), map.get($deprecation, "message"));
     }
 
     // remove the deprecation map keys so they do not break the breakpoint loop
-    $font-map: map-remove($font-map, "deprecation");
+    $font-map: map.remove($font-map, "deprecation");
   }
 
   @each $breakpoint, $breakpoint-map in $font-map {
-    $font-size: map-get($breakpoint-map, "font-size");
-    $font-size-rem: govuk-px-to-rem($font-size);
+    $font-size: map.get($breakpoint-map, "font-size");
+    $font-size-rem: px-to-rem.govuk-px-to-rem($font-size);
 
     // $calculated-line-height is a separate variable from $line-height,
     // as otherwise the value would get redefined with each loop and
@@ -203,7 +211,7 @@
     // We continue to call the param $line-height to stay consistent with the
     // naming with govuk-font.
     $calculated-line-height: _govuk-line-height(
-      $line-height: if($line-height, $line-height, map-get($breakpoint-map, "line-height")),
+      $line-height: if($line-height, $line-height, map.get($breakpoint-map, "line-height")),
       $font-size: $font-size
     );
 
@@ -223,7 +231,7 @@
         line-height: $calculated-line-height;
       }
     } @else {
-      @media #{govuk-from-breakpoint($breakpoint)} {
+      @media #{media-queries.govuk-from-breakpoint($breakpoint)} {
         font-size: $font-size-rem;
         line-height: $calculated-line-height;
       }

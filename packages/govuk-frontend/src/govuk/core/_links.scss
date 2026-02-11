@@ -1,8 +1,11 @@
-@include govuk-exports("govuk/core/links") {
+@use "helpers/links";
+@use "tools/exports";
+
+@include exports.govuk-exports("govuk/core/links") {
   %govuk-link {
-    @include govuk-link-common;
-    @include govuk-link-style-default;
-    @include govuk-link-print-friendly;
+    @include links.govuk-link-common;
+    @include links.govuk-link-style-default;
+    @include links.govuk-link-print-friendly;
   }
 
   .govuk-link {
@@ -13,28 +16,28 @@
   // class, so we do not need the common link styles as they will be inherited.
 
   .govuk-link--muted {
-    @include govuk-link-style-muted;
+    @include links.govuk-link-style-muted;
   }
 
   .govuk-link--text-colour {
-    @include govuk-link-style-text;
+    @include links.govuk-link-style-text;
   }
 
   .govuk-link--inverse {
-    @include govuk-link-style-inverse;
+    @include links.govuk-link-style-inverse;
   }
 
   .govuk-link--no-underline {
-    @include govuk-link-style-no-underline;
+    @include links.govuk-link-style-no-underline;
   }
 
   .govuk-link--no-visited-state {
-    @include govuk-link-style-no-visited-state;
+    @include links.govuk-link-style-no-visited-state;
   }
 
   // Links that only contain images
 
   .govuk-link-image {
-    @include govuk-link-image;
+    @include links.govuk-link-image;
   }
 }

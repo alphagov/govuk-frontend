@@ -1,5 +1,7 @@
+@use "tools/exports";
+
 // stylelint-disable declaration-no-important
-@include govuk-exports("govuk/overrides/text-align") {
+@include exports.govuk-exports("govuk/overrides/text-align") {
   .govuk-\!-text-align-left {
     text-align: left !important;
   }

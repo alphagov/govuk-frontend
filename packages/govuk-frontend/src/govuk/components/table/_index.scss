@@ -1,9 +1,15 @@
-@include govuk-exports("govuk/component/table") {
+@use "helpers/colour";
+@use "helpers/media-queries";
+@use "helpers/spacing";
+@use "helpers/typography";
+@use "tools/exports";
+
+@include exports.govuk-exports("govuk/component/table") {
   .govuk-table {
-    @include govuk-font($size: 19);
-    @include govuk-text-colour;
+    @include typography.govuk-font($size: 19);
+    @include typography.govuk-text-colour;
     width: 100%;
-    @include govuk-responsive-margin(6, "bottom");
+    @include spacing.govuk-responsive-margin(6, "bottom");
 
     border-spacing: 0;
     border-collapse: collapse;
@@ -12,26 +18,26 @@
   // Modifier for tables with a lot of data. Tables with lots of data benefit
   // from a smaller font size on small screens.
   .govuk-table--small-text-until-tablet {
-    @media #{govuk-until-breakpoint(tablet)} {
-      @include govuk-font-size($size: 16);
+    @media #{media-queries.govuk-until-breakpoint(tablet)} {
+      @include typography.govuk-font-size($size: 16);
     }
   }
 
   .govuk-table__header {
-    @include govuk-typography-weight-bold;
+    @include typography.govuk-typography-weight-bold;
   }
 
   .govuk-table__header,
   .govuk-table__cell {
-    padding: govuk-spacing(2) govuk-spacing(4) govuk-spacing(2) 0;
+    padding: spacing.govuk-spacing(2) spacing.govuk-spacing(4) spacing.govuk-spacing(2) 0;
     border-bottom: 1px solid;
-    border-bottom-color: govuk-functional-colour(border);
+    border-bottom-color: colour.govuk-functional-colour(border);
     text-align: left;
     vertical-align: top;
   }
 
   .govuk-table__cell--numeric {
-    @include govuk-font-tabular-numbers;
+    @include typography.govuk-font-tabular-numbers;
   }
 
   .govuk-table__header--numeric,
@@ -45,7 +51,7 @@
   }
 
   .govuk-table__caption {
-    @include govuk-typography-weight-bold;
+    @include typography.govuk-typography-weight-bold;
 
     display: table-caption;
     text-align: left;
@@ -55,18 +61,18 @@
   .govuk-table__caption--xl,
   .govuk-table__caption--l,
   .govuk-table__caption--m {
-    margin-bottom: govuk-spacing(3);
+    margin-bottom: spacing.govuk-spacing(3);
   }
 
   .govuk-table__caption--xl {
-    @include govuk-font-size($size: 48);
+    @include typography.govuk-font-size($size: 48);
   }
 
   .govuk-table__caption--l {
-    @include govuk-font-size($size: 36);
+    @include typography.govuk-font-size($size: 36);
   }
 
   .govuk-table__caption--m {
-    @include govuk-font-size($size: 24);
+    @include typography.govuk-font-size($size: 24);
   }
 }

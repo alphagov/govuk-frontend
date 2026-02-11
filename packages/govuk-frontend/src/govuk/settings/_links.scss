@@ -1,3 +1,4 @@
+@use "sass:string";
 ////
 /// @group settings/links
 ////
@@ -15,7 +16,7 @@
 /// @type Number
 /// @access public
 
-$govuk-link-underline-thickness: unquote("max(1px, .0625rem)") !default;
+$govuk-link-underline-thickness: string.unquote("max(1px, .0625rem)") !default;
 
 /// Offset of link underlines from text baseline
 ///
@@ -44,4 +45,4 @@ $govuk-link-underline-offset: 0.1578em !default;
 /// @type Number
 /// @access public
 
-$govuk-link-hover-underline-thickness: unquote("max(3px, .1875rem, .12em)") !default;
+$govuk-link-hover-underline-thickness: string.unquote("max(3px, .1875rem, .12em)") !default;

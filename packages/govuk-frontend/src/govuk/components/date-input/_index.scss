@@ -1,18 +1,21 @@
-@import "../error-message/index";
-@import "../input/index";
-@import "../hint/index";
-@import "../label/index";
-@import "../fieldset/index";
+@use "../error-message/index";
+@use "../input/index" as index2;
+@use "../hint/index" as index3;
+@use "../label/index" as index4;
+@use "../fieldset/index" as index5;
+@use "helpers/clearfix";
+@use "helpers/spacing";
+@use "tools/exports";
 
-@include govuk-exports("govuk/component/date-input") {
+@include exports.govuk-exports("govuk/component/date-input") {
   .govuk-date-input {
-    @include govuk-clearfix;
+    @include clearfix.govuk-clearfix;
     font-size: 0; // removes whitespace caused by inline-block
   }
 
   .govuk-date-input__item {
     display: inline-block;
-    margin-right: govuk-spacing(4);
+    margin-right: spacing.govuk-spacing(4);
     margin-bottom: 0;
 
     // Prevents an issue in iOS Safari 18 where the items vertically

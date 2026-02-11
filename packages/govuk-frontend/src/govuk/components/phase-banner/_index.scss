@@ -1,12 +1,17 @@
-@import "../tag/index";
+@use "../tag/index";
+@use "helpers/colour";
+@use "helpers/media-queries";
+@use "helpers/spacing";
+@use "helpers/typography";
+@use "tools/exports";
 
-@include govuk-exports("govuk/component/phase-banner") {
+@include exports.govuk-exports("govuk/component/phase-banner") {
   .govuk-phase-banner {
-    padding-top: govuk-spacing(2);
-    padding-bottom: govuk-spacing(2);
+    padding-top: spacing.govuk-spacing(2);
+    padding-bottom: spacing.govuk-spacing(2);
 
     border-bottom: 1px solid;
-    border-bottom-color: govuk-functional-colour(border);
+    border-bottom-color: colour.govuk-functional-colour(border);
   }
 
   // If the phase banner is already contained within a .govuk-width-container,
@@ -17,19 +22,19 @@
   }
 
   .govuk-phase-banner__content {
-    @include govuk-font($size: 16);
-    @include govuk-text-colour;
+    @include typography.govuk-font($size: 16);
+    @include typography.govuk-text-colour;
 
     display: table;
     margin: 0;
   }
 
   .govuk-phase-banner__content__tag {
-    @include govuk-font-size($size: 16);
-    margin-right: govuk-spacing(3);
+    @include typography.govuk-font-size($size: 16);
+    margin-right: spacing.govuk-spacing(3);
 
-    @media #{govuk-from-breakpoint(tablet)} {
-      margin-right: govuk-spacing(2);
+    @media #{media-queries.govuk-from-breakpoint(tablet)} {
+      margin-right: spacing.govuk-spacing(2);
     }
   }
 

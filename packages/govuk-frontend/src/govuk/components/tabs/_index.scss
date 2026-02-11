@@ -1,57 +1,65 @@
-@include govuk-exports("govuk/component/tabs") {
+@use "helpers/clearfix";
+@use "helpers/colour";
+@use "helpers/links";
+@use "helpers/media-queries";
+@use "helpers/spacing";
+@use "helpers/typography";
+@use "tools/exports";
+
+@include exports.govuk-exports("govuk/component/tabs") {
   .govuk-tabs {
-    @include govuk-responsive-margin(1, "top");
-    @include govuk-responsive-margin(6, "bottom");
-    @include govuk-font($size: 19);
+    @include spacing.govuk-responsive-margin(1, "top");
+    @include spacing.govuk-responsive-margin(6, "bottom");
+    @include typography.govuk-font($size: 19);
   }
 
   .govuk-tabs__title {
     // Set the size and weight again because this element is a heading and the
     // user agent font size overrides the inherited font size
-    @include govuk-font-size($size: 19);
-    @include govuk-typography-weight-regular;
-    @include govuk-text-colour;
-    margin-bottom: govuk-spacing(2);
+    @include typography.govuk-font-size($size: 19);
+    @include typography.govuk-typography-weight-regular;
+    @include typography.govuk-text-colour;
+    margin-bottom: spacing.govuk-spacing(2);
   }
 
   .govuk-tabs__list {
     margin: 0;
     padding: 0;
     list-style: none;
-    @include govuk-responsive-margin(6, "bottom");
+    @include spacing.govuk-responsive-margin(6, "bottom");
   }
 
   .govuk-tabs__list-item {
-    margin-left: govuk-spacing(5);
+    margin-left: spacing.govuk-spacing(5);
 
     &::before {
-      @include govuk-text-colour;
+      @include typography.govuk-text-colour;
       content: "\2014 "; // "— "
-      margin-left: govuk-spacing(-5);
-      padding-right: govuk-spacing(1);
+      margin-left: spacing.govuk-spacing(-5);
+      padding-right: spacing.govuk-spacing(1);
     }
   }
 
   .govuk-tabs__tab {
-    @include govuk-link-common;
-    @include govuk-link-style-default;
+    @include links.govuk-link-common;
+    @include links.govuk-link-style-default;
 
     display: inline-block;
-    margin-bottom: govuk-spacing(2);
+    margin-bottom: spacing.govuk-spacing(2);
   }
 
   .govuk-tabs__panel {
-    @include govuk-responsive-margin(8, "bottom");
+    @include spacing.govuk-responsive-margin(8, "bottom");
   }
 
   // GOV.UK Frontend JavaScript enabled
   .govuk-frontend-supported {
-    @media #{govuk-from-breakpoint(tablet)} {
+    @media #{media-queries.govuk-from-breakpoint(tablet)} {
       .govuk-tabs__list {
-        @include govuk-clearfix;
+        @include clearfix.govuk-clearfix;
         margin-bottom: 0;
         border-bottom: 1px solid;
-        border-bottom-color: govuk-functional-colour(border);
+        border-bottom-color: colour.govuk-functional-colour(border);
       }
 
       .govuk-tabs__title {
@@ -61,13 +69,13 @@
       .govuk-tabs__list-item {
         position: relative;
 
-        margin-right: govuk-spacing(1);
+        margin-right: spacing.govuk-spacing(1);
         margin-bottom: 0;
         margin-left: 0;
-        padding: govuk-spacing(2) govuk-spacing(4);
+        padding: spacing.govuk-spacing(2) spacing.govuk-spacing(4);
 
         float: left;
-        background-color: govuk-colour("black", $variant: "tint-95");
+        background-color: colour.govuk-colour("black", $variant: "tint-95");
         text-align: center;
 
         &::before {
@@ -80,20 +88,20 @@
 
         position: relative;
 
-        margin-top: govuk-spacing(-1);
+        margin-top: spacing.govuk-spacing(-1);
 
         // Compensation for border (otherwise we get a shift)
         margin-bottom: -$border-width;
-        padding-top: govuk-spacing(3) - $border-width;
-        padding-right: govuk-spacing(4) - $border-width;
-        padding-bottom: govuk-spacing(3) + $border-width;
-        padding-left: govuk-spacing(4) - $border-width;
+        padding-top: spacing.govuk-spacing(3) - $border-width;
+        padding-right: spacing.govuk-spacing(4) - $border-width;
+        padding-bottom: spacing.govuk-spacing(3) + $border-width;
+        padding-left: spacing.govuk-spacing(4) - $border-width;
 
         border: $border-width solid;
         border-bottom: 0;
-        border-color: govuk-functional-colour(border);
+        border-color: colour.govuk-functional-colour(border);
 
-        background-color: govuk-functional-colour(body-background);
+        background-color: colour.govuk-functional-colour(body-background);
 
         .govuk-tabs__tab {
           text-decoration: none;
@@ -101,7 +109,7 @@
       }
 
       .govuk-tabs__tab {
-        @include govuk-link-style-text;
+        @include links.govuk-link-style-text;
 
         margin-bottom: 0;
 
@@ -116,11 +124,11 @@
       }
 
       .govuk-tabs__panel {
-        @include govuk-responsive-margin(0, "bottom");
-        padding: govuk-spacing(6) govuk-spacing(4);
+        @include spacing.govuk-responsive-margin(0, "bottom");
+        padding: spacing.govuk-spacing(6) spacing.govuk-spacing(4);
         border: 1px solid;
         border-top: 0;
-        border-color: govuk-functional-colour(border);
+        border-color: colour.govuk-functional-colour(border);
 
         & > :last-child {
           margin-bottom: 0;

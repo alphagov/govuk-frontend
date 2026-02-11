@@ -1,3 +1,6 @@
+@use "sass:meta";
+@use "settings/assets";
+
 ////
 /// @group tools/assets
 ////
@@ -14,13 +17,13 @@
 
 @function govuk-image-url($filename) {
   // prettier-ignore
-  $use-custom-function: variable-exists("govuk-image-url-function")
-    and $govuk-image-url-function
-    and function-exists($govuk-image-url-function);
+  $use-custom-function: meta.variable-exists("govuk-image-url-function")
+    and assets.$govuk-image-url-function
+    and meta.function-exists(assets.$govuk-image-url-function);
 
   @if $use-custom-function {
-    @return call(get-function($govuk-image-url-function), $filename);
+    @return meta.call(meta.get-function($govuk-image-url-function), $filename);
   } @else {
-    @return url($govuk-images-path + $filename);
+    @return url(assets.$govuk-images-path + $filename);
   }
 }

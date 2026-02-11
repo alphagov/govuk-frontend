@@ -1,15 +1,20 @@
-@include govuk-exports("govuk/core/lists") {
+@use "helpers/media-queries";
+@use "helpers/spacing";
+@use "helpers/typography";
+@use "tools/exports";
+
+@include exports.govuk-exports("govuk/core/lists") {
   %govuk-list {
-    @include govuk-font($size: 19);
-    @include govuk-text-colour;
+    @include typography.govuk-font($size: 19);
+    @include typography.govuk-text-colour;
     margin-top: 0;
-    @include govuk-responsive-margin(4, "bottom");
+    @include spacing.govuk-responsive-margin(4, "bottom");
     padding-left: 0;
     list-style-type: none;
 
     // Add a top margin for nested lists
     %govuk-list {
-      margin-top: govuk-spacing(2);
+      margin-top: spacing.govuk-spacing(2);
     }
   }
 
@@ -17,7 +22,7 @@
     // Lists without numbers or bullets should always have extra space between
     // list items. Lists with numbers or bullets only have this extra space on
     // tablet and above
-    margin-bottom: govuk-spacing(1);
+    margin-bottom: spacing.govuk-spacing(1);
   }
 
   .govuk-list {
@@ -25,12 +30,12 @@
   }
 
   %govuk-list--bullet {
-    padding-left: govuk-spacing(4);
+    padding-left: spacing.govuk-spacing(4);
     list-style-type: disc;
   }
 
   %govuk-list--number {
-    padding-left: govuk-spacing(4);
+    padding-left: spacing.govuk-spacing(4);
     list-style-type: decimal;
   }
 
@@ -38,16 +43,16 @@
   %govuk-list--number > li {
     margin-bottom: 0;
 
-    @media #{govuk-from-breakpoint(tablet)} {
-      margin-bottom: govuk-spacing(1);
+    @media #{media-queries.govuk-from-breakpoint(tablet)} {
+      margin-bottom: spacing.govuk-spacing(1);
     }
   }
 
   %govuk-list--spaced > li {
-    margin-bottom: govuk-spacing(2);
+    margin-bottom: spacing.govuk-spacing(2);
 
-    @media #{govuk-from-breakpoint(tablet)} {
-      margin-bottom: govuk-spacing(3);
+    @media #{media-queries.govuk-from-breakpoint(tablet)} {
+      margin-bottom: spacing.govuk-spacing(3);
     }
   }
 

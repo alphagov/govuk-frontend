@@ -1,3 +1,8 @@
+@use "sass:map";
+@use "helpers/spacing" as spacing2;
+@use "settings/spacing";
+@use "tools/exports";
+
 ////
 /// @group overrides
 ////
@@ -34,15 +39,15 @@ $_spacing-directions: ("top", "right", "bottom", "left") !default;
 @mixin _govuk-generate-responsive-spacing-overrides($property) {
   // For each point in the spacing scale (defined in settings), create an
   // override that affects all directions...
-  @each $scale-point, $scale-map in $govuk-spacing-responsive-scale {
+  @each $scale-point, $scale-map in spacing.$govuk-spacing-responsive-scale {
     .govuk-\!-#{$property}-#{$scale-point} {
-      @include _govuk-responsive-spacing($scale-point, $property, "all", true);
+      @include spacing2.govuk-responsive-spacing($scale-point, $property, "all", true);
     }
 
     // ... and then an override for each individual direction
     @each $direction in $_spacing-directions {
       .govuk-\!-#{$property}-#{$direction}-#{$scale-point} {
-        @include _govuk-responsive-spacing($scale-point, $property, $direction, true);
+        @include spacing2.govuk-responsive-spacing($scale-point, $property, $direction, true);
       }
     }
   }
@@ -62,20 +67,20 @@ $_spacing-directions: ("top", "right", "bottom", "left") !default;
 ///
 /// @access private
 @mixin _govuk-generate-static-spacing-overrides($property) {
-  @each $spacing-point in map-keys($govuk-spacing-points) {
+  @each $spacing-point in map.keys(spacing.$govuk-spacing-points) {
     .govuk-\!-static-#{$property}-#{$spacing-point} {
-      #{$property}: govuk-spacing($spacing-point) !important;
+      #{$property}: spacing2.govuk-spacing($spacing-point) !important;
     }
 
     @each $direction in $_spacing-directions {
       .govuk-\!-static-#{$property}-#{$direction}-#{$spacing-point} {
-        #{$property}-#{$direction}: govuk-spacing($spacing-point) !important;
+        #{$property}-#{$direction}: spacing2.govuk-spacing($spacing-point) !important;
       }
     }
   }
 }
 
-@include govuk-exports("govuk/overrides/spacing") {
+@include exports.govuk-exports("govuk/overrides/spacing") {
   @include _govuk-generate-responsive-spacing-overrides("margin");
   @include _govuk-generate-responsive-spacing-overrides("padding");
 

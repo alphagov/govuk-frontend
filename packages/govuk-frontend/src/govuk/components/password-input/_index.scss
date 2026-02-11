@@ -1,14 +1,17 @@
-@import "../button/index";
-@import "../input/index";
+@use "../button/index";
+@use "../input/index" as index2;
+@use "helpers/media-queries";
+@use "helpers/spacing";
+@use "tools/exports";
 
-@include govuk-exports("govuk/component/password-input") {
+@include exports.govuk-exports("govuk/component/password-input") {
   .govuk-password-input__wrapper {
     // This element inherits styles from .govuk-input__wrapper, including:
     // - being display: block with contents in a stacked column below the mobile
     //   breakpoint
     // - being display: flex above the mobile breakpoint
 
-    @media #{govuk-from-breakpoint(mobile)} {
+    @media #{media-queries.govuk-from-breakpoint(mobile)} {
       flex-direction: row;
 
       // The default of `stretch` makes the toggle button appear taller than the
@@ -31,7 +34,7 @@
 
   .govuk-password-input__toggle {
     // Add top margin so the button doesn't obscure the input's focus style
-    margin-top: govuk-spacing(1);
+    margin-top: spacing.govuk-spacing(1);
 
     // Remove default margin-bottom from button
     margin-bottom: 0;
@@ -41,7 +44,7 @@
       display: none;
     }
 
-    @media #{govuk-from-breakpoint(mobile)} {
+    @media #{media-queries.govuk-from-breakpoint(mobile)} {
       // Buttons are normally 100% wide on mobile, but we don't want that here
       width: auto;
       flex-shrink: 0;
@@ -49,7 +52,7 @@
 
       // Move the spacing from top to the left
       margin-top: 0;
-      margin-left: govuk-spacing(1);
+      margin-left: spacing.govuk-spacing(1);
     }
   }
 }

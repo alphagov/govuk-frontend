@@ -1,9 +1,14 @@
-@import "../base";
+@use "../base";
+@use "helpers/clearfix";
+@use "helpers/colour";
+@use "helpers/spacing";
+@use "settings/measurements";
+@use "tools/exports";
 
-@include govuk-exports("govuk/objects/form-group") {
+@include exports.govuk-exports("govuk/objects/form-group") {
   .govuk-form-group {
-    @include govuk-clearfix;
-    @include govuk-responsive-margin(6, "bottom");
+    @include clearfix.govuk-clearfix;
+    @include spacing.govuk-responsive-margin(6, "bottom");
 
     .govuk-form-group:last-of-type {
       margin-bottom: 0; // Remove margin from last item in nested groups
@@ -11,9 +16,9 @@
   }
 
   .govuk-form-group--error {
-    padding-left: govuk-spacing(3);
-    border-left: $govuk-border-width-form-group-error solid;
-    border-left-color: govuk-functional-colour(error);
+    padding-left: spacing.govuk-spacing(3);
+    border-left: measurements.$govuk-border-width-form-group-error solid;
+    border-left-color: colour.govuk-functional-colour(error);
 
     .govuk-form-group {
       // Reset error styles in nested form groups that might have error class

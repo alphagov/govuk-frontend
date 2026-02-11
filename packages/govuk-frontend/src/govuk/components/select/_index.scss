@@ -1,10 +1,17 @@
-@import "../error-message/index";
-@import "../hint/index";
-@import "../label/index";
+@use "../error-message/index";
+@use "../hint/index" as index2;
+@use "../label/index" as index3;
+@use "helpers/colour";
+@use "helpers/focused";
+@use "helpers/spacing";
+@use "helpers/typography";
+@use "settings/measurements";
+@use "tools/exports";
+@use "tools/px-to-rem";
 
-@include govuk-exports("govuk/component/select") {
+@include exports.govuk-exports("govuk/component/select") {
   .govuk-select {
-    @include govuk-font($size: 19, $line-height: 1.25);
+    @include typography.govuk-font($size: 19, $line-height: 1.25);
 
     box-sizing: border-box;
 
@@ -14,18 +21,18 @@
     // - it fits comfortably on screens as narrow as 240px wide
     min-width: 11.5em;
     max-width: 100%;
-    height: govuk-px-to-rem(40px);
-    padding: govuk-spacing(1);
-    border: $govuk-border-width-form-element solid;
-    border-color: govuk-functional-colour(input-border);
+    height: px-to-rem.govuk-px-to-rem(40px);
+    padding: spacing.govuk-spacing(1);
+    border: measurements.$govuk-border-width-form-element solid;
+    border-color: colour.govuk-functional-colour(input-border);
 
     // Default user agent colours for selects can have low contrast,
     // and may look disabled (#2435)
-    color: govuk-functional-colour(text);
-    background-color: govuk-colour("white");
+    color: colour.govuk-functional-colour(text);
+    background-color: colour.govuk-colour("white");
 
     &:focus {
-      @include govuk-focused-form-input;
+      @include focused.govuk-focused-form-input;
     }
 
     &:disabled {
@@ -38,15 +45,15 @@
   .govuk-select option:active,
   .govuk-select option:checked,
   .govuk-select:focus::-ms-value {
-    color: govuk-colour("white");
-    background-color: govuk-colour("blue");
+    color: colour.govuk-colour("white");
+    background-color: colour.govuk-colour("blue");
   }
 
   .govuk-select--error {
-    border-color: govuk-functional-colour(error);
+    border-color: colour.govuk-functional-colour(error);
 
     &:focus {
-      border-color: govuk-functional-colour(input-border);
+      border-color: colour.govuk-functional-colour(input-border);
     }
   }
 }

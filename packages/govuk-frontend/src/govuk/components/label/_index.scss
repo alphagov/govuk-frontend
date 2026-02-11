@@ -1,35 +1,39 @@
-@include govuk-exports("govuk/component/label") {
+@use "helpers/spacing";
+@use "helpers/typography";
+@use "tools/exports";
+
+@include exports.govuk-exports("govuk/component/label") {
   .govuk-label {
-    @include govuk-font($size: 19);
-    @include govuk-text-colour;
+    @include typography.govuk-font($size: 19);
+    @include typography.govuk-text-colour;
 
     display: block;
 
-    margin-bottom: govuk-spacing(1);
+    margin-bottom: spacing.govuk-spacing(1);
   }
 
   // Modifiers that make labels look more like their equivalent headings
   .govuk-label--xl,
   .govuk-label--l,
   .govuk-label--m {
-    @include govuk-typography-weight-bold;
-    margin-bottom: govuk-spacing(3);
+    @include typography.govuk-typography-weight-bold;
+    margin-bottom: spacing.govuk-spacing(3);
   }
 
   .govuk-label--xl {
-    @include govuk-font-size($size: 48);
+    @include typography.govuk-font-size($size: 48);
   }
 
   .govuk-label--l {
-    @include govuk-font-size($size: 36);
+    @include typography.govuk-font-size($size: 36);
   }
 
   .govuk-label--m {
-    @include govuk-font-size($size: 24);
+    @include typography.govuk-font-size($size: 24);
   }
 
   .govuk-label--s {
-    @include govuk-typography-weight-bold;
+    @include typography.govuk-typography-weight-bold;
   }
 
   // When the label is nested inside a heading, override the heading so that it

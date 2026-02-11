@@ -1,9 +1,9 @@
-@import "base";
+@use "base";
 
-@import "core/index";
-@import "objects/index";
+@use "core/index";
+@use "objects/index" as index2;
 
-@import "components/index";
+@use "components/index" as index3;
 
-@import "utilities/index";
-@import "overrides/index";
+@use "utilities/index" as index4;
+@use "overrides/index" as index5;

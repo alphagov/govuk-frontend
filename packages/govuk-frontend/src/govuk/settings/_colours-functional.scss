@@ -2,7 +2,10 @@
 /// @group settings/colours
 ////
 
-@import "../helpers/colour";
+@use "sass:list";
+@use "sass:meta";
+@use "../helpers/colour";
+@use "warnings";
 
 /// Default definitions of the functional colours
 ///
@@ -134,7 +137,7 @@ $govuk-default-functional-colours: (
 ///
 /// @access public
 $govuk-functional-colours: $govuk-default-functional-colours !default;
-$govuk-functional-colours: _govuk-define-functional-colours(
+$govuk-functional-colours: colour.govuk-define-functional-colours(
   $govuk-functional-colours,
   $defaults: $govuk-default-functional-colours
 );
@@ -156,14 +159,14 @@ $_govuk-deprecated-applied-colour-variables: () !default;
 /// @param {String} Name of variable to check
 /// @access private
 @mixin _warn-if-applied-colour-variable-set($functional-colour-name) {
-  @if not index($_govuk-deprecated-applied-colour-variables, $functional-colour-name) {
-    @if variable-exists("govuk-#{$functional-colour-name}-colour") {
+  @if not list.index($_govuk-deprecated-applied-colour-variables, $functional-colour-name) {
+    @if meta.variable-exists("govuk-#{$functional-colour-name}-colour") {
       $deprecation-message: "Setting \`$govuk-#{$functional-colour-name}-colour\` no longer has any effect. Use \`$govuk-functional-colours: (#{$functional-colour-name}: <NEW_COLOUR_VALUE>);\` instead.";
 
-      @include _warning("applied-colour-variables", $deprecation-message);
+      @include warnings.warning("applied-colour-variables", $deprecation-message);
     }
 
-    $_govuk-deprecated-applied-colour-variables: append(
+    $_govuk-deprecated-applied-colour-variables: list.append(
       $_govuk-deprecated-applied-colour-variables,
       $functional-colour-name
     ) !global;
@@ -178,7 +181,7 @@ $_govuk-deprecated-applied-colour-variables: () !default;
 /// @deprecated
 ///   Variables for applied colours are deprecated. Please use the `govuk-functional-colour`
 ///   function instead: `govuk-functional-colour(brand)`.
-$govuk-brand-colour: govuk-functional-colour(brand);
+$govuk-brand-colour: colour.govuk-functional-colour(brand);
 
 @include _warn-if-applied-colour-variable-set(text);
 /// Text colour
@@ -188,7 +191,7 @@ $govuk-brand-colour: govuk-functional-colour(brand);
 /// @deprecated
 ///   Variables for applied colours are deprecated. Please use the `govuk-functional-colour`
 ///   function instead: `govuk-functional-colour(text)`.
-$govuk-text-colour: govuk-functional-colour(text);
+$govuk-text-colour: colour.govuk-functional-colour(text);
 
 @include _warn-if-applied-colour-variable-set(template-background);
 /// Template background colour
@@ -201,7 +204,7 @@ $govuk-text-colour: govuk-functional-colour(text);
 /// @deprecated
 ///   Variables for applied colours are deprecated. Please use the `govuk-functional-colour`
 ///   function instead: `govuk-functional-colour(template-background)`.
-$govuk-template-background-colour: govuk-functional-colour(template-background);
+$govuk-template-background-colour: colour.govuk-functional-colour(template-background);
 
 @include _warn-if-applied-colour-variable-set(body-background);
 /// Body background colour
@@ -211,7 +214,7 @@ $govuk-template-background-colour: govuk-functional-colour(template-background);
 /// @deprecated
 ///   Variables for applied colours are deprecated. Please use the `govuk-functional-colour`
 ///   function instead: `govuk-functional-colour(body-background)`.
-$govuk-body-background-colour: govuk-functional-colour(body-background);
+$govuk-body-background-colour: colour.govuk-functional-colour(body-background);
 
 @include _warn-if-applied-colour-variable-set(print-text);
 /// Text colour for print media
@@ -223,7 +226,7 @@ $govuk-body-background-colour: govuk-functional-colour(body-background);
 /// @deprecated
 ///   Variables for applied colours are deprecated. Please use the `govuk-functional-colour`
 ///   function instead: `govuk-functional-colour(print-text)`.
-$govuk-print-text-colour: govuk-functional-colour(print-text);
+$govuk-print-text-colour: colour.govuk-functional-colour(print-text);
 
 @include _warn-if-applied-colour-variable-set(secondary-text);
 /// Secondary text colour
@@ -235,7 +238,7 @@ $govuk-print-text-colour: govuk-functional-colour(print-text);
 /// @deprecated
 ///   Variables for applied colours are deprecated. Please use the `govuk-functional-colour`
 ///   function instead: `govuk-functional-colour(secondary-text)`.
-$govuk-secondary-text-colour: govuk-functional-colour(secondary-text);
+$govuk-secondary-text-colour: colour.govuk-functional-colour(secondary-text);
 
 @include _warn-if-applied-colour-variable-set(focus);
 /// Focus colour
@@ -248,7 +251,7 @@ $govuk-secondary-text-colour: govuk-functional-colour(secondary-text);
 /// @deprecated
 ///   Variables for applied colours are deprecated. Please use the `govuk-functional-colour`
 ///   function instead: `govuk-functional-colour(focus)`.
-$govuk-focus-colour: govuk-functional-colour(focus);
+$govuk-focus-colour: colour.govuk-functional-colour(focus);
 
 @include _warn-if-applied-colour-variable-set(focus-text);
 /// Focused text colour
@@ -261,7 +264,7 @@ $govuk-focus-colour: govuk-functional-colour(focus);
 /// @deprecated
 ///   Variables for applied colours are deprecated. Please use the `govuk-functional-colour`
 ///   function instead: `govuk-functional-colour(focus-text)`.
-$govuk-focus-text-colour: govuk-functional-colour(focus-text);
+$govuk-focus-text-colour: colour.govuk-functional-colour(focus-text);
 
 @include _warn-if-applied-colour-variable-set(error);
 /// Error colour
@@ -273,7 +276,7 @@ $govuk-focus-text-colour: govuk-functional-colour(focus-text);
 /// @deprecated
 ///   Variables for applied colours are deprecated. Please use the `govuk-functional-colour`
 ///   function instead: `govuk-functional-colour(error)`.
-$govuk-error-colour: govuk-functional-colour(error);
+$govuk-error-colour: colour.govuk-functional-colour(error);
 
 @include _warn-if-applied-colour-variable-set(success);
 /// Success colour
@@ -285,7 +288,7 @@ $govuk-error-colour: govuk-functional-colour(error);
 /// @deprecated
 ///   Variables for applied colours are deprecated. Please use the `govuk-functional-colour`
 ///   function instead: `govuk-functional-colour(error)`.
-$govuk-success-colour: govuk-functional-colour(success);
+$govuk-success-colour: colour.govuk-functional-colour(success);
 
 @include _warn-if-applied-colour-variable-set(border);
 /// Border colour
@@ -297,7 +300,7 @@ $govuk-success-colour: govuk-functional-colour(success);
 /// @deprecated
 ///   Variables for applied colours are deprecated. Please use the `govuk-functional-colour`
 ///   function instead: `govuk-functional-colour(border)`.
-$govuk-border-colour: govuk-functional-colour(border);
+$govuk-border-colour: colour.govuk-functional-colour(border);
 
 @include _warn-if-applied-colour-variable-set(input-border);
 /// Input border colour
@@ -309,7 +312,7 @@ $govuk-border-colour: govuk-functional-colour(border);
 /// @deprecated
 ///   Variables for applied colours are deprecated. Please use the `govuk-functional-colour`
 ///   function instead: `govuk-functional-colour(input-border)`.
-$govuk-input-border-colour: govuk-functional-colour(input-border);
+$govuk-input-border-colour: colour.govuk-functional-colour(input-border);
 
 @include _warn-if-applied-colour-variable-set(hover);
 /// Input hover colour
@@ -321,7 +324,7 @@ $govuk-input-border-colour: govuk-functional-colour(input-border);
 /// @deprecated
 ///   Variables for applied colours are deprecated. Please use the `govuk-functional-colour`
 ///   function instead: `govuk-functional-colour(hover)`.
-$govuk-hover-colour: govuk-functional-colour(hover);
+$govuk-hover-colour: colour.govuk-functional-colour(hover);
 
 @include _warn-if-applied-colour-variable-set(link);
 /// Link colour
@@ -331,7 +334,7 @@ $govuk-hover-colour: govuk-functional-colour(hover);
 /// @deprecated
 ///   Variables for applied colours are deprecated. Please use the `govuk-functional-colour`
 ///   function instead: `govuk-functional-colour(link)`.
-$govuk-link-colour: govuk-functional-colour(link);
+$govuk-link-colour: colour.govuk-functional-colour(link);
 
 @include _warn-if-applied-colour-variable-set(link-visited);
 /// Visited link colour
@@ -341,7 +344,7 @@ $govuk-link-colour: govuk-functional-colour(link);
 /// @deprecated
 ///   Variables for applied colours are deprecated. Please use the `govuk-functional-colour`
 ///   function instead: `govuk-functional-colour(link-visited)`.
-$govuk-link-visited-colour: govuk-functional-colour(link-visited);
+$govuk-link-visited-colour: colour.govuk-functional-colour(link-visited);
 
 @include _warn-if-applied-colour-variable-set(link-hover);
 /// Link hover colour
@@ -351,7 +354,7 @@ $govuk-link-visited-colour: govuk-functional-colour(link-visited);
 /// @deprecated
 ///   Variables for applied colours are deprecated. Please use the `govuk-functional-colour`
 ///   function instead: `govuk-functional-colour(link-hover)`.
-$govuk-link-hover-colour: govuk-functional-colour(link-hover);
+$govuk-link-hover-colour: colour.govuk-functional-colour(link-hover);
 
 @include _warn-if-applied-colour-variable-set(link-active);
 /// Active link colour
@@ -361,4 +364,4 @@ $govuk-link-hover-colour: govuk-functional-colour(link-hover);
 /// @deprecated
 ///   Variables for applied colours are deprecated. Please use the `govuk-functional-colour`
 ///   function instead: `govuk-functional-colour(link-active)`.
-$govuk-link-active-colour: govuk-functional-colour(link-active);
+$govuk-link-active-colour: colour.govuk-functional-colour(link-active);

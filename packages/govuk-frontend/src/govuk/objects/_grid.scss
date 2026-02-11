@@ -1,24 +1,29 @@
-@import "../base";
+@use "sass:map";
+@use "../base";
+@use "helpers/clearfix";
+@use "helpers/grid";
+@use "settings/measurements";
+@use "tools/exports";
 
-@include govuk-exports("govuk/objects/grid") {
+@include exports.govuk-exports("govuk/objects/grid") {
   .govuk-grid-row {
-    @include govuk-clearfix;
-    margin-right: -($govuk-gutter-half);
-    margin-left: -($govuk-gutter-half);
+    @include clearfix.govuk-clearfix;
+    margin-right: -(measurements.$govuk-gutter-half);
+    margin-left: -(measurements.$govuk-gutter-half);
   }
 
-  @each $width in map-keys($govuk-grid-widths) {
+  @each $width in map.keys(measurements.$govuk-grid-widths) {
     .govuk-grid-column-#{$width} {
-      @include govuk-grid-column($width);
+      @include grid.govuk-grid-column($width);
     }
   }
 
   // These *must* be defined in a separate loop as they have the same
   // specificity as the non-breakpoint specific classes, so need to appear after
   // them in the outputted CSS
-  @each $width in map-keys($govuk-grid-widths) {
+  @each $width in map.keys(measurements.$govuk-grid-widths) {
     .govuk-grid-column-#{$width}-from-desktop {
-      @include govuk-grid-column($width, $at: desktop);
+      @include grid.govuk-grid-column($width, $at: desktop);
     }
   }
 }

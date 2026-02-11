@@ -1,3 +1,7 @@
+@use "sass:map";
+@use "settings/measurements";
+@use "media-queries";
+
 ////
 /// @group helpers/layout
 ////
@@ -10,8 +14,8 @@
 /// @access public
 
 @function govuk-grid-width($key) {
-  @if map-has-key($govuk-grid-widths, $key) {
-    @return map-get($govuk-grid-widths, $key);
+  @if map.has-key(measurements.$govuk-grid-widths, $key) {
+    @return map.get(measurements.$govuk-grid-widths, $key);
   }
 
   @error "Unknown grid width `#{$key}`";
@@ -53,8 +57,8 @@
   @if $at != desktop {
     width: 100%;
   }
-  padding: 0 $govuk-gutter-half;
-  @media #{govuk-from-breakpoint($at)} {
+  padding: 0 measurements.$govuk-gutter-half;
+  @media #{media-queries.govuk-from-breakpoint($at)} {
     width: govuk-grid-width($width);
     float: $float;
   }

@@ -1,4 +1,4 @@
-@import "../settings/warnings";
+@use "../settings/warnings";
 
 ////
 /// @group settings/colours
@@ -129,6 +129,6 @@ $govuk-colours-organisations: (
 ///
 /// @access private
 
-$_govuk-colours-organisations-aliases: (
+$govuk-colours-organisations-aliases: (
   "department-for-business-and-trade": "department-for-business-trade"
 );

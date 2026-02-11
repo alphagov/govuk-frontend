@@ -1,30 +1,38 @@
-@include govuk-exports("govuk/component/back-link") {
+@use "sass:string";
+@use "helpers/colour";
+@use "helpers/links";
+@use "helpers/spacing";
+@use "helpers/typography";
+@use "tools/exports";
+@use "tools/px-to-em";
+
+@include exports.govuk-exports("govuk/component/back-link") {
   // Component font-size on the Frontend (used for calculations)
   $font-size: 16;
 
   // Size of chevron (excluding border)
-  $chevron-size: govuk-em(7px, $font-size);
+  $chevron-size: px-to-em.govuk-em(7px, $font-size);
 
   // Size of chevron border
   $chevron-border-min-width: 1px;
-  $chevron-border-width: govuk-em($chevron-border-min-width, $font-size);
+  $chevron-border-width: px-to-em.govuk-em($chevron-border-min-width, $font-size);
 
   // Colour of chevron
-  $chevron-border-colour: govuk-functional-colour(secondary-text);
+  $chevron-border-colour: colour.govuk-functional-colour(secondary-text);
 
   .govuk-back-link {
-    @include govuk-font-size($size: $font-size);
-    @include govuk-link-common;
-    @include govuk-link-style-text;
+    @include typography.govuk-font-size($size: $font-size);
+    @include links.govuk-link-common;
+    @include links.govuk-link-style-text;
 
     display: inline-block;
     position: relative;
 
-    margin-top: govuk-spacing(3);
-    margin-bottom: govuk-spacing(3);
+    margin-top: spacing.govuk-spacing(3);
+    margin-bottom: spacing.govuk-spacing(3);
 
     // Allow space for the arrow
-    padding-left: govuk-em(14px, $font-size);
+    padding-left: px-to-em.govuk-em(14px, $font-size);
   }
 
   // Prepend left pointing chevron
@@ -36,7 +44,7 @@
     position: absolute;
     top: 0;
     bottom: 0;
-    left: govuk-em(3px, $font-size);
+    left: px-to-em.govuk-em(3px, $font-size);
 
     width: $chevron-size;
     height: $chevron-size;
@@ -49,17 +57,17 @@
     border-width: $chevron-border-min-width $chevron-border-min-width 0 0;
     border-color: $chevron-border-colour;
 
-    @supports (border-width: unquote("max(0px)")) {
+    @supports (border-width: string.unquote("max(0px)")) {
       $border-width-eval: "max(#{$chevron-border-min-width}, #{$chevron-border-width})";
 
       // Ensure that the chevron never gets smaller than 16px
-      border-width: unquote($border-width-eval) unquote($border-width-eval) 0 0;
-      font-size: unquote("max(#{$font-size * 1px}, 1em)");
+      border-width: string.unquote($border-width-eval) string.unquote($border-width-eval) 0 0;
+      font-size: string.unquote("max(#{$font-size * 1px}, 1em)");
     }
   }
 
   .govuk-back-link:focus::before {
-    border-color: govuk-functional-colour(focus-text);
+    border-color: colour.govuk-functional-colour(focus-text);
   }
 
   .govuk-back-link::after {
@@ -72,7 +80,7 @@
   }
 
   .govuk-back-link--inverse {
-    @include govuk-link-style-inverse;
+    @include links.govuk-link-style-inverse;
 
     &::before {
       border-color: currentcolor;

@@ -1,3 +1,4 @@
+@use "sass:list";
 ////
 /// @group settings/warnings
 ////
@@ -46,12 +47,12 @@ $govuk-suppressed-warnings: () !default;
 /// warnings that use the same $key
 /// @access private
 
-@mixin _warning($key, $message, $silence-further-warnings: true) {
-  @if _should-warn($key) {
-    @warn _warning-text($key, $message);
+@mixin warning($key, $message, $silence-further-warnings: true) {
+  @if should-warn($key) {
+    @warn warning-text($key, $message);
 
     @if $silence-further-warnings {
-      $govuk-suppressed-warnings: append($govuk-suppressed-warnings, $key) !global;
+      $govuk-suppressed-warnings: list.append($govuk-suppressed-warnings, $key) !global;
     }
   }
 }
@@ -61,8 +62,8 @@ $govuk-suppressed-warnings: () !default;
 /// @param {String} $key - The key to be checked against `$govuk-suppressed-warnings`.
 /// @access private
 
-@function _should-warn($key) {
-  @return index($govuk-suppressed-warnings, $key) == null;
+@function should-warn($key) {
+  @return list.index($govuk-suppressed-warnings, $key) == null;
 }
 
 /// Format a warning by appending information on how to suppress it.
@@ -71,6 +72,6 @@ $govuk-suppressed-warnings: () !default;
 /// @param {String} $message - The warning text.
 /// @access private
 
-@function _warning-text($key, $message) {
+@function warning-text($key, $message) {
   @return $message + " To silence this warning, update $govuk-suppressed-warnings " + 'with key: "#{$key}"';
 }

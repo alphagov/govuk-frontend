@@ -1,4 +1,4 @@
-@import "settings/index";
-@import "tools/index";
-@import "helpers/index";
-@import "custom-properties/index";
+@use "settings/index";
+@use "tools/index" as index2;
+@use "helpers/index" as index3;
+@use "custom-properties/index" as index4;
