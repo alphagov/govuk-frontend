@@ -6,8 +6,8 @@ const deprecationOptions = {
     'color-functions',
     'global-builtin',
     'import',
-    'mixed-decls',
-    'slash-div'
+    'mixed-decls'
+    // 'slash-div'
   ]
 }
 
