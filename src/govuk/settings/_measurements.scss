@@ -21,17 +21,11 @@ $govuk-page-width: 960px !default;
 /// @access public
 
 $govuk-grid-widths: (
-  one-quarter: (
-    100% * 0.25
-  ),
+  one-quarter: math.div(100%, 4),
   one-third: math.div(100%, 3),
-  one-half: (
-    100% * 0.5
-  ),
+  one-half: math.div(100%, 2),
   two-thirds: math.div(200%, 3),
-  three-quarters: (
-    300% * 0.25
-  ),
+  three-quarters: math.div(300%, 4),
   full: 100%
 ) !default;
 
@@ -47,7 +41,7 @@ $govuk-gutter: 30px !default;
 /// @type Number
 /// @access public
 
-$govuk-gutter-half: $govuk-gutter * 0.5;
+$govuk-gutter-half: math.div($govuk-gutter, 2);
 
 // =========================================================
 // Borders
