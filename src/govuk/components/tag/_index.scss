@@ -33,7 +33,11 @@
 }
 
 @include govuk-exports("govuk/component/tag") {
-  $govuk-tag-max-width: if(map-has-key($govuk-breakpoints, "mobile"), map-get($govuk-breakpoints, "mobile") / 2, 160px);
+  $govuk-tag-max-width: if(
+    map-has-key($govuk-breakpoints, "mobile"),
+    map-get($govuk-breakpoints, "mobile") * 0.5,
+    160px
+  );
 
   .govuk-tag {
     @include govuk-font($size: 19);

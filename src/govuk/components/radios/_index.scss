@@ -57,8 +57,8 @@
     content: "";
     box-sizing: border-box;
     position: absolute;
-    top: ($govuk-touch-target-gutter / 2);
-    left: ($govuk-touch-target-gutter / 2);
+    top: ($govuk-touch-target-gutter * 0.5);
+    left: ($govuk-touch-target-gutter * 0.5);
     width: $govuk-radios-size;
     height: $govuk-radios-size;
     border: $govuk-border-width-form-element solid currentcolor;
@@ -79,8 +79,8 @@
     // Positioned by getting half the touch target, so we have the centre of the
     // input, and then moving back by the button's border width, thus positioning
     // the centre of the button in the centre of the input.
-    top: (($govuk-touch-target-size / 2) - $radio-button-size);
-    left: (($govuk-touch-target-size / 2) - $radio-button-size);
+    top: (($govuk-touch-target-size * 0.5) - $radio-button-size);
+    left: (($govuk-touch-target-size * 0.5) - $radio-button-size);
     width: 0;
     height: 0;
     border: $radio-button-size solid currentcolor;
@@ -178,7 +178,7 @@
   $conditional-border-width: $govuk-border-width-narrow;
   // Calculate the amount of padding needed to keep the border centered against
   // the radios.
-  $conditional-border-padding: ($govuk-touch-target-size / 2) - ($conditional-border-width / 2);
+  $conditional-border-padding: ($govuk-touch-target-size * 0.5) - ($conditional-border-width * 0.5);
   // Move the border centered with the radios
   $conditional-margin-left: $conditional-border-padding;
   // Move the contents of the conditional inline with the label
@@ -205,7 +205,7 @@
   // =========================================================
 
   .govuk-radios--small {
-    $input-offset: ($govuk-touch-target-size - $govuk-small-radios-size) / 2;
+    $input-offset: ($govuk-touch-target-size - $govuk-small-radios-size) * 0.5;
 
     .govuk-radios__item {
       margin-bottom: 0;
@@ -249,8 +249,8 @@
       $radio-button-size: govuk-spacing(1);
 
       // The same calculation as normal radio buttons but reduce the border width
-      top: (($govuk-touch-target-size / 2) - $radio-button-size);
-      left: ((($govuk-touch-target-size / 2) - $radio-button-size) - $input-offset);
+      top: (($govuk-touch-target-size * 0.5) - $radio-button-size);
+      left: ((($govuk-touch-target-size * 0.5) - $radio-button-size) - $input-offset);
       border-width: $radio-button-size;
     }
 
@@ -268,7 +268,7 @@
 
     // Align conditional reveals with small radios
     .govuk-radios__conditional {
-      $margin-left: ($govuk-small-radios-size / 2) - ($conditional-border-width / 2);
+      $margin-left: ($govuk-small-radios-size * 0.5) - ($conditional-border-width * 0.5);
       margin-left: $margin-left;
       padding-left: ($govuk-touch-target-size - $input-offset) - ($margin-left + $conditional-border-width);
     }

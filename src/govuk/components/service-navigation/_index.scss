@@ -1,3 +1,5 @@
+@use "sass:math";
+
 @include govuk-exports("govuk/component/service-navigation") {
   $govuk-service-navigation-active-link-border-width: govuk-spacing(1);
   $govuk-service-navigation-text-colour: govuk-functional-colour(surface-text);
@@ -50,7 +52,7 @@
       // padding (2×15), minus bottom border (1); 19 is the font-size at this
       // point. This gives us the perfect fractional line height to make the
       // overall component 60px high
-      line-height: (29 / 19);
+      line-height: math.div(29, 19);
 
       &:not(:last-child) {
         @include govuk-responsive-margin(6, $direction: right);

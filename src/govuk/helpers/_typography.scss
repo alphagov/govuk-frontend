@@ -2,6 +2,8 @@
 /// @group helpers/typography
 ////
 
+@use "sass:math";
+
 @import "../tools/px-to-rem";
 
 /// 'Common typography' helper
@@ -108,7 +110,7 @@
 
 @function _govuk-line-height($line-height, $font-size) {
   @if not unitless($line-height) and unit($line-height) == unit($font-size) {
-    $line-height: $line-height / $font-size;
+    $line-height: math.div($line-height, $font-size);
   }
 
   @return $line-height;
