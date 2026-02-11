@@ -8,8 +8,7 @@ const deprecationOptions = {
     'import',
     'mixed-decls',
     'slash-div'
-  ],
-  quietDeps: true
+  ]
 }
 
 module.exports = {
