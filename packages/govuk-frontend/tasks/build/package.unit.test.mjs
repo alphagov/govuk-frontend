@@ -167,15 +167,6 @@ describe('packages/govuk-frontend/dist/', () => {
         await expect(compileSassFile(file)).resolves.not.toThrow()
       })
     })
-
-    // all.scss is deprecated but we still want to make sure it works when used
-    // as the root for compilation
-    describe('all.scss', () => {
-      it('should compile without throwing an exception', async () => {
-        const file = join(paths.package, 'dist/govuk/index.scss')
-        await expect(compileSassFile(file)).resolves.not.toThrow()
-      })
-    })
   })
 
   describe('ECMAScript (ES) modules', () => {
