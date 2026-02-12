@@ -4,6 +4,12 @@ For advice on how to use these release notes, see [our guidance on staying up to
 
 ## Unreleased
 
+### Fixes
+
+We've made fixes to GOV.UK Frontend in the following pull requests:
+
+- [#6727: Migrate away from slash as a division in Sass](https://github.com/alphagov/govuk-frontend/pull/6727) - thanks to @colinrotherham for raising the issue
+
 ## v6.0.0 (Breaking release)
 
 ### Breaking changes
