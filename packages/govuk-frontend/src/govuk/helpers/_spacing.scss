@@ -1,6 +1,7 @@
 ////
 /// @group helpers/spacing
 ////
+@use "sass:map";
 
 /// Single point spacing
 ///
@@ -45,7 +46,7 @@
     @error "Unknown spacing variable `#{$spacing-point}`. Make sure you are using a point from the spacing scale in `_settings/spacing.scss`.";
   }
 
-  $value: map-get($govuk-spacing-points, $spacing-point);
+  $value: map.get($govuk-spacing-points, $spacing-point);
   @return if($is-negative, $value * -1, $value);
 }
 
@@ -86,7 +87,7 @@
   }
 
   // Make sure that the return value from `_settings/spacing.scss` is a map.
-  $scale-map: map-get($govuk-spacing-responsive-scale, $responsive-spacing-point);
+  $scale-map: map.get($govuk-spacing-responsive-scale, $responsive-spacing-point);
   $actual-map-type: type-of($scale-map);
   @if $actual-map-type != "map" {
     @error "Expected a number (integer), but got a "

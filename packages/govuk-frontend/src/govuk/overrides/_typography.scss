@@ -1,3 +1,5 @@
+@use "sass:map";
+
 @include govuk-exports("govuk/overrides/typography") {
   // Font size and line height
 
@@ -5,7 +7,7 @@
   // typography scale eg .govuk-\!-font-size-80
   @each $size, $font-map in $govuk-typography-scale {
     .govuk-\!-font-size-#{$size} {
-      $font-map: map-get($govuk-typography-scale, $size);
+      $font-map: map.get($govuk-typography-scale, $size);
 
       // Add underscore to deprecated typography scale keys
       @if map-has-key($font-map, "deprecation") {

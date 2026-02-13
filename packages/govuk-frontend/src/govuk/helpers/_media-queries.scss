@@ -1,6 +1,7 @@
 ////
 /// @group helpers/layout
 ////
+@use "sass:map";
 
 @import "../settings/media-queries";
 @import "../tools/px-to-em";
@@ -53,7 +54,7 @@
   // If $value is a string and exists as a key in in $breakpoints,
   // look up and use the value of it
   @if type-of($value) == "string" and map-has-key($breakpoints, $value) {
-    @return map-get($breakpoints, $value);
+    @return map.get($breakpoints, $value);
   }
 
   // If we get this far, we can't use the value, so return an error
