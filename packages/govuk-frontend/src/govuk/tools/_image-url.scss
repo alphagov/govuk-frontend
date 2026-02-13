@@ -1,6 +1,7 @@
 ////
 /// @group tools/assets
 ////
+@use "sass:meta";
 
 /// Image URL
 ///
@@ -14,7 +15,7 @@
 
 @function govuk-image-url($filename) {
   // prettier-ignore
-  $use-custom-function: variable-exists("govuk-image-url-function")
+  $use-custom-function: meta.variable-exists("govuk-image-url-function")
     and $govuk-image-url-function
     and function-exists($govuk-image-url-function);
 
