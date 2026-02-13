@@ -182,7 +182,7 @@
     }
   }
 
-  @return map-merge($defaults, $colours);
+  @return map.merge($defaults, $colours);
 }
 
 /// Get the colour for a government organisation
