@@ -1,10 +1,11 @@
-@import "../settings/colours-palette";
-@import "../settings/colours-organisations";
-@import "../settings/warnings";
-
 ////
 /// @group helpers/colour
 ////
+@use "sass:map";
+
+@import "../settings/colours-palette";
+@import "../settings/colours-organisations";
+@import "../settings/warnings";
 
 /// Get a colour from the palette
 ///
@@ -41,7 +42,7 @@
     $colour: "#{$colour}";
   }
 
-  $colour-variants: map-get($colours, $colour);
+  $colour-variants: map.get($colours, $colour);
 
   @if not $colour-variants {
     // To ease the transition between the brand palette and old GOV.UK Frontend colours
@@ -65,7 +66,7 @@
     @error "Colour `#{$colour}` should either be a `map` or `color`, not a `#{type-of($colour-variants)}`";
   }
 
-  $result: map-get($colour-variants, $variant);
+  $result: map.get($colour-variants, $variant);
 
   @if not $result {
     @error "Unknown variant `#{$variant}` for colour `#{$colour}` (available variants: #{map-keys($colour-variants)})";
@@ -75,7 +76,7 @@
 }
 
 @function _govuk-corresponding-brand-colour($colour) {
-  $pre-brand-colour: map-get($_govuk-pre-brand-colours, $colour);
+  $pre-brand-colour: map.get($_govuk-pre-brand-colours, $colour);
 
   @if $pre-brand-colour {
     $corresponding-colour: nth($pre-brand-colour, 1);
@@ -127,7 +128,7 @@
   }
 
   @if map-has-key($govuk-functional-colours, $colour) {
-    $value: _govuk-resolve-colour(map-get($govuk-functional-colours, $colour));
+    $value: _govuk-resolve-colour(map.get($govuk-functional-colours, $colour));
 
     @return var(--govuk-#{$colour}-colour, #{$value});
   }
@@ -152,14 +153,14 @@
     @error 'Colour reference should be a Sass colour or a Sass map';
   }
 
-  $name: map-get($colour-reference, "name");
+  $name: map.get($colour-reference, "name");
   @if not $name or $name == "" {
     @error "Colour reference `name` shouldn't be empty.";
   }
 
   $variant: "primary";
   @if map-has-key($colour-reference, "variant") {
-    $variant: map-get($colour-reference, "variant");
+    $variant: map.get($colour-reference, "variant");
   }
 
   @if not $variant or $variant == "" {
@@ -199,7 +200,7 @@
   // Check if the $organisation exists in the aliases map. If so, change the
   // value of $organisation to the aliased value.
   @if map-has-key($_govuk_colours-organisations-aliases, $organisation) {
-    $organisation: map-get($_govuk_colours-organisations-aliases, $organisation);
+    $organisation: map.get($_govuk_colours-organisations-aliases, $organisation);
   }
 
   // Check to see if the organisation exists
@@ -207,20 +208,20 @@
     @error "Unknown organisation `#{$organisation}`";
   }
 
-  $org-colour: map-get($govuk-colours-organisations, $organisation);
+  $org-colour: map.get($govuk-colours-organisations, $organisation);
 
   // If the organisation has a deprecation message associated with it
   // (e.g. it has ceased to exist) then output a warning.
   @if map-has-key($org-colour, "deprecation-message") and _should-warn("organisation-colours") {
     @warn _warning-text(
       "organisation-colours",
-      map-get($org-colour, "deprecation-message")
+      map.get($org-colour, "deprecation-message")
     );
   }
 
   @if $contrast-safe and map-has-key($org-colour, "contrast-safe") {
-    @return map-get($org-colour, "contrast-safe");
+    @return map.get($org-colour, "contrast-safe");
   } @else {
-    @return map-get($org-colour, "colour");
+    @return map.get($org-colour, "colour");
   }
 }
