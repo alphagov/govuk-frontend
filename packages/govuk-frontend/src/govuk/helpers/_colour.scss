@@ -2,6 +2,7 @@
 /// @group helpers/colour
 ////
 @use "sass:map";
+@use "sass:string";
 
 @import "../settings/colours-palette";
 @import "../settings/colours-organisations";
@@ -35,9 +36,9 @@
 /// @access public
 
 @function govuk-colour($colour, $variant: primary, $colours: $_govuk-palette) {
-  // Sass parses unquoted colours as colours, so we need to turn them into
+  // Sass parses string.unquoted colours as colours, so we need to turn them into
   // strings before looking them up in the colour palette
-  // https://sass-lang.com/documentation/values/strings#unquoted
+  // https://sass-lang.com/documentation/values/strings#string.unquoted
   @if type-of($colour) != "string" {
     $colour: "#{$colour}";
   }
@@ -120,9 +121,9 @@
 /// @access public
 /// @see $govuk-functional-colours
 @function govuk-functional-colour($colour) {
-  // Sass parses unquoted colours as colours, so we need to turn them into
+  // Sass parses string.unquoted colours as colours, so we need to turn them into
   // strings before looking them up in the colour palette
-  // https://sass-lang.com/documentation/values/strings#unquoted
+  // https://sass-lang.com/documentation/values/strings#string.unquoted
   @if type-of($colour) != "string" {
     $colour: "#{$colour}";
   }
