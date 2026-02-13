@@ -3,6 +3,7 @@
 ////
 @use "sass:list";
 @use "sass:map";
+@use "sass:meta";
 @use "sass:string";
 
 @import "../settings/colours-palette";
@@ -40,7 +41,7 @@
   // Sass parses unquoted colours as colours, so we need to turn them into
   // strings before looking them up in the colour palette
   // https://sass-lang.com/documentation/values/strings#unquoted
-  @if type-of($colour) != "string" {
+  @if meta.type-of($colour) != "string" {
     $colour: "#{$colour}";
   }
 
@@ -60,12 +61,12 @@
   }
 
   // Some colours may not have variants, if that's the case, we can return the colour straight away
-  @if type-of($colour-variants) == "color" {
+  @if meta.type-of($colour-variants) == "color" {
     @return $colour-variants;
   }
 
-  @if type-of($colour-variants) != "map" {
-    @error "Colour `#{$colour}` should either be a `map` or `color`, not a `#{type-of($colour-variants)}`";
+  @if meta.type-of($colour-variants) != "map" {
+    @error "Colour `#{$colour}` should either be a `map` or `color`, not a `#{meta.type-of($colour-variants)}`";
   }
 
   $result: map.get($colour-variants, $variant);
@@ -125,7 +126,7 @@
   // Sass parses unquoted colours as colours, so we need to turn them into
   // strings before looking them up in the colour palette
   // https://sass-lang.com/documentation/values/strings#unquoted
-  @if type-of($colour) != "string" {
+  @if meta.type-of($colour) != "string" {
     $colour: "#{$colour}";
   }
 
@@ -147,11 +148,11 @@
 /// @access private
 @function _govuk-resolve-colour($colour-reference) {
   // If the reference is already a colour, return the colour
-  @if type-of($colour-reference) == "color" {
+  @if meta.type-of($colour-reference) == "color" {
     @return $colour-reference;
   }
 
-  @if not type-of($colour-reference) == "map" {
+  @if not meta.type-of($colour-reference) == "map" {
     @error 'Colour reference should be a Sass colour or a Sass map';
   }
 
