@@ -1,8 +1,9 @@
 ////
 /// @group helpers/typography
 ////
-
+@use "sass:map";
 @use "sass:math";
+@use "sass:string";
 
 @import "../tools/px-to-rem";
 
@@ -109,7 +110,7 @@
 /// @access private
 
 @function _govuk-line-height($line-height, $font-size) {
-  @if not unitless($line-height) and unit($line-height) == unit($font-size) {
+  @if not math.is-unitless($line-height) and math.unit($line-height) == math.unit($font-size) {
     $line-height: math.div($line-height, $font-size);
   }
 
@@ -155,21 +156,21 @@
 @mixin govuk-font-size($size, $line-height: false, $important: false) {
   // Flag font sizes that start with underscores so we can suppress warnings on
   // deprecated sizes used internally, for example `govuk-font($size: "_14")`
-  $size-internal-use-only: str-slice(#{$size}, 1, 1) == "_";
+  $size-internal-use-only: string.slice(#{$size}, 1, 1) == "_";
 
   // Remove underscore from font sizes flagged for internal use
   @if $size-internal-use-only {
-    $size: str-slice(#{$size}, 2);
+    $size: string.slice(#{$size}, 2);
   }
 
   // Check for a font map exactly matching the given size
-  $font-map: map-get($govuk-typography-scale, $size);
+  $font-map: map.get($govuk-typography-scale, $size);
 
   // No match? Try with string type (e.g. $size: "16" not 16)
   @if not $font-map {
-    @each $font-size in map-keys($govuk-typography-scale) {
+    @each $font-size in map.keys($govuk-typography-scale) {
       @if not $font-map and "#{$font-size}" == "#{$size}" {
-        $font-map: map-get($govuk-typography-scale, $font-size);
+        $font-map: map.get($govuk-typography-scale, $font-size);
       }
     }
   }
@@ -180,20 +181,20 @@
   }
 
   // Check for a deprecation within the type scale
-  $deprecation: map-get($font-map, "deprecation");
+  $deprecation: map.get($font-map, "deprecation");
 
   @if $deprecation {
     // Warn on deprecated font sizes unless flagged for internal use
     @if not $size-internal-use-only {
-      @include _warning(map-get($deprecation, "key"), map-get($deprecation, "message"));
+      @include _warning(map.get($deprecation, "key"), map.get($deprecation, "message"));
     }
 
     // remove the deprecation map keys so they do not break the breakpoint loop
-    $font-map: map-remove($font-map, "deprecation");
+    $font-map: map.remove($font-map, "deprecation");
   }
 
   @each $breakpoint, $breakpoint-map in $font-map {
-    $font-size: map-get($breakpoint-map, "font-size");
+    $font-size: map.get($breakpoint-map, "font-size");
     $font-size-rem: govuk-px-to-rem($font-size);
 
     // $calculated-line-height is a separate variable from $line-height,
@@ -203,7 +204,7 @@
     // We continue to call the param $line-height to stay consistent with the
     // naming with govuk-font.
     $calculated-line-height: _govuk-line-height(
-      $line-height: if($line-height, $line-height, map-get($breakpoint-map, "line-height")),
+      $line-height: if($line-height, $line-height, map.get($breakpoint-map, "line-height")),
       $font-size: $font-size
     );
 

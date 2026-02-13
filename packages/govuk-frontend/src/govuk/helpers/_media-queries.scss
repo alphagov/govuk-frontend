@@ -1,6 +1,10 @@
 ////
 /// @group helpers/layout
 ////
+@use "sass:map";
+@use "sass:math";
+@use "sass:meta";
+@use "sass:string";
 
 @import "../settings/media-queries";
 @import "../tools/px-to-em";
@@ -41,9 +45,9 @@
 
 @function govuk-breakpoint-value($value, $breakpoints: $govuk-breakpoints) {
   // If $value is a number
-  @if type-of($value) == "number" {
+  @if meta.type-of($value) == "number" {
     // If the number is unitless, coerce it into a pixel value
-    @if unitless($value) {
+    @if math.is-unitless($value) {
       $value: $value * 1px;
     }
 
@@ -52,8 +56,8 @@
 
   // If $value is a string and exists as a key in in $breakpoints,
   // look up and use the value of it
-  @if type-of($value) == "string" and map-has-key($breakpoints, $value) {
-    @return map-get($breakpoints, $value);
+  @if meta.type-of($value) == "string" and map.has-key($breakpoints, $value) {
+    @return map.get($breakpoints, $value);
   }
 
   // If we get this far, we can't use the value, so return an error
@@ -97,7 +101,7 @@
 @function govuk-from-breakpoint($from, $breakpoints: $govuk-breakpoints) {
   $value: govuk-breakpoint-value($from, $breakpoints);
 
-  @if type-of($value) == "number" and unit($value) == "px" {
+  @if meta.type-of($value) == "number" and math.unit($value) == "px" {
     $value: govuk-em($value);
   }
 
@@ -142,13 +146,13 @@
 @function govuk-until-breakpoint($until, $breakpoints: $govuk-breakpoints) {
   $value: govuk-breakpoint-value($until, $breakpoints);
 
-  @if type-of($value) == "number" and unit($value) == "px" {
+  @if meta.type-of($value) == "number" and math.unit($value) == "px" {
     // If it's a pixel value, convert it to ems.
     $value: govuk-em($value);
   }
 
   // If $value derives from a named breakpoint, additionally subtract .01em
-  @if type-of($until) != "number" and unit($value) == "em" {
+  @if meta.type-of($until) != "number" and math.unit($value) == "em" {
     $value: $value - 0.01em;
   }
 
@@ -209,8 +213,8 @@
   }
 
   // If $media-query currently begins with an orphaned ' and ', remove it.
-  @if str-index($media-query, " and ") == 1 {
-    $media-query: str-slice($media-query, 6);
+  @if string.index($media-query, " and ") == 1 {
+    $media-query: string.slice($media-query, 6);
   }
 
   @media #{$media-query} {

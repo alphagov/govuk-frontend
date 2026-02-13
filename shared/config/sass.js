@@ -2,7 +2,7 @@
  * @type {import('sass-embedded').Options<"async">}
  */
 const deprecationOptions = {
-  silenceDeprecations: ['global-builtin', 'import', 'mixed-decls']
+  silenceDeprecations: ['import', 'mixed-decls']
 }
 
 module.exports = {

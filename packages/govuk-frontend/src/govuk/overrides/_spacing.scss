@@ -1,6 +1,7 @@
 ////
 /// @group overrides
 ////
+@use "sass:map";
 
 // stylelint-disable declaration-no-important
 
@@ -62,7 +63,7 @@ $_spacing-directions: ("top", "right", "bottom", "left") !default;
 ///
 /// @access private
 @mixin _govuk-generate-static-spacing-overrides($property) {
-  @each $spacing-point in map-keys($govuk-spacing-points) {
+  @each $spacing-point in map.keys($govuk-spacing-points) {
     .govuk-\!-static-#{$property}-#{$spacing-point} {
       #{$property}: govuk-spacing($spacing-point) !important;
     }

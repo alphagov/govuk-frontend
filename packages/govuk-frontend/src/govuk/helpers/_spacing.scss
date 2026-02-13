@@ -1,6 +1,9 @@
 ////
 /// @group helpers/spacing
 ////
+@use "sass:map";
+@use "sass:math";
+@use "sass:meta";
 
 /// Single point spacing
 ///
@@ -29,7 +32,7 @@
 /// @access public
 
 @function govuk-spacing($spacing-point) {
-  $actual-input-type: type-of($spacing-point);
+  $actual-input-type: meta.type-of($spacing-point);
   @if $actual-input-type != "number" {
     @error "Expected a number (integer), but got a "
       + "#{$actual-input-type}.";
@@ -38,14 +41,14 @@
   $is-negative: false;
   @if $spacing-point < 0 {
     $is-negative: true;
-    $spacing-point: abs($spacing-point);
+    $spacing-point: math.abs($spacing-point);
   }
 
-  @if not map-has-key($govuk-spacing-points, $spacing-point) {
+  @if not map.has-key($govuk-spacing-points, $spacing-point) {
     @error "Unknown spacing variable `#{$spacing-point}`. Make sure you are using a point from the spacing scale in `_settings/spacing.scss`.";
   }
 
-  $value: map-get($govuk-spacing-points, $spacing-point);
+  $value: map.get($govuk-spacing-points, $spacing-point);
   @return if($is-negative, $value * -1, $value);
 }
 
@@ -75,19 +78,19 @@
   $important: false,
   $adjustment: false
 ) {
-  $actual-input-type: type-of($responsive-spacing-point);
+  $actual-input-type: meta.type-of($responsive-spacing-point);
   @if $actual-input-type != "number" {
     @error "Expected a number (integer), but got a " + "#{$actual-input-type}.";
   }
 
-  @if not map-has-key($govuk-spacing-responsive-scale, $responsive-spacing-point) {
+  @if not map.has-key($govuk-spacing-responsive-scale, $responsive-spacing-point) {
     @error "Unknown spacing point `#{$responsive-spacing-point}`. Make sure you are using a point from the "
       + "responsive spacing scale in `_settings/spacing.scss`.";
   }
 
   // Make sure that the return value from `_settings/spacing.scss` is a map.
-  $scale-map: map-get($govuk-spacing-responsive-scale, $responsive-spacing-point);
-  $actual-map-type: type-of($scale-map);
+  $scale-map: map.get($govuk-spacing-responsive-scale, $responsive-spacing-point);
+  $actual-map-type: meta.type-of($scale-map);
   @if $actual-map-type != "map" {
     @error "Expected a number (integer), but got a "
       + "#{$actual-map-type}. Make sure you are using a map to set the responsive spacing in `_settings/spacing.scss`)";

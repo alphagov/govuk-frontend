@@ -1,6 +1,7 @@
 ////
 /// @group tools/assets
 ////
+@use "sass:meta";
 
 /// Font URL
 ///
@@ -14,12 +15,12 @@
 
 @function govuk-font-url($filename) {
   // prettier-ignore
-  $use-custom-function: variable-exists("govuk-font-url-function")
+  $use-custom-function: meta.variable-exists("govuk-font-url-function")
     and $govuk-font-url-function
-    and function-exists($govuk-font-url-function);
+    and meta.function-exists($govuk-font-url-function);
 
   @if $use-custom-function {
-    @return call(get-function($govuk-font-url-function), $filename);
+    @return meta.call(meta.get-function($govuk-font-url-function), $filename);
   } @else {
     @return url($govuk-fonts-path + $filename);
   }

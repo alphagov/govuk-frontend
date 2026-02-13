@@ -1,6 +1,7 @@
 ////
 /// @group helpers/layout
 ////
+@use "sass:map";
 
 /// Grid width percentage
 ///
@@ -10,8 +11,8 @@
 /// @access public
 
 @function govuk-grid-width($key) {
-  @if map-has-key($govuk-grid-widths, $key) {
-    @return map-get($govuk-grid-widths, $key);
+  @if map.has-key($govuk-grid-widths, $key) {
+    @return map.get($govuk-grid-widths, $key);
   }
 
   @error "Unknown grid width `#{$key}`";

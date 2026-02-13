@@ -1,3 +1,5 @@
+@use "sass:map";
+
 @import "../base";
 
 @include govuk-exports("govuk/objects/grid") {
@@ -7,7 +9,7 @@
     margin-left: -($govuk-gutter-half);
   }
 
-  @each $width in map-keys($govuk-grid-widths) {
+  @each $width in map.keys($govuk-grid-widths) {
     .govuk-grid-column-#{$width} {
       @include govuk-grid-column($width);
     }
@@ -16,7 +18,7 @@
   // These *must* be defined in a separate loop as they have the same
   // specificity as the non-breakpoint specific classes, so need to appear after
   // them in the outputted CSS
-  @each $width in map-keys($govuk-grid-widths) {
+  @each $width in map.keys($govuk-grid-widths) {
     .govuk-grid-column-#{$width}-from-desktop {
       @include govuk-grid-column($width, $at: desktop);
     }
