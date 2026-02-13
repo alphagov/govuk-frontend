@@ -1,6 +1,7 @@
 ////
 /// @group settings/colours
 ////
+@use "sass:meta";
 
 @import "../helpers/colour";
 
@@ -157,7 +158,7 @@ $_govuk-deprecated-applied-colour-variables: () !default;
 /// @access private
 @mixin _warn-if-applied-colour-variable-set($functional-colour-name) {
   @if not index($_govuk-deprecated-applied-colour-variables, $functional-colour-name) {
-    @if variable-exists("govuk-#{$functional-colour-name}-colour") {
+    @if meta.variable-exists("govuk-#{$functional-colour-name}-colour") {
       $deprecation-message: "Setting \`$govuk-#{$functional-colour-name}-colour\` no longer has any effect. Use \`$govuk-functional-colours: (#{$functional-colour-name}: <NEW_COLOUR_VALUE>);\` instead.";
 
       @include _warning("applied-colour-variables", $deprecation-message);
