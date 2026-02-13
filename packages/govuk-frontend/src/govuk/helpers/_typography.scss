@@ -110,7 +110,7 @@
 /// @access private
 
 @function _govuk-line-height($line-height, $font-size) {
-  @if not math.is-unitless($line-height) and unit($line-height) == unit($font-size) {
+  @if not math.is-unitless($line-height) and math.unit($line-height) == math.unit($font-size) {
     $line-height: math.div($line-height, $font-size);
   }
 
