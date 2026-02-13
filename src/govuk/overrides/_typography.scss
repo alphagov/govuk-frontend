@@ -10,7 +10,7 @@
       $font-map: map.get($govuk-typography-scale, $size);
 
       // Add underscore to deprecated typography scale keys
-      @if map-has-key($font-map, "deprecation") {
+      @if map.has-key($font-map, "deprecation") {
         $size: _#{$size};
       }
 
