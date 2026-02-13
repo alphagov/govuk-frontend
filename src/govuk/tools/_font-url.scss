@@ -20,7 +20,7 @@
     and meta.function-exists($govuk-font-url-function);
 
   @if $use-custom-function {
-    @return call(meta.get-function($govuk-font-url-function), $filename);
+    @return meta.call(meta.get-function($govuk-font-url-function), $filename);
   } @else {
     @return url($govuk-fonts-path + $filename);
   }
