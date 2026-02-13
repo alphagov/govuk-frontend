@@ -6,6 +6,7 @@
 @use "sass:string";
 
 @import "../tools/px-to-rem";
+@import "../tools/if";
 
 /// 'Common typography' helper
 ///
@@ -52,7 +53,7 @@
 /// @access public
 
 @mixin govuk-typography-weight-regular($important: false) {
-  font-weight: $govuk-font-weight-regular if($important, !important, null);
+  font-weight: $govuk-font-weight-regular govuk-if($important, !important);
 }
 
 /// Bold font weight helper
@@ -62,7 +63,7 @@
 /// @access public
 
 @mixin govuk-typography-weight-bold($important: false) {
-  font-weight: $govuk-font-weight-bold if($important, !important, null);
+  font-weight: $govuk-font-weight-bold govuk-if($important, !important);
 }
 
 /// Tabular number helper
@@ -79,7 +80,7 @@
 /// @access public
 
 @mixin govuk-font-tabular-numbers($important: false) {
-  font-variant-numeric: tabular-nums if($important, !important, null);
+  font-variant-numeric: tabular-nums govuk-if($important, !important);
 }
 
 /// Word break helper
@@ -93,10 +94,10 @@
 
 @mixin govuk-text-break-word($important: false) {
   // IE 11 and Edge 16–17 only support the non-standard `word-wrap` property
-  word-wrap: break-word if($important, !important, null);
+  word-wrap: break-word govuk-if($important, !important);
 
   // All other browsers support `overflow-wrap`
-  overflow-wrap: break-word if($important, !important, null);
+  overflow-wrap: break-word govuk-if($important, !important);
 }
 
 /// Convert line-heights specified in pixels into a relative value, unless
@@ -204,16 +205,16 @@
     // We continue to call the param $line-height to stay consistent with the
     // naming with govuk-font.
     $calculated-line-height: _govuk-line-height(
-      $line-height: if($line-height, $line-height, map.get($breakpoint-map, "line-height")),
+      $line-height: govuk-if($line-height, $line-height, map.get($breakpoint-map, "line-height")),
       $font-size: $font-size
     );
 
     // Mark rules as !important if $important is true - this will result in
     // these variables becoming strings, so this needs to happen *after* they
     // are used in calculations
-    $font-size: $font-size if($important, !important, null);
-    $font-size-rem: $font-size-rem if($important, !important, null);
-    $calculated-line-height: $calculated-line-height if($important, !important, null);
+    $font-size: $font-size govuk-if($important, !important);
+    $font-size-rem: $font-size-rem govuk-if($important, !important);
+    $calculated-line-height: $calculated-line-height govuk-if($important, !important);
 
     @if not $breakpoint {
       font-size: $font-size-rem;
