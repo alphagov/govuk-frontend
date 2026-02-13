@@ -189,7 +189,7 @@
     }
 
     // remove the deprecation map keys so they do not break the breakpoint loop
-    $font-map: map-remove($font-map, "deprecation");
+    $font-map: map.remove($font-map, "deprecation");
   }
 
   @each $breakpoint, $breakpoint-map in $font-map {
