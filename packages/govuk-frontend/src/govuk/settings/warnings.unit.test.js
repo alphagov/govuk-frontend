@@ -59,9 +59,10 @@ describe('Warnings mixin', () => {
 
   it('Does not fire a @warn if the key is already in $govuk-suppressed-warnings', async () => {
     const sass = `
+      @use "sass:list";
       ${sassBootstrap}
 
-      $govuk-suppressed-warnings: append($govuk-suppressed-warnings, 'test');
+      $govuk-suppressed-warnings: list.append($govuk-suppressed-warnings, 'test');
       @include _warning('test', 'This is a warning.');
     `
 
