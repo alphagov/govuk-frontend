@@ -101,7 +101,7 @@
 @function govuk-from-breakpoint($from, $breakpoints: $govuk-breakpoints) {
   $value: govuk-breakpoint-value($from, $breakpoints);
 
-  @if meta.type-of($value) == "number" and unit($value) == "px" {
+  @if meta.type-of($value) == "number" and math.unit($value) == "px" {
     $value: govuk-em($value);
   }
 
@@ -146,13 +146,13 @@
 @function govuk-until-breakpoint($until, $breakpoints: $govuk-breakpoints) {
   $value: govuk-breakpoint-value($until, $breakpoints);
 
-  @if meta.type-of($value) == "number" and unit($value) == "px" {
+  @if meta.type-of($value) == "number" and math.unit($value) == "px" {
     // If it's a pixel value, convert it to ems.
     $value: govuk-em($value);
   }
 
   // If $value derives from a named breakpoint, additionally subtract .01em
-  @if meta.type-of($until) != "number" and unit($value) == "em" {
+  @if meta.type-of($until) != "number" and math.unit($value) == "em" {
     $value: $value - 0.01em;
   }
 
