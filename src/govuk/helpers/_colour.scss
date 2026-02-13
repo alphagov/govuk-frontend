@@ -54,7 +54,7 @@
       }
     }
 
-    @error "Unknown colour `#{$colour}` (available colours: #{map-keys($colours)})";
+    @error "Unknown colour `#{$colour}` (available colours: #{map.keys($colours)})";
   }
 
   // Some colours may not have variants, if that's the case, we can return the colour straight away
@@ -69,7 +69,7 @@
   $result: map.get($colour-variants, $variant);
 
   @if not $result {
-    @error "Unknown variant `#{$variant}` for colour `#{$colour}` (available variants: #{map-keys($colour-variants)})";
+    @error "Unknown variant `#{$variant}` for colour `#{$colour}` (available variants: #{map.keys($colour-variants)})";
   }
 
   @return $result;
@@ -133,7 +133,7 @@
     @return var(--govuk-#{$colour}-colour, #{$value});
   }
 
-  @error "Unknown colour `#{$colour}` (available colours: #{map-keys($govuk-functional-colours)})";
+  @error "Unknown colour `#{$colour}` (available colours: #{map.keys($govuk-functional-colours)})";
 }
 
 /// Resolves the given reference to a colour in the palette
@@ -171,7 +171,7 @@
 }
 
 @function _govuk-define-functional-colours($colours, $defaults) {
-  $existing-colours: map-keys($defaults);
+  $existing-colours: map.keys($defaults);
 
   @each $colour-name, $colour in $colours {
     @if not index($existing-colours, $colour-name) {
