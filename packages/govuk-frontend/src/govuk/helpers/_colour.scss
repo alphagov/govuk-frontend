@@ -1,6 +1,7 @@
 ////
 /// @group helpers/colour
 ////
+@use "sass:list";
 @use "sass:map";
 @use "sass:string";
 
@@ -80,8 +81,8 @@
   $pre-brand-colour: map.get($_govuk-pre-brand-colours, $colour);
 
   @if $pre-brand-colour {
-    $corresponding-colour: nth($pre-brand-colour, 1);
-    $corresponding-variant: nth($pre-brand-colour, 2);
+    $corresponding-colour: list.nth($pre-brand-colour, 1);
+    $corresponding-variant: list.nth($pre-brand-colour, 2);
 
     $corresponding-govuk-colour-call: 'govuk-colour("#{$corresponding-colour}", $variant: "#{$corresponding-variant}")';
 
