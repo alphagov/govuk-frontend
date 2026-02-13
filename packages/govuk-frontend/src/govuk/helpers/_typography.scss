@@ -3,6 +3,7 @@
 ////
 @use "sass:map";
 @use "sass:math";
+@use "sass:string";
 
 @import "../tools/px-to-rem";
 
@@ -155,11 +156,11 @@
 @mixin govuk-font-size($size, $line-height: false, $important: false) {
   // Flag font sizes that start with underscores so we can suppress warnings on
   // deprecated sizes used internally, for example `govuk-font($size: "_14")`
-  $size-internal-use-only: str-slice(#{$size}, 1, 1) == "_";
+  $size-internal-use-only: string.slice(#{$size}, 1, 1) == "_";
 
   // Remove underscore from font sizes flagged for internal use
   @if $size-internal-use-only {
-    $size: str-slice(#{$size}, 2);
+    $size: string.slice(#{$size}, 2);
   }
 
   // Check for a font map exactly matching the given size

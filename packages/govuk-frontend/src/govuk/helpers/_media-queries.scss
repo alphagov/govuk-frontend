@@ -2,6 +2,7 @@
 /// @group helpers/layout
 ////
 @use "sass:map";
+@use "sass:string";
 
 @import "../settings/media-queries";
 @import "../tools/px-to-em";
@@ -210,8 +211,8 @@
   }
 
   // If $media-query currently begins with an orphaned ' and ', remove it.
-  @if str-index($media-query, " and ") == 1 {
-    $media-query: str-slice($media-query, 6);
+  @if string.index($media-query, " and ") == 1 {
+    $media-query: string.slice($media-query, 6);
   }
 
   @media #{$media-query} {
