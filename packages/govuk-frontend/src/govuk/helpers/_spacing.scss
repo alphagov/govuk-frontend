@@ -42,7 +42,7 @@
     $spacing-point: abs($spacing-point);
   }
 
-  @if not map-has-key($govuk-spacing-points, $spacing-point) {
+  @if not map.has-key($govuk-spacing-points, $spacing-point) {
     @error "Unknown spacing variable `#{$spacing-point}`. Make sure you are using a point from the spacing scale in `_settings/spacing.scss`.";
   }
 
@@ -81,7 +81,7 @@
     @error "Expected a number (integer), but got a " + "#{$actual-input-type}.";
   }
 
-  @if not map-has-key($govuk-spacing-responsive-scale, $responsive-spacing-point) {
+  @if not map.has-key($govuk-spacing-responsive-scale, $responsive-spacing-point) {
     @error "Unknown spacing point `#{$responsive-spacing-point}`. Make sure you are using a point from the "
       + "responsive spacing scale in `_settings/spacing.scss`.";
   }
