@@ -2,6 +2,8 @@
 /// @group helpers/spacing
 ////
 
+@import "../tools/if";
+
 /// Single point spacing
 ///
 /// Returns measurement corresponding to the spacing point requested.
@@ -102,16 +104,16 @@
     // The 'null' breakpoint is for mobile.
     @if not $breakpoint {
       @if $direction == all {
-        #{$property}: $breakpoint-value if($important, !important, null);
+        #{$property}: $breakpoint-value govuk-if($important, !important);
       } @else {
-        #{$property}-#{$direction}: $breakpoint-value if($important, !important, null);
+        #{$property}-#{$direction}: $breakpoint-value govuk-if($important, !important);
       }
     } @else {
       @media #{govuk-from-breakpoint($breakpoint)} {
         @if $direction == all {
-          #{$property}: $breakpoint-value if($important, !important, null);
+          #{$property}: $breakpoint-value govuk-if($important, !important);
         } @else {
-          #{$property}-#{$direction}: $breakpoint-value if($important, !important, null);
+          #{$property}-#{$direction}: $breakpoint-value govuk-if($important, !important);
         }
       }
     }

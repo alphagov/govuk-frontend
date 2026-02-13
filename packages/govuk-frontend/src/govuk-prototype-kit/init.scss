@@ -1,6 +1,8 @@
+@import "../govuk/tools/if";
+
 $govuk-prototype-kit-major-version: 0 !default;
 
-$govuk-assets-path: if(
+$govuk-assets-path: govuk-if(
   $govuk-prototype-kit-major-version > 12,
   $govuk-extensions-url-context + "/govuk-frontend/dist/govuk/assets/",
   "/govuk/assets/"
