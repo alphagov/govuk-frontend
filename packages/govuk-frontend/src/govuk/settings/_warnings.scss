@@ -63,7 +63,7 @@ $govuk-suppressed-warnings: () !default;
 /// @access private
 
 @function _should-warn($key) {
-  @return index($govuk-suppressed-warnings, $key) == null;
+  @return list.index($govuk-suppressed-warnings, $key) == null;
 }
 
 /// Format a warning by appending information on how to suppress it.
