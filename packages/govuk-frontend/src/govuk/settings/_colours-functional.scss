@@ -1,6 +1,7 @@
 ////
 /// @group settings/colours
 ////
+@use "sass:list";
 @use "sass:meta";
 
 @import "../helpers/colour";
@@ -164,7 +165,7 @@ $_govuk-deprecated-applied-colour-variables: () !default;
       @include _warning("applied-colour-variables", $deprecation-message);
     }
 
-    $_govuk-deprecated-applied-colour-variables: append(
+    $_govuk-deprecated-applied-colour-variables: list.append(
       $_govuk-deprecated-applied-colour-variables,
       $functional-colour-name
     ) !global;

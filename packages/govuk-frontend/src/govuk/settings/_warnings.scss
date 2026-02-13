@@ -1,6 +1,7 @@
 ////
 /// @group settings/warnings
 ////
+@use "sass:list";
 
 /// Suppressed warnings map
 ///
@@ -51,7 +52,7 @@ $govuk-suppressed-warnings: () !default;
     @warn _warning-text($key, $message);
 
     @if $silence-further-warnings {
-      $govuk-suppressed-warnings: append($govuk-suppressed-warnings, $key) !global;
+      $govuk-suppressed-warnings: list.append($govuk-suppressed-warnings, $key) !global;
     }
   }
 }
