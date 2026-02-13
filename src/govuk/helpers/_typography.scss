@@ -201,11 +201,18 @@
     // $calculated-line-height is a separate variable from $line-height,
     // as otherwise the value would get redefined with each loop and
     // eventually break _govuk-line-height.
-    //
+    // 1. See if the function was called with a specific line-height
+    $calculated-line-height: $line-height;
+    // 2. Default to the breakpoint-map if no specific value was given
+    @if not $calculated-line-height {
+      $calculated-line-height: map.get($breakpoint-map, "line-height");
+    }
+
+    // 3. Turn the value into a unitless line-height if possible
     // We continue to call the param $line-height to stay consistent with the
     // naming with govuk-font.
     $calculated-line-height: _govuk-line-height(
-      $line-height: govuk-if($line-height, $line-height, map.get($breakpoint-map, "line-height")),
+      $line-height: $calculated-line-height,
       $font-size: $font-size
     );
 
