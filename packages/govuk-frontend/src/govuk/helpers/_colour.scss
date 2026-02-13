@@ -176,7 +176,7 @@
   $existing-colours: map.keys($defaults);
 
   @each $colour-name, $colour in $colours {
-    @if not index($existing-colours, $colour-name) {
+    @if not list.index($existing-colours, $colour-name) {
       @error 'Unknown colour `#{$colour-name}` (available colours: #{$existing-colours})';
     }
   }
