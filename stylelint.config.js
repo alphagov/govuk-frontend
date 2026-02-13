@@ -209,6 +209,7 @@ module.exports = {
       'src',
       'cursor',
       '-webkit-appearance'
-    ]
+    ],
+    'function-disallowed-list': ['if']
   }
 }
