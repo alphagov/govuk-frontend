@@ -2,6 +2,7 @@
 /// @group helpers/spacing
 ////
 @use "sass:map";
+@use "sass:math";
 @use "sass:meta";
 
 /// Single point spacing
@@ -40,7 +41,7 @@
   $is-negative: false;
   @if $spacing-point < 0 {
     $is-negative: true;
-    $spacing-point: abs($spacing-point);
+    $spacing-point: math.abs($spacing-point);
   }
 
   @if not map.has-key($govuk-spacing-points, $spacing-point) {
