@@ -91,7 +91,7 @@
     "typescript": "^5.9.3"
   },
   "optionalDependencies": {
-    "@actions/github": "^7.0.0",
+    "@actions/github": "^9.0.0",
     "@jest/environment": "^30.2.0",
     "@octokit/plugin-rest-endpoint-methods": "^17.0.0",
     "@octokit/rest": "22.0.1",
