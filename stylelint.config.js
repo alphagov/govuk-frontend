@@ -209,6 +209,7 @@ module.exports = {
       'src',
       'cursor',
       '-webkit-appearance'
-    ]
+    ],
+    'scss/no-global-function-names': true
   }
 }
