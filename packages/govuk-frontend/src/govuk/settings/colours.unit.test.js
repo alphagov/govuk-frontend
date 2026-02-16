@@ -255,6 +255,10 @@ describe('Organisation colours', () => {
       }
     `
 
-    await expect(compileSassString(sass)).resolves
+    // sass-color-helpers relies on global builtins which would trigger a
+    // deprecation that breaks the compilation. As the settings are thoroughly
+    // tested by other of our tests, we'll silence the deprecations here
+    // waiting for us to replace the function
+    await expect(compileSassString(sass, { quietDeps: true })).resolves
   })
 })
