@@ -36,9 +36,10 @@ describe('Colour palette', () => {
     ['black', ['primary', 'tint-25', 'tint-50', 'tint-80', 'tint-95']]
   ])('Provides expected variants for `%s`', async (colour, variants) => {
     const sass = `
+      @use "sass:map";
       @import "settings/colours-palette";
 
-      $variants: map-keys(map-get($_govuk-palette, "#{${colour}}"));
+      $variants: map-keys(map.get($_govuk-palette, "#{${colour}}"));
 
       :root {
         variants: $variants;
@@ -56,10 +57,11 @@ describe('Colour palette', () => {
 
   it.each(['white'])('Provides a colour for `%s`', async (colour) => {
     const sass = `
+      @use "sass:map";
       @import "settings/colours-palette";
 
       :root {
-        type: type-of(map-get($_govuk-palette, "#{${colour}}"));
+        type: type-of(map.get($_govuk-palette, "#{${colour}}"));
       }
     `
 
@@ -91,11 +93,12 @@ describe('Functional colours', () => {
 
   it('should allow people to define custom colours before `@import`', async () => {
     const sass = `
+      @use "sass:map";
       $govuk-functional-colours: (text: rebeccapurple);
       @import "settings/colours-functional";
 
       :root {
-        value: map-get($govuk-functional-colours, text);
+        value: map.get($govuk-functional-colours, text);
       }
     `
 
@@ -109,12 +112,13 @@ describe('Functional colours', () => {
   })
   it('should allow people to define custom colours with `@use`', async () => {
     const sass = `
+      @use "sass:map";
       @use "settings/colours-functional" with (
         $govuk-functional-colours: (text: rebeccapurple)
       );
 
       :root {
-        value: map-get(colours-functional.$govuk-functional-colours, text);
+        value: map.get(colours-functional.$govuk-functional-colours, text);
       }
     `
 
@@ -226,6 +230,7 @@ describe('Functional colours', () => {
 describe('Organisation colours', () => {
   it('should define contrast-safe colours that meet contrast requirements', async () => {
     const sass = `
+      @use "sass:map";
       @import "settings/colours-palette";
       @import "settings/colours-organisations";
       @import "settings/colours-functional";
@@ -234,7 +239,7 @@ describe('Organisation colours', () => {
       @import "sass-color-helpers/stylesheets/color-helpers";
 
       $minimum-contrast: 4.5;
-      $body-background-colour: _govuk-resolve-colour(map-get($govuk-functional-colours, body-background));
+      $body-background-colour: _govuk-resolve-colour(map.get($govuk-functional-colours, body-background));
 
       @each $organisation in map-keys($govuk-colours-organisations) {
 
