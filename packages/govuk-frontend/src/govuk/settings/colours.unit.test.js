@@ -39,7 +39,7 @@ describe('Colour palette', () => {
       @use "sass:map";
       @import "settings/colours-palette";
 
-      $variants: map-keys(map.get($_govuk-palette, "#{${colour}}"));
+      $variants: map.keys(map.get($_govuk-palette, "#{${colour}}"));
 
       :root {
         variants: $variants;
@@ -241,7 +241,7 @@ describe('Organisation colours', () => {
       $minimum-contrast: 4.5;
       $body-background-colour: _govuk-resolve-colour(map.get($govuk-functional-colours, body-background));
 
-      @each $organisation in map-keys($govuk-colours-organisations) {
+      @each $organisation in map.keys($govuk-colours-organisations) {
 
         $colour: govuk-organisation-colour($organisation);
         $contrast: ch-color-contrast($body-background-colour, $colour);
