@@ -26,10 +26,15 @@ describe('@function font-url', () => {
 
   it('can be overridden to use a defined Sass function', async () => {
     const sass = `
+      @use "sass:string";
       @import "tools/font-url";
 
       $govuk-fonts-path: '/path/to/fonts/';
-      $govuk-font-url-function: 'to-upper-case';
+      $govuk-font-url-function: 'custom-font-url';
+
+      @function custom-font-url($url) {
+        @return string.to-upper-case($url);
+      }
 
       @font-face {
         font-family: "whatever";

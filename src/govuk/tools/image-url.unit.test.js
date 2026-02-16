@@ -24,9 +24,14 @@ describe('@function image-url', () => {
 
   it('can be overridden to use a defined Sass function', async () => {
     const sass = `
+      @use "sass:string";
       @import "tools/image-url";
 
-      $govuk-image-url-function: 'to-upper-case';
+      $govuk-image-url-function: 'custom-image-url';
+
+      @function custom-image-url($url) {
+        @return string.to-upper-case($url);
+      }
 
       .foo {
         background-image: govuk-image-url("baz.png");
