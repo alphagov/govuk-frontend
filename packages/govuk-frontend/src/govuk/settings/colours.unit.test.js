@@ -58,10 +58,11 @@ describe('Colour palette', () => {
   it.each(['white'])('Provides a colour for `%s`', async (colour) => {
     const sass = `
       @use "sass:map";
+      @use "sass:meta";
       @import "settings/colours-palette";
 
       :root {
-        type: type-of(map.get($_govuk-palette, "#{${colour}}"));
+        type: meta.type-of(map.get($_govuk-palette, "#{${colour}}"));
       }
     `
 
