@@ -1,0 +1,22 @@
+////
+/// @group tools/if
+////
+
+/// Inline `if` function
+///
+/// Replicates the syntax of the original Sass `if` function
+/// to support Sass `>=1.79 <1.95`. Defaults `$if-false` to `null`
+/// when not set.
+///
+/// @param {Boolean} $condition - The condition
+/// @param {any} $if-true - The value if the condition is met
+/// @param {any} $if-false [null] - The value if the condition is not met, defaults to `null`.
+/// @returns {any} `$if-true` if the condition is met, `$if-false` otherwise.
+/// @access public
+@function govuk-if($condition, $if-true, $if-false: null) {
+  @if $condition {
+    @return $if-true;
+  } @else {
+    @return $if-false;
+  }
+}

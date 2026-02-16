@@ -3,6 +3,8 @@
 ////
 @use "sass:map";
 
+@import "../../tools/if";
+
 /// Get tag text colour
 /// Almost all tags should use the 50% shade of their colour for their text
 ///
@@ -34,11 +36,7 @@
 }
 
 @include govuk-exports("govuk/component/tag") {
-  $govuk-tag-max-width: if(
-    map.has-key($govuk-breakpoints, "mobile"),
-    map.get($govuk-breakpoints, "mobile") * 0.5,
-    160px
-  );
+  $govuk-tag-max-width: 0.5 * (map.get($govuk-breakpoints, "mobile") or 320px);
 
   .govuk-tag {
     @include govuk-font($size: 19);

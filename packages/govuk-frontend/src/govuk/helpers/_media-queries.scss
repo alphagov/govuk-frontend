@@ -195,18 +195,16 @@
 
 @mixin govuk-media-query($from: null, $until: null, $and: null, $media-type: "all", $breakpoints: $govuk-breakpoints) {
   $media-query: "";
-  $min-width: if($from, govuk-from-breakpoint($from, $breakpoints), null);
-  $max-width: if($until, govuk-until-breakpoint($until, $breakpoints), null);
 
   // Assemble the media query string
   @if $media-type != "all" {
     $media-query: "#{$media-type}";
   }
-  @if $min-width {
-    $media-query: "#{$media-query} and #{$min-width}";
+  @if $from {
+    $media-query: "#{$media-query} and #{govuk-from-breakpoint($from, $breakpoints)}";
   }
-  @if $max-width {
-    $media-query: "#{$media-query} and #{$max-width}";
+  @if $until {
+    $media-query: "#{$media-query} and #{govuk-until-breakpoint($until, $breakpoints)}";
   }
   @if $and {
     $media-query: "#{$media-query} and #{$and}";
