@@ -1,0 +1,8 @@
+@use "index";
+
+// stylelint-disable-next-line color-named
+$import-colour: rebeccapurple;
+
+.from-index.import {
+  --import-color: #{$import-colour};
+}
