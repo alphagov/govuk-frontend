@@ -1,0 +1,6 @@
+@forward "pkg:govuk-frontend";
+@use "pkg:govuk-frontend";
+
+body {
+  --color: #{govuk-frontend.govuk-colour("blue")};
+}

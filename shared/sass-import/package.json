@@ -1,0 +1,10 @@
+{
+  "name": "@govuk-frontend/sass-import",
+  "private": true,
+  "devDependencies": {
+    "@govuk-frontend/config": "*",
+    "govuk-frontend": "*",
+    "sass-embedded": "^1.89.2",
+    "slash": "^5.1.0"
+  }
+}
