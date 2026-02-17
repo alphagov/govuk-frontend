@@ -14,7 +14,7 @@ We've made fixes to GOV.UK Frontend in the following pull requests:
 
 ### Breaking changes
 
-#### Make sure you're using Dart Sass v1.79.0 or newer to compile your Sass stylesheets
+#### Use Dart Sass v1.79.0 or later to compile your Sass stylesheets
 
 GOV.UK Frontend no longer supports Ruby Sass, LibSass or versions of Dart Sass older than v1.79.0. Update your project to [Dart Sass v1.79.0 or newer](https://sass-lang.com/dart-sass/) before updating to GOV.UK Frontend v6.0.
 
@@ -31,7 +31,7 @@ The type scale increases the size of text on small screens, improving legibility
 
 We've also removed size 14 from the type scale. The smallest size in the type scale is now 16.
 
-See the Design System website for an overview of the [changes to the type scale in the Design System](https://design-system.service.gov.uk/get-started/new-type-scale/).
+See the GOV.UK Design System website for an overview of the [changes to the type scale](https://design-system.service.gov.uk/get-started/new-type-scale/).
 
 You should test your service against the new type scale to see if you need to make any adjustments, particularly on small screens.
 
@@ -70,9 +70,9 @@ We’ve also made green and its tints and shades slightly darker.
 
 A future version of the brand guidelines will contain these improvements.
 
-##### Changes to colours in the web palette
+##### Changes to colours in the GOV.UK web palette
 
-The web palette in the brand guidelines reduces the number of named colours but introduces tints and shades for each colour. We've updated GOV.UK Frontend to use the same approach.
+The GOV.UK web palette in the brand guidelines reduces the number of named colours but introduces tints and shades for each colour. We've updated GOV.UK Frontend to use the same approach.
 
 We’ve updated these colours:
 
@@ -110,13 +110,13 @@ We made these changes in the following pull requests:
 
 ##### Check your service’s colours
 
-If your service uses any custom components, make sure they still work with the new web palette in terms of accessibility and design. Where possible, you should use colours from the new web palette.
+If your service uses any custom components, make sure they still work with the GOV.UK web palette in terms of accessibility and design. Where possible, you should use colours from the GOV.UK web palette.
 
-If you’re already using the [`govuk-colour` function](https://frontend.design-system.service.gov.uk/sass-api-reference/#govuk-colour) in your project, your service will automatically update to use the new web palette.
+If you’re already using the [`govuk-colour` function](https://frontend.design-system.service.gov.uk/sass-api-reference/#govuk-colour) in your project, your service will automatically update to use the latest GOV.UK web palette.
 
 If you're using a colour that we’ve renamed or that no longer exists, the `govuk-colour` function will log a warning and automatically return the suggested replacement.
 
-##### Use `govuk-colour` to access tints and shades
+##### Use the `govuk-colour` function to access tints and shades
 
 The [`govuk-colour` function](https://frontend.design-system.service.gov.uk/sass-api-reference/#govuk-colour) now accepts a `$variant` option to access tints or shades of a colour.
 
@@ -130,19 +130,19 @@ $app-colour: govuk-colour('blue'); // Returns the 'Primary blue' colour
 $component-colour: govuk-colour('red', $variant: 'tint-25') // Returns the 'Red tint 25%' colour
 ```
 
-See the Design System website for the [list of available colours, tints and shades in the web palette](https://design-system.service.gov.uk/styles/colour/#govuk-web-palette).
+See the [GOV.UK web palette](https://design-system.service.gov.uk/styles/colour/#govuk-web-palette) on the GOV.UK Design System website for the list of available colours, tints and shades.
 
-##### Stop using `$govuk-colours`
+##### Stop using the `$govuk-colours` variable
 
-We’ve removed the `$govuk-colours` variable from GOV.UK Frontend. Use the [`govuk-colour` function](https://frontend.design-system.service.gov.uk/sass-api-reference/#govuk-colour) to access colours from the web palette.
+We’ve removed the `$govuk-colours` variable from GOV.UK Frontend. Use the [`govuk-colour` function](https://frontend.design-system.service.gov.uk/sass-api-reference/#govuk-colour) to access colours from the GOV.UK web palette.
 
 You can no longer override the colour palette in GOV.UK Frontend.
 
-##### Stop using `govuk-tint` and `govuk-shade`
+##### Stop using the `govuk-tint` and `govuk-shade` functions
 
 We’ve removed the `govuk-tint` and `govuk-shade` functions for applying tints and shades to colours by percentage.
 
-Replace them with tints and shades from the web palette that are as close as possible to the colours you were previously using.
+Replace them with tints and shades from the GOV.UK web palette that are as close as possible to the colours you were previously using.
 
 We made this change in [pull request #6639: Remove `govuk-tint` and `govuk-shade` functions](https://github.com/alphagov/govuk-frontend/pull/6639).
 
@@ -159,7 +159,7 @@ We'll remove the `govuk-tag--turquoise` and `govuk-tag--pink` modifier classes i
 
 We made this change in [pull request #6416: Deprecate turquoise and pink tag colour modifiers](https://github.com/alphagov/govuk-frontend/pull/6416).
 
-#### Use the new Sass API and CSS custom properties for functional colours (formerly 'applied colours')
+#### Use the new Sass API and CSS custom properties for functional colours
 
 We’ve improved the way we reference colours for essential page elements in GOV.UK Frontend, renaming 'applied colours' to 'functional colours' and making them available as CSS custom properties.
 
@@ -208,15 +208,15 @@ The deprecated Sass variables listed in the previous section are now read-only.
 
 If you were customising a functional colour before importing GOV.UK Frontend, you'll now see a warning.
 
-Update your code to [assign a map of the colours you want to customise to the `$govuk-functional-colours` variable](https://frontend.design-system.service.gov.uk/sass-api-reference/#govuk-functional-colours) instead.
+Update your code to assign a map of the colours you want to customise to the [`$govuk-functional-colours` variable](https://frontend.design-system.service.gov.uk/sass-api-reference/#govuk-functional-colours) instead.
 
-##### Use `$govuk-output-custom-properties` to control whether custom properties are included in your CSS
+##### Use `$govuk-output-custom-properties` to control the output of custom properties in your CSS
 
 If your service uses multiple stylesheets, you can use the [`$govuk-output-custom-properties` setting](https://frontend.design-system.service.gov.uk/sass-api-reference/#govuk-output-custom-properties) to prevent custom properties (including the new custom properties for functional colours) from being included in your secondary stylesheets.
 
 We made this change in [pull request #6606: Enable better control over custom property outputting](https://github.com/alphagov/govuk-frontend/pull/6606).
 
-#### Stop using the old GOV.UK logo and colour palette
+#### Stop using the previous GOV.UK logo and colour palette
 
 You should now only use the refreshed GOV.UK branding and remove any rebrand feature flags.
 
@@ -224,7 +224,7 @@ We’ve made the refreshed (blue-based) GOV.UK branding the default appearance o
 
 We've also updated the colours used in the Service navigation and Cookie banner components.
 
-With these changes, only [services on the GOV.UK website](https://www.gov.uk/service-manual/design/making-your-service-look-like-govuk) should use the GOV.UK header and GOV.UK footer components. Services outside of the [GOV.UK proposition](https://www.gov.uk/government/publications/govuk-proposition) should stop using the header and footer components and instead create their own.
+With these changes, only [services on the GOV.UK website](https://www.gov.uk/service-manual/design/making-your-service-look-like-govuk) should use the GOV.UK header and GOV.UK footer components. Services outside of the [GOV.UK proposition](https://www.gov.uk/government/publications/govuk-proposition) should stop using the GOV.UK header and GOV.UK footer components and instead create their own.
 
 If you’re using GOV.UK Frontend's Nunjucks template, you should now remove the `govukRebrand` feature flag.
 
@@ -261,7 +261,7 @@ We made this change in [pull request #6414: Remove `useTudorCrown` parameter and
 
 ##### Remove the `rebrand` feature flag from your prototype config
 
-If you're using the Prototype Kit, remove the [`rebrand` option from your prototype's `app/config.json`](https://github.com/alphagov/govuk-frontend/blob/main/CHANGELOG.md#use-the-refreshed-govuk-brand-in-your-prototype-kit-prototype).
+If you're using the GOV.UK Prototype Kit, remove the [`rebrand` option from your prototype's `app/config.json`](https://github.com/alphagov/govuk-frontend/blob/main/CHANGELOG.md#use-the-refreshed-govuk-brand-in-your-prototype-kit-prototype).
 
 #### Changes to the page template
 
@@ -279,7 +279,7 @@ We've changed the page structure around the header to separate the header elemen
 
 You’ll need to follow different instructions to upgrade, depending on how you create the page headers in your service. In all cases, you should make sure your page includes a single `<header>` element after you’ve made the changes.
 
-If you’re using GOV.UK Frontend's template and are overriding the `govukHeader` component, update references to the `header` Nunjucks block to use `govukHeader` instead.
+If you’re using GOV.UK Frontend's template and are overriding the `govukHeader` component, replace references to the `header` Nunjucks block to use `govukHeader`.
 
 ```njk
 {# Previously #}
@@ -312,7 +312,7 @@ If you’re not using Nunjucks, change the existing GOV.UK header to a `<div>` e
 
 We made this change in [pull request #6536: Refactor heading to detach element from component](https://github.com/alphagov/govuk-frontend/pull/6536).
 
-##### Use the `container` block instead of the `main` block to replace the width container
+##### Use the `container` block to replace the width container
 
 We've reduced the scope of the `main` block to only replace the `<main>` element,
 rather than the whole `<div class="govuk-width-container">` element.
@@ -369,7 +369,7 @@ If you’re not using Nunjucks, change the existing GOV.UK footer to a `<div>` e
 
 We made this change in [pull request #6537: Refactor footer to detach element from component](https://github.com/alphagov/govuk-frontend/pull/6537).
 
-##### Customise the template's `<header>` element
+##### Customise the page template's `<header>` element
 
 If you use Nunjucks, you can customise the appearance and content of the template's `<header>` element with new blocks and variables.
 
@@ -435,9 +435,9 @@ We renamed the `govuk-responsive-typography` Sass mixin to `govuk-font-size` in 
 
 We made this change in [pull request #6387: Remove `govuk-responsive-typography` mixin](https://github.com/alphagov/govuk-frontend/pull/6387).
 
-##### We’ve removed previously deprecated features from our Header component
+##### We’ve removed previously deprecated features from the GOV.UK header component
 
-###### Stop including the service name and navigation items in the GOV.UK header component
+###### Stop including the service name and navigation in the GOV.UK header component
 
 We deprecated including the service name and navigation in the GOV.UK header component in [GOV.UK Frontend 5.9.0](https://github.com/alphagov/govuk-frontend/releases/tag/v5.9.0).
 
@@ -469,13 +469,13 @@ We made this change in [pull request #6423: Remove service name and navigation f
 
 ##### We’ve removed previously deprecated features from our colours
 
-###### Stop using the `$legacy` parameter in `govuk-colour`
+###### Stop using the `$legacy` parameter in the `govuk-colour` function
 
 We’ve removed the `$legacy` parameter of the `govuk-colour` function, so you should remove any usage of it.
 
 We made this change in [pull request #6326: Use brand palette through `govuk-colour`](https://github.com/alphagov/govuk-frontend/pull/6326).
 
-###### Stop using `$govuk-canvas-background-colour`
+###### Stop using the `$govuk-canvas-background-colour` variable
 
 We renamed `$govuk-canvas-background-colour` to `$govuk-template-background-colour` in [GOV.UK Frontend 5.10.0](https://github.com/alphagov/govuk-frontend/releases/tag/v5.10.0). We've now removed the previous variable entirely. You should access the colour of the template background using `govuk-functional-colour(template-background)`.
 
@@ -485,7 +485,7 @@ We made this change in [pull request #6413: Remove `$govuk-canvas-background-col
 
 We updated the organisation colour palette in [GOV.UK Frontend 5.9.0](https://github.com/alphagov/govuk-frontend/releases/tag/v5.9.0).
 
-The new palette was initially opt-in, using the `$govuk-new-organisation-colours` feature flag. The updated palette is now the only palette available, so you must remove the feature flag from your code.
+The latest palette was initially opt-in, using the `$govuk-new-organisation-colours` feature flag. The latest palette is now the only palette available, so you must remove the feature flag from your code.
 
 As part of this work, we removed the deprecated `$websafe` parameter of the `govuk-organisation-colour` function. Use the `$contrast-safe` parameter when calling the function instead.
 
@@ -497,7 +497,7 @@ We've removed deprecated organisations from the organisation colour palette. The
 
 We made this change in [pull request #6426: Remove deprecated organisation colours](https://github.com/alphagov/govuk-frontend/pull/6426).
 
-##### Update references to `govuk-pagination__item--ellipses` class from the HTML for the Pagination component
+##### Update references to the `govuk-pagination__item--ellipses` class in the Pagination component
 
 We deprecated the `govuk-pagination__item--ellipses` class in [GOV.UK Frontend 5.13.0](https://github.com/alphagov/govuk-frontend/releases/tag/v5.13.0), and we've now removed it.
 
