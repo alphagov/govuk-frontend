@@ -291,6 +291,245 @@ describe('pkg:govuk-frontend', () => {
         expect(css).toContain('--color: #ca3535;')
       })
     })
+
+    // Now let's see how the Sass module system affects configuration
+    describe('With configuration', () => {
+      // With `@import` users can set global variables
+      // and they'll get picked up by GOV.UK Frontend
+      it('uses global variables with `@import`', async () => {
+        const sass = `
+          $govuk-functional-colours: (brand: hotpink);
+          @import "pkg:govuk-frontend";
+
+          body {
+            --color: #{govuk-functional-colour(brand)};
+          }
+        `
+
+        const { css } = await compileStringAsync(sass, {
+          ...sassConfig,
+          importers: [new NodePackageImporter()]
+        })
+
+        // Check that GOV.UK Frontend's style are output
+        expect(css).toContain('.govuk-template')
+
+        // And that the configuration happened
+        expect(css).toContain('--color: var(--govuk-brand-colour, hotpink);')
+      })
+
+      // With `@use` global variables won't affect GOV.UK Frontend's configuration
+      // The code of the `@use`d module is isolated
+      it('ignores global variables with `@use`', async () => {
+        const sass = `
+          $govuk-functional-colours: (brand: hotpink);
+          @use "pkg:govuk-frontend";
+
+          body {
+            --color: #{govuk-frontend.govuk-functional-colour(brand)};
+          }
+        `
+
+        const { css } = await compileStringAsync(sass, {
+          ...sassConfig,
+          importers: [new NodePackageImporter()]
+        })
+
+        // Check that GOV.UK Frontend's style are output
+        expect(css).toContain('.govuk-template')
+
+        // !! Oh no !! The brand colour remains GOV.UK blue
+        expect(css).toContain('--color: var(--govuk-brand-colour, #1d70b8);')
+      })
+
+      // To configure GOV.UK Frontend, users will need to use `with`
+      it('accepts configuration through `with`', async () => {
+        const sass = `
+          @use "pkg:govuk-frontend" with (
+            $govuk-functional-colours: (brand: hotpink)
+          );
+
+          body {
+            --color: #{govuk-frontend.govuk-functional-colour(brand)};
+          }
+        `
+
+        const { css } = await compileStringAsync(sass, {
+          ...sassConfig,
+          importers: [new NodePackageImporter()]
+        })
+
+        // Check that GOV.UK Frontend's style are output
+        expect(css).toContain('.govuk-template')
+
+        // **The brand colour remains GOV.UK blue
+        expect(css).toContain('--color: var(--govuk-brand-colour, hotpink);')
+      })
+
+      // `with` can also be used with `@forward`, which is great news
+      // for libraries that may want to wrap GOV.UK Frontend and offer
+      // a pre-configured version to their users
+      it('configures in `@forward`', async () => {
+        const sass = `
+          @use 'file:${absolutePath('forward-and-configure')}';
+
+          body {
+            --color: #{forward-and-configure.govuk-functional-colour(brand)};
+          }
+        `
+
+        const { css } = await compileStringAsync(sass, {
+          ...sassConfig,
+          importers: [new NodePackageImporter()]
+        })
+
+        // Check that GOV.UK Frontend's style are output
+        expect(css).toContain('.govuk-template')
+
+        // **The brand colour remains GOV.UK blue
+        expect(css).toContain('--color: var(--govuk-brand-colour, hotpink);')
+      })
+
+      // Using `!default` in the `@forward`ed package allows to
+      // use `with` to pass the configuration down to the forwarded module
+      it('forwards configuration', async () => {
+        const sass = `
+          @use 'file:${absolutePath('forward-configuration')}' with (
+            $govuk-functional-colours: (
+              brand: rebeccapurple
+            )
+          );
+
+          body {
+            --color: #{forward-configuration.govuk-functional-colour(brand)};
+          }
+        `
+
+        const { css } = await compileStringAsync(sass, {
+          ...sassConfig,
+          importers: [new NodePackageImporter()]
+        })
+
+        // Check that GOV.UK Frontend's style are output
+        expect(css).toContain('.govuk-template')
+
+        // The colour is the one set when `@use`ing the module that uses `@forward`
+        expect(css).toContain(
+          '--color: var(--govuk-brand-colour, rebeccapurple);'
+        )
+      })
+
+      // However, because modules are only loaded once, a module wrapping GOV.UK Frontend
+      // and configuring it will also affect modules consuming `pkg:govuk-frontend`
+      it('configures inside `@use`d module', async () => {
+        const sass = `
+          @use 'file:${absolutePath('use-and-configure')}';
+          @use 'pkg:govuk-frontend';
+
+          body {
+            // We'll use a different property in the main code
+            --background-color: #{govuk-frontend.govuk-functional-colour(brand)};
+          }
+        `
+
+        const { css } = await compileStringAsync(sass, {
+          ...sassConfig,
+          importers: [new NodePackageImporter()]
+        })
+
+        // Check that GOV.UK Frontend's style are output
+        expect(css).toContain('.govuk-template')
+
+        // The brand colour inside the `@use`d module is configured
+        expect(css).toContain('--color: var(--govuk-brand-colour, hotpink);')
+
+        // The brand colour is also configured when using `govuk-frontend`
+        expect(css).toContain(
+          '--background-color: var(--govuk-brand-colour, hotpink);'
+        )
+      })
+
+      // Thankfully Sass will error if a module tries to use `with` on a module
+      // that's already loaded. It's more a concern for authors of libraries wrapping
+      // GOV.UK Frontend, though.
+      it('use govuk-frontend before using module', async () => {
+        const sass = `
+          @use 'pkg:govuk-frontend';
+          @use 'file:${absolutePath('use-and-configure')}';
+
+
+          body {
+            // We'll use a different property in the main code
+            --background-color: #{govuk-frontend.govuk-functional-colour(brand)};
+          }
+        `
+
+        await expect(
+          compileStringAsync(sass, {
+            ...sassConfig,
+            importers: [new NodePackageImporter()]
+          })
+        ).rejects.toThrow(
+          `This module was already loaded, so it can't be configured using "with".`
+        )
+      })
+
+      // Now what happens if the configuration happens on an individual file
+      // of GOV.UK Frontend. If we configure `settings/colours-functional`,
+      // will it affect a separate `@use` of `govuk-frontend`?
+      it('configures govuk-frontend module', async () => {
+        const sass = `
+          @use "sass:map";
+
+          @use 'pkg:govuk-frontend/dist/govuk/settings/colours-functional' with (
+            $govuk-functional-colours: (
+              brand: hotpink
+            )
+          );
+          @use 'pkg:govuk-frontend';
+
+          body {
+            --from-govuk-frontend: #{govuk-frontend.govuk-functional-colour(brand)};
+
+            // Let's check what's in the configured module as well
+            --from-settings: #{map.get(colours-functional.$govuk-functional-colours, brand)};
+          }
+        `
+
+        const { css } = await compileStringAsync(sass, {
+          ...sassConfig,
+          importers: [new NodePackageImporter()]
+        })
+
+        // Despite the configuration having affected the `colours-functional` file
+        expect(css).toContain('--from-settings: hotpink')
+
+        // The brand colour inside `govuk-frontend` hasn't been updated
+        expect(css).toContain(
+          '--from-govuk-frontend: var(--govuk-brand-colour, #1d70b8);'
+        )
+      })
+
+      // Once we move `govuk-frontend` to use `@use` under the hood
+      // `@use`ing and configuring individual files will also apply the changes
+      // to the files in `govuk-frontend` that `@use` them as well
+      it('configures through individual files', async () => {
+        const sass = `
+          @use "file:${absolutePath('configure-individual-files/settings')}" with (
+            $colour: rebeccapurple
+          );
+          @use "file:${absolutePath('configure-individual-files')}";
+        `
+
+        const { css } = await compileStringAsync(sass, {
+          ...sassConfig,
+          importers: [new NodePackageImporter()]
+        })
+
+        // Despite the configuration having affected the `colours-functional` file
+        expect(css).toContain('--from-settings: rebeccapurple')
+      })
+    })
   })
 })
 

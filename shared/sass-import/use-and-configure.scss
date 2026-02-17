@@ -1,0 +1,9 @@
+@use "pkg:govuk-frontend" as * with (
+  $govuk-functional-colours: (
+    brand: hotpink
+  )
+);
+
+body {
+  --color: #{govuk-functional-colour(brand)};
+}

@@ -1,0 +1,5 @@
+@use "./settings";
+
+body {
+  --from-settings: #{settings.$colour};
+}

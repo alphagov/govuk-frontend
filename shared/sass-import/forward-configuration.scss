@@ -1,0 +1,6 @@
+@forward "pkg:govuk-frontend" with (
+  $govuk-functional-colours: (
+    brand: hotpink
+  )
+  !default
+);
