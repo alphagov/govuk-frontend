@@ -529,6 +529,67 @@ describe('pkg:govuk-frontend', () => {
         // Despite the configuration having affected the `colours-functional` file
         expect(css).toContain('--from-settings: rebeccapurple')
       })
+
+      // Once we move `govuk-frontend` to use `@use` under the hood
+      // `@use`ing and configuring individual files will also apply the changes
+      // to the files in `govuk-frontend` that `@use` them as well
+      it('configures through individual files', async () => {
+        const sass = `
+          $colour: rebeccapurple;
+          @import "file:${absolutePath('configure-individual-files/settings')}";
+          @import "file:${absolutePath('configure-individual-files')}";
+        `
+
+        const { css } = await compileStringAsync(sass, {
+          ...sassConfig,
+          importers: [new NodePackageImporter()]
+        })
+
+        // Despite the configuration having affected the `colours-functional` file
+        expect(css).toContain('--from-settings: rebeccapurple')
+      })
+
+      // Once we move `govuk-frontend` to use `@use` under the hood
+      // `@use`ing and configuring individual files will also apply the changes
+      // to the files in `govuk-frontend` that `@use` them as well
+      it('configures through individual files', async () => {
+        const sass = `
+          @use "file:${absolutePath('configure-individual-files')}" with (
+            $colour: rebeccapurple
+          );
+        `
+
+        const { css } = await compileStringAsync(sass, {
+          ...sassConfig,
+          importers: [new NodePackageImporter()]
+        })
+
+        // Despite the configuration having affected the `colours-functional` file
+        expect(css).toContain('--from-settings: rebeccapurple')
+      })
+
+      it('outputs the same with `@use` and `@import`', async() => {
+        const sassWithUse = `
+          @use "pkg:govuk-frontend";
+        `
+
+        const { css: cssWithUse } = await compileStringAsync(sassWithUse, {
+          ...sassConfig,
+          importers: [new NodePackageImporter()]
+        })
+
+        const sassWithImport = `
+          @import "pkg:govuk-frontend";
+        `
+
+        const { css: cssWithImport } = await compileStringAsync(sassWithImport, {
+          ...sassConfig,
+          importers: [new NodePackageImporter()]
+        })
+
+        // Despite the configuration having affected the `colours-functional` file
+        expect(cssWithUse).toBe(cssWithImport)
+      })
     })
   })
 })
