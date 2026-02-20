@@ -1,0 +1,5 @@
+@use "pkg:govuk-frontend" as *;
+
+body {
+  --color: #{govuk-colour("magenta")};
+}

@@ -1,0 +1,8 @@
+@forward "forward.scss";
+
+// stylelint-disable-next-line color-named
+$import-colour: rebeccapurple !default;
+
+.from-index.import {
+  --import-color: #{$import-colour};
+}

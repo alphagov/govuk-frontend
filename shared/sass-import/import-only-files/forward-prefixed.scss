@@ -1,0 +1,6 @@
+// stylelint-disable-next-line color-named
+$colour: hotpink !default;
+
+.from-index {
+  --module-color: #{$colour};
+}
