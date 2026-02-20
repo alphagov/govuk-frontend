@@ -5,7 +5,7 @@
   "main": "index.mjs",
   "engines": {
     "node": "^24.11.0",
-    "npm": "11.6.2"
+    "npm": "^11.6.2"
   },
   "license": "MIT",
   "devDependencies": {

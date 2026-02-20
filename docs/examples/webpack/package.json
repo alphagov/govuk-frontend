@@ -4,7 +4,7 @@
   "description": "Boilerplate example for govuk-frontend using webpack",
   "engines": {
     "node": "^24.11.0",
-    "npm": "11.6.2"
+    "npm": "^11.6.2"
   },
   "scripts": {
     "dev": "webpack serve --progress --mode development",

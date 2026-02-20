@@ -4,7 +4,7 @@
   "description": "Used only for the development of GOV.UK Frontend, see `packages/govuk-frontend/package.json` for the published `package.json`",
   "engines": {
     "node": "^24.11.0",
-    "npm": "11.6.2"
+    "npm": "^11.6.2"
   },
   "license": "MIT",
   "workspaces": [
