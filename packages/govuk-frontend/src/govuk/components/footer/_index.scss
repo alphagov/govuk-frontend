@@ -1,3 +1,5 @@
+@import "../../base";
+
 @include govuk-exports("govuk/component/footer") {
   $govuk-footer-background: govuk-functional-colour(surface-background);
   $govuk-footer-text: govuk-functional-colour(surface-text);

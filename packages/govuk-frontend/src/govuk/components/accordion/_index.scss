@@ -1,3 +1,5 @@
+@import "../../base";
+
 @include govuk-exports("govuk/component/accordion") {
   $govuk-accordion-base-colour: govuk-colour("black");
   $govuk-accordion-hover-colour: govuk-colour("black", $variant: "tint-95");
