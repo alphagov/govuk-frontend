@@ -8,7 +8,9 @@ For advice on how to use these release notes, see [our guidance on staying up to
 
 We've made fixes to GOV.UK Frontend in the following pull requests:
 
-- [#6727: Migrate away from slash as a division in Sass](https://github.com/alphagov/govuk-frontend/pull/6727) - thanks to @colinrotherham for raising the issue
+- [#6727: Fix `slash-div` Sass deprecation](https://github.com/alphagov/govuk-frontend/pull/6727) - thanks to @colinrotherham for raising the issue
+- [#6730: Fix `if-function` Sass deprecation](https://github.com/alphagov/govuk-frontend/pull/6730)
+- [#6731: Fix `global-builtin` Sass deprecation](https://github.com/alphagov/govuk-frontend/pull/6731)
 
 ## v6.0.0 (Breaking release)
 
