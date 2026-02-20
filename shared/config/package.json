@@ -4,7 +4,7 @@
   "description": "GOV.UK Frontend shared config",
   "main": "index.js",
   "engines": {
-    "node": "^24.11.0",
+    "node": "24.13.0",
     "npm": "11.6.2"
   },
   "license": "MIT",
