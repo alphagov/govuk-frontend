@@ -2,8 +2,8 @@
   "name": "@govuk-frontend/bundler-integrations",
   "description": "Boilerplate to verify that GOV.UK Frontend works OK with main bundlers",
   "engines": {
-    "node": "24.13.0",
-    "npm": "11.6.2"
+    "node": "24.13.1",
+    "npm": "11.8.0"
   },
   "private": true,
   "scripts": {

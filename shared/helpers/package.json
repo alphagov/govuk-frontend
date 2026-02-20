@@ -9,8 +9,8 @@
     "./*": "./*.js"
   },
   "engines": {
-    "node": "24.13.0",
-    "npm": "11.6.2"
+    "node": "24.13.1",
+    "npm": "11.8.0"
   },
   "license": "MIT",
   "devDependencies": {
