@@ -3,6 +3,7 @@ const { join, basename } = require('path')
 
 const { paths } = require('@govuk-frontend/config')
 const { compileSassFile } = require('@govuk-frontend/helpers/tests')
+const { sassNull } = require('sass-embedded')
 const { default: slash } = require('slash')
 const stylelint = require('stylelint')
 
@@ -118,10 +119,22 @@ describe('Components', () => {
         let css
         let sassPath
 
+        let mockWarnFunction, sassConfig
+
         beforeAll(async () => {
           sassPath = join(componentFolder, `_${componentName}.scss`)
 
-          css = (await compileSassFile(sassPath)).css
+          // Create a mock warn function that we can use to override the native @warn
+          // function, that we can make assertions about post-render.
+          mockWarnFunction = jest.fn().mockReturnValue(sassNull)
+
+          sassConfig = {
+            logger: {
+              warn: mockWarnFunction
+            }
+          }
+
+          css = (await compileSassFile(sassPath, sassConfig)).css
         })
 
         it("includes the component's CSS", () => {
@@ -143,6 +156,14 @@ describe('Components', () => {
           }
 
           return expect(linter.results[0].warnings).toHaveLength(0)
+        })
+
+        it.only('logs as deprecation warning', () => {
+          expect(mockWarnFunction).toHaveBeenCalledWith(
+            `Importing \`<PATH_TO_GOVUK_FRONTEND>/components/${componentName}/${componentName}\` is deprecated.` +
+              ` Import \`<PATH_TO_GOVUK_FRONTEND>/components/${componentName}\` instead.` +
+              ' To silence this warning, update $govuk-suppressed-warnings with key: "component-scss-files"'
+          )
         })
       })
     })

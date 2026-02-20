@@ -1,1 +1,5 @@
+@import "../../settings/warnings";
+
+@include _component-scss-file-warning("date-input");
+
 @import "./index";
