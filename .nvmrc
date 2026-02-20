@@ -1,4 +1,4 @@
-24
+24.13.0
 # When updating this version, remember to update:
 # - the 'engines' fields in the various `package.json` files of the project
 # - `package-lock.json` by running `npm install`
