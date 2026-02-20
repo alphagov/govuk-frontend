@@ -79,8 +79,7 @@ describe('Components', () => {
         const sassFiles = await getListing(
           '**/src/govuk/components/**/*.scss',
           {
-            cwd: paths.package,
-            ignore: ['**/_all.scss', '**/_index.scss']
+            cwd: paths.package
           }
         )
 
