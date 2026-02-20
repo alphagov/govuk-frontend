@@ -1,2 +1,5 @@
-@import "../../base";
+@import "../../settings/warnings";
+
+@include _component-scss-file-warning("service-navigation");
+
 @import "./index";

@@ -57,6 +57,18 @@ $govuk-suppressed-warnings: () !default;
   }
 }
 
+/// Logs a deprecation warning that the given component's `<COMPONENT_NAME>.scss` file is deprecated
+///
+/// @access private
+@mixin _component-scss-file-warning($component-name) {
+  $component-path: "<PATH_TO_GOVUK_FRONTEND>/components/#{$component-name}";
+
+  $message: "Importing `#{$component-path}/_#{$component-name}` is deprecated." +
+    " Import `#{$component-path}` instead.";
+
+  @include _warning("component-scss-files", $message);
+}
+
 /// Check whether a key is present in the suppressed warnings list.
 ///
 /// @param {String} $key - The key to be checked against `$govuk-suppressed-warnings`.
