@@ -1,3 +1,5 @@
+@import "../../base";
+
 @include govuk-exports("govuk/component/error-message") {
   .govuk-error-message {
     @include govuk-font($size: 19, $weight: bold);

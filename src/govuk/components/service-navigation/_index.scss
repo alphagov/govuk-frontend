@@ -1,5 +1,7 @@
 @use "sass:math";
 
+@import "../../base";
+
 @include govuk-exports("govuk/component/service-navigation") {
   $govuk-service-navigation-active-link-border-width: govuk-spacing(1);
   $govuk-service-navigation-text-colour: govuk-functional-colour(surface-text);

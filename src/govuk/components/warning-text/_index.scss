@@ -1,3 +1,5 @@
+@import "../../base";
+
 @include govuk-exports("govuk/component/warning-text") {
   .govuk-warning-text {
     @include govuk-font($size: 19);
