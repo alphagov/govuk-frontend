@@ -1,9 +1,16 @@
-const { join } = require('path')
+const { globSync } = require('fs')
+const { join, basename } = require('path')
 
 const { paths } = require('@govuk-frontend/config')
 const { compileSassFile } = require('@govuk-frontend/helpers/tests')
-const { getListing } = require('@govuk-frontend/lib/files')
+const { default: slash } = require('slash')
 const stylelint = require('stylelint')
+
+// Grab the list of components synchronously so we can create
+// individual test suites for each of them
+const componentFolders = globSync(`${slash(__dirname)}/*`, {
+  exclude: ['**/*.*']
+})
 
 describe('Components', () => {
   describe('Sass render', () => {
@@ -72,57 +79,71 @@ describe('Components', () => {
       })
     })
 
-    describe('Individual components', () => {
-      let compiledSassFiles
+    describe.each(componentFolders)('%s', (componentFolder) => {
+      const componentName = basename(componentFolder)
 
-      beforeAll(async () => {
-        const sassFiles = await getListing(
-          '**/src/govuk/components/**/*.scss',
-          {
-            cwd: paths.package
-          }
-        )
+      describe('_index.scss', () => {
+        let css
+        let sassPath
 
-        compiledSassFiles = await Promise.all(
-          sassFiles.map(async (sassFilePath) => {
-            const file = join(paths.package, sassFilePath)
+        beforeAll(async () => {
+          sassPath = join(componentFolder, '_index.scss')
 
-            return {
-              file,
-              compiledSass: await compileSassFile(file)
-            }
-          })
-        )
-      })
+          css = (await compileSassFile(sassPath)).css
+        })
 
-      it('renders CSS for each component', async () => {
-        return compiledSassFiles.map((compiledSassFile) =>
-          expect(compiledSassFile.compiledSass).toMatchObject({
-            css: expect.any(String),
-            loadedUrls: expect.arrayContaining([expect.any(URL)])
-          })
-        )
-      })
+        it("includes the component's CSS", () => {
+          expect(css).toContain(`.govuk-${componentName}`)
+        })
 
-      it('does not render any empty custom properties per component', async () => {
-        const sassTasks = compiledSassFiles.map(async (compiledSassFile) => {
+        it('renders the custom properties used by the component', async () => {
           const linter = await stylelint.lint({
             config: { rules: { 'no-unknown-custom-properties': true } },
-            code: compiledSassFile.compiledSass.css
+            code: css
           })
 
           // Output stylelint warnings to make debugging easier
           if (linter.results[0].warnings.length) {
             console.log(
-              `Warnings were present when testing ${compiledSassFile.file} for unknown custom properties:`
+              `Warnings were present when testing ${sassPath} for unknown custom properties:`
             )
             console.log(linter.results[0].warnings)
           }
 
           return expect(linter.results[0].warnings).toHaveLength(0)
         })
+      })
 
-        return Promise.all(sassTasks)
+      describe(`_${componentName}.scss`, () => {
+        let css
+        let sassPath
+
+        beforeAll(async () => {
+          sassPath = join(componentFolder, `_${componentName}.scss`)
+
+          css = (await compileSassFile(sassPath)).css
+        })
+
+        it("includes the component's CSS", () => {
+          expect(css).toContain(`.govuk-${componentName}`)
+        })
+
+        it('renders the custom properties used by the component', async () => {
+          const linter = await stylelint.lint({
+            config: { rules: { 'no-unknown-custom-properties': true } },
+            code: css
+          })
+
+          // Output stylelint warnings to make debugging easier
+          if (linter.results[0].warnings.length) {
+            console.log(
+              `Warnings were present when testing ${sassPath} for unknown custom properties:`
+            )
+            console.log(linter.results[0].warnings)
+          }
+
+          return expect(linter.results[0].warnings).toHaveLength(0)
+        })
       })
     })
   })
