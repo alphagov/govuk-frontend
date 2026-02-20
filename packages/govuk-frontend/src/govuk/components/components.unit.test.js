@@ -2,7 +2,11 @@ const { globSync } = require('fs')
 const { join, basename } = require('path')
 
 const { paths } = require('@govuk-frontend/config')
-const { compileSassFile } = require('@govuk-frontend/helpers/tests')
+const {
+  compileSassFile,
+  compileSassString
+} = require('@govuk-frontend/helpers/tests')
+const { sassNull } = require('sass-embedded')
 const { default: slash } = require('slash')
 const stylelint = require('stylelint')
 
@@ -118,10 +122,40 @@ describe('Components', () => {
         let css
         let sassPath
 
-        beforeAll(async () => {
-          sassPath = join(componentFolder, `_${componentName}.scss`)
+        let sassConfig
+        let warnCalls
 
-          css = (await compileSassFile(sassPath)).css
+        beforeAll(async () => {
+          sassPath = join(componentFolder, `${componentName}`)
+
+          const sass = `
+            // Mock a deprecation warning having been triggered by another component
+            // to ensure each component will output a deprecation warning rather than
+            // force developers to chase them one by one
+            @import 'settings/warnings';
+            @include _component-scss-file-warning(mock-component);
+
+            // Sass works using URLs not paths, so we need (particularly for windows):
+            // 1. the 'file:' protocol to make this a URL
+            // 2. to turn any backslash into forward slash
+            @import "file:${slash(sassPath)}";
+          `
+
+          // Create a mock warn function that we can use to override the native @warn
+          // function, that we can make assertions about post-render.
+          const mockWarnFunction = jest.fn().mockReturnValue(sassNull)
+
+          sassConfig = {
+            logger: {
+              warn: mockWarnFunction
+            }
+          }
+
+          const compilationResult = await compileSassString(sass, sassConfig)
+          css = compilationResult.css
+
+          // Mocks are reset
+          warnCalls = mockWarnFunction.mock.calls
         })
 
         it("includes the component's CSS", () => {
@@ -143,6 +177,20 @@ describe('Components', () => {
           }
 
           return expect(linter.results[0].warnings).toHaveLength(0)
+        })
+
+        it('logs a deprecation warning when imported', () => {
+          const warningText =
+            `Importing \`<PATH_TO_GOVUK_FRONTEND>/components/${componentName}/${componentName}\` is deprecated.` +
+            ` Import \`<PATH_TO_GOVUK_FRONTEND>/components/${componentName}\` instead.` +
+            ' To silence this warning, update $govuk-suppressed-warnings with key: "component-scss-files"'
+
+          // Calls to `warn` are registered as arrays with one item per call
+          // As there may be other calls to warn, but we're not interested in those,
+          // we'll use `arrayContaining` for a partial comparison of the list of calls
+          expect(warnCalls).toEqual(
+            expect.arrayContaining([[warningText, expect.anything()]])
+          )
         })
       })
     })
