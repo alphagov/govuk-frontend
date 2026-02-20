@@ -1,3 +1,5 @@
+@use "sass:string";
+
 @include govuk-exports("govuk/component/breadcrumbs") {
   // Component font-size on the Frontend (used for calculations)
   $font-size: 16;
@@ -71,12 +73,12 @@
       border-width: $chevron-border-min-width $chevron-border-min-width 0 0;
       border-color: $chevron-border-colour;
 
-      @supports (border-width: unquote("max(0px)")) {
+      @supports (border-width: string.unquote("max(0px)")) {
         $border-width-eval: "max(#{$chevron-border-min-width}, #{$chevron-border-width})";
 
         // Ensure that the chevron never gets smaller than 16px
-        border-width: unquote($border-width-eval) unquote($border-width-eval) 0 0;
-        font-size: unquote("max(#{$font-size * 1px}, 1em)");
+        border-width: string.unquote($border-width-eval) string.unquote($border-width-eval) 0 0;
+        font-size: string.unquote("max(#{$font-size * 1px}, 1em)");
       }
     }
 

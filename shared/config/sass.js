@@ -2,14 +2,8 @@
  * @type {import('sass-embedded').Options<"async">}
  */
 const deprecationOptions = {
-  silenceDeprecations: [
-    'color-functions',
-    'global-builtin',
-    'import',
-    'mixed-decls',
-    'slash-div'
-  ],
-  quietDeps: true
+  silenceDeprecations: ['import', 'mixed-decls'],
+  fatalDeprecations: ['global-builtin']
 }
 
 module.exports = {

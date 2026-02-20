@@ -2,6 +2,8 @@
 /// @group tools/unit-conversion
 ////
 
+@use "sass:math";
+
 @import "../settings/typography-responsive";
 
 /// Convert pixels to em
@@ -12,11 +14,11 @@
 /// @access public
 
 @function govuk-em($value, $context-font-size: $govuk-root-font-size) {
-  @if unitless($value) {
+  @if math.is-unitless($value) {
     $value: $value * 1px;
   }
-  @if unitless($context-font-size) {
+  @if math.is-unitless($context-font-size) {
     $context-font-size: $context-font-size * 1px;
   }
-  @return $value / $context-font-size * 1em;
+  @return math.div($value, $context-font-size) * 1em;
 }
