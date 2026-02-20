@@ -54,6 +54,7 @@
     "gulp": "^5.0.1",
     "gulp-cli": "^3.0.0",
     "nodemon": "^3.1.11",
+    "nunjucks": "^3.2.4",
     "postcss-pseudo-classes": "^0.4.0",
     "puppeteer": "^24.34.0",
     "rollup": "^4.56.0",
@@ -61,8 +62,5 @@
     "supertest": "^7.2.2",
     "typedoc": "^0.28.16",
     "typedoc-plugin-missing-exports": "^4.1.2"
-  },
-  "optionalDependencies": {
-    "nunjucks": "^3.2.4"
   }
 }
