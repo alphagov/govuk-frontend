@@ -36,9 +36,10 @@ describe('Colour palette', () => {
     ['black', ['primary', 'tint-25', 'tint-50', 'tint-80', 'tint-95']]
   ])('Provides expected variants for `%s`', async (colour, variants) => {
     const sass = `
+      @use "sass:map";
       @import "settings/colours-palette";
 
-      $variants: map-keys(map-get($_govuk-palette, "#{${colour}}"));
+      $variants: map.keys(map.get($_govuk-palette, "#{${colour}}"));
 
       :root {
         variants: $variants;
@@ -56,10 +57,12 @@ describe('Colour palette', () => {
 
   it.each(['white'])('Provides a colour for `%s`', async (colour) => {
     const sass = `
+      @use "sass:map";
+      @use "sass:meta";
       @import "settings/colours-palette";
 
       :root {
-        type: type-of(map-get($_govuk-palette, "#{${colour}}"));
+        type: meta.type-of(map.get($_govuk-palette, "#{${colour}}"));
       }
     `
 
@@ -91,11 +94,12 @@ describe('Functional colours', () => {
 
   it('should allow people to define custom colours before `@import`', async () => {
     const sass = `
+      @use "sass:map";
       $govuk-functional-colours: (text: rebeccapurple);
       @import "settings/colours-functional";
 
       :root {
-        value: map-get($govuk-functional-colours, text);
+        value: map.get($govuk-functional-colours, text);
       }
     `
 
@@ -109,12 +113,13 @@ describe('Functional colours', () => {
   })
   it('should allow people to define custom colours with `@use`', async () => {
     const sass = `
+      @use "sass:map";
       @use "settings/colours-functional" with (
         $govuk-functional-colours: (text: rebeccapurple)
       );
 
       :root {
-        value: map-get(colours-functional.$govuk-functional-colours, text);
+        value: map.get(colours-functional.$govuk-functional-colours, text);
       }
     `
 
@@ -134,9 +139,7 @@ describe('Functional colours', () => {
     `
 
     await expect(compileSassString(sass)).rejects.toThrow(
-      'Unknown colour `non-existing-colour` (available colours: brand, text, template-background,' +
-        ' body-background, print-text, secondary-text, focus, focus-text, error,' +
-        ' success, border, input-border, hover, link, link-visited, link-hover, link-active)'
+      'Unknown colour `non-existing-colour`' // partial string match
     )
   })
 
@@ -183,12 +186,7 @@ describe('Functional colours', () => {
 
         const { css } = await compileSassString(sass, sassConfig)
 
-        expect(mockWarnFunction).not.toHaveBeenCalledWith(
-          `Using the \`$govuk-${functionalColourName}-colour\` variable to configure a new value is deprecated.` +
-            ` Please use \`$govuk-functional-colours: (${functionalColourName}: <NEW_COLOUR_VALUE>);\`.` +
-            ' To silence this warning, update $govuk-suppressed-warnings with key: "applied-colour-variables"',
-          expect.anything()
-        )
+        expect(mockWarnFunction).not.toHaveBeenCalled()
 
         expect(css).toContain(`result: true;`)
       })
@@ -204,8 +202,8 @@ describe('Functional colours', () => {
         // Expect our mocked @warn function to have been called once with a single
         // argument, which should be the deprecation notice
         expect(mockWarnFunction).toHaveBeenCalledWith(
-          `Using the \`$govuk-${functionalColourName}-colour\` variable to configure a new value is deprecated.` +
-            ` Please use \`$govuk-functional-colours: (${functionalColourName}: <NEW_COLOUR_VALUE>);\`.` +
+          `Setting \`$govuk-${functionalColourName}-colour\` no longer has any effect.` +
+            ` Use \`$govuk-functional-colours: (${functionalColourName}: <NEW_COLOUR_VALUE>);\` instead.` +
             ' To silence this warning, update $govuk-suppressed-warnings with key: "applied-colour-variables"',
           expect.anything()
         )
@@ -224,12 +222,7 @@ describe('Functional colours', () => {
 
         // Expect our mocked @warn function to have been called once with a single
         // argument, which should be the deprecation notice
-        expect(mockWarnFunction).not.toHaveBeenCalledWith(
-          `Using the \`$govuk-${functionalColourName}-colour\` variable to configure a new value is deprecated.` +
-            ` Please use \`$govuk-functional-colours: (${functionalColourName}: <NEW_COLOUR_VALUE>);\`.` +
-            ' To silence this warning, update $govuk-suppressed-warnings with key: "applied-colour-variables"',
-          expect.anything()
-        )
+        expect(mockWarnFunction).not.toHaveBeenCalled()
       })
     })
   })
@@ -238,6 +231,7 @@ describe('Functional colours', () => {
 describe('Organisation colours', () => {
   it('should define contrast-safe colours that meet contrast requirements', async () => {
     const sass = `
+      @use "sass:map";
       @import "settings/colours-palette";
       @import "settings/colours-organisations";
       @import "settings/colours-functional";
@@ -246,9 +240,9 @@ describe('Organisation colours', () => {
       @import "sass-color-helpers/stylesheets/color-helpers";
 
       $minimum-contrast: 4.5;
-      $body-background-colour: _govuk-resolve-colour(map-get($govuk-functional-colours, body-background));
+      $body-background-colour: _govuk-resolve-colour(map.get($govuk-functional-colours, body-background));
 
-      @each $organisation in map-keys($govuk-colours-organisations) {
+      @each $organisation in map.keys($govuk-colours-organisations) {
 
         $colour: govuk-organisation-colour($organisation);
         $contrast: ch-color-contrast($body-background-colour, $colour);
@@ -261,6 +255,10 @@ describe('Organisation colours', () => {
       }
     `
 
-    await expect(compileSassString(sass)).resolves
+    // sass-color-helpers relies on global builtins which would trigger a
+    // deprecation that breaks the compilation. As the settings are thoroughly
+    // tested by other of our tests, we'll silence the deprecations here
+    // waiting for us to replace the function
+    await expect(compileSassString(sass, { quietDeps: true })).resolves
   })
 })

@@ -1,15 +1,18 @@
+@use "sass:math";
+
 @include govuk-exports("govuk/component/service-navigation") {
   $govuk-service-navigation-active-link-border-width: govuk-spacing(1);
-  $govuk-service-navigation-background: govuk-colour("black", $variant: "tint-95");
-  $govuk-service-navigation-border-colour: govuk-functional-colour(border);
-
-  // We make the link colour a little darker than normal here so that it has
-  // better perceptual contrast with the navigation background.
-  $govuk-service-navigation-link-colour: govuk-colour("blue", "shade-10");
+  $govuk-service-navigation-text-colour: govuk-functional-colour(surface-text);
+  $govuk-service-navigation-background: govuk-functional-colour(surface-background);
+  $govuk-service-navigation-border-colour: govuk-functional-colour(surface-border);
 
   .govuk-service-navigation {
-    border-bottom: 1px solid $_govuk-rebrand-border-colour-on-blue-tint-95;
-    background-color: govuk-colour("blue", "tint-95");
+    @include govuk-font($size: 19);
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: $govuk-service-navigation-border-colour;
+    color: $govuk-service-navigation-text-colour;
+    background-color: $govuk-service-navigation-background;
   }
 
   .govuk-service-navigation__container {
@@ -29,7 +32,12 @@
   .govuk-service-navigation__service-name {
     position: relative;
     margin: govuk-spacing(2) 0;
-    border: 0 solid $govuk-service-navigation-link-colour;
+
+    // A border matching the link colour is used to mark the active section –
+    // see the `govuk-service-navigation__item--active` class
+    border-width: 0;
+    border-style: solid;
+    border-color: govuk-functional-colour(link);
 
     @media #{govuk-from-breakpoint(tablet)} {
       // inline-block is used as a fallback for browsers that don't support flexbox
@@ -44,7 +52,7 @@
       // padding (2×15), minus bottom border (1); 19 is the font-size at this
       // point. This gives us the perfect fractional line height to make the
       // overall component 60px high
-      line-height: (29 / 19);
+      line-height: math.div(29, 19);
 
       &:not(:last-child) {
         @include govuk-responsive-margin(6, $direction: right);
@@ -82,12 +90,6 @@
     @include govuk-link-common;
     @include govuk-link-style-no-underline;
     @include govuk-link-style-no-visited-state;
-
-    &:not(:hover):not(:focus) {
-      // We set the colour here as we don't want to override the hover or
-      // focus colours
-      color: $govuk-service-navigation-link-colour;
-    }
   }
 
   //
@@ -95,7 +97,7 @@
   //
 
   .govuk-service-navigation__service-name {
-    @include govuk-font($size: 19, $weight: bold);
+    @include govuk-typography-weight-bold;
   }
 
   // Annoyingly this requires a compound selector in order to overcome the
@@ -121,7 +123,7 @@
     margin: govuk-spacing(2) 0;
     padding: 0;
     border: 0;
-    color: $govuk-service-navigation-link-colour;
+    color: govuk-functional-colour(link);
     background: none;
     word-break: break-all;
     cursor: pointer;
@@ -154,7 +156,6 @@
   }
 
   .govuk-service-navigation__list {
-    @include govuk-font($size: 19);
     margin: 0;
     margin-bottom: govuk-spacing(3);
     padding: 0;
@@ -205,7 +206,7 @@
     .govuk-width-container {
       border-width: 1px 0;
       border-style: solid;
-      border-color: $_govuk-rebrand-border-colour-on-blue-tint-95;
+      border-color: $govuk-service-navigation-border-colour;
     }
 
     // Subtract 1px of space to account for the extra border-top

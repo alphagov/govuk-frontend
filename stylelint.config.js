@@ -209,6 +209,8 @@ module.exports = {
       'src',
       'cursor',
       '-webkit-appearance'
-    ]
+    ],
+    'scss/function-disallowed-list': ['if'],
+    'scss/no-global-function-names': true
   }
 }

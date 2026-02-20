@@ -1,8 +1,12 @@
 ////
 /// @group helpers/typography
 ////
+@use "sass:map";
+@use "sass:math";
+@use "sass:string";
 
 @import "../tools/px-to-rem";
+@import "../tools/if";
 
 /// 'Common typography' helper
 ///
@@ -49,7 +53,7 @@
 /// @access public
 
 @mixin govuk-typography-weight-regular($important: false) {
-  font-weight: $govuk-font-weight-regular if($important, !important, null);
+  font-weight: $govuk-font-weight-regular govuk-if($important, !important);
 }
 
 /// Bold font weight helper
@@ -59,7 +63,7 @@
 /// @access public
 
 @mixin govuk-typography-weight-bold($important: false) {
-  font-weight: $govuk-font-weight-bold if($important, !important, null);
+  font-weight: $govuk-font-weight-bold govuk-if($important, !important);
 }
 
 /// Tabular number helper
@@ -76,7 +80,7 @@
 /// @access public
 
 @mixin govuk-font-tabular-numbers($important: false) {
-  font-variant-numeric: tabular-nums if($important, !important, null);
+  font-variant-numeric: tabular-nums govuk-if($important, !important);
 }
 
 /// Word break helper
@@ -90,10 +94,10 @@
 
 @mixin govuk-text-break-word($important: false) {
   // IE 11 and Edge 16–17 only support the non-standard `word-wrap` property
-  word-wrap: break-word if($important, !important, null);
+  word-wrap: break-word govuk-if($important, !important);
 
   // All other browsers support `overflow-wrap`
-  overflow-wrap: break-word if($important, !important, null);
+  overflow-wrap: break-word govuk-if($important, !important);
 }
 
 /// Convert line-heights specified in pixels into a relative value, unless
@@ -107,8 +111,8 @@
 /// @access private
 
 @function _govuk-line-height($line-height, $font-size) {
-  @if not unitless($line-height) and unit($line-height) == unit($font-size) {
-    $line-height: $line-height / $font-size;
+  @if not math.is-unitless($line-height) and math.unit($line-height) == math.unit($font-size) {
+    $line-height: math.div($line-height, $font-size);
   }
 
   @return $line-height;
@@ -153,21 +157,21 @@
 @mixin govuk-font-size($size, $line-height: false, $important: false) {
   // Flag font sizes that start with underscores so we can suppress warnings on
   // deprecated sizes used internally, for example `govuk-font($size: "_14")`
-  $size-internal-use-only: str-slice(#{$size}, 1, 1) == "_";
+  $size-internal-use-only: string.slice(#{$size}, 1, 1) == "_";
 
   // Remove underscore from font sizes flagged for internal use
   @if $size-internal-use-only {
-    $size: str-slice(#{$size}, 2);
+    $size: string.slice(#{$size}, 2);
   }
 
   // Check for a font map exactly matching the given size
-  $font-map: map-get($govuk-typography-scale, $size);
+  $font-map: map.get($govuk-typography-scale, $size);
 
   // No match? Try with string type (e.g. $size: "16" not 16)
   @if not $font-map {
-    @each $font-size in map-keys($govuk-typography-scale) {
+    @each $font-size in map.keys($govuk-typography-scale) {
       @if not $font-map and "#{$font-size}" == "#{$size}" {
-        $font-map: map-get($govuk-typography-scale, $font-size);
+        $font-map: map.get($govuk-typography-scale, $font-size);
       }
     }
   }
@@ -178,39 +182,46 @@
   }
 
   // Check for a deprecation within the type scale
-  $deprecation: map-get($font-map, "deprecation");
+  $deprecation: map.get($font-map, "deprecation");
 
   @if $deprecation {
     // Warn on deprecated font sizes unless flagged for internal use
     @if not $size-internal-use-only {
-      @include _warning(map-get($deprecation, "key"), map-get($deprecation, "message"));
+      @include _warning(map.get($deprecation, "key"), map.get($deprecation, "message"));
     }
 
     // remove the deprecation map keys so they do not break the breakpoint loop
-    $font-map: map-remove($font-map, "deprecation");
+    $font-map: map.remove($font-map, "deprecation");
   }
 
   @each $breakpoint, $breakpoint-map in $font-map {
-    $font-size: map-get($breakpoint-map, "font-size");
+    $font-size: map.get($breakpoint-map, "font-size");
     $font-size-rem: govuk-px-to-rem($font-size);
 
     // $calculated-line-height is a separate variable from $line-height,
     // as otherwise the value would get redefined with each loop and
     // eventually break _govuk-line-height.
-    //
+    // 1. See if the function was called with a specific line-height
+    $calculated-line-height: $line-height;
+    // 2. Default to the breakpoint-map if no specific value was given
+    @if not $calculated-line-height {
+      $calculated-line-height: map.get($breakpoint-map, "line-height");
+    }
+
+    // 3. Turn the value into a unitless line-height if possible
     // We continue to call the param $line-height to stay consistent with the
     // naming with govuk-font.
     $calculated-line-height: _govuk-line-height(
-      $line-height: if($line-height, $line-height, map-get($breakpoint-map, "line-height")),
+      $line-height: $calculated-line-height,
       $font-size: $font-size
     );
 
     // Mark rules as !important if $important is true - this will result in
     // these variables becoming strings, so this needs to happen *after* they
     // are used in calculations
-    $font-size: $font-size if($important, !important, null);
-    $font-size-rem: $font-size-rem if($important, !important, null);
-    $calculated-line-height: $calculated-line-height if($important, !important, null);
+    $font-size: $font-size govuk-if($important, !important);
+    $font-size-rem: $font-size-rem govuk-if($important, !important);
+    $calculated-line-height: $calculated-line-height govuk-if($important, !important);
 
     @if not $breakpoint {
       font-size: $font-size-rem;
