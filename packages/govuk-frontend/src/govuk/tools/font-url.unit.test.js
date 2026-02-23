@@ -108,5 +108,60 @@ describe('@function font-url', () => {
         })
       })
     })
+
+    describe('as a function', () => {
+      it('executes a native Sass function', async () => {
+        const sass = `
+          @use "sass:meta";
+          @use "sass:string";
+          @import "tools/font-url";
+
+          $govuk-fonts-path: '/path/to/fonts/';
+          $govuk-font-url-function: meta.get-function(to-upper-case, $module: string);
+
+          @font-face {
+            font-family: "whatever";
+            src: govuk-font-url("whatever.woff2");
+          }
+        `
+
+        await expect(compileSassString(sass)).resolves.toMatchObject({
+          css: outdent`
+            @font-face {
+              font-family: "whatever";
+              src: "WHATEVER.WOFF2";
+            }
+          `
+        })
+      })
+
+      it('can be overridden to use a custom function', async () => {
+        const sass = `
+          @use "sass:meta";
+          @import "tools/font-url";
+
+          @function custom-url-handler($filename) {
+            @return url("/custom/#{$filename}");
+          }
+
+          $govuk-fonts-path: '/assets/fonts/';
+          $govuk-font-url-function: meta.get-function('custom-url-handler');
+
+          @font-face {
+            font-family: "whatever";
+            src: govuk-font-url("whatever.woff2");
+          }
+        `
+
+        await expect(compileSassString(sass)).resolves.toMatchObject({
+          css: outdent`
+            @font-face {
+              font-family: "whatever";
+              src: url("/custom/whatever.woff2");
+            }
+          `
+        })
+      })
+    })
   })
 })
