@@ -86,6 +86,15 @@ $govuk-image-url-function: false !default;
 ///
 ///   $govuk-font-url-function: 'my-url-handler';
 ///
+/// @example scss - From an external module
+///
+///   @use "sass:meta";
+///   // Include the module containing the handler function
+///   @use "url-handlers";
+///
+///   // Then pass the handler function using `meta.get-function`
+///   $govuk-font-url-function: meta.get-function("font-url", $module: "url-handlers");
+///
 /// @access public
 
 $govuk-font-url-function: false !default;
