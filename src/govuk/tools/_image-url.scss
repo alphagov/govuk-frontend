@@ -15,12 +15,19 @@
 
 @function govuk-image-url($filename) {
   // prettier-ignore
-  $use-custom-function: meta.variable-exists("govuk-image-url-function")
-    and $govuk-image-url-function
-    and meta.function-exists($govuk-image-url-function);
+  $custom-function: meta.variable-exists("govuk-image-url-function")
+    and $govuk-image-url-function;
 
-  @if $use-custom-function {
-    @return meta.call(meta.get-function($govuk-image-url-function), $filename);
+  @if meta.type-of($custom-function) == "string" {
+    @if meta.function-exists($custom-function) {
+      $custom-function: meta.get-function($custom-function);
+    } @else {
+      $custom-function: null;
+    }
+  }
+
+  @if $custom-function {
+    @return meta.call($custom-function, $filename);
   } @else {
     @return url($govuk-images-path + $filename);
   }
