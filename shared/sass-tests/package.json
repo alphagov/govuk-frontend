@@ -1,0 +1,14 @@
+{
+  "private": true,
+  "name": "@govuk-frontend/sass-tests",
+  "description": "GOV.UK Frontend Sass tests",
+  "engines": {
+    "node": "^24.11.0",
+    "npm": "11.6.2"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@govuk-frontend/config": "*",
+    "sass-embedded": "^1.89.2"
+  }
+}
