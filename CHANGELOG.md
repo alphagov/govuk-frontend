@@ -14,6 +14,24 @@ This will allow the variables to be configured when loading GOV.UK Frontend as a
 
 We made this change in [#6767: Use Sass functions to configure asset URLs](https://github.com/alphagov/govuk-frontend/pull/6767).
 
+### Recommended changes
+
+#### Use `<COMPONENT_NAME>/_index.scss` to import individual components
+
+We've deprecated each component's `_<COMPONENT_NAME>.scss` files, which let you [import an individual component’s CSS using a single Sass import](https://frontend.design-system.service.gov.uk/import-css/#import-an-individual-component-s-css-using-a-single-sass-import). We'll remove the `_<COMPONENT_NAME>.scss` files in the next major release.
+
+If you were using the `_<COMPONENT_NAME>.scss` files, use the component's `_index.scss` file instead. For example:
+
+```scss
+// Previously
+@import "govuk/components/button/button";
+
+// Now
+@import "govuk/components/button";
+```
+
+We made this change in [#6761: Deprecate `_<COMPONENT_NAME>.scss` files](https://github.com/alphagov/govuk-frontend/pull/6761).
+
 ### Fixes
 
 We've made fixes to GOV.UK Frontend in the following pull requests:
