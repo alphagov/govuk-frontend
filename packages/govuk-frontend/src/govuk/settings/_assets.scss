@@ -50,6 +50,15 @@ $govuk-fonts-path: "#{$govuk-assets-path}fonts/" !default;
 ///
 ///   $govuk-image-url-function: 'my-url-handler';
 ///
+/// @example scss - From an external module
+///
+///   @use "sass:meta";
+///   // Include the module containing the handler function
+///   @use "url-handlers";
+///
+///   // Then pass the handler function using `meta.get-function`
+///   $govuk-image-url-function: meta.get-function("image-url", $module: "url-handlers");
+///
 /// @access public
 
 $govuk-image-url-function: false !default;
