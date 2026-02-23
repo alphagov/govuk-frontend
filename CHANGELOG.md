@@ -14,6 +14,8 @@ We've made fixes to GOV.UK Frontend in the following pull requests:
 
 ## v6.0.0 (Breaking release)
 
+To install this version with npm, run `npm install govuk-frontend@6.0.0`. You can also find more information about [how to stay up to date](https://frontend.design-system.service.gov.uk/staying-up-to-date/#updating-to-the-latest-version) in our documentation.
+
 ### Breaking changes
 
 #### Use Dart Sass v1.79.0 or later to compile your Sass stylesheets
