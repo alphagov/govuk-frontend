@@ -9,6 +9,9 @@
   "license": "MIT",
   "devDependencies": {
     "@govuk-frontend/config": "*",
-    "sass-embedded": "^1.89.2"
+    "@govuk-frontend/lib": "*",
+    "govuk-frontend": "*",
+    "sass-embedded": "^1.89.2",
+    "slash": "^5.1.0"
   }
 }
