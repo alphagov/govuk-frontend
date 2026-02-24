@@ -1,4 +1,4 @@
 @function fonts-url($filename) {
   // Some custom URL handling
-  @return url('example.woff');
+  @return url("example.woff");
 }

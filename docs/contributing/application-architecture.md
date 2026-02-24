@@ -74,3 +74,14 @@
   - `tasks/`
 
     Read about [npm and Gulp tasks](tasks.md) for more information about the tasks.
+
+- `tests/`
+
+  Tests that consume GOV.UK Frontend as a package
+  - `bundler-integrations`
+
+    Confirm that GOV.UK Frontend's JavaScript enhancements compile as intended with popular bundlers like Rollup, Webpack and Vite.
+
+  - `sass-tests`
+
+    Confirm Sass compilation output for various ways of importing GOV.UK Frontend
