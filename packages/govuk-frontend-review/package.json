@@ -56,7 +56,7 @@
     "nodemon": "^3.1.11",
     "nunjucks": "^3.2.4",
     "postcss-pseudo-classes": "^0.4.0",
-    "puppeteer": "^24.34.0",
+    "puppeteer": "^24.37.3",
     "rollup": "^4.56.0",
     "sassdoc": "^2.7.4",
     "supertest": "^7.2.2",
