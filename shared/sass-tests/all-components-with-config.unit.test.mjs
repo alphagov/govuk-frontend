@@ -13,25 +13,23 @@ const sassConfig = {
 }
 
 describe('All components, with configuration', () => {
-  it('works when user @imports everything with configuration', async () => {
+  let cssWithImport
+  let cssWithUse
+
+  beforeAll(async () => {
     const sass = `
       $govuk-functional-colours: (brand: hotpink);
-      @function my-url-handler($filename) {
-        // Some custom URL handling
-        @return url('example.woff');
-      }
+      @import "./assets-urls";
 
-      $govuk-font-url-function: 'my-url-handler';
+      $govuk-font-url-function: 'fonts-url';
 
       @import "node_modules/govuk-frontend/dist/govuk";
     `
 
-    const { css } = await compileStringAsync(sass, sassConfig)
-
-    expect(css).toMatchSnapshot()
+    cssWithImport = (await compileStringAsync(sass, sassConfig)).css
   })
 
-  it('works when user @uses everything with configuration', async () => {
+  beforeAll(async () => {
     const sass = `
       @use "sass:meta";
       @use "./assets-urls";
@@ -42,8 +40,18 @@ describe('All components, with configuration', () => {
       );
     `
 
-    const { css } = await compileStringAsync(sass, sassConfig)
+    cssWithUse = (await compileStringAsync(sass, sassConfig)).css
+  })
 
-    expect(css).toMatchSnapshot()
+  it('works when user @imports everything with configuration', async () => {
+    expect(cssWithImport).toMatchSnapshot()
+  })
+
+  it('works when user @uses everything with configuration', async () => {
+    expect(cssWithUse).toMatchSnapshot()
+  })
+
+  it('outputs the same CSS with `@import` and `@use`', () => {
+    expect(cssWithUse).toBe(cssWithImport)
   })
 })
