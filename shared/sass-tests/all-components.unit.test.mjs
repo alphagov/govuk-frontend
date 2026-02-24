@@ -1,16 +1,18 @@
 import { paths } from '@govuk-frontend/config'
-import { compileStringAsync } from 'sass-embedded'
+import { compileStringAsync, NodePackageImporter } from 'sass-embedded'
 
 /** @type {import('sass-embedded').StringOptions<"async">} */
 const sassConfig = {
   loadPaths: [paths.root],
   quietDeps: true,
-  silenceDeprecations: ['import', 'mixed-decls']
+  silenceDeprecations: ['import', 'mixed-decls'],
+  importers: [new NodePackageImporter()]
 }
 
 describe('All components', () => {
   let cssWithImport
   let cssWithUse
+  let cssWithPkg
 
   beforeAll(async () => {
     const sass = `
@@ -28,6 +30,19 @@ describe('All components', () => {
     cssWithUse = (await compileStringAsync(sass, sassConfig)).css
   })
 
+  beforeAll(async () => {
+    const sass = `
+      @use "pkg:govuk-frontend"
+    `
+
+    cssWithPkg = (
+      await compileStringAsync(sass, {
+        ...sassConfig,
+        loadPaths: null // Prevent loadPaths from interfering
+      })
+    ).css
+  })
+
   it('works when user @imports everything', () => {
     expect(cssWithImport).toMatchSnapshot()
   })
@@ -38,5 +53,9 @@ describe('All components', () => {
 
   it('outputs the same CSS with `@import` and `@use`', () => {
     expect(cssWithUse).toBe(cssWithImport)
+  })
+
+  it('outputs the same CSS with a pkg url', () => {
+    expect(cssWithPkg).toBe(cssWithUse)
   })
 })
