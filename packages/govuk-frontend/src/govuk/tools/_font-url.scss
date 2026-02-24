@@ -15,12 +15,19 @@
 
 @function govuk-font-url($filename) {
   // prettier-ignore
-  $use-custom-function: meta.variable-exists("govuk-font-url-function")
-    and $govuk-font-url-function
-    and meta.function-exists($govuk-font-url-function);
+  $custom-function: meta.variable-exists("govuk-font-url-function")
+    and $govuk-font-url-function;
 
-  @if $use-custom-function {
-    @return meta.call(meta.get-function($govuk-font-url-function), $filename);
+  @if meta.type-of($custom-function) == "string" {
+    @if meta.function-exists($custom-function) {
+      $custom-function: meta.get-function($custom-function);
+    } @else {
+      $custom-function: null;
+    }
+  }
+
+  @if $custom-function {
+    @return meta.call($custom-function, $filename);
   } @else {
     @return url($govuk-fonts-path + $filename);
   }

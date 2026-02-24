@@ -4,6 +4,16 @@ For advice on how to use these release notes, see [our guidance on staying up to
 
 ## Unreleased
 
+### New features
+
+#### Use Sass functions to configure asset URLs
+
+You can now use Sass functions (from [`meta.get-function`](https://sass-lang.com/documentation/modules/meta/#get-function)) in addition to strings for configuring `$govuk-image-url-function` and `$govuk-font-url-function`.
+
+This will allow the variables to be configured when loading GOV.UK Frontend as a module once we support `@use` and `@forward`.
+
+We made this change in [#6767: Use Sass functions to configure asset URLs](https://github.com/alphagov/govuk-frontend/pull/6767).
+
 ### Fixes
 
 We've made fixes to GOV.UK Frontend in the following pull requests:
