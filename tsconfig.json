@@ -13,6 +13,9 @@
     },
     {
       "path": "./shared/tsconfig.json"
+    },
+    {
+      "path": "./tests/tsconfig.json"
     }
   ]
 }
