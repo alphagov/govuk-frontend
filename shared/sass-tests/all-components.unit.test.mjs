@@ -1,13 +1,6 @@
-import { paths } from '@govuk-frontend/config'
-import { compileStringAsync, NodePackageImporter } from 'sass-embedded'
+import { compileStringAsync } from 'sass-embedded'
 
-/** @type {import('sass-embedded').StringOptions<"async">} */
-const sassConfig = {
-  loadPaths: [paths.root],
-  quietDeps: true,
-  silenceDeprecations: ['import', 'mixed-decls'],
-  importers: [new NodePackageImporter()]
-}
+import { sassConfig } from './sass.config.js'
 
 describe('All components', () => {
   let cssWithImport

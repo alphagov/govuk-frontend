@@ -1,17 +1,11 @@
 import { globSync } from 'node:fs'
 import { relative } from 'node:path'
 
-import { paths } from '@govuk-frontend/config'
 import { packageNameToPath } from '@govuk-frontend/lib/names'
 import { compileStringAsync } from 'sass-embedded'
 import slash from 'slash'
 
-/** @type {import('sass-embedded').StringOptions<"async">} */
-const sassConfig = {
-  loadPaths: [paths.root],
-  quietDeps: true,
-  silenceDeprecations: ['import', 'mixed-decls']
-}
+import { sassConfig } from './sass.config.js'
 
 // Grab the list of components synchronously so we can create
 // individual test suites for each of them

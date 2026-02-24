@@ -1,16 +1,6 @@
-// Despite being a `.mjs` file, but it'll run as a CommonJS module
-// in Jest, so we won't have access to `import.meta.dirname` but `__dirname`
-/* global __dirname */
-
-import { paths } from '@govuk-frontend/config'
 import { compileStringAsync } from 'sass-embedded'
 
-/** @type {import('sass-embedded').StringOptions<"async">} */
-const sassConfig = {
-  loadPaths: [paths.root, __dirname],
-  quietDeps: true,
-  silenceDeprecations: ['import', 'mixed-decls']
-}
+import { sassConfig } from './sass.config.js'
 
 describe('All components, with configuration', () => {
   let cssWithImport

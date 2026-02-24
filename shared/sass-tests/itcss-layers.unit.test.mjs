@@ -1,12 +1,6 @@
-import { paths } from '@govuk-frontend/config'
 import { compileStringAsync } from 'sass-embedded'
 
-/** @type {import('sass-embedded').StringOptions<"async">} */
-const sassConfig = {
-  loadPaths: [paths.root],
-  quietDeps: true,
-  silenceDeprecations: ['import', 'mixed-decls']
-}
+import { sassConfig } from './sass.config.js'
 
 describe('ITCSS layers', () => {
   describe.each([
