@@ -12,6 +12,7 @@ We've made fixes to GOV.UK Frontend in the following pull requests:
 - [#6730: Fix `if-function` Sass deprecation](https://github.com/alphagov/govuk-frontend/pull/6730)
 - [#6731: Fix `global-builtin` Sass deprecation](https://github.com/alphagov/govuk-frontend/pull/6731)
 - [#6679: Fix summary list cells becoming vertically misaligned when a multi-line inline-block element is present](https://github.com/alphagov/govuk-frontend/pull/6679) - thanks to @DannyPayne-CH for raising the issue
+- [#6678: Explicitly set box-shadow colour for focused inputs](https://github.com/alphagov/govuk-frontend/pull/6678) - thanks to @colinrotherham for raising the issue
 
 ## v6.0.0 (Breaking release)
 
