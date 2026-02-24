@@ -9,23 +9,34 @@ const sassConfig = {
 }
 
 describe('All components', () => {
-  it('works when user @imports everything', async () => {
+  let cssWithImport
+  let cssWithUse
+
+  beforeAll(async () => {
     const sass = `
       @import "node_modules/govuk-frontend/dist/govuk";
     `
 
-    const { css } = await compileStringAsync(sass, sassConfig)
-
-    expect(css).toMatchSnapshot()
+    cssWithImport = (await compileStringAsync(sass, sassConfig)).css
   })
 
-  it('works when user @uses everything', async () => {
+  beforeAll(async () => {
     const sass = `
       @use "node_modules/govuk-frontend/dist/govuk";
     `
 
-    const { css } = await compileStringAsync(sass, sassConfig)
+    cssWithUse = (await compileStringAsync(sass, sassConfig)).css
+  })
 
-    expect(css).toMatchSnapshot()
+  it('works when user @imports everything', () => {
+    expect(cssWithImport).toMatchSnapshot()
+  })
+
+  it('works when user @uses everything', () => {
+    expect(cssWithUse).toMatchSnapshot()
+  })
+
+  it('outputs the same CSS with `@import` and `@use`', () => {
+    expect(cssWithUse).toBe(cssWithImport)
   })
 })
