@@ -40,10 +40,6 @@ describe('All components', () => {
     expect(cssWithImport).toMatchSnapshot()
   })
 
-  it('works when user @uses everything', () => {
-    expect(cssWithUse).toMatchSnapshot()
-  })
-
   it('outputs the same CSS with `@import` and `@use`', () => {
     expect(cssWithUse).toBe(cssWithImport)
   })

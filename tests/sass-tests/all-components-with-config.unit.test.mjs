@@ -37,10 +37,6 @@ describe('All components, with configuration', () => {
     expect(cssWithImport).toMatchSnapshot()
   })
 
-  it('works when user @uses everything with configuration', async () => {
-    expect(cssWithUse).toMatchSnapshot()
-  })
-
   it('outputs the same CSS with `@import` and `@use`', () => {
     expect(cssWithUse).toBe(cssWithImport)
   })
