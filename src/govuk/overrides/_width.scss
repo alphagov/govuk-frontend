@@ -1,3 +1,6 @@
+@import "../tools/exports";
+@import "../helpers/media-queries";
+
 // stylelint-disable declaration-no-important
 @include govuk-exports("govuk/overrides/width") {
   .govuk-\!-width-full {
