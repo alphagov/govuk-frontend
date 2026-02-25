@@ -1,3 +1,6 @@
+@import "../tools/exports";
+@import "../helpers/typography";
+
 @include govuk-exports("govuk/core/lists") {
   %govuk-list {
     @include govuk-font($size: 19);

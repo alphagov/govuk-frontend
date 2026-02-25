@@ -5,8 +5,14 @@
 @use "sass:math";
 @use "sass:string";
 
+@import "../settings/colours-functional";
+@import "../settings/spacing";
+@import "../settings/typography-font";
 @import "../tools/px-to-rem";
 @import "../tools/if";
+@import "font-faces";
+@import "media-queries";
+@import "spacing";
 
 /// 'Common typography' helper
 ///
