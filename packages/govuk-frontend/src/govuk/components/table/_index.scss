@@ -1,3 +1,5 @@
+@import "../../base";
+
 @include govuk-exports("govuk/component/table") {
   .govuk-table {
     @include govuk-font($size: 19);

@@ -1,3 +1,5 @@
+@import "../../base";
+
 @include govuk-exports("govuk/component/fieldset") {
   .govuk-fieldset {
     min-width: 0;

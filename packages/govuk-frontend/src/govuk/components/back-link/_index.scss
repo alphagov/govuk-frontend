@@ -1,5 +1,7 @@
 @use "sass:string";
 
+@import "../../base";
+
 @include govuk-exports("govuk/component/back-link") {
   // Component font-size on the Frontend (used for calculations)
   $font-size: 16;

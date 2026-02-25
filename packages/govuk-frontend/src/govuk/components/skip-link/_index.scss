@@ -1,5 +1,7 @@
 @use "sass:string";
 
+@import "../../base";
+
 @include govuk-exports("govuk/component/skip-link") {
   .govuk-skip-link {
     @include govuk-visually-hidden-focusable;
