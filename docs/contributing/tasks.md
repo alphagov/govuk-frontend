@@ -113,7 +113,7 @@ After building the project with `npm run build` the Express.js review app can be
 
 After building the project with `npm run build`, you can verify that the `govuk-frontend` package will be consumed correctly by mainstream bundlers with `npm run <BUNDLER_NAME> --workspace @govuk-frontend/bundler-integrations` (where bundler name is one of `rollup`, `webpack` or `vite`).
 
-This will use the specified bundler to compile both `shared/bundler-integrations/src/default.mjs` which is only importing one component, and `shared/bundler-integrations/src/initAll.mjs` which is importing and initialising all components via `initAll`. This helps us verify that [tree shaking] works as intended. The build output for both files is `shared/bundler-integrations/dist/<BUNDLER_NAME>/[name].js`. `default.js` should not contain the code of other components whilst `initAll.js` should contain the code for all the components.
+This will use the specified bundler to compile both `tests/bundler-integrations/src/default.mjs` which is only importing one component, and `tests/bundler-integrations/src/initAll.mjs` which is importing and initialising all components via `initAll`. This helps us verify that [tree shaking] works as intended. The build output for both files is `tests/bundler-integrations/dist/<BUNDLER_NAME>/[name].js`. `default.js` should not contain the code of other components whilst `initAll.js` should contain the code for all the components.
 
 You can also run `npm run build:all --workspace @govuk-frontend/bundler-integrations` to run all three bundlers in one go.
 
