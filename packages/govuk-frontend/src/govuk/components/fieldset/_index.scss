@@ -21,7 +21,6 @@
 
   .govuk-fieldset__legend {
     @include govuk-font($size: 19);
-    @include govuk-text-colour;
 
     // Fix legend text wrapping in Edge and IE
     // 1. IE9-11 & Edge 12-13
@@ -31,6 +30,7 @@
     max-width: 100%; // 1
     margin-bottom: govuk-spacing(2);
     padding: 0;
+    color: govuk-functional-colour(text);
 
     white-space: normal; // 1
   }
