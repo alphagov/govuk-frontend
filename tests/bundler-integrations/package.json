@@ -22,7 +22,7 @@
     "cross-env": "^10.1.0",
     "del-cli": "^7.0.0",
     "govuk-frontend": "*",
-    "rollup": "^4.56.0",
+    "rollup": "^4.59.0",
     "terser-webpack-plugin": "^5.3.16",
     "vite": "^7.3.1",
     "webpack": "^5.104.1"
