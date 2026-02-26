@@ -4,6 +4,7 @@ import { relative } from 'node:path'
 import { packageNameToPath } from '@govuk-frontend/lib/names'
 import { compileStringAsync } from 'sass-embedded'
 import slash from 'slash'
+import stylelint from 'stylelint'
 
 import { sassConfig } from './sass.config.js'
 
@@ -69,6 +70,28 @@ describe('Sass file compilation', () => {
       // `matchAll` does not return an actual `Array` so we need
       // a little conversion before we can check its length
       expect(Array.from(matches)).toHaveLength(0)
+    }
+  )
+
+  it.each(sassFiles)(
+    '%s does not reference any undefined custom properties',
+    async (sassFilePath) => {
+      const { css } = compiledFiles.get(sassFilePath)
+
+      const linter = await stylelint.lint({
+        config: { rules: { 'no-unknown-custom-properties': true } },
+        code: css
+      })
+
+      // Output stylelint warnings to make debugging easier
+      if (linter.results[0].warnings.length) {
+        console.log(
+          'Warnings were present when testing the utilities for unknown custom properties:'
+        )
+        console.log(linter.results[0].warnings)
+      }
+
+      return expect(linter.results[0].warnings).toHaveLength(0)
     }
   )
 })
