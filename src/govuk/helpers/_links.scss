@@ -222,13 +222,13 @@
 
 @mixin govuk-link-style-text {
   &:link,
-  &:visited {
+  &:visited,
+  &:active {
     color: govuk-functional-colour(text);
   }
 
-  &:active,
   &:focus {
-    color: govuk-functional-colour(text);
+    color: govuk-functional-colour(focus-text);
   }
 }
 
