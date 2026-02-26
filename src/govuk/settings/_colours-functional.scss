@@ -2,9 +2,10 @@
 /// @group settings/colours
 ////
 @use "sass:list";
+@use "sass:map";
 @use "sass:meta";
 
-@import "../helpers/colour";
+@import "../settings/warnings";
 
 /// Default definitions of the functional colours
 ///
@@ -100,6 +101,27 @@ $govuk-default-functional-colours: (
     )
   )
 );
+
+/// Validates and merges functional colour overrides with defaults.
+///
+/// Throws an error if any provided colour name does not exist in the default
+/// functional colours map.
+///
+/// @param {Map} $colours Functional colour overrides.
+/// @param {Map} $defaults Default functional colours.
+/// @return {Map} Merged functional colours.
+/// @access private
+@function _govuk-define-functional-colours($colours, $defaults) {
+  $existing-colours: map.keys($defaults);
+
+  @each $colour-name, $colour in $colours {
+    @if not list.index($existing-colours, $colour-name) {
+      @error 'Unknown colour `#{$colour-name}` (available colours: #{$existing-colours})';
+    }
+  }
+
+  @return map.merge($defaults, $colours);
+}
 
 /// Functional colours for the GOV.UK palette.
 ///
