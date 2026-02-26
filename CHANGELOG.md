@@ -4,11 +4,16 @@ For advice on how to use these release notes, see [our guidance on staying up to
 
 ## Unreleased
 
+To install this version with npm, run `npm install govuk-frontend@6.1.0`. You can also find more information about [how to stay up to date](https://frontend.design-system.service.gov.uk/staying-up-to-date/#updating-to-the-latest-version) in our documentation.
+
 ### New features
 
 #### Use Sass functions to configure asset URLs
 
-You can now use Sass functions (from [`meta.get-function`](https://sass-lang.com/documentation/modules/meta/#get-function)) in addition to strings for configuring `$govuk-image-url-function` and `$govuk-font-url-function`.
+You can now use Sass functions from [`meta.get-function`](https://sass-lang.com/documentation/modules/meta/#get-function) in addition to strings to configure:
+
+- `$govuk-image-url-function`
+- `$govuk-font-url-function`
 
 This will allow the variables to be configured when loading GOV.UK Frontend as a module once we support `@use` and `@forward`.
 
