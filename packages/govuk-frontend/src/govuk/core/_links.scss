@@ -1,3 +1,11 @@
+@import "../settings/links";
+@import "../settings/measurements";
+@import "../tools/exports";
+@import "../helpers/colour";
+@import "../helpers/focused";
+@import "../helpers/links";
+@import "../helpers/typography";
+
 @include govuk-exports("govuk/core/links") {
   %govuk-link {
     @include govuk-link-common;

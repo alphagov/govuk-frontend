@@ -294,11 +294,10 @@ describe('@function govuk-functional-colour', () => {
         "error": #ff0000,
         "success": #00ff00,
         "link": #0000ff,
-        "rebeccapurple": #663399,
-        "palette-reference": (name: "magenta"),
-        "palette-reference-with-variant": (name: "teal", variant: "tint-25"),
-        "palette-reference-with-empty-name": (name: ""),
-        "palette-reference-with-empty-variant": (name: "magenta", variant: "")
+        "brand": (name: "magenta"), // palette reference
+        "focus": (name: "teal", variant: "tint-25"), // palette reference with variant
+        "border": (name: ""), // palette reference with empty name
+        "hover": (name: "magenta", variant: "") // palette reference with empty variant
 
       );
 
@@ -329,14 +328,14 @@ describe('@function govuk-functional-colour', () => {
       ${sassBootstrap}
 
       .foo {
-        color: govuk-functional-colour(rebeccapurple);
+        color: govuk-functional-colour(success);
       }
     `
 
     await expect(compileSassString(sass, sassConfig)).resolves.toMatchObject({
       css: outdent`
         .foo {
-          color: var(--govuk-rebeccapurple-colour, #663399);
+          color: var(--govuk-success-colour, #00ff00);
         }
       `
     })
@@ -348,14 +347,14 @@ describe('@function govuk-functional-colour', () => {
         ${sassBootstrap}
 
         .foo {
-          color: govuk-functional-colour('palette-reference-with-variant');
+          color: govuk-functional-colour('focus');
         }
       `
 
       await expect(compileSassString(sass, sassConfig)).resolves.toMatchObject({
         css: expect.stringContaining(outdent`
           .foo {
-            color: var(--govuk-palette-reference-with-variant-colour, #50a1a5);
+            color: var(--govuk-focus-colour, #50a1a5);
           }
         `)
       })
@@ -366,14 +365,14 @@ describe('@function govuk-functional-colour', () => {
         ${sassBootstrap}
 
         .foo {
-          color: govuk-functional-colour('palette-reference');
+          color: govuk-functional-colour('brand');
         }
       `
 
       await expect(compileSassString(sass, sassConfig)).resolves.toMatchObject({
         css: expect.stringContaining(outdent`
           .foo {
-            color: var(--govuk-palette-reference-colour, #ca357c);
+            color: var(--govuk-brand-colour, #ca357c);
           }
         `)
       })
@@ -384,7 +383,7 @@ describe('@function govuk-functional-colour', () => {
         ${sassBootstrap}
 
         .foo {
-          color: govuk-functional-colour('palette-reference-with-empty-name');
+          color: govuk-functional-colour('border');
         }
       `
 
@@ -398,7 +397,7 @@ describe('@function govuk-functional-colour', () => {
         ${sassBootstrap}
 
         .foo {
-          color: govuk-functional-colour('palette-reference-with-empty-variant');
+          color: govuk-functional-colour('hover');
         }
       `
 
@@ -418,7 +417,7 @@ describe('@function govuk-functional-colour', () => {
     `
 
     await expect(compileSassString(sass, sassConfig)).rejects.toThrow(
-      'Unknown colour `hooloovoo` (available colours: error, success, link, rebeccapurple'
+      'Unknown colour `hooloovoo`'
     )
   })
 })

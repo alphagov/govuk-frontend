@@ -63,6 +63,28 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 :root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -74,8 +96,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 :root {
   --govuk-frontend-version: "development";
 }
-
-
 
 
 
@@ -111,6 +131,46 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   --govuk-surface-text-colour: #0b0c0c;
   --govuk-surface-border-colour: #8eb8dc;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -705,6 +765,26 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .govuk-back-link {
   font-size: 1rem;
   line-height: 1.25;
@@ -812,6 +892,26 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 .govuk-back-link--inverse::before {
   border-color: currentcolor;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1049,6 +1149,26 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 .govuk-breadcrumbs--inverse .govuk-breadcrumbs__list-item::before {
   border-color: currentcolor;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1466,6 +1586,46 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .govuk-error-message {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -1490,6 +1650,26 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     line-height: 1.15;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1687,6 +1867,26 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .govuk-label {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -1780,6 +1980,86 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 .govuk-label-wrapper {
   margin: 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2433,6 +2713,66 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .govuk-fieldset {
   min-width: 0;
   margin: 0;
@@ -2550,6 +2890,46 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   font-size: inherit;
   font-weight: inherit;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -3075,6 +3455,46 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .govuk-cookie-banner {
   padding-top: 20px;
   border-bottom: 10px solid transparent;
@@ -3095,6 +3515,126 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 .govuk-cookie-banner__message:focus {
   outline: none;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -4002,6 +4542,66 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .govuk-date-input {
   font-size: 0;
 }
@@ -4025,6 +4625,26 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 .govuk-date-input__input {
   margin-bottom: 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -4266,6 +4886,78 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     border-left-color: var(--govuk-border-colour, #cecece);
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -4802,6 +5494,46 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .govuk-exit-this-page {
   margin-bottom: 30px;
   position: -webkit-sticky;
@@ -4881,6 +5613,106 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 .govuk-exit-this-page-hide-content .govuk-exit-this-page-overlay {
   display: block !important;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -5538,6 +6370,26 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .govuk-footer {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -5810,6 +6662,26 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 .govuk-footer__list-item:last-child {
   margin-bottom: 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -6527,6 +7399,126 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .govuk-inset-text {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -6575,6 +7567,46 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 .govuk-inset-text > :last-child {
   margin-bottom: 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -6986,6 +8018,26 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .govuk-pagination {
   margin-bottom: 20px;
   display: flex;
@@ -7289,6 +8341,26 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .govuk-panel {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -7362,6 +8434,126 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 .govuk-panel__title:last-child {
   margin-bottom: 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -8038,6 +9230,46 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .govuk-tag {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -8188,6 +9420,106 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   display: table-cell;
   vertical-align: middle;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -9124,6 +10456,86 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .govuk-select {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -9177,6 +10589,26 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 .govuk-select--error:focus {
   border-color: var(--govuk-input-border-colour, #0b0c0c);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -9624,6 +11056,26 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .govuk-skip-link {
   text-decoration: underline;
   text-decoration-thickness: max(1px, .0625rem);
@@ -9701,6 +11153,26 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 .govuk-skip-link-focused-element:focus {
   outline: none;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -10171,6 +11643,26 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .govuk-table {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -10308,6 +11800,26 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     line-height: 1.15;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -10611,6 +12123,66 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     display: none;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -11352,6 +12924,106 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .govuk-warning-text {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -11493,6 +13165,28 @@ exports[`ITCSS layers core works when user @imports the layer 1`] = `
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 :root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -11504,8 +13198,6 @@ exports[`ITCSS layers core works when user @imports the layer 1`] = `
 :root {
   --govuk-frontend-version: "development";
 }
-
-
 
 
 
@@ -11541,6 +13233,52 @@ exports[`ITCSS layers core works when user @imports the layer 1`] = `
   --govuk-surface-text-colour: #0b0c0c;
   --govuk-surface-border-colour: #8eb8dc;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -11681,6 +13419,38 @@ exports[`ITCSS layers core works when user @imports the layer 1`] = `
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .govuk-list {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -11752,6 +13522,38 @@ exports[`ITCSS layers core works when user @imports the layer 1`] = `
     margin-bottom: 15px;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 .govuk-heading-xl {
@@ -12142,6 +13944,21 @@ exports[`ITCSS layers core works when user @imports the layer 1`] = `
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .govuk-section-break {
   margin: 0;
   border: 0;
@@ -12201,11 +14018,111 @@ exports[`ITCSS layers core works when user @imports the layer 1`] = `
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 "
 `;
 
 exports[`ITCSS layers helpers works when user @imports the layer 1`] = `
 "
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -12290,8 +14207,6 @@ exports[`ITCSS layers helpers works when user @imports the layer 1`] = `
 
 
 
-
-
 :root {
   --govuk-brand-colour: #1d70b8;
   --govuk-text-colour: #0b0c0c;
@@ -12314,6 +14229,32 @@ exports[`ITCSS layers helpers works when user @imports the layer 1`] = `
   --govuk-surface-text-colour: #0b0c0c;
   --govuk-surface-border-colour: #8eb8dc;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -12408,6 +14349,28 @@ exports[`ITCSS layers objects works when user @imports the layer 1`] = `
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 :root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -12419,8 +14382,6 @@ exports[`ITCSS layers objects works when user @imports the layer 1`] = `
 :root {
   --govuk-frontend-version: "development";
 }
-
-
 
 
 
@@ -12456,6 +14417,26 @@ exports[`ITCSS layers objects works when user @imports the layer 1`] = `
   --govuk-surface-text-colour: #0b0c0c;
   --govuk-surface-border-colour: #8eb8dc;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -12690,6 +14671,26 @@ exports[`ITCSS layers objects works when user @imports the layer 1`] = `
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .govuk-form-group {
   margin-bottom: 20px;
 }
@@ -12716,6 +14717,26 @@ exports[`ITCSS layers objects works when user @imports the layer 1`] = `
   padding: 0;
   border: 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -13027,6 +15048,26 @@ exports[`ITCSS layers objects works when user @imports the layer 1`] = `
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .govuk-main-wrapper {
   display: block;
   padding-top: 20px;
@@ -13049,6 +15090,26 @@ exports[`ITCSS layers objects works when user @imports the layer 1`] = `
     padding-top: 50px;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -13237,6 +15298,26 @@ exports[`ITCSS layers objects works when user @imports the layer 1`] = `
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .govuk-width-container {
   max-width: 960px;
   margin-right: 15px;
@@ -13339,6 +15420,28 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 :root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -13350,8 +15453,6 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
 :root {
   --govuk-frontend-version: "development";
 }
-
-
 
 
 
@@ -13391,6 +15492,15 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
 
 
 
+
+
+
+
+
+
+
+
+
 .govuk-\\!-display-inline {
   display: inline !important;
 }
@@ -13412,6 +15522,14 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
     display: none !important;
   }
 }
+
+
+
+
+
+
+
+
 
 .govuk-\\!-margin-0 {
   margin: 0 !important;
@@ -14514,6 +16632,7 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
 }
 
 
+
 .govuk-\\!-text-align-left {
   text-align: left !important;
 }
@@ -14525,6 +16644,32 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
 .govuk-\\!-text-align-right {
   text-align: right !important;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 .govuk-\\!-font-size-80 {
@@ -14652,6 +16797,11 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
 }
 
 
+
+
+
+
+
 .govuk-\\!-width-full {
   width: 100% !important;
 }
@@ -14767,6 +16917,28 @@ exports[`ITCSS layers settings works when user @imports the layer 1`] = `
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 :root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -14778,8 +16950,6 @@ exports[`ITCSS layers settings works when user @imports the layer 1`] = `
 :root {
   --govuk-frontend-version: "development";
 }
-
-
 
 
 
@@ -14815,10 +16985,6 @@ exports[`ITCSS layers settings works when user @imports the layer 1`] = `
   --govuk-surface-text-colour: #0b0c0c;
   --govuk-surface-border-colour: #8eb8dc;
 }
-
-
-
-
 
 
 
@@ -14904,6 +17070,28 @@ exports[`ITCSS layers tools works when user @imports the layer 1`] = `
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 :root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -14915,8 +17103,6 @@ exports[`ITCSS layers tools works when user @imports the layer 1`] = `
 :root {
   --govuk-frontend-version: "development";
 }
-
-
 
 
 
@@ -15030,6 +17216,28 @@ exports[`ITCSS layers utilities works when user @imports the layer 1`] = `
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 :root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -15041,8 +17249,6 @@ exports[`ITCSS layers utilities works when user @imports the layer 1`] = `
 :root {
   --govuk-frontend-version: "development";
 }
-
-
 
 
 
@@ -15082,11 +17288,17 @@ exports[`ITCSS layers utilities works when user @imports the layer 1`] = `
 
 
 
+
+
+
 .govuk-clearfix::after {
   content: "";
   display: block;
   clear: both;
 }
+
+
+
 
 
 .govuk-visually-hidden {

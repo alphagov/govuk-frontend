@@ -6,6 +6,7 @@
 @use "sass:meta";
 @use "sass:string";
 
+@import "../settings/colours-functional";
 @import "../settings/colours-palette";
 @import "../settings/colours-organisations";
 @import "../settings/warnings";
@@ -171,18 +172,6 @@
   }
 
   @return govuk-colour($name, $variant: $variant);
-}
-
-@function _govuk-define-functional-colours($colours, $defaults) {
-  $existing-colours: map.keys($defaults);
-
-  @each $colour-name, $colour in $colours {
-    @if not list.index($existing-colours, $colour-name) {
-      @error 'Unknown colour `#{$colour-name}` (available colours: #{$existing-colours})';
-    }
-  }
-
-  @return map.merge($defaults, $colours);
 }
 
 /// Get the colour for a government organisation

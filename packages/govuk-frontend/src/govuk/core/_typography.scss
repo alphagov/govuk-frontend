@@ -1,3 +1,7 @@
+@import "../tools/exports";
+@import "../helpers/colour";
+@import "../helpers/typography";
+
 @include govuk-exports("govuk/core/typography") {
   // Headings
 
