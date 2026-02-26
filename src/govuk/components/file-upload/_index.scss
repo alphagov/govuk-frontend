@@ -13,10 +13,11 @@
 
   .govuk-file-upload {
     @include govuk-font($size: 19);
-    @include govuk-text-colour;
+
     max-width: 100%;
     margin-left: -$component-padding;
     padding: $component-padding;
+    color: govuk-functional-colour(text);
 
     // The default file upload button in Safari does not support setting a
     // custom font-size. Set `-webkit-appearance` to `button` to drop out of the
