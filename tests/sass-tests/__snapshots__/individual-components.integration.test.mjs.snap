@@ -80,13 +80,6 @@ exports[`Individual components dist/govuk/components/accordion works when user @
 
 
 
-
-
-
-
-
-
-
 :root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -98,10 +91,6 @@ exports[`Individual components dist/govuk/components/accordion works when user @
 :root {
   --govuk-frontend-version: "development";
 }
-
-
-
-
 
 
 
@@ -571,13 +560,6 @@ exports[`Individual components dist/govuk/components/back-link works when user @
 
 
 
-
-
-
-
-
-
-
 :root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -589,10 +571,6 @@ exports[`Individual components dist/govuk/components/back-link works when user @
 :root {
   --govuk-frontend-version: "development";
 }
-
-
-
-
 
 
 
@@ -836,13 +814,6 @@ exports[`Individual components dist/govuk/components/breadcrumbs works when user
 
 
 
-
-
-
-
-
-
-
 :root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -854,10 +825,6 @@ exports[`Individual components dist/govuk/components/breadcrumbs works when user
 :root {
   --govuk-frontend-version: "development";
 }
-
-
-
-
 
 
 
@@ -1149,13 +1116,6 @@ exports[`Individual components dist/govuk/components/button works when user @imp
 
 
 
-
-
-
-
-
-
-
 :root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -1167,10 +1127,6 @@ exports[`Individual components dist/govuk/components/button works when user @imp
 :root {
   --govuk-frontend-version: "development";
 }
-
-
-
-
 
 
 
@@ -1481,13 +1437,6 @@ exports[`Individual components dist/govuk/components/character-count works when 
 
 
 
-
-
-
-
-
-
-
 :root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -1499,10 +1448,6 @@ exports[`Individual components dist/govuk/components/character-count works when 
 :root {
   --govuk-frontend-version: "development";
 }
-
-
-
-
 
 
 
@@ -1536,17 +1481,6 @@ exports[`Individual components dist/govuk/components/character-count works when 
   --govuk-surface-text-colour: #0b0c0c;
   --govuk-surface-border-colour: #8eb8dc;
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1780,17 +1714,6 @@ exports[`Individual components dist/govuk/components/character-count works when 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 .govuk-hint {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -1824,17 +1747,6 @@ exports[`Individual components dist/govuk/components/character-count works when 
 .govuk-fieldset__legend + .govuk-hint {
   margin-top: -5px;
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -2024,50 +1936,6 @@ exports[`Individual components dist/govuk/components/character-count works when 
 .govuk-label-wrapper {
   margin: 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -2618,13 +2486,6 @@ exports[`Individual components dist/govuk/components/checkboxes works when user 
 
 
 
-
-
-
-
-
-
-
 :root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -2636,10 +2497,6 @@ exports[`Individual components dist/govuk/components/checkboxes works when user 
 :root {
   --govuk-frontend-version: "development";
 }
-
-
-
-
 
 
 
@@ -2673,17 +2530,6 @@ exports[`Individual components dist/govuk/components/checkboxes works when user 
   --govuk-surface-text-colour: #0b0c0c;
   --govuk-surface-border-colour: #8eb8dc;
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -2821,17 +2667,6 @@ exports[`Individual components dist/govuk/components/checkboxes works when user 
     line-height: 1.15;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -3141,17 +2976,6 @@ exports[`Individual components dist/govuk/components/checkboxes works when user 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 .govuk-hint {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -3185,17 +3009,6 @@ exports[`Individual components dist/govuk/components/checkboxes works when user 
 .govuk-fieldset__legend + .govuk-hint {
   margin-top: -5px;
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -3669,13 +3482,6 @@ exports[`Individual components dist/govuk/components/cookie-banner works when us
 
 
 
-
-
-
-
-
-
-
 :root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -3687,10 +3493,6 @@ exports[`Individual components dist/govuk/components/cookie-banner works when us
 :root {
   --govuk-frontend-version: "development";
 }
-
-
-
-
 
 
 
@@ -3724,17 +3526,6 @@ exports[`Individual components dist/govuk/components/cookie-banner works when us
   --govuk-surface-text-colour: #0b0c0c;
   --govuk-surface-border-colour: #8eb8dc;
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -4127,13 +3918,6 @@ exports[`Individual components dist/govuk/components/date-input works when user 
 
 
 
-
-
-
-
-
-
-
 :root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -4145,10 +3929,6 @@ exports[`Individual components dist/govuk/components/date-input works when user 
 :root {
   --govuk-frontend-version: "development";
 }
-
-
-
-
 
 
 
@@ -4182,17 +3962,6 @@ exports[`Individual components dist/govuk/components/date-input works when user 
   --govuk-surface-text-colour: #0b0c0c;
   --govuk-surface-border-colour: #8eb8dc;
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -4615,39 +4384,6 @@ exports[`Individual components dist/govuk/components/date-input works when user 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .govuk-hint {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -4681,17 +4417,6 @@ exports[`Individual components dist/govuk/components/date-input works when user 
 .govuk-fieldset__legend + .govuk-hint {
   margin-top: -5px;
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -5059,39 +4784,6 @@ exports[`Individual components dist/govuk/components/date-input works when user 
     border-left: 0;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -5604,13 +5296,6 @@ exports[`Individual components dist/govuk/components/details works when user @im
 
 
 
-
-
-
-
-
-
-
 :root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -5622,10 +5307,6 @@ exports[`Individual components dist/govuk/components/details works when user @im
 :root {
   --govuk-frontend-version: "development";
 }
-
-
-
-
 
 
 
@@ -5920,13 +5601,6 @@ exports[`Individual components dist/govuk/components/error-message works when us
 
 
 
-
-
-
-
-
-
-
 :root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -5938,10 +5612,6 @@ exports[`Individual components dist/govuk/components/error-message works when us
 :root {
   --govuk-frontend-version: "development";
 }
-
-
-
-
 
 
 
@@ -6102,13 +5772,6 @@ exports[`Individual components dist/govuk/components/error-summary works when us
 
 
 
-
-
-
-
-
-
-
 :root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -6120,10 +5783,6 @@ exports[`Individual components dist/govuk/components/error-summary works when us
 :root {
   --govuk-frontend-version: "development";
 }
-
-
-
-
 
 
 
@@ -6157,6 +5816,9 @@ exports[`Individual components dist/govuk/components/error-summary works when us
   --govuk-surface-text-colour: #0b0c0c;
   --govuk-surface-border-colour: #8eb8dc;
 }
+
+
+
 
 
 
@@ -6497,13 +6159,6 @@ exports[`Individual components dist/govuk/components/exit-this-page works when u
 
 
 
-
-
-
-
-
-
-
 :root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -6515,10 +6170,6 @@ exports[`Individual components dist/govuk/components/exit-this-page works when u
 :root {
   --govuk-frontend-version: "development";
 }
-
-
-
-
 
 
 
@@ -6552,17 +6203,6 @@ exports[`Individual components dist/govuk/components/exit-this-page works when u
   --govuk-surface-text-colour: #0b0c0c;
   --govuk-surface-border-colour: #8eb8dc;
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -7014,13 +6654,6 @@ exports[`Individual components dist/govuk/components/fieldset works when user @i
 
 
 
-
-
-
-
-
-
-
 :root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -7032,10 +6665,6 @@ exports[`Individual components dist/govuk/components/fieldset works when user @i
 :root {
   --govuk-frontend-version: "development";
 }
-
-
-
-
 
 
 
@@ -7289,13 +6918,6 @@ exports[`Individual components dist/govuk/components/file-upload works when user
 
 
 
-
-
-
-
-
-
-
 :root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -7307,10 +6929,6 @@ exports[`Individual components dist/govuk/components/file-upload works when user
 :root {
   --govuk-frontend-version: "development";
 }
-
-
-
-
 
 
 
@@ -7344,17 +6962,6 @@ exports[`Individual components dist/govuk/components/file-upload works when user
   --govuk-surface-text-colour: #0b0c0c;
   --govuk-surface-border-colour: #8eb8dc;
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -7588,17 +7195,6 @@ exports[`Individual components dist/govuk/components/file-upload works when user
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 .govuk-hint {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -7632,17 +7228,6 @@ exports[`Individual components dist/govuk/components/file-upload works when user
 .govuk-fieldset__legend + .govuk-hint {
   margin-top: -5px;
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -8087,13 +7672,6 @@ exports[`Individual components dist/govuk/components/footer works when user @imp
 
 
 
-
-
-
-
-
-
-
 :root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -8105,10 +7683,6 @@ exports[`Individual components dist/govuk/components/footer works when user @imp
 :root {
   --govuk-frontend-version: "development";
 }
-
-
-
-
 
 
 
@@ -8517,13 +8091,6 @@ exports[`Individual components dist/govuk/components/header works when user @imp
 
 
 
-
-
-
-
-
-
-
 :root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -8535,10 +8102,6 @@ exports[`Individual components dist/govuk/components/header works when user @imp
 :root {
   --govuk-frontend-version: "development";
 }
-
-
-
-
 
 
 
@@ -8823,13 +8386,6 @@ exports[`Individual components dist/govuk/components/hint works when user @impor
 
 
 
-
-
-
-
-
-
-
 :root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -8841,10 +8397,6 @@ exports[`Individual components dist/govuk/components/hint works when user @impor
 :root {
   --govuk-frontend-version: "development";
 }
-
-
-
-
 
 
 
@@ -9014,13 +8566,6 @@ exports[`Individual components dist/govuk/components/input works when user @impo
 
 
 
-
-
-
-
-
-
-
 :root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -9032,10 +8577,6 @@ exports[`Individual components dist/govuk/components/input works when user @impo
 :root {
   --govuk-frontend-version: "development";
 }
-
-
-
-
 
 
 
@@ -9069,17 +8610,6 @@ exports[`Individual components dist/govuk/components/input works when user @impo
   --govuk-surface-text-colour: #0b0c0c;
   --govuk-surface-border-colour: #8eb8dc;
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -9313,17 +8843,6 @@ exports[`Individual components dist/govuk/components/input works when user @impo
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 .govuk-hint {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -9357,17 +8876,6 @@ exports[`Individual components dist/govuk/components/input works when user @impo
 .govuk-fieldset__legend + .govuk-hint {
   margin-top: -5px;
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -9819,13 +9327,6 @@ exports[`Individual components dist/govuk/components/inset-text works when user 
 
 
 
-
-
-
-
-
-
-
 :root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -9837,10 +9338,6 @@ exports[`Individual components dist/govuk/components/inset-text works when user 
 :root {
   --govuk-frontend-version: "development";
 }
-
-
-
-
 
 
 
@@ -10025,13 +9522,6 @@ exports[`Individual components dist/govuk/components/label works when user @impo
 
 
 
-
-
-
-
-
-
-
 :root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -10043,10 +9533,6 @@ exports[`Individual components dist/govuk/components/label works when user @impo
 :root {
   --govuk-frontend-version: "development";
 }
-
-
-
-
 
 
 
@@ -10276,13 +9762,6 @@ exports[`Individual components dist/govuk/components/notification-banner works w
 
 
 
-
-
-
-
-
-
-
 :root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -10294,10 +9773,6 @@ exports[`Individual components dist/govuk/components/notification-banner works w
 :root {
   --govuk-frontend-version: "development";
 }
-
-
-
-
 
 
 
@@ -10600,13 +10075,6 @@ exports[`Individual components dist/govuk/components/pagination works when user 
 
 
 
-
-
-
-
-
-
-
 :root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -10618,10 +10086,6 @@ exports[`Individual components dist/govuk/components/pagination works when user 
 :root {
   --govuk-frontend-version: "development";
 }
-
-
-
-
 
 
 
@@ -10979,13 +10443,6 @@ exports[`Individual components dist/govuk/components/panel works when user @impo
 
 
 
-
-
-
-
-
-
-
 :root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -10997,10 +10454,6 @@ exports[`Individual components dist/govuk/components/panel works when user @impo
 :root {
   --govuk-frontend-version: "development";
 }
-
-
-
-
 
 
 
@@ -11210,13 +10663,6 @@ exports[`Individual components dist/govuk/components/password-input works when u
 
 
 
-
-
-
-
-
-
-
 :root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -11228,10 +10674,6 @@ exports[`Individual components dist/govuk/components/password-input works when u
 :root {
   --govuk-frontend-version: "development";
 }
-
-
-
-
 
 
 
@@ -11265,17 +10707,6 @@ exports[`Individual components dist/govuk/components/password-input works when u
   --govuk-surface-text-colour: #0b0c0c;
   --govuk-surface-border-colour: #8eb8dc;
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -11752,28 +11183,6 @@ exports[`Individual components dist/govuk/components/password-input works when u
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .govuk-error-message {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -11798,17 +11207,6 @@ exports[`Individual components dist/govuk/components/password-input works when u
     line-height: 1.15;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -11938,17 +11336,6 @@ exports[`Individual components dist/govuk/components/password-input works when u
 .govuk-fieldset__legend + .govuk-hint {
   margin-top: -5px;
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -12429,13 +11816,6 @@ exports[`Individual components dist/govuk/components/phase-banner works when use
 
 
 
-
-
-
-
-
-
-
 :root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -12447,10 +11827,6 @@ exports[`Individual components dist/govuk/components/phase-banner works when use
 :root {
   --govuk-frontend-version: "development";
 }
-
-
-
-
 
 
 
@@ -12484,17 +11860,6 @@ exports[`Individual components dist/govuk/components/phase-banner works when use
   --govuk-surface-text-colour: #0b0c0c;
   --govuk-surface-border-colour: #8eb8dc;
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -12842,13 +12207,6 @@ exports[`Individual components dist/govuk/components/radios works when user @imp
 
 
 
-
-
-
-
-
-
-
 :root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -12860,10 +12218,6 @@ exports[`Individual components dist/govuk/components/radios works when user @imp
 :root {
   --govuk-frontend-version: "development";
 }
-
-
-
-
 
 
 
@@ -12897,17 +12251,6 @@ exports[`Individual components dist/govuk/components/radios works when user @imp
   --govuk-surface-text-colour: #0b0c0c;
   --govuk-surface-border-colour: #8eb8dc;
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -13045,17 +12388,6 @@ exports[`Individual components dist/govuk/components/radios works when user @imp
     line-height: 1.15;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -13365,17 +12697,6 @@ exports[`Individual components dist/govuk/components/radios works when user @imp
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 .govuk-hint {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -13409,17 +12730,6 @@ exports[`Individual components dist/govuk/components/radios works when user @imp
 .govuk-fieldset__legend + .govuk-hint {
   margin-top: -5px;
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -13900,13 +13210,6 @@ exports[`Individual components dist/govuk/components/select works when user @imp
 
 
 
-
-
-
-
-
-
-
 :root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -13918,10 +13221,6 @@ exports[`Individual components dist/govuk/components/select works when user @imp
 :root {
   --govuk-frontend-version: "development";
 }
-
-
-
-
 
 
 
@@ -13955,17 +13254,6 @@ exports[`Individual components dist/govuk/components/select works when user @imp
   --govuk-surface-text-colour: #0b0c0c;
   --govuk-surface-border-colour: #8eb8dc;
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -14199,17 +13487,6 @@ exports[`Individual components dist/govuk/components/select works when user @imp
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 .govuk-hint {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -14243,17 +13520,6 @@ exports[`Individual components dist/govuk/components/select works when user @imp
 .govuk-fieldset__legend + .govuk-hint {
   margin-top: -5px;
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -14582,13 +13848,6 @@ exports[`Individual components dist/govuk/components/service-navigation works wh
 
 
 
-
-
-
-
-
-
-
 :root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -14600,10 +13859,6 @@ exports[`Individual components dist/govuk/components/service-navigation works wh
 :root {
   --govuk-frontend-version: "development";
 }
-
-
-
-
 
 
 
@@ -15023,13 +14278,6 @@ exports[`Individual components dist/govuk/components/skip-link works when user @
 
 
 
-
-
-
-
-
-
-
 :root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -15041,10 +14289,6 @@ exports[`Individual components dist/govuk/components/skip-link works when user @
 :root {
   --govuk-frontend-version: "development";
 }
-
-
-
-
 
 
 
@@ -15258,13 +14502,6 @@ exports[`Individual components dist/govuk/components/summary-list works when use
 
 
 
-
-
-
-
-
-
-
 :root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -15276,10 +14513,6 @@ exports[`Individual components dist/govuk/components/summary-list works when use
 :root {
   --govuk-frontend-version: "development";
 }
-
-
-
-
 
 
 
@@ -15722,13 +14955,6 @@ exports[`Individual components dist/govuk/components/table works when user @impo
 
 
 
-
-
-
-
-
-
-
 :root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -15740,10 +14966,6 @@ exports[`Individual components dist/govuk/components/table works when user @impo
 :root {
   --govuk-frontend-version: "development";
 }
-
-
-
-
 
 
 
@@ -16018,13 +15240,6 @@ exports[`Individual components dist/govuk/components/tabs works when user @impor
 
 
 
-
-
-
-
-
-
-
 :root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -16036,10 +15251,6 @@ exports[`Individual components dist/govuk/components/tabs works when user @impor
 :root {
   --govuk-frontend-version: "development";
 }
-
-
-
-
 
 
 
@@ -16397,13 +15608,6 @@ exports[`Individual components dist/govuk/components/tag works when user @import
 
 
 
-
-
-
-
-
-
-
 :root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -16415,10 +15619,6 @@ exports[`Individual components dist/govuk/components/tag works when user @import
 :root {
   --govuk-frontend-version: "development";
 }
-
-
-
-
 
 
 
@@ -16642,13 +15842,6 @@ exports[`Individual components dist/govuk/components/task-list works when user @
 
 
 
-
-
-
-
-
-
-
 :root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -16660,10 +15853,6 @@ exports[`Individual components dist/govuk/components/task-list works when user @
 :root {
   --govuk-frontend-version: "development";
 }
-
-
-
-
 
 
 
@@ -16697,17 +15886,6 @@ exports[`Individual components dist/govuk/components/task-list works when user @
   --govuk-surface-text-colour: #0b0c0c;
   --govuk-surface-border-colour: #8eb8dc;
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -17085,13 +16263,6 @@ exports[`Individual components dist/govuk/components/textarea works when user @i
 
 
 
-
-
-
-
-
-
-
 :root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -17103,10 +16274,6 @@ exports[`Individual components dist/govuk/components/textarea works when user @i
 :root {
   --govuk-frontend-version: "development";
 }
-
-
-
-
 
 
 
@@ -17140,17 +16307,6 @@ exports[`Individual components dist/govuk/components/textarea works when user @i
   --govuk-surface-text-colour: #0b0c0c;
   --govuk-surface-border-colour: #8eb8dc;
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -17384,17 +16540,6 @@ exports[`Individual components dist/govuk/components/textarea works when user @i
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 .govuk-hint {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -17428,17 +16573,6 @@ exports[`Individual components dist/govuk/components/textarea works when user @i
 .govuk-fieldset__legend + .govuk-hint {
   margin-top: -5px;
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -17768,13 +16902,6 @@ exports[`Individual components dist/govuk/components/warning-text works when use
 
 
 
-
-
-
-
-
-
-
 :root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -17786,10 +16913,6 @@ exports[`Individual components dist/govuk/components/warning-text works when use
 :root {
   --govuk-frontend-version: "development";
 }
-
-
-
-
 
 
 

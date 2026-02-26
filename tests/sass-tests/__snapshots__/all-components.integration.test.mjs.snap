@@ -81,13 +81,6 @@ exports[`All components works when user @imports everything 1`] = `
 
 
 
-
-
-
-
-
-
-
 :root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -99,10 +92,6 @@ exports[`All components works when user @imports everything 1`] = `
 :root {
   --govuk-frontend-version: "development";
 }
-
-
-
-
 
 
 
@@ -136,6 +125,15 @@ exports[`All components works when user @imports everything 1`] = `
   --govuk-surface-text-colour: #0b0c0c;
   --govuk-surface-border-colour: #8eb8dc;
 }
+
+
+
+
+
+
+
+
+
 
 
 
@@ -335,6 +333,9 @@ exports[`All components works when user @imports everything 1`] = `
 
 
 
+
+
+
 .govuk-list {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -406,6 +407,9 @@ exports[`All components works when user @imports everything 1`] = `
     margin-bottom: 15px;
   }
 }
+
+
+
 
 
 
@@ -830,6 +834,12 @@ exports[`All components works when user @imports everything 1`] = `
 
 
 
+
+
+
+
+
+
 .govuk-section-break {
   margin: 0;
   border: 0;
@@ -884,6 +894,7 @@ exports[`All components works when user @imports everything 1`] = `
   border-bottom: 1px solid;
   border-bottom-color: var(--govuk-border-colour, #cecece);
 }
+
 
 
 
@@ -1203,17 +1214,6 @@ exports[`All components works when user @imports everything 1`] = `
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 .govuk-form-group {
   margin-bottom: 20px;
 }
@@ -1240,17 +1240,6 @@ exports[`All components works when user @imports everything 1`] = `
   padding: 0;
   border: 0;
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1590,17 +1579,6 @@ exports[`All components works when user @imports everything 1`] = `
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 .govuk-main-wrapper {
   display: block;
   padding-top: 20px;
@@ -1623,17 +1601,6 @@ exports[`All components works when user @imports everything 1`] = `
     padding-top: 50px;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1850,17 +1817,6 @@ exports[`All components works when user @imports everything 1`] = `
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 .govuk-width-container {
   max-width: 960px;
   margin-right: 15px;
@@ -1896,28 +1852,6 @@ exports[`All components works when user @imports everything 1`] = `
     }
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -2538,17 +2472,6 @@ exports[`All components works when user @imports everything 1`] = `
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 .govuk-back-link {
   font-size: 1rem;
   line-height: 1.25;
@@ -2656,17 +2579,6 @@ exports[`All components works when user @imports everything 1`] = `
 .govuk-back-link--inverse::before {
   border-color: currentcolor;
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -2918,17 +2830,6 @@ exports[`All components works when user @imports everything 1`] = `
 .govuk-breadcrumbs--inverse .govuk-breadcrumbs__list-item::before {
   border-color: currentcolor;
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -3388,28 +3289,6 @@ exports[`All components works when user @imports everything 1`] = `
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .govuk-error-message {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -3434,17 +3313,6 @@ exports[`All components works when user @imports everything 1`] = `
     line-height: 1.15;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -3670,17 +3538,6 @@ exports[`All components works when user @imports everything 1`] = `
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 .govuk-label {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -3774,50 +3631,6 @@ exports[`All components works when user @imports everything 1`] = `
 .govuk-label-wrapper {
   margin: 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -4569,39 +4382,6 @@ exports[`All components works when user @imports everything 1`] = `
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .govuk-fieldset {
   min-width: 0;
   margin: 0;
@@ -4719,28 +4499,6 @@ exports[`All components works when user @imports everything 1`] = `
   font-size: inherit;
   font-weight: inherit;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -5322,28 +5080,6 @@ exports[`All components works when user @imports everything 1`] = `
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .govuk-cookie-banner {
   padding-top: 20px;
   border-bottom: 10px solid transparent;
@@ -5364,72 +5100,6 @@ exports[`All components works when user @imports everything 1`] = `
 .govuk-cookie-banner__message:focus {
   outline: none;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -6463,39 +6133,6 @@ exports[`All components works when user @imports everything 1`] = `
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .govuk-date-input {
   font-size: 0;
 }
@@ -6519,17 +6156,6 @@ exports[`All components works when user @imports everything 1`] = `
 .govuk-date-input__input {
   margin-bottom: 0;
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -7005,25 +6631,6 @@ exports[`All components works when user @imports everything 1`] = `
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .govuk-error-summary {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -7162,28 +6769,6 @@ exports[`All components works when user @imports everything 1`] = `
 .govuk-error-summary__list a:focus {
   color: var(--govuk-focus-text-colour, #0b0c0c);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -7930,61 +7515,6 @@ exports[`All components works when user @imports everything 1`] = `
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .govuk-file-upload {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -8154,17 +7684,6 @@ exports[`All components works when user @imports everything 1`] = `
 .govuk-file-upload-button:disabled .govuk-file-upload-button__status {
   background-color: #d2e2f1;
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -8533,17 +8052,6 @@ exports[`All components works when user @imports everything 1`] = `
 .govuk-footer__list-item:last-child {
   margin-bottom: 0;
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -9359,72 +8867,6 @@ exports[`All components works when user @imports everything 1`] = `
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .govuk-inset-text {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -9473,28 +8915,6 @@ exports[`All components works when user @imports everything 1`] = `
 .govuk-inset-text > :last-child {
   margin-bottom: 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -9948,17 +9368,6 @@ exports[`All components works when user @imports everything 1`] = `
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 .govuk-pagination {
   margin-bottom: 20px;
   display: flex;
@@ -10276,17 +9685,6 @@ exports[`All components works when user @imports everything 1`] = `
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 .govuk-panel {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -10360,72 +9758,6 @@ exports[`All components works when user @imports everything 1`] = `
 .govuk-panel__title:last-child {
   margin-bottom: 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -11214,28 +10546,6 @@ exports[`All components works when user @imports everything 1`] = `
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .govuk-tag {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -11386,61 +10696,6 @@ exports[`All components works when user @imports everything 1`] = `
   display: table-cell;
   vertical-align: middle;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -12503,50 +11758,6 @@ exports[`All components works when user @imports everything 1`] = `
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .govuk-select {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -12600,17 +11811,6 @@ exports[`All components works when user @imports everything 1`] = `
 .govuk-select--error:focus {
   border-color: var(--govuk-input-border-colour, #0b0c0c);
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -13086,17 +12286,6 @@ exports[`All components works when user @imports everything 1`] = `
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 .govuk-skip-link {
   text-decoration: underline;
   text-decoration-thickness: max(1px, .0625rem);
@@ -13174,17 +12363,6 @@ exports[`All components works when user @imports everything 1`] = `
 .govuk-skip-link-focused-element:focus {
   outline: none;
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -13683,17 +12861,6 @@ exports[`All components works when user @imports everything 1`] = `
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 .govuk-table {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -13831,17 +12998,6 @@ exports[`All components works when user @imports everything 1`] = `
     line-height: 1.15;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -14445,39 +13601,6 @@ exports[`All components works when user @imports everything 1`] = `
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .govuk-task-list {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -14569,61 +13692,6 @@ exports[`All components works when user @imports everything 1`] = `
   margin-top: 5px;
   color: var(--govuk-secondary-text-colour, #484949);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -16384,9 +15452,6 @@ exports[`All components works when user @imports everything 1`] = `
 .govuk-\\!-text-align-right {
   text-align: right !important;
 }
-
-
-
 
 
 

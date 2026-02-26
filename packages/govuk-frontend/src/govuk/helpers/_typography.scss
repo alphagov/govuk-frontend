@@ -5,9 +5,12 @@
 @use "sass:math";
 @use "sass:string";
 
+@import "../settings/assets";
 @import "../settings/colours-functional";
 @import "../settings/spacing";
 @import "../settings/typography-font";
+@import "../settings/warnings";
+@import "../tools/font-url";
 @import "../tools/px-to-rem";
 @import "../tools/if";
 @import "font-faces";
