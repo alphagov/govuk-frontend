@@ -96,6 +96,11 @@ export default {
     },
     {
       ...config,
+      displayName: 'Integration tests',
+      testMatch: ['**/*.integration.test.{js,mjs}']
+    },
+    {
+      ...config,
       displayName: 'JavaScript behaviour tests',
       testEnvironment: '@govuk-frontend/helpers/jest/environment/jsdom.mjs',
       testMatch: ['**/*.jsdom.test.{js,mjs}'],

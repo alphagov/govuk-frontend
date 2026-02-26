@@ -171,6 +171,12 @@ jobs:
             projects:
               - JavaScript component tests
 
+          - description: Integration tests
+            name: test-integration
+            cache: .cache/jest
+            projects:
+              - Integration tests
+
           - description: Accessibility tests
             name: test-accessibility
             cache: |
