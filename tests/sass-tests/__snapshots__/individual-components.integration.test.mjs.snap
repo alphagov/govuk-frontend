@@ -146,10 +146,10 @@ exports[`Individual components dist/govuk/components/accordion works when user @
   font-weight: 700;
   font-size: 1.3125rem;
   line-height: 1.1904761905;
-  color: var(--govuk-text-colour, #0b0c0c);
   display: block;
   margin-bottom: 0;
   padding-top: 15px;
+  color: var(--govuk-text-colour, #0b0c0c);
 }
 /*! Copyright (c) 2011 by Margaret Calvert & Henrik Kubel. All rights reserved. The font has been customised for exclusive use on gov.uk. This cut is not commercially available. */ /* stylelint-disable-line scss/comment-no-loud  */
 @font-face {
@@ -827,9 +827,9 @@ exports[`Individual components dist/govuk/components/breadcrumbs works when user
   font-weight: 400;
   font-size: 1rem;
   line-height: 1.25;
-  color: var(--govuk-text-colour, #0b0c0c);
   margin-top: 15px;
   margin-bottom: 10px;
+  color: var(--govuk-text-colour, #0b0c0c);
 }
 /*! Copyright (c) 2011 by Margaret Calvert & Henrik Kubel. All rights reserved. The font has been customised for exclusive use on gov.uk. This cut is not commercially available. */ /* stylelint-disable-line scss/comment-no-loud  */
 @font-face {
@@ -1733,9 +1733,9 @@ exports[`Individual components dist/govuk/components/character-count works when 
   font-weight: 400;
   font-size: 1.1875rem;
   line-height: 1.3157894737;
-  color: var(--govuk-text-colour, #0b0c0c);
   display: block;
   margin-bottom: 5px;
+  color: var(--govuk-text-colour, #0b0c0c);
 }
 @media print {
   .govuk-label {
@@ -2573,12 +2573,12 @@ exports[`Individual components dist/govuk/components/checkboxes works when user 
   font-weight: 400;
   font-size: 1.1875rem;
   line-height: 1.3157894737;
-  color: var(--govuk-text-colour, #0b0c0c);
   box-sizing: border-box;
   display: table;
   max-width: 100%;
   margin-bottom: 10px;
   padding: 0;
+  color: var(--govuk-text-colour, #0b0c0c);
   white-space: normal;
 }
 @media print {
@@ -2864,9 +2864,9 @@ exports[`Individual components dist/govuk/components/checkboxes works when user 
   font-weight: 400;
   font-size: 1.1875rem;
   line-height: 1.3157894737;
-  color: var(--govuk-text-colour, #0b0c0c);
   display: block;
   margin-bottom: 5px;
+  color: var(--govuk-text-colour, #0b0c0c);
 }
 @media print {
   .govuk-label {
@@ -3050,9 +3050,9 @@ exports[`Individual components dist/govuk/components/checkboxes works when user 
   font-weight: 400;
   font-size: 1.1875rem;
   line-height: 1.3157894737;
-  color: var(--govuk-text-colour, #0b0c0c);
   width: 40px;
   margin-bottom: 10px;
+  color: var(--govuk-text-colour, #0b0c0c);
   text-align: center;
 }
 @media print {
@@ -4160,9 +4160,9 @@ exports[`Individual components dist/govuk/components/date-input works when user 
   font-weight: 400;
   font-size: 1.1875rem;
   line-height: 1.3157894737;
-  color: var(--govuk-text-colour, #0b0c0c);
   display: block;
   margin-bottom: 5px;
+  color: var(--govuk-text-colour, #0b0c0c);
 }
 @media print {
   .govuk-label {
@@ -4688,12 +4688,12 @@ exports[`Individual components dist/govuk/components/date-input works when user 
   font-weight: 400;
   font-size: 1.1875rem;
   line-height: 1.3157894737;
-  color: var(--govuk-text-colour, #0b0c0c);
   box-sizing: border-box;
   display: table;
   max-width: 100%;
   margin-bottom: 10px;
   padding: 0;
+  color: var(--govuk-text-colour, #0b0c0c);
   white-space: normal;
 }
 @media print {
@@ -4930,9 +4930,9 @@ exports[`Individual components dist/govuk/components/details works when user @im
   font-weight: 400;
   font-size: 1.1875rem;
   line-height: 1.3157894737;
-  color: var(--govuk-text-colour, #0b0c0c);
   margin-bottom: 20px;
   display: block;
+  color: var(--govuk-text-colour, #0b0c0c);
 }
 /*! Copyright (c) 2011 by Margaret Calvert & Henrik Kubel. All rights reserved. The font has been customised for exclusive use on gov.uk. This cut is not commercially available. */ /* stylelint-disable-line scss/comment-no-loud  */
 @font-face {
@@ -5383,11 +5383,11 @@ exports[`Individual components dist/govuk/components/error-summary works when us
   font-weight: 400;
   font-size: 1.1875rem;
   line-height: 1.3157894737;
-  color: var(--govuk-text-colour, #0b0c0c);
   margin-top: 0;
   margin-bottom: 15px;
   padding-left: 0;
   list-style-type: none;
+  color: var(--govuk-text-colour, #0b0c0c);
 }
 /*! Copyright (c) 2011 by Margaret Calvert & Henrik Kubel. All rights reserved. The font has been customised for exclusive use on gov.uk. This cut is not commercially available. */ /* stylelint-disable-line scss/comment-no-loud  */
 @font-face {
@@ -5466,11 +5466,11 @@ exports[`Individual components dist/govuk/components/error-summary works when us
   font-weight: 400;
   font-size: 1.1875rem;
   line-height: 1.3157894737;
-  color: var(--govuk-text-colour, #0b0c0c);
   padding: 15px;
   margin-bottom: 30px;
   border: 5px solid;
   border-color: var(--govuk-error-colour, #ca3535);
+  color: var(--govuk-text-colour, #0b0c0c);
 }
 @media print {
   .govuk-error-summary {
@@ -6212,12 +6212,12 @@ exports[`Individual components dist/govuk/components/fieldset works when user @i
   font-weight: 400;
   font-size: 1.1875rem;
   line-height: 1.3157894737;
-  color: var(--govuk-text-colour, #0b0c0c);
   box-sizing: border-box;
   display: table;
   max-width: 100%;
   margin-bottom: 10px;
   padding: 0;
+  color: var(--govuk-text-colour, #0b0c0c);
   white-space: normal;
 }
 /*! Copyright (c) 2011 by Margaret Calvert & Henrik Kubel. All rights reserved. The font has been customised for exclusive use on gov.uk. This cut is not commercially available. */ /* stylelint-disable-line scss/comment-no-loud  */
@@ -6760,9 +6760,9 @@ exports[`Individual components dist/govuk/components/file-upload works when user
   font-weight: 400;
   font-size: 1.1875rem;
   line-height: 1.3157894737;
-  color: var(--govuk-text-colour, #0b0c0c);
   display: block;
   margin-bottom: 5px;
+  color: var(--govuk-text-colour, #0b0c0c);
 }
 @media print {
   .govuk-label {
@@ -6850,10 +6850,10 @@ exports[`Individual components dist/govuk/components/file-upload works when user
   font-weight: 400;
   font-size: 1.1875rem;
   line-height: 1.3157894737;
-  color: var(--govuk-text-colour, #0b0c0c);
   max-width: 100%;
   margin-left: -5px;
   padding: 5px;
+  color: var(--govuk-text-colour, #0b0c0c);
 }
 @media print {
   .govuk-file-upload {
@@ -8310,9 +8310,9 @@ exports[`Individual components dist/govuk/components/input works when user @impo
   font-weight: 400;
   font-size: 1.1875rem;
   line-height: 1.3157894737;
-  color: var(--govuk-text-colour, #0b0c0c);
   display: block;
   margin-bottom: 5px;
+  color: var(--govuk-text-colour, #0b0c0c);
 }
 @media print {
   .govuk-label {
@@ -8699,13 +8699,13 @@ exports[`Individual components dist/govuk/components/inset-text works when user 
   font-weight: 400;
   font-size: 1.1875rem;
   line-height: 1.3157894737;
-  color: var(--govuk-text-colour, #0b0c0c);
   padding: 15px;
   margin-top: 20px;
   margin-bottom: 20px;
   clear: both;
   border-left: 10px solid;
   border-left-color: var(--govuk-border-colour, #cecece);
+  color: var(--govuk-text-colour, #0b0c0c);
 }
 /*! Copyright (c) 2011 by Margaret Calvert & Henrik Kubel. All rights reserved. The font has been customised for exclusive use on gov.uk. This cut is not commercially available. */ /* stylelint-disable-line scss/comment-no-loud  */
 @font-face {
@@ -8880,9 +8880,9 @@ exports[`Individual components dist/govuk/components/label works when user @impo
   font-weight: 400;
   font-size: 1.1875rem;
   line-height: 1.3157894737;
-  color: var(--govuk-text-colour, #0b0c0c);
   display: block;
   margin-bottom: 5px;
+  color: var(--govuk-text-colour, #0b0c0c);
 }
 /*! Copyright (c) 2011 by Margaret Calvert & Henrik Kubel. All rights reserved. The font has been customised for exclusive use on gov.uk. This cut is not commercially available. */ /* stylelint-disable-line scss/comment-no-loud  */
 @font-face {
@@ -9173,8 +9173,8 @@ exports[`Individual components dist/govuk/components/notification-banner works w
 }
 
 .govuk-notification-banner__content {
-  color: var(--govuk-text-colour, #0b0c0c);
   padding: 15px;
+  color: var(--govuk-text-colour, #0b0c0c);
   background-color: var(--govuk-body-background-colour, #ffffff);
 }
 @media (min-width: 40.0625em) {
@@ -9817,7 +9817,7 @@ exports[`Individual components dist/govuk/components/panel works when user @impo
 @media print {
   .govuk-panel--confirmation {
     border-color: currentcolor;
-    color: var(--govuk-print-text-colour, #000000);
+    color: var(--govuk-text-colour, #0b0c0c);
     background: none;
   }
 }
@@ -10626,9 +10626,9 @@ exports[`Individual components dist/govuk/components/password-input works when u
   font-weight: 400;
   font-size: 1.1875rem;
   line-height: 1.3157894737;
-  color: var(--govuk-text-colour, #0b0c0c);
   display: block;
   margin-bottom: 5px;
+  color: var(--govuk-text-colour, #0b0c0c);
 }
 @media print {
   .govuk-label {
@@ -11240,9 +11240,9 @@ exports[`Individual components dist/govuk/components/phase-banner works when use
   font-weight: 400;
   font-size: 1rem;
   line-height: 1.25;
-  color: var(--govuk-text-colour, #0b0c0c);
   display: table;
   margin: 0;
+  color: var(--govuk-text-colour, #0b0c0c);
 }
 @media print {
   .govuk-phase-banner__content {
@@ -11626,12 +11626,12 @@ exports[`Individual components dist/govuk/components/radios works when user @imp
   font-weight: 400;
   font-size: 1.1875rem;
   line-height: 1.3157894737;
-  color: var(--govuk-text-colour, #0b0c0c);
   box-sizing: border-box;
   display: table;
   max-width: 100%;
   margin-bottom: 10px;
   padding: 0;
+  color: var(--govuk-text-colour, #0b0c0c);
   white-space: normal;
 }
 @media print {
@@ -11917,9 +11917,9 @@ exports[`Individual components dist/govuk/components/radios works when user @imp
   font-weight: 400;
   font-size: 1.1875rem;
   line-height: 1.3157894737;
-  color: var(--govuk-text-colour, #0b0c0c);
   display: block;
   margin-bottom: 5px;
+  color: var(--govuk-text-colour, #0b0c0c);
 }
 @media print {
   .govuk-label {
@@ -12112,9 +12112,9 @@ exports[`Individual components dist/govuk/components/radios works when user @imp
   font-weight: 400;
   font-size: 1.1875rem;
   line-height: 1.3157894737;
-  color: var(--govuk-text-colour, #0b0c0c);
   width: 40px;
   margin-bottom: 10px;
+  color: var(--govuk-text-colour, #0b0c0c);
   text-align: center;
 }
 @media print {
@@ -12646,9 +12646,9 @@ exports[`Individual components dist/govuk/components/select works when user @imp
   font-weight: 400;
   font-size: 1.1875rem;
   line-height: 1.3157894737;
-  color: var(--govuk-text-colour, #0b0c0c);
   display: block;
   margin-bottom: 5px;
+  color: var(--govuk-text-colour, #0b0c0c);
 }
 @media print {
   .govuk-label {
@@ -13758,8 +13758,8 @@ exports[`Individual components dist/govuk/components/summary-list works when use
   font-weight: 700;
   font-size: 1.1875rem;
   line-height: 1.3157894737;
-  color: var(--govuk-text-colour, #0b0c0c);
   margin: 5px 20px 10px 0;
+  color: var(--govuk-text-colour, #0b0c0c);
 }
 @media print {
   .govuk-summary-card__title {
@@ -13962,11 +13962,11 @@ exports[`Individual components dist/govuk/components/table works when user @impo
   font-weight: 400;
   font-size: 1.1875rem;
   line-height: 1.3157894737;
-  color: var(--govuk-text-colour, #0b0c0c);
   width: 100%;
   margin-bottom: 20px;
   border-spacing: 0;
   border-collapse: collapse;
+  color: var(--govuk-text-colour, #0b0c0c);
 }
 /*! Copyright (c) 2011 by Margaret Calvert & Henrik Kubel. All rights reserved. The font has been customised for exclusive use on gov.uk. This cut is not commercially available. */ /* stylelint-disable-line scss/comment-no-loud  */
 @font-face {
@@ -14272,8 +14272,8 @@ exports[`Individual components dist/govuk/components/tabs works when user @impor
   font-size: 1.1875rem;
   line-height: 1.3157894737;
   font-weight: 400;
-  color: var(--govuk-text-colour, #0b0c0c);
   margin-bottom: 10px;
+  color: var(--govuk-text-colour, #0b0c0c);
 }
 @media print {
   .govuk-tabs__title {
@@ -14298,10 +14298,10 @@ exports[`Individual components dist/govuk/components/tabs works when user @impor
   margin-left: 25px;
 }
 .govuk-tabs__list-item::before {
-  color: var(--govuk-text-colour, #0b0c0c);
   content: "—";
   margin-left: -25px;
   padding-right: 5px;
+  color: var(--govuk-text-colour, #0b0c0c);
 }
 
 .govuk-tabs__tab {
@@ -15021,16 +15021,16 @@ exports[`Individual components dist/govuk/components/task-list works when user @
 
 .govuk-task-list__name-and-hint {
   display: table-cell;
-  vertical-align: top;
   color: var(--govuk-text-colour, #0b0c0c);
+  vertical-align: top;
 }
 
 .govuk-task-list__status {
   display: table-cell;
   padding-left: 10px;
+  color: var(--govuk-text-colour, #0b0c0c);
   text-align: right;
   vertical-align: top;
-  color: var(--govuk-text-colour, #0b0c0c);
 }
 
 .govuk-task-list__status--cannot-start-yet {
@@ -15497,9 +15497,9 @@ exports[`Individual components dist/govuk/components/textarea works when user @i
   font-weight: 400;
   font-size: 1.1875rem;
   line-height: 1.3157894737;
-  color: var(--govuk-text-colour, #0b0c0c);
   display: block;
   margin-bottom: 5px;
+  color: var(--govuk-text-colour, #0b0c0c);
 }
 @media print {
   .govuk-label {
@@ -15836,9 +15836,9 @@ exports[`Individual components dist/govuk/components/warning-text works when use
 }
 
 .govuk-warning-text__text {
-  color: var(--govuk-text-colour, #0b0c0c);
   display: block;
   padding-left: 45px;
+  color: var(--govuk-text-colour, #0b0c0c);
   font-weight: inherit;
 }
 

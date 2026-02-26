@@ -2,13 +2,16 @@
   // Headings
 
   %govuk-heading-xl {
-    @include govuk-text-colour;
     @include govuk-font($size: 48, $weight: bold);
 
     display: block;
 
+    // Keep margin configuration next to each other
+    // stylelint-disable order/order-properties
     margin-top: 0;
+    color: govuk-functional-colour(text);
     @include govuk-responsive-margin(8, "bottom");
+    // stylelint-enable order/order-properties
   }
 
   .govuk-heading-xl {
@@ -16,13 +19,16 @@
   }
 
   %govuk-heading-l {
-    @include govuk-text-colour;
     @include govuk-font($size: 36, $weight: bold);
 
     display: block;
 
+    // Keep margin configuration next to each other
+    // stylelint-disable order/order-properties
     margin-top: 0;
+    color: govuk-functional-colour(text);
     @include govuk-responsive-margin(6, "bottom");
+    // stylelint-enable order/order-properties
   }
 
   .govuk-heading-l {
@@ -30,13 +36,16 @@
   }
 
   %govuk-heading-m {
-    @include govuk-text-colour;
     @include govuk-font($size: 24, $weight: bold);
 
     display: block;
 
+    // Keep margin configuration next to each other
+    // stylelint-disable order/order-properties
     margin-top: 0;
+    color: govuk-functional-colour(text);
     @include govuk-responsive-margin(4, "bottom");
+    // stylelint-enable order/order-properties
   }
 
   .govuk-heading-m {
@@ -44,13 +53,16 @@
   }
 
   %govuk-heading-s {
-    @include govuk-text-colour;
     @include govuk-font($size: 19, $weight: bold);
 
     display: block;
 
+    // Keep margin configuration next to each other
+    // stylelint-disable order/order-properties
     margin-top: 0;
+    color: govuk-functional-colour(text);
     @include govuk-responsive-margin(4, "bottom");
+    // stylelint-enable order/order-properties
   }
 
   .govuk-heading-s {
@@ -93,11 +105,14 @@
   // Body (paragraphs)
 
   %govuk-body-l {
-    @include govuk-text-colour;
+    color: govuk-functional-colour(text);
     @include govuk-font($size: 24);
 
+    // Keep margin configuration next to each other
+    // stylelint-disable order/properties-order
     margin-top: 0;
     @include govuk-responsive-margin(6, "bottom");
+    // stylelint-enable order/properties-order
   }
 
   .govuk-body-l {
@@ -105,11 +120,14 @@
   }
 
   %govuk-body-m {
-    @include govuk-text-colour;
+    color: govuk-functional-colour(text);
     @include govuk-font($size: 19);
 
+    // Keep margin configuration next to each other
+    // stylelint-disable order/properties-order
     margin-top: 0;
     @include govuk-responsive-margin(4, "bottom");
+    // stylelint-enable order/properties-order
   }
 
   .govuk-body-m {
@@ -117,11 +135,14 @@
   }
 
   %govuk-body-s {
-    @include govuk-text-colour;
+    color: govuk-functional-colour(text);
     @include govuk-font($size: 16);
 
+    // Keep margin configuration next to each other
+    // stylelint-disable order/properties-order
     margin-top: 0;
     @include govuk-responsive-margin(4, "bottom");
+    // stylelint-enable order/properties-order
   }
 
   .govuk-body-s {

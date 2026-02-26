@@ -307,10 +307,10 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   font-weight: 700;
   font-size: 1.3125rem;
   line-height: 1.1904761905;
-  color: var(--govuk-text-colour, #0b0c0c);
   display: block;
   margin-bottom: 0;
   padding-top: 15px;
+  color: var(--govuk-text-colour, #0b0c0c);
 }
 /*! Copyright (c) 2011 by Margaret Calvert & Henrik Kubel. All rights reserved. The font has been customised for exclusive use on gov.uk. This cut is not commercially available. */ /* stylelint-disable-line scss/comment-no-loud  */
 @font-face {
@@ -891,9 +891,9 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   font-weight: 400;
   font-size: 1rem;
   line-height: 1.25;
-  color: var(--govuk-text-colour, #0b0c0c);
   margin-top: 15px;
   margin-bottom: 10px;
+  color: var(--govuk-text-colour, #0b0c0c);
 }
 @media print {
   .govuk-breadcrumbs {
@@ -1669,9 +1669,9 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   font-weight: 400;
   font-size: 1.1875rem;
   line-height: 1.3157894737;
-  color: var(--govuk-text-colour, #0b0c0c);
   display: block;
   margin-bottom: 5px;
+  color: var(--govuk-text-colour, #0b0c0c);
 }
 @media print {
   .govuk-label {
@@ -2428,12 +2428,12 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   font-weight: 400;
   font-size: 1.1875rem;
   line-height: 1.3157894737;
-  color: var(--govuk-text-colour, #0b0c0c);
   box-sizing: border-box;
   display: table;
   max-width: 100%;
   margin-bottom: 10px;
   padding: 0;
+  color: var(--govuk-text-colour, #0b0c0c);
   white-space: normal;
 }
 @media print {
@@ -2782,9 +2782,9 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   font-weight: 400;
   font-size: 1.1875rem;
   line-height: 1.3157894737;
-  color: var(--govuk-text-colour, #0b0c0c);
   width: 40px;
   margin-bottom: 10px;
+  color: var(--govuk-text-colour, #0b0c0c);
   text-align: center;
 }
 @media print {
@@ -4074,9 +4074,9 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   font-weight: 400;
   font-size: 1.1875rem;
   line-height: 1.3157894737;
-  color: var(--govuk-text-colour, #0b0c0c);
   margin-bottom: 20px;
   display: block;
+  color: var(--govuk-text-colour, #0b0c0c);
 }
 @media print {
   .govuk-details {
@@ -4390,11 +4390,11 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   font-weight: 400;
   font-size: 1.1875rem;
   line-height: 1.3157894737;
-  color: var(--govuk-text-colour, #0b0c0c);
   margin-top: 0;
   margin-bottom: 15px;
   padding-left: 0;
   list-style-type: none;
+  color: var(--govuk-text-colour, #0b0c0c);
 }
 @media print {
   .govuk-list {
@@ -4458,11 +4458,11 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   font-weight: 400;
   font-size: 1.1875rem;
   line-height: 1.3157894737;
-  color: var(--govuk-text-colour, #0b0c0c);
   padding: 15px;
   margin-bottom: 30px;
   border: 5px solid;
   border-color: var(--govuk-error-colour, #ca3535);
+  color: var(--govuk-text-colour, #0b0c0c);
 }
 @media print {
   .govuk-error-summary {
@@ -5239,10 +5239,10 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   font-weight: 400;
   font-size: 1.1875rem;
   line-height: 1.3157894737;
-  color: var(--govuk-text-colour, #0b0c0c);
   max-width: 100%;
   margin-left: -5px;
   padding: 5px;
+  color: var(--govuk-text-colour, #0b0c0c);
 }
 @media print {
   .govuk-file-upload {
@@ -6464,13 +6464,13 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   font-weight: 400;
   font-size: 1.1875rem;
   line-height: 1.3157894737;
-  color: var(--govuk-text-colour, #0b0c0c);
   padding: 15px;
   margin-top: 20px;
   margin-bottom: 20px;
   clear: both;
   border-left: 10px solid;
   border-left-color: var(--govuk-border-colour, #cecece);
+  color: var(--govuk-text-colour, #0b0c0c);
 }
 @media print {
   .govuk-inset-text {
@@ -6722,8 +6722,8 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 }
 
 .govuk-notification-banner__content {
-  color: var(--govuk-text-colour, #0b0c0c);
   padding: 15px;
+  color: var(--govuk-text-colour, #0b0c0c);
   background-color: var(--govuk-body-background-colour, #ffffff);
 }
 @media (min-width: 40.0625em) {
@@ -7254,7 +7254,7 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 @media print {
   .govuk-panel--confirmation {
     border-color: currentcolor;
-    color: var(--govuk-print-text-colour, #000000);
+    color: var(--govuk-text-colour, #0b0c0c);
     background: none;
   }
 }
@@ -8066,9 +8066,9 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   font-weight: 400;
   font-size: 1rem;
   line-height: 1.25;
-  color: var(--govuk-text-colour, #0b0c0c);
   display: table;
   margin: 0;
+  color: var(--govuk-text-colour, #0b0c0c);
 }
 @media print {
   .govuk-phase-banner__content {
@@ -8621,9 +8621,9 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   font-weight: 400;
   font-size: 1.1875rem;
   line-height: 1.3157894737;
-  color: var(--govuk-text-colour, #0b0c0c);
   width: 40px;
   margin-bottom: 10px;
+  color: var(--govuk-text-colour, #0b0c0c);
   text-align: center;
 }
 @media print {
@@ -9895,8 +9895,8 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   font-weight: 700;
   font-size: 1.1875rem;
   line-height: 1.3157894737;
-  color: var(--govuk-text-colour, #0b0c0c);
   margin: 5px 20px 10px 0;
+  color: var(--govuk-text-colour, #0b0c0c);
 }
 @media print {
   .govuk-summary-card__title {
@@ -10058,11 +10058,11 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   font-weight: 400;
   font-size: 1.1875rem;
   line-height: 1.3157894737;
-  color: var(--govuk-text-colour, #0b0c0c);
   width: 100%;
   margin-bottom: 20px;
   border-spacing: 0;
   border-collapse: collapse;
+  color: var(--govuk-text-colour, #0b0c0c);
 }
 @media print {
   .govuk-table {
@@ -10296,8 +10296,8 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   font-size: 1.1875rem;
   line-height: 1.3157894737;
   font-weight: 400;
-  color: var(--govuk-text-colour, #0b0c0c);
   margin-bottom: 10px;
+  color: var(--govuk-text-colour, #0b0c0c);
 }
 @media print {
   .govuk-tabs__title {
@@ -10322,10 +10322,10 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   margin-left: 25px;
 }
 .govuk-tabs__list-item::before {
-  color: var(--govuk-text-colour, #0b0c0c);
   content: "—";
   margin-left: -25px;
   padding-right: 5px;
+  color: var(--govuk-text-colour, #0b0c0c);
 }
 
 .govuk-tabs__tab {
@@ -10757,16 +10757,16 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 
 .govuk-task-list__name-and-hint {
   display: table-cell;
-  vertical-align: top;
   color: var(--govuk-text-colour, #0b0c0c);
+  vertical-align: top;
 }
 
 .govuk-task-list__status {
   display: table-cell;
   padding-left: 10px;
+  color: var(--govuk-text-colour, #0b0c0c);
   text-align: right;
   vertical-align: top;
-  color: var(--govuk-text-colour, #0b0c0c);
 }
 
 .govuk-task-list__status--cannot-start-yet {
@@ -11257,9 +11257,9 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 }
 
 .govuk-warning-text__text {
-  color: var(--govuk-text-colour, #0b0c0c);
   display: block;
   padding-left: 45px;
+  color: var(--govuk-text-colour, #0b0c0c);
   font-weight: inherit;
 }
 
@@ -11519,11 +11519,11 @@ exports[`ITCSS layers core works when user @imports the layer 1`] = `
   font-weight: 400;
   font-size: 1.1875rem;
   line-height: 1.3157894737;
-  color: var(--govuk-text-colour, #0b0c0c);
   margin-top: 0;
   margin-bottom: 15px;
   padding-left: 0;
   list-style-type: none;
+  color: var(--govuk-text-colour, #0b0c0c);
 }
 @media print {
   .govuk-list {
@@ -11581,7 +11581,6 @@ exports[`ITCSS layers core works when user @imports the layer 1`] = `
 
 
 .govuk-heading-xl {
-  color: var(--govuk-text-colour, #0b0c0c);
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -11590,6 +11589,7 @@ exports[`ITCSS layers core works when user @imports the layer 1`] = `
   line-height: 1.09375;
   display: block;
   margin-top: 0;
+  color: var(--govuk-text-colour, #0b0c0c);
   margin-bottom: 30px;
 }
 @media print {
@@ -11616,7 +11616,6 @@ exports[`ITCSS layers core works when user @imports the layer 1`] = `
 }
 
 .govuk-heading-l {
-  color: var(--govuk-text-colour, #0b0c0c);
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -11625,6 +11624,7 @@ exports[`ITCSS layers core works when user @imports the layer 1`] = `
   line-height: 1.1111111111;
   display: block;
   margin-top: 0;
+  color: var(--govuk-text-colour, #0b0c0c);
   margin-bottom: 20px;
 }
 @media print {
@@ -11651,7 +11651,6 @@ exports[`ITCSS layers core works when user @imports the layer 1`] = `
 }
 
 .govuk-heading-m {
-  color: var(--govuk-text-colour, #0b0c0c);
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -11660,6 +11659,7 @@ exports[`ITCSS layers core works when user @imports the layer 1`] = `
   line-height: 1.1904761905;
   display: block;
   margin-top: 0;
+  color: var(--govuk-text-colour, #0b0c0c);
   margin-bottom: 15px;
 }
 @media print {
@@ -11686,7 +11686,6 @@ exports[`ITCSS layers core works when user @imports the layer 1`] = `
 }
 
 .govuk-heading-s {
-  color: var(--govuk-text-colour, #0b0c0c);
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -11695,6 +11694,7 @@ exports[`ITCSS layers core works when user @imports the layer 1`] = `
   line-height: 1.3157894737;
   display: block;
   margin-top: 0;
+  color: var(--govuk-text-colour, #0b0c0c);
   margin-bottom: 15px;
 }
 @media print {
