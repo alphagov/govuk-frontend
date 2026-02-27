@@ -19,7 +19,10 @@ $govuk-default-functional-colours: (
       name: "blue"
     ),
     "text": (
-      name: "black"
+      name: "black",
+      media: (
+        print: #000000
+      )
     ),
     // The background colour of the template. This is intended to be the same
     // as `surface-background` for the purposes of making the Footer and Cookie
