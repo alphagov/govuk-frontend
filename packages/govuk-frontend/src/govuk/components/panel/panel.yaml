@@ -38,6 +38,23 @@ examples:
     options:
       titleHtml: Application complete
       text: 'Your reference number: HDJ2123F'
+  - name: custom heading level
+    options:
+      titleText: Application complete
+      headingLevel: 2
+      text: 'Your reference number: HDJ2123F'
+  - name: interruption
+    options:
+      titleText: Is your age correct?
+      html: |
+        <p>You entered your age as <strong>109</strong>.</p>
+        <div class="govuk-button-group">
+          <button type="submit" class="govuk-button govuk-button--inverse" data-module="govuk-button">
+            Yes, this is correct
+          </button>
+          <a href="#" class="govuk-link govuk-link--inverse">Change my age</a>
+        </div>
+      classes: govuk-panel--interruption
 
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: title html as text
