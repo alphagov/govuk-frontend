@@ -33,7 +33,7 @@ export class I18n {
    * @param {{ [key: string]: unknown }} [options] - Any options passed with the translation string, e.g: for string interpolation.
    * @returns {string} The appropriate translation string.
    * @throws {Error} Lookup key required
-   * @throws {Error} Options required for `${}` placeholders
+   * @throws {Error} Options required for `%{}` placeholders
    */
   t(lookupKey, options) {
     if (!lookupKey) {
@@ -58,9 +58,8 @@ export class I18n {
     }
 
     if (typeof translation === 'string') {
-      // Check for ${} placeholders in the translation string
-      // eslint-disable-next-line @typescript-eslint/prefer-regexp-exec
-      if (translation.match(/%{(.\S+)}/)) {
+      // Check for %{} placeholders in the translation string
+      if (/%{(\S+)}/.test(translation)) {
         if (!options) {
           throw new Error(
             'i18n: cannot replace placeholders in string if no option data provided'
@@ -93,7 +92,7 @@ export class I18n {
       : undefined
 
     return translationString.replace(
-      /%{(.\S+)}/g,
+      /%{(\S+)}/g,
 
       /**
        * Replace translation string placeholders
