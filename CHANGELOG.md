@@ -38,7 +38,7 @@ We've updated how the text colour changes to pure black when printing.
 
 Before, an additional print media query was included every time you used `@include govuk-text-colour`:
 
-````css
+```css
 .my-element {
   color: var(--govuk-text-colour, #0b0c0c);
 }
@@ -48,6 +48,21 @@ Before, an additional print media query was included every time you used `@inclu
     color: var(--govuk-print-text-colour, #000);
   }
 }
+```
+
+Now, only one media query is included at the start of the compiled CSS, changing the value of the `--govuk-text-colour` custom property:
+
+```css
+:root { --govuk-text-colour: #0b0c0c; }
+
+@media print {
+  :root { --govuk-text-colour: var(--govuk-print-text-colour, #000); }
+}
+
+.my-element {
+  color: var(--govuk-text-colour, #0b0c0c);
+}
+```
 
 This change allows you to simplify how the text colour is applied to your CSS rulesets.
 
@@ -188,7 +203,7 @@ For example:
 $app-colour: govuk-colour('blue'); // Returns the 'Primary blue' colour
 
 $component-colour: govuk-colour('red', $variant: 'tint-25') // Returns the 'Red tint 25%' colour
-````
+```
 
 See the [GOV.UK web palette](https://design-system.service.gov.uk/styles/colour/#govuk-web-palette) on the GOV.UK Design System website for the list of available colours, tints and shades.
 
