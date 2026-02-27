@@ -131,6 +131,11 @@ exports[`All components works when user @imports everything 1`] = `
   --govuk-surface-text-colour: #0b0c0c;
   --govuk-surface-border-colour: #8eb8dc;
 }
+@media print {
+  :root {
+    --govuk-text-colour: var(--govuk-print-text-colour, #000000);
+  }
+}
 
 
 
@@ -265,18 +270,8 @@ exports[`All components works when user @imports everything 1`] = `
 .govuk-link--text-colour:link, .govuk-link--text-colour:visited {
   color: var(--govuk-text-colour, #0b0c0c);
 }
-@media print {
-  .govuk-link--text-colour:link, .govuk-link--text-colour:visited {
-    color: var(--govuk-print-text-colour, #000000);
-  }
-}
 .govuk-link--text-colour:active, .govuk-link--text-colour:focus {
   color: var(--govuk-text-colour, #0b0c0c);
-}
-@media print {
-  .govuk-link--text-colour:active, .govuk-link--text-colour:focus {
-    color: var(--govuk-print-text-colour, #000000);
-  }
 }
 
 .govuk-link--inverse:link, .govuk-link--inverse:visited {
@@ -356,11 +351,11 @@ exports[`All components works when user @imports everything 1`] = `
   font-weight: 400;
   font-size: 1.1875rem;
   line-height: 1.3157894737;
-  color: var(--govuk-text-colour, #0b0c0c);
   margin-top: 0;
   margin-bottom: 15px;
   padding-left: 0;
   list-style-type: none;
+  color: var(--govuk-text-colour, #0b0c0c);
 }
 @media print {
   .govuk-list {
@@ -371,11 +366,6 @@ exports[`All components works when user @imports everything 1`] = `
   .govuk-list {
     font-size: 14pt;
     line-height: 1.15;
-  }
-}
-@media print {
-  .govuk-list {
-    color: var(--govuk-print-text-colour, #000000);
   }
 }
 @media (min-width: 40.0625em) {
@@ -455,7 +445,6 @@ exports[`All components works when user @imports everything 1`] = `
 
 
 .govuk-heading-xl {
-  color: var(--govuk-text-colour, #0b0c0c);
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -464,12 +453,8 @@ exports[`All components works when user @imports everything 1`] = `
   line-height: 1.09375;
   display: block;
   margin-top: 0;
+  color: var(--govuk-text-colour, #0b0c0c);
   margin-bottom: 30px;
-}
-@media print {
-  .govuk-heading-xl {
-    color: var(--govuk-print-text-colour, #000000);
-  }
 }
 @media print {
   .govuk-heading-xl {
@@ -495,7 +480,6 @@ exports[`All components works when user @imports everything 1`] = `
 }
 
 .govuk-heading-l {
-  color: var(--govuk-text-colour, #0b0c0c);
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -504,12 +488,8 @@ exports[`All components works when user @imports everything 1`] = `
   line-height: 1.1111111111;
   display: block;
   margin-top: 0;
+  color: var(--govuk-text-colour, #0b0c0c);
   margin-bottom: 20px;
-}
-@media print {
-  .govuk-heading-l {
-    color: var(--govuk-print-text-colour, #000000);
-  }
 }
 @media print {
   .govuk-heading-l {
@@ -535,7 +515,6 @@ exports[`All components works when user @imports everything 1`] = `
 }
 
 .govuk-heading-m {
-  color: var(--govuk-text-colour, #0b0c0c);
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -544,12 +523,8 @@ exports[`All components works when user @imports everything 1`] = `
   line-height: 1.1904761905;
   display: block;
   margin-top: 0;
+  color: var(--govuk-text-colour, #0b0c0c);
   margin-bottom: 15px;
-}
-@media print {
-  .govuk-heading-m {
-    color: var(--govuk-print-text-colour, #000000);
-  }
 }
 @media print {
   .govuk-heading-m {
@@ -575,7 +550,6 @@ exports[`All components works when user @imports everything 1`] = `
 }
 
 .govuk-heading-s {
-  color: var(--govuk-text-colour, #0b0c0c);
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -584,12 +558,8 @@ exports[`All components works when user @imports everything 1`] = `
   line-height: 1.3157894737;
   display: block;
   margin-top: 0;
+  color: var(--govuk-text-colour, #0b0c0c);
   margin-bottom: 15px;
-}
-@media print {
-  .govuk-heading-s {
-    color: var(--govuk-print-text-colour, #000000);
-  }
 }
 @media print {
   .govuk-heading-s {
@@ -694,6 +664,7 @@ exports[`All components works when user @imports everything 1`] = `
 }
 
 .govuk-body-lead, .govuk-body-l {
+  margin-top: 0;
   color: var(--govuk-text-colour, #0b0c0c);
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -701,13 +672,7 @@ exports[`All components works when user @imports everything 1`] = `
   font-weight: 400;
   font-size: 1.3125rem;
   line-height: 1.1904761905;
-  margin-top: 0;
   margin-bottom: 20px;
-}
-@media print {
-  .govuk-body-lead, .govuk-body-l {
-    color: var(--govuk-print-text-colour, #000000);
-  }
 }
 @media print {
   .govuk-body-lead, .govuk-body-l {
@@ -733,6 +698,7 @@ exports[`All components works when user @imports everything 1`] = `
 }
 
 .govuk-body, .govuk-body-m {
+  margin-top: 0;
   color: var(--govuk-text-colour, #0b0c0c);
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -740,13 +706,7 @@ exports[`All components works when user @imports everything 1`] = `
   font-weight: 400;
   font-size: 1.1875rem;
   line-height: 1.3157894737;
-  margin-top: 0;
   margin-bottom: 15px;
-}
-@media print {
-  .govuk-body, .govuk-body-m {
-    color: var(--govuk-print-text-colour, #000000);
-  }
 }
 @media print {
   .govuk-body, .govuk-body-m {
@@ -766,6 +726,7 @@ exports[`All components works when user @imports everything 1`] = `
 }
 
 .govuk-body-s {
+  margin-top: 0;
   color: var(--govuk-text-colour, #0b0c0c);
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -773,13 +734,7 @@ exports[`All components works when user @imports everything 1`] = `
   font-weight: 400;
   font-size: 1rem;
   line-height: 1.25;
-  margin-top: 0;
   margin-bottom: 15px;
-}
-@media print {
-  .govuk-body-s {
-    color: var(--govuk-print-text-colour, #000000);
-  }
 }
 @media print {
   .govuk-body-s {
@@ -2142,10 +2097,10 @@ exports[`All components works when user @imports everything 1`] = `
   font-weight: 700;
   font-size: 1.3125rem;
   line-height: 1.1904761905;
-  color: var(--govuk-text-colour, #0b0c0c);
   display: block;
   margin-bottom: 0;
   padding-top: 15px;
+  color: var(--govuk-text-colour, #0b0c0c);
 }
 @media print {
   .govuk-accordion__section-button {
@@ -2162,11 +2117,6 @@ exports[`All components works when user @imports everything 1`] = `
   .govuk-accordion__section-button {
     font-size: 18pt;
     line-height: 1.15;
-  }
-}
-@media print {
-  .govuk-accordion__section-button {
-    color: var(--govuk-print-text-colour, #000000);
   }
 }
 
@@ -2599,18 +2549,8 @@ exports[`All components works when user @imports everything 1`] = `
 .govuk-back-link:link, .govuk-back-link:visited {
   color: var(--govuk-text-colour, #0b0c0c);
 }
-@media print {
-  .govuk-back-link:link, .govuk-back-link:visited {
-    color: var(--govuk-print-text-colour, #000000);
-  }
-}
 .govuk-back-link:active, .govuk-back-link:focus {
   color: var(--govuk-text-colour, #0b0c0c);
-}
-@media print {
-  .govuk-back-link:active, .govuk-back-link:focus {
-    color: var(--govuk-print-text-colour, #000000);
-  }
 }
 
 .govuk-back-link::before {
@@ -2766,9 +2706,9 @@ exports[`All components works when user @imports everything 1`] = `
   font-weight: 400;
   font-size: 1rem;
   line-height: 1.25;
-  color: var(--govuk-text-colour, #0b0c0c);
   margin-top: 15px;
   margin-bottom: 10px;
+  color: var(--govuk-text-colour, #0b0c0c);
 }
 @media print {
   .govuk-breadcrumbs {
@@ -2779,11 +2719,6 @@ exports[`All components works when user @imports everything 1`] = `
   .govuk-breadcrumbs {
     font-size: 14pt;
     line-height: 1.2;
-  }
-}
-@media print {
-  .govuk-breadcrumbs {
-    color: var(--govuk-print-text-colour, #000000);
   }
 }
 
@@ -2872,18 +2807,8 @@ exports[`All components works when user @imports everything 1`] = `
 .govuk-breadcrumbs__link:link, .govuk-breadcrumbs__link:visited {
   color: var(--govuk-text-colour, #0b0c0c);
 }
-@media print {
-  .govuk-breadcrumbs__link:link, .govuk-breadcrumbs__link:visited {
-    color: var(--govuk-print-text-colour, #000000);
-  }
-}
 .govuk-breadcrumbs__link:active, .govuk-breadcrumbs__link:focus {
   color: var(--govuk-text-colour, #0b0c0c);
-}
-@media print {
-  .govuk-breadcrumbs__link:active, .govuk-breadcrumbs__link:focus {
-    color: var(--govuk-print-text-colour, #000000);
-  }
 }
 
 @media (max-width: 40.0525em) {
@@ -3659,9 +3584,9 @@ exports[`All components works when user @imports everything 1`] = `
   font-weight: 400;
   font-size: 1.1875rem;
   line-height: 1.3157894737;
-  color: var(--govuk-text-colour, #0b0c0c);
   display: block;
   margin-bottom: 5px;
+  color: var(--govuk-text-colour, #0b0c0c);
 }
 @media print {
   .govuk-label {
@@ -3672,11 +3597,6 @@ exports[`All components works when user @imports everything 1`] = `
   .govuk-label {
     font-size: 14pt;
     line-height: 1.15;
-  }
-}
-@media print {
-  .govuk-label {
-    color: var(--govuk-print-text-colour, #000000);
   }
 }
 
@@ -4563,12 +4483,12 @@ exports[`All components works when user @imports everything 1`] = `
   font-weight: 400;
   font-size: 1.1875rem;
   line-height: 1.3157894737;
-  color: var(--govuk-text-colour, #0b0c0c);
   box-sizing: border-box;
   display: table;
   max-width: 100%;
   margin-bottom: 10px;
   padding: 0;
+  color: var(--govuk-text-colour, #0b0c0c);
   white-space: normal;
 }
 @media print {
@@ -4580,11 +4500,6 @@ exports[`All components works when user @imports everything 1`] = `
   .govuk-fieldset__legend {
     font-size: 14pt;
     line-height: 1.15;
-  }
-}
-@media print {
-  .govuk-fieldset__legend {
-    color: var(--govuk-print-text-colour, #000000);
   }
 }
 
@@ -4962,9 +4877,9 @@ exports[`All components works when user @imports everything 1`] = `
   font-weight: 400;
   font-size: 1.1875rem;
   line-height: 1.3157894737;
-  color: var(--govuk-text-colour, #0b0c0c);
   width: 40px;
   margin-bottom: 10px;
+  color: var(--govuk-text-colour, #0b0c0c);
   text-align: center;
 }
 @media print {
@@ -4976,11 +4891,6 @@ exports[`All components works when user @imports everything 1`] = `
   .govuk-checkboxes__divider {
     font-size: 14pt;
     line-height: 1.15;
-  }
-}
-@media print {
-  .govuk-checkboxes__divider {
-    color: var(--govuk-print-text-colour, #000000);
   }
 }
 
@@ -6499,9 +6409,9 @@ exports[`All components works when user @imports everything 1`] = `
   font-weight: 400;
   font-size: 1.1875rem;
   line-height: 1.3157894737;
-  color: var(--govuk-text-colour, #0b0c0c);
   margin-bottom: 20px;
   display: block;
+  color: var(--govuk-text-colour, #0b0c0c);
 }
 @media print {
   .govuk-details {
@@ -6512,11 +6422,6 @@ exports[`All components works when user @imports everything 1`] = `
   .govuk-details {
     font-size: 14pt;
     line-height: 1.15;
-  }
-}
-@media print {
-  .govuk-details {
-    color: var(--govuk-print-text-colour, #000000);
   }
 }
 @media (min-width: 40.0625em) {
@@ -6893,11 +6798,11 @@ exports[`All components works when user @imports everything 1`] = `
   font-weight: 400;
   font-size: 1.1875rem;
   line-height: 1.3157894737;
-  color: var(--govuk-text-colour, #0b0c0c);
   padding: 15px;
   margin-bottom: 30px;
   border: 5px solid;
   border-color: var(--govuk-error-colour, #ca3535);
+  color: var(--govuk-text-colour, #0b0c0c);
 }
 @media print {
   .govuk-error-summary {
@@ -6908,11 +6813,6 @@ exports[`All components works when user @imports everything 1`] = `
   .govuk-error-summary {
     font-size: 14pt;
     line-height: 1.15;
-  }
-}
-@media print {
-  .govuk-error-summary {
-    color: var(--govuk-print-text-colour, #000000);
   }
 }
 @media (min-width: 40.0625em) {
@@ -7819,10 +7719,10 @@ exports[`All components works when user @imports everything 1`] = `
   font-weight: 400;
   font-size: 1.1875rem;
   line-height: 1.3157894737;
-  color: var(--govuk-text-colour, #0b0c0c);
   max-width: 100%;
   margin-left: -5px;
   padding: 5px;
+  color: var(--govuk-text-colour, #0b0c0c);
 }
 @media print {
   .govuk-file-upload {
@@ -7833,11 +7733,6 @@ exports[`All components works when user @imports everything 1`] = `
   .govuk-file-upload {
     font-size: 14pt;
     line-height: 1.15;
-  }
-}
-@media print {
-  .govuk-file-upload {
-    color: var(--govuk-print-text-colour, #000000);
   }
 }
 .govuk-file-upload::-webkit-file-upload-button {
@@ -8230,18 +8125,8 @@ exports[`All components works when user @imports everything 1`] = `
 .govuk-footer__copyright-logo:link, .govuk-footer__copyright-logo:visited {
   color: var(--govuk-text-colour, #0b0c0c);
 }
-@media print {
-  .govuk-footer__copyright-logo:link, .govuk-footer__copyright-logo:visited {
-    color: var(--govuk-print-text-colour, #000000);
-  }
-}
 .govuk-footer__copyright-logo:active, .govuk-footer__copyright-logo:focus {
   color: var(--govuk-text-colour, #0b0c0c);
-}
-@media print {
-  .govuk-footer__copyright-logo:active, .govuk-footer__copyright-logo:focus {
-    color: var(--govuk-print-text-colour, #000000);
-  }
 }
 
 .govuk-footer__copyright-logo::before {
@@ -9219,13 +9104,13 @@ exports[`All components works when user @imports everything 1`] = `
   font-weight: 400;
   font-size: 1.1875rem;
   line-height: 1.3157894737;
-  color: var(--govuk-text-colour, #0b0c0c);
   padding: 15px;
   margin-top: 20px;
   margin-bottom: 20px;
   clear: both;
   border-left: 10px solid;
   border-left-color: var(--govuk-border-colour, #cecece);
+  color: var(--govuk-text-colour, #0b0c0c);
 }
 @media print {
   .govuk-inset-text {
@@ -9236,11 +9121,6 @@ exports[`All components works when user @imports everything 1`] = `
   .govuk-inset-text {
     font-size: 14pt;
     line-height: 1.15;
-  }
-}
-@media print {
-  .govuk-inset-text {
-    color: var(--govuk-print-text-colour, #000000);
   }
 }
 @media (min-width: 40.0625em) {
@@ -9522,14 +9402,9 @@ exports[`All components works when user @imports everything 1`] = `
 }
 
 .govuk-notification-banner__content {
-  color: var(--govuk-text-colour, #0b0c0c);
   padding: 15px;
+  color: var(--govuk-text-colour, #0b0c0c);
   background-color: var(--govuk-body-background-colour, #ffffff);
-}
-@media print {
-  .govuk-notification-banner__content {
-    color: var(--govuk-print-text-colour, #000000);
-  }
 }
 @media (min-width: 40.0625em) {
   .govuk-notification-banner__content {
@@ -10099,7 +9974,7 @@ exports[`All components works when user @imports everything 1`] = `
 @media print {
   .govuk-panel--confirmation {
     border-color: currentcolor;
-    color: var(--govuk-print-text-colour, #000000);
+    color: var(--govuk-text-colour, #0b0c0c);
     background: none;
   }
 }
@@ -11071,9 +10946,9 @@ exports[`All components works when user @imports everything 1`] = `
   font-weight: 400;
   font-size: 1rem;
   line-height: 1.25;
-  color: var(--govuk-text-colour, #0b0c0c);
   display: table;
   margin: 0;
+  color: var(--govuk-text-colour, #0b0c0c);
 }
 @media print {
   .govuk-phase-banner__content {
@@ -11084,11 +10959,6 @@ exports[`All components works when user @imports everything 1`] = `
   .govuk-phase-banner__content {
     font-size: 14pt;
     line-height: 1.2;
-  }
-}
-@media print {
-  .govuk-phase-banner__content {
-    color: var(--govuk-print-text-colour, #000000);
   }
 }
 
@@ -11731,9 +11601,9 @@ exports[`All components works when user @imports everything 1`] = `
   font-weight: 400;
   font-size: 1.1875rem;
   line-height: 1.3157894737;
-  color: var(--govuk-text-colour, #0b0c0c);
   width: 40px;
   margin-bottom: 10px;
+  color: var(--govuk-text-colour, #0b0c0c);
   text-align: center;
 }
 @media print {
@@ -11745,11 +11615,6 @@ exports[`All components works when user @imports everything 1`] = `
   .govuk-radios__divider {
     font-size: 14pt;
     line-height: 1.15;
-  }
-}
-@media print {
-  .govuk-radios__divider {
-    color: var(--govuk-print-text-colour, #000000);
   }
 }
 
@@ -12528,18 +12393,8 @@ exports[`All components works when user @imports everything 1`] = `
 .govuk-service-navigation__service-name .govuk-service-navigation__link:link, .govuk-service-navigation__service-name .govuk-service-navigation__link:visited {
   color: var(--govuk-text-colour, #0b0c0c);
 }
-@media print {
-  .govuk-service-navigation__service-name .govuk-service-navigation__link:link, .govuk-service-navigation__service-name .govuk-service-navigation__link:visited {
-    color: var(--govuk-print-text-colour, #000000);
-  }
-}
 .govuk-service-navigation__service-name .govuk-service-navigation__link:active, .govuk-service-navigation__service-name .govuk-service-navigation__link:focus {
   color: var(--govuk-text-colour, #0b0c0c);
-}
-@media print {
-  .govuk-service-navigation__service-name .govuk-service-navigation__link:active, .govuk-service-navigation__service-name .govuk-service-navigation__link:focus {
-    color: var(--govuk-print-text-colour, #000000);
-  }
 }
 
 .govuk-service-navigation__wrapper {
@@ -12801,18 +12656,8 @@ exports[`All components works when user @imports everything 1`] = `
 .govuk-skip-link:link, .govuk-skip-link:visited {
   color: var(--govuk-text-colour, #0b0c0c);
 }
-@media print {
-  .govuk-skip-link:link, .govuk-skip-link:visited {
-    color: var(--govuk-print-text-colour, #000000);
-  }
-}
 .govuk-skip-link:active, .govuk-skip-link:focus {
   color: var(--govuk-text-colour, #0b0c0c);
-}
-@media print {
-  .govuk-skip-link:active, .govuk-skip-link:focus {
-    color: var(--govuk-print-text-colour, #000000);
-  }
 }
 @media print {
   .govuk-skip-link {
@@ -12968,11 +12813,6 @@ exports[`All components works when user @imports everything 1`] = `
   .govuk-summary-list {
     font-size: 14pt;
     line-height: 1.15;
-  }
-}
-@media print {
-  .govuk-summary-list {
-    color: var(--govuk-print-text-colour, #000000);
   }
 }
 @media (min-width: 40.0625em) {
@@ -13175,8 +13015,8 @@ exports[`All components works when user @imports everything 1`] = `
   font-weight: 700;
   font-size: 1.1875rem;
   line-height: 1.3157894737;
-  color: var(--govuk-text-colour, #0b0c0c);
   margin: 5px 20px 10px 0;
+  color: var(--govuk-text-colour, #0b0c0c);
 }
 @media print {
   .govuk-summary-card__title {
@@ -13187,11 +13027,6 @@ exports[`All components works when user @imports everything 1`] = `
   .govuk-summary-card__title {
     font-size: 14pt;
     line-height: 1.15;
-  }
-}
-@media print {
-  .govuk-summary-card__title {
-    color: var(--govuk-print-text-colour, #000000);
   }
 }
 @media (min-width: 40.0625em) {
@@ -13363,11 +13198,11 @@ exports[`All components works when user @imports everything 1`] = `
   font-weight: 400;
   font-size: 1.1875rem;
   line-height: 1.3157894737;
-  color: var(--govuk-text-colour, #0b0c0c);
   width: 100%;
   margin-bottom: 20px;
   border-spacing: 0;
   border-collapse: collapse;
+  color: var(--govuk-text-colour, #0b0c0c);
 }
 @media print {
   .govuk-table {
@@ -13378,11 +13213,6 @@ exports[`All components works when user @imports everything 1`] = `
   .govuk-table {
     font-size: 14pt;
     line-height: 1.15;
-  }
-}
-@media print {
-  .govuk-table {
-    color: var(--govuk-print-text-colour, #000000);
   }
 }
 @media (min-width: 40.0625em) {
@@ -13626,18 +13456,13 @@ exports[`All components works when user @imports everything 1`] = `
   font-size: 1.1875rem;
   line-height: 1.3157894737;
   font-weight: 400;
-  color: var(--govuk-text-colour, #0b0c0c);
   margin-bottom: 10px;
+  color: var(--govuk-text-colour, #0b0c0c);
 }
 @media print {
   .govuk-tabs__title {
     font-size: 14pt;
     line-height: 1.15;
-  }
-}
-@media print {
-  .govuk-tabs__title {
-    color: var(--govuk-print-text-colour, #000000);
   }
 }
 
@@ -13657,15 +13482,10 @@ exports[`All components works when user @imports everything 1`] = `
   margin-left: 25px;
 }
 .govuk-tabs__list-item::before {
-  color: var(--govuk-text-colour, #0b0c0c);
   content: "—";
   margin-left: -25px;
   padding-right: 5px;
-}
-@media print {
-  .govuk-tabs__list-item::before {
-    color: var(--govuk-print-text-colour, #000000);
-  }
+  color: var(--govuk-text-colour, #0b0c0c);
 }
 
 .govuk-tabs__tab {
@@ -13777,23 +13597,9 @@ exports[`All components works when user @imports everything 1`] = `
   .govuk-frontend-supported .govuk-tabs__tab:link, .govuk-frontend-supported .govuk-tabs__tab:visited {
     color: var(--govuk-text-colour, #0b0c0c);
   }
-}
-@media print and (min-width: 40.0625em) {
-  .govuk-frontend-supported .govuk-tabs__tab:link, .govuk-frontend-supported .govuk-tabs__tab:visited {
-    color: var(--govuk-print-text-colour, #000000);
-  }
-}
-@media (min-width: 40.0625em) {
   .govuk-frontend-supported .govuk-tabs__tab:active, .govuk-frontend-supported .govuk-tabs__tab:focus {
     color: var(--govuk-text-colour, #0b0c0c);
   }
-}
-@media print and (min-width: 40.0625em) {
-  .govuk-frontend-supported .govuk-tabs__tab:active, .govuk-frontend-supported .govuk-tabs__tab:focus {
-    color: var(--govuk-print-text-colour, #000000);
-  }
-}
-@media (min-width: 40.0625em) {
   .govuk-frontend-supported .govuk-tabs__tab::after {
     content: "";
     position: absolute;
@@ -14171,26 +13977,16 @@ exports[`All components works when user @imports everything 1`] = `
 
 .govuk-task-list__name-and-hint {
   display: table-cell;
-  vertical-align: top;
   color: var(--govuk-text-colour, #0b0c0c);
-}
-@media print {
-  .govuk-task-list__name-and-hint {
-    color: var(--govuk-print-text-colour, #000000);
-  }
+  vertical-align: top;
 }
 
 .govuk-task-list__status {
   display: table-cell;
   padding-left: 10px;
+  color: var(--govuk-text-colour, #0b0c0c);
   text-align: right;
   vertical-align: top;
-  color: var(--govuk-text-colour, #0b0c0c);
-}
-@media print {
-  .govuk-task-list__status {
-    color: var(--govuk-print-text-colour, #000000);
-  }
 }
 
 .govuk-task-list__status--cannot-start-yet {
@@ -14781,15 +14577,10 @@ exports[`All components works when user @imports everything 1`] = `
 }
 
 .govuk-warning-text__text {
-  color: var(--govuk-text-colour, #0b0c0c);
   display: block;
   padding-left: 45px;
+  color: var(--govuk-text-colour, #0b0c0c);
   font-weight: inherit;
-}
-@media print {
-  .govuk-warning-text__text {
-    color: var(--govuk-print-text-colour, #000000);
-  }
 }
 
 

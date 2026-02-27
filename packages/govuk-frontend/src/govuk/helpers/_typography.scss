@@ -45,14 +45,16 @@
 ///
 /// Sets the text colour, including a suitable override for print.
 ///
+/// @deprecated
 /// @access public
 
 @mixin govuk-text-colour {
-  color: govuk-functional-colour(text);
+  @include _warning(
+    "govuk-text-colour",
+    "The `govuk-text-colour` mixin is deprecated. Use `color: govuk-colour(text)` instead."
+  );
 
-  @media print {
-    color: govuk-functional-colour(print-text);
-  }
+  color: govuk-functional-colour(text);
 }
 
 /// Regular font weight helper

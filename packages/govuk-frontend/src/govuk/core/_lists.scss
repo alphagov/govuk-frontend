@@ -5,11 +5,16 @@
 @include govuk-exports("govuk/core/lists") {
   %govuk-list {
     @include govuk-font($size: 19);
-    @include govuk-text-colour;
+
+    // Keep margin configuration next to each other
+    // stylelint-disable order/order-properties
     margin-top: 0;
     @include govuk-responsive-margin(4, "bottom");
+    // stylelint-enable order/order-properties
+
     padding-left: 0;
     list-style-type: none;
+    color: govuk-functional-colour(text);
 
     // Add a top margin for nested lists
     %govuk-list {
