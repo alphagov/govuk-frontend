@@ -267,11 +267,11 @@ exports[`All components works when user @imports everything 1`] = `
   color: var(--govuk-focus-text-colour, #0b0c0c);
 }
 
-.govuk-link--text-colour:link, .govuk-link--text-colour:visited {
+.govuk-link--text-colour:link, .govuk-link--text-colour:visited, .govuk-link--text-colour:active {
   color: var(--govuk-text-colour, #0b0c0c);
 }
-.govuk-link--text-colour:active, .govuk-link--text-colour:focus {
-  color: var(--govuk-text-colour, #0b0c0c);
+.govuk-link--text-colour:focus {
+  color: var(--govuk-focus-text-colour, #0b0c0c);
 }
 
 .govuk-link--inverse:link, .govuk-link--inverse:visited {
@@ -2546,11 +2546,11 @@ exports[`All components works when user @imports everything 1`] = `
     box-decoration-break: clone;
   }
 }
-.govuk-back-link:link, .govuk-back-link:visited {
+.govuk-back-link:link, .govuk-back-link:visited, .govuk-back-link:active {
   color: var(--govuk-text-colour, #0b0c0c);
 }
-.govuk-back-link:active, .govuk-back-link:focus {
-  color: var(--govuk-text-colour, #0b0c0c);
+.govuk-back-link:focus {
+  color: var(--govuk-focus-text-colour, #0b0c0c);
 }
 
 .govuk-back-link::before {
@@ -2804,11 +2804,11 @@ exports[`All components works when user @imports everything 1`] = `
     box-decoration-break: clone;
   }
 }
-.govuk-breadcrumbs__link:link, .govuk-breadcrumbs__link:visited {
+.govuk-breadcrumbs__link:link, .govuk-breadcrumbs__link:visited, .govuk-breadcrumbs__link:active {
   color: var(--govuk-text-colour, #0b0c0c);
 }
-.govuk-breadcrumbs__link:active, .govuk-breadcrumbs__link:focus {
-  color: var(--govuk-text-colour, #0b0c0c);
+.govuk-breadcrumbs__link:focus {
+  color: var(--govuk-focus-text-colour, #0b0c0c);
 }
 
 @media (max-width: 40.0525em) {
@@ -8122,11 +8122,11 @@ exports[`All components works when user @imports everything 1`] = `
   text-wrap: balance;
 }
 
-.govuk-footer__copyright-logo:link, .govuk-footer__copyright-logo:visited {
+.govuk-footer__copyright-logo:link, .govuk-footer__copyright-logo:visited, .govuk-footer__copyright-logo:active {
   color: var(--govuk-text-colour, #0b0c0c);
 }
-.govuk-footer__copyright-logo:active, .govuk-footer__copyright-logo:focus {
-  color: var(--govuk-text-colour, #0b0c0c);
+.govuk-footer__copyright-logo:focus {
+  color: var(--govuk-focus-text-colour, #0b0c0c);
 }
 
 .govuk-footer__copyright-logo::before {
@@ -12390,11 +12390,11 @@ exports[`All components works when user @imports everything 1`] = `
   font-weight: 700;
 }
 
-.govuk-service-navigation__service-name .govuk-service-navigation__link:link, .govuk-service-navigation__service-name .govuk-service-navigation__link:visited {
+.govuk-service-navigation__service-name .govuk-service-navigation__link:link, .govuk-service-navigation__service-name .govuk-service-navigation__link:visited, .govuk-service-navigation__service-name .govuk-service-navigation__link:active {
   color: var(--govuk-text-colour, #0b0c0c);
 }
-.govuk-service-navigation__service-name .govuk-service-navigation__link:active, .govuk-service-navigation__service-name .govuk-service-navigation__link:focus {
-  color: var(--govuk-text-colour, #0b0c0c);
+.govuk-service-navigation__service-name .govuk-service-navigation__link:focus {
+  color: var(--govuk-focus-text-colour, #0b0c0c);
 }
 
 .govuk-service-navigation__wrapper {
@@ -12653,11 +12653,11 @@ exports[`All components works when user @imports everything 1`] = `
   -ms-user-select: none;
   user-select: none;
 }
-.govuk-skip-link:link, .govuk-skip-link:visited {
+.govuk-skip-link:link, .govuk-skip-link:visited, .govuk-skip-link:active {
   color: var(--govuk-text-colour, #0b0c0c);
 }
-.govuk-skip-link:active, .govuk-skip-link:focus {
-  color: var(--govuk-text-colour, #0b0c0c);
+.govuk-skip-link:focus {
+  color: var(--govuk-focus-text-colour, #0b0c0c);
 }
 @media print {
   .govuk-skip-link {
@@ -13594,11 +13594,11 @@ exports[`All components works when user @imports everything 1`] = `
   .govuk-frontend-supported .govuk-tabs__tab {
     margin-bottom: 0;
   }
-  .govuk-frontend-supported .govuk-tabs__tab:link, .govuk-frontend-supported .govuk-tabs__tab:visited {
+  .govuk-frontend-supported .govuk-tabs__tab:link, .govuk-frontend-supported .govuk-tabs__tab:visited, .govuk-frontend-supported .govuk-tabs__tab:active {
     color: var(--govuk-text-colour, #0b0c0c);
   }
-  .govuk-frontend-supported .govuk-tabs__tab:active, .govuk-frontend-supported .govuk-tabs__tab:focus {
-    color: var(--govuk-text-colour, #0b0c0c);
+  .govuk-frontend-supported .govuk-tabs__tab:focus {
+    color: var(--govuk-focus-text-colour, #0b0c0c);
   }
   .govuk-frontend-supported .govuk-tabs__tab::after {
     content: "";

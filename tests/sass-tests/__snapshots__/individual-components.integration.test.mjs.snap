@@ -686,11 +686,11 @@ exports[`Individual components dist/govuk/components/back-link works when user @
     box-decoration-break: clone;
   }
 }
-.govuk-back-link:link, .govuk-back-link:visited {
+.govuk-back-link:link, .govuk-back-link:visited, .govuk-back-link:active {
   color: var(--govuk-text-colour, #0b0c0c);
 }
-.govuk-back-link:active, .govuk-back-link:focus {
-  color: var(--govuk-text-colour, #0b0c0c);
+.govuk-back-link:focus {
+  color: var(--govuk-focus-text-colour, #0b0c0c);
 }
 
 .govuk-back-link::before {
@@ -1000,11 +1000,11 @@ exports[`Individual components dist/govuk/components/breadcrumbs works when user
     box-decoration-break: clone;
   }
 }
-.govuk-breadcrumbs__link:link, .govuk-breadcrumbs__link:visited {
+.govuk-breadcrumbs__link:link, .govuk-breadcrumbs__link:visited, .govuk-breadcrumbs__link:active {
   color: var(--govuk-text-colour, #0b0c0c);
 }
-.govuk-breadcrumbs__link:active, .govuk-breadcrumbs__link:focus {
-  color: var(--govuk-text-colour, #0b0c0c);
+.govuk-breadcrumbs__link:focus {
+  color: var(--govuk-focus-text-colour, #0b0c0c);
 }
 
 @media (max-width: 40.0525em) {
@@ -8101,11 +8101,11 @@ exports[`Individual components dist/govuk/components/footer works when user @imp
   text-wrap: balance;
 }
 
-.govuk-footer__copyright-logo:link, .govuk-footer__copyright-logo:visited {
+.govuk-footer__copyright-logo:link, .govuk-footer__copyright-logo:visited, .govuk-footer__copyright-logo:active {
   color: var(--govuk-text-colour, #0b0c0c);
 }
-.govuk-footer__copyright-logo:active, .govuk-footer__copyright-logo:focus {
-  color: var(--govuk-text-colour, #0b0c0c);
+.govuk-footer__copyright-logo:focus {
+  color: var(--govuk-focus-text-colour, #0b0c0c);
 }
 
 .govuk-footer__copyright-logo::before {
@@ -14453,11 +14453,11 @@ exports[`Individual components dist/govuk/components/service-navigation works wh
   font-weight: 700;
 }
 
-.govuk-service-navigation__service-name .govuk-service-navigation__link:link, .govuk-service-navigation__service-name .govuk-service-navigation__link:visited {
+.govuk-service-navigation__service-name .govuk-service-navigation__link:link, .govuk-service-navigation__service-name .govuk-service-navigation__link:visited, .govuk-service-navigation__service-name .govuk-service-navigation__link:active {
   color: var(--govuk-text-colour, #0b0c0c);
 }
-.govuk-service-navigation__service-name .govuk-service-navigation__link:active, .govuk-service-navigation__service-name .govuk-service-navigation__link:focus {
-  color: var(--govuk-text-colour, #0b0c0c);
+.govuk-service-navigation__service-name .govuk-service-navigation__link:focus {
+  color: var(--govuk-focus-text-colour, #0b0c0c);
 }
 
 .govuk-service-navigation__wrapper {
@@ -14757,11 +14757,11 @@ exports[`Individual components dist/govuk/components/skip-link works when user @
   -ms-user-select: none;
   user-select: none;
 }
-.govuk-skip-link:link, .govuk-skip-link:visited {
+.govuk-skip-link:link, .govuk-skip-link:visited, .govuk-skip-link:active {
   color: var(--govuk-text-colour, #0b0c0c);
 }
-.govuk-skip-link:active, .govuk-skip-link:focus {
-  color: var(--govuk-text-colour, #0b0c0c);
+.govuk-skip-link:focus {
+  color: var(--govuk-focus-text-colour, #0b0c0c);
 }
 /*! Copyright (c) 2011 by Margaret Calvert & Henrik Kubel. All rights reserved. The font has been customised for exclusive use on gov.uk. This cut is not commercially available. */ /* stylelint-disable-line scss/comment-no-loud  */
 @font-face {
@@ -15882,11 +15882,11 @@ exports[`Individual components dist/govuk/components/tabs works when user @impor
   .govuk-frontend-supported .govuk-tabs__tab {
     margin-bottom: 0;
   }
-  .govuk-frontend-supported .govuk-tabs__tab:link, .govuk-frontend-supported .govuk-tabs__tab:visited {
+  .govuk-frontend-supported .govuk-tabs__tab:link, .govuk-frontend-supported .govuk-tabs__tab:visited, .govuk-frontend-supported .govuk-tabs__tab:active {
     color: var(--govuk-text-colour, #0b0c0c);
   }
-  .govuk-frontend-supported .govuk-tabs__tab:active, .govuk-frontend-supported .govuk-tabs__tab:focus {
-    color: var(--govuk-text-colour, #0b0c0c);
+  .govuk-frontend-supported .govuk-tabs__tab:focus {
+    color: var(--govuk-focus-text-colour, #0b0c0c);
   }
   .govuk-frontend-supported .govuk-tabs__tab::after {
     content: "";
