@@ -10,9 +10,12 @@
 {% endset -%}
 
 {% if params.isPageHeading %}
-<h1 class="govuk-label-wrapper">
+{#- Optional. The page heading level(1-6) to be used with ``isPageHeading` defaults to heading level 1-#}
+{% set headingLevel = params.headingLevel if params.headingLevel else 1 %}
+
+<h{{ headingLevel }} class="govuk-label-wrapper">
   {{ labelHtml | safe | trim | indent(2) }}
-</h1>
+</h{{ headingLevel }}>
 {% else %}
 {{ labelHtml | safe | trim }}
 {% endif %}

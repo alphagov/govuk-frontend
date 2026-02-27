@@ -68,6 +68,13 @@ describe('Label', () => {
       expect($selector.length).toBeTruthy()
     })
 
+    it('can be nested inside an heading tag using isPageHeading and headingLevel', () => {
+      const $ = render('label', examples['as page heading with defined level'])
+
+      const $selector = $('h2 > .govuk-label')
+      expect($selector.length).toBeTruthy()
+    })
+
     it('allows additional attributes to be added to the component', () => {
       const $ = render('label', examples.attributes)
 
