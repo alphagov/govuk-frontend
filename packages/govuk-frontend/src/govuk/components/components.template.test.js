@@ -64,23 +64,12 @@ describe('Components', () => {
       // Validate component examples
       for (const { component: componentName, fixtures } of componentsFixtures) {
         const fixtureTasks = fixtures.map(async (fixture) => {
-          let supportingHTML = ''
-          if (componentName === 'label' && fixture.name === 'for') {
-            // Target for label "for" attributes which need a specific element
-            // https://html-validate.org/rules/valid-for.html
-            supportingHTML = '<input type="text" id="test-target-input">'
-          } else {
-            // Target for references in examples (e.g. aria-controls)
-            // https://html-validate.org/rules/no-missing-references.html
-            supportingHTML = '<div id="test-target-element"></div>'
-          }
-
           const html = outdent`
             ${render(componentName, {
               context: fixture.options,
               fixture
             })}
-            ${supportingHTML}
+            ${fixture.supportingHTML ?? ''}
           `
 
           // Validate HTML

@@ -96,6 +96,7 @@ examples:
     options:
       for: test-target-input
       text: National Insurance number
+    supportingHTML: '<input type="text" id="test-target-input">'
   - name: attributes
     hidden: true
     options:
