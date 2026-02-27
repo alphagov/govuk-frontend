@@ -220,7 +220,11 @@
     margin: govuk-spacing(1) govuk-spacing(4) govuk-spacing(2) 0;
     color: govuk-functional-colour(text);
 
+    word-wrap: break-word; // Fallback for older browsers only
+    overflow-wrap: break-word;
+
     @media #{govuk-from-breakpoint(tablet)} {
+      min-width: 0;
       margin-bottom: govuk-spacing(1);
     }
   }
