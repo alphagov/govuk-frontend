@@ -1,3 +1,6 @@
+@use "sass:map";
+@use "sass:meta";
+
 @import "../settings/custom-properties";
 @import "../settings/colours-functional";
 @import "../tools/exports";
@@ -9,11 +12,14 @@
     @if $govuk-output-custom-properties {
       @each $name, $value in $govuk-functional-colours {
         --govuk-#{$name}-colour: #{_govuk-resolve-colour($value)};
-      }
 
-      @media print {
-        // Use 'true black' to avoid printers using colour ink to print body text
-        --govuk-text-colour: #{govuk-functional-colour("print-text")};
+        @if meta.type-of($value) == "map" and map.has-key($value, "media") {
+          @each $query, $media-value in map.get($value, "media") {
+            @media (#{$query}) {
+              --govuk-#{$name}-colour: #{_govuk-resolve-colour($media-value)};
+            }
+          }
+        }
       }
     }
   }
