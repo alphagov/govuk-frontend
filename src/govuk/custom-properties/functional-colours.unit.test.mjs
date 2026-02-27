@@ -10,6 +10,10 @@ describe('custom-properties/functional-colours', () => {
 
     await expect(css).toContain('--govuk-brand-colour: #1d70b8;')
     await expect(css).toContain('--govuk-text-colour: #0b0c0c;')
+    // Check the adjustment for the print text colour is present
+    await expect(css).toContain(
+      '--govuk-text-colour: var(--govuk-print-text-colour, #000000)'
+    )
   })
 
   it('outputs the properties only once when included multiple times', async () => {

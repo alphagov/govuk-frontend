@@ -42,9 +42,9 @@
 
   .govuk-notification-banner__content {
     $padding-tablet: govuk-spacing(4);
-    @include govuk-text-colour;
     padding: govuk-spacing(3);
 
+    color: govuk-functional-colour(text);
     background-color: govuk-functional-colour(body-background);
 
     @media #{govuk-from-breakpoint(tablet)} {

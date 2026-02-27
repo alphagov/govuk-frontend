@@ -6,12 +6,12 @@
   // Headings
 
   %govuk-heading-xl {
-    @include govuk-text-colour;
     @include govuk-font($size: 48, $weight: bold);
 
     display: block;
 
     margin-top: 0;
+    color: govuk-functional-colour(text);
     @include govuk-responsive-margin(8, "bottom");
   }
 
@@ -20,12 +20,12 @@
   }
 
   %govuk-heading-l {
-    @include govuk-text-colour;
     @include govuk-font($size: 36, $weight: bold);
 
     display: block;
 
     margin-top: 0;
+    color: govuk-functional-colour(text);
     @include govuk-responsive-margin(6, "bottom");
   }
 
@@ -34,12 +34,12 @@
   }
 
   %govuk-heading-m {
-    @include govuk-text-colour;
     @include govuk-font($size: 24, $weight: bold);
 
     display: block;
 
     margin-top: 0;
+    color: govuk-functional-colour(text);
     @include govuk-responsive-margin(4, "bottom");
   }
 
@@ -48,12 +48,12 @@
   }
 
   %govuk-heading-s {
-    @include govuk-text-colour;
     @include govuk-font($size: 19, $weight: bold);
 
     display: block;
 
     margin-top: 0;
+    color: govuk-functional-colour(text);
     @include govuk-responsive-margin(4, "bottom");
   }
 
@@ -97,10 +97,9 @@
   // Body (paragraphs)
 
   %govuk-body-l {
-    @include govuk-text-colour;
-    @include govuk-font($size: 24);
-
     margin-top: 0;
+    color: govuk-functional-colour(text);
+    @include govuk-font($size: 24);
     @include govuk-responsive-margin(6, "bottom");
   }
 
@@ -109,10 +108,9 @@
   }
 
   %govuk-body-m {
-    @include govuk-text-colour;
-    @include govuk-font($size: 19);
-
     margin-top: 0;
+    color: govuk-functional-colour(text);
+    @include govuk-font($size: 19);
     @include govuk-responsive-margin(4, "bottom");
   }
 
@@ -121,10 +119,9 @@
   }
 
   %govuk-body-s {
-    @include govuk-text-colour;
-    @include govuk-font($size: 16);
-
     margin-top: 0;
+    color: govuk-functional-colour(text);
+    @include govuk-font($size: 16);
     @include govuk-responsive-margin(4, "bottom");
   }
 
