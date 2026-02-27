@@ -21,7 +21,8 @@ $govuk-default-functional-colours: (
     "text": (
       name: "black",
       media: (
-        print: #000000
+        print: #000000,
+        "prefers-contrast: more": #000000
       )
     ),
     // The background colour of the template. This is intended to be the same
@@ -62,7 +63,13 @@ $govuk-default-functional-colours: (
     // Used in for example borders, separators, rules and keylines.
     "border": (
         name: "black",
-        variant: "tint-80"
+        variant: "tint-80",
+        media: (
+          "prefers-contrast: more": (
+            name: "black",
+            variant: "tint-50"
+          )
+        )
       ),
     // Used for form inputs and controls
     "input-border": (
