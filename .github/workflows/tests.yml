@@ -119,7 +119,7 @@ jobs:
 
       - name: Cache linter
         if: ${{ matrix.task.cache }}
-        uses: actions/cache@v5.0.1
+        uses: actions/cache@v5.0.3
         with:
           # Use faster GNU tar for all runners
           enableCrossOsArchive: true
@@ -197,7 +197,7 @@ jobs:
 
       - name: Cache task
         if: ${{ matrix.task.cache }}
-        uses: actions/cache@v5.0.1
+        uses: actions/cache@v5.0.3
         with:
           # Use faster GNU tar for all runners
           enableCrossOsArchive: true
