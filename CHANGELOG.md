@@ -12,7 +12,7 @@ To install this version with npm, run `npm install govuk-frontend@6.1.0`. You ca
 
 #### Use Sass functions to configure asset URLs
 
-You can now use Sass functions from [`meta.get-function`](https://sass-lang.com/documentation/modules/meta/#get-function) in addition to strings to configure:
+You can now use Sass functions from [`meta.get-function`](https://sass-lang.com/documentation/modules/meta/#get-function) as well as strings to configure:
 
 - `$govuk-image-url-function`
 - `$govuk-font-url-function`
