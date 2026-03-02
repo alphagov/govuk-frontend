@@ -17,7 +17,7 @@ You can now use Sass functions from [`meta.get-function`](https://sass-lang.com/
 
 This will allow the variables to be configured when loading GOV.UK Frontend as a module once we support `@use` and `@forward`.
 
-We made this change in [#6767: Use Sass functions to configure asset URLs](https://github.com/alphagov/govuk-frontend/pull/6767).
+We made this change in [pull request #6767: Use Sass functions to configure asset URLs](https://github.com/alphagov/govuk-frontend/pull/6767).
 
 ### Recommended changes
 
@@ -35,13 +35,13 @@ If you were using the `_<COMPONENT_NAME>.scss` files, use the component's `_inde
 @import "govuk/components/button";
 ```
 
-We made this change in [#6761: Deprecate `_<COMPONENT_NAME>.scss` files](https://github.com/alphagov/govuk-frontend/pull/6761).
+We made this change in [pull request #6761: Deprecate `_<COMPONENT_NAME>.scss` files](https://github.com/alphagov/govuk-frontend/pull/6761).
 
 #### Use `color: govuk-functional-colour(text)` to set the text colour
 
 We've updated how the text colour changes to pure black when printing.
 
-Before, an additional print media query was included every time you used `@include govuk-text-colour`:
+Previously, an additional print media query was included every time you used `@include govuk-text-colour`:
 
 ```css
 .my-element {
