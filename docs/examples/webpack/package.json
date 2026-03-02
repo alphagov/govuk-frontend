@@ -16,8 +16,8 @@
     "govuk-frontend": "*"
   },
   "devDependencies": {
-    "@babel/core": "^7.28.6",
-    "@babel/preset-env": "^7.28.6",
+    "@babel/core": "^7.29.0",
+    "@babel/preset-env": "^7.29.0",
     "autoprefixer": "^10.4.23",
     "babel-loader": "^10.0.0",
     "copy-webpack-plugin": "^13.0.1",
