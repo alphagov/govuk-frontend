@@ -83,8 +83,6 @@ exports[`All components, with configuration works when user @imports everything 
 
 
 
-
-
 :root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -136,7 +134,6 @@ exports[`All components, with configuration works when user @imports everything 
     --govuk-text-colour: var(--govuk-print-text-colour, #000000);
   }
 }
-
 
 
 
@@ -343,7 +340,6 @@ exports[`All components, with configuration works when user @imports everything 
 
 
 
-
 .govuk-list {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -410,7 +406,6 @@ exports[`All components, with configuration works when user @imports everything 
     margin-bottom: 15px;
   }
 }
-
 
 
 
@@ -1046,10 +1041,6 @@ exports[`All components, with configuration works when user @imports everything 
 
 
 
-
-
-
-
 .govuk-button-group {
   margin-bottom: 5px;
   display: flex;
@@ -1203,8 +1194,6 @@ exports[`All components, with configuration works when user @imports everything 
 
 
 
-
-
 .govuk-form-group {
   margin-bottom: 20px;
 }
@@ -1231,8 +1220,6 @@ exports[`All components, with configuration works when user @imports everything 
   padding: 0;
   border: 0;
 }
-
-
 
 
 
@@ -1580,8 +1567,6 @@ exports[`All components, with configuration works when user @imports everything 
 
 
 
-
-
 .govuk-main-wrapper {
   display: block;
   padding-top: 20px;
@@ -1604,8 +1589,6 @@ exports[`All components, with configuration works when user @imports everything 
     padding-top: 50px;
   }
 }
-
-
 
 
 
@@ -1830,8 +1813,6 @@ exports[`All components, with configuration works when user @imports everything 
 
 
 
-
-
 .govuk-width-container {
   max-width: 960px;
   margin-right: 15px;
@@ -1867,10 +1848,6 @@ exports[`All components, with configuration works when user @imports everything 
     }
   }
 }
-
-
-
-
 
 
 
@@ -2498,8 +2475,6 @@ exports[`All components, with configuration works when user @imports everything 
 
 
 
-
-
 .govuk-back-link {
   font-size: 1rem;
   line-height: 1.25;
@@ -2597,8 +2572,6 @@ exports[`All components, with configuration works when user @imports everything 
 .govuk-back-link--inverse::before {
   border-color: currentcolor;
 }
-
-
 
 
 
@@ -2839,8 +2812,6 @@ exports[`All components, with configuration works when user @imports everything 
 .govuk-breadcrumbs--inverse .govuk-breadcrumbs__list-item::before {
   border-color: currentcolor;
 }
-
-
 
 
 
@@ -3312,10 +3283,6 @@ exports[`All components, with configuration works when user @imports everything 
 
 
 
-
-
-
-
 .govuk-error-message {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -3340,8 +3307,6 @@ exports[`All components, with configuration works when user @imports everything 
     line-height: 1.15;
   }
 }
-
-
 
 
 
@@ -3575,8 +3540,6 @@ exports[`All components, with configuration works when user @imports everything 
 
 
 
-
-
 .govuk-label {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -3665,14 +3628,6 @@ exports[`All components, with configuration works when user @imports everything 
 .govuk-label-wrapper {
   margin: 0;
 }
-
-
-
-
-
-
-
-
 
 
 
@@ -4452,12 +4407,6 @@ exports[`All components, with configuration works when user @imports everything 
 
 
 
-
-
-
-
-
-
 .govuk-fieldset {
   min-width: 0;
   margin: 0;
@@ -4570,10 +4519,6 @@ exports[`All components, with configuration works when user @imports everything 
   font-size: inherit;
   font-weight: inherit;
 }
-
-
-
-
 
 
 
@@ -5166,10 +5111,6 @@ exports[`All components, with configuration works when user @imports everything 
 
 
 
-
-
-
-
 .govuk-cookie-banner {
   padding-top: 20px;
   border-bottom: 10px solid transparent;
@@ -5190,18 +5131,6 @@ exports[`All components, with configuration works when user @imports everything 
 .govuk-cookie-banner__message:focus {
   outline: none;
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -6271,12 +6200,6 @@ exports[`All components, with configuration works when user @imports everything 
 
 
 
-
-
-
-
-
-
 .govuk-date-input {
   font-size: 0;
 }
@@ -6300,8 +6223,6 @@ exports[`All components, with configuration works when user @imports everything 
 .govuk-date-input__input {
   margin-bottom: 0;
 }
-
-
 
 
 
@@ -6786,11 +6707,6 @@ exports[`All components, with configuration works when user @imports everything 
 
 
 
-
-
-
-
-
 .govuk-error-summary {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -6924,10 +6840,6 @@ exports[`All components, with configuration works when user @imports everything 
 .govuk-error-summary__list a:focus {
   color: var(--govuk-focus-text-colour, #0b0c0c);
 }
-
-
-
-
 
 
 
@@ -7702,16 +7614,6 @@ exports[`All components, with configuration works when user @imports everything 
 
 
 
-
-
-
-
-
-
-
-
-
-
 .govuk-file-upload {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -7876,8 +7778,6 @@ exports[`All components, with configuration works when user @imports everything 
 .govuk-file-upload-button:disabled .govuk-file-upload-button__status {
   background-color: #d2e2f1;
 }
-
-
 
 
 
@@ -8240,8 +8140,6 @@ exports[`All components, with configuration works when user @imports everything 
 .govuk-footer__list-item:last-child {
   margin-bottom: 0;
 }
-
-
 
 
 
@@ -9085,18 +8983,6 @@ exports[`All components, with configuration works when user @imports everything 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 .govuk-inset-text {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -9140,10 +9026,6 @@ exports[`All components, with configuration works when user @imports everything 
 .govuk-inset-text > :last-child {
   margin-bottom: 0;
 }
-
-
-
-
 
 
 
@@ -9604,8 +9486,6 @@ exports[`All components, with configuration works when user @imports everything 
 
 
 
-
-
 .govuk-pagination {
   margin-bottom: 20px;
   display: flex;
@@ -9927,8 +9807,6 @@ exports[`All components, with configuration works when user @imports everything 
 
 
 
-
-
 .govuk-panel {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -10002,18 +9880,6 @@ exports[`All components, with configuration works when user @imports everything 
 .govuk-panel__title:last-child {
   margin-bottom: 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -10834,10 +10700,6 @@ exports[`All components, with configuration works when user @imports everything 
 
 
 
-
-
-
-
 .govuk-tag {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -10983,16 +10845,6 @@ exports[`All components, with configuration works when user @imports everything 
   display: table-cell;
   vertical-align: middle;
 }
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -12086,14 +11938,6 @@ exports[`All components, with configuration works when user @imports everything 
 
 
 
-
-
-
-
-
-
-
-
 .govuk-select {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -12147,8 +11991,6 @@ exports[`All components, with configuration works when user @imports everything 
 .govuk-select--error:focus {
   border-color: var(--govuk-input-border-colour, #0b0c0c);
 }
-
-
 
 
 
@@ -12622,8 +12464,6 @@ exports[`All components, with configuration works when user @imports everything 
 
 
 
-
-
 .govuk-skip-link {
   text-decoration: underline;
   text-decoration-thickness: max(1px, .0625rem);
@@ -12691,8 +12531,6 @@ exports[`All components, with configuration works when user @imports everything 
 .govuk-skip-link-focused-element:focus {
   outline: none;
 }
-
-
 
 
 
@@ -13189,8 +13027,6 @@ exports[`All components, with configuration works when user @imports everything 
 
 
 
-
-
 .govuk-table {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -13323,8 +13159,6 @@ exports[`All components, with configuration works when user @imports everything 
     line-height: 1.15;
   }
 }
-
-
 
 
 
@@ -13920,12 +13754,6 @@ exports[`All components, with configuration works when user @imports everything 
 
 
 
-
-
-
-
-
-
 .govuk-task-list {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -14007,16 +13835,6 @@ exports[`All components, with configuration works when user @imports everything 
   margin-top: 5px;
   color: var(--govuk-secondary-text-colour, #484949);
 }
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -15792,7 +15610,6 @@ exports[`All components, with configuration works when user @imports everything 
 .govuk-\\!-text-align-right {
   text-align: right !important;
 }
-
 
 
 
