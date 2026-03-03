@@ -1,24 +1,15 @@
-import { globSync } from 'node:fs'
-import { relative } from 'node:path'
-
-import { packageNameToPath } from '@govuk-frontend/lib/names'
 import { compileStringAsync } from 'sass-embedded'
-import slash from 'slash'
 import stylelint from 'stylelint'
 
+import { getAllSassFiles } from './helpers.mjs'
 import { sassConfig } from './sass.config.js'
 
 /**
  * Setup
  */
-const govukFrontendPath = packageNameToPath('govuk-frontend')
 
 // Grab a list of all Sass files and sort them alphabetically, for consistent output
-const sassFiles = globSync(`${slash(govukFrontendPath)}/dist/govuk/**/*.scss`, {
-  exclude: ['**/*.map']
-})
-  .map((filePath) => slash(relative(govukFrontendPath, filePath)))
-  .sort((a, b) => a.localeCompare(b))
+const sassFiles = getAllSassFiles()
 
 // Compile sass files and handle errors
 // This way, we can compile once, and run multiple tests without having to recompile each time
