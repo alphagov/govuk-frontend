@@ -3,8 +3,6 @@
 ////
 @use "sass:list";
 
-@import "../tools/if";
-
 // =========================================================
 // Font families
 // =========================================================
@@ -34,7 +32,7 @@ $govuk-font-family-print: sans-serif !default;
 /// @type Boolean
 /// @access public
 
-$govuk-include-default-font-face: govuk-if(list.index($govuk-font-family, "GDS Transport"), true, false) !default;
+$govuk-include-default-font-face: (list.index($govuk-font-family, "GDS Transport") != null) !default;
 
 // =========================================================
 // Font weights
