@@ -23,6 +23,6 @@
     "@rollup/plugin-terser": "^0.4.4",
     "govuk-frontend": "*",
     "rollup": "^4.59.0",
-    "rollup-plugin-visualizer": "^6.0.5"
+    "rollup-plugin-visualizer": "^7.0.0"
   }
 }
