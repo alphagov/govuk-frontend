@@ -121,8 +121,7 @@ describe('packages/govuk-frontend/dist/', () => {
       // Add Autoprefixer prefixes to all source '*.scss' files
       .flatMap(
         mapPathTo(['**/*.scss'], ({ dir: requirePath, name }) => [
-          join(requirePath, `${name}.scss`),
-          join(requirePath, `${name}.scss.map`) // with source map
+          join(requirePath, `${name}.scss`)
         ])
       )
 
