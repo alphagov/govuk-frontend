@@ -68,10 +68,12 @@ export async function compileStylesheet([
      * 1. PostCSS on Sass compiler result
      * 2. PostCSS on Sass sources (Autoprefixer only)
      */
-    map: {
-      annotation: true,
-      inline: false
-    }
+    map: moduleDestPath.endsWith('.css')
+      ? {
+          annotation: true,
+          inline: false
+        }
+      : false
   }
 
   // Compile Sass to CSS
