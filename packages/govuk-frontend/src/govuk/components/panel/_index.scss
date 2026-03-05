@@ -32,17 +32,17 @@
       // Support IE (autoprefixer doesn't add this as it's not a prefix)
       word-wrap: break-word;
     }
-  }
-
-  .govuk-panel--confirmation {
-    color: govuk-colour("white");
-    background: govuk-colour("green");
 
     @media print {
       border-color: currentcolor;
       color: govuk-functional-colour(text);
       background: none;
     }
+  }
+
+  .govuk-panel--confirmation {
+    color: govuk-colour("white");
+    background: govuk-colour("green");
   }
 
   .govuk-panel__title {
@@ -54,5 +54,13 @@
 
   .govuk-panel__title:last-child {
     margin-bottom: 0;
+  }
+
+  .govuk-panel--interruption {
+    color: govuk-colour("white");
+    background-color: $govuk-brand-colour;
+    text-align: left;
+
+    @include govuk-font($size: 19);
   }
 }
