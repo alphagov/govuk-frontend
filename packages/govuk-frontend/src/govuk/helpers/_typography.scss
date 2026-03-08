@@ -51,7 +51,7 @@
 @mixin govuk-text-colour {
   @include _warning(
     "govuk-text-colour",
-    "The `govuk-text-colour` mixin is deprecated. Use `color: govuk-colour(text)` instead."
+    "The `govuk-text-colour` mixin is deprecated. Use `color: govuk-functional-colour(text)` instead."
   );
 
   color: govuk-functional-colour(text);
