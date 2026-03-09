@@ -118,6 +118,19 @@ describe('Sass file compilation', () => {
 
   describe('comparison between @import and @use', () => {
     it.each(sassFiles)(
+      '%s compiled CSS matches snapshot',
+      async (sassFilePath) => {
+        const { css, error } = compiledImportFiles.get(sassFilePath)
+
+        if (error) {
+          return
+        }
+
+        expect(css).toMatchSnapshot()
+      }
+    )
+
+    it.each(sassFiles)(
       '%s is the same for @import and @use',
       async (sassFilePath) => {
         const importResult = compiledImportFiles.get(sassFilePath)
