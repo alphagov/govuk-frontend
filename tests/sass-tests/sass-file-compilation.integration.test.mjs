@@ -24,8 +24,8 @@ const sassFiles = globSync(`${slash(govukFrontendPath)}/dist/govuk/**/*.scss`, {
 // This way, we can compile once, and run multiple tests without having to recompile each time
 const compiledFiles = new Map()
 
-async function compileSassFile(sassFilePath) {
-  const sass = `@import "node_modules/govuk-frontend/${sassFilePath}";`
+async function compileSassFile(sassFilePath, type = 'import') {
+  const sass = `@${type} "node_modules/govuk-frontend/${sassFilePath}";`
 
   return compileStringAsync(sass, sassConfig)
     .then(({ css }) => ({ css, error: null }))
@@ -35,11 +35,15 @@ async function compileSassFile(sassFilePath) {
 /**
  * Test suite
  */
-describe('Sass file compilation', () => {
+describe.each(['import', 'use'])('Sass file @%s compilation', (type) => {
   beforeAll(async () => {
+    compiledFiles.clear()
     await Promise.all(
       sassFiles.map(async (sassFilePath) => {
-        compiledFiles.set(sassFilePath, await compileSassFile(sassFilePath))
+        compiledFiles.set(
+          sassFilePath,
+          await compileSassFile(sassFilePath, type)
+        )
       })
     )
   })
