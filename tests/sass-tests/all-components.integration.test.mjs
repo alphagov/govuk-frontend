@@ -9,7 +9,7 @@ describe('All components', () => {
 
   beforeAll(async () => {
     const sass = `
-      @import "node_modules/govuk-frontend/dist/govuk";
+      @import "node_modules/govuk-frontend/src/govuk";
     `
 
     cssWithImport = (await compileStringAsync(sass, sassConfig)).css
@@ -17,7 +17,7 @@ describe('All components', () => {
 
   beforeAll(async () => {
     const sass = `
-      @use "node_modules/govuk-frontend/dist/govuk";
+      @use "node_modules/govuk-frontend/src/govuk";
     `
 
     cssWithUse = (await compileStringAsync(sass, sassConfig)).css
@@ -44,7 +44,13 @@ describe('All components', () => {
     expect(cssWithUse).toBe(cssWithImport)
   })
 
-  it('outputs the same CSS with a pkg url', () => {
-    expect(cssWithPkg).toBe(cssWithUse)
+  it('outputs the same CSS with a pkg url', async () => {
+    const sass = `
+      @use "node_modules/govuk-frontend/dist/govuk";
+    `
+
+    const { css } = await compileStringAsync(sass, sassConfig)
+
+    expect(css).toBe(cssWithPkg)
   })
 })

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
-exports[`Individual components dist/govuk/components/accordion works when user @imports the component 1`] = `
+exports[`Individual components src/govuk/components/accordion works when user @imports the component 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -199,7 +199,6 @@ exports[`Individual components dist/govuk/components/accordion works when user @
 }
 @supports not (text-wrap: balance) {
   .govuk-frontend-supported .govuk-accordion__show-all:focus {
-    -webkit-box-decoration-break: clone;
     box-decoration-break: clone;
   }
 }
@@ -290,7 +289,6 @@ exports[`Individual components dist/govuk/components/accordion works when user @
   .govuk-frontend-supported .govuk-accordion__section-button:focus .govuk-accordion__section-heading-text-focus,
   .govuk-frontend-supported .govuk-accordion__section-button:focus .govuk-accordion__section-summary-focus,
   .govuk-frontend-supported .govuk-accordion__section-button:focus .govuk-accordion__section-toggle-focus {
-    -webkit-box-decoration-break: clone;
     box-decoration-break: clone;
   }
 }
@@ -384,7 +382,7 @@ exports[`Individual components dist/govuk/components/accordion works when user @
 }"
 `;
 
-exports[`Individual components dist/govuk/components/back-link works when user @imports the component 1`] = `
+exports[`Individual components src/govuk/components/back-link works when user @imports the component 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -466,9 +464,7 @@ exports[`Individual components dist/govuk/components/back-link works when user @
 }
 .govuk-back-link:hover {
   text-decoration-thickness: max(3px, .1875rem, .12em);
-  -webkit-text-decoration-skip-ink: none;
   text-decoration-skip-ink: none;
-  -webkit-text-decoration-skip: none;
   text-decoration-skip: none;
 }
 .govuk-back-link:focus {
@@ -480,7 +476,6 @@ exports[`Individual components dist/govuk/components/back-link works when user @
 }
 @supports not (text-wrap: balance) {
   .govuk-back-link:focus {
-    -webkit-box-decoration-break: clone;
     box-decoration-break: clone;
   }
 }
@@ -537,7 +532,7 @@ exports[`Individual components dist/govuk/components/back-link works when user @
 }"
 `;
 
-exports[`Individual components dist/govuk/components/breadcrumbs works when user @imports the component 1`] = `
+exports[`Individual components src/govuk/components/breadcrumbs works when user @imports the component 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -678,9 +673,7 @@ exports[`Individual components dist/govuk/components/breadcrumbs works when user
 }
 .govuk-breadcrumbs__link:hover {
   text-decoration-thickness: max(3px, .1875rem, .12em);
-  -webkit-text-decoration-skip-ink: none;
   text-decoration-skip-ink: none;
-  -webkit-text-decoration-skip: none;
   text-decoration-skip: none;
 }
 .govuk-breadcrumbs__link:focus {
@@ -692,7 +685,6 @@ exports[`Individual components dist/govuk/components/breadcrumbs works when user
 }
 @supports not (text-wrap: balance) {
   .govuk-breadcrumbs__link:focus {
-    -webkit-box-decoration-break: clone;
     box-decoration-break: clone;
   }
 }
@@ -733,7 +725,7 @@ exports[`Individual components dist/govuk/components/breadcrumbs works when user
 }"
 `;
 
-exports[`Individual components dist/govuk/components/button works when user @imports the component 1`] = `
+exports[`Individual components src/govuk/components/button works when user @imports the component 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -962,7 +954,7 @@ exports[`Individual components dist/govuk/components/button works when user @imp
 }"
 `;
 
-exports[`Individual components dist/govuk/components/character-count works when user @imports the component 1`] = `
+exports[`Individual components src/govuk/components/character-count works when user @imports the component 1`] = `
 "@charset "UTF-8";
 :root {
   --govuk-breakpoint-mobile: 20rem;
@@ -1251,7 +1243,7 @@ exports[`Individual components dist/govuk/components/character-count works when 
 }"
 `;
 
-exports[`Individual components dist/govuk/components/checkboxes works when user @imports the component 1`] = `
+exports[`Individual components src/govuk/components/checkboxes works when user @imports the component 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -1761,7 +1753,7 @@ exports[`Individual components dist/govuk/components/checkboxes works when user 
 }"
 `;
 
-exports[`Individual components dist/govuk/components/cookie-banner works when user @imports the component 1`] = `
+exports[`Individual components src/govuk/components/cookie-banner works when user @imports the component 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -2011,7 +2003,7 @@ exports[`Individual components dist/govuk/components/cookie-banner works when us
 }"
 `;
 
-exports[`Individual components dist/govuk/components/date-input works when user @imports the component 1`] = `
+exports[`Individual components src/govuk/components/date-input works when user @imports the component 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -2228,7 +2220,6 @@ exports[`Individual components dist/govuk/components/date-input works when user 
   border: 2px solid;
   border-radius: 0;
   border-color: var(--govuk-input-border-colour, #0b0c0c);
-  -webkit-appearance: none;
   appearance: none;
 }
 @media print {
@@ -2528,7 +2519,7 @@ exports[`Individual components dist/govuk/components/date-input works when user 
 }"
 `;
 
-exports[`Individual components dist/govuk/components/details works when user @imports the component 1`] = `
+exports[`Individual components src/govuk/components/details works when user @imports the component 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -2663,7 +2654,6 @@ exports[`Individual components dist/govuk/components/details works when user @im
 @supports not (-ms-ime-align: auto) {
   .govuk-details__summary {
     position: relative;
-    width: -webkit-fit-content;
     width: fit-content;
     padding-left: 25px;
     color: var(--govuk-link-colour, #1a65a6);
@@ -2681,7 +2671,6 @@ exports[`Individual components dist/govuk/components/details works when user @im
   }
   @supports not (text-wrap: balance) {
     .govuk-details__summary:focus {
-      -webkit-box-decoration-break: clone;
       box-decoration-break: clone;
     }
   }
@@ -2692,9 +2681,7 @@ exports[`Individual components dist/govuk/components/details works when user @im
   }
   .govuk-details__summary:hover .govuk-details__summary-text {
     text-decoration-thickness: max(3px, .1875rem, .12em);
-    -webkit-text-decoration-skip-ink: none;
     text-decoration-skip-ink: none;
-    -webkit-text-decoration-skip: none;
     text-decoration-skip: none;
   }
   .govuk-details__summary:focus .govuk-details__summary-text {
@@ -2715,7 +2702,6 @@ exports[`Individual components dist/govuk/components/details works when user @im
     height: 0;
     border-style: solid;
     border-color: transparent;
-    -webkit-clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
     clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
     border-width: 7px 0 7px 12.124px;
     border-left-color: inherit;
@@ -2726,7 +2712,6 @@ exports[`Individual components dist/govuk/components/details works when user @im
     height: 0;
     border-style: solid;
     border-color: transparent;
-    -webkit-clip-path: polygon(0% 0%, 50% 100%, 100% 0%);
     clip-path: polygon(0% 0%, 50% 100%, 100% 0%);
     border-width: 12.124px 7px 0 7px;
     border-top-color: inherit;
@@ -2738,7 +2723,7 @@ exports[`Individual components dist/govuk/components/details works when user @im
 }"
 `;
 
-exports[`Individual components dist/govuk/components/error-message works when user @imports the component 1`] = `
+exports[`Individual components src/govuk/components/error-message works when user @imports the component 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -2818,7 +2803,7 @@ exports[`Individual components dist/govuk/components/error-message works when us
 }"
 `;
 
-exports[`Individual components dist/govuk/components/error-summary works when user @imports the component 1`] = `
+exports[`Individual components src/govuk/components/error-summary works when user @imports the component 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -3042,9 +3027,7 @@ exports[`Individual components dist/govuk/components/error-summary works when us
 }
 .govuk-error-summary__list a:hover {
   text-decoration-thickness: max(3px, .1875rem, .12em);
-  -webkit-text-decoration-skip-ink: none;
   text-decoration-skip-ink: none;
-  -webkit-text-decoration-skip: none;
   text-decoration-skip: none;
 }
 .govuk-error-summary__list a:focus {
@@ -3056,7 +3039,6 @@ exports[`Individual components dist/govuk/components/error-summary works when us
 }
 @supports not (text-wrap: balance) {
   .govuk-error-summary__list a:focus {
-    -webkit-box-decoration-break: clone;
     box-decoration-break: clone;
   }
 }
@@ -3074,7 +3056,7 @@ exports[`Individual components dist/govuk/components/error-summary works when us
 }"
 `;
 
-exports[`Individual components dist/govuk/components/exit-this-page works when user @imports the component 1`] = `
+exports[`Individual components src/govuk/components/exit-this-page works when user @imports the component 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -3304,7 +3286,6 @@ exports[`Individual components dist/govuk/components/exit-this-page works when u
 
 .govuk-exit-this-page {
   margin-bottom: 30px;
-  position: -webkit-sticky;
   position: sticky;
   z-index: 1000;
   top: 0;
@@ -3383,7 +3364,7 @@ exports[`Individual components dist/govuk/components/exit-this-page works when u
 }"
 `;
 
-exports[`Individual components dist/govuk/components/fieldset works when user @imports the component 1`] = `
+exports[`Individual components src/govuk/components/fieldset works when user @imports the component 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -3551,7 +3532,7 @@ exports[`Individual components dist/govuk/components/fieldset works when user @i
 }"
 `;
 
-exports[`Individual components dist/govuk/components/file-upload works when user @imports the component 1`] = `
+exports[`Individual components src/govuk/components/file-upload works when user @imports the component 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -3919,7 +3900,7 @@ exports[`Individual components dist/govuk/components/file-upload works when user
 }"
 `;
 
-exports[`Individual components dist/govuk/components/footer works when user @imports the component 1`] = `
+exports[`Individual components src/govuk/components/footer works when user @imports the component 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -4028,9 +4009,7 @@ exports[`Individual components dist/govuk/components/footer works when user @imp
 }
 .govuk-footer__link:hover {
   text-decoration-thickness: max(3px, .1875rem, .12em);
-  -webkit-text-decoration-skip-ink: none;
   text-decoration-skip-ink: none;
-  -webkit-text-decoration-skip: none;
   text-decoration-skip: none;
 }
 .govuk-footer__link:focus {
@@ -4042,7 +4021,6 @@ exports[`Individual components dist/govuk/components/footer works when user @imp
 }
 @supports not (text-wrap: balance) {
   .govuk-footer__link:focus {
-    -webkit-box-decoration-break: clone;
     box-decoration-break: clone;
   }
 }
@@ -4136,16 +4114,12 @@ exports[`Individual components dist/govuk/components/footer works when user @imp
   text-align: center;
   white-space: nowrap;
 }
-@supports (-webkit-mask-position: initial) or (mask-position: initial) {
+@supports (mask-position: initial) {
   .govuk-footer__copyright-logo::before {
     background: currentcolor;
-    -webkit-mask-image: url("/assets/images/govuk-crest.svg");
     mask-image: url("/assets/images/govuk-crest.svg");
-    -webkit-mask-repeat: no-repeat;
     mask-repeat: no-repeat;
-    -webkit-mask-position: 50% 0%;
     mask-position: 50% 0%;
-    -webkit-mask-size: 125px 102px;
     mask-size: 125px 102px;
   }
   @media screen and (forced-colors: active) {
@@ -4237,7 +4211,7 @@ exports[`Individual components dist/govuk/components/footer works when user @imp
 }"
 `;
 
-exports[`Individual components dist/govuk/components/header works when user @imports the component 1`] = `
+exports[`Individual components src/govuk/components/header works when user @imports the component 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -4363,7 +4337,6 @@ exports[`Individual components dist/govuk/components/header works when user @imp
 }
 @supports not (text-wrap: balance) {
   .govuk-header__homepage-link:focus {
-    -webkit-box-decoration-break: clone;
     box-decoration-break: clone;
   }
 }
@@ -4442,7 +4415,7 @@ exports[`Individual components dist/govuk/components/header works when user @imp
 }"
 `;
 
-exports[`Individual components dist/govuk/components/hint works when user @imports the component 1`] = `
+exports[`Individual components src/govuk/components/hint works when user @imports the component 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -4531,7 +4504,7 @@ exports[`Individual components dist/govuk/components/hint works when user @impor
 }"
 `;
 
-exports[`Individual components dist/govuk/components/input works when user @imports the component 1`] = `
+exports[`Individual components src/govuk/components/input works when user @imports the component 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -4748,7 +4721,6 @@ exports[`Individual components dist/govuk/components/input works when user @impo
   border: 2px solid;
   border-radius: 0;
   border-color: var(--govuk-input-border-colour, #0b0c0c);
-  -webkit-appearance: none;
   appearance: none;
 }
 @media print {
@@ -4911,7 +4883,7 @@ exports[`Individual components dist/govuk/components/input works when user @impo
 }"
 `;
 
-exports[`Individual components dist/govuk/components/inset-text works when user @imports the component 1`] = `
+exports[`Individual components src/govuk/components/inset-text works when user @imports the component 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -5010,7 +4982,7 @@ exports[`Individual components dist/govuk/components/inset-text works when user 
 }"
 `;
 
-exports[`Individual components dist/govuk/components/label works when user @imports the component 1`] = `
+exports[`Individual components src/govuk/components/label works when user @imports the component 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -5154,7 +5126,7 @@ exports[`Individual components dist/govuk/components/label works when user @impo
 }"
 `;
 
-exports[`Individual components dist/govuk/components/notification-banner works when user @imports the component 1`] = `
+exports[`Individual components src/govuk/components/notification-banner works when user @imports the component 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -5319,9 +5291,7 @@ exports[`Individual components dist/govuk/components/notification-banner works w
 }
 .govuk-notification-banner__link:hover {
   text-decoration-thickness: max(3px, .1875rem, .12em);
-  -webkit-text-decoration-skip-ink: none;
   text-decoration-skip-ink: none;
-  -webkit-text-decoration-skip: none;
   text-decoration-skip: none;
 }
 .govuk-notification-banner__link:focus {
@@ -5333,7 +5303,6 @@ exports[`Individual components dist/govuk/components/notification-banner works w
 }
 @supports not (text-wrap: balance) {
   .govuk-notification-banner__link:focus {
-    -webkit-box-decoration-break: clone;
     box-decoration-break: clone;
   }
 }
@@ -5371,7 +5340,7 @@ exports[`Individual components dist/govuk/components/notification-banner works w
 }"
 `;
 
-exports[`Individual components dist/govuk/components/pagination works when user @imports the component 1`] = `
+exports[`Individual components src/govuk/components/pagination works when user @imports the component 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -5568,9 +5537,7 @@ exports[`Individual components dist/govuk/components/pagination works when user 
 .govuk-pagination__link:hover .govuk-pagination__link-title--decorated, .govuk-pagination__link:active .govuk-pagination__link-label,
 .govuk-pagination__link:active .govuk-pagination__link-title--decorated {
   text-decoration-thickness: max(3px, .1875rem, .12em);
-  -webkit-text-decoration-skip-ink: none;
   text-decoration-skip-ink: none;
-  -webkit-text-decoration-skip: none;
   text-decoration-skip: none;
 }
 .govuk-pagination__link:focus .govuk-pagination__icon {
@@ -5648,7 +5615,7 @@ exports[`Individual components dist/govuk/components/pagination works when user 
 }"
 `;
 
-exports[`Individual components dist/govuk/components/panel works when user @imports the component 1`] = `
+exports[`Individual components src/govuk/components/panel works when user @imports the component 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -5777,7 +5744,7 @@ exports[`Individual components dist/govuk/components/panel works when user @impo
 }"
 `;
 
-exports[`Individual components dist/govuk/components/password-input works when user @imports the component 1`] = `
+exports[`Individual components src/govuk/components/password-input works when user @imports the component 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -6168,7 +6135,6 @@ exports[`Individual components dist/govuk/components/password-input works when u
   border: 2px solid;
   border-radius: 0;
   border-color: var(--govuk-input-border-colour, #0b0c0c);
-  -webkit-appearance: none;
   appearance: none;
 }
 @media print {
@@ -6359,7 +6325,7 @@ exports[`Individual components dist/govuk/components/password-input works when u
 }"
 `;
 
-exports[`Individual components dist/govuk/components/phase-banner works when user @imports the component 1`] = `
+exports[`Individual components src/govuk/components/phase-banner works when user @imports the component 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -6559,7 +6525,7 @@ exports[`Individual components dist/govuk/components/phase-banner works when use
 }"
 `;
 
-exports[`Individual components dist/govuk/components/radios works when user @imports the component 1`] = `
+exports[`Individual components src/govuk/components/radios works when user @imports the component 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -7076,7 +7042,7 @@ exports[`Individual components dist/govuk/components/radios works when user @imp
 }"
 `;
 
-exports[`Individual components dist/govuk/components/select works when user @imports the component 1`] = `
+exports[`Individual components src/govuk/components/select works when user @imports the component 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -7333,7 +7299,7 @@ exports[`Individual components dist/govuk/components/select works when user @imp
 }"
 `;
 
-exports[`Individual components dist/govuk/components/service-navigation works when user @imports the component 1`] = `
+exports[`Individual components src/govuk/components/service-navigation works when user @imports the component 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -7487,9 +7453,7 @@ exports[`Individual components dist/govuk/components/service-navigation works wh
 }
 .govuk-service-navigation__link:hover {
   text-decoration-thickness: max(3px, .1875rem, .12em);
-  -webkit-text-decoration-skip-ink: none;
   text-decoration-skip-ink: none;
-  -webkit-text-decoration-skip: none;
   text-decoration-skip: none;
 }
 .govuk-service-navigation__link:focus {
@@ -7501,7 +7465,6 @@ exports[`Individual components dist/govuk/components/service-navigation works wh
 }
 @supports not (text-wrap: balance) {
   .govuk-service-navigation__link:focus {
-    -webkit-box-decoration-break: clone;
     box-decoration-break: clone;
   }
 }
@@ -7576,7 +7539,6 @@ exports[`Individual components dist/govuk/components/service-navigation works wh
 }
 @supports not (text-wrap: balance) {
   .govuk-service-navigation__toggle:focus {
-    -webkit-box-decoration-break: clone;
     box-decoration-break: clone;
   }
 }
@@ -7586,7 +7548,6 @@ exports[`Individual components dist/govuk/components/service-navigation works wh
   height: 0;
   border-style: solid;
   border-color: transparent;
-  -webkit-clip-path: polygon(0% 0%, 50% 100%, 100% 0%);
   clip-path: polygon(0% 0%, 50% 100%, 100% 0%);
   border-width: 8.66px 5px 0 5px;
   border-top-color: inherit;
@@ -7599,7 +7560,6 @@ exports[`Individual components dist/govuk/components/service-navigation works wh
   height: 0;
   border-style: solid;
   border-color: transparent;
-  -webkit-clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
   clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
   border-width: 0 5px 8.66px;
   border-bottom-color: inherit;
@@ -7662,7 +7622,7 @@ exports[`Individual components dist/govuk/components/service-navigation works wh
 }"
 `;
 
-exports[`Individual components dist/govuk/components/skip-link works when user @imports the component 1`] = `
+exports[`Individual components src/govuk/components/skip-link works when user @imports the component 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -7722,12 +7682,9 @@ exports[`Individual components dist/govuk/components/skip-link works when user @
   padding: 0 !important;
   overflow: hidden !important;
   clip: rect(0 0 0 0) !important;
-  -webkit-clip-path: inset(50%) !important;
   clip-path: inset(50%) !important;
   border: 0 !important;
   white-space: nowrap !important;
-  -webkit-user-select: none;
-  -ms-user-select: none;
   user-select: none;
 }
 .govuk-skip-link:link, .govuk-skip-link:visited, .govuk-skip-link:active {
@@ -7785,7 +7742,7 @@ exports[`Individual components dist/govuk/components/skip-link works when user @
 }"
 `;
 
-exports[`Individual components dist/govuk/components/summary-list works when user @imports the component 1`] = `
+exports[`Individual components src/govuk/components/summary-list works when user @imports the component 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -8137,7 +8094,7 @@ exports[`Individual components dist/govuk/components/summary-list works when use
 }"
 `;
 
-exports[`Individual components dist/govuk/components/table works when user @imports the component 1`] = `
+exports[`Individual components src/govuk/components/table works when user @imports the component 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -8325,7 +8282,7 @@ exports[`Individual components dist/govuk/components/table works when user @impo
 }"
 `;
 
-exports[`Individual components dist/govuk/components/tabs works when user @imports the component 1`] = `
+exports[`Individual components src/govuk/components/tabs works when user @imports the component 1`] = `
 "@charset "UTF-8";
 :root {
   --govuk-breakpoint-mobile: 20rem;
@@ -8460,9 +8417,7 @@ exports[`Individual components dist/govuk/components/tabs works when user @impor
 }
 .govuk-tabs__tab:hover {
   text-decoration-thickness: max(3px, .1875rem, .12em);
-  -webkit-text-decoration-skip-ink: none;
   text-decoration-skip-ink: none;
-  -webkit-text-decoration-skip: none;
   text-decoration-skip: none;
 }
 .govuk-tabs__tab:focus {
@@ -8474,7 +8429,6 @@ exports[`Individual components dist/govuk/components/tabs works when user @impor
 }
 @supports not (text-wrap: balance) {
   .govuk-tabs__tab:focus {
-    -webkit-box-decoration-break: clone;
     box-decoration-break: clone;
   }
 }
@@ -8579,7 +8533,7 @@ exports[`Individual components dist/govuk/components/tabs works when user @impor
 }"
 `;
 
-exports[`Individual components dist/govuk/components/tag works when user @imports the component 1`] = `
+exports[`Individual components src/govuk/components/tag works when user @imports the component 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -8722,7 +8676,7 @@ exports[`Individual components dist/govuk/components/tag works when user @import
 }"
 `;
 
-exports[`Individual components dist/govuk/components/task-list works when user @imports the component 1`] = `
+exports[`Individual components src/govuk/components/task-list works when user @imports the component 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -8947,7 +8901,7 @@ exports[`Individual components dist/govuk/components/task-list works when user @
 }"
 `;
 
-exports[`Individual components dist/govuk/components/textarea works when user @imports the component 1`] = `
+exports[`Individual components src/govuk/components/textarea works when user @imports the component 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -9205,7 +9159,7 @@ exports[`Individual components dist/govuk/components/textarea works when user @i
 }"
 `;
 
-exports[`Individual components dist/govuk/components/warning-text works when user @imports the component 1`] = `
+exports[`Individual components src/govuk/components/warning-text works when user @imports the component 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -9304,8 +9258,6 @@ exports[`Individual components dist/govuk/components/warning-text works when use
   font-size: 30px;
   line-height: 29px;
   text-align: center;
-  -webkit-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   forced-color-adjust: none;
 }

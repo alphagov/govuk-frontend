@@ -11,7 +11,7 @@ import { sassConfig } from './sass.config.js'
 // individual test suites for each of them
 const govukFrontendPath = packageNameToPath('govuk-frontend')
 const componentFolders = globSync(
-  `${slash(govukFrontendPath)}/dist/govuk/components/*`,
+  `${slash(govukFrontendPath)}/src/govuk/components/*`,
   {
     exclude: ['**/*.*']
   }
