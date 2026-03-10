@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/_base.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/_base.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -40,7 +40,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/_b
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/components/_index.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/components/_index.scss matches snapshot 1`] = `
 "@charset "UTF-8";
 :root {
   --govuk-breakpoint-mobile: 20rem;
@@ -4664,7 +4664,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/components/accordion/_accordion.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/components/accordion/_accordion.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -5048,7 +5048,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/components/accordion/_index.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/components/accordion/_index.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -5432,7 +5432,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/components/back-link/_back-link.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/components/back-link/_back-link.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -5585,7 +5585,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/components/back-link/_index.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/components/back-link/_index.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -5738,7 +5738,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/components/breadcrumbs/_breadcrumbs.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/components/breadcrumbs/_breadcrumbs.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -5934,7 +5934,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/components/breadcrumbs/_index.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/components/breadcrumbs/_index.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -6130,7 +6130,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/components/button/_button.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/components/button/_button.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -6359,7 +6359,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/components/button/_index.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/components/button/_index.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -6588,7 +6588,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/components/character-count/_character-count.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/components/character-count/_character-count.scss matches snapshot 1`] = `
 "@charset "UTF-8";
 :root {
   --govuk-breakpoint-mobile: 20rem;
@@ -6877,7 +6877,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/components/character-count/_index.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/components/character-count/_index.scss matches snapshot 1`] = `
 "@charset "UTF-8";
 :root {
   --govuk-breakpoint-mobile: 20rem;
@@ -7166,7 +7166,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/components/checkboxes/_checkboxes.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/components/checkboxes/_checkboxes.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -7676,7 +7676,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/components/checkboxes/_index.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/components/checkboxes/_index.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -8186,7 +8186,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/components/cookie-banner/_cookie-banner.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/components/cookie-banner/_cookie-banner.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -8436,7 +8436,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/components/cookie-banner/_index.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/components/cookie-banner/_index.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -8686,7 +8686,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/components/date-input/_date-input.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/components/date-input/_date-input.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -9203,7 +9203,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/components/date-input/_index.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/components/date-input/_index.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -9720,7 +9720,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/components/details/_details.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/components/details/_details.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -9930,7 +9930,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/components/details/_index.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/components/details/_index.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -10140,7 +10140,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/components/error-message/_error-message.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/components/error-message/_error-message.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -10220,7 +10220,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/components/error-message/_index.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/components/error-message/_index.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -10300,7 +10300,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/components/error-summary/_error-summary.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/components/error-summary/_error-summary.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -10556,7 +10556,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/components/error-summary/_index.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/components/error-summary/_index.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -10812,7 +10812,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/components/exit-this-page/_exit-this-page.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/components/exit-this-page/_exit-this-page.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -11121,7 +11121,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/components/exit-this-page/_index.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/components/exit-this-page/_index.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -11430,7 +11430,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/components/fieldset/_fieldset.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/components/fieldset/_fieldset.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -11598,7 +11598,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/components/fieldset/_index.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/components/fieldset/_index.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -11766,7 +11766,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/components/file-upload/_file-upload.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/components/file-upload/_file-upload.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -12134,7 +12134,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/components/file-upload/_index.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/components/file-upload/_index.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -12502,7 +12502,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/components/footer/_footer.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/components/footer/_footer.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -12820,7 +12820,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/components/footer/_index.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/components/footer/_index.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -13138,7 +13138,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/components/header/_header.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/components/header/_header.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -13343,7 +13343,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/components/header/_index.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/components/header/_index.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -13548,7 +13548,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/components/hint/_hint.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/components/hint/_hint.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -13637,7 +13637,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/components/hint/_index.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/components/hint/_index.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -13726,7 +13726,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/components/input/_index.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/components/input/_index.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -14106,7 +14106,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/components/input/_input.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/components/input/_input.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -14486,7 +14486,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/components/inset-text/_index.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/components/inset-text/_index.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -14585,7 +14585,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/components/inset-text/_inset-text.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/components/inset-text/_inset-text.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -14684,7 +14684,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/components/label/_index.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/components/label/_index.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -14828,7 +14828,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/components/label/_label.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/components/label/_label.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -14972,7 +14972,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/components/notification-banner/_index.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/components/notification-banner/_index.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -15189,7 +15189,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/components/notification-banner/_notification-banner.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/components/notification-banner/_notification-banner.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -15406,7 +15406,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/components/pagination/_index.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/components/pagination/_index.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -15683,7 +15683,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/components/pagination/_pagination.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/components/pagination/_pagination.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -15960,7 +15960,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/components/panel/_index.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/components/panel/_index.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -16089,7 +16089,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/components/panel/_panel.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/components/panel/_panel.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -16218,7 +16218,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/components/password-input/_index.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/components/password-input/_index.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -16800,7 +16800,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/components/password-input/_password-input.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/components/password-input/_password-input.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -17382,7 +17382,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/components/phase-banner/_index.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/components/phase-banner/_index.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -17582,7 +17582,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/components/phase-banner/_phase-banner.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/components/phase-banner/_phase-banner.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -17782,7 +17782,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/components/radios/_index.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/components/radios/_index.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -18299,7 +18299,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/components/radios/_radios.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/components/radios/_radios.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -18816,7 +18816,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/components/select/_index.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/components/select/_index.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -19073,7 +19073,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/components/select/_select.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/components/select/_select.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -19330,7 +19330,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/components/service-navigation/_index.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/components/service-navigation/_index.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -19659,7 +19659,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/components/service-navigation/_service-navigation.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/components/service-navigation/_service-navigation.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -19988,7 +19988,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/components/skip-link/_index.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/components/skip-link/_index.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -20111,7 +20111,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/components/skip-link/_skip-link.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/components/skip-link/_skip-link.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -20234,7 +20234,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/components/summary-list/_index.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/components/summary-list/_index.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -20586,7 +20586,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/components/summary-list/_summary-list.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/components/summary-list/_summary-list.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -20938,7 +20938,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/components/table/_index.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/components/table/_index.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -21126,7 +21126,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/components/table/_table.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/components/table/_table.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -21314,7 +21314,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/components/tabs/_index.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/components/tabs/_index.scss matches snapshot 1`] = `
 "@charset "UTF-8";
 :root {
   --govuk-breakpoint-mobile: 20rem;
@@ -21568,7 +21568,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/components/tabs/_tabs.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/components/tabs/_tabs.scss matches snapshot 1`] = `
 "@charset "UTF-8";
 :root {
   --govuk-breakpoint-mobile: 20rem;
@@ -21822,7 +21822,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/components/tag/_index.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/components/tag/_index.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -21965,7 +21965,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/components/tag/_tag.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/components/tag/_tag.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -22108,232 +22108,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/components/task-list/_index.scss compiled CSS matches snapshot 1`] = `
-":root {
-  --govuk-breakpoint-mobile: 20rem;
-  --govuk-breakpoint-tablet: 40.0625rem;
-  --govuk-breakpoint-desktop: 48.0625rem;
-}
-
-:root {
-  --govuk-frontend-version: "development";
-}
-
-:root {
-  --govuk-brand-colour: #1d70b8;
-  --govuk-text-colour: #0b0c0c;
-  --govuk-template-background-colour: #f4f8fb;
-  --govuk-body-background-colour: #ffffff;
-  --govuk-print-text-colour: #000000;
-  --govuk-secondary-text-colour: #484949;
-  --govuk-focus-colour: #ffdd00;
-  --govuk-focus-text-colour: #0b0c0c;
-  --govuk-error-colour: #ca3535;
-  --govuk-success-colour: #0f7a52;
-  --govuk-border-colour: #cecece;
-  --govuk-input-border-colour: #0b0c0c;
-  --govuk-hover-colour: #cecece;
-  --govuk-link-colour: #1a65a6;
-  --govuk-link-visited-colour: #54319f;
-  --govuk-link-hover-colour: #0f385c;
-  --govuk-link-active-colour: #0b0c0c;
-  --govuk-surface-background-colour: #f4f8fb;
-  --govuk-surface-text-colour: #0b0c0c;
-  --govuk-surface-border-colour: #8eb8dc;
-}
-@media print {
-  :root {
-    --govuk-text-colour: var(--govuk-print-text-colour, #000000);
-  }
-}
-
-.govuk-tag {
-  font-family: "GDS Transport", arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-weight: 400;
-  font-size: 1.1875rem;
-  line-height: 1.3157894737;
-  color: #0f385c;
-  background-color: #d2e2f1;
-  display: inline-block;
-  max-width: 160px;
-  margin-top: -2px;
-  margin-bottom: -3px;
-  padding-top: 2px;
-  padding-right: 8px;
-  padding-bottom: 3px;
-  padding-left: 8px;
-  border-radius: 1px;
-  text-decoration: none;
-  overflow-wrap: break-word;
-}
-/*! Copyright (c) 2011 by Margaret Calvert & Henrik Kubel. All rights reserved. The font has been customised for exclusive use on gov.uk. This cut is not commercially available. */ /* stylelint-disable-line scss/comment-no-loud  */
-@font-face {
-  font-family: "GDS Transport";
-  font-style: normal;
-  font-weight: normal;
-  src: url("/assets/fonts/light-94a07e06a1-v2.woff2") format("woff2"), url("/assets/fonts/light-f591b13f7d-v2.woff") format("woff");
-  font-display: fallback;
-}
-@font-face {
-  font-family: "GDS Transport";
-  font-style: normal;
-  font-weight: bold;
-  src: url("/assets/fonts/bold-b542beb274-v2.woff2") format("woff2"), url("/assets/fonts/bold-affa96571d-v2.woff") format("woff");
-  font-display: fallback;
-}
-@media print {
-  .govuk-tag {
-    font-family: sans-serif;
-  }
-}
-@media print {
-  .govuk-tag {
-    font-size: 14pt;
-    line-height: 1.15;
-  }
-}
-@media screen and (forced-colors: active) {
-  .govuk-tag {
-    font-weight: bold;
-  }
-}
-
-.govuk-tag--green {
-  color: #083d29;
-  background-color: #cfe4dc;
-}
-
-.govuk-tag--purple {
-  color: #2a1950;
-  background-color: #ddd6ec;
-}
-
-.govuk-tag--red {
-  color: #651b1b;
-  background-color: #f4d7d7;
-}
-
-.govuk-tag--orange {
-  color: #7a3c1c;
-  background-color: #fde4d7;
-}
-
-.govuk-tag--teal {
-  color: #0b4144;
-  background-color: #d0e6e7;
-}
-
-.govuk-tag--magenta {
-  color: #651b3e;
-  background-color: #f4d7e5;
-}
-
-.govuk-tag--yellow {
-  color: #7a3c1c;
-  background-color: #ffee80;
-}
-
-.govuk-tag--grey {
-  color: #0b0c0c;
-  background-color: #cecece;
-}
-
-.govuk-tag--turquoise {
-  color: #0b4144;
-  background-color: #d0e6e7;
-}
-
-.govuk-tag--pink {
-  color: #651b3e;
-  background-color: #f4d7e5;
-}
-
-.govuk-task-list {
-  font-family: "GDS Transport", arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-weight: 400;
-  font-size: 1.1875rem;
-  line-height: 1.3157894737;
-  margin-top: 0;
-  margin-bottom: 20px;
-  padding: 0;
-  list-style-type: none;
-}
-@media print {
-  .govuk-task-list {
-    font-family: sans-serif;
-  }
-}
-@media print {
-  .govuk-task-list {
-    font-size: 14pt;
-    line-height: 1.15;
-  }
-}
-@media (min-width: 40.0625em) {
-  .govuk-task-list {
-    margin-bottom: 30px;
-  }
-}
-
-.govuk-task-list__item {
-  display: table;
-  position: relative;
-  width: 100%;
-  margin-bottom: 0;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid;
-  border-bottom-color: var(--govuk-border-colour, #cecece);
-}
-
-.govuk-task-list__item:first-child {
-  border-top: 1px solid;
-  border-top-color: var(--govuk-border-colour, #cecece);
-}
-
-.govuk-task-list__item--with-link:hover {
-  background: #f3f3f3;
-}
-
-.govuk-task-list__name-and-hint {
-  display: table-cell;
-  color: var(--govuk-text-colour, #0b0c0c);
-  vertical-align: top;
-}
-
-.govuk-task-list__status {
-  display: table-cell;
-  padding-left: 10px;
-  color: var(--govuk-text-colour, #0b0c0c);
-  text-align: right;
-  vertical-align: top;
-}
-
-.govuk-task-list__status--cannot-start-yet {
-  color: var(--govuk-secondary-text-colour, #484949);
-}
-
-.govuk-task-list__link::after {
-  content: "";
-  display: block;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-}
-
-.govuk-task-list__hint {
-  margin-top: 5px;
-  color: var(--govuk-secondary-text-colour, #484949);
-}"
-`;
-
-exports[`Sass file compilation comparison between @import and @use dist/govuk/components/task-list/_task-list.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/components/task-list/_index.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -22558,7 +22333,232 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/components/textarea/_index.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/components/task-list/_task-list.scss matches snapshot 1`] = `
+":root {
+  --govuk-breakpoint-mobile: 20rem;
+  --govuk-breakpoint-tablet: 40.0625rem;
+  --govuk-breakpoint-desktop: 48.0625rem;
+}
+
+:root {
+  --govuk-frontend-version: "development";
+}
+
+:root {
+  --govuk-brand-colour: #1d70b8;
+  --govuk-text-colour: #0b0c0c;
+  --govuk-template-background-colour: #f4f8fb;
+  --govuk-body-background-colour: #ffffff;
+  --govuk-print-text-colour: #000000;
+  --govuk-secondary-text-colour: #484949;
+  --govuk-focus-colour: #ffdd00;
+  --govuk-focus-text-colour: #0b0c0c;
+  --govuk-error-colour: #ca3535;
+  --govuk-success-colour: #0f7a52;
+  --govuk-border-colour: #cecece;
+  --govuk-input-border-colour: #0b0c0c;
+  --govuk-hover-colour: #cecece;
+  --govuk-link-colour: #1a65a6;
+  --govuk-link-visited-colour: #54319f;
+  --govuk-link-hover-colour: #0f385c;
+  --govuk-link-active-colour: #0b0c0c;
+  --govuk-surface-background-colour: #f4f8fb;
+  --govuk-surface-text-colour: #0b0c0c;
+  --govuk-surface-border-colour: #8eb8dc;
+}
+@media print {
+  :root {
+    --govuk-text-colour: var(--govuk-print-text-colour, #000000);
+  }
+}
+
+.govuk-tag {
+  font-family: "GDS Transport", arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+  font-size: 1.1875rem;
+  line-height: 1.3157894737;
+  color: #0f385c;
+  background-color: #d2e2f1;
+  display: inline-block;
+  max-width: 160px;
+  margin-top: -2px;
+  margin-bottom: -3px;
+  padding-top: 2px;
+  padding-right: 8px;
+  padding-bottom: 3px;
+  padding-left: 8px;
+  border-radius: 1px;
+  text-decoration: none;
+  overflow-wrap: break-word;
+}
+/*! Copyright (c) 2011 by Margaret Calvert & Henrik Kubel. All rights reserved. The font has been customised for exclusive use on gov.uk. This cut is not commercially available. */ /* stylelint-disable-line scss/comment-no-loud  */
+@font-face {
+  font-family: "GDS Transport";
+  font-style: normal;
+  font-weight: normal;
+  src: url("/assets/fonts/light-94a07e06a1-v2.woff2") format("woff2"), url("/assets/fonts/light-f591b13f7d-v2.woff") format("woff");
+  font-display: fallback;
+}
+@font-face {
+  font-family: "GDS Transport";
+  font-style: normal;
+  font-weight: bold;
+  src: url("/assets/fonts/bold-b542beb274-v2.woff2") format("woff2"), url("/assets/fonts/bold-affa96571d-v2.woff") format("woff");
+  font-display: fallback;
+}
+@media print {
+  .govuk-tag {
+    font-family: sans-serif;
+  }
+}
+@media print {
+  .govuk-tag {
+    font-size: 14pt;
+    line-height: 1.15;
+  }
+}
+@media screen and (forced-colors: active) {
+  .govuk-tag {
+    font-weight: bold;
+  }
+}
+
+.govuk-tag--green {
+  color: #083d29;
+  background-color: #cfe4dc;
+}
+
+.govuk-tag--purple {
+  color: #2a1950;
+  background-color: #ddd6ec;
+}
+
+.govuk-tag--red {
+  color: #651b1b;
+  background-color: #f4d7d7;
+}
+
+.govuk-tag--orange {
+  color: #7a3c1c;
+  background-color: #fde4d7;
+}
+
+.govuk-tag--teal {
+  color: #0b4144;
+  background-color: #d0e6e7;
+}
+
+.govuk-tag--magenta {
+  color: #651b3e;
+  background-color: #f4d7e5;
+}
+
+.govuk-tag--yellow {
+  color: #7a3c1c;
+  background-color: #ffee80;
+}
+
+.govuk-tag--grey {
+  color: #0b0c0c;
+  background-color: #cecece;
+}
+
+.govuk-tag--turquoise {
+  color: #0b4144;
+  background-color: #d0e6e7;
+}
+
+.govuk-tag--pink {
+  color: #651b3e;
+  background-color: #f4d7e5;
+}
+
+.govuk-task-list {
+  font-family: "GDS Transport", arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+  font-size: 1.1875rem;
+  line-height: 1.3157894737;
+  margin-top: 0;
+  margin-bottom: 20px;
+  padding: 0;
+  list-style-type: none;
+}
+@media print {
+  .govuk-task-list {
+    font-family: sans-serif;
+  }
+}
+@media print {
+  .govuk-task-list {
+    font-size: 14pt;
+    line-height: 1.15;
+  }
+}
+@media (min-width: 40.0625em) {
+  .govuk-task-list {
+    margin-bottom: 30px;
+  }
+}
+
+.govuk-task-list__item {
+  display: table;
+  position: relative;
+  width: 100%;
+  margin-bottom: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid;
+  border-bottom-color: var(--govuk-border-colour, #cecece);
+}
+
+.govuk-task-list__item:first-child {
+  border-top: 1px solid;
+  border-top-color: var(--govuk-border-colour, #cecece);
+}
+
+.govuk-task-list__item--with-link:hover {
+  background: #f3f3f3;
+}
+
+.govuk-task-list__name-and-hint {
+  display: table-cell;
+  color: var(--govuk-text-colour, #0b0c0c);
+  vertical-align: top;
+}
+
+.govuk-task-list__status {
+  display: table-cell;
+  padding-left: 10px;
+  color: var(--govuk-text-colour, #0b0c0c);
+  text-align: right;
+  vertical-align: top;
+}
+
+.govuk-task-list__status--cannot-start-yet {
+  color: var(--govuk-secondary-text-colour, #484949);
+}
+
+.govuk-task-list__link::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.govuk-task-list__hint {
+  margin-top: 5px;
+  color: var(--govuk-secondary-text-colour, #484949);
+}"
+`;
+
+exports[`dist/govuk/components/textarea/_index.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -22816,7 +22816,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/components/textarea/_textarea.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/components/textarea/_textarea.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -23074,7 +23074,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/components/warning-text/_index.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/components/warning-text/_index.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -23199,7 +23199,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/components/warning-text/_warning-text.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/components/warning-text/_warning-text.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -23324,7 +23324,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/core/_global-styles.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/core/_global-styles.scss matches snapshot 1`] = `
 ".govuk-link {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -23797,7 +23797,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/core/_index.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/core/_index.scss matches snapshot 1`] = `
 ".govuk-link {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -24398,7 +24398,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/core/_links.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/core/_links.scss matches snapshot 1`] = `
 ".govuk-link {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -24525,7 +24525,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/core/_lists.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/core/_lists.scss matches snapshot 1`] = `
 ".govuk-list {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -24609,7 +24609,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/core/_section-break.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/core/_section-break.scss matches snapshot 1`] = `
 ".govuk-section-break {
   margin: 0;
   border: 0;
@@ -24666,7 +24666,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/core/_typography.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/core/_typography.scss matches snapshot 1`] = `
 ".govuk-heading-xl {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -25029,7 +25029,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/co
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/custom-properties/_breakpoints.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/custom-properties/_breakpoints.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -25037,13 +25037,13 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/cu
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/custom-properties/_frontend-version.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/custom-properties/_frontend-version.scss matches snapshot 1`] = `
 ":root {
   --govuk-frontend-version: "development";
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/custom-properties/_functional-colours.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/custom-properties/_functional-colours.scss matches snapshot 1`] = `
 ":root {
   --govuk-brand-colour: #1d70b8;
   --govuk-text-colour: #0b0c0c;
@@ -25073,7 +25073,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/cu
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/custom-properties/_index.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/custom-properties/_index.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -25113,33 +25113,33 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/cu
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/helpers/_clearfix.scss compiled CSS matches snapshot 1`] = `""`;
+exports[`dist/govuk/helpers/_clearfix.scss matches snapshot 1`] = `""`;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/helpers/_colour.scss compiled CSS matches snapshot 1`] = `""`;
+exports[`dist/govuk/helpers/_colour.scss matches snapshot 1`] = `""`;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/helpers/_device-pixels.scss compiled CSS matches snapshot 1`] = `""`;
+exports[`dist/govuk/helpers/_device-pixels.scss matches snapshot 1`] = `""`;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/helpers/_focused.scss compiled CSS matches snapshot 1`] = `""`;
+exports[`dist/govuk/helpers/_focused.scss matches snapshot 1`] = `""`;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/helpers/_font-faces.scss compiled CSS matches snapshot 1`] = `""`;
+exports[`dist/govuk/helpers/_font-faces.scss matches snapshot 1`] = `""`;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/helpers/_grid.scss compiled CSS matches snapshot 1`] = `""`;
+exports[`dist/govuk/helpers/_grid.scss matches snapshot 1`] = `""`;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/helpers/_index.scss compiled CSS matches snapshot 1`] = `""`;
+exports[`dist/govuk/helpers/_index.scss matches snapshot 1`] = `""`;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/helpers/_links.scss compiled CSS matches snapshot 1`] = `""`;
+exports[`dist/govuk/helpers/_links.scss matches snapshot 1`] = `""`;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/helpers/_media-queries.scss compiled CSS matches snapshot 1`] = `""`;
+exports[`dist/govuk/helpers/_media-queries.scss matches snapshot 1`] = `""`;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/helpers/_shape-arrow.scss compiled CSS matches snapshot 1`] = `""`;
+exports[`dist/govuk/helpers/_shape-arrow.scss matches snapshot 1`] = `""`;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/helpers/_spacing.scss compiled CSS matches snapshot 1`] = `""`;
+exports[`dist/govuk/helpers/_spacing.scss matches snapshot 1`] = `""`;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/helpers/_typography.scss compiled CSS matches snapshot 1`] = `""`;
+exports[`dist/govuk/helpers/_typography.scss matches snapshot 1`] = `""`;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/helpers/_visually-hidden.scss compiled CSS matches snapshot 1`] = `""`;
+exports[`dist/govuk/helpers/_visually-hidden.scss matches snapshot 1`] = `""`;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/index.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/index.scss matches snapshot 1`] = `
 "@charset "UTF-8";
 :root {
   --govuk-breakpoint-mobile: 20rem;
@@ -31945,7 +31945,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/in
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/objects/_button-group.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/objects/_button-group.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -32054,7 +32054,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/ob
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/objects/_form-group.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/objects/_form-group.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -32121,7 +32121,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/ob
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/objects/_grid.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/objects/_grid.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -32309,7 +32309,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/ob
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/objects/_index.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/objects/_index.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -32677,7 +32677,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/ob
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/objects/_main-wrapper.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/objects/_main-wrapper.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -32740,7 +32740,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/ob
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/objects/_template.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/objects/_template.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -32805,7 +32805,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/ob
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/objects/_width-container.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/objects/_width-container.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
   --govuk-breakpoint-tablet: 40.0625rem;
@@ -32881,7 +32881,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/ob
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/overrides/_display.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/overrides/_display.scss matches snapshot 1`] = `
 ".govuk-\\!-display-inline {
   display: inline !important;
 }
@@ -32905,7 +32905,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/ov
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/overrides/_index.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/overrides/_index.scss matches snapshot 1`] = `
 ".govuk-\\!-display-inline {
   display: inline !important;
 }
@@ -34213,7 +34213,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/ov
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/overrides/_spacing.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/overrides/_spacing.scss matches snapshot 1`] = `
 ".govuk-\\!-margin-0 {
   margin: 0 !important;
 }
@@ -35315,7 +35315,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/ov
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/overrides/_text-align.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/overrides/_text-align.scss matches snapshot 1`] = `
 ".govuk-\\!-text-align-left {
   text-align: left !important;
 }
@@ -35329,7 +35329,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/ov
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/overrides/_typography.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/overrides/_typography.scss matches snapshot 1`] = `
 ".govuk-\\!-font-size-80 {
   font-size: 3.3125rem !important;
   line-height: 1.0377358491 !important;
@@ -35455,7 +35455,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/ov
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/overrides/_width.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/overrides/_width.scss matches snapshot 1`] = `
 ".govuk-\\!-width-full {
   width: 100% !important;
 }
@@ -35506,51 +35506,51 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/ov
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/settings/_assets.scss compiled CSS matches snapshot 1`] = `""`;
+exports[`dist/govuk/settings/_assets.scss matches snapshot 1`] = `""`;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/settings/_colours-applied.scss compiled CSS matches snapshot 1`] = `""`;
+exports[`dist/govuk/settings/_colours-applied.scss matches snapshot 1`] = `""`;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/settings/_colours-functional.scss compiled CSS matches snapshot 1`] = `""`;
+exports[`dist/govuk/settings/_colours-functional.scss matches snapshot 1`] = `""`;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/settings/_colours-organisations.scss compiled CSS matches snapshot 1`] = `""`;
+exports[`dist/govuk/settings/_colours-organisations.scss matches snapshot 1`] = `""`;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/settings/_colours-palette.scss compiled CSS matches snapshot 1`] = `""`;
+exports[`dist/govuk/settings/_colours-palette.scss matches snapshot 1`] = `""`;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/settings/_custom-properties.scss compiled CSS matches snapshot 1`] = `""`;
+exports[`dist/govuk/settings/_custom-properties.scss matches snapshot 1`] = `""`;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/settings/_global-styles.scss compiled CSS matches snapshot 1`] = `""`;
+exports[`dist/govuk/settings/_global-styles.scss matches snapshot 1`] = `""`;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/settings/_index.scss compiled CSS matches snapshot 1`] = `""`;
+exports[`dist/govuk/settings/_index.scss matches snapshot 1`] = `""`;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/settings/_links.scss compiled CSS matches snapshot 1`] = `""`;
+exports[`dist/govuk/settings/_links.scss matches snapshot 1`] = `""`;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/settings/_measurements.scss compiled CSS matches snapshot 1`] = `""`;
+exports[`dist/govuk/settings/_measurements.scss matches snapshot 1`] = `""`;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/settings/_media-queries.scss compiled CSS matches snapshot 1`] = `""`;
+exports[`dist/govuk/settings/_media-queries.scss matches snapshot 1`] = `""`;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/settings/_spacing.scss compiled CSS matches snapshot 1`] = `""`;
+exports[`dist/govuk/settings/_spacing.scss matches snapshot 1`] = `""`;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/settings/_typography-font.scss compiled CSS matches snapshot 1`] = `""`;
+exports[`dist/govuk/settings/_typography-font.scss matches snapshot 1`] = `""`;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/settings/_typography-responsive.scss compiled CSS matches snapshot 1`] = `""`;
+exports[`dist/govuk/settings/_typography-responsive.scss matches snapshot 1`] = `""`;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/settings/_warnings.scss compiled CSS matches snapshot 1`] = `""`;
+exports[`dist/govuk/settings/_warnings.scss matches snapshot 1`] = `""`;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/tools/_exports.scss compiled CSS matches snapshot 1`] = `""`;
+exports[`dist/govuk/tools/_exports.scss matches snapshot 1`] = `""`;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/tools/_font-url.scss compiled CSS matches snapshot 1`] = `""`;
+exports[`dist/govuk/tools/_font-url.scss matches snapshot 1`] = `""`;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/tools/_if.scss compiled CSS matches snapshot 1`] = `""`;
+exports[`dist/govuk/tools/_if.scss matches snapshot 1`] = `""`;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/tools/_image-url.scss compiled CSS matches snapshot 1`] = `""`;
+exports[`dist/govuk/tools/_image-url.scss matches snapshot 1`] = `""`;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/tools/_index.scss compiled CSS matches snapshot 1`] = `""`;
+exports[`dist/govuk/tools/_index.scss matches snapshot 1`] = `""`;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/tools/_px-to-em.scss compiled CSS matches snapshot 1`] = `""`;
+exports[`dist/govuk/tools/_px-to-em.scss matches snapshot 1`] = `""`;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/tools/_px-to-rem.scss compiled CSS matches snapshot 1`] = `""`;
+exports[`dist/govuk/tools/_px-to-rem.scss matches snapshot 1`] = `""`;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/utilities/_clearfix.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/utilities/_clearfix.scss matches snapshot 1`] = `
 ".govuk-clearfix::after {
   content: "";
   display: block;
@@ -35558,7 +35558,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/ut
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/utilities/_index.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/utilities/_index.scss matches snapshot 1`] = `
 "@charset "UTF-8";
 .govuk-clearfix::after {
   content: "";
@@ -35607,7 +35607,7 @@ exports[`Sass file compilation comparison between @import and @use dist/govuk/ut
 }"
 `;
 
-exports[`Sass file compilation comparison between @import and @use dist/govuk/utilities/_visually-hidden.scss compiled CSS matches snapshot 1`] = `
+exports[`dist/govuk/utilities/_visually-hidden.scss matches snapshot 1`] = `
 "@charset "UTF-8";
 .govuk-visually-hidden {
   position: absolute !important;
