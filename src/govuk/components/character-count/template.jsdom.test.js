@@ -1,8 +1,4 @@
-const { render } = require('@govuk-frontend/helpers/nunjucks')
-const { htmlWithClassName } = require('@govuk-frontend/helpers/tests')
-const { getExamples } = require('@govuk-frontend/lib/components')
-
-const WORD_BOUNDARY = '\\b'
+const { getExamples, render } = require('@govuk-frontend/lib/components')
 
 describe('Character count', () => {
   let examples
@@ -13,261 +9,288 @@ describe('Character count', () => {
 
   describe('default example', () => {
     it('autopopulates default id from name', () => {
-      const $ = render('character-count', examples.default)
+      document.body.innerHTML = render('character-count', examples.default)
 
-      const $component = $('.govuk-js-character-count')
-      expect($component.attr('id')).toBe($component.attr('name'))
+      const $component = document.querySelector('.govuk-js-character-count')
+      expect($component).toHaveAttribute('id', $component.getAttribute('name'))
     })
 
     it('renders with name', () => {
-      const $ = render('character-count', examples.default)
+      document.body.innerHTML = render('character-count', examples.default)
 
-      const $component = $('.govuk-js-character-count')
-      expect($component.attr('name')).toBe('more-detail')
+      const $component = document.querySelector('.govuk-js-character-count')
+      expect($component).toHaveAttribute('name', 'more-detail')
     })
 
     it('renders with default number of rows', () => {
-      const $ = render('character-count', examples.default)
+      document.body.innerHTML = render('character-count', examples.default)
 
-      const $component = $('.govuk-js-character-count')
-      expect($component.attr('rows')).toBe('5')
+      const $component = document.querySelector('.govuk-js-character-count')
+      expect($component).toHaveAttribute('rows', '5')
     })
   })
 
   describe('custom options', () => {
     it('renders with id', () => {
-      const $ = render('character-count', examples.id)
+      document.body.innerHTML = render('character-count', examples.id)
 
-      const $component = $('.govuk-js-character-count')
-      expect($component.attr('id')).not.toBe($component.attr('name'))
-      expect($component.attr('id')).toBe('character-count-id')
+      const $component = document.querySelector('.govuk-js-character-count')
+      expect($component).toHaveAttribute('id', 'character-count-id')
     })
 
     it('renders with classes', () => {
-      const $ = render('character-count', examples.classes)
+      document.body.innerHTML = render('character-count', examples.classes)
 
-      const $component = $('.govuk-js-character-count')
-      expect(
-        $component.hasClass('app-character-count--custom-modifier')
-      ).toBeTruthy()
+      const $component = document.querySelector('.govuk-js-character-count')
+      expect($component).toHaveClass('app-character-count--custom-modifier')
     })
 
     it('renders with rows', () => {
-      const $ = render('character-count', examples['with custom rows'])
+      document.body.innerHTML = render(
+        'character-count',
+        examples['with custom rows']
+      )
 
-      const $component = $('.govuk-js-character-count')
-      expect($component.attr('rows')).toBe('8')
+      const $component = document.querySelector('.govuk-js-character-count')
+      expect($component).toHaveAttribute('rows', '8')
     })
 
     it('renders with value', () => {
-      const $ = render('character-count', examples['with default value'])
+      document.body.innerHTML = render(
+        'character-count',
+        examples['with default value']
+      )
 
-      const $component = $('.govuk-js-character-count')
-      expect($component.text()).toBe('221B Baker Street\nLondon\nNW1 6XE\n')
+      const $component = document.querySelector('.govuk-js-character-count')
+      expect($component).toHaveValue('221B Baker Street\nLondon\nNW1 6XE\n')
     })
 
     it('renders with attributes', () => {
-      const $ = render('character-count', examples.attributes)
+      document.body.innerHTML = render('character-count', examples.attributes)
 
-      const $component = $('.govuk-js-character-count')
-      expect($component.attr('data-attribute')).toBe('my data value')
+      const $component = document.querySelector('.govuk-js-character-count')
+      expect($component).toHaveAttribute('data-attribute', 'my data value')
     })
 
     it('renders with formGroup', () => {
-      const $ = render('character-count', examples['formGroup with classes'])
+      document.body.innerHTML = render(
+        'character-count',
+        examples['formGroup with classes']
+      )
 
-      const $component = $('.govuk-form-group')
-      expect(
-        $component.hasClass('app-character-count--custom-modifier')
-      ).toBeTruthy()
+      const $component = document.querySelector('.govuk-form-group')
+      expect($component).toHaveClass('app-character-count--custom-modifier')
     })
   })
 
   describe('count message', () => {
     it('renders with the amount of characters expected', () => {
-      const $ = render('character-count', examples.default)
+      document.body.innerHTML = render('character-count', examples.default)
 
-      const $countMessage = $('.govuk-character-count__message')
-      expect($countMessage.text()).toContain(
+      const $countMessage = document.querySelector(
+        '.govuk-character-count__message'
+      )
+      expect($countMessage).toHaveTextContent(
         'You can enter up to 10 characters'
       )
     })
 
     it('renders with the amount of words expected', () => {
-      const $ = render('character-count', examples['with word count'])
+      document.body.innerHTML = render(
+        'character-count',
+        examples['with word count']
+      )
 
-      const $countMessage = $('.govuk-character-count__message')
-      expect($countMessage.text()).toContain('You can enter up to 10 words')
+      const $countMessage = document.querySelector(
+        '.govuk-character-count__message'
+      )
+      expect($countMessage).toHaveTextContent('You can enter up to 10 words')
     })
 
     it('is associated with the textarea', () => {
-      const $ = render('character-count', examples.default)
+      document.body.innerHTML = render('character-count', examples.default)
 
-      const $textarea = $('.govuk-js-character-count')
-      const countMessageId = $('.govuk-character-count__message').attr('id')
+      const $textarea = document.querySelector('.govuk-js-character-count')
 
-      const describedBy = new RegExp(
-        `${WORD_BOUNDARY}${countMessageId}${WORD_BOUNDARY}`
+      expect($textarea).toHaveAccessibleDescription(
+        'You can enter up to 10 characters'
       )
-
-      expect($textarea.attr('aria-describedby')).toMatch(describedBy)
     })
 
     it('renders with custom classes', () => {
-      const $ = render(
+      document.body.innerHTML = render(
         'character-count',
         examples['custom classes on countMessage']
       )
 
-      const $countMessage = $('.govuk-character-count__message')
-      expect($countMessage.hasClass('app-custom-count-message')).toBeTruthy()
+      const $countMessage = document.querySelector(
+        '.govuk-character-count__message'
+      )
+      expect($countMessage).toHaveClass('app-custom-count-message')
     })
   })
 
   describe('when it has the spellcheck attribute', () => {
     it('renders the textarea with spellcheck attribute set to true', () => {
-      const $ = render('character-count', examples['spellcheck enabled'])
+      document.body.innerHTML = render(
+        'character-count',
+        examples['spellcheck enabled']
+      )
 
-      const $component = $('.govuk-character-count .govuk-textarea')
-      expect($component.attr('spellcheck')).toBe('true')
+      const $component = document.querySelector(
+        '.govuk-character-count .govuk-textarea'
+      )
+      expect($component).toHaveAttribute('spellcheck', 'true')
     })
 
     it('renders the textarea with spellcheck attribute set to false', () => {
-      const $ = render('character-count', examples['spellcheck disabled'])
+      document.body.innerHTML = render(
+        'character-count',
+        examples['spellcheck disabled']
+      )
 
-      const $component = $('.govuk-character-count .govuk-textarea')
-      expect($component.attr('spellcheck')).toBe('false')
+      const $component = document.querySelector(
+        '.govuk-character-count .govuk-textarea'
+      )
+      expect($component).toHaveAttribute('spellcheck', 'false')
     })
 
     it('renders the textarea without spellcheck attribute by default', () => {
-      const $ = render('character-count', examples.default)
+      document.body.innerHTML = render('character-count', examples.default)
 
-      const $component = $('.govuk-character-count .govuk-textarea')
-      expect($component.attr('spellcheck')).toBeUndefined()
+      const $component = document.querySelector(
+        '.govuk-character-count .govuk-textarea'
+      )
+      expect($component).not.toHaveAttribute('spellcheck')
     })
   })
 
   describe('when it includes a hint', () => {
     it('renders with hint', () => {
-      const $ = render('character-count', examples['with hint'])
+      document.body.innerHTML = render('character-count', examples['with hint'])
 
-      expect(htmlWithClassName($, '.govuk-hint')).toMatchSnapshot()
+      expect(document.querySelector('.govuk-hint').outerHTML).toMatchSnapshot()
     })
 
     it('associates the character count as "described by" the hint', () => {
-      const $ = render('character-count', examples['with hint'])
+      document.body.innerHTML = render('character-count', examples['with hint'])
 
-      const $textarea = $('.govuk-js-character-count')
-      const hintId = $('.govuk-hint').attr('id')
+      const $textarea = document.querySelector('.govuk-js-character-count')
 
-      const describedBy = new RegExp(
-        `${WORD_BOUNDARY}${hintId}${WORD_BOUNDARY}`
+      expect($textarea).toHaveAccessibleDescription(
+        "You can enter up to 10 characters Don't include personal or financial" +
+          ' information, eg your National Insurance number or credit card' +
+          ' details.'
       )
-
-      expect($textarea.attr('aria-describedby')).toMatch(describedBy)
     })
   })
 
   describe('when it includes an error message', () => {
     it('renders with error message', () => {
-      const $ = render(
+      document.body.innerHTML = render(
         'character-count',
         examples['with default value exceeding limit']
       )
 
-      expect(htmlWithClassName($, '.govuk-error-message')).toMatchSnapshot()
+      expect(
+        document.querySelector('.govuk-error-message').outerHTML
+      ).toMatchSnapshot()
     })
 
     it('associates the character-count as "described by" the error message', () => {
-      const $ = render(
+      document.body.innerHTML = render(
         'character-count',
         examples['with default value exceeding limit']
       )
 
-      const $component = $('.govuk-js-character-count')
-      const errorMessageId = $('.govuk-error-message').attr('id')
+      const $component = document.querySelector('.govuk-js-character-count')
 
-      const describedBy = new RegExp(
-        `${WORD_BOUNDARY}${errorMessageId}${WORD_BOUNDARY}`
+      expect($component).toHaveAccessibleDescription(
+        'You can enter up to 10 characters Error: Please do not exceed the' +
+          ' maximum allowed limit'
       )
-
-      expect($component.attr('aria-describedby')).toMatch(describedBy)
     })
 
     it('adds the error class to the character-count', () => {
-      const $ = render(
+      document.body.innerHTML = render(
         'character-count',
         examples['with default value exceeding limit']
       )
 
-      const $component = $('.govuk-js-character-count')
-      expect($component.hasClass('govuk-textarea--error')).toBeTruthy()
+      const $component = document.querySelector('.govuk-js-character-count')
+      expect($component).toHaveClass('govuk-textarea--error')
     })
 
     it('renders with classes', () => {
-      const $ = render(
+      document.body.innerHTML = render(
         'character-count',
         examples['custom classes with error message']
       )
 
-      const $component = $('.govuk-js-character-count')
-      expect(
-        $component.hasClass('app-character-count--custom-modifier')
-      ).toBeTruthy()
+      const $component = document.querySelector('.govuk-js-character-count')
+      expect($component).toHaveClass('app-character-count--custom-modifier')
     })
   })
 
   describe('with dependant components', () => {
     it('have correct nesting order', () => {
-      const $ = render(
+      document.body.innerHTML = render(
         'character-count',
         examples['with default value exceeding limit']
       )
 
-      const $component = $('.govuk-form-group > .govuk-js-character-count')
-      expect($component.length).toBeTruthy()
+      const $component = document.querySelector(
+        '.govuk-form-group > .govuk-js-character-count'
+      )
+      expect($component).toBeInTheDocument()
     })
 
     it('renders with label', () => {
-      const $ = render('character-count', examples.default)
+      document.body.innerHTML = render('character-count', examples.default)
 
-      expect(htmlWithClassName($, '.govuk-label')).toMatchSnapshot()
+      expect(document.querySelector('.govuk-label').outerHTML).toMatchSnapshot()
     })
 
-    it('renders label with "for" attribute reffering the character count "id"', () => {
-      const $ = render('character-count', examples.default)
+    it('renders label with "for" attribute referring the character count "id"', () => {
+      document.body.innerHTML = render('character-count', examples.default)
 
-      const $label = $('.govuk-label')
-      expect($label.attr('for')).toBe('more-detail')
+      const $component = document.querySelector('.govuk-js-character-count')
+      expect($component).toHaveAccessibleName('Can you provide more detail?')
     })
   })
 
   describe('with threshold', () => {
     it('hides the count to start with', () => {
-      const $ = render('character-count', examples['with threshold'])
+      document.body.innerHTML = render(
+        'character-count',
+        examples['with threshold']
+      )
 
-      const $component = $('.govuk-character-count')
-      expect($component.attr('data-threshold')).toBe('75')
+      const $component = document.querySelector('.govuk-character-count')
+      expect($component).toHaveAttribute('data-threshold', '75')
     })
   })
 
   describe('with custom textarea description', () => {
     it('allows customisation of the textarea description', () => {
-      const $ = render(
+      document.body.innerHTML = render(
         'character-count',
         examples['with custom textarea description']
       )
 
-      const message = $('.govuk-character-count__message').text().trim()
-      expect(message).toBe('Gallwch ddefnyddio hyd at 10 nod')
+      const message = document.querySelector('.govuk-character-count__message')
+      expect(message).toHaveTextContent('Gallwch ddefnyddio hyd at 10 nod')
     })
   })
 
   describe('translations', () => {
     it('renders with translation data attributes', () => {
-      const $ = render('character-count', examples['with translations'])
+      document.body.innerHTML = render(
+        'character-count',
+        examples['with translations']
+      )
 
-      const $component = $('[data-module]')
+      const $component = document.querySelector('[data-module]')
 
       Object.entries({
         'data-i18n.characters-under-limit.one': 'One character to go',
@@ -281,7 +304,7 @@ describe('Character count', () => {
         'data-i18n.words-over-limit.one': 'One word too many',
         'data-i18n.words-over-limit.other': '%{count} words too many'
       }).forEach(([attributeName, expectedValue]) => {
-        expect($component.attr(attributeName)).toEqual(expectedValue)
+        expect($component).toHaveAttribute(attributeName, expectedValue)
       })
     })
   })
@@ -292,37 +315,40 @@ describe('Character count', () => {
       // it needs to pass down any textarea description to the JavaScript
       // so it can inject the limit it may have received at instantiation
       it('renders the textarea description as a data attribute', () => {
-        const $ = render(
+        document.body.innerHTML = render(
           'character-count',
           examples['when neither maxlength nor maxwords are set']
         )
 
         // Fallback hint is passed as data attribute
-        const $component = $('[data-module]')
-        expect($component.attr('data-i18n.textarea-description.other')).toBe(
+        const $component = document.querySelector('[data-module]')
+        expect($component).toHaveAttribute(
+          'data-i18n.textarea-description.other',
           'No more than %{count} characters'
         )
 
         // No content is set as the accessible description cannot be interpolated on the backend
         // It'll be up to the JavaScript to fill it in
-        const $countMessage = $('.govuk-character-count__message')
-        expect($countMessage.html()).toMatch(/^\s*$/) // The macro outputs linebreaks around the hint itself
+        const $countMessage = document.querySelector(
+          '.govuk-character-count__message'
+        )
+        expect($countMessage).toHaveTextContent('')
       })
     })
 
     describe('without textarea description', () => {
       it('does not render a textarea description data attribute', () => {
-        const $ = render(
+        document.body.innerHTML = render(
           'character-count',
           examples[
             'when neither maxlength/maxwords nor textarea description are set'
           ]
         )
 
-        const $component = $('[data-module]')
-        expect(
-          $component.attr('data-i18n.textarea-description.other')
-        ).toBeFalsy()
+        const $component = document.querySelector('[data-module]')
+        expect($component).not.toHaveAttribute(
+          'data-i18n.textarea-description.other'
+        )
       })
     })
   })
