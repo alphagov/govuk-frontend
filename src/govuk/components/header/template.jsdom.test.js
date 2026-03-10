@@ -1,5 +1,4 @@
-const { render } = require('@govuk-frontend/helpers/nunjucks')
-const { getExamples } = require('@govuk-frontend/lib/components')
+const { getExamples, render } = require('@govuk-frontend/lib/components')
 
 describe('header', () => {
   let examples
@@ -10,47 +9,47 @@ describe('header', () => {
 
   describe('custom options', () => {
     it('renders attributes correctly', () => {
-      const $ = render('header', examples.attributes)
+      document.body.innerHTML = render('header', examples.attributes)
 
-      const $component = $('.govuk-header')
-      expect($component.attr('data-test-attribute')).toBe('value')
-      expect($component.attr('data-test-attribute-2')).toBe('value-2')
+      const $component = document.querySelector('.govuk-header')
+      expect($component).toHaveAttribute('data-test-attribute', 'value')
+      expect($component).toHaveAttribute('data-test-attribute-2', 'value-2')
     })
 
     it('renders classes', () => {
-      const $ = render('header', examples.classes)
+      document.body.innerHTML = render('header', examples.classes)
 
-      const $component = $('.govuk-header')
-      expect($component.hasClass('app-header--custom-modifier')).toBeTruthy()
+      const $component = document.querySelector('.govuk-header')
+      expect($component).toHaveClass('app-header--custom-modifier')
     })
 
     it('renders custom container classes', () => {
-      const $ = render('header', examples['full width'])
+      document.body.innerHTML = render('header', examples['full width'])
 
-      const $component = $('.govuk-header')
-      const $container = $component.find('.govuk-header__container')
+      const $container = document.querySelector('.govuk-header__container')
 
-      expect(
-        $container.hasClass('govuk-header__container--full-width')
-      ).toBeTruthy()
+      expect($container).toHaveClass('govuk-header__container--full-width')
     })
 
     it('renders home page URL', () => {
-      const $ = render('header', examples['custom homepage url'])
+      document.body.innerHTML = render(
+        'header',
+        examples['custom homepage url']
+      )
 
-      const $component = $('.govuk-header')
-      const $homepageLink = $component.find('.govuk-header__homepage-link')
-      expect($homepageLink.attr('href')).toBe('/')
+      const $homepageLink = document.querySelector(
+        '.govuk-header__homepage-link'
+      )
+      expect($homepageLink).toHaveAttribute('href', '/')
     })
   })
 
   describe('with product name', () => {
     it('renders product name', () => {
-      const $ = render('header', examples['with product name'])
+      document.body.innerHTML = render('header', examples['with product name'])
 
-      const $component = $('.govuk-header')
-      const $productName = $component.find('.govuk-header__product-name')
-      expect($productName.text().trim()).toBe('Product Name')
+      const $productName = document.querySelector('.govuk-header__product-name')
+      expect($productName).toHaveTextContent('Product Name')
     })
   })
 })
