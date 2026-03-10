@@ -311,9 +311,9 @@ describe('Character count', () => {
 
   describe('when neither maxlength nor maxwords are set', () => {
     describe('with textarea description set', () => {
-      // If the template has no maxwords or maxlength to go for
-      // it needs to pass down any textarea description to the JavaScript
-      // so it can inject the limit it may have received at instantiation
+      // If the template has no maxwords or maxlength to go for it needs to pass
+      // down any textarea description to the JavaScript so it can inject the
+      // limit it may have received at instantiation
       it('renders the textarea description as a data attribute', () => {
         document.body.innerHTML = render(
           'character-count',
@@ -327,8 +327,9 @@ describe('Character count', () => {
           'No more than %{count} characters'
         )
 
-        // No content is set as the accessible description cannot be interpolated on the backend
-        // It'll be up to the JavaScript to fill it in
+        // No content is set as the accessible description cannot be
+        // interpolated on the backend – it'll be up to the JavaScript to fill
+        // it in
         const $countMessage = document.querySelector(
           '.govuk-character-count__message'
         )
