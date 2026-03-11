@@ -1,8 +1,6 @@
 @import "../../base";
 
 @include govuk-exports("govuk/component/header") {
-  $govuk-header-background: govuk-functional-colour(brand);
-  $govuk-header-text: govuk-colour("white");
   $govuk-header-link-underline-thickness: 3px;
   $govuk-header-logo-bottom-margin: 2px;
 
@@ -11,8 +9,8 @@
 
     // Add a transparent bottom border for forced-colour modes
     border-bottom: 1px solid transparent;
-    color: $govuk-header-text;
-    background: $govuk-header-background;
+    color: govuk-colour("white");
+    background: govuk-functional-colour(brand);
   }
 
   .govuk-header__container--full-width {
