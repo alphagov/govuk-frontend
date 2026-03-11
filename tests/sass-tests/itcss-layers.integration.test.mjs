@@ -15,8 +15,8 @@ describe('ITCSS layers', () => {
   ])('%s', (layerName) => {
     it('works when user @imports the layer', async () => {
       const sass = `
-          @import "node_modules/govuk-frontend/dist/govuk/base";
-          @import "node_modules/govuk-frontend/dist/govuk/${layerName}";
+          @import "node_modules/govuk-frontend/src/govuk/base";
+          @import "node_modules/govuk-frontend/src/govuk/${layerName}";
         `
 
       const { css } = await compileStringAsync(sass, sassConfig)

@@ -13,7 +13,7 @@ describe('All components, with configuration', () => {
 
       $govuk-font-url-function: 'fonts-url';
 
-      @import "node_modules/govuk-frontend/dist/govuk";
+      @import "node_modules/govuk-frontend/src/govuk";
     `
 
     cssWithImport = (await compileStringAsync(sass, sassConfig)).css
@@ -24,7 +24,7 @@ describe('All components, with configuration', () => {
       @use "sass:meta";
       @use "./assets-urls";
 
-      @use "node_modules/govuk-frontend/dist/govuk" with (
+      @use "node_modules/govuk-frontend/src/govuk" with (
         $govuk-functional-colours: (brand: hotpink),
         $govuk-font-url-function: meta.get-function("fonts-url", $module: "assets-urls")
       );

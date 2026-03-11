@@ -200,7 +200,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 }
 @supports not (text-wrap: balance) {
   .govuk-frontend-supported .govuk-accordion__show-all:focus {
-    -webkit-box-decoration-break: clone;
     box-decoration-break: clone;
   }
 }
@@ -291,7 +290,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   .govuk-frontend-supported .govuk-accordion__section-button:focus .govuk-accordion__section-heading-text-focus,
   .govuk-frontend-supported .govuk-accordion__section-button:focus .govuk-accordion__section-summary-focus,
   .govuk-frontend-supported .govuk-accordion__section-button:focus .govuk-accordion__section-toggle-focus {
-    -webkit-box-decoration-break: clone;
     box-decoration-break: clone;
   }
 }
@@ -412,9 +410,7 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 }
 .govuk-back-link:hover {
   text-decoration-thickness: max(3px, .1875rem, .12em);
-  -webkit-text-decoration-skip-ink: none;
   text-decoration-skip-ink: none;
-  -webkit-text-decoration-skip: none;
   text-decoration-skip: none;
 }
 .govuk-back-link:focus {
@@ -426,7 +422,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 }
 @supports not (text-wrap: balance) {
   .govuk-back-link:focus {
-    -webkit-box-decoration-break: clone;
     box-decoration-break: clone;
   }
 }
@@ -569,9 +564,7 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 }
 .govuk-breadcrumbs__link:hover {
   text-decoration-thickness: max(3px, .1875rem, .12em);
-  -webkit-text-decoration-skip-ink: none;
   text-decoration-skip-ink: none;
-  -webkit-text-decoration-skip: none;
   text-decoration-skip: none;
 }
 .govuk-breadcrumbs__link:focus {
@@ -583,7 +576,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 }
 @supports not (text-wrap: balance) {
   .govuk-breadcrumbs__link:focus {
-    -webkit-box-decoration-break: clone;
     box-decoration-break: clone;
   }
 }
@@ -1373,7 +1365,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   border: 2px solid;
   border-radius: 0;
   border-color: var(--govuk-input-border-colour, #0b0c0c);
-  -webkit-appearance: none;
   appearance: none;
 }
 @media print {
@@ -1640,7 +1631,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 @supports not (-ms-ime-align: auto) {
   .govuk-details__summary {
     position: relative;
-    width: -webkit-fit-content;
     width: fit-content;
     padding-left: 25px;
     color: var(--govuk-link-colour, #1a65a6);
@@ -1658,7 +1648,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   }
   @supports not (text-wrap: balance) {
     .govuk-details__summary:focus {
-      -webkit-box-decoration-break: clone;
       box-decoration-break: clone;
     }
   }
@@ -1669,9 +1658,7 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   }
   .govuk-details__summary:hover .govuk-details__summary-text {
     text-decoration-thickness: max(3px, .1875rem, .12em);
-    -webkit-text-decoration-skip-ink: none;
     text-decoration-skip-ink: none;
-    -webkit-text-decoration-skip: none;
     text-decoration-skip: none;
   }
   .govuk-details__summary:focus .govuk-details__summary-text {
@@ -1692,7 +1679,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     height: 0;
     border-style: solid;
     border-color: transparent;
-    -webkit-clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
     clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
     border-width: 7px 0 7px 12.124px;
     border-left-color: inherit;
@@ -1703,7 +1689,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     height: 0;
     border-style: solid;
     border-color: transparent;
-    -webkit-clip-path: polygon(0% 0%, 50% 100%, 100% 0%);
     clip-path: polygon(0% 0%, 50% 100%, 100% 0%);
     border-width: 12.124px 7px 0 7px;
     border-top-color: inherit;
@@ -1883,9 +1868,7 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 }
 .govuk-error-summary__list a:hover {
   text-decoration-thickness: max(3px, .1875rem, .12em);
-  -webkit-text-decoration-skip-ink: none;
   text-decoration-skip-ink: none;
-  -webkit-text-decoration-skip: none;
   text-decoration-skip: none;
 }
 .govuk-error-summary__list a:focus {
@@ -1897,7 +1880,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 }
 @supports not (text-wrap: balance) {
   .govuk-error-summary__list a:focus {
-    -webkit-box-decoration-break: clone;
     box-decoration-break: clone;
   }
 }
@@ -1916,7 +1898,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 
 .govuk-exit-this-page {
   margin-bottom: 30px;
-  position: -webkit-sticky;
   position: sticky;
   z-index: 1000;
   top: 0;
@@ -2214,9 +2195,7 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 }
 .govuk-footer__link:hover {
   text-decoration-thickness: max(3px, .1875rem, .12em);
-  -webkit-text-decoration-skip-ink: none;
   text-decoration-skip-ink: none;
-  -webkit-text-decoration-skip: none;
   text-decoration-skip: none;
 }
 .govuk-footer__link:focus {
@@ -2228,7 +2207,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 }
 @supports not (text-wrap: balance) {
   .govuk-footer__link:focus {
-    -webkit-box-decoration-break: clone;
     box-decoration-break: clone;
   }
 }
@@ -2322,16 +2300,12 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   text-align: center;
   white-space: nowrap;
 }
-@supports (-webkit-mask-position: initial) or (mask-position: initial) {
+@supports (mask-position: initial) {
   .govuk-footer__copyright-logo::before {
     background: currentcolor;
-    -webkit-mask-image: url("/assets/images/govuk-crest.svg");
     mask-image: url("/assets/images/govuk-crest.svg");
-    -webkit-mask-repeat: no-repeat;
     mask-repeat: no-repeat;
-    -webkit-mask-position: 50% 0%;
     mask-position: 50% 0%;
-    -webkit-mask-size: 125px 102px;
     mask-size: 125px 102px;
   }
   @media screen and (forced-colors: active) {
@@ -2494,7 +2468,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 }
 @supports not (text-wrap: balance) {
   .govuk-header__homepage-link:focus {
-    -webkit-box-decoration-break: clone;
     box-decoration-break: clone;
   }
 }
@@ -2726,9 +2699,7 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 }
 .govuk-notification-banner__link:hover {
   text-decoration-thickness: max(3px, .1875rem, .12em);
-  -webkit-text-decoration-skip-ink: none;
   text-decoration-skip-ink: none;
-  -webkit-text-decoration-skip: none;
   text-decoration-skip: none;
 }
 .govuk-notification-banner__link:focus {
@@ -2740,7 +2711,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 }
 @supports not (text-wrap: balance) {
   .govuk-notification-banner__link:focus {
-    -webkit-box-decoration-break: clone;
     box-decoration-break: clone;
   }
 }
@@ -2920,9 +2890,7 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 .govuk-pagination__link:hover .govuk-pagination__link-title--decorated, .govuk-pagination__link:active .govuk-pagination__link-label,
 .govuk-pagination__link:active .govuk-pagination__link-title--decorated {
   text-decoration-thickness: max(3px, .1875rem, .12em);
-  -webkit-text-decoration-skip-ink: none;
   text-decoration-skip-ink: none;
-  -webkit-text-decoration-skip: none;
   text-decoration-skip: none;
 }
 .govuk-pagination__link:focus .govuk-pagination__icon {
@@ -3601,9 +3569,7 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 }
 .govuk-service-navigation__link:hover {
   text-decoration-thickness: max(3px, .1875rem, .12em);
-  -webkit-text-decoration-skip-ink: none;
   text-decoration-skip-ink: none;
-  -webkit-text-decoration-skip: none;
   text-decoration-skip: none;
 }
 .govuk-service-navigation__link:focus {
@@ -3615,7 +3581,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 }
 @supports not (text-wrap: balance) {
   .govuk-service-navigation__link:focus {
-    -webkit-box-decoration-break: clone;
     box-decoration-break: clone;
   }
 }
@@ -3690,7 +3655,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 }
 @supports not (text-wrap: balance) {
   .govuk-service-navigation__toggle:focus {
-    -webkit-box-decoration-break: clone;
     box-decoration-break: clone;
   }
 }
@@ -3700,7 +3664,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   height: 0;
   border-style: solid;
   border-color: transparent;
-  -webkit-clip-path: polygon(0% 0%, 50% 100%, 100% 0%);
   clip-path: polygon(0% 0%, 50% 100%, 100% 0%);
   border-width: 8.66px 5px 0 5px;
   border-top-color: inherit;
@@ -3713,7 +3676,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   height: 0;
   border-style: solid;
   border-color: transparent;
-  -webkit-clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
   clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
   border-width: 0 5px 8.66px;
   border-bottom-color: inherit;
@@ -3796,12 +3758,9 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   padding: 0 !important;
   overflow: hidden !important;
   clip: rect(0 0 0 0) !important;
-  -webkit-clip-path: inset(50%) !important;
   clip-path: inset(50%) !important;
   border: 0 !important;
   white-space: nowrap !important;
-  -webkit-user-select: none;
-  -ms-user-select: none;
   user-select: none;
 }
 .govuk-skip-link:link, .govuk-skip-link:visited, .govuk-skip-link:active {
@@ -4353,9 +4312,7 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 }
 .govuk-tabs__tab:hover {
   text-decoration-thickness: max(3px, .1875rem, .12em);
-  -webkit-text-decoration-skip-ink: none;
   text-decoration-skip-ink: none;
-  -webkit-text-decoration-skip: none;
   text-decoration-skip: none;
 }
 .govuk-tabs__tab:focus {
@@ -4367,7 +4324,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 }
 @supports not (text-wrap: balance) {
   .govuk-tabs__tab:focus {
-    -webkit-box-decoration-break: clone;
     box-decoration-break: clone;
   }
 }
@@ -4598,8 +4554,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   font-size: 30px;
   line-height: 29px;
   text-align: center;
-  -webkit-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   forced-color-adjust: none;
 }
@@ -4693,9 +4647,7 @@ exports[`ITCSS layers core works when user @imports the layer 1`] = `
 }
 .govuk-link:hover {
   text-decoration-thickness: max(3px, .1875rem, .12em);
-  -webkit-text-decoration-skip-ink: none;
   text-decoration-skip-ink: none;
-  -webkit-text-decoration-skip: none;
   text-decoration-skip: none;
 }
 .govuk-link:focus {
@@ -4707,7 +4659,6 @@ exports[`ITCSS layers core works when user @imports the layer 1`] = `
 }
 @supports not (text-wrap: balance) {
   .govuk-link:focus {
-    -webkit-box-decoration-break: clone;
     box-decoration-break: clone;
   }
 }
@@ -5611,11 +5562,9 @@ exports[`ITCSS layers objects works when user @imports the layer 1`] = `
 
 .govuk-template {
   background-color: var(--govuk-template-background-colour, #f4f8fb);
-  -webkit-text-size-adjust: 100%;
-  -moz-text-size-adjust: 100%;
   text-size-adjust: 100%;
 }
-@supports (position: -webkit-sticky) or (position: sticky) {
+@supports (position: sticky) {
   .govuk-template {
     scroll-padding-top: 60px;
   }
@@ -7151,12 +7100,9 @@ exports[`ITCSS layers utilities works when user @imports the layer 1`] = `
   padding: 0 !important;
   overflow: hidden !important;
   clip: rect(0 0 0 0) !important;
-  -webkit-clip-path: inset(50%) !important;
   clip-path: inset(50%) !important;
   border: 0 !important;
   white-space: nowrap !important;
-  -webkit-user-select: none;
-  -ms-user-select: none;
   user-select: none;
 }
 .govuk-visually-hidden::before {
@@ -7174,12 +7120,9 @@ exports[`ITCSS layers utilities works when user @imports the layer 1`] = `
   padding: 0 !important;
   overflow: hidden !important;
   clip: rect(0 0 0 0) !important;
-  -webkit-clip-path: inset(50%) !important;
   clip-path: inset(50%) !important;
   border: 0 !important;
   white-space: nowrap !important;
-  -webkit-user-select: none;
-  -ms-user-select: none;
   user-select: none;
 }"
 `;
