@@ -70,10 +70,6 @@
 
       @include govuk-focused-text;
     }
-
-    &:not(:focus) {
-      background-color: $govuk-header-background;
-    }
   }
 
   .govuk-header__logotype {

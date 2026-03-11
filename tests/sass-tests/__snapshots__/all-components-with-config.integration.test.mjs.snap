@@ -3291,9 +3291,6 @@ exports[`All components, with configuration works when user @imports everything 
     box-decoration-break: clone;
   }
 }
-.govuk-header__homepage-link:not(:focus) {
-  background-color: var(--govuk-brand-colour, hotpink);
-}
 
 .govuk-header__logotype {
   display: inline-block;
