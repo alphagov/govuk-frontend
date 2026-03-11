@@ -2452,11 +2452,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   margin-bottom: -3px;
   border-bottom: 3px solid;
 }
-.govuk-header__homepage-link:hover {
-  text-decoration: underline;
-  text-decoration-thickness: 3px;
-  text-underline-offset: 0.1578em;
-}
 .govuk-header__homepage-link:focus {
   margin-bottom: 0;
   border-bottom: 0;

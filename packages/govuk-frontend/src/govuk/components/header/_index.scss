@@ -63,15 +63,6 @@
       border-bottom: $govuk-header-link-underline-thickness solid;
     }
 
-    &:hover {
-      text-decoration: underline;
-      text-decoration-thickness: $govuk-header-link-underline-thickness;
-
-      @if $govuk-link-underline-offset {
-        text-underline-offset: $govuk-link-underline-offset;
-      }
-    }
-
     &:focus {
       // Remove any borders that show when focused and hovered.
       margin-bottom: 0;
