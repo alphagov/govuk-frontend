@@ -1,14 +1,13 @@
 import { readFile } from 'fs/promises'
 import { join, parse } from 'path'
 
-import { paths, sass as sassConfig } from '@govuk-frontend/config'
+import { sass as sassConfig } from '@govuk-frontend/config'
 import { getListing } from '@govuk-frontend/lib/files'
-import { packageTypeToPath } from '@govuk-frontend/lib/names'
 import PluginError from 'plugin-error'
 import postcss from 'postcss'
 // eslint-disable-next-line import/default
 import postcssrc from 'postcss-load-config'
-import { compileAsync } from 'sass-embedded'
+import { compileAsync, NodePackageImporter } from 'sass-embedded'
 
 import { assets } from './index.mjs'
 
@@ -88,18 +87,7 @@ export async function compileStylesheet([
       sourceMap: true,
       sourceMapIncludeSources: true,
 
-      // Resolve @imports via
-      loadPaths: [
-        // Remove `govuk/` suffix using `modulePath`
-        packageTypeToPath('govuk-frontend', {
-          modulePath: '../',
-          moduleRoot: basePath
-        }),
-
-        // Resolve local packages first
-        join(basePath, 'node_modules'),
-        join(paths.root, 'node_modules')
-      ],
+      importers: [new NodePackageImporter()],
 
       verbose: true
     }))
