@@ -19,11 +19,6 @@
   }
 }
 
-// Removes the breakpoint sass-mq debug display
-.app-template__body--component-preview::before {
-  display: none;
-}
-
 // Darken page background for previewing inversely coloured components
 .app-template__body--inverse {
   background-color: govuk-colour("blue");
