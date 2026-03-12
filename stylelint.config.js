@@ -71,7 +71,15 @@ module.exports = {
         },
         {
           emptyLineBefore: 'threshold',
-          properties: ['position', 'z-index', 'top', 'right', 'bottom', 'left']
+          properties: [
+            'position',
+            'isolation',
+            'z-index',
+            'top',
+            'right',
+            'bottom',
+            'left'
+          ]
         },
         {
           emptyLineBefore: 'threshold',
@@ -143,7 +151,14 @@ module.exports = {
         },
         {
           emptyLineBefore: 'threshold',
-          properties: ['float', 'clear', 'overflow', 'overflow-x', 'overflow-y']
+          properties: [
+            'float',
+            'clear',
+            'overflow',
+            'overflow-x',
+            'overflow-y',
+            'scroll-padding-top'
+          ]
         },
         {
           emptyLineBefore: 'threshold',
@@ -229,6 +244,7 @@ module.exports = {
             'background-repeat',
             'background-position',
             'background-size',
+            'box-decoration-break',
             'box-shadow',
             'fill',
 
@@ -259,6 +275,7 @@ module.exports = {
             'font-size',
             'font-style',
             'font-variant',
+            'font-variant-numeric',
             'font-weight',
             'font-emphasize',
             'font-display',
@@ -271,9 +288,11 @@ module.exports = {
             'text-align',
             'text-align-last',
             'text-decoration',
+            'text-decoration-line',
             'text-decoration-thickness',
             'text-decoration-skip-ink',
             'text-decoration-skip',
+            'text-underline-offset',
             'text-indent',
             'text-justify',
             'text-overflow',
@@ -282,6 +301,7 @@ module.exports = {
             'text-rendering',
             'text-outline',
             'text-shadow',
+            'text-size-adjust',
             'text-transform',
             'text-wrap',
             'word-wrap',
@@ -300,7 +320,12 @@ module.exports = {
         },
         {
           emptyLineBefore: 'threshold',
-          properties: ['cursor', '-webkit-appearance']
+          properties: [
+            'cursor',
+            'appearance',
+            '-webkit-appearance',
+            'touch-action'
+          ]
         }
       ],
       {
