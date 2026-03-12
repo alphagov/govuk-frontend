@@ -57,20 +57,16 @@ module.exports = {
     'order/properties-order': [
       [
         {
-          emptyLineBefore: 'threshold',
           properties: ['content', 'content-visibility', 'quotes']
         },
         {
           // Box-sizing - Allow here until global is decided
-          emptyLineBefore: 'threshold',
           properties: ['box-sizing']
         },
         {
-          emptyLineBefore: 'threshold',
           properties: ['display', 'visibility']
         },
         {
-          emptyLineBefore: 'threshold',
           properties: [
             'position',
             'isolation',
@@ -82,7 +78,6 @@ module.exports = {
           ]
         },
         {
-          emptyLineBefore: 'threshold',
           properties: [
             'flex',
             'flex-basis',
@@ -127,7 +122,6 @@ module.exports = {
           ]
         },
         {
-          emptyLineBefore: 'threshold',
           properties: [
             'width',
             'min-width',
@@ -150,7 +144,6 @@ module.exports = {
           ]
         },
         {
-          emptyLineBefore: 'threshold',
           properties: [
             'float',
             'clear',
@@ -161,11 +154,9 @@ module.exports = {
           ]
         },
         {
-          emptyLineBefore: 'threshold',
           properties: ['clip', 'clip-path', 'zoom', 'resize']
         },
         {
-          emptyLineBefore: 'threshold',
           properties: [
             'table-layout',
             'empty-cells',
@@ -175,7 +166,6 @@ module.exports = {
           ]
         },
         {
-          emptyLineBefore: 'threshold',
           properties: [
             'list-style',
             'list-style-position',
@@ -184,11 +174,9 @@ module.exports = {
           ]
         },
         {
-          emptyLineBefore: 'threshold',
           properties: ['transform', 'transition', 'animation']
         },
         {
-          emptyLineBefore: 'threshold',
           properties: [
             'border',
             'border-top',
@@ -230,12 +218,10 @@ module.exports = {
           ]
         },
         {
-          emptyLineBefore: 'threshold',
           properties: ['pointer-events', 'opacity']
         },
         {
           // Color has been moved to ensure it appears before background
-          emptyLineBefore: 'threshold',
           properties: [
             'color',
             'background',
@@ -268,7 +254,6 @@ module.exports = {
           ]
         },
         {
-          emptyLineBefore: 'threshold',
           properties: [
             'font',
             'font-family',
@@ -319,7 +304,6 @@ module.exports = {
           ]
         },
         {
-          emptyLineBefore: 'threshold',
           properties: [
             'cursor',
             'appearance',
@@ -327,11 +311,7 @@ module.exports = {
             'touch-action'
           ]
         }
-      ],
-      {
-        emptyLineBeforeUnspecified: 'threshold',
-        emptyLineMinimumPropertyThreshold: 6
-      }
+      ]
     ],
     'scss/function-disallowed-list': ['if'],
     'scss/no-global-function-names': true
