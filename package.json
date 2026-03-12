@@ -71,7 +71,7 @@
     "@govuk-frontend/tasks": "*",
     "@rollup/plugin-babel": "^6.1.0",
     "@rollup/plugin-replace": "^6.0.3",
-    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-terser": "^1.0.0",
     "autoprefixer": "^10.4.24",
     "cssnano": "^7.1.2",
     "cssnano-preset-default": "^7.0.1",
