@@ -24,7 +24,14 @@
       "@govuk-frontend/lib/*": ["./shared/lib/*.js"],
       "@govuk-frontend/stats": ["./shared/stats/src/index.mjs"],
       "@govuk-frontend/tasks": ["./shared/tasks/index.mjs"],
-      "govuk-frontend": ["./packages/govuk-frontend/src/govuk/all.mjs"]
+      // `govuk-frontend` resolves to the compiled file in `dist`, which do not
+      // provide type informations. We need to map it to `src` for TypeScript
+      // to access types when importing `govuk-frontend` in other workspaces in the repository
+      "govuk-frontend": ["./packages/govuk-frontend/src/govuk/all.mjs"],
+      // When importing individual files from `dist`, we want the bundlers to resolve
+      // the actual file in `dist` so set the path to `dist` in `import`. However for TypeScript to access the types,
+      // we need to point it at the file in src.
+      "govuk-frontend/dist/*": ["./packages/govuk-frontend/src/*"]
     }
   },
   "exclude": ["**/dist", "**/node_modules"],

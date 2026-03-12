@@ -27,6 +27,7 @@ module.exports = {
   target: 'web',
   entry: {
     'single-component': './src/single-component.mjs',
+    'individual-import': './src/individual-import.mjs',
     initAll: './src/initAll.mjs'
   },
   output: {
