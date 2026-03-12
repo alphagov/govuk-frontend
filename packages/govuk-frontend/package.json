@@ -18,10 +18,13 @@
       "require": "./dist/govuk/all.bundle.js",
       "default": "./dist/govuk/all.bundle.js"
     },
-    "./*": "./*",
     "./dist/": "./dist/",
     "./govuk-prototype-kit.config.json": "./govuk-prototype-kit.config.json",
-    "./package.json": "./package.json"
+    "./package.json": "./package.json",
+    "./*": {
+      "sass": "./dist/govuk/*",
+      "default": "./*"
+    }
   },
   "sideEffects": false,
   "engines": {
