@@ -16,6 +16,9 @@
     @media #{govuk-until-breakpoint(tablet)} {
       padding: govuk-spacing(4) - $govuk-border-width;
 
+      // Support IE (autoprefixer doesn't add this as it's not a prefix)
+      word-wrap: break-word;
+
       // This is an if-all-else-fails attempt to stop long words from
       // overflowing the container on very narrow viewports by forcing them to
       // break and wrap instead. This overflowing is more likely to happen when
@@ -28,9 +31,6 @@
       // components overflow, the user might have to scroll horizontally to view
       // it but the the text remains legible.
       overflow-wrap: break-word;
-
-      // Support IE (autoprefixer doesn't add this as it's not a prefix)
-      word-wrap: break-word;
     }
   }
 
