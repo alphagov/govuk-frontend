@@ -4335,9 +4335,6 @@ exports[`Individual components src/govuk/components/header works when user @impo
     box-decoration-break: clone;
   }
 }
-.govuk-header__homepage-link:not(:focus) {
-  background-color: var(--govuk-brand-colour, #1d70b8);
-}
 
 .govuk-header__logotype {
   display: inline-block;
