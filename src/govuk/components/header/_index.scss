@@ -1,18 +1,15 @@
 @import "../../base";
 
 @include govuk-exports("govuk/component/header") {
-  $govuk-header-background: govuk-functional-colour(brand);
-  $govuk-header-text: govuk-colour("white");
-  $govuk-header-link-underline-thickness: 3px;
-  $govuk-header-logo-bottom-margin: 2px;
+  $logo-bottom-margin: 2px;
 
   .govuk-header {
     @include govuk-font($size: 16, $line-height: 1);
 
     // Add a transparent bottom border for forced-colour modes
     border-bottom: 1px solid transparent;
-    color: $govuk-header-text;
-    background: $govuk-header-background;
+    color: govuk-colour("white");
+    background: govuk-functional-colour(brand);
   }
 
   .govuk-header__container--full-width {
@@ -24,7 +21,7 @@
 
     // Magic numbers, set padding to vertically centre align the logo
     padding-top: 16px;
-    padding-bottom: 14px - $govuk-header-logo-bottom-margin;
+    padding-bottom: 14px - $logo-bottom-margin;
   }
 
   .govuk-header__homepage-link {
@@ -59,8 +56,9 @@
     &:hover,
     &:active {
       // Negate the added border
-      margin-bottom: $govuk-header-link-underline-thickness * -1;
-      border-bottom: $govuk-header-link-underline-thickness solid;
+      $link-underline-thickness: 3px;
+      margin-bottom: $link-underline-thickness * -1;
+      border-bottom: $link-underline-thickness solid;
     }
 
     &:focus {
@@ -69,10 +67,6 @@
       border-bottom: 0;
 
       @include govuk-focused-text;
-    }
-
-    &:not(:focus) {
-      background-color: $govuk-header-background;
     }
   }
 
@@ -85,7 +79,7 @@
     // gets removed later if the logotype is a :last-child.
     margin-right: govuk-px-to-rem(7px); // 1 'dot'
     // Add bottom margin to space Product name on small viewports
-    margin-bottom: $govuk-header-logo-bottom-margin;
+    margin-bottom: $logo-bottom-margin;
     fill: currentcolor;
     vertical-align: top;
 
