@@ -53,15 +53,15 @@ exports[`All components works when user @imports everything 1`] = `
   font-family: "GDS Transport";
   font-style: normal;
   font-weight: normal;
-  src: url("/assets/fonts/light-94a07e06a1-v2.woff2") format("woff2"), url("/assets/fonts/light-f591b13f7d-v2.woff") format("woff");
   font-display: fallback;
+  src: url("/assets/fonts/light-94a07e06a1-v2.woff2") format("woff2"), url("/assets/fonts/light-f591b13f7d-v2.woff") format("woff");
 }
 @font-face {
   font-family: "GDS Transport";
   font-style: normal;
   font-weight: bold;
-  src: url("/assets/fonts/bold-b542beb274-v2.woff2") format("woff2"), url("/assets/fonts/bold-affa96571d-v2.woff") format("woff");
   font-display: fallback;
+  src: url("/assets/fonts/bold-b542beb274-v2.woff2") format("woff2"), url("/assets/fonts/bold-affa96571d-v2.woff") format("woff");
 }
 @media print {
   .govuk-link {
@@ -676,10 +676,10 @@ exports[`All components works when user @imports everything 1`] = `
 }
 @media (min-width: 40.0625em) {
   .govuk-button-group {
-    margin-right: -15px;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: baseline;
+    margin-right: -15px;
   }
   .govuk-button-group .govuk-button,
   .govuk-button-group .govuk-link {
@@ -1652,8 +1652,8 @@ exports[`All components works when user @imports everything 1`] = `
   font-size: 1.3125rem;
   line-height: 1;
   display: inline-flex;
-  min-height: auto;
   justify-content: center;
+  min-height: auto;
 }
 @media (min-width: 40.0625em) {
   .govuk-button--start {
@@ -1669,10 +1669,10 @@ exports[`All components works when user @imports everything 1`] = `
 }
 
 .govuk-button__start-icon {
-  margin-left: 5px;
-  vertical-align: middle;
   flex-shrink: 0;
   align-self: center;
+  margin-left: 5px;
+  vertical-align: middle;
   forced-color-adjust: auto;
 }
 @media (min-width: 48.0625em) {
@@ -2029,8 +2029,8 @@ exports[`All components works when user @imports everything 1`] = `
 
 .govuk-checkboxes__item {
   display: flex;
-  flex-wrap: wrap;
   position: relative;
+  flex-wrap: wrap;
   margin-bottom: 10px;
 }
 
@@ -2361,6 +2361,7 @@ exports[`All components works when user @imports everything 1`] = `
   line-height: 1.3157894737;
   box-sizing: border-box;
   display: flex;
+  flex: 0 0 auto;
   align-items: center;
   justify-content: center;
   min-width: 2.5rem;
@@ -2372,7 +2373,6 @@ exports[`All components works when user @imports everything 1`] = `
   text-align: center;
   white-space: nowrap;
   cursor: default;
-  flex: 0 0 auto;
 }
 @media print {
   .govuk-input__prefix,
@@ -2752,10 +2752,10 @@ exports[`All components works when user @imports everything 1`] = `
   padding: 10px;
   display: none;
   padding-bottom: 0;
+  pointer-events: none;
   color: inherit;
   line-height: 0;
   text-align: center;
-  pointer-events: none;
 }
 
 .govuk-exit-this-page__indicator--visible {
@@ -2824,9 +2824,9 @@ exports[`All components works when user @imports everything 1`] = `
   }
 }
 .govuk-file-upload::-webkit-file-upload-button {
-  -webkit-appearance: button;
   color: inherit;
   font: inherit;
+  -webkit-appearance: button;
 }
 .govuk-file-upload:focus {
   outline: 3px solid;
@@ -2855,10 +2855,10 @@ exports[`All components works when user @imports everything 1`] = `
 }
 
 .govuk-file-upload-button__pseudo-button {
+  flex-shrink: 0;
   width: auto;
   margin-right: 10px;
   margin-bottom: 3px;
-  flex-shrink: 0;
 }
 
 .govuk-file-upload-button__instruction {
@@ -2880,8 +2880,8 @@ exports[`All components works when user @imports everything 1`] = `
 
 .govuk-file-upload-button__pseudo-button-container {
   display: flex;
-  align-items: baseline;
   flex-wrap: wrap;
+  align-items: baseline;
 }
 
 .govuk-file-upload-button {
@@ -3067,11 +3067,11 @@ exports[`All components works when user @imports everything 1`] = `
 
 .govuk-footer__meta {
   display: flex;
-  margin-right: -15px;
-  margin-left: -15px;
   flex-wrap: wrap;
   align-items: flex-end;
   justify-content: center;
+  margin-right: -15px;
+  margin-left: -15px;
 }
 
 .govuk-footer__meta-item {
@@ -3194,10 +3194,10 @@ exports[`All components works when user @imports everything 1`] = `
 }
 
 .govuk-footer__list {
+  column-gap: 30px;
   margin: 0;
   padding: 0;
   list-style: none;
-  column-gap: 30px;
 }
 
 @media (min-width: 48.0625em) {
@@ -3303,8 +3303,8 @@ exports[`All components works when user @imports everything 1`] = `
 }
 @media (forced-colors: active) {
   .govuk-header__logotype {
-    forced-color-adjust: none;
     color: linktext;
+    forced-color-adjust: none;
   }
 }
 .govuk-header__logotype:last-child {
@@ -3568,8 +3568,8 @@ exports[`All components works when user @imports everything 1`] = `
   margin-bottom: 20px;
   display: flex;
   flex-direction: column;
-  align-items: center;
   flex-wrap: wrap;
+  align-items: center;
 }
 @media (min-width: 40.0625em) {
   .govuk-pagination {
@@ -3817,8 +3817,8 @@ exports[`All components works when user @imports everything 1`] = `
 @media (max-width: 40.0525em) {
   .govuk-panel {
     padding: 15px;
-    overflow-wrap: break-word;
     word-wrap: break-word;
+    overflow-wrap: break-word;
   }
 }
 
@@ -3878,9 +3878,9 @@ exports[`All components works when user @imports everything 1`] = `
 }
 @media (min-width: 20em) {
   .govuk-password-input__toggle {
-    width: auto;
-    flex-shrink: 0;
     flex-basis: 5em;
+    flex-shrink: 0;
+    width: auto;
     margin-top: 0;
     margin-left: 5px;
   }
@@ -4033,8 +4033,8 @@ exports[`All components works when user @imports everything 1`] = `
 
 .govuk-radios__item {
   display: flex;
-  flex-wrap: wrap;
   position: relative;
+  flex-wrap: wrap;
   margin-bottom: 10px;
 }
 
@@ -4443,6 +4443,7 @@ exports[`All components works when user @imports everything 1`] = `
   font-size: 1.1875rem;
   line-height: 1.3157894737;
   display: inline-flex;
+  align-items: center;
   margin: 10px 0;
   padding: 0;
   border: 0;
@@ -4450,7 +4451,6 @@ exports[`All components works when user @imports everything 1`] = `
   background: none;
   word-break: break-all;
   cursor: pointer;
-  align-items: center;
 }
 @media print {
   .govuk-service-navigation__toggle {
@@ -4828,8 +4828,8 @@ exports[`All components works when user @imports everything 1`] = `
 @media (min-width: 40.0625em) {
   .govuk-summary-card__title-wrapper {
     display: flex;
-    justify-content: space-between;
     flex-wrap: nowrap;
+    justify-content: space-between;
     padding: 15px 20px;
   }
 }

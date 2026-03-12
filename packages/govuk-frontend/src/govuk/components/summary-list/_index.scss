@@ -209,8 +209,8 @@
 
     @media #{govuk-from-breakpoint(tablet)} {
       display: flex;
-      justify-content: space-between;
       flex-wrap: nowrap;
+      justify-content: space-between;
       padding: govuk-spacing(3) govuk-spacing(4);
     }
   }
