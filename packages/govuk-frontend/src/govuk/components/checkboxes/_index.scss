@@ -1,9 +1,9 @@
 @import "../../base";
 
-@import "../error-message/index";
-@import "../fieldset/index";
-@import "../hint/index";
-@import "../label/index";
+@import "../error-message";
+@import "../fieldset";
+@import "../hint";
+@import "../label";
 
 @include govuk-exports("govuk/component/checkboxes") {
   $govuk-touch-target-gutter: 4px;
