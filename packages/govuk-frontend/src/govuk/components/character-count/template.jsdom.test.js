@@ -260,7 +260,7 @@ describe('Character count', () => {
   })
 
   describe('with threshold', () => {
-    it('hides the count to start with', () => {
+    it('configures the threshold as data attribute', () => {
       document.body.innerHTML = render(
         'character-count',
         examples['with threshold']
