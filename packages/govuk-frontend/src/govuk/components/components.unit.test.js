@@ -132,8 +132,8 @@ describe('Components', () => {
             // Mock a deprecation warning having been triggered by another component
             // to ensure each component will output a deprecation warning rather than
             // force developers to chase them one by one
-            @import 'settings/warnings';
-            @include _component-scss-file-warning(mock-component);
+            @use 'settings/warnings--internal';
+            @include warnings--internal.component-scss-file-warning(mock-component);
 
             // Sass works using URLs not paths, so we need (particularly for windows):
             // 1. the 'file:' protocol to make this a URL
