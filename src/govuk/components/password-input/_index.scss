@@ -1,7 +1,7 @@
 @import "../../base";
 
-@import "../button/index";
-@import "../input/index";
+@import "../button";
+@import "../input";
 
 @include govuk-exports("govuk/component/password-input") {
   .govuk-password-input__wrapper {

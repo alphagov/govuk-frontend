@@ -1,10 +1,10 @@
 @import "../../base";
 
-@import "../error-message/index";
-@import "../input/index";
-@import "../hint/index";
-@import "../label/index";
-@import "../fieldset/index";
+@import "../error-message";
+@import "../input";
+@import "../hint";
+@import "../label";
+@import "../fieldset";
 
 @include govuk-exports("govuk/component/date-input") {
   .govuk-date-input {
