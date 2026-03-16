@@ -24,9 +24,9 @@
     // native appearance so the font-size is set to 19px
     // https://webkit.org/b/224746
     &::-webkit-file-upload-button {
-      -webkit-appearance: button;
       color: inherit;
       font: inherit;
+      -webkit-appearance: button;
     }
 
     &:focus {
@@ -71,10 +71,10 @@
   }
 
   .govuk-file-upload-button__pseudo-button {
+    flex-shrink: 0;
     width: auto;
     margin-right: govuk-spacing(2);
     margin-bottom: $govuk-border-width-form-element + 1;
-    flex-shrink: 0;
   }
 
   .govuk-file-upload-button__instruction {
@@ -98,8 +98,8 @@
   // so we need a container here
   .govuk-file-upload-button__pseudo-button-container {
     display: flex;
-    align-items: baseline;
     flex-wrap: wrap;
+    align-items: baseline;
   }
 
   .govuk-file-upload-button {

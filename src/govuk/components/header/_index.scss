@@ -86,8 +86,8 @@
     // Prevent readability backplate from obscuring underline in Windows High
     // Contrast Mode
     @media (forced-colors: active) {
-      forced-color-adjust: none;
       color: linktext;
+      forced-color-adjust: none;
     }
 
     // Remove the gap after the logo if there's no product name to keep hover

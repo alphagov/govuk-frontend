@@ -238,22 +238,22 @@ $govuk-inverse-button-text-colour: govuk-functional-colour(brand) !default;
     @include govuk-font-size($size: 24, $line-height: 1);
 
     display: inline-flex;
-    min-height: auto;
-
     justify-content: center;
+    min-height: auto;
   }
 
   .govuk-button__start-icon {
+    flex-shrink: 0;
+    align-self: center;
     margin-left: govuk-spacing(1);
+    vertical-align: middle;
+
+    // Work around SVGs not inheriting color from parent in forced color mode
+    // (https://github.com/w3c/csswg-drafts/issues/6310)
+    forced-color-adjust: auto;
 
     @media #{govuk-from-breakpoint(desktop)} {
       margin-left: govuk-spacing(2);
     }
-    vertical-align: middle;
-    flex-shrink: 0;
-    align-self: center;
-    // Work around SVGs not inheriting color from parent in forced color mode
-    // (https://github.com/w3c/csswg-drafts/issues/6310)
-    forced-color-adjust: auto;
   }
 }
