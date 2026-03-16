@@ -40,11 +40,11 @@
 
   .govuk-footer__meta {
     display: flex; // Support: Flexbox
-    margin-right: -$govuk-gutter-half;
-    margin-left: -$govuk-gutter-half;
     flex-wrap: wrap; // Support: Flexbox
     align-items: flex-end; // Support: Flexbox
     justify-content: center; // Support: Flexbox
+    margin-right: -$govuk-gutter-half;
+    margin-left: -$govuk-gutter-half;
   }
 
   .govuk-footer__meta-item {
@@ -167,10 +167,10 @@
   }
 
   .govuk-footer__list {
+    column-gap: $govuk-gutter; // Support: Columns
     margin: 0;
     padding: 0;
     list-style: none;
-    column-gap: $govuk-gutter; // Support: Columns
   }
 
   @media #{govuk-from-breakpoint(desktop)} {

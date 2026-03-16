@@ -7,8 +7,8 @@
     @include govuk-responsive-margin(6, "bottom");
     display: flex;
     flex-direction: column;
-    align-items: center;
     flex-wrap: wrap;
+    align-items: center;
 
     @media #{govuk-from-breakpoint(tablet)} {
       flex-direction: row;
