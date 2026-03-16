@@ -4,6 +4,22 @@ For advice on how to use these release notes, see [our guidance on staying up to
 
 ## Unreleased
 
+### New features
+
+#### Use shorter `pkg:` URLs to include individual files in Sass
+
+You can now omit the `dist/govuk` part of the path when including GOV.UK Frontend in your Sass file with a [`pkg:` URL](https://sass-lang.com/blog/announcing-pkg-importers/):
+
+```scss
+// Previously
+@import "pkg:govuk-frontend/dist/govuk/components/button";
+
+// Now
+@import "pkg:govuk-frontend/components/button";
+```
+
+We made this change in [pull request #6839: Resolve `pkg:` URLs from `dist/govuk` and update the review app](https://github.com/alphagov/govuk-frontend/pull/6839).
+
 ### Fixes
 
 We've made fixes to GOV.UK Frontend in the following pull requests:
