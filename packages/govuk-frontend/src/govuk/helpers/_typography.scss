@@ -5,11 +5,12 @@
 @use "sass:math";
 @use "sass:string";
 
+@use "../settings/warnings--internal";
+
 @import "../settings/assets";
 @import "../settings/colours-functional";
 @import "../settings/spacing";
 @import "../settings/typography-font";
-@import "../settings/warnings";
 @import "../tools/font-url";
 @import "../tools/px-to-rem";
 @import "../tools/if";
@@ -49,7 +50,7 @@
 /// @access public
 
 @mixin govuk-text-colour {
-  @include _warning(
+  @include warnings--internal.warning(
     "govuk-text-colour",
     "The `govuk-text-colour` mixin is deprecated. Use `color: govuk-functional-colour(text)` instead."
   );
@@ -198,7 +199,7 @@
   @if $deprecation {
     // Warn on deprecated font sizes unless flagged for internal use
     @if not $size-internal-use-only {
-      @include _warning(map.get($deprecation, "key"), map.get($deprecation, "message"));
+      @include warnings--internal.warning(map.get($deprecation, "key"), map.get($deprecation, "message"));
     }
 
     // remove the deprecation map keys so they do not break the breakpoint loop
