@@ -1,4 +1,5 @@
 const { globSync } = require('fs')
+const { readFile } = require('fs/promises')
 const { join, basename } = require('path')
 
 const { paths } = require('@govuk-frontend/config')
@@ -7,7 +8,7 @@ const sassdoc = require('sassdoc')
 
 const partials = globSync('**/src/govuk/settings/**/*.scss', {
   cwd: paths.package,
-  exclude: ['**/_index.scss']
+  exclude: ['**/_index.scss', '**/*.import.scss', '**/*--internal.scss']
 }).map((partialPath) => ({
   partialPath,
   name: basename(partialPath)
@@ -19,7 +20,18 @@ describe('The settings layer', () => {
     await expect(compileSassFile(file)).resolves.toMatchObject({ css: '' })
   })
 
-  describe.each(partials)('$name', ({ partialPath }) => {
+  it('has am import-only file for the `index`', async () => {
+    const importOnlyPath = join(
+      paths.package,
+      'src/govuk/settings/_index.import.scss'
+    )
+
+    const fileContent = await readFile(importOnlyPath, { encoding: 'utf-8' })
+
+    expect(fileContent).toBe(`@forward "index";\n`)
+  })
+
+  describe.each(partials)('$name', ({ partialPath, name }) => {
     it('renders without errors', () => {
       const file = join(paths.package, partialPath)
 
@@ -27,6 +39,18 @@ describe('The settings layer', () => {
         css: expect.any(String),
         loadedUrls: expect.arrayContaining([expect.any(URL)])
       })
+    })
+
+    it('has a corresponding import-only file', async () => {
+      const importOnlyPath = join(
+        paths.package,
+        partialPath.replace('.scss', '.import.scss')
+      )
+      const { moduleName } = /_(?<moduleName>.*)\.scss/.exec(name).groups
+
+      const fileContent = await readFile(importOnlyPath, { encoding: 'utf-8' })
+
+      expect(fileContent).toContain(`@forward "${moduleName}";`)
     })
   })
 
