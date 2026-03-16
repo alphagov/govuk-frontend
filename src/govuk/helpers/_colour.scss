@@ -7,10 +7,10 @@
 @use "sass:string";
 
 @use "../settings/colours-palette--internal";
+@use "../settings/warnings--internal";
 
 @import "../settings/colours-functional";
 @import "../settings/colours-organisations";
-@import "../settings/warnings";
 
 /// Get a colour from the palette
 ///
@@ -90,7 +90,7 @@
     $corresponding-govuk-colour-call: 'govuk-colour("#{$corresponding-colour}", $variant: "#{$corresponding-variant}")';
 
     @if _should-warn("pre-brand-colour") {
-      @warn _warning-text("pre-brand-colour",
+      @warn warnings--internal.warning-text("pre-brand-colour",
         "We've updated GOV.UK Frontend's colour palette. Use " +
         "`#{$corresponding-govuk-colour-call}` instead of " +
         "`govuk-colour(\"#{$colour}\")`. The `#{$colour}` colour is " +
@@ -206,7 +206,7 @@
   // If the organisation has a deprecation message associated with it
   // (e.g. it has ceased to exist) then output a warning.
   @if map.has-key($org-colour, "deprecation-message") and _should-warn("organisation-colours") {
-    @warn _warning-text(
+    @warn warnings--internal.warning-text(
       "organisation-colours",
       map.get($org-colour, "deprecation-message")
     );

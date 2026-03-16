@@ -5,7 +5,7 @@
 @use "sass:map";
 @use "sass:meta";
 
-@import "../settings/warnings";
+@use "warnings--internal";
 
 /// Default definitions of the functional colours
 ///
@@ -184,7 +184,7 @@ $_govuk-deprecated-applied-colour-variables: () !default;
     @if meta.variable-exists("govuk-#{$functional-colour-name}-colour") {
       $deprecation-message: "Setting \`$govuk-#{$functional-colour-name}-colour\` no longer has any effect. Use \`$govuk-functional-colours: (#{$functional-colour-name}: <NEW_COLOUR_VALUE>);\` instead.";
 
-      @include _warning("applied-colour-variables", $deprecation-message);
+      @include warnings--internal.warning("applied-colour-variables", $deprecation-message);
     }
 
     $_govuk-deprecated-applied-colour-variables: list.append(
