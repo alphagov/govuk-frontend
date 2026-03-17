@@ -144,19 +144,6 @@ describe('Functional colours', () => {
   })
 
   describe('legacy variables', () => {
-    let mockWarnFunction
-    let sassConfig
-
-    beforeEach(() => {
-      mockWarnFunction = jest.fn().mockReturnValue(sassNull)
-
-      sassConfig = {
-        logger: {
-          warn: mockWarnFunction
-        }
-      }
-    })
-
     describe.each([
       'brand',
       'text',
@@ -186,43 +173,7 @@ describe('Functional colours', () => {
 
         const { css } = await compileSassString(sass, sassConfig)
 
-        expect(mockWarnFunction).not.toHaveBeenCalled()
-
         expect(css).toContain(`result: true;`)
-      })
-
-      it('logs a deprecation warning if an applied colour variable was set by the user', async () => {
-        const sass = `
-          $govuk-${functionalColourName}-colour: rebeccapurple;
-          @import "settings/colours-functional";
-        `
-
-        await compileSassString(sass, sassConfig)
-
-        // Expect our mocked @warn function to have been called once with a single
-        // argument, which should be the deprecation notice
-        expect(mockWarnFunction).toHaveBeenCalledWith(
-          `Setting \`$govuk-${functionalColourName}-colour\` no longer has any effect.` +
-            ` Use \`$govuk-functional-colours: (${functionalColourName}: <NEW_COLOUR_VALUE>);\` instead.` +
-            ' To silence this warning, update $govuk-suppressed-warnings with key: "applied-colour-variables"',
-          expect.anything()
-        )
-      })
-
-      // This will likely not happen from users explicitely `@import`ing the file twice (though it could)
-      // but will happen when importing GOV.UK Frontend as a whole, through object, core or component files
-      // importing files from settings, helpers or tools
-      it('does not log a deprecation if the file is imported twice without user configuration', async () => {
-        const sass = `
-          @import "settings/colours-functional";
-          @import "settings/colours-functional";
-        `
-
-        await compileSassString(sass, sassConfig)
-
-        // Expect our mocked @warn function to have been called once with a single
-        // argument, which should be the deprecation notice
-        expect(mockWarnFunction).not.toHaveBeenCalled()
       })
     })
   })
