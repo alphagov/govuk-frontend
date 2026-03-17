@@ -9,8 +9,8 @@
 @use "../settings/colours-palette--internal";
 @use "../settings/warnings--internal";
 
-@import "../settings/colours-functional";
-@import "../settings/colours-organisations";
+@use "../settings/colours-functional" as *;
+@use "../settings/colours-organisations" as *;
 
 /// Get a colour from the palette
 ///

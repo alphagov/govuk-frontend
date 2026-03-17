@@ -6,7 +6,7 @@
 @use "sass:meta";
 @use "sass:string";
 
-@import "../settings/media-queries";
+@use "../settings/media-queries" as *;
 @import "../tools/px-to-em";
 
 // =========================================================
