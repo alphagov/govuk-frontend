@@ -1,1 +1,12 @@
-@forward "colours-applied";
+////
+/// @group settings/colours
+////
+@use "warnings--internal";
+
+@forward "colours-functional";
+
+@include warnings--internal.warning(
+  "colours-applied",
+  "The '_colours-applied' file is deprecated. Please import '_colours-functional' instead. " +
+    "See https://github.com/alphagov/govuk-frontend/releases/tag/v6.0.0 for more details."
+);
