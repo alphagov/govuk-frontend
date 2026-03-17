@@ -5,8 +5,6 @@
 @use "sass:map";
 @use "sass:meta";
 
-@use "warnings--internal";
-
 /// Default definitions of the functional colours
 ///
 /// @type Map
@@ -171,30 +169,6 @@ $govuk-functional-colours: _govuk-define-functional-colours(
 // breakage as teams upgrade
 // =============================================================================
 
-// Because the file may be imported multiple times, subsequent imports will see
-// the legacy variable and warn when they shouldn't so we need to track those
-$_govuk-deprecated-applied-colour-variables: () !default;
-
-/// Warn if a given legacy applied colour variable is set
-///
-/// @param {String} Name of variable to check
-/// @access private
-@mixin _warn-if-applied-colour-variable-set($functional-colour-name) {
-  @if not list.index($_govuk-deprecated-applied-colour-variables, $functional-colour-name) {
-    @if meta.variable-exists("govuk-#{$functional-colour-name}-colour") {
-      $deprecation-message: "Setting \`$govuk-#{$functional-colour-name}-colour\` no longer has any effect. Use \`$govuk-functional-colours: (#{$functional-colour-name}: <NEW_COLOUR_VALUE>);\` instead.";
-
-      @include warnings--internal.warning("applied-colour-variables", $deprecation-message);
-    }
-
-    $_govuk-deprecated-applied-colour-variables: list.append(
-      $_govuk-deprecated-applied-colour-variables,
-      $functional-colour-name
-    ) !global;
-  }
-}
-
-@include _warn-if-applied-colour-variable-set(brand);
 /// Brand colour
 ///
 /// @type Colour
@@ -204,7 +178,6 @@ $_govuk-deprecated-applied-colour-variables: () !default;
 ///   function instead: `govuk-functional-colour(brand)`.
 $govuk-brand-colour: govuk-functional-colour(brand);
 
-@include _warn-if-applied-colour-variable-set(text);
 /// Text colour
 ///
 /// @type Colour
@@ -214,7 +187,6 @@ $govuk-brand-colour: govuk-functional-colour(brand);
 ///   function instead: `govuk-functional-colour(text)`.
 $govuk-text-colour: govuk-functional-colour(text);
 
-@include _warn-if-applied-colour-variable-set(template-background);
 /// Template background colour
 ///
 /// Used by components that want to give the illusion of extending
@@ -227,7 +199,6 @@ $govuk-text-colour: govuk-functional-colour(text);
 ///   function instead: `govuk-functional-colour(template-background)`.
 $govuk-template-background-colour: govuk-functional-colour(template-background);
 
-@include _warn-if-applied-colour-variable-set(body-background);
 /// Body background colour
 ///
 /// @type Colour
@@ -237,7 +208,6 @@ $govuk-template-background-colour: govuk-functional-colour(template-background);
 ///   function instead: `govuk-functional-colour(body-background)`.
 $govuk-body-background-colour: govuk-functional-colour(body-background);
 
-@include _warn-if-applied-colour-variable-set(print-text);
 /// Text colour for print media
 ///
 /// Use 'true black' to avoid printers using colour ink to print body text
@@ -249,7 +219,6 @@ $govuk-body-background-colour: govuk-functional-colour(body-background);
 ///   function instead: `govuk-functional-colour(print-text)`.
 $govuk-print-text-colour: govuk-functional-colour(print-text);
 
-@include _warn-if-applied-colour-variable-set(secondary-text);
 /// Secondary text colour
 ///
 /// Used in for example 'muted' text and help text.
@@ -261,7 +230,6 @@ $govuk-print-text-colour: govuk-functional-colour(print-text);
 ///   function instead: `govuk-functional-colour(secondary-text)`.
 $govuk-secondary-text-colour: govuk-functional-colour(secondary-text);
 
-@include _warn-if-applied-colour-variable-set(focus);
 /// Focus colour
 ///
 /// Used for outline (and background, where appropriate) when interactive
@@ -274,7 +242,6 @@ $govuk-secondary-text-colour: govuk-functional-colour(secondary-text);
 ///   function instead: `govuk-functional-colour(focus)`.
 $govuk-focus-colour: govuk-functional-colour(focus);
 
-@include _warn-if-applied-colour-variable-set(focus-text);
 /// Focused text colour
 ///
 /// Ensure that the contrast between the text and background colour passes
@@ -287,7 +254,6 @@ $govuk-focus-colour: govuk-functional-colour(focus);
 ///   function instead: `govuk-functional-colour(focus-text)`.
 $govuk-focus-text-colour: govuk-functional-colour(focus-text);
 
-@include _warn-if-applied-colour-variable-set(error);
 /// Error colour
 ///
 /// Used to highlight error messages and form controls in an error state
@@ -299,7 +265,6 @@ $govuk-focus-text-colour: govuk-functional-colour(focus-text);
 ///   function instead: `govuk-functional-colour(error)`.
 $govuk-error-colour: govuk-functional-colour(error);
 
-@include _warn-if-applied-colour-variable-set(success);
 /// Success colour
 ///
 /// Used to highlight success messages and banners
@@ -311,7 +276,6 @@ $govuk-error-colour: govuk-functional-colour(error);
 ///   function instead: `govuk-functional-colour(error)`.
 $govuk-success-colour: govuk-functional-colour(success);
 
-@include _warn-if-applied-colour-variable-set(border);
 /// Border colour
 ///
 /// Used in for example borders, separators, rules and keylines.
@@ -323,7 +287,6 @@ $govuk-success-colour: govuk-functional-colour(success);
 ///   function instead: `govuk-functional-colour(border)`.
 $govuk-border-colour: govuk-functional-colour(border);
 
-@include _warn-if-applied-colour-variable-set(input-border);
 /// Input border colour
 ///
 /// Used for form inputs and controls
@@ -335,7 +298,6 @@ $govuk-border-colour: govuk-functional-colour(border);
 ///   function instead: `govuk-functional-colour(input-border)`.
 $govuk-input-border-colour: govuk-functional-colour(input-border);
 
-@include _warn-if-applied-colour-variable-set(hover);
 /// Input hover colour
 ///
 /// Used for hover states on form controls
@@ -347,7 +309,6 @@ $govuk-input-border-colour: govuk-functional-colour(input-border);
 ///   function instead: `govuk-functional-colour(hover)`.
 $govuk-hover-colour: govuk-functional-colour(hover);
 
-@include _warn-if-applied-colour-variable-set(link);
 /// Link colour
 ///
 /// @type Colour
@@ -357,7 +318,6 @@ $govuk-hover-colour: govuk-functional-colour(hover);
 ///   function instead: `govuk-functional-colour(link)`.
 $govuk-link-colour: govuk-functional-colour(link);
 
-@include _warn-if-applied-colour-variable-set(link-visited);
 /// Visited link colour
 ///
 /// @type Colour
@@ -367,7 +327,6 @@ $govuk-link-colour: govuk-functional-colour(link);
 ///   function instead: `govuk-functional-colour(link-visited)`.
 $govuk-link-visited-colour: govuk-functional-colour(link-visited);
 
-@include _warn-if-applied-colour-variable-set(link-hover);
 /// Link hover colour
 ///
 /// @type Colour
@@ -377,7 +336,6 @@ $govuk-link-visited-colour: govuk-functional-colour(link-visited);
 ///   function instead: `govuk-functional-colour(link-hover)`.
 $govuk-link-hover-colour: govuk-functional-colour(link-hover);
 
-@include _warn-if-applied-colour-variable-set(link-active);
 /// Active link colour
 ///
 /// @type Colour
