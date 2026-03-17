@@ -141,7 +141,6 @@ describe('@function govuk-colour', () => {
   ])('returns the equivalent brand colour for `%s`', (colour, expected) => {
     it('returns the equivalent colour', async () => {
       const sass = `
-        @import "settings/colours-palette";
         @import "helpers/colour";
 
         .foo {
@@ -160,7 +159,7 @@ describe('@function govuk-colour', () => {
 
     it('warns the users of the deprecation and offers alternative parameters', async () => {
       const sass = `
-        @import "settings/colours-palette";
+
         @import "helpers/colour";
 
         .foo {
