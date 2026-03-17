@@ -7,10 +7,11 @@
 
 @use "../settings/warnings--internal";
 
-@import "../settings/assets";
-@import "../settings/colours-functional";
-@import "../settings/spacing";
-@import "../settings/typography-font";
+@use "../settings/assets" as *;
+@use "../settings/colours-functional" as *;
+@use "../settings/spacing" as *;
+@use "../settings/typography-font" as *;
+@use "../settings/typography-responsive" as *;
 @import "../tools/font-url";
 @import "../tools/px-to-rem";
 @import "../tools/if";

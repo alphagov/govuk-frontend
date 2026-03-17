@@ -179,7 +179,7 @@ describe('Functional colours', () => {
     ])('$govuk-%s-colour', (functionalColourName) => {
       it('sets a Sass variable with the functional colour value', async () => {
         const sass = `
-          @import "settings/colours-functional";
+          @use "settings/colours-functional" as *;
 
           :root {
             result: $govuk-${functionalColourName}-colour == govuk-functional-colour(${functionalColourName});
