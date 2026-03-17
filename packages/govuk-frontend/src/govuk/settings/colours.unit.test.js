@@ -37,9 +37,9 @@ describe('Colour palette', () => {
   ])('Provides expected variants for `%s`', async (colour, variants) => {
     const sass = `
       @use "sass:map";
-      @import "settings/colours-palette";
+      @use "settings/colours-palette--internal" as *;
 
-      $variants: map.keys(map.get($_govuk-palette, "#{${colour}}"));
+      $variants: map.keys(map.get($govuk-palette, "#{${colour}}"));
 
       :root {
         variants: $variants;
@@ -59,10 +59,10 @@ describe('Colour palette', () => {
     const sass = `
       @use "sass:map";
       @use "sass:meta";
-      @import "settings/colours-palette";
+      @use "settings/colours-palette--internal" as *;
 
       :root {
-        type: meta.type-of(map.get($_govuk-palette, "#{${colour}}"));
+        type: meta.type-of(map.get($govuk-palette, "#{${colour}}"));
       }
     `
 
@@ -232,7 +232,7 @@ describe('Organisation colours', () => {
   it('should define contrast-safe colours that meet contrast requirements', async () => {
     const sass = `
       @use "sass:map";
-      @import "settings/colours-palette";
+      @use "settings/colours-palette--internal" as *;
       @import "settings/colours-organisations";
       @import "settings/colours-functional";
       @import "helpers/colour";
