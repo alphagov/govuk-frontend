@@ -89,8 +89,8 @@ describe('Functional colours', () => {
       // argument, which should be the deprecation notice
       expect(mockWarnFunction).toHaveBeenCalledWith(
         "The '_colours-applied' file is deprecated. Please import '_colours-functional' instead." +
-        " See https://github.com/alphagov/govuk-frontend/releases/tag/v6.0.0 for more details." +
-        " To silence this warning, update $govuk-suppressed-warnings with key: \"colours-applied\"",
+          ' See https://github.com/alphagov/govuk-frontend/releases/tag/v6.0.0 for more details.' +
+          ' To silence this warning, update $govuk-suppressed-warnings with key: "colours-applied"',
         expect.anything()
       )
     })
@@ -100,7 +100,9 @@ describe('Functional colours', () => {
         @use "settings/colours-applied";
       `
 
-      expect(compileSassString(sass, sassConfig)).rejects.toThrow("Error: Can't find stylesheet to import.")
+      expect(compileSassString(sass, sassConfig)).rejects.toThrow(
+        "Error: Can't find stylesheet to import."
+      )
     })
   })
 
@@ -146,8 +148,9 @@ describe('Functional colours', () => {
 
   it('prevents people from adding new colours to the functional colours', async () => {
     const sass = `
-      $govuk-functional-colours: (non-existing-colour: rebeccapurple);
-      @import "settings/colours-functional";
+      @use "settings/colours-functional" with (
+        $govuk-functional-colours: (non-existing-colour: rebeccapurple)
+      );
     `
 
     await expect(compileSassString(sass)).rejects.toThrow(
@@ -196,8 +199,8 @@ describe('Organisation colours', () => {
     const sass = `
       @use "sass:map";
       @use "settings/colours-palette--internal" as *;
-      @import "settings/colours-organisations";
-      @import "settings/colours-functional";
+      @use "settings/colours-organisations" as *;
+      @use "settings/colours-functional" as *;
       @import "helpers/colour";
 
       @import "sass-color-helpers/stylesheets/color-helpers";
