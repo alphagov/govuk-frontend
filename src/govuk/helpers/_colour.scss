@@ -6,8 +6,9 @@
 @use "sass:meta";
 @use "sass:string";
 
+@use "../settings/colours-palette--internal";
+
 @import "../settings/colours-functional";
-@import "../settings/colours-palette";
 @import "../settings/colours-organisations";
 @import "../settings/warnings";
 
@@ -17,10 +18,10 @@
 /// functional colour. For example, use `govuk-functional-colour("link")` for
 /// links rather than `govuk-colour("blue")`.
 ///
-/// @param {String | Colour} $colour - Name of colour from the colour palette
-///   (`$_govuk-palette`)
-/// @param {String | Colour} $variant - Name of the variant from the colour palette
-///   (`$_govuk-palette`)
+/// @param {String | Colour} $colour - Name of colour from the [colour
+///   palette](https://design-system.service.gov.uk/styles/colour/#add-colours-using-govuk-colour)
+/// @param {String | Colour} $variant - Name of the variant from the [colour
+///   palette](https://design-system.service.gov.uk/styles/colour/#add-colours-using-govuk-colour)
 /// @return {Colour} Representation of named colour
 ///
 /// @example scss - Getting the primary variant of a colour
@@ -38,7 +39,7 @@
 /// @throw if the palette is misformatted and doesn't associate a colour or map to `$colour`
 /// @access public
 
-@function govuk-colour($colour, $variant: primary, $colours: $_govuk-palette) {
+@function govuk-colour($colour, $variant: primary, $colours: colours-palette--internal.$govuk-palette) {
   // Sass parses unquoted colours as colours, so we need to turn them into
   // strings before looking them up in the colour palette
   // https://sass-lang.com/documentation/values/strings#unquoted
@@ -51,7 +52,7 @@
   @if not $colour-variants {
     // To ease the transition between the brand palette and old GOV.UK Frontend colours
     // we'll automatically convert old colour names into their equivalent in the palette
-    @if $colours == $_govuk-palette {
+    @if $colours == colours-palette--internal.$govuk-palette {
       $corresponding-colour: _govuk-corresponding-brand-colour($colour);
       @if $corresponding-colour {
         @return $corresponding-colour;
@@ -80,7 +81,7 @@
 }
 
 @function _govuk-corresponding-brand-colour($colour) {
-  $pre-brand-colour: map.get($_govuk-pre-brand-colours, $colour);
+  $pre-brand-colour: map.get(colours-palette--internal.$govuk-pre-brand-colours, $colour);
 
   @if $pre-brand-colour {
     $corresponding-colour: list.nth($pre-brand-colour, 1);
