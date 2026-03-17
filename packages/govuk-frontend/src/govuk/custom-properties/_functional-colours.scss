@@ -1,5 +1,5 @@
-@import "../settings/custom-properties";
-@import "../settings/colours-functional";
+@use "../settings/custom-properties" as *;
+@use "../settings/colours-functional" as *;
 @import "../tools/exports";
 @import "../helpers/colour";
 
