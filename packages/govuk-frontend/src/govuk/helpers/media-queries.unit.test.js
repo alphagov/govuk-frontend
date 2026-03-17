@@ -2,11 +2,13 @@ const { compileSassString } = require('@govuk-frontend/helpers/tests')
 const { outdent } = require('outdent')
 
 const sassBootstrap = `
-  $govuk-breakpoints: (
-    mobile:  320px,
-    tablet:  740px,
-    desktop: 980px,
-    wide:    1300px
+  @use "settings" with (
+    $govuk-breakpoints: (
+      mobile:  320px,
+      tablet:  740px,
+      desktop: 980px,
+      wide:    1300px
+    )
   );
 `
 
