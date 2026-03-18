@@ -1,6 +1,6 @@
 @use "sass:map";
 @use "../settings/typography-responsive" as *;
-@import "../tools/exports";
+@use "../tools/exports" as *;
 @import "../helpers/typography";
 
 @include govuk-exports("govuk/overrides/typography") {

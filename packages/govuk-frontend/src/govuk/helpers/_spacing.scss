@@ -7,7 +7,7 @@
 
 @use "../settings/spacing" as *;
 
-@import "../tools/if";
+@use "../tools/if" as *;
 @import "../helpers/media-queries";
 
 /// Single point spacing
