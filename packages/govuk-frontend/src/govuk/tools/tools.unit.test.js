@@ -1,17 +1,13 @@
-const { globSync } = require('fs')
-const { join, basename } = require('path')
+const { join } = require('path')
 
 const { paths } = require('@govuk-frontend/config')
-const { compileSassFile } = require('@govuk-frontend/helpers/tests')
+const {
+  compileSassFile,
+  getSassPathsFromLayer
+} = require('@govuk-frontend/helpers/tests')
 const sassdoc = require('sassdoc')
 
-const partials = globSync('**/src/govuk/settings/**/*.scss', {
-  cwd: paths.package,
-  exclude: ['**/_index.scss', '**/*.import.scss', '**/*--internal.scss']
-}).map((partialPath) => ({
-  partialPath,
-  name: basename(partialPath)
-}))
+const partials = getSassPathsFromLayer('tools')
 
 describe('The tools layer', () => {
   it('should not output any CSS', async () => {
