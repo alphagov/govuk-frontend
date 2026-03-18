@@ -20,6 +20,7 @@ describe('Individual components', () => {
   describe.each(componentFolders)('%s', (componentFolder) => {
     it('works when user @imports the component', async () => {
       const sass = `
+        $govuk-suppressed-warnings: ("component-scss-files");
         @import "node_modules/govuk-frontend/${slash(componentFolder)}";
       `
 
