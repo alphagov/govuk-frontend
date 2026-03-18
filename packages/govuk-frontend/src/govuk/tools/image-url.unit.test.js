@@ -19,10 +19,10 @@ describe('@function image-url', () => {
       @use "settings/assets" with (
         $govuk-images-path: '/path/to/images/'
       );
-      @use "tools/image-url";
+      @use "tools/image-url" as *;
 
       .foo {
-        background-image: image-url.govuk-image-url("baz.png");
+        background-image: govuk-image-url("baz.png");
       }
     `
 
@@ -73,7 +73,7 @@ describe('@function image-url', () => {
             @return url("/custom/#{$filename}");
           }
 
-          $govuk-images-path: '/assets/fonts/';
+          $govuk-images-path: '/assets/images/';
           $govuk-image-url-function: 'custom-url-handler';
 
           .foo {
@@ -146,10 +146,10 @@ describe('@function image-url', () => {
           $govuk-images-path: '/path/to/images/',
           $govuk-image-url-function: 'some-string'
         );
-        @use "tools/image-url";
+        @use "tools/image-url" as *;
 
         .foo {
-          background-image: image-url.govuk-image-url("baz.png");
+          background-image: govuk-image-url("baz.png");
         }
       `
 
@@ -162,6 +162,56 @@ describe('@function image-url', () => {
           'with key: "image-url-string"',
         expect.anything()
       )
+    })
+
+    describe('as a function', () => {
+      it('executes a native Sass function', async () => {
+        const sass = `
+          @use "sass:meta";
+          @use "sass:string";
+          @use "settings/assets" with (
+            $govuk-images-path: '/path/to/images/',
+            $govuk-image-url-function: meta.get-function('to-upper-case', $module: 'string')
+          );
+          @use "tools/image-url" as *;
+
+          .foo {
+            background-image: govuk-image-url("baz.png");
+          }
+        `
+
+        await expect(compileSassString(sass)).resolves.toMatchObject({
+          css: outdent`
+            .foo {
+              background-image: "BAZ.PNG";
+            }
+          `
+        })
+      })
+
+      it('can be overridden to use a custom function', async () => {
+        const sass = `
+          @use "sass:meta";
+          @use "../../../../tests/sass-tests/assets-urls" as assets-urls;
+          @use "settings/assets" with (
+            $govuk-images-path: '/assets/images/',
+            $govuk-image-url-function: meta.get-function('images-url', $module: 'assets-urls')
+          );
+          @use "tools/image-url" as *;
+
+          .foo {
+            background-image: govuk-image-url("baz.png");
+          }
+        `
+
+        await expect(compileSassString(sass)).resolves.toMatchObject({
+          css: outdent`
+            .foo {
+              background-image: url("/custom/baz.png");
+            }
+          `
+        })
+      })
     })
   })
 })

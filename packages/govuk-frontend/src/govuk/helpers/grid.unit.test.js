@@ -5,8 +5,6 @@ describe('grid system', () => {
   const sassImports = `
     @import "helpers/grid";
     @import "helpers/media-queries";
-
-    @use "tools/exports";
   `
 
   describe('govuk-grid-width function', () => {
