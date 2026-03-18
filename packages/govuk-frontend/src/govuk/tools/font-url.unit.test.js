@@ -42,10 +42,9 @@ describe('@function font-url', () => {
   })
 
   describe('$govuk-font-url-function', () => {
-    describe('as a string', () => {
+    describe('as a string (@import only)', () => {
       it('executes a native Sass function', async () => {
         const sass = `
-          @import "settings/assets";
           @import "tools/font-url";
 
           $govuk-fonts-path: '/path/to/fonts/';
@@ -77,7 +76,6 @@ describe('@function font-url', () => {
 
       it('can be overridden to use a custom function', async () => {
         const sass = `
-          @import "settings/assets";
           @import "tools/font-url";
 
           @function custom-url-handler($filename) {
@@ -105,7 +103,6 @@ describe('@function font-url', () => {
 
       it('uses the default if the function does not exist', async () => {
         const sass = `
-          @import "settings/assets";
           @import "tools/font-url";
 
           $govuk-fonts-path: '/path/to/fonts/';
@@ -212,8 +209,8 @@ describe('@function font-url', () => {
       it('can be overridden to use a custom function', async () => {
         const sass = `
           @use "sass:meta";
-          @import "settings/assets";
-          @import "tools/font-url";
+          @use "settings/assets";
+          @use "tools/font-url";
 
           @function custom-url-handler($filename) {
             @return url("/custom/#{$filename}");
