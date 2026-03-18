@@ -24,7 +24,7 @@ describe('@function image-url', () => {
   })
 
   describe('$govuk-image-url-function', () => {
-    describe('as a string', () => {
+    describe('as a string (@import only)', () => {
       it('executes a native Sass function', async () => {
         const sass = `
           @import "tools/image-url";

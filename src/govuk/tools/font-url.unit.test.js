@@ -6,9 +6,10 @@ const { NodePackageImporter } = require('sass-embedded')
 describe('@function font-url', () => {
   it('by default concatenates the font path and the filename', async () => {
     const sass = `
-      @import "tools/font-url";
-
-      $govuk-fonts-path: '/path/to/fonts/';
+      @use "settings" with (
+        $govuk-fonts-path: '/path/to/fonts/'
+      );
+      @use "tools/font-url" as *;
 
       @font-face {
         font-family: "whatever";
@@ -27,7 +28,7 @@ describe('@function font-url', () => {
   })
 
   describe('$govuk-font-url-function', () => {
-    describe('as a string', () => {
+    describe('as a string (@import only)', () => {
       it('executes a native Sass function', async () => {
         const sass = `
           @import "tools/font-url";
@@ -61,10 +62,10 @@ describe('@function font-url', () => {
 
       it('can be overridden to use a custom function', async () => {
         const sass = `
+          $govuk-font-url-function: 'fonts-url';
+
           @import "pkg:@govuk-frontend/helpers/assets-urls";
           @import "tools/font-url";
-
-          $govuk-font-url-function: 'fonts-url';
 
           @font-face {
             font-family: "whatever";
@@ -113,10 +114,11 @@ describe('@function font-url', () => {
         const sass = `
           @use "sass:meta";
           @use "sass:string";
-          @import "tools/font-url";
-
-          $govuk-fonts-path: '/path/to/fonts/';
-          $govuk-font-url-function: meta.get-function(to-upper-case, $module: string);
+          @use "settings" with (
+            $govuk-fonts-path: '/path/to/fonts/',
+            $govuk-font-url-function: meta.get-function(to-upper-case, $module: string),
+          );
+          @use "tools/font-url" as *;
 
           @font-face {
             font-family: "whatever";
@@ -137,10 +139,11 @@ describe('@function font-url', () => {
       it('can be overridden to use a custom function', async () => {
         const sass = `
           @use "sass:meta";
-          @import "pkg:@govuk-frontend/helpers/assets-urls";
-          @import "tools/font-url";
-
-          $govuk-font-url-function: meta.get-function('fonts-url');
+          @use "pkg:@govuk-frontend/helpers/assets-urls";
+          @use "settings" with (
+            $govuk-font-url-function: meta.get-function("fonts-url", $module: "assets-urls")
+          );
+          @use "tools/font-url" as *;
 
           @font-face {
             font-family: "whatever";

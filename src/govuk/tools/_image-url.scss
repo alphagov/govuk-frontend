@@ -3,6 +3,8 @@
 ////
 @use "sass:meta";
 
+@use "../settings/assets" as *;
+
 /// Image URL
 ///
 /// If a custom image-url handler is defined ($govuk-image-url-function) then
