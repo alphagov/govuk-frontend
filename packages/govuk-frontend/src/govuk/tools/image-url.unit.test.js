@@ -1,16 +1,28 @@
 const { deprecationOptions } = require('@govuk-frontend/config/sass')
 const { compileSassString } = require('@govuk-frontend/helpers/tests')
 const { outdent } = require('outdent')
+const { sassNull } = require('sass-embedded')
+
+// Create a mock warn function that we can use to override the native @warn
+// function, that we can make assertions about post-render.
+const mockWarnFunction = jest.fn().mockReturnValue(sassNull)
+
+const sassConfig = {
+  logger: {
+    warn: mockWarnFunction
+  }
+}
 
 describe('@function image-url', () => {
   it('by default concatenates the image path and the filename', async () => {
     const sass = `
-      @import "tools/image-url";
-
-      $govuk-images-path: '/path/to/images/';
+      @use "settings/assets" with (
+        $govuk-images-path: '/path/to/images/'
+      );
+      @use "tools/image-url";
 
       .foo {
-        background-image: govuk-image-url("baz.png");
+        background-image: image-url.govuk-image-url("baz.png");
       }
     `
 
@@ -27,6 +39,7 @@ describe('@function image-url', () => {
     describe('as a string', () => {
       it('executes a native Sass function', async () => {
         const sass = `
+          @import "settings/assets";
           @import "tools/image-url";
 
           $govuk-image-url-function: 'to-upper-case';
@@ -55,6 +68,7 @@ describe('@function image-url', () => {
 
       it('executes a custom function', async () => {
         const sass = `
+          @import "settings/assets";
           @import "tools/image-url";
 
           @function custom-url-handler($filename) {
@@ -80,6 +94,7 @@ describe('@function image-url', () => {
 
       it('uses the default if the function does not exist', async () => {
         const sass = `
+        @import "settings/assets";
         @import "tools/image-url";
 
         $govuk-images-path: '/path/to/images/';
@@ -98,6 +113,58 @@ describe('@function image-url', () => {
         `
         })
       })
+
+      it('emits deprecation message when using `@import`', async () => {
+        const sass = `
+          @import "settings/assets";
+          @import "tools/image-url";
+
+          @function custom-url-handler($filename) {
+            @return url("/custom/#{$filename}");
+          }
+
+          $govuk-images-path: '/assets/images/';
+          $govuk-image-url-function: 'custom-url-handler';
+
+          .foo {
+            background-image: govuk-image-url("baz.png");
+          }
+        `
+
+        await compileSassString(sass, sassConfig)
+
+        expect(mockWarnFunction).toHaveBeenCalledWith(
+          'Passing a string to $govuk-image-url-function is deprecated. ' +
+            'Pass a function using meta.get-function(...) instead. ' +
+            'To silence this warning, update $govuk-suppressed-warnings ' +
+            'with key: "image-url-string"',
+          expect.anything()
+        )
+      })
+    })
+
+    it('emits deprecation message when using @use', async () => {
+      const sass = `
+        @use "settings/assets" with (
+          $govuk-images-path: '/path/to/images/',
+          $govuk-image-url-function: 'some-string'
+        );
+        @use "tools/image-url";
+
+        .foo {
+          background-image: image-url.govuk-image-url("baz.png");
+        }
+      `
+
+      await compileSassString(sass, sassConfig)
+
+      expect(mockWarnFunction).toHaveBeenCalledWith(
+        'Passing a string to $govuk-image-url-function is deprecated. ' +
+          'Pass a function using meta.get-function(...) instead. ' +
+          'To silence this warning, update $govuk-suppressed-warnings ' +
+          'with key: "image-url-string"',
+        expect.anything()
+      )
     })
   })
 })

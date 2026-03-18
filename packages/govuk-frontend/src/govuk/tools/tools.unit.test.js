@@ -46,7 +46,7 @@ describe('The tools layer', () => {
 
       const fileContent = await readFile(importOnlyPath, { encoding: 'utf-8' })
 
-      expect(fileContent).toContain(`@forward "${moduleName}";`)
+      expect(fileContent).toContain(`@forward "${moduleName}"`)
     })
   })
 
