@@ -4,6 +4,7 @@
 @use "sass:meta";
 
 @use "../settings/assets" as *;
+@use "../settings/warnings--internal";
 
 /// Font URL
 ///
@@ -21,11 +22,10 @@
     and $govuk-font-url-function;
 
   @if meta.type-of($custom-function) == "string" {
-    @if meta.function-exists($custom-function) {
-      $custom-function: meta.get-function($custom-function);
-    } @else {
-      $custom-function: null;
-    }
+    @warn warnings--internal.warning-text("font-url-string",
+    "You can't pass a string to $govuk-font-url-function with `@use`. "
+        + "Pass a function using meta.get-function(...) instead.");
+    $custom-function: null;
   }
 
   @if $custom-function {
