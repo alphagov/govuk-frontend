@@ -1,4 +1,5 @@
-const { join } = require('path')
+const { globSync } = require('fs')
+const { join, basename } = require('path')
 
 const { paths, sass: sassConfig } = require('@govuk-frontend/config')
 const { compileAsync, compileStringAsync } = require('sass-embedded')
@@ -39,6 +40,24 @@ async function compileSassString(source, options = {}) {
 }
 
 /**
+ * Get all .scss files within a layer, excluding index, import-only and internal
+ *
+ * @param {string} layer - The name of the layer to get Sass paths from (eg:
+ *   "tools", "settings")
+ * @returns {Array<{ partialPath: string, name: string }>} An array of objects
+ *   containing the path and shortened name of each Sass file
+ */
+function getSassPathsFromLayer(layer) {
+  return globSync(`**/src/govuk/${layer}/**/*.scss`, {
+    cwd: paths.package,
+    exclude: ['**/_index.scss', '**/*.import.scss', '**/*--internal.scss']
+  }).map((partialPath) => ({
+    partialPath,
+    name: basename(partialPath)
+  }))
+}
+
+/**
  * Get the raw HTML representation of a component, and remove any other
  * child elements that do not match the component.
  * Relies on B.E.M naming ensuring that child components relating to a component
@@ -60,5 +79,6 @@ function htmlWithClassName($, className) {
 module.exports = {
   compileSassFile,
   compileSassString,
+  getSassPathsFromLayer,
   htmlWithClassName
 }
