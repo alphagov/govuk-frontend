@@ -188,7 +188,7 @@ describe('@function font-url', () => {
             $govuk-fonts-path: '/path/to/fonts/',
             $govuk-font-url-function: meta.get-function('to-upper-case', $module: 'string')
           );
-          @use "tools/font-url" as font-url;;
+          @use "tools/font-url" as font-url;
 
           @font-face {
             font-family: "whatever";
@@ -209,19 +209,16 @@ describe('@function font-url', () => {
       it('can be overridden to use a custom function', async () => {
         const sass = `
           @use "sass:meta";
-          @use "settings/assets";
+          @use "../../../../tests/sass-tests/assets-urls" as assets-urls;
+          @use "settings/assets" with (
+            $govuk-fonts-path: '/assets/fonts/',
+            $govuk-font-url-function: meta.get-function('fonts-url', $module: 'assets-urls')
+          );
           @use "tools/font-url";
-
-          @function custom-url-handler($filename) {
-            @return url("/custom/#{$filename}");
-          }
-
-          $govuk-fonts-path: '/assets/fonts/';
-          $govuk-font-url-function: meta.get-function('custom-url-handler');
 
           @font-face {
             font-family: "whatever";
-            src: govuk-font-url("whatever.woff2");
+            src: font-url.govuk-font-url("whatever.woff2");
           }
         `
 

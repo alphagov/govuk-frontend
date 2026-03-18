@@ -1,4 +1,17 @@
 @function fonts-url($filename) {
-  // Some custom URL handling
-  @return url("example.woff");
+  // Handle test files
+  @if $filename == "whatever.woff2" {
+    @return url("/custom/whatever.woff2");
+  }
+  // Otherwise use the default
+  @return url("/assets/fonts/#{$filename}");
+}
+
+@function images-url($filename) {
+  // Handle test files
+  @if $filename == "baz.png" {
+    @return url("/custom/baz.png");
+  }
+  // Otherwise use the default
+  @return url("/assets/images/#{$filename}");
 }

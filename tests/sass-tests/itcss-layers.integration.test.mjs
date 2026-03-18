@@ -15,6 +15,7 @@ describe('ITCSS layers', () => {
   ])('%s', (layerName) => {
     it('works when user @imports the layer', async () => {
       const sass = `
+          $govuk-suppressed-warnings: ("component-scss-files");
           @import "node_modules/govuk-frontend/src/govuk/base";
           @import "node_modules/govuk-frontend/src/govuk/${layerName}";
         `

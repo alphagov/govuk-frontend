@@ -8,6 +8,7 @@ describe('All components', () => {
 
   beforeAll(async () => {
     const sass = `
+      $govuk-suppressed-warnings: ("component-scss-files");
       @import "node_modules/govuk-frontend/src/govuk";
     `
 
@@ -16,7 +17,9 @@ describe('All components', () => {
 
   beforeAll(async () => {
     const sass = `
-      @use "node_modules/govuk-frontend/src/govuk";
+      @use "node_modules/govuk-frontend/src/govuk" with (
+        $govuk-suppressed-warnings: ("component-scss-files")
+      );
     `
 
     cssWithUse = (await compileStringAsync(sass, sassConfig)).css
