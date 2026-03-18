@@ -1,4 +1,4 @@
-@import "../tools/exports";
+@use "../tools/exports" as *;
 
 // stylelint-disable declaration-no-important
 @include govuk-exports("govuk/overrides/display") {

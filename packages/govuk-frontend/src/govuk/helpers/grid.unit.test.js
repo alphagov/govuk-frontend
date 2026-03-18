@@ -6,7 +6,7 @@ describe('grid system', () => {
     @import "helpers/grid";
     @import "helpers/media-queries";
 
-    @import "tools/exports";
+    @use "tools/exports";
   `
 
   describe('govuk-grid-width function', () => {

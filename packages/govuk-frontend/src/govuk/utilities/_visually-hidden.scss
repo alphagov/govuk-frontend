@@ -1,4 +1,4 @@
-@import "../tools/exports";
+@use "../tools/exports" as *;
 @import "../helpers/visually-hidden";
 
 @include govuk-exports("govuk/utilities/visually-hidden") {

@@ -1,6 +1,6 @@
 @use "../settings/custom-properties" as *;
 @use "../settings/colours-functional" as *;
-@import "../tools/exports";
+@use "../tools/exports" as *;
 @import "../helpers/colour";
 
 // CSS custom properties for each functional colour

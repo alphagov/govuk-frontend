@@ -36,10 +36,9 @@ describe('@function image-url', () => {
   })
 
   describe('$govuk-image-url-function', () => {
-    describe('as a string', () => {
+    describe('as a string (@import only)', () => {
       it('executes a native Sass function', async () => {
         const sass = `
-          @import "settings/assets";
           @import "tools/image-url";
 
           $govuk-image-url-function: 'to-upper-case';
@@ -68,7 +67,6 @@ describe('@function image-url', () => {
 
       it('executes a custom function', async () => {
         const sass = `
-          @import "settings/assets";
           @import "tools/image-url";
 
           @function custom-url-handler($filename) {
@@ -94,7 +92,6 @@ describe('@function image-url', () => {
 
       it('uses the default if the function does not exist', async () => {
         const sass = `
-        @import "settings/assets";
         @import "tools/image-url";
 
         $govuk-images-path: '/path/to/images/';

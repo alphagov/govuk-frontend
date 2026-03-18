@@ -1,4 +1,4 @@
-@import "../tools/exports";
+@use "../tools/exports" as *;
 
 // This custom property is automatically overwritten during builds and
 // releases. It doesn't need to be updated manually.
