@@ -2,27 +2,27 @@ const { compileSassString } = require('@govuk-frontend/helpers/tests')
 const { outdent } = require('outdent')
 
 const sassBootstrap = `
-  @import "settings/media-queries";
-
   $spacing-point: 2;
 
-  // Emulates data from _settings/media-queries.scss
-  $govuk-breakpoints: (
-    my_breakpoint: 30em
-  );
+  @use "settings" with (
+    // Emulates data from _settings/media-queries.scss
+    $govuk-breakpoints: (
+      my_breakpoint: 30em
+    ),
 
-  // Emulates data from _settings/spacing.scss
-  $govuk-spacing-points: (
-    0: 0,
-    2: 15px
-  );
+    // Emulates data from _settings/spacing.scss
+    $govuk-spacing-points: (
+      0: 0,
+      2: 15px
+    ),
 
-  // Emulates data from _settings/spacing.scss
-  $govuk-spacing-responsive-scale: (
-    2: (
-      null: 15px,
-      my_breakpoint: 25px
-    )
+    // Emulates data from _settings/spacing.scss
+    $govuk-spacing-responsive-scale: (
+      2: (
+        null: 15px,
+        my_breakpoint: 25px
+      )
+    ),
   );
 
   @import "helpers/media-queries";

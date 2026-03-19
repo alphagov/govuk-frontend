@@ -5,6 +5,8 @@
 @use "sass:math";
 @use "sass:meta";
 
+@use "../settings/spacing" as *;
+
 @import "../tools/if";
 @import "../helpers/media-queries";
 

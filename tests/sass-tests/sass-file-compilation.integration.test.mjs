@@ -14,7 +14,9 @@ import { sassConfig } from './sass.config.js'
 const govukFrontendPath = packageNameToPath('govuk-frontend')
 
 // Grab a list of all Sass files and sort them alphabetically, for consistent output
-const sassFiles = globSync(`${slash(govukFrontendPath)}/src/govuk/**/*.scss`)
+const sassFiles = globSync(`${slash(govukFrontendPath)}/src/govuk/**/*.scss`, {
+  exclude: ['**/*.import.scss', '**/*--internal.scss']
+})
   .map((filePath) => slash(relative(govukFrontendPath, filePath)))
   .sort((a, b) => a.localeCompare(b))
 

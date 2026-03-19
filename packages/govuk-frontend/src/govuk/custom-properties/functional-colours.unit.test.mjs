@@ -32,7 +32,9 @@ describe('custom-properties/functional-colours', () => {
   describe('$govuk-output-custom-properties', () => {
     it('outputs the properties properties if `true`', async () => {
       const sass = `
-        $govuk-output-custom-properties: true;
+        @use "settings" with (
+          $govuk-output-custom-properties: true
+        );
         @import "custom-properties/functional-colours";
       `
 
@@ -43,7 +45,9 @@ describe('custom-properties/functional-colours', () => {
 
     it('does not output core custom properties if `false`', async () => {
       const sass = `
-        $govuk-output-custom-properties: false;
+        @use "settings" with (
+          $govuk-output-custom-properties: false
+        );
         @import "custom-properties/functional-colours";
       `
 

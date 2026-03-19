@@ -4,7 +4,7 @@
 
 @use "sass:math";
 
-@import "../settings/typography-responsive";
+@use "../settings/typography-responsive" as *;
 
 /// Convert pixels to em
 ///
