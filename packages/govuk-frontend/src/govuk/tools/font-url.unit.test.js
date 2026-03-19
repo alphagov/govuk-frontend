@@ -1,7 +1,7 @@
 const { deprecationOptions } = require('@govuk-frontend/config/sass')
 const { compileSassString } = require('@govuk-frontend/helpers/tests')
 const { outdent } = require('outdent')
-const { sassNull } = require('sass-embedded')
+const { NodePackageImporter, sassNull } = require('sass-embedded')
 
 // Create a mock warn function that we can use to override the native @warn
 // function, that we can make assertions about post-render.
@@ -209,7 +209,7 @@ describe('@function font-url', () => {
       it('can be overridden to use a custom function', async () => {
         const sass = `
           @use "sass:meta";
-          @use "../../../../tests/sass-tests/assets-urls" as assets-urls;
+          @use "pkg:@govuk-frontend/helpers/assets-urls";
           @use "settings/assets" with (
             $govuk-fonts-path: '/assets/fonts/',
             $govuk-font-url-function: meta.get-function('fonts-url', $module: 'assets-urls')
@@ -222,7 +222,7 @@ describe('@function font-url', () => {
           }
         `
 
-        await expect(compileSassString(sass)).resolves.toMatchObject({
+        await expect(compileSassString(sass, { importers: [new NodePackageImporter()] })).resolves.toMatchObject({
           css: outdent`
             @font-face {
               font-family: "whatever";
