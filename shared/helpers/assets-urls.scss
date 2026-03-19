@@ -1,7 +1,7 @@
 @function fonts-url($filename) {
   // Handle test files
-  @if $filename == "whatever.woff2" {
-    @return url("/custom/whatever.woff2");
+  @if $filename == "example.woff" or $filename == "test.woff" {
+    @return url("example.woff");
   }
   // Otherwise use the default
   @return url("/assets/fonts/#{$filename}");

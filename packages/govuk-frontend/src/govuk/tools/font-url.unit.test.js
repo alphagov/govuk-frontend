@@ -218,15 +218,17 @@ describe('@function font-url', () => {
 
           @font-face {
             font-family: "whatever";
-            src: govuk-font-url("whatever.woff2");
+            src: govuk-font-url("test.woff");
           }
         `
 
-        await expect(compileSassString(sass, { importers: [new NodePackageImporter()] })).resolves.toMatchObject({
+        await expect(
+          compileSassString(sass, { importers: [new NodePackageImporter()] })
+        ).resolves.toMatchObject({
           css: outdent`
             @font-face {
               font-family: "whatever";
-              src: url("/custom/whatever.woff2");
+              src: url("example.woff");
             }
           `
         })
