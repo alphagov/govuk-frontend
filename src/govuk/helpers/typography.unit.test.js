@@ -15,7 +15,7 @@ const sassConfig = {
 describe('@mixin govuk-typography-common', () => {
   it('should output a @font-face declaration by default', async () => {
     const sass = `
-      @import "helpers/typography";
+      @use "helpers/typography" as *;
 
       :root {
         @include govuk-typography-common;
@@ -41,7 +41,7 @@ describe('@mixin govuk-typography-common', () => {
       @use "settings" with (
         $govuk-font-family: (Helvetica, Arial, sans-serif)
       );
-      @import "helpers/typography";
+      @use "helpers/typography" as *;
 
       $govuk-font-family-tabular: monospace;
 
@@ -69,7 +69,7 @@ describe('@mixin govuk-typography-common', () => {
       @use "settings" with (
         $govuk-include-default-font-face: false
       );
-      @import "helpers";
+      @use "helpers" as *;
 
       :root {
         @include govuk-typography-common;
@@ -186,62 +186,6 @@ describe('@mixin govuk-text-break-word', () => {
         .foo {
           word-wrap: break-word !important;
           overflow-wrap: break-word !important;
-        }
-      `
-    })
-  })
-})
-
-describe('@function _govuk-line-height', () => {
-  it('preserves line-height if already unitless', async () => {
-    const sass = `
-      @import "helpers/typography";
-
-      .foo {
-        line-height: _govuk-line-height($line-height: 3.141, $font-size: 20px);
-      }
-    `
-
-    await expect(compileSassString(sass)).resolves.toMatchObject({
-      css: outdent`
-        .foo {
-          line-height: 3.141;
-        }
-      `
-    })
-  })
-
-  it('preserves line-height if using different units', async () => {
-    const sass = `
-      @import "helpers/typography";
-
-      .foo {
-        line-height: _govuk-line-height($line-height: 2em, $font-size: 20px);
-      }
-    `
-
-    await expect(compileSassString(sass)).resolves.toMatchObject({
-      css: outdent`
-        .foo {
-          line-height: 2em;
-        }
-      `
-    })
-  })
-
-  it('converts line-height to a relative number', async () => {
-    const sass = `
-      @import "helpers/typography";
-
-      .foo {
-        line-height: _govuk-line-height($line-height: 30px, $font-size: 20px);
-      }
-    `
-
-    await expect(compileSassString(sass)).resolves.toMatchObject({
-      css: outdent`
-        .foo {
-          line-height: 1.5;
         }
       `
     })
