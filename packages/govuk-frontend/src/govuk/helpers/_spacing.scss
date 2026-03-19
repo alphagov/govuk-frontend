@@ -5,10 +5,9 @@
 @use "sass:math";
 @use "sass:meta";
 
-@use "../settings/spacing" as *;
-
 @use "../tools/if" as *;
-@import "../helpers/media-queries";
+@use "../settings/spacing" as *;
+@use "spacing--internal";
 
 /// Single point spacing
 ///
@@ -57,82 +56,13 @@
   @return govuk-if($is-negative, $value * -1, $value);
 }
 
-/// Responsive spacing
-///
-/// Adds responsive spacing (either padding or margin, depending on `$property`)
-/// by fetching a 'spacing map' from the responsive spacing scale, which defines
-/// different spacing values at different breakpoints.
-///
-/// To generate responsive spacing, use 'govuk-responsive-margin' or
-/// 'govuk-responsive-padding' mixins
-///
-/// @param {Number} $responsive-spacing-point - Point on the responsive spacing
-///   scale, corresponds to a map of breakpoints and spacing values
-/// @param {String} $property - Property to add spacing to (e.g. 'margin')
-/// @param {String} $direction [all] - Direction to add spacing to
-///   (`top`, `right`, `bottom`, `left`, `all`)
-/// @param {Boolean} $important [false] - Whether to mark as `!important`
-/// @param {Number} $adjustment [false] - Offset to adjust spacing by
-///
-/// @access private
-
-@mixin _govuk-responsive-spacing(
-  $responsive-spacing-point,
-  $property,
-  $direction: "all",
-  $important: false,
-  $adjustment: false
-) {
-  $actual-input-type: meta.type-of($responsive-spacing-point);
-  @if $actual-input-type != "number" {
-    @error "Expected a number (integer), but got a " + "#{$actual-input-type}.";
-  }
-
-  @if not map.has-key($govuk-spacing-responsive-scale, $responsive-spacing-point) {
-    @error "Unknown spacing point `#{$responsive-spacing-point}`. Make sure you are using a point from the "
-      + "responsive spacing scale in `_settings/spacing.scss`.";
-  }
-
-  // Make sure that the return value from `_settings/spacing.scss` is a map.
-  $scale-map: map.get($govuk-spacing-responsive-scale, $responsive-spacing-point);
-  $actual-map-type: meta.type-of($scale-map);
-  @if $actual-map-type != "map" {
-    @error "Expected a number (integer), but got a "
-      + "#{$actual-map-type}. Make sure you are using a map to set the responsive spacing in `_settings/spacing.scss`)";
-  }
-
-  // Loop through each breakpoint in the map
-  @each $breakpoint, $breakpoint-value in $scale-map {
-    @if $adjustment {
-      $breakpoint-value: $breakpoint-value + $adjustment;
-    }
-
-    // The 'null' breakpoint is for mobile.
-    @if not $breakpoint {
-      @if $direction == all {
-        #{$property}: $breakpoint-value govuk-if($important, !important);
-      } @else {
-        #{$property}-#{$direction}: $breakpoint-value govuk-if($important, !important);
-      }
-    } @else {
-      @media #{govuk-from-breakpoint($breakpoint)} {
-        @if $direction == all {
-          #{$property}: $breakpoint-value govuk-if($important, !important);
-        } @else {
-          #{$property}-#{$direction}: $breakpoint-value govuk-if($important, !important);
-        }
-      }
-    }
-  }
-}
-
 /// Responsive margin
 ///
 /// Adds responsive margin by fetching a 'spacing map' from the responsive
 /// spacing scale, which defines different spacing values at different
-/// breakpoints. Wrapper for the `_govuk-responsive-spacing` mixin.
+/// breakpoints. Wrapper for the `govuk-responsive-spacing.govuk-responsive-spacing` mixin.
 ///
-/// @see {mixin} _govuk-responsive-spacing
+/// @see {mixin} govuk-responsive.govuk-responsive-spacing
 ///
 /// @param {Number} $responsive-spacing-point - Point on the responsive spacing
 /// scale, corresponds to a map of breakpoints and spacing values
@@ -149,7 +79,13 @@
 /// @access public
 
 @mixin govuk-responsive-margin($responsive-spacing-point, $direction: "all", $important: false, $adjustment: false) {
-  @include _govuk-responsive-spacing($responsive-spacing-point, "margin", $direction, $important, $adjustment);
+  @include spacing--internal.responsive-spacing(
+    $responsive-spacing-point,
+    "margin",
+    $direction,
+    $important,
+    $adjustment
+  );
 }
 
 /// Responsive padding
@@ -175,5 +111,11 @@
 /// @access public
 
 @mixin govuk-responsive-padding($responsive-spacing-point, $direction: "all", $important: false, $adjustment: false) {
-  @include _govuk-responsive-spacing($responsive-spacing-point, "padding", $direction, $important, $adjustment);
+  @include spacing--internal.responsive-spacing(
+    $responsive-spacing-point,
+    "padding",
+    $direction,
+    $important,
+    $adjustment
+  );
 }
