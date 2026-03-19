@@ -16,7 +16,7 @@ describe('The settings layer', () => {
     await expect(compileSassFile(file)).resolves.toMatchObject({ css: '' })
   })
 
-  it('has am import-only file for the `index`', async () => {
+  it('has an import-only file for the `index`', async () => {
     const importOnlyPath = join(
       paths.package,
       'src/govuk/settings/_index.import.scss'
