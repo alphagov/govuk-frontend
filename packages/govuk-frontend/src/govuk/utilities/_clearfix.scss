@@ -1,5 +1,5 @@
 @use "../tools/exports" as *;
-@import "../helpers/clearfix";
+@use "../helpers/clearfix" as *;
 
 @include govuk-exports("govuk/utilities/clearfix") {
   .govuk-clearfix {
