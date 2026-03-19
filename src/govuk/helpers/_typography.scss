@@ -16,8 +16,8 @@
 @use "../tools/px-to-rem" as *;
 @use "../tools/if" as *;
 @use "font-faces--internal";
-@import "media-queries";
-@import "spacing";
+@use "media-queries" as *;
+@use "spacing" as *;
 
 /// 'Common typography' helper
 ///
