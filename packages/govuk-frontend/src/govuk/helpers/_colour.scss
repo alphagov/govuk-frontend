@@ -133,7 +133,7 @@
   }
 
   @if map.has-key($govuk-functional-colours, $colour) {
-    $value: _govuk-resolve-colour(map.get($govuk-functional-colours, $colour));
+    $value: govuk-resolve-colour(map.get($govuk-functional-colours, $colour));
 
     @return var(--govuk-#{$colour}-colour, #{$value});
   }
@@ -147,8 +147,8 @@
 /// @returns {Colour} The colour
 /// @throws if the `name` is present but falsy
 /// @throws if the `variant` is present but falsy
-/// @access private
-@function _govuk-resolve-colour($colour-reference) {
+/// @access public
+@function govuk-resolve-colour($colour-reference) {
   // If the reference is already a colour, return the colour
   @if meta.type-of($colour-reference) == "color" {
     @return $colour-reference;
