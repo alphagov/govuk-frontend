@@ -15,7 +15,7 @@
 @use "../tools/font-url" as *;
 @use "../tools/px-to-rem" as *;
 @use "../tools/if" as *;
-@import "font-faces";
+@use "font-faces--internal";
 @import "media-queries";
 @import "spacing";
 
@@ -35,7 +35,7 @@
   // If the user is using the default GDS Transport font we need to include
   // the font-face declarations.
   @if $govuk-include-default-font-face {
-    @include _govuk-font-face-gds-transport;
+    @include font-faces--internal.gds-transport;
   }
 
   @media print {
