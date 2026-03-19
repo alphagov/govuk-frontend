@@ -2,6 +2,12 @@
 /// @group helpers/links
 ////
 
+@use "../settings/links" as *;
+@use "../settings/measurements" as *;
+@use "colour" as *;
+@use "focused" as *;
+@use "typography" as *;
+
 /// Common link styles
 ///
 /// Provides the typography and focus state, regardless of link style.
