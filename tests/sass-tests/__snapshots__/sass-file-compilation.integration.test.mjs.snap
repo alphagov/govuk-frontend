@@ -23428,8 +23428,6 @@ exports[`src/govuk/helpers/_device-pixels.scss matches snapshot 1`] = `""`;
 
 exports[`src/govuk/helpers/_focused.scss matches snapshot 1`] = `""`;
 
-exports[`src/govuk/helpers/_font-faces.scss matches snapshot 1`] = `""`;
-
 exports[`src/govuk/helpers/_grid.scss matches snapshot 1`] = `""`;
 
 exports[`src/govuk/helpers/_index.scss matches snapshot 1`] = `""`;
