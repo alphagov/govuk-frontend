@@ -1,6 +1,4 @@
-import { compileStringAsync } from 'sass-embedded'
-
-import { sassConfig } from './sass.config.js'
+import { compileSassStringLikeUsers } from './helpers/sass.js'
 
 describe('All components, with configuration', () => {
   let cssWithImport
@@ -16,7 +14,7 @@ describe('All components, with configuration', () => {
       @import "node_modules/govuk-frontend/src/govuk";
     `
 
-    cssWithImport = (await compileStringAsync(sass, sassConfig)).css
+    cssWithImport = await compileSassStringLikeUsers(sass)
   })
 
   beforeAll(async () => {
@@ -30,7 +28,7 @@ describe('All components, with configuration', () => {
       );
     `
 
-    cssWithUse = (await compileStringAsync(sass, sassConfig)).css
+    cssWithUse = await compileSassStringLikeUsers(sass)
   })
 
   it('works when user @imports everything with configuration', async () => {
