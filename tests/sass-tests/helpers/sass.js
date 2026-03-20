@@ -11,7 +11,7 @@ const sassConfig = {
 
 async function compileSassStringLikeUsers(string, options = sassConfig) {
   const { css } = await compileStringAsync(string, options)
-  return css
+  return css.replaceAll(/\n+/g, '\n')
 }
 
 module.exports = {
