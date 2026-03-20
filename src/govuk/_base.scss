@@ -1,4 +1,4 @@
-@import "settings";
-@import "tools";
+@forward "settings";
+@forward "tools";
 @import "helpers";
 @import "custom-properties";
