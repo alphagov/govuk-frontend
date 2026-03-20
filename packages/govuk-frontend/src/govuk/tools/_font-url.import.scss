@@ -18,3 +18,13 @@
 );
 
 @forward "font-url";
+
+@use "../settings/warnings--internal";
+
+@if meta.variable-exists("govuk-font-url-function") and meta.type-of($govuk-font-url-function) == "string" {
+  @include warnings--internal.warning(
+    "font-url-string",
+    "Passing a string to $govuk-font-url-function is deprecated. " +
+      "Pass a function using meta.get-function(...) instead."
+  );
+}
