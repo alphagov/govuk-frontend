@@ -1,6 +1,4 @@
-import { compileStringAsync } from 'sass-embedded'
-
-import { sassConfig } from './sass.config.js'
+import { compileSassStringLikeUsers } from './helpers/sass.js'
 
 describe('ITCSS layers', () => {
   describe.each([
@@ -19,7 +17,7 @@ describe('ITCSS layers', () => {
           @import "node_modules/govuk-frontend/src/govuk/${layerName}";
         `
 
-      const { css } = await compileStringAsync(sass, sassConfig)
+      const css = await compileSassStringLikeUsers(sass)
 
       expect(css).toMatchSnapshot()
     })

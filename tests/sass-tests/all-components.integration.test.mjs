@@ -1,6 +1,4 @@
-import { compileStringAsync } from 'sass-embedded'
-
-import { sassConfig } from './sass.config.js'
+import { compileSassStringLikeUsers, sassConfig } from './helpers/sass.js'
 
 describe('All components', () => {
   let cssWithImport
@@ -12,7 +10,7 @@ describe('All components', () => {
       @import "node_modules/govuk-frontend/src/govuk";
     `
 
-    cssWithImport = (await compileStringAsync(sass, sassConfig)).css
+    cssWithImport = await compileSassStringLikeUsers(sass)
   })
 
   beforeAll(async () => {
@@ -20,7 +18,7 @@ describe('All components', () => {
       @use "node_modules/govuk-frontend/src/govuk";
     `
 
-    cssWithUse = (await compileStringAsync(sass, sassConfig)).css
+    cssWithUse = await compileSassStringLikeUsers(sass)
   })
 
   beforeAll(async () => {
@@ -28,12 +26,10 @@ describe('All components', () => {
       @use "pkg:govuk-frontend"
     `
 
-    cssWithPkg = (
-      await compileStringAsync(sass, {
-        ...sassConfig,
-        loadPaths: null // Prevent loadPaths from interfering
-      })
-    ).css
+    cssWithPkg = await compileSassStringLikeUsers(sass, {
+      ...sassConfig,
+      loadPaths: null // Prevent loadPaths from interfering
+    })
   })
 
   it('works when user @imports everything', () => {
@@ -49,7 +45,7 @@ describe('All components', () => {
       @use "node_modules/govuk-frontend/dist/govuk";
     `
 
-    const { css } = await compileStringAsync(sass, sassConfig)
+    const css = await compileSassStringLikeUsers(sass)
 
     expect(css).toBe(cssWithPkg)
   })
