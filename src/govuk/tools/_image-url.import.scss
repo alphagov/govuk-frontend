@@ -18,3 +18,13 @@
 );
 
 @forward "image-url";
+
+@use "../settings/warnings--internal";
+
+@if meta.variable-exists("govuk-image-url-function") and meta.type-of($govuk-image-url-function) == "string" {
+  @include warnings--internal.warning(
+    "image-url-string",
+    "Passing a string to $govuk-image-url-function is deprecated. " +
+      "Pass a function using meta.get-function(...) instead."
+  );
+}
