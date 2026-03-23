@@ -12,12 +12,12 @@ const sassConfig = {
 }
 
 describe('Warnings mixin', () => {
-  const sassBootstrap = '@import "settings/warnings";'
+  const sassBootstrap = '@use "settings/warnings--internal";'
 
   it('Fires a @warn with the message plus the key suffix text', async () => {
     const sass = `
       ${sassBootstrap}
-      @include _warning('test', 'This is a warning.');
+      @include warnings--internal.warning('test', 'This is a warning.');
     `
 
     await compileSassString(sass, sassConfig)
@@ -34,8 +34,8 @@ describe('Warnings mixin', () => {
   it('Only fires one @warn per warning key', async () => {
     const sass = `
       ${sassBootstrap}
-      @include _warning('test', 'This is a warning.');
-      @include _warning('test', 'This is a warning.');
+      @include warnings--internal.warning('test', 'This is a warning.');
+      @include warnings--internal.warning('test', 'This is a warning.');
     `
 
     await compileSassString(sass, sassConfig)
@@ -48,8 +48,8 @@ describe('Warnings mixin', () => {
   it('fires every @warn if $silence-further-warnings is false', async () => {
     const sass = `
       ${sassBootstrap}
-      @include _warning('test', 'This is a warning.', $silence-further-warnings: false);
-      @include _warning('test', 'This is a warning.');
+      @include warnings--internal.warning('test', 'This is a warning.', $silence-further-warnings: false);
+      @include warnings--internal.warning('test', 'This is a warning.');
     `
 
     await compileSassString(sass, sassConfig)
@@ -60,10 +60,12 @@ describe('Warnings mixin', () => {
   it('Does not fire a @warn if the key is already in $govuk-suppressed-warnings', async () => {
     const sass = `
       @use "sass:list";
+      @use "settings/warnings" as * with (
+        $govuk-suppressed-warnings: ('test')
+      );
       ${sassBootstrap}
 
-      $govuk-suppressed-warnings: list.append($govuk-suppressed-warnings, 'test');
-      @include _warning('test', 'This is a warning.');
+      @include warnings--internal.warning('test', 'This is a warning.');
     `
 
     await compileSassString(sass, sassConfig)

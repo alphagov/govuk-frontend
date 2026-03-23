@@ -141,7 +141,6 @@ describe('@function govuk-colour', () => {
   ])('returns the equivalent brand colour for `%s`', (colour, expected) => {
     it('returns the equivalent colour', async () => {
       const sass = `
-        @import "settings/colours-palette";
         @import "helpers/colour";
 
         .foo {
@@ -160,7 +159,7 @@ describe('@function govuk-colour', () => {
 
     it('warns the users of the deprecation and offers alternative parameters', async () => {
       const sass = `
-        @import "settings/colours-palette";
+
         @import "helpers/colour";
 
         .foo {
@@ -290,15 +289,16 @@ describe('@function govuk-functional-colour', () => {
 
   beforeEach(() => {
     sassBootstrap = `
-      $govuk-functional-colours: (
-        "error": #ff0000,
-        "success": #00ff00,
-        "link": #0000ff,
-        "brand": (name: "magenta"), // palette reference
-        "focus": (name: "teal", variant: "tint-25"), // palette reference with variant
-        "border": (name: ""), // palette reference with empty name
-        "hover": (name: "magenta", variant: "") // palette reference with empty variant
-
+      @use "settings" with (
+        $govuk-functional-colours: (
+          "error": #ff0000,
+          "success": #00ff00,
+          "link": #0000ff,
+          "brand": (name: "magenta"), // palette reference
+          "focus": (name: "teal", variant: "tint-25"), // palette reference with variant
+          "border": (name: ""), // palette reference with empty name
+          "hover": (name: "magenta", variant: "") // palette reference with empty variant
+        )
       );
 
       @import "helpers/colour";
@@ -424,17 +424,19 @@ describe('@function govuk-functional-colour', () => {
 
 describe('@function govuk-organisation-colour', () => {
   const sassBootstrap = `
-    $govuk-colours-organisations: (
-      'department-of-social-affairs-citizenship': (
-        colour: #EC22FF,
-        contrast-safe: #9A00A8
-      ),
-      'department-of-administrative-affairs': (
-        colour: #A81223
-      ),
-      'ministry-of-silly-walks': (
-        colour: #786999,
-        deprecation-message: 'The Ministry of Silly Walks became the Department for Silly Walks in 2007.'
+    @use "settings" with (
+      $govuk-colours-organisations: (
+        'department-of-social-affairs-citizenship': (
+          colour: #EC22FF,
+          contrast-safe: #9A00A8
+        ),
+        'department-of-administrative-affairs': (
+          colour: #A81223
+        ),
+        'ministry-of-silly-walks': (
+          colour: #786999,
+          deprecation-message: 'The Ministry of Silly Walks became the Department for Silly Walks in 2007.'
+        )
       )
     );
 
@@ -530,9 +532,11 @@ describe('@function govuk-organisation-colour', () => {
 
   it('aliases renamed organisation keys to the equivalent key', async () => {
     const sass = `
-      $govuk-colours-organisations: (
-        'department-for-business-trade': (
-          colour: #e52d13
+      @use "settings" with (
+        $govuk-colours-organisations: (
+          'department-for-business-trade': (
+            colour: #e52d13
+          )
         )
       );
 

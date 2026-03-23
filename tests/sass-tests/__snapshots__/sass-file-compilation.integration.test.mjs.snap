@@ -35264,13 +35264,9 @@ exports[`src/govuk/overrides/_width.scss matches snapshot 1`] = `
 
 exports[`src/govuk/settings/_assets.scss matches snapshot 1`] = `""`;
 
-exports[`src/govuk/settings/_colours-applied.scss matches snapshot 1`] = `""`;
-
 exports[`src/govuk/settings/_colours-functional.scss matches snapshot 1`] = `""`;
 
 exports[`src/govuk/settings/_colours-organisations.scss matches snapshot 1`] = `""`;
-
-exports[`src/govuk/settings/_colours-palette.scss matches snapshot 1`] = `""`;
 
 exports[`src/govuk/settings/_custom-properties.scss matches snapshot 1`] = `""`;
 
