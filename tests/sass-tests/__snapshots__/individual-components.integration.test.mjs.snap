@@ -6,11 +6,9 @@ exports[`Individual components src/govuk/components/accordion works when user @i
   --govuk-breakpoint-tablet: 40.0625rem;
   --govuk-breakpoint-desktop: 48.0625rem;
 }
-
 :root {
   --govuk-frontend-version: "development";
 }
-
 :root {
   --govuk-brand-colour: #1d70b8;
   --govuk-text-colour: #0b0c0c;
@@ -38,7 +36,6 @@ exports[`Individual components src/govuk/components/accordion works when user @i
     --govuk-text-colour: var(--govuk-print-text-colour, #000000);
   }
 }
-
 .govuk-accordion {
   margin-bottom: 20px;
 }
@@ -47,18 +44,15 @@ exports[`Individual components src/govuk/components/accordion works when user @i
     margin-bottom: 30px;
   }
 }
-
 .govuk-accordion__section {
   padding-top: 15px;
 }
-
 .govuk-accordion__section-heading {
   margin-top: 0;
   margin-bottom: 0;
   padding-top: 15px;
   padding-bottom: 15px;
 }
-
 .govuk-accordion__section-button {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -103,11 +97,9 @@ exports[`Individual components src/govuk/components/accordion works when user @i
     line-height: 1.15;
   }
 }
-
 .govuk-accordion__section-content > :last-child {
   margin-bottom: 0;
 }
-
 .govuk-frontend-supported .govuk-accordion {
   border-bottom: 1px solid;
   border-bottom-color: var(--govuk-border-colour, #cecece);
@@ -388,11 +380,9 @@ exports[`Individual components src/govuk/components/back-link works when user @i
   --govuk-breakpoint-tablet: 40.0625rem;
   --govuk-breakpoint-desktop: 48.0625rem;
 }
-
 :root {
   --govuk-frontend-version: "development";
 }
-
 :root {
   --govuk-brand-colour: #1d70b8;
   --govuk-text-colour: #0b0c0c;
@@ -420,7 +410,6 @@ exports[`Individual components src/govuk/components/back-link works when user @i
     --govuk-text-colour: var(--govuk-print-text-colour, #000000);
   }
 }
-
 .govuk-back-link {
   font-size: 1rem;
   line-height: 1.25;
@@ -485,7 +474,6 @@ exports[`Individual components src/govuk/components/back-link works when user @i
 .govuk-back-link:focus {
   color: var(--govuk-focus-text-colour, #0b0c0c);
 }
-
 .govuk-back-link::before {
   content: "";
   display: block;
@@ -507,11 +495,9 @@ exports[`Individual components src/govuk/components/back-link works when user @i
     font-size: max(16px, 1em);
   }
 }
-
 .govuk-back-link:focus::before {
   border-color: var(--govuk-focus-text-colour, #0b0c0c);
 }
-
 .govuk-back-link::after {
   content: "";
   position: absolute;
@@ -520,7 +506,6 @@ exports[`Individual components src/govuk/components/back-link works when user @i
   bottom: -14px;
   left: 0;
 }
-
 .govuk-back-link--inverse:link, .govuk-back-link--inverse:visited {
   color: #ffffff;
 }
@@ -538,11 +523,9 @@ exports[`Individual components src/govuk/components/breadcrumbs works when user 
   --govuk-breakpoint-tablet: 40.0625rem;
   --govuk-breakpoint-desktop: 48.0625rem;
 }
-
 :root {
   --govuk-frontend-version: "development";
 }
-
 :root {
   --govuk-brand-colour: #1d70b8;
   --govuk-text-colour: #0b0c0c;
@@ -570,7 +553,6 @@ exports[`Individual components src/govuk/components/breadcrumbs works when user 
     --govuk-text-colour: var(--govuk-print-text-colour, #000000);
   }
 }
-
 .govuk-breadcrumbs {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -608,7 +590,6 @@ exports[`Individual components src/govuk/components/breadcrumbs works when user 
     line-height: 1.2;
   }
 }
-
 .govuk-breadcrumbs__list {
   margin: 0;
   padding: 0;
@@ -619,7 +600,6 @@ exports[`Individual components src/govuk/components/breadcrumbs works when user 
   display: block;
   clear: both;
 }
-
 .govuk-breadcrumbs__list-item {
   display: inline-block;
   position: relative;
@@ -657,7 +637,6 @@ exports[`Individual components src/govuk/components/breadcrumbs works when user 
   content: none;
   display: none;
 }
-
 .govuk-breadcrumbs__link {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -694,7 +673,6 @@ exports[`Individual components src/govuk/components/breadcrumbs works when user 
 .govuk-breadcrumbs__link:focus {
   color: var(--govuk-focus-text-colour, #0b0c0c);
 }
-
 @media (max-width: 40.0525em) {
   .govuk-breadcrumbs--collapse-on-mobile .govuk-breadcrumbs__list-item {
     display: none;
@@ -710,7 +688,6 @@ exports[`Individual components src/govuk/components/breadcrumbs works when user 
     display: flex;
   }
 }
-
 .govuk-breadcrumbs--inverse {
   color: #ffffff;
 }
@@ -731,11 +708,9 @@ exports[`Individual components src/govuk/components/button works when user @impo
   --govuk-breakpoint-tablet: 40.0625rem;
   --govuk-breakpoint-desktop: 48.0625rem;
 }
-
 :root {
   --govuk-frontend-version: "development";
 }
-
 :root {
   --govuk-brand-colour: #1d70b8;
   --govuk-text-colour: #0b0c0c;
@@ -763,7 +738,6 @@ exports[`Individual components src/govuk/components/button works when user @impo
     --govuk-text-colour: var(--govuk-print-text-colour, #000000);
   }
 }
-
 .govuk-button {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -864,7 +838,6 @@ exports[`Individual components src/govuk/components/button works when user @impo
 .govuk-button:active::before {
   top: -4px;
 }
-
 .govuk-button[disabled] {
   opacity: 0.5;
 }
@@ -876,7 +849,6 @@ exports[`Individual components src/govuk/components/button works when user @impo
   top: 0;
   box-shadow: 0 2px 0 #083d29;
 }
-
 .govuk-button--secondary {
   background-color: #f3f3f3;
   box-shadow: 0 2px 0 #858686;
@@ -890,7 +862,6 @@ exports[`Individual components src/govuk/components/button works when user @impo
 .govuk-button--secondary:hover[disabled] {
   background-color: #f3f3f3;
 }
-
 .govuk-button--warning {
   background-color: #ca3535;
   box-shadow: 0 2px 0 #651b1b;
@@ -904,7 +875,6 @@ exports[`Individual components src/govuk/components/button works when user @impo
 .govuk-button--warning:hover[disabled] {
   background-color: #ca3535;
 }
-
 .govuk-button--inverse {
   background-color: #ffffff;
   box-shadow: 0 2px 0 #0f385c;
@@ -918,7 +888,6 @@ exports[`Individual components src/govuk/components/button works when user @impo
 .govuk-button--inverse:hover[disabled] {
   background-color: #ffffff;
 }
-
 .govuk-button--start {
   font-weight: 700;
   font-size: 1.3125rem;
@@ -939,7 +908,6 @@ exports[`Individual components src/govuk/components/button works when user @impo
     line-height: 1;
   }
 }
-
 .govuk-button__start-icon {
   flex-shrink: 0;
   align-self: center;
@@ -961,11 +929,9 @@ exports[`Individual components src/govuk/components/character-count works when u
   --govuk-breakpoint-tablet: 40.0625rem;
   --govuk-breakpoint-desktop: 48.0625rem;
 }
-
 :root {
   --govuk-frontend-version: "development";
 }
-
 :root {
   --govuk-brand-colour: #1d70b8;
   --govuk-text-colour: #0b0c0c;
@@ -993,7 +959,6 @@ exports[`Individual components src/govuk/components/character-count works when u
     --govuk-text-colour: var(--govuk-print-text-colour, #000000);
   }
 }
-
 .govuk-error-message {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -1033,7 +998,6 @@ exports[`Individual components src/govuk/components/character-count works when u
     line-height: 1.15;
   }
 }
-
 .govuk-hint {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -1055,19 +1019,15 @@ exports[`Individual components src/govuk/components/character-count works when u
     line-height: 1.15;
   }
 }
-
 .govuk-label:not(.govuk-label--m):not(.govuk-label--l):not(.govuk-label--xl) + .govuk-hint {
   margin-bottom: 10px;
 }
-
 .govuk-fieldset__legend:not(.govuk-fieldset__legend--m):not(.govuk-fieldset__legend--l):not(.govuk-fieldset__legend--xl) + .govuk-hint {
   margin-bottom: 10px;
 }
-
 .govuk-fieldset__legend + .govuk-hint {
   margin-top: -5px;
 }
-
 .govuk-label {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -1090,14 +1050,12 @@ exports[`Individual components src/govuk/components/character-count works when u
     line-height: 1.15;
   }
 }
-
 .govuk-label--xl,
 .govuk-label--l,
 .govuk-label--m {
   font-weight: 700;
   margin-bottom: 15px;
 }
-
 .govuk-label--xl {
   font-size: 2rem;
   line-height: 1.09375;
@@ -1114,7 +1072,6 @@ exports[`Individual components src/govuk/components/character-count works when u
     line-height: 1.15;
   }
 }
-
 .govuk-label--l {
   font-size: 1.6875rem;
   line-height: 1.1111111111;
@@ -1131,7 +1088,6 @@ exports[`Individual components src/govuk/components/character-count works when u
     line-height: 1.05;
   }
 }
-
 .govuk-label--m {
   font-size: 1.3125rem;
   line-height: 1.1904761905;
@@ -1148,15 +1104,12 @@ exports[`Individual components src/govuk/components/character-count works when u
     line-height: 1.15;
   }
 }
-
 .govuk-label--s {
   font-weight: 700;
 }
-
 .govuk-label-wrapper {
   margin: 0;
 }
-
 .govuk-textarea {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -1204,14 +1157,12 @@ exports[`Individual components src/govuk/components/character-count works when u
   background-color: transparent;
   cursor: not-allowed;
 }
-
 .govuk-textarea--error {
   border-color: var(--govuk-error-colour, #ca3535);
 }
 .govuk-textarea--error:focus {
   border-color: var(--govuk-input-border-colour, #0b0c0c);
 }
-
 .govuk-character-count {
   margin-bottom: 20px;
 }
@@ -1228,7 +1179,6 @@ exports[`Individual components src/govuk/components/character-count works when u
   border-color: var(--govuk-error-colour, #ca3535);
   box-shadow: inset 0 0 0 2px var(--govuk-error-colour, #ca3535);
 }
-
 .govuk-character-count__message {
   font-variant-numeric: tabular-nums;
   margin-top: 0;
@@ -1237,7 +1187,6 @@ exports[`Individual components src/govuk/components/character-count works when u
 .govuk-character-count__message::after {
   content: "​";
 }
-
 .govuk-character-count__message--disabled {
   visibility: hidden;
 }"
@@ -1249,11 +1198,9 @@ exports[`Individual components src/govuk/components/checkboxes works when user @
   --govuk-breakpoint-tablet: 40.0625rem;
   --govuk-breakpoint-desktop: 48.0625rem;
 }
-
 :root {
   --govuk-frontend-version: "development";
 }
-
 :root {
   --govuk-brand-colour: #1d70b8;
   --govuk-text-colour: #0b0c0c;
@@ -1281,7 +1228,6 @@ exports[`Individual components src/govuk/components/checkboxes works when user @
     --govuk-text-colour: var(--govuk-print-text-colour, #000000);
   }
 }
-
 .govuk-error-message {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -1321,7 +1267,6 @@ exports[`Individual components src/govuk/components/checkboxes works when user @
     line-height: 1.15;
   }
 }
-
 .govuk-fieldset {
   min-width: 0;
   margin: 0;
@@ -1333,7 +1278,6 @@ exports[`Individual components src/govuk/components/checkboxes works when user @
   display: block;
   clear: both;
 }
-
 @supports not (caret-color: auto) {
   .govuk-fieldset,
   x:-moz-any-link {
@@ -1366,14 +1310,12 @@ exports[`Individual components src/govuk/components/checkboxes works when user @
     line-height: 1.15;
   }
 }
-
 .govuk-fieldset__legend--xl,
 .govuk-fieldset__legend--l,
 .govuk-fieldset__legend--m {
   font-weight: 700;
   margin-bottom: 15px;
 }
-
 .govuk-fieldset__legend--xl {
   font-size: 2rem;
   line-height: 1.09375;
@@ -1390,7 +1332,6 @@ exports[`Individual components src/govuk/components/checkboxes works when user @
     line-height: 1.15;
   }
 }
-
 .govuk-fieldset__legend--l {
   font-size: 1.6875rem;
   line-height: 1.1111111111;
@@ -1407,7 +1348,6 @@ exports[`Individual components src/govuk/components/checkboxes works when user @
     line-height: 1.05;
   }
 }
-
 .govuk-fieldset__legend--m {
   font-size: 1.3125rem;
   line-height: 1.1904761905;
@@ -1424,17 +1364,14 @@ exports[`Individual components src/govuk/components/checkboxes works when user @
     line-height: 1.15;
   }
 }
-
 .govuk-fieldset__legend--s {
   font-weight: 700;
 }
-
 .govuk-fieldset__heading {
   margin: 0;
   font-size: inherit;
   font-weight: inherit;
 }
-
 .govuk-hint {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -1456,19 +1393,15 @@ exports[`Individual components src/govuk/components/checkboxes works when user @
     line-height: 1.15;
   }
 }
-
 .govuk-label:not(.govuk-label--m):not(.govuk-label--l):not(.govuk-label--xl) + .govuk-hint {
   margin-bottom: 10px;
 }
-
 .govuk-fieldset__legend:not(.govuk-fieldset__legend--m):not(.govuk-fieldset__legend--l):not(.govuk-fieldset__legend--xl) + .govuk-hint {
   margin-bottom: 10px;
 }
-
 .govuk-fieldset__legend + .govuk-hint {
   margin-top: -5px;
 }
-
 .govuk-label {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -1491,14 +1424,12 @@ exports[`Individual components src/govuk/components/checkboxes works when user @
     line-height: 1.15;
   }
 }
-
 .govuk-label--xl,
 .govuk-label--l,
 .govuk-label--m {
   font-weight: 700;
   margin-bottom: 15px;
 }
-
 .govuk-label--xl {
   font-size: 2rem;
   line-height: 1.09375;
@@ -1515,7 +1446,6 @@ exports[`Individual components src/govuk/components/checkboxes works when user @
     line-height: 1.15;
   }
 }
-
 .govuk-label--l {
   font-size: 1.6875rem;
   line-height: 1.1111111111;
@@ -1532,7 +1462,6 @@ exports[`Individual components src/govuk/components/checkboxes works when user @
     line-height: 1.05;
   }
 }
-
 .govuk-label--m {
   font-size: 1.3125rem;
   line-height: 1.1904761905;
@@ -1549,27 +1478,22 @@ exports[`Individual components src/govuk/components/checkboxes works when user @
     line-height: 1.15;
   }
 }
-
 .govuk-label--s {
   font-weight: 700;
 }
-
 .govuk-label-wrapper {
   margin: 0;
 }
-
 .govuk-checkboxes__item {
   display: flex;
   position: relative;
   flex-wrap: wrap;
   margin-bottom: 10px;
 }
-
 .govuk-checkboxes__item:last-child,
 .govuk-checkboxes__item:last-of-type {
   margin-bottom: 0;
 }
-
 .govuk-checkboxes__input {
   z-index: 1;
   width: 44px;
@@ -1578,7 +1502,6 @@ exports[`Individual components src/govuk/components/checkboxes works when user @
   opacity: 0;
   cursor: pointer;
 }
-
 .govuk-checkboxes__label {
   align-self: center;
   max-width: calc(100% - 74px);
@@ -1587,7 +1510,6 @@ exports[`Individual components src/govuk/components/checkboxes works when user @
   cursor: pointer;
   touch-action: manipulation;
 }
-
 .govuk-checkboxes__label::before {
   content: "";
   box-sizing: border-box;
@@ -1599,7 +1521,6 @@ exports[`Individual components src/govuk/components/checkboxes works when user @
   border: 2px solid currentcolor;
   background: transparent;
 }
-
 .govuk-checkboxes__label::after {
   content: "";
   box-sizing: border-box;
@@ -1615,7 +1536,6 @@ exports[`Individual components src/govuk/components/checkboxes works when user @
   opacity: 0;
   background: transparent;
 }
-
 .govuk-checkboxes__hint {
   display: block;
   width: 100%;
@@ -1623,11 +1543,9 @@ exports[`Individual components src/govuk/components/checkboxes works when user @
   padding-right: 15px;
   padding-left: 59px;
 }
-
 .govuk-label:not(.govuk-label--m):not(.govuk-label--l):not(.govuk-label--xl) + .govuk-checkboxes__hint {
   margin-bottom: 0;
 }
-
 .govuk-checkboxes__input:focus + .govuk-checkboxes__label::before {
   border-width: 4px;
   outline: 3px solid transparent;
@@ -1639,21 +1557,17 @@ exports[`Individual components src/govuk/components/checkboxes works when user @
     outline-color: Highlight;
   }
 }
-
 .govuk-checkboxes__input:checked + .govuk-checkboxes__label::after {
   opacity: 1;
 }
-
 .govuk-checkboxes__input:disabled,
 .govuk-checkboxes__input:disabled + .govuk-checkboxes__label {
   cursor: not-allowed;
 }
-
 .govuk-checkboxes__input:disabled + .govuk-checkboxes__label,
 .govuk-checkboxes__input:disabled ~ .govuk-hint {
   opacity: 0.5;
 }
-
 .govuk-checkboxes__divider {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -1677,7 +1591,6 @@ exports[`Individual components src/govuk/components/checkboxes works when user @
     line-height: 1.15;
   }
 }
-
 .govuk-checkboxes__conditional {
   margin-bottom: 15px;
   margin-left: 20px;
@@ -1696,7 +1609,6 @@ exports[`Individual components src/govuk/components/checkboxes works when user @
 .govuk-checkboxes__conditional > :last-child {
   margin-bottom: 0;
 }
-
 .govuk-checkboxes--small .govuk-checkboxes__item {
   margin-bottom: 0;
 }
@@ -1759,11 +1671,9 @@ exports[`Individual components src/govuk/components/cookie-banner works when use
   --govuk-breakpoint-tablet: 40.0625rem;
   --govuk-breakpoint-desktop: 48.0625rem;
 }
-
 :root {
   --govuk-frontend-version: "development";
 }
-
 :root {
   --govuk-brand-colour: #1d70b8;
   --govuk-text-colour: #0b0c0c;
@@ -1791,7 +1701,6 @@ exports[`Individual components src/govuk/components/cookie-banner works when use
     --govuk-text-colour: var(--govuk-print-text-colour, #000000);
   }
 }
-
 .govuk-button {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -1892,7 +1801,6 @@ exports[`Individual components src/govuk/components/cookie-banner works when use
 .govuk-button:active::before {
   top: -4px;
 }
-
 .govuk-button[disabled] {
   opacity: 0.5;
 }
@@ -1904,7 +1812,6 @@ exports[`Individual components src/govuk/components/cookie-banner works when use
   top: 0;
   box-shadow: 0 2px 0 #083d29;
 }
-
 .govuk-button--secondary {
   background-color: #f3f3f3;
   box-shadow: 0 2px 0 #858686;
@@ -1918,7 +1825,6 @@ exports[`Individual components src/govuk/components/cookie-banner works when use
 .govuk-button--secondary:hover[disabled] {
   background-color: #f3f3f3;
 }
-
 .govuk-button--warning {
   background-color: #ca3535;
   box-shadow: 0 2px 0 #651b1b;
@@ -1932,7 +1838,6 @@ exports[`Individual components src/govuk/components/cookie-banner works when use
 .govuk-button--warning:hover[disabled] {
   background-color: #ca3535;
 }
-
 .govuk-button--inverse {
   background-color: #ffffff;
   box-shadow: 0 2px 0 #0f385c;
@@ -1946,7 +1851,6 @@ exports[`Individual components src/govuk/components/cookie-banner works when use
 .govuk-button--inverse:hover[disabled] {
   background-color: #ffffff;
 }
-
 .govuk-button--start {
   font-weight: 700;
   font-size: 1.3125rem;
@@ -1967,7 +1871,6 @@ exports[`Individual components src/govuk/components/cookie-banner works when use
     line-height: 1;
   }
 }
-
 .govuk-button__start-icon {
   flex-shrink: 0;
   align-self: center;
@@ -1980,18 +1883,15 @@ exports[`Individual components src/govuk/components/cookie-banner works when use
     margin-left: 10px;
   }
 }
-
 .govuk-cookie-banner {
   padding-top: 20px;
   border-bottom: 10px solid transparent;
   color: var(--govuk-surface-text-colour, #0b0c0c);
   background-color: var(--govuk-surface-background-colour, #f4f8fb);
 }
-
 .govuk-cookie-banner[hidden] {
   display: none;
 }
-
 .govuk-cookie-banner__message {
   margin-bottom: -10px;
 }
@@ -2009,11 +1909,9 @@ exports[`Individual components src/govuk/components/date-input works when user @
   --govuk-breakpoint-tablet: 40.0625rem;
   --govuk-breakpoint-desktop: 48.0625rem;
 }
-
 :root {
   --govuk-frontend-version: "development";
 }
-
 :root {
   --govuk-brand-colour: #1d70b8;
   --govuk-text-colour: #0b0c0c;
@@ -2041,7 +1939,6 @@ exports[`Individual components src/govuk/components/date-input works when user @
     --govuk-text-colour: var(--govuk-print-text-colour, #000000);
   }
 }
-
 .govuk-error-message {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -2081,7 +1978,6 @@ exports[`Individual components src/govuk/components/date-input works when user @
     line-height: 1.15;
   }
 }
-
 .govuk-hint {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -2103,19 +1999,15 @@ exports[`Individual components src/govuk/components/date-input works when user @
     line-height: 1.15;
   }
 }
-
 .govuk-label:not(.govuk-label--m):not(.govuk-label--l):not(.govuk-label--xl) + .govuk-hint {
   margin-bottom: 10px;
 }
-
 .govuk-fieldset__legend:not(.govuk-fieldset__legend--m):not(.govuk-fieldset__legend--l):not(.govuk-fieldset__legend--xl) + .govuk-hint {
   margin-bottom: 10px;
 }
-
 .govuk-fieldset__legend + .govuk-hint {
   margin-top: -5px;
 }
-
 .govuk-label {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -2138,14 +2030,12 @@ exports[`Individual components src/govuk/components/date-input works when user @
     line-height: 1.15;
   }
 }
-
 .govuk-label--xl,
 .govuk-label--l,
 .govuk-label--m {
   font-weight: 700;
   margin-bottom: 15px;
 }
-
 .govuk-label--xl {
   font-size: 2rem;
   line-height: 1.09375;
@@ -2162,7 +2052,6 @@ exports[`Individual components src/govuk/components/date-input works when user @
     line-height: 1.15;
   }
 }
-
 .govuk-label--l {
   font-size: 1.6875rem;
   line-height: 1.1111111111;
@@ -2179,7 +2068,6 @@ exports[`Individual components src/govuk/components/date-input works when user @
     line-height: 1.05;
   }
 }
-
 .govuk-label--m {
   font-size: 1.3125rem;
   line-height: 1.1904761905;
@@ -2196,15 +2084,12 @@ exports[`Individual components src/govuk/components/date-input works when user @
     line-height: 1.15;
   }
 }
-
 .govuk-label--s {
   font-weight: 700;
 }
-
 .govuk-label-wrapper {
   margin: 0;
 }
-
 .govuk-input {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -2245,57 +2130,45 @@ exports[`Individual components src/govuk/components/date-input works when user @
   background-color: transparent;
   cursor: not-allowed;
 }
-
 .govuk-input::-webkit-outer-spin-button,
 .govuk-input::-webkit-inner-spin-button {
   margin: 0;
   -webkit-appearance: none;
 }
-
 .govuk-input[type=number] {
   -moz-appearance: textfield;
 }
-
 .govuk-input--error {
   border-color: var(--govuk-error-colour, #ca3535);
 }
 .govuk-input--error:focus {
   border-color: var(--govuk-input-border-colour, #0b0c0c);
 }
-
 .govuk-input--extra-letter-spacing {
   font-variant-numeric: tabular-nums;
   letter-spacing: 0.05em;
 }
-
 .govuk-input--width-30 {
   max-width: 29.5em;
 }
-
 .govuk-input--width-20 {
   max-width: 20.5em;
 }
-
 .govuk-input--width-10 {
   max-width: 11.5em;
 }
-
 .govuk-input--width-5 {
   max-width: 5.5em;
 }
-
 .govuk-input--width-4 {
   max-width: 4.5em;
 }
-
 .govuk-input--width-3 {
   max-width: 3.75em;
 }
-
 .govuk-input--width-2 {
   max-width: 2.75em;
 }
-
 .govuk-input__wrapper {
   display: flex;
 }
@@ -2313,7 +2186,6 @@ exports[`Individual components src/govuk/components/date-input works when user @
     max-width: 100%;
   }
 }
-
 .govuk-input__prefix,
 .govuk-input__suffix {
   font-family: "GDS Transport", arial, sans-serif;
@@ -2358,7 +2230,6 @@ exports[`Individual components src/govuk/components/date-input works when user @
     white-space: normal;
   }
 }
-
 @media (max-width: 19.99em) {
   .govuk-input__prefix {
     border-bottom: 0;
@@ -2369,7 +2240,6 @@ exports[`Individual components src/govuk/components/date-input works when user @
     border-right: 0;
   }
 }
-
 @media (max-width: 19.99em) {
   .govuk-input__suffix {
     border-top: 0;
@@ -2380,7 +2250,6 @@ exports[`Individual components src/govuk/components/date-input works when user @
     border-left: 0;
   }
 }
-
 .govuk-fieldset {
   min-width: 0;
   margin: 0;
@@ -2392,7 +2261,6 @@ exports[`Individual components src/govuk/components/date-input works when user @
   display: block;
   clear: both;
 }
-
 @supports not (caret-color: auto) {
   .govuk-fieldset,
   x:-moz-any-link {
@@ -2425,14 +2293,12 @@ exports[`Individual components src/govuk/components/date-input works when user @
     line-height: 1.15;
   }
 }
-
 .govuk-fieldset__legend--xl,
 .govuk-fieldset__legend--l,
 .govuk-fieldset__legend--m {
   font-weight: 700;
   margin-bottom: 15px;
 }
-
 .govuk-fieldset__legend--xl {
   font-size: 2rem;
   line-height: 1.09375;
@@ -2449,7 +2315,6 @@ exports[`Individual components src/govuk/components/date-input works when user @
     line-height: 1.15;
   }
 }
-
 .govuk-fieldset__legend--l {
   font-size: 1.6875rem;
   line-height: 1.1111111111;
@@ -2466,7 +2331,6 @@ exports[`Individual components src/govuk/components/date-input works when user @
     line-height: 1.05;
   }
 }
-
 .govuk-fieldset__legend--m {
   font-size: 1.3125rem;
   line-height: 1.1904761905;
@@ -2483,17 +2347,14 @@ exports[`Individual components src/govuk/components/date-input works when user @
     line-height: 1.15;
   }
 }
-
 .govuk-fieldset__legend--s {
   font-weight: 700;
 }
-
 .govuk-fieldset__heading {
   margin: 0;
   font-size: inherit;
   font-weight: inherit;
 }
-
 .govuk-date-input {
   font-size: 0;
 }
@@ -2502,18 +2363,15 @@ exports[`Individual components src/govuk/components/date-input works when user @
   display: block;
   clear: both;
 }
-
 .govuk-date-input__item {
   display: inline-block;
   margin-right: 20px;
   margin-bottom: 0;
   vertical-align: bottom;
 }
-
 .govuk-date-input__label {
   display: block;
 }
-
 .govuk-date-input__input {
   margin-bottom: 0;
 }"
@@ -2525,11 +2383,9 @@ exports[`Individual components src/govuk/components/details works when user @imp
   --govuk-breakpoint-tablet: 40.0625rem;
   --govuk-breakpoint-desktop: 48.0625rem;
 }
-
 :root {
   --govuk-frontend-version: "development";
 }
-
 :root {
   --govuk-brand-colour: #1d70b8;
   --govuk-text-colour: #0b0c0c;
@@ -2557,7 +2413,6 @@ exports[`Individual components src/govuk/components/details works when user @imp
     --govuk-text-colour: var(--govuk-print-text-colour, #000000);
   }
 }
-
 .govuk-details {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -2600,15 +2455,12 @@ exports[`Individual components src/govuk/components/details works when user @imp
     margin-bottom: 30px;
   }
 }
-
 .govuk-details__summary {
   display: block;
 }
-
 .govuk-details[open] .govuk-details__summary {
   margin-bottom: 5px;
 }
-
 .govuk-details__summary-text > :first-child {
   margin-top: 0;
 }
@@ -2616,22 +2468,18 @@ exports[`Individual components src/govuk/components/details works when user @imp
 .govuk-details__summary-text > :last-child {
   margin-bottom: 0;
 }
-
 .govuk-details__text {
   padding-top: 15px;
   padding-bottom: 15px;
   padding-left: 20px;
 }
-
 .govuk-details__text p {
   margin-top: 0;
   margin-bottom: 20px;
 }
-
 .govuk-details__text > :last-child {
   margin-bottom: 0;
 }
-
 @media screen\\0  {
   .govuk-details {
     border-left: 10px solid;
@@ -2729,11 +2577,9 @@ exports[`Individual components src/govuk/components/error-message works when use
   --govuk-breakpoint-tablet: 40.0625rem;
   --govuk-breakpoint-desktop: 48.0625rem;
 }
-
 :root {
   --govuk-frontend-version: "development";
 }
-
 :root {
   --govuk-brand-colour: #1d70b8;
   --govuk-text-colour: #0b0c0c;
@@ -2761,7 +2607,6 @@ exports[`Individual components src/govuk/components/error-message works when use
     --govuk-text-colour: var(--govuk-print-text-colour, #000000);
   }
 }
-
 .govuk-error-message {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -2809,11 +2654,9 @@ exports[`Individual components src/govuk/components/error-summary works when use
   --govuk-breakpoint-tablet: 40.0625rem;
   --govuk-breakpoint-desktop: 48.0625rem;
 }
-
 :root {
   --govuk-frontend-version: "development";
 }
-
 :root {
   --govuk-brand-colour: #1d70b8;
   --govuk-text-colour: #0b0c0c;
@@ -2841,7 +2684,6 @@ exports[`Individual components src/govuk/components/error-summary works when use
     --govuk-text-colour: var(--govuk-print-text-colour, #000000);
   }
 }
-
 .govuk-list {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -2889,21 +2731,17 @@ exports[`Individual components src/govuk/components/error-summary works when use
 .govuk-list .govuk-list {
   margin-top: 10px;
 }
-
 .govuk-list > li {
   margin-bottom: 5px;
 }
-
 .govuk-list--bullet {
   padding-left: 20px;
   list-style-type: disc;
 }
-
 .govuk-list--number {
   padding-left: 20px;
   list-style-type: decimal;
 }
-
 .govuk-list--bullet > li,
 .govuk-list--number > li {
   margin-bottom: 0;
@@ -2914,7 +2752,6 @@ exports[`Individual components src/govuk/components/error-summary works when use
     margin-bottom: 5px;
   }
 }
-
 .govuk-list--spaced > li {
   margin-bottom: 10px;
 }
@@ -2923,7 +2760,6 @@ exports[`Individual components src/govuk/components/error-summary works when use
     margin-bottom: 15px;
   }
 }
-
 .govuk-error-summary {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -2962,7 +2798,6 @@ exports[`Individual components src/govuk/components/error-summary works when use
   outline: 3px solid;
   outline-color: var(--govuk-focus-colour, #ffdd00);
 }
-
 .govuk-error-summary__title {
   font-size: 1.3125rem;
   line-height: 1.1904761905;
@@ -2987,7 +2822,6 @@ exports[`Individual components src/govuk/components/error-summary works when use
     margin-bottom: 20px;
   }
 }
-
 .govuk-error-summary__body p {
   margin-bottom: 0;
 }
@@ -3002,15 +2836,12 @@ exports[`Individual components src/govuk/components/error-summary works when use
 .govuk-error-summary__body > :last-child {
   margin-bottom: 5px;
 }
-
 .govuk-error-summary__list {
   margin-bottom: 0;
 }
-
 .govuk-error-summary__list li:last-child {
   margin-bottom: 0;
 }
-
 .govuk-error-summary__list a {
   font-weight: 700;
   font-family: "GDS Transport", arial, sans-serif;
@@ -3062,11 +2893,9 @@ exports[`Individual components src/govuk/components/exit-this-page works when us
   --govuk-breakpoint-tablet: 40.0625rem;
   --govuk-breakpoint-desktop: 48.0625rem;
 }
-
 :root {
   --govuk-frontend-version: "development";
 }
-
 :root {
   --govuk-brand-colour: #1d70b8;
   --govuk-text-colour: #0b0c0c;
@@ -3094,7 +2923,6 @@ exports[`Individual components src/govuk/components/exit-this-page works when us
     --govuk-text-colour: var(--govuk-print-text-colour, #000000);
   }
 }
-
 .govuk-button {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -3195,7 +3023,6 @@ exports[`Individual components src/govuk/components/exit-this-page works when us
 .govuk-button:active::before {
   top: -4px;
 }
-
 .govuk-button[disabled] {
   opacity: 0.5;
 }
@@ -3207,7 +3034,6 @@ exports[`Individual components src/govuk/components/exit-this-page works when us
   top: 0;
   box-shadow: 0 2px 0 #083d29;
 }
-
 .govuk-button--secondary {
   background-color: #f3f3f3;
   box-shadow: 0 2px 0 #858686;
@@ -3221,7 +3047,6 @@ exports[`Individual components src/govuk/components/exit-this-page works when us
 .govuk-button--secondary:hover[disabled] {
   background-color: #f3f3f3;
 }
-
 .govuk-button--warning {
   background-color: #ca3535;
   box-shadow: 0 2px 0 #651b1b;
@@ -3235,7 +3060,6 @@ exports[`Individual components src/govuk/components/exit-this-page works when us
 .govuk-button--warning:hover[disabled] {
   background-color: #ca3535;
 }
-
 .govuk-button--inverse {
   background-color: #ffffff;
   box-shadow: 0 2px 0 #0f385c;
@@ -3249,7 +3073,6 @@ exports[`Individual components src/govuk/components/exit-this-page works when us
 .govuk-button--inverse:hover[disabled] {
   background-color: #ffffff;
 }
-
 .govuk-button--start {
   font-weight: 700;
   font-size: 1.3125rem;
@@ -3270,7 +3093,6 @@ exports[`Individual components src/govuk/components/exit-this-page works when us
     line-height: 1;
   }
 }
-
 .govuk-button__start-icon {
   flex-shrink: 0;
   align-self: center;
@@ -3283,7 +3105,6 @@ exports[`Individual components src/govuk/components/exit-this-page works when us
     margin-left: 10px;
   }
 }
-
 .govuk-exit-this-page {
   margin-bottom: 30px;
   position: sticky;
@@ -3306,11 +3127,9 @@ exports[`Individual components src/govuk/components/exit-this-page works when us
     float: right;
   }
 }
-
 .govuk-exit-this-page__button {
   margin-bottom: 0;
 }
-
 .govuk-exit-this-page__indicator {
   padding: 10px;
   display: none;
@@ -3320,11 +3139,9 @@ exports[`Individual components src/govuk/components/exit-this-page works when us
   line-height: 0;
   text-align: center;
 }
-
 .govuk-exit-this-page__indicator--visible {
   display: block;
 }
-
 .govuk-exit-this-page__indicator-light {
   box-sizing: border-box;
   display: inline-block;
@@ -3336,11 +3153,9 @@ exports[`Individual components src/govuk/components/exit-this-page works when us
   border-radius: 50%;
   border-color: currentcolor;
 }
-
 .govuk-exit-this-page__indicator-light--on {
   border-width: 0.375em;
 }
-
 @media only print {
   .govuk-exit-this-page {
     display: none;
@@ -3355,7 +3170,6 @@ exports[`Individual components src/govuk/components/exit-this-page works when us
   left: 0;
   background-color: #ffffff;
 }
-
 .govuk-exit-this-page-hide-content * {
   display: none !important;
 }
@@ -3370,11 +3184,9 @@ exports[`Individual components src/govuk/components/fieldset works when user @im
   --govuk-breakpoint-tablet: 40.0625rem;
   --govuk-breakpoint-desktop: 48.0625rem;
 }
-
 :root {
   --govuk-frontend-version: "development";
 }
-
 :root {
   --govuk-brand-colour: #1d70b8;
   --govuk-text-colour: #0b0c0c;
@@ -3402,7 +3214,6 @@ exports[`Individual components src/govuk/components/fieldset works when user @im
     --govuk-text-colour: var(--govuk-print-text-colour, #000000);
   }
 }
-
 .govuk-fieldset {
   min-width: 0;
   margin: 0;
@@ -3414,7 +3225,6 @@ exports[`Individual components src/govuk/components/fieldset works when user @im
   display: block;
   clear: both;
 }
-
 @supports not (caret-color: auto) {
   .govuk-fieldset,
   x:-moz-any-link {
@@ -3462,14 +3272,12 @@ exports[`Individual components src/govuk/components/fieldset works when user @im
     line-height: 1.15;
   }
 }
-
 .govuk-fieldset__legend--xl,
 .govuk-fieldset__legend--l,
 .govuk-fieldset__legend--m {
   font-weight: 700;
   margin-bottom: 15px;
 }
-
 .govuk-fieldset__legend--xl {
   font-size: 2rem;
   line-height: 1.09375;
@@ -3486,7 +3294,6 @@ exports[`Individual components src/govuk/components/fieldset works when user @im
     line-height: 1.15;
   }
 }
-
 .govuk-fieldset__legend--l {
   font-size: 1.6875rem;
   line-height: 1.1111111111;
@@ -3503,7 +3310,6 @@ exports[`Individual components src/govuk/components/fieldset works when user @im
     line-height: 1.05;
   }
 }
-
 .govuk-fieldset__legend--m {
   font-size: 1.3125rem;
   line-height: 1.1904761905;
@@ -3520,11 +3326,9 @@ exports[`Individual components src/govuk/components/fieldset works when user @im
     line-height: 1.15;
   }
 }
-
 .govuk-fieldset__legend--s {
   font-weight: 700;
 }
-
 .govuk-fieldset__heading {
   margin: 0;
   font-size: inherit;
@@ -3538,11 +3342,9 @@ exports[`Individual components src/govuk/components/file-upload works when user 
   --govuk-breakpoint-tablet: 40.0625rem;
   --govuk-breakpoint-desktop: 48.0625rem;
 }
-
 :root {
   --govuk-frontend-version: "development";
 }
-
 :root {
   --govuk-brand-colour: #1d70b8;
   --govuk-text-colour: #0b0c0c;
@@ -3570,7 +3372,6 @@ exports[`Individual components src/govuk/components/file-upload works when user 
     --govuk-text-colour: var(--govuk-print-text-colour, #000000);
   }
 }
-
 .govuk-error-message {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -3610,7 +3411,6 @@ exports[`Individual components src/govuk/components/file-upload works when user 
     line-height: 1.15;
   }
 }
-
 .govuk-hint {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -3632,19 +3432,15 @@ exports[`Individual components src/govuk/components/file-upload works when user 
     line-height: 1.15;
   }
 }
-
 .govuk-label:not(.govuk-label--m):not(.govuk-label--l):not(.govuk-label--xl) + .govuk-hint {
   margin-bottom: 10px;
 }
-
 .govuk-fieldset__legend:not(.govuk-fieldset__legend--m):not(.govuk-fieldset__legend--l):not(.govuk-fieldset__legend--xl) + .govuk-hint {
   margin-bottom: 10px;
 }
-
 .govuk-fieldset__legend + .govuk-hint {
   margin-top: -5px;
 }
-
 .govuk-label {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -3667,14 +3463,12 @@ exports[`Individual components src/govuk/components/file-upload works when user 
     line-height: 1.15;
   }
 }
-
 .govuk-label--xl,
 .govuk-label--l,
 .govuk-label--m {
   font-weight: 700;
   margin-bottom: 15px;
 }
-
 .govuk-label--xl {
   font-size: 2rem;
   line-height: 1.09375;
@@ -3691,7 +3485,6 @@ exports[`Individual components src/govuk/components/file-upload works when user 
     line-height: 1.15;
   }
 }
-
 .govuk-label--l {
   font-size: 1.6875rem;
   line-height: 1.1111111111;
@@ -3708,7 +3501,6 @@ exports[`Individual components src/govuk/components/file-upload works when user 
     line-height: 1.05;
   }
 }
-
 .govuk-label--m {
   font-size: 1.3125rem;
   line-height: 1.1904761905;
@@ -3725,15 +3517,12 @@ exports[`Individual components src/govuk/components/file-upload works when user 
     line-height: 1.15;
   }
 }
-
 .govuk-label--s {
   font-weight: 700;
 }
-
 .govuk-label-wrapper {
   margin: 0;
 }
-
 .govuk-file-upload {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -3776,31 +3565,26 @@ exports[`Individual components src/govuk/components/file-upload works when user 
   opacity: 0.5;
   cursor: not-allowed;
 }
-
 .govuk-drop-zone {
   display: block;
   position: relative;
   z-index: 0;
   background-color: var(--govuk-body-background-colour, #ffffff);
 }
-
 .govuk-drop-zone--disabled {
   cursor: not-allowed;
 }
-
 .govuk-file-upload-button__pseudo-button {
   flex-shrink: 0;
   width: auto;
   margin-right: 10px;
   margin-bottom: 3px;
 }
-
 .govuk-file-upload-button__instruction {
   margin-top: 7px;
   margin-bottom: 0;
   text-align: left;
 }
-
 .govuk-file-upload-button__status {
   display: block;
   margin-bottom: 10px;
@@ -3811,13 +3595,11 @@ exports[`Individual components src/govuk/components/file-upload works when user 
   word-wrap: break-word;
   overflow-wrap: break-word;
 }
-
 .govuk-file-upload-button__pseudo-button-container {
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
 }
-
 .govuk-file-upload-button {
   width: 100%;
   padding: 18px;
@@ -3860,7 +3642,6 @@ exports[`Individual components src/govuk/components/file-upload works when user 
   background-color: #cecece;
   box-shadow: inset 0 0 0 1px var(--govuk-focus-colour, #ffdd00);
 }
-
 .govuk-file-upload-button--empty {
   border-style: dashed;
   background-color: #ffffff;
@@ -3878,7 +3659,6 @@ exports[`Individual components src/govuk/components/file-upload works when user 
 .govuk-file-upload-button--empty:hover .govuk-file-upload-button__status, .govuk-file-upload-button--empty:focus .govuk-file-upload-button__status, .govuk-file-upload-button--empty:active .govuk-file-upload-button__status {
   background-color: #d2e2f1;
 }
-
 .govuk-file-upload-button--dragging {
   border-style: solid;
   border-color: #0b0c0c;
@@ -3886,7 +3666,6 @@ exports[`Individual components src/govuk/components/file-upload works when user 
 .govuk-file-upload-button--dragging.govuk-file-upload-button--empty {
   background-color: #f3f3f3;
 }
-
 .govuk-file-upload-button:disabled {
   pointer-events: none;
   opacity: 0.5;
@@ -3906,11 +3685,9 @@ exports[`Individual components src/govuk/components/footer works when user @impo
   --govuk-breakpoint-tablet: 40.0625rem;
   --govuk-breakpoint-desktop: 48.0625rem;
 }
-
 :root {
   --govuk-frontend-version: "development";
 }
-
 :root {
   --govuk-brand-colour: #1d70b8;
   --govuk-text-colour: #0b0c0c;
@@ -3938,7 +3715,6 @@ exports[`Individual components src/govuk/components/footer works when user @impo
     --govuk-text-colour: var(--govuk-print-text-colour, #000000);
   }
 }
-
 .govuk-footer {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -3989,11 +3765,9 @@ exports[`Individual components src/govuk/components/footer works when user @impo
     padding-bottom: 25px;
   }
 }
-
 .govuk-footer__crown {
   margin-bottom: 25px;
 }
-
 .govuk-footer__link {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -4039,7 +3813,6 @@ exports[`Individual components src/govuk/components/footer works when user @impo
 .govuk-footer__link:focus {
   color: var(--govuk-focus-text-colour, #0b0c0c);
 }
-
 .govuk-footer__section-break {
   margin: 0;
   margin-bottom: 30px;
@@ -4053,7 +3826,6 @@ exports[`Individual components src/govuk/components/footer works when user @impo
     margin-bottom: 50px;
   }
 }
-
 .govuk-footer__meta {
   display: flex;
   flex-wrap: wrap;
@@ -4062,13 +3834,11 @@ exports[`Individual components src/govuk/components/footer works when user @impo
   margin-right: -15px;
   margin-left: -15px;
 }
-
 .govuk-footer__meta-item {
   margin-right: 15px;
   margin-bottom: 25px;
   margin-left: 15px;
 }
-
 .govuk-footer__meta-item--grow {
   flex: 1;
 }
@@ -4077,7 +3847,6 @@ exports[`Individual components src/govuk/components/footer works when user @impo
     flex-basis: 320px;
   }
 }
-
 .govuk-footer__licence-logo {
   display: inline-block;
   margin-right: 10px;
@@ -4089,19 +3858,16 @@ exports[`Individual components src/govuk/components/footer works when user @impo
     margin-bottom: 15px;
   }
 }
-
 .govuk-footer__licence-description {
   display: inline-block;
   text-wrap: balance;
 }
-
 .govuk-footer__copyright-logo:link, .govuk-footer__copyright-logo:visited, .govuk-footer__copyright-logo:active {
   color: var(--govuk-text-colour, #0b0c0c);
 }
 .govuk-footer__copyright-logo:focus {
   color: var(--govuk-focus-text-colour, #0b0c0c);
 }
-
 .govuk-footer__copyright-logo::before {
   content: "";
   display: block;
@@ -4128,31 +3894,25 @@ exports[`Individual components src/govuk/components/footer works when user @impo
     }
   }
 }
-
 .govuk-footer__inline-list {
   margin-top: 0;
   margin-bottom: 15px;
   padding: 0;
 }
-
 .govuk-footer__inline-list:last-child {
   margin-bottom: 0;
 }
-
 .govuk-footer__meta-custom {
   margin-bottom: 20px;
 }
-
 .govuk-footer__meta-custom:last-child {
   margin-bottom: 0;
 }
-
 .govuk-footer__inline-list-item {
   display: inline-block;
   margin-right: 15px;
   margin-bottom: 5px;
 }
-
 .govuk-footer__heading {
   margin-bottom: 30px;
   padding-bottom: 20px;
@@ -4165,7 +3925,6 @@ exports[`Individual components src/govuk/components/footer works when user @impo
     padding-bottom: 10px;
   }
 }
-
 .govuk-footer__navigation {
   margin-right: -15px;
   margin-left: -15px;
@@ -4175,20 +3934,17 @@ exports[`Individual components src/govuk/components/footer works when user @impo
   display: block;
   clear: both;
 }
-
 .govuk-footer__section {
   display: inline-block;
   margin-bottom: 30px;
   vertical-align: top;
 }
-
 .govuk-footer__list {
   column-gap: 30px;
   margin: 0;
   padding: 0;
   list-style: none;
 }
-
 @media (min-width: 48.0625em) {
   .govuk-footer__list--columns-2 {
     column-count: 2;
@@ -4205,7 +3961,6 @@ exports[`Individual components src/govuk/components/footer works when user @impo
     margin-bottom: 20px;
   }
 }
-
 .govuk-footer__list-item:last-child {
   margin-bottom: 0;
 }"
@@ -4217,11 +3972,9 @@ exports[`Individual components src/govuk/components/header works when user @impo
   --govuk-breakpoint-tablet: 40.0625rem;
   --govuk-breakpoint-desktop: 48.0625rem;
 }
-
 :root {
   --govuk-frontend-version: "development";
 }
-
 :root {
   --govuk-brand-colour: #1d70b8;
   --govuk-text-colour: #0b0c0c;
@@ -4249,7 +4002,6 @@ exports[`Individual components src/govuk/components/header works when user @impo
     --govuk-text-colour: var(--govuk-print-text-colour, #000000);
   }
 }
-
 .govuk-header {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -4287,17 +4039,14 @@ exports[`Individual components src/govuk/components/header works when user @impo
     line-height: 1;
   }
 }
-
 .govuk-header__container--full-width {
   padding: 0 15px;
 }
-
 .govuk-header__logo {
   box-sizing: border-box;
   padding-top: 16px;
   padding-bottom: 12px;
 }
-
 .govuk-header__homepage-link {
   display: inline;
   margin-right: 10px;
@@ -4335,7 +4084,6 @@ exports[`Individual components src/govuk/components/header works when user @impo
     box-decoration-break: clone;
   }
 }
-
 .govuk-header__logotype {
   display: inline-block;
   position: relative;
@@ -4354,7 +4102,6 @@ exports[`Individual components src/govuk/components/header works when user @impo
 .govuk-header__logotype:last-child {
   margin-right: 0;
 }
-
 .govuk-logo-dot {
   fill: #00ffe0;
 }
@@ -4371,7 +4118,6 @@ exports[`Individual components src/govuk/components/header works when user @impo
 :focus .govuk-logo-dot {
   fill: currentcolor;
 }
-
 .govuk-header__product-name {
   display: inline-table;
   margin-bottom: -0.0625rem;
@@ -4386,7 +4132,6 @@ exports[`Individual components src/govuk/components/header works when user @impo
     background: transparent;
   }
 }
-
 @media print {
   .govuk-header {
     border-bottom-width: 0;
@@ -4413,11 +4158,9 @@ exports[`Individual components src/govuk/components/hint works when user @import
   --govuk-breakpoint-tablet: 40.0625rem;
   --govuk-breakpoint-desktop: 48.0625rem;
 }
-
 :root {
   --govuk-frontend-version: "development";
 }
-
 :root {
   --govuk-brand-colour: #1d70b8;
   --govuk-text-colour: #0b0c0c;
@@ -4445,7 +4188,6 @@ exports[`Individual components src/govuk/components/hint works when user @import
     --govuk-text-colour: var(--govuk-print-text-colour, #000000);
   }
 }
-
 .govuk-hint {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -4482,15 +4224,12 @@ exports[`Individual components src/govuk/components/hint works when user @import
     line-height: 1.15;
   }
 }
-
 .govuk-label:not(.govuk-label--m):not(.govuk-label--l):not(.govuk-label--xl) + .govuk-hint {
   margin-bottom: 10px;
 }
-
 .govuk-fieldset__legend:not(.govuk-fieldset__legend--m):not(.govuk-fieldset__legend--l):not(.govuk-fieldset__legend--xl) + .govuk-hint {
   margin-bottom: 10px;
 }
-
 .govuk-fieldset__legend + .govuk-hint {
   margin-top: -5px;
 }"
@@ -4502,11 +4241,9 @@ exports[`Individual components src/govuk/components/input works when user @impor
   --govuk-breakpoint-tablet: 40.0625rem;
   --govuk-breakpoint-desktop: 48.0625rem;
 }
-
 :root {
   --govuk-frontend-version: "development";
 }
-
 :root {
   --govuk-brand-colour: #1d70b8;
   --govuk-text-colour: #0b0c0c;
@@ -4534,7 +4271,6 @@ exports[`Individual components src/govuk/components/input works when user @impor
     --govuk-text-colour: var(--govuk-print-text-colour, #000000);
   }
 }
-
 .govuk-error-message {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -4574,7 +4310,6 @@ exports[`Individual components src/govuk/components/input works when user @impor
     line-height: 1.15;
   }
 }
-
 .govuk-hint {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -4596,19 +4331,15 @@ exports[`Individual components src/govuk/components/input works when user @impor
     line-height: 1.15;
   }
 }
-
 .govuk-label:not(.govuk-label--m):not(.govuk-label--l):not(.govuk-label--xl) + .govuk-hint {
   margin-bottom: 10px;
 }
-
 .govuk-fieldset__legend:not(.govuk-fieldset__legend--m):not(.govuk-fieldset__legend--l):not(.govuk-fieldset__legend--xl) + .govuk-hint {
   margin-bottom: 10px;
 }
-
 .govuk-fieldset__legend + .govuk-hint {
   margin-top: -5px;
 }
-
 .govuk-label {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -4631,14 +4362,12 @@ exports[`Individual components src/govuk/components/input works when user @impor
     line-height: 1.15;
   }
 }
-
 .govuk-label--xl,
 .govuk-label--l,
 .govuk-label--m {
   font-weight: 700;
   margin-bottom: 15px;
 }
-
 .govuk-label--xl {
   font-size: 2rem;
   line-height: 1.09375;
@@ -4655,7 +4384,6 @@ exports[`Individual components src/govuk/components/input works when user @impor
     line-height: 1.15;
   }
 }
-
 .govuk-label--l {
   font-size: 1.6875rem;
   line-height: 1.1111111111;
@@ -4672,7 +4400,6 @@ exports[`Individual components src/govuk/components/input works when user @impor
     line-height: 1.05;
   }
 }
-
 .govuk-label--m {
   font-size: 1.3125rem;
   line-height: 1.1904761905;
@@ -4689,15 +4416,12 @@ exports[`Individual components src/govuk/components/input works when user @impor
     line-height: 1.15;
   }
 }
-
 .govuk-label--s {
   font-weight: 700;
 }
-
 .govuk-label-wrapper {
   margin: 0;
 }
-
 .govuk-input {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -4738,57 +4462,45 @@ exports[`Individual components src/govuk/components/input works when user @impor
   background-color: transparent;
   cursor: not-allowed;
 }
-
 .govuk-input::-webkit-outer-spin-button,
 .govuk-input::-webkit-inner-spin-button {
   margin: 0;
   -webkit-appearance: none;
 }
-
 .govuk-input[type=number] {
   -moz-appearance: textfield;
 }
-
 .govuk-input--error {
   border-color: var(--govuk-error-colour, #ca3535);
 }
 .govuk-input--error:focus {
   border-color: var(--govuk-input-border-colour, #0b0c0c);
 }
-
 .govuk-input--extra-letter-spacing {
   font-variant-numeric: tabular-nums;
   letter-spacing: 0.05em;
 }
-
 .govuk-input--width-30 {
   max-width: 29.5em;
 }
-
 .govuk-input--width-20 {
   max-width: 20.5em;
 }
-
 .govuk-input--width-10 {
   max-width: 11.5em;
 }
-
 .govuk-input--width-5 {
   max-width: 5.5em;
 }
-
 .govuk-input--width-4 {
   max-width: 4.5em;
 }
-
 .govuk-input--width-3 {
   max-width: 3.75em;
 }
-
 .govuk-input--width-2 {
   max-width: 2.75em;
 }
-
 .govuk-input__wrapper {
   display: flex;
 }
@@ -4806,7 +4518,6 @@ exports[`Individual components src/govuk/components/input works when user @impor
     max-width: 100%;
   }
 }
-
 .govuk-input__prefix,
 .govuk-input__suffix {
   font-family: "GDS Transport", arial, sans-serif;
@@ -4851,7 +4562,6 @@ exports[`Individual components src/govuk/components/input works when user @impor
     white-space: normal;
   }
 }
-
 @media (max-width: 19.99em) {
   .govuk-input__prefix {
     border-bottom: 0;
@@ -4862,7 +4572,6 @@ exports[`Individual components src/govuk/components/input works when user @impor
     border-right: 0;
   }
 }
-
 @media (max-width: 19.99em) {
   .govuk-input__suffix {
     border-top: 0;
@@ -4881,11 +4590,9 @@ exports[`Individual components src/govuk/components/inset-text works when user @
   --govuk-breakpoint-tablet: 40.0625rem;
   --govuk-breakpoint-desktop: 48.0625rem;
 }
-
 :root {
   --govuk-frontend-version: "development";
 }
-
 :root {
   --govuk-brand-colour: #1d70b8;
   --govuk-text-colour: #0b0c0c;
@@ -4913,7 +4620,6 @@ exports[`Individual components src/govuk/components/inset-text works when user @
     --govuk-text-colour: var(--govuk-print-text-colour, #000000);
   }
 }
-
 .govuk-inset-text {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -4980,11 +4686,9 @@ exports[`Individual components src/govuk/components/label works when user @impor
   --govuk-breakpoint-tablet: 40.0625rem;
   --govuk-breakpoint-desktop: 48.0625rem;
 }
-
 :root {
   --govuk-frontend-version: "development";
 }
-
 :root {
   --govuk-brand-colour: #1d70b8;
   --govuk-text-colour: #0b0c0c;
@@ -5012,7 +4716,6 @@ exports[`Individual components src/govuk/components/label works when user @impor
     --govuk-text-colour: var(--govuk-print-text-colour, #000000);
   }
 }
-
 .govuk-label {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -5050,14 +4753,12 @@ exports[`Individual components src/govuk/components/label works when user @impor
     line-height: 1.15;
   }
 }
-
 .govuk-label--xl,
 .govuk-label--l,
 .govuk-label--m {
   font-weight: 700;
   margin-bottom: 15px;
 }
-
 .govuk-label--xl {
   font-size: 2rem;
   line-height: 1.09375;
@@ -5074,7 +4775,6 @@ exports[`Individual components src/govuk/components/label works when user @impor
     line-height: 1.15;
   }
 }
-
 .govuk-label--l {
   font-size: 1.6875rem;
   line-height: 1.1111111111;
@@ -5091,7 +4791,6 @@ exports[`Individual components src/govuk/components/label works when user @impor
     line-height: 1.05;
   }
 }
-
 .govuk-label--m {
   font-size: 1.3125rem;
   line-height: 1.1904761905;
@@ -5108,11 +4807,9 @@ exports[`Individual components src/govuk/components/label works when user @impor
     line-height: 1.15;
   }
 }
-
 .govuk-label--s {
   font-weight: 700;
 }
-
 .govuk-label-wrapper {
   margin: 0;
 }"
@@ -5124,11 +4821,9 @@ exports[`Individual components src/govuk/components/notification-banner works wh
   --govuk-breakpoint-tablet: 40.0625rem;
   --govuk-breakpoint-desktop: 48.0625rem;
 }
-
 :root {
   --govuk-frontend-version: "development";
 }
-
 :root {
   --govuk-brand-colour: #1d70b8;
   --govuk-text-colour: #0b0c0c;
@@ -5156,7 +4851,6 @@ exports[`Individual components src/govuk/components/notification-banner works wh
     --govuk-text-colour: var(--govuk-print-text-colour, #000000);
   }
 }
-
 .govuk-notification-banner {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -5204,7 +4898,6 @@ exports[`Individual components src/govuk/components/notification-banner works wh
   outline: 3px solid;
   outline-color: var(--govuk-focus-colour, #ffdd00);
 }
-
 .govuk-notification-banner__header {
   padding: 2px 15px 5px;
   border-bottom: 1px solid transparent;
@@ -5214,7 +4907,6 @@ exports[`Individual components src/govuk/components/notification-banner works wh
     padding: 2px 20px 5px;
   }
 }
-
 .govuk-notification-banner__title {
   font-size: 1.1875rem;
   line-height: 1.3157894737;
@@ -5229,7 +4921,6 @@ exports[`Individual components src/govuk/components/notification-banner works wh
     line-height: 1.15;
   }
 }
-
 .govuk-notification-banner__content {
   padding: 15px;
   color: var(--govuk-text-colour, #0b0c0c);
@@ -5247,7 +4938,6 @@ exports[`Individual components src/govuk/components/notification-banner works wh
 .govuk-notification-banner__content > :last-child {
   margin-bottom: 0;
 }
-
 .govuk-notification-banner__heading {
   font-size: 1.3125rem;
   line-height: 1.1904761905;
@@ -5267,7 +4957,6 @@ exports[`Individual components src/govuk/components/notification-banner works wh
     line-height: 1.15;
   }
 }
-
 .govuk-notification-banner__link {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -5313,7 +5002,6 @@ exports[`Individual components src/govuk/components/notification-banner works wh
 .govuk-notification-banner__link:focus {
   color: var(--govuk-focus-text-colour, #0b0c0c);
 }
-
 .govuk-notification-banner--success {
   border-color: var(--govuk-success-colour, #0f7a52);
   background-color: var(--govuk-success-colour, #0f7a52);
@@ -5338,11 +5026,9 @@ exports[`Individual components src/govuk/components/pagination works when user @
   --govuk-breakpoint-tablet: 40.0625rem;
   --govuk-breakpoint-desktop: 48.0625rem;
 }
-
 :root {
   --govuk-frontend-version: "development";
 }
-
 :root {
   --govuk-brand-colour: #1d70b8;
   --govuk-text-colour: #0b0c0c;
@@ -5370,7 +5056,6 @@ exports[`Individual components src/govuk/components/pagination works when user @
     --govuk-text-colour: var(--govuk-print-text-colour, #000000);
   }
 }
-
 .govuk-pagination {
   margin-bottom: 20px;
   display: flex;
@@ -5389,13 +5074,11 @@ exports[`Individual components src/govuk/components/pagination works when user @
     align-items: flex-start;
   }
 }
-
 .govuk-pagination__list {
   margin: 0;
   padding: 0;
   list-style: none;
 }
-
 .govuk-pagination__item,
 .govuk-pagination__next,
 .govuk-pagination__prev {
@@ -5447,7 +5130,6 @@ exports[`Individual components src/govuk/components/pagination works when user @
 .govuk-pagination__prev:hover {
   background-color: #f3f3f3;
 }
-
 .govuk-pagination__item {
   display: none;
   text-align: center;
@@ -5457,7 +5139,6 @@ exports[`Individual components src/govuk/components/pagination works when user @
     display: block;
   }
 }
-
 .govuk-pagination__prev,
 .govuk-pagination__next {
   font-weight: 700;
@@ -5467,22 +5148,18 @@ exports[`Individual components src/govuk/components/pagination works when user @
   display: flex;
   align-items: center;
 }
-
 .govuk-pagination__prev {
   padding-left: 0;
 }
-
 .govuk-pagination__next {
   padding-right: 0;
 }
-
 .govuk-pagination__item--current,
 .govuk-pagination__item--ellipsis,
 .govuk-pagination__item:first-child,
 .govuk-pagination__item:last-child {
   display: block;
 }
-
 .govuk-pagination__item--current {
   font-weight: 700;
   outline: 1px solid transparent;
@@ -5497,7 +5174,6 @@ exports[`Individual components src/govuk/components/pagination works when user @
 .govuk-pagination__item--current .govuk-pagination__link:focus {
   color: var(--govuk-focus-text-colour, #0b0c0c);
 }
-
 .govuk-pagination__item--ellipsis {
   font-weight: 700;
   color: var(--govuk-secondary-text-colour, #484949);
@@ -5505,7 +5181,6 @@ exports[`Individual components src/govuk/components/pagination works when user @
 .govuk-pagination__item--ellipsis:hover {
   background-color: transparent;
 }
-
 .govuk-pagination__link {
   display: block;
   min-width: 15px;
@@ -5541,11 +5216,9 @@ exports[`Individual components src/govuk/components/pagination works when user @
 .govuk-pagination__link:focus .govuk-pagination__link-title--decorated {
   text-decoration: none;
 }
-
 .govuk-pagination__link-title {
   text-decoration-thickness: inherit;
 }
-
 .govuk-pagination__link-label {
   font-weight: 400;
   text-decoration: underline;
@@ -5553,7 +5226,6 @@ exports[`Individual components src/govuk/components/pagination works when user @
   text-underline-offset: 0.1578em;
   display: inline-block;
 }
-
 .govuk-pagination__icon {
   width: 0.9375rem;
   height: 0.8125rem;
@@ -5561,15 +5233,12 @@ exports[`Individual components src/govuk/components/pagination works when user @
   fill: currentcolor;
   forced-color-adjust: auto;
 }
-
 .govuk-pagination__icon--prev {
   margin-right: 15px;
 }
-
 .govuk-pagination__icon--next {
   margin-left: 15px;
 }
-
 .govuk-pagination--block {
   display: block;
 }
@@ -5613,11 +5282,9 @@ exports[`Individual components src/govuk/components/panel works when user @impor
   --govuk-breakpoint-tablet: 40.0625rem;
   --govuk-breakpoint-desktop: 48.0625rem;
 }
-
 :root {
   --govuk-frontend-version: "development";
 }
-
 :root {
   --govuk-brand-colour: #1d70b8;
   --govuk-text-colour: #0b0c0c;
@@ -5645,7 +5312,6 @@ exports[`Individual components src/govuk/components/panel works when user @impor
     --govuk-text-colour: var(--govuk-print-text-colour, #000000);
   }
 }
-
 .govuk-panel {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -5698,7 +5364,6 @@ exports[`Individual components src/govuk/components/panel works when user @impor
     overflow-wrap: break-word;
   }
 }
-
 .govuk-panel--confirmation {
   color: #ffffff;
   background: #0f7a52;
@@ -5710,7 +5375,6 @@ exports[`Individual components src/govuk/components/panel works when user @impor
     background: none;
   }
 }
-
 .govuk-panel__title {
   font-size: 2rem;
   line-height: 1.09375;
@@ -5730,7 +5394,6 @@ exports[`Individual components src/govuk/components/panel works when user @impor
     line-height: 1.15;
   }
 }
-
 .govuk-panel__title:last-child {
   margin-bottom: 0;
 }"
@@ -5742,11 +5405,9 @@ exports[`Individual components src/govuk/components/password-input works when us
   --govuk-breakpoint-tablet: 40.0625rem;
   --govuk-breakpoint-desktop: 48.0625rem;
 }
-
 :root {
   --govuk-frontend-version: "development";
 }
-
 :root {
   --govuk-brand-colour: #1d70b8;
   --govuk-text-colour: #0b0c0c;
@@ -5774,7 +5435,6 @@ exports[`Individual components src/govuk/components/password-input works when us
     --govuk-text-colour: var(--govuk-print-text-colour, #000000);
   }
 }
-
 .govuk-button {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -5875,7 +5535,6 @@ exports[`Individual components src/govuk/components/password-input works when us
 .govuk-button:active::before {
   top: -4px;
 }
-
 .govuk-button[disabled] {
   opacity: 0.5;
 }
@@ -5887,7 +5546,6 @@ exports[`Individual components src/govuk/components/password-input works when us
   top: 0;
   box-shadow: 0 2px 0 #083d29;
 }
-
 .govuk-button--secondary {
   background-color: #f3f3f3;
   box-shadow: 0 2px 0 #858686;
@@ -5901,7 +5559,6 @@ exports[`Individual components src/govuk/components/password-input works when us
 .govuk-button--secondary:hover[disabled] {
   background-color: #f3f3f3;
 }
-
 .govuk-button--warning {
   background-color: #ca3535;
   box-shadow: 0 2px 0 #651b1b;
@@ -5915,7 +5572,6 @@ exports[`Individual components src/govuk/components/password-input works when us
 .govuk-button--warning:hover[disabled] {
   background-color: #ca3535;
 }
-
 .govuk-button--inverse {
   background-color: #ffffff;
   box-shadow: 0 2px 0 #0f385c;
@@ -5929,7 +5585,6 @@ exports[`Individual components src/govuk/components/password-input works when us
 .govuk-button--inverse:hover[disabled] {
   background-color: #ffffff;
 }
-
 .govuk-button--start {
   font-weight: 700;
   font-size: 1.3125rem;
@@ -5950,7 +5605,6 @@ exports[`Individual components src/govuk/components/password-input works when us
     line-height: 1;
   }
 }
-
 .govuk-button__start-icon {
   flex-shrink: 0;
   align-self: center;
@@ -5963,7 +5617,6 @@ exports[`Individual components src/govuk/components/password-input works when us
     margin-left: 10px;
   }
 }
-
 .govuk-error-message {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -5988,7 +5641,6 @@ exports[`Individual components src/govuk/components/password-input works when us
     line-height: 1.15;
   }
 }
-
 .govuk-hint {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -6010,19 +5662,15 @@ exports[`Individual components src/govuk/components/password-input works when us
     line-height: 1.15;
   }
 }
-
 .govuk-label:not(.govuk-label--m):not(.govuk-label--l):not(.govuk-label--xl) + .govuk-hint {
   margin-bottom: 10px;
 }
-
 .govuk-fieldset__legend:not(.govuk-fieldset__legend--m):not(.govuk-fieldset__legend--l):not(.govuk-fieldset__legend--xl) + .govuk-hint {
   margin-bottom: 10px;
 }
-
 .govuk-fieldset__legend + .govuk-hint {
   margin-top: -5px;
 }
-
 .govuk-label {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -6045,14 +5693,12 @@ exports[`Individual components src/govuk/components/password-input works when us
     line-height: 1.15;
   }
 }
-
 .govuk-label--xl,
 .govuk-label--l,
 .govuk-label--m {
   font-weight: 700;
   margin-bottom: 15px;
 }
-
 .govuk-label--xl {
   font-size: 2rem;
   line-height: 1.09375;
@@ -6069,7 +5715,6 @@ exports[`Individual components src/govuk/components/password-input works when us
     line-height: 1.15;
   }
 }
-
 .govuk-label--l {
   font-size: 1.6875rem;
   line-height: 1.1111111111;
@@ -6086,7 +5731,6 @@ exports[`Individual components src/govuk/components/password-input works when us
     line-height: 1.05;
   }
 }
-
 .govuk-label--m {
   font-size: 1.3125rem;
   line-height: 1.1904761905;
@@ -6103,15 +5747,12 @@ exports[`Individual components src/govuk/components/password-input works when us
     line-height: 1.15;
   }
 }
-
 .govuk-label--s {
   font-weight: 700;
 }
-
 .govuk-label-wrapper {
   margin: 0;
 }
-
 .govuk-input {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -6152,57 +5793,45 @@ exports[`Individual components src/govuk/components/password-input works when us
   background-color: transparent;
   cursor: not-allowed;
 }
-
 .govuk-input::-webkit-outer-spin-button,
 .govuk-input::-webkit-inner-spin-button {
   margin: 0;
   -webkit-appearance: none;
 }
-
 .govuk-input[type=number] {
   -moz-appearance: textfield;
 }
-
 .govuk-input--error {
   border-color: var(--govuk-error-colour, #ca3535);
 }
 .govuk-input--error:focus {
   border-color: var(--govuk-input-border-colour, #0b0c0c);
 }
-
 .govuk-input--extra-letter-spacing {
   font-variant-numeric: tabular-nums;
   letter-spacing: 0.05em;
 }
-
 .govuk-input--width-30 {
   max-width: 29.5em;
 }
-
 .govuk-input--width-20 {
   max-width: 20.5em;
 }
-
 .govuk-input--width-10 {
   max-width: 11.5em;
 }
-
 .govuk-input--width-5 {
   max-width: 5.5em;
 }
-
 .govuk-input--width-4 {
   max-width: 4.5em;
 }
-
 .govuk-input--width-3 {
   max-width: 3.75em;
 }
-
 .govuk-input--width-2 {
   max-width: 2.75em;
 }
-
 .govuk-input__wrapper {
   display: flex;
 }
@@ -6220,7 +5849,6 @@ exports[`Individual components src/govuk/components/password-input works when us
     max-width: 100%;
   }
 }
-
 .govuk-input__prefix,
 .govuk-input__suffix {
   font-family: "GDS Transport", arial, sans-serif;
@@ -6265,7 +5893,6 @@ exports[`Individual components src/govuk/components/password-input works when us
     white-space: normal;
   }
 }
-
 @media (max-width: 19.99em) {
   .govuk-input__prefix {
     border-bottom: 0;
@@ -6276,7 +5903,6 @@ exports[`Individual components src/govuk/components/password-input works when us
     border-right: 0;
   }
 }
-
 @media (max-width: 19.99em) {
   .govuk-input__suffix {
     border-top: 0;
@@ -6287,18 +5913,15 @@ exports[`Individual components src/govuk/components/password-input works when us
     border-left: 0;
   }
 }
-
 @media (min-width: 20em) {
   .govuk-password-input__wrapper {
     flex-direction: row;
     align-items: flex-start;
   }
 }
-
 .govuk-password-input__input::-ms-reveal {
   display: none;
 }
-
 .govuk-password-input__toggle {
   margin-top: 5px;
   margin-bottom: 0;
@@ -6323,11 +5946,9 @@ exports[`Individual components src/govuk/components/phase-banner works when user
   --govuk-breakpoint-tablet: 40.0625rem;
   --govuk-breakpoint-desktop: 48.0625rem;
 }
-
 :root {
   --govuk-frontend-version: "development";
 }
-
 :root {
   --govuk-brand-colour: #1d70b8;
   --govuk-text-colour: #0b0c0c;
@@ -6355,7 +5976,6 @@ exports[`Individual components src/govuk/components/phase-banner works when user
     --govuk-text-colour: var(--govuk-print-text-colour, #000000);
   }
 }
-
 .govuk-tag {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -6408,69 +6028,56 @@ exports[`Individual components src/govuk/components/phase-banner works when user
     font-weight: bold;
   }
 }
-
 .govuk-tag--green {
   color: #083d29;
   background-color: #cfe4dc;
 }
-
 .govuk-tag--purple {
   color: #2a1950;
   background-color: #ddd6ec;
 }
-
 .govuk-tag--red {
   color: #651b1b;
   background-color: #f4d7d7;
 }
-
 .govuk-tag--orange {
   color: #7a3c1c;
   background-color: #fde4d7;
 }
-
 .govuk-tag--teal {
   color: #0b4144;
   background-color: #d0e6e7;
 }
-
 .govuk-tag--magenta {
   color: #651b3e;
   background-color: #f4d7e5;
 }
-
 .govuk-tag--yellow {
   color: #7a3c1c;
   background-color: #ffee80;
 }
-
 .govuk-tag--grey {
   color: #0b0c0c;
   background-color: #cecece;
 }
-
 .govuk-tag--turquoise {
   color: #0b4144;
   background-color: #d0e6e7;
 }
-
 .govuk-tag--pink {
   color: #651b3e;
   background-color: #f4d7e5;
 }
-
 .govuk-phase-banner {
   padding-top: 10px;
   padding-bottom: 10px;
   border-bottom: 1px solid;
   border-bottom-color: var(--govuk-border-colour, #cecece);
 }
-
 .govuk-width-container .govuk-phase-banner.govuk-width-container {
   margin-right: 0;
   margin-left: 0;
 }
-
 .govuk-phase-banner__content {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -6493,7 +6100,6 @@ exports[`Individual components src/govuk/components/phase-banner works when user
     line-height: 1.2;
   }
 }
-
 .govuk-phase-banner__content__tag {
   font-size: 1rem;
   line-height: 1.25;
@@ -6510,7 +6116,6 @@ exports[`Individual components src/govuk/components/phase-banner works when user
     margin-right: 10px;
   }
 }
-
 .govuk-phase-banner__text {
   display: table-cell;
   vertical-align: middle;
@@ -6523,11 +6128,9 @@ exports[`Individual components src/govuk/components/radios works when user @impo
   --govuk-breakpoint-tablet: 40.0625rem;
   --govuk-breakpoint-desktop: 48.0625rem;
 }
-
 :root {
   --govuk-frontend-version: "development";
 }
-
 :root {
   --govuk-brand-colour: #1d70b8;
   --govuk-text-colour: #0b0c0c;
@@ -6555,7 +6158,6 @@ exports[`Individual components src/govuk/components/radios works when user @impo
     --govuk-text-colour: var(--govuk-print-text-colour, #000000);
   }
 }
-
 .govuk-error-message {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -6595,7 +6197,6 @@ exports[`Individual components src/govuk/components/radios works when user @impo
     line-height: 1.15;
   }
 }
-
 .govuk-fieldset {
   min-width: 0;
   margin: 0;
@@ -6607,7 +6208,6 @@ exports[`Individual components src/govuk/components/radios works when user @impo
   display: block;
   clear: both;
 }
-
 @supports not (caret-color: auto) {
   .govuk-fieldset,
   x:-moz-any-link {
@@ -6640,14 +6240,12 @@ exports[`Individual components src/govuk/components/radios works when user @impo
     line-height: 1.15;
   }
 }
-
 .govuk-fieldset__legend--xl,
 .govuk-fieldset__legend--l,
 .govuk-fieldset__legend--m {
   font-weight: 700;
   margin-bottom: 15px;
 }
-
 .govuk-fieldset__legend--xl {
   font-size: 2rem;
   line-height: 1.09375;
@@ -6664,7 +6262,6 @@ exports[`Individual components src/govuk/components/radios works when user @impo
     line-height: 1.15;
   }
 }
-
 .govuk-fieldset__legend--l {
   font-size: 1.6875rem;
   line-height: 1.1111111111;
@@ -6681,7 +6278,6 @@ exports[`Individual components src/govuk/components/radios works when user @impo
     line-height: 1.05;
   }
 }
-
 .govuk-fieldset__legend--m {
   font-size: 1.3125rem;
   line-height: 1.1904761905;
@@ -6698,17 +6294,14 @@ exports[`Individual components src/govuk/components/radios works when user @impo
     line-height: 1.15;
   }
 }
-
 .govuk-fieldset__legend--s {
   font-weight: 700;
 }
-
 .govuk-fieldset__heading {
   margin: 0;
   font-size: inherit;
   font-weight: inherit;
 }
-
 .govuk-hint {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -6730,19 +6323,15 @@ exports[`Individual components src/govuk/components/radios works when user @impo
     line-height: 1.15;
   }
 }
-
 .govuk-label:not(.govuk-label--m):not(.govuk-label--l):not(.govuk-label--xl) + .govuk-hint {
   margin-bottom: 10px;
 }
-
 .govuk-fieldset__legend:not(.govuk-fieldset__legend--m):not(.govuk-fieldset__legend--l):not(.govuk-fieldset__legend--xl) + .govuk-hint {
   margin-bottom: 10px;
 }
-
 .govuk-fieldset__legend + .govuk-hint {
   margin-top: -5px;
 }
-
 .govuk-label {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -6765,14 +6354,12 @@ exports[`Individual components src/govuk/components/radios works when user @impo
     line-height: 1.15;
   }
 }
-
 .govuk-label--xl,
 .govuk-label--l,
 .govuk-label--m {
   font-weight: 700;
   margin-bottom: 15px;
 }
-
 .govuk-label--xl {
   font-size: 2rem;
   line-height: 1.09375;
@@ -6789,7 +6376,6 @@ exports[`Individual components src/govuk/components/radios works when user @impo
     line-height: 1.15;
   }
 }
-
 .govuk-label--l {
   font-size: 1.6875rem;
   line-height: 1.1111111111;
@@ -6806,7 +6392,6 @@ exports[`Individual components src/govuk/components/radios works when user @impo
     line-height: 1.05;
   }
 }
-
 .govuk-label--m {
   font-size: 1.3125rem;
   line-height: 1.1904761905;
@@ -6823,27 +6408,22 @@ exports[`Individual components src/govuk/components/radios works when user @impo
     line-height: 1.15;
   }
 }
-
 .govuk-label--s {
   font-weight: 700;
 }
-
 .govuk-label-wrapper {
   margin: 0;
 }
-
 .govuk-radios__item {
   display: flex;
   position: relative;
   flex-wrap: wrap;
   margin-bottom: 10px;
 }
-
 .govuk-radios__item:last-child,
 .govuk-radios__item:last-of-type {
   margin-bottom: 0;
 }
-
 .govuk-radios__input {
   z-index: 1;
   width: 44px;
@@ -6852,7 +6432,6 @@ exports[`Individual components src/govuk/components/radios works when user @impo
   opacity: 0;
   cursor: pointer;
 }
-
 .govuk-radios__label {
   align-self: center;
   max-width: calc(100% - 74px);
@@ -6861,7 +6440,6 @@ exports[`Individual components src/govuk/components/radios works when user @impo
   cursor: pointer;
   touch-action: manipulation;
 }
-
 .govuk-radios__label::before {
   content: "";
   box-sizing: border-box;
@@ -6874,7 +6452,6 @@ exports[`Individual components src/govuk/components/radios works when user @impo
   border-radius: 50%;
   background: transparent;
 }
-
 .govuk-radios__label::after {
   content: "";
   position: absolute;
@@ -6887,7 +6464,6 @@ exports[`Individual components src/govuk/components/radios works when user @impo
   opacity: 0;
   background: currentcolor;
 }
-
 .govuk-radios__hint {
   display: block;
   width: 100%;
@@ -6895,11 +6471,9 @@ exports[`Individual components src/govuk/components/radios works when user @impo
   padding-right: 15px;
   padding-left: 59px;
 }
-
 .govuk-label:not(.govuk-label--m):not(.govuk-label--l):not(.govuk-label--xl) + .govuk-radios__hint {
   margin-bottom: 0;
 }
-
 .govuk-radios__input:focus + .govuk-radios__label::before {
   border-width: 4px;
   outline: 3px solid transparent;
@@ -6911,21 +6485,17 @@ exports[`Individual components src/govuk/components/radios works when user @impo
     outline-color: Highlight;
   }
 }
-
 .govuk-radios__input:checked + .govuk-radios__label::after {
   opacity: 1;
 }
-
 .govuk-radios__input:disabled,
 .govuk-radios__input:disabled + .govuk-radios__label {
   cursor: not-allowed;
 }
-
 .govuk-radios__input:disabled + .govuk-radios__label,
 .govuk-radios__input:disabled ~ .govuk-hint {
   opacity: 0.5;
 }
-
 @media (min-width: 40.0625em) {
   .govuk-radios--inline {
     display: flex;
@@ -6936,7 +6506,6 @@ exports[`Individual components src/govuk/components/radios works when user @impo
     margin-right: 20px;
   }
 }
-
 .govuk-radios__divider {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -6960,7 +6529,6 @@ exports[`Individual components src/govuk/components/radios works when user @impo
     line-height: 1.15;
   }
 }
-
 .govuk-radios__conditional {
   margin-bottom: 15px;
   margin-left: 20px;
@@ -6979,7 +6547,6 @@ exports[`Individual components src/govuk/components/radios works when user @impo
 .govuk-radios__conditional > :last-child {
   margin-bottom: 0;
 }
-
 .govuk-radios--small .govuk-radios__item {
   margin-bottom: 0;
 }
@@ -7040,11 +6607,9 @@ exports[`Individual components src/govuk/components/select works when user @impo
   --govuk-breakpoint-tablet: 40.0625rem;
   --govuk-breakpoint-desktop: 48.0625rem;
 }
-
 :root {
   --govuk-frontend-version: "development";
 }
-
 :root {
   --govuk-brand-colour: #1d70b8;
   --govuk-text-colour: #0b0c0c;
@@ -7072,7 +6637,6 @@ exports[`Individual components src/govuk/components/select works when user @impo
     --govuk-text-colour: var(--govuk-print-text-colour, #000000);
   }
 }
-
 .govuk-error-message {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -7112,7 +6676,6 @@ exports[`Individual components src/govuk/components/select works when user @impo
     line-height: 1.15;
   }
 }
-
 .govuk-hint {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -7134,19 +6697,15 @@ exports[`Individual components src/govuk/components/select works when user @impo
     line-height: 1.15;
   }
 }
-
 .govuk-label:not(.govuk-label--m):not(.govuk-label--l):not(.govuk-label--xl) + .govuk-hint {
   margin-bottom: 10px;
 }
-
 .govuk-fieldset__legend:not(.govuk-fieldset__legend--m):not(.govuk-fieldset__legend--l):not(.govuk-fieldset__legend--xl) + .govuk-hint {
   margin-bottom: 10px;
 }
-
 .govuk-fieldset__legend + .govuk-hint {
   margin-top: -5px;
 }
-
 .govuk-label {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -7169,14 +6728,12 @@ exports[`Individual components src/govuk/components/select works when user @impo
     line-height: 1.15;
   }
 }
-
 .govuk-label--xl,
 .govuk-label--l,
 .govuk-label--m {
   font-weight: 700;
   margin-bottom: 15px;
 }
-
 .govuk-label--xl {
   font-size: 2rem;
   line-height: 1.09375;
@@ -7193,7 +6750,6 @@ exports[`Individual components src/govuk/components/select works when user @impo
     line-height: 1.15;
   }
 }
-
 .govuk-label--l {
   font-size: 1.6875rem;
   line-height: 1.1111111111;
@@ -7210,7 +6766,6 @@ exports[`Individual components src/govuk/components/select works when user @impo
     line-height: 1.05;
   }
 }
-
 .govuk-label--m {
   font-size: 1.3125rem;
   line-height: 1.1904761905;
@@ -7227,15 +6782,12 @@ exports[`Individual components src/govuk/components/select works when user @impo
     line-height: 1.15;
   }
 }
-
 .govuk-label--s {
   font-weight: 700;
 }
-
 .govuk-label-wrapper {
   margin: 0;
 }
-
 .govuk-select {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -7275,14 +6827,12 @@ exports[`Individual components src/govuk/components/select works when user @impo
   color: inherit;
   cursor: not-allowed;
 }
-
 .govuk-select option:active,
 .govuk-select option:checked,
 .govuk-select:focus::-ms-value {
   color: #ffffff;
   background-color: #1d70b8;
 }
-
 .govuk-select--error {
   border-color: var(--govuk-error-colour, #ca3535);
 }
@@ -7297,11 +6847,9 @@ exports[`Individual components src/govuk/components/service-navigation works whe
   --govuk-breakpoint-tablet: 40.0625rem;
   --govuk-breakpoint-desktop: 48.0625rem;
 }
-
 :root {
   --govuk-frontend-version: "development";
 }
-
 :root {
   --govuk-brand-colour: #1d70b8;
   --govuk-text-colour: #0b0c0c;
@@ -7329,7 +6877,6 @@ exports[`Individual components src/govuk/components/service-navigation works whe
     --govuk-text-colour: var(--govuk-print-text-colour, #000000);
   }
 }
-
 .govuk-service-navigation {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -7369,7 +6916,6 @@ exports[`Individual components src/govuk/components/service-navigation works whe
     line-height: 1.15;
   }
 }
-
 .govuk-service-navigation__container {
   display: flex;
   flex-direction: column;
@@ -7381,7 +6927,6 @@ exports[`Individual components src/govuk/components/service-navigation works whe
     flex-wrap: wrap;
   }
 }
-
 .govuk-service-navigation__item,
 .govuk-service-navigation__service-name {
   position: relative;
@@ -7410,12 +6955,10 @@ exports[`Individual components src/govuk/components/service-navigation works whe
     margin-right: 30px;
   }
 }
-
 .govuk-service-navigation__service-name + .govuk-service-navigation__wrapper .govuk-service-navigation__list:first-child .govuk-service-navigation__item:first-child,
 .govuk-service-navigation__service-name + .govuk-service-navigation__wrapper .govuk-service-navigation__toggle[hidden] + .govuk-service-navigation__list .govuk-service-navigation__item:first-child {
   margin-top: 0;
 }
-
 @media (max-width: 40.0525em) {
   .govuk-service-navigation__item--active {
     margin-left: -15px;
@@ -7429,7 +6972,6 @@ exports[`Individual components src/govuk/components/service-navigation works whe
     border-bottom-width: 5px;
   }
 }
-
 .govuk-service-navigation__link {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -7478,22 +7020,18 @@ exports[`Individual components src/govuk/components/service-navigation works whe
 .govuk-service-navigation__link:focus {
   color: var(--govuk-focus-text-colour, #0b0c0c);
 }
-
 .govuk-service-navigation__service-name {
   font-weight: 700;
 }
-
 .govuk-service-navigation__service-name .govuk-service-navigation__link:link, .govuk-service-navigation__service-name .govuk-service-navigation__link:visited, .govuk-service-navigation__service-name .govuk-service-navigation__link:active {
   color: var(--govuk-text-colour, #0b0c0c);
 }
 .govuk-service-navigation__service-name .govuk-service-navigation__link:focus {
   color: var(--govuk-focus-text-colour, #0b0c0c);
 }
-
 .govuk-service-navigation__wrapper {
   flex-grow: 1;
 }
-
 .govuk-service-navigation__toggle {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -7562,7 +7100,6 @@ exports[`Individual components src/govuk/components/service-navigation works whe
 .govuk-service-navigation__service-name + .govuk-service-navigation__wrapper .govuk-service-navigation__toggle {
   margin-top: 0;
 }
-
 .govuk-service-navigation__list {
   margin: 0;
   margin-bottom: 15px;
@@ -7581,11 +7118,9 @@ exports[`Individual components src/govuk/components/service-navigation works whe
     display: block;
   }
 }
-
 .govuk-service-navigation__active-fallback {
   font-weight: inherit;
 }
-
 .govuk-service-navigation--inverse {
   border-bottom: none;
   color: #ffffff;
@@ -7620,11 +7155,9 @@ exports[`Individual components src/govuk/components/skip-link works when user @i
   --govuk-breakpoint-tablet: 40.0625rem;
   --govuk-breakpoint-desktop: 48.0625rem;
 }
-
 :root {
   --govuk-frontend-version: "development";
 }
-
 :root {
   --govuk-brand-colour: #1d70b8;
   --govuk-text-colour: #0b0c0c;
@@ -7652,7 +7185,6 @@ exports[`Individual components src/govuk/components/skip-link works when user @i
     --govuk-text-colour: var(--govuk-print-text-colour, #000000);
   }
 }
-
 .govuk-skip-link {
   text-decoration: underline;
   text-decoration-thickness: max(1px, .0625rem);
@@ -7728,7 +7260,6 @@ exports[`Individual components src/govuk/components/skip-link works when user @i
     outline-offset: -3px;
   }
 }
-
 .govuk-skip-link-focused-element:focus {
   outline: none;
 }"
@@ -7740,11 +7271,9 @@ exports[`Individual components src/govuk/components/summary-list works when user
   --govuk-breakpoint-tablet: 40.0625rem;
   --govuk-breakpoint-desktop: 48.0625rem;
 }
-
 :root {
   --govuk-frontend-version: "development";
 }
-
 :root {
   --govuk-brand-colour: #1d70b8;
   --govuk-text-colour: #0b0c0c;
@@ -7772,7 +7301,6 @@ exports[`Individual components src/govuk/components/summary-list works when user
     --govuk-text-colour: var(--govuk-print-text-colour, #000000);
   }
 }
-
 .govuk-summary-list {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -7823,7 +7351,6 @@ exports[`Individual components src/govuk/components/summary-list works when user
     margin-bottom: 30px;
   }
 }
-
 .govuk-summary-list__row {
   border-bottom: 1px solid;
   border-bottom-color: var(--govuk-border-colour, #cecece);
@@ -7838,11 +7365,9 @@ exports[`Individual components src/govuk/components/summary-list works when user
     display: table-row;
   }
 }
-
 .govuk-summary-list__row:not(.govuk-summary-list__row--no-actions) > :last-child {
   padding-right: 0;
 }
-
 @media (min-width: 40.0625em) {
   .govuk-summary-list__row--no-actions::after {
     content: "";
@@ -7850,7 +7375,6 @@ exports[`Individual components src/govuk/components/summary-list works when user
     width: 20%;
   }
 }
-
 .govuk-summary-list__key,
 .govuk-summary-list__value,
 .govuk-summary-list__actions {
@@ -7867,7 +7391,6 @@ exports[`Individual components src/govuk/components/summary-list works when user
     vertical-align: top;
   }
 }
-
 .govuk-summary-list__actions {
   margin-bottom: 15px;
 }
@@ -7877,13 +7400,11 @@ exports[`Individual components src/govuk/components/summary-list works when user
     text-align: right;
   }
 }
-
 .govuk-summary-list__key,
 .govuk-summary-list__value {
   word-wrap: break-word;
   overflow-wrap: break-word;
 }
-
 .govuk-summary-list__key {
   margin-bottom: 5px;
   font-weight: 700;
@@ -7893,32 +7414,26 @@ exports[`Individual components src/govuk/components/summary-list works when user
     width: 30%;
   }
 }
-
 @media (max-width: 40.0525em) {
   .govuk-summary-list__value {
     margin-bottom: 15px;
   }
 }
-
 .govuk-summary-list__value > p {
   margin-bottom: 10px;
 }
-
 .govuk-summary-list__value > :last-child {
   margin-bottom: 0;
 }
-
 .govuk-summary-list__actions-list {
   width: 100%;
   margin: 0;
   padding: 0;
 }
-
 .govuk-summary-list__actions-list-item,
 .govuk-summary-card__action {
   display: inline-block;
 }
-
 @media (max-width: 40.0525em) {
   .govuk-summary-list__actions-list-item,
   .govuk-summary-card__action {
@@ -7955,7 +7470,6 @@ exports[`Individual components src/govuk/components/summary-list works when user
 .govuk-summary-list__actions-list-item .govuk-link:focus {
   isolation: isolate;
 }
-
 .govuk-summary-list--no-border .govuk-summary-list__row {
   border: 0;
 }
@@ -7966,7 +7480,6 @@ exports[`Individual components src/govuk/components/summary-list works when user
     padding-bottom: 11px;
   }
 }
-
 .govuk-summary-list__row--no-border {
   border: 0;
 }
@@ -7977,7 +7490,6 @@ exports[`Individual components src/govuk/components/summary-list works when user
     padding-bottom: 11px;
   }
 }
-
 .govuk-summary-card {
   margin-bottom: 20px;
   border: 1px solid;
@@ -7988,7 +7500,6 @@ exports[`Individual components src/govuk/components/summary-list works when user
     margin-bottom: 30px;
   }
 }
-
 .govuk-summary-card__title-wrapper {
   padding: 15px;
   border-bottom: 1px solid transparent;
@@ -8002,7 +7513,6 @@ exports[`Individual components src/govuk/components/summary-list works when user
     padding: 15px 20px;
   }
 }
-
 .govuk-summary-card__title {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -8029,7 +7539,6 @@ exports[`Individual components src/govuk/components/summary-list works when user
     margin-bottom: 5px;
   }
 }
-
 .govuk-summary-card__actions {
   font-size: 1.1875rem;
   line-height: 1.3157894737;
@@ -8053,7 +7562,6 @@ exports[`Individual components src/govuk/components/summary-list works when user
     text-align: right;
   }
 }
-
 .govuk-summary-card__action {
   display: inline;
 }
@@ -8062,13 +7570,11 @@ exports[`Individual components src/govuk/components/summary-list works when user
     margin-bottom: 5px;
   }
 }
-
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
   .govuk-summary-card__action:last-child {
     margin-bottom: 0;
   }
 }
-
 .govuk-summary-card__content {
   padding: 15px 15px 0;
 }
@@ -8092,11 +7598,9 @@ exports[`Individual components src/govuk/components/table works when user @impor
   --govuk-breakpoint-tablet: 40.0625rem;
   --govuk-breakpoint-desktop: 48.0625rem;
 }
-
 :root {
   --govuk-frontend-version: "development";
 }
-
 :root {
   --govuk-brand-colour: #1d70b8;
   --govuk-text-colour: #0b0c0c;
@@ -8124,7 +7628,6 @@ exports[`Individual components src/govuk/components/table works when user @impor
     --govuk-text-colour: var(--govuk-print-text-colour, #000000);
   }
 }
-
 .govuk-table {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -8169,7 +7672,6 @@ exports[`Individual components src/govuk/components/table works when user @impor
     margin-bottom: 30px;
   }
 }
-
 @media (max-width: 40.0525em) {
   .govuk-table--small-text-until-tablet {
     font-size: 1rem;
@@ -8182,11 +7684,9 @@ exports[`Individual components src/govuk/components/table works when user @impor
     line-height: 1.2;
   }
 }
-
 .govuk-table__header {
   font-weight: 700;
 }
-
 .govuk-table__header,
 .govuk-table__cell {
   padding: 10px 20px 10px 0;
@@ -8195,33 +7695,27 @@ exports[`Individual components src/govuk/components/table works when user @impor
   text-align: left;
   vertical-align: top;
 }
-
 .govuk-table__cell--numeric {
   font-variant-numeric: tabular-nums;
 }
-
 .govuk-table__header--numeric,
 .govuk-table__cell--numeric {
   text-align: right;
 }
-
 .govuk-table__header:last-child,
 .govuk-table__cell:last-child {
   padding-right: 0;
 }
-
 .govuk-table__caption {
   font-weight: 700;
   display: table-caption;
   text-align: left;
 }
-
 .govuk-table__caption--xl,
 .govuk-table__caption--l,
 .govuk-table__caption--m {
   margin-bottom: 15px;
 }
-
 .govuk-table__caption--xl {
   font-size: 2rem;
   line-height: 1.09375;
@@ -8238,7 +7732,6 @@ exports[`Individual components src/govuk/components/table works when user @impor
     line-height: 1.15;
   }
 }
-
 .govuk-table__caption--l {
   font-size: 1.6875rem;
   line-height: 1.1111111111;
@@ -8255,7 +7748,6 @@ exports[`Individual components src/govuk/components/table works when user @impor
     line-height: 1.05;
   }
 }
-
 .govuk-table__caption--m {
   font-size: 1.3125rem;
   line-height: 1.1904761905;
@@ -8281,11 +7773,9 @@ exports[`Individual components src/govuk/components/tabs works when user @import
   --govuk-breakpoint-tablet: 40.0625rem;
   --govuk-breakpoint-desktop: 48.0625rem;
 }
-
 :root {
   --govuk-frontend-version: "development";
 }
-
 :root {
   --govuk-brand-colour: #1d70b8;
   --govuk-text-colour: #0b0c0c;
@@ -8313,7 +7803,6 @@ exports[`Individual components src/govuk/components/tabs works when user @import
     --govuk-text-colour: var(--govuk-print-text-colour, #000000);
   }
 }
-
 .govuk-tabs {
   margin-top: 5px;
   margin-bottom: 20px;
@@ -8355,7 +7844,6 @@ exports[`Individual components src/govuk/components/tabs works when user @import
     line-height: 1.15;
   }
 }
-
 .govuk-tabs__title {
   font-size: 1.1875rem;
   line-height: 1.3157894737;
@@ -8369,7 +7857,6 @@ exports[`Individual components src/govuk/components/tabs works when user @import
     line-height: 1.15;
   }
 }
-
 .govuk-tabs__list {
   margin: 0;
   padding: 0;
@@ -8381,7 +7868,6 @@ exports[`Individual components src/govuk/components/tabs works when user @import
     margin-bottom: 30px;
   }
 }
-
 .govuk-tabs__list-item {
   margin-left: 25px;
 }
@@ -8391,7 +7877,6 @@ exports[`Individual components src/govuk/components/tabs works when user @import
   padding-right: 5px;
   color: var(--govuk-text-colour, #0b0c0c);
 }
-
 .govuk-tabs__tab {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -8439,7 +7924,6 @@ exports[`Individual components src/govuk/components/tabs works when user @import
 .govuk-tabs__tab:focus {
   color: var(--govuk-focus-text-colour, #0b0c0c);
 }
-
 .govuk-tabs__panel {
   margin-bottom: 30px;
 }
@@ -8448,7 +7932,6 @@ exports[`Individual components src/govuk/components/tabs works when user @import
     margin-bottom: 50px;
   }
 }
-
 @media (min-width: 40.0625em) {
   .govuk-frontend-supported .govuk-tabs__list {
     margin-bottom: 0;
@@ -8531,11 +8014,9 @@ exports[`Individual components src/govuk/components/tag works when user @imports
   --govuk-breakpoint-tablet: 40.0625rem;
   --govuk-breakpoint-desktop: 48.0625rem;
 }
-
 :root {
   --govuk-frontend-version: "development";
 }
-
 :root {
   --govuk-brand-colour: #1d70b8;
   --govuk-text-colour: #0b0c0c;
@@ -8563,7 +8044,6 @@ exports[`Individual components src/govuk/components/tag works when user @imports
     --govuk-text-colour: var(--govuk-print-text-colour, #000000);
   }
 }
-
 .govuk-tag {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -8616,52 +8096,42 @@ exports[`Individual components src/govuk/components/tag works when user @imports
     font-weight: bold;
   }
 }
-
 .govuk-tag--green {
   color: #083d29;
   background-color: #cfe4dc;
 }
-
 .govuk-tag--purple {
   color: #2a1950;
   background-color: #ddd6ec;
 }
-
 .govuk-tag--red {
   color: #651b1b;
   background-color: #f4d7d7;
 }
-
 .govuk-tag--orange {
   color: #7a3c1c;
   background-color: #fde4d7;
 }
-
 .govuk-tag--teal {
   color: #0b4144;
   background-color: #d0e6e7;
 }
-
 .govuk-tag--magenta {
   color: #651b3e;
   background-color: #f4d7e5;
 }
-
 .govuk-tag--yellow {
   color: #7a3c1c;
   background-color: #ffee80;
 }
-
 .govuk-tag--grey {
   color: #0b0c0c;
   background-color: #cecece;
 }
-
 .govuk-tag--turquoise {
   color: #0b4144;
   background-color: #d0e6e7;
 }
-
 .govuk-tag--pink {
   color: #651b3e;
   background-color: #f4d7e5;
@@ -8674,11 +8144,9 @@ exports[`Individual components src/govuk/components/task-list works when user @i
   --govuk-breakpoint-tablet: 40.0625rem;
   --govuk-breakpoint-desktop: 48.0625rem;
 }
-
 :root {
   --govuk-frontend-version: "development";
 }
-
 :root {
   --govuk-brand-colour: #1d70b8;
   --govuk-text-colour: #0b0c0c;
@@ -8706,7 +8174,6 @@ exports[`Individual components src/govuk/components/task-list works when user @i
     --govuk-text-colour: var(--govuk-print-text-colour, #000000);
   }
 }
-
 .govuk-tag {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -8759,57 +8226,46 @@ exports[`Individual components src/govuk/components/task-list works when user @i
     font-weight: bold;
   }
 }
-
 .govuk-tag--green {
   color: #083d29;
   background-color: #cfe4dc;
 }
-
 .govuk-tag--purple {
   color: #2a1950;
   background-color: #ddd6ec;
 }
-
 .govuk-tag--red {
   color: #651b1b;
   background-color: #f4d7d7;
 }
-
 .govuk-tag--orange {
   color: #7a3c1c;
   background-color: #fde4d7;
 }
-
 .govuk-tag--teal {
   color: #0b4144;
   background-color: #d0e6e7;
 }
-
 .govuk-tag--magenta {
   color: #651b3e;
   background-color: #f4d7e5;
 }
-
 .govuk-tag--yellow {
   color: #7a3c1c;
   background-color: #ffee80;
 }
-
 .govuk-tag--grey {
   color: #0b0c0c;
   background-color: #cecece;
 }
-
 .govuk-tag--turquoise {
   color: #0b4144;
   background-color: #d0e6e7;
 }
-
 .govuk-tag--pink {
   color: #651b3e;
   background-color: #f4d7e5;
 }
-
 .govuk-task-list {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -8838,7 +8294,6 @@ exports[`Individual components src/govuk/components/task-list works when user @i
     margin-bottom: 30px;
   }
 }
-
 .govuk-task-list__item {
   display: table;
   position: relative;
@@ -8849,22 +8304,18 @@ exports[`Individual components src/govuk/components/task-list works when user @i
   border-bottom: 1px solid;
   border-bottom-color: var(--govuk-border-colour, #cecece);
 }
-
 .govuk-task-list__item:first-child {
   border-top: 1px solid;
   border-top-color: var(--govuk-border-colour, #cecece);
 }
-
 .govuk-task-list__item--with-link:hover {
   background: #f3f3f3;
 }
-
 .govuk-task-list__name-and-hint {
   display: table-cell;
   color: var(--govuk-text-colour, #0b0c0c);
   vertical-align: top;
 }
-
 .govuk-task-list__status {
   display: table-cell;
   padding-left: 10px;
@@ -8872,11 +8323,9 @@ exports[`Individual components src/govuk/components/task-list works when user @i
   text-align: right;
   vertical-align: top;
 }
-
 .govuk-task-list__status--cannot-start-yet {
   color: var(--govuk-secondary-text-colour, #484949);
 }
-
 .govuk-task-list__link::after {
   content: "";
   display: block;
@@ -8886,7 +8335,6 @@ exports[`Individual components src/govuk/components/task-list works when user @i
   bottom: 0;
   left: 0;
 }
-
 .govuk-task-list__hint {
   margin-top: 5px;
   color: var(--govuk-secondary-text-colour, #484949);
@@ -8899,11 +8347,9 @@ exports[`Individual components src/govuk/components/textarea works when user @im
   --govuk-breakpoint-tablet: 40.0625rem;
   --govuk-breakpoint-desktop: 48.0625rem;
 }
-
 :root {
   --govuk-frontend-version: "development";
 }
-
 :root {
   --govuk-brand-colour: #1d70b8;
   --govuk-text-colour: #0b0c0c;
@@ -8931,7 +8377,6 @@ exports[`Individual components src/govuk/components/textarea works when user @im
     --govuk-text-colour: var(--govuk-print-text-colour, #000000);
   }
 }
-
 .govuk-error-message {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -8971,7 +8416,6 @@ exports[`Individual components src/govuk/components/textarea works when user @im
     line-height: 1.15;
   }
 }
-
 .govuk-hint {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -8993,19 +8437,15 @@ exports[`Individual components src/govuk/components/textarea works when user @im
     line-height: 1.15;
   }
 }
-
 .govuk-label:not(.govuk-label--m):not(.govuk-label--l):not(.govuk-label--xl) + .govuk-hint {
   margin-bottom: 10px;
 }
-
 .govuk-fieldset__legend:not(.govuk-fieldset__legend--m):not(.govuk-fieldset__legend--l):not(.govuk-fieldset__legend--xl) + .govuk-hint {
   margin-bottom: 10px;
 }
-
 .govuk-fieldset__legend + .govuk-hint {
   margin-top: -5px;
 }
-
 .govuk-label {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -9028,14 +8468,12 @@ exports[`Individual components src/govuk/components/textarea works when user @im
     line-height: 1.15;
   }
 }
-
 .govuk-label--xl,
 .govuk-label--l,
 .govuk-label--m {
   font-weight: 700;
   margin-bottom: 15px;
 }
-
 .govuk-label--xl {
   font-size: 2rem;
   line-height: 1.09375;
@@ -9052,7 +8490,6 @@ exports[`Individual components src/govuk/components/textarea works when user @im
     line-height: 1.15;
   }
 }
-
 .govuk-label--l {
   font-size: 1.6875rem;
   line-height: 1.1111111111;
@@ -9069,7 +8506,6 @@ exports[`Individual components src/govuk/components/textarea works when user @im
     line-height: 1.05;
   }
 }
-
 .govuk-label--m {
   font-size: 1.3125rem;
   line-height: 1.1904761905;
@@ -9086,15 +8522,12 @@ exports[`Individual components src/govuk/components/textarea works when user @im
     line-height: 1.15;
   }
 }
-
 .govuk-label--s {
   font-weight: 700;
 }
-
 .govuk-label-wrapper {
   margin: 0;
 }
-
 .govuk-textarea {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -9142,7 +8575,6 @@ exports[`Individual components src/govuk/components/textarea works when user @im
   background-color: transparent;
   cursor: not-allowed;
 }
-
 .govuk-textarea--error {
   border-color: var(--govuk-error-colour, #ca3535);
 }
@@ -9157,11 +8589,9 @@ exports[`Individual components src/govuk/components/warning-text works when user
   --govuk-breakpoint-tablet: 40.0625rem;
   --govuk-breakpoint-desktop: 48.0625rem;
 }
-
 :root {
   --govuk-frontend-version: "development";
 }
-
 :root {
   --govuk-brand-colour: #1d70b8;
   --govuk-text-colour: #0b0c0c;
@@ -9189,7 +8619,6 @@ exports[`Individual components src/govuk/components/warning-text works when user
     --govuk-text-colour: var(--govuk-print-text-colour, #000000);
   }
 }
-
 .govuk-warning-text {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -9233,7 +8662,6 @@ exports[`Individual components src/govuk/components/warning-text works when user
     margin-bottom: 30px;
   }
 }
-
 .govuk-warning-text__icon {
   box-sizing: border-box;
   display: inline-block;
@@ -9265,7 +8693,6 @@ exports[`Individual components src/govuk/components/warning-text works when user
     background: transparent;
   }
 }
-
 .govuk-warning-text__text {
   display: block;
   padding-left: 45px;
