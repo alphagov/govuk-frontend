@@ -3,8 +3,10 @@ const { compileSassString } = require('@govuk-frontend/helpers/tests')
 describe('@mixin govuk-link-decoration', () => {
   it('sets text-decoration-thickness', async () => {
     const sass = `
-      $govuk-link-underline-thickness: 1px;
-      @import "base";
+      @use "settings" with (
+        $govuk-link-underline-thickness: 1px
+      );
+      @use "helpers/links" as *;
 
       .foo {
         @include govuk-link-decoration;
@@ -18,8 +20,10 @@ describe('@mixin govuk-link-decoration', () => {
 
   it('sets text-underline-offset', async () => {
     const sass = `
-      $govuk-link-underline-offset: .1em;
-      @import "base";
+      @use "settings" with (
+        $govuk-link-underline-offset: .1em
+      );
+      @use "helpers/links" as *;
 
       .foo {
         @include govuk-link-decoration;
@@ -34,8 +38,10 @@ describe('@mixin govuk-link-decoration', () => {
   describe('when $govuk-link-underline-thickness is falsy', () => {
     it('does not set text-decoration-thickness', async () => {
       const sass = `
-        $govuk-link-underline-thickness: false;
-        @import "base";
+        @use "settings" with (
+          $govuk-link-underline-thickness: false
+        );
+        @use "helpers/links" as *;
 
         .foo {
           @include govuk-link-decoration;
@@ -51,8 +57,10 @@ describe('@mixin govuk-link-decoration', () => {
   describe('when $govuk-link-underline-offset is falsy', () => {
     it('does not set text-decoration-offset', async () => {
       const sass = `
-      $govuk-link-underline-offset: false;
-      @import "base";
+      @use "settings" with (
+        $govuk-link-underline-offset: false
+      );
+      @use "helpers/links" as *;
 
       .foo {
           @include govuk-link-decoration;
@@ -69,7 +77,7 @@ describe('@mixin govuk-link-decoration', () => {
 describe('@mixin govuk-link-hover-decoration', () => {
   it('sets a hover state', async () => {
     const sass = `
-      @import "base";
+      @use "helpers/links" as *;
 
       .foo:hover {
         @include govuk-link-hover-decoration;
@@ -84,8 +92,10 @@ describe('@mixin govuk-link-hover-decoration', () => {
   describe('when $govuk-link-hover-underline-thickness is falsy', () => {
     it('does not set a hover state', async () => {
       const sass = `
-      $govuk-link-hover-underline-thickness: false;
-      @import "base";
+      @use "settings" with (
+        $govuk-link-hover-underline-thickness: false
+      );
+      @use "helpers/links" as *;
 
       // The mixin shouldn't return anything, so this selector ends up empty and
       // is omitted from the CSS
