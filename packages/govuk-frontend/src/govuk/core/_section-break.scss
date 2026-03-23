@@ -1,4 +1,4 @@
-@import "../settings/spacing";
+@use "../settings/spacing" as *;
 @import "../tools/exports";
 @import "../helpers/colour";
 @import "../helpers/spacing";

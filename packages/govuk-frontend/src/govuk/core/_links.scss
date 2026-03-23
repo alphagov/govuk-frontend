@@ -1,5 +1,5 @@
-@import "../settings/links";
-@import "../settings/measurements";
+@use "../settings/links" as *;
+@use "../settings/measurements" as *;
 @import "../tools/exports";
 @import "../helpers/colour";
 @import "../helpers/focused";

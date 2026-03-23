@@ -1,5 +1,5 @@
 @use "sass:map";
-@import "../settings/typography-responsive";
+@use "../settings/typography-responsive" as *;
 @import "../tools/exports";
 @import "../helpers/typography";
 
