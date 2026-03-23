@@ -7,11 +7,9 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   --govuk-breakpoint-tablet: 40.0625rem;
   --govuk-breakpoint-desktop: 48.0625rem;
 }
-
 :root {
   --govuk-frontend-version: "development";
 }
-
 :root {
   --govuk-brand-colour: #1d70b8;
   --govuk-text-colour: #0b0c0c;
@@ -39,7 +37,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     --govuk-text-colour: var(--govuk-print-text-colour, #000000);
   }
 }
-
 .govuk-accordion {
   margin-bottom: 20px;
 }
@@ -48,18 +45,15 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     margin-bottom: 30px;
   }
 }
-
 .govuk-accordion__section {
   padding-top: 15px;
 }
-
 .govuk-accordion__section-heading {
   margin-top: 0;
   margin-bottom: 0;
   padding-top: 15px;
   padding-bottom: 15px;
 }
-
 .govuk-accordion__section-button {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -104,11 +98,9 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     line-height: 1.15;
   }
 }
-
 .govuk-accordion__section-content > :last-child {
   margin-bottom: 0;
 }
-
 .govuk-frontend-supported .govuk-accordion {
   border-bottom: 1px solid;
   border-bottom-color: var(--govuk-border-colour, #cecece);
@@ -381,7 +373,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     border-top-color: var(--govuk-border-colour, #cecece);
   }
 }
-
 .govuk-back-link {
   font-size: 1rem;
   line-height: 1.25;
@@ -431,7 +422,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 .govuk-back-link:focus {
   color: var(--govuk-focus-text-colour, #0b0c0c);
 }
-
 .govuk-back-link::before {
   content: "";
   display: block;
@@ -453,11 +443,9 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     font-size: max(16px, 1em);
   }
 }
-
 .govuk-back-link:focus::before {
   border-color: var(--govuk-focus-text-colour, #0b0c0c);
 }
-
 .govuk-back-link::after {
   content: "";
   position: absolute;
@@ -466,7 +454,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   bottom: -14px;
   left: 0;
 }
-
 .govuk-back-link--inverse:link, .govuk-back-link--inverse:visited {
   color: #ffffff;
 }
@@ -476,7 +463,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 .govuk-back-link--inverse::before {
   border-color: currentcolor;
 }
-
 .govuk-breadcrumbs {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -499,7 +485,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     line-height: 1.2;
   }
 }
-
 .govuk-breadcrumbs__list {
   margin: 0;
   padding: 0;
@@ -510,7 +495,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   display: block;
   clear: both;
 }
-
 .govuk-breadcrumbs__list-item {
   display: inline-block;
   position: relative;
@@ -548,7 +532,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   content: none;
   display: none;
 }
-
 .govuk-breadcrumbs__link {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -585,7 +568,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 .govuk-breadcrumbs__link:focus {
   color: var(--govuk-focus-text-colour, #0b0c0c);
 }
-
 @media (max-width: 40.0525em) {
   .govuk-breadcrumbs--collapse-on-mobile .govuk-breadcrumbs__list-item {
     display: none;
@@ -601,7 +583,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     display: flex;
   }
 }
-
 .govuk-breadcrumbs--inverse {
   color: #ffffff;
 }
@@ -614,7 +595,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 .govuk-breadcrumbs--inverse .govuk-breadcrumbs__list-item::before {
   border-color: currentcolor;
 }
-
 .govuk-button {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -700,7 +680,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 .govuk-button:active::before {
   top: -4px;
 }
-
 .govuk-button[disabled] {
   opacity: 0.5;
 }
@@ -712,7 +691,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   top: 0;
   box-shadow: 0 2px 0 #083d29;
 }
-
 .govuk-button--secondary {
   background-color: #f3f3f3;
   box-shadow: 0 2px 0 #858686;
@@ -726,7 +704,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 .govuk-button--secondary:hover[disabled] {
   background-color: #f3f3f3;
 }
-
 .govuk-button--warning {
   background-color: #ca3535;
   box-shadow: 0 2px 0 #651b1b;
@@ -740,7 +717,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 .govuk-button--warning:hover[disabled] {
   background-color: #ca3535;
 }
-
 .govuk-button--inverse {
   background-color: #ffffff;
   box-shadow: 0 2px 0 #0f385c;
@@ -754,7 +730,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 .govuk-button--inverse:hover[disabled] {
   background-color: #ffffff;
 }
-
 .govuk-button--start {
   font-weight: 700;
   font-size: 1.3125rem;
@@ -775,7 +750,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     line-height: 1;
   }
 }
-
 .govuk-button__start-icon {
   flex-shrink: 0;
   align-self: center;
@@ -788,7 +762,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     margin-left: 10px;
   }
 }
-
 .govuk-error-message {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -813,7 +786,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     line-height: 1.15;
   }
 }
-
 .govuk-hint {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -835,19 +807,15 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     line-height: 1.15;
   }
 }
-
 .govuk-label:not(.govuk-label--m):not(.govuk-label--l):not(.govuk-label--xl) + .govuk-hint {
   margin-bottom: 10px;
 }
-
 .govuk-fieldset__legend:not(.govuk-fieldset__legend--m):not(.govuk-fieldset__legend--l):not(.govuk-fieldset__legend--xl) + .govuk-hint {
   margin-bottom: 10px;
 }
-
 .govuk-fieldset__legend + .govuk-hint {
   margin-top: -5px;
 }
-
 .govuk-label {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -870,14 +838,12 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     line-height: 1.15;
   }
 }
-
 .govuk-label--xl,
 .govuk-label--l,
 .govuk-label--m {
   font-weight: 700;
   margin-bottom: 15px;
 }
-
 .govuk-label--xl {
   font-size: 2rem;
   line-height: 1.09375;
@@ -894,7 +860,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     line-height: 1.15;
   }
 }
-
 .govuk-label--l {
   font-size: 1.6875rem;
   line-height: 1.1111111111;
@@ -911,7 +876,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     line-height: 1.05;
   }
 }
-
 .govuk-label--m {
   font-size: 1.3125rem;
   line-height: 1.1904761905;
@@ -928,15 +892,12 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     line-height: 1.15;
   }
 }
-
 .govuk-label--s {
   font-weight: 700;
 }
-
 .govuk-label-wrapper {
   margin: 0;
 }
-
 .govuk-textarea {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -984,14 +945,12 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   background-color: transparent;
   cursor: not-allowed;
 }
-
 .govuk-textarea--error {
   border-color: var(--govuk-error-colour, #ca3535);
 }
 .govuk-textarea--error:focus {
   border-color: var(--govuk-input-border-colour, #0b0c0c);
 }
-
 .govuk-character-count {
   margin-bottom: 20px;
 }
@@ -1008,7 +967,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   border-color: var(--govuk-error-colour, #ca3535);
   box-shadow: inset 0 0 0 2px var(--govuk-error-colour, #ca3535);
 }
-
 .govuk-character-count__message {
   font-variant-numeric: tabular-nums;
   margin-top: 0;
@@ -1017,11 +975,9 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 .govuk-character-count__message::after {
   content: "​";
 }
-
 .govuk-character-count__message--disabled {
   visibility: hidden;
 }
-
 .govuk-fieldset {
   min-width: 0;
   margin: 0;
@@ -1033,7 +989,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   display: block;
   clear: both;
 }
-
 @supports not (caret-color: auto) {
   .govuk-fieldset,
   x:-moz-any-link {
@@ -1066,14 +1021,12 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     line-height: 1.15;
   }
 }
-
 .govuk-fieldset__legend--xl,
 .govuk-fieldset__legend--l,
 .govuk-fieldset__legend--m {
   font-weight: 700;
   margin-bottom: 15px;
 }
-
 .govuk-fieldset__legend--xl {
   font-size: 2rem;
   line-height: 1.09375;
@@ -1090,7 +1043,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     line-height: 1.15;
   }
 }
-
 .govuk-fieldset__legend--l {
   font-size: 1.6875rem;
   line-height: 1.1111111111;
@@ -1107,7 +1059,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     line-height: 1.05;
   }
 }
-
 .govuk-fieldset__legend--m {
   font-size: 1.3125rem;
   line-height: 1.1904761905;
@@ -1124,29 +1075,24 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     line-height: 1.15;
   }
 }
-
 .govuk-fieldset__legend--s {
   font-weight: 700;
 }
-
 .govuk-fieldset__heading {
   margin: 0;
   font-size: inherit;
   font-weight: inherit;
 }
-
 .govuk-checkboxes__item {
   display: flex;
   position: relative;
   flex-wrap: wrap;
   margin-bottom: 10px;
 }
-
 .govuk-checkboxes__item:last-child,
 .govuk-checkboxes__item:last-of-type {
   margin-bottom: 0;
 }
-
 .govuk-checkboxes__input {
   z-index: 1;
   width: 44px;
@@ -1155,7 +1101,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   opacity: 0;
   cursor: pointer;
 }
-
 .govuk-checkboxes__label {
   align-self: center;
   max-width: calc(100% - 74px);
@@ -1164,7 +1109,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   cursor: pointer;
   touch-action: manipulation;
 }
-
 .govuk-checkboxes__label::before {
   content: "";
   box-sizing: border-box;
@@ -1176,7 +1120,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   border: 2px solid currentcolor;
   background: transparent;
 }
-
 .govuk-checkboxes__label::after {
   content: "";
   box-sizing: border-box;
@@ -1192,7 +1135,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   opacity: 0;
   background: transparent;
 }
-
 .govuk-checkboxes__hint {
   display: block;
   width: 100%;
@@ -1200,11 +1142,9 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   padding-right: 15px;
   padding-left: 59px;
 }
-
 .govuk-label:not(.govuk-label--m):not(.govuk-label--l):not(.govuk-label--xl) + .govuk-checkboxes__hint {
   margin-bottom: 0;
 }
-
 .govuk-checkboxes__input:focus + .govuk-checkboxes__label::before {
   border-width: 4px;
   outline: 3px solid transparent;
@@ -1216,21 +1156,17 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     outline-color: Highlight;
   }
 }
-
 .govuk-checkboxes__input:checked + .govuk-checkboxes__label::after {
   opacity: 1;
 }
-
 .govuk-checkboxes__input:disabled,
 .govuk-checkboxes__input:disabled + .govuk-checkboxes__label {
   cursor: not-allowed;
 }
-
 .govuk-checkboxes__input:disabled + .govuk-checkboxes__label,
 .govuk-checkboxes__input:disabled ~ .govuk-hint {
   opacity: 0.5;
 }
-
 .govuk-checkboxes__divider {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -1254,7 +1190,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     line-height: 1.15;
   }
 }
-
 .govuk-checkboxes__conditional {
   margin-bottom: 15px;
   margin-left: 20px;
@@ -1273,7 +1208,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 .govuk-checkboxes__conditional > :last-child {
   margin-bottom: 0;
 }
-
 .govuk-checkboxes--small .govuk-checkboxes__item {
   margin-bottom: 0;
 }
@@ -1328,18 +1262,15 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     box-shadow: 0 0 0 3px var(--govuk-focus-colour, #ffdd00);
   }
 }
-
 .govuk-cookie-banner {
   padding-top: 20px;
   border-bottom: 10px solid transparent;
   color: var(--govuk-surface-text-colour, #0b0c0c);
   background-color: var(--govuk-surface-background-colour, #f4f8fb);
 }
-
 .govuk-cookie-banner[hidden] {
   display: none;
 }
-
 .govuk-cookie-banner__message {
   margin-bottom: -10px;
 }
@@ -1349,7 +1280,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 .govuk-cookie-banner__message:focus {
   outline: none;
 }
-
 .govuk-input {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -1390,57 +1320,45 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   background-color: transparent;
   cursor: not-allowed;
 }
-
 .govuk-input::-webkit-outer-spin-button,
 .govuk-input::-webkit-inner-spin-button {
   margin: 0;
   -webkit-appearance: none;
 }
-
 .govuk-input[type=number] {
   -moz-appearance: textfield;
 }
-
 .govuk-input--error {
   border-color: var(--govuk-error-colour, #ca3535);
 }
 .govuk-input--error:focus {
   border-color: var(--govuk-input-border-colour, #0b0c0c);
 }
-
 .govuk-input--extra-letter-spacing {
   font-variant-numeric: tabular-nums;
   letter-spacing: 0.05em;
 }
-
 .govuk-input--width-30 {
   max-width: 29.5em;
 }
-
 .govuk-input--width-20 {
   max-width: 20.5em;
 }
-
 .govuk-input--width-10 {
   max-width: 11.5em;
 }
-
 .govuk-input--width-5 {
   max-width: 5.5em;
 }
-
 .govuk-input--width-4 {
   max-width: 4.5em;
 }
-
 .govuk-input--width-3 {
   max-width: 3.75em;
 }
-
 .govuk-input--width-2 {
   max-width: 2.75em;
 }
-
 .govuk-input__wrapper {
   display: flex;
 }
@@ -1458,7 +1376,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     max-width: 100%;
   }
 }
-
 .govuk-input__prefix,
 .govuk-input__suffix {
   font-family: "GDS Transport", arial, sans-serif;
@@ -1503,7 +1420,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     white-space: normal;
   }
 }
-
 @media (max-width: 19.99em) {
   .govuk-input__prefix {
     border-bottom: 0;
@@ -1514,7 +1430,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     border-right: 0;
   }
 }
-
 @media (max-width: 19.99em) {
   .govuk-input__suffix {
     border-top: 0;
@@ -1525,7 +1440,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     border-left: 0;
   }
 }
-
 .govuk-date-input {
   font-size: 0;
 }
@@ -1534,22 +1448,18 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   display: block;
   clear: both;
 }
-
 .govuk-date-input__item {
   display: inline-block;
   margin-right: 20px;
   margin-bottom: 0;
   vertical-align: bottom;
 }
-
 .govuk-date-input__label {
   display: block;
 }
-
 .govuk-date-input__input {
   margin-bottom: 0;
 }
-
 .govuk-details {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -1577,15 +1487,12 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     margin-bottom: 30px;
   }
 }
-
 .govuk-details__summary {
   display: block;
 }
-
 .govuk-details[open] .govuk-details__summary {
   margin-bottom: 5px;
 }
-
 .govuk-details__summary-text > :first-child {
   margin-top: 0;
 }
@@ -1593,22 +1500,18 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 .govuk-details__summary-text > :last-child {
   margin-bottom: 0;
 }
-
 .govuk-details__text {
   padding-top: 15px;
   padding-bottom: 15px;
   padding-left: 20px;
 }
-
 .govuk-details__text p {
   margin-top: 0;
   margin-bottom: 20px;
 }
-
 .govuk-details__text > :last-child {
   margin-bottom: 0;
 }
-
 @media screen\\0  {
   .govuk-details {
     border-left: 10px solid;
@@ -1730,21 +1633,17 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 .govuk-list .govuk-list {
   margin-top: 10px;
 }
-
 .govuk-list > li {
   margin-bottom: 5px;
 }
-
 .govuk-list--bullet {
   padding-left: 20px;
   list-style-type: disc;
 }
-
 .govuk-list--number {
   padding-left: 20px;
   list-style-type: decimal;
 }
-
 .govuk-list--bullet > li,
 .govuk-list--number > li {
   margin-bottom: 0;
@@ -1755,7 +1654,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     margin-bottom: 5px;
   }
 }
-
 .govuk-list--spaced > li {
   margin-bottom: 10px;
 }
@@ -1764,7 +1662,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     margin-bottom: 15px;
   }
 }
-
 .govuk-error-summary {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -1803,7 +1700,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   outline: 3px solid;
   outline-color: var(--govuk-focus-colour, #ffdd00);
 }
-
 .govuk-error-summary__title {
   font-size: 1.3125rem;
   line-height: 1.1904761905;
@@ -1828,7 +1724,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     margin-bottom: 20px;
   }
 }
-
 .govuk-error-summary__body p {
   margin-bottom: 0;
 }
@@ -1843,15 +1738,12 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 .govuk-error-summary__body > :last-child {
   margin-bottom: 5px;
 }
-
 .govuk-error-summary__list {
   margin-bottom: 0;
 }
-
 .govuk-error-summary__list li:last-child {
   margin-bottom: 0;
 }
-
 .govuk-error-summary__list a {
   font-weight: 700;
   font-family: "GDS Transport", arial, sans-serif;
@@ -1895,7 +1787,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 .govuk-error-summary__list a:focus {
   color: var(--govuk-focus-text-colour, #0b0c0c);
 }
-
 .govuk-exit-this-page {
   margin-bottom: 30px;
   position: sticky;
@@ -1918,11 +1809,9 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     float: right;
   }
 }
-
 .govuk-exit-this-page__button {
   margin-bottom: 0;
 }
-
 .govuk-exit-this-page__indicator {
   padding: 10px;
   display: none;
@@ -1932,11 +1821,9 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   line-height: 0;
   text-align: center;
 }
-
 .govuk-exit-this-page__indicator--visible {
   display: block;
 }
-
 .govuk-exit-this-page__indicator-light {
   box-sizing: border-box;
   display: inline-block;
@@ -1948,11 +1835,9 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   border-radius: 50%;
   border-color: currentcolor;
 }
-
 .govuk-exit-this-page__indicator-light--on {
   border-width: 0.375em;
 }
-
 @media only print {
   .govuk-exit-this-page {
     display: none;
@@ -1967,14 +1852,12 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   left: 0;
   background-color: #ffffff;
 }
-
 .govuk-exit-this-page-hide-content * {
   display: none !important;
 }
 .govuk-exit-this-page-hide-content .govuk-exit-this-page-overlay {
   display: block !important;
 }
-
 .govuk-file-upload {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -2017,31 +1900,26 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   opacity: 0.5;
   cursor: not-allowed;
 }
-
 .govuk-drop-zone {
   display: block;
   position: relative;
   z-index: 0;
   background-color: var(--govuk-body-background-colour, #ffffff);
 }
-
 .govuk-drop-zone--disabled {
   cursor: not-allowed;
 }
-
 .govuk-file-upload-button__pseudo-button {
   flex-shrink: 0;
   width: auto;
   margin-right: 10px;
   margin-bottom: 3px;
 }
-
 .govuk-file-upload-button__instruction {
   margin-top: 7px;
   margin-bottom: 0;
   text-align: left;
 }
-
 .govuk-file-upload-button__status {
   display: block;
   margin-bottom: 10px;
@@ -2052,13 +1930,11 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   word-wrap: break-word;
   overflow-wrap: break-word;
 }
-
 .govuk-file-upload-button__pseudo-button-container {
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
 }
-
 .govuk-file-upload-button {
   width: 100%;
   padding: 18px;
@@ -2101,7 +1977,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   background-color: #cecece;
   box-shadow: inset 0 0 0 1px var(--govuk-focus-colour, #ffdd00);
 }
-
 .govuk-file-upload-button--empty {
   border-style: dashed;
   background-color: #ffffff;
@@ -2119,7 +1994,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 .govuk-file-upload-button--empty:hover .govuk-file-upload-button__status, .govuk-file-upload-button--empty:focus .govuk-file-upload-button__status, .govuk-file-upload-button--empty:active .govuk-file-upload-button__status {
   background-color: #d2e2f1;
 }
-
 .govuk-file-upload-button--dragging {
   border-style: solid;
   border-color: #0b0c0c;
@@ -2127,7 +2001,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 .govuk-file-upload-button--dragging.govuk-file-upload-button--empty {
   background-color: #f3f3f3;
 }
-
 .govuk-file-upload-button:disabled {
   pointer-events: none;
   opacity: 0.5;
@@ -2139,7 +2012,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 .govuk-file-upload-button:disabled .govuk-file-upload-button__status {
   background-color: #d2e2f1;
 }
-
 .govuk-footer {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -2175,11 +2047,9 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     padding-bottom: 25px;
   }
 }
-
 .govuk-footer__crown {
   margin-bottom: 25px;
 }
-
 .govuk-footer__link {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -2225,7 +2095,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 .govuk-footer__link:focus {
   color: var(--govuk-focus-text-colour, #0b0c0c);
 }
-
 .govuk-footer__section-break {
   margin: 0;
   margin-bottom: 30px;
@@ -2239,7 +2108,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     margin-bottom: 50px;
   }
 }
-
 .govuk-footer__meta {
   display: flex;
   flex-wrap: wrap;
@@ -2248,13 +2116,11 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   margin-right: -15px;
   margin-left: -15px;
 }
-
 .govuk-footer__meta-item {
   margin-right: 15px;
   margin-bottom: 25px;
   margin-left: 15px;
 }
-
 .govuk-footer__meta-item--grow {
   flex: 1;
 }
@@ -2263,7 +2129,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     flex-basis: 320px;
   }
 }
-
 .govuk-footer__licence-logo {
   display: inline-block;
   margin-right: 10px;
@@ -2275,19 +2140,16 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     margin-bottom: 15px;
   }
 }
-
 .govuk-footer__licence-description {
   display: inline-block;
   text-wrap: balance;
 }
-
 .govuk-footer__copyright-logo:link, .govuk-footer__copyright-logo:visited, .govuk-footer__copyright-logo:active {
   color: var(--govuk-text-colour, #0b0c0c);
 }
 .govuk-footer__copyright-logo:focus {
   color: var(--govuk-focus-text-colour, #0b0c0c);
 }
-
 .govuk-footer__copyright-logo::before {
   content: "";
   display: block;
@@ -2314,31 +2176,25 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     }
   }
 }
-
 .govuk-footer__inline-list {
   margin-top: 0;
   margin-bottom: 15px;
   padding: 0;
 }
-
 .govuk-footer__inline-list:last-child {
   margin-bottom: 0;
 }
-
 .govuk-footer__meta-custom {
   margin-bottom: 20px;
 }
-
 .govuk-footer__meta-custom:last-child {
   margin-bottom: 0;
 }
-
 .govuk-footer__inline-list-item {
   display: inline-block;
   margin-right: 15px;
   margin-bottom: 5px;
 }
-
 .govuk-footer__heading {
   margin-bottom: 30px;
   padding-bottom: 20px;
@@ -2351,7 +2207,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     padding-bottom: 10px;
   }
 }
-
 .govuk-footer__navigation {
   margin-right: -15px;
   margin-left: -15px;
@@ -2361,20 +2216,17 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   display: block;
   clear: both;
 }
-
 .govuk-footer__section {
   display: inline-block;
   margin-bottom: 30px;
   vertical-align: top;
 }
-
 .govuk-footer__list {
   column-gap: 30px;
   margin: 0;
   padding: 0;
   list-style: none;
 }
-
 @media (min-width: 48.0625em) {
   .govuk-footer__list--columns-2 {
     column-count: 2;
@@ -2391,11 +2243,9 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     margin-bottom: 20px;
   }
 }
-
 .govuk-footer__list-item:last-child {
   margin-bottom: 0;
 }
-
 .govuk-header {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -2418,17 +2268,14 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     line-height: 1;
   }
 }
-
 .govuk-header__container--full-width {
   padding: 0 15px;
 }
-
 .govuk-header__logo {
   box-sizing: border-box;
   padding-top: 16px;
   padding-bottom: 12px;
 }
-
 .govuk-header__homepage-link {
   display: inline;
   margin-right: 10px;
@@ -2466,7 +2313,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     box-decoration-break: clone;
   }
 }
-
 .govuk-header__logotype {
   display: inline-block;
   position: relative;
@@ -2485,7 +2331,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 .govuk-header__logotype:last-child {
   margin-right: 0;
 }
-
 .govuk-logo-dot {
   fill: #00ffe0;
 }
@@ -2502,7 +2347,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 :focus .govuk-logo-dot {
   fill: currentcolor;
 }
-
 .govuk-header__product-name {
   display: inline-table;
   margin-bottom: -0.0625rem;
@@ -2517,7 +2361,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     background: transparent;
   }
 }
-
 @media print {
   .govuk-header {
     border-bottom-width: 0;
@@ -2579,7 +2422,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 .govuk-inset-text > :last-child {
   margin-bottom: 0;
 }
-
 .govuk-notification-banner {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -2612,7 +2454,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   outline: 3px solid;
   outline-color: var(--govuk-focus-colour, #ffdd00);
 }
-
 .govuk-notification-banner__header {
   padding: 2px 15px 5px;
   border-bottom: 1px solid transparent;
@@ -2622,7 +2463,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     padding: 2px 20px 5px;
   }
 }
-
 .govuk-notification-banner__title {
   font-size: 1.1875rem;
   line-height: 1.3157894737;
@@ -2637,7 +2477,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     line-height: 1.15;
   }
 }
-
 .govuk-notification-banner__content {
   padding: 15px;
   color: var(--govuk-text-colour, #0b0c0c);
@@ -2655,7 +2494,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 .govuk-notification-banner__content > :last-child {
   margin-bottom: 0;
 }
-
 .govuk-notification-banner__heading {
   font-size: 1.3125rem;
   line-height: 1.1904761905;
@@ -2675,7 +2513,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     line-height: 1.15;
   }
 }
-
 .govuk-notification-banner__link {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -2721,7 +2558,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 .govuk-notification-banner__link:focus {
   color: var(--govuk-focus-text-colour, #0b0c0c);
 }
-
 .govuk-notification-banner--success {
   border-color: var(--govuk-success-colour, #0f7a52);
   background-color: var(--govuk-success-colour, #0f7a52);
@@ -2738,7 +2574,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 .govuk-notification-banner--success .govuk-notification-banner__link:focus {
   color: var(--govuk-focus-text-colour, #0b0c0c);
 }
-
 .govuk-pagination {
   margin-bottom: 20px;
   display: flex;
@@ -2757,13 +2592,11 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     align-items: flex-start;
   }
 }
-
 .govuk-pagination__list {
   margin: 0;
   padding: 0;
   list-style: none;
 }
-
 .govuk-pagination__item,
 .govuk-pagination__next,
 .govuk-pagination__prev {
@@ -2800,7 +2633,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 .govuk-pagination__prev:hover {
   background-color: #f3f3f3;
 }
-
 .govuk-pagination__item {
   display: none;
   text-align: center;
@@ -2810,7 +2642,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     display: block;
   }
 }
-
 .govuk-pagination__prev,
 .govuk-pagination__next {
   font-weight: 700;
@@ -2820,22 +2651,18 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   display: flex;
   align-items: center;
 }
-
 .govuk-pagination__prev {
   padding-left: 0;
 }
-
 .govuk-pagination__next {
   padding-right: 0;
 }
-
 .govuk-pagination__item--current,
 .govuk-pagination__item--ellipsis,
 .govuk-pagination__item:first-child,
 .govuk-pagination__item:last-child {
   display: block;
 }
-
 .govuk-pagination__item--current {
   font-weight: 700;
   outline: 1px solid transparent;
@@ -2850,7 +2677,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 .govuk-pagination__item--current .govuk-pagination__link:focus {
   color: var(--govuk-focus-text-colour, #0b0c0c);
 }
-
 .govuk-pagination__item--ellipsis {
   font-weight: 700;
   color: var(--govuk-secondary-text-colour, #484949);
@@ -2858,7 +2684,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 .govuk-pagination__item--ellipsis:hover {
   background-color: transparent;
 }
-
 .govuk-pagination__link {
   display: block;
   min-width: 15px;
@@ -2894,11 +2719,9 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 .govuk-pagination__link:focus .govuk-pagination__link-title--decorated {
   text-decoration: none;
 }
-
 .govuk-pagination__link-title {
   text-decoration-thickness: inherit;
 }
-
 .govuk-pagination__link-label {
   font-weight: 400;
   text-decoration: underline;
@@ -2906,7 +2729,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   text-underline-offset: 0.1578em;
   display: inline-block;
 }
-
 .govuk-pagination__icon {
   width: 0.9375rem;
   height: 0.8125rem;
@@ -2914,15 +2736,12 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   fill: currentcolor;
   forced-color-adjust: auto;
 }
-
 .govuk-pagination__icon--prev {
   margin-right: 15px;
 }
-
 .govuk-pagination__icon--next {
   margin-left: 15px;
 }
-
 .govuk-pagination--block {
   display: block;
 }
@@ -2958,7 +2777,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   margin-left: -30px;
   float: left;
 }
-
 .govuk-panel {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -2996,7 +2814,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     overflow-wrap: break-word;
   }
 }
-
 .govuk-panel--confirmation {
   color: #ffffff;
   background: #0f7a52;
@@ -3008,7 +2825,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     background: none;
   }
 }
-
 .govuk-panel__title {
   font-size: 2rem;
   line-height: 1.09375;
@@ -3028,22 +2844,18 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     line-height: 1.15;
   }
 }
-
 .govuk-panel__title:last-child {
   margin-bottom: 0;
 }
-
 @media (min-width: 20em) {
   .govuk-password-input__wrapper {
     flex-direction: row;
     align-items: flex-start;
   }
 }
-
 .govuk-password-input__input::-ms-reveal {
   display: none;
 }
-
 .govuk-password-input__toggle {
   margin-top: 5px;
   margin-bottom: 0;
@@ -3060,7 +2872,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     margin-left: 5px;
   }
 }
-
 .govuk-tag {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -3098,69 +2909,56 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     font-weight: bold;
   }
 }
-
 .govuk-tag--green {
   color: #083d29;
   background-color: #cfe4dc;
 }
-
 .govuk-tag--purple {
   color: #2a1950;
   background-color: #ddd6ec;
 }
-
 .govuk-tag--red {
   color: #651b1b;
   background-color: #f4d7d7;
 }
-
 .govuk-tag--orange {
   color: #7a3c1c;
   background-color: #fde4d7;
 }
-
 .govuk-tag--teal {
   color: #0b4144;
   background-color: #d0e6e7;
 }
-
 .govuk-tag--magenta {
   color: #651b3e;
   background-color: #f4d7e5;
 }
-
 .govuk-tag--yellow {
   color: #7a3c1c;
   background-color: #ffee80;
 }
-
 .govuk-tag--grey {
   color: #0b0c0c;
   background-color: #cecece;
 }
-
 .govuk-tag--turquoise {
   color: #0b4144;
   background-color: #d0e6e7;
 }
-
 .govuk-tag--pink {
   color: #651b3e;
   background-color: #f4d7e5;
 }
-
 .govuk-phase-banner {
   padding-top: 10px;
   padding-bottom: 10px;
   border-bottom: 1px solid;
   border-bottom-color: var(--govuk-border-colour, #cecece);
 }
-
 .govuk-width-container .govuk-phase-banner.govuk-width-container {
   margin-right: 0;
   margin-left: 0;
 }
-
 .govuk-phase-banner__content {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -3183,7 +2981,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     line-height: 1.2;
   }
 }
-
 .govuk-phase-banner__content__tag {
   font-size: 1rem;
   line-height: 1.25;
@@ -3200,24 +2997,20 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     margin-right: 10px;
   }
 }
-
 .govuk-phase-banner__text {
   display: table-cell;
   vertical-align: middle;
 }
-
 .govuk-radios__item {
   display: flex;
   position: relative;
   flex-wrap: wrap;
   margin-bottom: 10px;
 }
-
 .govuk-radios__item:last-child,
 .govuk-radios__item:last-of-type {
   margin-bottom: 0;
 }
-
 .govuk-radios__input {
   z-index: 1;
   width: 44px;
@@ -3226,7 +3019,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   opacity: 0;
   cursor: pointer;
 }
-
 .govuk-radios__label {
   align-self: center;
   max-width: calc(100% - 74px);
@@ -3235,7 +3027,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   cursor: pointer;
   touch-action: manipulation;
 }
-
 .govuk-radios__label::before {
   content: "";
   box-sizing: border-box;
@@ -3248,7 +3039,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   border-radius: 50%;
   background: transparent;
 }
-
 .govuk-radios__label::after {
   content: "";
   position: absolute;
@@ -3261,7 +3051,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   opacity: 0;
   background: currentcolor;
 }
-
 .govuk-radios__hint {
   display: block;
   width: 100%;
@@ -3269,11 +3058,9 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   padding-right: 15px;
   padding-left: 59px;
 }
-
 .govuk-label:not(.govuk-label--m):not(.govuk-label--l):not(.govuk-label--xl) + .govuk-radios__hint {
   margin-bottom: 0;
 }
-
 .govuk-radios__input:focus + .govuk-radios__label::before {
   border-width: 4px;
   outline: 3px solid transparent;
@@ -3285,21 +3072,17 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     outline-color: Highlight;
   }
 }
-
 .govuk-radios__input:checked + .govuk-radios__label::after {
   opacity: 1;
 }
-
 .govuk-radios__input:disabled,
 .govuk-radios__input:disabled + .govuk-radios__label {
   cursor: not-allowed;
 }
-
 .govuk-radios__input:disabled + .govuk-radios__label,
 .govuk-radios__input:disabled ~ .govuk-hint {
   opacity: 0.5;
 }
-
 @media (min-width: 40.0625em) {
   .govuk-radios--inline {
     display: flex;
@@ -3310,7 +3093,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     margin-right: 20px;
   }
 }
-
 .govuk-radios__divider {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -3334,7 +3116,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     line-height: 1.15;
   }
 }
-
 .govuk-radios__conditional {
   margin-bottom: 15px;
   margin-left: 20px;
@@ -3353,7 +3134,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 .govuk-radios__conditional > :last-child {
   margin-bottom: 0;
 }
-
 .govuk-radios--small .govuk-radios__item {
   margin-bottom: 0;
 }
@@ -3406,7 +3186,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     box-shadow: 0 0 0 4px var(--govuk-focus-colour, #ffdd00);
   }
 }
-
 .govuk-select {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -3446,21 +3225,18 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   color: inherit;
   cursor: not-allowed;
 }
-
 .govuk-select option:active,
 .govuk-select option:checked,
 .govuk-select:focus::-ms-value {
   color: #ffffff;
   background-color: #1d70b8;
 }
-
 .govuk-select--error {
   border-color: var(--govuk-error-colour, #ca3535);
 }
 .govuk-select--error:focus {
   border-color: var(--govuk-input-border-colour, #0b0c0c);
 }
-
 .govuk-service-navigation {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -3485,7 +3261,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     line-height: 1.15;
   }
 }
-
 .govuk-service-navigation__container {
   display: flex;
   flex-direction: column;
@@ -3497,7 +3272,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     flex-wrap: wrap;
   }
 }
-
 .govuk-service-navigation__item,
 .govuk-service-navigation__service-name {
   position: relative;
@@ -3526,12 +3300,10 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     margin-right: 30px;
   }
 }
-
 .govuk-service-navigation__service-name + .govuk-service-navigation__wrapper .govuk-service-navigation__list:first-child .govuk-service-navigation__item:first-child,
 .govuk-service-navigation__service-name + .govuk-service-navigation__wrapper .govuk-service-navigation__toggle[hidden] + .govuk-service-navigation__list .govuk-service-navigation__item:first-child {
   margin-top: 0;
 }
-
 @media (max-width: 40.0525em) {
   .govuk-service-navigation__item--active {
     margin-left: -15px;
@@ -3545,7 +3317,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     border-bottom-width: 5px;
   }
 }
-
 .govuk-service-navigation__link {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -3594,22 +3365,18 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 .govuk-service-navigation__link:focus {
   color: var(--govuk-focus-text-colour, #0b0c0c);
 }
-
 .govuk-service-navigation__service-name {
   font-weight: 700;
 }
-
 .govuk-service-navigation__service-name .govuk-service-navigation__link:link, .govuk-service-navigation__service-name .govuk-service-navigation__link:visited, .govuk-service-navigation__service-name .govuk-service-navigation__link:active {
   color: var(--govuk-text-colour, #0b0c0c);
 }
 .govuk-service-navigation__service-name .govuk-service-navigation__link:focus {
   color: var(--govuk-focus-text-colour, #0b0c0c);
 }
-
 .govuk-service-navigation__wrapper {
   flex-grow: 1;
 }
-
 .govuk-service-navigation__toggle {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -3678,7 +3445,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 .govuk-service-navigation__service-name + .govuk-service-navigation__wrapper .govuk-service-navigation__toggle {
   margin-top: 0;
 }
-
 .govuk-service-navigation__list {
   margin: 0;
   margin-bottom: 15px;
@@ -3697,11 +3463,9 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     display: block;
   }
 }
-
 .govuk-service-navigation__active-fallback {
   font-weight: inherit;
 }
-
 .govuk-service-navigation--inverse {
   border-bottom: none;
   color: #ffffff;
@@ -3728,7 +3492,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 .govuk-service-navigation--inverse .govuk-service-navigation__toggle:not(:focus) {
   color: currentcolor;
 }
-
 .govuk-skip-link {
   text-decoration: underline;
   text-decoration-thickness: max(1px, .0625rem);
@@ -3789,11 +3552,9 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     outline-offset: -3px;
   }
 }
-
 .govuk-skip-link-focused-element:focus {
   outline: none;
 }
-
 .govuk-summary-list {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -3829,7 +3590,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     margin-bottom: 30px;
   }
 }
-
 .govuk-summary-list__row {
   border-bottom: 1px solid;
   border-bottom-color: var(--govuk-border-colour, #cecece);
@@ -3844,11 +3604,9 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     display: table-row;
   }
 }
-
 .govuk-summary-list__row:not(.govuk-summary-list__row--no-actions) > :last-child {
   padding-right: 0;
 }
-
 @media (min-width: 40.0625em) {
   .govuk-summary-list__row--no-actions::after {
     content: "";
@@ -3856,7 +3614,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     width: 20%;
   }
 }
-
 .govuk-summary-list__key,
 .govuk-summary-list__value,
 .govuk-summary-list__actions {
@@ -3873,7 +3630,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     vertical-align: top;
   }
 }
-
 .govuk-summary-list__actions {
   margin-bottom: 15px;
 }
@@ -3883,13 +3639,11 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     text-align: right;
   }
 }
-
 .govuk-summary-list__key,
 .govuk-summary-list__value {
   word-wrap: break-word;
   overflow-wrap: break-word;
 }
-
 .govuk-summary-list__key {
   margin-bottom: 5px;
   font-weight: 700;
@@ -3899,32 +3653,26 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     width: 30%;
   }
 }
-
 @media (max-width: 40.0525em) {
   .govuk-summary-list__value {
     margin-bottom: 15px;
   }
 }
-
 .govuk-summary-list__value > p {
   margin-bottom: 10px;
 }
-
 .govuk-summary-list__value > :last-child {
   margin-bottom: 0;
 }
-
 .govuk-summary-list__actions-list {
   width: 100%;
   margin: 0;
   padding: 0;
 }
-
 .govuk-summary-list__actions-list-item,
 .govuk-summary-card__action {
   display: inline-block;
 }
-
 @media (max-width: 40.0525em) {
   .govuk-summary-list__actions-list-item,
   .govuk-summary-card__action {
@@ -3961,7 +3709,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 .govuk-summary-list__actions-list-item .govuk-link:focus {
   isolation: isolate;
 }
-
 .govuk-summary-list--no-border .govuk-summary-list__row {
   border: 0;
 }
@@ -3972,7 +3719,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     padding-bottom: 11px;
   }
 }
-
 .govuk-summary-list__row--no-border {
   border: 0;
 }
@@ -3983,7 +3729,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     padding-bottom: 11px;
   }
 }
-
 .govuk-summary-card {
   margin-bottom: 20px;
   border: 1px solid;
@@ -3994,7 +3739,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     margin-bottom: 30px;
   }
 }
-
 .govuk-summary-card__title-wrapper {
   padding: 15px;
   border-bottom: 1px solid transparent;
@@ -4008,7 +3752,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     padding: 15px 20px;
   }
 }
-
 .govuk-summary-card__title {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -4035,7 +3778,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     margin-bottom: 5px;
   }
 }
-
 .govuk-summary-card__actions {
   font-size: 1.1875rem;
   line-height: 1.3157894737;
@@ -4059,7 +3801,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     text-align: right;
   }
 }
-
 .govuk-summary-card__action {
   display: inline;
 }
@@ -4068,13 +3809,11 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     margin-bottom: 5px;
   }
 }
-
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
   .govuk-summary-card__action:last-child {
     margin-bottom: 0;
   }
 }
-
 .govuk-summary-card__content {
   padding: 15px 15px 0;
 }
@@ -4090,7 +3829,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   margin-bottom: 0;
   border-bottom: none;
 }
-
 .govuk-table {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -4120,7 +3858,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     margin-bottom: 30px;
   }
 }
-
 @media (max-width: 40.0525em) {
   .govuk-table--small-text-until-tablet {
     font-size: 1rem;
@@ -4133,11 +3870,9 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     line-height: 1.2;
   }
 }
-
 .govuk-table__header {
   font-weight: 700;
 }
-
 .govuk-table__header,
 .govuk-table__cell {
   padding: 10px 20px 10px 0;
@@ -4146,33 +3881,27 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   text-align: left;
   vertical-align: top;
 }
-
 .govuk-table__cell--numeric {
   font-variant-numeric: tabular-nums;
 }
-
 .govuk-table__header--numeric,
 .govuk-table__cell--numeric {
   text-align: right;
 }
-
 .govuk-table__header:last-child,
 .govuk-table__cell:last-child {
   padding-right: 0;
 }
-
 .govuk-table__caption {
   font-weight: 700;
   display: table-caption;
   text-align: left;
 }
-
 .govuk-table__caption--xl,
 .govuk-table__caption--l,
 .govuk-table__caption--m {
   margin-bottom: 15px;
 }
-
 .govuk-table__caption--xl {
   font-size: 2rem;
   line-height: 1.09375;
@@ -4189,7 +3918,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     line-height: 1.15;
   }
 }
-
 .govuk-table__caption--l {
   font-size: 1.6875rem;
   line-height: 1.1111111111;
@@ -4206,7 +3934,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     line-height: 1.05;
   }
 }
-
 .govuk-table__caption--m {
   font-size: 1.3125rem;
   line-height: 1.1904761905;
@@ -4223,7 +3950,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     line-height: 1.15;
   }
 }
-
 .govuk-tabs {
   margin-top: 5px;
   margin-bottom: 20px;
@@ -4250,7 +3976,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     line-height: 1.15;
   }
 }
-
 .govuk-tabs__title {
   font-size: 1.1875rem;
   line-height: 1.3157894737;
@@ -4264,7 +3989,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     line-height: 1.15;
   }
 }
-
 .govuk-tabs__list {
   margin: 0;
   padding: 0;
@@ -4276,7 +4000,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     margin-bottom: 30px;
   }
 }
-
 .govuk-tabs__list-item {
   margin-left: 25px;
 }
@@ -4286,7 +4009,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   padding-right: 5px;
   color: var(--govuk-text-colour, #0b0c0c);
 }
-
 .govuk-tabs__tab {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -4334,7 +4056,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
 .govuk-tabs__tab:focus {
   color: var(--govuk-focus-text-colour, #0b0c0c);
 }
-
 .govuk-tabs__panel {
   margin-bottom: 30px;
 }
@@ -4343,7 +4064,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     margin-bottom: 50px;
   }
 }
-
 @media (min-width: 40.0625em) {
   .govuk-frontend-supported .govuk-tabs__list {
     margin-bottom: 0;
@@ -4418,7 +4138,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     display: none;
   }
 }
-
 .govuk-task-list {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -4447,7 +4166,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     margin-bottom: 30px;
   }
 }
-
 .govuk-task-list__item {
   display: table;
   position: relative;
@@ -4458,22 +4176,18 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   border-bottom: 1px solid;
   border-bottom-color: var(--govuk-border-colour, #cecece);
 }
-
 .govuk-task-list__item:first-child {
   border-top: 1px solid;
   border-top-color: var(--govuk-border-colour, #cecece);
 }
-
 .govuk-task-list__item--with-link:hover {
   background: #f3f3f3;
 }
-
 .govuk-task-list__name-and-hint {
   display: table-cell;
   color: var(--govuk-text-colour, #0b0c0c);
   vertical-align: top;
 }
-
 .govuk-task-list__status {
   display: table-cell;
   padding-left: 10px;
@@ -4481,11 +4195,9 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   text-align: right;
   vertical-align: top;
 }
-
 .govuk-task-list__status--cannot-start-yet {
   color: var(--govuk-secondary-text-colour, #484949);
 }
-
 .govuk-task-list__link::after {
   content: "";
   display: block;
@@ -4495,12 +4207,10 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   bottom: 0;
   left: 0;
 }
-
 .govuk-task-list__hint {
   margin-top: 5px;
   color: var(--govuk-secondary-text-colour, #484949);
 }
-
 .govuk-warning-text {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -4529,7 +4239,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     margin-bottom: 30px;
   }
 }
-
 .govuk-warning-text__icon {
   box-sizing: border-box;
   display: inline-block;
@@ -4561,7 +4270,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     background: transparent;
   }
 }
-
 .govuk-warning-text__text {
   display: block;
   padding-left: 45px;
@@ -4576,11 +4284,9 @@ exports[`ITCSS layers core works when user @imports the layer 1`] = `
   --govuk-breakpoint-tablet: 40.0625rem;
   --govuk-breakpoint-desktop: 48.0625rem;
 }
-
 :root {
   --govuk-frontend-version: "development";
 }
-
 :root {
   --govuk-brand-colour: #1d70b8;
   --govuk-text-colour: #0b0c0c;
@@ -4608,7 +4314,6 @@ exports[`ITCSS layers core works when user @imports the layer 1`] = `
     --govuk-text-colour: var(--govuk-print-text-colour, #000000);
   }
 }
-
 .govuk-link {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -4676,7 +4381,6 @@ exports[`ITCSS layers core works when user @imports the layer 1`] = `
     word-wrap: break-word;
   }
 }
-
 .govuk-link--muted:link, .govuk-link--muted:visited {
   color: var(--govuk-secondary-text-colour, #484949);
 }
@@ -4686,25 +4390,21 @@ exports[`ITCSS layers core works when user @imports the layer 1`] = `
 .govuk-link--muted:focus {
   color: var(--govuk-focus-text-colour, #0b0c0c);
 }
-
 .govuk-link--text-colour:link, .govuk-link--text-colour:visited, .govuk-link--text-colour:active {
   color: var(--govuk-text-colour, #0b0c0c);
 }
 .govuk-link--text-colour:focus {
   color: var(--govuk-focus-text-colour, #0b0c0c);
 }
-
 .govuk-link--inverse:link, .govuk-link--inverse:visited {
   color: #ffffff;
 }
 .govuk-link--inverse:focus {
   color: var(--govuk-focus-text-colour, #0b0c0c);
 }
-
 .govuk-link--no-underline:not(:hover):not(:active) {
   text-decoration: none;
 }
-
 .govuk-link--no-visited-state:link {
   color: var(--govuk-link-colour, #1a65a6);
 }
@@ -4720,7 +4420,6 @@ exports[`ITCSS layers core works when user @imports the layer 1`] = `
 .govuk-link--no-visited-state:focus {
   color: var(--govuk-focus-text-colour, #0b0c0c);
 }
-
 .govuk-link-image {
   display: inline-block;
   line-height: 0;
@@ -4730,7 +4429,6 @@ exports[`ITCSS layers core works when user @imports the layer 1`] = `
   outline: 3px solid transparent;
   box-shadow: 0 0 0 4px var(--govuk-focus-colour, #ffdd00), 0 0 0 8px var(--govuk-focus-text-colour, #0b0c0c);
 }
-
 .govuk-list {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -4763,21 +4461,17 @@ exports[`ITCSS layers core works when user @imports the layer 1`] = `
 .govuk-list .govuk-list {
   margin-top: 10px;
 }
-
 .govuk-list > li {
   margin-bottom: 5px;
 }
-
 .govuk-list--bullet {
   padding-left: 20px;
   list-style-type: disc;
 }
-
 .govuk-list--number {
   padding-left: 20px;
   list-style-type: decimal;
 }
-
 .govuk-list--bullet > li,
 .govuk-list--number > li {
   margin-bottom: 0;
@@ -4788,7 +4482,6 @@ exports[`ITCSS layers core works when user @imports the layer 1`] = `
     margin-bottom: 5px;
   }
 }
-
 .govuk-list--spaced > li {
   margin-bottom: 10px;
 }
@@ -4797,7 +4490,6 @@ exports[`ITCSS layers core works when user @imports the layer 1`] = `
     margin-bottom: 15px;
   }
 }
-
 .govuk-heading-xl {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -4832,7 +4524,6 @@ exports[`ITCSS layers core works when user @imports the layer 1`] = `
     margin-bottom: 50px;
   }
 }
-
 .govuk-heading-l {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -4867,7 +4558,6 @@ exports[`ITCSS layers core works when user @imports the layer 1`] = `
     margin-bottom: 30px;
   }
 }
-
 .govuk-heading-m {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -4902,7 +4592,6 @@ exports[`ITCSS layers core works when user @imports the layer 1`] = `
     margin-bottom: 20px;
   }
 }
-
 .govuk-heading-s {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -4931,7 +4620,6 @@ exports[`ITCSS layers core works when user @imports the layer 1`] = `
     margin-bottom: 20px;
   }
 }
-
 .govuk-caption-xl {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -4960,7 +4648,6 @@ exports[`ITCSS layers core works when user @imports the layer 1`] = `
     line-height: 1.15;
   }
 }
-
 .govuk-caption-l {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -4994,7 +4681,6 @@ exports[`ITCSS layers core works when user @imports the layer 1`] = `
     margin-bottom: 0;
   }
 }
-
 .govuk-caption-m {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -5016,7 +4702,6 @@ exports[`ITCSS layers core works when user @imports the layer 1`] = `
     line-height: 1.15;
   }
 }
-
 .govuk-body-lead, .govuk-body-l {
   margin-top: 0;
   color: var(--govuk-text-colour, #0b0c0c);
@@ -5050,7 +4735,6 @@ exports[`ITCSS layers core works when user @imports the layer 1`] = `
     margin-bottom: 30px;
   }
 }
-
 .govuk-body, .govuk-body-m {
   margin-top: 0;
   color: var(--govuk-text-colour, #0b0c0c);
@@ -5078,7 +4762,6 @@ exports[`ITCSS layers core works when user @imports the layer 1`] = `
     margin-bottom: 20px;
   }
 }
-
 .govuk-body-s {
   margin-top: 0;
   color: var(--govuk-text-colour, #0b0c0c);
@@ -5106,7 +4789,6 @@ exports[`ITCSS layers core works when user @imports the layer 1`] = `
     margin-bottom: 20px;
   }
 }
-
 .govuk-body-l + .govuk-heading-l, .govuk-body-lead + .govuk-heading-l {
   padding-top: 5px;
 }
@@ -5115,7 +4797,6 @@ exports[`ITCSS layers core works when user @imports the layer 1`] = `
     padding-top: 10px;
   }
 }
-
 .govuk-body-m + .govuk-heading-l, .govuk-body + .govuk-heading-l,
 .govuk-body-s + .govuk-heading-l,
 .govuk-list + .govuk-heading-l {
@@ -5128,7 +4809,6 @@ exports[`ITCSS layers core works when user @imports the layer 1`] = `
     padding-top: 20px;
   }
 }
-
 .govuk-body-m + .govuk-heading-m, .govuk-body + .govuk-heading-m,
 .govuk-body-s + .govuk-heading-m,
 .govuk-list + .govuk-heading-m,
@@ -5149,12 +4829,10 @@ exports[`ITCSS layers core works when user @imports the layer 1`] = `
     padding-top: 10px;
   }
 }
-
 .govuk-section-break {
   margin: 0;
   border: 0;
 }
-
 .govuk-section-break--xl {
   margin-top: 30px;
   margin-bottom: 30px;
@@ -5169,7 +4847,6 @@ exports[`ITCSS layers core works when user @imports the layer 1`] = `
     margin-bottom: 50px;
   }
 }
-
 .govuk-section-break--l {
   margin-top: 20px;
   margin-bottom: 20px;
@@ -5184,7 +4861,6 @@ exports[`ITCSS layers core works when user @imports the layer 1`] = `
     margin-bottom: 30px;
   }
 }
-
 .govuk-section-break--m {
   margin-top: 15px;
   margin-bottom: 15px;
@@ -5199,7 +4875,6 @@ exports[`ITCSS layers core works when user @imports the layer 1`] = `
     margin-bottom: 20px;
   }
 }
-
 .govuk-section-break--visible {
   border-bottom: 1px solid;
   border-bottom-color: var(--govuk-border-colour, #cecece);
@@ -5212,11 +4887,9 @@ exports[`ITCSS layers helpers works when user @imports the layer 1`] = `
   --govuk-breakpoint-tablet: 40.0625rem;
   --govuk-breakpoint-desktop: 48.0625rem;
 }
-
 :root {
   --govuk-frontend-version: "development";
 }
-
 :root {
   --govuk-brand-colour: #1d70b8;
   --govuk-text-colour: #0b0c0c;
@@ -5252,11 +4925,9 @@ exports[`ITCSS layers objects works when user @imports the layer 1`] = `
   --govuk-breakpoint-tablet: 40.0625rem;
   --govuk-breakpoint-desktop: 48.0625rem;
 }
-
 :root {
   --govuk-frontend-version: "development";
 }
-
 :root {
   --govuk-brand-colour: #1d70b8;
   --govuk-text-colour: #0b0c0c;
@@ -5284,7 +4955,6 @@ exports[`ITCSS layers objects works when user @imports the layer 1`] = `
     --govuk-text-colour: var(--govuk-print-text-colour, #000000);
   }
 }
-
 .govuk-button-group {
   margin-bottom: 5px;
   display: flex;
@@ -5353,7 +5023,6 @@ exports[`ITCSS layers objects works when user @imports the layer 1`] = `
     text-align: left;
   }
 }
-
 .govuk-form-group {
   margin-bottom: 20px;
 }
@@ -5370,7 +5039,6 @@ exports[`ITCSS layers objects works when user @imports the layer 1`] = `
 .govuk-form-group .govuk-form-group:last-of-type {
   margin-bottom: 0;
 }
-
 .govuk-form-group--error {
   padding-left: 15px;
   border-left: 5px solid;
@@ -5380,7 +5048,6 @@ exports[`ITCSS layers objects works when user @imports the layer 1`] = `
   padding: 0;
   border: 0;
 }
-
 .govuk-grid-row {
   margin-right: -15px;
   margin-left: -15px;
@@ -5390,7 +5057,6 @@ exports[`ITCSS layers objects works when user @imports the layer 1`] = `
   display: block;
   clear: both;
 }
-
 .govuk-grid-column-one-quarter {
   box-sizing: border-box;
   width: 100%;
@@ -5402,7 +5068,6 @@ exports[`ITCSS layers objects works when user @imports the layer 1`] = `
     float: left;
   }
 }
-
 .govuk-grid-column-one-third {
   box-sizing: border-box;
   width: 100%;
@@ -5414,7 +5079,6 @@ exports[`ITCSS layers objects works when user @imports the layer 1`] = `
     float: left;
   }
 }
-
 .govuk-grid-column-one-half {
   box-sizing: border-box;
   width: 100%;
@@ -5426,7 +5090,6 @@ exports[`ITCSS layers objects works when user @imports the layer 1`] = `
     float: left;
   }
 }
-
 .govuk-grid-column-two-thirds {
   box-sizing: border-box;
   width: 100%;
@@ -5438,7 +5101,6 @@ exports[`ITCSS layers objects works when user @imports the layer 1`] = `
     float: left;
   }
 }
-
 .govuk-grid-column-three-quarters {
   box-sizing: border-box;
   width: 100%;
@@ -5450,7 +5112,6 @@ exports[`ITCSS layers objects works when user @imports the layer 1`] = `
     float: left;
   }
 }
-
 .govuk-grid-column-full {
   box-sizing: border-box;
   width: 100%;
@@ -5462,7 +5123,6 @@ exports[`ITCSS layers objects works when user @imports the layer 1`] = `
     float: left;
   }
 }
-
 .govuk-grid-column-one-quarter-from-desktop {
   box-sizing: border-box;
   padding: 0 15px;
@@ -5473,7 +5133,6 @@ exports[`ITCSS layers objects works when user @imports the layer 1`] = `
     float: left;
   }
 }
-
 .govuk-grid-column-one-third-from-desktop {
   box-sizing: border-box;
   padding: 0 15px;
@@ -5484,7 +5143,6 @@ exports[`ITCSS layers objects works when user @imports the layer 1`] = `
     float: left;
   }
 }
-
 .govuk-grid-column-one-half-from-desktop {
   box-sizing: border-box;
   padding: 0 15px;
@@ -5495,7 +5153,6 @@ exports[`ITCSS layers objects works when user @imports the layer 1`] = `
     float: left;
   }
 }
-
 .govuk-grid-column-two-thirds-from-desktop {
   box-sizing: border-box;
   padding: 0 15px;
@@ -5506,7 +5163,6 @@ exports[`ITCSS layers objects works when user @imports the layer 1`] = `
     float: left;
   }
 }
-
 .govuk-grid-column-three-quarters-from-desktop {
   box-sizing: border-box;
   padding: 0 15px;
@@ -5517,7 +5173,6 @@ exports[`ITCSS layers objects works when user @imports the layer 1`] = `
     float: left;
   }
 }
-
 .govuk-grid-column-full-from-desktop {
   box-sizing: border-box;
   padding: 0 15px;
@@ -5528,7 +5183,6 @@ exports[`ITCSS layers objects works when user @imports the layer 1`] = `
     float: left;
   }
 }
-
 .govuk-main-wrapper {
   display: block;
   padding-top: 20px;
@@ -5540,7 +5194,6 @@ exports[`ITCSS layers objects works when user @imports the layer 1`] = `
     padding-bottom: 40px;
   }
 }
-
 .govuk-main-wrapper--auto-spacing:first-child,
 .govuk-main-wrapper--l {
   padding-top: 30px;
@@ -5551,7 +5204,6 @@ exports[`ITCSS layers objects works when user @imports the layer 1`] = `
     padding-top: 50px;
   }
 }
-
 .govuk-template {
   background-color: var(--govuk-template-background-colour, #f4f8fb);
   text-size-adjust: 100%;
@@ -5569,12 +5221,10 @@ exports[`ITCSS layers objects works when user @imports the layer 1`] = `
     overflow-y: scroll;
   }
 }
-
 .govuk-template__body {
   margin: 0;
   background-color: var(--govuk-body-background-colour, #ffffff);
 }
-
 .govuk-width-container {
   max-width: 960px;
   margin-right: 15px;
@@ -5618,11 +5268,9 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
   --govuk-breakpoint-tablet: 40.0625rem;
   --govuk-breakpoint-desktop: 48.0625rem;
 }
-
 :root {
   --govuk-frontend-version: "development";
 }
-
 :root {
   --govuk-brand-colour: #1d70b8;
   --govuk-text-colour: #0b0c0c;
@@ -5650,23 +5298,18 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
     --govuk-text-colour: var(--govuk-print-text-colour, #000000);
   }
 }
-
 .govuk-\\!-display-inline {
   display: inline !important;
 }
-
 .govuk-\\!-display-inline-block {
   display: inline-block !important;
 }
-
 .govuk-\\!-display-block {
   display: block !important;
 }
-
 .govuk-\\!-display-none {
   display: none !important;
 }
-
 @media print {
   .govuk-\\!-display-none-print {
     display: none !important;
@@ -5675,83 +5318,63 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
 .govuk-\\!-margin-0 {
   margin: 0 !important;
 }
-
 .govuk-\\!-margin-top-0 {
   margin-top: 0 !important;
 }
-
 .govuk-\\!-margin-right-0 {
   margin-right: 0 !important;
 }
-
 .govuk-\\!-margin-bottom-0 {
   margin-bottom: 0 !important;
 }
-
 .govuk-\\!-margin-left-0 {
   margin-left: 0 !important;
 }
-
 .govuk-\\!-margin-1 {
   margin: 5px !important;
 }
-
 .govuk-\\!-margin-top-1 {
   margin-top: 5px !important;
 }
-
 .govuk-\\!-margin-right-1 {
   margin-right: 5px !important;
 }
-
 .govuk-\\!-margin-bottom-1 {
   margin-bottom: 5px !important;
 }
-
 .govuk-\\!-margin-left-1 {
   margin-left: 5px !important;
 }
-
 .govuk-\\!-margin-2 {
   margin: 10px !important;
 }
-
 .govuk-\\!-margin-top-2 {
   margin-top: 10px !important;
 }
-
 .govuk-\\!-margin-right-2 {
   margin-right: 10px !important;
 }
-
 .govuk-\\!-margin-bottom-2 {
   margin-bottom: 10px !important;
 }
-
 .govuk-\\!-margin-left-2 {
   margin-left: 10px !important;
 }
-
 .govuk-\\!-margin-3 {
   margin: 15px !important;
 }
-
 .govuk-\\!-margin-top-3 {
   margin-top: 15px !important;
 }
-
 .govuk-\\!-margin-right-3 {
   margin-right: 15px !important;
 }
-
 .govuk-\\!-margin-bottom-3 {
   margin-bottom: 15px !important;
 }
-
 .govuk-\\!-margin-left-3 {
   margin-left: 15px !important;
 }
-
 .govuk-\\!-margin-4 {
   margin: 15px !important;
 }
@@ -5760,7 +5383,6 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
     margin: 20px !important;
   }
 }
-
 .govuk-\\!-margin-top-4 {
   margin-top: 15px !important;
 }
@@ -5769,7 +5391,6 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
     margin-top: 20px !important;
   }
 }
-
 .govuk-\\!-margin-right-4 {
   margin-right: 15px !important;
 }
@@ -5778,7 +5399,6 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
     margin-right: 20px !important;
   }
 }
-
 .govuk-\\!-margin-bottom-4 {
   margin-bottom: 15px !important;
 }
@@ -5787,7 +5407,6 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
     margin-bottom: 20px !important;
   }
 }
-
 .govuk-\\!-margin-left-4 {
   margin-left: 15px !important;
 }
@@ -5796,7 +5415,6 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
     margin-left: 20px !important;
   }
 }
-
 .govuk-\\!-margin-5 {
   margin: 15px !important;
 }
@@ -5805,7 +5423,6 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
     margin: 25px !important;
   }
 }
-
 .govuk-\\!-margin-top-5 {
   margin-top: 15px !important;
 }
@@ -5814,7 +5431,6 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
     margin-top: 25px !important;
   }
 }
-
 .govuk-\\!-margin-right-5 {
   margin-right: 15px !important;
 }
@@ -5823,7 +5439,6 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
     margin-right: 25px !important;
   }
 }
-
 .govuk-\\!-margin-bottom-5 {
   margin-bottom: 15px !important;
 }
@@ -5832,7 +5447,6 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
     margin-bottom: 25px !important;
   }
 }
-
 .govuk-\\!-margin-left-5 {
   margin-left: 15px !important;
 }
@@ -5841,7 +5455,6 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
     margin-left: 25px !important;
   }
 }
-
 .govuk-\\!-margin-6 {
   margin: 20px !important;
 }
@@ -5850,7 +5463,6 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
     margin: 30px !important;
   }
 }
-
 .govuk-\\!-margin-top-6 {
   margin-top: 20px !important;
 }
@@ -5859,7 +5471,6 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
     margin-top: 30px !important;
   }
 }
-
 .govuk-\\!-margin-right-6 {
   margin-right: 20px !important;
 }
@@ -5868,7 +5479,6 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
     margin-right: 30px !important;
   }
 }
-
 .govuk-\\!-margin-bottom-6 {
   margin-bottom: 20px !important;
 }
@@ -5877,7 +5487,6 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
     margin-bottom: 30px !important;
   }
 }
-
 .govuk-\\!-margin-left-6 {
   margin-left: 20px !important;
 }
@@ -5886,7 +5495,6 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
     margin-left: 30px !important;
   }
 }
-
 .govuk-\\!-margin-7 {
   margin: 25px !important;
 }
@@ -5895,7 +5503,6 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
     margin: 40px !important;
   }
 }
-
 .govuk-\\!-margin-top-7 {
   margin-top: 25px !important;
 }
@@ -5904,7 +5511,6 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
     margin-top: 40px !important;
   }
 }
-
 .govuk-\\!-margin-right-7 {
   margin-right: 25px !important;
 }
@@ -5913,7 +5519,6 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
     margin-right: 40px !important;
   }
 }
-
 .govuk-\\!-margin-bottom-7 {
   margin-bottom: 25px !important;
 }
@@ -5922,7 +5527,6 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
     margin-bottom: 40px !important;
   }
 }
-
 .govuk-\\!-margin-left-7 {
   margin-left: 25px !important;
 }
@@ -5931,7 +5535,6 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
     margin-left: 40px !important;
   }
 }
-
 .govuk-\\!-margin-8 {
   margin: 30px !important;
 }
@@ -5940,7 +5543,6 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
     margin: 50px !important;
   }
 }
-
 .govuk-\\!-margin-top-8 {
   margin-top: 30px !important;
 }
@@ -5949,7 +5551,6 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
     margin-top: 50px !important;
   }
 }
-
 .govuk-\\!-margin-right-8 {
   margin-right: 30px !important;
 }
@@ -5958,7 +5559,6 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
     margin-right: 50px !important;
   }
 }
-
 .govuk-\\!-margin-bottom-8 {
   margin-bottom: 30px !important;
 }
@@ -5967,7 +5567,6 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
     margin-bottom: 50px !important;
   }
 }
-
 .govuk-\\!-margin-left-8 {
   margin-left: 30px !important;
 }
@@ -5976,7 +5575,6 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
     margin-left: 50px !important;
   }
 }
-
 .govuk-\\!-margin-9 {
   margin: 40px !important;
 }
@@ -5985,7 +5583,6 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
     margin: 60px !important;
   }
 }
-
 .govuk-\\!-margin-top-9 {
   margin-top: 40px !important;
 }
@@ -5994,7 +5591,6 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
     margin-top: 60px !important;
   }
 }
-
 .govuk-\\!-margin-right-9 {
   margin-right: 40px !important;
 }
@@ -6003,7 +5599,6 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
     margin-right: 60px !important;
   }
 }
-
 .govuk-\\!-margin-bottom-9 {
   margin-bottom: 40px !important;
 }
@@ -6012,7 +5607,6 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
     margin-bottom: 60px !important;
   }
 }
-
 .govuk-\\!-margin-left-9 {
   margin-left: 40px !important;
 }
@@ -6021,87 +5615,66 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
     margin-left: 60px !important;
   }
 }
-
 .govuk-\\!-padding-0 {
   padding: 0 !important;
 }
-
 .govuk-\\!-padding-top-0 {
   padding-top: 0 !important;
 }
-
 .govuk-\\!-padding-right-0 {
   padding-right: 0 !important;
 }
-
 .govuk-\\!-padding-bottom-0 {
   padding-bottom: 0 !important;
 }
-
 .govuk-\\!-padding-left-0 {
   padding-left: 0 !important;
 }
-
 .govuk-\\!-padding-1 {
   padding: 5px !important;
 }
-
 .govuk-\\!-padding-top-1 {
   padding-top: 5px !important;
 }
-
 .govuk-\\!-padding-right-1 {
   padding-right: 5px !important;
 }
-
 .govuk-\\!-padding-bottom-1 {
   padding-bottom: 5px !important;
 }
-
 .govuk-\\!-padding-left-1 {
   padding-left: 5px !important;
 }
-
 .govuk-\\!-padding-2 {
   padding: 10px !important;
 }
-
 .govuk-\\!-padding-top-2 {
   padding-top: 10px !important;
 }
-
 .govuk-\\!-padding-right-2 {
   padding-right: 10px !important;
 }
-
 .govuk-\\!-padding-bottom-2 {
   padding-bottom: 10px !important;
 }
-
 .govuk-\\!-padding-left-2 {
   padding-left: 10px !important;
 }
-
 .govuk-\\!-padding-3 {
   padding: 15px !important;
 }
-
 .govuk-\\!-padding-top-3 {
   padding-top: 15px !important;
 }
-
 .govuk-\\!-padding-right-3 {
   padding-right: 15px !important;
 }
-
 .govuk-\\!-padding-bottom-3 {
   padding-bottom: 15px !important;
 }
-
 .govuk-\\!-padding-left-3 {
   padding-left: 15px !important;
 }
-
 .govuk-\\!-padding-4 {
   padding: 15px !important;
 }
@@ -6110,7 +5683,6 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
     padding: 20px !important;
   }
 }
-
 .govuk-\\!-padding-top-4 {
   padding-top: 15px !important;
 }
@@ -6119,7 +5691,6 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
     padding-top: 20px !important;
   }
 }
-
 .govuk-\\!-padding-right-4 {
   padding-right: 15px !important;
 }
@@ -6128,7 +5699,6 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
     padding-right: 20px !important;
   }
 }
-
 .govuk-\\!-padding-bottom-4 {
   padding-bottom: 15px !important;
 }
@@ -6137,7 +5707,6 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
     padding-bottom: 20px !important;
   }
 }
-
 .govuk-\\!-padding-left-4 {
   padding-left: 15px !important;
 }
@@ -6146,7 +5715,6 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
     padding-left: 20px !important;
   }
 }
-
 .govuk-\\!-padding-5 {
   padding: 15px !important;
 }
@@ -6155,7 +5723,6 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
     padding: 25px !important;
   }
 }
-
 .govuk-\\!-padding-top-5 {
   padding-top: 15px !important;
 }
@@ -6164,7 +5731,6 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
     padding-top: 25px !important;
   }
 }
-
 .govuk-\\!-padding-right-5 {
   padding-right: 15px !important;
 }
@@ -6173,7 +5739,6 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
     padding-right: 25px !important;
   }
 }
-
 .govuk-\\!-padding-bottom-5 {
   padding-bottom: 15px !important;
 }
@@ -6182,7 +5747,6 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
     padding-bottom: 25px !important;
   }
 }
-
 .govuk-\\!-padding-left-5 {
   padding-left: 15px !important;
 }
@@ -6191,7 +5755,6 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
     padding-left: 25px !important;
   }
 }
-
 .govuk-\\!-padding-6 {
   padding: 20px !important;
 }
@@ -6200,7 +5763,6 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
     padding: 30px !important;
   }
 }
-
 .govuk-\\!-padding-top-6 {
   padding-top: 20px !important;
 }
@@ -6209,7 +5771,6 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
     padding-top: 30px !important;
   }
 }
-
 .govuk-\\!-padding-right-6 {
   padding-right: 20px !important;
 }
@@ -6218,7 +5779,6 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
     padding-right: 30px !important;
   }
 }
-
 .govuk-\\!-padding-bottom-6 {
   padding-bottom: 20px !important;
 }
@@ -6227,7 +5787,6 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
     padding-bottom: 30px !important;
   }
 }
-
 .govuk-\\!-padding-left-6 {
   padding-left: 20px !important;
 }
@@ -6236,7 +5795,6 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
     padding-left: 30px !important;
   }
 }
-
 .govuk-\\!-padding-7 {
   padding: 25px !important;
 }
@@ -6245,7 +5803,6 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
     padding: 40px !important;
   }
 }
-
 .govuk-\\!-padding-top-7 {
   padding-top: 25px !important;
 }
@@ -6254,7 +5811,6 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
     padding-top: 40px !important;
   }
 }
-
 .govuk-\\!-padding-right-7 {
   padding-right: 25px !important;
 }
@@ -6263,7 +5819,6 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
     padding-right: 40px !important;
   }
 }
-
 .govuk-\\!-padding-bottom-7 {
   padding-bottom: 25px !important;
 }
@@ -6272,7 +5827,6 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
     padding-bottom: 40px !important;
   }
 }
-
 .govuk-\\!-padding-left-7 {
   padding-left: 25px !important;
 }
@@ -6281,7 +5835,6 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
     padding-left: 40px !important;
   }
 }
-
 .govuk-\\!-padding-8 {
   padding: 30px !important;
 }
@@ -6290,7 +5843,6 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
     padding: 50px !important;
   }
 }
-
 .govuk-\\!-padding-top-8 {
   padding-top: 30px !important;
 }
@@ -6299,7 +5851,6 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
     padding-top: 50px !important;
   }
 }
-
 .govuk-\\!-padding-right-8 {
   padding-right: 30px !important;
 }
@@ -6308,7 +5859,6 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
     padding-right: 50px !important;
   }
 }
-
 .govuk-\\!-padding-bottom-8 {
   padding-bottom: 30px !important;
 }
@@ -6317,7 +5867,6 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
     padding-bottom: 50px !important;
   }
 }
-
 .govuk-\\!-padding-left-8 {
   padding-left: 30px !important;
 }
@@ -6326,7 +5875,6 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
     padding-left: 50px !important;
   }
 }
-
 .govuk-\\!-padding-9 {
   padding: 40px !important;
 }
@@ -6335,7 +5883,6 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
     padding: 60px !important;
   }
 }
-
 .govuk-\\!-padding-top-9 {
   padding-top: 40px !important;
 }
@@ -6344,7 +5891,6 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
     padding-top: 60px !important;
   }
 }
-
 .govuk-\\!-padding-right-9 {
   padding-right: 40px !important;
 }
@@ -6353,7 +5899,6 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
     padding-right: 60px !important;
   }
 }
-
 .govuk-\\!-padding-bottom-9 {
   padding-bottom: 40px !important;
 }
@@ -6362,7 +5907,6 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
     padding-bottom: 60px !important;
   }
 }
-
 .govuk-\\!-padding-left-9 {
   padding-left: 40px !important;
 }
@@ -6371,419 +5915,315 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
     padding-left: 60px !important;
   }
 }
-
 .govuk-\\!-static-margin-0 {
   margin: 0 !important;
 }
-
 .govuk-\\!-static-margin-top-0 {
   margin-top: 0 !important;
 }
-
 .govuk-\\!-static-margin-right-0 {
   margin-right: 0 !important;
 }
-
 .govuk-\\!-static-margin-bottom-0 {
   margin-bottom: 0 !important;
 }
-
 .govuk-\\!-static-margin-left-0 {
   margin-left: 0 !important;
 }
-
 .govuk-\\!-static-margin-1 {
   margin: 5px !important;
 }
-
 .govuk-\\!-static-margin-top-1 {
   margin-top: 5px !important;
 }
-
 .govuk-\\!-static-margin-right-1 {
   margin-right: 5px !important;
 }
-
 .govuk-\\!-static-margin-bottom-1 {
   margin-bottom: 5px !important;
 }
-
 .govuk-\\!-static-margin-left-1 {
   margin-left: 5px !important;
 }
-
 .govuk-\\!-static-margin-2 {
   margin: 10px !important;
 }
-
 .govuk-\\!-static-margin-top-2 {
   margin-top: 10px !important;
 }
-
 .govuk-\\!-static-margin-right-2 {
   margin-right: 10px !important;
 }
-
 .govuk-\\!-static-margin-bottom-2 {
   margin-bottom: 10px !important;
 }
-
 .govuk-\\!-static-margin-left-2 {
   margin-left: 10px !important;
 }
-
 .govuk-\\!-static-margin-3 {
   margin: 15px !important;
 }
-
 .govuk-\\!-static-margin-top-3 {
   margin-top: 15px !important;
 }
-
 .govuk-\\!-static-margin-right-3 {
   margin-right: 15px !important;
 }
-
 .govuk-\\!-static-margin-bottom-3 {
   margin-bottom: 15px !important;
 }
-
 .govuk-\\!-static-margin-left-3 {
   margin-left: 15px !important;
 }
-
 .govuk-\\!-static-margin-4 {
   margin: 20px !important;
 }
-
 .govuk-\\!-static-margin-top-4 {
   margin-top: 20px !important;
 }
-
 .govuk-\\!-static-margin-right-4 {
   margin-right: 20px !important;
 }
-
 .govuk-\\!-static-margin-bottom-4 {
   margin-bottom: 20px !important;
 }
-
 .govuk-\\!-static-margin-left-4 {
   margin-left: 20px !important;
 }
-
 .govuk-\\!-static-margin-5 {
   margin: 25px !important;
 }
-
 .govuk-\\!-static-margin-top-5 {
   margin-top: 25px !important;
 }
-
 .govuk-\\!-static-margin-right-5 {
   margin-right: 25px !important;
 }
-
 .govuk-\\!-static-margin-bottom-5 {
   margin-bottom: 25px !important;
 }
-
 .govuk-\\!-static-margin-left-5 {
   margin-left: 25px !important;
 }
-
 .govuk-\\!-static-margin-6 {
   margin: 30px !important;
 }
-
 .govuk-\\!-static-margin-top-6 {
   margin-top: 30px !important;
 }
-
 .govuk-\\!-static-margin-right-6 {
   margin-right: 30px !important;
 }
-
 .govuk-\\!-static-margin-bottom-6 {
   margin-bottom: 30px !important;
 }
-
 .govuk-\\!-static-margin-left-6 {
   margin-left: 30px !important;
 }
-
 .govuk-\\!-static-margin-7 {
   margin: 40px !important;
 }
-
 .govuk-\\!-static-margin-top-7 {
   margin-top: 40px !important;
 }
-
 .govuk-\\!-static-margin-right-7 {
   margin-right: 40px !important;
 }
-
 .govuk-\\!-static-margin-bottom-7 {
   margin-bottom: 40px !important;
 }
-
 .govuk-\\!-static-margin-left-7 {
   margin-left: 40px !important;
 }
-
 .govuk-\\!-static-margin-8 {
   margin: 50px !important;
 }
-
 .govuk-\\!-static-margin-top-8 {
   margin-top: 50px !important;
 }
-
 .govuk-\\!-static-margin-right-8 {
   margin-right: 50px !important;
 }
-
 .govuk-\\!-static-margin-bottom-8 {
   margin-bottom: 50px !important;
 }
-
 .govuk-\\!-static-margin-left-8 {
   margin-left: 50px !important;
 }
-
 .govuk-\\!-static-margin-9 {
   margin: 60px !important;
 }
-
 .govuk-\\!-static-margin-top-9 {
   margin-top: 60px !important;
 }
-
 .govuk-\\!-static-margin-right-9 {
   margin-right: 60px !important;
 }
-
 .govuk-\\!-static-margin-bottom-9 {
   margin-bottom: 60px !important;
 }
-
 .govuk-\\!-static-margin-left-9 {
   margin-left: 60px !important;
 }
-
 .govuk-\\!-static-padding-0 {
   padding: 0 !important;
 }
-
 .govuk-\\!-static-padding-top-0 {
   padding-top: 0 !important;
 }
-
 .govuk-\\!-static-padding-right-0 {
   padding-right: 0 !important;
 }
-
 .govuk-\\!-static-padding-bottom-0 {
   padding-bottom: 0 !important;
 }
-
 .govuk-\\!-static-padding-left-0 {
   padding-left: 0 !important;
 }
-
 .govuk-\\!-static-padding-1 {
   padding: 5px !important;
 }
-
 .govuk-\\!-static-padding-top-1 {
   padding-top: 5px !important;
 }
-
 .govuk-\\!-static-padding-right-1 {
   padding-right: 5px !important;
 }
-
 .govuk-\\!-static-padding-bottom-1 {
   padding-bottom: 5px !important;
 }
-
 .govuk-\\!-static-padding-left-1 {
   padding-left: 5px !important;
 }
-
 .govuk-\\!-static-padding-2 {
   padding: 10px !important;
 }
-
 .govuk-\\!-static-padding-top-2 {
   padding-top: 10px !important;
 }
-
 .govuk-\\!-static-padding-right-2 {
   padding-right: 10px !important;
 }
-
 .govuk-\\!-static-padding-bottom-2 {
   padding-bottom: 10px !important;
 }
-
 .govuk-\\!-static-padding-left-2 {
   padding-left: 10px !important;
 }
-
 .govuk-\\!-static-padding-3 {
   padding: 15px !important;
 }
-
 .govuk-\\!-static-padding-top-3 {
   padding-top: 15px !important;
 }
-
 .govuk-\\!-static-padding-right-3 {
   padding-right: 15px !important;
 }
-
 .govuk-\\!-static-padding-bottom-3 {
   padding-bottom: 15px !important;
 }
-
 .govuk-\\!-static-padding-left-3 {
   padding-left: 15px !important;
 }
-
 .govuk-\\!-static-padding-4 {
   padding: 20px !important;
 }
-
 .govuk-\\!-static-padding-top-4 {
   padding-top: 20px !important;
 }
-
 .govuk-\\!-static-padding-right-4 {
   padding-right: 20px !important;
 }
-
 .govuk-\\!-static-padding-bottom-4 {
   padding-bottom: 20px !important;
 }
-
 .govuk-\\!-static-padding-left-4 {
   padding-left: 20px !important;
 }
-
 .govuk-\\!-static-padding-5 {
   padding: 25px !important;
 }
-
 .govuk-\\!-static-padding-top-5 {
   padding-top: 25px !important;
 }
-
 .govuk-\\!-static-padding-right-5 {
   padding-right: 25px !important;
 }
-
 .govuk-\\!-static-padding-bottom-5 {
   padding-bottom: 25px !important;
 }
-
 .govuk-\\!-static-padding-left-5 {
   padding-left: 25px !important;
 }
-
 .govuk-\\!-static-padding-6 {
   padding: 30px !important;
 }
-
 .govuk-\\!-static-padding-top-6 {
   padding-top: 30px !important;
 }
-
 .govuk-\\!-static-padding-right-6 {
   padding-right: 30px !important;
 }
-
 .govuk-\\!-static-padding-bottom-6 {
   padding-bottom: 30px !important;
 }
-
 .govuk-\\!-static-padding-left-6 {
   padding-left: 30px !important;
 }
-
 .govuk-\\!-static-padding-7 {
   padding: 40px !important;
 }
-
 .govuk-\\!-static-padding-top-7 {
   padding-top: 40px !important;
 }
-
 .govuk-\\!-static-padding-right-7 {
   padding-right: 40px !important;
 }
-
 .govuk-\\!-static-padding-bottom-7 {
   padding-bottom: 40px !important;
 }
-
 .govuk-\\!-static-padding-left-7 {
   padding-left: 40px !important;
 }
-
 .govuk-\\!-static-padding-8 {
   padding: 50px !important;
 }
-
 .govuk-\\!-static-padding-top-8 {
   padding-top: 50px !important;
 }
-
 .govuk-\\!-static-padding-right-8 {
   padding-right: 50px !important;
 }
-
 .govuk-\\!-static-padding-bottom-8 {
   padding-bottom: 50px !important;
 }
-
 .govuk-\\!-static-padding-left-8 {
   padding-left: 50px !important;
 }
-
 .govuk-\\!-static-padding-9 {
   padding: 60px !important;
 }
-
 .govuk-\\!-static-padding-top-9 {
   padding-top: 60px !important;
 }
-
 .govuk-\\!-static-padding-right-9 {
   padding-right: 60px !important;
 }
-
 .govuk-\\!-static-padding-bottom-9 {
   padding-bottom: 60px !important;
 }
-
 .govuk-\\!-static-padding-left-9 {
   padding-left: 60px !important;
 }
-
 .govuk-\\!-text-align-left {
   text-align: left !important;
 }
-
 .govuk-\\!-text-align-centre {
   text-align: center !important;
 }
-
 .govuk-\\!-text-align-right {
   text-align: right !important;
 }
-
 .govuk-\\!-font-size-80 {
   font-size: 3.3125rem !important;
   line-height: 1.0377358491 !important;
@@ -6800,7 +6240,6 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
     line-height: 1.1 !important;
   }
 }
-
 .govuk-\\!-font-size-48 {
   font-size: 2rem !important;
   line-height: 1.09375 !important;
@@ -6817,7 +6256,6 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
     line-height: 1.15 !important;
   }
 }
-
 .govuk-\\!-font-size-36 {
   font-size: 1.6875rem !important;
   line-height: 1.1111111111 !important;
@@ -6834,7 +6272,6 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
     line-height: 1.05 !important;
   }
 }
-
 .govuk-\\!-font-size-27 {
   font-size: 1.3125rem !important;
   line-height: 1.1904761905 !important;
@@ -6851,7 +6288,6 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
     line-height: 1.15 !important;
   }
 }
-
 .govuk-\\!-font-size-24 {
   font-size: 1.3125rem !important;
   line-height: 1.1904761905 !important;
@@ -6868,7 +6304,6 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
     line-height: 1.15 !important;
   }
 }
-
 .govuk-\\!-font-size-19 {
   font-size: 1.1875rem !important;
   line-height: 1.3157894737 !important;
@@ -6879,7 +6314,6 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
     line-height: 1.15 !important;
   }
 }
-
 .govuk-\\!-font-size-16 {
   font-size: 1rem !important;
   line-height: 1.25 !important;
@@ -6890,28 +6324,22 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
     line-height: 1.2 !important;
   }
 }
-
 .govuk-\\!-font-weight-regular {
   font-weight: 400 !important;
 }
-
 .govuk-\\!-font-weight-bold {
   font-weight: 700 !important;
 }
-
 .govuk-\\!-font-tabular-numbers {
   font-variant-numeric: tabular-nums !important;
 }
-
 .govuk-\\!-text-break-word {
   word-wrap: break-word !important;
   overflow-wrap: break-word !important;
 }
-
 .govuk-\\!-width-full {
   width: 100% !important;
 }
-
 .govuk-\\!-width-three-quarters {
   width: 100% !important;
 }
@@ -6920,7 +6348,6 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
     width: 75% !important;
   }
 }
-
 .govuk-\\!-width-two-thirds {
   width: 100% !important;
 }
@@ -6929,7 +6356,6 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
     width: 66.66% !important;
   }
 }
-
 .govuk-\\!-width-one-half {
   width: 100% !important;
 }
@@ -6938,7 +6364,6 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
     width: 50% !important;
   }
 }
-
 .govuk-\\!-width-one-third {
   width: 100% !important;
 }
@@ -6947,7 +6372,6 @@ exports[`ITCSS layers overrides works when user @imports the layer 1`] = `
     width: 33.33% !important;
   }
 }
-
 .govuk-\\!-width-one-quarter {
   width: 100% !important;
 }
@@ -6964,11 +6388,9 @@ exports[`ITCSS layers settings works when user @imports the layer 1`] = `
   --govuk-breakpoint-tablet: 40.0625rem;
   --govuk-breakpoint-desktop: 48.0625rem;
 }
-
 :root {
   --govuk-frontend-version: "development";
 }
-
 :root {
   --govuk-brand-colour: #1d70b8;
   --govuk-text-colour: #0b0c0c;
@@ -7004,11 +6426,9 @@ exports[`ITCSS layers tools works when user @imports the layer 1`] = `
   --govuk-breakpoint-tablet: 40.0625rem;
   --govuk-breakpoint-desktop: 48.0625rem;
 }
-
 :root {
   --govuk-frontend-version: "development";
 }
-
 :root {
   --govuk-brand-colour: #1d70b8;
   --govuk-text-colour: #0b0c0c;
@@ -7045,11 +6465,9 @@ exports[`ITCSS layers utilities works when user @imports the layer 1`] = `
   --govuk-breakpoint-tablet: 40.0625rem;
   --govuk-breakpoint-desktop: 48.0625rem;
 }
-
 :root {
   --govuk-frontend-version: "development";
 }
-
 :root {
   --govuk-brand-colour: #1d70b8;
   --govuk-text-colour: #0b0c0c;
@@ -7077,13 +6495,11 @@ exports[`ITCSS layers utilities works when user @imports the layer 1`] = `
     --govuk-text-colour: var(--govuk-print-text-colour, #000000);
   }
 }
-
 .govuk-clearfix::after {
   content: "";
   display: block;
   clear: both;
 }
-
 .govuk-visually-hidden {
   position: absolute !important;
   width: 1px !important;
@@ -7103,7 +6519,6 @@ exports[`ITCSS layers utilities works when user @imports the layer 1`] = `
 .govuk-visually-hidden::after {
   content: " ";
 }
-
 .govuk-visually-hidden-focusable:not(:active):not(:focus):not(.\\:focus) {
   position: absolute !important;
   width: 1px !important;

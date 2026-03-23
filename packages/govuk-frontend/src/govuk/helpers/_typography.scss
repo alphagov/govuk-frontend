@@ -12,9 +12,9 @@
 @use "../settings/spacing" as *;
 @use "../settings/typography-font" as *;
 @use "../settings/typography-responsive" as *;
-@import "../tools/font-url";
-@import "../tools/px-to-rem";
-@import "../tools/if";
+@use "../tools/font-url" as *;
+@use "../tools/px-to-rem" as *;
+@use "../tools/if" as *;
 @import "font-faces";
 @import "media-queries";
 @import "spacing";

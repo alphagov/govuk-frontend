@@ -1,4 +1,4 @@
-@import "../tools/exports";
+@use "../tools/exports" as *;
 @import "../helpers/clearfix";
 
 @include govuk-exports("govuk/utilities/clearfix") {

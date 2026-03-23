@@ -1,5 +1,5 @@
 @use "../settings/global-styles" as *;
-@import "../tools/exports";
+@use "../tools/exports" as *;
 @import "../helpers/colour";
 @import "../helpers/links";
 @import "links";

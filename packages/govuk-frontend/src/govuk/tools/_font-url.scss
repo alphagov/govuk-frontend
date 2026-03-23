@@ -3,6 +3,7 @@
 ////
 @use "sass:meta";
 
+@use "../settings/warnings--internal";
 @use "../settings/assets" as *;
 
 /// Font URL
@@ -21,6 +22,12 @@
     and $govuk-font-url-function;
 
   @if meta.type-of($custom-function) == "string" {
+    @if warnings--internal.should-warn("font-url-string") {
+      @warn warnings--internal.warning-text("font-url-string",
+      "Passing a string to $govuk-font-url-function is deprecated. "
+          + "Pass a function using meta.get-function(...) instead.");
+    }
+
     @if meta.function-exists($custom-function) {
       $custom-function: meta.get-function($custom-function);
     } @else {

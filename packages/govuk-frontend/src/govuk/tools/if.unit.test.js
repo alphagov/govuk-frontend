@@ -4,7 +4,7 @@ const { outdent } = require('outdent')
 describe('@function govuk-if', () => {
   it('returns `$if-value` if the condition is met', async () => {
     const sass = `
-      @import "tools/if";
+      @use "tools/if" as *;
       :root {
         value: govuk-if(true, 'if-value', 'else-value')
       }
@@ -20,7 +20,7 @@ describe('@function govuk-if', () => {
 
   it('returns `$else-value` if the condition is not met', async () => {
     const sass = `
-      @import "tools/if";
+      @use "tools/if" as *;
       :root {
         value: govuk-if(false, 'if-value', 'else-value')
       }
@@ -36,7 +36,7 @@ describe('@function govuk-if', () => {
 
   it('defaults `$else-value` to `null`', async () => {
     const sass = `
-      @import "tools/if";
+      @use "tools/if" as *;
       :root {
         value: govuk-if(false, 'if-value')
       }
