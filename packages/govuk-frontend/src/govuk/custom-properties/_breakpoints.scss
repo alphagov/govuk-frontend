@@ -1,5 +1,5 @@
-@use "../settings/custom-properties" as *;
-@use "../settings/media-queries" as *;
+@import "../settings/custom-properties";
+@import "../settings/media-queries";
 @import "../tools/exports";
 @import "../tools/px-to-rem";
 

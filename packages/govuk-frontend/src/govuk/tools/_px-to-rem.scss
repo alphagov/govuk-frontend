@@ -4,7 +4,7 @@
 
 @use "sass:math";
 
-@use "../settings/typography-responsive" as *;
+@import "../settings/typography-responsive";
 
 /// Convert pixels to rem
 ///

@@ -6,11 +6,10 @@
 @use "sass:meta";
 @use "sass:string";
 
-@use "../settings/colours-palette--internal";
-@use "../settings/warnings--internal";
-
-@use "../settings/colours-functional" as *;
-@use "../settings/colours-organisations" as *;
+@import "../settings/colours-functional";
+@import "../settings/colours-palette";
+@import "../settings/colours-organisations";
+@import "../settings/warnings";
 
 /// Get a colour from the palette
 ///
@@ -18,10 +17,10 @@
 /// functional colour. For example, use `govuk-functional-colour("link")` for
 /// links rather than `govuk-colour("blue")`.
 ///
-/// @param {String | Colour} $colour - Name of colour from the [colour
-///   palette](https://design-system.service.gov.uk/styles/colour/#add-colours-using-govuk-colour)
-/// @param {String | Colour} $variant - Name of the variant from the [colour
-///   palette](https://design-system.service.gov.uk/styles/colour/#add-colours-using-govuk-colour)
+/// @param {String | Colour} $colour - Name of colour from the colour palette
+///   (`$_govuk-palette`)
+/// @param {String | Colour} $variant - Name of the variant from the colour palette
+///   (`$_govuk-palette`)
 /// @return {Colour} Representation of named colour
 ///
 /// @example scss - Getting the primary variant of a colour
@@ -39,7 +38,7 @@
 /// @throw if the palette is misformatted and doesn't associate a colour or map to `$colour`
 /// @access public
 
-@function govuk-colour($colour, $variant: primary, $colours: colours-palette--internal.$govuk-palette) {
+@function govuk-colour($colour, $variant: primary, $colours: $_govuk-palette) {
   // Sass parses unquoted colours as colours, so we need to turn them into
   // strings before looking them up in the colour palette
   // https://sass-lang.com/documentation/values/strings#unquoted
@@ -52,7 +51,7 @@
   @if not $colour-variants {
     // To ease the transition between the brand palette and old GOV.UK Frontend colours
     // we'll automatically convert old colour names into their equivalent in the palette
-    @if $colours == colours-palette--internal.$govuk-palette {
+    @if $colours == $_govuk-palette {
       $corresponding-colour: _govuk-corresponding-brand-colour($colour);
       @if $corresponding-colour {
         @return $corresponding-colour;
@@ -81,7 +80,7 @@
 }
 
 @function _govuk-corresponding-brand-colour($colour) {
-  $pre-brand-colour: map.get(colours-palette--internal.$govuk-pre-brand-colours, $colour);
+  $pre-brand-colour: map.get($_govuk-pre-brand-colours, $colour);
 
   @if $pre-brand-colour {
     $corresponding-colour: list.nth($pre-brand-colour, 1);
@@ -90,7 +89,7 @@
     $corresponding-govuk-colour-call: 'govuk-colour("#{$corresponding-colour}", $variant: "#{$corresponding-variant}")';
 
     @if _should-warn("pre-brand-colour") {
-      @warn warnings--internal.warning-text("pre-brand-colour",
+      @warn _warning-text("pre-brand-colour",
         "We've updated GOV.UK Frontend's colour palette. Use " +
         "`#{$corresponding-govuk-colour-call}` instead of " +
         "`govuk-colour(\"#{$colour}\")`. The `#{$colour}` colour is " +
@@ -175,24 +174,6 @@
   @return govuk-colour($name, $variant: $variant);
 }
 
-/// Organisation colour aliases
-///
-/// Some organisations have been renamed within our code over time. Here we
-/// map the prior key to the new equivalent key.
-///
-/// Note: This is for internal renames only. If a department has changed name
-/// or brand colour in a machinery of government change, it should be added to
-/// $govuk-colours-organisations as a new entry with any superseded
-/// organisations marked deprecated.
-///
-/// @type Map
-///
-/// @access private
-
-$_govuk-colours-organisations-aliases: (
-  "department-for-business-and-trade": "department-for-business-trade"
-);
-
 /// Get the colour for a government organisation
 ///
 /// @param {String} $organisation - Organisation name, lowercase, hyphenated
@@ -224,7 +205,7 @@ $_govuk-colours-organisations-aliases: (
   // If the organisation has a deprecation message associated with it
   // (e.g. it has ceased to exist) then output a warning.
   @if map.has-key($org-colour, "deprecation-message") and _should-warn("organisation-colours") {
-    @warn warnings--internal.warning-text(
+    @warn _warning-text(
       "organisation-colours",
       map.get($org-colour, "deprecation-message")
     );

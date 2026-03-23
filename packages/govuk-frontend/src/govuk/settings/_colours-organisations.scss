@@ -1,4 +1,4 @@
-@use "warnings--internal";
+@import "../settings/warnings";
 
 ////
 /// @group settings/colours
@@ -114,3 +114,21 @@ $govuk-colours-organisations: (
     colour: #a33038
   )
 ) !default;
+
+/// Organisation colour aliases
+///
+/// Some organisations have been renamed within our code over time. Here we
+/// map the prior key to the new equivalent key.
+///
+/// Note: This is for internal renames only. If a department has changed name
+/// or brand colour in a machinery of government change, it should be added to
+/// $govuk-colours-organisations as a new entry with any superseded
+/// organisations marked deprecated.
+///
+/// @type Map
+///
+/// @access private
+
+$_govuk-colours-organisations-aliases: (
+  "department-for-business-and-trade": "department-for-business-trade"
+);
