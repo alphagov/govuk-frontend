@@ -1,6 +1,4 @@
-import { compileStringAsync } from 'sass-embedded'
-
-import { sassConfig } from './sass.config.js'
+import { compileSassStringLikeUsers } from './helpers/sass.js'
 
 describe('All components, with configuration', () => {
   let cssWithImport
@@ -9,20 +7,20 @@ describe('All components, with configuration', () => {
   beforeAll(async () => {
     const sass = `
       $govuk-functional-colours: (brand: hotpink);
-      @import "./assets-urls";
+      @import "pkg:@govuk-frontend/helpers/assets-urls";
 
       $govuk-font-url-function: 'fonts-url';
 
       @import "node_modules/govuk-frontend/src/govuk";
     `
 
-    cssWithImport = (await compileStringAsync(sass, sassConfig)).css
+    cssWithImport = await compileSassStringLikeUsers(sass)
   })
 
   beforeAll(async () => {
     const sass = `
       @use "sass:meta";
-      @use "./assets-urls";
+      @use "pkg:@govuk-frontend/helpers/assets-urls";
 
       @use "node_modules/govuk-frontend/src/govuk" with (
         $govuk-functional-colours: (brand: hotpink),
@@ -30,7 +28,7 @@ describe('All components, with configuration', () => {
       );
     `
 
-    cssWithUse = (await compileStringAsync(sass, sassConfig)).css
+    cssWithUse = await compileSassStringLikeUsers(sass)
   })
 
   it('works when user @imports everything with configuration', async () => {
