@@ -324,6 +324,7 @@ module.exports = {
  * @property {boolean} [screenshot] - Screenshot and include in visual regression tests
  * @property {PageTemplateOptions} [pageTemplateOptions] - Page template options for render
  * @property {MacroOptions} options - Nunjucks macro options (or params)
+ * @property {string} [supportingHTML] - Supporting HTML to inject during tests (e.g., target elements for aria-controls, label for attributes)
  */
 
 /**
