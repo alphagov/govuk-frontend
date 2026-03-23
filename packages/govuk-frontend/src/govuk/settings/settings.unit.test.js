@@ -1,39 +1,28 @@
-const { globSync } = require('fs')
-const { readFile } = require('fs/promises')
-const { join, basename } = require('path')
+const { join } = require('path')
 
 const { paths } = require('@govuk-frontend/config')
 const { compileSassFile } = require('@govuk-frontend/helpers/tests')
+const { getListing } = require('@govuk-frontend/lib/files')
 const sassdoc = require('sassdoc')
 
-const partials = globSync('**/src/govuk/settings/**/*.scss', {
-  cwd: paths.package,
-  exclude: ['**/_index.scss', '**/*.import.scss', '**/*--internal.scss']
-}).map((partialPath) => ({
-  partialPath,
-  name: basename(partialPath)
-}))
-
 describe('The settings layer', () => {
+  let sassFiles
+
+  beforeAll(async () => {
+    sassFiles = await getListing('**/src/govuk/settings/**/*.scss', {
+      cwd: paths.package,
+      ignore: ['**/_all.scss', '**/_index.scss']
+    })
+  })
+
   it('should not output any CSS', async () => {
     const file = join(paths.package, 'src/govuk/settings/_index.scss')
     await expect(compileSassFile(file)).resolves.toMatchObject({ css: '' })
   })
 
-  it('has am import-only file for the `index`', async () => {
-    const importOnlyPath = join(
-      paths.package,
-      'src/govuk/settings/_index.import.scss'
-    )
-
-    const fileContent = await readFile(importOnlyPath, { encoding: 'utf-8' })
-
-    expect(fileContent).toBe(`@forward "index";\n`)
-  })
-
-  describe.each(partials)('$name', ({ partialPath, name }) => {
-    it('renders without errors', () => {
-      const file = join(paths.package, partialPath)
+  it('renders CSS for all settings', () => {
+    const sassTasks = sassFiles.map((sassFilePath) => {
+      const file = join(paths.package, sassFilePath)
 
       return expect(compileSassFile(file)).resolves.toMatchObject({
         css: expect.any(String),
@@ -41,17 +30,7 @@ describe('The settings layer', () => {
       })
     })
 
-    it('has a corresponding import-only file', async () => {
-      const importOnlyPath = join(
-        paths.package,
-        partialPath.replace('.scss', '.import.scss')
-      )
-      const { moduleName } = /_(?<moduleName>.*)\.scss/.exec(name).groups
-
-      const fileContent = await readFile(importOnlyPath, { encoding: 'utf-8' })
-
-      expect(fileContent).toContain(`@forward "${moduleName}";`)
-    })
+    return Promise.all(sassTasks)
   })
 
   describe('Sass documentation', () => {

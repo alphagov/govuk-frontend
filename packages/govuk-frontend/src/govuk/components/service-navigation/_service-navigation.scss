@@ -1,5 +1,5 @@
-@use "../../settings/warnings--internal";
+@import "../../settings/warnings";
 
-@include warnings--internal.component-scss-file-warning("service-navigation");
+@include _component-scss-file-warning("service-navigation");
 
 @import "./index";

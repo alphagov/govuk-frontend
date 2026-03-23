@@ -2,7 +2,7 @@
 /// @group overrides
 ////
 @use "sass:map";
-@use "../settings/spacing" as *;
+@import "../settings/spacing";
 @import "../tools/exports";
 @import "../helpers/spacing";
 
