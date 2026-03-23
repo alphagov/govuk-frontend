@@ -7,7 +7,8 @@
   },
   "private": true,
   "scripts": {
-    "rollup": "npm run rollup:single-component && npm run rollup:initAll",
+    "rollup": "npm run rollup:single-component && npm run rollup:initAll && npm run rollup:individual-import",
+    "rollup:individual-import": "npm run rollup:cli -- -o dist/rollup/individual-import.js ./src/individual-import.mjs",
     "rollup:single-component": "npm run rollup:cli -- -o dist/rollup/single-component.js ./src/single-component.mjs",
     "rollup:initAll": "npm run rollup:cli -- -o dist/rollup/initAll.js ./src/initAll.mjs",
     "rollup:cli": "rollup -c rollup.config.mjs",
