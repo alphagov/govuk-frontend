@@ -2,7 +2,7 @@
 /// @group helpers/accessibility
 ////
 
-@import "../tools/if";
+@use "../tools/if" as *;
 
 /// Helper function containing the common code for the following two mixins
 ///

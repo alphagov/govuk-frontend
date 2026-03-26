@@ -6,6 +6,7 @@ describe('All components, with configuration', () => {
 
   beforeAll(async () => {
     const sass = `
+      $govuk-suppressed-warnings: ("component-scss-files");
       $govuk-functional-colours: (brand: hotpink);
       @import "pkg:@govuk-frontend/helpers/assets-urls";
 

@@ -2,3 +2,8 @@
   // Some custom URL handling
   @return url("example.woff");
 }
+
+@function images-url($filename) {
+  // Some custom URL handling
+  @return url("example.svg");
+}

@@ -1,0 +1,30 @@
+@use "sass:meta";
+
+// If `$govuk-font-url-function` or `$govuk-image-url-function` are configured as a string
+// we need to resolve them to a function in this import-only file. The file included by `@forward`
+// will be loaded as a module and will be isolated from the code that `@import`s this file
+// and where the function is available
+@forward "../settings" with (
+  $govuk-font-url-function: meta.variable-exists("govuk-font-url-function") and
+    (
+      (meta.type-of($govuk-font-url-function) == "string" and meta.get-function($govuk-font-url-function)) or
+        $govuk-font-url-function
+    ),
+  $govuk-image-url-function: meta.variable-exists("govuk-image-url-function") and
+    (
+      (meta.type-of($govuk-image-url-function) == "string" and meta.get-function($govuk-image-url-function)) or
+        $govuk-image-url-function
+    )
+);
+
+@forward "image-url";
+
+@use "../settings/warnings--internal";
+
+@if meta.variable-exists("govuk-image-url-function") and meta.type-of($govuk-image-url-function) == "string" {
+  @include warnings--internal.warning(
+    "image-url-string",
+    "Passing a string to $govuk-image-url-function is deprecated. " +
+      "Pass a function using meta.get-function(...) instead."
+  );
+}

@@ -1,6 +1,6 @@
-@import "exports";
-@import "font-url";
-@import "if";
-@import "image-url";
-@import "px-to-em";
-@import "px-to-rem";
+@forward "exports";
+@forward "font-url";
+@forward "if";
+@forward "image-url";
+@forward "px-to-em";
+@forward "px-to-rem";

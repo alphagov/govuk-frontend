@@ -1,4 +1,4 @@
-@import "../tools/exports";
+@use "../tools/exports" as *;
 @import "../helpers/media-queries";
 
 // stylelint-disable declaration-no-important
