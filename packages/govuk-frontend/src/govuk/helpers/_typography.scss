@@ -2,20 +2,22 @@
 /// @group helpers/typography
 ////
 @use "sass:map";
-@use "sass:math";
 @use "sass:string";
 
-@import "../settings/assets";
-@import "../settings/colours-functional";
-@import "../settings/spacing";
-@import "../settings/typography-font";
-@import "../settings/warnings";
-@import "../tools/font-url";
-@import "../tools/px-to-rem";
-@import "../tools/if";
-@import "font-faces";
-@import "media-queries";
-@import "spacing";
+@use "../settings/warnings--internal";
+
+@use "../settings/assets" as *;
+@use "../settings/colours-functional" as *;
+@use "../settings/spacing" as *;
+@use "../settings/typography-font" as *;
+@use "../settings/typography-responsive" as *;
+@use "../tools/font-url" as *;
+@use "../tools/px-to-rem" as *;
+@use "../tools/if" as *;
+@use "font-faces--internal";
+@use "typography--internal";
+@use "media-queries" as *;
+@use "spacing" as *;
 
 /// 'Common typography' helper
 ///
@@ -33,7 +35,7 @@
   // If the user is using the default GDS Transport font we need to include
   // the font-face declarations.
   @if $govuk-include-default-font-face {
-    @include _govuk-font-face-gds-transport;
+    @include font-faces--internal.gds-transport;
   }
 
   @media print {
@@ -49,7 +51,7 @@
 /// @access public
 
 @mixin govuk-text-colour {
-  @include _warning(
+  @include warnings--internal.warning(
     "govuk-text-colour",
     "The `govuk-text-colour` mixin is deprecated. Use `color: govuk-functional-colour(text)` instead."
   );
@@ -109,24 +111,6 @@
 
   // All other browsers support `overflow-wrap`
   overflow-wrap: break-word govuk-if($important, !important);
-}
-
-/// Convert line-heights specified in pixels into a relative value, unless
-/// they are already unit-less (and thus already treated as relative values)
-/// or the units do not match the units used for the font size.
-///
-/// @param {Number} $line-height Line height
-/// @param {Number} $font-size Font size
-/// @return {Number} The line height as either a relative value or unmodified
-///
-/// @access private
-
-@function _govuk-line-height($line-height, $font-size) {
-  @if not math.is-unitless($line-height) and math.unit($line-height) == math.unit($font-size) {
-    $line-height: math.div($line-height, $font-size);
-  }
-
-  @return $line-height;
 }
 
 /// Font size and line height helper
@@ -198,7 +182,7 @@
   @if $deprecation {
     // Warn on deprecated font sizes unless flagged for internal use
     @if not $size-internal-use-only {
-      @include _warning(map.get($deprecation, "key"), map.get($deprecation, "message"));
+      @include warnings--internal.warning(map.get($deprecation, "key"), map.get($deprecation, "message"));
     }
 
     // remove the deprecation map keys so they do not break the breakpoint loop
@@ -211,7 +195,7 @@
 
     // $calculated-line-height is a separate variable from $line-height,
     // as otherwise the value would get redefined with each loop and
-    // eventually break _govuk-line-height.
+    // eventually break typography--internal.line-height.
     // 1. See if the function was called with a specific line-height
     $calculated-line-height: $line-height;
     // 2. Default to the breakpoint-map if no specific value was given
@@ -222,7 +206,7 @@
     // 3. Turn the value into a unitless line-height if possible
     // We continue to call the param $line-height to stay consistent with the
     // naming with govuk-font.
-    $calculated-line-height: _govuk-line-height(
+    $calculated-line-height: typography--internal.line-height(
       $line-height: $calculated-line-height,
       $font-size: $font-size
     );

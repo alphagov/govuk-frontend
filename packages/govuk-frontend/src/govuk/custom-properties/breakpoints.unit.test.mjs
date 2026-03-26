@@ -3,9 +3,11 @@ import { compileSassString } from '@govuk-frontend/helpers/tests'
 describe('custom-properties/breakpoints', () => {
   it('outputs one custom property for each breakpoint', async () => {
     const sass = `
-      $govuk-breakpoints: (
-        mobile: 320px,
-        desktop: 760px,
+      @use "settings" with (
+        $govuk-breakpoints: (
+          mobile: 320px,
+          desktop: 760px,
+        )
       );
       @import "custom-properties/breakpoints";
     `
@@ -18,9 +20,11 @@ describe('custom-properties/breakpoints', () => {
 
   it('outputs the properties only once when included multiple times', async () => {
     const sass = `
-      $govuk-breakpoints: (
-        mobile: 320px,
-        desktop: 760px,
+      @use "settings" with (
+        $govuk-breakpoints: (
+          mobile: 320px,
+          desktop: 760px,
+        )
       );
       @import "custom-properties/breakpoints";
       @import "custom-properties/breakpoints";
@@ -36,7 +40,9 @@ describe('custom-properties/breakpoints', () => {
   describe('$govuk-output-custom-properties', () => {
     it('outputs the properties properties if `true`', async () => {
       const sass = `
-        $govuk-output-custom-properties: true;
+        @use "settings" with (
+          $govuk-output-custom-properties: true
+        );
         @import "custom-properties/breakpoints";
       `
 
@@ -47,7 +53,9 @@ describe('custom-properties/breakpoints', () => {
 
     it('does not output core custom properties if `false`', async () => {
       const sass = `
-        $govuk-output-custom-properties: false;
+        @use "settings" with (
+          $govuk-output-custom-properties: false
+        );
         @import "custom-properties/breakpoints";
       `
 

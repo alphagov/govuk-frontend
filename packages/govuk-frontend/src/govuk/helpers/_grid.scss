@@ -3,6 +3,9 @@
 ////
 @use "sass:map";
 
+@use "../settings/measurements" as *;
+@use "media-queries" as *;
+
 /// Grid width percentage
 ///
 /// @param {String} $key - Name of grid width (e.g. two-thirds)

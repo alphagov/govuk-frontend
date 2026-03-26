@@ -1,7 +1,7 @@
-@import "../settings/spacing";
-@import "../tools/exports";
-@import "../helpers/colour";
-@import "../helpers/spacing";
+@use "../settings/spacing" as *;
+@use "../tools/exports" as *;
+@use "../helpers/colour" as *;
+@use "../helpers/spacing" as *;
 
 @include govuk-exports("govuk/core/section-break") {
   %govuk-section-break {

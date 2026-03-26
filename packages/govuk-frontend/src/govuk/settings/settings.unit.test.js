@@ -1,28 +1,35 @@
+const { readFile } = require('fs/promises')
 const { join } = require('path')
 
 const { paths } = require('@govuk-frontend/config')
-const { compileSassFile } = require('@govuk-frontend/helpers/tests')
-const { getListing } = require('@govuk-frontend/lib/files')
+const {
+  compileSassFile,
+  getSassPathsFromLayer
+} = require('@govuk-frontend/helpers/tests')
 const sassdoc = require('sassdoc')
 
+const partials = getSassPathsFromLayer('settings')
+
 describe('The settings layer', () => {
-  let sassFiles
-
-  beforeAll(async () => {
-    sassFiles = await getListing('**/src/govuk/settings/**/*.scss', {
-      cwd: paths.package,
-      ignore: ['**/_all.scss', '**/_index.scss']
-    })
-  })
-
   it('should not output any CSS', async () => {
     const file = join(paths.package, 'src/govuk/settings/_index.scss')
     await expect(compileSassFile(file)).resolves.toMatchObject({ css: '' })
   })
 
-  it('renders CSS for all settings', () => {
-    const sassTasks = sassFiles.map((sassFilePath) => {
-      const file = join(paths.package, sassFilePath)
+  it('has an import-only file for the `index`', async () => {
+    const importOnlyPath = join(
+      paths.package,
+      'src/govuk/settings/_index.import.scss'
+    )
+
+    const fileContent = await readFile(importOnlyPath, { encoding: 'utf-8' })
+
+    expect(fileContent).toBe(`@forward "index";\n`)
+  })
+
+  describe.each(partials)('$name', ({ partialPath, name }) => {
+    it('renders without errors', () => {
+      const file = join(paths.package, partialPath)
 
       return expect(compileSassFile(file)).resolves.toMatchObject({
         css: expect.any(String),
@@ -30,7 +37,17 @@ describe('The settings layer', () => {
       })
     })
 
-    return Promise.all(sassTasks)
+    it('has a corresponding import-only file', async () => {
+      const importOnlyPath = join(
+        paths.package,
+        partialPath.replace('.scss', '.import.scss')
+      )
+      const { moduleName } = /_(?<moduleName>.*)\.scss/.exec(name).groups
+
+      const fileContent = await readFile(importOnlyPath, { encoding: 'utf-8' })
+
+      expect(fileContent).toContain(`@forward "${moduleName}";`)
+    })
   })
 
   describe('Sass documentation', () => {

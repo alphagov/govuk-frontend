@@ -2,11 +2,10 @@ import { globSync } from 'node:fs'
 import { relative } from 'node:path'
 
 import { packageNameToPath } from '@govuk-frontend/lib/names'
-import { compileStringAsync } from 'sass-embedded'
 import slash from 'slash'
 import stylelint from 'stylelint'
 
-import { sassConfig } from './sass.config.js'
+import { compileSassStringLikeUsers } from './helpers/sass.js'
 
 /**
  * Setup
@@ -14,7 +13,9 @@ import { sassConfig } from './sass.config.js'
 const govukFrontendPath = packageNameToPath('govuk-frontend')
 
 // Grab a list of all Sass files and sort them alphabetically, for consistent output
-const sassFiles = globSync(`${slash(govukFrontendPath)}/src/govuk/**/*.scss`)
+const sassFiles = globSync(`${slash(govukFrontendPath)}/src/govuk/**/*.scss`, {
+  exclude: ['**/*.import.scss', '**/*--internal.scss']
+})
   .map((filePath) => slash(relative(govukFrontendPath, filePath)))
   .sort((a, b) => a.localeCompare(b))
 
@@ -23,7 +24,7 @@ async function compileSassFile(sassFilePath, type = 'import') {
   const suppressWarnings = `$govuk-suppressed-warnings: ("component-scss-files");\n`
   const sass = `${suppressWarnings}@${type} "node_modules/govuk-frontend/${sassFilePath}";`
 
-  const { css } = await compileStringAsync(sass, sassConfig)
+  const css = await compileSassStringLikeUsers(sass)
   return css
 }
 

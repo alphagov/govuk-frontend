@@ -1,7 +1,7 @@
 @use "sass:map";
-@import "../settings/typography-responsive";
-@import "../tools/exports";
-@import "../helpers/typography";
+@use "../settings/typography-responsive" as *;
+@use "../tools/exports" as *;
+@use "../helpers/typography" as *;
 
 @include govuk-exports("govuk/overrides/typography") {
   // Font size and line height

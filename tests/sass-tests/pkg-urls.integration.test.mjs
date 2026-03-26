@@ -1,6 +1,4 @@
-import { compileStringAsync } from 'sass-embedded'
-
-import { sassConfig } from './sass.config.js'
+import { compileSassStringLikeUsers, sassConfig } from './helpers/sass.js'
 
 describe('`pkg:` URLs', () => {
   describe.each([
@@ -21,7 +19,7 @@ describe('`pkg:` URLs', () => {
         @use "${fileUrl}"
       `
 
-      cssFromFileUrl = (await compileStringAsync(sass, sassConfig)).css
+      cssFromFileUrl = await compileSassStringLikeUsers(sass)
     })
 
     it('outputs the same CSS as the path', async () => {
@@ -29,7 +27,7 @@ describe('`pkg:` URLs', () => {
         @use "${pkgUrl}";
       `
 
-      const { css } = await compileStringAsync(sass, {
+      const css = await compileSassStringLikeUsers(sass, {
         ...sassConfig,
         loadPaths: null // Prevent loadPaths from interfering
       })

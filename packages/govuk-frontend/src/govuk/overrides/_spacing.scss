@@ -2,9 +2,10 @@
 /// @group overrides
 ////
 @use "sass:map";
-@import "../settings/spacing";
-@import "../tools/exports";
-@import "../helpers/spacing";
+@use "../settings/spacing" as *;
+@use "../tools/exports" as *;
+@use "../helpers/spacing--internal";
+@use "../helpers/spacing" as *;
 
 // stylelint-disable declaration-no-important
 
@@ -40,13 +41,13 @@ $_spacing-directions: ("top", "right", "bottom", "left") !default;
   // override that affects all directions...
   @each $scale-point, $scale-map in $govuk-spacing-responsive-scale {
     .govuk-\!-#{$property}-#{$scale-point} {
-      @include _govuk-responsive-spacing($scale-point, $property, "all", true);
+      @include spacing--internal.responsive-spacing($scale-point, $property, "all", true);
     }
 
     // ... and then an override for each individual direction
     @each $direction in $_spacing-directions {
       .govuk-\!-#{$property}-#{$direction}-#{$scale-point} {
-        @include _govuk-responsive-spacing($scale-point, $property, $direction, true);
+        @include spacing--internal.responsive-spacing($scale-point, $property, $direction, true);
       }
     }
   }
