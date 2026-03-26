@@ -1,5 +1,5 @@
-@import "links";
-@import "lists";
-@import "typography";
-@import "section-break";
-@import "global-styles";
+@forward "links";
+@forward "lists";
+@forward "typography";
+@forward "section-break";
+@forward "global-styles";
