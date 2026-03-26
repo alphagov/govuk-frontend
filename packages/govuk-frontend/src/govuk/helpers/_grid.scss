@@ -4,6 +4,7 @@
 @use "sass:map";
 
 @use "../settings/measurements" as *;
+@use "media-queries" as *;
 
 /// Grid width percentage
 ///

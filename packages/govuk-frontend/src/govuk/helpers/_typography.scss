@@ -2,7 +2,6 @@
 /// @group helpers/typography
 ////
 @use "sass:map";
-@use "sass:math";
 @use "sass:string";
 
 @use "../settings/warnings--internal";
@@ -15,9 +14,10 @@
 @use "../tools/font-url" as *;
 @use "../tools/px-to-rem" as *;
 @use "../tools/if" as *;
-@import "font-faces";
-@import "media-queries";
-@import "spacing";
+@use "font-faces--internal";
+@use "typography--internal";
+@use "media-queries" as *;
+@use "spacing" as *;
 
 /// 'Common typography' helper
 ///
@@ -35,7 +35,7 @@
   // If the user is using the default GDS Transport font we need to include
   // the font-face declarations.
   @if $govuk-include-default-font-face {
-    @include _govuk-font-face-gds-transport;
+    @include font-faces--internal.gds-transport;
   }
 
   @media print {
@@ -111,24 +111,6 @@
 
   // All other browsers support `overflow-wrap`
   overflow-wrap: break-word govuk-if($important, !important);
-}
-
-/// Convert line-heights specified in pixels into a relative value, unless
-/// they are already unit-less (and thus already treated as relative values)
-/// or the units do not match the units used for the font size.
-///
-/// @param {Number} $line-height Line height
-/// @param {Number} $font-size Font size
-/// @return {Number} The line height as either a relative value or unmodified
-///
-/// @access private
-
-@function _govuk-line-height($line-height, $font-size) {
-  @if not math.is-unitless($line-height) and math.unit($line-height) == math.unit($font-size) {
-    $line-height: math.div($line-height, $font-size);
-  }
-
-  @return $line-height;
 }
 
 /// Font size and line height helper
@@ -213,7 +195,7 @@
 
     // $calculated-line-height is a separate variable from $line-height,
     // as otherwise the value would get redefined with each loop and
-    // eventually break _govuk-line-height.
+    // eventually break typography--internal.line-height.
     // 1. See if the function was called with a specific line-height
     $calculated-line-height: $line-height;
     // 2. Default to the breakpoint-map if no specific value was given
@@ -224,7 +206,7 @@
     // 3. Turn the value into a unitless line-height if possible
     // We continue to call the param $line-height to stay consistent with the
     // naming with govuk-font.
-    $calculated-line-height: _govuk-line-height(
+    $calculated-line-height: typography--internal.line-height(
       $line-height: $calculated-line-height,
       $font-size: $font-size
     );

@@ -1,7 +1,7 @@
 @use "../settings/global-styles" as *;
 @use "../tools/exports" as *;
-@import "../helpers/colour";
-@import "../helpers/links";
+@use "../helpers/colour" as *;
+@use "../helpers/links" as *;
 @import "links";
 @import "typography";
 

@@ -33,7 +33,7 @@ describe('@function govuk-colour', () => {
         "white": #fff
       );
 
-      @import "helpers/colour";
+      @use "helpers/colour" as *;
     `
   })
 
@@ -301,7 +301,7 @@ describe('@function govuk-functional-colour', () => {
         )
       );
 
-      @import "helpers/colour";
+      @use "helpers/colour" as *;
     `
   })
 
@@ -440,7 +440,7 @@ describe('@function govuk-organisation-colour', () => {
       )
     );
 
-    @import "helpers/colour";
+    @use "helpers/colour" as *;
   `
 
   it('returns the contrast-safe colour for a given organisation by default', async () => {
