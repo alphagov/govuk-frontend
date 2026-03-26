@@ -1,6 +1,5 @@
+@use "../../core/lists" as *;
 @import "../../base";
-
-@import "../../core/lists";
 
 @include govuk-exports("govuk/component/error-summary") {
   .govuk-error-summary {
