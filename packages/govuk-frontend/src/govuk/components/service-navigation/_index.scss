@@ -1,6 +1,6 @@
 @use "sass:math";
 
-@import "../../base";
+@use "../../base" as *;
 
 @include govuk-exports("govuk/component/service-navigation") {
   $govuk-service-navigation-active-link-border-width: govuk-spacing(1);

@@ -1,6 +1,6 @@
 @use "sass:math";
 
-@import "../../base";
+@use "../../base" as *;
 
 @include govuk-exports("govuk/component/notification-banner") {
   .govuk-notification-banner {

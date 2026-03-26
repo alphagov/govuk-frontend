@@ -1,8 +1,8 @@
-@import "../../base";
+@use "../../base" as *;
 
-@import "../error-message";
-@import "../hint";
-@import "../label";
+@use "../error-message";
+@use "../hint";
+@use "../label";
 
 @include govuk-exports("govuk/component/select") {
   .govuk-select {

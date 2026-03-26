@@ -1,9 +1,9 @@
-@import "../../base";
+@use "../../base" as *;
 
-@import "../error-message";
-@import "../hint";
-@import "../label";
-@import "../textarea";
+@use "../error-message";
+@use "../hint";
+@use "../label";
+@use "../textarea";
 
 @include govuk-exports("govuk/component/character-count") {
   .govuk-character-count {

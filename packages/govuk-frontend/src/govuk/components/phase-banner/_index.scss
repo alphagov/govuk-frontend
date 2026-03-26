@@ -1,6 +1,6 @@
-@import "../../base";
+@use "../../base" as *;
 
-@import "../tag";
+@use "../tag";
 
 @include govuk-exports("govuk/component/phase-banner") {
   .govuk-phase-banner {

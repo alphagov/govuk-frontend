@@ -1,6 +1,6 @@
 @use "sass:string";
 
-@import "../../base";
+@use "../../base" as *;
 
 @include govuk-exports("govuk/component/skip-link") {
   .govuk-skip-link {

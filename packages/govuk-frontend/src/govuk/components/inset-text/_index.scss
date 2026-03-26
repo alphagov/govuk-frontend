@@ -1,4 +1,4 @@
-@import "../../base";
+@use "../../base" as *;
 
 @include govuk-exports("govuk/component/inset-text") {
   .govuk-inset-text {

@@ -1,6 +1,6 @@
-@import "../../base";
+@use "../../base" as *;
 
-@import "../button";
+@use "../button";
 
 @include govuk-exports("govuk/component/exit-this-page") {
   $indicator-size: 0.75em;
