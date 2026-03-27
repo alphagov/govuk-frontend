@@ -3,63 +3,64 @@
 @use "../helpers/typography" as *;
 @use "../helpers/spacing" as *;
 @use "../helpers/media-queries" as *;
+@use "typography" as *;
 
-@include govuk-exports("govuk/core/lists") {
+%govuk-list {
+  @include govuk-font($size: 19);
+
+  // Keep margin configuration next to each other
+  // stylelint-disable order/order-properties
+  margin-top: 0;
+  @include govuk-responsive-margin(4, "bottom");
+  // stylelint-enable order/order-properties
+
+  padding-left: 0;
+  list-style-type: none;
+  color: govuk-functional-colour(text);
+
+  // Add a top margin for nested lists
   %govuk-list {
-    @include govuk-font($size: 19);
-
-    // Keep margin configuration next to each other
-    // stylelint-disable order/order-properties
-    margin-top: 0;
-    @include govuk-responsive-margin(4, "bottom");
-    // stylelint-enable order/order-properties
-
-    padding-left: 0;
-    list-style-type: none;
-    color: govuk-functional-colour(text);
-
-    // Add a top margin for nested lists
-    %govuk-list {
-      margin-top: govuk-spacing(2);
-    }
+    margin-top: govuk-spacing(2);
   }
+}
 
-  %govuk-list > li {
-    // Lists without numbers or bullets should always have extra space between
-    // list items. Lists with numbers or bullets only have this extra space on
-    // tablet and above
+%govuk-list > li {
+  // Lists without numbers or bullets should always have extra space between
+  // list items. Lists with numbers or bullets only have this extra space on
+  // tablet and above
+  margin-bottom: govuk-spacing(1);
+}
+
+%govuk-list--bullet {
+  padding-left: govuk-spacing(4);
+  list-style-type: disc;
+}
+
+%govuk-list--number {
+  padding-left: govuk-spacing(4);
+  list-style-type: decimal;
+}
+
+%govuk-list--bullet > li,
+%govuk-list--number > li {
+  margin-bottom: 0;
+
+  @media #{govuk-from-breakpoint(tablet)} {
     margin-bottom: govuk-spacing(1);
   }
+}
 
+%govuk-list--spaced > li {
+  margin-bottom: govuk-spacing(2);
+
+  @media #{govuk-from-breakpoint(tablet)} {
+    margin-bottom: govuk-spacing(3);
+  }
+}
+
+@include govuk-exports("govuk/core/lists") {
   .govuk-list {
     @extend %govuk-list;
-  }
-
-  %govuk-list--bullet {
-    padding-left: govuk-spacing(4);
-    list-style-type: disc;
-  }
-
-  %govuk-list--number {
-    padding-left: govuk-spacing(4);
-    list-style-type: decimal;
-  }
-
-  %govuk-list--bullet > li,
-  %govuk-list--number > li {
-    margin-bottom: 0;
-
-    @media #{govuk-from-breakpoint(tablet)} {
-      margin-bottom: govuk-spacing(1);
-    }
-  }
-
-  %govuk-list--spaced > li {
-    margin-bottom: govuk-spacing(2);
-
-    @media #{govuk-from-breakpoint(tablet)} {
-      margin-bottom: govuk-spacing(3);
-    }
   }
 
   .govuk-list--bullet {

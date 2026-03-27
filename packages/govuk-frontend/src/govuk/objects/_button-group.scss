@@ -1,4 +1,4 @@
-@import "../base";
+@use "../base" as *;
 
 @include govuk-exports("govuk/objects/button-group") {
   // Button groups can be used to group buttons and links together as a group.

@@ -1,6 +1,6 @@
 @use "sass:map";
 
-@import "../base";
+@use "../base" as *;
 
 @include govuk-exports("govuk/objects/grid") {
   .govuk-grid-row {

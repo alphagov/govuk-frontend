@@ -1,20 +1,20 @@
-@import "../../base";
+@use "../../base";
 
-@include govuk-exports("govuk/component/panel") {
+@include base.govuk-exports("govuk/component/panel") {
   .govuk-panel {
-    @include govuk-font($size: 36);
+    @include base.govuk-font($size: 36);
 
     box-sizing: border-box;
 
-    margin-bottom: govuk-spacing(3);
-    padding: govuk-spacing(7) - $govuk-border-width;
+    margin-bottom: base.govuk-spacing(3);
+    padding: base.govuk-spacing(7) - base.$govuk-border-width;
 
-    border: $govuk-border-width solid transparent;
+    border: base.$govuk-border-width solid transparent;
 
     text-align: center;
 
-    @media #{govuk-until-breakpoint(tablet)} {
-      padding: govuk-spacing(4) - $govuk-border-width;
+    @media #{base.govuk-until-breakpoint(tablet)} {
+      padding: base.govuk-spacing(4) - base.$govuk-border-width;
 
       // Support IE (autoprefixer doesn't add this as it's not a prefix)
       word-wrap: break-word;
@@ -35,21 +35,21 @@
   }
 
   .govuk-panel--confirmation {
-    color: govuk-colour("white");
-    background: govuk-colour("green");
+    color: base.govuk-colour("white");
+    background: base.govuk-colour("green");
 
     @media print {
       border-color: currentcolor;
-      color: govuk-functional-colour(text);
+      color: base.govuk-functional-colour(text);
       background: none;
     }
   }
 
   .govuk-panel__title {
-    @include govuk-font-size($size: 48);
-    @include govuk-typography-weight-bold;
+    @include base.govuk-font-size($size: 48);
+    @include base.govuk-typography-weight-bold;
     margin-top: 0;
-    margin-bottom: govuk-spacing(6);
+    margin-bottom: base.govuk-spacing(6);
   }
 
   .govuk-panel__title:last-child {

@@ -2,8 +2,8 @@
 @use "../tools/exports" as *;
 @use "../helpers/colour" as *;
 @use "../helpers/links" as *;
-@import "links";
-@import "typography";
+@use "links" as *;
+@use "typography" as *;
 
 @mixin govuk-global-styles {
   a {

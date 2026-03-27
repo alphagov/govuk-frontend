@@ -1,19 +1,19 @@
-@import "../../base";
+@use "../../base";
 
-@include govuk-exports("govuk/component/header") {
+@include base.govuk-exports("govuk/component/header") {
   $logo-bottom-margin: 2px;
 
   .govuk-header {
-    @include govuk-font($size: 16, $line-height: 1);
+    @include base.govuk-font($size: 16, $line-height: 1);
 
     // Add a transparent bottom border for forced-colour modes
     border-bottom: 1px solid transparent;
-    color: govuk-colour("white");
-    background: govuk-functional-colour(brand);
+    color: base.govuk-colour("white");
+    background: base.govuk-functional-colour(brand);
   }
 
   .govuk-header__container--full-width {
-    padding: 0 govuk-spacing(3);
+    padding: 0 base.govuk-spacing(3);
   }
 
   .govuk-header__logo {
@@ -36,17 +36,17 @@
     // Font size needs to be set on the link so that the box sizing is correct
     // in Firefox
     display: inline;
-    margin-right: govuk-spacing(2);
+    margin-right: base.govuk-spacing(2);
     font-size: 30px; // We don't have a mixin that produces 30px font size
     text-decoration: none;
     // Remove word-spacing from within the logo so we can ignore
     // whitespace characters in the HTML
-    word-spacing: govuk-px-to-rem(-6px);
+    word-spacing: base.govuk-px-to-rem(-6px);
     // Reset word-spacing for child elements
     > * {
       word-spacing: 0;
     }
-    @include govuk-link-style-inverse;
+    @include base.govuk-link-style-inverse;
 
     &:link,
     &:visited {
@@ -66,7 +66,7 @@
       margin-bottom: 0;
       border-bottom: 0;
 
-      @include govuk-focused-text;
+      @include base.govuk-focused-text;
     }
   }
 
@@ -77,7 +77,7 @@
 
     // Add a gap after the logo in case it's followed by a product name. This
     // gets removed later if the logotype is a :last-child.
-    margin-right: govuk-px-to-rem(7px); // 1 'dot'
+    margin-right: base.govuk-px-to-rem(7px); // 1 'dot'
     // Add bottom margin to space Product name on small viewports
     margin-bottom: $logo-bottom-margin;
     fill: currentcolor;
@@ -99,7 +99,7 @@
 
   // Colour in the Dot
   .govuk-logo-dot {
-    fill: govuk-colour("teal", "accent");
+    fill: base.govuk-colour("teal", "accent");
 
     // Override Dot colour when printing
     @media print {
@@ -122,11 +122,11 @@
 
     // Remove 1px from the bottom to account for the font-size being 1px
     // larger than the logo height.
-    margin-bottom: govuk-px-to-rem(-1px);
+    margin-bottom: base.govuk-px-to-rem(-1px);
 
     // Magic number font-size that visually aligns with GOV.UK logo.
     // Also stops reducing the product name size on narrow screens
-    font-size: govuk-px-to-rem(31px);
+    font-size: base.govuk-px-to-rem(31px);
 
     // Reduce letter spacing
     letter-spacing: -0.015em;
@@ -147,14 +147,14 @@
   @media print {
     .govuk-header {
       border-bottom-width: 0;
-      color: govuk-colour("black");
+      color: base.govuk-colour("black");
       background: transparent;
     }
 
     .govuk-header__homepage-link {
       &:link,
       &:visited {
-        color: govuk-colour("black");
+        color: base.govuk-colour("black");
       }
 
       // Do not append link href to GOV.UK link when printing (e.g. '(/)')

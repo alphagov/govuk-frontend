@@ -2,6 +2,7 @@
 @use "../settings/colours-functional" as *;
 @use "../tools/exports" as *;
 @use "../helpers/colour" as *;
+@forward "../tools/exports";
 
 // CSS custom properties for each functional colour
 @include govuk-exports("govuk/custom-properties/functional-colours") {

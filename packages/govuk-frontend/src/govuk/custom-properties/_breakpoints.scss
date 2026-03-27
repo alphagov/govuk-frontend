@@ -2,6 +2,7 @@
 @use "../settings/media-queries" as *;
 @use "../tools/exports" as *;
 @use "../tools/px-to-rem" as *;
+@forward "../tools/exports";
 
 // CSS custom property for each breakpoint
 @include govuk-exports("govuk/custom-properties/breakpoints") {

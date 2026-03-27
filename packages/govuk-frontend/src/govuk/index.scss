@@ -1,11 +1,9 @@
-@forward "settings";
+@forward "base";
 
-@import "base";
+@forward "core";
+@forward "objects";
 
-@import "core";
-@import "objects";
+@forward "components";
 
-@import "components";
-
-@import "utilities";
-@import "overrides";
+@forward "utilities";
+@forward "overrides";

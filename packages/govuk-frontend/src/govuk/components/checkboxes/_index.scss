@@ -1,23 +1,23 @@
-@import "../../base";
+@use "../../base";
 
-@import "../error-message";
-@import "../fieldset";
-@import "../hint";
-@import "../label";
+@use "../error-message";
+@use "../fieldset";
+@use "../hint";
+@use "../label";
 
-@include govuk-exports("govuk/component/checkboxes") {
+@include base.govuk-exports("govuk/component/checkboxes") {
   $govuk-touch-target-gutter: 4px;
   $govuk-checkboxes-size: 40px;
   $govuk-touch-target-size: ($govuk-checkboxes-size + $govuk-touch-target-gutter);
   $govuk-small-checkboxes-size: 24px;
-  $govuk-checkboxes-label-padding-left-right: govuk-spacing(3);
+  $govuk-checkboxes-label-padding-left-right: base.govuk-spacing(3);
   $govuk-checkbox-check-horizontal-position: 10px;
 
   .govuk-checkboxes__item {
     display: flex;
     position: relative;
     flex-wrap: wrap;
-    margin-bottom: govuk-spacing(2);
+    margin-bottom: base.govuk-spacing(2);
   }
 
   .govuk-checkboxes__item:last-child,
@@ -45,7 +45,7 @@
     // __item using flex-wrap because we want hints on a separate line.
     max-width: calc(100% - #{(($govuk-checkboxes-label-padding-left-right * 2) + $govuk-touch-target-size)});
     margin-bottom: 0;
-    padding: (govuk-spacing(1) + $govuk-border-width-form-element) govuk-spacing(3);
+    padding: (base.govuk-spacing(1) + base.$govuk-border-width-form-element) base.govuk-spacing(3);
     cursor: pointer;
     // remove 300ms pause on mobile
     touch-action: manipulation;
@@ -60,7 +60,7 @@
     left: ($govuk-touch-target-gutter * 0.5);
     width: $govuk-checkboxes-size;
     height: $govuk-checkboxes-size;
-    border: $govuk-border-width-form-element solid currentcolor;
+    border: base.$govuk-border-width-form-element solid currentcolor;
     background: transparent;
   }
 
@@ -92,13 +92,13 @@
   .govuk-checkboxes__hint {
     display: block;
     width: 100%;
-    margin-top: govuk-spacing(-1);
+    margin-top: base.govuk-spacing(-1);
     padding-right: $govuk-checkboxes-label-padding-left-right;
     padding-left: ($govuk-checkboxes-label-padding-left-right + $govuk-touch-target-size);
   }
 
   // This is to bypass govuk-hint's specificity on hints following labels having
-  // a margin bottom of 10px (govuk-spacing(2)). Because checkboxes are flexbox,
+  // a margin bottom of 10px (base.govuk-spacing(2)). Because checkboxes are flexbox,
   // the margin doesn't collapse so we have to do this manually.
   .govuk-label:not(.govuk-label--m):not(.govuk-label--l):not(.govuk-label--xl) + .govuk-checkboxes__hint {
     margin-bottom: 0;
@@ -112,7 +112,7 @@
     // which means the focus state is less obvious. By adding a transparent
     // outline, which becomes solid (text-coloured) in that context, we ensure
     // the focus remains clearly visible.
-    outline: $govuk-focus-width solid transparent;
+    outline: base.$govuk-focus-width solid transparent;
     outline-offset: 1px;
 
     // When in an explicit forced-color mode, we can use the Highlight system
@@ -121,7 +121,7 @@
       outline-color: Highlight;
     }
 
-    box-shadow: 0 0 0 $govuk-focus-width govuk-functional-colour(focus);
+    box-shadow: 0 0 0 base.$govuk-focus-width base.govuk-functional-colour(focus);
   }
 
   // Selected state
@@ -145,13 +145,13 @@
   // =========================================================
 
   .govuk-checkboxes__divider {
-    @include govuk-font($size: 19);
+    @include base.govuk-font($size: 19);
 
     $govuk-divider-size: $govuk-checkboxes-size !default;
     width: $govuk-divider-size;
 
-    margin-bottom: govuk-spacing(2);
-    color: govuk-functional-colour(text);
+    margin-bottom: base.govuk-spacing(2);
+    color: base.govuk-functional-colour(text);
     text-align: center;
   }
 
@@ -161,7 +161,7 @@
 
   // The narrow border is used in the conditional reveals because the border has
   // to be an even number in order to be centred under the 40px checkbox or radio.
-  $conditional-border-width: $govuk-border-width-narrow;
+  $conditional-border-width: base.$govuk-border-width-narrow;
   // Calculate the amount of padding needed to keep the border centered against the checkbox.
   $conditional-border-padding: ($govuk-touch-target-size * 0.5) - ($conditional-border-width * 0.5);
   // Move the border centered with the checkbox
@@ -170,11 +170,11 @@
   $conditional-padding-left: $conditional-border-padding + $govuk-checkboxes-label-padding-left-right;
 
   .govuk-checkboxes__conditional {
-    @include govuk-responsive-margin(4, "bottom");
+    @include base.govuk-responsive-margin(4, "bottom");
     margin-left: $conditional-margin-left;
     padding-left: $conditional-padding-left;
     border-left: $conditional-border-width solid;
-    border-left-color: govuk-functional-colour(border);
+    border-left-color: base.govuk-functional-colour(border);
 
     .govuk-frontend-supported &--hidden {
       display: none;
@@ -262,7 +262,7 @@
 
     .govuk-checkboxes__divider {
       width: $govuk-small-checkboxes-size;
-      margin-bottom: govuk-spacing(1);
+      margin-bottom: base.govuk-spacing(1);
     }
 
     // Hover state for small checkboxes.
@@ -274,9 +274,9 @@
     .govuk-checkboxes__item:hover .govuk-checkboxes__input:not(:disabled) + .govuk-checkboxes__label::before {
       // Forced colours modes tend to ignore box-shadow.
       // Apply an outline for those modes to use instead.
-      outline: $govuk-focus-width dashed transparent;
+      outline: base.$govuk-focus-width dashed transparent;
       outline-offset: 1px;
-      box-shadow: 0 0 0 $govuk-hover-width govuk-functional-colour(hover);
+      box-shadow: 0 0 0 base.$govuk-hover-width base.govuk-functional-colour(hover);
     }
 
     // Because we've overridden the border-shadow provided by the focus state,
@@ -291,8 +291,8 @@
       }
       // prettier-ignore
       box-shadow:
-        0 0 0 $govuk-focus-width govuk-functional-colour(focus), // 1
-        0 0 0 $govuk-hover-width govuk-functional-colour(hover); // 2
+        0 0 0 base.$govuk-focus-width base.govuk-functional-colour(focus), // 1
+        0 0 0 base.$govuk-hover-width base.govuk-functional-colour(hover); // 2
     }
 
     // For devices that explicitly don't support hover, don't provide a hover
@@ -307,7 +307,7 @@
       }
 
       .govuk-checkboxes__item:hover .govuk-checkboxes__input:focus + .govuk-checkboxes__label::before {
-        box-shadow: 0 0 0 $govuk-focus-width govuk-functional-colour(focus);
+        box-shadow: 0 0 0 base.$govuk-focus-width base.govuk-functional-colour(focus);
       }
     }
   }

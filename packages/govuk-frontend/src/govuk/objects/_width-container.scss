@@ -3,7 +3,7 @@
 ////
 @use "sass:string";
 
-@import "../base";
+@use "../base" as *;
 
 /// Width container mixin
 ///

@@ -2,67 +2,67 @@
 /// @group components/button
 ////
 
-@import "../../base";
+@use "../../base";
 
 /// Button component background colour
 ///
 /// @type Colour
 /// @access public
 
-$govuk-button-background-colour: govuk-colour("green") !default;
+$govuk-button-background-colour: base.govuk-colour("green") !default;
 
 /// Button component text colour
 ///
 /// @type Colour
 /// @access public
 
-$govuk-button-text-colour: govuk-colour("white") !default;
+$govuk-button-text-colour: base.govuk-colour("white") !default;
 
 /// Inverted button component background colour
 ///
 /// @type Colour
 /// @access public
 
-$govuk-inverse-button-background-colour: govuk-colour("white") !default;
+$govuk-inverse-button-background-colour: base.govuk-colour("white") !default;
 
 /// Inverted button component text colour
 ///
 /// @type Colour
 /// @access public
 
-$govuk-inverse-button-text-colour: govuk-functional-colour(brand) !default;
+$govuk-inverse-button-text-colour: base.govuk-functional-colour(brand) !default;
 
-@include govuk-exports("govuk/component/button") {
+@include base.govuk-exports("govuk/component/button") {
   $govuk-button-colour: $govuk-button-background-colour;
   $govuk-button-text-colour: $govuk-button-text-colour;
-  $govuk-button-hover-colour: govuk-colour("green", $variant: "shade-25");
-  $govuk-button-shadow-colour: govuk-colour("green", $variant: "shade-50");
+  $govuk-button-hover-colour: base.govuk-colour("green", $variant: "shade-25");
+  $govuk-button-shadow-colour: base.govuk-colour("green", $variant: "shade-50");
 
   // Secondary button variables
-  $govuk-secondary-button-colour: govuk-colour("black", $variant: "tint-95");
-  $govuk-secondary-button-text-colour: govuk-colour("black");
-  $govuk-secondary-button-hover-colour: govuk-colour("black", $variant: "tint-80");
-  $govuk-secondary-button-shadow-colour: govuk-colour("black", $variant: "tint-50");
+  $govuk-secondary-button-colour: base.govuk-colour("black", $variant: "tint-95");
+  $govuk-secondary-button-text-colour: base.govuk-colour("black");
+  $govuk-secondary-button-hover-colour: base.govuk-colour("black", $variant: "tint-80");
+  $govuk-secondary-button-shadow-colour: base.govuk-colour("black", $variant: "tint-50");
 
   // Warning button variables
-  $govuk-warning-button-colour: govuk-colour("red");
-  $govuk-warning-button-text-colour: govuk-colour("white");
-  $govuk-warning-button-hover-colour: govuk-colour("red", $variant: "shade-25");
-  $govuk-warning-button-shadow-colour: govuk-colour("red", $variant: "shade-50");
+  $govuk-warning-button-colour: base.govuk-colour("red");
+  $govuk-warning-button-text-colour: base.govuk-colour("white");
+  $govuk-warning-button-hover-colour: base.govuk-colour("red", $variant: "shade-25");
+  $govuk-warning-button-shadow-colour: base.govuk-colour("red", $variant: "shade-50");
 
   // Inverse button variables
   $govuk-inverse-button-colour: $govuk-inverse-button-background-colour;
   $govuk-inverse-button-text-colour: $govuk-inverse-button-text-colour;
-  $govuk-inverse-button-hover-colour: govuk-colour("blue", $variant: "tint-95");
-  $govuk-inverse-button-shadow-colour: govuk-colour("blue", $variant: "shade-50");
+  $govuk-inverse-button-hover-colour: base.govuk-colour("blue", $variant: "tint-95");
+  $govuk-inverse-button-shadow-colour: base.govuk-colour("blue", $variant: "shade-50");
 
   // Because the shadow (s0) is visually 'part of' the button, we need to reduce
   // the height of the button to compensate by adjusting its padding (s1) and
   // increase the bottom margin to include it (s2).
-  $button-shadow-size: $govuk-border-width-form-element;
+  $button-shadow-size: base.$govuk-border-width-form-element;
 
   .govuk-button {
-    @include govuk-font($size: 19, $line-height: 19px);
+    @include base.govuk-font($size: 19, $line-height: 19px);
 
     box-sizing: border-box;
     display: inline-block;
@@ -71,10 +71,10 @@ $govuk-inverse-button-text-colour: govuk-functional-colour(brand) !default;
     margin-top: 0;
     margin-right: 0;
     margin-left: 0;
-    @include govuk-responsive-margin(6, "bottom", $adjustment: $button-shadow-size); // s2
-    padding: (govuk-spacing(2) - $govuk-border-width-form-element) govuk-spacing(2)
-      (govuk-spacing(2) - $govuk-border-width-form-element - ($button-shadow-size * 0.5)); // s1
-    border: $govuk-border-width-form-element solid transparent;
+    @include base.govuk-responsive-margin(6, "bottom", $adjustment: $button-shadow-size); // s2
+    padding: (base.govuk-spacing(2) - base.$govuk-border-width-form-element) base.govuk-spacing(2)
+      (base.govuk-spacing(2) - base.$govuk-border-width-form-element - ($button-shadow-size * 0.5)); // s1
+    border: base.$govuk-border-width-form-element solid transparent;
     border-radius: 0;
     color: $govuk-button-text-colour;
     background-color: $govuk-button-colour;
@@ -84,7 +84,7 @@ $govuk-inverse-button-text-colour: govuk-functional-colour(brand) !default;
     cursor: pointer;
     -webkit-appearance: none;
 
-    @media #{govuk-from-breakpoint(tablet)} {
+    @media #{base.govuk-from-breakpoint(tablet)} {
       width: auto;
     }
 
@@ -113,16 +113,16 @@ $govuk-inverse-button-text-colour: govuk-functional-colour(brand) !default;
     }
 
     &:focus {
-      border-color: govuk-functional-colour(focus);
-      outline: $govuk-focus-width solid transparent;
-      box-shadow: inset 0 0 0 1px govuk-functional-colour(focus);
+      border-color: base.govuk-functional-colour(focus);
+      outline: base.$govuk-focus-width solid transparent;
+      box-shadow: inset 0 0 0 1px base.govuk-functional-colour(focus);
     }
 
     &:focus:not(:active):not(:hover) {
-      border-color: govuk-functional-colour(focus);
-      color: govuk-functional-colour(focus-text);
-      background-color: govuk-functional-colour(focus);
-      box-shadow: 0 2px 0 govuk-functional-colour(focus-text);
+      border-color: base.govuk-functional-colour(focus);
+      color: base.govuk-functional-colour(focus-text);
+      background-color: base.govuk-functional-colour(focus);
+      box-shadow: 0 2px 0 base.govuk-functional-colour(focus-text);
     }
 
     // Use a pseudo element to expand the click target area to include the
@@ -133,10 +133,10 @@ $govuk-inverse-button-text-colour: govuk-functional-colour(brand) !default;
 
       position: absolute;
 
-      top: -$govuk-border-width-form-element;
-      right: -$govuk-border-width-form-element;
-      bottom: -($govuk-border-width-form-element + $button-shadow-size);
-      left: -$govuk-border-width-form-element;
+      top: -1 * base.$govuk-border-width-form-element;
+      right: -1 * base.$govuk-border-width-form-element;
+      bottom: -(base.$govuk-border-width-form-element + $button-shadow-size);
+      left: -1 * base.$govuk-border-width-form-element;
 
       background: transparent;
     }
@@ -152,7 +152,7 @@ $govuk-inverse-button-text-colour: govuk-functional-colour(brand) !default;
     //
     // 🎉
     &:active::before {
-      top: -($govuk-border-width-form-element + $button-shadow-size);
+      top: -(base.$govuk-border-width-form-element + $button-shadow-size);
     }
   }
 
@@ -234,8 +234,8 @@ $govuk-inverse-button-text-colour: govuk-functional-colour(brand) !default;
   }
 
   .govuk-button--start {
-    @include govuk-typography-weight-bold;
-    @include govuk-font-size($size: 24, $line-height: 1);
+    @include base.govuk-typography-weight-bold;
+    @include base.govuk-font-size($size: 24, $line-height: 1);
 
     display: inline-flex;
     justify-content: center;
@@ -245,15 +245,15 @@ $govuk-inverse-button-text-colour: govuk-functional-colour(brand) !default;
   .govuk-button__start-icon {
     flex-shrink: 0;
     align-self: center;
-    margin-left: govuk-spacing(1);
+    margin-left: base.govuk-spacing(1);
     vertical-align: middle;
 
     // Work around SVGs not inheriting color from parent in forced color mode
     // (https://github.com/w3c/csswg-drafts/issues/6310)
     forced-color-adjust: auto;
 
-    @media #{govuk-from-breakpoint(desktop)} {
-      margin-left: govuk-spacing(2);
+    @media #{base.govuk-from-breakpoint(desktop)} {
+      margin-left: base.govuk-spacing(2);
     }
   }
 }
