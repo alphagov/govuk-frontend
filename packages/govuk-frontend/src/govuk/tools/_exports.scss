@@ -8,7 +8,7 @@
 /// @type List
 /// @access private
 
-$_govuk-imported-modules: () !default;
+$govuk-imported-modules: () !default;
 
 /// Export module
 ///
@@ -23,9 +23,9 @@ $_govuk-imported-modules: () !default;
 
 @mixin govuk-exports($name) {
   // If the mixin is not in the list of modules already exported...
-  @if not list.index($_govuk-imported-modules, $name) {
+  @if not list.index($govuk-imported-modules, $name) {
     // ... then add it to the list
-    $_govuk-imported-modules: list.append($_govuk-imported-modules, $name) !global;
+    $govuk-imported-modules: list.append($govuk-imported-modules, $name) !global;
     // ... and output the CSS for that module
     @content;
   }
