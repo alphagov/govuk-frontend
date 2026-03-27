@@ -1,7 +1,4 @@
-@use "../settings/global-styles" as *;
-@use "../tools/exports" as *;
-@use "../helpers/colour" as *;
-@use "../helpers/links" as *;
+@use "../base";
 @import "links";
 @import "typography";
 
@@ -15,8 +12,10 @@
   }
 }
 
-@include govuk-exports("govuk/core/global-styles") {
-  @if $govuk-global-styles == true {
+@include base.govuk-exports("govuk/core/global-styles") {
+  @include base.govuk-custom-properties;
+
+  @if base.$govuk-global-styles == true {
     @include govuk-global-styles;
   }
 }
