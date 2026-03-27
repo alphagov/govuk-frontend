@@ -46,9 +46,13 @@ describe.each(sassFiles)('%s', (sassFilePath) => {
     importCss = results[1]
   })
 
-  it('outputs the same CSS with `@import` and `@use`', () => {
-    expect(importCss).toEqual(useCss)
-  })
+  // Base does not output CSS when `@use`d so the output will be different
+  // than when `@import`ed. This is tested in a unit test.
+  if (!sassFilePath.endsWith('_base.scss')) {
+    it('outputs the same CSS with `@import` and `@use`', () => {
+      expect(importCss).toEqual(useCss)
+    })
+  }
 
   // See packages/govuk-frontend/src/govuk/index.unit.test.mjs for details of
   // this test. We've copied it here and tweaked it to include functions that
@@ -87,7 +91,9 @@ describe.each(sassFiles)('%s', (sassFilePath) => {
   })
 
   it('matches snapshot', () => {
-    expect(useCss).toMatchSnapshot()
+    // Base does not output any CSS when `@use`d so we can only compare the import
+    const css = sassFilePath.endsWith('_base.scss') ? importCss : useCss
+    expect(css).toMatchSnapshot()
   })
 
   it('does not output CSS from settings, tools or helpers', () => {
