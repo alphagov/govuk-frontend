@@ -1,26 +1,24 @@
-@use "../tools/exports" as *;
-@use "../helpers/colour" as *;
-@use "../helpers/typography" as *;
-@use "../helpers/spacing" as *;
-@use "../helpers/media-queries" as *;
+@use "../base";
 
-@include govuk-exports("govuk/core/lists") {
+@include base.govuk-exports("govuk/core/lists") {
+  @include base.govuk-custom-properties;
+
   %govuk-list {
-    @include govuk-font($size: 19);
+    @include base.govuk-font($size: 19);
 
     // Keep margin configuration next to each other
     // stylelint-disable order/order-properties
     margin-top: 0;
-    @include govuk-responsive-margin(4, "bottom");
+    @include base.govuk-responsive-margin(4, "bottom");
     // stylelint-enable order/order-properties
 
     padding-left: 0;
     list-style-type: none;
-    color: govuk-functional-colour(text);
+    color: base.govuk-functional-colour(text);
 
     // Add a top margin for nested lists
     %govuk-list {
-      margin-top: govuk-spacing(2);
+      margin-top: base.govuk-spacing(2);
     }
   }
 
@@ -28,7 +26,7 @@
     // Lists without numbers or bullets should always have extra space between
     // list items. Lists with numbers or bullets only have this extra space on
     // tablet and above
-    margin-bottom: govuk-spacing(1);
+    margin-bottom: base.govuk-spacing(1);
   }
 
   .govuk-list {
@@ -36,12 +34,12 @@
   }
 
   %govuk-list--bullet {
-    padding-left: govuk-spacing(4);
+    padding-left: base.govuk-spacing(4);
     list-style-type: disc;
   }
 
   %govuk-list--number {
-    padding-left: govuk-spacing(4);
+    padding-left: base.govuk-spacing(4);
     list-style-type: decimal;
   }
 
@@ -49,16 +47,16 @@
   %govuk-list--number > li {
     margin-bottom: 0;
 
-    @media #{govuk-from-breakpoint(tablet)} {
-      margin-bottom: govuk-spacing(1);
+    @media #{base.govuk-from-breakpoint(tablet)} {
+      margin-bottom: base.govuk-spacing(1);
     }
   }
 
   %govuk-list--spaced > li {
-    margin-bottom: govuk-spacing(2);
+    margin-bottom: base.govuk-spacing(2);
 
-    @media #{govuk-from-breakpoint(tablet)} {
-      margin-bottom: govuk-spacing(3);
+    @media #{base.govuk-from-breakpoint(tablet)} {
+      margin-bottom: base.govuk-spacing(3);
     }
   }
 
