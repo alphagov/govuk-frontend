@@ -1,6 +1,7 @@
-@forward "settings";
+@forward "base";
+@use "base";
 
-@import "base";
+@include base.govuk-custom-properties;
 
 @import "core";
 @import "objects";
