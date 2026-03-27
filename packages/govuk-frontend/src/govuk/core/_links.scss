@@ -1,16 +1,12 @@
-@use "../settings/links" as *;
-@use "../settings/measurements" as *;
-@use "../tools/exports" as *;
-@use "../helpers/colour" as *;
-@use "../helpers/focused" as *;
-@use "../helpers/links" as *;
-@use "../helpers/typography" as *;
+@use "../base";
 
-@include govuk-exports("govuk/core/links") {
+@include base.govuk-exports("govuk/core/links") {
+  @include base.govuk-custom-properties;
+
   %govuk-link {
-    @include govuk-link-common;
-    @include govuk-link-style-default;
-    @include govuk-link-print-friendly;
+    @include base.govuk-link-common;
+    @include base.govuk-link-style-default;
+    @include base.govuk-link-print-friendly;
   }
 
   .govuk-link {
@@ -21,28 +17,28 @@
   // class, so we do not need the common link styles as they will be inherited.
 
   .govuk-link--muted {
-    @include govuk-link-style-muted;
+    @include base.govuk-link-style-muted;
   }
 
   .govuk-link--text-colour {
-    @include govuk-link-style-text;
+    @include base.govuk-link-style-text;
   }
 
   .govuk-link--inverse {
-    @include govuk-link-style-inverse;
+    @include base.govuk-link-style-inverse;
   }
 
   .govuk-link--no-underline {
-    @include govuk-link-style-no-underline;
+    @include base.govuk-link-style-no-underline;
   }
 
   .govuk-link--no-visited-state {
-    @include govuk-link-style-no-visited-state;
+    @include base.govuk-link-style-no-visited-state;
   }
 
   // Links that only contain images
 
   .govuk-link-image {
-    @include govuk-link-image;
+    @include base.govuk-link-image;
   }
 }
