@@ -30575,42 +30575,7 @@ exports[`src/govuk/objects/_main-wrapper.scss matches snapshot 1`] = `
 `;
 
 exports[`src/govuk/objects/_template.scss matches snapshot 1`] = `
-":root {
-  --govuk-breakpoint-mobile: 20rem;
-  --govuk-breakpoint-tablet: 40.0625rem;
-  --govuk-breakpoint-desktop: 48.0625rem;
-}
-:root {
-  --govuk-frontend-version: "development";
-}
-:root {
-  --govuk-brand-colour: #1d70b8;
-  --govuk-text-colour: #0b0c0c;
-  --govuk-template-background-colour: #f4f8fb;
-  --govuk-body-background-colour: #ffffff;
-  --govuk-print-text-colour: #000000;
-  --govuk-secondary-text-colour: #484949;
-  --govuk-focus-colour: #ffdd00;
-  --govuk-focus-text-colour: #0b0c0c;
-  --govuk-error-colour: #ca3535;
-  --govuk-success-colour: #0f7a52;
-  --govuk-border-colour: #cecece;
-  --govuk-input-border-colour: #0b0c0c;
-  --govuk-hover-colour: #cecece;
-  --govuk-link-colour: #1a65a6;
-  --govuk-link-visited-colour: #54319f;
-  --govuk-link-hover-colour: #0f385c;
-  --govuk-link-active-colour: #0b0c0c;
-  --govuk-surface-background-colour: #f4f8fb;
-  --govuk-surface-text-colour: #0b0c0c;
-  --govuk-surface-border-colour: #8eb8dc;
-}
-@media print {
-  :root {
-    --govuk-text-colour: var(--govuk-print-text-colour, #000000);
-  }
-}
-.govuk-template {
+".govuk-template {
   background-color: var(--govuk-template-background-colour, #f4f8fb);
   text-size-adjust: 100%;
 }
