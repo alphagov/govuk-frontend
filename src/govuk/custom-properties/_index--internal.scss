@@ -1,0 +1,9 @@
+@use "breakpoints--internal";
+@use "frontend-version--internal";
+@use "functional-colours--internal";
+
+@mixin styles {
+  @include breakpoints--internal.styles;
+  @include frontend-version--internal.styles;
+  @include functional-colours--internal.styles;
+}
