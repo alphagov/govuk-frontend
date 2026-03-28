@@ -351,7 +351,7 @@ export class CharacterCount extends ConfigurableComponent {
       return
     }
 
-    this.count = text.length
+    this.count = countCharacters(text)
   }
 
   /**
@@ -479,6 +479,26 @@ export class CharacterCount extends ConfigurableComponent {
       }
     ]
   })
+}
+
+/**
+ * Count the number of user-perceived characters (grapheme clusters) in text.
+ *
+ * Uses Intl.Segmenter when available to correctly count multi-code-point
+ * characters like emoji (👩🏻‍🚀 = 1 character, not 7). Falls back to
+ * String.length for environments without Intl.Segmenter support.
+ *
+ * @private
+ * @param {string} text - The text to count characters in
+ * @returns {number} The number of grapheme clusters
+ */
+function countCharacters(text) {
+  if (typeof Intl !== 'undefined' && Intl.Segmenter) {
+    const segmenter = new Intl.Segmenter(undefined, { granularity: 'grapheme' })
+    return [...segmenter.segment(text)].length
+  }
+
+  return text.length
 }
 
 /**
