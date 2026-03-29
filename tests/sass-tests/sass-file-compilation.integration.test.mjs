@@ -4,7 +4,7 @@ import { relative } from 'node:path'
 import { packageNameToPath } from '@govuk-frontend/lib/names'
 import { compileStringAsync } from 'sass-embedded'
 import slash from 'slash'
-import stylelint from 'stylelint'
+import { lint } from '@lyricalstring/gale'
 
 import { sassConfig } from './sass.config.js'
 
@@ -69,7 +69,7 @@ describe.each(sassFiles)('%s', (sassFilePath) => {
   })
 
   it('does not reference any undefined custom properties', async () => {
-    const linter = await stylelint.lint({
+    const linter = await lint({
       config: { rules: { 'no-unknown-custom-properties': true } },
       code: useCss
     })

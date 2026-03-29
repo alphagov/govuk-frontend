@@ -8,7 +8,7 @@ const {
 } = require('@govuk-frontend/helpers/tests')
 const { sassNull } = require('sass-embedded')
 const { default: slash } = require('slash')
-const stylelint = require('stylelint')
+const { lint } = require('@lyricalstring/gale')
 
 // Grab the list of components synchronously so we can create
 // individual test suites for each of them
@@ -66,7 +66,7 @@ describe('Components', () => {
       })
 
       it('does not reference any undefined custom properties', async () => {
-        const linter = await stylelint.lint({
+        const linter = await lint({
           config: { rules: { 'no-unknown-custom-properties': true } },
           code: sassCompilationResult.css
         })
@@ -101,7 +101,7 @@ describe('Components', () => {
         })
 
         it('renders the custom properties used by the component', async () => {
-          const linter = await stylelint.lint({
+          const linter = await lint({
             config: { rules: { 'no-unknown-custom-properties': true } },
             code: css
           })
@@ -163,7 +163,7 @@ describe('Components', () => {
         })
 
         it('renders the custom properties used by the component', async () => {
-          const linter = await stylelint.lint({
+          const linter = await lint({
             config: { rules: { 'no-unknown-custom-properties': true } },
             code: css
           })

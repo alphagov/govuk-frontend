@@ -13,14 +13,14 @@ const commands = {
   // https://github.com/okonet/lint-staged#how-can-i-ignore-files-from-eslintignore
   eslint: filterTask('npm run lint:js:cli -- --fix'),
   prettier: 'npm run lint:prettier:cli -- --write',
-  stylelint: 'npm run lint:scss:cli -- --fix --allow-empty-input'
+  gale: 'npm run lint:scss:cli -- --fix --allow-empty-input'
 }
 
 module.exports = {
   '*.{cjs,js,mjs}': [commands.eslint, commands.prettier],
   '*.{json,yaml,yml}': commands.prettier,
-  '*.md': [commands.eslint, commands.stylelint, commands.prettier],
-  '*.scss': [commands.stylelint, commands.prettier]
+  '*.md': [commands.eslint, commands.gale, commands.prettier],
+  '*.scss': [commands.gale, commands.prettier]
 }
 
 // Configure paths to ignore

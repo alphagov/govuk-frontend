@@ -94,7 +94,7 @@ jobs:
           - description: Lint Sass
             name: lint-scss
             run: npm run lint:scss
-            cache: .cache/stylelint
+            cache: .cache/gale
 
           - description: Lint JavaScript
             name: lint-js

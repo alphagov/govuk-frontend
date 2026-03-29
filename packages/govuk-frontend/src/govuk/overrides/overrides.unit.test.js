@@ -1,5 +1,5 @@
 const { compileSassString } = require('@govuk-frontend/helpers/tests')
-const stylelint = require('stylelint')
+const { lint } = require('@lyricalstring/gale')
 
 describe('The overrides layer', () => {
   it('does not reference any undefined custom properties', async () => {
@@ -11,7 +11,7 @@ describe('The overrides layer', () => {
 
     const { css } = await compileSassString(sass)
 
-    const linter = await stylelint.lint({
+    const linter = await lint({
       config: { rules: { 'no-unknown-custom-properties': true } },
       code: css
     })

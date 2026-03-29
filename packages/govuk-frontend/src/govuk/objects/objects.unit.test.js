@@ -5,7 +5,7 @@ const { compileSassFile } = require('@govuk-frontend/helpers/tests')
 const { compileSassString } = require('@govuk-frontend/helpers/tests')
 const { getListing } = require('@govuk-frontend/lib/files')
 const sassdoc = require('sassdoc')
-const stylelint = require('stylelint')
+const { lint } = require('@lyricalstring/gale')
 
 describe('The objects layer', () => {
   let sassFiles
@@ -26,7 +26,7 @@ describe('The objects layer', () => {
 
     const { css } = await compileSassString(sass)
 
-    const linter = await stylelint.lint({
+    const linter = await lint({
       config: { rules: { 'no-unknown-custom-properties': true } },
       code: css
     })
