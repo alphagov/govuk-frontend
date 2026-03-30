@@ -1,3 +1,4 @@
+@forward "../../base";
 @use "../../base";
 
 @include base.govuk-exports("govuk/component/header") {

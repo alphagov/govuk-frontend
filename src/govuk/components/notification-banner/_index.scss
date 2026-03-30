@@ -1,5 +1,6 @@
 @use "sass:math";
 
+@forward "../../base";
 @use "../../base";
 
 @include base.govuk-exports("govuk/component/notification-banner") {
