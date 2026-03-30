@@ -1,1 +1,12 @@
 @forward "assets";
+
+@use "sass:meta";
+@use "assets";
+
+@if meta.variable-exists("govuk-font-url-function") and meta.type-of($govuk-font-url-function) == "string" {
+  assets.$govuk-font-url-function: meta.get-function($govuk-font-url-function);
+}
+
+@if meta.variable-exists("govuk-image-url-function") and meta.type-of($govuk-image-url-function) == "string" {
+  assets.$govuk-image-url-function: meta.get-function($govuk-image-url-function);
+}
