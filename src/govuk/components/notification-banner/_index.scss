@@ -1,53 +1,55 @@
 @use "sass:math";
 
-@import "../../base";
+@use "../../base";
 
-@include govuk-exports("govuk/component/notification-banner") {
+@include base.govuk-exports("govuk/component/notification-banner") {
+  @include base.govuk-custom-properties;
+
   .govuk-notification-banner {
-    @include govuk-font($size: 19);
-    @include govuk-responsive-margin(8, "bottom");
+    @include base.govuk-font($size: 19);
+    @include base.govuk-responsive-margin(8, "bottom");
 
-    border: $govuk-border-width solid;
-    border-color: govuk-functional-colour(brand);
+    border: base.$govuk-border-width solid;
+    border-color: base.govuk-functional-colour(brand);
 
-    background-color: govuk-functional-colour(brand);
+    background-color: base.govuk-functional-colour(brand);
 
     &:focus {
-      outline: $govuk-focus-width solid;
-      outline-color: govuk-functional-colour(focus);
+      outline: base.$govuk-focus-width solid;
+      outline-color: base.govuk-functional-colour(focus);
     }
   }
 
   .govuk-notification-banner__header {
-    padding: 2px govuk-spacing(3) govuk-spacing(1);
+    padding: 2px base.govuk-spacing(3) base.govuk-spacing(1);
 
     // Ensures the notification header appears separate to the notification body
     // text in high contrast mode
     border-bottom: 1px solid transparent;
 
-    @media #{govuk-from-breakpoint(tablet)} {
-      padding: 2px govuk-spacing(4) govuk-spacing(1);
+    @media #{base.govuk-from-breakpoint(tablet)} {
+      padding: 2px base.govuk-spacing(4) base.govuk-spacing(1);
     }
   }
 
   .govuk-notification-banner__title {
     // Set the size again because this element is a heading and the user agent
     // font size overrides the inherited font size
-    @include govuk-font-size($size: 19);
-    @include govuk-typography-weight-bold;
+    @include base.govuk-font-size($size: 19);
+    @include base.govuk-typography-weight-bold;
     margin: 0;
     padding: 0;
-    color: govuk-colour("white");
+    color: base.govuk-colour("white");
   }
 
   .govuk-notification-banner__content {
-    $padding-tablet: govuk-spacing(4);
-    padding: govuk-spacing(3);
+    $padding-tablet: base.govuk-spacing(4);
+    padding: base.govuk-spacing(3);
 
-    color: govuk-functional-colour(text);
-    background-color: govuk-functional-colour(body-background);
+    color: base.govuk-functional-colour(text);
+    background-color: base.govuk-functional-colour(body-background);
 
-    @media #{govuk-from-breakpoint(tablet)} {
+    @media #{base.govuk-from-breakpoint(tablet)} {
       padding: $padding-tablet;
     }
 
@@ -59,10 +61,10 @@
       box-sizing: border-box;
 
       // Calculate the internal width of a two-thirds column...
-      $two-col-width: math.div($govuk-page-width * 2, 3) - math.div($govuk-gutter * 1, 3);
+      $two-col-width: math.div(base.$govuk-page-width * 2, 3) - math.div(base.$govuk-gutter * 1, 3);
 
       // ...and then factor in the left border and padding
-      $banner-exterior: ($padding-tablet + $govuk-border-width);
+      $banner-exterior: ($padding-tablet + base.$govuk-border-width);
       max-width: $two-col-width - $banner-exterior;
     }
 
@@ -72,26 +74,26 @@
   }
 
   .govuk-notification-banner__heading {
-    @include govuk-font-size($size: 24);
-    @include govuk-typography-weight-bold;
+    @include base.govuk-font-size($size: 24);
+    @include base.govuk-typography-weight-bold;
 
-    margin: 0 0 govuk-spacing(3);
+    margin: 0 0 base.govuk-spacing(3);
 
     padding: 0;
   }
 
   .govuk-notification-banner__link {
-    @include govuk-link-common;
-    @include govuk-link-style-no-visited-state;
+    @include base.govuk-link-common;
+    @include base.govuk-link-style-no-visited-state;
   }
 
   .govuk-notification-banner--success {
-    border-color: govuk-functional-colour(success);
+    border-color: base.govuk-functional-colour(success);
 
-    background-color: govuk-functional-colour(success);
+    background-color: base.govuk-functional-colour(success);
 
     .govuk-notification-banner__link {
-      @include govuk-link-style-success;
+      @include base.govuk-link-style-success;
     }
   }
 }

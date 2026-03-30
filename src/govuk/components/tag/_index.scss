@@ -3,7 +3,7 @@
 ////
 @use "sass:map";
 
-@import "../../base";
+@use "../../base";
 
 /// Get tag text colour
 /// Almost all tags should use the 50% shade of their colour for their text
@@ -12,7 +12,7 @@
 /// @return {Colour} Representation of the named colour for use in tags
 /// @access private
 @function _govuk-tag-text-colour($colour) {
-  @return govuk-colour($colour, $variant: "shade-50");
+  @return base.govuk-colour($colour, $variant: "shade-50");
 }
 
 /// Get tag background colour
@@ -22,7 +22,7 @@
 /// @return {Colour} Representation of the named colour for use in tags
 /// @access private
 @function _govuk-tag-background-colour($colour) {
-  @return govuk-colour($colour, $variant: "tint-80");
+  @return base.govuk-colour($colour, $variant: "tint-80");
 }
 
 /// Generate colour CSS for tag and tag modifiers
@@ -35,11 +35,13 @@
   background-color: _govuk-tag-background-colour($colour);
 }
 
-@include govuk-exports("govuk/component/tag") {
-  $govuk-tag-max-width: 0.5 * (map.get($govuk-breakpoints, "mobile") or 320px);
+@include base.govuk-exports("govuk/component/tag") {
+  @include base.govuk-custom-properties;
+
+  $govuk-tag-max-width: 0.5 * (map.get(base.$govuk-breakpoints, "mobile") or 320px);
 
   .govuk-tag {
-    @include govuk-font($size: 19);
+    @include base.govuk-font($size: 19);
     // Default tag colour is blue
     @include _govuk-tag-colours("blue");
 
@@ -110,14 +112,14 @@
 
   // Yellow uses different colours to ensure it's legible
   .govuk-tag--yellow {
-    color: govuk-colour("orange", $variant: "shade-50");
-    background-color: govuk-colour("yellow", $variant: "tint-50");
+    color: base.govuk-colour("orange", $variant: "shade-50");
+    background-color: base.govuk-colour("yellow", $variant: "tint-50");
   }
 
   // Grey uses different colours to ensure it's legible
   .govuk-tag--grey {
-    color: govuk-colour("black");
-    background-color: govuk-colour("black", $variant: "tint-80");
+    color: base.govuk-colour("black");
+    background-color: base.govuk-colour("black", $variant: "tint-80");
   }
 
   // Turquoise and pink are deprecated over teal and magenta respectively

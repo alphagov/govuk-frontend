@@ -1,12 +1,14 @@
-@import "../../base";
+@use "../../base";
 
-@include govuk-exports("govuk/component/warning-text") {
+@include base.govuk-exports("govuk/component/warning-text") {
+  @include base.govuk-custom-properties;
+
   .govuk-warning-text {
-    @include govuk-font($size: 19);
-    @include govuk-responsive-margin(6, "bottom");
-    @include govuk-typography-weight-bold;
+    @include base.govuk-font($size: 19);
+    @include base.govuk-responsive-margin(6, "bottom");
+    @include base.govuk-typography-weight-bold;
     position: relative;
-    padding: govuk-spacing(2) 0;
+    padding: base.govuk-spacing(2) 0;
   }
 
   .govuk-warning-text__icon {
@@ -21,7 +23,7 @@
     min-height: 35px;
     margin-top: -7px;
 
-    @media #{govuk-from-breakpoint(tablet)} {
+    @media #{base.govuk-from-breakpoint(tablet)} {
       margin-top: -5px;
     }
 
@@ -29,10 +31,10 @@
     // removed. Adding a border to the component keeps it's shape as a circle.
     border: 3px solid;
     border-radius: 50%;
-    border-color: govuk-functional-colour(text);
+    border-color: base.govuk-functional-colour(text);
 
-    color: govuk-functional-colour(body-background);
-    background: govuk-functional-colour(text);
+    color: base.govuk-functional-colour(body-background);
+    background: base.govuk-functional-colour(text);
 
     font-size: 30px;
     line-height: 29px;
@@ -57,7 +59,7 @@
   .govuk-warning-text__text {
     display: block;
     padding-left: 45px;
-    color: govuk-functional-colour(text);
+    color: base.govuk-functional-colour(text);
     // While `<strong>` is styled `bold` or `bolder` by user-agents
     // this can be reset by the app's stylesheet
     font-weight: inherit;

@@ -1,34 +1,35 @@
 @use "sass:string";
 
-@import "../../base";
+@use "../../base";
 
-@include govuk-exports("govuk/component/back-link") {
+@include base.govuk-exports("govuk/component/back-link") {
+  @include base.govuk-custom-properties;
   // Component font-size on the Frontend (used for calculations)
   $font-size: 16;
 
   // Size of chevron (excluding border)
-  $chevron-size: govuk-em(7px, $font-size);
+  $chevron-size: base.govuk-em(7px, $font-size);
 
   // Size of chevron border
   $chevron-border-min-width: 1px;
-  $chevron-border-width: govuk-em($chevron-border-min-width, $font-size);
+  $chevron-border-width: base.govuk-em($chevron-border-min-width, $font-size);
 
   // Colour of chevron
-  $chevron-border-colour: govuk-functional-colour(secondary-text);
+  $chevron-border-colour: base.govuk-functional-colour(secondary-text);
 
   .govuk-back-link {
-    @include govuk-font-size($size: $font-size);
-    @include govuk-link-common;
-    @include govuk-link-style-text;
+    @include base.govuk-font-size($size: $font-size);
+    @include base.govuk-link-common;
+    @include base.govuk-link-style-text;
 
     display: inline-block;
     position: relative;
 
-    margin-top: govuk-spacing(3);
-    margin-bottom: govuk-spacing(3);
+    margin-top: base.govuk-spacing(3);
+    margin-bottom: base.govuk-spacing(3);
 
     // Allow space for the arrow
-    padding-left: govuk-em(14px, $font-size);
+    padding-left: base.govuk-em(14px, $font-size);
   }
 
   // Prepend left pointing chevron
@@ -40,7 +41,7 @@
     position: absolute;
     top: 0;
     bottom: 0;
-    left: govuk-em(3px, $font-size);
+    left: base.govuk-em(3px, $font-size);
 
     width: $chevron-size;
     height: $chevron-size;
@@ -63,7 +64,7 @@
   }
 
   .govuk-back-link:focus::before {
-    border-color: govuk-functional-colour(focus-text);
+    border-color: base.govuk-functional-colour(focus-text);
   }
 
   .govuk-back-link::after {
@@ -76,7 +77,7 @@
   }
 
   .govuk-back-link--inverse {
-    @include govuk-link-style-inverse;
+    @include base.govuk-link-style-inverse;
 
     &::before {
       border-color: currentcolor;
