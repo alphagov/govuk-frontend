@@ -1,5 +1,6 @@
 @use "sass:string";
 
+@forward "../../base";
 @use "../../base";
 
 @include base.govuk-exports("govuk/component/back-link") {

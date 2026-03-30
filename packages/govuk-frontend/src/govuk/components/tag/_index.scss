@@ -3,6 +3,7 @@
 ////
 @use "sass:map";
 
+@forward "../../base";
 @use "../../base";
 
 /// Get tag text colour
