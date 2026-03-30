@@ -1,29 +1,31 @@
-@import "../../base";
+@use "../../base";
 
 @import "../../core/lists";
 
-@include govuk-exports("govuk/component/error-summary") {
-  .govuk-error-summary {
-    @include govuk-font($size: 19);
-    @include govuk-responsive-padding(4);
-    @include govuk-responsive-margin(8, "bottom");
+@include base.govuk-exports("govuk/component/error-summary") {
+  @include base.govuk-custom-properties;
 
-    border: $govuk-border-width solid;
-    border-color: govuk-functional-colour(error);
-    color: govuk-functional-colour(text);
+  .govuk-error-summary {
+    @include base.govuk-font($size: 19);
+    @include base.govuk-responsive-padding(4);
+    @include base.govuk-responsive-margin(8, "bottom");
+
+    border: base.$govuk-border-width solid;
+    border-color: base.govuk-functional-colour(error);
+    color: base.govuk-functional-colour(text);
 
     &:focus {
-      outline: $govuk-focus-width solid;
-      outline-color: govuk-functional-colour(focus);
+      outline: base.$govuk-focus-width solid;
+      outline-color: base.govuk-functional-colour(focus);
     }
   }
 
   .govuk-error-summary__title {
-    @include govuk-font-size($size: 24);
-    @include govuk-typography-weight-bold;
+    @include base.govuk-font-size($size: 24);
+    @include base.govuk-typography-weight-bold;
 
     margin-top: 0;
-    @include govuk-responsive-margin(4, "bottom");
+    @include base.govuk-responsive-margin(4, "bottom");
   }
 
   .govuk-error-summary__body {
@@ -32,11 +34,11 @@
     }
 
     > * + * {
-      @include govuk-responsive-margin(4, "top");
+      @include base.govuk-responsive-margin(4, "top");
     }
 
     > :last-child {
-      @include govuk-responsive-margin(1, "bottom");
+      @include base.govuk-responsive-margin(1, "bottom");
     }
   }
 
@@ -51,8 +53,8 @@
   }
 
   .govuk-error-summary__list a {
-    @include govuk-typography-weight-bold;
-    @include govuk-link-common;
-    @include govuk-link-style-error;
+    @include base.govuk-typography-weight-bold;
+    @include base.govuk-link-common;
+    @include base.govuk-link-style-error;
   }
 }

@@ -1,7 +1,6 @@
 const { globSync } = require('fs')
 const { join, basename } = require('path')
 
-const { paths } = require('@govuk-frontend/config')
 const {
   compileSassFile,
   compileSassString
@@ -19,67 +18,74 @@ const componentFolders = globSync(`${slash(__dirname)}/*`, {
 describe('Components', () => {
   describe('Sass render', () => {
     describe('all components', () => {
-      let sassCompilationResult
+      describe.each([
+        [
+          'import',
+          `
+          @import "base";
+          @import "components";
+        `
+        ],
+        ['use', `@use "components";`]
+      ])('with `@%s`', (type, sass) => {
+        let css
 
-      beforeAll(async () => {
-        const source = join(paths.package, 'src/govuk/components/_index.scss')
-        sassCompilationResult = await compileSassFile(source)
-      })
-
-      it('renders CSS for all components', () => {
-        return expect(sassCompilationResult).toMatchObject({
-          css: expect.any(String),
-          loadedUrls: expect.arrayContaining([expect.any(URL)])
+        beforeAll(async () => {
+          css = (await compileSassString(sass)).css
         })
-      })
 
-      it('does not use custom properties in shorthand properties', async () => {
-        const { css } = sassCompilationResult
+        it('outputs the custom properties only once', () => {
+          const occurrences = css.matchAll(/--govuk-breakpoint-mobile/g)
 
-        // Use a list of allowed properties rather than disallowed ones
-        // to catch new uses and explicitly allow them, rather than
-        // risk problematic future uses implicitly be accepted
-        const allowedProperties = ['box-shadow']
+          expect(Array.from(occurrences)).toHaveLength(1)
+        })
 
-        await require('postcss')({
-          postcssPlugin: 'govuk-frontend-var-in-shorthands',
-          Declaration(declaration) {
-            // Find out if the value includes a CSS variable that is not the entire value
-            // Test first for `var(` to avoid running regex unnecessarily
-            if (
-              declaration.value.includes('var(') &&
-              !declaration.value.match(/^var\(.*?\)$/)
-            ) {
-              // If it does, error unless we allow custom properties for that property
-              if (!allowedProperties.includes(declaration.prop)) {
-                throw new Error(
-                  `\`${declaration.prop}: ${declaration.value}\` includes a custom property as part of its value`
-                )
+        it('does not use custom properties in shorthand properties', async () => {
+          // Use a list of allowed properties rather than disallowed ones
+          // to catch new uses and explicitly allow them, rather than
+          // risk problematic future uses implicitly be accepted
+          const allowedProperties = ['box-shadow']
+
+          await require('postcss')({
+            postcssPlugin: 'govuk-frontend-var-in-shorthands',
+            Declaration(declaration) {
+              // Find out if the value includes a CSS variable that is not the entire value
+              // Test first for `var(` to avoid running regex unnecessarily
+              if (
+                declaration.value.includes('var(') &&
+                !declaration.value.match(/^var\(.*?\)$/)
+              ) {
+                // If it does, error unless we allow custom properties for that property
+                if (!allowedProperties.includes(declaration.prop)) {
+                  throw new Error(
+                    `\`${declaration.prop}: ${declaration.value}\` includes a custom property as part of its value`
+                  )
+                }
               }
             }
+          }).process(css, {
+            // Avoid PostCSS complaining about lacking a `from` option to locate a Browserslist file
+            // as we don't care about Browser support here, just parsing syntax
+            from: undefined
+          })
+        })
+
+        it('does not reference any undefined custom properties', async () => {
+          const linter = await stylelint.lint({
+            config: { rules: { 'no-unknown-custom-properties': true } },
+            code: css
+          })
+
+          // Output stylelint warnings to make debugging easier
+          if (linter.results[0].warnings.length) {
+            console.log(
+              'Warnings were present when testing all components for unknown custom properties:'
+            )
+            console.log(linter.results[0].warnings)
           }
-        }).process(css, {
-          // Avoid PostCSS complaining about lacking a `from` option to locate a Browserslist file
-          // as we don't care about Browser support here, just parsing syntax
-          from: undefined
+
+          return expect(linter.results[0].warnings).toHaveLength(0)
         })
-      })
-
-      it('does not reference any undefined custom properties', async () => {
-        const linter = await stylelint.lint({
-          config: { rules: { 'no-unknown-custom-properties': true } },
-          code: sassCompilationResult.css
-        })
-
-        // Output stylelint warnings to make debugging easier
-        if (linter.results[0].warnings.length) {
-          console.log(
-            'Warnings were present when testing all components for unknown custom properties:'
-          )
-          console.log(linter.results[0].warnings)
-        }
-
-        return expect(linter.results[0].warnings).toHaveLength(0)
       })
     })
 

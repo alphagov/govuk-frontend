@@ -1,37 +1,39 @@
-@import "../../base";
+@use "../../base";
 
-@include govuk-exports("govuk/component/footer") {
-  $govuk-footer-background: govuk-functional-colour(surface-background);
-  $govuk-footer-text: govuk-functional-colour(surface-text);
-  $govuk-footer-content-border: govuk-functional-colour(surface-border);
+@include base.govuk-exports("govuk/component/footer") {
+  @include base.govuk-custom-properties;
+
+  $govuk-footer-background: base.govuk-functional-colour(surface-background);
+  $govuk-footer-text: base.govuk-functional-colour(surface-text);
+  $govuk-footer-content-border: base.govuk-functional-colour(surface-border);
 
   // Royal Arms image dimensions
   $govuk-footer-crest-image-width: 125px;
   $govuk-footer-crest-image-height: 102px;
 
   .govuk-footer {
-    @include govuk-font($size: 19);
-    @include govuk-responsive-padding(7, "top");
-    @include govuk-responsive-padding(5, "bottom");
+    @include base.govuk-font($size: 19);
+    @include base.govuk-responsive-padding(7, "top");
+    @include base.govuk-responsive-padding(5, "bottom");
 
     border-top: 10px solid;
-    border-top-color: govuk-functional-colour(brand);
+    border-top-color: base.govuk-functional-colour(brand);
     color: $govuk-footer-text;
-    background: govuk-functional-colour(template-background);
+    background: base.govuk-functional-colour(template-background);
   }
 
   .govuk-footer__crown {
-    margin-bottom: govuk-spacing(5);
+    margin-bottom: base.govuk-spacing(5);
   }
 
   .govuk-footer__link {
-    @include govuk-link-common;
-    @include govuk-link-style-default;
+    @include base.govuk-link-common;
+    @include base.govuk-link-style-default;
   }
 
   .govuk-footer__section-break {
     margin: 0; // Reset `<hr>` default margins
-    @include govuk-responsive-margin(8, "bottom");
+    @include base.govuk-responsive-margin(8, "bottom");
     border: 0; // Reset `<hr>` default borders
     border-bottom-width: 1px;
     border-bottom-style: solid;
@@ -43,28 +45,28 @@
     flex-wrap: wrap; // Support: Flexbox
     align-items: flex-end; // Support: Flexbox
     justify-content: center; // Support: Flexbox
-    margin-right: -$govuk-gutter-half;
-    margin-left: -$govuk-gutter-half;
+    margin-right: -(base.$govuk-gutter-half);
+    margin-left: -(base.$govuk-gutter-half);
   }
 
   .govuk-footer__meta-item {
-    margin-right: $govuk-gutter-half;
-    margin-bottom: govuk-spacing(5);
-    margin-left: $govuk-gutter-half;
+    margin-right: base.$govuk-gutter-half;
+    margin-bottom: base.govuk-spacing(5);
+    margin-left: base.$govuk-gutter-half;
   }
 
   .govuk-footer__meta-item--grow {
     flex: 1; // Support: Flexbox
-    @media #{govuk-until-breakpoint(tablet)} {
+    @media #{base.govuk-until-breakpoint(tablet)} {
       flex-basis: 320px; // Support: Flexbox
     }
   }
 
   .govuk-footer__licence-logo {
     display: inline-block;
-    margin-right: govuk-spacing(2);
-    @media #{govuk-until-breakpoint(desktop)} {
-      margin-bottom: govuk-spacing(3);
+    margin-right: base.govuk-spacing(2);
+    @media #{base.govuk-until-breakpoint(desktop)} {
+      margin-bottom: base.govuk-spacing(3);
     }
     vertical-align: top;
     // Work around SVGs not inheriting color from parent in forced color mode
@@ -81,15 +83,15 @@
   }
 
   .govuk-footer__copyright-logo {
-    @include govuk-link-style-text;
+    @include base.govuk-link-style-text;
   }
 
   .govuk-footer__copyright-logo::before {
     content: "";
     display: block;
     width: 100%;
-    padding-top: ($govuk-footer-crest-image-height + govuk-spacing(2));
-    background-image: govuk-image-url("govuk-crest.svg");
+    padding-top: ($govuk-footer-crest-image-height + base.govuk-spacing(2));
+    background-image: base.govuk-image-url("govuk-crest.svg");
     background-repeat: no-repeat;
     background-position: 50% 0%;
     background-size: $govuk-footer-crest-image-width $govuk-footer-crest-image-height;
@@ -103,7 +105,7 @@
     // positive in Edge 17.
     @supports (mask-position: initial) {
       background: currentcolor;
-      mask-image: govuk-image-url("govuk-crest.svg");
+      mask-image: base.govuk-image-url("govuk-crest.svg");
       mask-repeat: no-repeat;
       mask-position: 50% 0%;
       mask-size: $govuk-footer-crest-image-width $govuk-footer-crest-image-height;
@@ -119,7 +121,7 @@
 
   .govuk-footer__inline-list {
     margin-top: 0;
-    margin-bottom: govuk-spacing(3);
+    margin-bottom: base.govuk-spacing(3);
     padding: 0;
   }
 
@@ -128,7 +130,7 @@
   }
 
   .govuk-footer__meta-custom {
-    margin-bottom: govuk-spacing(4);
+    margin-bottom: base.govuk-spacing(4);
   }
 
   .govuk-footer__meta-custom:last-child {
@@ -137,16 +139,16 @@
 
   .govuk-footer__inline-list-item {
     display: inline-block;
-    margin-right: govuk-spacing(3);
-    margin-bottom: govuk-spacing(1);
+    margin-right: base.govuk-spacing(3);
+    margin-bottom: base.govuk-spacing(1);
   }
 
   .govuk-footer__heading {
-    margin-bottom: govuk-spacing(6);
-    padding-bottom: govuk-spacing(4);
+    margin-bottom: base.govuk-spacing(6);
+    padding-bottom: base.govuk-spacing(4);
 
-    @media #{govuk-until-breakpoint(tablet)} {
-      padding-bottom: govuk-spacing(2);
+    @media #{base.govuk-until-breakpoint(tablet)} {
+      padding-bottom: base.govuk-spacing(2);
     }
 
     border-bottom-width: 1px;
@@ -155,25 +157,25 @@
   }
 
   .govuk-footer__navigation {
-    @include govuk-clearfix;
-    margin-right: -$govuk-gutter-half;
-    margin-left: -$govuk-gutter-half;
+    @include base.govuk-clearfix;
+    margin-right: -(base.$govuk-gutter-half);
+    margin-left: -(base.$govuk-gutter-half);
   }
 
   .govuk-footer__section {
     display: inline-block;
-    margin-bottom: $govuk-gutter;
+    margin-bottom: base.$govuk-gutter;
     vertical-align: top;
   }
 
   .govuk-footer__list {
-    column-gap: $govuk-gutter; // Support: Columns
+    column-gap: base.$govuk-gutter; // Support: Columns
     margin: 0;
     padding: 0;
     list-style: none;
   }
 
-  @media #{govuk-from-breakpoint(desktop)} {
+  @media #{base.govuk-from-breakpoint(desktop)} {
     .govuk-footer__list--columns-2 {
       column-count: 2; // Support: Columns
     }
@@ -184,7 +186,7 @@
   }
 
   .govuk-footer__list-item {
-    @include govuk-responsive-margin(4, "bottom");
+    @include base.govuk-responsive-margin(4, "bottom");
   }
 
   .govuk-footer__list-item:last-child {

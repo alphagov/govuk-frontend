@@ -1,30 +1,32 @@
-@import "../../base";
+@use "../../base";
 
 @import "../error-message";
 @import "../hint";
 @import "../label";
 
-@include govuk-exports("govuk/component/textarea") {
+@include base.govuk-exports("govuk/component/textarea") {
+  @include base.govuk-custom-properties;
+
   .govuk-textarea {
-    @include govuk-font($size: 19, $line-height: 1.25);
+    @include base.govuk-font($size: 19, $line-height: 1.25);
 
     box-sizing: border-box;
     display: block;
     width: 100%;
     min-height: 40px;
-    @include govuk-responsive-margin(6, "bottom");
-    padding: govuk-spacing(1);
+    @include base.govuk-responsive-margin(6, "bottom");
+    padding: base.govuk-spacing(1);
 
     resize: vertical;
 
-    border: $govuk-border-width-form-element solid;
+    border: base.$govuk-border-width-form-element solid;
     border-radius: 0;
-    border-color: govuk-functional-colour(input-border);
+    border-color: base.govuk-functional-colour(input-border);
 
     -webkit-appearance: none;
 
     &:focus {
-      @include govuk-focused-form-input;
+      @include base.govuk-focused-form-input;
     }
 
     &:disabled {
@@ -36,10 +38,10 @@
   }
 
   .govuk-textarea--error {
-    border-color: govuk-functional-colour(error);
+    border-color: base.govuk-functional-colour(error);
 
     &:focus {
-      border-color: govuk-functional-colour(input-border);
+      border-color: base.govuk-functional-colour(input-border);
     }
   }
 }
