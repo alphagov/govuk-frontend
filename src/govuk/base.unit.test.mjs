@@ -1,4 +1,5 @@
 import { compileSassString } from '@govuk-frontend/helpers/tests'
+import { NodePackageImporter } from 'sass-embedded'
 
 describe('_base.scss', () => {
   // Keep the current behaviour of outputting custom properties with `@import`
@@ -13,6 +14,29 @@ describe('_base.scss', () => {
       expect(css).toContain('--govuk-frontend-version')
       expect(css).toContain('--govuk-breakpoint-mobile')
       expect(css).toContain('--govuk-brand-colour')
+    })
+
+    it('allows to configure asset-url functions as strings', async () => {
+      const sass = `
+        @import 'pkg:@govuk-frontend/helpers/assets-urls';
+
+        $govuk-image-url-function: 'images-url';
+        $govuk-font-url-function: 'fonts-url';
+
+        @import "base";
+
+        :root {
+          --font: #{govuk-font-url('font.woff')}
+          --image: #{govuk-image-url('image.woff')}
+        }
+      `
+
+      const { css } = await compileSassString(sass, {
+        importers: [new NodePackageImporter()]
+      })
+
+      expect(css).toContain('--font: url("example.woff")')
+      expect(css).toContain('--image: url("example.svg")')
     })
 
     it('does not output custom properties twice when imported twice', async () => {
