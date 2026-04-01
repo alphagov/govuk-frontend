@@ -62,6 +62,17 @@ describe('Checkboxes', () => {
     expect($orItemInput.attr('data-behaviour')).toBe('exclusive')
   })
 
+  it('render example with a "Select all" checkbox with select-all behaviour', () => {
+    const $ = render('checkboxes', examples['with select all'])
+
+    const $component = $('.govuk-checkboxes')
+    const $items = $component.find('.govuk-checkboxes__item')
+    expect($items).toHaveLength(6)
+
+    const $selectAllInput = $items.first().find('input').first()
+    expect($selectAllInput.attr('data-behaviour')).toBe('select-all')
+  })
+
   it('render additional label classes', () => {
     const $ = render('checkboxes', examples['with label classes'])
 

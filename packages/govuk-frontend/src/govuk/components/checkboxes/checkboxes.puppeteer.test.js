@@ -348,6 +348,62 @@ describe('Checkboxes', () => {
         expect(await isVisible($conditionalPrimary)).toBe(false)
       })
 
+  describe('with a "Select all" checkbox', () => {
+    describe('when JavaScript is available', () => {
+      let $component
+      let $inputs
+
+      beforeEach(async () => {
+        await render(page, 'checkboxes', examples['with select all'])
+
+        $component = await page.$('.govuk-checkboxes')
+        $inputs = await $component.$$('.govuk-checkboxes__input')
+      })
+
+      it('checks all other checkboxes when "Select all" is checked', async () => {
+        // Click "Select all" (first input)
+        await $inputs[0].click()
+
+        // All other checkboxes should be checked
+        expect(await getProperty($inputs[1], 'checked')).toBe(true)
+        expect(await getProperty($inputs[2], 'checked')).toBe(true)
+        expect(await getProperty($inputs[3], 'checked')).toBe(true)
+        expect(await getProperty($inputs[4], 'checked')).toBe(true)
+        expect(await getProperty($inputs[5], 'checked')).toBe(true)
+      })
+
+      it('unchecks all other checkboxes when "Select all" is unchecked', async () => {
+        // Check select all first
+        await $inputs[0].click()
+
+        // Uncheck select all
+        await $inputs[0].click()
+
+        // All other checkboxes should be unchecked
+        expect(await getProperty($inputs[1], 'checked')).toBe(false)
+        expect(await getProperty($inputs[2], 'checked')).toBe(false)
+        expect(await getProperty($inputs[3], 'checked')).toBe(false)
+        expect(await getProperty($inputs[4], 'checked')).toBe(false)
+        expect(await getProperty($inputs[5], 'checked')).toBe(false)
+      })
+
+      it('unchecks "Select all" when any other checkbox is unchecked', async () => {
+        // Check select all
+        await $inputs[0].click()
+
+        // Uncheck one checkbox
+        await $inputs[1].click()
+
+        // "Select all" should be unchecked
+        expect(await getProperty($inputs[0], 'checked')).toBe(false)
+
+        // Other checkboxes should remain checked
+        expect(await getProperty($inputs[2], 'checked')).toBe(true)
+        expect(await getProperty($inputs[3], 'checked')).toBe(true)
+      })
+    })
+  })
+
       describe('errors at instantiation', () => {
         it('can throw a SupportError if appropriate', async () => {
           await expect(

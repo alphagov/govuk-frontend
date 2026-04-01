@@ -160,6 +160,55 @@ export class Checkboxes extends Component {
   }
 
   /**
+   * Check all other checkboxes
+   *
+   * Find any other checkbox inputs with the same name value, and check them.
+   * This is useful for when a "Select all" checkbox is checked.
+   *
+   * @private
+   * @param {HTMLInputElement} $input - Checkbox input
+   */
+  checkAllInputsExcept($input) {
+    const allInputsWithSameName = document.querySelectorAll(
+      `input[type="checkbox"][name="${$input.name}"]`
+    )
+
+    allInputsWithSameName.forEach(($inputWithSameName) => {
+      const hasSameFormOwner = $input.form === $inputWithSameName.form
+      const isExclusive =
+        $inputWithSameName.getAttribute('data-behaviour') === 'exclusive'
+      if (hasSameFormOwner && $inputWithSameName !== $input && !isExclusive) {
+        $inputWithSameName.checked = true
+        this.syncConditionalRevealWithInputState($inputWithSameName)
+      }
+    })
+  }
+
+  /**
+   * Uncheck select-all checkboxes
+   *
+   * Find any checkbox inputs with the same name value and the 'select-all'
+   * behaviour, and uncheck them. This keeps the select-all checkbox in sync
+   * when a regular checkbox is unchecked.
+   *
+   * @private
+   * @param {HTMLInputElement} $input - Checkbox input
+   */
+  unCheckSelectAllInputs($input) {
+    const allSelectAllInputs = document.querySelectorAll(
+      `input[data-behaviour="select-all"][type="checkbox"][name="${$input.name}"]`
+    )
+
+    allSelectAllInputs.forEach(($selectAllInput) => {
+      const hasSameFormOwner = $input.form === $selectAllInput.form
+      if (hasSameFormOwner) {
+        $selectAllInput.checked = false
+        this.syncConditionalRevealWithInputState($selectAllInput)
+      }
+    })
+  }
+
+  /**
    * Click event handler
    *
    * Handle a click within the component root – if the click occurred on a checkbox,
@@ -186,15 +235,26 @@ export class Checkboxes extends Component {
       this.syncConditionalRevealWithInputState($clickedInput)
     }
 
-    // No further behaviour needed for unchecking
+    const behaviour = $clickedInput.getAttribute('data-behaviour')
+
+    // Handle 'select-all' checkbox behaviour
+    if (behaviour === 'select-all') {
+      if ($clickedInput.checked) {
+        this.checkAllInputsExcept($clickedInput)
+      } else {
+        this.unCheckAllInputsExcept($clickedInput)
+      }
+      return
+    }
+
+    // When unchecking a regular checkbox, uncheck any select-all checkbox
     if (!$clickedInput.checked) {
+      this.unCheckSelectAllInputs($clickedInput)
       return
     }
 
     // Handle 'exclusive' checkbox behaviour (ie "None of these")
-    const hasBehaviourExclusive =
-      $clickedInput.getAttribute('data-behaviour') === 'exclusive'
-    if (hasBehaviourExclusive) {
+    if (behaviour === 'exclusive') {
       this.unCheckAllInputsExcept($clickedInput)
     } else {
       this.unCheckExclusiveInputs($clickedInput)

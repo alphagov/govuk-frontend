@@ -129,7 +129,7 @@ params:
       - name: behaviour
         type: string
         required: false
-        description: If set to `"exclusive"`, implements a 'None of these' type behaviour via JavaScript when checkboxes are clicked.
+        description: If set to `"exclusive"`, implements a 'None of these' type behaviour via JavaScript when checkboxes are clicked. If set to `"select-all"`, implements a 'Select all' type behaviour that checks all other checkboxes when clicked.
       - name: disabled
         type: boolean
         required: false
@@ -245,6 +245,27 @@ examples:
         - value: none
           text: None of these
           behaviour: exclusive
+
+  - name: with select all
+    options:
+      name: with-select-all
+      fieldset:
+        legend:
+          text: Which days are you available?
+      items:
+        - value: select-all
+          text: Select all
+          behaviour: select-all
+        - value: monday
+          text: Monday
+        - value: tuesday
+          text: Tuesday
+        - value: wednesday
+          text: Wednesday
+        - value: thursday
+          text: Thursday
+        - value: friday
+          text: Friday
 
   - name: with divider, None and conditional items
     options:
