@@ -49,7 +49,7 @@
     "@rollup/plugin-commonjs": "^29.0.0",
     "@rollup/plugin-node-resolve": "^16.0.3",
     "@rollup/plugin-terser": "^1.0.0",
-    "autoprefixer": "^10.4.24",
+    "autoprefixer": "^10.4.27",
     "browser-sync": "^3.0.4",
     "gulp": "^5.0.1",
     "gulp-cli": "^3.0.0",
