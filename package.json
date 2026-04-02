@@ -108,7 +108,7 @@
     "stylelint-config-gds": "^2.0.0",
     "stylelint-order": "^8.0.0",
     "typed-query-selector": "^2.12.0",
-    "typescript": "^5.9.3"
+    "typescript": "^6.0.2"
   },
   "overrides": {
     "chokidar@^2": {
