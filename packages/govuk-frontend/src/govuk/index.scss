@@ -1,7 +1,7 @@
 @forward "base--forwarding";
 
-@import "core";
-@import "objects";
+@forward "core";
+@forward "objects";
 
 @import "components";
 
