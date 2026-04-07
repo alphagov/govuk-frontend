@@ -20,6 +20,7 @@ runs:
           docs/examples/*/node_modules
           packages/*/node_modules
           shared/*/node_modules
+          tests/*/node_modules
 
     - name: Setup Node.js
       uses: ./.github/workflows/actions/setup-node
