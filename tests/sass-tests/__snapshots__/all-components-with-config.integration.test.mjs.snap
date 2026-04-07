@@ -37,7 +37,7 @@ exports[`All components, with configuration works when user @imports everything 
     --govuk-text-colour: var(--govuk-print-text-colour, #000000);
   }
 }
-.govuk-link {
+a, .govuk-link {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -61,16 +61,16 @@ exports[`All components, with configuration works when user @imports everything 
   src: url("example.woff") format("woff2"), url("example.woff") format("woff");
 }
 @media print {
-  .govuk-link {
+  a, .govuk-link {
     font-family: sans-serif;
   }
 }
-.govuk-link:hover {
+a:hover, .govuk-link:hover {
   text-decoration-thickness: max(3px, .1875rem, .12em);
   text-decoration-skip-ink: none;
   text-decoration-skip: none;
 }
-.govuk-link:focus {
+a:focus, .govuk-link:focus {
   outline: 3px solid transparent;
   color: var(--govuk-focus-text-colour, #0b0c0c);
   background-color: var(--govuk-focus-colour, #ffdd00);
@@ -78,27 +78,27 @@ exports[`All components, with configuration works when user @imports everything 
   text-decoration: none;
 }
 @supports not (text-wrap: balance) {
-  .govuk-link:focus {
+  a:focus, .govuk-link:focus {
     box-decoration-break: clone;
   }
 }
-.govuk-link:link {
+a:link, .govuk-link:link {
   color: var(--govuk-link-colour, #1a65a6);
 }
-.govuk-link:visited {
+a:visited, .govuk-link:visited {
   color: var(--govuk-link-visited-colour, #54319f);
 }
-.govuk-link:hover {
+a:hover, .govuk-link:hover {
   color: var(--govuk-link-hover-colour, #0f385c);
 }
-.govuk-link:active {
+a:active, .govuk-link:active {
   color: var(--govuk-link-active-colour, #0b0c0c);
 }
-.govuk-link:focus {
+a:focus, .govuk-link:focus {
   color: var(--govuk-focus-text-colour, #0b0c0c);
 }
 @media print {
-  [href^="/"].govuk-link::after, [href^="http://"].govuk-link::after, [href^="https://"].govuk-link::after {
+  a[href^="/"]::after, [href^="/"].govuk-link::after, a[href^="http://"]::after, [href^="http://"].govuk-link::after, a[href^="https://"]::after, [href^="https://"].govuk-link::after {
     content: " (" attr(href) ")";
     font-size: 90%;
     word-wrap: break-word;
@@ -458,7 +458,7 @@ exports[`All components, with configuration works when user @imports everything 
     margin-bottom: 30px;
   }
 }
-.govuk-body, .govuk-body-m {
+p, .govuk-body, .govuk-body-m {
   margin-top: 0;
   color: var(--govuk-text-colour, #0b0c0c);
   font-family: "GDS Transport", arial, sans-serif;
@@ -470,18 +470,18 @@ exports[`All components, with configuration works when user @imports everything 
   margin-bottom: 15px;
 }
 @media print {
-  .govuk-body, .govuk-body-m {
+  p, .govuk-body, .govuk-body-m {
     font-family: sans-serif;
   }
 }
 @media print {
-  .govuk-body, .govuk-body-m {
+  p, .govuk-body, .govuk-body-m {
     font-size: 14pt;
     line-height: 1.15;
   }
 }
 @media (min-width: 40.0625em) {
-  .govuk-body, .govuk-body-m {
+  p, .govuk-body, .govuk-body-m {
     margin-bottom: 20px;
   }
 }
@@ -520,21 +520,22 @@ exports[`All components, with configuration works when user @imports everything 
     padding-top: 10px;
   }
 }
-.govuk-body-m + .govuk-heading-l, .govuk-body + .govuk-heading-l,
+p + .govuk-heading-l, .govuk-body-m + .govuk-heading-l, .govuk-body + .govuk-heading-l,
 .govuk-body-s + .govuk-heading-l,
 .govuk-list + .govuk-heading-l {
   padding-top: 15px;
 }
 @media (min-width: 40.0625em) {
-  .govuk-body-m + .govuk-heading-l, .govuk-body + .govuk-heading-l,
+  p + .govuk-heading-l, .govuk-body-m + .govuk-heading-l, .govuk-body + .govuk-heading-l,
   .govuk-body-s + .govuk-heading-l,
   .govuk-list + .govuk-heading-l {
     padding-top: 20px;
   }
 }
-.govuk-body-m + .govuk-heading-m, .govuk-body + .govuk-heading-m,
+p + .govuk-heading-m, .govuk-body-m + .govuk-heading-m, .govuk-body + .govuk-heading-m,
 .govuk-body-s + .govuk-heading-m,
 .govuk-list + .govuk-heading-m,
+p + .govuk-heading-s,
 .govuk-body-m + .govuk-heading-s,
 .govuk-body + .govuk-heading-s,
 .govuk-body-s + .govuk-heading-s,
@@ -542,9 +543,10 @@ exports[`All components, with configuration works when user @imports everything 
   padding-top: 5px;
 }
 @media (min-width: 40.0625em) {
-  .govuk-body-m + .govuk-heading-m, .govuk-body + .govuk-heading-m,
+  p + .govuk-heading-m, .govuk-body-m + .govuk-heading-m, .govuk-body + .govuk-heading-m,
   .govuk-body-s + .govuk-heading-m,
   .govuk-list + .govuk-heading-m,
+  p + .govuk-heading-s,
   .govuk-body-m + .govuk-heading-s,
   .govuk-body + .govuk-heading-s,
   .govuk-body-s + .govuk-heading-s,
@@ -4325,6 +4327,10 @@ exports[`All components, with configuration works when user @imports everything 
   outline-color: var(--govuk-focus-colour, #ffdd00);
   outline-offset: 0;
   background-color: var(--govuk-focus-colour, #ffdd00);
+  text-decoration: underline;
+  text-decoration-thickness: max(1px, .0625rem);
+  text-underline-offset: 0.1578em;
+  box-shadow: none;
 }
 @media (forced-colors: active) {
   .govuk-skip-link:focus {
