@@ -103,7 +103,7 @@
     width: 100%;
     // align the padding to be same as notification banner and error summary accounting for the thicker borders
     padding: (base.govuk-spacing(3) + base.$govuk-border-width - $file-upload-border-width);
-    border: $file-upload-border-width base.govuk-colour("black", $variant: "tint-80") solid;
+    border: $file-upload-border-width solid base.govuk-colour("black", $variant: "tint-80");
     background-color: base.govuk-colour("white");
     cursor: pointer;
 
@@ -111,11 +111,17 @@
       padding: (base.govuk-spacing(4) + base.$govuk-border-width - $file-upload-border-width);
     }
 
+    @at-root .govuk-form-group--error & {
+      border-style: solid;
+      border-color: base.govuk-functional-colour("error");
+    }
+
     .govuk-file-upload-button__pseudo-button {
       background-color: base.govuk-colour("black", $variant: "tint-95");
     }
 
     &:hover {
+      border-style: dashed;
       border-color: base.govuk-colour("black", $variant: "tint-50");
 
       .govuk-file-upload-button__pseudo-button {
