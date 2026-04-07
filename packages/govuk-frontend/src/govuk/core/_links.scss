@@ -1,13 +1,9 @@
 @use "../base";
 
+@use "placeholders--internal";
+
 @include base.govuk-exports("govuk/core/links") {
   @include base.govuk-custom-properties;
-
-  %govuk-link {
-    @include base.govuk-link-common;
-    @include base.govuk-link-style-default;
-    @include base.govuk-link-print-friendly;
-  }
 
   .govuk-link {
     @extend %govuk-link;

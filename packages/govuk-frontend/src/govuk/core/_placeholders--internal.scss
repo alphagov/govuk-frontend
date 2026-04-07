@@ -1,5 +1,163 @@
 @use "../base";
 
+// Links
+
+%govuk-link {
+  @include base.govuk-link-common;
+  @include base.govuk-link-style-default;
+  @include base.govuk-link-print-friendly;
+}
+
+// Lists
+
+%govuk-list {
+  @include base.govuk-font($size: 19);
+
+  // Keep margin configuration next to each other
+  // stylelint-disable order/order-properties
+  margin-top: 0;
+  @include base.govuk-responsive-margin(4, "bottom");
+  // stylelint-enable order/order-properties
+
+  padding-left: 0;
+  list-style-type: none;
+  color: base.govuk-functional-colour(text);
+
+  // Add a top margin for nested lists
+  %govuk-list {
+    margin-top: base.govuk-spacing(2);
+  }
+}
+
+%govuk-list > li {
+  // Lists without numbers or bullets should always have extra space between
+  // list items. Lists with numbers or bullets only have this extra space on
+  // tablet and above
+  margin-bottom: base.govuk-spacing(1);
+}
+
+%govuk-list--bullet {
+  padding-left: base.govuk-spacing(4);
+  list-style-type: disc;
+}
+
+%govuk-list--number {
+  padding-left: base.govuk-spacing(4);
+  list-style-type: decimal;
+}
+
+%govuk-list--bullet > li,
+%govuk-list--number > li {
+  margin-bottom: 0;
+
+  @media #{base.govuk-from-breakpoint(tablet)} {
+    margin-bottom: base.govuk-spacing(1);
+  }
+}
+
+%govuk-list--spaced > li {
+  margin-bottom: base.govuk-spacing(2);
+
+  @media #{base.govuk-from-breakpoint(tablet)} {
+    margin-bottom: base.govuk-spacing(3);
+  }
+}
+
+// Typography
+
+%govuk-heading-xl {
+  @include base.govuk-font($size: 48, $weight: bold);
+
+  display: block;
+
+  margin-top: 0;
+  color: base.govuk-functional-colour(text);
+  @include base.govuk-responsive-margin(8, "bottom");
+}
+
+%govuk-heading-l {
+  @include base.govuk-font($size: 36, $weight: bold);
+
+  display: block;
+
+  margin-top: 0;
+  color: base.govuk-functional-colour(text);
+  @include base.govuk-responsive-margin(6, "bottom");
+}
+
+%govuk-heading-m {
+  @include base.govuk-font($size: 24, $weight: bold);
+
+  display: block;
+
+  margin-top: 0;
+  color: base.govuk-functional-colour(text);
+  @include base.govuk-responsive-margin(4, "bottom");
+}
+
+%govuk-heading-s {
+  @include base.govuk-font($size: 19, $weight: bold);
+
+  display: block;
+
+  margin-top: 0;
+  color: base.govuk-functional-colour(text);
+  @include base.govuk-responsive-margin(4, "bottom");
+}
+
+// Body (paragraphs)
+
+%govuk-body-l {
+  margin-top: 0;
+  color: base.govuk-functional-colour(text);
+  @include base.govuk-font($size: 24);
+  @include base.govuk-responsive-margin(6, "bottom");
+}
+
+%govuk-body-m {
+  margin-top: 0;
+  color: base.govuk-functional-colour(text);
+  @include base.govuk-font($size: 19);
+  @include base.govuk-responsive-margin(4, "bottom");
+}
+
+%govuk-body-s {
+  margin-top: 0;
+  color: base.govuk-functional-colour(text);
+  @include base.govuk-font($size: 16);
+  @include base.govuk-responsive-margin(4, "bottom");
+}
+
+// Contextual adjustments
+// Add top padding to headings that appear directly after paragraphs.
+
+%govuk-body-l + %govuk-heading-l {
+  padding-top: base.govuk-spacing(1);
+
+  @media #{base.govuk-from-breakpoint(tablet)} {
+    padding-top: base.govuk-spacing(2);
+  }
+}
+
+%govuk-body-m + %govuk-heading-l,
+%govuk-body-s + %govuk-heading-l,
+%govuk-list + %govuk-heading-l {
+  @include base.govuk-responsive-padding(4, "top");
+}
+
+%govuk-body-m + %govuk-heading-m,
+%govuk-body-s + %govuk-heading-m,
+%govuk-list + %govuk-heading-m,
+%govuk-body-m + %govuk-heading-s,
+%govuk-body-s + %govuk-heading-s,
+%govuk-list + %govuk-heading-s {
+  padding-top: base.govuk-spacing(1);
+
+  @media #{base.govuk-from-breakpoint(tablet)} {
+    padding-top: base.govuk-spacing(2);
+  }
+}
+
 // Section breaks
 
 %govuk-section-break {

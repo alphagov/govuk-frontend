@@ -1,6 +1,5 @@
 @use "../base";
-@import "links";
-@import "typography";
+@use "placeholders--internal";
 
 @mixin govuk-global-styles {
   a {
