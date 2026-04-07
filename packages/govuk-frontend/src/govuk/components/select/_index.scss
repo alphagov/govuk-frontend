@@ -1,12 +1,15 @@
-@import "../../base";
+@forward "../../base";
+@use "../../base";
 
 @import "../error-message";
 @import "../hint";
 @import "../label";
 
-@include govuk-exports("govuk/component/select") {
+@include base.govuk-exports("govuk/component/select") {
+  @include base.govuk-custom-properties;
+
   .govuk-select {
-    @include govuk-font($size: 19, $line-height: 1.25);
+    @include base.govuk-font($size: 19, $line-height: 1.25);
 
     box-sizing: border-box;
 
@@ -16,18 +19,18 @@
     // - it fits comfortably on screens as narrow as 240px wide
     min-width: 11.5em;
     max-width: 100%;
-    height: govuk-px-to-rem(40px);
-    padding: govuk-spacing(1);
-    border: $govuk-border-width-form-element solid;
-    border-color: govuk-functional-colour(input-border);
+    height: base.govuk-px-to-rem(40px);
+    padding: base.govuk-spacing(1);
+    border: base.$govuk-border-width-form-element solid;
+    border-color: base.govuk-functional-colour(input-border);
 
     // Default user agent colours for selects can have low contrast,
     // and may look disabled (#2435)
-    color: govuk-functional-colour(text);
-    background-color: govuk-colour("white");
+    color: base.govuk-functional-colour(text);
+    background-color: base.govuk-colour("white");
 
     &:focus {
-      @include govuk-focused-form-input;
+      @include base.govuk-focused-form-input;
     }
 
     &:disabled {
@@ -40,15 +43,15 @@
   .govuk-select option:active,
   .govuk-select option:checked,
   .govuk-select:focus::-ms-value {
-    color: govuk-colour("white");
-    background-color: govuk-colour("blue");
+    color: base.govuk-colour("white");
+    background-color: base.govuk-colour("blue");
   }
 
   .govuk-select--error {
-    border-color: govuk-functional-colour(error);
+    border-color: base.govuk-functional-colour(error);
 
     &:focus {
-      border-color: govuk-functional-colour(input-border);
+      border-color: base.govuk-functional-colour(input-border);
     }
   }
 }

@@ -1,14 +1,17 @@
-@import "../../base";
+@forward "../../base";
+@use "../../base";
 
-@include govuk-exports("govuk/component/error-message") {
+@include base.govuk-exports("govuk/component/error-message") {
+  @include base.govuk-custom-properties;
+
   .govuk-error-message {
-    @include govuk-font($size: 19, $weight: bold);
+    @include base.govuk-font($size: 19, $weight: bold);
 
     display: block;
     margin-top: 0; // Reset any default browser margins for paragraphs
-    margin-bottom: govuk-spacing(3);
+    margin-bottom: base.govuk-spacing(3);
     clear: both;
 
-    color: govuk-functional-colour(error);
+    color: base.govuk-functional-colour(error);
   }
 }

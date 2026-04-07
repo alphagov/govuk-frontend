@@ -1,0 +1,7 @@
+@use "sass:meta";
+// Ensure configuring `$govuk-font-url-function` and `$govuk-image-url-function`
+// leads to the function in the global scope being passed to the assets module
+// so that `govuk-font-url` and `govuk-image-url` can use `meta.call`
+@import "settings/assets";
+
+@import "base--forwarding";

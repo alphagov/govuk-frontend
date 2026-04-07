@@ -1,19 +1,22 @@
-@import "../../base";
+@forward "../../base";
+@use "../../base";
 
 @import "../button";
 
-@include govuk-exports("govuk/component/exit-this-page") {
+@include base.govuk-exports("govuk/component/exit-this-page") {
+  @include base.govuk-custom-properties;
+
   $indicator-size: 0.75em;
 
   .govuk-exit-this-page {
-    @include govuk-responsive-margin(8, "bottom");
+    @include base.govuk-responsive-margin(8, "bottom");
     position: sticky;
     z-index: 1000;
     top: 0;
     left: 0;
     width: 100%;
 
-    @media #{govuk-from-breakpoint(tablet)} {
+    @media #{base.govuk-from-breakpoint(tablet)} {
       display: inline-block;
       right: 0;
       left: auto;
@@ -27,7 +30,7 @@
   }
 
   .govuk-exit-this-page__indicator {
-    @include govuk-responsive-padding(2);
+    @include base.govuk-responsive-padding(2);
     display: none;
     padding-bottom: 0;
     pointer-events: none;
@@ -69,7 +72,7 @@
     right: 0;
     bottom: 0;
     left: 0;
-    background-color: govuk-colour("white");
+    background-color: base.govuk-colour("white");
   }
 
   // This class is added to the body when the Exit This Page button is activated

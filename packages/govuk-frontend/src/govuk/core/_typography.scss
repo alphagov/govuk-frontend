@@ -1,20 +1,18 @@
-@use "../tools/exports" as *;
-@use "../helpers/colour" as *;
-@use "../helpers/typography" as *;
-@use "../helpers/spacing" as *;
-@use "../helpers/media-queries" as *;
+@use "../base";
 
-@include govuk-exports("govuk/core/typography") {
+@include base.govuk-exports("govuk/core/typography") {
+  @include base.govuk-custom-properties;
+
   // Headings
 
   %govuk-heading-xl {
-    @include govuk-font($size: 48, $weight: bold);
+    @include base.govuk-font($size: 48, $weight: bold);
 
     display: block;
 
     margin-top: 0;
-    color: govuk-functional-colour(text);
-    @include govuk-responsive-margin(8, "bottom");
+    color: base.govuk-functional-colour(text);
+    @include base.govuk-responsive-margin(8, "bottom");
   }
 
   .govuk-heading-xl {
@@ -22,13 +20,13 @@
   }
 
   %govuk-heading-l {
-    @include govuk-font($size: 36, $weight: bold);
+    @include base.govuk-font($size: 36, $weight: bold);
 
     display: block;
 
     margin-top: 0;
-    color: govuk-functional-colour(text);
-    @include govuk-responsive-margin(6, "bottom");
+    color: base.govuk-functional-colour(text);
+    @include base.govuk-responsive-margin(6, "bottom");
   }
 
   .govuk-heading-l {
@@ -36,13 +34,13 @@
   }
 
   %govuk-heading-m {
-    @include govuk-font($size: 24, $weight: bold);
+    @include base.govuk-font($size: 24, $weight: bold);
 
     display: block;
 
     margin-top: 0;
-    color: govuk-functional-colour(text);
-    @include govuk-responsive-margin(4, "bottom");
+    color: base.govuk-functional-colour(text);
+    @include base.govuk-responsive-margin(4, "bottom");
   }
 
   .govuk-heading-m {
@@ -50,13 +48,13 @@
   }
 
   %govuk-heading-s {
-    @include govuk-font($size: 19, $weight: bold);
+    @include base.govuk-font($size: 19, $weight: bold);
 
     display: block;
 
     margin-top: 0;
-    color: govuk-functional-colour(text);
-    @include govuk-responsive-margin(4, "bottom");
+    color: base.govuk-functional-colour(text);
+    @include base.govuk-responsive-margin(4, "bottom");
   }
 
   .govuk-heading-s {
@@ -66,43 +64,43 @@
   // Captions to be used inside headings
 
   .govuk-caption-xl {
-    @include govuk-font($size: 27);
+    @include base.govuk-font($size: 27);
 
     display: block;
 
-    margin-bottom: govuk-spacing(1);
+    margin-bottom: base.govuk-spacing(1);
 
-    color: govuk-functional-colour(secondary-text);
+    color: base.govuk-functional-colour(secondary-text);
   }
 
   .govuk-caption-l {
-    @include govuk-font($size: 24);
+    @include base.govuk-font($size: 24);
 
     display: block;
 
-    margin-bottom: govuk-spacing(1);
-    color: govuk-functional-colour(secondary-text);
+    margin-bottom: base.govuk-spacing(1);
+    color: base.govuk-functional-colour(secondary-text);
 
-    @media #{govuk-from-breakpoint(tablet)} {
+    @media #{base.govuk-from-breakpoint(tablet)} {
       margin-bottom: 0;
     }
   }
 
   .govuk-caption-m {
-    @include govuk-font($size: 19);
+    @include base.govuk-font($size: 19);
 
     display: block;
 
-    color: govuk-functional-colour(secondary-text);
+    color: base.govuk-functional-colour(secondary-text);
   }
 
   // Body (paragraphs)
 
   %govuk-body-l {
     margin-top: 0;
-    color: govuk-functional-colour(text);
-    @include govuk-font($size: 24);
-    @include govuk-responsive-margin(6, "bottom");
+    color: base.govuk-functional-colour(text);
+    @include base.govuk-font($size: 24);
+    @include base.govuk-responsive-margin(6, "bottom");
   }
 
   .govuk-body-l {
@@ -111,9 +109,9 @@
 
   %govuk-body-m {
     margin-top: 0;
-    color: govuk-functional-colour(text);
-    @include govuk-font($size: 19);
-    @include govuk-responsive-margin(4, "bottom");
+    color: base.govuk-functional-colour(text);
+    @include base.govuk-font($size: 19);
+    @include base.govuk-responsive-margin(4, "bottom");
   }
 
   .govuk-body-m {
@@ -122,9 +120,9 @@
 
   %govuk-body-s {
     margin-top: 0;
-    color: govuk-functional-colour(text);
-    @include govuk-font($size: 16);
-    @include govuk-responsive-margin(4, "bottom");
+    color: base.govuk-functional-colour(text);
+    @include base.govuk-font($size: 16);
+    @include base.govuk-responsive-margin(4, "bottom");
   }
 
   .govuk-body-s {
@@ -148,17 +146,17 @@
   // Add top padding to headings that appear directly after paragraphs.
 
   %govuk-body-l + %govuk-heading-l {
-    padding-top: govuk-spacing(1);
+    padding-top: base.govuk-spacing(1);
 
-    @media #{govuk-from-breakpoint(tablet)} {
-      padding-top: govuk-spacing(2);
+    @media #{base.govuk-from-breakpoint(tablet)} {
+      padding-top: base.govuk-spacing(2);
     }
   }
 
   %govuk-body-m + %govuk-heading-l,
   %govuk-body-s + %govuk-heading-l,
   %govuk-list + %govuk-heading-l {
-    @include govuk-responsive-padding(4, "top");
+    @include base.govuk-responsive-padding(4, "top");
   }
 
   %govuk-body-m + %govuk-heading-m,
@@ -167,10 +165,10 @@
   %govuk-body-m + %govuk-heading-s,
   %govuk-body-s + %govuk-heading-s,
   %govuk-list + %govuk-heading-s {
-    padding-top: govuk-spacing(1);
+    padding-top: base.govuk-spacing(1);
 
-    @media #{govuk-from-breakpoint(tablet)} {
-      padding-top: govuk-spacing(2);
+    @media #{base.govuk-from-breakpoint(tablet)} {
+      padding-top: base.govuk-spacing(2);
     }
   }
 }
