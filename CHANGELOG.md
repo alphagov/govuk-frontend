@@ -73,6 +73,7 @@ We made this change in [pull request #6975: Update index to use all layers and r
 We've made fixes to GOV.UK Frontend in the following pull requests:
 
 - [#6831: Fix header link hover state in Safari](https://github.com/alphagov/govuk-frontend/pull/6831)
+- [#6925: Fix enhanced file upload lacking an error state](https://github.com/alphagov/govuk-frontend/pull/6925)
 
 ## v6.1.0 (Feature release)
 
