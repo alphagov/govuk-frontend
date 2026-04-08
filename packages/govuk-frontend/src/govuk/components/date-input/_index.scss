@@ -1,11 +1,11 @@
 @forward "../../base";
 @use "../../base";
 
-@use "../error-message";
-@use "../input";
-@use "../hint";
-@use "../label";
-@use "../fieldset";
+@forward "../error-message";
+@forward "../input";
+@forward "../hint";
+@forward "../label";
+@forward "../fieldset";
 
 @include base.govuk-exports("govuk/component/date-input") {
   @include base.govuk-custom-properties;

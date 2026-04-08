@@ -1,6 +1,6 @@
-@use "button-group";
-@use "form-group";
-@use "grid";
-@use "main-wrapper";
-@use "template";
-@use "width-container";
+@forward "button-group";
+@forward "form-group";
+@forward "grid";
+@forward "main-wrapper";
+@forward "template";
+@forward "width-container";

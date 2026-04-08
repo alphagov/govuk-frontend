@@ -1,10 +1,10 @@
 @use "../../base";
 @forward "../../base";
 
-@use "../error-message";
-@use "../hint";
-@use "../label";
-@use "../textarea";
+@forward "../error-message";
+@forward "../hint";
+@forward "../label";
+@forward "../textarea";
 
 @include base.govuk-exports("govuk/component/character-count") {
   @include base.govuk-custom-properties;

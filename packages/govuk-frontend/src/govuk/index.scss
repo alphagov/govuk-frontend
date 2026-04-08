@@ -2,10 +2,10 @@
 
 // Forward access to 'govuk-global-styles' mixin
 @forward "core";
-@use "objects";
+@forward "objects";
 
 // Forward so users can still set button-related variables
 @forward "components";
 
-@use "utilities";
-@use "overrides";
+@forward "utilities";
+@forward "overrides";

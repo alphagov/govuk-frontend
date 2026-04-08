@@ -1,9 +1,9 @@
 @forward "../../base";
 @use "../../base";
 
-@use "../error-message";
-@use "../hint";
-@use "../label";
+@forward "../error-message";
+@forward "../hint";
+@forward "../label";
 
 @include base.govuk-exports("govuk/component/file-upload") {
   @include base.govuk-custom-properties;
