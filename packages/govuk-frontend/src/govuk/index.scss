@@ -7,5 +7,5 @@
 // Forward so users can still set button-related variables
 @forward "components";
 
-@import "utilities";
+@use "utilities";
 @import "overrides";
