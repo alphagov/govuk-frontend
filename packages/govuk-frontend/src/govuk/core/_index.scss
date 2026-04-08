@@ -1,3 +1,11 @@
+// This layer has not been updated to use `@use` because it uses both
+// placeholders and extends, and there is a bug with `@extends` when used with
+// placeholders in a module that is then imported (affecting Sass < 1.92.0)
+// – see https://github.com/sass/dart-sass/issues/2616
+//
+// We'll need to keep using @import for this layer until we drop support for
+// including GOV.UK Frontend using `@import`.
+
 @import "links";
 @import "lists";
 @import "typography";
