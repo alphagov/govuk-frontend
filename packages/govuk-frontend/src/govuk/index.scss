@@ -4,7 +4,8 @@
 @forward "core";
 @use "objects";
 
-@use "components";
+// Forward so users can still set button-related variables
+@forward "components";
 
 @import "utilities";
 @import "overrides";
