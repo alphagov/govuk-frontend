@@ -62,8 +62,6 @@
 /// spacing scale, which defines different spacing values at different
 /// breakpoints. Wrapper for the `govuk-responsive-spacing.govuk-responsive-spacing` mixin.
 ///
-/// @see {mixin} govuk-responsive.govuk-responsive-spacing
-///
 /// @param {Number} $responsive-spacing-point - Point on the responsive spacing
 /// scale, corresponds to a map of breakpoints and spacing values
 /// @param {String} $direction [all] - Direction to add spacing to
@@ -93,8 +91,6 @@
 /// Adds responsive padding by fetching a 'spacing map' from the responsive
 /// spacing scale, which defines different spacing values at different
 /// breakpoints. Wrapper for the `_govuk-responsive-spacing` mixin.
-///
-/// @see {mixin} _govuk-responsive-spacing
 ///
 /// @param {Number} $responsive-spacing-point - Point on the responsive spacing
 ///   scale, corresponds to a map of breakpoints and spacing values
