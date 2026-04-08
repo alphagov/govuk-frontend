@@ -8,9 +8,30 @@ describe('The core layer', () => {
       `
       @import "base";
       @import "core";
+
+      h2 {
+        @extend %govuk-heading-m;
+      }
+
+      ul {
+        @extend %govuk-list;
+      }
     `
     ],
-    ['use', `@use "core";`]
+    [
+      'use',
+      `
+      @use "core";
+
+      h2 {
+        @extend %govuk-heading-m;
+      }
+
+      ul {
+        @extend %govuk-list;
+      }
+      `
+    ]
   ])('with `@%s`', (type, sass) => {
     let css
 
@@ -39,6 +60,18 @@ describe('The core layer', () => {
       }
 
       return expect(linter.results[0].warnings).toHaveLength(0)
+    })
+
+    it('allows extension of placeholders', () => {
+      expect(css).toContain('h2, .govuk-heading-m')
+    })
+
+    // Based on the `%govuk-list + %govuk-heading-m` placeholder spacing
+    // adjustment in _typography.scss, which ul and h2 extend in our test Sass
+    it('allows extension of combinatorial placeholders', () => {
+      expect(css).toContain('ul + h2')
+      expect(css).toContain('.govuk-list + h2')
+      expect(css).toContain('ul + .govuk-heading-m')
     })
   })
 })
