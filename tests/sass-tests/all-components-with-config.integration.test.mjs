@@ -8,6 +8,8 @@ describe('All components, with configuration', () => {
     const sass = `
       $govuk-suppressed-warnings: ("component-scss-files");
       $govuk-functional-colours: (brand: hotpink);
+      $govuk-global-styles: true;
+
       @import "pkg:@govuk-frontend/helpers/assets-urls";
 
       $govuk-font-url-function: 'fonts-url';
@@ -25,7 +27,8 @@ describe('All components, with configuration', () => {
 
       @use "node_modules/govuk-frontend/src/govuk" with (
         $govuk-functional-colours: (brand: hotpink),
-        $govuk-font-url-function: meta.get-function("fonts-url", $module: "assets-urls")
+        $govuk-font-url-function: meta.get-function("fonts-url", $module: "assets-urls"),
+        $govuk-global-styles: true
       );
     `
 
