@@ -2,7 +2,7 @@
 
 // Forward access to 'govuk-global-styles' mixin
 @forward "core";
-@import "objects";
+@use "objects";
 
 @import "components";
 
