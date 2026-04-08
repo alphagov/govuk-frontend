@@ -2,6 +2,8 @@
 /// @group helpers
 ////
 
+@use "sass:list";
+
 /// Media query for retina images (device-pixel-ratio)
 ///
 /// @param {Number} $ratio [2] - Device pixel ratio
@@ -26,8 +28,6 @@
 ///   }
 ///
 /// @access public
-
-@use "sass:list";
 
 @mixin govuk-device-pixel-ratio($ratio: 2) {
   @media only screen and (-webkit-min-device-pixel-ratio: $ratio),
