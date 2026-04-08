@@ -1,7 +1,7 @@
 @forward "../../base";
 @use "../../base";
 
-@import "../../core/lists";
+@use "../../core/lists";
 
 @include base.govuk-exports("govuk/component/error-summary") {
   @include base.govuk-custom-properties;

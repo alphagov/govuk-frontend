@@ -1,7 +1,7 @@
 @forward "../../base";
 @use "../../base";
 
-@import "../tag";
+@use "../tag";
 
 @include base.govuk-exports("govuk/component/task-list") {
   @include base.govuk-custom-properties;

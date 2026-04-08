@@ -1,9 +1,9 @@
 @use "../../base";
 
-@import "../error-message";
-@import "../hint";
-@import "../label";
-@import "../textarea";
+@use "../error-message";
+@use "../hint";
+@use "../label";
+@use "../textarea";
 
 @include base.govuk-exports("govuk/component/character-count") {
   @include base.govuk-custom-properties;
