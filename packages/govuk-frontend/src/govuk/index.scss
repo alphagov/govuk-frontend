@@ -1,6 +1,7 @@
 @forward "base--forwarding";
 
-@import "core";
+// Forward access to 'govuk-global-styles' mixin
+@forward "core";
 @import "objects";
 
 @import "components";
