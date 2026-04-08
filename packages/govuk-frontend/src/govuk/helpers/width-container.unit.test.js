@@ -4,7 +4,7 @@ const { outdent } = require('outdent')
 describe('@mixin govuk-width-container', () => {
   it('allows different widths to be specified using $width', async () => {
     const sass = `
-      @import "objects/width-container";
+      @import "helpers/width-container";
 
       .app-width-container--wide {
         @include govuk-width-container(1200px);
