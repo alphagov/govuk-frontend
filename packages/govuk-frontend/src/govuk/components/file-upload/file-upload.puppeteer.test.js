@@ -2,7 +2,8 @@
 
 const {
   render,
-  getAccessibleName
+  getAccessibleName,
+  isVisible
 } = require('@govuk-frontend/helpers/puppeteer')
 const { getExamples } = require('@govuk-frontend/lib/components')
 
@@ -76,12 +77,10 @@ describe('/components/file-upload', () => {
         })
 
         describe('file input', () => {
-          it('sets tabindex to -1', async () => {
-            const inputElementTabindex = await page.$eval(inputSelector, (el) =>
-              el.getAttribute('tabindex')
-            )
+          it('gets hidden', async () => {
+            const $input = await page.$(inputSelector)
 
-            expect(inputElementTabindex).toBe('-1')
+            expect(await isVisible($input)).toBe(false)
           })
         })
 
