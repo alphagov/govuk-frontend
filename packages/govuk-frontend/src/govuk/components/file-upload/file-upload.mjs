@@ -96,7 +96,7 @@ export class FileUpload extends ConfigurableComponent {
     this.$input.id = `${this.id}-input`
 
     // Hide the native input
-    this.$input.setAttribute('hidden', 'true')
+    this.$input.setAttribute('hidden', 'hidden')
 
     // Create the file selection button
     const $button = document.createElement('button')
