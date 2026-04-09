@@ -76,12 +76,12 @@ describe('/components/file-upload', () => {
         })
 
         describe('file input', () => {
-          it('sets tabindex to -1', async () => {
-            const inputElementTabindex = await page.$eval(inputSelector, (el) =>
-              el.getAttribute('tabindex')
+          it('gets hidden', async () => {
+            const inputElementHidden = await page.$eval(inputSelector, (el) =>
+              el.getAttribute('hidden')
             )
 
-            expect(inputElementTabindex).toBe('-1')
+            expect(inputElementHidden).toBe('hidden')
           })
         })
 
