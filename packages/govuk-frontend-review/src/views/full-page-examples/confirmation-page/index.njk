@@ -1,0 +1,60 @@
+---
+title: Application complete
+name: Confirmation page
+scenario: You have reached the end of a service
+
+notes: |
+  We'll write these later
+---
+
+{% extends "layouts/full-page-example.njk" %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+{# remember to set the title properly #}
+{% from "govuk/components/panel/macro.njk" import govukPanel %}
+
+{% set pageTitle = example.title %}
+{% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ govukPanel({
+        titleText: pageTitle,
+        html: "Your reference number<br><strong>HDJ2123F</strong>"
+      }) }}
+
+      <p class="govuk-body">We have sent you a confirmation email.</p>
+
+      <h2 class="govuk-heading-m">What happens next</h2>
+
+      <p class="govuk-body">
+        We’ve sent your application to Hackney Electoral Register Office.
+      </p>
+      <p class="govuk-body">
+        They will contact you either to confirm your registration, or to ask for more information.
+      </p>
+    </div>
+  </div>
+{% endblock %}
+
+{% block footerStart %}
+  <div class="govuk-width-container">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <div class="govuk-feedback">
+          <h2 class="govuk-heading-m">How could we improve this service?</h2>
+          <p class="govuk-body">This is a new service – This is not support but if you want to improve our service you can give us feedback using <a href="#" class="govuk-link">this link</a>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .govuk-feedback {
+      border-top: 1px solid var(--govuk-brand-colour);
+      padding: 15px;
+      background-color: var(--govuk-surface-background-colour);
+    }
+  </style>
+{% endblock %}
