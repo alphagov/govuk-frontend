@@ -108,7 +108,7 @@ params:
   - name: attributes
     type: object
     required: false
-    description: HTML attributes (for example data attributes) to add to the file upload component.
+    description: HTML attributes (for example data attributes) to add to the file upload component. Note that the `required` attribute does not work for the improved file upload component.
 
 examples:
   - name: default
