@@ -225,6 +225,29 @@ describe('File upload', () => {
       expect($wrapper.attr('data-module')).toBe('govuk-file-upload')
     })
 
+    it('renders custom drop zone classes', () => {
+      const $ = render(
+        'file-upload',
+        examples['enhanced, custom classes and attributes']
+      )
+
+      const $wrapper = $('.govuk-form-group > .govuk-drop-zone')
+
+      expect($wrapper.hasClass('app-drop-zone--custom-class')).toBeTruthy()
+    })
+
+    it('renders custom drop zone attributes', () => {
+      const $ = render(
+        'file-upload',
+        examples['enhanced, custom classes and attributes']
+      )
+
+      const $wrapper = $('.govuk-form-group > .govuk-drop-zone')
+
+      expect($wrapper.attr('data-custom-attribute')).toBe('custom-value')
+      expect($wrapper.attr('data-custom-attribute-2')).toBe('custom-value-2')
+    })
+
     it('adds the data-module attribute when receiving an object', () => {
       const $ = render('file-upload', examples.translated)
 
