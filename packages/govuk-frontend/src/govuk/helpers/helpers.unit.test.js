@@ -19,7 +19,7 @@ describe('The helpers layer', () => {
   it('has an import-only file for the `index`', async () => {
     const importOnlyPath = join(
       paths.package,
-      'src/govuk/settings/_index.import.scss'
+      'src/govuk/helpers/_index.import.scss'
     )
 
     const fileContent = await readFile(importOnlyPath, { encoding: 'utf-8' })
