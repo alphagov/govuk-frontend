@@ -27,7 +27,7 @@ describe('The objects layer', () => {
     })
 
     it('outputs the custom properties only once', () => {
-      const occurrences = css.matchAll(/--govuk-breakpoint-mobile/g)
+      const occurrences = css.matchAll(/--govuk-frontend-version/g)
 
       expect(Array.from(occurrences)).toHaveLength(1)
     })

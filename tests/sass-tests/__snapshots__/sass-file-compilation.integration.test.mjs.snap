@@ -23596,11 +23596,15 @@ exports[`src/govuk/custom-properties/_breakpoints.scss matches snapshot 1`] = `
 }"
 `;
 
+exports[`src/govuk/custom-properties/_frontend-version.mixin.scss matches snapshot 1`] = `""`;
+
 exports[`src/govuk/custom-properties/_frontend-version.scss matches snapshot 1`] = `
 ":root {
   --govuk-frontend-version: "development";
 }"
 `;
+
+exports[`src/govuk/custom-properties/_functional-colours.mixin.scss matches snapshot 1`] = `""`;
 
 exports[`src/govuk/custom-properties/_functional-colours.scss matches snapshot 1`] = `
 ":root {

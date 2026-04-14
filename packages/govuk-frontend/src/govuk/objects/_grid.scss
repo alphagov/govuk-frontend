@@ -1,28 +1,4 @@
-@use "sass:map";
+@use "grid.mixin" as grid;
+@use "../custom-properties";
 
-@use "../base";
-
-@include base.govuk-exports("govuk/objects/grid") {
-  @include base.govuk-custom-properties;
-
-  .govuk-grid-row {
-    @include base.govuk-clearfix;
-    margin-right: -(base.$govuk-gutter-half);
-    margin-left: -(base.$govuk-gutter-half);
-  }
-
-  @each $width in map.keys(base.$govuk-grid-widths) {
-    .govuk-grid-column-#{$width} {
-      @include base.govuk-grid-column($width);
-    }
-  }
-
-  // These *must* be defined in a separate loop as they have the same
-  // specificity as the non-breakpoint specific classes, so need to appear after
-  // them in the outputted CSS
-  @each $width in map.keys(base.$govuk-grid-widths) {
-    .govuk-grid-column-#{$width}-from-desktop {
-      @include base.govuk-grid-column($width, $at: desktop);
-    }
-  }
-}
+@include grid.styles;

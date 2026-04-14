@@ -1,7 +1,7 @@
 @forward "../../base";
 @use "../../base";
 
-@import "../button";
+@use "../button";
 
 @include base.govuk-exports("govuk/component/exit-this-page") {
   @include base.govuk-custom-properties;

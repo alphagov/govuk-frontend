@@ -1,9 +1,9 @@
 @forward "../../base";
 @use "../../base";
 
-@import "../error-message";
-@import "../hint";
-@import "../label";
+@use "../error-message";
+@use "../hint";
+@use "../label";
 
 @include base.govuk-exports("govuk/component/select") {
   @include base.govuk-custom-properties;

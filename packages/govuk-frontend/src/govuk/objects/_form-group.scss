@@ -1,26 +1,4 @@
-@use "../base";
+@use "form-group.mixin" as form-group;
+@use "../custom-properties";
 
-@include base.govuk-exports("govuk/objects/form-group") {
-  @include base.govuk-custom-properties;
-
-  .govuk-form-group {
-    @include base.govuk-clearfix;
-    @include base.govuk-responsive-margin(6, "bottom");
-
-    .govuk-form-group:last-of-type {
-      margin-bottom: 0; // Remove margin from last item in nested groups
-    }
-  }
-
-  .govuk-form-group--error {
-    padding-left: base.govuk-spacing(3);
-    border-left: base.$govuk-border-width-form-group-error solid;
-    border-left-color: base.govuk-functional-colour(error);
-
-    .govuk-form-group {
-      // Reset error styles in nested form groups that might have error class
-      padding: 0;
-      border: 0;
-    }
-  }
-}
+@include form-group.styles;
