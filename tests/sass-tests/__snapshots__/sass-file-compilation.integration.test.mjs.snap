@@ -23586,6 +23586,8 @@ exports[`src/govuk/core/_typography.scss matches snapshot 1`] = `
 }"
 `;
 
+exports[`src/govuk/custom-properties/_breakpoints.mixin.scss matches snapshot 1`] = `""`;
+
 exports[`src/govuk/custom-properties/_breakpoints.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
