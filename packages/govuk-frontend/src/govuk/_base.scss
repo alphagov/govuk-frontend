@@ -4,8 +4,8 @@
 // Because the name of the internal mixin is not prefixed
 // we cannot `@forward` it directly, and instead need to wrap it
 // in an appropriately named mixin
-@use "custom-properties/index--internal";
+@use "custom-properties";
 
 @mixin govuk-custom-properties {
-  @include index--internal.styles;
+  // noop
 }
