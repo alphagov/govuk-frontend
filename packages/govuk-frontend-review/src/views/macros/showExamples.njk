@@ -7,8 +7,6 @@
 {% for example in componentFixtures.fixtures %}
   {% if (not exampleNames and not example.hidden) or (exampleNames and example.name in exampleNames) %}
 
-  {% set exampleStates = exampleStates | default([false]) %}
-
   {% set exampleName = example.name | slugify %}
 
   {% if example.name == 'default' %}
@@ -32,18 +30,17 @@
         </p>
       {% endif %}
     </div>
-    {% for state in exampleStates %}
-      <div class="app-component-preview">
-        <div class="govuk-width-container">
-          <p class="govuk-body">
-            <a href="{{ path }}" class="govuk-link" rel="noreferrer noopener" target="_blank">
-              Open this example in a new tab<span class="govuk-visually-hidden">: {{ heading + ', rebrand flag ' + ('on' if state else 'off') | safe }}</span>
-            </a>
-          </p>
-        </div>
-        <iframe src="{{ path }}?iframe=true{{ '&rebrandOverride=' + state }}" loading="{{ "eager" if loop.index <= 3 else "lazy" }}" class="js-component-preview app-component-preview__iframe"></iframe>
+
+    <div class="app-component-preview">
+      <div class="govuk-width-container">
+        <p class="govuk-body">
+          <a href="{{ path }}" class="govuk-link" rel="noreferrer noopener" target="_blank">
+            Open this example in a new tab
+          </a>
+        </p>
       </div>
-    {% endfor %}
+      <iframe src="{{ path }}?iframe=true" loading="{{ "eager" if loop.index <= 3 else "lazy" }}" class="js-component-preview app-component-preview__iframe"></iframe>
+    </div>
 
     <div class="govuk-width-container">
       {% set codeExamplesHtml %}
