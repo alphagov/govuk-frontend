@@ -9,12 +9,23 @@ notes: |
 
 {% extends "layouts/full-page-example.njk" %}
 
-{% set mainClasses = "govuk-main-wrapper--l" %}
+{# {% set mainClasses = "govuk-main-wrapper--l" %} #}
 {# remember to set the title properly #}
 {% from "govuk/components/panel/macro.njk" import govukPanel %}
 
 {% set pageTitle = example.title %}
 {% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
+
+{% block headerEnd %}
+  <div class="govuk-phase-banner govuk-width-container">
+    <p class="govuk-phase-banner__content">
+      <strong class="govuk-tag govuk-phase-banner__content__tag">
+        Alpha
+      </strong>
+    </p>
+  </div>
+{% endblock %}
+
 
 {% block content %}
   <div class="govuk-grid-row">
@@ -43,8 +54,8 @@ notes: |
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
         <div class="govuk-feedback">
-          <h2 class="govuk-heading-m">How could we improve this service?</h2>
-          <p class="govuk-body">This is a new service – This is not support but if you want to improve our service you can give us feedback using <a href="#" class="govuk-link">this link</a>.</p>
+          <h2 class="govuk-heading-m">Help us improve this service</h2>
+          <p class="govuk-body">Tell us about your experience using this service. You’ll help us make improvements by <a href="#" class="govuk-link">giving us your feedback</a>.</p>
         </div>
       </div>
     </div>
@@ -53,7 +64,7 @@ notes: |
   <style>
     .govuk-feedback {
       border-top: 1px solid var(--govuk-brand-colour);
-      padding: 15px;
+      padding: 20px 15px;
       background-color: var(--govuk-surface-background-colour);
     }
   </style>
