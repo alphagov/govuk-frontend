@@ -1,5 +1,3 @@
-@use "../tools/exports" as *;
-
 @mixin styles {
   // This custom property is automatically overwritten during builds and
   // releases. It doesn't need to be updated manually.
@@ -7,9 +5,7 @@
   // This custom property is always output by base regardless of if
   // `$govuk-output-custom-properties` is true or not to help with checking if
   // multiple stylesheets are outputting the same version
-  @include govuk-exports("govuk/custom-properties/frontend-version") {
-    :root {
-      --govuk-frontend-version: "development";
-    }
+  :root {
+    --govuk-frontend-version: "development";
   }
 }
