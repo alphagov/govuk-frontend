@@ -1,0 +1,12 @@
+@use "mixin";
+@use "../../tools/exports" as *;
+
+@import "../../base";
+@import "../../custom-properties";
+@import "../error-message";
+@import "../hint";
+@import "../label";
+
+@include govuk-exports("govuk/component/file-upload") {
+  @include mixin.styles;
+}

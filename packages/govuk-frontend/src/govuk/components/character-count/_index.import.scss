@@ -1,0 +1,13 @@
+@use "mixin";
+@use "../../tools/exports" as *;
+
+@import "../../base";
+@import "../../custom-properties";
+@import "../error-message";
+@import "../hint";
+@import "../label";
+@import "../textarea";
+
+@include govuk-exports("govuk/component/character-count") {
+  @include mixin.styles;
+}
