@@ -1,11 +1,4 @@
-////
-/// @group objects/layout
-////
-@use "../base";
+@use "width-container.mixin" as width-container;
 @use "../custom-properties";
 
-@include base.govuk-exports("govuk/objects/width-container") {
-  .govuk-width-container {
-    @include base.govuk-width-container;
-  }
-}
+@include width-container.styles;

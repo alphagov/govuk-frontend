@@ -29876,6 +29876,8 @@ exports[`src/govuk/index.scss matches snapshot 1`] = `
 }"
 `;
 
+exports[`src/govuk/objects/_button-group.mixin.scss matches snapshot 1`] = `""`;
+
 exports[`src/govuk/objects/_button-group.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
@@ -29982,6 +29984,8 @@ exports[`src/govuk/objects/_button-group.scss matches snapshot 1`] = `
 }"
 `;
 
+exports[`src/govuk/objects/_form-group.mixin.scss matches snapshot 1`] = `""`;
+
 exports[`src/govuk/objects/_form-group.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
@@ -30044,6 +30048,8 @@ exports[`src/govuk/objects/_form-group.scss matches snapshot 1`] = `
   border: 0;
 }"
 `;
+
+exports[`src/govuk/objects/_grid.mixin.scss matches snapshot 1`] = `""`;
 
 exports[`src/govuk/objects/_grid.scss matches snapshot 1`] = `
 ":root {
@@ -30561,6 +30567,8 @@ exports[`src/govuk/objects/_index.scss matches snapshot 1`] = `
 }"
 `;
 
+exports[`src/govuk/objects/_main-wrapper.mixin.scss matches snapshot 1`] = `""`;
+
 exports[`src/govuk/objects/_main-wrapper.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
@@ -30620,6 +30628,8 @@ exports[`src/govuk/objects/_main-wrapper.scss matches snapshot 1`] = `
 }"
 `;
 
+exports[`src/govuk/objects/_template.mixin.scss matches snapshot 1`] = `""`;
+
 exports[`src/govuk/objects/_template.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
@@ -30678,6 +30688,8 @@ exports[`src/govuk/objects/_template.scss matches snapshot 1`] = `
   background-color: var(--govuk-body-background-colour, #ffffff);
 }"
 `;
+
+exports[`src/govuk/objects/_width-container.mixin.scss matches snapshot 1`] = `""`;
 
 exports[`src/govuk/objects/_width-container.scss matches snapshot 1`] = `
 ":root {
