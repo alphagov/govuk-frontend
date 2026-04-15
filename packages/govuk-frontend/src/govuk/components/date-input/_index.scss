@@ -1,35 +1,9 @@
-@forward "../../base";
-@use "../../base";
 @use "../../custom-properties";
-
+@use "mixin";
 @use "../error-message";
 @use "../input";
 @use "../hint";
 @use "../label";
 @use "../fieldset";
 
-@include base.govuk-exports("govuk/component/date-input") {
-  .govuk-date-input {
-    @include base.govuk-clearfix;
-    font-size: 0; // removes whitespace caused by inline-block
-  }
-
-  .govuk-date-input__item {
-    display: inline-block;
-    margin-right: base.govuk-spacing(4);
-    margin-bottom: 0;
-
-    // Prevents an issue in iOS Safari 18 where the items vertically
-    // shift when the value of inputs is changed.
-    // https://github.com/alphagov/reported-bugs/issues/90
-    vertical-align: bottom;
-  }
-
-  .govuk-date-input__label {
-    display: block;
-  }
-
-  .govuk-date-input__input {
-    margin-bottom: 0;
-  }
-}
+@include mixin.styles;
