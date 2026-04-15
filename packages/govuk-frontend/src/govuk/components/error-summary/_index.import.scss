@@ -1,0 +1,9 @@
+@use "mixin";
+@use "../../tools/exports" as *;
+
+@import "../../custom-properties";
+@import "../../core/lists";
+
+@include govuk-exports("govuk/component/error-summary") {
+  @include mixin.styles;
+}

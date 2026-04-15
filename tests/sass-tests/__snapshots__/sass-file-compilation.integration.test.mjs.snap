@@ -10140,6 +10140,8 @@ exports[`src/govuk/components/error-summary/_index.scss matches snapshot 1`] = `
 }"
 `;
 
+exports[`src/govuk/components/error-summary/_mixin.scss matches snapshot 1`] = `""`;
+
 exports[`src/govuk/components/exit-this-page/_exit-this-page.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
@@ -23035,6 +23037,8 @@ exports[`src/govuk/core/_links.scss matches snapshot 1`] = `
   box-shadow: 0 0 0 4px var(--govuk-focus-colour, #ffdd00), 0 0 0 8px var(--govuk-focus-text-colour, #0b0c0c);
 }"
 `;
+
+exports[`src/govuk/core/_lists.mixin.scss matches snapshot 1`] = `""`;
 
 exports[`src/govuk/core/_lists.scss matches snapshot 1`] = `
 ":root {
