@@ -23692,6 +23692,8 @@ exports[`src/govuk/helpers/_typography.scss matches snapshot 1`] = `""`;
 
 exports[`src/govuk/helpers/_visually-hidden.scss matches snapshot 1`] = `""`;
 
+exports[`src/govuk/helpers/_width-container.scss matches snapshot 1`] = `""`;
+
 exports[`src/govuk/index.scss matches snapshot 1`] = `
 "@charset "UTF-8";
 :root {
