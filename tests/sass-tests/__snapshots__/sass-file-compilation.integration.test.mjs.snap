@@ -6198,6 +6198,8 @@ exports[`src/govuk/components/button/_index.scss matches snapshot 1`] = `
 }"
 `;
 
+exports[`src/govuk/components/button/_mixin.scss matches snapshot 1`] = `""`;
+
 exports[`src/govuk/components/character-count/_character-count.scss matches snapshot 1`] = `
 "@charset "UTF-8";
 :root {
@@ -8159,6 +8161,8 @@ exports[`src/govuk/components/cookie-banner/_index.scss matches snapshot 1`] = `
   outline: none;
 }"
 `;
+
+exports[`src/govuk/components/cookie-banner/_mixin.scss matches snapshot 1`] = `""`;
 
 exports[`src/govuk/components/date-input/_date-input.scss matches snapshot 1`] = `
 ":root {
@@ -10709,6 +10713,8 @@ exports[`src/govuk/components/exit-this-page/_index.scss matches snapshot 1`] = 
   display: block !important;
 }"
 `;
+
+exports[`src/govuk/components/exit-this-page/_mixin.scss matches snapshot 1`] = `""`;
 
 exports[`src/govuk/components/fieldset/_fieldset.scss matches snapshot 1`] = `
 ":root {
@@ -13522,6 +13528,8 @@ exports[`src/govuk/components/input/_input.scss matches snapshot 1`] = `
 }"
 `;
 
+exports[`src/govuk/components/input/_mixin.scss matches snapshot 1`] = `""`;
+
 exports[`src/govuk/components/inset-text/_index.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
@@ -15692,6 +15700,8 @@ exports[`src/govuk/components/password-input/_index.scss matches snapshot 1`] = 
   }
 }"
 `;
+
+exports[`src/govuk/components/password-input/_mixin.scss matches snapshot 1`] = `""`;
 
 exports[`src/govuk/components/password-input/_password-input.scss matches snapshot 1`] = `
 ":root {
