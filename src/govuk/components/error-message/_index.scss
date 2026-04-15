@@ -1,16 +1,4 @@
-@forward "../../base";
-@use "../../base";
 @use "../../custom-properties";
+@use "mixin";
 
-@include base.govuk-exports("govuk/component/error-message") {
-  .govuk-error-message {
-    @include base.govuk-font($size: 19, $weight: bold);
-
-    display: block;
-    margin-top: 0; // Reset any default browser margins for paragraphs
-    margin-bottom: base.govuk-spacing(3);
-    clear: both;
-
-    color: base.govuk-functional-colour(error);
-  }
-}
+@include mixin.styles;

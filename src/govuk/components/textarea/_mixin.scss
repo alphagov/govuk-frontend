@@ -1,0 +1,41 @@
+@use "../../base";
+
+@mixin styles {
+  .govuk-textarea {
+    @include base.govuk-font($size: 19, $line-height: 1.25);
+
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    min-height: 40px;
+    @include base.govuk-responsive-margin(6, "bottom");
+    padding: base.govuk-spacing(1);
+
+    resize: vertical;
+
+    border: base.$govuk-border-width-form-element solid;
+    border-radius: 0;
+    border-color: base.govuk-functional-colour(input-border);
+
+    -webkit-appearance: none;
+
+    &:focus {
+      @include base.govuk-focused-form-input;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      color: inherit;
+      background-color: transparent;
+      cursor: not-allowed;
+    }
+  }
+
+  .govuk-textarea--error {
+    border-color: base.govuk-functional-colour(error);
+
+    &:focus {
+      border-color: base.govuk-functional-colour(input-border);
+    }
+  }
+}
