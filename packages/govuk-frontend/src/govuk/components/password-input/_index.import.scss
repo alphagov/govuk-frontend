@@ -1,0 +1,11 @@
+@use "mixin";
+@use "../../tools/exports" as *;
+
+@import "../../base";
+@import "../../custom-properties";
+@import "../button";
+@import "../input";
+
+@include govuk-exports("govuk/component/password-input") {
+  @include mixin.styles;
+}
