@@ -72,7 +72,6 @@ export default async () => {
   app.use(middleware.request)
   app.use(middleware.robots)
   app.use(middleware.banner)
-  app.use(middleware.featureFlags)
 
   // Add build stats
   app.locals.stats = Object.groupBy(
@@ -288,7 +287,6 @@ class NotFoundError extends Error {
  * @property {ComponentFixture} [componentFixture] - Single component fixture
  * @property {string} componentName - Component name
  * @property {string} [exampleName] - Example name
- * @property {boolean} [useRebrand] - Whether to show rebranded examples
  */
 
 /**
