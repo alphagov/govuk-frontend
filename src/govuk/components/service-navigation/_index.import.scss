@@ -1,0 +1,7 @@
+@use "mixin";
+
+@import "../../base";
+
+@include govuk-exports("govuk/component/service-navigation") {
+  @include mixin.styles;
+}
