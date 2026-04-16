@@ -16416,6 +16416,8 @@ exports[`src/govuk/components/phase-banner/_index.scss matches snapshot 1`] = `
 }"
 `;
 
+exports[`src/govuk/components/phase-banner/_mixin.scss matches snapshot 1`] = `""`;
+
 exports[`src/govuk/components/phase-banner/_phase-banner.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
@@ -20500,6 +20502,8 @@ exports[`src/govuk/components/tag/_index.scss matches snapshot 1`] = `
 }"
 `;
 
+exports[`src/govuk/components/tag/_mixin.scss matches snapshot 1`] = `""`;
+
 exports[`src/govuk/components/tag/_tag.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
@@ -20832,6 +20836,8 @@ exports[`src/govuk/components/task-list/_index.scss matches snapshot 1`] = `
   color: var(--govuk-secondary-text-colour, #484949);
 }"
 `;
+
+exports[`src/govuk/components/task-list/_mixin.scss matches snapshot 1`] = `""`;
 
 exports[`src/govuk/components/task-list/_task-list.scss matches snapshot 1`] = `
 ":root {
