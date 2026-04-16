@@ -130,7 +130,10 @@ async function generateFixture(componentDataPath, options) {
         screenshot: example.screenshot ?? false,
 
         // Add rendered Nunjucks example to fixture
-        html: html.trim()
+        html: html.trim(),
+
+        // Add supporting HTML for tests (e.g., target elements for aria-controls, label for attributes)
+        supportingHTML: example.supportingHTML ?? ''
       }
     }
   )
