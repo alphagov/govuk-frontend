@@ -2,7 +2,7 @@
 @use "../../base";
 @use "../../custom-properties";
 
-@import "../../core/lists";
+@use "../../core/lists";
 
 @include base.govuk-exports("govuk/component/error-summary") {
   .govuk-error-summary {

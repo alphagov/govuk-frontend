@@ -2,8 +2,8 @@
 @use "../../base";
 @use "../../custom-properties";
 
-@import "../button";
-@import "../input";
+@use "../button";
+@use "../input";
 
 @include base.govuk-exports("govuk/component/password-input") {
   .govuk-password-input__wrapper {

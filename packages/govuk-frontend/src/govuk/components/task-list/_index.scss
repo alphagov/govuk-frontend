@@ -2,7 +2,7 @@
 @use "../../base";
 @use "../../custom-properties";
 
-@import "../tag";
+@use "../tag";
 
 @include base.govuk-exports("govuk/component/task-list") {
   $govuk-task-list-hover-colour: base.govuk-colour("black", $variant: "tint-95");
