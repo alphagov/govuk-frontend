@@ -1,9 +1,8 @@
 @forward "../../base";
 @use "../../base";
+@use "../../custom-properties";
 
 @include base.govuk-exports("govuk/component/tabs") {
-  @include base.govuk-custom-properties;
-
   .govuk-tabs {
     @include base.govuk-responsive-margin(1, "top");
     @include base.govuk-responsive-margin(6, "bottom");

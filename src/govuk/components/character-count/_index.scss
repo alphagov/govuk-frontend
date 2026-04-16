@@ -1,4 +1,5 @@
 @use "../../base";
+@use "../../custom-properties";
 
 @import "../error-message";
 @import "../hint";
@@ -6,8 +7,6 @@
 @import "../textarea";
 
 @include base.govuk-exports("govuk/component/character-count") {
-  @include base.govuk-custom-properties;
-
   .govuk-character-count {
     @include base.govuk-responsive-margin(6, "bottom");
 

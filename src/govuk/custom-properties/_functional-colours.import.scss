@@ -1,0 +1,7 @@
+@use "../tools/exports" as *;
+@use "functional-colours.mixin" as functional-colours;
+
+// CSS custom property for each breakpoint
+@include govuk-exports("govuk/custom-properties/functional-colours") {
+  @include functional-colours.styles;
+}

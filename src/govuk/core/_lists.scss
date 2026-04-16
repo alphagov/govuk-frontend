@@ -1,8 +1,7 @@
 @use "../base";
+@use "../custom-properties";
 
 @include base.govuk-exports("govuk/core/lists") {
-  @include base.govuk-custom-properties;
-
   %govuk-list {
     @include base.govuk-font($size: 19);
 

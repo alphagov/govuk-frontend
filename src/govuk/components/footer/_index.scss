@@ -1,9 +1,8 @@
 @forward "../../base";
 @use "../../base";
+@use "../../custom-properties";
 
 @include base.govuk-exports("govuk/component/footer") {
-  @include base.govuk-custom-properties;
-
   $govuk-footer-background: base.govuk-functional-colour(surface-background);
   $govuk-footer-text: base.govuk-functional-colour(surface-text);
   $govuk-footer-content-border: base.govuk-functional-colour(surface-border);

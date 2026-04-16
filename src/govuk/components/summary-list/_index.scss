@@ -1,9 +1,8 @@
 @forward "../../base";
 @use "../../base";
+@use "../../custom-properties";
 
 @include base.govuk-exports("govuk/component/summary-list") {
-  @include base.govuk-custom-properties;
-
   .govuk-summary-list {
     @include base.govuk-font($size: 19);
 

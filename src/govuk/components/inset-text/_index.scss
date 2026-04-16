@@ -1,9 +1,8 @@
 @forward "../../base";
 @use "../../base";
+@use "../../custom-properties";
 
 @include base.govuk-exports("govuk/component/inset-text") {
-  @include base.govuk-custom-properties;
-
   .govuk-inset-text {
     @include base.govuk-font($size: 19);
 

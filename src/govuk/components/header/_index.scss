@@ -1,9 +1,8 @@
 @forward "../../base";
 @use "../../base";
+@use "../../custom-properties";
 
 @include base.govuk-exports("govuk/component/header") {
-  @include base.govuk-custom-properties;
-
   $logo-bottom-margin: 2px;
 
   .govuk-header {

@@ -1,9 +1,8 @@
 @forward "../../base";
 @use "../../base";
+@use "../../custom-properties";
 
 @include base.govuk-exports("govuk/component/fieldset") {
-  @include base.govuk-custom-properties;
-
   .govuk-fieldset {
     min-width: 0;
     margin: 0;
