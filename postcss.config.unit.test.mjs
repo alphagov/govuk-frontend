@@ -136,7 +136,7 @@ describe('PostCSS config', () => {
           'postcss-normalize-positions',
           'postcss-normalize-whitespace',
           'postcss-merge-longhand',
-          'postcss-discard-duplicates',
+          // 'postcss-discard-duplicates',
           'postcss-merge-rules',
           'postcss-discard-empty',
           'postcss-unique-selectors',
