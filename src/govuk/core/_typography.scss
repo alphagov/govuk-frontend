@@ -1,10 +1,8 @@
 @use "../base";
+@use "../custom-properties";
 
 @include base.govuk-exports("govuk/core/typography") {
-  @include base.govuk-custom-properties;
-
   // Headings
-
   %govuk-heading-xl {
     @include base.govuk-font($size: 48, $weight: bold);
 
