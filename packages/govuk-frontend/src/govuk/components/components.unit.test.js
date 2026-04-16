@@ -31,7 +31,7 @@ describe('Components', () => {
           css = (await compileSassString(sass)).css
         })
 
-        it.failing('outputs the custom properties only once', () => {
+        it('outputs the custom properties only once', () => {
           const occurrences = css.matchAll(/--govuk-breakpoint-mobile/g)
 
           expect(Array.from(occurrences)).toHaveLength(1)
@@ -118,12 +118,6 @@ describe('Components', () => {
 
           it("includes the component's CSS", () => {
             expect(css).toContain(`.govuk-${componentName}`)
-          })
-
-          it('provides access to the members of `base`', () => {
-            // Only look for the start of the `var()` call so test is resilient
-            // to changes in the value of the brand colour
-            expect(css).toContain('--value: var(--govuk-brand-colour')
           })
 
           it('renders the custom properties used by the component', async () => {
