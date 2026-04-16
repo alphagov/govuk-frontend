@@ -1,3 +1,5 @@
+@use "sass:math";
+
 ////
 /// @group settings/layout
 ////
@@ -10,8 +12,6 @@
 ///
 /// @type Number
 /// @access public
-
-@use "sass:math";
 
 $govuk-page-width: 960px !default;
 
