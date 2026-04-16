@@ -1,4 +1,5 @@
 @use "../../settings/warnings--internal";
-@use "index";
 
 @include warnings--internal.component-scss-file-warning("tag");
+
+@import "index";

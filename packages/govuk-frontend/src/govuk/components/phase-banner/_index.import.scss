@@ -1,0 +1,10 @@
+@use "mixin";
+@use "../../tools/exports" as *;
+
+@import "../../base";
+@import "../../custom-properties";
+@import "../tag";
+
+@include govuk-exports("govuk/component/phase-banner") {
+  @include mixin.styles;
+}
