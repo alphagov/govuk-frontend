@@ -38,10 +38,34 @@ notes: |
         html: "Your reference number<br><strong>HDJ2123F</strong>"
       }) }}
 
-      <p class="govuk-body">We have sent you a confirmation email.</p>
-
+      <p class="govuk-body">Your referral has been submitted to the Disclosure and Barring Service (DBS). You may be contacted for further information.</p>
+      <p class="govuk-body">We have sent you a confirmation email to <strong>[supplied email]</strong></p>
+      <div class="govuk-inset-text">
+  It can take up to 8 weeks to register a lasting power of attorney if there are no mistakes in the application.
+</div>
+  <div class="govuk-width-container">
+    <div class="govuk-grid-row">
+        <div class="govuk-feedback">
+          <h2 class="govuk-heading-m">Help us improve this service</h2>
+          <p class="govuk-body">Tell us about your experience using this service. You’ll help us make improvements by <a href="#" class="govuk-link">giving us your feedback</a>.</p>
+        </div>
+    </div>
+  </div>
+  <style>
+    .govuk-feedback {
+      border-top: 1px solid var(--govuk-brand-colour);
+      padding: 20px 15px;
+      background-color: var(--govuk-surface-background-colour);
+    }
+  </style>
       <h2 class="govuk-heading-m">What happens next</h2>
-
+      <div class="govuk-warning-text">
+  <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+  <strong class="govuk-warning-text__text">
+    <span class="govuk-visually-hidden">Warning</span>
+    You must now send us documentation within five days, by post or email, to support your barring referral submission.
+  </strong>
+</div>
       <p class="govuk-body">
         We’ve sent your application to Hackney Electoral Register Office.
       </p>
@@ -50,25 +74,4 @@ notes: |
       </p>
     </div>
   </div>
-{% endblock %}
-
-{% block footerStart %}
-  <div class="govuk-width-container">
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds">
-        <div class="govuk-feedback">
-          <h2 class="govuk-heading-m">Help us improve this service</h2>
-          <p class="govuk-body">Tell us about your experience using this service. You’ll help us make improvements by <a href="#" class="govuk-link">giving us your feedback</a>.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <style>
-    .govuk-feedback {
-      border-top: 1px solid var(--govuk-brand-colour);
-      padding: 20px 15px;
-      background-color: var(--govuk-surface-background-colour);
-    }
-  </style>
 {% endblock %}
