@@ -1,3 +1,5 @@
+@use "sass:list";
+
 ////
 /// @group helpers
 ////
@@ -26,8 +28,6 @@
 ///   }
 ///
 /// @access public
-
-@use "sass:list";
 
 @mixin govuk-device-pixel-ratio($ratio: 2) {
   @media only screen and (-webkit-min-device-pixel-ratio: $ratio),
