@@ -4,6 +4,7 @@
 
 @use "../../base";
 @forward "../../base";
+@use "../../custom-properties";
 
 /// Button component background colour
 ///
@@ -34,8 +35,6 @@ $govuk-inverse-button-background-colour: base.govuk-colour("white") !default;
 $govuk-inverse-button-text-colour: base.govuk-functional-colour(brand) !default;
 
 @include base.govuk-exports("govuk/component/button") {
-  @include base.govuk-custom-properties;
-
   $govuk-button-colour: $govuk-button-background-colour;
   $govuk-button-text-colour: $govuk-button-text-colour;
   $govuk-button-hover-colour: base.govuk-colour("green", $variant: "shade-25");

@@ -2,10 +2,9 @@
 
 @forward "../../base";
 @use "../../base";
+@use "../../custom-properties";
 
 @include base.govuk-exports("govuk/component/notification-banner") {
-  @include base.govuk-custom-properties;
-
   .govuk-notification-banner {
     @include base.govuk-font($size: 19);
     @include base.govuk-responsive-margin(8, "bottom");

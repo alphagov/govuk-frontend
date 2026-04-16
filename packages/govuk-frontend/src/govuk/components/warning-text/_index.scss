@@ -1,9 +1,8 @@
 @forward "../../base";
 @use "../../base";
+@use "../../custom-properties";
 
 @include base.govuk-exports("govuk/component/warning-text") {
-  @include base.govuk-custom-properties;
-
   .govuk-warning-text {
     @include base.govuk-font($size: 19);
     @include base.govuk-responsive-margin(6, "bottom");

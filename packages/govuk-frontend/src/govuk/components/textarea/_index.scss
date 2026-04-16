@@ -1,13 +1,12 @@
 @forward "../../base";
 @use "../../base";
+@use "../../custom-properties";
 
 @import "../error-message";
 @import "../hint";
 @import "../label";
 
 @include base.govuk-exports("govuk/component/textarea") {
-  @include base.govuk-custom-properties;
-
   .govuk-textarea {
     @include base.govuk-font($size: 19, $line-height: 1.25);
 

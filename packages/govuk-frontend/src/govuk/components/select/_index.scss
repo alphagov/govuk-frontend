@@ -1,13 +1,12 @@
 @forward "../../base";
 @use "../../base";
+@use "../../custom-properties";
 
 @import "../error-message";
 @import "../hint";
 @import "../label";
 
 @include base.govuk-exports("govuk/component/select") {
-  @include base.govuk-custom-properties;
-
   .govuk-select {
     @include base.govuk-font($size: 19, $line-height: 1.25);
 

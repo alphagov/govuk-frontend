@@ -5,6 +5,7 @@
 
 @forward "../../base";
 @use "../../base";
+@use "../../custom-properties";
 
 /// Get tag text colour
 /// Almost all tags should use the 50% shade of their colour for their text
@@ -37,8 +38,6 @@
 }
 
 @include base.govuk-exports("govuk/component/tag") {
-  @include base.govuk-custom-properties;
-
   $govuk-tag-max-width: 0.5 * (map.get(base.$govuk-breakpoints, "mobile") or 320px);
 
   .govuk-tag {

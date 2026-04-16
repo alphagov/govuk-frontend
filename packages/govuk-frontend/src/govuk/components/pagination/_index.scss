@@ -1,9 +1,8 @@
 @forward "../../base";
 @use "../../base";
+@use "../../custom-properties";
 
 @include base.govuk-exports("govuk/component/pagination") {
-  @include base.govuk-custom-properties;
-
   // Flexbox enhancement for small screen visual design
   // Falls back to a float: left layout on non-flex browsers
   .govuk-pagination {
