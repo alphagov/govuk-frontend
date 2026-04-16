@@ -2,11 +2,11 @@
 @use "../../base";
 @use "../../custom-properties";
 
-@import "../error-message";
-@import "../input";
-@import "../hint";
-@import "../label";
-@import "../fieldset";
+@use "../error-message";
+@use "../input";
+@use "../hint";
+@use "../label";
+@use "../fieldset";
 
 @include base.govuk-exports("govuk/component/date-input") {
   .govuk-date-input {
