@@ -49,6 +49,7 @@ describe('@function font-url', () => {
       it('executes a native Sass function', async () => {
         const sass = `
           @use "settings" with (
+            $govuk-suppressed-warnings: ("font-url-string"),
             $govuk-font-url-function: 'to-upper-case'
           );
           @use "tools/font-url" as *;
@@ -60,7 +61,10 @@ describe('@function font-url', () => {
         `
 
         await expect(
-          compileSassString(sass, { fatalDeprecations })
+          compileSassString(sass, {
+            fatalDeprecations,
+            silenceDeprecations: ['global-builtin']
+          })
         ).resolves.toMatchObject({
           css: outdent`
             @font-face {
@@ -74,6 +78,7 @@ describe('@function font-url', () => {
       it('uses the default for a non-native function', async () => {
         const sass = `
           @use "settings" with (
+            $govuk-suppressed-warnings: ("font-url-string"),
             $govuk-fonts-path: '/path/to/fonts/',
             $govuk-font-url-function: non-native-function
           );
@@ -122,6 +127,7 @@ describe('@function font-url', () => {
       describe('with `@import`', () => {
         it('can be overridden to use a custom function', async () => {
           const sass = `
+            $govuk-suppressed-warnings: ("font-url-string");
             $govuk-font-url-function: 'fonts-url';
 
             @import "pkg:@govuk-frontend/helpers/assets-urls";
@@ -149,6 +155,7 @@ describe('@function font-url', () => {
           const sass = `
             @import "tools/font-url";
 
+            $govuk-suppressed-warnings: ("font-url-string");
             $govuk-fonts-path: '/path/to/fonts/';
             $govuk-font-url-function: unknown-function;
 
