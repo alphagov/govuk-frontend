@@ -2,10 +2,9 @@
 /// @group objects/layout
 ////
 @use "../base";
+@use "../custom-properties";
 
 @include base.govuk-exports("govuk/objects/width-container") {
-  @include base.govuk-custom-properties;
-
   .govuk-width-container {
     @include base.govuk-width-container;
   }
