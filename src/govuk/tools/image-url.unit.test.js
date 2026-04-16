@@ -46,6 +46,7 @@ describe('@function image-url', () => {
       it('executes a native Sass function', async () => {
         const sass = `
           @use "settings" with (
+            $govuk-suppressed-warnings: ("image-url-string"),
             $govuk-image-url-function: 'to-upper-case'
           );
           @use "tools/image-url" as *;
@@ -62,7 +63,10 @@ describe('@function image-url', () => {
         )
 
         await expect(
-          compileSassString(sass, { fatalDeprecations })
+          compileSassString(sass, {
+            fatalDeprecations,
+            silenceDeprecations: ['global-builtin']
+          })
         ).resolves.toMatchObject({
           css: outdent`
             .foo {
@@ -75,6 +79,7 @@ describe('@function image-url', () => {
       it('uses the default for a non-native function', async () => {
         const sass = `
           @use "settings" with (
+            $govuk-suppressed-warnings: ("image-url-string"),
             $govuk-images-path: '/path/to/images/',
             $govuk-image-url-function: non-native-function
           );
@@ -121,6 +126,7 @@ describe('@function image-url', () => {
     describe('with `@import`', () => {
       it('executes a custom function', async () => {
         const sass = `
+          $govuk-suppressed-warnings: ("image-url-string");
           $govuk-image-url-function: 'images-url';
 
           @import "pkg:@govuk-frontend/helpers/assets-urls";
@@ -146,6 +152,7 @@ describe('@function image-url', () => {
         const sass = `
         @import "tools/image-url";
 
+        $govuk-suppressed-warnings: ("image-url-string");
         $govuk-images-path: '/path/to/images/';
         $govuk-image-url-function: unknown-function;
 
