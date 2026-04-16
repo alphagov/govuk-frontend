@@ -16,15 +16,22 @@ describe('The settings layer', () => {
     await expect(compileSassFile(file)).resolves.toMatchObject({ css: '' })
   })
 
-  it('has an import-only file for the `index`', async () => {
-    const importOnlyPath = join(
-      paths.package,
-      'src/govuk/settings/_index.import.scss'
-    )
+  describe('_index.import.scss', () => {
+    let fileContent
 
-    const fileContent = await readFile(importOnlyPath, { encoding: 'utf-8' })
+    beforeAll(async () => {
+      const importOnlyPath = join(
+        paths.package,
+        'src/govuk/settings/_index.import.scss'
+      )
 
-    expect(fileContent).toBe(`@forward "index";\n`)
+      fileContent = await readFile(importOnlyPath, { encoding: 'utf-8' })
+    })
+
+    it.each(partials)('imports $name', ({ partialPath, name }) => {
+      const { moduleName } = /_(?<moduleName>.*)\.scss/.exec(name).groups
+      expect(fileContent).toContain(`@import "${moduleName}";`)
+    })
   })
 
   describe.each(partials)('$name', ({ partialPath, name }) => {

@@ -1,1 +1,22 @@
-@forward "index";
+// The order we import settings in is important, as some settings files rely on
+// others
+
+@import "assets";
+
+@import "warnings";
+@import "global-styles";
+
+@import "custom-properties";
+
+@import "media-queries";
+
+@import "colours-organisations";
+@import "colours-functional";
+
+@import "spacing";
+@import "measurements";
+
+@import "typography-font";
+@import "typography-responsive";
+
+@import "links";

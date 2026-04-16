@@ -1,8 +1,7 @@
 @use "../base";
+@use "../custom-properties";
 
 @include base.govuk-exports("govuk/objects/template") {
-  @include base.govuk-custom-properties;
-
   // Applied to the <html> element
   .govuk-template {
     // Set the overall page background colour to the same colour as used by the

@@ -1,10 +1,9 @@
 @use "sass:map";
 
 @use "../base";
+@use "../custom-properties";
 
 @include base.govuk-exports("govuk/objects/grid") {
-  @include base.govuk-custom-properties;
-
   .govuk-grid-row {
     @include base.govuk-clearfix;
     margin-right: -(base.$govuk-gutter-half);

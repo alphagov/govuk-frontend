@@ -2,10 +2,9 @@
 
 @forward "../../base";
 @use "../../base";
+@use "../../custom-properties";
 
 @include base.govuk-exports("govuk/component/service-navigation") {
-  @include base.govuk-custom-properties;
-
   $govuk-service-navigation-active-link-border-width: base.govuk-spacing(1);
   $govuk-service-navigation-text-colour: base.govuk-functional-colour(surface-text);
   $govuk-service-navigation-background: base.govuk-functional-colour(surface-background);

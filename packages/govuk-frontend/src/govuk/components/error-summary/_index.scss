@@ -1,11 +1,10 @@
 @forward "../../base";
 @use "../../base";
+@use "../../custom-properties";
 
 @import "../../core/lists";
 
 @include base.govuk-exports("govuk/component/error-summary") {
-  @include base.govuk-custom-properties;
-
   .govuk-error-summary {
     @include base.govuk-font($size: 19);
     @include base.govuk-responsive-padding(4);

@@ -1,7 +1,0 @@
-// Forward base to provide the API to files importing it
-@forward "base";
-
-// Use base to generate the output of CSS
-@use "base";
-
-@include base.govuk-custom-properties;

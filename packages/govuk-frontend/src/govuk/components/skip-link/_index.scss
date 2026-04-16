@@ -2,10 +2,9 @@
 
 @forward "../../base";
 @use "../../base";
+@use "../../custom-properties";
 
 @include base.govuk-exports("govuk/component/skip-link") {
-  @include base.govuk-custom-properties;
-
   .govuk-skip-link {
     @include base.govuk-visually-hidden-focusable;
     @include base.govuk-link-decoration;

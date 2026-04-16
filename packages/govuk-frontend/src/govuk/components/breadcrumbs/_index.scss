@@ -2,9 +2,9 @@
 
 @forward "../../base";
 @use "../../base";
+@use "../../custom-properties";
 
 @include base.govuk-exports("govuk/component/breadcrumbs") {
-  @include base.govuk-custom-properties;
   // Component font-size on the Frontend (used for calculations)
   $font-size: 16;
 
