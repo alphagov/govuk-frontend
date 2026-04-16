@@ -1,9 +1,8 @@
 @forward "../../base";
 @use "../../base";
+@use "../../custom-properties";
 
 @include base.govuk-exports("govuk/component/accordion") {
-  @include base.govuk-custom-properties;
-
   $govuk-accordion-base-colour: base.govuk-colour("black");
   $govuk-accordion-hover-colour: base.govuk-colour("black", $variant: "tint-95");
   $govuk-accordion-icon-focus-colour: base.govuk-functional-colour(focus);

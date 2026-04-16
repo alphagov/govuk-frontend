@@ -1,12 +1,11 @@
 @forward "../../base";
 @use "../../base";
+@use "../../custom-properties";
 
 @import "../button";
 @import "../input";
 
 @include base.govuk-exports("govuk/component/password-input") {
-  @include base.govuk-custom-properties;
-
   .govuk-password-input__wrapper {
     // This element inherits styles from .govuk-input__wrapper, including:
     // - being display: block with contents in a stacked column below the mobile

@@ -1,11 +1,10 @@
 @forward "../../base";
 @use "../../base";
+@use "../../custom-properties";
 
 @import "../button";
 
 @include base.govuk-exports("govuk/component/exit-this-page") {
-  @include base.govuk-custom-properties;
-
   $indicator-size: 0.75em;
 
   .govuk-exit-this-page {

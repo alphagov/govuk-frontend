@@ -1,13 +1,12 @@
 @forward "../../base";
 @use "../../base";
+@use "../../custom-properties";
 
 @import "../error-message";
 @import "../hint";
 @import "../label";
 
 @include base.govuk-exports("govuk/component/file-upload") {
-  @include base.govuk-custom-properties;
-
   $file-upload-border-width: 2px;
   $component-padding: base.govuk-spacing(1);
   $empty-button-background-colour: base.govuk-colour("white");

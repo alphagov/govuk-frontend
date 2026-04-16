@@ -1,5 +1,6 @@
 @forward "../../base";
 @use "../../base";
+@use "../../custom-properties";
 
 @import "../error-message";
 @import "../fieldset";
@@ -7,8 +8,6 @@
 @import "../label";
 
 @include base.govuk-exports("govuk/component/radios") {
-  @include base.govuk-custom-properties;
-
   $govuk-touch-target-gutter: 4px;
   $govuk-radios-size: 40px;
   $govuk-touch-target-size: ($govuk-radios-size + $govuk-touch-target-gutter);
