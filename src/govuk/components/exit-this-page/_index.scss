@@ -2,7 +2,7 @@
 @use "../../base";
 @use "../../custom-properties";
 
-@import "../button";
+@use "../button";
 
 @include base.govuk-exports("govuk/component/exit-this-page") {
   $indicator-size: 0.75em;
