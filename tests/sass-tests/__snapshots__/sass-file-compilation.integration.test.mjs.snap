@@ -5102,6 +5102,8 @@ exports[`src/govuk/components/accordion/_index.scss matches snapshot 1`] = `
 }"
 `;
 
+exports[`src/govuk/components/accordion/_mixin.scss matches snapshot 1`] = `""`;
+
 exports[`src/govuk/components/back-link/_back-link.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
@@ -5387,6 +5389,8 @@ exports[`src/govuk/components/back-link/_index.scss matches snapshot 1`] = `
   border-color: currentcolor;
 }"
 `;
+
+exports[`src/govuk/components/back-link/_mixin.scss matches snapshot 1`] = `""`;
 
 exports[`src/govuk/components/breadcrumbs/_breadcrumbs.scss matches snapshot 1`] = `
 ":root {
@@ -5757,6 +5761,8 @@ exports[`src/govuk/components/breadcrumbs/_index.scss matches snapshot 1`] = `
   border-color: currentcolor;
 }"
 `;
+
+exports[`src/govuk/components/breadcrumbs/_mixin.scss matches snapshot 1`] = `""`;
 
 exports[`src/govuk/components/button/_button.scss matches snapshot 1`] = `
 ":root {
@@ -9506,6 +9512,8 @@ exports[`src/govuk/components/details/_index.scss matches snapshot 1`] = `
 }"
 `;
 
+exports[`src/govuk/components/details/_mixin.scss matches snapshot 1`] = `""`;
+
 exports[`src/govuk/components/error-message/_error-message.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
@@ -12306,6 +12314,8 @@ exports[`src/govuk/components/footer/_index.scss matches snapshot 1`] = `
 }"
 `;
 
+exports[`src/govuk/components/footer/_mixin.scss matches snapshot 1`] = `""`;
+
 exports[`src/govuk/components/header/_header.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
@@ -12677,6 +12687,8 @@ exports[`src/govuk/components/header/_index.scss matches snapshot 1`] = `
   }
 }"
 `;
+
+exports[`src/govuk/components/header/_mixin.scss matches snapshot 1`] = `""`;
 
 exports[`src/govuk/components/hint/_hint.scss matches snapshot 1`] = `
 ":root {
@@ -13738,6 +13750,8 @@ exports[`src/govuk/components/inset-text/_inset-text.scss matches snapshot 1`] =
 }"
 `;
 
+exports[`src/govuk/components/inset-text/_mixin.scss matches snapshot 1`] = `""`;
+
 exports[`src/govuk/components/label/_index.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
@@ -14215,6 +14229,8 @@ exports[`src/govuk/components/notification-banner/_index.scss matches snapshot 1
 }"
 `;
 
+exports[`src/govuk/components/notification-banner/_mixin.scss matches snapshot 1`] = `""`;
+
 exports[`src/govuk/components/notification-banner/_notification-banner.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
@@ -14676,6 +14692,8 @@ exports[`src/govuk/components/pagination/_index.scss matches snapshot 1`] = `
 }"
 `;
 
+exports[`src/govuk/components/pagination/_mixin.scss matches snapshot 1`] = `""`;
+
 exports[`src/govuk/components/pagination/_pagination.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
@@ -15054,6 +15072,8 @@ exports[`src/govuk/components/panel/_index.scss matches snapshot 1`] = `
   margin-bottom: 0;
 }"
 `;
+
+exports[`src/govuk/components/panel/_mixin.scss matches snapshot 1`] = `""`;
 
 exports[`src/govuk/components/panel/_panel.scss matches snapshot 1`] = `
 ":root {
@@ -18378,6 +18398,8 @@ exports[`src/govuk/components/service-navigation/_index.scss matches snapshot 1`
 }"
 `;
 
+exports[`src/govuk/components/service-navigation/_mixin.scss matches snapshot 1`] = `""`;
+
 exports[`src/govuk/components/service-navigation/_service-navigation.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
@@ -18801,6 +18823,8 @@ exports[`src/govuk/components/skip-link/_index.scss matches snapshot 1`] = `
   outline: none;
 }"
 `;
+
+exports[`src/govuk/components/skip-link/_mixin.scss matches snapshot 1`] = `""`;
 
 exports[`src/govuk/components/skip-link/_skip-link.scss matches snapshot 1`] = `
 ":root {
@@ -19244,6 +19268,8 @@ exports[`src/govuk/components/summary-list/_index.scss matches snapshot 1`] = `
   border-bottom: none;
 }"
 `;
+
+exports[`src/govuk/components/summary-list/_mixin.scss matches snapshot 1`] = `""`;
 
 exports[`src/govuk/components/summary-list/_summary-list.scss matches snapshot 1`] = `
 ":root {
@@ -19746,6 +19772,8 @@ exports[`src/govuk/components/table/_index.scss matches snapshot 1`] = `
 }"
 `;
 
+exports[`src/govuk/components/table/_mixin.scss matches snapshot 1`] = `""`;
+
 exports[`src/govuk/components/table/_table.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
@@ -20161,6 +20189,8 @@ exports[`src/govuk/components/tabs/_index.scss matches snapshot 1`] = `
   }
 }"
 `;
+
+exports[`src/govuk/components/tabs/_mixin.scss matches snapshot 1`] = `""`;
 
 exports[`src/govuk/components/tabs/_tabs.scss matches snapshot 1`] = `
 "@charset "UTF-8";
@@ -21677,6 +21707,8 @@ exports[`src/govuk/components/warning-text/_index.scss matches snapshot 1`] = `
   font-weight: inherit;
 }"
 `;
+
+exports[`src/govuk/components/warning-text/_mixin.scss matches snapshot 1`] = `""`;
 
 exports[`src/govuk/components/warning-text/_warning-text.scss matches snapshot 1`] = `
 ":root {

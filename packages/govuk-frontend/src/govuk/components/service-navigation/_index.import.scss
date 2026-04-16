@@ -1,0 +1,9 @@
+@use "mixin";
+@use "../../tools/exports" as *;
+
+@import "../../base";
+@import "../../custom-properties";
+
+@include govuk-exports("govuk/component/service-navigation") {
+  @include mixin.styles;
+}

@@ -1,0 +1,9 @@
+@use "mixin";
+@use "../../tools/exports" as *;
+
+@import "../../base";
+@import "../../custom-properties";
+
+@include govuk-exports("govuk/component/panel") {
+  @include mixin.styles;
+}
