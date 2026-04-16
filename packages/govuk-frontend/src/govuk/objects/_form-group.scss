@@ -1,8 +1,7 @@
 @use "../base";
+@use "../custom-properties";
 
 @include base.govuk-exports("govuk/objects/form-group") {
-  @include base.govuk-custom-properties;
-
   .govuk-form-group {
     @include base.govuk-clearfix;
     @include base.govuk-responsive-margin(6, "bottom");

@@ -1,8 +1,7 @@
 @use "../base";
+@use "../custom-properties";
 
 @include base.govuk-exports("govuk/objects/button-group") {
-  @include base.govuk-custom-properties;
-
   // Button groups can be used to group buttons and links together as a group.
   //
   // Within a button group:
