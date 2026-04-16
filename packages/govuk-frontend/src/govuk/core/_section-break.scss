@@ -1,8 +1,7 @@
 @use "../base";
+@use "../custom-properties";
 
 @include base.govuk-exports("govuk/core/section-break") {
-  @include base.govuk-custom-properties;
-
   %govuk-section-break {
     margin: 0;
     border: 0;
