@@ -453,7 +453,7 @@ export class FileUpload extends ConfigurableComponent {
   updateDisabledState() {
     this.$button.disabled = this.$input.disabled
 
-    this.$root.classList.toggle(
+    this.$dropzone.classList.toggle(
       'govuk-drop-zone--disabled',
       this.$button.disabled
     )
