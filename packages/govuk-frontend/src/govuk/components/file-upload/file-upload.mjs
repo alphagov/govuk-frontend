@@ -20,6 +20,11 @@ export class FileUpload extends ConfigurableComponent {
   /**
    * @private
    */
+  $dropzone
+
+  /**
+   * @private
+   */
   $button
 
   /**
@@ -98,6 +103,13 @@ export class FileUpload extends ConfigurableComponent {
     // Hide the native input
     this.$input.setAttribute('hidden', 'hidden')
 
+    // Create the drop zone element, or use the existing one if one exists
+    // (for backwards compatibility). Backwards compat can be removed in 7.0.
+    const $dropzone =
+      this.$root.querySelector('.govuk-drop-zone') ??
+      document.createElement('div')
+    $dropzone.classList.add('govuk-drop-zone')
+
     // Create the file selection button
     const $button = document.createElement('button')
     $button.classList.add('govuk-file-upload-button')
@@ -160,10 +172,16 @@ export class FileUpload extends ConfigurableComponent {
       event.preventDefault()
     })
 
-    // Assemble these all together
-    this.$root.insertAdjacentElement('afterbegin', $button)
+    $dropzone.appendChild($button)
+
+    // Insert the dropzone into the DOM (unless it's already there)
+    // Check for existing drop zone can be removed in 7.0.
+    if (!this.$root.querySelector('.govuk-drop-zone')) {
+      this.$root.insertAdjacentElement('beforeend', $dropzone)
+    }
 
     // Make all these new variables available to the module
+    this.$dropzone = $dropzone
     this.$button = $button
     this.$status = $status
 
@@ -180,7 +198,7 @@ export class FileUpload extends ConfigurableComponent {
     this.$announcements.classList.add('govuk-file-upload-announcements')
     this.$announcements.classList.add('govuk-visually-hidden')
     this.$announcements.setAttribute('aria-live', 'assertive')
-    this.$root.insertAdjacentElement('afterend', this.$announcements)
+    this.$dropzone.insertAdjacentElement('afterend', this.$announcements)
 
     // if there is no CSS and input is hidden
     // button will need to handle drop event
@@ -441,7 +459,7 @@ export class FileUpload extends ConfigurableComponent {
   updateDisabledState() {
     this.$button.disabled = this.$input.disabled
 
-    this.$root.classList.toggle(
+    this.$dropzone.classList.toggle(
       'govuk-drop-zone--disabled',
       this.$button.disabled
     )

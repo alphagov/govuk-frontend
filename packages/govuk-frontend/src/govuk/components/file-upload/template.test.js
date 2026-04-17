@@ -220,38 +220,15 @@ describe('File upload', () => {
     it('adds the data-module attribute to the wrapper when `true`', () => {
       const $ = render('file-upload', examples.enhanced)
 
-      const $wrapper = $('.govuk-form-group > .govuk-drop-zone')
+      const $wrapper = $('.govuk-form-group')
 
       expect($wrapper.attr('data-module')).toBe('govuk-file-upload')
-    })
-
-    it('renders custom drop zone classes', () => {
-      const $ = render(
-        'file-upload',
-        examples['enhanced, custom classes and attributes']
-      )
-
-      const $wrapper = $('.govuk-form-group > .govuk-drop-zone')
-
-      expect($wrapper.hasClass('app-drop-zone--custom-class')).toBeTruthy()
-    })
-
-    it('renders custom drop zone attributes', () => {
-      const $ = render(
-        'file-upload',
-        examples['enhanced, custom classes and attributes']
-      )
-
-      const $wrapper = $('.govuk-form-group > .govuk-drop-zone')
-
-      expect($wrapper.attr('data-custom-attribute')).toBe('custom-value')
-      expect($wrapper.attr('data-custom-attribute-2')).toBe('custom-value-2')
     })
 
     it('adds the data-module attribute when receiving an object', () => {
       const $ = render('file-upload', examples.translated)
 
-      const $wrapper = $('.govuk-form-group > .govuk-drop-zone')
+      const $wrapper = $('.govuk-form-group')
 
       expect($wrapper.attr('data-module')).toBe('govuk-file-upload')
     })
@@ -259,7 +236,7 @@ describe('File upload', () => {
     it('enables the rendering of translation messages when true', () => {
       const $ = render('file-upload', examples.translated)
 
-      const $wrapper = $('.govuk-form-group > .govuk-drop-zone')
+      const $wrapper = $('.govuk-form-group')
 
       expect($wrapper.attr('data-i18n.choose-files-button')).toBe(
         'Dewiswch ffeil'
@@ -290,7 +267,7 @@ describe('File upload', () => {
         examples['translated, no javascript enhancement']
       )
 
-      const $input = $('.govuk-form-group > .govuk-file-upload')
+      const $input = $('.govuk-form-group')
 
       expect($input.attr('data-i18n.select-files-button')).toBeUndefined()
       expect($input.attr('data-i18n.files-selected-default')).toBeUndefined()

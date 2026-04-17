@@ -10,6 +10,31 @@
 {%- set id = params.id if params.id else params.name -%}
 
 <div class="govuk-form-group {%- if params.errorMessage %} govuk-form-group--error{% endif %} {%- if params.formGroup.classes %} {{ params.formGroup.classes }}{% endif %}"
+  {%- if params.javascript %} data-module="govuk-file-upload"{% endif %}
+  {{- govukI18nAttributes({
+    key: 'choose-files-button',
+    message: params.chooseFilesButtonText
+  }) -}}
+  {{- govukI18nAttributes({
+    key: 'no-file-chosen',
+    message: params.noFileChosenText
+  }) -}}
+  {{- govukI18nAttributes({
+    key: 'multiple-files-chosen',
+    messages: params.multipleFilesChosenText
+  }) -}}
+  {{- govukI18nAttributes({
+    key: 'drop-instruction',
+    message: params.dropInstructionText
+  }) -}}
+  {{- govukI18nAttributes({
+    key: 'entered-drop-zone',
+    message: params.enteredDropZoneText
+  }) -}}
+  {{- govukI18nAttributes({
+    key: 'left-drop-zone',
+    message: params.leftDropZoneText
+  }) -}}
   {{- govukAttributes(params.formGroup.attributes) }}>
   {{ govukLabel({
     html: params.label.html,
@@ -45,45 +70,11 @@
 {% if params.formGroup.beforeInput %}
   {{ params.formGroup.beforeInput.html | safe | trim | indent(2) if params.formGroup.beforeInput.html else params.formGroup.beforeInput.text }}
 {% endif %}
-{% if params.javascript %}
-  <div
-    class="govuk-drop-zone {%- if params.dropZoneClasses %} {{ params.dropZoneClasses }}{% endif %}"
-    data-module="govuk-file-upload"
-    {{- govukI18nAttributes({
-      key: 'choose-files-button',
-      message: params.chooseFilesButtonText
-    }) -}}
-    {{- govukI18nAttributes({
-      key: 'no-file-chosen',
-      message: params.noFileChosenText
-    }) -}}
-    {{- govukI18nAttributes({
-      key: 'multiple-files-chosen',
-      messages: params.multipleFilesChosenText
-    }) -}}
-    {{- govukI18nAttributes({
-      key: 'drop-instruction',
-      message: params.dropInstructionText
-    }) -}}
-    {{- govukI18nAttributes({
-      key: 'entered-drop-zone',
-      message: params.enteredDropZoneText
-    }) -}}
-    {{- govukI18nAttributes({
-      key: 'left-drop-zone',
-      message: params.leftDropZoneText
-    }) -}}
-    {{- govukAttributes(params.dropZoneAttributes) }}
-  >
-{% endif %}
   <input class="govuk-file-upload {%- if params.classes %} {{ params.classes }}{% endif %} {%- if params.errorMessage %} govuk-file-upload--error{% endif %}" id="{{ id }}" name="{{ params.name }}" type="file"
   {%- if params.disabled %} disabled{% endif %}
   {%- if params.multiple %} multiple{% endif %}
   {%- if describedBy %} aria-describedby="{{ describedBy }}"{% endif %}
   {{- govukAttributes(params.attributes) }}>
-{% if params.javascript %}
-  </div>
-{% endif %}
 {% if params.formGroup.afterInput %}
   {{ params.formGroup.afterInput.html | safe | trim | indent(2) if params.formGroup.afterInput.html else params.formGroup.afterInput.text }}
 {% endif %}
