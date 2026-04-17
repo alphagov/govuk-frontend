@@ -21828,6 +21828,8 @@ exports[`src/govuk/components/warning-text/_warning-text.scss matches snapshot 1
 }"
 `;
 
+exports[`src/govuk/core/_global-styles.mixin.scss matches snapshot 1`] = `""`;
+
 exports[`src/govuk/core/_global-styles.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
@@ -22917,6 +22919,8 @@ exports[`src/govuk/core/_index.scss matches snapshot 1`] = `
 }"
 `;
 
+exports[`src/govuk/core/_links.mixin.scss matches snapshot 1`] = `""`;
+
 exports[`src/govuk/core/_links.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
@@ -23186,6 +23190,8 @@ exports[`src/govuk/core/_lists.scss matches snapshot 1`] = `
 }"
 `;
 
+exports[`src/govuk/core/_section-break.mixin.scss matches snapshot 1`] = `""`;
+
 exports[`src/govuk/core/_section-break.scss matches snapshot 1`] = `
 ":root {
   --govuk-breakpoint-mobile: 20rem;
@@ -23273,6 +23279,8 @@ exports[`src/govuk/core/_section-break.scss matches snapshot 1`] = `
   border-bottom-color: var(--govuk-border-colour, #cecece);
 }"
 `;
+
+exports[`src/govuk/core/_typography.mixin.scss matches snapshot 1`] = `""`;
 
 exports[`src/govuk/core/_typography.scss matches snapshot 1`] = `
 ":root {
@@ -30838,6 +30846,8 @@ exports[`src/govuk/objects/_width-container.scss matches snapshot 1`] = `
 }"
 `;
 
+exports[`src/govuk/overrides/_display.mixin.scss matches snapshot 1`] = `""`;
+
 exports[`src/govuk/overrides/_display.scss matches snapshot 1`] = `
 ".govuk-\\!-display-inline {
   display: inline !important;
@@ -31943,6 +31953,8 @@ exports[`src/govuk/overrides/_index.scss matches snapshot 1`] = `
 }"
 `;
 
+exports[`src/govuk/overrides/_spacing.mixin.scss matches snapshot 1`] = `""`;
+
 exports[`src/govuk/overrides/_spacing.scss matches snapshot 1`] = `
 ".govuk-\\!-margin-0 {
   margin: 0 !important;
@@ -32846,6 +32858,8 @@ exports[`src/govuk/overrides/_spacing.scss matches snapshot 1`] = `
 }"
 `;
 
+exports[`src/govuk/overrides/_text-align.mixin.scss matches snapshot 1`] = `""`;
+
 exports[`src/govuk/overrides/_text-align.scss matches snapshot 1`] = `
 ".govuk-\\!-text-align-left {
   text-align: left !important;
@@ -32857,6 +32871,8 @@ exports[`src/govuk/overrides/_text-align.scss matches snapshot 1`] = `
   text-align: right !important;
 }"
 `;
+
+exports[`src/govuk/overrides/_typography.mixin.scss matches snapshot 1`] = `""`;
 
 exports[`src/govuk/overrides/_typography.scss matches snapshot 1`] = `
 ".govuk-\\!-font-size-80 {
@@ -32974,6 +32990,8 @@ exports[`src/govuk/overrides/_typography.scss matches snapshot 1`] = `
 }"
 `;
 
+exports[`src/govuk/overrides/_width.mixin.scss matches snapshot 1`] = `""`;
+
 exports[`src/govuk/overrides/_width.scss matches snapshot 1`] = `
 ".govuk-\\!-width-full {
   width: 100% !important;
@@ -33060,6 +33078,8 @@ exports[`src/govuk/tools/_px-to-em.scss matches snapshot 1`] = `""`;
 
 exports[`src/govuk/tools/_px-to-rem.scss matches snapshot 1`] = `""`;
 
+exports[`src/govuk/utilities/_clearfix.mixin.scss matches snapshot 1`] = `""`;
+
 exports[`src/govuk/utilities/_clearfix.scss matches snapshot 1`] = `
 ".govuk-clearfix::after {
   content: "";
@@ -33108,6 +33128,8 @@ exports[`src/govuk/utilities/_index.scss matches snapshot 1`] = `
   user-select: none;
 }"
 `;
+
+exports[`src/govuk/utilities/_visually-hidden.mixin.scss matches snapshot 1`] = `""`;
 
 exports[`src/govuk/utilities/_visually-hidden.scss matches snapshot 1`] = `
 "@charset "UTF-8";
