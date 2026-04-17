@@ -2,28 +2,43 @@ const { compileSassString } = require('@govuk-frontend/helpers/tests')
 const stylelint = require('stylelint')
 
 describe('The overrides layer', () => {
-  it('does not reference any undefined custom properties', async () => {
-    // Requires base as this is where the custom properties come from
-    const sass = `
+  describe.each([
+    [
+      'import',
+      `
       @import "base";
-      @import "overrides";
+      @import "utilities";
     `
+    ],
+    ['use', `@use "utilities";`]
+  ])('with `@%s`', (type, sass) => {
+    let css
 
-    const { css } = await compileSassString(sass)
-
-    const linter = await stylelint.lint({
-      config: { rules: { 'no-unknown-custom-properties': true } },
-      code: css
+    beforeAll(async () => {
+      css = (await compileSassString(sass)).css
     })
 
-    // Output stylelint warnings to make debugging easier
-    if (linter.results[0].warnings.length) {
-      console.log(
-        'Warnings were present when testing the overrides layer for unknown custom properties:'
-      )
-      console.log(linter.results[0].warnings)
-    }
+    it('outputs the custom properties only once', () => {
+      const occurrences = css.matchAll(/--govuk-breakpoint-mobile/g)
 
-    return expect(linter.results[0].warnings).toHaveLength(0)
+      expect(Array.from(occurrences)).toHaveLength(1)
+    })
+
+    it('does not reference any undefined custom properties', async () => {
+      const linter = await stylelint.lint({
+        config: { rules: { 'no-unknown-custom-properties': true } },
+        code: css
+      })
+
+      // Output stylelint warnings to make debugging easier
+      if (linter.results[0].warnings.length) {
+        console.log(
+          'Warnings were present when testing the utilities layer for unknown custom properties:'
+        )
+        console.log(linter.results[0].warnings)
+      }
+
+      return expect(linter.results[0].warnings).toHaveLength(0)
+    })
   })
 })
