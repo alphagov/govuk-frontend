@@ -20,6 +20,25 @@ You can now omit the `dist/govuk` part of the path when including GOV.UK Fronten
 
 We made this change in [pull request #6861: Resolve `pkg:` URLs from `dist/govuk` and update the review app](https://github.com/alphagov/govuk-frontend/pull/6861).
 
+#### Pass custom classes and attributes to the enhanced File upload component's drop zone
+
+We've introduced two new parameters to the File upload component's Nunjucks macro: `dropZoneClasses` and `dropZoneAttributes`.
+
+These allow you to define custom classes and HTML attributes for the drop zone element used by the enhanced version of the File upload.
+
+```njk
+{{ govukFileUpload({
+  javascript: true,
+  dropZoneClasses: "my-custom-class",
+  dropZoneAttributes: {
+    "data-attribute": "value"
+  }
+}) }}
+```
+
+We made this change in [pull request #6933: Code improvements to File upload component
+](https://github.com/alphagov/govuk-frontend/pull/6933).
+
 ### Fixes
 
 We've made fixes to GOV.UK Frontend in the following pull requests:
