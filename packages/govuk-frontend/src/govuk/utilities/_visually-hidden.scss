@@ -1,12 +1,4 @@
-@use "../tools/exports" as *;
-@use "../helpers/visually-hidden" as *;
+@use "visually-hidden.mixin" as visually-hidden;
+@use "../custom-properties";
 
-@include govuk-exports("govuk/utilities/visually-hidden") {
-  .govuk-visually-hidden {
-    @include govuk-visually-hidden;
-  }
-
-  .govuk-visually-hidden-focusable {
-    @include govuk-visually-hidden-focusable;
-  }
-}
+@include visually-hidden.styles;

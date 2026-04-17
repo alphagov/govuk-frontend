@@ -1,2 +1,3 @@
-@import "clearfix";
-@import "visually-hidden";
+@use "../tools/exports";
+@use "clearfix";
+@use "visually-hidden";
