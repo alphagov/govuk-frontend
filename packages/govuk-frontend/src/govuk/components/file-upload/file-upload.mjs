@@ -103,8 +103,11 @@ export class FileUpload extends ConfigurableComponent {
     // Hide the native input
     this.$input.setAttribute('hidden', 'hidden')
 
-    // Create the drop zone element
-    const $dropzone = document.createElement('div')
+    // Create the drop zone element, or use the existing one if one exists
+    // (for backwards compatibility). Backwards compat can be removed in 7.0.
+    const $dropzone =
+      this.$root.querySelector('.govuk-drop-zone') ??
+      document.createElement('div')
     $dropzone.classList.add('govuk-drop-zone')
 
     // Create the file selection button
@@ -171,8 +174,11 @@ export class FileUpload extends ConfigurableComponent {
 
     $dropzone.appendChild($button)
 
-    // Assemble these all together
-    this.$root.insertAdjacentElement('beforeend', $dropzone)
+    // Insert the dropzone into the DOM (unless it's already there)
+    // Check for existing drop zone can be removed in 7.0.
+    if (!this.$root.querySelector('.govuk-drop-zone')) {
+      this.$root.insertAdjacentElement('beforeend', $dropzone)
+    }
 
     // Make all these new variables available to the module
     this.$dropzone = $dropzone
