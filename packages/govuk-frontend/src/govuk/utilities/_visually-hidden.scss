@@ -1,4 +1,3 @@
 @use "visually-hidden.mixin" as visually-hidden;
-@use "../custom-properties";
 
 @include visually-hidden.styles;

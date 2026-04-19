@@ -6,7 +6,6 @@ describe('The utilities layer', () => {
     [
       'import',
       `
-      @import "base";
       @import "utilities";
     `
     ],
@@ -18,10 +17,10 @@ describe('The utilities layer', () => {
       css = (await compileSassString(sass)).css
     })
 
-    it('outputs the custom properties only once', () => {
+    it('does not output custom properties', () => {
       const occurrences = css.matchAll(/--govuk-breakpoint-mobile/g)
 
-      expect(Array.from(occurrences)).toHaveLength(1)
+      expect(Array.from(occurrences)).toHaveLength(0)
     })
 
     it('does not reference any undefined custom properties', async () => {

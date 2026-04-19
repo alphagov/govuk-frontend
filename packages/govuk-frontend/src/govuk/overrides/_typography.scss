@@ -1,4 +1,3 @@
 @use "typography.mixin" as typography;
-@use "../custom-properties";
 
 @include typography.styles;
