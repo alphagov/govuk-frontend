@@ -1,5 +1,16 @@
-@use "links";
-@use "lists";
-@use "typography";
-@use "section-break";
-@use "global-styles";
+@use "../custom-properties";
+@use "links.mixin" as links;
+@use "lists.mixin" as lists;
+@use "typography.mixin" as typography;
+@use "section-break.mixin" as section-break;
+@use "global-styles.mixin" as global-styles;
+
+// `@extend` rules only work within the same file or "upstream" files (files
+// loaded via `@use` in the same file as the `@extend`). By including all the
+// mixins here, we ensure that the `@extend` rules can "see" all the core
+// layer's styles, which are `@use`'d just above.
+@include links.styles;
+@include lists.styles;
+@include typography.styles;
+@include section-break.styles;
+@include global-styles.styles;
