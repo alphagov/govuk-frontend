@@ -2,7 +2,6 @@
 @use "../tools/exports" as *;
 
 @import "../base";
-@import "../custom-properties";
 
 @include govuk-exports("govuk/objects/button-group") {
   @include button-group.styles;
