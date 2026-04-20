@@ -1,0 +1,7 @@
+@use "typography.mixin" as mixin;
+
+@import "../tools/exports";
+
+@include govuk-exports("govuk/overrides/typography") {
+  @include mixin.styles;
+}
