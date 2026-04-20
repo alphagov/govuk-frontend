@@ -54,9 +54,9 @@ notes: |
 
 {% block footerStart %}
   <div class="govuk-width-container">
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds">
-        <div class="govuk-feedback">
+    <div class="govuk-feedback">
+     <div class="govuk-grid-row">
+       <div class="govuk-grid-column-two-thirds">
           <h2 class="govuk-heading-m">Help us improve this service</h2>
           <p class="govuk-body">Tell us about your experience using this service. You’ll help us make improvements by <a href="#" class="govuk-link">giving us your feedback</a>.</p>
         </div>
@@ -67,8 +67,21 @@ notes: |
   <style>
     .govuk-feedback {
       border-top: 1px solid var(--govuk-brand-colour);
-      padding: 20px 15px;
+      padding: 20px 15px 25px; 
+      margin: 0 -15px; 
       background-color: var(--govuk-surface-background-colour);
+    } 
+    .govuk-feedback .govuk-body { 
+      margin-bottom: 0;
+    }
+    @media (min-width:40.0625rem) {
+      .govuk-feedback{ 
+        margin-left: 0; 
+        margin-right: 0;
+        padding-left: 20px;
+        padding-right: 20px;
+      }
     }
   </style>
 {% endblock %}
+
