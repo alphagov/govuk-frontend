@@ -1,26 +1,3 @@
-@use "../tools/exports" as *;
+@use "display.mixin" as display;
 
-// stylelint-disable declaration-no-important
-@include govuk-exports("govuk/overrides/display") {
-  .govuk-\!-display-inline {
-    display: inline !important;
-  }
-
-  .govuk-\!-display-inline-block {
-    display: inline-block !important;
-  }
-
-  .govuk-\!-display-block {
-    display: block !important;
-  }
-
-  .govuk-\!-display-none {
-    display: none !important;
-  }
-
-  @media print {
-    .govuk-\!-display-none-print {
-      display: none !important;
-    }
-  }
-}
+@include display.styles;
