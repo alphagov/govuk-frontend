@@ -19,13 +19,21 @@ export class FileUpload extends ConfigurableComponent {
 
   /**
    * @private
+   * @type {HTMLButtonElement}
    */
   $button
 
   /**
    * @private
+   * @type {HTMLSpanElement}
    */
   $status
+
+  /**
+   * @private
+   * @type {HTMLLabelElement}
+   */
+  $label
 
   /** @private */
   i18n
@@ -89,6 +97,7 @@ export class FileUpload extends ConfigurableComponent {
     if (!$label.id) {
       $label.id = `${this.id}-label`
     }
+    this.$label = $label
 
     // we need to copy the 'id' of the root element
     // to the new button replacement element
@@ -98,6 +107,55 @@ export class FileUpload extends ConfigurableComponent {
     // Hide the native input
     this.$input.setAttribute('hidden', 'hidden')
 
+    // Inject status and button HTML
+    // $status has to come first as it's used within `createButton()`
+    this.$status = this.createStatus()
+    this.$button = this.createButton()
+
+    // Inject button into component
+    this.$root.insertAdjacentElement('afterbegin', this.$button)
+
+    // Bind change event to the underlying input
+    this.$input.addEventListener('change', this.onChange.bind(this))
+
+    // Synchronise the `disabled` state between the button and underlying input
+    this.updateDisabledState()
+    this.observeDisabledState()
+
+    // Handle drop zone visibility
+    // A live region to announce when users enter or leave the drop zone
+    this.$announcements = document.createElement('span')
+    this.$announcements.classList.add('govuk-file-upload-announcements')
+    this.$announcements.classList.add('govuk-visually-hidden')
+    this.$announcements.setAttribute('aria-live', 'assertive')
+    this.$root.insertAdjacentElement('afterend', this.$announcements)
+
+    // Bind all of the events relating to drag and drop functionality
+    this.bindDraggingEvents()
+  }
+
+  /**
+   * Create status element that shows what/how many files are selected
+   *
+   * @private
+   * @returns {HTMLSpanElement} - the status element
+   */
+  createStatus() {
+    const $status = document.createElement('span')
+    $status.className = 'govuk-body govuk-file-upload-button__status'
+    $status.setAttribute('aria-live', 'polite')
+    $status.innerText = this.i18n.t('noFileChosen')
+
+    return $status
+  }
+
+  /**
+   * Assembles the button HTML element.
+   *
+   * @private
+   * @returns {HTMLButtonElement} - the button element
+   */
+  createButton() {
     // Create the file selection button
     const $button = document.createElement('button')
     $button.classList.add('govuk-file-upload-button')
@@ -112,13 +170,8 @@ export class FileUpload extends ConfigurableComponent {
       $button.setAttribute('aria-describedby', ariaDescribedBy)
     }
 
-    // Create status element that shows what/how many files are selected
-    const $status = document.createElement('span')
-    $status.className = 'govuk-body govuk-file-upload-button__status'
-    $status.setAttribute('aria-live', 'polite')
-    $status.innerText = this.i18n.t('noFileChosen')
-
-    $button.appendChild($status)
+    // Inject status element
+    $button.appendChild(this.$status)
 
     const commaSpan = document.createElement('span')
     commaSpan.className = 'govuk-visually-hidden'
@@ -152,7 +205,7 @@ export class FileUpload extends ConfigurableComponent {
     $button.appendChild(containerSpan)
     $button.setAttribute(
       'aria-labelledby',
-      `${$label.id} ${commaSpan.id} ${$button.id}`
+      `${this.$label.id} ${commaSpan.id} ${$button.id}`
     )
     $button.addEventListener('click', this.onClick.bind(this))
     $button.addEventListener('dragover', (event) => {
@@ -160,28 +213,15 @@ export class FileUpload extends ConfigurableComponent {
       event.preventDefault()
     })
 
-    // Assemble these all together
-    this.$root.insertAdjacentElement('afterbegin', $button)
+    return $button
+  }
 
-    // Make all these new variables available to the module
-    this.$button = $button
-    this.$status = $status
-
-    // Bind change event to the underlying input
-    this.$input.addEventListener('change', this.onChange.bind(this))
-
-    // Synchronise the `disabled` state between the button and underlying input
-    this.updateDisabledState()
-    this.observeDisabledState()
-
-    // Handle drop zone visibility
-    // A live region to announce when users enter or leave the drop zone
-    this.$announcements = document.createElement('span')
-    this.$announcements.classList.add('govuk-file-upload-announcements')
-    this.$announcements.classList.add('govuk-visually-hidden')
-    this.$announcements.setAttribute('aria-live', 'assertive')
-    this.$root.insertAdjacentElement('afterend', this.$announcements)
-
+  /**
+   * Bind dragging events.
+   *
+   * @private
+   */
+  bindDraggingEvents() {
     // if there is no CSS and input is hidden
     // button will need to handle drop event
     this.$button.addEventListener('drop', this.onDrop.bind(this))
@@ -193,7 +233,7 @@ export class FileUpload extends ConfigurableComponent {
     //   (`relatedTarget` being a descendant of the wrapper)
     // - check if the user is still over the viewport
     //   (`relatedTarget` being null if outside)
-
+    //
     // Thanks to `dragenter` bubbling, we can listen on the `document` with a
     // single function and update the visibility based on whether we entered a
     // node inside or outside the wrapper.
@@ -385,7 +425,7 @@ export class FileUpload extends ConfigurableComponent {
    * Looks up the `<label>` element associated to the field
    *
    * @private
-   * @returns {HTMLElement} The `<label>` element associated to the field
+   * @returns {HTMLLabelElement} The `<label>` element associated to the field
    * @throws {ElementError} If the `<label>` cannot be found
    */
   findLabel() {
