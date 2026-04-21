@@ -49,22 +49,20 @@ notes: |
 {% endblock %}
 
 {% block footerStart %}
-  <div class="govuk-width-container">
-    <div class="test-feedback">
-     <div class="govuk-grid-row">
-       <div class="govuk-grid-column-two-thirds">
-          <h2 class="govuk-heading-m">Help us improve this service</h2>
-          <p class="govuk-body">Tell us about your experience using this service. You’ll help us make improvements by <a href="#" class="govuk-link">giving us your feedback</a>.</p>
-        </div>
+  <div class="test-feedback govuk-width-container">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h2 class="govuk-heading-m">Help us improve this service</h2>
+        <p class="govuk-body">Tell us about your experience using this service. You’ll help us make improvements by <a href="#" class="govuk-link">giving us your feedback</a>.</p>
       </div>
     </div>
   </div>
 
   <style>
     .test-feedback {
+      box-sizing: border-box;
       border-top: 1px solid var(--govuk-brand-colour, #1d70b8);
-      padding: 20px 15px 25px; 
-      margin: 0 -15px; 
+      padding: 20px 15px 25px;
       background-color: var(--govuk-surface-background-colour, #f4f8fb);
     } 
 
@@ -73,11 +71,16 @@ notes: |
     }
 
     @media (min-width: 40.0625rem) {
+      .test-feedback {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+    }
+
+    @media (max-width: calc(40.0625rem  - 1px)) {
       .test-feedback { 
         margin-left: 0; 
         margin-right: 0;
-        padding-left: 20px;
-        padding-right: 20px;
       }
     }
   </style>
