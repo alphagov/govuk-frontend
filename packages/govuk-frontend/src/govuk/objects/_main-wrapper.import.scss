@@ -1,8 +1,6 @@
 @use "main-wrapper.mixin" as main-wrapper;
-@use "../tools/exports" as *;
 
 @import "../base";
-@import "../custom-properties";
 
 @include govuk-exports("govuk/objects/main-wrapper") {
   @include main-wrapper.styles;

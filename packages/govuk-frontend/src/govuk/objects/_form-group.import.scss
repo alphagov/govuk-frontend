@@ -1,8 +1,6 @@
 @use "form-group.mixin" as form-group;
-@use "../tools/exports" as *;
 
 @import "../base";
-@import "../custom-properties";
 
 @include govuk-exports("govuk/objects/form-group") {
   @include form-group.styles;

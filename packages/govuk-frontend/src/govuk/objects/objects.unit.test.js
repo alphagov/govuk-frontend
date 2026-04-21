@@ -1,15 +1,17 @@
 const { join } = require('path')
 
 const { paths } = require('@govuk-frontend/config')
-const { compileSassFile } = require('@govuk-frontend/helpers/tests')
+const {
+  compileSassFile,
+  getSassPathsFromLayer
+} = require('@govuk-frontend/helpers/tests')
 const { compileSassString } = require('@govuk-frontend/helpers/tests')
-const { getListing } = require('@govuk-frontend/lib/files')
 const sassdoc = require('sassdoc')
 const stylelint = require('stylelint')
 
-describe('The objects layer', () => {
-  let sassFiles
+const partials = getSassPathsFromLayer('objects')
 
+describe('The objects layer', () => {
   describe.each([
     [
       'import',
@@ -33,14 +35,6 @@ describe('The objects layer', () => {
     })
 
     it('does not reference any undefined custom properties', async () => {
-      // Requires base as this is where the custom properties come from
-      const sass = `
-        @import "base";
-        @import "objects";
-      `
-
-      const { css } = await compileSassString(sass)
-
       const linter = await stylelint.lint({
         config: { rules: { 'no-unknown-custom-properties': true } },
         code: css
@@ -58,24 +52,15 @@ describe('The objects layer', () => {
     })
   })
 
-  beforeAll(async () => {
-    sassFiles = await getListing('**/src/govuk/objects/**/*.scss', {
-      cwd: paths.package,
-      ignore: ['**/_all.scss', '**/_index.scss']
-    })
-  })
-
-  it('renders CSS for all objects', () => {
-    const sassTasks = sassFiles.map((sassFilePath) => {
-      const file = join(paths.package, sassFilePath)
+  describe.each(partials)('$name', ({ partialPath, name }) => {
+    it('renders without errors', () => {
+      const file = join(paths.package, partialPath)
 
       return expect(compileSassFile(file)).resolves.toMatchObject({
         css: expect.any(String),
         loadedUrls: expect.arrayContaining([expect.any(URL)])
       })
     })
-
-    return Promise.all(sassTasks)
   })
 
   describe('Sass documentation', () => {
