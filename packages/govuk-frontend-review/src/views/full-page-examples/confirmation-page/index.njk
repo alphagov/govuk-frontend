@@ -12,23 +12,19 @@ notes: |
 {# {% set mainClasses = "govuk-main-wrapper--l" %} #}
 {# remember to set the title properly #}
 {% from "govuk/components/panel/macro.njk" import govukPanel %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
 
 {% set pageTitle = example.title %}
 {% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
 
 {% block headerEnd %}
-  <div class="govuk-phase-banner govuk-width-container">
-    <p class="govuk-phase-banner__content">
-      <strong class="govuk-tag govuk-phase-banner__content__tag">
-        Alpha
-      </strong>
-       <span class="govuk-phase-banner__text">
-      This is a new service. 
-    </span>
-    </p>
-  </div>
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Alpha"
+    },
+    html: 'This is a new service.'
+  }) }}
 {% endblock %}
-
 
 {% block content %}
   <div class="govuk-grid-row">
