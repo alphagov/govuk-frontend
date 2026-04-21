@@ -146,6 +146,28 @@ describe('Date input', () => {
       const $lastItems = $('.govuk-date-input__item:last-child input')
       expect($lastItems.val()).toBe('2018')
     })
+
+    it('renders items with pre-defined field, item value and values', () => {
+      const $ = render(
+        'date-input',
+        examples['with pre-defined field, item value and values']
+      )
+
+      // Item value takes precedence over both pre-defined field and values option
+      const $lastItems = $('.govuk-date-input__item:last-child input')
+      expect($lastItems.val()).toBe('2018')
+    })
+
+    it('renders items with pre-defined field overriding values', () => {
+      const $ = render(
+        'date-input',
+        examples['with pre-defined field overriding values']
+      )
+
+      // Pre-defined field takes precedence over values option
+      const $lastItems = $('.govuk-date-input__item:last-child input')
+      expect($lastItems.val()).toBe('2023')
+    })
   })
 
   describe('custom options', () => {

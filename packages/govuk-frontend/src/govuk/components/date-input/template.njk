@@ -13,16 +13,19 @@
 
 {%- set dateInputDay = params.day | default({
   name: "day",
+  value: params.values.day,
   classes: "govuk-input--width-2"
 }) -%}
 
 {%- set dateInputMonth = params.month | default({
   name: "month",
+  value: params.values.month,
   classes: "govuk-input--width-2"
 }) -%}
 
 {%- set dateInputYear = params.year | default({
   name: "year",
+  value: params.values.year,
   classes: "govuk-input--width-4"
 }) -%}
 
@@ -77,7 +80,7 @@
     id: item.id if item.id else (params.id + "-" + itemName),
     classes: "govuk-date-input__input " + (itemClasses if itemClasses),
     name: namePrefix + itemName,
-    value: itemValue,
+    value: itemValue | default(params.values[namePrefix + itemName]),
     type: "text",
     inputmode: item.inputmode if item.inputmode else "numeric",
     autocomplete: item.autocomplete,
