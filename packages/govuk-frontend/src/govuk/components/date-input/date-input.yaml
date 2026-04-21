@@ -423,10 +423,10 @@ examples:
         - name: day
         - name: month
         - name: year
-  - name: with values
+  - name: with item value
     hidden: true
     options:
-      id: with-values
+      id: with-item-value
       items:
         - id: day
           name: day
@@ -435,6 +435,39 @@ examples:
         - id: year
           name: year
           value: 2018
+  - name: with pre-defined field
+    hidden: true
+    options:
+      id: with-field-value
+      year:
+        value: 2023
+  - name: with pre-defined field and items
+    hidden: true
+    options:
+      id: with-field-value-items
+      items:
+        - id: day
+          name: day
+        - id: month
+          name: month
+        - id: year
+          name: year
+      year:
+        value: 2023
+  - name: with pre-defined field and item value
+    hidden: true
+    options:
+      id: with-field-value-item-value
+      items:
+        - id: day
+          name: day
+        - id: month
+          name: month
+        - id: year
+          name: year
+          value: 2018
+      year:
+        value: 2023
   - name: with hint and describedBy
     hidden: true
     options:

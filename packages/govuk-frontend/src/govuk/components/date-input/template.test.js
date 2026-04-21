@@ -112,8 +112,37 @@ describe('Date input', () => {
     })
 
     it('renders items with value', () => {
-      const $ = render('date-input', examples['with values'])
+      const $ = render('date-input', examples['with item value'])
 
+      const $lastItems = $('.govuk-date-input__item:last-child input')
+      expect($lastItems.val()).toBe('2018')
+    })
+
+    it('renders items with pre-defined field', () => {
+      const $ = render('date-input', examples['with pre-defined field'])
+
+      const $lastItems = $('.govuk-date-input__item:last-child input')
+      expect($lastItems.val()).toBe('2023')
+    })
+
+    it('renders items with pre-defined field and items', () => {
+      const $ = render(
+        'date-input',
+        examples['with pre-defined field and items']
+      )
+
+      // Item lacks value so pre-defined field is used
+      const $lastItems = $('.govuk-date-input__item:last-child input')
+      expect($lastItems.val()).toBe('2023')
+    })
+
+    it('renders items with pre-defined field and item value', () => {
+      const $ = render(
+        'date-input',
+        examples['with pre-defined field and item value']
+      )
+
+      // Item value takes precedence over pre-defined field
       const $lastItems = $('.govuk-date-input__item:last-child input')
       expect($lastItems.val()).toBe('2018')
     })
