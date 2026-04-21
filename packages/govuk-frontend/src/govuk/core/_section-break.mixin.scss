@@ -1,0 +1,52 @@
+@use "../base";
+
+@mixin styles {
+  %govuk-section-break {
+    margin: 0;
+    border: 0;
+  }
+
+  .govuk-section-break {
+    @extend %govuk-section-break;
+  }
+
+  // Sizes
+
+  %govuk-section-break--xl {
+    @include base.govuk-responsive-margin(8, "top");
+    @include base.govuk-responsive-margin(8, "bottom");
+  }
+
+  .govuk-section-break--xl {
+    @extend %govuk-section-break--xl;
+  }
+
+  %govuk-section-break--l {
+    @include base.govuk-responsive-margin(6, "top");
+    @include base.govuk-responsive-margin(6, "bottom");
+  }
+
+  .govuk-section-break--l {
+    @extend %govuk-section-break--l;
+  }
+
+  %govuk-section-break--m {
+    @include base.govuk-responsive-margin(4, "top");
+    @include base.govuk-responsive-margin(4, "bottom");
+  }
+
+  .govuk-section-break--m {
+    @extend %govuk-section-break--m;
+  }
+
+  // Visible variant
+
+  %govuk-section-break--visible {
+    border-bottom: 1px solid;
+    border-bottom-color: base.govuk-functional-colour(border);
+  }
+
+  .govuk-section-break--visible {
+    @extend %govuk-section-break--visible;
+  }
+}
