@@ -20,6 +20,46 @@ You can now omit the `dist/govuk` part of the path when including GOV.UK Fronten
 
 We made this change in [pull request #6861: Resolve `pkg:` URLs from `dist/govuk` and update the review app](https://github.com/alphagov/govuk-frontend/pull/6861).
 
+#### Add date input `day`, `month` and `year` options
+
+We've updated the date input component to add individual `day`, `month` and `year` Nunjucks options.
+
+These new options can be used to partially override the defaults. For example, setting `error: true` on the year item no longer requires all other item defaults to be set:
+
+```patch
+  {{ govukDateInput({
+    fieldset: {
+      legend: {
+        text: "What is your date of birth?"
+      }
+    },
+-   items: [
+-     {
+-       name: "dob-day",
+-       label: "Day",
+-       classes: "govuk-input--width-2"
+-     },
+-     {
+-       name: "dob-month",
+-       label: "Month",
+-       classes: "govuk-input--width-2"
+-     },
+-     {
+-       name: "dob-year",
+-       label: "Year",
+-       classes: "govuk-input--width-4",
+-       error: true
+-     }
+-   ]
++   namePrefix: "dob",
++   year: {
++     error: true
++   }
+  }) }}
+```
+
+We made this change in [pull request #6971: Add date input `day`, `month` and `year` options](https://github.com/alphagov/govuk-frontend/pull/6971).
+
 ### Fixes
 
 We've made fixes to GOV.UK Frontend in the following pull requests:
