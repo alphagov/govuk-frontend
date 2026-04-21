@@ -40,5 +40,29 @@ describe('The core layer', () => {
 
       return expect(linter.results[0].warnings).toHaveLength(0)
     })
+
+    describe('placeholder selectors', () => {
+      it('generates selector combining placeholders from list and typography', () => {
+        expect(css).toContain('.govuk-list + .govuk-heading-s')
+      })
+
+      it('generates selectors when placeholders for list and typography are extended', async () => {
+        const { css } = await compileSassString(`
+          ${sass}
+
+          ul {
+            @extend %govuk-list;
+          }
+
+          h2 {
+            @extend %govuk-heading-s;
+          }
+        `)
+
+        expect(css).toContain('ul + .govuk-heading-s')
+        expect(css).toContain('.govuk-list + h2')
+        expect(css).toContain('ul + h2')
+      })
+    })
   })
 })
