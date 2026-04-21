@@ -1,0 +1,7 @@
+@use "lists.mixin" as mixin;
+
+@import "../base";
+
+@include govuk-exports("govuk/core/lists") {
+  @include mixin.styles;
+}
