@@ -11,22 +11,28 @@
 {#- fieldset is false by default -#}
 {% set hasFieldset = true if params.fieldset else false %}
 
+{%- set dateInputDay = params.day | default({
+  name: "day",
+  classes: "govuk-input--width-2"
+}) -%}
+
+{%- set dateInputMonth = params.month | default({
+  name: "month",
+  classes: "govuk-input--width-2"
+}) -%}
+
+{%- set dateInputYear = params.year | default({
+  name: "year",
+  classes: "govuk-input--width-4"
+}) -%}
+
 {%- if params.items | length %}
   {% set dateInputItems = params.items %}
 {% else %}
   {% set dateInputItems = [
-    {
-      name: "day",
-      classes: "govuk-input--width-2"
-    },
-    {
-      name: "month",
-      classes: "govuk-input--width-2"
-    },
-    {
-      name: "year",
-      classes: "govuk-input--width-4"
-    }
+    dateInputDay,
+    dateInputMonth,
+    dateInputYear
   ] %}
 {% endif %}
 
