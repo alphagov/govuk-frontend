@@ -36,6 +36,26 @@
   ] %}
 {% endif %}
 
+{%- macro _dateInputItem(params, item) %}
+<div class="govuk-date-input__item">
+  {{ govukInput({
+    label: {
+      text: item.label if item.label else item.name | capitalize,
+      classes: "govuk-date-input__label"
+    },
+    id: item.id if item.id else (params.id + "-" + item.name),
+    classes: "govuk-date-input__input " + (item.classes if item.classes),
+    name: (params.namePrefix + "-" + item.name) if params.namePrefix else item.name,
+    value: item.value,
+    type: "text",
+    inputmode: item.inputmode if item.inputmode else "numeric",
+    autocomplete: item.autocomplete,
+    pattern: item.pattern,
+    attributes: item.attributes
+  }) | trim | indent(6) }}
+</div>
+{%- endmacro -%}
+
 {#- Capture the HTML so we can optionally nest it in a fieldset -#}
 {% set innerHtml %}
 {% if params.hint %}
@@ -68,23 +88,9 @@
     {{ params.formGroup.beforeInputs.html | safe | trim | indent(4) if params.formGroup.beforeInputs.html else params.formGroup.beforeInputs.text }}
     {% endif %}
     {% for item in dateInputItems %}
-    <div class="govuk-date-input__item">
-      {{ govukInput({
-        label: {
-          text: item.label if item.label else item.name | capitalize,
-          classes: "govuk-date-input__label"
-        },
-        id: item.id if item.id else (params.id + "-" + item.name),
-        classes: "govuk-date-input__input " + (item.classes if item.classes),
-        name: (params.namePrefix + "-" + item.name) if params.namePrefix else item.name,
-        value: item.value,
-        type: "text",
-        inputmode: item.inputmode if item.inputmode else "numeric",
-        autocomplete: item.autocomplete,
-        pattern: item.pattern,
-        attributes: item.attributes
-      }) | trim | indent(6) }}
-    </div>
+      {% if item %}
+        {{- _dateInputItem(params, item) | trim | indent(4, true) }}
+      {% endif %}
     {% endfor %}
     {% if params.formGroup.afterInputs %}
     {{ params.formGroup.afterInputs.html | safe | trim | indent(4) if params.formGroup.afterInputs.html else params.formGroup.afterInputs.text }}
