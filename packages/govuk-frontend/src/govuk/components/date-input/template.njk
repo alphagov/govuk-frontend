@@ -37,16 +37,32 @@
 {% endif %}
 
 {%- macro _dateInputItem(params, item) %}
+{% set itemName = item.name %}
+{% set itemValue = item.value %}
+{% set itemClasses = item.classes | default("govuk-input--width-2") %}
+
+{%- if item is sameas(dateInputDay) or (item.name and item.name in ["day", dateInputDay.name]) %}
+  {% set itemName = item.name | default("day") %}
+  {% set itemValue = item.value | default(dateInputDay.value) %}
+{% elif item is sameas(dateInputMonth) or (item.name and item.name in ["month", dateInputMonth.name]) %}
+  {% set itemName = item.name | default("month") %}
+  {% set itemValue = item.value | default(dateInputMonth.value) %}
+{% elif item is sameas(dateInputYear) or (item.name and item.name in ["year", dateInputYear.name]) %}
+  {% set itemName = item.name | default("year") %}
+  {% set itemValue = item.value | default(dateInputYear.value) %}
+  {% set itemClasses = item.classes | default("govuk-input--width-4") %}
+{% endif -%}
+
 <div class="govuk-date-input__item">
   {{ govukInput({
     label: {
-      text: item.label if item.label else item.name | capitalize,
+      text: item.label if item.label else itemName | capitalize,
       classes: "govuk-date-input__label"
     },
-    id: item.id if item.id else (params.id + "-" + item.name),
-    classes: "govuk-date-input__input " + (item.classes if item.classes),
-    name: (params.namePrefix + "-" + item.name) if params.namePrefix else item.name,
-    value: item.value,
+    id: item.id if item.id else (params.id + "-" + itemName),
+    classes: "govuk-date-input__input " + (itemClasses if itemClasses),
+    name: (params.namePrefix + "-" + itemName) if params.namePrefix else itemName,
+    value: itemValue,
     type: "text",
     inputmode: item.inputmode if item.inputmode else "numeric",
     autocomplete: item.autocomplete,
