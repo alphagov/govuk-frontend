@@ -1,0 +1,7 @@
+@use "spacing.mixin" as mixin;
+
+@import "../tools/exports";
+
+@include govuk-exports("govuk/overrides/spacing") {
+  @include mixin.styles;
+}
