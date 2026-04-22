@@ -50,7 +50,12 @@ async function compileSassString(source, options = {}) {
 function getSassPathsFromLayer(layer) {
   return globSync(`**/src/govuk/${layer}/**/*.scss`, {
     cwd: paths.package,
-    exclude: ['**/_index.scss', '**/*.import.scss', '**/*--internal.scss']
+    exclude: [
+      '**/_index.scss',
+      '**/*.import.scss',
+      '**/*.mixin.scss',
+      '**/*--internal.scss'
+    ]
   }).map((partialPath) => ({
     partialPath,
     name: basename(partialPath)
