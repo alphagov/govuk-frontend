@@ -6,7 +6,7 @@ params:
   - name: id
     type: string
     required: false
-    description: The ID of the input. Defaults to the value of `name`.
+    description: The ID of the input. Defaults to the value of `name`. If `javascript` is provided, this ID will be on the button of the improved version, and the hidden input's ID will get the suffix "-input".
   - name: disabled
     type: boolean
     required: false
