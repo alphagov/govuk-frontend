@@ -1,0 +1,9 @@
+@use "global-styles.mixin" as mixin;
+
+@import "../base";
+@import "links";
+@import "typography";
+
+@include govuk-exports("govuk/core/global-styles") {
+  @include mixin.styles;
+}
