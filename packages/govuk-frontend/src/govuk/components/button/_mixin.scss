@@ -4,37 +4,9 @@
 
 @use "../../base";
 
-/// Button component background colour
-///
-/// @type Colour
-/// @access public
-
-$govuk-button-background-colour: base.govuk-colour("green") !default;
-
-/// Button component text colour
-///
-/// @type Colour
-/// @access public
-
-$govuk-button-text-colour: base.govuk-colour("white") !default;
-
-/// Inverted button component background colour
-///
-/// @type Colour
-/// @access public
-
-$govuk-inverse-button-background-colour: base.govuk-colour("white") !default;
-
-/// Inverted button component text colour
-///
-/// @type Colour
-/// @access public
-
-$govuk-inverse-button-text-colour: base.govuk-functional-colour(brand) !default;
-
-@mixin styles {
-  $govuk-button-colour: $govuk-button-background-colour;
-  $govuk-button-text-colour: $govuk-button-text-colour;
+@mixin styles($background-colour, $text-colour, $inverse-background-colour, $inverse-text-colour) {
+  $govuk-button-colour: $background-colour;
+  $text-colour: $text-colour;
   $govuk-button-hover-colour: base.govuk-colour("green", $variant: "shade-25");
   $govuk-button-shadow-colour: base.govuk-colour("green", $variant: "shade-50");
 
@@ -51,8 +23,8 @@ $govuk-inverse-button-text-colour: base.govuk-functional-colour(brand) !default;
   $govuk-warning-button-shadow-colour: base.govuk-colour("red", $variant: "shade-50");
 
   // Inverse button variables
-  $govuk-inverse-button-colour: $govuk-inverse-button-background-colour;
-  $govuk-inverse-button-text-colour: $govuk-inverse-button-text-colour;
+  $govuk-inverse-button-colour: $inverse-background-colour;
+  $inverse-text-colour: $inverse-text-colour;
   $govuk-inverse-button-hover-colour: base.govuk-colour("blue", $variant: "tint-95");
   $govuk-inverse-button-shadow-colour: base.govuk-colour("blue", $variant: "shade-50");
 
@@ -76,7 +48,7 @@ $govuk-inverse-button-text-colour: base.govuk-functional-colour(brand) !default;
       (base.govuk-spacing(2) - base.$govuk-border-width-form-element - ($button-shadow-size * 0.5)); // s1
     border: base.$govuk-border-width-form-element solid transparent;
     border-radius: 0;
-    color: $govuk-button-text-colour;
+    color: $text-colour;
     background-color: $govuk-button-colour;
     box-shadow: 0 $button-shadow-size 0 $govuk-button-shadow-colour; // s0
     text-align: center;
@@ -93,7 +65,7 @@ $govuk-inverse-button-text-colour: base.govuk-functional-colour(brand) !default;
     &:visited,
     &:active,
     &:hover {
-      color: $govuk-button-text-colour;
+      color: $text-colour;
       text-decoration: none;
     }
 
@@ -221,7 +193,7 @@ $govuk-inverse-button-text-colour: base.govuk-functional-colour(brand) !default;
     &:visited,
     &:active,
     &:hover {
-      color: $govuk-inverse-button-text-colour;
+      color: $inverse-text-colour;
     }
 
     &:hover {

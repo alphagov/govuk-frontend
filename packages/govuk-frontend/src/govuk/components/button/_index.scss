@@ -1,4 +1,10 @@
+@use "../../base";
 @use "../../custom-properties";
 @use "mixin";
 
-@include mixin.styles;
+@include mixin.styles(
+  $background-colour: base.$govuk-button-background-colour,
+  $text-colour: base.$govuk-button-text-colour,
+  $inverse-background-colour: base.$govuk-inverse-button-background-colour,
+  $inverse-text-colour: base.$govuk-inverse-button-text-colour
+);
