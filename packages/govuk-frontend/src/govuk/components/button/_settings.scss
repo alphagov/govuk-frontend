@@ -1,0 +1,33 @@
+////
+/// @group components/button
+////
+
+@use "../../helpers";
+
+/// Button component background colour
+///
+/// @type Colour
+/// @access public
+
+$govuk-button-background-colour: helpers.govuk-colour("green") !default;
+
+/// Button component text colour
+///
+/// @type Colour
+/// @access public
+
+$govuk-button-text-colour: helpers.govuk-colour("white") !default;
+
+/// Inverted button component background colour
+///
+/// @type Colour
+/// @access public
+
+$govuk-inverse-button-background-colour: helpers.govuk-colour("white") !default;
+
+/// Inverted button component text colour
+///
+/// @type Colour
+/// @access public
+
+$govuk-inverse-button-text-colour: helpers.govuk-functional-colour(brand) !default;
