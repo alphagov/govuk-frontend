@@ -1,0 +1,8 @@
+@use "mixin";
+
+@import "../../base";
+@import "../button";
+
+@include govuk-exports("govuk/component/cookie-banner") {
+  @include mixin.styles;
+}

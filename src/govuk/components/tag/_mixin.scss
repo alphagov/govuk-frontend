@@ -1,0 +1,133 @@
+////
+/// @group components/tag
+////
+@use "sass:map";
+
+@use "../../base";
+
+/// Get tag text colour
+/// Almost all tags should use the 50% shade of their colour for their text
+///
+/// @param {String} $colour - name of colour from the colour palette
+/// @return {Colour} Representation of the named colour for use in tags
+/// @access private
+@function _govuk-tag-text-colour($colour) {
+  @return base.govuk-colour($colour, $variant: "shade-50");
+}
+
+/// Get tag background colour
+/// Almost all tags should use the 80% tint of their colour for their background
+///
+/// @param {String} $colour - name of colour from the colour palette
+/// @return {Colour} Representation of the named colour for use in tags
+/// @access private
+@function _govuk-tag-background-colour($colour) {
+  @return base.govuk-colour($colour, $variant: "tint-80");
+}
+
+/// Generate colour CSS for tag and tag modifiers
+/// Applies standard rules from the tag colour functions
+///
+/// @param {String} $colour - name of colour from the colour palette
+/// @access private
+@mixin _govuk-tag-colours($colour) {
+  color: _govuk-tag-text-colour($colour);
+  background-color: _govuk-tag-background-colour($colour);
+}
+
+@mixin styles {
+  $govuk-tag-max-width: 0.5 * (map.get(base.$govuk-breakpoints, "mobile") or 320px);
+
+  .govuk-tag {
+    @include base.govuk-font($size: 19);
+    // Default tag colour is blue
+    @include _govuk-tag-colours("blue");
+
+    display: inline-block;
+
+    // set a max-width along with overflow-wrap: break-word below for instances
+    // where a tag has a single long word and could overflow its boundaries.
+    // The max-width is necessary as break-word requires a bounding box to base
+    // where to break off of.
+    max-width: $govuk-tag-max-width;
+
+    // These negative margins make sure that the tag component doesn’t increase
+    // the size of its container. Otherwise, for example, a table row containing
+    // a tag will be taller than one containing plain text.
+    //
+    // The negative margin added to the top and bottom matches the extra padding
+    // added.
+    margin-top: -2px;
+    margin-bottom: -3px;
+
+    padding-top: 2px;
+    padding-right: 8px;
+    padding-bottom: 3px;
+    padding-left: 8px;
+
+    border-radius: 1px;
+    text-decoration: none;
+    overflow-wrap: break-word;
+
+    // When forced colour mode is active, for example to provide high contrast,
+    // the background colour of the tag is the same as the rest of the page. To
+    // ensure that the tag is perceived as separate from any surround text, it
+    // is made bold.
+    //
+    // Transparent outlines are no longer added, as they make the Tag look
+    // indistinguishable from a button – but the tag is not interactive in the
+    // same way.
+    @media screen and (forced-colors: active) {
+      font-weight: bold;
+    }
+  }
+
+  // Tag colour modifiers. Use the _govuk-tag-colours mixin to define consistent
+  // colour rules per modifier
+  .govuk-tag--green {
+    @include _govuk-tag-colours("green");
+  }
+
+  .govuk-tag--purple {
+    @include _govuk-tag-colours("purple");
+  }
+
+  .govuk-tag--red {
+    @include _govuk-tag-colours("red");
+  }
+
+  .govuk-tag--orange {
+    @include _govuk-tag-colours("orange");
+  }
+
+  .govuk-tag--teal {
+    @include _govuk-tag-colours("teal");
+  }
+
+  .govuk-tag--magenta {
+    @include _govuk-tag-colours("magenta");
+  }
+
+  // Yellow uses different colours to ensure it's legible
+  .govuk-tag--yellow {
+    color: base.govuk-colour("orange", $variant: "shade-50");
+    background-color: base.govuk-colour("yellow", $variant: "tint-50");
+  }
+
+  // Grey uses different colours to ensure it's legible
+  .govuk-tag--grey {
+    color: base.govuk-colour("black");
+    background-color: base.govuk-colour("black", $variant: "tint-80");
+  }
+
+  // Turquoise and pink are deprecated over teal and magenta respectively
+  // @deprecated
+  .govuk-tag--turquoise {
+    @include _govuk-tag-colours("teal");
+  }
+
+  // @deprecated
+  .govuk-tag--pink {
+    @include _govuk-tag-colours("magenta");
+  }
+}

@@ -1,0 +1,8 @@
+@use "mixin";
+
+@import "../../base";
+@import "../tag";
+
+@include govuk-exports("govuk/component/task-list") {
+  @include mixin.styles;
+}

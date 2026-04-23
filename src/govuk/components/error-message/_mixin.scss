@@ -1,0 +1,14 @@
+@use "../../base";
+
+@mixin styles {
+  .govuk-error-message {
+    @include base.govuk-font($size: 19, $weight: bold);
+
+    display: block;
+    margin-top: 0; // Reset any default browser margins for paragraphs
+    margin-bottom: base.govuk-spacing(3);
+    clear: both;
+
+    color: base.govuk-functional-colour(error);
+  }
+}
