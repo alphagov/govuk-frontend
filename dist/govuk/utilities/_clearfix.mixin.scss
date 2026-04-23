@@ -1,0 +1,9 @@
+@use "../base";
+@use "../helpers/clearfix" as *;
+
+@mixin styles {
+  .govuk-clearfix {
+    @include govuk-clearfix;
+  }
+}
+

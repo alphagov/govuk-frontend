@@ -1,0 +1,6 @@
+@use "../../settings/warnings--internal";
+
+@include warnings--internal.component-scss-file-warning("hint");
+
+@import "index";
+

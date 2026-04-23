@@ -1,0 +1,7 @@
+@use "../../custom-properties";
+
+@use "mixin";
+@use "../tag";
+
+@include mixin.styles;
+

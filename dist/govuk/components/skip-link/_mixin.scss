@@ -1,0 +1,59 @@
+@use "sass:string";
+
+@use "../../base";
+
+@mixin styles {
+  .govuk-skip-link {
+    @include base.govuk-visually-hidden-focusable;
+    @include base.govuk-link-decoration;
+    @include base.govuk-link-style-text;
+    @include base.govuk-font($size: 16);
+
+    display: block;
+    padding: base.govuk-spacing(2) base.govuk-spacing(3);
+
+    // Respect 'display cutout' safe area (avoids notches and rounded corners)
+    @supports (padding: string.unquote("max(calc(0px))")) {
+      $padding-safe-area-right: calc(#{base.govuk-spacing(3)} + env(safe-area-inset-right));
+      $padding-safe-area-left: calc(#{base.govuk-spacing(3)} + env(safe-area-inset-left));
+
+      // Use max() to pick largest padding, default or with safe area
+      // Escaped due to Sass max() vs. CSS native max()
+      padding-right: string.unquote("max(#{base.govuk-spacing(3)}, #{$padding-safe-area-right})");
+      padding-left: string.unquote("max(#{base.govuk-spacing(3)}, #{$padding-safe-area-left})");
+    }
+
+    &:focus {
+      outline: base.$govuk-focus-width solid;
+      outline-color: base.govuk-functional-colour(focus);
+      outline-offset: 0;
+      background-color: base.govuk-functional-colour(focus);
+
+      @media (forced-colors: active) {
+        outline-offset: (0 - base.$govuk-focus-width);
+      }
+
+      // Undo unwanted changes when global styles are enabled
+      @if base.$govuk-global-styles {
+        @include base.govuk-link-decoration;
+        box-shadow: none;
+      }
+    }
+  }
+
+  .govuk-skip-link-focused-element {
+    &:focus {
+      // Remove the native visible focus indicator when the element is
+      // programmatically focused.
+      //
+      // We set the focus on the linked element (this is usually the <main>
+      // element) when the skip link is activated to improve screen reader
+      // announcements. However, we remove the visible focus indicator from the
+      // linked element because the user cannot interact with it.
+      //
+      // A related discussion: https://github.com/w3c/wcag/issues/1001
+      outline: none;
+    }
+  }
+}
+

@@ -1,0 +1,69 @@
+////
+/// @group settings.internal
+////
+
+@use "sass:list";
+
+@use "warnings" as *;
+
+/// Warnings
+///
+/// Acts as a wrapper for the built in `@warn` sass function
+///
+/// We use this instead of using `@warn` for 3 reasons:
+///
+/// - To check if a warning is being suppressed through `$govuk-suppressed-warnings`,
+/// in which case we don't call `@warn` and printing the warning to the user
+/// - To format the passed warning `$message` with the warning key at the end
+/// - To prevent duplicate warnings by adding the passed `$key` to
+/// `$govuk-suppressed-warnings` after `@warn` is called to ensure it only runs
+/// once per sass compilation (unless $silence-further-warnings is false)
+///
+/// @param {String} $key - The key to be checked against `$govuk-suppressed-warnings`
+/// and then passed to it to prevent multiple of the same warning.
+/// @param {String} $message - The message to use when calling `@warn`
+/// @param {Boolean} $silence-further-warnings - Whether to silence future
+/// warnings that use the same $key
+/// @access private
+
+@mixin warning($key, $message, $silence-further-warnings: true) {
+  @if should-warn($key) {
+    @warn warning-text($key, $message);
+
+    @if $silence-further-warnings {
+      $govuk-suppressed-warnings: list.append($govuk-suppressed-warnings, $key) !global;
+    }
+  }
+}
+
+/// Logs a deprecation warning that the given component's `<COMPONENT_NAME>.scss` file is deprecated
+///
+/// @param {string} $component-name - The name of component, as it appears in the folder gathering its files
+/// @access private
+@mixin component-scss-file-warning($component-name) {
+  $component-path: "<PATH_TO_GOVUK_FRONTEND>/components/#{$component-name}";
+
+  $message: "Importing `#{$component-path}/#{$component-name}` is deprecated." + " Import `#{$component-path}` instead.";
+
+  @include warning("component-scss-files", $message, $silence-further-warnings: false);
+}
+
+/// Check whether a key is present in the suppressed warnings list.
+///
+/// @param {String} $key - The key to be checked against `$govuk-suppressed-warnings`.
+/// @access private
+
+@function should-warn($key) {
+  @return list.index($govuk-suppressed-warnings, $key) == null;
+}
+
+/// Format a warning by appending information on how to suppress it.
+///
+/// @param {String} $key - The key needed to suppress the warning.
+/// @param {String} $message - The warning text.
+/// @access private
+
+@function warning-text($key, $message) {
+  @return $message + " To silence this warning, update $govuk-suppressed-warnings " + 'with key: "#{$key}"';
+}
+

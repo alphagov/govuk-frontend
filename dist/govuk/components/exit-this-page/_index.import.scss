@@ -1,0 +1,9 @@
+@use "mixin";
+
+@import "../../base";
+@import "../button";
+
+@include govuk-exports("govuk/component/exit-this-page") {
+  @include mixin.styles;
+}
+

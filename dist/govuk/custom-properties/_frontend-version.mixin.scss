@@ -1,0 +1,12 @@
+@mixin styles {
+  // This custom property is automatically overwritten during builds and
+  // releases. It doesn't need to be updated manually.
+  //
+  // This custom property is always output by base regardless of if
+  // `$govuk-output-custom-properties` is true or not to help with checking if
+  // multiple stylesheets are outputting the same version
+  :root {
+    --govuk-frontend-version: "6.1.0";
+  }
+}
+

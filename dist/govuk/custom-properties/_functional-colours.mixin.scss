@@ -1,0 +1,20 @@
+@use "../settings/custom-properties" as *;
+@use "../settings/colours-functional" as *;
+@use "../helpers/colour" as *;
+
+@mixin styles {
+  // CSS custom properties for each functional colour
+  :root {
+    @if $govuk-output-custom-properties {
+      @each $name, $value in $govuk-functional-colours {
+        --govuk-#{$name}-colour: #{govuk-resolve-colour($value)};
+      }
+
+      @media print {
+        // Use 'true black' to avoid printers using colour ink to print body text
+        --govuk-text-colour: #{govuk-functional-colour("print-text")};
+      }
+    }
+  }
+}
+

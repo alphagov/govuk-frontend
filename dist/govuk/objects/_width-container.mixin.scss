@@ -1,0 +1,8 @@
+@use "../base";
+
+@mixin styles {
+  .govuk-width-container {
+    @include base.govuk-width-container;
+  }
+}
+

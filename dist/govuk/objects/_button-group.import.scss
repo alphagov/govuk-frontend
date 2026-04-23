@@ -1,0 +1,8 @@
+@use "button-group.mixin" as button-group;
+
+@import "../base";
+
+@include govuk-exports("govuk/objects/button-group") {
+  @include button-group.styles;
+}
+

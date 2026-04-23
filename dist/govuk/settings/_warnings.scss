@@ -1,0 +1,28 @@
+////
+/// @group settings/warnings
+////
+
+/// Suppressed warnings map
+///
+/// This map is used to determine which deprecation warnings to **not** show
+/// to users when compiling sass. This is in place for codebases that do not
+/// have the necessary capacity to upgrade and remove the deprecation,
+/// particularly if the deprecation is significant. For example, the removal of
+/// mixins and functions that were previously available to users of Frontend.
+///
+/// You can add to this map and define which warnings to suppress by appending to
+/// it using the warning key, found in the warning message. For example:
+///
+/// @example scss:
+///   // warning message:
+///   //  $foobar is no longer supported. To silence this warning, update
+///   //  $govuk-suppressed-warnings with key: "foobar"
+///   $govuk-suppressed-warnings: (
+///     foobar
+///   );
+///
+/// @type List
+/// @access public
+
+$govuk-suppressed-warnings: () !default;
+

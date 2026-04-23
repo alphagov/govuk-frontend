@@ -1,0 +1,107 @@
+{% from "./macros/attributes.njk" import govukAttributes -%}
+{% from "./components/skip-link/macro.njk" import govukSkipLink -%}
+{% from "./components/header/macro.njk" import govukHeader -%}
+{% from "./components/service-navigation/macro.njk" import govukServiceNavigation -%}
+{% from "./components/footer/macro.njk" import govukFooter -%}
+
+{# Hardcoded value is $govuk-brand-blue -#}
+{% set themeColor = themeColor | default("#1d70b8", true) -%}
+{% set assetPath = assetPath | default("/assets", true) -%}
+
+<!DOCTYPE html>
+<html lang="{{ htmlLang | default("en", true) }}" class="govuk-template {%- if htmlClasses %} {{ htmlClasses }}{% endif %}">
+  <head>
+    <meta charset="utf-8">
+    <title {%- if pageTitleLang %} lang="{{ pageTitleLang }}"{% endif %}>{% block pageTitle %}GOV.UK - The best place to find government services and information{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="{{ themeColor }}">
+
+    {% block head %}{% endblock %}
+
+    {% block headIcons %}
+      <link rel="icon" sizes="48x48" href="{{ assetPath }}/images/favicon.ico">
+      <link rel="icon" sizes="any" href="{{ assetPath }}/images/favicon.svg" type="image/svg+xml">
+      <link rel="mask-icon" href="{{ assetPath }}/images/govuk-icon-mask.svg" color="{{ themeColor }}">
+      <link rel="apple-touch-icon" href="{{ assetPath }}/images/govuk-icon-180.png">
+      <link rel="manifest" href="{{ assetPath }}/manifest.json">
+    {% endblock %}
+
+    {#- OpenGraph images needs to be absolute, so we need either a URL for the image or for assetUrl to be set #}
+    {% if opengraphImageUrl or assetUrl %}
+    <meta property="og:image" content="{{ opengraphImageUrl | default(assetUrl + "/images/govuk-opengraph-image.png", true) }}">
+    {% endif %}
+  </head>
+  <body class="govuk-template__body {%- if bodyClasses %} {{ bodyClasses }}{% endif %}" {{- govukAttributes(bodyAttributes) }}>
+    <script {%- if cspNonce %} nonce="{{ cspNonce }}"{% endif %}>document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');</script>
+    {% block bodyStart %}{% endblock %}
+
+    {% block govukSkipLink %}
+      {%- block skipLink %}
+        {{ govukSkipLink({
+          href: '#main-content',
+          text: 'Skip to main content'
+        }) }}
+      {% endblock -%}
+    {% endblock %}
+
+    {# Only output <header> if any of its child blocks have content. #}
+    {% macro _govukTemplateHeader() %}
+      {%- if caller() | trim | length > 0 %}
+        <header class="govuk-template__header {%- if headerClasses %} {{ headerClasses }}{% endif %}" {{- govukAttributes(headerAttributes)}}>
+          {{ caller() }}
+        </header>
+      {%- endif %}
+    {% endmacro %}
+
+    {% block header %}
+      {% call _govukTemplateHeader() %}
+        {% block headerStart %}{% endblock %}
+        {% block govukHeader %}
+          {{ govukHeader() }}
+        {% endblock %}
+        {% block govukServiceNavigation %}
+          {%- if serviceName %}
+            {{ govukServiceNavigation({
+              serviceName: serviceName,
+              serviceUrl: serviceUrl
+            }) }}
+          {%- endif  %}
+        {% endblock %}
+        {% block headerEnd %}{% endblock %}
+      {% endcall %}
+    {% endblock %}
+
+    {% block container %}
+      <div class="govuk-width-container {%- if containerClasses %} {{ containerClasses }}{% endif %}" {{- govukAttributes(containerAttributes) }}>
+        {% block containerStart %}{% block beforeContent %}{% endblock %}{% endblock %}
+        {% block main %}
+        <main class="govuk-main-wrapper {%- if mainClasses %} {{ mainClasses }}{% endif %}" id="main-content" {%- if mainLang %} lang="{{ mainLang }}"{% endif %} {{- govukAttributes(mainAttributes) }}>
+          {% block content %}{% endblock %}
+        </main>
+        {% endblock %}
+        {% block containerEnd %}{% endblock %}
+      </div>
+    {% endblock %}
+
+    {# Only output <footer> if any of its child blocks have content. #}
+    {% macro _govukTemplateFooter() %}
+      {%- if caller() | trim | length > 0 %}
+        <footer class="govuk-template__footer {%- if footerClasses %} {{ footerClasses }}{% endif %}" {{- govukAttributes(footerAttributes)}}>
+          {{ caller() }}
+        </footer>
+      {%- endif %}
+    {% endmacro %}
+
+    {% block footer %}
+      {% call _govukTemplateFooter() %}
+        {% block footerStart %}{% endblock %}
+        {% block govukFooter %}
+          {{ govukFooter() }}
+        {% endblock %}
+        {% block footerEnd %}{% endblock %}
+      {% endcall %}
+    {% endblock %}
+
+    {% block bodyEnd %}{% endblock %}
+  </body>
+</html>

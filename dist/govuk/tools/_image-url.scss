@@ -1,0 +1,44 @@
+////
+/// @group tools/assets
+////
+@use "sass:meta";
+
+@use "../settings/warnings--internal";
+@use "../settings/assets" as *;
+
+/// Image URL
+///
+/// If a custom image-url handler is defined ($govuk-image-url-function) then
+/// it will be called, otherwise a url will be returned with the filename
+/// appended to the image path.
+///
+/// @param {String} Filename for the image to load
+/// @return {String} URL for the filename, wrapped in `url()`
+/// @access public
+
+@function govuk-image-url($filename) {
+  // prettier-ignore
+  $custom-function: meta.variable-exists("govuk-image-url-function")
+    and $govuk-image-url-function;
+
+  @if meta.type-of($custom-function) == "string" {
+    @if warnings--internal.should-warn("image-url-string") {
+      @warn warnings--internal.warning-text("image-url-string",
+      "Passing a string to $govuk-image-url-function is deprecated. "
+          + "Pass a function using meta.get-function(...) instead.");
+    }
+
+    @if meta.function-exists($custom-function) {
+      $custom-function: meta.get-function($custom-function);
+    } @else {
+      $custom-function: null;
+    }
+  }
+
+  @if $custom-function {
+    @return meta.call($custom-function, $filename);
+  } @else {
+    @return url($govuk-images-path + $filename);
+  }
+}
+

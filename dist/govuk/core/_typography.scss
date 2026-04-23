@@ -1,0 +1,5 @@
+@use "../custom-properties";
+@use "typography.mixin" as mixin;
+
+@include mixin.styles;
+

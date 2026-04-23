@@ -1,0 +1,57 @@
+@use "../../base";
+
+@mixin styles {
+  .govuk-error-summary {
+    @include base.govuk-font($size: 19);
+    @include base.govuk-responsive-padding(4);
+    @include base.govuk-responsive-margin(8, "bottom");
+
+    border: base.$govuk-border-width solid;
+    border-color: base.govuk-functional-colour(error);
+    color: base.govuk-functional-colour(text);
+
+    &:focus {
+      outline: base.$govuk-focus-width solid;
+      outline-color: base.govuk-functional-colour(focus);
+    }
+  }
+
+  .govuk-error-summary__title {
+    @include base.govuk-font-size($size: 24);
+    @include base.govuk-typography-weight-bold;
+
+    margin-top: 0;
+    @include base.govuk-responsive-margin(4, "bottom");
+  }
+
+  .govuk-error-summary__body {
+    p {
+      margin-bottom: 0;
+    }
+
+    > * + * {
+      @include base.govuk-responsive-margin(4, "top");
+    }
+
+    > :last-child {
+      @include base.govuk-responsive-margin(1, "bottom");
+    }
+  }
+
+  // Cross-component class - adjusts styling of list component
+  .govuk-error-summary__list {
+    margin-bottom: 0;
+  }
+
+  // Remove the bottom margin from the last list item
+  .govuk-error-summary__list li:last-child {
+    margin-bottom: 0;
+  }
+
+  .govuk-error-summary__list a {
+    @include base.govuk-typography-weight-bold;
+    @include base.govuk-link-common;
+    @include base.govuk-link-style-error;
+  }
+}
+
