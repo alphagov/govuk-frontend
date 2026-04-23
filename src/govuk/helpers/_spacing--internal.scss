@@ -7,7 +7,7 @@
 @use "../settings/spacing" as *;
 @use "media-queries" as *;
 
-@import "../tools/if";
+@use "../tools/if" as *;
 
 /// Responsive spacing
 ///
