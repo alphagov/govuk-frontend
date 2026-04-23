@@ -1,0 +1,5 @@
+@use "../../settings/warnings--internal";
+
+@include warnings--internal.component-scss-file-warning("service-navigation");
+
+@import "index";
