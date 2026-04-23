@@ -5185,6 +5185,8 @@ exports[`src/govuk/components/button/_index.scss matches snapshot 1`] = `
 
 exports[`src/govuk/components/button/_mixin.scss matches snapshot 1`] = `""`;
 
+exports[`src/govuk/components/button/_settings.scss matches snapshot 1`] = `""`;
+
 exports[`src/govuk/components/character-count/_index.scss matches snapshot 1`] = `
 "@charset "UTF-8";
 :root {
