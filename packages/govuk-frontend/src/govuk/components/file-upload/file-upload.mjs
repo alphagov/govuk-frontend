@@ -482,7 +482,7 @@ export class FileUpload extends ConfigurableComponent {
     this.$button.disabled = this.$input.disabled
 
     this.$root.classList.toggle(
-      'govuk-drop-zone--disabled',
+      'govuk-file-upload-wrapper--disabled',
       this.$button.disabled
     )
   }
