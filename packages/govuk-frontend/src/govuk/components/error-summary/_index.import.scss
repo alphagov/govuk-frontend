@@ -1,6 +1,6 @@
 @use "mixin";
 
-@import "../../core/lists";
+@import "../../base";
 
 @include govuk-exports("govuk/component/error-summary") {
   @include mixin.styles;

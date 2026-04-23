@@ -2684,17 +2684,17 @@ exports[`Individual components src/govuk/components/error-summary works when use
     --govuk-text-colour: var(--govuk-print-text-colour, #000000);
   }
 }
-.govuk-list {
+.govuk-error-summary {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-weight: 400;
   font-size: 1.1875rem;
   line-height: 1.3157894737;
-  margin-top: 0;
-  margin-bottom: 15px;
-  padding-left: 0;
-  list-style-type: none;
+  padding: 15px;
+  margin-bottom: 30px;
+  border: 5px solid;
+  border-color: var(--govuk-error-colour, #ca3535);
   color: var(--govuk-text-colour, #0b0c0c);
 }
 /*! Copyright (c) 2011 by Margaret Calvert & Henrik Kubel. All rights reserved. The font has been customised for exclusive use on gov.uk. This cut is not commercially available. */ /* stylelint-disable-line scss/comment-no-loud  */
@@ -2711,67 +2711,6 @@ exports[`Individual components src/govuk/components/error-summary works when use
   font-weight: bold;
   font-display: fallback;
   src: url("/assets/fonts/bold-b542beb274-v2.woff2") format("woff2"), url("/assets/fonts/bold-affa96571d-v2.woff") format("woff");
-}
-@media print {
-  .govuk-list {
-    font-family: sans-serif;
-  }
-}
-@media print {
-  .govuk-list {
-    font-size: 14pt;
-    line-height: 1.15;
-  }
-}
-@media (min-width: 40.0625em) {
-  .govuk-list {
-    margin-bottom: 20px;
-  }
-}
-.govuk-list .govuk-list {
-  margin-top: 10px;
-}
-.govuk-list > li {
-  margin-bottom: 5px;
-}
-.govuk-list--bullet {
-  padding-left: 20px;
-  list-style-type: disc;
-}
-.govuk-list--number {
-  padding-left: 20px;
-  list-style-type: decimal;
-}
-.govuk-list--bullet > li,
-.govuk-list--number > li {
-  margin-bottom: 0;
-}
-@media (min-width: 40.0625em) {
-  .govuk-list--bullet > li,
-  .govuk-list--number > li {
-    margin-bottom: 5px;
-  }
-}
-.govuk-list--spaced > li {
-  margin-bottom: 10px;
-}
-@media (min-width: 40.0625em) {
-  .govuk-list--spaced > li {
-    margin-bottom: 15px;
-  }
-}
-.govuk-error-summary {
-  font-family: "GDS Transport", arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-weight: 400;
-  font-size: 1.1875rem;
-  line-height: 1.3157894737;
-  padding: 15px;
-  margin-bottom: 30px;
-  border: 5px solid;
-  border-color: var(--govuk-error-colour, #ca3535);
-  color: var(--govuk-text-colour, #0b0c0c);
 }
 @media print {
   .govuk-error-summary {

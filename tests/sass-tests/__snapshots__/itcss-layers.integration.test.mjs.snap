@@ -1601,67 +1601,6 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
     border-left-color: var(--govuk-border-colour, #cecece);
   }
 }
-.govuk-list {
-  font-family: "GDS Transport", arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-weight: 400;
-  font-size: 1.1875rem;
-  line-height: 1.3157894737;
-  margin-top: 0;
-  margin-bottom: 15px;
-  padding-left: 0;
-  list-style-type: none;
-  color: var(--govuk-text-colour, #0b0c0c);
-}
-@media print {
-  .govuk-list {
-    font-family: sans-serif;
-  }
-}
-@media print {
-  .govuk-list {
-    font-size: 14pt;
-    line-height: 1.15;
-  }
-}
-@media (min-width: 40.0625em) {
-  .govuk-list {
-    margin-bottom: 20px;
-  }
-}
-.govuk-list .govuk-list {
-  margin-top: 10px;
-}
-.govuk-list > li {
-  margin-bottom: 5px;
-}
-.govuk-list--bullet {
-  padding-left: 20px;
-  list-style-type: disc;
-}
-.govuk-list--number {
-  padding-left: 20px;
-  list-style-type: decimal;
-}
-.govuk-list--bullet > li,
-.govuk-list--number > li {
-  margin-bottom: 0;
-}
-@media (min-width: 40.0625em) {
-  .govuk-list--bullet > li,
-  .govuk-list--number > li {
-    margin-bottom: 5px;
-  }
-}
-.govuk-list--spaced > li {
-  margin-bottom: 10px;
-}
-@media (min-width: 40.0625em) {
-  .govuk-list--spaced > li {
-    margin-bottom: 15px;
-  }
-}
 .govuk-error-summary {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -4429,67 +4368,6 @@ exports[`ITCSS layers core works when user @imports the layer 1`] = `
   outline: 3px solid transparent;
   box-shadow: 0 0 0 4px var(--govuk-focus-colour, #ffdd00), 0 0 0 8px var(--govuk-focus-text-colour, #0b0c0c);
 }
-.govuk-list {
-  font-family: "GDS Transport", arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-weight: 400;
-  font-size: 1.1875rem;
-  line-height: 1.3157894737;
-  margin-top: 0;
-  margin-bottom: 15px;
-  padding-left: 0;
-  list-style-type: none;
-  color: var(--govuk-text-colour, #0b0c0c);
-}
-@media print {
-  .govuk-list {
-    font-family: sans-serif;
-  }
-}
-@media print {
-  .govuk-list {
-    font-size: 14pt;
-    line-height: 1.15;
-  }
-}
-@media (min-width: 40.0625em) {
-  .govuk-list {
-    margin-bottom: 20px;
-  }
-}
-.govuk-list .govuk-list {
-  margin-top: 10px;
-}
-.govuk-list > li {
-  margin-bottom: 5px;
-}
-.govuk-list--bullet {
-  padding-left: 20px;
-  list-style-type: disc;
-}
-.govuk-list--number {
-  padding-left: 20px;
-  list-style-type: decimal;
-}
-.govuk-list--bullet > li,
-.govuk-list--number > li {
-  margin-bottom: 0;
-}
-@media (min-width: 40.0625em) {
-  .govuk-list--bullet > li,
-  .govuk-list--number > li {
-    margin-bottom: 5px;
-  }
-}
-.govuk-list--spaced > li {
-  margin-bottom: 10px;
-}
-@media (min-width: 40.0625em) {
-  .govuk-list--spaced > li {
-    margin-bottom: 15px;
-  }
-}
 .govuk-heading-xl {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -4827,6 +4705,67 @@ exports[`ITCSS layers core works when user @imports the layer 1`] = `
   .govuk-body-s + .govuk-heading-s,
   .govuk-list + .govuk-heading-s {
     padding-top: 10px;
+  }
+}
+.govuk-list {
+  font-family: "GDS Transport", arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+  font-size: 1.1875rem;
+  line-height: 1.3157894737;
+  margin-top: 0;
+  margin-bottom: 15px;
+  padding-left: 0;
+  list-style-type: none;
+  color: var(--govuk-text-colour, #0b0c0c);
+}
+@media print {
+  .govuk-list {
+    font-family: sans-serif;
+  }
+}
+@media print {
+  .govuk-list {
+    font-size: 14pt;
+    line-height: 1.15;
+  }
+}
+@media (min-width: 40.0625em) {
+  .govuk-list {
+    margin-bottom: 20px;
+  }
+}
+.govuk-list .govuk-list {
+  margin-top: 10px;
+}
+.govuk-list > li {
+  margin-bottom: 5px;
+}
+.govuk-list--bullet {
+  padding-left: 20px;
+  list-style-type: disc;
+}
+.govuk-list--number {
+  padding-left: 20px;
+  list-style-type: decimal;
+}
+.govuk-list--bullet > li,
+.govuk-list--number > li {
+  margin-bottom: 0;
+}
+@media (min-width: 40.0625em) {
+  .govuk-list--bullet > li,
+  .govuk-list--number > li {
+    margin-bottom: 5px;
+  }
+}
+.govuk-list--spaced > li {
+  margin-bottom: 10px;
+}
+@media (min-width: 40.0625em) {
+  .govuk-list--spaced > li {
+    margin-bottom: 15px;
   }
 }
 .govuk-section-break {
