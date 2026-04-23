@@ -215,5 +215,82 @@ describe('Components', () => {
         })
       })
     })
+
+    describe('component variables', () => {
+      // Map the user-configurable button colours to some test values
+      const buttonColours = [
+        {
+          variable: '$govuk-button-background-colour',
+          value: '#112233'
+        },
+        {
+          variable: '$govuk-button-text-colour',
+          value: '#445566'
+        },
+        {
+          variable: '$govuk-inverse-button-background-colour',
+          value: '#778899'
+        },
+        {
+          variable: '$govuk-inverse-button-text-colour',
+          value: '#aabbcc'
+        }
+      ]
+
+      const useConfiguration = buttonColours
+        .map(({ variable, value }) => `${variable}: ${value}`)
+        .join(',\n')
+
+      const importDeclarations = buttonColours
+        .map(({ variable, value }) => `${variable}: ${value};`)
+        .join('\n')
+
+      const sassSources = {
+        'with `@use` including the whole of GOV.UK Frontend': `
+            @use "index" with (
+              ${useConfiguration}
+            );
+          `,
+        'with `@import` including the whole of GOV.UK Frontend': `
+            ${importDeclarations}
+            @import "index";
+          `,
+        'with `@use` including the components layer': `
+            @use "base" with (
+              ${useConfiguration}
+            );
+            @use "components";
+          `,
+        'with `@import` including the components layer': `
+            ${importDeclarations}
+            @import "components";
+          `,
+        'with `@use` including the individual button file': `
+            @use "base" with (
+              ${useConfiguration}
+            );
+            @use "components/button";
+          `,
+        'with `@import` including the individual button file': `
+            ${importDeclarations}
+            @import "components/button";
+          `
+      }
+
+      describe.each(Object.entries(sassSources))('%s', (_, sass) => {
+        let css
+
+        beforeAll(async () => {
+          css = (await compileSassString(sass)).css
+        })
+
+        it.each(buttonColours)(
+          'uses the configured value for $variable',
+          ({ value }) => {
+            expect(css).toContain(value)
+          }
+        )
+      })
+    })
   })
 })
