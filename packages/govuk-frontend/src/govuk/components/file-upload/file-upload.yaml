@@ -104,11 +104,11 @@ params:
   - name: classes
     type: string
     required: false
-    description: Classes to add to the file upload `<input>` element.
+    description: Classes to add to the file upload `<input>` element. If `javascript` is provided, these are not copied to the visible button. To use classes for the visible button, use the `wrapperClasses` option.
   - name: attributes
     type: object
     required: false
-    description: HTML attributes (for example data attributes) to add to the file upload  `<input>` element.
+    description: HTML attributes (for example data attributes) to add to the file upload  `<input>` element. If `javascript` is provided, these are not copied to the visible button. To add attributes to the container, use the `wrapperAttributes` option instead.
   - name: wrapperClasses
     type: string
     required: false
