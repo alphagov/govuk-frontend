@@ -47,7 +47,7 @@
 {% endif %}
 {% if params.javascript %}
   <div
-    class="govuk-drop-zone {%- if params.wrapperClasses %} {{ params.wrapperClasses }}{% endif %}"
+    class="govuk-file-upload-wrapper {%- if params.wrapperClasses %} {{ params.wrapperClasses }}{% endif %}"
     data-module="govuk-file-upload"
     {{- govukI18nAttributes({
       key: 'choose-files-button',

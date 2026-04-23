@@ -56,6 +56,8 @@
     }
   }
 
+  .govuk-file-upload-wrapper,
+  // @deprecated .govuk-drop-zone class is deprecated in favour of .govuk-file-upload-wrapper
   .govuk-drop-zone {
     display: block;
     position: relative;
@@ -66,7 +68,7 @@
   // required because disabling pointer events
   // on the button means that the cursor style
   // be applied on the button itself
-  .govuk-drop-zone--disabled {
+  .govuk-file-upload-wrapper--disabled {
     cursor: not-allowed;
   }
 
