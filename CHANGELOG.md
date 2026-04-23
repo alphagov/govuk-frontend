@@ -20,24 +20,35 @@ You can now omit the `dist/govuk` part of the path when including GOV.UK Fronten
 
 We made this change in [pull request #6861: Resolve `pkg:` URLs from `dist/govuk` and update the review app](https://github.com/alphagov/govuk-frontend/pull/6861).
 
-#### Pass custom classes and attributes to the enhanced File upload component's drop zone
+#### Add custom classes and attributes to the File upload component's wrapper
 
-We've introduced two new parameters to the File upload component's Nunjucks macro: `dropZoneClasses` and `dropZoneAttributes`.
+We've introduced two new parameters to the File upload component's Nunjucks macro: `wrapperClasses` and `wrapperAttributes`.
 
-These allow you to define custom classes and HTML attributes for the drop zone element used by the enhanced version of the File upload.
+These allow you to define custom classes and HTML attributes for the wrapper of the improved version of the File upload.
 
 ```njk
 {{ govukFileUpload({
   javascript: true,
-  dropZoneClasses: "my-custom-class",
-  dropZoneAttributes: {
+  wrapperClasses: "my-custom-class",
+  wrapperAttributes: {
     "data-attribute": "value"
   }
 }) }}
 ```
 
-We made this change in [pull request #6933: Code improvements to File upload component
-](https://github.com/alphagov/govuk-frontend/pull/6933).
+We made this change in [pull request #6933: Code improvements to File upload component](https://github.com/alphagov/govuk-frontend/pull/6933).
+
+### Recommended changes
+
+#### Rename the `govuk-drop-zone` class on the improved File upload component
+
+The class name of the element that wraps the improved File upload component has been changed from `govuk-drop-zone` to `govuk-file-upload-wrapper`. This was to better describe what function the element plays in the component.
+
+The old class name has been deprecated and will be removed in the next major version of GOV.UK Frontend.
+
+If you're using our Nunjucks macros, you don't need to update anything.
+
+We made this change in [pull request #6933: Code improvements to File upload component](https://github.com/alphagov/govuk-frontend/pull/6933).
 
 ### Fixes
 
