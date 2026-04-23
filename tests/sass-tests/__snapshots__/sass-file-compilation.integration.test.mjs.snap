@@ -2058,6 +2058,7 @@ exports[`src/govuk/components/_index.scss matches snapshot 1`] = `
   cursor: not-allowed;
 }
 
+.govuk-file-upload-wrapper,
 .govuk-drop-zone {
   display: block;
   position: relative;
@@ -2065,7 +2066,7 @@ exports[`src/govuk/components/_index.scss matches snapshot 1`] = `
   background-color: var(--govuk-body-background-colour, #ffffff);
 }
 
-.govuk-drop-zone--disabled {
+.govuk-file-upload-wrapper--disabled {
   cursor: not-allowed;
 }
 
@@ -11925,6 +11926,7 @@ exports[`src/govuk/components/file-upload/_file-upload.scss matches snapshot 1`]
   cursor: not-allowed;
 }
 
+.govuk-file-upload-wrapper,
 .govuk-drop-zone {
   display: block;
   position: relative;
@@ -11932,7 +11934,7 @@ exports[`src/govuk/components/file-upload/_file-upload.scss matches snapshot 1`]
   background-color: var(--govuk-body-background-colour, #ffffff);
 }
 
-.govuk-drop-zone--disabled {
+.govuk-file-upload-wrapper--disabled {
   cursor: not-allowed;
 }
 
@@ -12299,6 +12301,7 @@ exports[`src/govuk/components/file-upload/_index.scss matches snapshot 1`] = `
   cursor: not-allowed;
 }
 
+.govuk-file-upload-wrapper,
 .govuk-drop-zone {
   display: block;
   position: relative;
@@ -12306,7 +12309,7 @@ exports[`src/govuk/components/file-upload/_index.scss matches snapshot 1`] = `
   background-color: var(--govuk-body-background-colour, #ffffff);
 }
 
-.govuk-drop-zone--disabled {
+.govuk-file-upload-wrapper--disabled {
   cursor: not-allowed;
 }
 
@@ -27825,6 +27828,7 @@ exports[`src/govuk/index.scss matches snapshot 1`] = `
   cursor: not-allowed;
 }
 
+.govuk-file-upload-wrapper,
 .govuk-drop-zone {
   display: block;
   position: relative;
@@ -27832,7 +27836,7 @@ exports[`src/govuk/index.scss matches snapshot 1`] = `
   background-color: var(--govuk-body-background-colour, #ffffff);
 }
 
-.govuk-drop-zone--disabled {
+.govuk-file-upload-wrapper--disabled {
   cursor: not-allowed;
 }
 

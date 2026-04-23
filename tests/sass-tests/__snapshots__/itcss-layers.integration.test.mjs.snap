@@ -2018,6 +2018,7 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   cursor: not-allowed;
 }
 
+.govuk-file-upload-wrapper,
 .govuk-drop-zone {
   display: block;
   position: relative;
@@ -2025,7 +2026,7 @@ exports[`ITCSS layers components works when user @imports the layer 1`] = `
   background-color: var(--govuk-body-background-colour, #ffffff);
 }
 
-.govuk-drop-zone--disabled {
+.govuk-file-upload-wrapper--disabled {
   cursor: not-allowed;
 }
 
