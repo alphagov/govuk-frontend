@@ -109,14 +109,14 @@ params:
     type: object
     required: false
     description: HTML attributes (for example data attributes) to add to the file upload  `<input>` element.
-  - name: dropZoneClasses
+  - name: wrapperClasses
     type: string
     required: false
-    description: Classes to add to the enhanced file upload component. If `javascript` is not provided, this option will be ignored.
-  - name: dropZoneAttributes
+    description: Classes to add to the improved file upload component's wrapper. If `javascript` is not provided, this option will be ignored.
+  - name: wrapperAttributes
     type: object
     required: false
-    description: HTML attributes (for example data attributes) to add to the enhanced file upload component. If `javascript` is not provided, this option will be ignored.
+    description: HTML attributes (for example data attributes) to add to the improved file upload component's wrapper. If `javascript` is not provided, this option will be ignored.
 
 examples:
   - name: default
@@ -194,8 +194,8 @@ examples:
       name: file-upload-3
       label:
         text: Upload files
-      dropZoneClasses: app-drop-zone--custom-class
-      dropZoneAttributes:
+      wrapperClasses: app-drop-zone--custom-class
+      wrapperAttributes:
         data-custom-attribute: custom-value
         data-custom-attribute-2: custom-value-2
 
