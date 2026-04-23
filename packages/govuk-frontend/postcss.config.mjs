@@ -37,11 +37,11 @@ export default ({ to = '' } = {}) => ({
 
           // Sorted CSS is smaller when gzipped, but we sort using Stylelint
           // https://cssnano.co/docs/optimisations/cssdeclarationsorter/
-          cssDeclarationSorter: false,
+          cssDeclarationSorter: false
 
           // disable postcss-discard-duplicates temporarily so we can see
           // custom properties duplications in the minified output
-          discardDuplicates: false
+          // discardDuplicates: false
         })
       })
   ],
