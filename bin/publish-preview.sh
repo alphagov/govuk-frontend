@@ -5,7 +5,9 @@ CURRENT_BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
 CURRENT_VERSION=$(npm run version --silent --workspace govuk-frontend)
 
 BRANCH_NAME="preview-$CURRENT_BRANCH_NAME"
-VERSION="$CURRENT_VERSION-$CURRENT_BRANCH_NAME"
+# `/` are not valid in npm version numbers, so we turn them into `-`
+# https://www.gnu.org/software/bash/manual/bash.html#Shell-Parameter-Expansion
+VERSION="$CURRENT_VERSION-${CURRENT_BRANCH_NAME/\//-}"
 
 # Check if there are files that need to be commited
 if [[ -n $(git status --porcelain) ]]; then
