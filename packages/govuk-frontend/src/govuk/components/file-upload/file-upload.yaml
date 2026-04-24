@@ -187,14 +187,14 @@ examples:
         text: Upload files
       multiple: true
 
-  - name: enhanced, custom classes and attributes
+  - name: enhanced, custom wrapper classes and attributes
     options:
       javascript: true
       id: file-upload-3
       name: file-upload-3
       label:
         text: Upload files
-      wrapperClasses: app-drop-zone--custom-class
+      wrapperClasses: app-file-upload--custom-class
       wrapperAttributes:
         data-custom-attribute: custom-value
         data-custom-attribute-2: custom-value-2
