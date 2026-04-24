@@ -22,9 +22,13 @@ if [ `git branch --list $BRANCH_NAME` ]; then
 fi
 
 # Work on the new branch
-git checkout -b $BRANCH_NAME
+git checkout --orphan $BRANCH_NAME
+# An orphaned branch stages all new files so reset them.
+git reset
 
 # Build the package as normal
+echo "✍️ Build package"
+npm ci
 npm run build:package
 
 # npm will try to install dev, optional and peer dependencies
@@ -36,16 +40,18 @@ npm pkg delete devDependencies --workspace govuk-frontend
 
 echo "✍️ Update package version"
 npm version $VERSION --allow-same-version --no-git-tag-version --workspace govuk-frontend
+
+echo "✍️ Commit package files"
 git add packages/govuk-frontend/package.json
 git add package-lock.json
-
-echo "✍️ Force commit package"
+# Some files are gitignored so we need to force adding them.
 git add --force packages/govuk-frontend/dist/
 git add --force packages/govuk-frontend/govuk-prototype-kit.config.json
-git commit --allow-empty -m "Release GOV.UK Frontend 'v$VERSION' to '$BRANCH_NAME' for testing"
+git commit --no-verify --message="Release GOV.UK Frontend 'v$VERSION' to '$BRANCH_NAME' for testing"
 
-# Create a local branch containing the packages/govuk-frontend directory
 echo "✨ Filter the branch to only the packages/govuk-frontend/ directory..."
+# Remove any untracked files
+git clean -df
 git filter-branch --force --subdirectory-filter packages/govuk-frontend
 
 # Force the push of the branch to the remote Github origin
@@ -53,7 +59,7 @@ git push origin $BRANCH_NAME:$BRANCH_NAME --force
 
 echo "⚠️ Branch pushed to '$BRANCH_NAME', do not edit this by hand."
 
-git checkout -
+git checkout $CURRENT_BRANCH_NAME
 
 BRANCH_COMMIT_SHA=$(git rev-parse --short $BRANCH_NAME)
 
