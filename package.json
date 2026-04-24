@@ -104,9 +104,9 @@
     "puppeteer": "^24.40.0",
     "semver": "^7.7.3",
     "standard": "^17.1.2",
-    "stylelint": "^16.26.1",
+    "stylelint": "^17.5.0",
     "stylelint-config-gds": "^2.0.0",
-    "stylelint-order": "^8.0.0",
+    "stylelint-order": "^8.1.1",
     "typed-query-selector": "^2.12.0",
     "typescript": "^5.9.3"
   },
