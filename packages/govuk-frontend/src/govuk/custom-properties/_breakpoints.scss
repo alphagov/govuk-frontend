@@ -1,15 +1,3 @@
-@import "../settings/custom-properties";
-@import "../settings/media-queries";
-@import "../tools/exports";
-@import "../tools/px-to-rem";
+@use "breakpoints.mixin" as breakpoints;
 
-// CSS custom property for each breakpoint
-@include govuk-exports("govuk/custom-properties/breakpoints") {
-  :root {
-    @if $govuk-output-custom-properties {
-      @each $name, $value in $govuk-breakpoints {
-        --govuk-breakpoint-#{$name}: #{govuk-px-to-rem($value)};
-      }
-    }
-  }
-}
+@include breakpoints.styles;

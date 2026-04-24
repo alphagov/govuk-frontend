@@ -1,0 +1,31 @@
+////
+/// @group components/button
+////
+
+/// Button component background colour
+///
+/// @type Colour
+/// @access public
+
+$govuk-button-background-colour: govuk-colour("green") !default;
+
+/// Button component text colour
+///
+/// @type Colour
+/// @access public
+
+$govuk-button-text-colour: govuk-colour("white") !default;
+
+/// Inverted button component background colour
+///
+/// @type Colour
+/// @access public
+
+$govuk-inverse-button-background-colour: govuk-colour("white") !default;
+
+/// Inverted button component text colour
+///
+/// @type Colour
+/// @access public
+
+$govuk-inverse-button-text-colour: govuk-functional-colour(brand) !default;

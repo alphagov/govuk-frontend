@@ -1,0 +1,17 @@
+@use "../base";
+
+@mixin govuk-global-styles {
+  a {
+    @extend %govuk-link;
+  }
+
+  p {
+    @extend %govuk-body-m;
+  }
+}
+
+@mixin styles {
+  @if base.$govuk-global-styles == true {
+    @include govuk-global-styles;
+  }
+}

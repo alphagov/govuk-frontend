@@ -6,7 +6,10 @@
   "exports": {
     ".": "./index.js",
     "./jest/*": "./jest/*",
-    "./*": "./*.js"
+    "./*": {
+      "sass": "./*.scss",
+      "default": "./*.js"
+    }
   },
   "engines": {
     "node": "^24.11.0",

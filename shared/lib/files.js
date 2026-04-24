@@ -140,26 +140,30 @@ function getFileSizeComparison(headFiles, baseFiles) {
   // Get initial percentage differences and check for deletions
   const comparedFileSizes = baseFiles.map((file) => {
     const headFile = findFileSizeRow(headFiles, file)
-    let percentage
 
+    // If the file doesn't exist in our branch (head), then the file was deleted
     if (!headFile) {
-      percentage = 'Deleted'
-    } else {
-      const sizeDiff = ((headFile.size - file.size) / file.size) * 100
-
-      // Remove '.0' here rather than check for it in the proceeding if to strip
-      // out instances of '4.0%'
-      percentage = sizeDiff.toFixed(1).replace('.0', '')
-
-      // Return null if there's no percentage difference
-      // Test as string because toFixed returns a string
-      if (percentage === '0') {
-        return null
+      return {
+        path: file.path,
+        size: 0,
+        percentage: 'Deleted'
       }
     }
 
+    const sizeDiff = ((headFile.size - file.size) / file.size) * 100
+
+    // Remove '.0' here rather than check for it in the proceeding if to strip
+    // out instances of '4.0%'
+    const percentage = sizeDiff.toFixed(1).replace('.0', '')
+
+    // Return null if there's no percentage difference
+    // Test as string because toFixed returns a string
+    if (percentage === '0') {
+      return null
+    }
+
     return {
-      ...file,
+      ...headFile,
       percentage: `${percentage}%`
     }
   })

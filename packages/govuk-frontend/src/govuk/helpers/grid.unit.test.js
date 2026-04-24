@@ -3,14 +3,8 @@ const { outdent } = require('outdent')
 
 describe('grid system', () => {
   const sassImports = `
-    @import "settings/media-queries";
-    @import "settings/spacing";
-    @import "settings/measurements";
-
-    @import "helpers/grid";
-    @import "helpers/media-queries";
-
-    @import "tools/exports";
+    @use "helpers/grid" as *;
+    @use "helpers/media-queries" as *;
   `
 
   describe('govuk-grid-width function', () => {

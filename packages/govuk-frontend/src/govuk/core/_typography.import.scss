@@ -1,0 +1,7 @@
+@use "typography.mixin" as mixin;
+
+@import "../base";
+
+@include govuk-exports("govuk/core/typography") {
+  @include mixin.styles;
+}

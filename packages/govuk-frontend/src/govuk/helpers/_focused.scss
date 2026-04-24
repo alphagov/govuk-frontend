@@ -2,6 +2,9 @@
 /// @group helpers/accessibility
 ////
 
+@use "../settings/measurements" as *;
+@use "colour" as *;
+
 /// Focused text
 ///
 /// Provides an outline to clearly indicate when the target element is focused.

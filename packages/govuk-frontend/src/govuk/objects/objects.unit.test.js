@@ -1,58 +1,66 @@
 const { join } = require('path')
 
 const { paths } = require('@govuk-frontend/config')
-const { compileSassFile } = require('@govuk-frontend/helpers/tests')
+const {
+  compileSassFile,
+  getSassPathsFromLayer
+} = require('@govuk-frontend/helpers/tests')
 const { compileSassString } = require('@govuk-frontend/helpers/tests')
-const { getListing } = require('@govuk-frontend/lib/files')
 const sassdoc = require('sassdoc')
 const stylelint = require('stylelint')
 
+const partials = getSassPathsFromLayer('objects')
+
 describe('The objects layer', () => {
-  let sassFiles
-
-  beforeAll(async () => {
-    sassFiles = await getListing('**/src/govuk/objects/**/*.scss', {
-      cwd: paths.package,
-      ignore: ['**/_all.scss', '**/_index.scss']
-    })
-  })
-
-  it('does not reference any undefined custom properties', async () => {
-    // Requires base as this is where the custom properties come from
-    const sass = `
+  describe.each([
+    [
+      'import',
+      `
       @import "base";
       @import "objects";
     `
+    ],
+    ['use', `@use "objects";`]
+  ])('with `@%s`', (type, sass) => {
+    let css
 
-    const { css } = await compileSassString(sass)
-
-    const linter = await stylelint.lint({
-      config: { rules: { 'no-unknown-custom-properties': true } },
-      code: css
+    beforeAll(async () => {
+      css = (await compileSassString(sass)).css
     })
 
-    // Output stylelint warnings to make debugging easier
-    if (linter.results[0].warnings.length) {
-      console.log(
-        'Warnings were present when testing the objects layer for unknown custom properties:'
-      )
-      console.log(linter.results[0].warnings)
-    }
+    it('outputs the custom properties only once', () => {
+      const occurrences = css.matchAll(/--govuk-breakpoint-mobile/g)
 
-    return expect(linter.results[0].warnings).toHaveLength(0)
+      expect(Array.from(occurrences)).toHaveLength(1)
+    })
+
+    it('does not reference any undefined custom properties', async () => {
+      const linter = await stylelint.lint({
+        config: { rules: { 'no-unknown-custom-properties': true } },
+        code: css
+      })
+
+      // Output stylelint warnings to make debugging easier
+      if (linter.results[0].warnings.length) {
+        console.log(
+          'Warnings were present when testing the objects layer for unknown custom properties:'
+        )
+        console.log(linter.results[0].warnings)
+      }
+
+      return expect(linter.results[0].warnings).toHaveLength(0)
+    })
   })
 
-  it('renders CSS for all objects', () => {
-    const sassTasks = sassFiles.map((sassFilePath) => {
-      const file = join(paths.package, sassFilePath)
+  describe.each(partials)('$name', ({ partialPath, name }) => {
+    it('renders without errors', () => {
+      const file = join(paths.package, partialPath)
 
       return expect(compileSassFile(file)).resolves.toMatchObject({
         css: expect.any(String),
         loadedUrls: expect.arrayContaining([expect.any(URL)])
       })
     })
-
-    return Promise.all(sassTasks)
   })
 
   describe('Sass documentation', () => {

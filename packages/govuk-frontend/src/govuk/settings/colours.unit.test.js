@@ -37,9 +37,9 @@ describe('Colour palette', () => {
   ])('Provides expected variants for `%s`', async (colour, variants) => {
     const sass = `
       @use "sass:map";
-      @import "settings/colours-palette";
+      @use "settings/colours-palette--internal" as *;
 
-      $variants: map.keys(map.get($_govuk-palette, "#{${colour}}"));
+      $variants: map.keys(map.get($govuk-palette, "#{${colour}}"));
 
       :root {
         variants: $variants;
@@ -59,10 +59,10 @@ describe('Colour palette', () => {
     const sass = `
       @use "sass:map";
       @use "sass:meta";
-      @import "settings/colours-palette";
+      @use "settings/colours-palette--internal" as *;
 
       :root {
-        type: meta.type-of(map.get($_govuk-palette, "#{${colour}}"));
+        type: meta.type-of(map.get($govuk-palette, "#{${colour}}"));
       }
     `
 
@@ -77,19 +77,33 @@ describe('Colour palette', () => {
 })
 
 describe('Functional colours', () => {
-  it('outputs a warning the old applied colours file is imported', async () => {
-    const sass = `
-      @import "settings/colours-applied";
-    `
+  describe('colours-applied', () => {
+    it('outputs a warning the old applied colours file is imported', async () => {
+      const sass = `
+        @import "settings/colours-applied";
+      `
 
-    await compileSassString(sass, sassConfig)
+      await compileSassString(sass, sassConfig)
 
-    // Expect our mocked @warn function to have been called once with a single
-    // argument, which should be the deprecation notice
-    expect(mockWarnFunction).toHaveBeenCalledWith(
-      "The '_colours-applied' file is deprecated. Please import '_colours-functional' instead. See https://github.com/alphagov/govuk-frontend/releases/tag/v6.0.0 for more details.",
-      expect.anything()
-    )
+      // Expect our mocked @warn function to have been called once with a single
+      // argument, which should be the deprecation notice
+      expect(mockWarnFunction).toHaveBeenCalledWith(
+        "The '_colours-applied' file is deprecated. Please import '_colours-functional' instead." +
+          ' See https://github.com/alphagov/govuk-frontend/releases/tag/v6.0.0 for more details.' +
+          ' To silence this warning, update $govuk-suppressed-warnings with key: "colours-applied"',
+        expect.anything()
+      )
+    })
+
+    it('is not available for `@use`', async () => {
+      const sass = `
+        @use "settings/colours-applied";
+      `
+
+      expect(compileSassString(sass, sassConfig)).rejects.toThrow(
+        "Error: Can't find stylesheet to import."
+      )
+    })
   })
 
   it('should allow people to define custom colours before `@import`', async () => {
@@ -134,8 +148,9 @@ describe('Functional colours', () => {
 
   it('prevents people from adding new colours to the functional colours', async () => {
     const sass = `
-      $govuk-functional-colours: (non-existing-colour: rebeccapurple);
-      @import "settings/colours-functional";
+      @use "settings/colours-functional" with (
+        $govuk-functional-colours: (non-existing-colour: rebeccapurple)
+      );
     `
 
     await expect(compileSassString(sass)).rejects.toThrow(
@@ -144,19 +159,6 @@ describe('Functional colours', () => {
   })
 
   describe('legacy variables', () => {
-    let mockWarnFunction
-    let sassConfig
-
-    beforeEach(() => {
-      mockWarnFunction = jest.fn().mockReturnValue(sassNull)
-
-      sassConfig = {
-        logger: {
-          warn: mockWarnFunction
-        }
-      }
-    })
-
     describe.each([
       'brand',
       'text',
@@ -177,7 +179,7 @@ describe('Functional colours', () => {
     ])('$govuk-%s-colour', (functionalColourName) => {
       it('sets a Sass variable with the functional colour value', async () => {
         const sass = `
-          @import "settings/colours-functional";
+          @use "settings/colours-functional" as *;
 
           :root {
             result: $govuk-${functionalColourName}-colour == govuk-functional-colour(${functionalColourName});
@@ -186,43 +188,7 @@ describe('Functional colours', () => {
 
         const { css } = await compileSassString(sass, sassConfig)
 
-        expect(mockWarnFunction).not.toHaveBeenCalled()
-
         expect(css).toContain(`result: true;`)
-      })
-
-      it('logs a deprecation warning if an applied colour variable was set by the user', async () => {
-        const sass = `
-          $govuk-${functionalColourName}-colour: rebeccapurple;
-          @import "settings/colours-functional";
-        `
-
-        await compileSassString(sass, sassConfig)
-
-        // Expect our mocked @warn function to have been called once with a single
-        // argument, which should be the deprecation notice
-        expect(mockWarnFunction).toHaveBeenCalledWith(
-          `Setting \`$govuk-${functionalColourName}-colour\` no longer has any effect.` +
-            ` Use \`$govuk-functional-colours: (${functionalColourName}: <NEW_COLOUR_VALUE>);\` instead.` +
-            ' To silence this warning, update $govuk-suppressed-warnings with key: "applied-colour-variables"',
-          expect.anything()
-        )
-      })
-
-      // This will likely not happen from users explicitely `@import`ing the file twice (though it could)
-      // but will happen when importing GOV.UK Frontend as a whole, through object, core or component files
-      // importing files from settings, helpers or tools
-      it('does not log a deprecation if the file is imported twice without user configuration', async () => {
-        const sass = `
-          @import "settings/colours-functional";
-          @import "settings/colours-functional";
-        `
-
-        await compileSassString(sass, sassConfig)
-
-        // Expect our mocked @warn function to have been called once with a single
-        // argument, which should be the deprecation notice
-        expect(mockWarnFunction).not.toHaveBeenCalled()
       })
     })
   })
@@ -232,15 +198,15 @@ describe('Organisation colours', () => {
   it('should define contrast-safe colours that meet contrast requirements', async () => {
     const sass = `
       @use "sass:map";
-      @import "settings/colours-palette";
-      @import "settings/colours-organisations";
-      @import "settings/colours-functional";
+      @use "settings/colours-palette--internal" as *;
+      @use "settings/colours-organisations" as *;
+      @use "settings/colours-functional" as *;
       @import "helpers/colour";
 
       @import "sass-color-helpers/stylesheets/color-helpers";
 
       $minimum-contrast: 4.5;
-      $body-background-colour: _govuk-resolve-colour(map.get($govuk-functional-colours, body-background));
+      $body-background-colour: govuk-resolve-colour(map.get($govuk-functional-colours, body-background));
 
       @each $organisation in map.keys($govuk-colours-organisations) {
 

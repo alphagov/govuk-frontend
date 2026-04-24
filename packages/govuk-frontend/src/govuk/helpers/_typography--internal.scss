@@ -1,0 +1,23 @@
+////
+/// @group helpers/typography
+////
+
+@use "sass:math";
+
+/// Convert line-heights specified in pixels into a relative value, unless
+/// they are already unit-less (and thus already treated as relative values)
+/// or the units do not match the units used for the font size.
+///
+/// @param {Number} $line-height Line height
+/// @param {Number} $font-size Font size
+/// @return {Number} The line height as either a relative value or unmodified
+///
+/// @access private
+
+@function line-height($line-height, $font-size) {
+  @if not math.is-unitless($line-height) and math.unit($line-height) == math.unit($font-size) {
+    $line-height: math.div($line-height, $font-size);
+  }
+
+  @return $line-height;
+}

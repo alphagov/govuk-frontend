@@ -1,0 +1,7 @@
+@use "template.mixin" as template;
+
+@import "../base";
+
+@include govuk-exports("govuk/objects/template") {
+  @include template.styles;
+}

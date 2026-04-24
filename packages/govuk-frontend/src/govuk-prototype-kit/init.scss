@@ -1,4 +1,4 @@
-@import "../govuk/tools/if";
+@use "../govuk/tools/if" as *;
 
 $govuk-prototype-kit-major-version: 0 !default;
 

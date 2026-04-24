@@ -1,8 +1,3 @@
-@import "../tools/exports";
-@import "../helpers/clearfix";
+@use "clearfix.mixin" as clearfix;
 
-@include govuk-exports("govuk/utilities/clearfix") {
-  .govuk-clearfix {
-    @include govuk-clearfix;
-  }
-}
+@include clearfix.styles;

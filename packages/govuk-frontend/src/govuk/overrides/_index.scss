@@ -1,8 +1,5 @@
-@import "../settings/spacing";
-@import "../tools/exports";
-@import "../helpers/spacing";
-@import "display";
-@import "spacing";
-@import "text-align";
-@import "typography";
-@import "width";
+@use "display";
+@use "spacing";
+@use "text-align";
+@use "typography";
+@use "width";
