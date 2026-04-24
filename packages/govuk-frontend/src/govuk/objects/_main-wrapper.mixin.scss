@@ -21,6 +21,7 @@
 //   </div>
 // </div>
 
+/// @access private
 @mixin styles {
   .govuk-main-wrapper {
     // In IE11 the `main` element can be used, but is not recognized  –

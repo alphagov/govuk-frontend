@@ -1,4 +1,5 @@
 // stylelint-disable declaration-no-important
+/// @access private
 @mixin styles {
   .govuk-\!-text-align-left {
     text-align: left !important;

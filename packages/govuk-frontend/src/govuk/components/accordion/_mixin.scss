@@ -1,5 +1,6 @@
 @use "../../base";
 
+/// @access private
 @mixin styles {
   $govuk-accordion-base-colour: base.govuk-colour("black");
   $govuk-accordion-hover-colour: base.govuk-colour("black", $variant: "tint-95");

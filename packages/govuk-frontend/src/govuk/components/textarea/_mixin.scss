@@ -1,5 +1,6 @@
 @use "../../base";
 
+/// @access private
 @mixin styles {
   .govuk-textarea {
     @include base.govuk-font($size: 19, $line-height: 1.25);
