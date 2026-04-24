@@ -29,28 +29,17 @@ $govuk-fonts-path: "#{$govuk-assets-path}fonts/" !default;
 
 /// Custom image URL function
 ///
-/// If the built-in image URL helper does not meet your needs, you can specify
-/// the name of a custom handler – either built in or by writing your own
-/// function.
+/// If you need more control than $govuk-images-path provides, you can use a
+/// function to resolve image filenames to URLs.
 ///
-/// If you are writing your own handler, ensure that it returns a string wrapped
-/// with `url()`
+/// The function should accept a filename and return the URL as a string,
+/// wrapped with `url()`.
 ///
-/// @type String
+/// Passing the name of a function as a string is deprecated.
 ///
-/// @example scss - Rails asset handling
-///   $govuk-image-url-function: 'image-url';
+/// @type Function | String | null
 ///
-/// @example scss - Custom asset handling
-///
-///   @function my-url-handler($filename) {
-///     // Some custom URL handling
-///     @return url('example.jpg');
-///   }
-///
-///   $govuk-image-url-function: 'my-url-handler';
-///
-/// @example scss - From an external module
+/// @example scss - Using your own function
 ///
 ///   @use "sass:meta";
 ///   // Include the module containing the handler function
@@ -59,34 +48,39 @@ $govuk-fonts-path: "#{$govuk-assets-path}fonts/" !default;
 ///   // Then pass the handler function using `meta.get-function`
 ///   $govuk-image-url-function: meta.get-function("image-url", $module: "url-handlers");
 ///
-/// @access public
-
-$govuk-image-url-function: false !default;
-
-/// Custom font URL function
+/// @example scss - Using sass-rails' `image-url` helper
 ///
-/// If the built-in font URL helper does not meet your needs, you can specify
-/// the name of a custom handler – either built in or by writing your own
-/// function.
+///   $govuk-image-url-function: meta.get-function('image-url');
 ///
-/// If you are writing your own handler, ensure that it returns a string wrapped
-/// with `url()`
-///
-/// @type String
-///
-/// @example scss - Rails asset handling
-///   $govuk-font-url-function: 'font-url';
-///
-/// @example scss - Custom asset handling
+/// @example scss - Passing the name of a function (deprecated)
 ///
 ///   @function my-url-handler($filename) {
 ///     // Some custom URL handling
-///     @return url('example.woff');
+///     @return url('example.jpg');
 ///   }
 ///
-///   $govuk-font-url-function: 'my-url-handler';
+///   $govuk-image-url-function: 'my-url-handler';
 ///
-/// @example scss - From an external module
+/// @see $govuk-images-path
+/// @see {function} govuk-image-url
+///
+/// @access public
+
+$govuk-image-url-function: null !default;
+
+/// Custom font URL function
+///
+/// If you need more control than $govuk-fonts-path provides, you can use a
+/// function to resolve font filenames to URLs.
+///
+/// The function should accept a filename and return the URL as a string,
+/// wrapped with `url()`.
+///
+/// Passing the name of a function as a string is deprecated.
+///
+/// @type Function | String | null
+///
+/// @example scss - Using your own function
 ///
 ///   @use "sass:meta";
 ///   // Include the module containing the handler function
@@ -95,6 +89,22 @@ $govuk-image-url-function: false !default;
 ///   // Then pass the handler function using `meta.get-function`
 ///   $govuk-font-url-function: meta.get-function("font-url", $module: "url-handlers");
 ///
+/// @example scss - Using sass-rails' `font-url` helper
+///
+///   $govuk-font-url-function: meta.get-function('font-url');
+///
+/// @example scss - Passing the name of a function (deprecated)
+///
+///   @function my-url-handler($filename) {
+///     // Some custom URL handling
+///     @return url('example.woff');
+///   }
+///
+///   $govuk-font-url-function: 'my-url-handler';
+///
+/// @see $govuk-fonts-path
+/// @see {function} govuk-font-url
+///
 /// @access public
 
-$govuk-font-url-function: false !default;
+$govuk-font-url-function: null !default;
