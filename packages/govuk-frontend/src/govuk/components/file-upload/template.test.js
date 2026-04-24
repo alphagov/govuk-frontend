@@ -220,15 +220,38 @@ describe('File upload', () => {
     it('adds the data-module attribute to the wrapper when `true`', () => {
       const $ = render('file-upload', examples.enhanced)
 
-      const $wrapper = $('.govuk-form-group > .govuk-drop-zone')
+      const $wrapper = $('.govuk-form-group > .govuk-file-upload-wrapper')
 
       expect($wrapper.attr('data-module')).toBe('govuk-file-upload')
+    })
+
+    it('renders custom wraper classes', () => {
+      const $ = render(
+        'file-upload',
+        examples['enhanced, custom wrapper classes and attributes']
+      )
+
+      const $wrapper = $('.govuk-form-group > .govuk-file-upload-wrapper')
+
+      expect($wrapper.hasClass('app-file-upload--custom-class')).toBeTruthy()
+    })
+
+    it('renders custom wrapper attributes', () => {
+      const $ = render(
+        'file-upload',
+        examples['enhanced, custom wrapper classes and attributes']
+      )
+
+      const $wrapper = $('.govuk-form-group > .govuk-file-upload-wrapper')
+
+      expect($wrapper.attr('data-custom-attribute')).toBe('custom-value')
+      expect($wrapper.attr('data-custom-attribute-2')).toBe('custom-value-2')
     })
 
     it('adds the data-module attribute when receiving an object', () => {
       const $ = render('file-upload', examples.translated)
 
-      const $wrapper = $('.govuk-form-group > .govuk-drop-zone')
+      const $wrapper = $('.govuk-form-group > .govuk-file-upload-wrapper')
 
       expect($wrapper.attr('data-module')).toBe('govuk-file-upload')
     })
@@ -236,7 +259,7 @@ describe('File upload', () => {
     it('enables the rendering of translation messages when true', () => {
       const $ = render('file-upload', examples.translated)
 
-      const $wrapper = $('.govuk-form-group > .govuk-drop-zone')
+      const $wrapper = $('.govuk-form-group > .govuk-file-upload-wrapper')
 
       expect($wrapper.attr('data-i18n.choose-files-button')).toBe(
         'Dewiswch ffeil'

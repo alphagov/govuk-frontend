@@ -104,11 +104,19 @@ params:
   - name: classes
     type: string
     required: false
-    description: Classes to add to the file upload component.
+    description: Classes to add to the file upload `<input>` element. If `javascript` is provided, these are not copied to the visible button. To use classes for the visible button, use the `wrapperClasses` option.
   - name: attributes
     type: object
     required: false
-    description: HTML attributes (for example data attributes) to add to the file upload component.
+    description: HTML attributes (for example data attributes) to add to the file upload  `<input>` element. If `javascript` is provided, these are not copied to the visible button. To add attributes to the container, use the `wrapperAttributes` option instead.
+  - name: wrapperClasses
+    type: string
+    required: false
+    description: Classes to add to the improved file upload component's wrapper. If `javascript` is not provided, this option will be ignored.
+  - name: wrapperAttributes
+    type: object
+    required: false
+    description: HTML attributes (for example data attributes) to add to the improved file upload component's wrapper. If `javascript` is not provided, this option will be ignored.
 
 examples:
   - name: default
@@ -178,6 +186,18 @@ examples:
       label:
         text: Upload files
       multiple: true
+
+  - name: enhanced, custom wrapper classes and attributes
+    options:
+      javascript: true
+      id: file-upload-3
+      name: file-upload-3
+      label:
+        text: Upload files
+      wrapperClasses: app-file-upload--custom-class
+      wrapperAttributes:
+        data-custom-attribute: custom-value
+        data-custom-attribute-2: custom-value-2
 
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: with value

@@ -3777,6 +3777,7 @@ exports[`Individual components src/govuk/components/file-upload works when user 
   cursor: not-allowed;
 }
 
+.govuk-file-upload-wrapper,
 .govuk-drop-zone {
   display: block;
   position: relative;
@@ -3784,7 +3785,7 @@ exports[`Individual components src/govuk/components/file-upload works when user 
   background-color: var(--govuk-body-background-colour, #ffffff);
 }
 
-.govuk-drop-zone--disabled {
+.govuk-file-upload-wrapper--disabled {
   cursor: not-allowed;
 }
 
