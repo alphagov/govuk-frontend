@@ -2,6 +2,7 @@
 
 @use "../../base";
 
+/// @access private
 @mixin styles {
   // Component font-size on the Frontend (used for calculations)
   $font-size: 16;

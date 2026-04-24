@@ -1,5 +1,6 @@
 @use "../../base";
 
+/// @access private
 @mixin styles {
   $govuk-touch-target-gutter: 4px;
   $govuk-radios-size: 40px;

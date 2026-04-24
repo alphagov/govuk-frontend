@@ -4,6 +4,7 @@
 
 @use "../../base";
 
+/// @access private
 @mixin styles($background-colour, $text-colour, $inverse-background-colour, $inverse-text-colour) {
   $govuk-button-colour: $background-colour;
   $text-colour: $text-colour;

@@ -1,5 +1,6 @@
 @use "../base";
 
+/// @access private
 @mixin styles {
   // Headings
   %govuk-heading-xl {

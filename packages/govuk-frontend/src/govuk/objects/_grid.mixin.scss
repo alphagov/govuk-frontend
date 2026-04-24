@@ -2,6 +2,7 @@
 
 @use "../base";
 
+/// @access private
 @mixin styles {
   .govuk-grid-row {
     @include base.govuk-clearfix;

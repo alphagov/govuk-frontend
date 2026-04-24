@@ -2,6 +2,7 @@
 
 @use "../../base";
 
+/// @access private
 @mixin styles {
   $govuk-service-navigation-active-link-border-width: base.govuk-spacing(1);
   $govuk-service-navigation-text-colour: base.govuk-functional-colour(surface-text);

@@ -1,5 +1,6 @@
 @use "../base";
 
+/// @access private
 @mixin styles {
   // Applied to the <html> element
   .govuk-template {

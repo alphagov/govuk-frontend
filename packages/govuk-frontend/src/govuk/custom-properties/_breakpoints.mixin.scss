@@ -2,6 +2,7 @@
 @use "../settings/media-queries" as *;
 @use "../tools/px-to-rem" as *;
 
+/// @access private
 @mixin styles {
   :root {
     @if $govuk-output-custom-properties {
