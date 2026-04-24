@@ -39,7 +39,7 @@ $govuk-fonts-path: "#{$govuk-assets-path}fonts/" !default;
 ///
 /// @type Function | String | null
 ///
-/// @example scss - Using your own function
+/// @example scss - Passing a function
 ///
 ///   @use "sass:meta";
 ///   // Include the module containing the handler function
@@ -47,10 +47,6 @@ $govuk-fonts-path: "#{$govuk-assets-path}fonts/" !default;
 ///
 ///   // Then pass the handler function using `meta.get-function`
 ///   $govuk-image-url-function: meta.get-function("image-url", $module: "url-handlers");
-///
-/// @example scss - Using sass-rails' `image-url` helper
-///
-///   $govuk-image-url-function: meta.get-function('image-url');
 ///
 /// @example scss - Passing the name of a function (deprecated)
 ///
@@ -80,7 +76,7 @@ $govuk-image-url-function: null !default;
 ///
 /// @type Function | String | null
 ///
-/// @example scss - Using your own function
+/// @example scss - Passing a function
 ///
 ///   @use "sass:meta";
 ///   // Include the module containing the handler function
@@ -88,10 +84,6 @@ $govuk-image-url-function: null !default;
 ///
 ///   // Then pass the handler function using `meta.get-function`
 ///   $govuk-font-url-function: meta.get-function("font-url", $module: "url-handlers");
-///
-/// @example scss - Using sass-rails' `font-url` helper
-///
-///   $govuk-font-url-function: meta.get-function('font-url');
 ///
 /// @example scss - Passing the name of a function (deprecated)
 ///
