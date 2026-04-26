@@ -98,6 +98,35 @@ params:
     required: false
     description: Can be used to add a fieldset to the date input component.
     isComponent: true
+  - name: day
+    type: object
+    required: false
+    description: Options for the day input within the date input component. See items.
+  - name: month
+    type: object
+    required: false
+    description: Options for the month input within the date input component. See items.
+  - name: year
+    type: object
+    required: false
+    description: Options for the year input within the date input component. See items.
+  - name: values
+    type: object
+    required: false
+    description: An optional object use to specify `value` attributes for the date parts without setting items.
+    params:
+      day:
+        type: string
+        required: false
+        description: The `value` attribute for the day input.
+      month:
+        type: string
+        required: false
+        description: The `value` attribute for the month input.
+      year:
+        type: string
+        required: false
+        description: The `value` attribute for the year input.
   - name: classes
     type: string
     required: false
@@ -117,7 +146,43 @@ examples:
           text: What is your date of birth?
       hint:
         text: For example, 31 3 1980
+  - name: with translations
+    options:
+      id: with-translations
+      fieldset:
+        legend:
+          text: Pryd gafodd eich pasbort ei gyhoeddi?
+      hint:
+        text: Er enghraifft, 27 3 2007
+      day:
+        label: Dydd
+      month:
+        label: Mis
+      year:
+        label: Blwyddyn
+  - name: with values
+    options:
+      id: with-values
+      fieldset:
+        legend:
+          text: What is your date of birth?
+      hint:
+        text: For example, 31 3 1980
+      values:
+        day: 31
+        month: 3
+        year: 1980
   - name: day and month
+    options:
+      id: bday
+      namePrefix: bday
+      fieldset:
+        legend:
+          text: What is your birthday?
+      hint:
+        text: For example, 5 12
+      year: false
+  - name: day and month (using items)
     options:
       id: bday
       namePrefix: bday
@@ -140,12 +205,36 @@ examples:
           text: When did you move to this property?
       hint:
         text: For example, 3 1980
+      year: false
+  - name: month and year (using items)
+    options:
+      id: dob
+      namePrefix: dob
+      fieldset:
+        legend:
+          text: When did you move to this property?
+      hint:
+        text: For example, 3 1980
       items:
         - name: month
           classes: govuk-input--width-2
         - name: year
           classes: govuk-input--width-4
   - name: with errors only
+    options:
+      id: dob-errors
+      fieldset:
+        legend:
+          text: What is your date of birth?
+      errorMessage:
+        text: Error message goes here
+      day:
+        error: true
+      month:
+        error: true
+      year:
+        error: true
+  - name: with errors only (using items)
     options:
       id: dob-errors
       fieldset:
@@ -170,6 +259,22 @@ examples:
         text: For example, 31 3 1980
       errorMessage:
         text: Error message goes here
+      day:
+        error: true
+      month:
+        error: true
+      year:
+        error: true
+  - name: with errors and hint (using items)
+    options:
+      id: dob-errors
+      fieldset:
+        legend:
+          text: What is your date of birth?
+      hint:
+        text: For example, 31 3 1980
+      errorMessage:
+        text: Error message goes here
       items:
         - name: day
           classes: govuk-input--width-2 govuk-input--error
@@ -178,6 +283,19 @@ examples:
         - name: year
           classes: govuk-input--width-4 govuk-input--error
   - name: with error on day input
+    options:
+      id: dob-day-error
+      namePrefix: dob-day-error
+      fieldset:
+        legend:
+          text: What is your date of birth?
+      hint:
+        text: For example, 31 3 1980
+      errorMessage:
+        text: Error message goes here
+      day:
+        error: true
+  - name: with error on day input (using items)
     options:
       id: dob-day-error
       namePrefix: dob-day-error
@@ -206,6 +324,19 @@ examples:
         text: For example, 31 3 1980
       errorMessage:
         text: Error message goes here
+      month:
+        error: true
+  - name: with error on month input (using items)
+    options:
+      id: dob-month-error
+      namePrefix: dob-month-error
+      fieldset:
+        legend:
+          text: What is your date of birth?
+      hint:
+        text: For example, 31 3 1980
+      errorMessage:
+        text: Error message goes here
       items:
         - name: day
           classes: govuk-input--width-2
@@ -214,6 +345,19 @@ examples:
         - name: year
           classes: govuk-input--width-4
   - name: with error on year input
+    options:
+      id: dob-year-error
+      namePrefix: dob-year-error
+      fieldset:
+        legend:
+          text: What is your date of birth?
+      hint:
+        text: For example, 31 3 1980
+      errorMessage:
+        text: Error message goes here
+      year:
+        error: true
+  - name: with error on year input (using items)
     options:
       id: dob-year-error
       namePrefix: dob-year-error
@@ -308,10 +452,10 @@ examples:
         - name: day
         - name: month
         - name: year
-  - name: with values
+  - name: with item value
     hidden: true
     options:
-      id: with-values
+      id: with-item-value
       items:
         - id: day
           name: day
@@ -320,6 +464,63 @@ examples:
         - id: year
           name: year
           value: 2018
+  - name: with pre-defined field
+    hidden: true
+    options:
+      id: with-field-value
+      year:
+        value: 2023
+  - name: with pre-defined field and items
+    hidden: true
+    options:
+      id: with-field-value-items
+      items:
+        - id: day
+          name: day
+        - id: month
+          name: month
+        - id: year
+          name: year
+      year:
+        value: 2023
+  - name: with pre-defined field and item value
+    hidden: true
+    options:
+      id: with-field-value-item-value
+      items:
+        - id: day
+          name: day
+        - id: month
+          name: month
+        - id: year
+          name: year
+          value: 2018
+      year:
+        value: 2023
+  - name: with pre-defined field, item value and values
+    hidden: true
+    options:
+      id: with-field-value-item-value-values
+      items:
+        - id: day
+          name: day
+        - id: month
+          name: month
+        - id: year
+          name: year
+          value: 2018
+      year:
+        value: 2023
+      values:
+        year: 2026
+  - name: with pre-defined field overriding values
+    hidden: true
+    options:
+      id: with-field-value-values
+      year:
+        value: 2023
+      values:
+        year: 2026
   - name: with hint and describedBy
     hidden: true
     options:
