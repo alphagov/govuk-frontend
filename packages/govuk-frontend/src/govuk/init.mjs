@@ -1,4 +1,5 @@
 import { normaliseOptions } from './common/configuration.mjs'
+import { initDyslexiaMode } from './common/dyslexia.mjs'
 import { isObject, isSupported } from './common/index.mjs'
 import { Accordion } from './components/accordion/accordion.mjs'
 import { Button } from './components/button/button.mjs'
@@ -28,7 +29,7 @@ function initAll(scopeOrConfig = {}) {
 
   // Extract initialisation options
   const options = normaliseOptions(scopeOrConfig)
-
+  initDyslexiaMode()
   try {
     // Skip initialisation when GOV.UK Frontend is not supported
     if (!isSupported()) {

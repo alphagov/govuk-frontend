@@ -67,7 +67,13 @@
             }) }}
           {%- endif  %}
         {% endblock %}
-        {% block headerEnd %}{% endblock %}
+        {% block headerEnd %}
+      <div class="govuk-width-container">
+        <button id="dyslexia-toggle" class="govuk-button govuk-button--secondary govuk-!-margin-top-2" data-module="govuk-button">
+          Dyslexia-friendly font
+        </button>
+      </div>
+    {% endblock %}
       {% endcall %}
     {% endblock %}
 

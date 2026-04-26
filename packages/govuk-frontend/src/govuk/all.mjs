@@ -16,6 +16,7 @@ export { initAll, createAll } from './init.mjs'
 export { isSupported } from './common/index.mjs'
 export { Component } from './component.mjs'
 export { ConfigurableComponent } from './common/configuration.mjs'
+export { initDyslexiaMode } from './common/dyslexia.mjs'
 
 /**
  * @typedef {import('./init.mjs').Config} Config for all components via `initAll()`

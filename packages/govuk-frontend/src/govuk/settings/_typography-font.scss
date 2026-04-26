@@ -13,7 +13,17 @@
 /// @type List
 /// @access public
 
-$govuk-font-family: "GDS Transport", arial, sans-serif !default;
+$govuk-font-family: var(--govuk-font-family, "GDS Transport", arial, sans-serif) !default;
+
+/// Font families for Dyslexia-friendly mode
+/// @type List
+/// @access public
+$govuk-font-family-dyslexia: "OpenDyslexic", arial, sans-serif !default;
+
+/// Include the OpenDyslexic @font-face declarations
+/// @type Boolean
+/// @access public
+$govuk-include-dyslexia-font-face: true !default;
 
 /// Font families to use for print media
 ///
@@ -50,3 +60,20 @@ $govuk-font-weight-regular: 400 !default;
 /// @type Number
 /// @access public
 $govuk-font-weight-bold: 700 !default;
+
+// Load OpenDyslexic fonts if the include flag is true
+@font-face {
+  font-family: OpenDyslexic;
+  font-style: normal;
+  font-weight: $govuk-font-weight-regular;
+  font-display: swap;
+  src: url("/assets/fonts/OpenDyslexic-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: OpenDyslexic;
+  font-style: normal;
+  font-weight: $govuk-font-weight-bold;
+  font-display: swap;
+  src: url("/assets/fonts/OpenDyslexic-Bold.woff2") format("woff2");
+}
