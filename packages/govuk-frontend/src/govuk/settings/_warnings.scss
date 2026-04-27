@@ -13,12 +13,15 @@
 /// You can add to this map and define which warnings to suppress by appending to
 /// it using the warning key, found in the warning message. For example:
 ///
-/// @example scss:
-///   // warning message:
-///   //  $foobar is no longer supported. To silence this warning, update
-///   //  $govuk-suppressed-warnings with key: "foobar"
-///   $govuk-suppressed-warnings: (
-///     foobar
+/// @example scss Suppressing a warning message
+///
+///   // Prevent the following warning message to appear:
+///   // '$deprecated-feature is no longer supported. To silence this warning, update
+///   // $govuk-suppressed-warnings with key: "warning-key"'
+///   @use "node_modules/govuk-frontend/dist/govuk" as * with (
+///     $govuk-suppressed-warnings: (
+///       warning-key
+///     )
 ///   );
 ///
 /// @type List
