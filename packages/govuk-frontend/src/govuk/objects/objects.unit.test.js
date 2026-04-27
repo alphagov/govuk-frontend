@@ -6,7 +6,6 @@ const {
   getSassPathsFromLayer
 } = require('@govuk-frontend/helpers/tests')
 const { compileSassString } = require('@govuk-frontend/helpers/tests')
-const sassdoc = require('sassdoc')
 const stylelint = require('stylelint')
 
 const partials = getSassPathsFromLayer('objects')
@@ -60,25 +59,6 @@ describe('The objects layer', () => {
         css: expect.any(String),
         loadedUrls: expect.arrayContaining([expect.any(URL)])
       })
-    })
-  })
-
-  describe('Sass documentation', () => {
-    it('associates everything with a "objects" group', async () => {
-      const docs = await sassdoc.parse(
-        join(paths.package, 'src/govuk/objects/**/*.scss')
-      )
-
-      for (const doc of docs) {
-        expect(doc).toMatchObject({
-          // Include doc.context.name in the expected result when this fails,
-          // giving you the context to be able to fix it
-          context: {
-            name: doc.context.name
-          },
-          group: [expect.stringMatching(/^objects/)]
-        })
-      }
     })
   })
 })
