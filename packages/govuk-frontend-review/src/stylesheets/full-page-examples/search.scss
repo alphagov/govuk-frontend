@@ -1,5 +1,4 @@
-@import "pkg:govuk-frontend/base";
-@import "pkg:govuk-frontend/core";
+@use "pkg:govuk-frontend/base" as *;
 
 .app-document-list > li {
   padding-top: govuk-spacing(4);
