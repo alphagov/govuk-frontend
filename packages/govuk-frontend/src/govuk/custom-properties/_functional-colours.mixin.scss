@@ -2,6 +2,7 @@
 @use "../settings/colours-functional" as *;
 @use "../helpers/colour" as *;
 
+/// @access private
 @mixin styles {
   // CSS custom properties for each functional colour
   :root {

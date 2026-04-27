@@ -1,6 +1,7 @@
 @use "sass:map";
 @use "../base";
 
+/// @access private
 @mixin styles {
   // Font size and line height
 

@@ -1,6 +1,7 @@
 @use "../base";
 
 // stylelint-disable declaration-no-important
+/// @access private
 @mixin styles {
   .govuk-\!-width-full {
     width: 100% !important;

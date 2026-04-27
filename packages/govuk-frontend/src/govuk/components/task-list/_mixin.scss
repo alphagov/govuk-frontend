@@ -1,5 +1,6 @@
 @use "../../base";
 
+/// @access private
 @mixin styles {
   $govuk-task-list-hover-colour: base.govuk-colour("black", $variant: "tint-95");
 

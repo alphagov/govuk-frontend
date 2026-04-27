@@ -1,5 +1,6 @@
 @use "../../base";
 
+/// @access private
 @mixin styles {
   .govuk-character-count {
     @include base.govuk-responsive-margin(6, "bottom");

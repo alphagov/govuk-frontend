@@ -1,5 +1,6 @@
 @use "../../base";
 
+/// @access private
 @mixin styles {
   $indicator-size: 0.75em;
 

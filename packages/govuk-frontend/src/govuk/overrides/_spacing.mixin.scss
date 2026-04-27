@@ -78,6 +78,7 @@ $_spacing-directions: ("top", "right", "bottom", "left") !default;
   }
 }
 
+/// @access private
 @mixin styles {
   @include _govuk-generate-responsive-spacing-overrides("margin");
   @include _govuk-generate-responsive-spacing-overrides("padding");

@@ -1,5 +1,6 @@
 @use "../../base";
 
+/// @access private
 @mixin styles {
   .govuk-password-input__wrapper {
     // This element inherits styles from .govuk-input__wrapper, including:

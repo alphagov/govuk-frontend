@@ -10,6 +10,7 @@
   }
 }
 
+/// @access private
 @mixin styles {
   @if base.$govuk-global-styles == true {
     @include govuk-global-styles;

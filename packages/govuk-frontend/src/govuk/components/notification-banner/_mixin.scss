@@ -2,6 +2,7 @@
 
 @use "../../base";
 
+/// @access private
 @mixin styles {
   .govuk-notification-banner {
     @include base.govuk-font($size: 19);

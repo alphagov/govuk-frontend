@@ -2,6 +2,7 @@
 
 @use "../../base";
 
+/// @access private
 @mixin styles {
   .govuk-skip-link {
     @include base.govuk-visually-hidden-focusable;

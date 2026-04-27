@@ -1,5 +1,6 @@
 @use "../../base";
 
+/// @access private
 @mixin styles {
   $govuk-footer-background: base.govuk-functional-colour(surface-background);
   $govuk-footer-text: base.govuk-functional-colour(surface-text);

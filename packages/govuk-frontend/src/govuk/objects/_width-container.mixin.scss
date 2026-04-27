@@ -1,5 +1,6 @@
 @use "../base";
 
+/// @access private
 @mixin styles {
   .govuk-width-container {
     @include base.govuk-width-container;

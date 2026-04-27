@@ -1,5 +1,6 @@
 @use "../../base";
 
+/// @access private
 @mixin styles {
   $file-upload-border-width: 2px;
   $component-padding: base.govuk-spacing(1);

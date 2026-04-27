@@ -1,5 +1,6 @@
 @use "../base";
 
+/// @access private
 @mixin styles {
   .govuk-form-group {
     @include base.govuk-clearfix;

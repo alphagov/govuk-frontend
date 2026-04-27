@@ -1,5 +1,6 @@
 @use "../../base";
 
+/// @access private
 @mixin styles {
   // Flexbox enhancement for small screen visual design
   // Falls back to a float: left layout on non-flex browsers

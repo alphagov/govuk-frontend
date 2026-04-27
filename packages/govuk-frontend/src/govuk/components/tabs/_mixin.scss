@@ -1,5 +1,6 @@
 @use "../../base";
 
+/// @access private
 @mixin styles {
   .govuk-tabs {
     @include base.govuk-responsive-margin(1, "top");

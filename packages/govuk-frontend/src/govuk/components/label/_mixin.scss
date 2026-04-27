@@ -1,5 +1,6 @@
 @use "../../base";
 
+/// @access private
 @mixin styles {
   .govuk-label {
     @include base.govuk-font($size: 19);
