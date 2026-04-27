@@ -1,4 +1,5 @@
-@import "pkg:govuk-frontend";
+@use "pkg:govuk-frontend";
+
 @import "partials/app";
 @import "partials/banner";
 @import "partials/code";
