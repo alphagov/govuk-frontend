@@ -90,7 +90,12 @@ describe('normaliseString', () => {
   })
 
   it('skips unhandled property schema', () => {
+    const inputFunction = '() => "albatross"'
     const inputObject = '{ not: "allowed" }'
+
+    // Functions in strings are ignored even with schema property type
+    expect(normaliseString(inputFunction)).toBe(inputFunction)
+    expect(normaliseString(inputFunction, { type: 'function' })).toBeUndefined()
 
     // Objects in strings are ignored even with schema property type
     expect(normaliseString(inputObject)).toBe(inputObject)
