@@ -25,6 +25,7 @@ We made this change in [pull request #6861: Resolve `pkg:` URLs from `dist/govuk
 We've made fixes to GOV.UK Frontend in the following pull requests:
 
 - [#6831: Fix header link hover state in Safari](https://github.com/alphagov/govuk-frontend/pull/6831)
+- [#6993: Remove Internet Explorer specific CSS hacks, bugfixes and styles](https://github.com/alphagov/govuk-frontend/pull/6993)
 
 ## v6.1.0 (Feature release)
 
