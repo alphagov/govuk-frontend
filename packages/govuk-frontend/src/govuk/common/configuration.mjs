@@ -107,6 +107,13 @@ export class ConfigurableComponent extends Component {
  * @returns {string | boolean | number | undefined} Normalised data
  */
 export function normaliseString(value, property) {
+  if (
+    property?.type &&
+    !['string', 'number', 'boolean'].includes(property.type)
+  ) {
+    return
+  }
+
   const trimmedValue = value ? value.trim() : ''
 
   let output
