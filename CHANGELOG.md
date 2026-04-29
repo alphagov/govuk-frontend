@@ -6,21 +6,67 @@ For advice on how to use these release notes, see [our guidance on staying up to
 
 ### New features
 
+#### Use `@use` to include GOV.UK Frontend styles in Sass
+
+The [use of `@import` was deprecated](https://sass-lang.com/blog/import-is-deprecated/) in Dart Sass 1.80.0. To prepare for the removal of `@import` in the next major release of Sass, you can now include GOV.UK Frontend as a Sass module with [`@use`](https://sass-lang.com/documentation/at-rules/use/) or [`@forward`](https://sass-lang.com/documentation/at-rules/forward/).
+
+We also plan to deprecate support for `@import` in GOV.UK Frontend in a future 6.x release and remove it completely in our next major release, v.7.0, so we recommend you start using Sass modules as soon as possible.
+
+To include all the styles from GOV.UK Frontend in your compiled stylesheet, replace `@import` with `@use` in your Sass file:
+
+```scss
+// Previously
+@import "node_modules/govuk-frontend/dist/govuk";
+
+// Now
+// Outputs GOV.UK Frontend's CSS (`@use`) and
+// makes the Sass API available without namespacing (`as *`)
+@use "node_modules/govuk-frontend/dist/govuk" as *;
+```
+
+To configure any of GOV.UK Frontend's settings when including it in your Sass file, you should now use a [`with` clause](https://sass-lang.com/documentation/at-rules/use/#configuration) listing each setting you want to modify to your `@use` rule:
+
+```scss
+// Previously
+$govuk-assets-path: "/path/to/assets/";
+@import "node_modules/govuk-frontend/dist/govuk";
+
+
+// Now
+@use "pkg:gov-uk frontend" as * with (
+  $govuk-assets-path: "/path/to/assets/"
+)
+```
+
+You can also [include specific parts of GOV.UK Frontend using Sass](https://deploy-preview-615--govuk-frontend-docs-preview.netlify.app/include-css/include-specific-parts-of-gov-uk-frontend-using-sass).
+
+See the GOV.UK Frontend documentation for more information on [including GOV.UK Frontend](https://deploy-preview-615--govuk-frontend-docs-preview.netlify.app/include-css/) in your Sass build.
+
+We made this change in [pull request #6862: Migration to Sass modules](https://github.com/alphagov/govuk-frontend/pull/6862).
+
 #### Use shorter `pkg:` URLs to include individual files in Sass
 
 You can now omit the `dist/govuk` part of the path when including GOV.UK Frontend in your Sass file with a [`pkg:` URL](https://sass-lang.com/blog/announcing-pkg-importers/):
 
 ```scss
-// Previously
-@import "pkg:govuk-frontend/dist/govuk/components/button";
-
-// Now
-@import "pkg:govuk-frontend/components/button";
+// `@import` will soon be deprecated, so use`@use`
+// Instead of `"pkg:govuk-frontend/dist/govuk/components/button"`
+@use "pkg:govuk-frontend/components/button";
 ```
 
 We made this change in [pull request #6861: Resolve `pkg:` URLs from `dist/govuk` and update the review app](https://github.com/alphagov/govuk-frontend/pull/6861).
 
 ### Fixes
+
+#### Error summary no longer outputs the styles for lists
+
+The `components/error-summary/_index.scss` file was outputting CSS from `core/lists`, which is not part of the `components` layer. This was causing a duplication issue with Sass modules.
+
+The `components/error-summary/_index.scss` file now only outputs the CSS for the Error summary component.
+
+We made this change in [pull request #6975: Update index to use all layers and refactor core (again) to avoid duplicated CSS](https://github.com/alphagov/govuk-frontend/pull/6975).
+
+#### Other fixes
 
 We've made fixes to GOV.UK Frontend in the following pull requests:
 
