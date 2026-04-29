@@ -46,16 +46,21 @@ $govuk-fonts-path: "#{$govuk-assets-path}fonts/" !default;
 ///   @use "url-handlers";
 ///
 ///   // Then pass the handler function using `meta.get-function`
-///   $govuk-image-url-function: meta.get-function("image-url", $module: "url-handlers");
+///   @use "node_modules/govuk-frontend/dist/govuk" as * with (
+///     $govuk-image-url-function: meta.get-function("image-url", $module: "url-handlers")
+///   )
 ///
 /// @example scss - Passing the name of a function (deprecated)
 ///
+///   // This is only available if you still use `@import`
 ///   @function my-url-handler($filename) {
 ///     // Some custom URL handling
 ///     @return url('example.jpg');
 ///   }
 ///
 ///   $govuk-image-url-function: 'my-url-handler';
+///
+///   @import "node_modules/govuk-frontend/dist/govuk";
 ///
 /// @see $govuk-images-path
 /// @see {function} govuk-image-url
@@ -83,16 +88,21 @@ $govuk-image-url-function: null !default;
 ///   @use "url-handlers";
 ///
 ///   // Then pass the handler function using `meta.get-function`
-///   $govuk-font-url-function: meta.get-function("font-url", $module: "url-handlers");
+///   @use "node_modules/govuk-frontend/dist/govuk" as * with (
+///     $govuk-font-url-function: meta.get-function("font-url", $module: "url-handlers")
+///   )
 ///
 /// @example scss - Passing the name of a function (deprecated)
 ///
+///   // This is only available if you still use `@import`
 ///   @function my-url-handler($filename) {
 ///     // Some custom URL handling
 ///     @return url('example.woff');
 ///   }
 ///
 ///   $govuk-font-url-function: 'my-url-handler';
+///
+///   @import "node_modules/govuk-frontend/dist/govuk";
 ///
 /// @see $govuk-fonts-path
 /// @see {function} govuk-font-url

@@ -140,14 +140,16 @@ $govuk-default-functional-colours: (
 ///
 /// @example scss – Redefining functional colours by setting them before import
 ///
-///   // These will be merged with the default functional colours
-///   $govuk-functional-colours: (
-///     // set the 'brand' colour to the 'primary' variant of 'purple'
-///     brand: (name: 'purple'),
-///     // set the 'template-background' colour to the 'tint-95' variant of 'purple'
-///     template-background: (name: 'purple', variant: 'tint-95'),
-///     // set the 'text' colour to an arbitrary colour `#221133`
-///     text: #221133
+///   @use "node_modules/govuk-frontend/dist/govuk" as * with (
+///     // These will be merged with the default functional colours
+///     $govuk-functional-colours: (
+///       // set the 'brand' colour to the 'primary' variant of 'purple'
+///       brand: (name: 'purple'),
+///       // set the 'template-background' colour to the 'tint-95' variant of 'purple'
+///       template-background: (name: 'purple', variant: 'tint-95'),
+///       // set the 'text' colour to an arbitrary colour `#221133`
+///       text: #221133
+///     )
 ///   );
 ///
 /// @see {function} govuk-functional-colour

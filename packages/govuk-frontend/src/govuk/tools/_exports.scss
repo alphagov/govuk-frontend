@@ -14,7 +14,13 @@ $govuk-imported-modules: () !default;
 ///
 /// Ensure that the modules of CSS that we define throughout Frontend are only
 /// included in the generated CSS once, no matter how many times they are
-/// imported across the individual components.
+/// imported across the individual components with `@import`.
+///
+/// If you include your stylesheets as Sass modules with `@use` or `@forward`
+/// Sass already ensures the CSS for the module is only output once without having
+/// to use `govuk-exports`.
+///
+/// `govuk-exports` can also prevent a mixin from outputting CSS multiple times.
 ///
 /// @param {String} $name - Name of module - must be unique within the codebase
 /// @content The passed content will only be outputted if a module of the same
