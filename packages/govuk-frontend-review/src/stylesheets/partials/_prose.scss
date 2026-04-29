@@ -1,3 +1,6 @@
+@use "pkg:govuk-frontend/base" as *;
+@use "pkg:govuk-frontend/core";
+
 .app-prose-scope {
   h1 {
     @extend %govuk-heading-xl;

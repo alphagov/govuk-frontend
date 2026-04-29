@@ -1,3 +1,5 @@
+@use "pkg:govuk-frontend/base" as *;
+
 .app-banner {
   padding-top: govuk-spacing(6);
   padding-bottom: govuk-spacing(6);

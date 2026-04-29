@@ -1,4 +1,6 @@
-@import "highlight";
+@use "pkg:govuk-frontend/base" as *;
+
+@use "highlight";
 
 .app-code {
   @include govuk-responsive-margin(6, "bottom");
