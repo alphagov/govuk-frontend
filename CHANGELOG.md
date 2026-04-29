@@ -4,6 +4,8 @@ For advice on how to use these release notes, see [our guidance on staying up to
 
 ## Unreleased
 
+## v6.2.0-beta.0 (Beta feature release)
+
 ### New features
 
 #### Use `@use` to include GOV.UK Frontend styles in Sass
