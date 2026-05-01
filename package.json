@@ -48,7 +48,7 @@
     "prepare": "node -e \"try { (await import('husky')).default() } catch (e) { if (e.code !== 'ERR_MODULE_NOT_FOUND') throw e }\" --input-type module"
   },
   "devDependencies": {
-    "@actions/github": "^9.0.0",
+    "@actions/github": "^9.1.1",
     "@babel/core": "^7.29.0",
     "@babel/preset-env": "^7.29.2",
     "@govuk-frontend/config": "*",
@@ -67,7 +67,7 @@
     "@types/jest-axe": "^3.5.9",
     "@types/js-yaml": "^4.0.9",
     "@types/mime-types": "^3.0.1",
-    "@types/node": "^25.5.0",
+    "@types/node": "^25.6.0",
     "@types/nunjucks": "^3.2.6",
     "@types/semver": "^7.7.1",
     "@types/slug": "^5.0.9",
