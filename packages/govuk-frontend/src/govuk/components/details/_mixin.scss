@@ -44,26 +44,6 @@
     margin-bottom: 0;
   }
 
-  // Hack to target IE8 - IE11 (and REALLY old Firefox)
-  // These browsers don't support the details element, so fall back to looking
-  // like inset text
-  @media screen\0 {
-    .govuk-details {
-      border-left: base.$govuk-border-width-wide solid;
-      border-left-color: base.govuk-functional-colour(border);
-    }
-
-    .govuk-details__summary {
-      margin-top: base.govuk-spacing(3);
-    }
-
-    .govuk-details__summary-text {
-      @include base.govuk-typography-weight-bold;
-      @include base.govuk-responsive-margin(4, "bottom");
-      padding-left: base.govuk-spacing(4);
-    }
-  }
-
   // We wrap styles for newer browsers in a feature query, which is ignored by
   // older browsers, which always expand the details element.
   //

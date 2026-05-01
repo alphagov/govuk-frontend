@@ -31,12 +31,6 @@
         scroll-padding-top: 0;
       }
     }
-
-    // Force the scrollbar to always display in IE, to prevent horizontal page
-    // jumps as content height changes (e.g. autocomplete results open).
-    @media screen {
-      overflow-y: scroll;
-    }
   }
 
   // Applied to the <body> element

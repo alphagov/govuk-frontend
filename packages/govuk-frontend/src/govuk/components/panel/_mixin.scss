@@ -17,9 +17,6 @@
     @media #{base.govuk-until-breakpoint(tablet)} {
       padding: base.govuk-spacing(4) - base.$govuk-border-width;
 
-      // Support IE (autoprefixer doesn't add this as it's not a prefix)
-      word-wrap: break-word;
-
       // This is an if-all-else-fails attempt to stop long words from
       // overflowing the container on very narrow viewports by forcing them to
       // break and wrap instead. This overflowing is more likely to happen when

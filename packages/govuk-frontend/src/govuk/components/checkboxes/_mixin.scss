@@ -78,9 +78,6 @@
     transform: rotate(-45deg);
     border: solid;
     border-width: 0 0 5px 5px;
-    // Fix bug in IE11 caused by transform rotate (-45deg).
-    // See: alphagov/govuk_elements/issues/518
-    border-top-color: transparent;
     opacity: 0;
     background: transparent;
   }
@@ -280,30 +277,18 @@
     //
     // We use two box shadows, one that restores the original focus state [1]
     // and another that then applies the hover state [2].
-    .govuk-checkboxes__item:hover .govuk-checkboxes__input:focus + .govuk-checkboxes__label::before {
-      // Set different HCM colour when we have both hover/focus applied at once
-      @media screen and (forced-colors: active), (-ms-high-contrast: active) {
-        outline-color: Highlight;
-      }
-      // prettier-ignore
-      box-shadow:
-        0 0 0 base.$govuk-focus-width base.govuk-functional-colour(focus), // 1
-        0 0 0 base.$govuk-hover-width base.govuk-functional-colour(hover); // 2
-    }
-
-    // For devices that explicitly don't support hover, don't provide a hover
-    // state (e.g. on touch devices like iOS).
     //
-    // We can't use `@media (hover: hover)` because we wouldn't get the hover
-    // state in browsers that don't support `@media (hover)` (like Internet
-    // Explorer) – so we have to 'undo' the hover state instead.
-    @media (hover: none), (pointer: coarse) {
-      .govuk-checkboxes__item:hover .govuk-checkboxes__input:not(:disabled) + .govuk-checkboxes__label::before {
-        box-shadow: initial;
-      }
-
+    // We only want this to apply to browsers that support hover states.
+    @media (hover: hover) {
       .govuk-checkboxes__item:hover .govuk-checkboxes__input:focus + .govuk-checkboxes__label::before {
-        box-shadow: 0 0 0 base.$govuk-focus-width base.govuk-functional-colour(focus);
+        // Set different HCM colour when we have both hover/focus applied at once
+        @media screen and (forced-colors: active), (-ms-high-contrast: active) {
+          outline-color: Highlight;
+        }
+        // prettier-ignore
+        box-shadow:
+          0 0 0 base.$govuk-focus-width base.govuk-functional-colour(focus), // 1
+          0 0 0 base.$govuk-hover-width base.govuk-functional-colour(hover); // 2
       }
     }
   }

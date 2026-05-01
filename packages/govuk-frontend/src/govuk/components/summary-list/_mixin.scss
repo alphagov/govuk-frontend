@@ -244,19 +244,6 @@
 
   .govuk-summary-card__action {
     display: inline;
-
-    // We use the following media query to target IE11 and 10 only to add margin
-    // between actions.
-    //
-    // We do this because we're using row-gap to create space between actions on
-    // more evergreen browsers which IE doesn't support. @supports currently isn't
-    // a viable solution, see https://github.com/w3c/csswg-drafts/issues/3559.
-    //
-    // Solution taken from https://stackoverflow.com/questions/11173106/apply-style-only-on-ie#answer-36448860
-    // which also includes an explanation of why this works
-    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
-      margin-bottom: base.govuk-spacing(1);
-    }
   }
 
   .govuk-summary-card__action:last-child {

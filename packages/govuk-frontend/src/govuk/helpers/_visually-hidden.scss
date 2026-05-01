@@ -26,9 +26,6 @@
   padding: 0 govuk-if($important, !important);
 
   overflow: hidden govuk-if($important, !important);
-
-  // `clip` is needed for IE11 support
-  clip: rect(0 0 0 0) govuk-if($important, !important);
   clip-path: inset(50%) govuk-if($important, !important);
 
   border: 0 govuk-if($important, !important);
@@ -75,11 +72,10 @@
 /// @access public
 
 @mixin govuk-visually-hidden-focusable($important: true) {
-  // IE 11 doesn't support the combined `:not(:active, :focus)` syntax.
   // Also allows for ':focus' companion classes from postcss-pseudo-classes
   // which the plugin unfortunately doesn't handle automatically.
   // stylelint-disable-next-line selector-class-pattern
-  &:not(:active):not(:focus):not(.\:focus) {
+  &:not(:active):not(.\:focus):not(:focus) {
     @include _govuk-visually-hide-content($important: $important);
   }
 }

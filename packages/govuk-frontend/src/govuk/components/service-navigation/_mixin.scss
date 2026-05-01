@@ -174,16 +174,6 @@
       display: flex;
       flex-wrap: wrap;
       margin-bottom: 0;
-
-      // However... IE11 totally trips over flexbox and doesn't wrap anything,
-      // making all of the items into a single, horizontally scrolling row,
-      // which is no good. This CSS hack removes the flexbox definition for
-      // IE 9–11, reverting it to the flawed, but OK, non-flexbox version.
-      //
-      // CSS hack from http://browserhacks.com/#hack-a60b03e301a67f76a5a22221c739dc64
-      @media screen and (min-width: 0\0) {
-        display: block;
-      }
     }
   }
 
