@@ -2083,24 +2083,24 @@ p + .govuk-heading-s,
   width: 24px;
   margin-bottom: 5px;
 }
-.govuk-checkboxes--small .govuk-checkboxes__item:hover .govuk-checkboxes__input:not(:disabled) + .govuk-checkboxes__label::before {
+.govuk-checkboxes--small .govuk-checkboxes__input:not(:disabled):hover + .govuk-checkboxes__label::before {
   outline: 3px dashed transparent;
   outline-offset: 1px;
   box-shadow: 0 0 0 10px var(--govuk-hover-colour, #cecece);
 }
-.govuk-checkboxes--small .govuk-checkboxes__item:hover .govuk-checkboxes__input:focus + .govuk-checkboxes__label::before {
+.govuk-checkboxes--small .govuk-checkboxes__input:focus:hover + .govuk-checkboxes__label::before {
   box-shadow: 0 0 0 3px var(--govuk-focus-colour, #ffdd00), 0 0 0 10px var(--govuk-hover-colour, #cecece);
 }
 @media screen and (forced-colors: active), (-ms-high-contrast: active) {
-  .govuk-checkboxes--small .govuk-checkboxes__item:hover .govuk-checkboxes__input:focus + .govuk-checkboxes__label::before {
+  .govuk-checkboxes--small .govuk-checkboxes__input:focus:hover + .govuk-checkboxes__label::before {
     outline-color: Highlight;
   }
 }
 @media (hover: none), (pointer: coarse) {
-  .govuk-checkboxes--small .govuk-checkboxes__item:hover .govuk-checkboxes__input:not(:disabled) + .govuk-checkboxes__label::before {
+  .govuk-checkboxes--small .govuk-checkboxes__input:not(:disabled):hover + .govuk-checkboxes__label::before {
     box-shadow: initial;
   }
-  .govuk-checkboxes--small .govuk-checkboxes__item:hover .govuk-checkboxes__input:focus + .govuk-checkboxes__label::before {
+  .govuk-checkboxes--small .govuk-checkboxes__input:focus:hover + .govuk-checkboxes__label::before {
     box-shadow: 0 0 0 3px var(--govuk-focus-colour, #ffdd00);
   }
 }
@@ -3946,24 +3946,24 @@ p + .govuk-heading-s,
   width: 24px;
   margin-bottom: 5px;
 }
-.govuk-radios--small .govuk-radios__item:hover .govuk-radios__input:not(:disabled) + .govuk-radios__label::before {
+.govuk-radios--small .govuk-radios__input:not(:disabled):hover + .govuk-radios__label::before {
   outline: 4px dashed transparent;
   outline-offset: 1px;
   box-shadow: 0 0 0 10px var(--govuk-hover-colour, #cecece);
 }
-.govuk-radios--small .govuk-radios__item:hover .govuk-radios__input:focus + .govuk-radios__label::before {
+.govuk-radios--small .govuk-radios__input:focus:hover + .govuk-radios__label::before {
   box-shadow: 0 0 0 4px var(--govuk-focus-colour, #ffdd00), 0 0 0 10px var(--govuk-hover-colour, #cecece);
 }
 @media screen and (forced-colors: active), (-ms-high-contrast: active) {
-  .govuk-radios--small .govuk-radios__item:hover .govuk-radios__input:focus + .govuk-radios__label::before {
+  .govuk-radios--small .govuk-radios__input:focus:hover + .govuk-radios__label::before {
     outline-color: Highlight;
   }
 }
 @media (hover: none), (pointer: coarse) {
-  .govuk-radios--small .govuk-radios__item:hover .govuk-radios__input:not(:disabled) + .govuk-radios__label::before {
+  .govuk-radios--small .govuk-radios__input:not(:disabled):hover + .govuk-radios__label::before {
     box-shadow: initial;
   }
-  .govuk-radios--small .govuk-radios__item:hover .govuk-radios__input:focus + .govuk-radios__label::before {
+  .govuk-radios--small .govuk-radios__input:focus:hover + .govuk-radios__label::before {
     box-shadow: 0 0 0 4px var(--govuk-focus-colour, #ffdd00);
   }
 }
