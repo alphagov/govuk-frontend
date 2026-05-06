@@ -19,7 +19,7 @@ jobs:
 
     steps:
       - name: Cache stats
-        uses: actions/cache@v5.0.5
+        uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5.0.5
         id: stats-cache
         with:
           # Restore build cache, unless commit SHA or base ref changes
@@ -33,7 +33,7 @@ jobs:
       - name: Checkout base branch
         # Skip build when we’ve built this SHA before
         if: steps.stats-cache.outputs.cache-hit != 'true'
-        uses: actions/checkout@v6.0.2
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
         with:
           ref: ${{ github.base_ref }}
@@ -53,7 +53,7 @@ jobs:
       - name: Get base file stats
         # Skip build when we’ve built this SHA before
         if: steps.stats-cache.outputs.cache-hit != 'true'
-        uses: actions/github-script@v9.0.0
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
         with:
           script: |
             const { writeFileSync } = await import('fs')
@@ -68,7 +68,7 @@ jobs:
       - name: Checkout head
         # Skip build when we’ve built this SHA before
         if: steps.stats-cache.outputs.cache-hit != 'true'
-        uses: actions/checkout@v6.0.2
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           ref: ${{ github.head_ref }}
           clean: false # So that we retain the stats generated from base
@@ -88,7 +88,7 @@ jobs:
       - name: Get head file stats
         # Skip build when we’ve built this SHA before
         if: steps.stats-cache.outputs.cache-hit != 'true'
-        uses: actions/github-script@v9.0.0
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
         with:
           script: |
             const { writeFileSync } = await import('fs')
@@ -103,7 +103,7 @@ jobs:
       - name: Compare base and head and add comment to PR
         # Skip build when we’ve built this SHA before
         if: steps.stats-cache.outputs.cache-hit != 'true'
-        uses: actions/github-script@v9.0.0
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |

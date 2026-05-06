@@ -31,7 +31,7 @@ jobs:
         run: echo "::warning title=GitHub Actions secrets::Workflow requires 'PERCY_TOKEN' secret"
 
       - name: Checkout
-        uses: actions/checkout@v6.0.2
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           fetch-depth: 0
 
@@ -53,7 +53,7 @@ jobs:
 
       - name: Check for relevant changes
         id: changes
-        uses: actions/github-script@v9.0.0
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
@@ -81,7 +81,7 @@ jobs:
 
       - name: Cache browser download
         if: steps.changes.outputs.relevant_changes == 'true'
-        uses: actions/cache@v5.0.5
+        uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5.0.5
         with:
           # Use faster GNU tar for all runners
           enableCrossOsArchive: true
