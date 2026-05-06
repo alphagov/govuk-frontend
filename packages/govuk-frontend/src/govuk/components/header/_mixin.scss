@@ -13,8 +13,18 @@
     background: base.govuk-functional-colour(brand);
   }
 
+  .govuk-header--unbranded {
+    background: base.govuk-colour("black");
+  }
+
   .govuk-header__container--full-width {
     padding: 0 base.govuk-spacing(3);
+  }
+
+  .govuk-header__container--slots {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
   }
 
   .govuk-header__logo {

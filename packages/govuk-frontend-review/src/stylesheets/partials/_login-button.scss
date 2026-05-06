@@ -1,0 +1,18 @@
+@use "pkg:govuk-frontend/base" as *;
+
+.app-login-button {
+  @include govuk-font($size: 16, $weight: bold);
+  @include govuk-link-style-no-underline;
+  display: block;
+  padding: govuk-spacing(3) 0;
+  color: govuk-colour("white");
+}
+
+.app-login-button__text {
+  display: flex;
+  align-items: center;
+}
+
+.app-login-button__logo {
+  margin-right: govuk-spacing(2);
+}

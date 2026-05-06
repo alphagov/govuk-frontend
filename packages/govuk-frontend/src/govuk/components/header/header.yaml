@@ -3,10 +3,22 @@ params:
     type: string
     required: false
     description: The URL of the homepage. Defaults to the GOV.UK homepage.
+  - name: logo
+    type: string
+    required: false
+    description: HTML to use for the logo within the header. Will default to the GOV.UK logo if not specified.
   - name: productName
     type: string
     required: false
     description: Product name, used when the product name follows on directly from ‘GOV.UK’. For example, GOV.UK Pay or GOV.UK Design System. In most circumstances, you should use the [Service navigation component](https://design-system.service.gov.uk/components/service-navigation/).
+  - name: branded
+    type: boolean
+    required: false
+    description: Specifies if the header should use the GOV.UK brand or not. When set to `false`, will turn the header black. Will default to `true` if not specified.
+  - name: slotContent
+    type: string
+    required: false
+    description: HTML for extra elements to go in the header alongside the logo
   - name: containerClasses
     type: string
     required: false
@@ -51,9 +63,27 @@ examples:
     options:
       productName: Product Name
 
+  - name: with custom logo
+    options:
+      logo: |
+        <img src="/images/hmlr-header-logo.png" height="28">
+
+  - name: with custom logo and unbranded header
+    screenshot: true
+    options:
+      branded: false
+      logo: |
+        <img src="/images/hmlr-header-logo.png" height="28">
+
   - name: full width
     options:
       containerClasses: govuk-header__container--full-width
+
+  - name: with slot content
+    screenshot: true
+    options:
+      slotContent: |
+        <a href="https://pizza.com" class="govuk-link govuk-link--inverse">Click here for big pizza</a>
 
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: attributes
