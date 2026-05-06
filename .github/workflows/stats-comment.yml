@@ -37,6 +37,7 @@ jobs:
 
         with:
           ref: ${{ github.base_ref }}
+          persist-credentials: false
 
       - name: Restore base dependencies
         # Skip build when we’ve built this SHA before
@@ -72,6 +73,7 @@ jobs:
         with:
           ref: ${{ github.head_ref }}
           clean: false # So that we retain the stats generated from base
+          persist-credentials: false
 
       - name: Restore head dependencies
         # Skip build when we’ve built this SHA before
