@@ -46,7 +46,7 @@ $govuk-assets-path: "/path/to/assets/";
 );
 ```
 
-You can also [include specific parts of GOV.UK Frontend using Sass](https://deploy-preview-615--govuk-frontend-docs-preview.netlify.app/include-css/include-specific-parts-of-gov-uk-frontend-using-sass).
+You can also [include specific parts of GOV.UK Frontend using Sass](https://deploy-preview-615--govuk-frontend-docs-preview.netlify.app/include-css#include-specific-parts-of-gov-uk-frontend-using-sass).
 
 See the GOV.UK Frontend documentation for more information on [including GOV.UK Frontend](https://deploy-preview-615--govuk-frontend-docs-preview.netlify.app/include-css/) in your Sass build.
 
