@@ -43,7 +43,7 @@ $govuk-assets-path: "/path/to/assets/";
 // Now
 @use "pkg:gov-uk frontend" as * with (
   $govuk-assets-path: "/path/to/assets/"
-)
+);
 ```
 
 You can also [include specific parts of GOV.UK Frontend using Sass](https://deploy-preview-615--govuk-frontend-docs-preview.netlify.app/include-css/include-specific-parts-of-gov-uk-frontend-using-sass).
