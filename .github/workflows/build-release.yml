@@ -16,6 +16,9 @@ jobs:
   build-release:
     name: Build release
     runs-on: Ubuntu-22.04
+    env:
+      VERSION: ${{ inputs.version }}
+      GITHUB_ACTOR: ${{ github.actor }}
 
     steps:
       - name: Checkout
@@ -36,7 +39,7 @@ jobs:
             const { validateVersion } = await import('${{ github.workspace }}/shared/github-scripts/changelog-release-helper.mjs')
             const frontendPackage = await import('${{ github.workspace }}/packages/govuk-frontend/package.json', { with: { type: 'json' }})
 
-            validateVersion('${{ inputs.version }}', frontendPackage.default.version)
+            validateVersion(process.env.VERSION, frontendPackage.default.version)
 
       - name: Update CHANGELOG
         uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
@@ -45,10 +48,10 @@ jobs:
             const { updateChangelog } = await import('${{ github.workspace }}/shared/github-scripts/changelog-release-helper.mjs')
             const frontendPackage = await import('${{ github.workspace }}/packages/govuk-frontend/package.json', { with: { type: 'json' }})
 
-            updateChangelog('${{ inputs.version }}', frontendPackage.default.version)
+            updateChangelog(process.env.VERSION, frontendPackage.default.version)
 
       - name: Update package version
-        run: npm version --no-git-tag-version --workspace govuk-frontend ${{ inputs.version }}
+        run: npm version --no-git-tag-version --workspace govuk-frontend ${VERSION}
 
       - name: Generate release notes
         uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
@@ -56,7 +59,7 @@ jobs:
           script: |
             const { generateReleaseNotes } = await import('${{ github.workspace }}/shared/github-scripts/changelog-release-helper.mjs')
 
-            generateReleaseNotes('${{ inputs.version }}', { actor: '${{ github.actor }}', runId: '${{ github.run_id }}' })
+            generateReleaseNotes(process.env.VERSION, { actor: process.env.GITHUB_ACTOR, runId: '${{ github.run_id }}' })
 
       - name: Build release
         run: npm run build:release
@@ -65,10 +68,10 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.CI_PAT }}
         run: |
-          git config --global user.name '${{ github.actor }}'
-          git config --global user.email '${{ github.actor }}@digital.cabinet-office.gov.uk'
+          git config --global user.name '${GITHUB_ACTOR}'
+          git config --global user.email '${GITHUB_ACTOR}@digital.cabinet-office.gov.uk'
           git add .
-          git commit -m "Release ${{ inputs.version }}"
-          git checkout -b release-${{ inputs.version }}
-          git push -u origin release-${{ inputs.version }}
-          gh pr create --base main --head release-${{ inputs.version }} --title "Release ${{ inputs.version }}" --body-file "release-notes-body"
+          git commit -m "Release ${VERSION}"
+          git checkout -b release-${VERSION}
+          git push -u origin release-${VERSION}
+          gh pr create --base main --head release-${VERSION} --title "Release ${VERSION}" --body-file "release-notes-body"

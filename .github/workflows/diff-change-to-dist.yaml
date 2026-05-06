@@ -31,12 +31,14 @@ jobs:
           git config diff.mincss.textconv "js-beautify --editorconfig --type css"
 
       - name: Generate diff
+        env:
+          GITHUB_EVENT_PR_BASE_REF: ${{ github.event.pull_request.base.ref }}
         run: |
           # Using `origin/<BASE_REF>` to avoid actually checking out the branch
           # as all we need is to let Git diff the two references
           # Using the even to get a more accurate reference when the base changes
           # as $GITHUB_BASE_REF seems to keep referencing the old base
-          bin/dist-diff.sh origin/${{ github.event.pull_request.base.ref }} $GITHUB_WORKSPACE
+          bin/dist-diff.sh origin/${GITHUB_EVENT_PR_BASE_REF} $GITHUB_WORKSPACE
 
       - name: Save GitHub release diffs
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
