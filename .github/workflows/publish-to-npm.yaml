@@ -35,4 +35,6 @@ jobs:
         run: npm run build:package
 
       - name: Publish to npm
-        run: npm publish --workspace govuk-frontend --provenance --tag ${{steps.generate_tag.outputs.NPM_TAG}}
+        env:
+          NPM_TAG: ${{ steps.generate_tag.outputs.NPM_TAG }}
+        run: npm publish --workspace govuk-frontend --provenance --tag "$NPM_TAG"

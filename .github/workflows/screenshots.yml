@@ -57,6 +57,8 @@ jobs:
       - name: Check for relevant changes
         id: changes
         uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
+        env:
+          CHANGED_FILES_JSON: ${{ steps.files.outputs.changed_files }}
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
@@ -69,8 +71,8 @@ jobs:
               console.log(`Merging to ${context.ref} - running Percy`)
               core.setOutput('relevant_changes', 'true')
             } else {
-              const changedFiles = JSON.parse('${{ steps.files.outputs.changed_files }}')
-              const { checkRelevantChanges } = await import('${{ github.workspace }}/shared/github-scripts/check-percy-files.mjs')
+              const changedFiles = JSON.parse(process.env.CHANGED_FILES_JSON || '[]')
+              const { checkRelevantChanges } = await import(`${process.env.GITHUB_WORKSPACE}/shared/github-scripts/check-percy-files.mjs`)
 
               const relevantChanges = checkRelevantChanges(changedFiles)
               core.setOutput('relevant_changes', relevantChanges)

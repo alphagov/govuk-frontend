@@ -51,19 +51,24 @@ jobs:
           fi
 
       - name: Create GitHub archive
-        run: git archive -o ./release-${{ steps.create-github-tag.outputs.GH_TAG }}.zip HEAD:dist
+        env:
+          GH_TAG: ${{ steps.create-github-tag.outputs.GH_TAG }}
+        run: git archive -o ./release-${GH_TAG}.zip HEAD:dist
 
       - name: Generate release notes
         uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
+        env:
+          GH_TAG: ${{ steps.create-github-tag.outputs.GH_TAG }}
         with:
           script: |
-            const { generateReleaseNotes } = await import('${{ github.workspace }}/shared/github-scripts/changelog-release-helper.mjs')
+            const { generateReleaseNotes } = await import(`${process.env.GITHUB_WORKSPACE}/shared/github-scripts/changelog-release-helper.mjs`)
 
-            await generateReleaseNotes('${{ steps.create-github-tag.outputs.GH_TAG }}')
+            await generateReleaseNotes(process.env.GH_TAG)
 
       - name: Create GitHub release
+        env:
+          GH_TAG: ${{ steps.create-github-tag.outputs.GH_TAG }}
         run: |
-          GH_TAG=${{ steps.create-github-tag.outputs.GH_TAG }}
           RELEASE_NAME="GOV.UK Frontend $GH_TAG"
           RELEASE_BODY=$(cat release-notes-body)
 

@@ -316,19 +316,19 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - run: node --eval "console.log(require.resolve('govuk-frontend'))"${{ env.FLAGS }}
+      - run: node --eval "console.log(require.resolve('govuk-frontend'))"$FLAGS
         working-directory: packages/govuk-frontend
 
-      - run: node --eval "console.log(require.resolve('govuk-frontend/package.json'))"${{ env.FLAGS }}
+      - run: node --eval "console.log(require.resolve('govuk-frontend/package.json'))"$FLAGS
         working-directory: packages/govuk-frontend
 
-      - run: node --eval "console.log(require.resolve('govuk-frontend/dist/govuk/components/accordion/accordion.bundle.js'))"${{ env.FLAGS }}
+      - run: node --eval "console.log(require.resolve('govuk-frontend/dist/govuk/components/accordion/accordion.bundle.js'))"$FLAGS
         working-directory: packages/govuk-frontend
 
-      - run: node --eval "console.log(require.resolve('govuk-frontend/dist/govuk/components/accordion/accordion.bundle.mjs'))"${{ env.FLAGS }}
+      - run: node --eval "console.log(require.resolve('govuk-frontend/dist/govuk/components/accordion/accordion.bundle.mjs'))"$FLAGS
         working-directory: packages/govuk-frontend
 
-      - run: node --eval "console.log(require.resolve('govuk-frontend/dist/govuk/i18n.mjs'))"${{ env.FLAGS }}
+      - run: node --eval "console.log(require.resolve('govuk-frontend/dist/govuk/i18n.mjs'))"$FLAGS
         working-directory: packages/govuk-frontend
 
   regression:
