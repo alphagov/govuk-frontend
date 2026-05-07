@@ -1,7 +1,13 @@
 name: 'RELEASE: GitHub release'
+run-name: "RELEASE: GitHub release${{ inputs.dry_run && ' (Dry run)' || '' }}"
 
 on:
   workflow_dispatch:
+    inputs:
+      dry_run:
+        type: boolean
+        description: Dry run
+        default: true
 
 jobs:
   publish-release-to-github:
@@ -58,6 +64,7 @@ jobs:
             await generateReleaseNotes('${{ steps.create-github-tag.outputs.GH_TAG }}')
 
       - name: Create GitHub release
+        if: inputs.dry_run == false
         run: |
           GH_TAG=${{ steps.create-github-tag.outputs.GH_TAG }}
           RELEASE_NAME="GOV.UK Frontend $GH_TAG"

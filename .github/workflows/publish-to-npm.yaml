@@ -1,7 +1,13 @@
 name: 'RELEASE: npm publish'
+run-name: "RELEASE: npm publish${{ inputs.dry_run && ' (Dry run)' || '' }}"
 
 on:
   workflow_dispatch:
+    inputs:
+      dry_run:
+        type: boolean
+        description: Dry run
+        default: true
 
 jobs:
   publish:
@@ -33,4 +39,5 @@ jobs:
         run: npm run build:package
 
       - name: Publish to npm
+        if: inputs.dry_run == false
         run: npm publish --workspace govuk-frontend --provenance --tag ${{steps.generate_tag.outputs.NPM_TAG}}
