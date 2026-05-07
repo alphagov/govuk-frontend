@@ -20,7 +20,7 @@ elif [ $(version "$PACKAGE_VERSION") -ge $(version "$LATEST_PUBLISHED_VERSION") 
   NPM_TAG="latest"
 else
   major_version_num=$(echo "$PACKAGE_VERSION" | cut -d. -f1)
-  NPM_TAG="latest-$major_version_num"
+  NPM_TAG="latest-v$major_version_num"
 fi
 
 echo "$NPM_TAG"
