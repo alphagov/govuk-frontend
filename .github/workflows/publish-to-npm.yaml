@@ -38,6 +38,22 @@ jobs:
       - name: Build npm package
         run: npm run build:package
 
+      - name: Print information on package
+        id: pack
+        run: |
+          echo '```bash' >> $GITHUB_STEP_SUMMARY
+          # Redirect the stderr which contains the useful meta data to the Action summary
+          ARCHIVE_FILE_PATH=$(npm pack --workspace govuk-frontend 2>> $GITHUB_STEP_SUMMARY)
+          echo '```' >> $GITHUB_STEP_SUMMARY
+
+          echo "ARCHIVE_FILE_PATH=${ARCHIVE_FILE_PATH}" >> $GITHUB_OUTPUT
+
+      - name: Upload npm package archive artifact
+        uses: actions/upload-artifact@v7
+        with:
+          path: ${{steps.pack.outputs.ARCHIVE_FILE_PATH}}
+          archive: false # file is already compressed
+
       - name: Publish to npm
         if: inputs.dry_run == false
         run: npm publish --workspace govuk-frontend --provenance --tag ${{steps.generate_tag.outputs.NPM_TAG}}
