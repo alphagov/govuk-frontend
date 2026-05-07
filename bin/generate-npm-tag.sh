@@ -11,11 +11,8 @@ version() { echo "$@" | awk -F. '{ printf("%d%03d%03d\n", $1,$2,$3); }'; }
 
 if echo "$PACKAGE_VERSION" | grep -q "internal"; then
   NPM_TAG="internal"
-elif echo "$PACKAGE_VERSION" | grep -q "beta"; then
+elif echo "$PACKAGE_VERSION" | grep -q "-"; then
   NPM_TAG="next"
-elif echo "$PACKAGE_VERSION" | grep -q -E '^\d+\.\d+\.\d+-\D+(\.\d+)?$'; then
-  echo "⚠️ Pre-releases with an identifier other than 'beta' or 'internal' are not allowed, therefore we will not generate an npm tag. Please check your current version."
-  exit 1
 elif [ $(version "$PACKAGE_VERSION") -ge $(version "$LATEST_PUBLISHED_VERSION") ]; then
   NPM_TAG="latest"
 else
