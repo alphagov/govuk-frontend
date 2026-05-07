@@ -1,11 +1,11 @@
 #!/bin/sh
 set -e
 
-# Get highest tag published on Github
-HIGHEST_PUBLISHED_VERSION=$(git tag --list 2>/dev/null | sort -V | tail -n1 2>/dev/null | sed 's/v//g')
+# Use first argument as version or extract tag version from ./packages/govuk-frontend/package.json
+CURRENT_VERSION=${1:-$(npm run get-version --silent --workspace govuk-frontend)}
 
-# Extract tag version from ./packages/govuk-frontend/package.json
-CURRENT_VERSION=$(npm run get-version --silent --workspace govuk-frontend)
+# Use second argument as highest published version or get highest tag published on Github
+HIGHEST_PUBLISHED_VERSION=${2:-$(git tag --list 2>/dev/null | sort -V | tail -n1 2>/dev/null | sed 's/v//g')}
 
 version() { echo "$@" | awk -F. '{ printf("%d%03d%03d\n", $1,$2,$3); }'; }
 
