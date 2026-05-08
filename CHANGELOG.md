@@ -9,6 +9,7 @@ For advice on how to use these release notes, see [our guidance on staying up to
 We've made fixes to GOV.UK Frontend in the following pull requests:
 
 - [#7021: Fix small inputs activating hover style when hovering on non-clickable areas](https://github.com/alphagov/govuk-frontend/pull/7021)
+- [#6959: Fix alignment of jewels and base in govuk-icon PNGs](https://github.com/alphagov/govuk-frontend/pull/6959), thanks to @matteason for reporting and fixing this issue
 
 ## v6.2.0-beta.0 (Beta feature release)
 
