@@ -2,12 +2,13 @@
 
 const {
   render,
-  getAccessibleName
+  getAccessibleName,
+  isVisible
 } = require('@govuk-frontend/helpers/puppeteer')
 const { getExamples } = require('@govuk-frontend/lib/components')
 
 const inputSelector = '.govuk-file-upload'
-const wrapperSelector = '.govuk-drop-zone'
+const wrapperSelector = '.govuk-file-upload-wrapper'
 const buttonSelector = '.govuk-file-upload-button'
 const statusSelector = '.govuk-file-upload-button__status'
 const pseudoButtonSelector = '.govuk-file-upload-button__pseudo-button'
@@ -76,12 +77,10 @@ describe('/components/file-upload', () => {
         })
 
         describe('file input', () => {
-          it('sets tabindex to -1', async () => {
-            const inputElementTabindex = await page.$eval(inputSelector, (el) =>
-              el.getAttribute('tabindex')
-            )
+          it('gets hidden', async () => {
+            const $input = await page.$(inputSelector)
 
-            expect(inputElementTabindex).toBe('-1')
+            expect(await isVisible($input)).toBe(false)
           })
         })
 
@@ -268,7 +267,7 @@ describe('/components/file-upload', () => {
         beforeEach(async () => {
           await render(page, 'file-upload', examples.enhanced)
 
-          $wrapper = await page.$('.govuk-drop-zone')
+          $wrapper = await page.$('.govuk-file-upload-wrapper')
           wrapperBoundingBox = await $wrapper.boundingBox()
 
           $announcements = await page.$('.govuk-file-upload-announcements')
@@ -353,7 +352,7 @@ describe('/components/file-upload', () => {
 
           // It doesn't seem doable to make Puppeteer drag outside the viewport
           // so instead, we can only mock two 'dragleave' events
-          await page.$eval('.govuk-drop-zone', ($el) => {
+          await page.$eval('.govuk-file-upload-wrapper', ($el) => {
             $el.dispatchEvent(new Event('dragleave', { bubbles: true }))
             $el.dispatchEvent(new Event('dragleave', { bubbles: true }))
           })
@@ -502,7 +501,7 @@ describe('/components/file-upload', () => {
             el.hasAttribute('disabled')
           )
           const dropZoneDisabled = await page.$eval(wrapperSelector, (el) =>
-            el.classList.contains('govuk-drop-zone--disabled')
+            el.classList.contains('govuk-file-upload-wrapper--disabled')
           )
 
           expect(buttonDisabled).toBeTruthy()
@@ -520,7 +519,7 @@ describe('/components/file-upload', () => {
             el.hasAttribute('disabled')
           )
           const dropZoneDisabled = await page.$eval(wrapperSelector, (el) =>
-            el.classList.contains('govuk-drop-zone--disabled')
+            el.classList.contains('govuk-file-upload-wrapper--disabled')
           )
 
           expect(buttonDisabledAfter).toBeTruthy()
@@ -544,7 +543,7 @@ describe('/components/file-upload', () => {
             el.hasAttribute('disabled')
           )
           const dropZoneDisabled = await page.$eval(wrapperSelector, (el) =>
-            el.classList.contains('govuk-drop-zone--disabled')
+            el.classList.contains('govuk-file-upload-wrapper--disabled')
           )
 
           expect(buttonDisabled).toBeFalsy()
