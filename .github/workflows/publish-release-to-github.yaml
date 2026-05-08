@@ -73,6 +73,17 @@ jobs:
 
             await generateReleaseNotes('${{ steps.create-github-tag.outputs.GH_TAG }}')
 
+      - name: Print information on release notes
+        run: |
+          {
+            echo "## Generated release notes"
+            cat release-notes-body
+            echo '## Files in archive'
+            echo '```bash'
+            tree dist
+            echo '```'
+          } >> $GITHUB_STEP_SUMMARY
+
       - name: Create GitHub release
         if: inputs.dry_run == false
         run: |
