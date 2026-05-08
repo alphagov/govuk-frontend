@@ -12,6 +12,13 @@ on:
           - major
           - minor
           - patch
+          - premajor
+          - preminor
+          - prepatch
+          - prerelease
+      preid:
+        description: 'Prerelease label (for ex. `internal`, `beta`, `rc`)'
+        type: string
       dry_run:
         description: 'Dry run'
         type: boolean
@@ -42,7 +49,14 @@ jobs:
         run: echo "PREVIOUS_PACKAGE_VERSION=$(npm run version --silent --workspace govuk-frontend)" >> $GITHUB_ENV
 
       - name: Update package version
-        run: npm version --no-git-tag-version --workspace govuk-frontend ${{ inputs.version }}
+        env:
+          VERSION: ${{inputs.version}}
+          PREID: ${{inputs.preid}}
+        run: |
+          npm version --no-git-tag-version --workspace govuk-frontend "$VERSION" --preid "$PREID"
+
+          # Save the new version number for access in future steps
+          echo "PACKAGE_VERSION=$(npm run version --silent --workspace govuk-frontend)" >> $GITHUB_ENV
 
       - name: Update CHANGELOG
         uses: actions/github-script@v9.0.0
@@ -50,7 +64,7 @@ jobs:
           script: |
             const { updateChangelog } = await import('${{ github.workspace }}/shared/github-scripts/changelog-release-helper.mjs')
 
-            updateChangelog('${{ inputs.version }}', process.env.PREVIOUS_PACKAGE_VERSION)
+            updateChangelog(process.env.PACKAGE_VERSION, process.env.PREVIOUS_PACKAGE_VERSION)
 
       - name: Generate release notes
         uses: actions/github-script@v9.0.0
@@ -58,7 +72,7 @@ jobs:
           script: |
             const { generateReleaseNotes } = await import('${{ github.workspace }}/shared/github-scripts/changelog-release-helper.mjs')
 
-            generateReleaseNotes('${{ inputs.version }}', { actor: '${{ github.actor }}', runId: '${{ github.run_id }}' })
+            generateReleaseNotes(process.env.PACKAGE_VERSION, { actor: '${{ github.actor }}', runId: '${{ github.run_id }}' })
 
       - name: Build release
         run: npm run build:release
