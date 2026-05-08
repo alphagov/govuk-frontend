@@ -4,7 +4,7 @@ run-name: "RELEASE: Build release${{ inputs.dry_run && ' (Dry run)' || '' }}"
 on:
   workflow_dispatch:
     inputs:
-      version:
+      release_type:
         description: 'Release type'
         required: true
         type: choice
@@ -33,7 +33,22 @@ jobs:
     name: Build release
     runs-on: Ubuntu-22.04
 
+    env:
+      RELEASE_TYPE: ${{inputs.release_type}}
+      PREID: ${{inputs.preid}}
+
     steps:
+      - name: Log inputs in the action summary
+        run: |
+          # Output the inputs in the summary before anything
+          {
+            echo "## Inputs"
+            echo '|Input|Value|'
+            echo '|-----|-----|'
+            echo "|release_type|\`$RELEASE_TYPE\`|"
+            echo "|preid|\`$PREID\`|"
+          } >> $GITHUB_STEP_SUMMARY
+
       - name: Checkout
         uses: actions/checkout@v6.0.2
 
@@ -49,11 +64,8 @@ jobs:
         run: echo "PREVIOUS_PACKAGE_VERSION=$(npm run version --silent --workspace govuk-frontend)" >> $GITHUB_ENV
 
       - name: Update package version
-        env:
-          VERSION: ${{inputs.version}}
-          PREID: ${{inputs.preid}}
         run: |
-          npm version --no-git-tag-version --workspace govuk-frontend "$VERSION" --preid "$PREID"
+          npm version --no-git-tag-version --workspace govuk-frontend "$RELEASE_TYPE" --preid "$PREID"
 
           # Save the new version number for access in future steps
           echo "PACKAGE_VERSION=$(npm run version --silent --workspace govuk-frontend)" >> $GITHUB_ENV
