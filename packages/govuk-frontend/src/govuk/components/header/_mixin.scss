@@ -13,18 +13,14 @@
     background: base.govuk-functional-colour(brand);
   }
 
-  .govuk-header--unbranded {
-    background: base.govuk-colour("black");
+  .govuk-header__container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
   }
 
   .govuk-header__container--full-width {
     padding: 0 base.govuk-spacing(3);
-  }
-
-  .govuk-header__container--slots {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
   }
 
   .govuk-header__logo {
@@ -33,6 +29,11 @@
     // Magic numbers, set padding to vertically centre align the logo
     padding-top: 16px;
     padding-bottom: 14px - $logo-bottom-margin;
+  }
+
+  .govuk-header__slot {
+    box-sizing: border-box;
+    padding: base.govuk-spacing(3) 0;
   }
 
   .govuk-header__homepage-link {
