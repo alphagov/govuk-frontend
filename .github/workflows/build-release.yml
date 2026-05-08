@@ -34,17 +34,19 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Save current version
+        run: echo "PREVIOUS_PACKAGE_VERSION=$(npm run version --silent --workspace govuk-frontend)" >> $GITHUB_ENV
+
+      - name: Update package version
+        run: npm version --no-git-tag-version --workspace govuk-frontend ${{ inputs.version }}
+
       - name: Update CHANGELOG
         uses: actions/github-script@v9.0.0
         with:
           script: |
             const { updateChangelog } = await import('${{ github.workspace }}/shared/github-scripts/changelog-release-helper.mjs')
-            const frontendPackage = await import('${{ github.workspace }}/packages/govuk-frontend/package.json', { with: { type: 'json' }})
 
-            updateChangelog('${{ inputs.version }}', frontendPackage.default.version)
-
-      - name: Update package version
-        run: npm version --no-git-tag-version --workspace govuk-frontend ${{ inputs.version }}
+            updateChangelog('${{ inputs.version }}', process.env.PREVIOUS_PACKAGE_VERSION)
 
       - name: Generate release notes
         uses: actions/github-script@v9.0.0
