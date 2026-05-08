@@ -53,7 +53,17 @@ jobs:
           fi
 
       - name: Create GitHub archive
-        run: git archive -o ./release-${{ steps.create-github-tag.outputs.GH_TAG }}.zip HEAD:dist
+        id: archive
+        run: |
+          ARCHIVE_FILE_PATH="./release-${{ steps.create-github-tag.outputs.GH_TAG }}.zip"
+          git archive -o "${ARCHIVE_FILE_PATH}" HEAD:dist
+          echo "ARCHIVE_FILE_PATH=${ARCHIVE_FILE_PATH}" >> $GITHUB_OUTPUT
+
+      - name: Upload GitHub archive artifact
+        uses: actions/upload-artifact@v7
+        with:
+          path: ${{steps.archive.outputs.ARCHIVE_FILE_PATH}}
+          archive: false # file is already compressed
 
       - name: Generate release notes
         uses: actions/github-script@v9.0.0
@@ -69,10 +79,11 @@ jobs:
           GH_TAG=${{ steps.create-github-tag.outputs.GH_TAG }}
           RELEASE_NAME="GOV.UK Frontend $GH_TAG"
           RELEASE_BODY=$(cat release-notes-body)
+          ARCHIVE_FILE_PATH="${{steps.archive.outputs.ARCHIVE_FILE_PATH}}"
 
           if gh release view "$GH_TAG" > /dev/null 2>&1; then
             echo "⚠️ Release $GH_TAG already exists. Please delete the release and tag via the GitHub UI and re-run this workflow"
             exit 1
           else
-            gh release create "$GH_TAG" ./release-"${GH_TAG}".zip --title "${RELEASE_NAME}" --notes "$RELEASE_BODY"
+            gh release create "$GH_TAG" "$ARCHIVE_FILE_PATH" --title "${RELEASE_NAME}" --notes "$RELEASE_BODY"
           fi
