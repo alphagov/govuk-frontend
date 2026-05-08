@@ -1,0 +1,27 @@
+{% from "../../macros/attributes.njk" import govukAttributes -%}
+{% from "../../macros/logo.njk" import govukLogo -%}
+
+<div class="govuk-header {%- if params.branded == false %} govuk-header--unbranded{% endif %}{% if params.classes %} {{ params.classes }}{% endif %}" {{- govukAttributes(params.attributes) }}>
+  <div class="govuk-header__container {%- if params.slotContent %} govuk-header__container--slots{% endif %} {{ params.containerClasses | default("govuk-width-container", true) }}">
+    <div class="govuk-header__logo">
+      <a href="{{ params.homepageUrl | default("//gov.uk", true) }}" class="govuk-header__homepage-link">
+        {% if params.logo %}
+          {{ params.logo | safe }}
+        {% else %}
+          {{ govukLogo({
+            classes: "govuk-header__logotype",
+            ariaLabelText: "GOV.UK"
+          }) | trim | indent(8) }}
+        {% endif %}
+        {% if (params.productName) %}
+        <span class="govuk-header__product-name">
+          {{- params.productName -}}
+        </span>
+        {% endif %}
+      </a>
+    </div>
+    {% if params.slotContent %}
+      {{ params.slotContent | safe }}
+    {% endif %}
+  </div>
+</div>

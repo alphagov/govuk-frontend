@@ -1,0 +1,8 @@
+@use "mixin";
+
+@import "../../base";
+
+@include govuk-exports("govuk/component/table") {
+  @include mixin.styles;
+}
+

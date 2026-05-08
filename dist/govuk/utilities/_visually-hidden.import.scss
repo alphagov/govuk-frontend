@@ -1,0 +1,8 @@
+@use "visually-hidden.mixin" as mixin;
+
+@import "../tools/exports";
+
+@include govuk-exports("govuk/utilities/visually-hidden") {
+  @include mixin.styles;
+}
+

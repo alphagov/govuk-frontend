@@ -1,0 +1,14 @@
+@use "lists.mixin" as mixin;
+
+@import "../base";
+
+// This is only needed for consistency between `importing` and `using` base.
+// In an `@use` world, lists have to `use` typography for the placeholder classes
+// to be extended correctly, and this results in the typography CSS being
+// outputted before lists.
+@import "typography";
+
+@include govuk-exports("govuk/core/lists") {
+  @include mixin.styles;
+}
+

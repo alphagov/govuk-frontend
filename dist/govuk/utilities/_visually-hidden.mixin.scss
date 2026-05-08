@@ -1,0 +1,14 @@
+@use "../base";
+@use "../helpers/visually-hidden" as *;
+
+/// @access private
+@mixin styles {
+  .govuk-visually-hidden {
+    @include govuk-visually-hidden;
+  }
+
+  .govuk-visually-hidden-focusable {
+    @include govuk-visually-hidden-focusable;
+  }
+}
+

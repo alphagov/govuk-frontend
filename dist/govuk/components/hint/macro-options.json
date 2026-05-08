@@ -1,0 +1,32 @@
+[
+    {
+        "name": "text",
+        "type": "string",
+        "required": true,
+        "description": "If `html` is set, this is not required. Text to use within the hint. If `html` is provided, the `text` option will be ignored."
+    },
+    {
+        "name": "html",
+        "type": "string",
+        "required": true,
+        "description": "If `text` is set, this is not required. HTML to use within the hint. If `html` is provided, the `text` option will be ignored."
+    },
+    {
+        "name": "id",
+        "type": "string",
+        "required": false,
+        "description": "Optional ID attribute to add to the hint span tag."
+    },
+    {
+        "name": "classes",
+        "type": "string",
+        "required": false,
+        "description": "Classes to add to the hint span tag."
+    },
+    {
+        "name": "attributes",
+        "type": "object",
+        "required": false,
+        "description": "HTML attributes (for example data attributes) to add to the hint span tag."
+    }
+]

@@ -1,0 +1,8 @@
+@use "main-wrapper.mixin" as main-wrapper;
+
+@import "../base";
+
+@include govuk-exports("govuk/objects/main-wrapper") {
+  @include main-wrapper.styles;
+}
+

@@ -1,0 +1,8 @@
+@use "../tools/exports" as *;
+@use "breakpoints.mixin" as breakpoints;
+
+// CSS custom property for each breakpoint
+@include govuk-exports("govuk/custom-properties/breakpoints") {
+  @include breakpoints.styles;
+}
+

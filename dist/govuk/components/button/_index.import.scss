@@ -1,0 +1,13 @@
+@use "mixin";
+
+@import "../../base";
+
+@include govuk-exports("govuk/component/button") {
+  @include mixin.styles(
+    $background-colour: $govuk-button-background-colour,
+    $text-colour: $govuk-button-text-colour,
+    $inverse-background-colour: $govuk-inverse-button-background-colour,
+    $inverse-text-colour: $govuk-inverse-button-text-colour
+  );
+}
+

@@ -1,0 +1,8 @@
+@use "display.mixin" as mixin;
+
+@import "../tools/exports";
+
+@include govuk-exports("govuk/overrides/display") {
+  @include mixin.styles;
+}
+

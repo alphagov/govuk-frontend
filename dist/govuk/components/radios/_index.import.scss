@@ -1,0 +1,12 @@
+@use "mixin";
+
+@import "../../base";
+@import "../error-message";
+@import "../fieldset";
+@import "../hint";
+@import "../label";
+
+@include govuk-exports("govuk/component/radios") {
+  @include mixin.styles;
+}
+

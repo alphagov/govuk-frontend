@@ -1,0 +1,57 @@
+{% from "../../macros/attributes.njk" import govukAttributes %}
+{% from "../button/macro.njk" import govukButton -%}
+
+<div class="govuk-cookie-banner {%- if params.classes %} {{ params.classes }}{% endif %}" data-nosnippet role="region" aria-label="{{ params.ariaLabel | default("Cookie banner", true) }}"
+  {%- if params.hidden %} hidden{% endif %}
+  {{- govukAttributes(params.attributes) }}>
+  {% for message in params.messages %}
+  <div class="govuk-cookie-banner__message {%- if message.classes %} {{ message.classes }}{% endif %} govuk-width-container" {%- if message.role %} role="{{ message.role }}"{% endif %}
+    {{- govukAttributes(message.attributes) -}}
+    {%- if message.hidden %} hidden{% endif %}>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        {% if message.headingHtml or message.headingText %}
+        <h2 class="govuk-cookie-banner__heading govuk-heading-m">
+          {{ message.headingHtml | safe | trim | indent(10) if message.headingHtml else message.headingText }}
+        </h2>
+        {% endif %}
+        <div class="govuk-cookie-banner__content">
+          {% if message.html %}
+          {{ message.html | safe | trim | indent(10) }}
+          {% elif message.text %}
+          <p class="govuk-body">{{ message.text }}</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    {% if message.actions %}
+    <div class="govuk-button-group">
+    {% for action in message.actions %}
+      {% set buttonHtml -%}
+        {% if not action.href or action.type == "button" %}
+          {{ govukButton({
+            "text": action.text,
+            "type": action.type if action.type else "button",
+            "name": action.name,
+            "value": action.value,
+            "classes": action.classes,
+            "href": action.href,
+            "attributes": action.attributes
+          }) }}
+        {% else %}
+          <a class="govuk-link {%- if action.classes %} {{ action.classes }}{% endif %}" href="{{ action.href }}"
+            {{- govukAttributes(action.attributes) }}>
+            {{- action.text -}}
+          </a>
+        {% endif %}
+      {%- endset %}
+      {{ buttonHtml | safe | trim | indent(6) }}
+    {% endfor %}
+    </div>
+    {% endif %}
+
+  </div>
+  {% endfor %}
+</div>

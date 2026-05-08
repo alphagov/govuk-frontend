@@ -1,0 +1,5 @@
+@use "template.mixin" as template;
+@use "../custom-properties";
+
+@include template.styles;
+

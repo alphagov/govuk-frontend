@@ -1,0 +1,10 @@
+@use "../base";
+@use "../helpers/clearfix" as *;
+
+/// @access private
+@mixin styles {
+  .govuk-clearfix {
+    @include govuk-clearfix;
+  }
+}
+

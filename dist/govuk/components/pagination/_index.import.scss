@@ -1,0 +1,8 @@
+@use "mixin";
+
+@import "../../base";
+
+@include govuk-exports("govuk/component/pagination") {
+  @include mixin.styles;
+}
+
