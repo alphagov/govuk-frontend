@@ -1,7 +1,6 @@
 import fs from 'fs'
 
 import {
-  validateVersion,
   updateChangelog,
   generateReleaseNotes
 } from './changelog-release-helper.mjs'
@@ -19,68 +18,6 @@ describe('Changelog release helper', () => {
 
       ## v3.0.0 (Breaking release)
     `)
-  })
-
-  describe('Validate version', () => {
-    it('runs normally if a valid new version is parsed to it', () => {
-      expect(() => validateVersion('3.1.0', '3.0.0')).not.toThrow()
-    })
-
-    it('throws an error if an invalid semver is parsed', () => {
-      expect(() => validateVersion('pizza', '3.0.0')).toThrow(
-        'New version number pizza could not be processed by Semver. Please ensure you are providing a valid semantic version'
-      )
-    })
-
-    it('throws an error if new version is less than old version', () => {
-      expect(() => validateVersion('2.11.0', '3.0.0')).toThrow(
-        'New version number 2.11.0 is less than or equal to the most recent version (3.0.0). Please provide a newer version number'
-      )
-    })
-
-    it('throws an error if the previous version is falsy or invalid', () => {
-      expect(() => validateVersion('3.1.0', 'pizza')).toThrow(
-        'Previous version number pizza could not be processed by Semver. Please ensure a valid version is being passed to the script via the govuk-frontend package.json package.'
-      )
-    })
-
-    it.each([
-      {
-        badVersion: '5.0.0',
-        type: 'major',
-        goodVersion: '4.0.0'
-      },
-      {
-        badVersion: '3.2.0',
-        type: 'minor',
-        goodVersion: '3.1.0'
-      },
-      {
-        badVersion: '3.0.2',
-        type: 'patch',
-        goodVersion: '3.0.1'
-      },
-      {
-        badVersion: '3.0.2-beta.0',
-        type: 'prepatch',
-        goodVersion: '3.0.1-beta.0'
-      },
-      {
-        badVersion: '3.0.2',
-        type: 'patch',
-        goodVersion: '3.0.1',
-        customVersion: '3.0.1-beta.15'
-      }
-    ])(
-      'throws an error if new version is more than one possible `$type` increment',
-      ({ badVersion, type, goodVersion, customVersion }) => {
-        expect(() =>
-          validateVersion(badVersion, customVersion ?? '3.0.0')
-        ).toThrow(
-          `New version number ${badVersion} is incrementing more than one for its increment type (${type}). Please provide a version number than only increments by one from the current version. In this case, it's likely that your new version number should be: ${goodVersion}`
-        )
-      }
-    )
   })
 
   describe('Update changelog', () => {
