@@ -5,9 +5,13 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: 'New version number eg: 5.3.1'
+        description: 'Release type'
         required: true
-        type: string
+        type: choice
+        options:
+          - major
+          - minor
+          - patch
       dry_run:
         description: 'Dry run'
         type: boolean
