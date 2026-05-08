@@ -1,4 +1,5 @@
 name: 'RELEASE: Build release'
+run-name: "RELEASE: Build release${{ inputs.dry_run && ' (Dry run)' || '' }}"
 
 on:
   workflow_dispatch:
@@ -7,6 +8,10 @@ on:
         description: 'New version number eg: 5.3.1'
         required: true
         type: string
+      dry_run:
+        description: 'Dry run'
+        type: boolean
+        default: true
 
 permissions:
   contents: write
@@ -52,7 +57,26 @@ jobs:
       - name: Build release
         run: npm run build:release
 
+      - name: Output PR content in action summary
+        run: |
+          {
+            echo '## PR body'
+            cat release-notes-body
+            echo ''
+            echo '## Files in archive'
+            echo '```diff'
+            git diff
+            echo '```'
+          } >> $GITHUB_STEP_SUMMARY
+
+      - name: Upload CHANGELOG as artifact
+        uses: actions/upload-artifact@v7
+        with:
+          path: CHANGELOG.md
+          archive: false # Saves having to decompress the CHANGELOG
+
       - name: Create pull request
+        if: inputs.dry_run == false
         env:
           GH_TOKEN: ${{ secrets.CI_PAT }}
         run: |
