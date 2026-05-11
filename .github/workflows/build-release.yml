@@ -34,7 +34,7 @@ permissions:
 jobs:
   build-release:
     name: Build release
-    runs-on: Ubuntu-22.04
+    runs-on: ubuntu-24.04
     environment: ${{ inputs.environment == 'production' && 'production' || null }}
 
     env:

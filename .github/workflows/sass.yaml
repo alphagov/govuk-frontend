@@ -21,7 +21,7 @@ concurrency:
 jobs:
   dart-sass:
     name: Dart Sass v1.79.0
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
 
     steps:
       - name: Checkout code
@@ -58,7 +58,7 @@ jobs:
 
   dart-sass-latest:
     name: Dart Sass v1 (latest)
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
 
     steps:
       - name: Checkout code

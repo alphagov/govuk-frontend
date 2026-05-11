@@ -33,7 +33,7 @@ jobs:
       matrix:
         runner:
           - name: Ubuntu
-            os: ubuntu-22.04
+            os: ubuntu-24.04
           - name: Windows
             os: windows-latest
 
@@ -55,7 +55,7 @@ jobs:
       matrix:
         runner:
           - name: Ubuntu
-            os: ubuntu-22.04
+            os: ubuntu-24.04
           - name: Windows
             os: windows-latest
 
@@ -86,7 +86,7 @@ jobs:
       matrix:
         runner:
           - name: Ubuntu
-            os: ubuntu-22.04
+            os: ubuntu-24.04
           - name: Windows
             os: windows-latest
 
@@ -146,7 +146,7 @@ jobs:
       matrix:
         runner:
           - name: Ubuntu
-            os: ubuntu-22.04
+            os: ubuntu-24.04
           - name: Windows
             os: windows-latest
 
@@ -236,7 +236,7 @@ jobs:
       matrix:
         runner:
           - name: Ubuntu
-            os: ubuntu-22.04
+            os: ubuntu-24.04
           - name: Windows
             os: windows-latest
 
@@ -264,7 +264,7 @@ jobs:
 
   package:
     name: Export ${{ matrix.conditions }}, Node.js ${{ matrix.node-version }}
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     needs: [install, build]
 
     strategy:

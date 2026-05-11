@@ -15,7 +15,7 @@ on:
 jobs:
   publish:
     name: Publish to npm
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     environment: ${{ inputs.environment == 'production' && 'production' || null }}
     permissions:
       id-token: write
