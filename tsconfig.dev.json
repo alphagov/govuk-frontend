@@ -22,7 +22,7 @@
     "**/*.config.mjs",
     "**/*.test.js",
     "**/*.test.mjs",
-    "**/.eslintrc.js",
+    "**/eslint.config.mjs",
     "tests/sass-tests/helpers/sass.js"
   ]
 }

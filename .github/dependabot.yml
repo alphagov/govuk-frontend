@@ -14,11 +14,15 @@ updates:
 
       lint:
         patterns:
+          - '@eslint/*'
           - '@typescript-eslint/*'
           - 'editorconfig-checker'
-          - 'standard'
+          - 'eslint'
+          - 'eslint-*'
+          - 'neostandard'
           - 'prettier'
           - 'typescript'
+          - 'typescript-eslint'
 
       stylelint:
         patterns:
@@ -67,9 +71,6 @@ updates:
           - '@types/jest'
           - '@types/jest-*'
     ignore:
-      - dependency-name: 'eslint-*'
-      - dependency-name: 'eslint'
-      - dependency-name: '@typescript-eslint/*'
       # iframe-resizer has switched to GPL licence in v5
       # so we need to avoid upgrading to their next major version
       - dependency-name: 'iframe-resizer'
