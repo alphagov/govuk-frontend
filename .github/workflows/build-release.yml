@@ -1,9 +1,16 @@
 name: 'RELEASE: Build release'
-run-name: "RELEASE: Build release${{ inputs.dry_run && ' (Dry run)' || '' }}"
+run-name: 'RELEASE: Build release to ${{inputs.environment}}'
 
 on:
   workflow_dispatch:
     inputs:
+      environment:
+        description: Environment
+        required: true # For UI consistency with other required options
+        type: choice
+        options:
+          - test
+          - production
       release_type:
         description: 'Release type'
         required: true
@@ -17,12 +24,8 @@ on:
           - prepatch
           - prerelease
       preid:
-        description: 'Prerelease label (for ex. `internal`, `beta`, `rc`)'
+        description: "Prerelease label (for example: 'beta')"
         type: string
-      dry_run:
-        description: 'Dry run'
-        type: boolean
-        default: true
 
 permissions:
   contents: write
@@ -32,6 +35,7 @@ jobs:
   build-release:
     name: Build release
     runs-on: Ubuntu-22.04
+    environment: ${{ inputs.environment == 'production' && 'production' || null }}
 
     env:
       RELEASE_TYPE: ${{inputs.release_type}}
@@ -108,7 +112,7 @@ jobs:
           archive: false # Saves having to decompress the CHANGELOG
 
       - name: Create pull request
-        if: inputs.dry_run == false
+        if: inputs.environment == 'production'
         env:
           GH_TOKEN: ${{ secrets.CI_PAT }}
         run: |
