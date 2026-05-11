@@ -376,15 +376,19 @@ export class CharacterCount extends ConfigurableComponent {
    * @returns {string} Status message
    */
   formatCountMessage(remainingNumber, countType) {
-    if (remainingNumber === 0) {
-      return this.i18n.t(`${countType}AtLimit`)
+    let translationKeyPrefix = 'characters'
+    let translationKeySuffix = remainingNumber < 0 ? 'OverLimit' : 'UnderLimit'
+
+    if (countType === 'words') {
+      translationKeyPrefix = 'words'
     }
 
-    const translationKeySuffix =
-      remainingNumber < 0 ? 'OverLimit' : 'UnderLimit'
+    if (remainingNumber === 0) {
+      translationKeySuffix = 'AtLimit'
+    }
 
-    return this.i18n.t(`${countType}${translationKeySuffix}`, {
-      count: Math.abs(remainingNumber)
+    return this.i18n.t(`${translationKeyPrefix}${translationKeySuffix}`, {
+      count: remainingNumber === 0 ? undefined : Math.abs(remainingNumber)
     })
   }
 
