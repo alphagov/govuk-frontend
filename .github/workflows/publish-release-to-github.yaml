@@ -1,18 +1,22 @@
 name: 'RELEASE: GitHub release'
-run-name: "RELEASE: GitHub release${{ inputs.dry_run && ' (Dry run)' || '' }}"
+run-name: 'RELEASE: GitHub release to ${{inputs.environment}}'
 
 on:
   workflow_dispatch:
     inputs:
-      dry_run:
-        type: boolean
-        description: Dry run
-        default: true
+      environment:
+        description: Environment
+        required: true # For UI consistency with other required options
+        type: choice
+        options:
+          - test
+          - production
 
 jobs:
   publish-release-to-github:
     name: Publish release to GitHub
     runs-on: Ubuntu-22.04
+    environment: ${{ inputs.environment == 'production' && 'production' || null }}
     permissions:
       contents: write
     env:
@@ -85,7 +89,7 @@ jobs:
           } >> $GITHUB_STEP_SUMMARY
 
       - name: Create GitHub release
-        if: inputs.dry_run == false
+        if: inputs.environment == 'production'
         run: |
           GH_TAG=${{ steps.create-github-tag.outputs.GH_TAG }}
           RELEASE_NAME="GOV.UK Frontend $GH_TAG"

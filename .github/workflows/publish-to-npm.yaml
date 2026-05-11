@@ -1,18 +1,22 @@
 name: 'RELEASE: npm publish'
-run-name: "RELEASE: npm publish${{ inputs.dry_run && ' (Dry run)' || '' }}"
+run-name: 'RELEASE: npm publish to ${{inputs.environment}}'
 
 on:
   workflow_dispatch:
     inputs:
-      dry_run:
-        type: boolean
-        description: Dry run
-        default: true
+      environment:
+        description: Environment
+        required: true
+        type: choice
+        options:
+          - test
+          - production
 
 jobs:
   publish:
     name: Publish to npm
     runs-on: ubuntu-22.04
+    environment: ${{ inputs.environment == 'production' && 'production' || null }}
     permissions:
       id-token: write
 
@@ -55,5 +59,5 @@ jobs:
           archive: false # file is already compressed
 
       - name: Publish to npm
-        if: inputs.dry_run == false
+        if: inputs.environment == 'production'
         run: npm publish --workspace govuk-frontend --provenance --tag ${{steps.generate_tag.outputs.NPM_TAG}}
