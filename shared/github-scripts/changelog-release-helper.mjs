@@ -6,80 +6,12 @@ const processingErrorMessage =
   'There was a problem processing information from the changelog. This likely means that there is an issue with the changelog content itself. Please check it and try running this task again.'
 
 /**
- * Validate a new version of GOV.UK Frontend
- *
- * Throws an error if any of the following are true:
- *
- * - The version can't be processed by semver and we therefore presume it isn't
- * a valid semver
- * - The version is less than the current version
- * - The version increments the current version by more than one possible
- * increment, eg: going from 3.1.0 to 5.0.0, 3.3.0 or 3.1.2
- *
- * @param {string} newVersion - New version to validate
- * @param {string} previousVersion - Previous version to compare to
- */
-export function validateVersion(newVersion, previousVersion) {
-  if (!semver.valid(newVersion)) {
-    throw new Error(
-      `New version number ${newVersion} could not be processed by Semver. Please ensure you are providing a valid semantic version`
-    )
-  }
-
-  const previousReleaseNumber = validatePreviousVersionNumber(previousVersion)
-
-  // Check the new version against the old version. Firstly a quick check that
-  // the new one isn't less than the old one
-  if (semver.lte(newVersion, previousReleaseNumber)) {
-    throw new Error(
-      `New version number ${newVersion} is less than or equal to the most recent version (${previousReleaseNumber}). Please provide a newer version number`
-    )
-  }
-
-  // Get the version diff keyword (major, minor, patch plus prerelease versions
-  // of those 3 and prerelease for differences between prereleases) which we can
-  // use to help with validating the new version
-  const versionDiff = semver.diff(newVersion, previousReleaseNumber)
-  const identifier = versionIsAPrerelease(newVersion)
-    ? getPrereleaseIdentifier(newVersion)
-    : undefined
-
-  if (!versionDiff) {
-    throw new Error(
-      'Could not determine difference between new and previous versions. Please check the version number you provided and the changelog content'
-    )
-  }
-
-  // Check if the new version increments from the old version by one for
-  // its change type (major, minor, patch) and throws an error if it doesn't.
-  // Eg: if the current version is 4.3.12:
-  // - 4.3.13, 4.4.0 and 5.0.0 are valid
-  // - 4.3.14, 4.5.0, 6.0.0 and above for all aren't valid
-  const correctIncrement = semver.inc(
-    previousReleaseNumber,
-    versionDiff,
-    false,
-    identifier
-  )
-
-  if (!semver.satisfies(newVersion, `<=${correctIncrement}`)) {
-    throw new Error(
-      `New version number ${newVersion} is incrementing more than one for its increment type (${versionDiff}). Please provide a version number than only increments by one from the current version. In this case, it's likely that your new version number should be: ${correctIncrement}`
-    )
-  }
-
-  console.log('No errors noted in the new version. We can proceed!')
-}
-
-/**
  * Update the changelog with a new version heading
  *
  * Inserts a new heading between the 'Unreleased' heading and the most recent
  * content
  *
- * @param {string} newVersion - New version to add to the changelog. We presume
- *   that this is a valid version as this function is always run after validateVersion
- *   has passed.
+ * @param {string} newVersion - New version to add to the changelog
  * @param {string} previousVersion - Previous version. Used for calculating difference
  *   in versions to build the changelog title
  */
