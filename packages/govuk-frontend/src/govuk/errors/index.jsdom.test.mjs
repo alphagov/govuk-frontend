@@ -52,6 +52,15 @@ describe('errors', () => {
         'GOV.UK Frontend initialised without `<script type="module">`'
       )
     })
+
+    it('allows a custom message to be provided', () => {
+      const supportMessage = 'Support for "navigator.clipboard" required'
+
+      expect(new SupportError(supportMessage)).toHaveProperty(
+        'message',
+        supportMessage
+      )
+    })
   })
 
   describe('InitError', () => {
