@@ -131,7 +131,10 @@ export class CharacterCount extends ConfigurableComponent {
       locale: closestAttributeValue(this.$root, 'lang')
     })
 
-    if (this.config.countType === 'characters') {
+    if (
+      this.config.countType === 'characters' ||
+      (this.config.countType === 'words' && this.config.maxwords === undefined)
+    ) {
       if (!('Segmenter' in Intl)) {
         throw new SupportError(
           formatErrorMessage(
