@@ -53,6 +53,13 @@ export function updateChangelog(newVersion, previousVersion) {
     )
   }
 
+  // Add content on how to install the release
+  newLines.push(
+    `To install this version with npm, run \`npm install govuk-frontend@${newVersion}\`. ` +
+      `You can also find more information about [how to stay up to date](https://frontend.design-system.service.gov.uk/staying-up-to-date/#updating-to-the-latest-version) in our documentation.`,
+    ``
+  )
+
   // Inject the new lines into the CHANGELOG
   changelogLines.splice(startIndex + 1, 0, '', ...newLines)
 
