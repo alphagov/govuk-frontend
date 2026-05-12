@@ -65,14 +65,14 @@ jobs:
         run: npm ci
 
       - name: Save current version
-        run: echo "PREVIOUS_PACKAGE_VERSION=$(npm run version --silent --workspace govuk-frontend)" >> $GITHUB_ENV
+        run: echo "PREVIOUS_PACKAGE_VERSION=$(npm run get-version --silent --workspace govuk-frontend)" >> $GITHUB_ENV
 
       - name: Update package version
         run: |
           npm version --no-git-tag-version --workspace govuk-frontend "$RELEASE_TYPE" --preid "$PREID"
 
           # Save the new version number for access in future steps
-          echo "PACKAGE_VERSION=$(npm run version --silent --workspace govuk-frontend)" >> $GITHUB_ENV
+          echo "PACKAGE_VERSION=$(npm run get-version --silent --workspace govuk-frontend)" >> $GITHUB_ENV
 
       - name: Update CHANGELOG
         uses: actions/github-script@v9.0.0

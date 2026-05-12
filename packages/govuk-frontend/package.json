@@ -63,7 +63,7 @@
     "clean:package": "del-cli *.tsbuildinfo dist govuk-prototype-kit.config.json",
     "clean:release": "del-cli ../../dist --force",
     "postbuild:package": "npm run build:stats && govuk-prototype-kit validate-plugin .",
-    "version": "echo $npm_package_version"
+    "get-version": "echo $npm_package_version"
   },
   "devDependencies": {
     "@babel/core": "^7.29.0",
