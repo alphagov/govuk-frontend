@@ -5,7 +5,7 @@ set -e
 PACKAGE_VERSION=${1:-$(npm run get-version --silent --workspace govuk-frontend)}
 
 # Use second argument as latest published version or get latest tag published on Github
-LATEST_PUBLISHED_VERSION=${2:-$(git tag --list 2>/dev/null | sort -V | tail -n1 2>/dev/null | sed 's/v//g')}
+LATEST_PUBLISHED_VERSION=${2:-$(npm view govuk-frontend version)}
 
 version() { echo "$@" | awk -F. '{ printf("%d%03d%03d\n", $1,$2,$3); }'; }
 
