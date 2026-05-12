@@ -78,6 +78,10 @@ describe('Changelog release helper', () => {
           > Use this release to prepare for the changes coming in version \`3.1.0\`.
         `)
       )
+      expect(fs.writeFileSync).toHaveBeenCalledWith(
+        './CHANGELOG.md',
+        expect.stringContaining('To install this version with npm')
+      )
     })
 
     it('does not display a warning when the change is a stable release', () => {
@@ -95,6 +99,27 @@ describe('Changelog release helper', () => {
       expect(fs.writeFileSync).not.toHaveBeenCalledWith(
         './CHANGELOG.md',
         expect.stringContaining('> [!WARNING]')
+      )
+    })
+
+    it('has instructions for how to install the release', () => {
+      jest.mocked(fs.readFileSync).mockReturnValue(`
+        ## Unreleased
+
+        ### Fixes
+
+        Bing bong
+
+        ## v3.1.0 (Feature release)
+      `)
+
+      updateChangelog('3.1.1', '3.1.0')
+      expect(fs.writeFileSync).toHaveBeenCalledWith(
+        './CHANGELOG.md',
+        expect.stringContaining(outdent`
+            ## v3.1.1 (Fix release)
+            To install this version with npm, run \`npm install govuk-frontend@3.1.1\`. You can also find more information about [how to stay up to date](https://frontend.design-system.service.gov.uk/staying-up-to-date/#updating-to-the-latest-version) in our documentation.
+        `)
       )
     })
 

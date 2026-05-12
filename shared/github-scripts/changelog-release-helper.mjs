@@ -48,9 +48,17 @@ export function updateChangelog(newVersion, previousVersion) {
     newLines.push(
       `> [!WARNING]`,
       `> Do not use in production.`,
-      `> Use this release to prepare for the changes coming in version \`${removePrereleaseFlag(newVersion)}\`.`
+      `> Use this release to prepare for the changes coming in version \`${removePrereleaseFlag(newVersion)}\`.`,
+      ` `
     )
   }
+
+  // Add content on how to install the release
+  newLines.push(
+    `To install this version with npm, run \`npm install govuk-frontend@${newVersion}\`. ` +
+      `You can also find more information about [how to stay up to date](https://frontend.design-system.service.gov.uk/staying-up-to-date/#updating-to-the-latest-version) in our documentation.`,
+    ` `
+  )
 
   // Inject the new lines while replacing the unreleased heading.
   changelogLines.splice(startIndex + 1, 0, '', ...newLines)
