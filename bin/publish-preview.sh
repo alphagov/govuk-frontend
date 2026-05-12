@@ -2,7 +2,7 @@
 set -e
 
 CURRENT_BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
-CURRENT_VERSION=$(npm run version --silent --workspace govuk-frontend)
+CURRENT_VERSION=$(npm run get-version --silent --workspace govuk-frontend)
 
 BRANCH_NAME="preview-$CURRENT_BRANCH_NAME"
 # `/` are not valid in npm version numbers, so we turn them into `-`

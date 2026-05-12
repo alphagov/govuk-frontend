@@ -58,7 +58,7 @@ Developers should pair on pre-releases. When working remotely, it can be useful 
 7. Create and check out a new branch (`release-[version]`)
 
    ```shell
-   git switch -c "release-$(npm run version --silent --workspace govuk-frontend)"
+   git switch -c "release-$(npm run get-version --silent --workspace govuk-frontend)"
    ```
 
 8. If you're publishing a beta pre-release, update the [`CHANGELOG.md`](/CHANGELOG.md) by:

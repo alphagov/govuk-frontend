@@ -50,7 +50,7 @@ npm publish "${NPM_ARGS[@]}"
 echo "🗒 Package published!"
 
 # Extract tag version from ./packages/govuk-frontend/package.json
-ALL_PACKAGE_VERSION=$(npm run version --silent --workspace govuk-frontend)
+ALL_PACKAGE_VERSION=$(npm run get-version --silent --workspace govuk-frontend)
 TAG="v$ALL_PACKAGE_VERSION"
 
 if [ $(git tag -l "$TAG") ]; then
