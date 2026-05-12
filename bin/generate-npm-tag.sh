@@ -9,10 +9,7 @@ LATEST_PUBLISHED_VERSION=${2:-$(npm view govuk-frontend version)}
 
 version() { echo "$@" | awk -F. '{ printf("%d%03d%03d\n", $1,$2,$3); }'; }
 
-if [ "$PACKAGE_VERSION" = "$LATEST_PUBLISHED_VERSION" ]; then
-  echo "⚠️ Git tag $TAG already exists. Check you have run \`npm version\` correctly."
-  exit 1
-elif echo "$PACKAGE_VERSION" | grep -q "internal"; then
+if echo "$PACKAGE_VERSION" | grep -q "internal"; then
   NPM_TAG="internal"
 elif echo "$PACKAGE_VERSION" | grep -q "beta"; then
   NPM_TAG="next"
