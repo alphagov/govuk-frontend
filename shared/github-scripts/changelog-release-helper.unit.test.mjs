@@ -1,5 +1,7 @@
 import fs from 'fs'
 
+import { outdent } from 'outdent'
+
 import {
   updateChangelog,
   generateReleaseNotes
@@ -52,6 +54,47 @@ describe('Changelog release helper', () => {
       expect(fs.writeFileSync).toHaveBeenCalledWith(
         './CHANGELOG.md',
         expect.stringContaining('## v3.1.0-beta.1 (Beta feature release)')
+      )
+    })
+
+    it('displays a warning to not use non-stable releases in production', () => {
+      jest.mocked(fs.readFileSync).mockReturnValue(`
+        ## Unreleased
+
+        ### Fixes
+
+        Bing bong
+
+        ## v3.1.0-beta.0 (Beta feature release)
+      `)
+
+      updateChangelog('3.1.0-beta.1', '3.1.0-beta.0')
+      expect(fs.writeFileSync).toHaveBeenCalledWith(
+        './CHANGELOG.md',
+        expect.stringContaining(outdent`
+          ## v3.1.0-beta.1 (Beta feature release)
+          > [!WARNING]
+          > Do not use in production.
+          > Use this release to prepare for the changes coming in version \`3.1.0\`.
+        `)
+      )
+    })
+
+    it('does not display a warning when the change is a stable release', () => {
+      jest.mocked(fs.readFileSync).mockReturnValue(`
+        ## Unreleased
+
+        ### Fixes
+
+        Bing bong
+
+        ## v3.1.0 (Feature release)
+      `)
+
+      updateChangelog('3.1.1', '3.1.0')
+      expect(fs.writeFileSync).not.toHaveBeenCalledWith(
+        './CHANGELOG.md',
+        expect.stringContaining('> [!WARNING]')
       )
     })
 

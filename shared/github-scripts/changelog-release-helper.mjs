@@ -17,7 +17,8 @@ const processingErrorMessage =
  */
 export function updateChangelog(newVersion, previousVersion) {
   // Skip the entire function if the release version is internal eg: 5.1.0-internal.0
-  if (versionIsAPrerelease(newVersion)) {
+  const newVersionIsAPrerelease = versionIsAPrerelease(newVersion)
+  if (newVersionIsAPrerelease) {
     const identifier = getPrereleaseIdentifier(newVersion)
 
     if (identifier === 'internal') {
@@ -42,7 +43,19 @@ export function updateChangelog(newVersion, previousVersion) {
   }
   const newVersionTitle = `## v${newVersion} (${convertIncTypeWord(versionDiff, newVersion, true, changelogLines[previousReleaseLineIndex])} release)`
 
-  changelogLines.splice(startIndex + 1, 0, '', newVersionTitle)
+  const newLines = [newVersionTitle]
+  if (newVersionIsAPrerelease) {
+    newLines.push(
+      `> [!WARNING]`,
+      `> Do not use in production.`,
+      `> Use this release to prepare for the changes coming in version \`${removePrereleaseFlag(newVersion)}\`.`,
+      ``
+    )
+  }
+
+  // Inject the new lines into the CHANGELOG
+  changelogLines.splice(startIndex + 1, 0, '', ...newLines)
+
   writeFileSync('./CHANGELOG.md', changelogLines.join('\n'))
 }
 
@@ -261,4 +274,16 @@ function convertIncTypeWord(
   return capitalise
     ? `${rewordedIncType.charAt(0).toUpperCase()}${rewordedIncType.slice(1)}`
     : rewordedIncType
+}
+
+/**
+ * Remove any pre-release flag from a version e.g. 1.0.0-alpha -> 1.0.0
+ *
+ * @param {string} version - version number
+ * @returns {string} - version number without any pre-release flag
+ */
+function removePrereleaseFlag(version) {
+  const parsedVersion = semver.parse(version)
+  parsedVersion.prerelease = []
+  return parsedVersion.format()
 }
