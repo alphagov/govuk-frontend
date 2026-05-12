@@ -1,0 +1,12 @@
+{% from "../../macros/base-header.njk" import baseHeader -%}
+{% from "../../macros/logo.njk" import govukLogo -%}
+
+{% call baseHeader({
+  rootClass: "govuk-generic-header",
+  url: params.url | default("/", true),
+  classes: params.classes,
+  containerClasses: params.containerClasses,
+  attributes: params.attributes
+}) %}
+{{ params.logo | safe }}
+{% endcall %}

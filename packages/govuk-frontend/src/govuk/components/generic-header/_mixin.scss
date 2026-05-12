@@ -1,0 +1,21 @@
+@use "../../base";
+
+/// @access private
+@mixin styles {
+  $logo-bottom-margin: 2px;
+
+  .govuk-generic-header {
+    @include base.govuk-header-styles;
+    background: base.govuk-colour("black");
+  }
+
+  .govuk-generic-header__logo {
+    box-sizing: border-box;
+    max-height: base.govuk-spacing(9);
+    padding: base.govuk-spacing(3) 0;
+  }
+
+  .govuk-generic-header__homepage-link {
+    @include base.govuk-header-link-styles;
+  }
+}

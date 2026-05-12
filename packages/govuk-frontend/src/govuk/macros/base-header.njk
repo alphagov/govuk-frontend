@@ -1,0 +1,13 @@
+{% from "./attributes.njk" import govukAttributes %}
+
+{% macro baseHeader(params) %}
+<div class="{{ params.rootClass }} {%- if params.classes %} {{ params.classes }}{% endif %}" {{- govukAttributes(params.attributes) }}>
+  <div class="{{ params.rootClass }}__container {{ params.containerClasses | default("govuk-width-container", true) }}">
+    <div class="{{ params.rootClass }}__logo">
+      <a href="{{ params.url }}" class="{{ params.rootClass }}__homepage-link">
+        {{ caller() }}
+      </a>
+    </div>
+  </div>
+</div>
+{% endmacro %}

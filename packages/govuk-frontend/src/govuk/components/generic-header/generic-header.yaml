@@ -1,0 +1,66 @@
+params:
+  - name: url
+    type: string
+    required: false
+    description: The URL of the logo link. Defaults to the root of the website ("/").
+  - name: logo
+    type: string
+    required: false
+    description: HTML content for the logo section of the generic header.
+  - name: containerClasses
+    type: string
+    required: false
+    description: Classes for the container, useful if you want to make the header fixed width.
+  - name: classes
+    type: string
+    required: false
+    description: Classes to add to the header container.
+  - name: attributes
+    type: object
+    required: false
+    description: HTML attributes (for example data attributes) to add to the header container.
+
+previewLayout: full-width
+accessibilityCriteria: |
+  Text and links in the Header must:
+  - have a text contrast ratio higher than 4.5:1 against the background colour to meet [WCAG AA](https://www.w3.org/TR/WCAG20/#visual-audio-contrast-contrast)
+
+  Links in the Header must:
+  - accept focus
+  - be focusable with a keyboard
+  - be usable with a keyboard
+  - indicate when they have focus
+  - change in appearance when touched (in the touch-down state)
+  - change in appearance when hovered
+  - have visible text
+
+  Images in the Header must:
+  - be presentational when linked to from accompanying text (crown icon).
+
+  Landmarks and Roles in the Header should:
+  - have a role of `"banner"` at the root of the component (<header>) (https://www.w3.org/TR/wai-aria-1.1/#banner)
+
+examples:
+  - name: default
+    options: {}
+
+  - name: with logo content
+    options:
+      logo: |
+        <img src="/images/hmlr.png" height="30" alt="Wow what a cool logo HM land registry has I like their green">
+
+  # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
+  - name: attributes
+    hidden: true
+    options:
+      attributes:
+        data-test-attribute: value
+        data-test-attribute-2: value-2
+  - name: classes
+    hidden: true
+    options:
+      classes: app-header--custom-modifier
+  - name: custom homepage url
+    hidden: true
+    options:
+      url: /pizza
