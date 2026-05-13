@@ -63,11 +63,11 @@ export class CharacterCount extends ConfigurableComponent {
    * the JavaScript config.
    *
    * @internal
-   * @param {CharacterCountConfig} datasetConfig - configuration specified by dataset
-   * @returns {CharacterCountConfig} - configuration to override by dataset
+   * @param {Partial<CharacterCountConfig>} datasetConfig - configuration specified by dataset
+   * @returns {Partial<CharacterCountConfig>} - configuration to override by dataset
    */
   [configOverride](datasetConfig) {
-    let configOverrides = {}
+    let configOverrides = /** @type {Partial<CharacterCountConfig>} */ ({})
     if ('maxwords' in datasetConfig || 'maxlength' in datasetConfig) {
       configOverrides = {
         maxlength: undefined,
