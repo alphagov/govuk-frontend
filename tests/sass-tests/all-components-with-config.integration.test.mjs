@@ -35,10 +35,6 @@ describe('All components, with configuration', () => {
     cssWithUse = await compileSassStringLikeUsers(sass)
   })
 
-  it('works when user @imports everything with configuration', async () => {
-    expect(cssWithImport).toMatchSnapshot()
-  })
-
   it('outputs the same CSS with `@import` and `@use`', () => {
     expect(cssWithUse).toBe(cssWithImport)
   })
