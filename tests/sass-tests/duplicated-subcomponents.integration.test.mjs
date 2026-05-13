@@ -1,4 +1,4 @@
-import { compileSassStringLikeUsers } from './helpers/sass.js'
+import { compileSassStringLikeUsers } from '@govuk-frontend/helpers/tests'
 
 /**
  * These are regex patterns which are unique in the compiled css output, and so

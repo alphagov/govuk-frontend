@@ -2,12 +2,28 @@ const { globSync } = require('fs')
 const { join, basename } = require('path')
 
 const { paths, sass: sassConfig } = require('@govuk-frontend/config')
-const { compileAsync, compileStringAsync } = require('sass-embedded')
+const {
+  NodePackageImporter,
+  compileAsync,
+  compileStringAsync
+} = require('sass-embedded')
 
 const sassPaths = [
   join(paths.package, 'src/govuk'),
   join(paths.root, 'node_modules')
 ]
+
+/**
+ * A sass config that mimics how users might compile their sass
+ *
+ * @type {import('sass-embedded').StringOptions<"async">}
+ */
+const userSassConfig = {
+  loadPaths: [paths.root, __dirname],
+  quietDeps: true,
+  silenceDeprecations: ['import', 'mixed-decls'],
+  importers: [new NodePackageImporter()]
+}
 
 /**
  * Render Sass from file
@@ -37,6 +53,18 @@ async function compileSassString(source, options = {}) {
     ...sassConfig.deprecationOptions,
     ...options
   })
+}
+
+/**
+ * Render Sass from string like a user
+ *
+ * @param {string} source - Sass source string
+ * @param {import('sass-embedded').Options} [options] - Options to pass to Sass
+ * @returns {Promise<string>} CSS string
+ */
+async function compileSassStringLikeUsers(source, options = userSassConfig) {
+  const { css } = await compileStringAsync(source, options)
+  return css.replaceAll(/\n+/g, '\n')
 }
 
 /**
@@ -138,7 +166,9 @@ function htmlWithClassName($, className) {
 module.exports = {
   compileSassFile,
   compileSassString,
+  compileSassStringLikeUsers,
   getSassPathsFromLayer,
   configureGOVUKFrontend,
-  htmlWithClassName
+  htmlWithClassName,
+  userSassConfig
 }

@@ -1,10 +1,9 @@
 import { globSync } from 'node:fs'
 import { relative } from 'node:path'
 
+import { compileSassStringLikeUsers } from '@govuk-frontend/helpers/tests'
 import { packageNameToPath } from '@govuk-frontend/lib/names'
 import slash from 'slash'
-
-import { compileSassStringLikeUsers } from './helpers/sass.js'
 
 // Grab the list of components synchronously so we can create
 // individual test suites for each of them

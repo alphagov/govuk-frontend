@@ -1,4 +1,4 @@
-import { compileSassStringLikeUsers } from './helpers/sass.js'
+import { compileSassStringLikeUsers } from '@govuk-frontend/helpers/tests'
 
 describe('All components, with configuration', () => {
   let cssWithImport

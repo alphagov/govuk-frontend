@@ -1,4 +1,7 @@
-import { compileSassStringLikeUsers, sassConfig } from './helpers/sass.js'
+import {
+  compileSassStringLikeUsers,
+  userSassConfig
+} from '@govuk-frontend/helpers/tests'
 
 describe('All components', () => {
   let cssWithImport
@@ -30,7 +33,7 @@ describe('All components', () => {
     `
 
     cssWithPkg = await compileSassStringLikeUsers(sass, {
-      ...sassConfig,
+      ...userSassConfig,
       loadPaths: null // Prevent loadPaths from interfering
     })
   })
