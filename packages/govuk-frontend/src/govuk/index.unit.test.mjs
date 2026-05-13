@@ -7,24 +7,91 @@ import slash from 'slash'
 let mockWarnFunction, sassConfig
 
 describe('GOV.UK Frontend', () => {
-  it('compiles without deprecation warnings', async () => {
-    // Create a mock warn function that we can use to override the native @warn
-    // function, that we can make assertions about post-render.
-    mockWarnFunction = jest.fn().mockReturnValue(sassNull)
+  describe.each([
+    [
+      '@import',
+      {
+        default: '@import "index";',
+        configuration: `
+        $govuk-suppressed-warnings: ("component-scss-files");
+        $govuk-functional-colours: (brand: hotpink);
+        $govuk-page-width: 9876px;
+        $govuk-global-styles: true;
 
-    sassConfig = {
-      logger: {
-        warn: mockWarnFunction
-      }
-    }
+        @import "pkg:@govuk-frontend/helpers/assets-urls";
 
-    const sass = `
+        $govuk-font-url-function: 'fonts-url';
+
         @import "index";
       `
-    await compileSassString(sass, sassConfig)
+      }
+    ],
+    [
+      '@use',
+      {
+        default: '@use "index";',
+        configuration: `
+        @use "sass:meta";
+        @use "pkg:@govuk-frontend/helpers/assets-urls";
 
-    // Expect our mocked @warn function to have not been called
-    expect(mockWarnFunction).not.toHaveBeenCalled()
+        @use "index" with (
+          $govuk-suppressed-warnings: ("component-scss-files"),
+          $govuk-functional-colours: (brand: hotpink),
+          $govuk-page-width: 9876px,
+          $govuk-global-styles: true,
+          $govuk-font-url-function: meta.get-function("fonts-url", $module: "assets-urls")
+        );
+      `
+      }
+    ]
+  ])('with %s', (type, fixtures) => {
+    it('compiles without deprecation warnings', async () => {
+      // Create a mock warn function that we can use to override the native @warn
+      // function, that we can make assertions about post-render.
+      mockWarnFunction = jest.fn().mockReturnValue(sassNull)
+
+      sassConfig = {
+        logger: {
+          warn: mockWarnFunction
+        }
+      }
+
+      await compileSassString(fixtures.default, sassConfig)
+
+      // Expect our mocked @warn function to have not been called
+      expect(mockWarnFunction).not.toHaveBeenCalled()
+    })
+
+    describe('configuration', () => {
+      let css
+
+      beforeAll(async () => {
+        const result = await compileSassString(fixtures.configuration)
+        css = result.css
+      })
+
+      it('applies boolean config settings', () => {
+        // `$govuk-global-styles: true` enables global link selectors
+        expect(css).toEqual(expect.stringContaining('a, .govuk-link {'))
+      })
+
+      it('applies map config settings', () => {
+        // The `brand` functional colour flows through `govuk-colour()` calls
+        // (e.g. in the link styles)
+        expect(css).toEqual(expect.stringContaining('hotpink'))
+      })
+
+      it('applies number config settings', () => {
+        // `$govuk-page-width` flows through the width container
+        expect(css).toEqual(expect.stringContaining('9876px'))
+      })
+
+      it('applies function config settings', () => {
+        // `@font-face` declarations call `govuk-font-url` which delegates to
+        // the configured function
+        expect(css).toEqual(expect.stringContaining('url("example.woff")'))
+      })
+    })
   })
 
   describe('global styles', () => {
