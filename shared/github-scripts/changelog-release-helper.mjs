@@ -16,9 +16,13 @@ const processingErrorMessage =
  *   in versions to build the changelog title
  */
 export function updateChangelog(newVersion, previousVersion) {
+  const validatedNewVersion = validateVersionNumber(newVersion)
+  const validatedPreviousVersion = validateVersionNumber(previousVersion)
+
   // Skip the entire function if the release version is internal eg: 5.1.0-internal.0
-  if (versionIsAPrerelease(newVersion)) {
-    const identifier = getPrereleaseIdentifier(newVersion)
+  const newVersionIsAPrerelease = versionIsAPrerelease(validatedNewVersion)
+  if (newVersionIsAPrerelease) {
+    const identifier = getPrereleaseIdentifier(validatedNewVersion)
 
     if (identifier === 'internal') {
       console.log(
@@ -32,17 +36,32 @@ export function updateChangelog(newVersion, previousVersion) {
   const [startIndex, previousReleaseLineIndex] =
     getChangelogLineIndexes(changelogLines)
 
-  const versionDiff = semver.diff(
-    newVersion,
-    validatePreviousVersionNumber(previousVersion)
-  )
-
+  const versionDiff = semver.diff(validatedNewVersion, validatedPreviousVersion)
   if (!versionDiff) {
     throw new Error(processingErrorMessage)
   }
-  const newVersionTitle = `## v${newVersion} (${convertIncTypeWord(versionDiff, newVersion, true, changelogLines[previousReleaseLineIndex])} release)`
+  const newVersionTitle = `## v${validatedNewVersion} (${convertIncTypeWord(versionDiff, validatedNewVersion, true, changelogLines[previousReleaseLineIndex])} release)`
 
-  changelogLines.splice(startIndex + 1, 0, '', newVersionTitle)
+  const newLines = [newVersionTitle]
+  if (newVersionIsAPrerelease) {
+    newLines.push(
+      `> [!WARNING]`,
+      `> Do not use in production.`,
+      `> Use this release to prepare for the changes coming in version \`${removePrereleaseFlag(validatedNewVersion)}\`.`,
+      ``
+    )
+  }
+
+  // Add content on how to install the release
+  newLines.push(
+    `To install this version with npm, run \`npm install govuk-frontend@${validatedNewVersion}\`. ` +
+      `You can also find more information about [how to stay up to date](https://frontend.design-system.service.gov.uk/staying-up-to-date/#updating-to-the-latest-version) in our documentation.`,
+    ``
+  )
+
+  // Inject the new lines into the CHANGELOG
+  changelogLines.splice(startIndex + 1, 0, '', ...newLines)
+
   writeFileSync('./CHANGELOG.md', changelogLines.join('\n'))
 }
 
@@ -90,22 +109,21 @@ export function generateReleaseNotes(newVersion, options) {
 }
 
 /**
- * Validates the previous govuk-frontend version number, presumed passed from
- * the govuk-frontend package.json
+ * Validates the version number that it is a semantic versioned string.
  *
- * @param {string} previousVersion - pervious version number
- * @returns {string} - Validated semver of previous version
+ * @param {string} version - version number
+ * @returns {string} - Validated semver of version
  */
-function validatePreviousVersionNumber(previousVersion) {
-  const previousReleaseNumber = semver.valid(previousVersion)
+function validateVersionNumber(version) {
+  const validatedVersion = semver.valid(version)
 
-  if (!previousReleaseNumber) {
+  if (!validatedVersion) {
     throw new Error(
-      `Previous version number ${previousVersion} could not be processed by Semver. Please ensure a valid version is being passed to the script via the govuk-frontend package.json package.`
+      `Version number "${version}" could not be parsed as a semantic versioned string.`
     )
   }
 
-  return previousReleaseNumber
+  return validatedVersion
 }
 
 /**
@@ -261,4 +279,16 @@ function convertIncTypeWord(
   return capitalise
     ? `${rewordedIncType.charAt(0).toUpperCase()}${rewordedIncType.slice(1)}`
     : rewordedIncType
+}
+
+/**
+ * Remove any pre-release flag from a version e.g. 1.0.0-alpha -> 1.0.0
+ *
+ * @param {string} version - version number
+ * @returns {string} - version number without any pre-release flag
+ */
+function removePrereleaseFlag(version) {
+  const parsedVersion = semver.parse(version)
+  parsedVersion.prerelease = []
+  return parsedVersion.format()
 }
