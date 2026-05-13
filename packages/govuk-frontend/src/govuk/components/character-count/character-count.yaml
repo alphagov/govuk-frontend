@@ -234,6 +234,15 @@ examples:
       label:
         text: Enter a job description
 
+  - name: with count type 'characters'
+    options:
+      id: with-count-type-characters
+      name: example
+      countType: characters
+      maxlength: 200
+      label:
+        text: Enter a job description
+
   - name: with count type 'words'
     options:
       id: with-count-type-words

@@ -5,7 +5,7 @@ import {
   configOverride
 } from '../../common/configuration.mjs'
 import { formatErrorMessage } from '../../common/index.mjs'
-import { ConfigError, ElementError } from '../../errors/index.mjs'
+import { ConfigError, ElementError, SupportError } from '../../errors/index.mjs'
 import { I18n } from '../../i18n.mjs'
 
 /**
@@ -27,6 +27,11 @@ export class CharacterCount extends ConfigurableComponent {
 
   /** @private */
   count = 0
+
+  /**
+   * @type {Intl.Segmenter | null}
+   */
+  segmenter = null
 
   /** @private */
   $visibleCountMessage
@@ -125,6 +130,21 @@ export class CharacterCount extends ConfigurableComponent {
       // Read the fallback if necessary rather than have it set in the defaults
       locale: closestAttributeValue(this.$root, 'lang')
     })
+
+    if (this.config.countType === 'characters') {
+      if (!('Segmenter' in Intl)) {
+        throw new SupportError(
+          formatErrorMessage(
+            CharacterCount,
+            'Support for "Intl.Segmenter" required'
+          )
+        )
+      }
+
+      this.segmenter = new Intl.Segmenter(this.i18n.locale, {
+        granularity: 'grapheme'
+      })
+    }
 
     // Determine the limit attribute (characters or words)
     this.maxLength = this.config.maxlength ?? Infinity
@@ -360,8 +380,18 @@ export class CharacterCount extends ConfigurableComponent {
   updateCount() {
     const text = this.$textarea.value
 
+    // Count grapheme clusters (user-perceived characters)
+    if (this.config.countType === 'characters') {
+      this.count = this.segmenter
+        ? Array.from(this.segmenter.segment(text)).length
+        : 0
+
+      return
+    }
+
+    // Count consecutive non-whitespace results
     if (this.config.countType === 'words') {
-      const tokens = text.match(/\S+/g) ?? [] // Matches consecutive non-whitespace chars
+      const tokens = text.match(/\S+/g) ?? []
       this.count = tokens.length
       return
     }
@@ -515,8 +545,8 @@ export class CharacterCount extends ConfigurableComponent {
  * @property {number} [threshold=0] - The percentage value of the limit at
  *   which point the count message is displayed. If this attribute is set, the
  *   count message will be hidden by default.
- * @property {'length' | 'words'} [countType] - The count type (`"length"` or
- *   `"words"`) used to count the text.
+ * @property {'characters' | 'length' | 'words'} [countType] - The count type
+ *   (`"characters"`, `"length"` or `"words"`) used to count the text.
  * @property {CharacterCountTranslations} [i18n=CharacterCount.defaults.i18n] - Character count translations
  */
 
