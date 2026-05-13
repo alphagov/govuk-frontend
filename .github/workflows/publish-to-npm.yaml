@@ -15,6 +15,10 @@ on:
 jobs:
   publish-to-npm:
     uses: ./.github/workflows/publish-to-npm-2.yaml
+    with:
+      environment: ${{ inputs.environment }}
   publish-release-to-github:
     needs: [publish-to-npm]
     uses: ./.github/workflows/publish-release-to-github.yaml
+    with:
+      environment: ${{ inputs.environment }}

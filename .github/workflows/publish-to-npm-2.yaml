@@ -2,7 +2,7 @@ name: 'RELEASE: npm publish'
 run-name: 'RELEASE: npm publish to ${{inputs.environment}}'
 
 on:
-  workflow_dispatch:
+  workflow_call:
     inputs:
       environment:
         description: Environment

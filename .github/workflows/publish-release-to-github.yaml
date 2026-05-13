@@ -2,7 +2,7 @@ name: 'RELEASE: GitHub release'
 run-name: 'RELEASE: GitHub release to ${{inputs.environment}}'
 
 on:
-  workflow_dispatch:
+  workflow_call:
     inputs:
       environment:
         description: Environment
