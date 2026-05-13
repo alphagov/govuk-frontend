@@ -1,63 +1,20 @@
-name: 'RELEASE: npm publish'
-run-name: 'RELEASE: npm publish to ${{inputs.environment}}'
+name: 'RELEASE: Publish release (GitHub and npm)'
+run-name: 'RELEASE: Publish release (GitHub and npm) to ${{inputs.environment}}'
 
 on:
   workflow_dispatch:
     inputs:
       environment:
         description: Environment
-        required: true
+        required: true # For UI consistency with other required options
         type: choice
         options:
           - test
           - production
 
 jobs:
-  publish:
-    name: Publish to npm
-    runs-on: ubuntu-22.04
-    environment: ${{ inputs.environment == 'production' && 'production' || null }}
-    permissions:
-      id-token: write
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v6.0.2
-
-      - name: Setup Node
-        uses: actions/setup-node@v6.4.0
-        with:
-          node-version-file: .nvmrc
-          registry-url: 'https://registry.npmjs.org'
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Generate tag
-        id: generate_tag
-        run: |
-          TAG=$(npm run generate-npm-tag --silent)
-          echo "NPM_TAG=${TAG}" >> $GITHUB_OUTPUT
-
-      - name: Build npm package
-        run: npm run build:package
-
-      - name: Print information on package
-        id: pack
-        run: |
-          echo '```bash' >> $GITHUB_STEP_SUMMARY
-          # Redirect the stderr which contains the useful meta data to the Action summary
-          ARCHIVE_FILE_PATH=$(npm pack --workspace govuk-frontend 2>> $GITHUB_STEP_SUMMARY)
-          echo '```' >> $GITHUB_STEP_SUMMARY
-
-          echo "ARCHIVE_FILE_PATH=${ARCHIVE_FILE_PATH}" >> $GITHUB_OUTPUT
-
-      - name: Upload npm package archive artifact
-        uses: actions/upload-artifact@v7
-        with:
-          path: ${{steps.pack.outputs.ARCHIVE_FILE_PATH}}
-          archive: false # file is already compressed
-
-      - name: Publish to npm
-        if: inputs.environment == 'production'
-        run: npm publish --workspace govuk-frontend --provenance --tag ${{steps.generate_tag.outputs.NPM_TAG}}
+  publish-to-npm:
+    uses: ./.github/workflows/publish-to-npm-2.yaml
+  publish-release-to-github:
+    needs: [publish-to-npm]
+    uses: ./.github/workflows/publish-release-to-github.yaml
