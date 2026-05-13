@@ -1,0 +1,20 @@
+name: 'RELEASE: Publish release (GitHub and npm)'
+run-name: 'RELEASE: Publish release (GitHub and npm) to ${{inputs.environment}}'
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: Environment
+        required: true # For UI consistency with other required options
+        type: choice
+        options:
+          - test
+          - production
+
+jobs:
+  publish-to-npm:
+    uses: ./.github/workflows/publish-to-npm.yaml
+  publish-release-to-github:
+    needs: [publish-to-npm]
+    uses: ./.github/workflows/publish-release-to-github.yaml
