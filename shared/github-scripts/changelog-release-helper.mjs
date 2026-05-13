@@ -16,10 +16,13 @@ const processingErrorMessage =
  *   in versions to build the changelog title
  */
 export function updateChangelog(newVersion, previousVersion) {
+  const validatedNewVersion = validateVersionNumber(newVersion)
+  const validatedPreviousVersion = validateVersionNumber(previousVersion)
+
   // Skip the entire function if the release version is internal eg: 5.1.0-internal.0
-  const newVersionIsAPrerelease = versionIsAPrerelease(newVersion)
+  const newVersionIsAPrerelease = versionIsAPrerelease(validatedNewVersion)
   if (newVersionIsAPrerelease) {
-    const identifier = getPrereleaseIdentifier(newVersion)
+    const identifier = getPrereleaseIdentifier(validatedNewVersion)
 
     if (identifier === 'internal') {
       console.log(
@@ -33,29 +36,25 @@ export function updateChangelog(newVersion, previousVersion) {
   const [startIndex, previousReleaseLineIndex] =
     getChangelogLineIndexes(changelogLines)
 
-  const versionDiff = semver.diff(
-    newVersion,
-    validatePreviousVersionNumber(previousVersion)
-  )
-
+  const versionDiff = semver.diff(validatedNewVersion, validatedPreviousVersion)
   if (!versionDiff) {
     throw new Error(processingErrorMessage)
   }
-  const newVersionTitle = `## v${newVersion} (${convertIncTypeWord(versionDiff, newVersion, true, changelogLines[previousReleaseLineIndex])} release)`
+  const newVersionTitle = `## v${validatedNewVersion} (${convertIncTypeWord(versionDiff, validatedNewVersion, true, changelogLines[previousReleaseLineIndex])} release)`
 
   const newLines = [newVersionTitle]
   if (newVersionIsAPrerelease) {
     newLines.push(
       `> [!WARNING]`,
       `> Do not use in production.`,
-      `> Use this release to prepare for the changes coming in version \`${removePrereleaseFlag(newVersion)}\`.`,
+      `> Use this release to prepare for the changes coming in version \`${removePrereleaseFlag(validatedNewVersion)}\`.`,
       ``
     )
   }
 
   // Add content on how to install the release
   newLines.push(
-    `To install this version with npm, run \`npm install govuk-frontend@${newVersion}\`. ` +
+    `To install this version with npm, run \`npm install govuk-frontend@${validatedNewVersion}\`. ` +
       `You can also find more information about [how to stay up to date](https://frontend.design-system.service.gov.uk/staying-up-to-date/#updating-to-the-latest-version) in our documentation.`,
     ``
   )
@@ -110,22 +109,21 @@ export function generateReleaseNotes(newVersion, options) {
 }
 
 /**
- * Validates the previous govuk-frontend version number, presumed passed from
- * the govuk-frontend package.json
+ * Validates the version number that it is a semantic versioned string.
  *
- * @param {string} previousVersion - pervious version number
- * @returns {string} - Validated semver of previous version
+ * @param {string} version - version number
+ * @returns {string} - Validated semver of version
  */
-function validatePreviousVersionNumber(previousVersion) {
-  const previousReleaseNumber = semver.valid(previousVersion)
+function validateVersionNumber(version) {
+  const validatedVersion = semver.valid(version)
 
-  if (!previousReleaseNumber) {
+  if (!validatedVersion) {
     throw new Error(
-      `Previous version number ${previousVersion} could not be processed by Semver. Please ensure a valid version is being passed to the script via the govuk-frontend package.json package.`
+      `Version number "${version}" could not be parsed as a semantic versioned string.`
     )
   }
 
-  return previousReleaseNumber
+  return validatedVersion
 }
 
 /**

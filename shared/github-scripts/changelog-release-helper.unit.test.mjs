@@ -132,6 +132,26 @@ describe('Changelog release helper', () => {
       )
       expect(fs.writeFileSync).not.toHaveBeenCalled()
     })
+
+    it('throws an error if the newVersion is not a semantic version string', () => {
+      expect(() => {
+        updateChangelog('a.b.c', '3.0.0')
+      }).toThrow(
+        new Error(
+          'Version number "a.b.c" could not be parsed as a semantic versioned string.'
+        )
+      )
+    })
+
+    it('throws an error if the previousVersion is not a semantic version string', () => {
+      expect(() => {
+        updateChangelog('3.0.0', 'x.y.z')
+      }).toThrow(
+        new Error(
+          'Version number "x.y.z" could not be parsed as a semantic versioned string.'
+        )
+      )
+    })
   })
 
   describe('Generate release notes', () => {
