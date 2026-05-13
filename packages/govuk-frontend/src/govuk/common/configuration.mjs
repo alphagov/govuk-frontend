@@ -79,10 +79,15 @@ export class ConfigurableComponent extends Component {
       normaliseDataset(childConstructor, this._$root.dataset)
     )
 
+    // Override defaults with JavaScript config
+    this._config = /** @type {ConfigurationType} */ (
+      mergeConfigs(childConstructor.defaults, config ?? {})
+    )
+
+    // Override merged config with dataset config
     this._config = /** @type {ConfigurationType} */ (
       mergeConfigs(
-        childConstructor.defaults,
-        config ?? {},
+        this._config,
         this[configOverride](datasetConfig),
         datasetConfig
       )
