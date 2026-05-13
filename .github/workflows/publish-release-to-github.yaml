@@ -7,10 +7,7 @@ on:
       environment:
         description: Environment
         required: true # For UI consistency with other required options
-        type: choice
-        options:
-          - test
-          - production
+        type: string
 
 jobs:
   publish-release-to-github:

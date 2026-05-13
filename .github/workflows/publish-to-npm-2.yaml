@@ -7,10 +7,7 @@ on:
       environment:
         description: Environment
         required: true
-        type: choice
-        options:
-          - test
-          - production
+        type: string
 
 jobs:
   publish:
