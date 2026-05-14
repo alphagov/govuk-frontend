@@ -382,36 +382,17 @@ export class CharacterCount extends ConfigurableComponent {
    */
   updateCount() {
     const text = this.$textarea.value
+    const countType = this.config.countType ?? 'length'
 
-    // Count grapheme clusters (user-perceived characters)
-    if (this.config.countType === 'characters') {
-      this.count = this.segmenter
-        ? Array.from(this.segmenter.segment(text)).length
-        : 0
-
-      return
-    }
-
-    // Count words
-    //
-    // If the (deprecated) `maxwords` option is set, count consecutive
-    // non-whitespace results rather than using the segmenter
-    if (this.config.countType === 'words') {
-      if (this.config.maxwords !== undefined) {
-        this.count = text.match(/\S+/g)?.length ?? 0
-        return
-      }
-
-      const segments = this.segmenter
-        ? Array.from(this.segmenter.segment(text))
-        : []
-
-      // Filter out punctuation and whitespace, leaving only words
-      this.count = segments.filter((segment) => segment.isWordLike).length
-      return
-    }
-
-    this.count = text.length
+    // Limit access via `this` when calling the count function to prevent
+    // unintended access to internal properties and methods
+    this.count = this.countFunctions[countType].call(
+      {
+        config: this.config,
+        segmenter: this.segmenter
+      },
+      text
+    )
   }
 
   /**
@@ -478,6 +459,58 @@ export class CharacterCount extends ConfigurableComponent {
 
     return thresholdValue <= currentLength
   }
+
+  /**
+   * Character count functions
+   *
+   * @constant
+   * @satisfies {Record<string, CharacterCountFunction>}
+   */
+  countFunctions = Object.freeze({
+    /**
+     * Count code points (string length)
+     *
+     * @param {string} text - Textarea value
+     * @returns {number} Count
+     */
+    length(text) {
+      return text.length
+    },
+
+    /**
+     * Count grapheme clusters (user-perceived characters)
+     *
+     * @param {string} text - Textarea value
+     * @returns {number} Count
+     */
+    characters(text) {
+      return this.segmenter
+        ? Array.from(this.segmenter.segment(text)).length
+        : 0
+    },
+
+    /**
+     * Count words
+     *
+     * If the (deprecated) `maxwords` option is set, count consecutive
+     * non-whitespace results rather than using the segmenter
+     *
+     * @param {string} text - Textarea value
+     * @returns {number} Count
+     */
+    words(text) {
+      if (this.config.maxwords !== undefined) {
+        return text.match(/\S+/g)?.length ?? 0
+      }
+
+      const segments = this.segmenter
+        ? Array.from(this.segmenter.segment(text))
+        : []
+
+      // Filter out punctuation and whitespace, leaving only words
+      return segments.filter((segment) => segment.isWordLike).length
+    }
+  })
 
   /**
    * Name for the component used when initialising using data-module attributes.
@@ -563,6 +596,15 @@ export class CharacterCount extends ConfigurableComponent {
  * @property {'characters' | 'length' | 'words'} [countType] - The count type
  *   (`"characters"`, `"length"` or `"words"`) used to count the text.
  * @property {CharacterCountTranslations} [i18n=CharacterCount.defaults.i18n] - Character count translations
+ */
+
+/**
+ * Character count function
+ *
+ * @callback CharacterCountFunction
+ * @this {{ config: CharacterCountConfig, segmenter: CharacterCount['segmenter'] }}
+ * @param {string} text - Textarea value
+ * @returns {number} Count
  */
 
 /**
