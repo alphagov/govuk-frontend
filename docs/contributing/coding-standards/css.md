@@ -300,7 +300,7 @@ margin: 1px 2px 3px;
 Bad:
 
 ```scss
-@import 'foo';
+@use 'foo';
 
 $govuk-font-family-gds-transport: 'GDS Transport', arial, sans-serif;
 
@@ -312,7 +312,7 @@ $govuk-font-family-gds-transport: 'GDS Transport', arial, sans-serif;
 Good:
 
 ```scss
-@import "foo";
+@use "foo";
 
 $govuk-font-family-gds-transport: "GDS Transport", arial, sans-serif;
 
@@ -323,20 +323,20 @@ $govuk-font-family-gds-transport: "GDS Transport", arial, sans-serif;
 
 ### Files should always have a final newline
 
-### The basenames of `@import`ed SCSS partials should not begin with an underscore and should not include the filename extension
+### The basenames of `@use`ed SCSS partials should not begin with an underscore and should not include the filename extension
 
 Bad:
 
 ```scss
-@import "_foo.scss";
-@import "_bar/foo.scss";
+@use "_foo.scss";
+@use "_bar/foo.scss";
 ```
 
 Good:
 
 ```scss
-@import "foo";
-@import "bar/foo";
+@use "foo";
+@use "bar/foo";
 ```
 
 ### Properties should be formatted with a single space separating the colon from the property's value
