@@ -122,4 +122,4 @@ jobs:
           git commit -m "Release ${{ inputs.version }}"
           git checkout -b release-${{ inputs.version }}
           git push -u origin release-${{ inputs.version }}
-          gh pr create --base main --head release-${{ inputs.version }} --title "Release ${{ inputs.version }}" --body-file "release-notes-body"
+          gh pr create --base "${{ github.ref_name }}" --head release-${{ inputs.version }} --title "Release ${{ inputs.version }}" --body-file "release-notes-body"
