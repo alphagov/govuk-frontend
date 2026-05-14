@@ -216,7 +216,12 @@ jobs:
 
         # Use 2x CPU cores for hosted GitHub runners
         # https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#supported-runners-and-hardware-resources
-        run: npx jest --color ${{ format('--coverage={0} --maxWorkers=2 --selectProjects "{1}"', matrix.task.coverage || false, join(matrix.task.projects, '", "')) }}
+        #
+        # Accessibility tests on Windows are pinned to a single worker to
+        # avoid flaky `connect ETIMEDOUT` failures when Jest workers connect
+        # to the per-worker Chromium WebSocket endpoint over the loopback
+        # interface under load.
+        run: npx jest --color ${{ format('--coverage={0} --maxWorkers={1} --selectProjects "{2}"', matrix.task.coverage || false, (matrix.task.name == 'test-accessibility' && matrix.runner.os == 'windows-latest') && 1 || 2, join(matrix.task.projects, '", "')) }}
 
       - name: Save test coverage
         uses: actions/upload-artifact@v7.0.1
