@@ -4,16 +4,27 @@ const { join } = require('path')
 const { paths } = require('@govuk-frontend/config')
 const {
   compileSassFile,
-  getSassPathsFromLayer
+  getSassPathsFromLayer,
+  compileSassString
 } = require('@govuk-frontend/helpers/tests')
 const sassdoc = require('sassdoc')
 
 const partials = getSassPathsFromLayer('settings')
 
 describe('The settings layer', () => {
-  it('should not output any CSS', async () => {
-    const file = join(paths.package, 'src/govuk/settings/_index.scss')
-    await expect(compileSassFile(file)).resolves.toMatchObject({ css: '' })
+  describe.each([
+    ['import', `@import "settings";`],
+    ['use', `@use "settings";`]
+  ])('with `@%s`', (type, sass) => {
+    let css
+
+    beforeAll(async () => {
+      css = (await compileSassString(sass)).css
+    })
+
+    it('should not output any CSS', async () => {
+      expect(css).toBe('')
+    })
   })
 
   describe('_index.import.scss', () => {
