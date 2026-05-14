@@ -2,16 +2,38 @@ const { globSync } = require('fs')
 const { join, basename } = require('path')
 
 const { paths, sass: sassConfig } = require('@govuk-frontend/config')
-const {
-  compileAsync,
-  compileStringAsync,
-  NodePackageImporter
-} = require('sass-embedded')
+const { initAsyncCompiler, NodePackageImporter } = require('sass-embedded')
 
 const sassPaths = [
   join(paths.package, 'src/govuk'),
   join(paths.root, 'node_modules')
 ]
+
+/**
+ * Lazily-initialised shared async Sass compiler.
+ *
+ * Reusing a single compiler across compilations avoids the cost of spawning
+ * a new `sass-embedded` process for every call, which speeds up tests.
+ *
+ * @type {Promise<import('sass-embedded').AsyncCompiler> | undefined}
+ */
+let compilerPromise
+
+function getCompiler() {
+  if (!compilerPromise) {
+    compilerPromise = initAsyncCompiler()
+
+    // Dispose the compiler when the process is about to exit so the
+    // underlying `sass-embedded` subprocess is cleaned up.
+    process.once('beforeExit', async () => {
+      const promise = compilerPromise
+      compilerPromise = undefined
+      const compiler = await promise
+      await compiler.dispose()
+    })
+  }
+  return compilerPromise
+}
 
 /**
  * Render Sass from file
@@ -21,7 +43,8 @@ const sassPaths = [
  * @returns {Promise<import('sass-embedded').CompileResult>} Sass compile result
  */
 async function compileSassFile(path, options = {}) {
-  return compileAsync(path, {
+  const compiler = await getCompiler()
+  return compiler.compileAsync(path, {
     loadPaths: sassPaths,
     ...sassConfig.deprecationOptions,
     ...options
@@ -36,7 +59,8 @@ async function compileSassFile(path, options = {}) {
  * @returns {Promise<import('sass-embedded').CompileResult>} Sass compile result
  */
 async function compileSassString(source, options = {}) {
-  return compileStringAsync(source, {
+  const compiler = await getCompiler()
+  return compiler.compileStringAsync(source, {
     loadPaths: sassPaths,
     // Used to resolve assets helpers, not to load govuk-frontend itself
     importers: [new NodePackageImporter()],

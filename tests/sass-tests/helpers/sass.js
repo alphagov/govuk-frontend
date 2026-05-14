@@ -1,5 +1,6 @@
 const { paths } = require('@govuk-frontend/config')
-const { NodePackageImporter, compileStringAsync } = require('sass-embedded')
+const { compileSassString } = require('@govuk-frontend/helpers/tests')
+const { NodePackageImporter } = require('sass-embedded')
 
 /** @type {import('sass-embedded').StringOptions<"async">} */
 const sassConfig = {
@@ -10,7 +11,7 @@ const sassConfig = {
 }
 
 async function compileSassStringLikeUsers(string, options = sassConfig) {
-  const { css } = await compileStringAsync(string, options)
+  const { css } = await compileSassString(string, options)
   return css.replaceAll(/\n+/g, '\n')
 }
 
