@@ -387,9 +387,12 @@ export class CharacterCount extends ConfigurableComponent {
     const text = this.$textarea.value
     const countType = this.config.countType ?? 'length'
 
+    const countFunction =
+      this.config.countFunction ?? this.countFunctions[countType]
+
     // Limit access via `this` when calling the count function to prevent
     // unintended access to internal properties and methods
-    this.count = this.countFunctions[countType].call(
+    this.count = countFunction.call(
       {
         config: this.config,
         segmenter: this.segmenter
@@ -569,7 +572,8 @@ export class CharacterCount extends ConfigurableComponent {
       maxwords: { type: 'number' },
       maxlength: { type: 'number' },
       threshold: { type: 'number' },
-      countType: { type: 'string' }
+      countType: { type: 'string' },
+      countFunction: { type: 'function' }
     },
     anyOf: [
       {
@@ -598,6 +602,8 @@ export class CharacterCount extends ConfigurableComponent {
  *   count message will be hidden by default.
  * @property {'characters' | 'length' | 'words'} [countType] - The count type
  *   (`"characters"`, `"length"` or `"words"`) used to count the text.
+ * @property {CharacterCountFunction} [countFunction] - Custom character or
+ *   word counting function.
  * @property {CharacterCountTranslations} [i18n=CharacterCount.defaults.i18n] - Character count translations
  */
 
