@@ -392,10 +392,22 @@ export class CharacterCount extends ConfigurableComponent {
       return
     }
 
-    // Count consecutive non-whitespace results
+    // Count words
+    //
+    // If the (deprecated) `maxwords` option is set, count consecutive
+    // non-whitespace results rather than using the segmenter
     if (this.config.countType === 'words') {
-      const tokens = text.match(/\S+/g) ?? []
-      this.count = tokens.length
+      if (this.config.maxwords !== undefined) {
+        this.count = text.match(/\S+/g)?.length ?? 0
+        return
+      }
+
+      const segments = this.segmenter
+        ? Array.from(this.segmenter.segment(text))
+        : []
+
+      // Filter out punctuation and whitespace, leaving only words
+      this.count = segments.filter((segment) => segment.isWordLike).length
       return
     }
 
