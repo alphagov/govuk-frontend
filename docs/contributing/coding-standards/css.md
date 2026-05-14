@@ -1,8 +1,36 @@
-# CSS Style Guide
+# CSS and Sass Style Guide
+
+## Sass modules
+
+GOV.UK Frontend supports both `@import` and `@use` to include Sass files.
+
+Our public API is prefixed with `govuk-` to ensure consistent naming and avoid
+clashes with Sass elements in your application. You should `@use` govuk-frontend
+modules without a namespace:
+
+Bad:
+
+```scss
+@use "foo";
+
+.bar {
+  color: foo.govuk-function("baz")
+}
+```
+
+Good:
+
+```scss
+@use "foo" as *;
+
+.bar {
+  color: govuk-function("baz")
+}
+```
 
 ## Class naming convention
 
-## `govuk` namespacing
+### `govuk` namespacing
 
 All class names start with a `.govuk-` namespace to reduce the likelihood of
 conflicting with existing classes in your application. It also helps to identify
@@ -11,7 +39,7 @@ where the styling for a particular element is coming from.
 If you are building components for your own application or framework you should
 use a different prefix, for example `.app-` or the initials of your department.
 
-## Block Element Modifier (BEM)
+### Block Element Modifier (BEM)
 
 GOV.UK Frontend uses the Block Element Modifier (BEM) methodology when naming
 CSS classes. This is designed to help developers understand how the different
