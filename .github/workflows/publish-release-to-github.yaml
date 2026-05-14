@@ -2,6 +2,12 @@ name: 'RELEASE: GitHub release'
 run-name: 'RELEASE: GitHub release to ${{inputs.environment}}'
 
 on:
+  workflow_call:
+    inputs:
+      environment:
+        description: Environment
+        required: true
+        type: string
   workflow_dispatch:
     inputs:
       environment:
