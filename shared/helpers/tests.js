@@ -2,7 +2,11 @@ const { globSync } = require('fs')
 const { join, basename } = require('path')
 
 const { paths, sass: sassConfig } = require('@govuk-frontend/config')
-const { compileAsync, compileStringAsync } = require('sass-embedded')
+const {
+  compileAsync,
+  compileStringAsync,
+  NodePackageImporter
+} = require('sass-embedded')
 
 const sassPaths = [
   join(paths.package, 'src/govuk'),
@@ -34,6 +38,8 @@ async function compileSassFile(path, options = {}) {
 async function compileSassString(source, options = {}) {
   return compileStringAsync(source, {
     loadPaths: sassPaths,
+    // Used to resolve assets helpers, not to load govuk-frontend itself
+    importers: [new NodePackageImporter()],
     ...sassConfig.deprecationOptions,
     ...options
   })
