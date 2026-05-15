@@ -1,0 +1,62 @@
+---
+title: HM Pizza Finder
+name: non-GOV.UK service
+scenario: You want to sign in to the HM Pizza Finder service
+---
+
+{% extends "layouts/full-page-example.njk" %}
+
+{% from "govuk/components/generic-header/macro.njk" import govukGenericHeader %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% set htmlClasses = "app-template--hmpf" %}
+
+{% block pageTitle %}HM Pizza Finder{% endblock %}
+
+{% set logoContent %}
+<svg width="28" height="30" viewBox="0 0 28 30" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="13.5549" cy="4.21349" r="4.21349"/>
+  <circle cx="13.5549" cy="25.7865" r="4.21349"/>
+  <circle cx="22.8963" cy="9.6068" r="4.21349"/>
+  <circle cx="4.2135" cy="20.3932" r="4.21349"/>
+  <circle cx="22.8963" cy="20.3932" r="4.21349"/>
+  <circle cx="4.21351" cy="9.60674" r="4.21349"/>
+</svg> | HM Pizza Finder service
+{% endset %}
+
+{% block govukHeader %}
+{{ govukGenericHeader({
+  url: "#",
+  logoHtml: logoContent
+}) }}
+{% endblock %}
+
+{% block headerEnd %}
+{{ govukPhaseBanner({
+  tag: {
+    text: 'Beta'
+  },
+  html: 'This is a new service'
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<h1 class="govuk-heading-xl">Welcome to the HM Pizza Finder service (HMPF)</h1>
+
+<h2 class="govuk-heading-l">Sign in to HMPF online services</h2>
+
+<p class="govuk-body">When logged in you can:</p>
+<ul class="govuk-list govuk-list--bullet">
+  <li>find a nearby pizza</li>
+  <li>register a pizza</li>
+  <li>manage a pizza</li>
+  <li>locate an existing pizza</li>
+</ul>
+
+{{ govukButton({
+  text: "Sign in",
+  href: "#"
+}) }}
+{% endblock %}
