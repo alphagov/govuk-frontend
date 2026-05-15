@@ -1,4 +1,4 @@
-# GOV.UK Header
+# Generic Header
 
 ## Installation
 
@@ -6,10 +6,10 @@ See the [main README quick start guide](https://github.com/alphagov/govuk-fronte
 
 ## Guidance and Examples
 
-Find out when to use the header component in your service in the [GOV.UK Design System](https://design-system.service.gov.uk/components/header).
+Find out when to use the header component in your service in the [GOV.UK Design System](https://design-system.service.gov.uk/components/generic-header).
 
 ## Component options
 
 Use options to customise the appearance, content and behaviour of a component when using a macro, for example, changing the text.
 
-See [options table](https://design-system.service.gov.uk/components/header/#options-header-example) for details.
+See [options table](https://design-system.service.gov.uk/components/generic-header/#options-generic-header-example) for details.

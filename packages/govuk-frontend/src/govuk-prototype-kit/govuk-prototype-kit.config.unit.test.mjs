@@ -105,6 +105,10 @@ describe('GOV.UK Prototype Kit config', () => {
           macroName: 'govukFooter'
         },
         {
+          importFrom: 'govuk/components/generic-header/macro.njk',
+          macroName: 'govukGenericHeader'
+        },
+        {
           importFrom: 'govuk/components/header/macro.njk',
           macroName: 'govukHeader'
         },
