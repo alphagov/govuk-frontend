@@ -1,7 +1,6 @@
 @use "pkg:govuk-frontend/base" as *;
 
 .app-header--campaign {
-  padding-bottom: govuk-spacing(2);
   border-bottom: $govuk-border-width-wide solid #fff500;
 }
 
