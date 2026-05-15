@@ -1,20 +1,23 @@
-{% from "../../macros/attributes.njk" import govukAttributes -%}
+{% from "../generic-header/macro.njk" import govukGenericHeader -%}
 {% from "../../macros/logo.njk" import govukLogo -%}
 
-<div class="govuk-header {%- if params.classes %} {{ params.classes }}{% endif %}" {{- govukAttributes(params.attributes) }}>
-  <div class="govuk-header__container {{ params.containerClasses | default("govuk-width-container", true) }}">
-    <div class="govuk-header__logo">
-      <a href="{{ params.homepageUrl | default("//gov.uk", true) }}" class="govuk-header__homepage-link">
-        {{ govukLogo({
-          classes: "govuk-header__logotype",
-          ariaLabelText: "GOV.UK"
-        }) | trim | indent(8) }}
-        {% if (params.productName) %}
-        <span class="govuk-header__product-name">
-          {{- params.productName -}}
-        </span>
-        {% endif %}
-      </a>
-    </div>
-  </div>
-</div>
+{% set logoContent %}
+  {{ govukLogo({
+    classes: "govuk-header__logotype",
+    ariaLabelText: "GOV.UK"
+  }) | trim | indent(8) }}
+  {%- if (params.productName) %}
+    <span class="govuk-header__product-name">
+      {{- params.productName -}}
+    </span>
+  {% endif -%}
+{% endset %}
+
+{{ govukGenericHeader({
+  _namespace: 'govuk',
+  logoHtml: logoContent,
+  url: params.homepageUrl | default("//gov.uk", true),
+  containerClasses: params.containerClasses,
+  classes: params.classes,
+  attributes: params.attributes
+}) }}
