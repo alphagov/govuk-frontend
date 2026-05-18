@@ -62,4 +62,4 @@ jobs:
       # Publish the package using [trusted-publishing](https://docs.npmjs.com/trusted-publishers)
       - name: Publish to npm
         if: inputs.environment == 'production'
-        run: npm publish --workspace govuk-frontend --provenance --tag ${{steps.generate_tag.outputs.NPM_TAG}}
+        run: npm publish --workspace govuk-frontend --tag ${{steps.generate_tag.outputs.NPM_TAG}}
