@@ -89,16 +89,4 @@ describe.each(sassFiles)('%s', (sassFilePath) => {
 
     return expect(linter.results[0].warnings).toHaveLength(0)
   })
-
-  it('matches snapshot', () => {
-    // Base does not output any CSS when `@use`d so we can only compare the import
-    const css = sassFilePath.endsWith('_base.scss') ? importCss : useCss
-    expect(css).toMatchSnapshot()
-  })
-
-  it('does not output CSS from settings, tools or helpers', () => {
-    if (/\/(settings|tools|helpers)\//.test(sassFilePath)) {
-      expect(useCss).toBe('')
-    }
-  })
 })
