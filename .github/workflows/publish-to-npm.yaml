@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-22.04
     environment: ${{ inputs.environment == 'production' && 'production' || null }}
     permissions:
-      id-token: write
+      id-token: write # Used when [generating provenance statements](https://docs.npmjs.com/generating-provenance-statements)
 
     steps:
       - name: Checkout
@@ -29,6 +29,7 @@ jobs:
         with:
           node-version-file: .nvmrc
           registry-url: 'https://registry.npmjs.org'
+          package-manager-cache: false # never use caching in release builds
 
       - name: Install dependencies
         run: npm ci
@@ -58,6 +59,7 @@ jobs:
           path: ${{steps.pack.outputs.ARCHIVE_FILE_PATH}}
           archive: false # file is already compressed
 
+      # Publish the package using [trusted-publishing](https://docs.npmjs.com/trusted-publishers)
       - name: Publish to npm
         if: inputs.environment == 'production'
-        run: npm publish --workspace govuk-frontend --provenance --tag ${{steps.generate_tag.outputs.NPM_TAG}}
+        run: npm publish --workspace govuk-frontend --tag ${{steps.generate_tag.outputs.NPM_TAG}}
