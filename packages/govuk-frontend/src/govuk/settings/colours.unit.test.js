@@ -157,41 +157,41 @@ describe('Functional colours', () => {
       'Unknown colour `non-existing-colour`' // partial string match
     )
   })
+})
 
-  describe('legacy variables', () => {
-    describe.each([
-      'brand',
-      'text',
-      'template-background',
-      'body-background',
-      'print-text',
-      'secondary-text',
-      'focus',
-      'focus-text',
-      'error',
-      'success',
-      'border',
-      'input-border',
-      'link',
-      'link-visited',
-      'link-hover',
-      'link-active'
-    ])('$govuk-%s-colour', (functionalColourName) => {
-      it('sets a Sass variable with the functional colour value', async () => {
-        const sass = `
-          @use "settings/colours-functional" as *;
+describe('legacy variables', () => {
+  describe.each([
+    'brand',
+    'text',
+    'template-background',
+    'body-background',
+    'print-text',
+    'secondary-text',
+    'focus',
+    'focus-text',
+    'error',
+    'success',
+    'border',
+    'input-border',
+    'link',
+    'link-visited',
+    'link-hover',
+    'link-active'
+  ])('$govuk-%s-colour', (functionalColourName) => {
+    it('sets a Sass variable with the functional colour value', async () => {
+      const sass = `
+      @use "settings/colours-legacy-functional" as *;
 
-          :root {
-            result: $govuk-${functionalColourName}-colour;
-          }
-        `
+        :root {
+          result: $govuk-${functionalColourName}-colour;
+        }
+      `
 
-        const { css } = await compileSassString(sass, sassConfig)
+      const { css } = await compileSassString(sass, sassConfig)
 
-        expect(css).toContain(
-          `result: var(--govuk-${functionalColourName}-colour`
-        )
-      })
+      expect(css).toContain(
+        `result: var(--govuk-${functionalColourName}-colour`
+      )
     })
   })
 })
