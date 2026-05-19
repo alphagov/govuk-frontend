@@ -110,6 +110,20 @@ describe('@mixin govuk-text-colour', () => {
       expect.anything()
     )
   })
+
+  it('outputs the custom property for the text functional colour', async () => {
+    const sass = `
+      ${sassBootstrap()}
+
+      .foo {
+        @include govuk-text-colour;
+      }
+    `
+
+    const { css } = await compileSassString(sass, sassConfig)
+
+    expect(css).toContain('color: var(--govuk-text-colour, ')
+  })
 })
 
 describe('@mixin govuk-font-tabular-numbers', () => {

@@ -14,6 +14,7 @@
 @use "../tools/font-url" as *;
 @use "../tools/px-to-rem" as *;
 @use "../tools/if" as *;
+@use "colour" as *;
 @use "font-faces--internal";
 @use "typography--internal";
 @use "media-queries" as *;
