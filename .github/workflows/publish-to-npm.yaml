@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-22.04
     environment: ${{ inputs.environment == 'production' && 'production' || null }}
     permissions:
-      id-token: write # Used when [generating provenance statements](https://docs.npmjs.com/generating-provenance-statements)
+      id-token: write # required for Trusted publishing (https://docs.npmjs.com/trusted-publishers)
 
     steps:
       - name: Checkout
@@ -59,7 +59,7 @@ jobs:
           path: ${{steps.pack.outputs.ARCHIVE_FILE_PATH}}
           archive: false # file is already compressed
 
-      # Publish the package using [trusted-publishing](https://docs.npmjs.com/trusted-publishers)
+      # Publish the package using Trusted publishing (https://docs.npmjs.com/trusted-publishers)
       - name: Publish to npm
         if: inputs.environment == 'production'
         run: npm publish --workspace govuk-frontend --tag ${{steps.generate_tag.outputs.NPM_TAG}}
