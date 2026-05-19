@@ -182,13 +182,15 @@ describe('Functional colours', () => {
           @use "settings/colours-functional" as *;
 
           :root {
-            result: $govuk-${functionalColourName}-colour == govuk-functional-colour(${functionalColourName});
+            result: $govuk-${functionalColourName}-colour;
           }
         `
 
         const { css } = await compileSassString(sass, sassConfig)
 
-        expect(css).toContain(`result: true;`)
+        expect(css).toContain(
+          `result: var(--govuk-${functionalColourName}-colour`
+        )
       })
     })
   })
