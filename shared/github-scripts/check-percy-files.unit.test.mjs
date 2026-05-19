@@ -75,7 +75,7 @@ describe('checkRelevantChanges', () => {
       const changedFiles = [
         'jest.config.mjs', // Root file
         '.github/workflows/test.yml', // GitHub files
-        'bin/build-release.sh', // bin files
+        'bin/generate-npm-tag.sh', // bin files
         'docs/contributing/testing.md', // doc files
         'packages/govuk-frontend/src/govuk/common/index.jsdom.test.mjs', // Test files, even if correct extension and location
         'packages/govuk-frontend/src/govuk/components/accordion/README.md', // Wrong extension, right location
