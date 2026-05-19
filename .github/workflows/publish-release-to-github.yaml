@@ -25,6 +25,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6.0.2
+        with:
+          fetch-tags: true
 
       - name: Setup Node
         uses: actions/setup-node@v6.4.0
@@ -46,7 +48,7 @@ jobs:
           TAG="v${ALL_PACKAGE_VERSION}"
 
           if [ $(git tag -l "$TAG") ]; then
-            echo "⚠️ Tag $TAG already exists. Please delete $TAG via the GitHub UI and re-run this workflow"
+            echo "::error::Tag $TAG already exists. Please delete $TAG via the GitHub UI and re-run this workflow"
             exit 1
           else
             echo "🗒 Tagging repo using tag version: $TAG ..."
@@ -97,7 +99,7 @@ jobs:
           ARCHIVE_FILE_PATH="${{steps.archive.outputs.ARCHIVE_FILE_PATH}}"
 
           if gh release view "$GH_TAG" > /dev/null 2>&1; then
-            echo "⚠️ Release $GH_TAG already exists. Please delete the release and tag via the GitHub UI and re-run this workflow"
+            echo "::error::Release $GH_TAG already exists. Please delete the release and tag via the GitHub UI and re-run this workflow"
             exit 1
           else
             gh release create "$GH_TAG" "$ARCHIVE_FILE_PATH" --title "${RELEASE_NAME}" --notes "$RELEASE_BODY"
