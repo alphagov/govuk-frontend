@@ -7,6 +7,7 @@ jobs:
   publish:
     name: Publish to npm
     runs-on: ubuntu-22.04
+    environment: production
     permissions:
       id-token: write
 
