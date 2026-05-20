@@ -7,6 +7,7 @@ jobs:
   publish-release-to-github:
     name: Publish release to GitHub
     runs-on: Ubuntu-22.04
+    environment: production
     permissions:
       contents: write
     env:
