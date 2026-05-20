@@ -1,6 +1,10 @@
 import { readFileSync, writeFileSync } from 'fs'
+import { join } from 'path'
 
+import { paths } from '@govuk-frontend/config'
 import semver from 'semver'
+
+const CHANGELOG_FILE_PATH = join(paths.root, 'CHANGELOG.md')
 
 const processingErrorMessage =
   'There was a problem processing information from the changelog. This likely means that there is an issue with the changelog content itself. Please check it and try running this task again.'
@@ -62,7 +66,7 @@ export function updateChangelog(newVersion, previousVersion) {
   // Inject the new lines into the CHANGELOG
   changelogLines.splice(startIndex + 1, 0, '', ...newLines)
 
-  writeFileSync('./CHANGELOG.md', changelogLines.join('\n'))
+  writeFileSync(CHANGELOG_FILE_PATH, changelogLines.join('\n'))
 }
 
 /**
@@ -132,7 +136,7 @@ function validateVersionNumber(version) {
  * @returns {Array<string>} - Changelog split into an array by lines
  */
 function getChangelogLines() {
-  return readFileSync('./CHANGELOG.md', 'utf8').split('\n')
+  return readFileSync(CHANGELOG_FILE_PATH, 'utf8').split('\n')
 }
 
 /**
