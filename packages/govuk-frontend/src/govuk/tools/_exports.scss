@@ -24,7 +24,7 @@ $govuk-imported-modules: () !default;
 ///
 /// @param {String} $name - Name of module - must be unique within the codebase
 /// @content The passed content will only be outputted if a module of the same
-///   $name has not already been outputted
+///   $name has not already been outputted. Use only with `@import`, not `@use`.
 /// @access public
 
 @mixin govuk-exports($name) {
