@@ -74,11 +74,10 @@ jobs:
     runs-on: ${{ matrix.runner.os }}
     needs: [install]
 
-    # Disabled due to editorconfig-checker bug
-    # env:
-    # Authorise GitHub API requests for EditorConfig checker binary
-    # https://www.npmjs.com/package/editorconfig-checker
-    # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    env:
+      # Authorise GitHub API requests for EditorConfig checker binary
+      # https://www.npmjs.com/package/editorconfig-checker
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     strategy:
       fail-fast: false
@@ -101,10 +100,9 @@ jobs:
             run: npm run lint:js
             cache: .cache/eslint
 
-          # Disabled due to editorconfig-checker bug
-          # - description: EditorConfig
-          #   name: lint-editorconfig
-          #   run: npm run lint:editorconfig
+          - description: EditorConfig
+            name: lint-editorconfig
+            run: npm run lint:editorconfig
 
           - description: Prettier
             name: lint-prettier
