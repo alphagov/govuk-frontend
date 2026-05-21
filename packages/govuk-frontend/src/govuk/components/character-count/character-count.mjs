@@ -29,6 +29,7 @@ export class CharacterCount extends ConfigurableComponent {
   count = 0
 
   /**
+   * @private
    * @type {Intl.Segmenter | null}
    */
   segmenter = null
@@ -389,15 +390,10 @@ export class CharacterCount extends ConfigurableComponent {
     const countFunction =
       this.config.countFunction ?? this.countFunctions[countType]
 
-    // Limit access via `this` when calling the count function to prevent
-    // unintended access to internal properties and methods
-    this.count = countFunction.call(
-      {
-        config: this.config,
-        segmenter: this.segmenter
-      },
-      text
-    )
+    this.count = countFunction(text, {
+      config: this.config,
+      segmenter: this.segmenter
+    })
   }
 
   /**
@@ -486,11 +482,12 @@ export class CharacterCount extends ConfigurableComponent {
      * Count grapheme clusters (user-perceived characters)
      *
      * @param {string} text - Textarea value
+     * @param {CharacterCountContext} context - Object containing the config and segmenter
      * @returns {number} Count
      */
-    characters(text) {
-      return this.segmenter
-        ? Array.from(this.segmenter.segment(text)).length
+    characters(text, context) {
+      return context.segmenter
+        ? Array.from(context.segmenter.segment(text)).length
         : 0
     },
 
@@ -501,15 +498,16 @@ export class CharacterCount extends ConfigurableComponent {
      * non-whitespace results rather than using the segmenter
      *
      * @param {string} text - Textarea value
+     * @param {CharacterCountContext} context - Object containing the config and segmenter
      * @returns {number} Count
      */
-    words(text) {
-      if (this.config.maxwords !== undefined) {
+    words(text, context) {
+      if (context.config.maxwords !== undefined) {
         return text.match(/\S+/g)?.length ?? 0
       }
 
-      const segments = this.segmenter
-        ? Array.from(this.segmenter.segment(text))
+      const segments = context.segmenter
+        ? Array.from(context.segmenter.segment(text))
         : []
 
       // Filter out punctuation and whitespace, leaving only words
@@ -610,9 +608,17 @@ export class CharacterCount extends ConfigurableComponent {
  * Character count function
  *
  * @callback CharacterCountFunction
- * @this {{ config: CharacterCountConfig, segmenter: CharacterCount['segmenter'] }}
  * @param {string} text - Textarea value
+ * @param {CharacterCountContext} context - Object containing the config and segmenter
  * @returns {number} Count
+ */
+
+/**
+ * Character count context
+ *
+ * @typedef {object} CharacterCountContext
+ * @property {CharacterCountConfig} config - Character count config
+ * @property {CharacterCount['segmenter']} segmenter - Character count segmenter
  */
 
 /**
