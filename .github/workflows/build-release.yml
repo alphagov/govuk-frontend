@@ -67,6 +67,8 @@ jobs:
       - name: Update package version and CHANGELOG
         run: |
           npm version --no-git-tag-version --workspace govuk-frontend "$RELEASE_TYPE" --preid "$PREID"
+          # After `npm version` runs, the `postversion` lifecycle hook script from the govuk-frontend package
+          # will be run which then updates the CHANGELOG.
 
           # Save the new version number for access in future steps
           echo "PACKAGE_VERSION=$(npm run get-version --silent --workspace govuk-frontend)" >> $GITHUB_ENV
