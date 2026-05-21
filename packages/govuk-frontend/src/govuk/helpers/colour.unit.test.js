@@ -289,7 +289,7 @@ describe('@function govuk-functional-colour', () => {
 
   beforeEach(() => {
     sassBootstrap = `
-      @use "settings" with (
+      @use "settings/colours-functional" with (
         $govuk-functional-colours: (
           "error": #ff0000,
           "success": #00ff00,
