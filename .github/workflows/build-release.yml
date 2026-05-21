@@ -64,23 +64,14 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Save current version
-        run: echo "PREVIOUS_PACKAGE_VERSION=$(npm run get-version --silent --workspace govuk-frontend)" >> $GITHUB_ENV
-
-      - name: Update package version
+      - name: Update package version and CHANGELOG
         run: |
           npm version --no-git-tag-version --workspace govuk-frontend "$RELEASE_TYPE" --preid "$PREID"
+          # After `npm version` runs, the `postversion` lifecycle hook script from the govuk-frontend package
+          # will be run which then updates the CHANGELOG.
 
           # Save the new version number for access in future steps
           echo "PACKAGE_VERSION=$(npm run get-version --silent --workspace govuk-frontend)" >> $GITHUB_ENV
-
-      - name: Update CHANGELOG
-        uses: actions/github-script@v9.0.0
-        with:
-          script: |
-            const { updateChangelog } = await import('${{ github.workspace }}/shared/github-scripts/changelog-release-helper.mjs')
-
-            updateChangelog(process.env.PACKAGE_VERSION, process.env.PREVIOUS_PACKAGE_VERSION)
 
       - name: Generate release notes
         uses: actions/github-script@v9.0.0

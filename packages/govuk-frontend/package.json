@@ -63,6 +63,7 @@
     "clean:package": "del-cli *.tsbuildinfo dist govuk-prototype-kit.config.json",
     "clean:release": "del-cli ../../dist --force",
     "postbuild:package": "npm run build:stats && govuk-prototype-kit validate-plugin .",
+    "postversion": "node ../../bin/update-changelog.mjs",
     "get-version": "echo $npm_package_version"
   },
   "devDependencies": {

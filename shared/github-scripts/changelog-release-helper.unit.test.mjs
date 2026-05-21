@@ -1,5 +1,7 @@
 import fs from 'fs'
+import { join } from 'path'
 
+import { paths } from '@govuk-frontend/config'
 import { outdent } from 'outdent'
 
 import {
@@ -8,6 +10,8 @@ import {
 } from './changelog-release-helper.mjs'
 
 jest.mock('fs')
+
+const CHANGELOG_FILE_PATH = join(paths.root, 'CHANGELOG.md')
 
 describe('Changelog release helper', () => {
   beforeEach(() => {
@@ -26,7 +30,7 @@ describe('Changelog release helper', () => {
     it('adds a new heading to the changelog for the new version', () => {
       updateChangelog('3.1.0', '3.0.0')
       expect(fs.writeFileSync).toHaveBeenCalledWith(
-        './CHANGELOG.md',
+        CHANGELOG_FILE_PATH,
         expect.stringContaining('## v3.1.0 (Feature release)')
       )
     })
@@ -34,7 +38,7 @@ describe('Changelog release helper', () => {
     it('prefixes a new heading with a pre-release identifier if the new version is a pre-release', () => {
       updateChangelog('3.1.0-beta.0', '3.0.0')
       expect(fs.writeFileSync).toHaveBeenCalledWith(
-        './CHANGELOG.md',
+        CHANGELOG_FILE_PATH,
         expect.stringContaining('## v3.1.0-beta.0 (Beta feature release)')
       )
     })
@@ -52,7 +56,7 @@ describe('Changelog release helper', () => {
 
       updateChangelog('3.1.0-beta.1', '3.1.0-beta.0')
       expect(fs.writeFileSync).toHaveBeenCalledWith(
-        './CHANGELOG.md',
+        CHANGELOG_FILE_PATH,
         expect.stringContaining('## v3.1.0-beta.1 (Beta feature release)')
       )
     })
@@ -70,7 +74,7 @@ describe('Changelog release helper', () => {
 
       updateChangelog('3.1.0-beta.1', '3.1.0-beta.0')
       expect(fs.writeFileSync).toHaveBeenCalledWith(
-        './CHANGELOG.md',
+        CHANGELOG_FILE_PATH,
         expect.stringContaining(outdent`
           ## v3.1.0-beta.1 (Beta feature release)
           > [!WARNING]
@@ -79,7 +83,7 @@ describe('Changelog release helper', () => {
         `)
       )
       expect(fs.writeFileSync).toHaveBeenCalledWith(
-        './CHANGELOG.md',
+        CHANGELOG_FILE_PATH,
         expect.stringContaining('To install this version with npm')
       )
     })
@@ -97,7 +101,7 @@ describe('Changelog release helper', () => {
 
       updateChangelog('3.1.1', '3.1.0')
       expect(fs.writeFileSync).not.toHaveBeenCalledWith(
-        './CHANGELOG.md',
+        CHANGELOG_FILE_PATH,
         expect.stringContaining('> [!WARNING]')
       )
     })
@@ -115,7 +119,7 @@ describe('Changelog release helper', () => {
 
       updateChangelog('3.1.1', '3.1.0')
       expect(fs.writeFileSync).toHaveBeenCalledWith(
-        './CHANGELOG.md',
+        CHANGELOG_FILE_PATH,
         expect.stringContaining(outdent`
             ## v3.1.1 (Fix release)
             To install this version with npm, run \`npm install govuk-frontend@3.1.1\`. You can also find more information about [how to stay up to date](https://frontend.design-system.service.gov.uk/staying-up-to-date/#updating-to-the-latest-version) in our documentation.

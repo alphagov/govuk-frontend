@@ -6,6 +6,9 @@
       "path": "./tsconfig.dev.json"
     },
     {
+      "path": "./bin/tsconfig.json"
+    },
+    {
       "path": "./packages/govuk-frontend-review/tsconfig.json"
     },
     {
