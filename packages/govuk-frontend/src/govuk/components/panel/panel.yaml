@@ -56,6 +56,41 @@ examples:
         </div>
       classes: govuk-panel--interruption
 
+  - name: interruption with body classes
+    options:
+      titleText: This defect is for the vehicles newer than the one you're testing
+      html: |
+        <p class="govuk-body">You have selected the defect <strong>Tyre pressure monitoring system inoperative</strong>.</p>
+        <p class="govuk-body">It is only for vehicles <strong>first used from 1st April 2023</strong>.</p>
+        <p class="govuk-body">Make sure you have selected the correct defect.</p>
+        <div class="govuk-button-group">
+          <button type="submit" class="govuk-button govuk-button--inverse" data-module="govuk-button">
+            Defect is correct - continue
+          </button>
+          <a href="#" class="govuk-link govuk-link--inverse">Cancel and return to defects</a>
+        </div>
+      classes: govuk-panel--interruption
+
+  - name: interruption with lists
+    options:
+      titleText: We need to check who you are before you can make your choice
+      html: |
+        <p class="govuk-body">We'll need your:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>name</li>
+          <li>date of birth</li>
+          <li>postcode or NHS number</li>
+        </ul>
+        <p class="govuk-body">We'll use these details tro find your contact details from your health records so we can send you a security code.</p>
+        <div class="govuk-button-group">
+          <button type="submit" class="govuk-button govuk-button--inverse" data-module="govuk-button">
+            Continue
+          </button>
+          <a href="#" class="govuk-link govuk-link--inverse">Cancel</a>
+        </div>
+        <p class="govuk-body"><a href="#" class="govuk-link govuk-link--inverse">How your data will be processed</a> (opens in a new window)</p>
+      classes: govuk-panel--interruption
+
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: title html as text
     hidden: true
