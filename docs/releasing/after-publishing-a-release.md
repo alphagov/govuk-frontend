@@ -1,33 +1,32 @@
-# Tasks after publishing a new release of GOV.UK Frontend
+# After publishing a new release of GOV.UK Frontend
 
-Once we've published a new release of GOV.UK Frontend there are a number of things we still need to do, such as informing our community and updating our own repos.
+After we've published a new release of GOV.UK Frontend, there are things we still need to do, such as inform our community and update our own repos.
 
 ## Update our repos to use the new release
 
-Developers should update [govuk-design-system](https://github.com/alphagov/govuk-design-system) and [govuk-frontend-docs](https://github.com/alphagov/govuk-frontend-docs) to use the new release. When updating the design system, you should also test any new or updated guidance that relate to the new release and publish them along with the version update.
+We should update [govuk-design-system](https://github.com/alphagov/govuk-design-system) and [govuk-frontend-docs](https://github.com/alphagov/govuk-frontend-docs) to use the new release. When updating the Design System, we should also check that:
 
-## Let the community know about the new release
+- any guidance updates are published and show as expected
+- any updates coming from GOV.UK Frontend macro options show as expected
 
-We now need to update our comms channels.
+## Send an email to mailing list subscribers
 
-### The mailing list
+We usually send out an email with the release comms, except for releases with minor fixes.
 
-The team should send out an email with the release comms drafted before publishing.
-
-The release email should:
+This email should:
 
 - give a summary of the update
-- explain on why teams should update
-- components or styles affected (if possible)
-- thanks to any major contributors (if possible, include name and organisation)
+- explain why teams should update
+- say which components or styles are affected (if applicable)
+- thank any major contributors using their GitHub usernames
 
 A release email will typically end with a link to the version's [release notes](https://github.com/alphagov/govuk-frontend/releases), and a call-to-action button to the [update npm how-to page](https://frontend.design-system.service.gov.uk/updating-with-npm/#update-using-node-js-package-manager-npm).
 
-For example, see the [release email for GOV.UK Frontend 4.4.0](https://us1.admin.mailchimp.com/campaigns/show?id=10053738).
+For example, see the [release email for GOV.UK Frontend 5.11.0](https://mailchi.mp/c877961d1db5/feature-release-govuk-frontend-v590-improved-file-upload-component-10977163?e=[UNIQID]).
 
-### Slack
+## Send Slack messages to relevant channels
 
-We should update both internal and x-gov slack channels:
+We should update both internal and cross-government Slack channels:
 
 - [GDS: govuk-design-system](https://gds.slack.com/archives/CAF8JA25U)
 - [GDS: digital-service-platforms](https://gds.slack.com/archives/C01E20X06JK)
@@ -35,19 +34,19 @@ We should update both internal and x-gov slack channels:
 
 The message we send on Slack is usually a shorter version of the email.
 
-We also need to review the GOV.UK Design System overview canvases we have on each support channel, updating the version number of GOV.UK Frontend in [GDS: #govuk-design-system](https://gds.slack.com/docs/T8GT9416G/F08UG2X7BFD) and [x-gov: #govuk-design-system](https://ukgovernmentdigital.slack.com/docs/T04V6EBTR/F058W5T94ET)
+We should also review the GOV.UK Design System overview canvases we have on each support channel, updating the version number of GOV.UK Frontend in [GDS: #govuk-design-system](https://gds.slack.com/docs/T8GT9416G/F08UG2X7BFD) and [x-gov: #govuk-design-system](https://ukgovernmentdigital.slack.com/docs/T04V6EBTR/F058W5T94ET).
 
-### Design System website
+## Update the Design System website
 
-We should check if we need to update the following places on the website:
+We should decide whether we need to update the following places on the website:
 
-- the "what's new" section on the homepage of the website. The content for this section can be found in [/views/partials/\_whats-new.njk](https://github.com/alphagov/govuk-design-system/blob/main/views/partials/_whats-new.njk).
-- the aliases section in the metadata of the [Upcoming components and patterns page](https://github.com/alphagov/govuk-design-system/blob/main/src/community/upcoming-components-patterns/index.md?plain=1) to ensure that if a release includes a new component that searches for that component on the website no longer point at that page
+- the "What's New" section on the homepage of the website - the content for this section can be found in [/views/partials/\_whats-new.njk](https://github.com/alphagov/govuk-design-system/blob/main/views/partials/_whats-new.njk)
+- the aliases section in the metadata of the [Upcoming components and patterns page](https://github.com/alphagov/govuk-design-system/blob/main/src/community/upcoming-components-patterns/index.md?plain=1) to make sure that searches on the website for a new component no longer point at that page
 
-## Clear the decks
+## Tidy up our issue list and sprint board
 
-Finally, we should make sure that our issue list and sprint board are tidy by making sure:
+Finally, we should tidy up our issue list and sprint board by making sure:
 
-- issues created for this release are all complete, closed, and moved into the **Done** column on the [Design System cycle board](https://github.com/orgs/alphagov/projects/53)
-- that all the issues (on the same board) solved and/or published in this release have been moved from the **Ready to Release** column to **Done**
+- issues created for this release are all complete, closed and moved into the **Done** column on the [Design System cycle board](https://github.com/orgs/alphagov/projects/53)
+- all the issues on the cycle board that were closed in this release have been moved from the **Ready to Release** column to **Done**
 - any associated milestones are closed
