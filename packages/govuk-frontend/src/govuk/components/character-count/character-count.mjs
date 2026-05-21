@@ -28,6 +28,9 @@ export class CharacterCount extends ConfigurableComponent {
   /** @private */
   count = 0
 
+  /** @private */
+  countFunction
+
   /**
    * @private
    * @type {Intl.Segmenter | null}
@@ -151,6 +154,11 @@ export class CharacterCount extends ConfigurableComponent {
         granularity: this.config.countType === 'words' ? 'word' : 'grapheme'
       })
     }
+
+    // Determine the count function to use
+    this.countFunction =
+      this.config.countFunction ??
+      this.countFunctions[this.config.countType ?? 'length']
 
     // Determine the limit attribute (characters or words)
     this.maxLength = this.config.maxlength ?? Infinity
@@ -385,12 +393,8 @@ export class CharacterCount extends ConfigurableComponent {
    */
   updateCount() {
     const text = this.$textarea.value
-    const countType = this.config.countType ?? 'length'
 
-    const countFunction =
-      this.config.countFunction ?? this.countFunctions[countType]
-
-    this.count = countFunction(text, {
+    this.count = this.countFunction(text, {
       config: this.config,
       segmenter: this.segmenter
     })
