@@ -80,4 +80,58 @@ describe('libraries', () => {
       })
     })
   })
+
+  describe('if the library `@use`s GOV.UK Frontend', () => {
+    describe('without configuration', () => {
+      let css
+
+      beforeAll(async () => {
+        const sass = `
+          @use 'pkg:govuk-frontend';
+          @use 'libraries/with-use';
+        `
+
+        css = await compileSassStringLikeUsers(sass)
+      })
+
+      it('outputs the CSS of GOV.UK Frontend only once', async () => {
+        expect(css.match(/govuk-visually-hidden/)).toHaveLength(1)
+      })
+
+      it('applied the default GOV.UK Frontend configuration to the library', async () => {
+        expect(css).toContain(
+          '--with-use-colour: var(--govuk-brand-colour, #1d70b8)'
+        )
+        expect(css).toContain(
+          '--with-use-icon: url("/assets/images/home-icon.svg")'
+        )
+      })
+    })
+
+    describe('with configuration', () => {
+      let css
+
+      beforeAll(async () => {
+        const sass = `
+          @use "sass:meta";
+          @use 'pkg:@govuk-frontend/helpers/assets-urls';
+          @use 'pkg:govuk-frontend' with (
+            $govuk-functional-colours: (brand: hotpink),
+            $govuk-image-url-function: meta.get-function('images-url', $module: 'assets-urls')
+          );
+          @use 'libraries/with-use';
+        `
+
+        css = await compileSassStringLikeUsers(sass)
+      })
+
+      it('applies configuration to both GOV.UK Frontend and the library', async () => {
+        expect(css).toContain('--govuk-brand-colour: hotpink')
+        expect(css).toContain(
+          '--with-use-colour: var(--govuk-brand-colour, hotpink)'
+        )
+        expect(css).toContain('--with-use-icon: url("example.svg")')
+      })
+    })
+  })
 })
