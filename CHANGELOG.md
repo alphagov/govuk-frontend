@@ -4,7 +4,7 @@ For advice on how to use these release notes, see [our guidance on staying up to
 
 ## Unreleased
 
-## v6.2.0-rc.0 (Beta feature release)
+## v6.2.0-rc.0 (RC feature release)
 
 > [!WARNING]
 > Do not use in production.
