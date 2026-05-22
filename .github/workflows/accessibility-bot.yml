@@ -24,7 +24,7 @@ permissions:
 jobs:
   images:
     name: Check images
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
 
     steps:
       - name: Check images for alt text

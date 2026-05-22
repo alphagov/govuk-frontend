@@ -33,7 +33,7 @@ jobs:
       matrix:
         runner:
           - name: Ubuntu
-            os: ubuntu-22.04
+            os: ubuntu-24.04
           - name: Windows
             os: windows-latest
 
@@ -55,7 +55,7 @@ jobs:
       matrix:
         runner:
           - name: Ubuntu
-            os: ubuntu-22.04
+            os: ubuntu-24.04
           - name: Windows
             os: windows-latest
 
@@ -85,7 +85,7 @@ jobs:
       matrix:
         runner:
           - name: Ubuntu
-            os: ubuntu-22.04
+            os: ubuntu-24.04
           - name: Windows
             os: windows-latest
 
@@ -144,7 +144,7 @@ jobs:
       matrix:
         runner:
           - name: Ubuntu
-            os: ubuntu-22.04
+            os: ubuntu-24.04
           - name: Windows
             os: windows-latest
 
@@ -174,6 +174,7 @@ jobs:
             cache: |
               .cache/jest
               .cache/puppeteer
+            puppeteer: true
             projects:
               - JavaScript component tests
 
@@ -188,6 +189,7 @@ jobs:
             cache: |
               .cache/jest
               .cache/puppeteer
+            puppeteer: true
             projects:
               - Accessibility tests
 
@@ -211,10 +213,17 @@ jobs:
           path: ${{ matrix.task.cache }}
 
       - name: Run test task
+        run: |
+          # Use 2x CPU cores for hosted GitHub runners (--maxWorkers)
+          # https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#supported-runners-and-hardware-resources
 
-        # Use 2x CPU cores for hosted GitHub runners
-        # https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#supported-runners-and-hardware-resources
-        run: npx jest --color ${{ format('--coverage={0} --maxWorkers=2 --selectProjects "{1}"', matrix.task.coverage || false, join(matrix.task.projects, '", "')) }}
+          # Puppeteer uses Chrome to execute tests.
+          # Ubuntu requires a profile for developer builds of Chrome to run without errors.
+          # (https://chromium.googlesource.com/chromium/src/+/main/docs/security/apparmor-userns-restrictions.md)
+          ${{ (
+            matrix.task.puppeteer == true &&
+            matrix.runner.name == 'Ubuntu'
+          ) && 'aa-exec --profile=chrome' || '' }} npx jest --color ${{ format('--coverage={0} --maxWorkers=2 --selectProjects "{1}"', matrix.task.coverage || false, join(matrix.task.projects, '", "')) }}
 
       - name: Save test coverage
         uses: actions/upload-artifact@v7.0.1
@@ -234,7 +243,7 @@ jobs:
       matrix:
         runner:
           - name: Ubuntu
-            os: ubuntu-22.04
+            os: ubuntu-24.04
           - name: Windows
             os: windows-latest
 
@@ -262,7 +271,7 @@ jobs:
 
   package:
     name: Export ${{ matrix.conditions }}, Node.js ${{ matrix.node-version }}
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     needs: [install, build]
 
     strategy:

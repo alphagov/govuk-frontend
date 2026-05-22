@@ -11,7 +11,7 @@ permissions:
 jobs:
   generate-stats:
     name: Generate stats
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
 
     # Skip workflows other than PRs such as merges to `main` but
     # also when token write permissions are unavailable on forks

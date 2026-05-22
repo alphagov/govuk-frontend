@@ -15,7 +15,7 @@ on:
 jobs:
   publish-release-to-github:
     name: Publish release to GitHub
-    runs-on: Ubuntu-22.04
+    runs-on: ubuntu-24.04
     environment: ${{ inputs.environment == 'production' && 'production' || null }}
     permissions:
       contents: write
