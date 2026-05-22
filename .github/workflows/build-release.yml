@@ -113,7 +113,7 @@ jobs:
           git config --global user.name '${{ github.actor }}'
           git config --global user.email '${{ github.actor }}@digital.cabinet-office.gov.uk'
           git add .
-          git commit -m $RELEASE_TITLE
-          git checkout -b $RELEASE_BRANCH_NAME
-          git push -u origin $RELEASE_BRANCH_NAME
-          gh pr create --base "${{ github.ref_name }}" --head $RELEASE_BRANCH_NAME --title $RELEASE_TITLE --body-file "release-notes-body"
+          git commit -m "$RELEASE_TITLE"
+          git checkout -b "$RELEASE_BRANCH_NAME"
+          git push -u origin "$RELEASE_BRANCH_NAME"
+          gh pr create --base "${{ github.ref_name }}" --head "$RELEASE_BRANCH_NAME" --title "$RELEASE_TITLE" --body-file "release-notes-body"
