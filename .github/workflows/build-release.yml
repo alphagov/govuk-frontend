@@ -107,10 +107,13 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.CI_PAT }}
         run: |
+          RELEASE_BRANCH_NAME="release-$PACKAGE_VERSION"
+          RELEASE_TITLE="Release $PACKAGE_VERSION"
+
           git config --global user.name '${{ github.actor }}'
           git config --global user.email '${{ github.actor }}@digital.cabinet-office.gov.uk'
           git add .
-          git commit -m "Release ${{ inputs.version }}"
-          git checkout -b release-${{ inputs.version }}
-          git push -u origin release-${{ inputs.version }}
-          gh pr create --base "${{ github.ref_name }}" --head release-${{ inputs.version }} --title "Release ${{ inputs.version }}" --body-file "release-notes-body"
+          git commit -m $RELEASE_TITLE
+          git checkout -b $RELEASE_BRANCH_NAME
+          git push -u origin $RELEASE_BRANCH_NAME
+          gh pr create --base "${{ github.ref_name }}" --head $RELEASE_BRANCH_NAME --title $RELEASE_TITLE --body-file "release-notes-body"
