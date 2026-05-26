@@ -35,11 +35,19 @@ describe('Changelog release helper', () => {
       )
     })
 
-    it('prefixes a new heading with a pre-release identifier if the new version is a pre-release', () => {
+    it('prefixes a new heading with a beta pre-release identifier', () => {
       updateChangelog('3.1.0-beta.0', '3.0.0')
       expect(fs.writeFileSync).toHaveBeenCalledWith(
         CHANGELOG_FILE_PATH,
         expect.stringContaining('## v3.1.0-beta.0 (Beta release)')
+      )
+    })
+
+    it('prefixes a new heading with a release candidate pre-release identifier', () => {
+      updateChangelog('3.1.0-rc.0', '3.0.0')
+      expect(fs.writeFileSync).toHaveBeenCalledWith(
+        CHANGELOG_FILE_PATH,
+        expect.stringContaining('## v3.1.0-rc.0 (Release candidate)')
       )
     })
 
