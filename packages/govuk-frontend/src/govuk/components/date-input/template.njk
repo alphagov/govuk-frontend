@@ -78,7 +78,7 @@
       classes: "govuk-date-input__label"
     },
     id: item.id if item.id else (params.id + "-" + itemName),
-    classes: "govuk-date-input__input " + (itemClasses if itemClasses),
+    classes: "govuk-date-input__input" + (" " + itemClasses if itemClasses),
     name: namePrefix + itemName,
     value: itemValue | default(params.values[namePrefix + itemName]),
     type: "text",
