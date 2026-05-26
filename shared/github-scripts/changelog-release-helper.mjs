@@ -37,14 +37,13 @@ export function updateChangelog(newVersion, previousVersion) {
   }
 
   const changelogLines = getChangelogLines()
-  const [startIndex, previousReleaseLineIndex] =
-    getChangelogLineIndexes(changelogLines)
+  const [startIndex] = getChangelogLineIndexes(changelogLines)
 
   const versionDiff = semver.diff(validatedNewVersion, validatedPreviousVersion)
   if (!versionDiff) {
     throw new Error(processingErrorMessage)
   }
-  const newVersionTitle = `## v${validatedNewVersion} (${convertIncTypeWord(versionDiff, validatedNewVersion, true, changelogLines[previousReleaseLineIndex])} release)`
+  const newVersionTitle = `## v${validatedNewVersion} (${capitalise(convertIncTypeWord(versionDiff, validatedNewVersion))})`
 
   const newLines = [newVersionTitle]
   if (newVersionIsAPrerelease) {
@@ -230,59 +229,47 @@ function versionIsAPrerelease(version) {
  * @returns {string} - the identifier of the pre-release
  */
 function getPrereleaseIdentifier(version) {
-  return version.substring(version.indexOf('-') + 1, version.lastIndexOf('.'))
+  if (!versionIsAPrerelease(version)) {
+    return ''
+  }
+  // Prerelease is made up of an optional string label and a number increment
+  // e.g. `1.0.0-beta.0` and `1.0.0-0`, so only return something if we find a label
+  const prereleaseIdentifier = semver
+    .prerelease(version)
+    .find((part) => typeof part === 'string')
+  if (!prereleaseIdentifier) {
+    return ''
+  }
+  return prereleaseIdentifier
 }
 
 /**
  * Convert a standard SemVer increment word eg: major, minor or patch into the
- * wording we use for release titles. The conversion:
- *
- * - major -> breaking
- * - minor -> feature
- * - patch -> fix
- *
- * If the increment is a pre-release eg: prepatch, we split the 'pre' substring
- * from the inc and call this function recursively to generate a string of the
- * format '{identifier} {increment type}' Eg: where the current version is 6.2.1
- * and the new version is 6.3.0-beta.0, the generated string would be
- * 'Beta feature'
+ * wording we use for release titles.
  *
  * @param {string} incType - SemVer increment type
  * @param {string|null} version - SemVer version
- * @param {boolean} capitalise - If the returned string should start with a capital
- *   letter or not
- * @param {string|null} lastReleaseTitle - Previous release title
  * @returns {string} - The reworded increment type
  */
-function convertIncTypeWord(
-  incType,
-  version = null,
-  capitalise = false,
-  lastReleaseTitle = null
-) {
-  let rewordedIncType
+function convertIncTypeWord(incType, version) {
+  let rewordedIncType = incType
 
-  if (incType === 'major') {
+  // If there's a prerelease flag e.g. 1.0.0-beta.0 use that to decide
+  const prereleaseIdentifier = getPrereleaseIdentifier(version)
+  if (prereleaseIdentifier) {
+    if (prereleaseIdentifier === 'rc') {
+      return 'release candidate'
+    }
+    rewordedIncType = prereleaseIdentifier
+  } else if (incType === 'major') {
     rewordedIncType = 'breaking'
   } else if (incType === 'minor') {
     rewordedIncType = 'feature'
   } else if (incType === 'patch') {
     rewordedIncType = 'fix'
-  } else if (incType === 'prerelease' && lastReleaseTitle != null) {
-    rewordedIncType = lastReleaseTitle.substring(
-      lastReleaseTitle.indexOf('(') + 1,
-      lastReleaseTitle.indexOf(' release')
-    )
-  } else if (incType.includes('pre') && version != null) {
-    const identifier = getPrereleaseIdentifier(version)
-    rewordedIncType = `${identifier} ${convertIncTypeWord(incType.slice(3))}`
-  } else {
-    rewordedIncType = incType
   }
 
-  return capitalise
-    ? `${rewordedIncType.charAt(0).toUpperCase()}${rewordedIncType.slice(1)}`
-    : rewordedIncType
+  return `${rewordedIncType} release`
 }
 
 /**
@@ -295,4 +282,14 @@ function removePrereleaseFlag(version) {
   const parsedVersion = semver.parse(version)
   parsedVersion.prerelease = []
   return parsedVersion.format()
+}
+
+/**
+ * Capitalise a word or sentance so the first letter is uppercase
+ *
+ * @param {string} word
+ * @returns {string} - capitalised string
+ */
+function capitalise(word) {
+  return word.charAt(0).toUpperCase() + word.slice(1)
 }
