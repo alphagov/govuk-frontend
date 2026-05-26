@@ -44,6 +44,7 @@
 {% set itemValue = item.value %}
 {% set itemWidth = 2 %}
 {% set itemClasses = "" %}
+{% set itemHasError = true if item.error or (item.classes and "govuk-input--error" in item.classes) else false %}
 
 {%- if item is sameas(dateInputDay) or (item.name and item.name in ["day", dateInputDay.name]) %}
   {% set itemName = item.name | default("day") %}
@@ -57,7 +58,7 @@
   {% set itemWidth = 4 %}
 {% endif %}
 
-{%- if item.error or (item.classes and "govuk-input--error" in item.classes) %}
+{%- if itemHasError or (item.error != false and params.errorMessage and not anyItemHasError) %}
   {% set itemClasses = (itemClasses + " govuk-input--error") | trim %}
 {% endif -%}
 
