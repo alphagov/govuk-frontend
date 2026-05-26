@@ -85,9 +85,12 @@ describe('Changelog release helper', () => {
         CHANGELOG_FILE_PATH,
         expect.stringContaining(outdent`
           ## v3.1.0-beta.1 (Beta release)
+
           > [!WARNING]
           > Do not use in production.
           > Use this release to prepare for the changes coming in version \`3.1.0\`.
+
+          To install this version with npm
         `)
       )
       expect(fs.writeFileSync).toHaveBeenCalledWith(
@@ -130,6 +133,7 @@ describe('Changelog release helper', () => {
         CHANGELOG_FILE_PATH,
         expect.stringContaining(outdent`
             ## v3.1.1 (Fix release)
+
             To install this version with npm, run \`npm install govuk-frontend@3.1.1\`. You can also find more information about [how to stay up to date](https://frontend.design-system.service.gov.uk/staying-up-to-date/#updating-to-the-latest-version) in our documentation.
         `)
       )
