@@ -45,7 +45,7 @@ export function updateChangelog(newVersion, previousVersion) {
   }
   const newVersionTitle = `## v${validatedNewVersion} (${capitalise(convertIncTypeWord(versionDiff, validatedNewVersion))})`
 
-  const newLines = [newVersionTitle]
+  const newLines = [newVersionTitle, ``]
   if (newVersionIsAPrerelease) {
     newLines.push(
       `> [!WARNING]`,
