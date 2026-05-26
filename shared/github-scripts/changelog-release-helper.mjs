@@ -44,7 +44,7 @@ export function updateChangelog(newVersion, previousVersion) {
   if (!versionDiff) {
     throw new Error(processingErrorMessage)
   }
-  const newVersionTitle = `## v${validatedNewVersion} (${convertIncTypeWord(versionDiff, validatedNewVersion, true, changelogLines[previousReleaseLineIndex])} release)`
+  const newVersionTitle = `## v${validatedNewVersion} (${capitalise(convertIncTypeWord(versionDiff, validatedNewVersion, changelogLines[previousReleaseLineIndex]))} release)`
 
   const newLines = [newVersionTitle]
   if (newVersionIsAPrerelease) {
@@ -249,17 +249,10 @@ function getPrereleaseIdentifier(version) {
  *
  * @param {string} incType - SemVer increment type
  * @param {string|null} version - SemVer version
- * @param {boolean} capitalise - If the returned string should start with a capital
- *   letter or not
  * @param {string|null} lastReleaseTitle - Previous release title
  * @returns {string} - The reworded increment type
  */
-function convertIncTypeWord(
-  incType,
-  version = null,
-  capitalise = false,
-  lastReleaseTitle = null
-) {
+function convertIncTypeWord(incType, version = null, lastReleaseTitle = null) {
   let rewordedIncType
 
   if (incType === 'major') {
@@ -280,9 +273,7 @@ function convertIncTypeWord(
     rewordedIncType = incType
   }
 
-  return capitalise
-    ? `${rewordedIncType.charAt(0).toUpperCase()}${rewordedIncType.slice(1)}`
-    : rewordedIncType
+  return rewordedIncType
 }
 
 /**
@@ -295,4 +286,14 @@ function removePrereleaseFlag(version) {
   const parsedVersion = semver.parse(version)
   parsedVersion.prerelease = []
   return parsedVersion.format()
+}
+
+/**
+ * Capitalise a word or sentance so the first letter is uppercase
+ *
+ * @param {string} word
+ * @returns {string} - capitalised string
+ */
+function capitalise(word) {
+  return word.charAt(0).toUpperCase() + word.slice(1)
 }
