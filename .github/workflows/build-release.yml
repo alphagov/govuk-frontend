@@ -1,16 +1,9 @@
 name: 'RELEASE: Build release'
-run-name: 'RELEASE: Build release to ${{inputs.environment}}'
+run-name: "RELEASE: Build release (${{ join(inputs.*, ', ') }})"
 
 on:
   workflow_dispatch:
     inputs:
-      environment:
-        description: Environment
-        required: true # For UI consistency with other required options
-        type: choice
-        options:
-          - test
-          - production
       release_type:
         description: 'Release type'
         required: true
@@ -35,7 +28,6 @@ jobs:
   build-release:
     name: Build release
     runs-on: ubuntu-24.04
-    environment: ${{ inputs.environment == 'production' && 'production' || null }}
 
     env:
       RELEASE_TYPE: ${{inputs.release_type}}
@@ -103,7 +95,6 @@ jobs:
           archive: false # Saves having to decompress the CHANGELOG
 
       - name: Create pull request
-        if: inputs.environment == 'production'
         env:
           GH_TOKEN: ${{ secrets.CI_PAT }}
         run: |
