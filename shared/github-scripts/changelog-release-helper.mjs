@@ -37,14 +37,13 @@ export function updateChangelog(newVersion, previousVersion) {
   }
 
   const changelogLines = getChangelogLines()
-  const [startIndex, previousReleaseLineIndex] =
-    getChangelogLineIndexes(changelogLines)
+  const [startIndex] = getChangelogLineIndexes(changelogLines)
 
   const versionDiff = semver.diff(validatedNewVersion, validatedPreviousVersion)
   if (!versionDiff) {
     throw new Error(processingErrorMessage)
   }
-  const newVersionTitle = `## v${validatedNewVersion} (${capitalise(convertIncTypeWord(versionDiff, validatedNewVersion, changelogLines[previousReleaseLineIndex]))} release)`
+  const newVersionTitle = `## v${validatedNewVersion} (${capitalise(convertIncTypeWord(versionDiff, validatedNewVersion))} release)`
 
   const newLines = [newVersionTitle]
   if (newVersionIsAPrerelease) {
@@ -249,10 +248,9 @@ function getPrereleaseIdentifier(version) {
  *
  * @param {string} incType - SemVer increment type
  * @param {string|null} version - SemVer version
- * @param {string|null} lastReleaseTitle - Previous release title
  * @returns {string} - The reworded increment type
  */
-function convertIncTypeWord(incType, version = null, lastReleaseTitle = null) {
+function convertIncTypeWord(incType, version) {
   let rewordedIncType
 
   if (incType === 'major') {
@@ -261,14 +259,8 @@ function convertIncTypeWord(incType, version = null, lastReleaseTitle = null) {
     rewordedIncType = 'feature'
   } else if (incType === 'patch') {
     rewordedIncType = 'fix'
-  } else if (incType === 'prerelease' && lastReleaseTitle != null) {
-    rewordedIncType = lastReleaseTitle.substring(
-      lastReleaseTitle.indexOf('(') + 1,
-      lastReleaseTitle.indexOf(' release')
-    )
-  } else if (incType.includes('pre') && version != null) {
-    const identifier = getPrereleaseIdentifier(version)
-    rewordedIncType = `${identifier} ${convertIncTypeWord(incType.slice(3))}`
+  } else if (incType.includes('pre')) {
+    rewordedIncType = getPrereleaseIdentifier(version)
   } else {
     rewordedIncType = incType
   }

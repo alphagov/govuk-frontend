@@ -39,7 +39,7 @@ describe('Changelog release helper', () => {
       updateChangelog('3.1.0-beta.0', '3.0.0')
       expect(fs.writeFileSync).toHaveBeenCalledWith(
         CHANGELOG_FILE_PATH,
-        expect.stringContaining('## v3.1.0-beta.0 (Beta feature release)')
+        expect.stringContaining('## v3.1.0-beta.0 (Beta release)')
       )
     })
 
@@ -51,13 +51,13 @@ describe('Changelog release helper', () => {
 
         Bing bong
 
-        ## v3.1.0-beta.0 (Beta feature release)
+        ## v3.1.0-beta.0 (Beta release)
       `)
 
       updateChangelog('3.1.0-beta.1', '3.1.0-beta.0')
       expect(fs.writeFileSync).toHaveBeenCalledWith(
         CHANGELOG_FILE_PATH,
-        expect.stringContaining('## v3.1.0-beta.1 (Beta feature release)')
+        expect.stringContaining('## v3.1.0-beta.1 (Beta release)')
       )
     })
 
@@ -69,14 +69,14 @@ describe('Changelog release helper', () => {
 
         Bing bong
 
-        ## v3.1.0-beta.0 (Beta feature release)
+        ## v3.1.0-beta.0 (Beta release)
       `)
 
       updateChangelog('3.1.0-beta.1', '3.1.0-beta.0')
       expect(fs.writeFileSync).toHaveBeenCalledWith(
         CHANGELOG_FILE_PATH,
         expect.stringContaining(outdent`
-          ## v3.1.0-beta.1 (Beta feature release)
+          ## v3.1.0-beta.1 (Beta release)
           > [!WARNING]
           > Do not use in production.
           > Use this release to prepare for the changes coming in version \`3.1.0\`.
