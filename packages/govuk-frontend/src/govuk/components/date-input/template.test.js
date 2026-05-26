@@ -250,7 +250,19 @@ describe('Date input', () => {
       )
     })
 
-    it('renders with a form group wrapper that has an error state', () => {
+    it('includes the error modifier class on the inputs', () => {
+      const $ = render('date-input', examples['with errors only'])
+
+      const $dayInput = $('[name="day"]')
+      const $monthInput = $('[name="month"]')
+      const $yearInput = $('[name="year"]')
+
+      expect($dayInput.hasClass('govuk-input--error')).toBeTruthy()
+      expect($monthInput.hasClass('govuk-input--error')).toBeTruthy()
+      expect($yearInput.hasClass('govuk-input--error')).toBeTruthy()
+    })
+
+    it('includes the error modifier class on the form group wrapper', () => {
       const $ = render('date-input', examples['with errors only'])
 
       const $formGroup = $('.govuk-form-group')
@@ -327,6 +339,13 @@ describe('Date input', () => {
     const $dayInput = $('[name="day"]')
     const $monthInput = $('[name="month"]')
     const $yearInput = $('[name="year"]')
+
+    // All fields set default classes
+    expect($dayInput.hasClass('govuk-date-input__input')).toBeTruthy()
+    expect($monthInput.hasClass('govuk-date-input__input')).toBeTruthy()
+    expect($yearInput.hasClass('govuk-date-input__input')).toBeTruthy()
+
+    // All fields set custom classes
     expect($dayInput.hasClass('app-date-input__day')).toBeTruthy()
     expect($monthInput.hasClass('app-date-input__month')).toBeTruthy()
     expect($yearInput.hasClass('app-date-input__year')).toBeTruthy()
@@ -338,6 +357,13 @@ describe('Date input', () => {
     const $dayInput = $('[name="day"]')
     const $monthInput = $('[name="month"]')
     const $yearInput = $('[name="year"]')
+
+    // All fields set default classes
+    expect($dayInput.hasClass('govuk-date-input__input')).toBeTruthy()
+    expect($monthInput.hasClass('govuk-date-input__input')).toBeTruthy()
+    expect($yearInput.hasClass('govuk-date-input__input')).toBeTruthy()
+
+    // No fields set undefined classes
     expect($dayInput.hasClass('undefined')).toBeFalsy()
     expect($monthInput.hasClass('undefined')).toBeFalsy()
     expect($yearInput.hasClass('undefined')).toBeFalsy()
