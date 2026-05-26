@@ -36,10 +36,10 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Set up Git
+      - name: Configure Git
         run: |
-          git config user.name '${{ github.actor }}'
-          git config user.email '${{ github.actor }}@users.noreply.github.com'
+          git config --global user.name '${{ github.actor }}'
+          git config --global user.email '${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com'
 
       - name: Create GitHub tag
         id: create-github-tag
