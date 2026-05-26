@@ -4,6 +4,14 @@ For advice on how to use these release notes, see [our guidance on staying up to
 
 ## Unreleased
 
+## v6.2.0-test.0 (Beta feature release)
+
+> [!WARNING]
+> Do not use in production.
+> Use this release to prepare for the changes coming in version `6.2.0`.
+
+To install this version with npm, run `npm install govuk-frontend@6.2.0-test.0`. You can also find more information about [how to stay up to date](https://frontend.design-system.service.gov.uk/staying-up-to-date/#updating-to-the-latest-version) in our documentation.
+
 ### New features
 
 #### Add custom classes and attributes to the File upload component's wrapper
