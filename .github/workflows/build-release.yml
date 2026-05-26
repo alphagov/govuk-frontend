@@ -1,5 +1,5 @@
 name: 'RELEASE: Build release'
-run-name: 'RELEASE: Build release to ${{inputs.environment}}'
+run-name: "RELEASE: Build release (${{ join(inputs.*, ', ') }})"
 
 on:
   workflow_dispatch:
