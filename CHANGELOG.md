@@ -4,6 +4,10 @@ For advice on how to use these release notes, see [our guidance on staying up to
 
 ## Unreleased
 
+## v7.0.0 (Breaking release)
+
+To install this version with npm, run `npm install govuk-frontend@7.0.0`. You can also find more information about [how to stay up to date](https://frontend.design-system.service.gov.uk/staying-up-to-date/#updating-to-the-latest-version) in our documentation.
+
 ### New features
 
 #### Add custom classes and attributes to the File upload component's wrapper
