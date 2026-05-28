@@ -14,53 +14,15 @@ To install this version with npm, run `npm install govuk-frontend@6.2.0-rc.0`. Y
 
 ### New features
 
-#### Add custom classes and attributes to the File upload component's wrapper
-
-We've introduced two new parameters to the File upload component's Nunjucks macro: `wrapperClasses` and `wrapperAttributes`.
-
-These allow you to define custom classes and HTML attributes for the wrapper of the improved version of the File upload.
-
-```njk
-{{ govukFileUpload({
-  javascript: true,
-  wrapperClasses: "my-custom-class",
-  wrapperAttributes: {
-    "data-attribute": "value"
-  }
-}) }}
-```
-
-We made this change in [pull request #6933: Code improvements to File upload component](https://github.com/alphagov/govuk-frontend/pull/6933).
-
-### Recommended changes
-
-#### Rename the `govuk-drop-zone` class on the improved File upload component
-
-The class name of the element that wraps the improved File upload component has been changed from `govuk-drop-zone` to `govuk-file-upload-wrapper`. This was to better describe what function the element plays in the component.
-
-The old class name has been deprecated and will be removed in the next major version of GOV.UK Frontend.
-
-If you're using our Nunjucks macros, you don't need to update anything.
-
-We made this change in [pull request #6933: Code improvements to File upload component](https://github.com/alphagov/govuk-frontend/pull/6933).
-
-### Fixes
-
-We've made fixes to GOV.UK Frontend in the following pull requests:
-
-- [#6925: Fix enhanced file upload lacking an error state](https://github.com/alphagov/govuk-frontend/pull/6925)
-- [#7021: Fix small inputs activating hover style when hovering on non-clickable areas](https://github.com/alphagov/govuk-frontend/pull/7021)
-- [#6959: Fix alignment of jewels and base in govuk-icon PNGs](https://github.com/alphagov/govuk-frontend/pull/6959), thanks to @matteason for reporting and fixing this issue
-
-## v6.2.0-beta.0 (Beta feature release)
-
-### New features
-
 #### Use `@use` to include GOV.UK Frontend styles in Sass
 
-The [use of `@import` was deprecated](https://sass-lang.com/blog/import-is-deprecated/) in Dart Sass 1.80.0. To prepare for the removal of `@import` in the next major release of Sass, you can now include GOV.UK Frontend as a Sass module with [`@use`](https://sass-lang.com/documentation/at-rules/use/) or [`@forward`](https://sass-lang.com/documentation/at-rules/forward/).
+You can now include GOV.UK Frontend as a Sass module with [`@use`](https://sass-lang.com/documentation/at-rules/use/) or [`@forward`](https://sass-lang.com/documentation/at-rules/forward/).
 
-We also plan to deprecate support for `@import` in GOV.UK Frontend in a future 6.x release and remove it completely in our next major release, v.7.0, so we recommend you start using Sass modules as soon as possible.
+[`@import` was deprecated in Dart Sass v1.88.0](https://sass-lang.com/blog/import-is-deprecated/), and the Sass team will remove it in Dart Sass v3.0.0.
+
+We also plan to deprecate and eventually remove support for `@import` from GOV.UK Frontend in future releases.
+
+We recommend you migrate to using Sass modules instead of `@import` everywhere in your Sass, unless your service depends on other Sass libraries that use `@import`. Mixing `@use` and `@import` can lead to duplicated CSS or configuration not being applied due to how Sass loads the included stylesheets.
 
 To include all the styles from GOV.UK Frontend in your compiled stylesheet, replace `@import` with `@use` in your Sass file:
 
@@ -88,9 +50,9 @@ $govuk-assets-path: "/path/to/assets/";
 );
 ```
 
-You can also [include specific parts of GOV.UK Frontend using Sass](https://deploy-preview-615--govuk-frontend-docs-preview.netlify.app/include-css#include-specific-parts-of-gov-uk-frontend-using-sass).
+You can also [include specific parts of GOV.UK Frontend using Sass](https://frontend.design-system.service.gov.uk/include-css#include-specific-parts-of-gov-uk-frontend-using-sass).
 
-See the GOV.UK Frontend documentation for more information on [including GOV.UK Frontend](https://deploy-preview-615--govuk-frontend-docs-preview.netlify.app/include-css/) in your Sass build.
+See the GOV.UK Frontend documentation for more information on [including GOV.UK Frontend](https://frontend.design-system.service.gov.uk/include-css/) in your Sass build.
 
 We made this change in [pull request #6862: Migration to Sass modules](https://github.com/alphagov/govuk-frontend/pull/6862).
 
@@ -104,7 +66,47 @@ You can now omit the `dist/govuk` part of the path when including GOV.UK Fronten
 @use "pkg:govuk-frontend/components/button";
 ```
 
+> [!WARNING]
+> If you're using `@import` with `pkg:` URLs there's a known issue with how [Sass loads `pkg:` URLs with `@import`](https://github.com/sass/sass/issues/4224).
+>
+> We recommend you either:
+>
+> - only use `pkg:` URLs with `@use`
+> - make sure to include `index.import` in the URLs you import (for example: `@import "pkg:govuk-frontend/index.import"`)
+>
+> You should migrate any existing uses of `@import` with `pkg:` in your service.
+
 We made this change in [pull request #6861: Resolve `pkg:` URLs from `dist/govuk` and update the review app](https://github.com/alphagov/govuk-frontend/pull/6861).
+
+#### Add custom classes and attributes to the File upload component's wrapper
+
+We've introduced two new parameters to the File upload component's Nunjucks macro: `wrapperClasses` and `wrapperAttributes`.
+
+These parameters allow you to define custom classes and HTML attributes for the wrapper of the improved version of the File upload component.
+
+```njk
+{{ govukFileUpload({
+  javascript: true,
+  wrapperClasses: "my-custom-class",
+  wrapperAttributes: {
+    "data-attribute": "value"
+  }
+}) }}
+```
+
+We made this change in [pull request #6933: Code improvements to File upload component](https://github.com/alphagov/govuk-frontend/pull/6933).
+
+### Recommended changes
+
+#### Rename the `govuk-drop-zone` class on the improved File upload component
+
+We've changed the class name of the element that wraps the improved File upload component from `govuk-drop-zone` to `govuk-file-upload-wrapper`. `govuk-file-upload-wrapper` better describes what the element does.
+
+We've now deprecated the previous class name and will remove it in the next major version of GOV.UK Frontend.
+
+If you're using our Nunjucks macros, you do not need to update anything.
+
+We made this change in [pull request #6933: Code improvements to File upload component](https://github.com/alphagov/govuk-frontend/pull/6933).
 
 ### Fixes
 
@@ -121,6 +123,9 @@ We made this change in [pull request #6975: Update index to use all layers and r
 We've made fixes to GOV.UK Frontend in the following pull requests:
 
 - [#6831: Fix header link hover state in Safari](https://github.com/alphagov/govuk-frontend/pull/6831)
+- [#6925: Fix enhanced file upload lacking an error state](https://github.com/alphagov/govuk-frontend/pull/6925)
+- [#6959: Fix alignment of jewels and base in govuk-icon PNGs](https://github.com/alphagov/govuk-frontend/pull/6959), thanks to @matteason for reporting and fixing this issue
+- [#7021: Fix small inputs activating hover style when hovering on non-clickable areas](https://github.com/alphagov/govuk-frontend/pull/7021)
 
 ## v6.1.0 (Feature release)
 
