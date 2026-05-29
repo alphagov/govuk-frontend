@@ -78,7 +78,7 @@
   // IE 11 doesn't support the combined `:not(:active, :focus)` syntax.
   // Also allows for ':focus' companion classes from postcss-pseudo-classes
   // which the plugin unfortunately doesn't handle automatically.
-  // stylelint-disable-next-line selector-class-pattern
+  // stylelint-disable-next-line scss/selector-class-pattern
   &:not(:active):not(:focus):not(.\:focus) {
     @include _govuk-visually-hide-content($important: $important);
   }
