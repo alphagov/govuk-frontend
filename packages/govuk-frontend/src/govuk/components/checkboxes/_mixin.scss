@@ -172,13 +172,13 @@
     border-left: $conditional-border-width solid;
     border-left-color: base.govuk-functional-colour(border);
 
-    .govuk-frontend-supported &--hidden {
-      display: none;
-    }
-
     & > :last-child {
       margin-bottom: 0;
     }
+  }
+
+  .govuk-frontend-supported .govuk-checkboxes__conditional--hidden {
+    display: none;
   }
 
   // =========================================================
