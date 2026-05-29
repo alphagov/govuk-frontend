@@ -48,6 +48,17 @@ module.exports = {
   ],
   plugins: ['stylelint-order'],
   rules: {
+    'property-no-deprecated': [
+      true,
+      {
+        ignoreProperties: [
+          // Used by `govuk-visually-hidden` to ensure the element is not visible in some browsers
+          'clip',
+          // We're still supporting IE11 so need to use `word-wrap`
+          'word-wrap'
+        ]
+      }
+    ],
     /**
      * GOV.UK Frontend has a specific ordering pattern
      * that should be applied to rules
