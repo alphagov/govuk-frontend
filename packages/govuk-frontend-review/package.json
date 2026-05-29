@@ -45,7 +45,7 @@
   "devDependencies": {
     "@govuk-frontend/helpers": "*",
     "@govuk-frontend/tasks": "*",
-    "@percy/cli": "^1.31.12",
+    "@percy/cli": "^1.31.14",
     "@rollup/plugin-commonjs": "^29.0.2",
     "@rollup/plugin-node-resolve": "^16.0.3",
     "@rollup/plugin-terser": "^1.0.0",
