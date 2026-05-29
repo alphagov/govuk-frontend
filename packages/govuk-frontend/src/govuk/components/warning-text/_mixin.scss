@@ -49,8 +49,8 @@
     forced-color-adjust: none;
 
     @media screen and (forced-colors: active) {
-      border-color: windowText;
-      color: windowText;
+      border-color: CanvasText;
+      color: CanvasText;
       background: transparent;
     }
   }
