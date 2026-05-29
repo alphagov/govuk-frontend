@@ -57,6 +57,7 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
+            core.setOutput('relevant_changes', 'true')
             console.log('Checking if Percy needs to run.')
 
             if (context.eventName === 'workflow_dispatch') {
@@ -70,7 +71,7 @@ jobs:
               const { checkRelevantChanges } = await import('${{ github.workspace }}/shared/github-scripts/check-percy-files.mjs')
 
               const relevantChanges = checkRelevantChanges(changedFiles)
-              core.setOutput('relevant_changes', relevantChanges)
+              core.setOutput('relevant_changes', 'true')
 
               console.log('Relevant changes detected:', relevantChanges)
             }
