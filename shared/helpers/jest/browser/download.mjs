@@ -16,13 +16,20 @@ export async function download() {
 
   // Downloaded versions
   const buildId = PUPPETEER_REVISIONS.chrome
-  const versions = cache.getInstalledBrowsers()
+  const versions = await cache.getInstalledBrowsers()
+
+  console.log('versions: ', versions)
 
   // Download latest browser (unless cached)
   if (!versions.some((version) => version.buildId === buildId)) {
     await cache.clear()
 
     // Install into cache directory
-    await install({ browser, buildId, cacheDir })
+    const installedBrowserInstance = await install({
+      browser,
+      buildId,
+      cacheDir
+    })
+    console.log('install instance: ', installedBrowserInstance)
   }
 }
