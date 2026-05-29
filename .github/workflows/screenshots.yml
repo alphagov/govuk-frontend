@@ -100,4 +100,4 @@ jobs:
         if: steps.changes.outputs.relevant_changes == 'true'
         # Ubuntu requires a profile for developer builds of Chrome to run without errors.
         # (https://chromium.googlesource.com/chromium/src/+/main/docs/security/apparmor-userns-restrictions.md)
-        run: aa-exec --profile=chrome npx --workspace @govuk-frontend/review percy exec -- npm run test:screenshots
+        run: npx --workspace @govuk-frontend/review percy exec -- aa-exec --profile=chrome npm run test:screenshots
