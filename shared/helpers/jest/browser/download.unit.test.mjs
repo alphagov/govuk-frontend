@@ -24,16 +24,10 @@ describe('Browser tasks: Puppeteer browser downloader', () => {
     jest.mocked(Cache.prototype.clear).mockReturnValue()
   })
 
-  it('downloads by default', async () => {
-    await download()
-
-    expect(install).toHaveBeenCalledWith(
-      expect.objectContaining({ buildId: 'new-version' })
+  it('errors if no versions are available to download', async () => {
+    await expect(download()).rejects.toThrow(
+      'No browser versions are installed.'
     )
-    expect(install).toHaveBeenCalledTimes(1)
-
-    // Outdated versions always removed
-    expect(Cache.prototype.clear).toHaveBeenCalledTimes(1)
   })
 
   it('downloads with single version outdated', async () => {
