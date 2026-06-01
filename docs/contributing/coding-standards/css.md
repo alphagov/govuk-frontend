@@ -286,13 +286,17 @@ Good:
 Bad:
 
 ```scss
-margin: 1px 2px 3px 2px;
+.selector {
+  margin: 1px 2px 3px 2px;
+}
 ```
 
 Good:
 
 ```scss
-margin: 1px 2px 3px;
+.selector {
+  margin: 1px 2px 3px;
+}
 ```
 
 ### Strings should always use double quotes

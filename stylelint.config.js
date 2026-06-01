@@ -34,10 +34,10 @@ module.exports = {
 
         // Allow markdown `*.md` Sass bad examples
         'scss/at-if-no-null': null,
-        'scss/at-import-partial-extension': null,
         'scss/at-mixin-pattern': null,
         'scss/at-rule-conditional-no-parentheses': null,
         'scss/load-no-partial-leading-underscore': null,
+        'scss/load-partial-extension': null,
         'scss/operator-no-unspaced': null
       }
     },
@@ -48,6 +48,17 @@ module.exports = {
   ],
   plugins: ['stylelint-order'],
   rules: {
+    'property-no-deprecated': [
+      true,
+      {
+        ignoreProperties: [
+          // Used by `govuk-visually-hidden` to ensure the element is not visible in some browsers
+          'clip',
+          // We're still supporting IE11 so need to use `word-wrap`
+          'word-wrap'
+        ]
+      }
+    ],
     /**
      * GOV.UK Frontend has a specific ordering pattern
      * that should be applied to rules
