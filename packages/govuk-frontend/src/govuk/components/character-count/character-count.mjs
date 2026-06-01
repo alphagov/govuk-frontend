@@ -162,7 +162,7 @@ export class CharacterCount extends ConfigurableComponent {
     // Determine the count function to use
     this.countFunction =
       this.config.countFunction ??
-      this.countFunctions[this.config.countType ?? 'length']
+      CharacterCount.countFunctions[this.config.countType ?? 'length']
 
     // Cache the count function context
     this.countFunctionContext = /** @type {CharacterCountContext} */ ({
@@ -481,7 +481,7 @@ export class CharacterCount extends ConfigurableComponent {
    * @constant
    * @satisfies {Record<string, CharacterCountFunction>}
    */
-  countFunctions = Object.freeze({
+  static countFunctions = Object.freeze({
     /**
      * Count code points (string length)
      *
