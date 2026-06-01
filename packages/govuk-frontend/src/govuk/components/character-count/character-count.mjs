@@ -607,9 +607,9 @@ export class CharacterCount extends ConfigurableComponent {
  * @property {TranslationPluralForms} [textareaDescription] - Message made
  *   available to assistive technologies, if none is already present in the
  *   HTML, to describe that the component accepts only a limited amount of
- *   content. It is visible on the page when JavaScript is unavailable. The
- *   component will replace the `%{count}` placeholder with the value of the
- *   `maxlength` or `maxwords` parameter.
+ *   content. It is visible on the page if `countType` is not supported or
+ *   JavaScript is unavailable. The component will replace the `%{count}`
+ *   placeholder with the value of the `maxlength` parameter.
  */
 
 /**
