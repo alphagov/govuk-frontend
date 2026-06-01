@@ -133,7 +133,9 @@ export class CharacterCount extends ConfigurableComponent {
 
     if (
       this.config.countType === 'characters' ||
-      (this.config.countType === 'words' && this.config.maxwords === undefined)
+      (this.config.countType === 'words' &&
+        this.config.maxwords === undefined) ||
+      this.config.countFunction
     ) {
       if (!('Segmenter' in Intl)) {
         throw new SupportError(
