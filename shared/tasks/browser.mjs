@@ -1,7 +1,7 @@
 import { join } from 'path'
 
 import { paths } from '@govuk-frontend/config'
-import { download } from '@govuk-frontend/helpers/jest/browser/download.mjs'
+// import { download } from '@govuk-frontend/helpers/jest/browser/download.mjs'
 import { goToComponent, goToExample } from '@govuk-frontend/helpers/puppeteer'
 import { getComponentNames, getExamples } from '@govuk-frontend/lib/components'
 import { getListing, getYaml } from '@govuk-frontend/lib/files'
@@ -15,7 +15,7 @@ import { launch } from 'puppeteer'
  * @returns {Promise<void>}
  */
 export async function screenshots() {
-  await download()
+  // await download()
 
   const browser = await launch({ headless: true })
   const componentNames = await getComponentNames()
