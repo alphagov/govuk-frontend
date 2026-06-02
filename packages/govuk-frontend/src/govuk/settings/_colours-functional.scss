@@ -238,8 +238,11 @@ $govuk-default-functional-colours: (
       name: "teal",
       variant: "accent"
     ),
-
     // Should this be a functional colour?,
+    "input-suffix-background": (
+        name: "black",
+        variant: "tint-95"
+      ) // Should this be "surface-background"?
   )
 );
 

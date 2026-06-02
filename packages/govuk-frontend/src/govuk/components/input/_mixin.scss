@@ -124,7 +124,7 @@
     padding: base.govuk-spacing(1);
     border: base.$govuk-border-width-form-element solid;
     border-color: base.govuk-functional-colour(input-border);
-    background-color: base.govuk-colour("black", $variant: "tint-95");
+    background-color: base.govuk-functional-colour(input-suffix-background);
     text-align: center;
     white-space: nowrap;
     // Emphasise non-editable status of prefixes and suffixes
