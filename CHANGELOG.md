@@ -41,7 +41,7 @@ $govuk-assets-path: "/path/to/assets/";
 
 
 // Now
-@use "pkg:gov-uk frontend" as * with (
+@use "node_modules/govuk-frontend/dist/govuk" as * with (
   $govuk-assets-path: "/path/to/assets/"
 );
 ```
