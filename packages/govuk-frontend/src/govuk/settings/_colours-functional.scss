@@ -167,6 +167,70 @@ $govuk-default-functional-colours: (
       name: "white"
     ),
     // Should it be `template-background`?
+    "file-upload-status-background": (
+        name: "blue"
+      ),
+    // Should it be `brand`?
+    "file-upload-status-text": (
+        name: "white"
+      ),
+    "file-upload-button-border": (
+      name: "black",
+      variant: "tint-80"
+    ),
+    "file-upload-button-background": (
+      name: "white"
+    ),
+    "file-upload-hover-button-border": (
+      name: "black",
+      variant: "tint-50"
+    ),
+    "file-upload-hover-pseudo-button-background": (
+      name: "black",
+      variant: "tint-80"
+    ),
+    "file-upload-focus-button-background": (
+      name: "black",
+      variant: "tint-95"
+    ),
+    "file-upload-focus-button-border": (
+      name: "black"
+    ),
+    // Should it reference `focus-text`?
+    "file-upload-focus-pseudo-button-shadow": (
+        name: "black",
+        variant: "tint-80"
+      ),
+    "file-upload-pseudo-button-background": (
+      name: "black",
+      variant: "tint-95"
+    ),
+    "file-upload-empty-button-background": (
+      name: "white"
+    ),
+    "file-upload-empty-pseudo-button-background": (
+      name: "black",
+      variant: "tint-95"
+    ),
+    "file-upload-empty-status-text": (
+      name: "black"
+    ),
+    // Should it be 'text'
+    "file-upload-empty-status-background": (
+        name: "blue",
+        variant: "tint-80"
+      ),
+    "file-upload-empty-hover-button-background": (
+      name: "black",
+      variant: "tint-95"
+    ),
+    "file-upload-dragging-button-border": (
+      name: "black"
+    ),
+    "file-upload-dragging-empty-button-background": (
+      name: "black",
+      variant: "tint-95"
+    )
   )
 );
 
