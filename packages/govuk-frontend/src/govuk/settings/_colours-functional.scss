@@ -100,11 +100,13 @@ $govuk-default-functional-colours: (
     "accordion-base": (
       name: "black"
     ),
-    // Should this be `text`?
     "accordion-hover": (
-        name: "black",
-        variant: "tint-95"
-      )
+      name: "black",
+      variant: "tint-95"
+    ),
+    "breadcrumbs-inverse": (
+      name: "white"
+    )
   )
 );
 
