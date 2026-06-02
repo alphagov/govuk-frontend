@@ -96,7 +96,15 @@ $govuk-default-functional-colours: (
     "surface-border": (
       name: "blue",
       variant: "tint-50"
-    )
+    ),
+    "accordion-base": (
+      name: "black"
+    ),
+    // Should this be `text`?
+    "accordion-hover": (
+        name: "black",
+        variant: "tint-95"
+      )
   )
 );
 
