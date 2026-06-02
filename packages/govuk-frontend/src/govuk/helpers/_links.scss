@@ -125,7 +125,7 @@
   }
 
   &:hover {
-    color: govuk-colour("red", $variant: "shade-50");
+    color: govuk-functional-colour(link-error-hover);
   }
 
   &:active {
@@ -162,7 +162,7 @@
   }
 
   &:hover {
-    color: govuk-colour("green", $variant: "shade-50");
+    color: govuk-functional-colour(link-success-hover);
   }
 
   &:active {
@@ -257,7 +257,7 @@
 @mixin govuk-link-style-inverse {
   &:link,
   &:visited {
-    color: govuk-colour("white");
+    color: govuk-functional-colour(link-inverse);
   }
 
   &:focus {

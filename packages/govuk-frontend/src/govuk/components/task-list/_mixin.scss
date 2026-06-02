@@ -2,7 +2,7 @@
 
 /// @access private
 @mixin styles {
-  $govuk-task-list-hover-colour: base.govuk-colour("black", $variant: "tint-95");
+  $govuk-task-list-hover-colour: base.govuk-functional-colour(task-list-hover);
 
   .govuk-task-list {
     @include base.govuk-font($size: 19);

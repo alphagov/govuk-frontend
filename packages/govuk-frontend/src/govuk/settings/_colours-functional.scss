@@ -281,7 +281,22 @@ $govuk-default-functional-colours: (
         name: "black",
         variant: "tint-95"
       ),
+    "task-list-hover": (
+      name: "black",
+      variant: "tint-95"
+    ),
     // Should it be `surface` ?
+    "link-error-hover": (
+        name: "red",
+        variant: "shade-50"
+      ),
+    "link-success-hover": (
+      name: "green",
+      variant: "shade-50"
+    ),
+    "link-inverse": (
+      name: "white"
+    )
   )
 );
 
