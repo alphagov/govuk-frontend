@@ -324,6 +324,7 @@ examples:
     screenshot: true
     options:
       id: input-with-extra-letter-spacing
+      name: input-with-extra-letter-spacing
       label:
         text: National insurance number
       classes: govuk-input--width-30 govuk-input--extra-letter-spacing
@@ -578,4 +579,5 @@ examples:
       label:
         text: Disabled input
       id: disabled-input
+      name: disabled-input
       disabled: true
