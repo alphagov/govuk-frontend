@@ -59,10 +59,10 @@
   }
 
   .govuk-panel--interruption {
-    color: govuk-colour("white");
-    background-color: $govuk-brand-colour;
+    color: base.govuk-colour("white");
+    background-color: base.govuk-functional-colour(brand);
     text-align: left;
 
-    @include govuk-font($size: 19);
+    @include base.govuk-font($size: 19);
   }
 }
