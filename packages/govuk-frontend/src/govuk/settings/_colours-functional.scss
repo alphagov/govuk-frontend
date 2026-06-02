@@ -230,7 +230,16 @@ $govuk-default-functional-colours: (
     "file-upload-dragging-empty-button-background": (
       name: "black",
       variant: "tint-95"
-    )
+    ),
+    "header-text": (
+      name: "white"
+    ),
+    "header-dot": (
+      name: "teal",
+      variant: "accent"
+    ),
+
+    // Should this be a functional colour?,
   )
 );
 

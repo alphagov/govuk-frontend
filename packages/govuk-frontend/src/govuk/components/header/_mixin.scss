@@ -9,7 +9,7 @@
 
     // Add a transparent bottom border for forced-colour modes
     border-bottom: 1px solid transparent;
-    color: base.govuk-colour("white");
+    color: base.govuk-functional-colour(header-text);
     background: base.govuk-functional-colour(brand);
   }
 
@@ -100,7 +100,7 @@
 
   // Colour in the Dot
   .govuk-logo-dot {
-    fill: base.govuk-colour("teal", "accent");
+    fill: base.govuk-functional-colour(header-dot);
 
     // Override Dot colour when printing
     @media print {
@@ -148,14 +148,14 @@
   @media print {
     .govuk-header {
       border-bottom-width: 0;
-      color: base.govuk-colour("black");
+      color: base.govuk-functional-colour(text);
       background: transparent;
     }
 
     .govuk-header__homepage-link {
       &:link,
       &:visited {
-        color: base.govuk-colour("black");
+        color: base.govuk-functional-colour(text); // inherit?
       }
 
       // Do not append link href to GOV.UK link when printing (e.g. '(/)')
