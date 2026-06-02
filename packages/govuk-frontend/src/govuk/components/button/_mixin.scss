@@ -8,26 +8,26 @@
 @mixin styles($background-colour, $text-colour, $inverse-background-colour, $inverse-text-colour) {
   $govuk-button-colour: $background-colour;
   $text-colour: $text-colour;
-  $govuk-button-hover-colour: base.govuk-colour("green", $variant: "shade-25");
-  $govuk-button-shadow-colour: base.govuk-colour("green", $variant: "shade-50");
+  $govuk-button-hover-colour: base.govuk-functional-colour(button-hover);
+  $govuk-button-shadow-colour: base.govuk-functional-colour(button-shadow);
 
   // Secondary button variables
-  $govuk-secondary-button-colour: base.govuk-colour("black", $variant: "tint-95");
-  $govuk-secondary-button-text-colour: base.govuk-colour("black");
-  $govuk-secondary-button-hover-colour: base.govuk-colour("black", $variant: "tint-80");
-  $govuk-secondary-button-shadow-colour: base.govuk-colour("black", $variant: "tint-50");
+  $govuk-secondary-button-colour: base.govuk-functional-colour(secondary-button);
+  $govuk-secondary-button-text-colour: base.govuk-functional-colour(secondary-button-text);
+  $govuk-secondary-button-hover-colour: base.govuk-functional-colour(secondary-button-hover);
+  $govuk-secondary-button-shadow-colour: base.govuk-functional-colour(secondary-button-shadow);
 
   // Warning button variables
-  $govuk-warning-button-colour: base.govuk-colour("red");
-  $govuk-warning-button-text-colour: base.govuk-colour("white");
-  $govuk-warning-button-hover-colour: base.govuk-colour("red", $variant: "shade-25");
-  $govuk-warning-button-shadow-colour: base.govuk-colour("red", $variant: "shade-50");
+  $govuk-warning-button-colour: base.govuk-functional-colour(warning-button);
+  $govuk-warning-button-text-colour: base.govuk-functional-colour(warning-button-text);
+  $govuk-warning-button-hover-colour: base.govuk-functional-colour(warning-button-hover);
+  $govuk-warning-button-shadow-colour: base.govuk-functional-colour(warning-button-shadow);
 
   // Inverse button variables
   $govuk-inverse-button-colour: $inverse-background-colour;
   $inverse-text-colour: $inverse-text-colour;
-  $govuk-inverse-button-hover-colour: base.govuk-colour("blue", $variant: "tint-95");
-  $govuk-inverse-button-shadow-colour: base.govuk-colour("blue", $variant: "shade-50");
+  $govuk-inverse-button-hover-colour: base.govuk-functional-colour(inverse-button-hover);
+  $govuk-inverse-button-shadow-colour: base.govuk-functional-colour(inverse-button-shadow);
 
   // Because the shadow (s0) is visually 'part of' the button, we need to reduce
   // the height of the button to compensate by adjusting its padding (s1) and

@@ -106,6 +106,62 @@ $govuk-default-functional-colours: (
     ),
     "breadcrumbs-inverse": (
       name: "white"
+    ),
+    "button": (
+      name: "green"
+    ),
+    "button-text": (
+      name: "white"
+    ),
+    "button-hover": (
+      name: "green",
+      variant: "shade-25"
+    ),
+    "button-shadow": (
+      name: "green",
+      variant: "shade-50"
+    ),
+    "secondary-button": (
+      name: "black",
+      variant: "tint-95"
+    ),
+    "secondary-button-text": (
+      name: "black"
+    ),
+    "secondary-button-hover": (
+      name: "black",
+      variant: "tint-80"
+    ),
+    "secondary-button-shadow": (
+      name: "black",
+      variant: "tint-50"
+    ),
+    "warning-button": (
+      name: "red"
+    ),
+    "warning-button-text": (
+      name: "white"
+    ),
+    "warning-button-hover": (
+      name: "red",
+      variant: "shade-25"
+    ),
+    "warning-button-shadow": (
+      name: "red",
+      variant: "shade-50"
+    ),
+    // No inverse-button-text as it's `brand`
+    "inverse-button-background": (
+        name: "white"
+      ),
+    // Why was the variable not `inverse-button`
+    "inverse-button-hover": (
+        name: "blue",
+        variant: "tint-95"
+      ),
+    "inverse-button-shadow": (
+      name: "blue",
+      variant: "shade-50"
     )
   )
 );
