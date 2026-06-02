@@ -162,7 +162,11 @@ $govuk-default-functional-colours: (
     "inverse-button-shadow": (
       name: "blue",
       variant: "shade-50"
-    )
+    ),
+    "exit-this-page-overlay-background": (
+      name: "white"
+    ),
+    // Should it be `template-background`?
   )
 );
 

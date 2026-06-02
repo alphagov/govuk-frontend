@@ -68,7 +68,7 @@
     right: 0;
     bottom: 0;
     left: 0;
-    background-color: base.govuk-colour("white");
+    background-color: base.govuk-functional-colour(exit-this-page-overlay-background);
   }
 
   // This class is added to the body when the Exit This Page button is activated
