@@ -271,7 +271,12 @@ $govuk-default-functional-colours: (
       ),
     "service-navigation-inverse-text": (
       name: "white"
-    )
+    ),
+    "summary-card-title-background": (
+      name: "black",
+      variant: "tint-95"
+    ),
+    // Should it be `surface` ?
   )
 );
 
