@@ -258,6 +258,17 @@ $govuk-default-functional-colours: (
       name: "green"
     ),
     // Should it be `success`?
+    "select-background": (
+        name: "white"
+      ),
+    // Should it be "template-background"?
+    "select-active-text": (
+        name: "white"
+      ),
+    // Another white on blue
+    "select-active-background": (
+        name: "blue"
+      )
   )
 );
 
