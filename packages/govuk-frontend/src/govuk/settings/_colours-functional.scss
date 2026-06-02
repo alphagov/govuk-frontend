@@ -246,7 +246,11 @@ $govuk-default-functional-colours: (
     // Should this be "surface-background"?
     "notification-banner-title-text": (
         name: "white"
-      )
+      ),
+    "pagination-hover": (
+      name: "black",
+      variant: "tint-95"
+    )
   )
 );
 
