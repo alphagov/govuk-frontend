@@ -36,8 +36,8 @@
   }
 
   .govuk-panel--confirmation {
-    color: base.govuk-colour("white");
-    background: base.govuk-colour("green");
+    color: base.govuk-functional-colour(panel-text);
+    background: base.govuk-functional-colour(panel-background);
 
     @media print {
       border-color: currentcolor;

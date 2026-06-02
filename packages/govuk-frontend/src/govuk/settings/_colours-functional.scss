@@ -250,7 +250,14 @@ $govuk-default-functional-colours: (
     "pagination-hover": (
       name: "black",
       variant: "tint-95"
-    )
+    ),
+    "panel-text": (
+      name: "white"
+    ),
+    "panel-background": (
+      name: "green"
+    ),
+    // Should it be `success`?
   )
 );
 
