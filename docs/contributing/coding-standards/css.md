@@ -1,8 +1,36 @@
-# CSS Style Guide
+# CSS and Sass Style Guide
+
+## Sass modules
+
+GOV.UK Frontend supports both `@import` and `@use` to include Sass files.
+
+Our public API is prefixed with `govuk-` to ensure consistent naming and avoid
+clashes with Sass elements in your application. You should `@use` govuk-frontend
+modules without a namespace:
+
+Bad:
+
+```scss
+@use "foo";
+
+.bar {
+  color: foo.govuk-function("baz")
+}
+```
+
+Good:
+
+```scss
+@use "foo" as *;
+
+.bar {
+  color: govuk-function("baz")
+}
+```
 
 ## Class naming convention
 
-## `govuk` namespacing
+### `govuk` namespacing
 
 All class names start with a `.govuk-` namespace to reduce the likelihood of
 conflicting with existing classes in your application. It also helps to identify
@@ -11,7 +39,7 @@ where the styling for a particular element is coming from.
 If you are building components for your own application or framework you should
 use a different prefix, for example `.app-` or the initials of your department.
 
-## Block Element Modifier (BEM)
+### Block Element Modifier (BEM)
 
 GOV.UK Frontend uses the Block Element Modifier (BEM) methodology when naming
 CSS classes. This is designed to help developers understand how the different
@@ -300,7 +328,7 @@ margin: 1px 2px 3px;
 Bad:
 
 ```scss
-@import 'foo';
+@use 'foo';
 
 $govuk-font-family-gds-transport: 'GDS Transport', arial, sans-serif;
 
@@ -312,7 +340,7 @@ $govuk-font-family-gds-transport: 'GDS Transport', arial, sans-serif;
 Good:
 
 ```scss
-@import "foo";
+@use "foo";
 
 $govuk-font-family-gds-transport: "GDS Transport", arial, sans-serif;
 
@@ -323,20 +351,20 @@ $govuk-font-family-gds-transport: "GDS Transport", arial, sans-serif;
 
 ### Files should always have a final newline
 
-### The basenames of `@import`ed SCSS partials should not begin with an underscore and should not include the filename extension
+### The basenames of `@use`ed SCSS partials should not begin with an underscore and should not include the filename extension
 
 Bad:
 
 ```scss
-@import "_foo.scss";
-@import "_bar/foo.scss";
+@use "_foo.scss";
+@use "_bar/foo.scss";
 ```
 
 Good:
 
 ```scss
-@import "foo";
-@import "bar/foo";
+@use "foo";
+@use "bar/foo";
 ```
 
 ### Properties should be formatted with a single space separating the colon from the property's value
