@@ -242,7 +242,11 @@ $govuk-default-functional-colours: (
     "input-suffix-background": (
         name: "black",
         variant: "tint-95"
-      ) // Should this be "surface-background"?
+      ),
+    // Should this be "surface-background"?
+    "notification-banner-title-text": (
+        name: "white"
+      )
   )
 );
 
