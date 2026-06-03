@@ -9,18 +9,7 @@ import { ElementError } from '../../errors/index.mjs'
  */
 export class ServiceNavigation extends Component {
   /** @private */
-  $menuButton
-
-  /** @private */
-  $menu
-
-  /**
-   * Remember the open/closed state of the nav so we can maintain it when the
-   * screen is resized.
-   *
-   * @private
-   */
-  menuIsOpen = false
+  controlledMenus = []
 
   /**
    * A global const for storing a matchMedia instance which we'll use to detect
@@ -38,43 +27,52 @@ export class ServiceNavigation extends Component {
   constructor($root) {
     super($root)
 
-    const $menuButton = this.$root.querySelector(
+    const $menuButtons = this.$root.querySelectorAll(
       '.govuk-js-service-navigation-toggle'
     )
 
     // Headers don't necessarily have a navigation. When they don't, the menu
     // toggle won't be rendered by our macro (or may be omitted when writing
     // plain HTML)
-    if (!$menuButton) {
+    if ($menuButtons.length === 0) {
       return this
     }
 
-    const menuId = $menuButton.getAttribute('aria-controls')
-    if (!menuId) {
-      throw new ElementError({
-        component: ServiceNavigation,
-        identifier:
-          'Navigation button (`<button class="govuk-js-service-navigation-toggle">`) attribute (`aria-controls`)'
-      })
-    }
+    this.controlledMenus = Array.from($menuButtons).map(($menuButton) => {
+      const menuId = $menuButton.getAttribute('aria-controls')
 
-    const $menu = document.getElementById(menuId)
-    if (!$menu) {
-      throw new ElementError({
-        component: ServiceNavigation,
-        element: $menu,
-        identifier: `Navigation (\`<ul id="${menuId}">\`)`
-      })
-    }
+      if (!menuId) {
+        throw new ElementError({
+          component: ServiceNavigation,
+          identifier:
+            'Navigation button (`<button class="govuk-js-service-navigation-toggle">`) attribute (`aria-controls`)'
+        })
+      }
 
-    this.$menu = $menu
-    this.$menuButton = $menuButton
+      const $menu = document.getElementById(menuId)
+
+      if (!$menu) {
+        throw new ElementError({
+          component: ServiceNavigation,
+          element: $menu,
+          identifier: `Navigation (\`<ul id="${menuId}">\`)`
+        })
+      }
+
+      return {
+        $menu,
+        $menuButton,
+        menuIsOpen: false
+      }
+    })
 
     this.setupResponsiveChecks()
 
-    this.$menuButton.addEventListener('click', () =>
-      this.handleMenuButtonClick()
-    )
+    for (const controlledMenu of this.controlledMenus) {
+      controlledMenu.$menuButton.addEventListener('click', () =>
+        this.handleMenuButtonClick(controlledMenu)
+      )
+    }
   }
 
   /**
@@ -119,21 +117,29 @@ export class ServiceNavigation extends Component {
    * @private
    */
   checkMode() {
-    if (!this.mql || !this.$menu || !this.$menuButton) {
+    if (!this.mql) {
       return
     }
 
-    if (this.mql.matches) {
-      this.$menu.removeAttribute('hidden')
-      setAttributes(this.$menuButton, attributesForHidingButton)
-    } else {
-      removeAttributes(this.$menuButton, Object.keys(attributesForHidingButton))
-      this.$menuButton.setAttribute('aria-expanded', this.menuIsOpen.toString())
-
-      if (this.menuIsOpen) {
-        this.$menu.removeAttribute('hidden')
+    for (const controlledMenu of this.controlledMenus) {
+      if (this.mql.matches) {
+        controlledMenu.$menu.removeAttribute('hidden')
+        setAttributes(controlledMenu.$menuButton, attributesForHidingButton)
       } else {
-        this.$menu.setAttribute('hidden', '')
+        removeAttributes(
+          controlledMenu.$menuButton,
+          Object.keys(attributesForHidingButton)
+        )
+        controlledMenu.$menuButton.setAttribute(
+          'aria-expanded',
+          controlledMenu.menuIsOpen.toString()
+        )
+
+        if (controlledMenu.menuIsOpen) {
+          controlledMenu.$menu.removeAttribute('hidden')
+        } else {
+          controlledMenu.$menu.setAttribute('hidden', '')
+        }
       }
     }
   }
@@ -146,8 +152,8 @@ export class ServiceNavigation extends Component {
    *
    * @private
    */
-  handleMenuButtonClick() {
-    this.menuIsOpen = !this.menuIsOpen
+  handleMenuButtonClick(controlledMenu) {
+    controlledMenu.menuIsOpen = !controlledMenu.menuIsOpen
     this.checkMode()
   }
 

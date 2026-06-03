@@ -6,6 +6,9 @@ const iPhone = KnownDevices['iPhone 6']
 
 const navigationSelector = `.govuk-service-navigation__list`
 const toggleButtonSelector = '.govuk-js-service-navigation-toggle'
+const responsiveLanguageNavigationSelector =
+  '#language-switcher-navigation.govuk-language-switcher__list'
+const responsiveLanguageToggleSelector = '.govuk-language-switcher__toggle'
 
 describe('/components/service-navigation', () => {
   let examples
@@ -67,6 +70,57 @@ describe('/components/service-navigation', () => {
             examples['with collapseNavigationOnMobile set to false']
           )
         ).resolves.not.toThrow()
+      })
+    })
+
+    describe('with a responsive language switcher', () => {
+      describe('on page load', () => {
+        beforeAll(async () => {
+          await render(
+            page,
+            'service-navigation',
+            examples['with language switcher responsive']
+          )
+        })
+
+        it('renders the responsive language switcher hidden by default', async () => {
+          const navigationHiddenAttribute = await page.$eval(
+            responsiveLanguageNavigationSelector,
+            (el) => el.hasAttribute('hidden')
+          )
+
+          expect(navigationHiddenAttribute).toBeTruthy()
+        })
+
+        it('renders the responsive language toggle visibly', async () => {
+          const buttonHiddenAttribute = await page.$eval(
+            responsiveLanguageToggleSelector,
+            (el) => el.hasAttribute('hidden')
+          )
+
+          expect(buttonHiddenAttribute).toBeFalsy()
+        })
+      })
+
+      describe('when the responsive language toggle is clicked', () => {
+        beforeAll(async () => {
+          await render(
+            page,
+            'service-navigation',
+            examples['with language switcher responsive']
+          )
+          await page.waitForSelector(responsiveLanguageToggleSelector)
+          await page.click(responsiveLanguageToggleSelector)
+        })
+
+        it('shows the responsive language list', async () => {
+          const navigationHiddenAttribute = await page.$eval(
+            responsiveLanguageNavigationSelector,
+            (el) => el.hasAttribute('hidden')
+          )
+
+          expect(navigationHiddenAttribute).toBeFalsy()
+        })
       })
     })
 
