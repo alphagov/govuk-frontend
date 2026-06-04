@@ -76,13 +76,13 @@
 ///
 /// @example scss
 ///  .example {
-///    @media #{govuk-from-breakpoint(tablet)} {
+///    @media govuk-from-breakpoint(tablet) {
 ///      color: red;
 ///    }
-///    @media #{govuk-from-breakpoint(30em)} {
+///    @media govuk-from-breakpoint(30em) {
 ///      color: green;
 ///    }
-///    @media #{govuk-from-breakpoint(tablet)} and (orientation: landscape) {
+///    @media govuk-from-breakpoint(tablet) and (orientation: landscape) {
 ///      color: blue;
 ///    }
 ///    $custom-breakpoint-map: (
@@ -91,7 +91,7 @@
 ///      large: 1100px,
 ///      extra-large: 1600px
 ///    );
-///    @media #{govuk-from-breakpoint(extra-large, $custom-breakpoint-map)} {
+///    @media govuk-from-breakpoint(extra-large, $custom-breakpoint-map) {
 ///      color: cyan;
 ///    }
 ///  }
@@ -121,13 +121,13 @@
 ///
 /// @example scss
 ///  .example {
-///    @media #{govuk-until-breakpoint(desktop)} {
+///    @media govuk-until-breakpoint(desktop) {
 ///      color: red;
 ///    }
-///    @media #{govuk-until-breakpoint(40em)} {
+///    @media govuk-until-breakpoint(40em) {
 ///      color: green;
 ///    }
-///    @media #{govuk-until-breakpoint(tablet)} and (orientation: landscape) {
+///    @media govuk-until-breakpoint(tablet) and (orientation: landscape) {
 ///      color: blue;
 ///    }
 ///    $custom-breakpoint-map: (
@@ -136,7 +136,7 @@
 ///      large: 1100px,
 ///      extra-large: 1600px
 ///    );
-///    @media #{govuk-until-breakpoint(extra-large, $custom-breakpoint-map)} {
+///    @media govuk-until-breakpoint(extra-large, $custom-breakpoint-map) {
 ///      color: cyan;
 ///    }
 ///  }

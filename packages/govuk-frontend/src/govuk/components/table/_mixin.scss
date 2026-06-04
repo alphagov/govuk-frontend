@@ -16,7 +16,7 @@
   // Modifier for tables with a lot of data. Tables with lots of data benefit
   // from a smaller font size on small screens.
   .govuk-table--small-text-until-tablet {
-    @media #{base.govuk-until-breakpoint(tablet)} {
+    @media base.govuk-until-breakpoint(tablet) {
       @include base.govuk-font-size($size: 16);
     }
   }

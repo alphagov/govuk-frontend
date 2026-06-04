@@ -26,7 +26,7 @@
     // text in high contrast mode
     border-bottom: 1px solid transparent;
 
-    @media #{base.govuk-from-breakpoint(tablet)} {
+    @media base.govuk-from-breakpoint(tablet) {
       padding: 2px base.govuk-spacing(4) base.govuk-spacing(1);
     }
   }
@@ -48,7 +48,7 @@
     color: base.govuk-functional-colour(text);
     background-color: base.govuk-functional-colour(body-background);
 
-    @media #{base.govuk-from-breakpoint(tablet)} {
+    @media base.govuk-from-breakpoint(tablet) {
       padding: $padding-tablet;
     }
 

@@ -50,7 +50,7 @@
 
   // GOV.UK Frontend JavaScript enabled
   .govuk-frontend-supported {
-    @media #{base.govuk-from-breakpoint(tablet)} {
+    @media base.govuk-from-breakpoint(tablet) {
       .govuk-tabs__list {
         @include base.govuk-clearfix;
         margin-bottom: 0;

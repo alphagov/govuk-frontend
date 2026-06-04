@@ -100,7 +100,7 @@
     }
 
     // Split prefix/suffix onto separate lines on narrow screens
-    @media #{base.govuk-until-breakpoint(mobile)} {
+    @media base.govuk-until-breakpoint(mobile) {
       display: block;
 
       .govuk-input {
@@ -130,7 +130,7 @@
     // Emphasise non-editable status of prefixes and suffixes
     cursor: default;
     // Split prefix/suffix onto separate lines on narrow screens
-    @media #{base.govuk-until-breakpoint(mobile)} {
+    @media base.govuk-until-breakpoint(mobile) {
       display: block;
       height: 100%;
       white-space: normal;
@@ -138,20 +138,20 @@
   }
 
   .govuk-input__prefix {
-    @media #{base.govuk-until-breakpoint(mobile)} {
+    @media base.govuk-until-breakpoint(mobile) {
       border-bottom: 0;
     }
-    @media #{base.govuk-from-breakpoint(mobile)} {
+    @media base.govuk-from-breakpoint(mobile) {
       border-right: 0;
     }
   }
 
   // Split prefix/suffix onto separate lines on narrow screens
   .govuk-input__suffix {
-    @media #{base.govuk-until-breakpoint(mobile)} {
+    @media base.govuk-until-breakpoint(mobile) {
       border-top: 0;
     }
-    @media #{base.govuk-from-breakpoint(mobile)} {
+    @media base.govuk-from-breakpoint(mobile) {
       border-left: 0;
     }
   }

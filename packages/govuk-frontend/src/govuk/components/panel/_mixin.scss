@@ -14,7 +14,7 @@
 
     text-align: center;
 
-    @media #{base.govuk-until-breakpoint(tablet)} {
+    @media base.govuk-until-breakpoint(tablet) {
       padding: base.govuk-spacing(4) - base.$govuk-border-width;
 
       // Support IE (autoprefixer doesn't add this as it's not a prefix)

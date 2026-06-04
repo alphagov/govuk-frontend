@@ -10,7 +10,7 @@
   .govuk-\!-width-three-quarters {
     width: 100% !important;
 
-    @media #{base.govuk-from-breakpoint(tablet)} {
+    @media base.govuk-from-breakpoint(tablet) {
       width: 75% !important;
     }
   }
@@ -18,7 +18,7 @@
   .govuk-\!-width-two-thirds {
     width: 100% !important;
 
-    @media #{base.govuk-from-breakpoint(tablet)} {
+    @media base.govuk-from-breakpoint(tablet) {
       width: 66.66% !important;
     }
   }
@@ -26,7 +26,7 @@
   .govuk-\!-width-one-half {
     width: 100% !important;
 
-    @media #{base.govuk-from-breakpoint(tablet)} {
+    @media base.govuk-from-breakpoint(tablet) {
       width: 50% !important;
     }
   }
@@ -34,7 +34,7 @@
   .govuk-\!-width-one-third {
     width: 100% !important;
 
-    @media #{base.govuk-from-breakpoint(tablet)} {
+    @media base.govuk-from-breakpoint(tablet) {
       width: 33.33% !important;
     }
   }
@@ -42,7 +42,7 @@
   .govuk-\!-width-one-quarter {
     width: 100% !important;
 
-    @media #{base.govuk-from-breakpoint(tablet)} {
+    @media base.govuk-from-breakpoint(tablet) {
       width: 25% !important;
     }
   }

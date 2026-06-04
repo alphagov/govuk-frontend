@@ -22,7 +22,7 @@
     min-height: 35px;
     margin-top: -7px;
 
-    @media #{base.govuk-from-breakpoint(tablet)} {
+    @media base.govuk-from-breakpoint(tablet) {
       margin-top: -5px;
     }
 

@@ -7,7 +7,7 @@
 
     color: base.govuk-functional-colour(text);
 
-    @media #{base.govuk-from-breakpoint(tablet)} {
+    @media base.govuk-from-breakpoint(tablet) {
       display: table;
       width: 100%;
       table-layout: fixed; // Required to allow us to wrap words that overflow.
@@ -25,10 +25,10 @@
     border-bottom: 1px solid;
     border-bottom-color: base.govuk-functional-colour(border);
 
-    @media #{base.govuk-until-breakpoint(tablet)} {
+    @media base.govuk-until-breakpoint(tablet) {
       margin-bottom: base.govuk-spacing(3);
     }
-    @media #{base.govuk-from-breakpoint(tablet)} {
+    @media base.govuk-from-breakpoint(tablet) {
       display: table-row;
     }
   }
@@ -41,7 +41,7 @@
   // Provide an empty 'cell' for rows that don't have actions – otherwise the
   // bottom border is not drawn for that part of the row in some browsers.
   .govuk-summary-list__row--no-actions {
-    @media #{base.govuk-from-breakpoint(tablet)} {
+    @media base.govuk-from-breakpoint(tablet) {
       &::after {
         content: "";
         display: table-cell;
@@ -55,7 +55,7 @@
   .govuk-summary-list__actions {
     margin: 0; // Reset default user agent styles
 
-    @media #{base.govuk-from-breakpoint(tablet)} {
+    @media base.govuk-from-breakpoint(tablet) {
       display: table-cell;
       padding-top: base.govuk-spacing(2);
       padding-right: base.govuk-spacing(4);
@@ -70,7 +70,7 @@
 
   .govuk-summary-list__actions {
     margin-bottom: base.govuk-spacing(3);
-    @media #{base.govuk-from-breakpoint(tablet)} {
+    @media base.govuk-from-breakpoint(tablet) {
       width: 20%;
       text-align: right;
     }
@@ -86,13 +86,13 @@
   .govuk-summary-list__key {
     margin-bottom: base.govuk-spacing(1);
     @include base.govuk-typography-weight-bold;
-    @media #{base.govuk-from-breakpoint(tablet)} {
+    @media base.govuk-from-breakpoint(tablet) {
       width: 30%;
     }
   }
 
   .govuk-summary-list__value {
-    @media #{base.govuk-until-breakpoint(tablet)} {
+    @media base.govuk-until-breakpoint(tablet) {
       margin-bottom: base.govuk-spacing(3);
     }
   }
@@ -116,7 +116,7 @@
     display: inline-block;
   }
 
-  @media #{base.govuk-until-breakpoint(tablet)} {
+  @media base.govuk-until-breakpoint(tablet) {
     .govuk-summary-list__actions-list-item,
     .govuk-summary-card__action {
       margin-right: base.govuk-spacing(2);
@@ -133,7 +133,7 @@
     }
   }
 
-  @media #{base.govuk-from-breakpoint(tablet)} {
+  @media base.govuk-from-breakpoint(tablet) {
     .govuk-summary-list__actions-list-item,
     .govuk-summary-card__action {
       margin-left: base.govuk-spacing(2);
@@ -170,7 +170,7 @@
     }
 
     // Increase padding by 1px to compensate for 'missing' border
-    @media #{base.govuk-from-breakpoint(tablet)} {
+    @media base.govuk-from-breakpoint(tablet) {
       .govuk-summary-list__key,
       .govuk-summary-list__value,
       .govuk-summary-list__actions {
@@ -184,7 +184,7 @@
     border: 0;
 
     // Increase padding by 1px to compensate for 'missing' border
-    @media #{base.govuk-from-breakpoint(tablet)} {
+    @media base.govuk-from-breakpoint(tablet) {
       .govuk-summary-list__key,
       .govuk-summary-list__value,
       .govuk-summary-list__actions {
@@ -208,7 +208,7 @@
     border-bottom: 1px solid transparent;
     background-color: base.govuk-colour("black", $variant: "tint-95");
 
-    @media #{base.govuk-from-breakpoint(tablet)} {
+    @media base.govuk-from-breakpoint(tablet) {
       display: flex;
       flex-wrap: nowrap;
       justify-content: space-between;
@@ -221,7 +221,7 @@
     margin: base.govuk-spacing(1) base.govuk-spacing(4) base.govuk-spacing(2) 0;
     color: base.govuk-functional-colour(text);
 
-    @media #{base.govuk-from-breakpoint(tablet)} {
+    @media base.govuk-from-breakpoint(tablet) {
       margin-bottom: base.govuk-spacing(1);
     }
   }
@@ -236,7 +236,7 @@
     padding: 0;
     list-style: none;
 
-    @media #{base.govuk-from-breakpoint(tablet)} {
+    @media base.govuk-from-breakpoint(tablet) {
       justify-content: right;
       text-align: right;
     }
@@ -269,7 +269,7 @@
   .govuk-summary-card__content {
     padding: base.govuk-spacing(3) base.govuk-spacing(3) 0;
 
-    @media #{base.govuk-from-breakpoint(tablet)} {
+    @media base.govuk-from-breakpoint(tablet) {
       padding: base.govuk-spacing(3) base.govuk-spacing(4);
     }
 

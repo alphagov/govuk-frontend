@@ -79,7 +79,7 @@
     margin-bottom: base.govuk-spacing(1);
     color: base.govuk-functional-colour(secondary-text);
 
-    @media #{base.govuk-from-breakpoint(tablet)} {
+    @media base.govuk-from-breakpoint(tablet) {
       margin-bottom: 0;
     }
   }
@@ -146,7 +146,7 @@
   %govuk-body-l + %govuk-heading-l {
     padding-top: base.govuk-spacing(1);
 
-    @media #{base.govuk-from-breakpoint(tablet)} {
+    @media base.govuk-from-breakpoint(tablet) {
       padding-top: base.govuk-spacing(2);
     }
   }
@@ -165,7 +165,7 @@
   %govuk-list + %govuk-heading-s {
     padding-top: base.govuk-spacing(1);
 
-    @media #{base.govuk-from-breakpoint(tablet)} {
+    @media base.govuk-from-breakpoint(tablet) {
       padding-top: base.govuk-spacing(2);
     }
   }

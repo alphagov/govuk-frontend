@@ -8,7 +8,7 @@
     //   breakpoint
     // - being display: flex above the mobile breakpoint
 
-    @media #{base.govuk-from-breakpoint(mobile)} {
+    @media base.govuk-from-breakpoint(mobile) {
       flex-direction: row;
 
       // The default of `stretch` makes the toggle button appear taller than the
@@ -41,7 +41,7 @@
       display: none;
     }
 
-    @media #{base.govuk-from-breakpoint(mobile)} {
+    @media base.govuk-from-breakpoint(mobile) {
       flex-basis: 5em;
       flex-shrink: 0;
       // Buttons are normally 100% wide on mobile, but we don't want that here

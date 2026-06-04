@@ -11,7 +11,7 @@
     flex-wrap: wrap;
     align-items: center;
 
-    @media #{base.govuk-from-breakpoint(tablet)} {
+    @media base.govuk-from-breakpoint(tablet) {
       flex-direction: row;
       align-items: flex-start;
     }
@@ -48,7 +48,7 @@
     // visually sit in the middle of their touch area
     text-align: center;
 
-    @media #{base.govuk-from-breakpoint(tablet)} {
+    @media base.govuk-from-breakpoint(tablet) {
       display: block;
     }
   }

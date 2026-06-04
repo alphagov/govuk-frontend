@@ -102,7 +102,7 @@
   }
 
   .govuk-breadcrumbs--collapse-on-mobile {
-    @media #{base.govuk-until-breakpoint(tablet)} {
+    @media base.govuk-until-breakpoint(tablet) {
       .govuk-breadcrumbs__list-item {
         display: none;
 

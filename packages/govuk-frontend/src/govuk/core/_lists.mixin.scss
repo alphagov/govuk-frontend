@@ -46,7 +46,7 @@
   %govuk-list--number > li {
     margin-bottom: 0;
 
-    @media #{base.govuk-from-breakpoint(tablet)} {
+    @media base.govuk-from-breakpoint(tablet) {
       margin-bottom: base.govuk-spacing(1);
     }
   }
@@ -54,7 +54,7 @@
   %govuk-list--spaced > li {
     margin-bottom: base.govuk-spacing(2);
 
-    @media #{base.govuk-from-breakpoint(tablet)} {
+    @media base.govuk-from-breakpoint(tablet) {
       margin-bottom: base.govuk-spacing(3);
     }
   }

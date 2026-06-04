@@ -58,7 +58,7 @@
 
     // On tablet and above, we also introduce a 'column gap' between the
     // buttons and links in each row and left align links
-    @media #{base.govuk-from-breakpoint(tablet)} {
+    @media base.govuk-from-breakpoint(tablet) {
       flex-direction: row;
       flex-wrap: wrap;
       align-items: baseline;

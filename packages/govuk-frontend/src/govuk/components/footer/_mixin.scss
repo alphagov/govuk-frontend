@@ -56,7 +56,7 @@
 
   .govuk-footer__meta-item--grow {
     flex: 1; // Support: Flexbox
-    @media #{base.govuk-until-breakpoint(tablet)} {
+    @media base.govuk-until-breakpoint(tablet) {
       flex-basis: 320px; // Support: Flexbox
     }
   }
@@ -64,7 +64,7 @@
   .govuk-footer__licence-logo {
     display: inline-block;
     margin-right: base.govuk-spacing(2);
-    @media #{base.govuk-until-breakpoint(desktop)} {
+    @media base.govuk-until-breakpoint(desktop) {
       margin-bottom: base.govuk-spacing(3);
     }
     vertical-align: top;
@@ -146,7 +146,7 @@
     margin-bottom: base.govuk-spacing(6);
     padding-bottom: base.govuk-spacing(4);
 
-    @media #{base.govuk-until-breakpoint(tablet)} {
+    @media base.govuk-until-breakpoint(tablet) {
       padding-bottom: base.govuk-spacing(2);
     }
 
@@ -174,7 +174,7 @@
     list-style: none;
   }
 
-  @media #{base.govuk-from-breakpoint(desktop)} {
+  @media base.govuk-from-breakpoint(desktop) {
     .govuk-footer__list--columns-2 {
       column-count: 2; // Support: Columns
     }

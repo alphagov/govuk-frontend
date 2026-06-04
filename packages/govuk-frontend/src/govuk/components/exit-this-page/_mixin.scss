@@ -12,7 +12,7 @@
     left: 0;
     width: 100%;
 
-    @media #{base.govuk-from-breakpoint(tablet)} {
+    @media base.govuk-from-breakpoint(tablet) {
       display: inline-block;
       right: 0;
       left: auto;

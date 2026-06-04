@@ -40,7 +40,7 @@
   }
 
   // On tablet, add full width gutters
-  @media #{govuk-from-breakpoint(tablet)} {
+  @media govuk-from-breakpoint(tablet) {
     margin-right: $govuk-gutter;
     margin-left: $govuk-gutter;
 

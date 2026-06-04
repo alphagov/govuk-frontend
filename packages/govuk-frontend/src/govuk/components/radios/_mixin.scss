@@ -145,7 +145,7 @@
   // =========================================================
 
   .govuk-radios--inline {
-    @media #{base.govuk-from-breakpoint(tablet)} {
+    @media base.govuk-from-breakpoint(tablet) {
       display: flex;
       flex-wrap: wrap;
       align-items: flex-start;

@@ -109,7 +109,7 @@
     background-color: base.govuk-colour("white");
     cursor: pointer;
 
-    @media #{base.govuk-from-breakpoint(tablet)} {
+    @media base.govuk-from-breakpoint(tablet) {
       padding: (base.govuk-spacing(4) + base.$govuk-border-width - $file-upload-border-width);
     }
 

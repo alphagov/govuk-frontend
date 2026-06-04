@@ -29,7 +29,7 @@
     @include base.govuk-font-size($size: 16);
     margin-right: base.govuk-spacing(3);
 
-    @media #{base.govuk-from-breakpoint(tablet)} {
+    @media base.govuk-from-breakpoint(tablet) {
       margin-right: base.govuk-spacing(2);
     }
   }

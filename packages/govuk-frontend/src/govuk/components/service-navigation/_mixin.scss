@@ -23,7 +23,7 @@
     flex-direction: column;
     align-items: start;
 
-    @media #{base.govuk-from-breakpoint(tablet)} {
+    @media base.govuk-from-breakpoint(tablet) {
       flex-direction: row;
       flex-wrap: wrap;
     }
@@ -42,7 +42,7 @@
     border-style: solid;
     border-color: base.govuk-functional-colour(link);
 
-    @media #{base.govuk-from-breakpoint(tablet)} {
+    @media base.govuk-from-breakpoint(tablet) {
       // inline-block is used as a fallback for browsers that don't support flexbox
       display: inline-block;
 
@@ -75,7 +75,7 @@
   }
 
   .govuk-service-navigation__item--active {
-    @media #{base.govuk-until-breakpoint(tablet)} {
+    @media base.govuk-until-breakpoint(tablet) {
       // Negative offset the left margin so we can place a current page indicator
       // to the left without misaligning the list item text.
       margin-left: ((base.govuk-spacing(2) + $govuk-service-navigation-active-link-border-width) * -1);
@@ -83,7 +83,7 @@
       border-left-width: $govuk-service-navigation-active-link-border-width;
     }
 
-    @media #{base.govuk-from-breakpoint(tablet)} {
+    @media base.govuk-from-breakpoint(tablet) {
       padding-bottom: base.govuk-spacing(3) - $govuk-service-navigation-active-link-border-width;
       border-bottom-width: $govuk-service-navigation-active-link-border-width;
     }
@@ -170,7 +170,7 @@
     //   readers would pointlessly announce.
     // - Fixes an NVDA issue in Firefox and Chrome <= 124 where it would read
     //   all of the links as a run-on sentence.
-    @media #{base.govuk-from-breakpoint(tablet)} {
+    @media base.govuk-from-breakpoint(tablet) {
       display: flex;
       flex-wrap: wrap;
       margin-bottom: 0;

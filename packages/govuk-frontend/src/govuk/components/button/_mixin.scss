@@ -57,7 +57,7 @@
     cursor: pointer;
     -webkit-appearance: none;
 
-    @media #{base.govuk-from-breakpoint(tablet)} {
+    @media base.govuk-from-breakpoint(tablet) {
       width: auto;
     }
 
@@ -225,7 +225,7 @@
     // (https://github.com/w3c/csswg-drafts/issues/6310)
     forced-color-adjust: auto;
 
-    @media #{base.govuk-from-breakpoint(desktop)} {
+    @media base.govuk-from-breakpoint(desktop) {
       margin-left: base.govuk-spacing(2);
     }
   }
