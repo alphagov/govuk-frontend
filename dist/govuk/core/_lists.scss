@@ -1,0 +1,9 @@
+@use "../custom-properties";
+@use "lists.mixin" as mixin;
+
+// We need to use typography in order to extend the %govuk-list placeholder
+// classes in the typography mixin
+@use "typography";
+
+@include mixin.styles;
+
