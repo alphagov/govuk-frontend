@@ -1,0 +1,107 @@
+{% from "../../macros/attributes.njk" import govukAttributes %}
+{% from "../language-switcher/macro.njk" import govukLanguageSwitcher %}
+
+{%- set menuButtonText = params.menuButtonText | default("Menu", true) -%}
+{%- set navigationId = params.navigationId | default("navigation", true) %}
+{%- set hasLanguageSwitch = params.languageSwitch %}
+{%- set languageSwitchClasses = params.languageSwitch.classes | default("", true) if hasLanguageSwitch else "" -%}
+{%- set languageSwitchIsResponsive = hasLanguageSwitch and ("govuk-language-switcher-responsive" in languageSwitchClasses) -%}
+{%- set languageSwitchIsRightAligned = hasLanguageSwitch and not languageSwitchIsResponsive and ("govuk-language-switcher--right-align" in languageSwitchClasses) -%}
+{%- set languageSwitchIsInline = languageSwitchIsRightAligned -%}
+{%- set languageSwitchItems = params.languageSwitch.items | default([
+  {
+    "code": "en",
+    "text": params.languageSwitch.englishText | default("English", true),
+    "href": params.languageSwitch.englishHref | default("#", true)
+  },
+  {
+    "code": "cy",
+    "text": params.languageSwitch.welshText | default("Cymraeg", true),
+    "href": params.languageSwitch.welshHref | default("#", true)
+  }
+], true) if hasLanguageSwitch else [] -%}
+{%- set languageSwitchVariantClass = "govuk-language-switcher-responsive" if languageSwitchIsResponsive else ("govuk-language-switcher-right" if languageSwitchIsRightAligned else "govuk-language-switcher-end") -%}
+{%- set languageSwitchAllClasses = (languageSwitchVariantClass ~ (" " ~ languageSwitchClasses if languageSwitchClasses else "")) | trim if hasLanguageSwitch else "" -%}
+
+<section aria-label="{{ params.ariaLabel | default("Service information") }}" class="govuk-test-service-navigation govuk-service-navigation{%- if params.classes %} {{ params.classes }}{% endif %}" data-module="govuk-service-navigation"
+  {{- govukAttributes(params.attributes) }}>
+  <div class="govuk-width-container">
+    <div class="govuk-service-navigation__container">
+      {% if params.serviceName %}
+        <span class="govuk-service-navigation__service-name">
+          {% if params.serviceUrl %}
+            <a href="{{ params.serviceUrl }}" class="govuk-service-navigation__link">
+              {{ params.serviceName }}
+            </a>
+          {% else %}
+            <span class="govuk-service-navigation__text">
+              {{- params.serviceName -}}
+            </span>
+          {% endif %}
+        </span>
+      {% endif %}
+
+      {% set navigationItems = params.navigation | default([]) | select("truthy") %}
+      {% set collapseNavigationOnMobile = params.collapseNavigationOnMobile | default(navigationItems.length > 1) %}
+      {% if navigationItems | length %}
+        <nav aria-label="{{ params.navigationLabel | default(menuButtonText, true) }}" class="govuk-service-navigation__wrapper {%- if params.navigationClasses %} {{ params.navigationClasses }}{% endif %}">
+          {% if collapseNavigationOnMobile %}
+            <button type="button" class="govuk-service-navigation__toggle govuk-js-service-navigation-toggle" aria-controls="{{ navigationId }}" {%- if params.menuButtonLabel and params.menuButtonLabel != menuButtonText %} aria-label="{{ params.menuButtonLabel }}"{% endif %} hidden aria-hidden="true">
+              {{ menuButtonText }}
+            </button>
+          {% endif %}
+
+          <ul class="govuk-service-navigation__list" id="{{ navigationId }}">
+            {% for item in navigationItems %}
+              <li class="govuk-service-navigation__item {%- if item.active or item.current %} govuk-service-navigation__item--active{% endif %}">
+                {% if item.href %}
+                  <a class="govuk-service-navigation__link" href="{{ item.href }}" {%- if item.active or item.current %} aria-current="{{ 'page' if item.current else 'true' }}"{% endif %}{{- govukAttributes(item.attributes) -}}>
+                    {% if item.active or item.current %}
+                      <strong class="govuk-service-navigation__active-fallback">{{ item.html | safe if item.html else item.text }}</strong>
+                    {% else %}
+                      {{ item.html | safe if item.html else item.text }}
+                    {% endif %}
+                  </a>
+                {% elif item.html or item.text %}
+                  <span class="govuk-service-navigation__text" {%- if item.active or item.current %} aria-current="{{ 'page' if item.current else 'true' }}"{% endif %}>
+                    {{ item.html | safe if item.html else item.text }}
+                  </span>
+                {% endif %}
+              </li>
+            {% endfor %}
+          </ul>
+        </nav>
+      {% endif %}
+
+      {% if hasLanguageSwitch and languageSwitchIsInline %}
+        {{ govukLanguageSwitcher({
+          "currentLanguage": params.languageSwitch.currentLanguage,
+          "items": languageSwitchItems,
+          "collapseOnMobile": languageSwitchIsResponsive,
+          "menuButtonText": params.languageSwitch.menuButtonText,
+          "menuButtonLabel": params.languageSwitch.menuButtonLabel,
+          "navigationId": params.languageSwitch.navigationId,
+          "showIcon": params.languageSwitch.showIcon,
+          "ariaLabel": params.languageSwitch.ariaLabel,
+          "classes": languageSwitchAllClasses,
+          "attributes": params.languageSwitch.attributes
+        }) }}
+      {% endif %}
+    </div>
+
+    {% if hasLanguageSwitch and not languageSwitchIsInline %}
+      {{ govukLanguageSwitcher({
+        "currentLanguage": params.languageSwitch.currentLanguage,
+        "items": languageSwitchItems,
+        "collapseOnMobile": languageSwitchIsResponsive,
+        "menuButtonText": params.languageSwitch.menuButtonText,
+        "menuButtonLabel": params.languageSwitch.menuButtonLabel,
+        "navigationId": params.languageSwitch.navigationId,
+        "showIcon": params.languageSwitch.showIcon,
+        "ariaLabel": params.languageSwitch.ariaLabel,
+        "classes": languageSwitchAllClasses,
+        "attributes": params.languageSwitch.attributes
+      }) }}
+    {% endif %}
+  </div>
+</section>
