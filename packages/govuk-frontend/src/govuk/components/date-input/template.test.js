@@ -112,10 +112,61 @@ describe('Date input', () => {
     })
 
     it('renders items with value', () => {
-      const $ = render('date-input', examples['with values'])
+      const $ = render('date-input', examples['with item value'])
 
       const $lastItems = $('.govuk-date-input__item:last-child input')
       expect($lastItems.val()).toBe('2018')
+    })
+
+    it('renders items with pre-defined field', () => {
+      const $ = render('date-input', examples['with pre-defined field'])
+
+      const $lastItems = $('.govuk-date-input__item:last-child input')
+      expect($lastItems.val()).toBe('2023')
+    })
+
+    it('renders items with pre-defined field and items', () => {
+      const $ = render(
+        'date-input',
+        examples['with pre-defined field and items']
+      )
+
+      // Item lacks value so pre-defined field is used
+      const $lastItems = $('.govuk-date-input__item:last-child input')
+      expect($lastItems.val()).toBe('2023')
+    })
+
+    it('renders items with pre-defined field and item value', () => {
+      const $ = render(
+        'date-input',
+        examples['with pre-defined field and item value']
+      )
+
+      // Item value takes precedence over pre-defined field
+      const $lastItems = $('.govuk-date-input__item:last-child input')
+      expect($lastItems.val()).toBe('2018')
+    })
+
+    it('renders items with pre-defined field, item value and values', () => {
+      const $ = render(
+        'date-input',
+        examples['with pre-defined field, item value and values']
+      )
+
+      // Item value takes precedence over both pre-defined field and values option
+      const $lastItems = $('.govuk-date-input__item:last-child input')
+      expect($lastItems.val()).toBe('2018')
+    })
+
+    it('renders items with pre-defined field overriding values', () => {
+      const $ = render(
+        'date-input',
+        examples['with pre-defined field overriding values']
+      )
+
+      // Pre-defined field takes precedence over values option
+      const $lastItems = $('.govuk-date-input__item:last-child input')
+      expect($lastItems.val()).toBe('2023')
     })
   })
 
@@ -215,12 +266,12 @@ describe('Date input', () => {
 
   describe('when it includes an error message', () => {
     it('renders the error message', () => {
-      const $ = render('date-input', examples['with errors only'])
+      const $ = render('date-input', examples['with error message and hint'])
       expect(htmlWithClassName($, '.govuk-error-message')).toMatchSnapshot()
     })
 
     it('uses the id as a prefix for the error message id', () => {
-      const $ = render('date-input', examples['with errors only'])
+      const $ = render('date-input', examples['with error message and hint'])
 
       const $errorMessage = $('.govuk-error-message')
 
@@ -228,7 +279,7 @@ describe('Date input', () => {
     })
 
     it('associates the fieldset as "described by" the error message', () => {
-      const $ = render('date-input', examples['with errors only'])
+      const $ = render('date-input', examples['with error message and hint'])
 
       const $fieldset = $('.govuk-fieldset')
       const errorMessageId = $('.govuk-error-message').attr('id')
@@ -250,8 +301,20 @@ describe('Date input', () => {
       )
     })
 
-    it('renders with a form group wrapper that has an error state', () => {
-      const $ = render('date-input', examples['with errors only'])
+    it('includes the error modifier class on the inputs', () => {
+      const $ = render('date-input', examples['with error message and hint'])
+
+      const $dayInput = $('[name="day"]')
+      const $monthInput = $('[name="month"]')
+      const $yearInput = $('[name="year"]')
+
+      expect($dayInput.hasClass('govuk-input--error')).toBeTruthy()
+      expect($monthInput.hasClass('govuk-input--error')).toBeTruthy()
+      expect($yearInput.hasClass('govuk-input--error')).toBeTruthy()
+    })
+
+    it('includes the error modifier class on the form group wrapper', () => {
+      const $ = render('date-input', examples['with error message and hint'])
 
       const $formGroup = $('.govuk-form-group')
       expect($formGroup.hasClass('govuk-form-group--error')).toBeTruthy()
@@ -260,7 +323,7 @@ describe('Date input', () => {
 
   describe('when they include both a hint and an error message', () => {
     it('sets the `group` role on the fieldset to force JAWS18 to announce the hint and error message', () => {
-      const $ = render('date-input', examples['with errors and hint'])
+      const $ = render('date-input', examples['with error message and hint'])
 
       const $fieldset = $('.govuk-fieldset')
 
@@ -268,7 +331,7 @@ describe('Date input', () => {
     })
 
     it('associates the fieldset as described by both the hint and the error message', () => {
-      const $ = render('date-input', examples['with errors and hint'])
+      const $ = render('date-input', examples['with error message and hint'])
 
       const $fieldset = $('.govuk-fieldset')
       const errorMessageId = $('.govuk-error-message').attr('id')
@@ -282,7 +345,7 @@ describe('Date input', () => {
     })
 
     it('associates the fieldset as described by the hint, error message and parent fieldset', () => {
-      const $ = render('date-input', examples['with errors and hint'])
+      const $ = render('date-input', examples['with error message and hint'])
 
       const $fieldset = $('.govuk-fieldset')
 
@@ -327,9 +390,21 @@ describe('Date input', () => {
     const $dayInput = $('[name="day"]')
     const $monthInput = $('[name="month"]')
     const $yearInput = $('[name="year"]')
+
+    // All fields set default classes
+    expect($dayInput.hasClass('govuk-date-input__input')).toBeTruthy()
+    expect($monthInput.hasClass('govuk-date-input__input')).toBeTruthy()
+    expect($yearInput.hasClass('govuk-date-input__input')).toBeTruthy()
+
+    // All fields set custom classes
     expect($dayInput.hasClass('app-date-input__day')).toBeTruthy()
     expect($monthInput.hasClass('app-date-input__month')).toBeTruthy()
     expect($yearInput.hasClass('app-date-input__year')).toBeTruthy()
+
+    // Only the day field has the error class
+    expect($monthInput.hasClass('govuk-input--error')).toBeFalsy()
+    expect($yearInput.hasClass('govuk-input--error')).toBeFalsy()
+    expect($dayInput.hasClass('govuk-input--error')).toBeTruthy()
   })
 
   it('does not set classes as undefined if none are defined', () => {
@@ -338,6 +413,18 @@ describe('Date input', () => {
     const $dayInput = $('[name="day"]')
     const $monthInput = $('[name="month"]')
     const $yearInput = $('[name="year"]')
+
+    // All fields set default classes
+    expect($dayInput.hasClass('govuk-date-input__input')).toBeTruthy()
+    expect($monthInput.hasClass('govuk-date-input__input')).toBeTruthy()
+    expect($yearInput.hasClass('govuk-date-input__input')).toBeTruthy()
+
+    // Only the day field sets the error class
+    expect($monthInput.hasClass('govuk-input--error')).toBeFalsy()
+    expect($yearInput.hasClass('govuk-input--error')).toBeFalsy()
+    expect($dayInput.hasClass('govuk-input--error')).toBeTruthy()
+
+    // No fields set undefined classes
     expect($dayInput.hasClass('undefined')).toBeFalsy()
     expect($monthInput.hasClass('undefined')).toBeFalsy()
     expect($yearInput.hasClass('undefined')).toBeFalsy()

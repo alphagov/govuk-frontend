@@ -4,6 +4,112 @@ For advice on how to use these release notes, see [our guidance on staying up to
 
 ## Unreleased
 
+### New features
+
+#### Add date input `day`, `month`, `year` and `values` options
+
+We've updated the date input component to add new Nunjucks options:
+
+- `day`, `month` and `year` to customise individual items
+- `error` boolean option to set the error state on individual items
+- `values` option to set individual item values using a single object
+
+For consistency with other components, the date input error state is now set automatically when `errorMessage` is provided.
+
+For example, it is no longer necessary to set the `"govuk-input--error"` class on every item:
+
+```patch
+  {{ govukDateInput({
+    fieldset: {
+      legend: {
+        text: "What is your date of birth?"
+      }
+    },
+    errorMessage: {
+      text: "Enter your date of birth"
+-   },
+-   items: [
+-     {
+-       name: "day",
+-       label: "Day",
+-       classes: "govuk-input--width-2 govuk-input--error"
+-     },
+-     {
+-       name: "month",
+-       label: "Month",
+-       classes: "govuk-input--width-2 govuk-input--error"
+-     },
+-     {
+-       name: "year",
+-       label: "Year",
+-       classes: "govuk-input--width-4 govuk-input--error"
+-     }
+-   ]
++   }
+  }) }}
+```
+
+If only one field has an error, use the new `day`, `month` or `year` options to set `error: true` for that field only:
+
+```patch
+  {{ govukDateInput({
+    fieldset: {
+      legend: {
+        text: "What is your date of birth?"
+      }
+    },
+    errorMessage: {
+      text: "Date of birth must include a year"
+    },
+-   items: [
+-     {
+-       name: "day",
+-       label: "Day",
+-       classes: "govuk-input--width-2"
+-     },
+-     {
+-       name: "month",
+-       label: "Month",
+-       classes: "govuk-input--width-2"
+-     },
+-     {
+-       name: "year",
+-       label: "Year",
+-       classes: "govuk-input--width-4 govuk-input--error"
+-     }
+-   ]
++   year: {
++     error: true
++   }
+  }) }}
+```
+
+When using the GOV.UK Prototype Kit, given the following `data` object:
+
+```json
+{
+  "dob-day": "31",
+  "dob-month": "3",
+  "dob-year": "1980"
+}
+```
+
+You can now pass in `values: data` to automatically set item values:
+
+```njk
+  {{ govukDateInput({
+    fieldset: {
+      legend: {
+        text: "What is your date of birth?"
+      }
+    },
+    namePrefix: "dob",
+    values: data
+  }) }}
+```
+
+We made this change in [pull request #6971: Add date input `day`, `month`, `year` and `values` options](https://github.com/alphagov/govuk-frontend/pull/6971).
+
 ## v6.2.0 (Feature release)
 
 To install this version with npm, run `npm install govuk-frontend@6.2.0`. You can also find more information about [how to stay up to date](https://frontend.design-system.service.gov.uk/staying-up-to-date/#updating-to-the-latest-version) in our documentation.
