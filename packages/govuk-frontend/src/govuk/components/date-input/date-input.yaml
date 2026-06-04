@@ -28,6 +28,10 @@ params:
         type: string
         required: false
         description: If provided, it will be used as the initial value of the input.
+      - name: error
+        type: boolean
+        required: false
+        description: If set to `true`, will show a red error border on the item input. If provided, you must set the top-level `errorMessage` option to add an error message to the date input component.
       - name: autocomplete
         type: string
         required: false
@@ -226,30 +230,29 @@ examples:
       fieldset:
         legend:
           text: What is your date of birth?
-      errorMessage:
-        text: Error message goes here
       day:
-        classes: govuk-input--error
+        error: true
       month:
-        classes: govuk-input--error
+        error: true
       year:
-        classes: govuk-input--error
+        error: true
   - name: with errors only (using items)
     options:
       id: dob-errors
       fieldset:
         legend:
           text: What is your date of birth?
-      errorMessage:
-        text: Error message goes here
       items:
         - name: day
-          classes: govuk-input--width-2 govuk-input--error
+          classes: govuk-input--width-2
+          error: true
         - name: month
-          classes: govuk-input--width-2 govuk-input--error
+          classes: govuk-input--width-2
+          error: true
         - name: year
-          classes: govuk-input--width-4 govuk-input--error
-  - name: with errors and hint
+          classes: govuk-input--width-4
+          error: true
+  - name: with error message and hint
     options:
       id: dob-errors
       fieldset:
@@ -260,28 +263,11 @@ examples:
       errorMessage:
         text: Error message goes here
       day:
-        classes: govuk-input--error
+        error: true
       month:
-        classes: govuk-input--error
+        error: true
       year:
-        classes: govuk-input--error
-  - name: with errors and hint (using items)
-    options:
-      id: dob-errors
-      fieldset:
-        legend:
-          text: What is your date of birth?
-      hint:
-        text: For example, 31 3 1980
-      errorMessage:
-        text: Error message goes here
-      items:
-        - name: day
-          classes: govuk-input--width-2 govuk-input--error
-        - name: month
-          classes: govuk-input--width-2 govuk-input--error
-        - name: year
-          classes: govuk-input--width-4 govuk-input--error
+        error: true
   - name: with error on day input
     options:
       id: dob-day-error
@@ -294,7 +280,7 @@ examples:
       errorMessage:
         text: Error message goes here
       day:
-        classes: govuk-input--error
+        error: true
   - name: with error on day input (using items)
     options:
       id: dob-day-error
@@ -308,7 +294,8 @@ examples:
         text: Error message goes here
       items:
         - name: day
-          classes: govuk-input--width-2 govuk-input--error
+          classes: govuk-input--width-2
+          error: true
         - name: month
           classes: govuk-input--width-2
         - name: year
@@ -325,7 +312,7 @@ examples:
       errorMessage:
         text: Error message goes here
       month:
-        classes: govuk-input--error
+        error: true
   - name: with error on month input (using items)
     options:
       id: dob-month-error
@@ -341,7 +328,8 @@ examples:
         - name: day
           classes: govuk-input--width-2
         - name: month
-          classes: govuk-input--width-2 govuk-input--error
+          classes: govuk-input--width-2
+          error: true
         - name: year
           classes: govuk-input--width-4
   - name: with error on year input
@@ -356,7 +344,7 @@ examples:
       errorMessage:
         text: Error message goes here
       year:
-        classes: govuk-input--error
+        error: true
   - name: with error on year input (using items)
     options:
       id: dob-year-error
@@ -374,7 +362,8 @@ examples:
         - name: month
           classes: govuk-input--width-2
         - name: year
-          classes: govuk-input--width-4 govuk-input--error
+          classes: govuk-input--width-4
+          error: true
 
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: classes
@@ -555,6 +544,7 @@ examples:
       items:
         - name: day
           classes: app-date-input__day
+          error: true
         - name: month
           classes: app-date-input__month
         - name: year
@@ -565,6 +555,7 @@ examples:
       id: without-item-classes
       items:
         - name: day
+          error: true
         - name: month
         - name: year
   - name: with optional form-group classes

@@ -39,7 +39,7 @@
   ] %}
 {% endif %}
 
-{%- macro _dateInputItem(params, item) %}
+{%- macro _dateInputItem(params, item, anyItemHasError) %}
 {% set itemName = item.name %}
 {% set itemValue = item.value %}
 {% set itemWidth = 2 %}
@@ -57,7 +57,7 @@
   {% set itemWidth = 4 %}
 {% endif %}
 
-{%- if item.classes and "govuk-input--error" in item.classes %}
+{%- if item.error or (item.classes and "govuk-input--error" in item.classes) %}
   {% set itemClasses = (itemClasses + " govuk-input--error") | trim %}
 {% endif -%}
 
@@ -89,6 +89,12 @@
   }) | trim | indent(2) }}
 </div>
 {%- endmacro -%}
+
+{#- Determine if any date input item has an error #}
+{%- set anyItemHasError = false %}
+{% for item in dateInputItems %}
+  {% set anyItemHasError = true if item.error or (item.classes and "govuk-input--error" in item.classes) else anyItemHasError %}
+{% endfor -%}
 
 {#- Capture the HTML so we can optionally nest it in a fieldset -#}
 {% set innerHtml %}
@@ -123,7 +129,7 @@
     {% endif %}
     {% for item in dateInputItems %}
       {% if item %}
-        {{- _dateInputItem(params, item) | trim | indent(4, true) }}
+        {{- _dateInputItem(params, item, anyItemHasError) | trim | indent(4, true) }}
       {% endif %}
     {% endfor %}
     {% if params.formGroup.afterInputs %}

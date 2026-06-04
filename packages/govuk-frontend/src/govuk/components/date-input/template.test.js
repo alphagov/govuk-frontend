@@ -266,12 +266,12 @@ describe('Date input', () => {
 
   describe('when it includes an error message', () => {
     it('renders the error message', () => {
-      const $ = render('date-input', examples['with errors only'])
+      const $ = render('date-input', examples['with error message and hint'])
       expect(htmlWithClassName($, '.govuk-error-message')).toMatchSnapshot()
     })
 
     it('uses the id as a prefix for the error message id', () => {
-      const $ = render('date-input', examples['with errors only'])
+      const $ = render('date-input', examples['with error message and hint'])
 
       const $errorMessage = $('.govuk-error-message')
 
@@ -279,7 +279,7 @@ describe('Date input', () => {
     })
 
     it('associates the fieldset as "described by" the error message', () => {
-      const $ = render('date-input', examples['with errors only'])
+      const $ = render('date-input', examples['with error message and hint'])
 
       const $fieldset = $('.govuk-fieldset')
       const errorMessageId = $('.govuk-error-message').attr('id')
@@ -302,7 +302,7 @@ describe('Date input', () => {
     })
 
     it('includes the error modifier class on the inputs', () => {
-      const $ = render('date-input', examples['with errors only'])
+      const $ = render('date-input', examples['with error message and hint'])
 
       const $dayInput = $('[name="day"]')
       const $monthInput = $('[name="month"]')
@@ -314,7 +314,7 @@ describe('Date input', () => {
     })
 
     it('includes the error modifier class on the form group wrapper', () => {
-      const $ = render('date-input', examples['with errors only'])
+      const $ = render('date-input', examples['with error message and hint'])
 
       const $formGroup = $('.govuk-form-group')
       expect($formGroup.hasClass('govuk-form-group--error')).toBeTruthy()
@@ -323,7 +323,7 @@ describe('Date input', () => {
 
   describe('when they include both a hint and an error message', () => {
     it('sets the `group` role on the fieldset to force JAWS18 to announce the hint and error message', () => {
-      const $ = render('date-input', examples['with errors and hint'])
+      const $ = render('date-input', examples['with error message and hint'])
 
       const $fieldset = $('.govuk-fieldset')
 
@@ -331,7 +331,7 @@ describe('Date input', () => {
     })
 
     it('associates the fieldset as described by both the hint and the error message', () => {
-      const $ = render('date-input', examples['with errors and hint'])
+      const $ = render('date-input', examples['with error message and hint'])
 
       const $fieldset = $('.govuk-fieldset')
       const errorMessageId = $('.govuk-error-message').attr('id')
@@ -345,7 +345,7 @@ describe('Date input', () => {
     })
 
     it('associates the fieldset as described by the hint, error message and parent fieldset', () => {
-      const $ = render('date-input', examples['with errors and hint'])
+      const $ = render('date-input', examples['with error message and hint'])
 
       const $fieldset = $('.govuk-fieldset')
 
@@ -400,6 +400,11 @@ describe('Date input', () => {
     expect($dayInput.hasClass('app-date-input__day')).toBeTruthy()
     expect($monthInput.hasClass('app-date-input__month')).toBeTruthy()
     expect($yearInput.hasClass('app-date-input__year')).toBeTruthy()
+
+    // Only the day field has the error class
+    expect($monthInput.hasClass('govuk-input--error')).toBeFalsy()
+    expect($yearInput.hasClass('govuk-input--error')).toBeFalsy()
+    expect($dayInput.hasClass('govuk-input--error')).toBeTruthy()
   })
 
   it('does not set classes as undefined if none are defined', () => {
@@ -413,6 +418,11 @@ describe('Date input', () => {
     expect($dayInput.hasClass('govuk-date-input__input')).toBeTruthy()
     expect($monthInput.hasClass('govuk-date-input__input')).toBeTruthy()
     expect($yearInput.hasClass('govuk-date-input__input')).toBeTruthy()
+
+    // Only the day field sets the error class
+    expect($monthInput.hasClass('govuk-input--error')).toBeFalsy()
+    expect($yearInput.hasClass('govuk-input--error')).toBeFalsy()
+    expect($dayInput.hasClass('govuk-input--error')).toBeTruthy()
 
     // No fields set undefined classes
     expect($dayInput.hasClass('undefined')).toBeFalsy()
