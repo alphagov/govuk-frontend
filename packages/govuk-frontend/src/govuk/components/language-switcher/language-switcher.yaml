@@ -1,0 +1,142 @@
+params:
+  - name: items
+    type: array
+    required: true
+    description: Language options shown in the switcher.
+    params:
+      - name: code
+        type: string
+        required: true
+        description: Language code used for `lang` and `hreflang`.
+      - name: text
+        type: string
+        required: true
+        description: Language name shown to users.
+      - name: href
+        type: string
+        required: false
+        description: URL for the language link. Ignored when the item is current.
+      - name: current
+        type: boolean
+        required: false
+        description: Marks this language as current. Takes precedence over `currentLanguage`.
+  - name: currentLanguage
+    type: string
+    required: false
+    description: Language code for the current language. Defaults to matching no item.
+  - name: collapseOnMobile
+    type: boolean
+    required: false
+    description: Whether to collapse the language list behind a button on mobile viewports. Defaults to `true`.
+  - name: menuButtonText
+    type: string
+    required: false
+    description: Text used for the collapse toggle button. Defaults to `Language`.
+  - name: menuButtonLabel
+    type: string
+    required: false
+    description: Accessible label for the collapse toggle button. Defaults to `menuButtonText`.
+  - name: ariaLabel
+    type: string
+    required: false
+    description: Label for the language navigation landmark. Defaults to `Language`.
+  - name: navigationId
+    type: string
+    required: false
+    description: ID used to associate the collapse toggle with the list. Defaults to `language-switcher-navigation`.
+  - name: showIcon
+    type: boolean
+    required: false
+    description: If `true`, shows a globe icon before the first language option.
+  - name: classes
+    type: string
+    required: false
+    description: Classes to add to the component container.
+  - name: attributes
+    type: object
+    required: false
+    description: HTML attributes (for example, data attributes) to add to the component container.
+
+examples:
+  - name: default
+    screenshot: true
+    options:
+      currentLanguage: en
+      items:
+        - code: en
+          text: English
+          href: /en
+        - code: cy
+          text: Cymraeg
+          href: /cy
+  - name: with icon
+    screenshot: true
+    options:
+      currentLanguage: en
+      showIcon: true
+      items:
+        - code: en
+          text: English
+          href: /en
+        - code: cy
+          text: Cymraeg
+          href: /cy
+  - name: with mobile collapse
+    screenshot:
+      variants:
+        - default
+        - no-js
+    options:
+      collapseOnMobile: true
+      currentLanguage: en
+      items:
+        - code: en
+          text: English
+          href: /en
+        - code: cy
+          text: Cymraeg
+          href: /cy
+        - code: fr
+          text: Francais
+          href: /fr
+
+  # Hidden examples
+  - name: classes
+    hidden: true
+    options:
+      classes: app-language-switcher--custom-class
+      currentLanguage: en
+      items:
+        - code: en
+          text: English
+          href: /en
+        - code: cy
+          text: Cymraeg
+          href: /cy
+  - name: attributes
+    hidden: true
+    options:
+      attributes:
+        data-test: attribute
+        aria-describedby: language-switcher-help
+      currentLanguage: en
+      items:
+        - code: en
+          text: English
+          href: /en
+        - code: cy
+          text: Cymraeg
+          href: /cy
+  - name: with explicit current item
+    hidden: true
+    options:
+      currentLanguage: en
+      items:
+        - code: en
+          text: English
+          href: /en
+          current: false
+        - code: cy
+          text: Cymraeg
+          href: /cy
+          current: true

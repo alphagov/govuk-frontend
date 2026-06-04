@@ -1,0 +1,180 @@
+@use "sass:math";
+
+@use "../../base";
+
+/// @group components/language-switcher
+/// @access private
+@mixin styles {
+  .govuk-language-switcher {
+    @include base.govuk-font($size: 19);
+  }
+
+  .govuk-language-switcher__list {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .govuk-language-switcher__item {
+    margin: 0;
+    padding: 0;
+
+    &:not(:first-child) {
+      position: relative;
+      margin-left: base.govuk-spacing(2);
+      padding-left: base.govuk-spacing(2);
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 0;
+        height: 1em;
+        transform: translateY(-50%);
+        border-left: 1px solid currentcolor;
+      }
+    }
+
+    @media #{base.govuk-from-breakpoint(tablet)} {
+      display: inline-block;
+      margin-top: 0;
+      margin-bottom: 0;
+      padding: base.govuk-spacing(3) 0;
+      line-height: math.div(29, 19);
+    }
+  }
+
+  .govuk-language-switcher__link {
+    @include base.govuk-link-common;
+    @include base.govuk-link-style-no-underline;
+    @include base.govuk-link-style-no-visited-state;
+  }
+
+  .govuk-language-switcher__text {
+    font-weight: inherit;
+  }
+
+  .govuk-language-switcher__icon {
+    display: inline-flex;
+    align-items: center;
+    filter: grayscale(1);
+    line-height: 1;
+    vertical-align: text-top;
+  }
+
+  .govuk-language-switcher__icon-svg {
+    display: block;
+  }
+
+  .govuk-language-switcher__toggle {
+    @include base.govuk-font($size: 19, $weight: bold);
+    display: inline-flex;
+    align-items: center;
+    margin: base.govuk-spacing(2) 0;
+    padding: 0;
+    border: 0;
+    color: base.govuk-functional-colour(link);
+    background: none;
+    word-break: break-all;
+    cursor: pointer;
+
+    &:focus {
+      @include base.govuk-focused-text;
+    }
+
+    &::after {
+      @include base.govuk-shape-arrow($direction: down, $base: 10px, $display: inline-block);
+      content: "";
+      margin-left: base.govuk-spacing(1);
+    }
+
+    &[aria-expanded="true"]::after {
+      @include base.govuk-shape-arrow($direction: up, $base: 10px, $display: inline-block);
+    }
+
+    &[hidden] {
+      display: none;
+    }
+  }
+
+  .govuk-language-switcher__toggle .govuk-language-switcher__icon {
+    margin-right: base.govuk-spacing(1);
+  }
+
+  .govuk-language-switcher__item--icon + .govuk-language-switcher__item {
+    margin-left: base.govuk-spacing(1);
+    padding-left: 0;
+
+    &::before {
+      display: none;
+    }
+  }
+
+  .govuk-language-switcher--right-align,
+  .govuk-language-switcher-right {
+    margin: base.govuk-spacing(2) 0;
+
+    @media #{base.govuk-from-breakpoint(tablet)} {
+      margin: 0 0 0 auto;
+    }
+  }
+
+  .govuk-language-switcher--post-end,
+  .govuk-language-switcher-end,
+  .govuk-language-switcher-responsive {
+    .govuk-language-switcher__item {
+      @media #{base.govuk-until-breakpoint(tablet)} {
+        padding-bottom: base.govuk-spacing(2);
+      }
+
+      @media #{base.govuk-from-breakpoint(tablet)} {
+        padding-top: 0;
+        line-height: 1;
+      }
+
+      &:not(:first-child)::before {
+        @media #{base.govuk-from-breakpoint(tablet)} {
+          top: 0;
+          transform: none;
+        }
+      }
+    }
+  }
+
+  .govuk-language-switcher--collapsible,
+  .govuk-language-switcher-responsive {
+    .govuk-language-switcher__toggle {
+      margin-bottom: 0;
+    }
+
+    @media #{base.govuk-until-breakpoint(tablet)} {
+      .govuk-language-switcher__list {
+        display: block;
+        margin-bottom: base.govuk-spacing(3);
+
+        &[hidden] {
+          display: none;
+        }
+      }
+
+      .govuk-language-switcher__item {
+        margin: base.govuk-spacing(2) 0;
+
+        &:not(:first-child) {
+          margin-left: 0;
+          padding-left: 0;
+
+          &::before {
+            display: none;
+          }
+        }
+      }
+
+      .govuk-language-switcher__item--icon {
+        display: none;
+      }
+    }
+  }
+}

@@ -1,7 +1,15 @@
 {% from "../../macros/attributes.njk" import govukAttributes %}
+{% from "./language-switcher-end.njk" import govukLanguageSwitcherEnd %}
+{% from "./language-switcher-right.njk" import govukLanguageSwitcherRight %}
+{% from "./language-switcher-responsive.njk" import govukLanguageSwitcherResponsive %}
 
 {%- set menuButtonText = params.menuButtonText | default("Menu", true) -%}
 {%- set navigationId = params.navigationId | default("navigation", true) %}
+{%- set hasLanguageSwitch = params.languageSwitch %}
+{%- set languageSwitchClasses = params.languageSwitch.classes | default("", true) if hasLanguageSwitch else "" -%}
+{%- set languageSwitchIsResponsive = hasLanguageSwitch and ("govuk-language-switcher-responsive" in languageSwitchClasses) -%}
+{%- set languageSwitchIsRightAligned = hasLanguageSwitch and not languageSwitchIsResponsive and ("govuk-language-switcher--right-align" in languageSwitchClasses) -%}
+{%- set languageSwitchIsInline = languageSwitchIsRightAligned -%}
 
 {%- set commonAttributes %}
 class="govuk-service-navigation {%- if params.classes %} {{ params.classes }}{% endif %}"
@@ -84,10 +92,26 @@ data-module="govuk-service-navigation"
           </ul>
         </nav>
       {% endif %}
+
+      {% if hasLanguageSwitch and languageSwitchIsInline %}
+        {% if languageSwitchIsResponsive %}
+          {{ govukLanguageSwitcherResponsive(params.languageSwitch) }}
+        {% else %}
+          {{ govukLanguageSwitcherRight(params.languageSwitch) }}
+        {% endif %}
+      {% endif %}
     </div>
 
     {# Slot: end #}
     {%- if params.slots.end %}{{ params.slots.end | safe }}{% endif -%}
+
+    {% if hasLanguageSwitch and not languageSwitchIsInline %}
+      {% if languageSwitchIsResponsive %}
+        {{ govukLanguageSwitcherResponsive(params.languageSwitch) }}
+      {% else %}
+        {{ govukLanguageSwitcherEnd(params.languageSwitch) }}
+      {% endif %}
+    {% endif %}
 
   </div>
 {% endset -%}

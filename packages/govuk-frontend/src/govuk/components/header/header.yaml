@@ -11,6 +11,10 @@ params:
     type: string
     required: false
     description: Classes for the container, useful if you want to make the header fixed width.
+  - name: secondaryHtml
+    type: string
+    required: false
+    description: HTML rendered inside the header container after the logo block.
   - name: classes
     type: string
     required: false
