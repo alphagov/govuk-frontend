@@ -79,10 +79,15 @@ export class ConfigurableComponent extends Component {
       normaliseDataset(childConstructor, this._$root.dataset)
     )
 
+    // Override defaults with JavaScript config
+    this._config = /** @type {ConfigurationType} */ (
+      mergeConfigs(childConstructor.defaults, config ?? {})
+    )
+
+    // Override merged config with dataset config
     this._config = /** @type {ConfigurationType} */ (
       mergeConfigs(
-        childConstructor.defaults,
-        config ?? {},
+        this._config,
         this[configOverride](datasetConfig),
         datasetConfig
       )
@@ -107,6 +112,13 @@ export class ConfigurableComponent extends Component {
  * @returns {string | boolean | number | undefined} Normalised data
  */
 export function normaliseString(value, property) {
+  if (
+    property?.type &&
+    !['string', 'number', 'boolean'].includes(property.type)
+  ) {
+    return
+  }
+
   const trimmedValue = value ? value.trim() : ''
 
   let output
@@ -374,7 +386,8 @@ export function extractConfigByNamespace(schema, dataset, namespace) {
 /**
  * @internal
  * @typedef {keyof ObjectNested} NestedKey
- * @typedef {{ [key: string]: string | boolean | number | ObjectNested | undefined }} ObjectNested
+ * @typedef {string | boolean | number} NestedValue
+ * @typedef {{ [key: string]: NestedValue | ((...args: any[]) => NestedValue) | ObjectNested | undefined }} ObjectNested
  */
 
 /**
@@ -390,7 +403,7 @@ export function extractConfigByNamespace(schema, dataset, namespace) {
  * Schema property for component config
  *
  * @typedef {object} SchemaProperty
- * @property {'string' | 'boolean' | 'number' | 'object'} type - Property type
+ * @property {'string' | 'boolean' | 'number' | 'object' | 'function'} type - Property type
  */
 
 /**

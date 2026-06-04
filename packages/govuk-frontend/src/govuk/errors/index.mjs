@@ -1,4 +1,4 @@
-import { formatErrorMessage, isObject } from '../common/index.mjs'
+import { formatErrorMessage, isObject, isScope } from '../common/index.mjs'
 
 /**
  * GOV.UK Frontend error
@@ -33,19 +33,20 @@ export class SupportError extends GOVUKFrontendError {
   /**
    * Checks if GOV.UK Frontend is supported on this page
    *
-   * @param {HTMLElement | null} [$scope] - HTML element `<body>` checked for browser support
+   * @param {Element | Document | null | string} [scopeOrMessage] - HTML element `<body>` checked for browser support or support error message
    */
-  constructor($scope = document.body) {
-    const supportMessage =
+  constructor(scopeOrMessage = document.body) {
+    let supportMessage =
       'noModule' in HTMLScriptElement.prototype
         ? 'GOV.UK Frontend initialised without `<body class="govuk-frontend-supported">` from template `<script>` snippet'
         : 'GOV.UK Frontend is not supported in this browser'
 
-    super(
-      $scope
-        ? supportMessage
-        : 'GOV.UK Frontend initialised without `<script type="module">`'
-    )
+    if (!isScope(scopeOrMessage)) {
+      supportMessage =
+        'GOV.UK Frontend initialised without `<script type="module">`'
+    }
+
+    super(typeof scopeOrMessage === 'string' ? scopeOrMessage : supportMessage)
   }
 }
 

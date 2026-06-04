@@ -3,6 +3,9 @@
 {% from "../textarea/macro.njk" import govukTextarea %}
 {% from "../hint/macro.njk" import govukHint %}
 
+{%- set countType = params.countType if params.countType
+  else ("words" if params.maxwords) -%}
+
 {#-
   If the limit is set in JavaScript, we won't be able to interpolate the message
   until JavaScript, so we only set a text if the `maxlength` or `maxwords` options
@@ -10,7 +13,7 @@
 #}
 {%- set hasNoLimit = (not params.maxwords and not params.maxlength) -%}
 {%- set textareaDescriptionLength = params.maxwords or params.maxlength -%}
-{%- set textareaDescriptionText = params.textareaDescriptionText or 'You can enter up to %{count} ' + ('words' if params.maxwords else 'characters') -%}
+{%- set textareaDescriptionText = params.textareaDescriptionText or "You can enter up to %{count} " + ("words" if countType == "words" else "characters") -%}
 {%- set textareaDescriptionTextNoLimit = textareaDescriptionText | replace('%{count}', textareaDescriptionLength) if not hasNoLimit -%}
 {%- set id = params.id if params.id else params.name -%}
 
@@ -32,12 +35,16 @@
       value: params.maxlength,
       optional: true
     },
+    "data-maxwords": {
+      value: params.maxwords,
+      optional: true
+    },
     "data-threshold": {
       value: params.threshold,
       optional: true
     },
-    "data-maxwords": {
-      value: params.maxwords,
+    "data-count-type": {
+      value: countType if countType else false,
       optional: true
     }
   }) -}}
