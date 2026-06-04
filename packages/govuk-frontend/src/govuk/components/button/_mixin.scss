@@ -14,7 +14,10 @@
   // Secondary button variables
   $govuk-secondary-button-colour: base.govuk-colour("black", $variant: "tint-95");
   $govuk-secondary-button-text-colour: base.govuk-colour("black");
-  $govuk-secondary-button-hover-colour: base.govuk-colour("black", $variant: "tint-80");
+  $govuk-secondary-button-hover-colour: var(
+    --govuk-hover-colour-lighter,
+    base.govuk-colour("black", $variant: "tint-80")
+  );
   $govuk-secondary-button-shadow-colour: base.govuk-colour("black", $variant: "tint-50");
 
   // Warning button variables
@@ -26,7 +29,7 @@
   // Inverse button variables
   $govuk-inverse-button-colour: $inverse-background-colour;
   $inverse-text-colour: $inverse-text-colour;
-  $govuk-inverse-button-hover-colour: base.govuk-colour("blue", $variant: "tint-95");
+  $govuk-inverse-button-hover-colour: var(--govuk-hover-colour-lighter, base.govuk-colour("blue", $variant: "tint-95"));
   $govuk-inverse-button-shadow-colour: base.govuk-colour("blue", $variant: "shade-50");
 
   // Because the shadow (s0) is visually 'part of' the button, we need to reduce
