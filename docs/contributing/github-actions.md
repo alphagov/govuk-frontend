@@ -62,8 +62,7 @@ git commit -m "$RELEASE_TITLE"
 
 ## Move complicated logic outside of the workflow
 
-Instead delegate to shell or JavaScript scripts that can be run individually on our machines and accept options as environment variables (to help testing).
-Scripts should have associated unit tests when possible
+Try to run any complicated logic in scripts outside the GitHub workflow, this allows us to test them using our regular test suite.
 
 Bad:
 
