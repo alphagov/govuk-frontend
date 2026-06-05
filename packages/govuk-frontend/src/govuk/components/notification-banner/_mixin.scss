@@ -38,7 +38,7 @@
     @include base.govuk-typography-weight-bold;
     margin: 0;
     padding: 0;
-    color: base.govuk-colour("white");
+    color: base.govuk-functional-colour(notification-banner-title-text);
   }
 
   .govuk-notification-banner__content {

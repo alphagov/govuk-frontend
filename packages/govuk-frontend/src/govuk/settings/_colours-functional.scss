@@ -96,6 +96,206 @@ $govuk-default-functional-colours: (
     "surface-border": (
       name: "blue",
       variant: "tint-50"
+    ),
+    "accordion-base": (
+      name: "black"
+    ),
+    "accordion-hover": (
+      name: "black",
+      variant: "tint-95"
+    ),
+    "breadcrumbs-inverse": (
+      name: "white"
+    ),
+    "button": (
+      name: "green"
+    ),
+    "button-text": (
+      name: "white"
+    ),
+    "button-hover": (
+      name: "green",
+      variant: "shade-25"
+    ),
+    "button-shadow": (
+      name: "green",
+      variant: "shade-50"
+    ),
+    "secondary-button": (
+      name: "black",
+      variant: "tint-95"
+    ),
+    "secondary-button-text": (
+      name: "black"
+    ),
+    "secondary-button-hover": (
+      name: "black",
+      variant: "tint-80"
+    ),
+    "secondary-button-shadow": (
+      name: "black",
+      variant: "tint-50"
+    ),
+    "warning-button": (
+      name: "red"
+    ),
+    "warning-button-text": (
+      name: "white"
+    ),
+    "warning-button-hover": (
+      name: "red",
+      variant: "shade-25"
+    ),
+    "warning-button-shadow": (
+      name: "red",
+      variant: "shade-50"
+    ),
+    // No inverse-button-text as it's `brand`
+    "inverse-button-background": (
+        name: "white"
+      ),
+    // Why was the variable not `inverse-button`
+    "inverse-button-hover": (
+        name: "blue",
+        variant: "tint-95"
+      ),
+    "inverse-button-shadow": (
+      name: "blue",
+      variant: "shade-50"
+    ),
+    "exit-this-page-overlay-background": (
+      name: "white"
+    ),
+    // Should it be `template-background`?
+    "file-upload-status-background": (
+        name: "blue"
+      ),
+    // Should it be `brand`?
+    "file-upload-status-text": (
+        name: "white"
+      ),
+    "file-upload-button-border": (
+      name: "black",
+      variant: "tint-80"
+    ),
+    "file-upload-button-background": (
+      name: "white"
+    ),
+    "file-upload-hover-button-border": (
+      name: "black",
+      variant: "tint-50"
+    ),
+    "file-upload-hover-pseudo-button-background": (
+      name: "black",
+      variant: "tint-80"
+    ),
+    "file-upload-focus-button-background": (
+      name: "black",
+      variant: "tint-95"
+    ),
+    "file-upload-focus-button-border": (
+      name: "black"
+    ),
+    // Should it reference `focus-text`?
+    "file-upload-focus-pseudo-button-shadow": (
+        name: "black",
+        variant: "tint-80"
+      ),
+    "file-upload-pseudo-button-background": (
+      name: "black",
+      variant: "tint-95"
+    ),
+    "file-upload-empty-button-background": (
+      name: "white"
+    ),
+    "file-upload-empty-pseudo-button-background": (
+      name: "black",
+      variant: "tint-95"
+    ),
+    "file-upload-empty-status-text": (
+      name: "black"
+    ),
+    // Should it be 'text'
+    "file-upload-empty-status-background": (
+        name: "blue",
+        variant: "tint-80"
+      ),
+    "file-upload-empty-hover-button-background": (
+      name: "black",
+      variant: "tint-95"
+    ),
+    "file-upload-dragging-button-border": (
+      name: "black"
+    ),
+    "file-upload-dragging-empty-button-background": (
+      name: "black",
+      variant: "tint-95"
+    ),
+    "header-text": (
+      name: "white"
+    ),
+    "header-dot": (
+      name: "teal",
+      variant: "accent"
+    ),
+    // Should this be a functional colour?,
+    "input-suffix-background": (
+        name: "black",
+        variant: "tint-95"
+      ),
+    // Should this be "surface-background"?
+    "notification-banner-title-text": (
+        name: "white"
+      ),
+    "pagination-hover": (
+      name: "black",
+      variant: "tint-95"
+    ),
+    "panel-text": (
+      name: "white"
+    ),
+    "panel-background": (
+      name: "green"
+    ),
+    // Should it be `success`?
+    "select-background": (
+        name: "white"
+      ),
+    // Should it be "template-background"?
+    "select-active-text": (
+        name: "white"
+      ),
+    // Another white on blue
+    "select-active-background": (
+        name: "blue"
+      ),
+    "service-navigation-inverse-text": (
+      name: "white"
+    ),
+    "summary-card-title-background": (
+      name: "black",
+      variant: "tint-95"
+    ),
+    // Should it be `surface` ?
+    "tabs-list-item-background": (
+        name: "black",
+        variant: "tint-95"
+      ),
+    "task-list-hover": (
+      name: "black",
+      variant: "tint-95"
+    ),
+    // Should it be `surface` ?
+    "link-error-hover": (
+        name: "red",
+        variant: "shade-50"
+      ),
+    "link-success-hover": (
+      name: "green",
+      variant: "shade-50"
+    ),
+    "link-inverse": (
+      name: "white"
     )
   )
 );

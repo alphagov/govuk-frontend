@@ -1,0 +1,210 @@
+{% extends "layouts/examples.njk" %}
+
+{% from "govuk/components/header/macro.njk" import govukHeader %}
+{% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/service-navigation/macro.njk" import govukServiceNavigation %}
+{% from "govuk/components/panel/macro.njk" import govukPanel %}
+{% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
+{% from "govuk/components/select/macro.njk" import govukSelect %}
+
+{% block head %}
+  {{super()}}
+  <style>
+    /*
+     * As the list of colours is pretty long
+     * make it scrollable so they're easier to tweak
+     */
+    .govuk-grid-row {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+
+      > * {
+        width: 100%;
+      }
+    }
+
+    .govuk-grid-column-one-third {
+      position: relative;
+
+      > * {
+        position: absolute;
+        inset: 0;
+        overflow-y: scroll;
+        overflow-behaviour-y: contain;
+        padding-left: 15px;
+      }
+    }
+  </style>
+{% endblock %}
+
+{% block containerStart %}
+  {{ govukBackLink({
+    href: "/"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <h1 class="govuk-heading-l">Components with solid surfaces</h1>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds" data-module="app-examples">
+      <h2 class="govuk-heading-m">Examples</h2>
+
+      <h3 class="govuk-heading-s">Inverse section via custom props</h3>
+      <style style="display: block; white-space: pre; font-family: monospace">
+:root {
+  --app-brand-surface-text-colour: #ffffff;
+  --app-brand-surface-text-hover-colour: #f4f8fb;
+  --app-brand-surface-background-colour: var(--govuk-brand-colour);
+  --app-brand-surface-shadow-colour:  #0f385c;
+
+}
+
+.app-brand-surface {
+  background: var(--app-brand-surface-background-colour);
+  color: var(--app-brand-surface-text-colour);
+  --govuk-text-colour: var(--app-brand-surface-text-colour);
+  --govuk-link-colour: var(--app-brand-surface-text-colour);
+  --govuk-link-visited-colour: var(--app-brand-surface-text-colour);
+  --govuk-link-hover-colour: var(--app-brand-surface-text-colour);
+  --govuk-button-colour: var(--app-brand-surface-text-colour);
+  --govuk-button-text-colour: var(--app-brand-surface-background-colour);
+  --govuk-button-shadow-colour: var(--app-brand-surface-shadow-colour);
+  --govuk-button-hover-colour: var(--app-brand-surface-text-hover-colour);
+}
+      </style>
+      <div class="app-brand-surface govuk-!-padding-3">
+        <h4 class="govuk-heading-s">Oh! Hello!</h4>
+        <p class="govuk-body">Inside this block, <a class="govuk-link" href="">`govuk-link`s</a> and <a class="govuk-link govuk-link--text">`govuk-link--text`</a> do not need custom properties to adapt to the background.
+        <p class="govuk-body">Buttons do not either:</p>
+        {{govukButton({text: 'A regular `govuk-button`'})}}
+        <p class="govuk-body">Start buttons do not either:</p>
+        {{govukButton(componentFixtures['button']['start'][0].options)}}
+        <p class="govuk-body">We can still have red warning buttons too</p>
+        {{govukButton(componentFixtures['button']['warning'][0].options)}}
+        <p class="govuk-body">But would need extra CSS to allow green buttons</p>
+
+
+      </div>
+
+      <h3 class="govuk-heading-s">Header</h3>
+      {{ govukHeader(componentFixtures['header']['with product name'][0].options) }}
+
+      <h3 class="govuk-heading-s">Breadcrumbs (inverse)</h3>
+      <div class="app-template__body--inverse govuk-!-padding-2">
+      {{ govukBreadcrumbs(componentFixtures['breadcrumbs']['inverse'][0].options) }}
+      </div>
+
+      <h3 class="govuk-heading-s">Service navigation (inverse)</h3>
+      {{ govukServiceNavigation(componentFixtures['service-navigation'].inverse[0].options) }}
+
+      <h3 class="govuk-heading-s">Panel</h3>
+      {{ govukPanel(componentFixtures['panel']['default'][0].options) }}
+
+      <h3 class="govuk-heading-s">Notification banner</h3>
+      {{ govukNotificationBanner(componentFixtures['notification-banner']['default'][0].options) }}
+
+      <h3 class="govuk-heading-s">Notification banner (success)</h3>
+      {{ govukNotificationBanner(componentFixtures['notification-banner']['with type as success'][0].options) }}
+
+      <h3 class="govuk-heading-s">Link (inverse)</h3>
+      <div class="app-template__body--inverse govuk-!-padding-2">
+        <a class="govuk-link govuk-link--inverse" href="">Contact</a>
+      </div>
+
+      <h3 class="govuk-heading-s">Button</h3>
+      {{govukButton(componentFixtures['button']['default'][0].options)}}
+
+      <h3 class="govuk-heading-s">Button (start)</h3>
+      {{govukButton(componentFixtures['button']['start'][0].options)}}
+
+      <h3 class="govuk-heading-s">Button (warning)</h3>
+      {{govukButton(componentFixtures['button']['warning'][0].options)}}
+
+      <h3 class="govuk-heading-s">Button (inverse)</h3>
+      <div class="app-template__body--inverse govuk-!-padding-2">
+        {{govukButton(componentFixtures['button']['inverse'][0].options)}}
+      </div>
+
+      <h3 class="govuk-heading-s">Select (selected value)</h3>
+      {{govukSelect(componentFixtures['select']['default'][0].options)}}
+
+    </div>
+    <div class="govuk-grid-column-one-third">
+      <div>
+        <h2 class="govuk-heading-m">Colours</h2>
+        <template data-module="app-colour-form">
+          <div class="govuk-form-group">
+            <input type="color">
+            <label class="govuk-label govuk-label--s"></label>
+          </div>
+        </template>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block bodyEnd %}
+  {{super()}}
+  <script type="module">
+    const template = document.querySelector('[data-module="app-colour-form"]');
+
+    const colourProperties = Array.from(getCustomProperties(document.documentElement)
+      .filter(({propertyName}) => propertyName.endsWith('-colour')))
+      .sort(({propertyName: a}, {propertyName: b}) => a > b ? -1 : (a < b ? 1 : 0))
+
+    for (const property of colourProperties) {
+      template.insertAdjacentElement('afterEnd', createField(property))
+    }
+
+    document.addEventListener('input', (event) => {
+      const propertyName = event.target.name;
+      const value = event.target.value;
+      document.documentElement.style.setProperty(propertyName, value);
+    })
+
+    //////
+    ///. Supporting functions .
+    //////
+
+    function createField({propertyName, propertyValue}) {
+      const id = propertyName.replace('--','')
+
+      const field = template.content.cloneNode(true)
+      const label = field.querySelector('label')
+      const input = field.querySelector('input')
+
+      label.for = id
+      label.textContent = propertyName
+      input.id = id
+      input.name = propertyName
+      input.value = propertyValue
+
+      return field.children[0];
+    }
+
+    /**
+     * Creates a generator to iterate on all the custom properties styling an element
+     *
+     * @param {Element} element - The element whose custom properties to iterate on
+     * @return {Generator<{propertyName: string, propertyValue: string}>}
+     */
+    function* getCustomProperties(element) {
+      const computedStyles = getComputedStyle(element);
+      for (const property in computedStyles) {
+        // For some reason custom properties are not listed as direct JavaScript properties
+        // of the computed styles. Instead, they're listed as values for number indices of the computed styles
+        if (!Number.isNaN(parseInt(property))) {
+          const propertyName = computedStyles[property];
+          if (propertyName.startsWith('--')) {
+            const propertyValue = computedStyles.getPropertyValue(propertyName);
+            yield {propertyName, propertyValue}
+          }
+        }
+      }
+    }
+
+  </script>
+{% endblock %}
