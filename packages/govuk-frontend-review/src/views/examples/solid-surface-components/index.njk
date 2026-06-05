@@ -51,6 +51,44 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds" data-module="app-examples">
       <h2 class="govuk-heading-m">Examples</h2>
+
+      <h3 class="govuk-heading-s">Inverse section via custom props</h3>
+      <style style="display: block; white-space: pre; font-family: monospace">
+:root {
+  --app-brand-surface-text-colour: #ffffff;
+  --app-brand-surface-text-hover-colour: #f4f8fb;
+  --app-brand-surface-background-colour: var(--govuk-brand-colour);
+  --app-brand-surface-shadow-colour:  #0f385c;
+
+}
+
+.app-brand-surface {
+  background: var(--app-brand-surface-background-colour);
+  color: var(--app-brand-surface-text-colour);
+  --govuk-text-colour: var(--app-brand-surface-text-colour);
+  --govuk-link-colour: var(--app-brand-surface-text-colour);
+  --govuk-link-visited-colour: var(--app-brand-surface-text-colour);
+  --govuk-link-hover-colour: var(--app-brand-surface-text-colour);
+  --govuk-button-colour: var(--app-brand-surface-text-colour);
+  --govuk-button-text-colour: var(--app-brand-surface-background-colour);
+  --govuk-button-shadow-colour: var(--app-brand-surface-shadow-colour);
+  --govuk-button-hover-colour: var(--app-brand-surface-text-hover-colour);
+}
+      </style>
+      <div class="app-brand-surface govuk-!-padding-3">
+        <h4 class="govuk-heading-s">Oh! Hello!</h4>
+        <p class="govuk-body">Inside this block, <a class="govuk-link" href="">`govuk-link`s</a> and <a class="govuk-link govuk-link--text">`govuk-link--text`</a> do not need custom properties to adapt to the background.
+        <p class="govuk-body">Buttons do not either:</p>
+        {{govukButton({text: 'A regular `govuk-button`'})}}
+        <p class="govuk-body">Start buttons do not either:</p>
+        {{govukButton(componentFixtures['button']['start'][0].options)}}
+        <p class="govuk-body">We can still have red warning buttons too</p>
+        {{govukButton(componentFixtures['button']['warning'][0].options)}}
+        <p class="govuk-body">But would need extra CSS to allow green buttons</p>
+
+
+      </div>
+
       <h3 class="govuk-heading-s">Header</h3>
       {{ govukHeader(componentFixtures['header']['with product name'][0].options) }}
 
@@ -112,11 +150,10 @@
   {{super()}}
   <script type="module">
     const template = document.querySelector('[data-module="app-colour-form"]');
-    const examples = document.querySelector('[data-module="app-examples"]');
 
-    const colourProperties = getCustomProperties(document.documentElement).filter(({propertyName}) => {
-      return propertyName.startsWith('--govuk') && propertyName.endsWith('-colour')
-    })
+    const colourProperties = Array.from(getCustomProperties(document.documentElement)
+      .filter(({propertyName}) => propertyName.endsWith('-colour')))
+      .sort(({propertyName: a}, {propertyName: b}) => a > b ? -1 : (a < b ? 1 : 0))
 
     for (const property of colourProperties) {
       template.insertAdjacentElement('afterEnd', createField(property))
@@ -125,7 +162,7 @@
     document.addEventListener('input', (event) => {
       const propertyName = event.target.name;
       const value = event.target.value;
-      examples.style.setProperty(propertyName, value);
+      document.documentElement.style.setProperty(propertyName, value);
     })
 
     //////
