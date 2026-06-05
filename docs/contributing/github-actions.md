@@ -179,3 +179,13 @@ Good:
   echo "::error::Release $GH_TAG already exists. Please delete the release and tag via the GitHub UI and re-run this workflow"
   exit 1
 ```
+
+## Clearing corrupt caches
+
+Sometimes you may run into issues where parts of GitHub Actions workflows are cached in a corrupted state.
+
+If a new pull request does not have a cache reference it'll check if a cache with the same key exists on the `main` branch.
+
+So you must remove the cache on `main` as well, if needed.
+
+You can delete the cache from https://github.com/alphagov/govuk-frontend/actions/caches or using the GitHub CLI (`gh cache delete --all`).
