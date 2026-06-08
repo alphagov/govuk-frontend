@@ -2,6 +2,9 @@
 
 @mixin govuk-surface() {
   --govuk-text-colour: var(--govuk-surface-text);
+  // TODO: Feels like back-link and breadcrumbs could benefit
+  // from a functional colour for their chevrons rather than use `secondary-text`
+  --govuk-secondary-text-colour: var(--govuk-surface-text);
 
   // This would likely be applying the `link-style-text` mixin
   --govuk-link-colour: #{govuk-functional-colour(text)};
@@ -26,4 +29,5 @@
   --govuk-surface-text: #{govuk-colour("white")};
   --govuk-surface-text-hover: #{govuk-colour("blue", $variant: "tint-95")};
   --govuk-surface-shadow: #{govuk-colour("blue", $variant: "shade-50")};
+  --govuk-surface-graphic: #{govuk-colour("white")};
 }
