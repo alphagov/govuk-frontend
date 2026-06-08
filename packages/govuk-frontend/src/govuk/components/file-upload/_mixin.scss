@@ -180,7 +180,7 @@
     &:hover,
     &:focus,
     &:active {
-      background-color: base.govuk-colour("black", $variant: "tint-95");
+      background-color: var(--govuk-hover-colour-lighter, base.govuk-colour("black", $variant: "tint-95"));
 
       .govuk-file-upload-button__status {
         background-color: base.govuk-colour("blue", $variant: "tint-80");

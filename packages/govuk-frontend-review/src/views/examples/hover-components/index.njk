@@ -7,6 +7,7 @@
 {% from "govuk/components/radios/macro.njk" import govukRadios %}
 {% from "govuk/components/task-list/macro.njk" import govukTaskList %}
 {% from "govuk/components/pagination/macro.njk" import govukPagination %}
+{% from "govuk/components/file-upload/macro.njk" import govukFileUpload %}
 
 {% block containerStart %}
   {{ govukBackLink({
@@ -183,7 +184,14 @@
     <h2 class="govuk-heading-m">File upload</h2>
     <hr class="govuk-section-break govuk-section-break--s govuk-!-margin-bottom-5 govuk-section-break--visible">
 
-    Todo
+    {{ govukFileUpload({
+      id: "file-upload-1",
+      name: "fileUpload1",
+      label: {
+        text: "Upload a file"
+      },
+      javascript: true
+    }) }}
 
     <hr class="govuk-section-break govuk-section-break--l govuk-!-margin-bottom-9 govuk-section-break--visible">
 
