@@ -1,0 +1,6 @@
+@use "../helpers/surface" as *;
+
+.govuk-surface--brand {
+  @include govuk-surface;
+  @include govuk-surface-style-brand;
+}
