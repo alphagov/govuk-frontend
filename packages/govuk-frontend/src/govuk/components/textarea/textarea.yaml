@@ -148,6 +148,13 @@ examples:
         classes: govuk-label--l
         isPageHeading: true
 
+  - name: auto-sizing
+    options:
+      name: favourite-place
+      classes: govuk-textarea--auto-size
+      label:
+        text: Can you provide more detail?
+
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: id
     hidden: true

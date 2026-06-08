@@ -39,4 +39,28 @@
       border-color: base.govuk-functional-colour(input-border);
     }
   }
+
+  .govuk-textarea--auto-size {
+    @supports (field-sizing: content) {
+      field-sizing: content;
+
+      // Using field-sizing: content stops the `rows` attribute from having
+      // any effect. We can preserve the behaviour of the `rows` attribute by
+      // using it to set `min-height`.
+
+      // We'll need to do some maths - we need [rows] worth of line-height, but
+      // we also need to factor in borders and padding.
+      $border-and-padding: (base.$govuk-border-width-form-element * 2) + (base.govuk-spacing(1) * 2);
+
+      // And first we need a fallback for browsers that don't support `attr()`
+      // with a type. These browsers will always display a textarea with 5 rows.
+      min-height: calc(5lh + $border-and-padding);
+
+      // Grab the value of the rows attribute and use it to set `min-height`.
+      min-height: calc(attr(rows lh, 5lh) + $border-and-padding);
+
+      // Remove the resize grab handle
+      resize: initial;
+    }
+  }
 }
