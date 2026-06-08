@@ -200,11 +200,8 @@
     // Remove bottom border to add width-container ones
     border-bottom: none;
 
-    // Set colour here so non-link text (service name, slot content) can
-    // use it too.
-    color: base.govuk-functional-colour(service-navigation-inverse-text);
-
-    background-color: base.govuk-functional-colour(brand);
+    @include base.govuk-surface;
+    @include base.govuk-surface-style-brand;
 
     .govuk-width-container {
       border-width: 1px 0;
@@ -220,12 +217,7 @@
     // Override the 'active' border colour
     .govuk-service-navigation__item,
     .govuk-service-navigation__service-name {
-      border-color: base.govuk-functional-colour(service-navigation-inverse-text);
-    }
-
-    // Override link styles
-    .govuk-service-navigation__link {
-      @include base.govuk-link-style-inverse;
+      border-color: base.govuk-functional-colour(text);
     }
 
     // Override mobile menu toggle colour when not focused
