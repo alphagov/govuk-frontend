@@ -3,7 +3,7 @@
 /// @access private
 @mixin styles {
   $govuk-accordion-base-colour: base.govuk-colour("black");
-  $govuk-accordion-hover-colour: base.govuk-colour("black", $variant: "tint-95");
+  $govuk-accordion-hover-colour: var(--govuk-hover-colour-lighter, base.govuk-colour("black", $variant: "tint-95"));
   $govuk-accordion-icon-focus-colour: base.govuk-functional-colour(focus);
   $govuk-accordion-bottom-border-width: 1px;
 

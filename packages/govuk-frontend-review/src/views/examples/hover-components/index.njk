@@ -1,0 +1,551 @@
+{% extends "layouts/examples.njk" %}
+
+{% from "govuk/components/accordion/macro.njk" import govukAccordion %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/task-list/macro.njk" import govukTaskList %}
+{% from "govuk/components/pagination/macro.njk" import govukPagination %}
+{% from "govuk/components/file-upload/macro.njk" import govukFileUpload %}
+
+{% block containerStart %}
+  {{ govukBackLink({
+    href: "/"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<style>
+  /* On large screens make use of the screen */
+  @media (min-width: 1900px) {
+    /* make page bigger to see more content */
+    .govuk-width-container {
+      max-width: 60vw;
+    }
+    /* hack the grid so sticky positioning works correctly */
+    [class^=govuk-grid] {
+      all: unset;
+    }
+    .govuk-grid-row {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 30px;
+    }
+    .example-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
+  }
+</style>
+
+<div class="govuk-grid-row">
+
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">Hover states</h1>
+    <p class="govuk-body">Forced hover states on the components that currently dont use the --govuk-hover-color functional colour consistently</p>
+    
+    <h2 class="govuk-heading-m">Accordion</h2>
+    <hr class="govuk-section-break govuk-section-break--s govuk-!-margin-bottom-5 govuk-section-break--visible">
+
+    <div class="example-grid">
+      <div>
+        {{ govukAccordion({
+          id: "accordion-default",
+          items: [
+            {
+              heading: {
+                text: "Writing well for the web"
+              },
+              content: {
+                html: '<p class="govuk-body">This is the content for Writing well for the web.</p>'
+              }
+            },
+            {
+              heading: {
+                text: "Writing well for specialists"
+              },
+              content: {
+                html: '<p class="govuk-body">This is the content for Writing well for specialists.</p>'
+              }
+            },
+            {
+              heading: {
+                text: "Know your audience"
+              },
+              content: {
+                html: '<p class="govuk-body">This is the content for Know your audience.</p>'
+              }
+            },
+            {
+              heading: {
+                text: "How people read"
+              },
+              content: {
+                html: '<p class="govuk-body">This is the content for How people read.</p>'
+              }
+            }
+          ]
+        }) }}
+      </div>
+      <div>
+        {{ govukAccordion({
+          id: "accordion-default",
+          items: [
+            {
+              heading: {
+                text: "Writing well for the web"
+              },
+              content: {
+                html: '<p class="govuk-body">This is the content for Writing well for the web.</p>'
+              }
+            },
+            {
+              heading: {
+                text: "Writing well for specialists"
+              },
+              content: {
+                html: '<p class="govuk-body">This is the content for Writing well for specialists.</p>'
+              }
+            },
+            {
+              heading: {
+                text: "Know your audience"
+              },
+              content: {
+                html: '<p class="govuk-body">This is the content for Know your audience.</p>'
+              }
+            },
+            {
+              heading: {
+                text: "How people read"
+              },
+              content: {
+                html: '<p class="govuk-body">This is the content for How people read.</p>'
+              }
+            }
+          ]
+        }) | replace("govuk-accordion__section-button", "govuk-accordion__section-button :hover")  }}
+      </div>
+    </div>
+
+    <hr class="govuk-section-break govuk-section-break--l govuk-!-margin-bottom-9 govuk-section-break--visible">
+
+    <h2 class="govuk-heading-m">Buttons</h2>
+    <h2 class="govuk-heading-s">Secondary button</h2>
+    <hr class="govuk-section-break govuk-section-break--s govuk-!-margin-bottom-5 govuk-section-break--visible">
+
+    <div class="example-grid">
+      <div>
+        <h3 class="govuk-heading-s">Regular</h3>
+
+        {{ govukButton({
+          text: "Find address",
+          classes: "govuk-button--secondary"
+        }) }}
+      </div>
+      <div>
+        <h3 class="govuk-heading-s">Forced hover</h3>
+
+        {{ govukButton({
+          text: "Find address",
+          classes: "govuk-button--secondary :hover"
+        }) }}
+      </div>
+    </div>
+
+
+    <h2 class="govuk-heading-s govuk-!-margin-top-6">Inverse button</h2>
+    <hr class="govuk-section-break govuk-section-break--s govuk-!-margin-bottom-5 govuk-section-break--visible">
+    <div class="example-grid">
+      <div>
+        <h3 class="govuk-heading-s">Regular</h3>
+
+        {{ govukButton({
+          text: "Create an account",
+          classes: "govuk-button--inverse"
+        }) }}
+      </div>
+      <div>
+        <h3 class="govuk-heading-s">Forced hover</h3>
+
+        {{ govukButton({
+          text: "Create an account",
+          classes: "govuk-button--inverse :hover"
+        }) }}
+      </div>
+    </div>
+
+    <hr class="govuk-section-break govuk-section-break--l govuk-!-margin-bottom-9 govuk-section-break--visible">
+
+    <h2 class="govuk-heading-m">File upload</h2>
+    <hr class="govuk-section-break govuk-section-break--s govuk-!-margin-bottom-5 govuk-section-break--visible">
+
+    {{ govukFileUpload({
+      id: "file-upload-1",
+      name: "fileUpload1",
+      label: {
+        text: "Upload a file"
+      },
+      javascript: true
+    }) }}
+
+    <hr class="govuk-section-break govuk-section-break--l govuk-!-margin-bottom-9 govuk-section-break--visible">
+
+    <h2 class="govuk-heading-m">Checkboxes</h2>
+    <hr class="govuk-section-break govuk-section-break--s govuk-!-margin-bottom-5 govuk-section-break--visible">
+    <div class="example-grid">
+      <div>
+        {{ govukCheckboxes({
+          classes: "govuk-checkboxes--small",
+          name: "regular-checkboxes",
+          fieldset: {
+            legend: {
+              text: "Regular",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "month",
+              text: "Monthly"
+            },
+            {
+              value: "year",
+              text: "Yearly"
+            }
+          ]
+        }) }}
+      </div>
+      <div>
+        {{ govukCheckboxes({
+          classes: "govuk-checkboxes--small",
+          name: "forced-checkboxes",
+          fieldset: {
+            legend: {
+              text: "Forced hovered",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "month",
+              text: "Monthly"
+            },
+            {
+              value: "year",
+              text: "Yearly"
+            }
+          ]
+        }) | replace("govuk-checkboxes__input", "govuk-checkboxes__input :hover") }}
+      </div>
+    </div>
+
+    <hr class="govuk-section-break govuk-section-break--l govuk-!-margin-bottom-9 govuk-section-break--visible">
+    <h2 class="govuk-heading-m">Radios</h2>
+    <hr class="govuk-section-break govuk-section-break--s govuk-!-margin-bottom-5 govuk-section-break--visible">
+    <div class="example-grid">
+      <div>
+        {{ govukRadios({
+          classes: "govuk-radios--small",
+          name: "regular",
+          fieldset: {
+            legend: {
+              text: "Regular",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "month",
+              text: "Monthly"
+            },
+            {
+              value: "year",
+              text: "Yearly"
+            }
+          ]
+        }) }}
+      </div>
+      <div>
+        {{ govukRadios({
+          classes: "govuk-radios--small",
+          name: "forced",
+          fieldset: {
+            legend: {
+              text: "Forced hovered",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "month",
+              text: "Monthly"
+            },
+            {
+              value: "year",
+              text: "Yearly"
+            }
+          ]
+        }) | replace("govuk-radios__input", "govuk-radios__input :hover") }}
+      </div>
+    </div>
+
+    <hr class="govuk-section-break govuk-section-break--l govuk-!-margin-bottom-9 govuk-section-break--visible">
+    <h2 class="govuk-heading-m">Task list</h2>
+    <hr class="govuk-section-break govuk-section-break--s govuk-!-margin-bottom-5 govuk-section-break--visible">
+
+    <div class="example-grid">
+      <div>
+        <h2 class="govuk-heading-s">Regular</h2>
+
+        {{ govukTaskList({
+          idPrefix: "company-details",
+          items: [
+            {
+              title: {
+                text: "Company Directors"
+              },
+              href: "#",
+              status: {
+                text: "Completed"
+              }
+            },
+            {
+              title: {
+                text: "Registered company details"
+              },
+              href: "#",
+              status: {
+                tag: {
+                  text: "Incomplete",
+                  classes: "govuk-tag--blue"
+                }
+              }
+            },
+            {
+              title: {
+                text: "Financial history"
+              },
+              hint: {
+                text: "Include 5 years of the company’s relevant financial information"
+              },
+              href: "#",
+              status: {
+                tag: {
+                  text: "Incomplete",
+                  classes: "govuk-tag--blue"
+                }
+              }
+            },
+            {
+              title: {
+                text: "Business plan"
+              },
+              href: "#",
+              status: {
+                tag: {
+                  text: "Incomplete",
+                  classes: "govuk-tag--blue"
+                }
+              }
+            },
+            {
+              title: {
+                text: "References"
+              },
+              href: "#",
+              status: {
+                tag: {
+                  text: "Incomplete",
+                  classes: "govuk-tag--blue"
+                }
+              }
+            }
+          ]
+        }) }}
+      </div>
+      <div>
+        <h2 class="govuk-heading-s">Forced hover</h2>
+
+        {{ govukTaskList({
+          idPrefix: "company-details",
+          items: [
+            {
+              title: {
+                text: "Company Directors"
+              },
+              href: "#",
+              status: {
+                text: "Completed"
+              }
+            },
+            {
+              title: {
+                text: "Registered company details"
+              },
+              href: "#",
+              status: {
+                tag: {
+                  text: "Incomplete",
+                  classes: "govuk-tag--blue"
+                }
+              }
+            },
+            {
+              title: {
+                text: "Financial history"
+              },
+              hint: {
+                text: "Include 5 years of the company’s relevant financial information"
+              },
+              href: "#",
+              status: {
+                tag: {
+                  text: "Incomplete",
+                  classes: "govuk-tag--blue"
+                }
+              }
+            },
+            {
+              title: {
+                text: "Business plan"
+              },
+              href: "#",
+              status: {
+                tag: {
+                  text: "Incomplete",
+                  classes: "govuk-tag--blue"
+                }
+              }
+            },
+            {
+              title: {
+                text: "References"
+              },
+              href: "#",
+              status: {
+                tag: {
+                  text: "Incomplete",
+                  classes: "govuk-tag--blue"
+                }
+              }
+            }
+          ]
+        }) | replace("govuk-task-list__item--with-link", "govuk-task-list__item--with-link :hover") }}
+      </div>
+    </div>
+
+    <hr class="govuk-section-break govuk-section-break--l govuk-!-margin-bottom-9 govuk-section-break--visible">
+
+    <h2 class="govuk-heading-m">Pagination</h2>
+
+    <hr class="govuk-section-break govuk-section-break--s govuk-!-margin-bottom-5 govuk-section-break--visible">
+
+    <div class="example-grid">
+      <div>
+        {{ govukPagination({
+          previous: {
+            href: "#"
+          },
+          next: {
+            href: "#"
+          },
+          items: [
+            {
+              number: 1,
+              href: "#"
+            },
+            {
+              number: 2,
+              current: true,
+              href: "#"
+            },
+            {
+              number: 3,
+              href: "#"
+            }
+          ]
+        }) }}
+      </div>
+      <div>
+        {{ govukPagination({
+          previous: {
+            href: "#"
+          },
+          next: {
+            href: "#"
+          },
+          items: [
+            {
+              number: 1,
+              href: "#"
+            },
+            {
+              number: 2,
+              current: true,
+              href: "#"
+            },
+            {
+              number: 3,
+              href: "#"
+            }
+          ]
+        }) | replace("govuk-pagination__next", "govuk-pagination__next :hover") }}
+      </div>
+    </div>
+
+    <hr class="govuk-section-break govuk-section-break--s govuk-!-margin-bottom-9 govuk-section-break--visible">   
+
+  </div>
+  {# todo hack the grid instead #}
+  <div class="govuk-grid-column-one-third">
+    {# Not accessible only for spike, do not use in production #}
+    <style>
+    :root {
+      &:has(input[name="hover-colour"][value="light"]:checked) {
+        --govuk-hover-colour-lighter: #f3f3f3;
+        --govuk-hover-colour: var(--govuk-hover-colour-lighter);
+      }
+      &:has(input[name="hover-colour"][value="dark"]:checked) {
+        --govuk-hover-colour-lighter: var(--govuk-hover-colour);
+      }
+    }
+    </style>
+    <div style="height: 9.5em;"></div>
+    <div style="position: sticky; top: 15px;">
+      {{ govukRadios({
+        name: "hover-colour",
+        fieldset: {
+          legend: {
+            classes: "govuk-fieldset__legend--m",
+            text: "Change hover colour"
+          }
+        },
+        items: [
+          {
+            checked: true,
+            value: "before",
+            text: "6.2.0"
+          },
+          {
+            value: "light",
+            text: "All light grey (#f3f3f3)"
+          },
+          {
+            value: "dark",
+            text: "All dark grey (existing hover colour)"
+          }
+        ]
+      }) }}
+    </div>
+  </div>
+</div>
+{% endblock %}
