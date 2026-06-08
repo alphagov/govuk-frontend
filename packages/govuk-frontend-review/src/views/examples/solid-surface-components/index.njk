@@ -9,6 +9,7 @@
 {% from "govuk/components/panel/macro.njk" import govukPanel %}
 {% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
 {% from "govuk/components/select/macro.njk" import govukSelect %}
+{% from "govuk/components/file-upload/macro.njk" import govukFileUpload %}
 
 {% block head %}
   {{super()}}
@@ -59,7 +60,6 @@
   --app-brand-surface-text-hover-colour: #f4f8fb;
   --app-brand-surface-background-colour: var(--govuk-brand-colour);
   --app-brand-surface-shadow-colour:  #0f385c;
-
 }
 
 .app-brand-surface {
@@ -85,6 +85,26 @@
         <p class="govuk-body">We can still have red warning buttons too</p>
         {{govukButton(componentFixtures['button']['warning'][0].options)}}
         <p class="govuk-body">But would need extra CSS to allow green buttons</p>
+        <style style="display: block; white-space: pre; font-family: monospace">
+:root {
+  /* Save the default button colours
+   * so we can re-use them when
+   * `--govuk-button(-...)-colour` have been overridden
+   */
+  --app-default-button-colour: var(--govuk-button-colour);
+  --app-default-button-text-colour: var(--govuk-button-text-colour);
+  --app-default-button-hover-colour: var(--govuk-button-hover-colour);
+  --app-default-button-shadow-colour: var(--govuk-button-shadow-colour);
+}
+
+.app-button--default {
+  --govuk-button-colour: var(--app-default-button-colour);
+  --govuk-button-text-colour: var(--app-default-button-text-colour);
+  --govuk-button-shadow-colour: var(--app-default-button-shadow-colour);
+  --govuk-button-hover-colour: var(--app-default-button-hover-colour);
+}
+        </style>
+        {{govukButton({text: 'A green button', classes: 'app-button--default'})}}
 
 
       </div>
@@ -130,6 +150,9 @@
 
       <h3 class="govuk-heading-s">Select (selected value)</h3>
       {{govukSelect(componentFixtures['select']['default'][0].options)}}
+
+      <h3 class="govuk-heading-s">File upload (filled)</h3>
+      {{govukFileUpload(componentFixtures['file-upload']['enhanced'][0].options)}}
 
     </div>
     <div class="govuk-grid-column-one-third">
