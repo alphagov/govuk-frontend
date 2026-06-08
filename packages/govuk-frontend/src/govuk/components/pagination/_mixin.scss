@@ -35,7 +35,7 @@
     float: left; // Float is ignored if flex is active for prev/next links
 
     &:hover {
-      background-color: base.govuk-colour("black", $variant: "tint-95");
+      background-color: var(--govuk-hover-colour-lighter, base.govuk-colour("black", $variant: "tint-95"));
     }
   }
 
