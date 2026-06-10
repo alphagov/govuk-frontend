@@ -378,6 +378,30 @@ examples:
           text: Navigation item 3
         - href: '#/4'
           text: Navigation item 4
+  - name: with language switcher
+    description: HTML rendered by the language switcher component can be injected into the `end` slot of the service header.
+    options:
+      serviceName: Service name
+      navigation:
+        - href: '#/1'
+          text: Navigation item 1
+          active: true
+        - href: '#/2'
+          text: Navigation item 2
+        - href: '#/3'
+          text: Navigation item 3
+      slots:
+        end: |-
+          <nav class="govuk-language-switcher" aria-label="Language switcher">
+            <ul class="govuk-language-switcher__list">
+              <li class="govuk-language-switcher__list-item">
+                <span class="govuk-language-switcher__text" lang="en" aria-current="true">English</span>
+              </li>
+              <li class="govuk-language-switcher__list-item">
+                <a class="govuk-language-switcher__link" href="#/cy" lang="cy" hreflang="cy" rel="alternate">Cymraeg</a>
+              </li>
+            </ul>
+          </nav>
   - name: with slotted content
     hidden: true
     options:
