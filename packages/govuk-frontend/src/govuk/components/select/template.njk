@@ -49,6 +49,9 @@
     {%- if params.disabled %} disabled{% endif %}
     {%- if describedBy %} aria-describedby="{{ describedBy }}"{% endif %}
     {{- govukAttributes(params.attributes) }}>
+    <button>
+      <selectedcontent></selectedcontent>
+    </button>
   {% for item in params.items %}
     {% if item %}
     {#- Allow selecting by text content (the value for an option when no value attribute is specified) #}
@@ -57,7 +60,8 @@
       {{-" selected" if item.selected | default((effectiveValue == params.value and item.selected != false) if params.value else false, true) }}
       {{-" disabled" if item.disabled }}
       {{- govukAttributes(item.attributes) }}>
-      {{- item.text -}}
+      {# span element ensures that flex spacing does not get applied to HTML labels #}
+      <span>{{- item.html | safe if item.html else item.text -}}</span>
     </option>
     {% endif %}
   {% endfor %}
