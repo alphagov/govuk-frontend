@@ -1,0 +1,35 @@
+@use "../../base";
+
+/// @access private
+@mixin styles {
+  .govuk-language-switcher {
+    @include base.govuk-font($size: 16);
+
+    margin-top: base.govuk-spacing(3);
+    margin-bottom: base.govuk-spacing(3);
+    color: base.govuk-functional-colour(text);
+  }
+
+  .govuk-language-switcher__list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+
+  .govuk-language-switcher__list-item {
+    display: inline-block;
+    margin-bottom: base.govuk-spacing(1);
+
+    &:not(:last-child) {
+      margin-right: base.govuk-spacing(1);
+      padding-right: base.govuk-spacing(2);
+      border-right: 1px solid;
+      border-right-color: base.govuk-functional-colour(border);
+    }
+  }
+
+  .govuk-language-switcher__link {
+    @include base.govuk-link-common;
+    @include base.govuk-link-style-default;
+  }
+}
