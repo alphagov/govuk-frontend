@@ -1,0 +1,1041 @@
+{% extends "layouts/examples.njk" %}
+
+    {% from "govuk/components/cookie-banner/macro.njk" import govukCookieBanner %}
+{% from "govuk/components/accordion/macro.njk" import govukAccordion %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/task-list/macro.njk" import govukTaskList %}
+{% from "govuk/components/pagination/macro.njk" import govukPagination %}
+{% from "govuk/components/file-upload/macro.njk" import govukFileUpload %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/tabs/macro.njk" import govukTabs %}
+{% from "govuk/components/table/macro.njk" import govukTable %}
+{% from "govuk/components/service-navigation/macro.njk" import govukServiceNavigation %}
+{% from "govuk/components/footer/macro.njk" import govukFooter %}
+
+{% block containerStart %}
+  {{ govukBackLink({
+    href: "/"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <style>
+    :root {
+      --govuk-generic-surface-background-colour: #f3f3f3;
+      --govuk-generic-surface-border-colour: var(--govuk-border-colour);
+      --govuk-generic-surface-text-colour: var(--govuk-text-colour);
+
+      --govuk-inverse-surface-background-colour: var(--govuk-brand-colour);
+      --govuk-inverse-surface-border-colour: var(--govuk-brand-colour);
+      --govuk-inverse-surface-text-colour: #ffffff;
+    }
+    /* On large screens make use of the screen */
+    @media (min-width: 1900px) {
+      /* make page bigger to see more content */
+      .govuk-width-container {
+        max-width: 90vw;
+      }
+      /* hack the grid so sticky positioning works correctly */
+      [class^=govuk-grid] {
+        all: unset;
+      }
+      .example-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 30px;
+      }
+    }
+  </style>
+
+  <h1 class="govuk-heading-l">Surface-like components</h1>
+  
+  <h2 class="govuk-heading-m">Text input</h2>
+  <hr class="govuk-section-break govuk-section-break--s govuk-!-margin-bottom-5 govuk-section-break--visible">
+
+  <div class="example-grid">
+    <div>
+      <h3 class="govuk-heading-s">Now</h3>
+      {{ govukInput({
+        id: "cost-per-item",
+        name: "costPerItem",
+        label: {
+          text: "What is the cost per item, in pounds?",
+          classes: "govuk-label--l",
+          isPageHeading: true
+        },
+        prefix: {
+          text: "£"
+        },
+        suffix: {
+          text: "per item"
+        },
+        classes: "govuk-input--width-5",
+        spellcheck: false
+      }) }}
+    </div>
+    <div>
+      <h3 class="govuk-heading-s">(Brand) Surface</h3>
+      <style>
+        .govuk-input__wrapper--surfaced {
+          .govuk-input__prefix,
+          .govuk-input__suffix {
+            color: var(--govuk-surface-text-colour);
+            background-color: var(--govuk-surface-background-colour);
+            --govuk-input-border-colour: var(--govuk-surface-border-colour);
+          }
+        }
+      </style>
+      {{ govukInput({
+        id: "cost-per-item",
+        name: "costPerItem",
+        label: {
+          text: "What is the cost per item, in pounds?",
+          classes: "govuk-label--l",
+          isPageHeading: true
+        },
+        prefix: {
+          text: "£"
+        },
+        suffix: {
+          text: "per item"
+        },
+        classes: "govuk-input--width-5",
+        wrapperClasses: "",
+        spellcheck: false
+      }) | replace("govuk-input__wrapper", "govuk-input__wrapper govuk-input__wrapper--surfaced") }}
+    </div>
+    <div>
+      <h3 class="govuk-heading-s">Generic Surface</h3>
+      <style>
+        .govuk-input__wrapper--generic-surfaced {
+          .govuk-input__prefix,
+          .govuk-input__suffix {
+            color: var(--govuk-generic-surface-text-colour);
+            background-color: var(--govuk-generic-surface-background-colour);
+            --govuk-input-border-colour: var(--govuk-generic-surface-border-colour);
+          }
+        }
+      </style>
+      {{ govukInput({
+        id: "cost-per-item",
+        name: "costPerItem",
+        label: {
+          text: "What is the cost per item, in pounds?",
+          classes: "govuk-label--l",
+          isPageHeading: true
+        },
+        prefix: {
+          text: "£"
+        },
+        suffix: {
+          text: "per item"
+        },
+        classes: "govuk-input--width-5",
+        wrapperClasses: "",
+        spellcheck: false
+      }) | replace("govuk-input__wrapper", "govuk-input__wrapper govuk-input__wrapper--generic-surfaced") }}
+    </div>
+    <div>
+      <h3 class="govuk-heading-s">Generic Surface</h3>
+      <style>
+        .govuk-input__wrapper--inverse-surfaced {
+          .govuk-input__prefix,
+          .govuk-input__suffix {
+            color: var(--govuk-inverse-surface-text-colour);
+            background-color: var(--govuk-inverse-surface-background-colour);
+            --govuk-input-border-colour: var(--govuk-inverse-surface-border-colour);
+          }
+        }
+      </style>
+      {{ govukInput({
+        id: "cost-per-item",
+        name: "costPerItem",
+        label: {
+          text: "What is the cost per item, in pounds?",
+          classes: "govuk-label--l",
+          isPageHeading: true
+        },
+        prefix: {
+          text: "£"
+        },
+        suffix: {
+          text: "per item"
+        },
+        classes: "govuk-input--width-5",
+        wrapperClasses: "",
+        spellcheck: false
+      }) | replace("govuk-input__wrapper", "govuk-input__wrapper govuk-input__wrapper--inverse-surfaced") }}
+    </div>
+  </div>
+
+  <hr class="govuk-section-break govuk-section-break--l govuk-!-margin-bottom-9 govuk-section-break--visible">
+
+
+  <h2 class="govuk-heading-m">Summary list cards</h2>
+  <hr class="govuk-section-break govuk-section-break--s govuk-!-margin-bottom-5 govuk-section-break--visible">
+
+  <div class="example-grid">
+    <div>
+      <h3 class="govuk-heading-s">Now</h3>
+      {{ govukSummaryList({
+        card: {
+          title: {
+            text: "University of Gloucestershire"
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Delete choice"
+              },
+              {
+                href: "#",
+                text: "Withdraw"
+              }
+            ]
+          }
+        },
+        rows: [
+          {
+            key: {
+              text: "Course"
+            },
+            value: {
+              html: "English (3DMD)<br>PGCE with QTS full time"
+            }
+          },
+          {
+            key: {
+              text: "Location"
+            },
+            value: {
+              html: "School name<br>Road, City, SW1 1AA"
+            }
+          }
+        ]
+      }) }}
+    </div>
+    <div>
+      <h3 class="govuk-heading-s">(Brand) Surface</h3>
+      <style>
+        .govuk-summary-list--surfaced {
+          --govuk-border-colour: var(--govuk-surface-border-colour);
+          --govuk-text-colour: var(--govuk-surface-text-colour);
+          .govuk-summary-card__title-wrapper {
+            background-color: var(--govuk-surface-background-colour);
+          }
+        }
+      </style>
+      {{ govukSummaryList({
+        card: {
+          classes: "govuk-summary-list--surfaced",
+          title: {
+            text: "University of Gloucestershire"
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Delete choice"
+              },
+              {
+                href: "#",
+                text: "Withdraw"
+              }
+            ]
+          }
+        },
+        rows: [
+          {
+            key: {
+              text: "Course"
+            },
+            value: {
+              html: "English (3DMD)<br>PGCE with QTS full time"
+            }
+          },
+          {
+            key: {
+              text: "Location"
+            },
+            value: {
+              html: "School name<br>Road, City, SW1 1AA"
+            }
+          }
+        ]
+      }) }}
+    </div>
+    <div>
+      <h3 class="govuk-heading-s">Generic Surface</h3>
+      <style>
+        .govuk-summary-list--generic-surfaced {
+          --govuk-border-colour: var(--govuk-generic-surface-border-colour);
+          --govuk-text-colour: var(--govuk-generic-surface-text-colour);
+          .govuk-summary-card__title-wrapper {
+            background-color: var(--govuk-generic-surface-background-colour);
+          }
+        }
+      </style>
+      {{ govukSummaryList({
+        card: {
+          classes: "govuk-summary-list--generic-surfaced",
+          title: {
+            text: "University of Gloucestershire"
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Delete choice"
+              },
+              {
+                href: "#",
+                text: "Withdraw"
+              }
+            ]
+          }
+        },
+        rows: [
+          {
+            key: {
+              text: "Course"
+            },
+            value: {
+              html: "English (3DMD)<br>PGCE with QTS full time"
+            }
+          },
+          {
+            key: {
+              text: "Location"
+            },
+            value: {
+              html: "School name<br>Road, City, SW1 1AA"
+            }
+          }
+        ]
+      }) }}
+    </div><div>
+      <h3 class="govuk-heading-s">Inverse Surface</h3>
+      <style>
+        .govuk-summary-list--inverse-surfaced {
+          --govuk-surface-border-colour: var(--govuk-inverse-surface-border-colour);
+          border-color: var(--govuk-surface-border-colour);
+          --govuk-surface-text-colour: var(--govuk-inverse-surface-text-colour);
+          .govuk-summary-card__title-wrapper {
+            background-color: var(--govuk-inverse-surface-background-colour);
+          }
+          .govuk-summary-card__title {
+            --govuk-text-colour: white;
+          }
+          --govuk-link-colour: white;
+        }
+      </style>
+      {{ govukSummaryList({
+        card: {
+          classes: "govuk-summary-list--inverse-surfaced",
+          title: {
+            text: "University of Gloucestershire"
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Delete choice"
+              },
+              {
+                href: "#",
+                text: "Withdraw"
+              }
+            ]
+          }
+        },
+        rows: [
+          {
+            key: {
+              text: "Course"
+            },
+            value: {
+              html: "English (3DMD)<br>PGCE with QTS full time"
+            }
+          },
+          {
+            key: {
+              text: "Location"
+            },
+            value: {
+              html: "School name<br>Road, City, SW1 1AA"
+            }
+          }
+        ]
+      }) }}
+    </div>
+  </div>
+
+  <hr class="govuk-section-break govuk-section-break--l govuk-!-margin-bottom-9 govuk-section-break--visible">
+  <h2 class="govuk-heading-m">Tabs</h2>
+  <hr class="govuk-section-break govuk-section-break--s govuk-!-margin-bottom-5 govuk-section-break--visible">
+
+  <div class="example-grid">
+    <div>
+      <h3 class="govuk-heading-s">Now</h3>
+      {% set pastDayHtml %}
+      <h2 class="govuk-heading-l">Past day</h2>
+      {{ govukTable({
+        head: [
+          {
+            text: "Case manager"
+          },
+          {
+            text: "Cases opened"
+          },
+          {
+            text: "Cases closed"
+          }
+        ],
+        rows: [
+          [
+            {
+              text: "David Francis"
+            },
+            {
+              text: "3"
+            },
+            {
+              text: "0"
+            }
+          ],
+          [
+            {
+              text: "Paul Farmer"
+            },
+            {
+              text: "1"
+            },
+            {
+              text: "0"
+            }
+          ],
+          [
+            {
+              text: "Rita Patel"
+            },
+            {
+              text: "2"
+            },
+            {
+              text: "0"
+            }
+          ]
+        ]
+      }) }}
+      {% endset -%}
+
+      {% set pastWeekHtml %}
+      <h2 class="govuk-heading-l">Past week</h2>
+      {{ govukTable({
+        head: [
+          {
+            text: "Case manager"
+          },
+          {
+            text: "Cases opened"
+          },
+          {
+            text: "Cases closed"
+          }
+        ],
+        rows: [
+          [
+            {
+              text: "David Francis"
+            },
+            {
+              text: "24"
+            },
+            {
+              text: "18"
+            }
+          ],
+          [
+            {
+              text: "Paul Farmer"
+            },
+            {
+              text: "16"
+            },
+            {
+              text: "20"
+            }
+          ],
+          [
+            {
+              text: "Rita Patel"
+            },
+            {
+              text: "24"
+            },
+            {
+              text: "27"
+            }
+          ]
+        ]
+      }) }}
+      {% endset -%}
+
+      {% set pastMonthHtml %}
+      <h2 class="govuk-heading-l">Past month</h2>
+      {{ govukTable({
+        head: [
+          {
+            text: "Case manager"
+          },
+          {
+            text: "Cases opened"
+          },
+          {
+            text: "Cases closed"
+          }
+        ],
+        rows: [
+          [
+            {
+              text: "David Francis"
+            },
+            {
+              text: "98"
+            },
+            {
+              text: "95"
+            }
+          ],
+          [
+            {
+              text: "Paul Farmer"
+            },
+            {
+              text: "122"
+            },
+            {
+              text: "131"
+            }
+          ],
+          [
+            {
+              text: "Rita Patel"
+            },
+            {
+              text: "126"
+            },
+            {
+              text: "142"
+            }
+          ]
+        ]
+      }) }}
+      {% endset -%}
+
+      {% set pastYearHtml %}
+      <h2 class="govuk-heading-l">Past year</h2>
+      {{ govukTable({
+        head: [
+          {
+            text: "Case manager"
+          },
+          {
+            text: "Cases opened"
+          },
+          {
+            text: "Cases closed"
+          }
+        ],
+        rows: [
+          [
+            {
+              text: "David Francis"
+            },
+            {
+              text: "1380"
+            },
+            {
+              text: "1472"
+            }
+          ],
+          [
+            {
+              text: "Paul Farmer"
+            },
+            {
+              text: "1129"
+            },
+            {
+              text: "1083"
+            }
+          ],
+          [
+            {
+              text: "Rita Patel"
+            },
+            {
+              text: "1539"
+            },
+            {
+              text: "1265"
+            }
+          ]
+        ]
+      }) }}
+      {% endset -%}
+
+      {{ govukTabs({
+        items: [
+          {
+            label: "Past day",
+            id: "past-day",
+            panel: {
+              html: pastDayHtml
+            }
+          },
+          {
+            label: "Past week",
+            id: "past-week",
+            panel: {
+              html: pastWeekHtml
+            }
+          },
+          {
+            label: "Past month",
+            id: "past-month",
+            panel: {
+              html: pastMonthHtml
+            }
+          },
+          {
+            label: "Past year",
+            id: "past-year",
+            panel: {
+              html: pastYearHtml
+            }
+          }
+        ]
+      }) }}
+    </div>
+    <div>
+      <h3 class="govuk-heading-s">(Brand) Surface</h3>
+      <style>
+        .govuk-tabs--surfaced {
+          --govuk-border-colour: var(--govuk-surface-border-colour);
+          .govuk-tabs__list-item:not(.govuk-tabs__list-item--selected) {
+            background-color: var(--govuk-surface-background-colour);
+          }
+        }
+      </style>
+      {{ govukTabs({
+        classes: "govuk-tabs--surfaced",
+        items: [
+          {
+            label: "Past day",
+            id: "past-day",
+            panel: {
+              html: pastDayHtml
+            }
+          },
+          {
+            label: "Past week",
+            id: "past-week",
+            panel: {
+              html: pastWeekHtml
+            }
+          },
+          {
+            label: "Past month",
+            id: "past-month",
+            panel: {
+              html: pastMonthHtml
+            }
+          },
+          {
+            label: "Past year",
+            id: "past-year",
+            panel: {
+              html: pastYearHtml
+            }
+          }
+        ]
+      }) }}
+    </div>
+    <div>
+      <h3 class="govuk-heading-s">Generic Surface</h3>
+      <style>
+        .govuk-tabs--generic-surfaced {
+          .govuk-tabs__list-item {
+            --govuk-border-colour: var(--govuk-surface-border-colour);
+          }
+        }
+      </style>
+      {{ govukTabs({
+        items: [
+          {
+            label: "Past day",
+            id: "past-day",
+            panel: {
+              html: pastDayHtml
+            }
+          },
+          {
+            label: "Past week",
+            id: "past-week",
+            panel: {
+              html: pastWeekHtml
+            }
+          },
+          {
+            label: "Past month",
+            id: "past-month",
+            panel: {
+              html: pastMonthHtml
+            }
+          },
+          {
+            label: "Past year",
+            id: "past-year",
+            panel: {
+              html: pastYearHtml
+            }
+          }
+        ]
+      }) }}
+    </div>
+    <div>
+      <h3 class="govuk-heading-s">Inverse Surface</h3>
+      <style>
+        .govuk-tabs--inverse-surfaced {
+          --govuk-border-colour: var(--govuk-inverse-surface-border-colour);
+          .govuk-tabs__list-item {
+          }
+          .govuk-tabs__list-item:not(.govuk-tabs__list-item--selected) {
+            background-color: var(--govuk-inverse-surface-background-colour);
+            --govuk-text-colour: white;
+          }
+        }
+      </style>
+      {{ govukTabs({
+        classes: "govuk-tabs--inverse-surfaced",
+        items: [
+          {
+            label: "Past day",
+            id: "past-day",
+            panel: {
+              html: pastDayHtml
+            }
+          },
+          {
+            label: "Past week",
+            id: "past-week",
+            panel: {
+              html: pastWeekHtml
+            }
+          },
+          {
+            label: "Past month",
+            id: "past-month",
+            panel: {
+              html: pastMonthHtml
+            }
+          },
+          {
+            label: "Past year",
+            id: "past-year",
+            panel: {
+              html: pastYearHtml
+            }
+          }
+        ]
+      }) }}
+    </div>
+  </div>
+
+  <hr class="govuk-section-break govuk-section-break--l govuk-!-margin-bottom-9 govuk-section-break--visible">
+
+
+  <h2 class="govuk-heading-m">Footer</h2>
+  <hr class="govuk-section-break govuk-section-break--s govuk-!-margin-bottom-5 govuk-section-break--visible">
+
+  <div class="example-grid">
+    <div>
+      <h3 class="govuk-heading-s">Now</h3>
+      {{ govukServiceNavigation({
+        navigation: [
+          {
+            href: "#",
+            text: "Navigation item 1"
+          },
+          {
+            href: "#",
+            text: "Navigation item 2",
+            active: true
+          },
+          {
+            href: "#",
+            text: "Navigation item 3"
+          }
+        ]
+      }) }}
+    </div>
+    <div>
+      <h3 class="govuk-heading-s">(Brand) Surface</h3>
+      {{ govukServiceNavigation({
+        navigation: [
+          {
+            href: "#",
+            text: "Navigation item 1"
+          },
+          {
+            href: "#",
+            text: "Navigation item 2",
+            active: true
+          },
+          {
+            href: "#",
+            text: "Navigation item 3"
+          }
+        ]
+      }) }}
+    </div>
+    
+    <div>
+      <h3 class="govuk-heading-s">Generic Surface</h3>
+      <style>
+        .govuk-service-navigation--generic-surfaced {
+          --govuk-surface-border-colour: var(--govuk-border-colour);
+          --govuk-surface-background-colour: var(--govuk-generic-surface-background-colour);
+          --govuk-surface-text-colour: var(--govuk-text-colour);
+        }
+      </style>
+      {{ govukServiceNavigation({
+        classes: "govuk-service-navigation--generic-surfaced",
+        navigation: [
+          {
+            href: "#",
+            text: "Navigation item 1"
+          },
+          {
+            href: "#",
+            text: "Navigation item 2",
+            active: true
+          },
+          {
+            href: "#",
+            text: "Navigation item 3"
+          }
+        ]
+      }) }}
+    </div><div>
+      <h3 class="govuk-heading-s">Inverse surface</h3>
+      <style>
+        .govuk-service-navigation--inverse-surfaced {
+          --govuk-surface-border-colour: var(--govuk-inverse-surface-border-colour);
+          --govuk-surface-background-colour: var(--govuk-inverse-surface-background-colour);
+          --govuk-surface-text-colour: var(--govuk-inverse-surface-text-colour);
+          --govuk-link-colour: white;
+        }
+      </style>
+      {{ govukServiceNavigation({
+        classes: "govuk-service-navigation--inverse-surfaced",
+        navigation: [
+          {
+            href: "#",
+            text: "Navigation item 1"
+          },
+          {
+            href: "#",
+            text: "Navigation item 2",
+            active: true
+          },
+          {
+            href: "#",
+            text: "Navigation item 3"
+          }
+        ]
+      }) }}
+    </div>
+  </div>
+
+  <hr class="govuk-section-break govuk-section-break--l govuk-!-margin-bottom-9 govuk-section-break--visible">
+  
+  <h2 class="govuk-heading-m">Footer</h2>
+  <hr class="govuk-section-break govuk-section-break--s govuk-!-margin-bottom-5 govuk-section-break--visible">
+
+  <div class="example-grid">
+    <div>
+      <h3 class="govuk-heading-s">Now</h3>
+      {{ govukFooter({}) }}
+    </div>
+    <div>
+      <h3 class="govuk-heading-s">(Brand) Surface</h3>
+      <style>
+        .govuk-input__wrapper--surfaced {
+          .govuk-input__prefix,
+          .govuk-input__suffix {
+            color: var(--govuk-surface-text-colour);
+            background-color: var(--govuk-surface-background-colour);
+            --govuk-input-border-colour: var(--govuk-surface-border-colour);
+          }
+        }
+      </style>
+      {{ govukFooter({}) }}
+    </div>
+    <div>
+      <h3 class="govuk-heading-s">Generic Surface</h3>
+      <style>
+        .govuk-footer--generic-surfaced {
+          --govuk-brand-colour: var(--govuk-border-colour);
+          --govuk-surface-border-colour: var(--govuk-inverse-surface-border-colour);
+          --govuk-surface-background-colour: var(--govuk-generic-surface-background-colour);
+          --govuk-template-background-colour: var(--govuk-surface-background-colour);
+          /* uses the background colour since the html background colour of the page 'extends' the footer */
+          --govuk-surface-border-colour: var(--govuk-generic-surface-border-colour);
+        }
+      </style>
+      {{ govukFooter({
+        classes: "govuk-footer--generic-surfaced"
+      }) }}
+    </div>
+    <div>
+      <h3 class="govuk-heading-s">Inverse Surface</h3>
+      <style>
+        .govuk-footer--inverse-surfaced {
+          --govuk-brand-colour: var(--govuk-brand-colour);
+          --govuk-surface-border-colour: var(--govuk-inverse-surface-border-colour);
+          --govuk-surface-background-colour: var(--govuk-inverse-surface-background-colour);
+          --govuk-template-background-colour: var(--govuk-surface-background-colour);
+          /* uses the background colour since the html background colour of the page 'extends' the footer */
+          --govuk-surface-text-colour: var(--govuk-inverse-surface-text-colour);
+          --govuk-link-colour: var(--govuk-inverse-surface-text-colour);
+        }
+      </style>
+      {{ govukFooter({
+        classes: "govuk-footer--inverse-surfaced"
+      }) }}
+    </div>
+  </div>
+
+  <hr class="govuk-section-break govuk-section-break--l govuk-!-margin-bottom-9 govuk-section-break--visible">
+  <h2 class="govuk-heading-m">Cookie Banner</h2>
+  <hr class="govuk-section-break govuk-section-break--s govuk-!-margin-bottom-5 govuk-section-break--visible">
+
+  <div class="example-grid">
+    <div>
+      <h3 class="govuk-heading-s">Now</h3>
+      {% set cookieBannerHtml %}
+        <p class="govuk-body">We use some essential cookies to make this service work.</p>
+        <p class="govuk-body">We’d also like to use analytics cookies so we can understand how you use the service and make improvements.</p>
+      {% endset %}
+
+      {{ govukCookieBanner({
+        ariaLabel: "Cookies on [name of service]",
+        messages: [
+          {
+            headingText: "Cookies on [name of service]",
+            html: cookieBannerHtml,
+            actions: [
+              {
+                text: "Accept analytics cookies",
+                type: "button"
+              },
+              {
+                text: "Reject analytics cookies",
+                type: "button"
+              },
+              {
+                text: "View cookies",
+                href: "#"
+              }
+            ]
+          }
+        ]
+      }) }}
+    </div>
+    <div>
+      <h3 class="govuk-heading-s">(Brand) Surface</h3>
+      <style>
+        .govuk-input__wrapper--surfaced {
+          .govuk-input__prefix,
+          .govuk-input__suffix {
+            color: var(--govuk-surface-text-colour);
+            background-color: var(--govuk-surface-background-colour);
+            --govuk-input-border-colour: var(--govuk-surface-border-colour);
+          }
+        }
+      </style>
+      {{ govukCookieBanner({
+        classes: "govuk-cookie-banner--surfaced",
+        ariaLabel: "Cookies on [name of service]",
+        messages: [
+          {
+            headingText: "Cookies on [name of service]",
+            html: cookieBannerHtml,
+            actions: [
+              {
+                text: "Accept analytics cookies",
+                type: "button"
+              },
+              {
+                text: "Reject analytics cookies",
+                type: "button"
+              },
+              {
+                text: "View cookies",
+                href: "#"
+              }
+            ]
+          }
+        ]
+      }) }}
+    </div>
+    <div>
+      <h3 class="govuk-heading-s">Generic Surface</h3>
+      <style>
+        .govuk-cookie-banner--generic-surfaced {
+          --govuk-brand-colour: grey;
+          --govuk-surface-border-colour: var(--govuk-generic-surface-border-colour);
+          --govuk-surface-background-colour: var(--govuk-generic-surface-background-colour);
+          --govuk-template-background-colour: var(--govuk-surface-background-colour);
+          /* uses the background colour since the html background colour of the page 'extends' the footer */
+          --govuk-surface-border-colour: var(--govuk-generic-surface-border-colour);
+        }
+      </style>
+      {{ govukCookieBanner({
+        classes: "govuk-cookie-banner--generic-surfaced",
+        ariaLabel: "Cookies on [name of service]",
+        messages: [
+          {
+            headingText: "Cookies on [name of service]",
+            html: cookieBannerHtml,
+            actions: [
+              {
+                text: "Accept analytics cookies",
+                type: "button"
+              },
+              {
+                text: "Reject analytics cookies",
+                type: "button"
+              },
+              {
+                text: "View cookies",
+                href: "#"
+              }
+            ]
+          }
+        ]
+      }) }}
+    </div>
+  </div>
+
+  <hr class="govuk-section-break govuk-section-break--l govuk-!-margin-bottom-9 govuk-section-break--visible">
+
+{% endblock %}
