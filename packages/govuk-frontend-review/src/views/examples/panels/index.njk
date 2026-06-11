@@ -1,0 +1,71 @@
+{% extends "layouts/examples.njk" %}
+
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/panel/macro.njk" import govukPanel %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% block containerStart %}
+  {{ govukBackLink({
+    href: "/"
+  }) }}
+{% endblock %}
+
+{% block content %}
+<h1 class="govuk-heading-xl">Panels</h1>
+
+{% call govukPanel({
+  titleText: "Is your age correct?",
+  classes: 'govuk-panel--interruption'})
+%}
+  <p class="govuk-body govuk-!-color-inverse">You entered your age as <strong>109</strong>.</p>
+  <div class="govuk-button-group">
+    <button type="submit" class="govuk-button govuk-button--inverse" data-module="govuk-button">
+      Yes, this is correct
+    </button>
+    <a href="#" class="govuk-link govuk-link--inverse">Change my age</a>
+  </div>
+{% endcall %}
+
+
+
+{% call govukPanel({ classes: 'govuk-panel--interruption'}) %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {{ govukRadios({
+        name: "signIn",
+        fieldset: {
+          legend: {
+            text: "Are you sure you want to start a claim to get back your student loan repayments?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        hint: {
+          text: "You have a claim in progress to get back your student loan repayments. You will lose your progress on this claim if you start a different claim before you send it."
+        },
+        items: [
+          {
+            value: "yes",
+            text: "Yes, start claim to get back your student loan repayments",
+            hint: {
+              text: "You will lose progress on your first claim"
+            }
+          },
+          {
+            value: "no",
+            text: "No, finish the claim I have in progress"
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue",
+        classes: "govuk-button--inverse"
+      }) }}
+      </div>
+  </div>
+{% endcall %}
+
+{% endblock %}

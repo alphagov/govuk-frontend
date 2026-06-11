@@ -1,0 +1,7 @@
+@use "color.mixin" as mixin;
+
+@import "../tools/exports";
+
+@include govuk-exports("govuk/overrides/color") {
+  @include mixin.styles;
+}
