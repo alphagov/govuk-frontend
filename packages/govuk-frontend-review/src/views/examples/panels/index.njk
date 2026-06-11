@@ -1,0 +1,203 @@
+{% extends "layouts/examples.njk" %}
+
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/panel/macro.njk" import govukPanel %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% block containerStart %}
+  {{ govukBackLink({
+    href: "/"
+  }) }}
+{% endblock %}
+
+{% block content %}
+<h1 class="govuk-heading-xl">Panels</h1>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h2 class="govuk-heading-l">Examples</h2>
+      <h3 class="govuk-heading-m">Text and buttons/links only</h3>
+{% call govukPanel({
+  titleText: "Is your age correct?",
+  classes: 'govuk-panel--interruption'})
+%}
+  <p class="govuk-body govuk-!-color-inverse">You entered your age as <strong>109</strong>. This wouldn't match our <a class="govuk-link govuk-!-color-inverse" href="">policy for wellbeing of the livings</a>.</p>
+  <div class="govuk-button-group">
+    <button type="submit" class="govuk-button govuk-button--inverse" data-module="govuk-button">
+      Yes, this is correct
+    </button>
+    <a href="#" class="govuk-link govuk-link--inverse">Change my age</a>
+  </div>
+{% endcall %}
+
+<h3 class="govuk-heading-m">Branded panels</h3>
+{% call govukPanel({
+  titleText: "Department for Business and Trade",
+  classes: 'govuk-panel--interruption',
+  attributes: {
+    style: "--govuk-brand-colour: #e02c13"
+  }
+  })
+%}
+  <p class="govuk-body govuk-!-color-inverse">You entered your age as <strong>109</strong>. This wouldn't match our <a class="govuk-link govuk-!-color-inverse" href="">policy for wellbeing of the livings</a>.</p>
+  <div class="govuk-button-group">
+    <button type="submit" class="govuk-button govuk-button--inverse" data-module="govuk-button">
+      Yes, this is correct
+    </button>
+    <a href="#" class="govuk-link govuk-link--inverse">Change my age</a>
+  </div>
+{% endcall %}
+
+{% call govukPanel({
+  titleText: "Department for Food and Rural Affairs",
+  classes: 'govuk-panel--interruption',
+  attributes: {
+    style: "--govuk-brand-colour: #008531"
+  }
+  })
+%}
+  <p class="govuk-body govuk-!-color-inverse">You entered your age as <strong>109</strong>. This wouldn't match our <a class="govuk-link govuk-!-color-inverse" href="">policy for wellbeing of the livings</a>.</p>
+  <div class="govuk-button-group">
+    <button type="submit" class="govuk-button govuk-button--inverse" data-module="govuk-button">
+      Yes, this is correct
+    </button>
+    <a href="#" class="govuk-link govuk-link--inverse">Change my age</a>
+  </div>
+{% endcall %}
+
+{% call govukPanel({
+  titleText: "Department for Transport",
+  classes: 'govuk-panel--interruption',
+  attributes: {
+    style: "--govuk-brand-colour: #006853"
+  }
+  })
+%}
+  <p class="govuk-body govuk-!-color-inverse">You entered your age as <strong>109</strong>. This wouldn't match our <a class="govuk-link govuk-!-color-inverse" href="">policy for wellbeing of the livings</a>.</p>
+  <div class="govuk-button-group">
+    <button type="submit" class="govuk-button govuk-button--inverse" data-module="govuk-button">
+      Yes, this is correct
+    </button>
+    <a href="#" class="govuk-link govuk-link--inverse">Change my age</a>
+  </div>
+{% endcall %}
+
+<h3>With input fields</h3>
+{% call govukPanel({ classes: 'govuk-panel--interruption'}) %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {{ govukRadios({
+        name: "signIn",
+        fieldset: {
+          legend: {
+            text: "Are you sure you want to start a claim to get back your student loan repayments?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        hint: {
+          text: "You have a claim in progress to get back your student loan repayments. You will lose your progress on this claim if you start a different claim before you send it."
+        },
+        items: [
+          {
+            value: "yes",
+            text: "Yes, start claim to get back your student loan repayments",
+            hint: {
+              text: "You will lose progress on your first claim"
+            },
+            classes: 'govuk-!-inverse-colour'
+          },
+          {
+            value: "no",
+            text: "No, finish the claim I have in progress",
+            classes: 'govuk-!-inverse-colour'
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue",
+        classes: "govuk-button--inverse"
+      }) }}
+      </div>
+  </div>
+{% endcall %}
+    </div>
+    <div class="govuk-grid-column-one-third">
+      <div>
+        <h2 class="govuk-heading-m">Colours</h2>
+        <template data-module="app-colour-form">
+          <div class="govuk-form-group">
+            <input type="color">
+            <label class="govuk-label govuk-label--s"></label>
+          </div>
+        </template>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block bodyEnd %}
+  {{super()}}
+  <script type="module">
+    const template = document.querySelector('[data-module="app-colour-form"]');
+
+    const colourProperties = Array.from(getCustomProperties(document.documentElement)
+      .filter(({propertyName}) => propertyName.endsWith('-colour') && propertyName.includes('brand')))
+      .sort(({propertyName: a}, {propertyName: b}) => a > b ? -1 : (a < b ? 1 : 0))
+
+    for (const property of colourProperties) {
+      template.insertAdjacentElement('afterEnd', createField(property))
+    }
+
+    document.addEventListener('input', (event) => {
+      const propertyName = event.target.name;
+      const value = event.target.value;
+      document.documentElement.style.setProperty(propertyName, value);
+    })
+
+    //////
+    ///. Supporting functions .
+    //////
+
+    function createField({propertyName, propertyValue}) {
+      const id = propertyName.replace('--','')
+
+      const field = template.content.cloneNode(true)
+      const label = field.querySelector('label')
+      const input = field.querySelector('input')
+
+      label.for = id
+      label.textContent = propertyName
+      input.id = id
+      input.name = propertyName
+      input.value = propertyValue
+
+      return field.children[0];
+    }
+
+    /**
+     * Creates a generator to iterate on all the custom properties styling an element
+     *
+     * @param {Element} element - The element whose custom properties to iterate on
+     * @return {Generator<{propertyName: string, propertyValue: string}>}
+     */
+    function* getCustomProperties(element) {
+      const computedStyles = getComputedStyle(element);
+      for (const property in computedStyles) {
+        // For some reason custom properties are not listed as direct JavaScript properties
+        // of the computed styles. Instead, they're listed as values for number indices of the computed styles
+        if (!Number.isNaN(parseInt(property))) {
+          const propertyName = computedStyles[property];
+          if (propertyName.startsWith('--')) {
+            const propertyValue = computedStyles.getPropertyValue(propertyName);
+            yield {propertyName, propertyValue}
+          }
+        }
+      }
+    }
+
+  </script>
+{% endblock %}

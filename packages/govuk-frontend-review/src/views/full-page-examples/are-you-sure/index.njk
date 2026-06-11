@@ -1,0 +1,63 @@
+---
+title: Are you sure you want to start a claim?
+---
+
+{% extends "layouts/full-page-example.njk" %}
+
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/panel/macro.njk" import govukPanel %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% set pageTitle = example.title + " - Claim back your student loan repayments - GOV.UK" %}
+{% block pageTitle %}{{ "Error: " if errorSummary | length }}{{ pageTitle }} - GOV.UK{% endblock %}
+
+{% block containerStart %}
+  {{ govukBackLink({
+    text: "Back"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+{% call govukPanel({ classes: 'govuk-panel--interruption'}) %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    {{ govukRadios({
+      name: "signIn",
+      fieldset: {
+        legend: {
+          text: "Are you sure you want to start a claim to get back your student loan repayments?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
+        }
+      },
+      hint: {
+        text: "You have a claim in progress to get back your student loan repayments. You will lose your progress on this claim if you start a different claim before you send it."
+      },
+      items: [
+        {
+          value: "yes",
+          text: "Yes, start claim to get back your student loan repayments",
+          hint: {
+            text: "You will lose progress on your first claim"
+          }
+        },
+        {
+          value: "no",
+          text: "No, finish the claim I have in progress"
+        }
+      ]
+    }) }}
+
+    {{ govukButton({
+      text: "Continue",
+      classes: "govuk-button--inverse"
+    }) }}
+    </div>
+</div>
+{% endcall %}
+
+{% endblock %}
