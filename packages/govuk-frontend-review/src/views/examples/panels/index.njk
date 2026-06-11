@@ -17,11 +17,12 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <h2>Examples</h2>
+      <h3>Text and buttons/links only</h3>
 {% call govukPanel({
   titleText: "Is your age correct?",
   classes: 'govuk-panel--interruption'})
 %}
-  <p class="govuk-body govuk-!-color-inverse">You entered your age as <strong>109</strong>.</p>
+  <p class="govuk-body govuk-!-color-inverse">You entered your age as <strong>109</strong>. This wouldn't match our <a class="govuk-link govuk-!-color-inverse" href="">policy for wellbeing of the livings</a>.</p>
   <div class="govuk-button-group">
     <button type="submit" class="govuk-button govuk-button--inverse" data-module="govuk-button">
       Yes, this is correct
@@ -30,8 +31,7 @@
   </div>
 {% endcall %}
 
-
-
+<h3>With input fields</h3>
 {% call govukPanel({ classes: 'govuk-panel--interruption'}) %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
@@ -54,11 +54,13 @@
             text: "Yes, start claim to get back your student loan repayments",
             hint: {
               text: "You will lose progress on your first claim"
-            }
+            },
+            classes: 'govuk-!-inverse-colour'
           },
           {
             value: "no",
-            text: "No, finish the claim I have in progress"
+            text: "No, finish the claim I have in progress",
+            classes: 'govuk-!-inverse-colour'
           }
         ]
       }) }}
