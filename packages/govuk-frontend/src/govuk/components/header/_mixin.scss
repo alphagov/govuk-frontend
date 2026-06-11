@@ -6,11 +6,11 @@
 
   .govuk-header {
     @include base.govuk-font($size: 16, $line-height: 1);
+    @include base.govuk-surface;
+    @include base.govuk-surface-style-brand;
 
     // Add a transparent bottom border for forced-colour modes
     border-bottom: 1px solid transparent;
-    color: base.govuk-functional-colour(header-text);
-    background: base.govuk-functional-colour(brand);
   }
 
   .govuk-header__container--full-width {
@@ -47,7 +47,7 @@
     > * {
       word-spacing: 0;
     }
-    @include base.govuk-link-style-inverse;
+    @include base.govuk-link-style-text;
 
     &:link,
     &:visited {

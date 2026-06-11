@@ -1,0 +1,38 @@
+@use "colour" as *;
+
+@mixin govuk-surface() {
+  --govuk-text-colour: var(--govuk-surface-text);
+  // TODO: Feels like back-link and breadcrumbs could benefit
+  // from a functional colour for their chevrons rather than use `secondary-text`
+  --govuk-secondary-text-colour: var(--govuk-surface-text);
+
+  // This would likely be applying the `link-style-text` mixin
+  --govuk-link-colour: #{govuk-functional-colour(text)};
+  --govuk-link-visited-colour: #{govuk-functional-colour(text)};
+  --govuk-link-hover-colour: #{govuk-functional-colour(text)};
+
+  // This would likely be applying some form of mixin too
+  --govuk-button-colour: var(--govuk-surface-text);
+  --govuk-button-text-colour: var(--govuk-surface-background);
+  --govuk-button-shadow-colour: var(--govuk-surface-shadow);
+  --govuk-button-hover-colour: var(--govuk-surface-text-hover);
+  color: govuk-functional-colour(text);
+
+  background: var(--govuk-surface-background);
+}
+
+@mixin govuk-surface-style-brand() {
+  // TODO: Figure if these need to be functional. Watch out for the `--govuk-suface-background`,
+  // which, if set on `:root`, will not get updated if `--govuk-brand-colour` gets updated on a descendant
+  // on the page, as its value will already have been resolved on `:root`.
+  --govuk-surface-background: #{govuk-functional-colour(brand)};
+  --govuk-surface-text: #{govuk-colour("white")};
+  --govuk-surface-text-hover: #{govuk-colour("blue", $variant: "tint-95")};
+  --govuk-surface-shadow: #{govuk-colour("blue", $variant: "shade-50")};
+  --govuk-surface-graphic: #{govuk-colour("white")};
+}
+
+@mixin govuk-surface-style-body() {
+  --govuk-surface-background: #{govuk-functional-colour(body-background)};
+  --govuk-surface-text: #{govuk-functional-colour(body-text)};
+}

@@ -9,9 +9,9 @@
     @include base.govuk-responsive-margin(8, "bottom");
 
     border: base.$govuk-border-width solid;
-    border-color: base.govuk-functional-colour(brand);
-
-    background-color: base.govuk-functional-colour(brand);
+    @include base.govuk-surface;
+    @include base.govuk-surface-style-brand;
+    border-color: var(--govuk-surface-background);
 
     &:focus {
       outline: base.$govuk-focus-width solid;
@@ -44,6 +44,9 @@
   .govuk-notification-banner__content {
     $padding-tablet: base.govuk-spacing(4);
     padding: base.govuk-spacing(3);
+
+    @include base.govuk-surface;
+    @include base.govuk-surface-style-body;
 
     color: base.govuk-functional-colour(text);
     background-color: base.govuk-functional-colour(body-background);

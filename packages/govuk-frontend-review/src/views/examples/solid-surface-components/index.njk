@@ -9,6 +9,12 @@
 {% from "govuk/components/panel/macro.njk" import govukPanel %}
 {% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
 {% from "govuk/components/select/macro.njk" import govukSelect %}
+{% from "govuk/components/file-upload/macro.njk" import govukFileUpload %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/select/macro.njk" import govukSelect %}
+{% from "govuk/components/textarea/macro.njk" import govukTextarea %}
 
 {% block head %}
   {{super()}}
@@ -50,32 +56,10 @@
   <h1 class="govuk-heading-l">Components with solid surfaces</h1>
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds" data-module="app-examples">
-      <h2 class="govuk-heading-m">Examples</h2>
+      <h2 class="govuk-heading-m">Blue examples</h2>
 
       <h3 class="govuk-heading-s">Inverse section via custom props</h3>
-      <style style="display: block; white-space: pre; font-family: monospace">
-:root {
-  --app-brand-surface-text-colour: #ffffff;
-  --app-brand-surface-text-hover-colour: #f4f8fb;
-  --app-brand-surface-background-colour: var(--govuk-brand-colour);
-  --app-brand-surface-shadow-colour:  #0f385c;
-
-}
-
-.app-brand-surface {
-  background: var(--app-brand-surface-background-colour);
-  color: var(--app-brand-surface-text-colour);
-  --govuk-text-colour: var(--app-brand-surface-text-colour);
-  --govuk-link-colour: var(--app-brand-surface-text-colour);
-  --govuk-link-visited-colour: var(--app-brand-surface-text-colour);
-  --govuk-link-hover-colour: var(--app-brand-surface-text-colour);
-  --govuk-button-colour: var(--app-brand-surface-text-colour);
-  --govuk-button-text-colour: var(--app-brand-surface-background-colour);
-  --govuk-button-shadow-colour: var(--app-brand-surface-shadow-colour);
-  --govuk-button-hover-colour: var(--app-brand-surface-text-hover-colour);
-}
-      </style>
-      <div class="app-brand-surface govuk-!-padding-3">
+      <div class="govuk-surface--brand govuk-!-padding-3">
         <h4 class="govuk-heading-s">Oh! Hello!</h4>
         <p class="govuk-body">Inside this block, <a class="govuk-link" href="">`govuk-link`s</a> and <a class="govuk-link govuk-link--text">`govuk-link--text`</a> do not need custom properties to adapt to the background.
         <p class="govuk-body">Buttons do not either:</p>
@@ -85,6 +69,37 @@
         <p class="govuk-body">We can still have red warning buttons too</p>
         {{govukButton(componentFixtures['button']['warning'][0].options)}}
         <p class="govuk-body">But would need extra CSS to allow green buttons</p>
+        <style style="display: block; white-space: pre; font-family: monospace">
+:root {
+  /* Save the default button colours
+   * so we can re-use them when
+   * `--govuk-button(-...)-colour` have been overridden
+   */
+  --app-default-button-colour: var(--govuk-button-colour);
+  --app-default-button-text-colour: var(--govuk-button-text-colour);
+  --app-default-button-hover-colour: var(--govuk-button-hover-colour);
+  --app-default-button-shadow-colour: var(--govuk-button-shadow-colour);
+}
+
+.app-button--default {
+  --govuk-button-colour: var(--app-default-button-colour);
+  --govuk-button-text-colour: var(--app-default-button-text-colour);
+  --govuk-button-shadow-colour: var(--app-default-button-shadow-colour);
+  --govuk-button-hover-colour: var(--app-default-button-hover-colour);
+}
+        </style>
+        {{govukButton({text: 'A green button', classes: 'app-button--default'})}}
+
+      <p class="govuk-body">Let's look at what form fields would look like</p>
+      {{govukInput(componentFixtures['input']['with hint text'][0].options)}}
+      {{govukSelect(componentFixtures['select']['with hint text and error message'][0].options)}}
+      {{govukTextarea(componentFixtures['textarea']['with error message'][0].options)}}
+      {{govukCheckboxes(componentFixtures['checkboxes']['default'][0].options)}}
+      {{govukCheckboxes(componentFixtures['checkboxes']['small'][0].options)}}
+      {{govukRadios(componentFixtures['radios']['default'][0].options)}}
+      {{govukRadios(componentFixtures['radios']['small'][0].options)}}
+      {{govukRadios(componentFixtures['radios']['small'][0].options)}}
+
 
 
       </div>
@@ -93,26 +108,44 @@
       {{ govukHeader(componentFixtures['header']['with product name'][0].options) }}
 
       <h3 class="govuk-heading-s">Breadcrumbs (inverse)</h3>
-      <div class="app-template__body--inverse govuk-!-padding-2">
-      {{ govukBreadcrumbs(componentFixtures['breadcrumbs']['inverse'][0].options) }}
+      <div class="govuk-surface--brand govuk-!-padding-2">
+      {{ govukBreadcrumbs(componentFixtures['breadcrumbs']['default'][0].options) }}
+      </div>
+
+      <h3 class="govuk-heading-s">Back link</h3>
+      <div class="govuk-surface--brand govuk-!-padding-2">
+      {{ govukBackLink({ href: "/" }) }}
       </div>
 
       <h3 class="govuk-heading-s">Service navigation (inverse)</h3>
       {{ govukServiceNavigation(componentFixtures['service-navigation'].inverse[0].options) }}
 
-      <h3 class="govuk-heading-s">Panel</h3>
-      {{ govukPanel(componentFixtures['panel']['default'][0].options) }}
-
       <h3 class="govuk-heading-s">Notification banner</h3>
       {{ govukNotificationBanner(componentFixtures['notification-banner']['default'][0].options) }}
 
+      <h3 class="govuk-heading-s">Link (inverse)</h3>
+      <div class="govuk-surface--brand govuk-!-padding-2">
+        <a class="govuk-link" href="">Contact</a>
+      </div>
+
+      <h3 class="govuk-heading-s">Button (inverse)</h3>
+      <div class="govuk-surface--brand govuk-!-padding-2">
+        {{govukButton(componentFixtures['button']['default'][0].options)}}
+      </div>
+
+      <h3 class="govuk-heading-s">Select (selected value)</h3>
+      {{govukSelect(componentFixtures['select']['default'][0].options)}}
+
+      <h3 class="govuk-heading-s">File upload (filled)</h3>
+      {{govukFileUpload(componentFixtures['file-upload']['enhanced'][0].options)}}
+
+      <h2 class="govuk-heading-m">Green examples</h2>
+
+      <h3 class="govuk-heading-s">Panel</h3>
+      {{ govukPanel(componentFixtures['panel']['default'][0].options) }}
+
       <h3 class="govuk-heading-s">Notification banner (success)</h3>
       {{ govukNotificationBanner(componentFixtures['notification-banner']['with type as success'][0].options) }}
-
-      <h3 class="govuk-heading-s">Link (inverse)</h3>
-      <div class="app-template__body--inverse govuk-!-padding-2">
-        <a class="govuk-link govuk-link--inverse" href="">Contact</a>
-      </div>
 
       <h3 class="govuk-heading-s">Button</h3>
       {{govukButton(componentFixtures['button']['default'][0].options)}}
@@ -120,16 +153,10 @@
       <h3 class="govuk-heading-s">Button (start)</h3>
       {{govukButton(componentFixtures['button']['start'][0].options)}}
 
+      <h2 class="govuk-heading-m">Red examples</h2>
+
       <h3 class="govuk-heading-s">Button (warning)</h3>
       {{govukButton(componentFixtures['button']['warning'][0].options)}}
-
-      <h3 class="govuk-heading-s">Button (inverse)</h3>
-      <div class="app-template__body--inverse govuk-!-padding-2">
-        {{govukButton(componentFixtures['button']['inverse'][0].options)}}
-      </div>
-
-      <h3 class="govuk-heading-s">Select (selected value)</h3>
-      {{govukSelect(componentFixtures['select']['default'][0].options)}}
 
     </div>
     <div class="govuk-grid-column-one-third">

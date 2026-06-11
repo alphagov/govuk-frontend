@@ -30,6 +30,9 @@ $govuk-default-functional-colours: (
     "body-background": (
       name: "white"
     ),
+    "body-text": (
+      name: "black"
+    ),
     // Use 'true black' to avoid printers using colour ink to print body text
     "print-text": #000000,
     // Used in for example 'muted' text and help text.
@@ -230,9 +233,6 @@ $govuk-default-functional-colours: (
     "file-upload-dragging-empty-button-background": (
       name: "black",
       variant: "tint-95"
-    ),
-    "header-text": (
-      name: "white"
     ),
     "header-dot": (
       name: "teal",
