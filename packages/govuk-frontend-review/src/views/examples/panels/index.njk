@@ -16,11 +16,63 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <h2>Examples</h2>
-      <h3>Text and buttons/links only</h3>
+      <h2 class="govuk-heading-l">Examples</h2>
+      <h3 class="govuk-heading-m">Text and buttons/links only</h3>
 {% call govukPanel({
   titleText: "Is your age correct?",
   classes: 'govuk-panel--interruption'})
+%}
+  <p class="govuk-body govuk-!-color-inverse">You entered your age as <strong>109</strong>. This wouldn't match our <a class="govuk-link govuk-!-color-inverse" href="">policy for wellbeing of the livings</a>.</p>
+  <div class="govuk-button-group">
+    <button type="submit" class="govuk-button govuk-button--inverse" data-module="govuk-button">
+      Yes, this is correct
+    </button>
+    <a href="#" class="govuk-link govuk-link--inverse">Change my age</a>
+  </div>
+{% endcall %}
+
+<h3 class="govuk-heading-m">Branded panels</h3>
+{% call govukPanel({
+  titleText: "Department for Business and Trade",
+  classes: 'govuk-panel--interruption',
+  attributes: {
+    style: "--govuk-brand-colour: #e02c13"
+  }
+  })
+%}
+  <p class="govuk-body govuk-!-color-inverse">You entered your age as <strong>109</strong>. This wouldn't match our <a class="govuk-link govuk-!-color-inverse" href="">policy for wellbeing of the livings</a>.</p>
+  <div class="govuk-button-group">
+    <button type="submit" class="govuk-button govuk-button--inverse" data-module="govuk-button">
+      Yes, this is correct
+    </button>
+    <a href="#" class="govuk-link govuk-link--inverse">Change my age</a>
+  </div>
+{% endcall %}
+
+{% call govukPanel({
+  titleText: "Department for Food and Rural Affairs",
+  classes: 'govuk-panel--interruption',
+  attributes: {
+    style: "--govuk-brand-colour: #008531"
+  }
+  })
+%}
+  <p class="govuk-body govuk-!-color-inverse">You entered your age as <strong>109</strong>. This wouldn't match our <a class="govuk-link govuk-!-color-inverse" href="">policy for wellbeing of the livings</a>.</p>
+  <div class="govuk-button-group">
+    <button type="submit" class="govuk-button govuk-button--inverse" data-module="govuk-button">
+      Yes, this is correct
+    </button>
+    <a href="#" class="govuk-link govuk-link--inverse">Change my age</a>
+  </div>
+{% endcall %}
+
+{% call govukPanel({
+  titleText: "Department for Transport",
+  classes: 'govuk-panel--interruption',
+  attributes: {
+    style: "--govuk-brand-colour: #006853"
+  }
+  })
 %}
   <p class="govuk-body govuk-!-color-inverse">You entered your age as <strong>109</strong>. This wouldn't match our <a class="govuk-link govuk-!-color-inverse" href="">policy for wellbeing of the livings</a>.</p>
   <div class="govuk-button-group">
