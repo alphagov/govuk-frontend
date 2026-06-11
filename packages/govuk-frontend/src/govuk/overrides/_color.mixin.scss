@@ -4,6 +4,6 @@
 /// @access private
 @mixin styles {
   .govuk-\!-color-inverse {
-    color: govuk-colour("white") !important;
+    color: base.govuk-functional-colour(brand-inverse) !important;
   }
 }
