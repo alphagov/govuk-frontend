@@ -10,6 +10,11 @@
 {% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
 {% from "govuk/components/select/macro.njk" import govukSelect %}
 {% from "govuk/components/file-upload/macro.njk" import govukFileUpload %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/select/macro.njk" import govukSelect %}
+{% from "govuk/components/textarea/macro.njk" import govukTextarea %}
 
 {% block head %}
   {{super()}}
@@ -84,6 +89,17 @@
 }
         </style>
         {{govukButton({text: 'A green button', classes: 'app-button--default'})}}
+
+      <p class="govuk-body">Let's look at what form fields would look like</p>
+      {{govukInput(componentFixtures['input']['with hint text'][0].options)}}
+      {{govukSelect(componentFixtures['select']['with hint text and error message'][0].options)}}
+      {{govukTextarea(componentFixtures['textarea']['with error message'][0].options)}}
+      {{govukCheckboxes(componentFixtures['checkboxes']['default'][0].options)}}
+      {{govukCheckboxes(componentFixtures['checkboxes']['small'][0].options)}}
+      {{govukRadios(componentFixtures['radios']['default'][0].options)}}
+      {{govukRadios(componentFixtures['radios']['small'][0].options)}}
+      {{govukRadios(componentFixtures['radios']['small'][0].options)}}
+
 
 
       </div>
