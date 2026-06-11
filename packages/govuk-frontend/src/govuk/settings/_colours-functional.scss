@@ -20,6 +20,14 @@ $govuk-default-functional-colours: (
     "brand-inverse": (
       name: "white"
     ),
+    "brand-inverse-hover": (
+      name: "blue",
+      variant: "tint-95"
+    ),
+    "brand-shadow": (
+      name: "blue",
+      variant: "shade-50"
+    ),
     "text": (
       name: "black"
     ),

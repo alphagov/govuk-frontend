@@ -26,8 +26,8 @@
   // Inverse button variables
   $govuk-inverse-button-colour: $inverse-background-colour;
   $inverse-text-colour: $inverse-text-colour;
-  $govuk-inverse-button-hover-colour: base.govuk-colour("blue", $variant: "tint-95");
-  $govuk-inverse-button-shadow-colour: base.govuk-colour("blue", $variant: "shade-50");
+  $govuk-inverse-button-hover-colour: base.govuk-functional-colour(brand-inverse-hover);
+  $govuk-inverse-button-shadow-colour: base.govuk-functional-colour(brand-shadow);
 
   // Because the shadow (s0) is visually 'part of' the button, we need to reduce
   // the height of the button to compensate by adjusting its padding (s1) and
