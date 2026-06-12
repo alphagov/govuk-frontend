@@ -153,6 +153,11 @@
       .govuk-radios__item {
         margin-right: base.govuk-spacing(4);
       }
+
+      // Don't cap the max width, as this causes text to unnecessarily wrap
+      .govuk-radios__label {
+        max-width: none;
+      }
     }
   }
 
