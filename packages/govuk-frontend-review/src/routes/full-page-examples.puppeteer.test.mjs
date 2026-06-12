@@ -28,8 +28,11 @@ describe('Full page examples', () => {
       const $title = await page.$('title')
       const titleText = await getProperty($title, 'textContent')
 
-      // Check for matching title
-      expect(titleText).toBe(`${example.title} - GOV.UK`)
+      if (exampleName === 'non-govuk-service') {
+        expect(titleText).toBe(`${example.title}`)
+      } else {
+        expect(titleText).toBe(`${example.title} - GOV.UK`)
+      }
     }
   })
 })

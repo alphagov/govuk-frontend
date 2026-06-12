@@ -1,73 +1,32 @@
 @use "../../base";
+@use "../generic-header/mixin" as genericHeader;
 
 /// @access private
 @mixin styles {
   $logo-bottom-margin: 2px;
 
   .govuk-header {
-    @include base.govuk-font($size: 16, $line-height: 1);
-
-    // Add a transparent bottom border for forced-colour modes
-    border-bottom: 1px solid transparent;
-    color: base.govuk-colour("white");
-    background: base.govuk-functional-colour(brand);
+    @include genericHeader.block-styles($background: base.govuk-functional-colour("brand"));
   }
 
   .govuk-header__container--full-width {
-    padding: 0 base.govuk-spacing(3);
+    @include genericHeader.full-width-container-styles;
   }
 
   .govuk-header__logo {
-    box-sizing: border-box;
-
     // Magic numbers, set padding to vertically centre align the logo
-    padding-top: 16px;
-    padding-bottom: 14px - $logo-bottom-margin;
+    @include genericHeader.logo-styles($padding-top: 16px, $padding-bottom: 14px - $logo-bottom-margin);
   }
 
   .govuk-header__homepage-link {
-    // Avoid using the `base.govuk-link-common` mixin because the links in the
-    // header get a special treatment, because:
-    //
-    // - underlines are only visible on hover
-    // - all links get a 3px underline regardless of text size, as there are
-    //   multiple grouped elements close to one another and having slightly
-    //   different underline widths looks unbalanced
-    //
-    // Font size needs to be set on the link so that the box sizing is correct
-    // in Firefox
-    display: inline;
-    margin-right: base.govuk-spacing(2);
-    font-size: 30px; // We don't have a mixin that produces 30px font size
-    text-decoration: none;
+    @include genericHeader.link-styles;
+
     // Remove word-spacing from within the logo so we can ignore
     // whitespace characters in the HTML
     word-spacing: base.govuk-px-to-rem(-6px);
     // Reset word-spacing for child elements
     > * {
       word-spacing: 0;
-    }
-    @include base.govuk-link-style-inverse;
-
-    &:link,
-    &:visited {
-      text-decoration: none;
-    }
-
-    &:hover,
-    &:active {
-      // Negate the added border
-      $link-underline-thickness: 3px;
-      margin-bottom: $link-underline-thickness * -1;
-      border-bottom: $link-underline-thickness solid;
-    }
-
-    &:focus {
-      // Remove any borders that show when focused and hovered.
-      margin-bottom: 0;
-      border-bottom: 0;
-
-      @include base.govuk-focused-text;
     }
   }
 
@@ -146,24 +105,6 @@
   }
 
   @media print {
-    .govuk-header {
-      border-bottom-width: 0;
-      color: base.govuk-colour("black");
-      background: transparent;
-    }
-
-    .govuk-header__homepage-link {
-      &:link,
-      &:visited {
-        color: base.govuk-colour("black");
-      }
-
-      // Do not append link href to GOV.UK link when printing (e.g. '(/)')
-      &::after {
-        display: none;
-      }
-    }
-
     .govuk-header__product-name {
       // Fix product name alignment in Firefox when printing
       @-moz-document url-prefix() {
