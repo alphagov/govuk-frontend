@@ -2,10 +2,13 @@
 
 /// @access private
 @mixin styles {
+  $govuk-select-arrow-size: 12px;
+
   .govuk-select {
     @include base.govuk-font($size: 19, $line-height: 1.25);
 
     box-sizing: border-box;
+    position: relative;
 
     // This min-width was chosen because:
     // - it makes the Select wider than it is tall (which is what users expect)
@@ -15,6 +18,7 @@
     max-width: 100%;
     height: base.govuk-px-to-rem(40px);
     padding: base.govuk-spacing(1);
+    padding-right: $govuk-select-arrow-size + base.govuk-spacing(1) * 2;
     border: base.$govuk-border-width-form-element solid;
     border-color: base.govuk-functional-colour(input-border);
 
@@ -22,6 +26,84 @@
     // and may look disabled (#2435)
     color: base.govuk-functional-colour(text);
     background-color: base.govuk-colour("white");
+
+    // Enable custom select and dropdown styling in browsers that support them.
+    @supports (appearance: base-select) {
+      // ISSUE: Overriding the `appearance` stops the browser from doing the
+      // text truncation it would normally do, and trying other methods to
+      // prevent text overflowing the element don't seem to work, so just allow
+      // it to grow in height for now.
+      height: auto;
+      min-height: base.govuk-px-to-rem(40px);
+
+      border-radius: 0;
+      appearance: base-select;
+
+      &::picker-icon {
+        // Hide default arrow
+        content: "";
+
+        // ISSUE: The icon output from this mixin does not scale with changes
+        // to text size.
+        @include base.govuk-shape-arrow($direction: down, $base: $govuk-select-arrow-size);
+
+        position: absolute;
+        top: calc(50% - #{$govuk-select-arrow-size * 0.5});
+        right: base.govuk-spacing(1);
+      }
+
+      &::picker(select) {
+        // Position menu below the select and grow to the right if needed.
+        position-area: bottom span-right;
+
+        // Subtract top border to avoid doubling up with the input.
+        //
+        // ISSUE: The dropdown can appear above the input if there is more space
+        // available there, in which case this spacing is undesirable.
+        top: base.$govuk-border-width-form-element * -1;
+
+        // Be at least as wide as the select, and as tall as the available
+        // viewport allows.
+        min-width: anchor-size(self-inline);
+        max-height: stretch;
+        overflow: auto;
+
+        border: base.$govuk-border-width-form-element solid;
+        border-color: base.govuk-functional-colour(input-border);
+
+        // Default user agent colours for selects can have low contrast,
+        // and may look disabled (#2435)
+        color: base.govuk-functional-colour(text);
+        background-color: base.govuk-colour("white");
+
+        appearance: base-select;
+      }
+
+      option {
+        display: flex;
+        align-items: start;
+        gap: base.govuk-spacing(1);
+        padding: base.govuk-spacing(1);
+      }
+
+      // ISSUE: The checkmark does not scale with changes to text size, but this
+      // is also the case with our checkboxes generally.
+      option::checkmark {
+        content: "";
+        box-sizing: border-box;
+        width: 20px;
+        height: 11px;
+        margin-top: 3px;
+        transform: rotate(-45deg);
+        border: solid;
+        border-width: 0 0 3px 3px;
+      }
+
+      option:enabled:hover {
+        color: base.govuk-functional-colour(text);
+        background-color: base.govuk-colour("black", $variant: "tint-80");
+      }
+    }
 
     &:focus {
       @include base.govuk-focused-form-input;
@@ -35,10 +117,18 @@
   }
 
   .govuk-select option:active,
-  .govuk-select option:checked,
-  .govuk-select:focus::-ms-value {
+  .govuk-select option:checked {
     color: base.govuk-colour("white");
     background-color: base.govuk-colour("blue");
+  }
+
+  // Apply focus state for keyboard navigation. This uses :focus-visible
+  // instead of :focus, as otherwise it overrides the :checked colours
+  // (the checked option is always focused when opening the dropdown).
+  .govuk-select option:focus-visible {
+    outline: none;
+    color: base.govuk-functional-colour(focus-text);
+    background-color: base.govuk-functional-colour(focus);
   }
 
   .govuk-select--error {
