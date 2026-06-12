@@ -1,0 +1,466 @@
+Colour,Function,Used as,Used in,Concept
+#1d70b8,,--govuk-brand-colour,:root,
+#0b0c0c,,--govuk-text-colour,:root,
+#f4f8fb,,--govuk-template-background-colour,:root,
+#fff,,--govuk-body-background-colour,:root,
+#000,,--govuk-print-text-colour,:root,
+#484949,,--govuk-secondary-text-colour,:root,
+#fd0,,--govuk-focus-colour,:root,
+#0b0c0c,,--govuk-focus-text-colour,:root,
+#ca3535,,--govuk-error-colour,:root,
+#0f7a52,,--govuk-success-colour,:root,
+#cecece,,--govuk-border-colour,:root,
+#0b0c0c,,--govuk-input-border-colour,:root,
+#cecece,,--govuk-hover-colour,:root,
+#1a65a6,,--govuk-link-colour,:root,
+#54319f,,--govuk-link-visited-colour,:root,
+#0f385c,,--govuk-link-hover-colour,:root,
+#0b0c0c,,--govuk-link-active-colour,:root,
+#f4f8fb,,--govuk-surface-background-colour,:root,
+#0b0c0c,,--govuk-surface-text-colour,:root,
+#8eb8dc,,--govuk-surface-border-colour,:root,
+#000,print-text,--govuk-text-colour,:root,
+#fd0,focus,background-color,.govuk-link:focus,link
+#fd0,focus,box-shadow,.govuk-link:focus,link
+#0b0c0c,focus-text,box-shadow,.govuk-link:focus,link
+#1a65a6,link,color,.govuk-link:link,link
+#54319f,link-visited,color,.govuk-link:visited,link
+#0f385c,link-hover,color,.govuk-link:hover,link
+#0b0c0c,link-active,color,.govuk-link:active,link
+#0b0c0c,focus-text,color,.govuk-link:focus,link
+#484949,secondary-text,color,".govuk-link--muted:link,
+.govuk-link--muted:visited",link--muted
+#0b0c0c,text,color,".govuk-link--muted:active,
+.govuk-link--muted:hover",link--muted
+#0b0c0c,focus-text,color,.govuk-link--muted:focus,link--muted
+#0b0c0c,text,color,".govuk-link--text-colour:active,
+.govuk-link--text-colour:link,
+.govuk-link--text-colour:visited",link--text-colour
+#0b0c0c,focus-text,color,.govuk-link--text-colour:focus,link--text-colour
+#fff,,color,".govuk-link--inverse:link,
+.govuk-link--inverse:visited",link--inverse
+#0b0c0c,focus-text,color,.govuk-link--inverse:focus,link--inverse
+#1a65a6,link,color,".govuk-link--no-visited-state:link,
+.govuk-link--no-visited-state:visited",link--no-visited-state
+#0f385c,link-hover,color,.govuk-link--no-visited-state:hover,link--no-visited-state
+#0b0c0c,link-active,color,.govuk-link--no-visited-state:active,link--no-visited-state
+#0b0c0c,focus-text,color,.govuk-link--no-visited-state:focus,link--no-visited-state
+#fd0,focus,box-shadow,.govuk-link-image:focus,link-image
+#0b0c0c,focus-text,box-shadow,.govuk-link-image:focus,link-image
+#0b0c0c,text,color,.govuk-heading-xl,heading-xl
+#0b0c0c,text,color,.govuk-heading-l,heading-l
+#0b0c0c,text,color,.govuk-heading-m,heading-m
+#0b0c0c,text,color,.govuk-heading-s,heading-s
+#484949,secondary-text,color,.govuk-caption-xl,caption-xl
+#484949,secondary-text,color,.govuk-caption-l,caption-l
+#484949,secondary-text,color,.govuk-caption-m,caption-m
+#0b0c0c,text,color,".govuk-body-l,
+.govuk-body-lead","body-l,"
+#0b0c0c,text,color,".govuk-body,
+.govuk-body-m","body,"
+#0b0c0c,text,color,.govuk-body-s,body-s
+#0b0c0c,text,color,.govuk-list,list
+#cecece,border,border-bottom-color,.govuk-section-break--visible,section-break--visible
+#ca3535,error,border-left-color,.govuk-form-group--error,form-group--error
+#f4f8fb,template-background,background-color,.govuk-template,template
+#fff,body-background,background-color,.govuk-template__body,template__body
+#0b0c0c,text,color,.govuk-accordion__section-button,accordion__section-button
+#cecece,border,border-bottom-color,.govuk-frontend-supported .govuk-accordion,frontend-supported
+#1a65a6,link,color,.govuk-frontend-supported .govuk-accordion__show-all,frontend-supported
+#0b0c0c,,color,.govuk-frontend-supported .govuk-accordion__show-all:hover,frontend-supported
+#f3f3f3,,background,.govuk-frontend-supported .govuk-accordion__show-all:hover,frontend-supported
+#f3f3f3,,box-shadow,.govuk-frontend-supported .govuk-accordion__show-all:hover,frontend-supported
+#f3f3f3,,box-shadow,.govuk-frontend-supported .govuk-accordion__show-all:hover,frontend-supported
+#0b0c0c,,color,.govuk-frontend-supported .govuk-accordion__show-all:hover .govuk-accordion__section-toggle-text,frontend-supported
+#0b0c0c,,color,.govuk-frontend-supported .govuk-accordion__show-all:hover .govuk-accordion-nav__chevron,frontend-supported
+#0b0c0c,,background,.govuk-frontend-supported .govuk-accordion__show-all:hover .govuk-accordion-nav__chevron,frontend-supported
+#f3f3f3,,color,.govuk-frontend-supported .govuk-accordion__show-all:hover .govuk-accordion-nav__chevron:after,frontend-supported
+#0b0c0c,focus-text,color,.govuk-frontend-supported .govuk-accordion__show-all:focus,frontend-supported
+#fd0,focus,background-color,.govuk-frontend-supported .govuk-accordion__show-all:focus,frontend-supported
+#fd0,focus,box-shadow,.govuk-frontend-supported .govuk-accordion__show-all:focus,frontend-supported
+#0b0c0c,focus-text,box-shadow,.govuk-frontend-supported .govuk-accordion__show-all:focus,frontend-supported
+#0b0c0c,,background,.govuk-frontend-supported .govuk-accordion__show-all:focus .govuk-accordion-nav__chevron,frontend-supported
+#fd0,focus,color,.govuk-frontend-supported .govuk-accordion__show-all:focus .govuk-accordion-nav__chevron:after,frontend-supported
+#cecece,border,border-top-color,.govuk-frontend-supported .govuk-accordion__section-button,frontend-supported
+#0b0c0c,text,color,.govuk-frontend-supported .govuk-accordion__section-button,frontend-supported
+#0b0c0c,link-active,color,.govuk-frontend-supported .govuk-accordion__section-button:active,frontend-supported
+#0b0c0c,,color,.govuk-frontend-supported .govuk-accordion__section-button:hover,frontend-supported
+#f3f3f3,,background,.govuk-frontend-supported .govuk-accordion__section-button:hover,frontend-supported
+#0b0c0c,,color,.govuk-frontend-supported .govuk-accordion__section-button:hover .govuk-accordion__section-toggle-text,frontend-supported
+#0b0c0c,,color,.govuk-frontend-supported .govuk-accordion__section-button:hover .govuk-accordion-nav__chevron,frontend-supported
+#0b0c0c,,background,.govuk-frontend-supported .govuk-accordion__section-button:hover .govuk-accordion-nav__chevron,frontend-supported
+#f3f3f3,,color,.govuk-frontend-supported .govuk-accordion__section-button:hover .govuk-accordion-nav__chevron:after,frontend-supported
+#0b0c0c,focus-text,color,".govuk-frontend-supported .govuk-accordion__section-button:focus .govuk-accordion__section-heading-text-focus,
+.govuk-frontend-supported .govuk-accordion__section-button:focus .govuk-accordion__section-summary-focus,
+.govuk-frontend-supported .govuk-accordion__section-button:focus .govuk-accordion__section-toggle-focus",frontend-supported
+#fd0,focus,background-color,".govuk-frontend-supported .govuk-accordion__section-button:focus .govuk-accordion__section-heading-text-focus,
+.govuk-frontend-supported .govuk-accordion__section-button:focus .govuk-accordion__section-summary-focus,
+.govuk-frontend-supported .govuk-accordion__section-button:focus .govuk-accordion__section-toggle-focus",frontend-supported
+#fd0,focus,box-shadow,".govuk-frontend-supported .govuk-accordion__section-button:focus .govuk-accordion__section-heading-text-focus,
+.govuk-frontend-supported .govuk-accordion__section-button:focus .govuk-accordion__section-summary-focus,
+.govuk-frontend-supported .govuk-accordion__section-button:focus .govuk-accordion__section-toggle-focus",frontend-supported
+#0b0c0c,focus-text,box-shadow,".govuk-frontend-supported .govuk-accordion__section-button:focus .govuk-accordion__section-heading-text-focus,
+.govuk-frontend-supported .govuk-accordion__section-button:focus .govuk-accordion__section-summary-focus,
+.govuk-frontend-supported .govuk-accordion__section-button:focus .govuk-accordion__section-toggle-focus",frontend-supported
+#0b0c0c,,color,.govuk-frontend-supported .govuk-accordion__section-button:focus .govuk-accordion-nav__chevron,frontend-supported
+#0b0c0c,,background,.govuk-frontend-supported .govuk-accordion__section-button:focus .govuk-accordion-nav__chevron,frontend-supported
+#fd0,focus,color,.govuk-frontend-supported .govuk-accordion__section-button:focus .govuk-accordion-nav__chevron:after,frontend-supported
+#1a65a6,link,color,.govuk-frontend-supported .govuk-accordion__section-toggle,frontend-supported
+#cecece,border,border-top-color,.govuk-frontend-supported .govuk-accordion__section-header:hover,frontend-supported
+#1a65a6,link,box-shadow,.govuk-frontend-supported .govuk-accordion__section-header:hover,frontend-supported
+#cecece,border,border-top-color,.govuk-frontend-supported .govuk-accordion__section-header:hover .govuk-accordion__section-button,frontend-supported
+#fd0,focus,background-color,.govuk-back-link:focus,back-link
+#fd0,focus,box-shadow,.govuk-back-link:focus,back-link
+#0b0c0c,focus-text,box-shadow,.govuk-back-link:focus,back-link
+#0b0c0c,text,color,".govuk-back-link:active,
+.govuk-back-link:link,
+.govuk-back-link:visited",back-link
+#0b0c0c,focus-text,color,.govuk-back-link:focus,back-link
+#484949,secondary-text,border-color,.govuk-back-link:before,back-link
+#0b0c0c,focus-text,border-color,.govuk-back-link:focus:before,back-link
+#fff,,color,".govuk-back-link--inverse:link,
+.govuk-back-link--inverse:visited",back-link--inverse
+#0b0c0c,focus-text,color,.govuk-back-link--inverse:focus,back-link--inverse
+#0b0c0c,text,color,.govuk-breadcrumbs,breadcrumbs
+#484949,secondary-text,border-color,.govuk-breadcrumbs__list-item:before,breadcrumbs__list-item
+#fd0,focus,background-color,.govuk-breadcrumbs__link:focus,breadcrumbs__link
+#fd0,focus,box-shadow,.govuk-breadcrumbs__link:focus,breadcrumbs__link
+#0b0c0c,focus-text,box-shadow,.govuk-breadcrumbs__link:focus,breadcrumbs__link
+#0b0c0c,text,color,".govuk-breadcrumbs__link:active,
+.govuk-breadcrumbs__link:link,
+.govuk-breadcrumbs__link:visited",breadcrumbs__link
+#0b0c0c,focus-text,color,.govuk-breadcrumbs__link:focus,breadcrumbs__link
+#fff,,color,".govuk-breadcrumbs--inverse,
+.govuk-breadcrumbs--inverse .govuk-breadcrumbs__link:link,
+.govuk-breadcrumbs--inverse .govuk-breadcrumbs__link:visited","breadcrumbs--inverse,"
+#0b0c0c,focus-text,color,.govuk-breadcrumbs--inverse .govuk-breadcrumbs__link:focus,breadcrumbs--inverse
+#fff,,color,.govuk-button,button
+#0f7a52,,background-color,.govuk-button,button
+#083d29,,box-shadow,.govuk-button,button
+#fff,,color,".govuk-button:active,
+.govuk-button:hover,
+.govuk-button:link,
+.govuk-button:visited",button
+#0b5c3e,,background-color,.govuk-button:hover,button
+#fd0,focus,border-color,.govuk-button:focus,button
+#fd0,focus,box-shadow,.govuk-button:focus,button
+#fd0,focus,border-color,.govuk-button:focus:not(:active):not(:hover),button
+#0b0c0c,focus-text,color,.govuk-button:focus:not(:active):not(:hover),button
+#fd0,focus,background-color,.govuk-button:focus:not(:active):not(:hover),button
+#0b0c0c,focus-text,box-shadow,.govuk-button:focus:not(:active):not(:hover),button
+#0f7a52,,background-color,.govuk-button[disabled]:hover,button[disabled]
+#083d29,,box-shadow,.govuk-button[disabled]:active,button[disabled]
+#f3f3f3,,background-color,.govuk-button--secondary,button--secondary
+#858686,,box-shadow,.govuk-button--secondary,button--secondary
+#0b0c0c,,color,".govuk-button--secondary,
+.govuk-button--secondary:active,
+.govuk-button--secondary:hover,
+.govuk-button--secondary:link,
+.govuk-button--secondary:visited","button--secondary,"
+#cecece,,background-color,.govuk-button--secondary:hover,button--secondary
+#f3f3f3,,background-color,.govuk-button--secondary:hover[disabled],button--secondary
+#ca3535,,background-color,.govuk-button--warning,button--warning
+#651b1b,,box-shadow,.govuk-button--warning,button--warning
+#fff,,color,".govuk-button--warning,
+.govuk-button--warning:active,
+.govuk-button--warning:hover,
+.govuk-button--warning:link,
+.govuk-button--warning:visited","button--warning,"
+#982828,,background-color,.govuk-button--warning:hover,button--warning
+#ca3535,,background-color,.govuk-button--warning:hover[disabled],button--warning
+#fff,,background-color,.govuk-button--inverse,button--inverse
+#0f385c,,box-shadow,.govuk-button--inverse,button--inverse
+#1d70b8,brand,color,".govuk-button--inverse,
+.govuk-button--inverse:active,
+.govuk-button--inverse:hover,
+.govuk-button--inverse:link,
+.govuk-button--inverse:visited","button--inverse,"
+#f4f8fb,,background-color,.govuk-button--inverse:hover,button--inverse
+#fff,,background-color,.govuk-button--inverse:hover[disabled],button--inverse
+#ca3535,error,color,.govuk-error-message,error-message
+#484949,secondary-text,color,.govuk-hint,hint
+#0b0c0c,text,color,.govuk-label,label
+#0b0c0c,input-border,border-color,.govuk-textarea,textarea
+#fd0,focus,outline-color,.govuk-textarea:focus,textarea
+#0b0c0c,input-border,box-shadow,.govuk-textarea:focus,textarea
+#ca3535,error,border-color,.govuk-textarea--error,textarea--error
+#0b0c0c,input-border,border-color,.govuk-textarea--error:focus,textarea--error
+#ca3535,error,border-color,.govuk-character-count .govuk-textarea--error:focus,character-count
+#ca3535,error,box-shadow,.govuk-character-count .govuk-textarea--error:focus,character-count
+#0b0c0c,text,color,.govuk-fieldset__legend,fieldset__legend
+#fd0,focus,box-shadow,.govuk-checkboxes__input:focus+.govuk-checkboxes__label:before,checkboxes__input
+#0b0c0c,text,color,.govuk-checkboxes__divider,checkboxes__divider
+#cecece,border,border-left-color,.govuk-checkboxes__conditional,checkboxes__conditional
+#cecece,hover,box-shadow,.govuk-checkboxes--small .govuk-checkboxes__input:not(:disabled):hover+.govuk-checkboxes__label:before,checkboxes--small
+#fd0,focus,box-shadow,.govuk-checkboxes--small .govuk-checkboxes__input:focus:hover+.govuk-checkboxes__label:before,checkboxes--small
+#cecece,hover,box-shadow,.govuk-checkboxes--small .govuk-checkboxes__input:focus:hover+.govuk-checkboxes__label:before,checkboxes--small
+#fd0,focus,box-shadow,.govuk-checkboxes--small .govuk-checkboxes__input:focus:hover+.govuk-checkboxes__label:before,checkboxes--small
+#0b0c0c,surface-text,color,.govuk-cookie-banner,cookie-banner
+#f4f8fb,surface-background,background-color,.govuk-cookie-banner,cookie-banner
+#0b0c0c,input-border,border-color,.govuk-input,input
+#fd0,focus,outline-color,.govuk-input:focus,input
+#0b0c0c,input-border,box-shadow,.govuk-input:focus,input
+#ca3535,error,border-color,.govuk-input--error,input--error
+#0b0c0c,input-border,border-color,.govuk-input--error:focus,input--error
+#0b0c0c,input-border,border-color,".govuk-input__prefix,
+.govuk-input__suffix","input__prefix,"
+#f3f3f3,,background-color,".govuk-input__prefix,
+.govuk-input__suffix","input__prefix,"
+#0b0c0c,text,color,.govuk-details,details
+#cecece,border,border-left-color,.govuk-details,details
+#1a65a6,link,color,.govuk-details__summary,details__summary
+#0f385c,link-hover,color,.govuk-details__summary:hover,details__summary
+#0b0c0c,focus-text,color,.govuk-details__summary:focus,details__summary
+#fd0,focus,background-color,.govuk-details__summary:focus,details__summary
+#fd0,focus,box-shadow,.govuk-details__summary:focus,details__summary
+#0b0c0c,focus-text,box-shadow,.govuk-details__summary:focus,details__summary
+#cecece,border,border-left-color,.govuk-details__text,details__text
+#ca3535,error,border-color,.govuk-error-summary,error-summary
+#0b0c0c,text,color,.govuk-error-summary,error-summary
+#fd0,focus,outline-color,.govuk-error-summary:focus,error-summary
+#fd0,focus,background-color,.govuk-error-summary__list a:focus,error-summary__list
+#fd0,focus,box-shadow,.govuk-error-summary__list a:focus,error-summary__list
+#0b0c0c,focus-text,box-shadow,.govuk-error-summary__list a:focus,error-summary__list
+#ca3535,error,color,".govuk-error-summary__list a:link,
+.govuk-error-summary__list a:visited",error-summary__list
+#651b1b,,color,.govuk-error-summary__list a:hover,error-summary__list
+#ca3535,error,color,.govuk-error-summary__list a:active,error-summary__list
+#0b0c0c,focus-text,color,.govuk-error-summary__list a:focus,error-summary__list
+#fff,,background-color,.govuk-exit-this-page-overlay,exit-this-page-overlay
+#0b0c0c,text,color,.govuk-file-upload,file-upload
+#fd0,focus,outline-color,.govuk-file-upload:focus,file-upload
+#0b0c0c,input-border,box-shadow,.govuk-file-upload:focus,file-upload
+#fd0,focus,outline-color,.govuk-file-upload:focus-within,file-upload
+#0b0c0c,input-border,box-shadow,.govuk-file-upload:focus-within,file-upload
+#fff,body-background,background-color,".govuk-drop-zone,
+.govuk-file-upload-wrapper","drop-zone,"
+#fff,,color,.govuk-file-upload-button__status,file-upload-button__status
+#1d70b8,,background-color,.govuk-file-upload-button__status,file-upload-button__status
+#cecece,,border,.govuk-file-upload-button,file-upload-button
+#fff,,background-color,.govuk-file-upload-button,file-upload-button
+#ca3535,error,border-color,.govuk-form-group--error .govuk-file-upload-button,form-group--error
+#f3f3f3,,background-color,.govuk-file-upload-button .govuk-file-upload-button__pseudo-button,file-upload-button
+#858686,,border-color,.govuk-file-upload-button:hover,file-upload-button
+#cecece,,background-color,.govuk-file-upload-button:hover .govuk-file-upload-button__pseudo-button,file-upload-button
+#1d70b8,,background-color,.govuk-file-upload-button:hover .govuk-file-upload-button__status,file-upload-button
+#0b0c0c,,border,".govuk-file-upload-button:active,
+.govuk-file-upload-button:focus",file-upload-button
+#fd0,focus,outline-color,".govuk-file-upload-button:active,
+.govuk-file-upload-button:focus",file-upload-button
+#f3f3f3,,background-color,".govuk-file-upload-button:active,
+.govuk-file-upload-button:focus",file-upload-button
+#fd0,focus,background-color,".govuk-file-upload-button:active .govuk-file-upload-button__pseudo-button,
+.govuk-file-upload-button:focus .govuk-file-upload-button__pseudo-button",file-upload-button
+#0b0c0c,,box-shadow,".govuk-file-upload-button:active .govuk-file-upload-button__pseudo-button,
+.govuk-file-upload-button:focus .govuk-file-upload-button__pseudo-button",file-upload-button
+#fd0,focus,border-color,".govuk-file-upload-button:active:hover .govuk-file-upload-button__pseudo-button,
+.govuk-file-upload-button:focus:hover .govuk-file-upload-button__pseudo-button",file-upload-button
+#cecece,,background-color,".govuk-file-upload-button:active:hover .govuk-file-upload-button__pseudo-button,
+.govuk-file-upload-button:focus:hover .govuk-file-upload-button__pseudo-button",file-upload-button
+#fd0,focus,box-shadow,".govuk-file-upload-button:active:hover .govuk-file-upload-button__pseudo-button,
+.govuk-file-upload-button:focus:hover .govuk-file-upload-button__pseudo-button",file-upload-button
+#fff,,background-color,.govuk-file-upload-button--empty,file-upload-button--empty
+#f3f3f3,,background-color,.govuk-file-upload-button--empty .govuk-file-upload-button__pseudo-button,file-upload-button--empty
+#0b0c0c,,color,.govuk-file-upload-button--empty .govuk-file-upload-button__status,file-upload-button--empty
+#d2e2f1,,background-color,.govuk-file-upload-button--empty .govuk-file-upload-button__status,file-upload-button--empty
+#f3f3f3,,background-color,".govuk-file-upload-button--empty:active,
+.govuk-file-upload-button--empty:focus,
+.govuk-file-upload-button--empty:hover",file-upload-button--empty
+#d2e2f1,,background-color,".govuk-file-upload-button--empty:active .govuk-file-upload-button__status,
+.govuk-file-upload-button--empty:focus .govuk-file-upload-button__status,
+.govuk-file-upload-button--empty:hover .govuk-file-upload-button__status",file-upload-button--empty
+#0b0c0c,,border-color,.govuk-file-upload-button--dragging,file-upload-button--dragging
+#f3f3f3,,background-color,.govuk-file-upload-button--dragging.govuk-file-upload-button--empty,file-upload-button--dragging
+#fff,,background-color,.govuk-file-upload-button:disabled,file-upload-button
+#f3f3f3,,background-color,.govuk-file-upload-button:disabled .govuk-file-upload-button__pseudo-button,file-upload-button
+#d2e2f1,,background-color,.govuk-file-upload-button:disabled .govuk-file-upload-button__status,file-upload-button
+#1d70b8,brand,border-top-color,.govuk-footer,footer
+#0b0c0c,surface-text,color,.govuk-footer,footer
+#f4f8fb,template-background,background,.govuk-footer,footer
+#fd0,focus,background-color,.govuk-footer__link:focus,footer__link
+#fd0,focus,box-shadow,.govuk-footer__link:focus,footer__link
+#0b0c0c,focus-text,box-shadow,.govuk-footer__link:focus,footer__link
+#1a65a6,link,color,.govuk-footer__link:link,footer__link
+#54319f,link-visited,color,.govuk-footer__link:visited,footer__link
+#0f385c,link-hover,color,.govuk-footer__link:hover,footer__link
+#0b0c0c,link-active,color,.govuk-footer__link:active,footer__link
+#0b0c0c,focus-text,color,.govuk-footer__link:focus,footer__link
+#8eb8dc,surface-border,border-bottom,.govuk-footer__section-break,footer__section-break
+#0b0c0c,text,color,".govuk-footer__copyright-logo:active,
+.govuk-footer__copyright-logo:link,
+.govuk-footer__copyright-logo:visited",footer__copyright-logo
+#0b0c0c,focus-text,color,.govuk-footer__copyright-logo:focus,footer__copyright-logo
+#8eb8dc,surface-border,border-bottom,.govuk-footer__heading,footer__heading
+#fff,,color,.govuk-header,header
+#1d70b8,brand,background,.govuk-header,header
+#fff,,color,".govuk-header__homepage-link:link,
+.govuk-header__homepage-link:visited",header__homepage-link
+#0b0c0c,focus-text,color,.govuk-header__homepage-link:focus,header__homepage-link
+#fd0,focus,background-color,.govuk-header__homepage-link:focus,header__homepage-link
+#fd0,focus,box-shadow,.govuk-header__homepage-link:focus,header__homepage-link
+#0b0c0c,focus-text,box-shadow,.govuk-header__homepage-link:focus,header__homepage-link
+#00ffe0,,fill,.govuk-logo-dot,logo-dot
+#0b0c0c,,color,.govuk-header,header
+#0b0c0c,,color,".govuk-header__homepage-link:link,
+.govuk-header__homepage-link:visited",header__homepage-link
+#cecece,border,border-left-color,.govuk-inset-text,inset-text
+#0b0c0c,text,color,.govuk-inset-text,inset-text
+#1d70b8,brand,border-color,.govuk-notification-banner,notification-banner
+#1d70b8,brand,background-color,.govuk-notification-banner,notification-banner
+#fd0,focus,outline-color,.govuk-notification-banner:focus,notification-banner
+#fff,,color,.govuk-notification-banner__title,notification-banner__title
+#0b0c0c,text,color,.govuk-notification-banner__content,notification-banner__content
+#fff,body-background,background-color,.govuk-notification-banner__content,notification-banner__content
+#fd0,focus,background-color,.govuk-notification-banner__link:focus,notification-banner__link
+#fd0,focus,box-shadow,.govuk-notification-banner__link:focus,notification-banner__link
+#0b0c0c,focus-text,box-shadow,.govuk-notification-banner__link:focus,notification-banner__link
+#1a65a6,link,color,".govuk-notification-banner__link:link,
+.govuk-notification-banner__link:visited",notification-banner__link
+#0f385c,link-hover,color,.govuk-notification-banner__link:hover,notification-banner__link
+#0b0c0c,link-active,color,.govuk-notification-banner__link:active,notification-banner__link
+#0b0c0c,focus-text,color,.govuk-notification-banner__link:focus,notification-banner__link
+#0f7a52,success,border-color,.govuk-notification-banner--success,notification-banner--success
+#0f7a52,success,background-color,.govuk-notification-banner--success,notification-banner--success
+#0f7a52,success,color,".govuk-notification-banner--success .govuk-notification-banner__link:link,
+.govuk-notification-banner--success .govuk-notification-banner__link:visited",notification-banner--success
+#083d29,,color,.govuk-notification-banner--success .govuk-notification-banner__link:hover,notification-banner--success
+#0f7a52,success,color,.govuk-notification-banner--success .govuk-notification-banner__link:active,notification-banner--success
+#0b0c0c,focus-text,color,.govuk-notification-banner--success .govuk-notification-banner__link:focus,notification-banner--success
+#f3f3f3,,background-color,".govuk-pagination__item:hover,
+.govuk-pagination__next:hover,
+.govuk-pagination__prev:hover",pagination__item
+#1a65a6,link,background-color,".govuk-pagination__item--current,
+.govuk-pagination__item--current:hover","pagination__item--current,"
+#fff,,color,".govuk-pagination__item--current .govuk-pagination__link:link,
+.govuk-pagination__item--current .govuk-pagination__link:visited",pagination__item--current
+#0b0c0c,focus-text,color,.govuk-pagination__item--current .govuk-pagination__link:focus,pagination__item--current
+#484949,secondary-text,color,.govuk-pagination__item--ellipsis,pagination__item--ellipsis
+#0b0c0c,focus-text,color,.govuk-pagination__link:focus .govuk-pagination__icon,pagination__link
+#484949,secondary-text,color,.govuk-pagination__icon,pagination__icon
+#cecece,border,border-top-color,.govuk-pagination--block .govuk-pagination__prev+.govuk-pagination__next,pagination--block
+#fff,,color,.govuk-panel--confirmation,panel--confirmation
+#0f7a52,,background,.govuk-panel--confirmation,panel--confirmation
+#0b0c0c,text,color,.govuk-panel--confirmation,panel--confirmation
+#0f385c,,color,.govuk-tag,tag
+#d2e2f1,,background-color,.govuk-tag,tag
+#083d29,,color,.govuk-tag--green,tag--green
+#cfe4dc,,background-color,.govuk-tag--green,tag--green
+#2a1950,,color,.govuk-tag--purple,tag--purple
+#ddd6ec,,background-color,.govuk-tag--purple,tag--purple
+#651b1b,,color,.govuk-tag--red,tag--red
+#f4d7d7,,background-color,.govuk-tag--red,tag--red
+#7a3c1c,,color,.govuk-tag--orange,tag--orange
+#fde4d7,,background-color,.govuk-tag--orange,tag--orange
+#0b4144,,color,.govuk-tag--teal,tag--teal
+#d0e6e7,,background-color,.govuk-tag--teal,tag--teal
+#651b3e,,color,.govuk-tag--magenta,tag--magenta
+#f4d7e5,,background-color,.govuk-tag--magenta,tag--magenta
+#7a3c1c,,color,.govuk-tag--yellow,tag--yellow
+#ffee80,,background-color,.govuk-tag--yellow,tag--yellow
+#0b0c0c,,color,.govuk-tag--grey,tag--grey
+#cecece,,background-color,.govuk-tag--grey,tag--grey
+#0b4144,,color,.govuk-tag--turquoise,tag--turquoise
+#d0e6e7,,background-color,.govuk-tag--turquoise,tag--turquoise
+#651b3e,,color,.govuk-tag--pink,tag--pink
+#f4d7e5,,background-color,.govuk-tag--pink,tag--pink
+#cecece,border,border-bottom-color,.govuk-phase-banner,phase-banner
+#0b0c0c,text,color,.govuk-phase-banner__content,phase-banner__content
+#fd0,focus,box-shadow,.govuk-radios__input:focus+.govuk-radios__label:before,radios__input
+#0b0c0c,text,color,.govuk-radios__divider,radios__divider
+#cecece,border,border-left-color,.govuk-radios__conditional,radios__conditional
+#cecece,hover,box-shadow,.govuk-radios--small .govuk-radios__input:not(:disabled):hover+.govuk-radios__label:before,radios--small
+#fd0,focus,box-shadow,.govuk-radios--small .govuk-radios__input:focus:hover+.govuk-radios__label:before,radios--small
+#cecece,hover,box-shadow,.govuk-radios--small .govuk-radios__input:focus:hover+.govuk-radios__label:before,radios--small
+#fd0,focus,box-shadow,.govuk-radios--small .govuk-radios__input:focus:hover+.govuk-radios__label:before,radios--small
+#0b0c0c,input-border,border-color,.govuk-select,select
+#0b0c0c,text,color,.govuk-select,select
+#fff,,background-color,.govuk-select,select
+#fd0,focus,outline-color,.govuk-select:focus,select
+#0b0c0c,input-border,box-shadow,.govuk-select:focus,select
+#fff,,color,".govuk-select option:active,
+.govuk-select option:checked,
+.govuk-select:focus::-ms-value",select
+#1d70b8,,background-color,".govuk-select option:active,
+.govuk-select option:checked,
+.govuk-select:focus::-ms-value",select
+#ca3535,error,border-color,.govuk-select--error,select--error
+#0b0c0c,input-border,border-color,.govuk-select--error:focus,select--error
+#8eb8dc,surface-border,border-bottom,.govuk-service-navigation,service-navigation
+#0b0c0c,surface-text,color,.govuk-service-navigation,service-navigation
+#f4f8fb,surface-background,background-color,.govuk-service-navigation,service-navigation
+#1a65a6,link,border-color,".govuk-service-navigation__item,
+.govuk-service-navigation__service-name","service-navigation__item,"
+#fd0,focus,background-color,.govuk-service-navigation__link:focus,service-navigation__link
+#fd0,focus,box-shadow,.govuk-service-navigation__link:focus,service-navigation__link
+#0b0c0c,focus-text,box-shadow,.govuk-service-navigation__link:focus,service-navigation__link
+#1a65a6,link,color,".govuk-service-navigation__link:link,
+.govuk-service-navigation__link:visited",service-navigation__link
+#0f385c,link-hover,color,.govuk-service-navigation__link:hover,service-navigation__link
+#0b0c0c,link-active,color,.govuk-service-navigation__link:active,service-navigation__link
+#0b0c0c,focus-text,color,.govuk-service-navigation__link:focus,service-navigation__link
+#0b0c0c,text,color,".govuk-service-navigation__service-name .govuk-service-navigation__link:active,
+.govuk-service-navigation__service-name .govuk-service-navigation__link:link,
+.govuk-service-navigation__service-name .govuk-service-navigation__link:visited",service-navigation__service-name
+#0b0c0c,focus-text,color,.govuk-service-navigation__service-name .govuk-service-navigation__link:focus,service-navigation__service-name
+#1a65a6,link,color,.govuk-service-navigation__toggle,service-navigation__toggle
+#0b0c0c,focus-text,color,.govuk-service-navigation__toggle:focus,service-navigation__toggle
+#fd0,focus,background-color,.govuk-service-navigation__toggle:focus,service-navigation__toggle
+#fd0,focus,box-shadow,.govuk-service-navigation__toggle:focus,service-navigation__toggle
+#0b0c0c,focus-text,box-shadow,.govuk-service-navigation__toggle:focus,service-navigation__toggle
+#fff,,color,.govuk-service-navigation--inverse,service-navigation--inverse
+#1d70b8,brand,background-color,.govuk-service-navigation--inverse,service-navigation--inverse
+#8eb8dc,surface-border,border-color,.govuk-service-navigation--inverse .govuk-width-container,service-navigation--inverse
+#fff,,border-color,".govuk-service-navigation--inverse .govuk-service-navigation__item,
+.govuk-service-navigation--inverse .govuk-service-navigation__service-name",service-navigation--inverse
+#fff,,color,".govuk-service-navigation--inverse .govuk-service-navigation__link:link,
+.govuk-service-navigation--inverse .govuk-service-navigation__link:visited",service-navigation--inverse
+#0b0c0c,focus-text,color,.govuk-service-navigation--inverse .govuk-service-navigation__link:focus,service-navigation--inverse
+#0b0c0c,text,color,".govuk-skip-link:active,
+.govuk-skip-link:link,
+.govuk-skip-link:visited",skip-link
+#0b0c0c,focus-text,color,.govuk-skip-link:focus,skip-link
+#fd0,focus,outline-color,.govuk-skip-link:focus,skip-link
+#fd0,focus,background-color,.govuk-skip-link:focus,skip-link
+#0b0c0c,text,color,.govuk-summary-list,summary-list
+#cecece,border,border-bottom-color,.govuk-summary-list__row,summary-list__row
+#cecece,border,border-right-color,".govuk-summary-card__action,
+.govuk-summary-list__actions-list-item","summary-card__action,"
+#cecece,border,border-left-color,".govuk-summary-card__action:not(:first-child),
+.govuk-summary-list__actions-list-item:not(:first-child)",summary-card__action
+#cecece,border,border-color,.govuk-summary-card,summary-card
+#f3f3f3,,background-color,.govuk-summary-card__title-wrapper,summary-card__title-wrapper
+#0b0c0c,text,color,.govuk-summary-card__title,summary-card__title
+#0b0c0c,text,color,.govuk-table,table
+#cecece,border,border-bottom-color,".govuk-table__cell,
+.govuk-table__header","table__cell,"
+#0b0c0c,text,color,.govuk-tabs__title,tabs__title
+#0b0c0c,text,color,.govuk-tabs__list-item:before,tabs__list-item
+#fd0,focus,background-color,.govuk-tabs__tab:focus,tabs__tab
+#fd0,focus,box-shadow,.govuk-tabs__tab:focus,tabs__tab
+#0b0c0c,focus-text,box-shadow,.govuk-tabs__tab:focus,tabs__tab
+#1a65a6,link,color,.govuk-tabs__tab:link,tabs__tab
+#54319f,link-visited,color,.govuk-tabs__tab:visited,tabs__tab
+#0f385c,link-hover,color,.govuk-tabs__tab:hover,tabs__tab
+#0b0c0c,link-active,color,.govuk-tabs__tab:active,tabs__tab
+#0b0c0c,focus-text,color,.govuk-tabs__tab:focus,tabs__tab
+#cecece,border,border-bottom-color,.govuk-frontend-supported .govuk-tabs__list,frontend-supported
+#f3f3f3,,background-color,.govuk-frontend-supported .govuk-tabs__list-item,frontend-supported
+#cecece,border,border-color,.govuk-frontend-supported .govuk-tabs__list-item--selected,frontend-supported
+#fff,body-background,background-color,.govuk-frontend-supported .govuk-tabs__list-item--selected,frontend-supported
+#0b0c0c,text,color,".govuk-frontend-supported .govuk-tabs__tab:active,
+.govuk-frontend-supported .govuk-tabs__tab:link,
+.govuk-frontend-supported .govuk-tabs__tab:visited",frontend-supported
+#0b0c0c,focus-text,color,.govuk-frontend-supported .govuk-tabs__tab:focus,frontend-supported
+#cecece,border,border-color,.govuk-frontend-supported .govuk-tabs__panel,frontend-supported
+#cecece,border,border-bottom-color,.govuk-task-list__item,task-list__item
+#cecece,border,border-top-color,.govuk-task-list__item:first-child,task-list__item
+#f3f3f3,,background,.govuk-task-list__item--with-link:hover,task-list__item--with-link
+#0b0c0c,text,color,".govuk-task-list__name-and-hint,
+.govuk-task-list__status","task-list__name-and-hint,"
+#484949,secondary-text,color,.govuk-task-list__status--cannot-start-yet,task-list__status--cannot-start-yet
+#484949,secondary-text,color,.govuk-task-list__hint,task-list__hint
+#0b0c0c,text,border-color,.govuk-warning-text__icon,warning-text__icon
+#fff,body-background,color,.govuk-warning-text__icon,warning-text__icon
+#0b0c0c,text,background,.govuk-warning-text__icon,warning-text__icon
+#0b0c0c,text,color,.govuk-warning-text__text,warning-text__text
+

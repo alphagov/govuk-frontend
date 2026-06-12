@@ -21,7 +21,9 @@
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^16.0.3",
     "@rollup/plugin-terser": "^1.0.0",
+    "csv": "^6.5.1",
     "govuk-frontend": "*",
+    "postcss-value-parser": "^4.2.0",
     "rollup": "^4.60.4",
     "rollup-plugin-visualizer": "^7.0.1"
   }
