@@ -8,3 +8,24 @@
 @use "partials/links";
 @use "partials/organisation-swatch";
 @use "partials/prose";
+
+:root {
+  --govuk-brand-colour: #b81db3;
+  --govuk-inverse-text-colour: #0b0b0c;
+  --govuk-text-colour: #f3f3f3;
+  --govuk-template-background-colour: #0f385c;
+  --govuk-body-background-colour: #061625;
+  --govuk-hover-colour: #cecece;
+  --govuk-link-colour: #8eb8dc;
+  --govuk-link-visited-colour: #aa98cf;
+  --govuk-link-hover-colour: #d2e2f1;
+  --govuk-link-active-colour: #0b0c0c;
+  --govuk-surface-background-colour: #0f385c;
+  --govuk-surface-text-colour: #ffffff;
+  --govuk-surface-border-colour: #0f385c;
+  --govuk-secondary-text-colour: #8eb8dc;
+  --govuk-input-border-colour: #ffffff;
+  --govuk-error-colour: #d76868;
+  --govuk-emphasis-background-colour: #0a253e;
+  color-scheme: dark;
+}

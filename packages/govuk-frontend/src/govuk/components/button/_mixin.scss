@@ -19,7 +19,7 @@
 
   // Warning button variables
   $govuk-warning-button-colour: base.govuk-colour("red");
-  $govuk-warning-button-text-colour: base.govuk-colour("white");
+  $govuk-warning-button-text-colour: base.govuk-functional-colour(inverse-text);
   $govuk-warning-button-hover-colour: base.govuk-colour("red", $variant: "shade-25");
   $govuk-warning-button-shadow-colour: base.govuk-colour("red", $variant: "shade-50");
 

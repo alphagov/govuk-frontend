@@ -4,7 +4,7 @@
 @mixin styles {
   $file-upload-border-width: 2px;
   $component-padding: base.govuk-spacing(1);
-  $empty-button-background-colour: base.govuk-colour("white");
+  $empty-button-background-colour: base.govuk-functional-colour(body-background);
   $empty-pseudo-button-background-colour: base.govuk-colour("black", $variant: "tint-95");
   $empty-status-background-colour: base.govuk-colour("blue", $variant: "tint-80");
 
@@ -86,8 +86,8 @@
     display: block;
     margin-bottom: base.govuk-spacing(2);
     padding: base.govuk-spacing(3) base.govuk-spacing(2);
-    color: base.govuk-colour("white");
-    background-color: base.govuk-colour("blue");
+    color: base.govuk-functional-colour(inverse-text);
+    background-color: base.govuk-colour("blue"); // Informative or brand?
     text-align: left;
     @include base.govuk-text-break-word;
   }

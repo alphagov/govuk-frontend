@@ -21,7 +21,7 @@
     // Default user agent colours for selects can have low contrast,
     // and may look disabled (#2435)
     color: base.govuk-functional-colour(text);
-    background-color: base.govuk-colour("white");
+    background-color: base.govuk-functional-colour(body-background);
 
     &:focus {
       @include base.govuk-focused-form-input;
@@ -37,7 +37,7 @@
   .govuk-select option:active,
   .govuk-select option:checked,
   .govuk-select:focus::-ms-value {
-    color: base.govuk-colour("white");
+    color: base.govuk-functional-colour(inverse-text);
     background-color: base.govuk-colour("blue");
   }
 

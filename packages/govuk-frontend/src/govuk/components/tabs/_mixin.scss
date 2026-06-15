@@ -71,7 +71,7 @@
         padding: base.govuk-spacing(2) base.govuk-spacing(4);
 
         float: left;
-        background-color: base.govuk-colour("black", $variant: "tint-95");
+        background-color: base.govuk-functional-colour(emphasis-background);
         text-align: center;
 
         &::before {

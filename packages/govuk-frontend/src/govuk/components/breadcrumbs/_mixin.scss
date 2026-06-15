@@ -124,7 +124,9 @@
   }
 
   .govuk-breadcrumbs--inverse {
-    color: base.govuk-colour("white");
+    // Because the section would be right under the brand-text content of the Header
+    // the text needs to be `brand-text` rather than `inverse-text`?
+    color: base.govuk-functional-colour(inverse-text);
 
     .govuk-breadcrumbs__link {
       @include base.govuk-link-style-inverse;

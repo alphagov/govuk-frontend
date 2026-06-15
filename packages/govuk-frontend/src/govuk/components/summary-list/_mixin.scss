@@ -206,7 +206,7 @@
     // Ensures the card header appears separate to the summary list in forced
     // colours mode
     border-bottom: 1px solid transparent;
-    background-color: base.govuk-colour("black", $variant: "tint-95");
+    background-color: base.govuk-functional-colour(emphasis-background);
 
     @media #{base.govuk-from-breakpoint(tablet)} {
       display: flex;

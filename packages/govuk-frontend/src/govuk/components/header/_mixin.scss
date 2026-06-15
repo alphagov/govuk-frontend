@@ -9,7 +9,7 @@
 
     // Add a transparent bottom border for forced-colour modes
     border-bottom: 1px solid transparent;
-    color: base.govuk-colour("white");
+    color: base.govuk-functional-colour(inverse-text);
     background: base.govuk-functional-colour(brand);
   }
 

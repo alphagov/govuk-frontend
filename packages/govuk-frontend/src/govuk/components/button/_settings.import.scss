@@ -14,14 +14,14 @@ $govuk-button-background-colour: govuk-colour("green") !default;
 /// @type Colour
 /// @access public
 
-$govuk-button-text-colour: govuk-colour("white") !default;
+$govuk-button-text-colour: govuk-functional-colour(inverse-text) !default;
 
 /// Inverted button component background colour
 ///
 /// @type Colour
 /// @access public
 
-$govuk-inverse-button-background-colour: govuk-colour("white") !default;
+$govuk-inverse-button-background-colour: govuk-functional-colour(inverse-text) !default;
 
 /// Inverted button component text colour
 ///

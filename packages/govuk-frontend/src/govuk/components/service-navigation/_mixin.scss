@@ -202,7 +202,7 @@
 
     // Set colour here so non-link text (service name, slot content) can
     // use it too.
-    color: base.govuk-colour("white");
+    color: base.govuk-functional-colour(inverse-text);
 
     background-color: base.govuk-functional-colour(brand);
 
@@ -220,7 +220,7 @@
     // Override the 'active' border colour
     .govuk-service-navigation__item,
     .govuk-service-navigation__service-name {
-      border-color: base.govuk-colour("white");
+      border-color: base.govuk-functional-colour(inverse-text);
     }
 
     // Override link styles
