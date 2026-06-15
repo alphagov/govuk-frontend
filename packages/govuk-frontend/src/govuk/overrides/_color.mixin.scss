@@ -1,0 +1,9 @@
+@use "../base";
+
+// stylelint-disable declaration-no-important
+/// @access private
+@mixin styles {
+  .govuk-\!-color-inverse {
+    color: base.govuk-functional-colour(brand-inverse) !important;
+  }
+}

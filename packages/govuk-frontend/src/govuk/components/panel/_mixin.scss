@@ -33,17 +33,17 @@
       // it but the the text remains legible.
       overflow-wrap: break-word;
     }
-  }
-
-  .govuk-panel--confirmation {
-    color: base.govuk-colour("white");
-    background: base.govuk-colour("green");
 
     @media print {
       border-color: currentcolor;
       color: base.govuk-functional-colour(text);
       background: none;
     }
+  }
+
+  .govuk-panel--confirmation {
+    color: base.govuk-colour("white");
+    background: base.govuk-colour("green");
   }
 
   .govuk-panel__title {
@@ -55,5 +55,13 @@
 
   .govuk-panel__title:last-child {
     margin-bottom: 0;
+  }
+
+  .govuk-panel--interruption {
+    color: base.govuk-functional-colour(brand-inverse);
+    background-color: base.govuk-functional-colour(brand);
+    text-align: left;
+
+    @include base.govuk-font($size: 19);
   }
 }
