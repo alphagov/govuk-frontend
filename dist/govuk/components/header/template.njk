@@ -1,0 +1,23 @@
+{% from "../generic-header/macro.njk" import govukGenericHeader -%}
+{% from "../../macros/logo.njk" import govukLogo -%}
+
+{% set logoContent %}
+  {{ govukLogo({
+    classes: "govuk-header__logotype",
+    ariaLabelText: "GOV.UK"
+  }) | trim | indent(8) }}
+  {%- if (params.productName) %}
+    <span class="govuk-header__product-name">
+      {{- params.productName -}}
+    </span>
+  {% endif -%}
+{% endset %}
+
+{{ govukGenericHeader({
+  _namespace: 'govuk',
+  logoHtml: logoContent,
+  url: params.homepageUrl | default("//gov.uk", true),
+  containerClasses: params.containerClasses,
+  classes: params.classes,
+  attributes: params.attributes
+}) }}

@@ -1,0 +1,8 @@
+@use "mixin";
+
+@import "../../base";
+
+@include govuk-exports("govuk/component/fieldset") {
+  @include mixin.styles;
+}
+

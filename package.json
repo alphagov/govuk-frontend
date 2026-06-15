@@ -1,0 +1,69 @@
+{
+  "name": "govuk-frontend",
+  "description": "GOV.UK Frontend contains the code you need to start building a user interface for government platforms and services.",
+  "version": "6.2.0-generic-header",
+  "main": "dist/govuk/all.bundle.js",
+  "module": "dist/govuk/all.mjs",
+  "sass": "dist/govuk/index.scss",
+  "files": [
+    "dist",
+    "govuk-prototype-kit.config.json",
+    "package.json",
+    "README.md"
+  ],
+  "exports": {
+    ".": {
+      "sass": "./dist/govuk/index.scss",
+      "import": "./dist/govuk/all.mjs",
+      "require": "./dist/govuk/all.bundle.js",
+      "default": "./dist/govuk/all.bundle.js"
+    },
+    "./dist/": "./dist/",
+    "./govuk-prototype-kit.config.json": "./govuk-prototype-kit.config.json",
+    "./package.json": "./package.json",
+    "./*": {
+      "sass": "./dist/govuk/*",
+      "default": "./*"
+    }
+  },
+  "sideEffects": false,
+  "engines": {
+    "node": ">= 4.2.0"
+  },
+  "author": {
+    "name": "GOV.UK Design System Team (Government Digital Service)",
+    "email": "design-system-developers@digital.cabinet-office.gov.uk"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alphagov/govuk-frontend.git",
+    "directory": "packages/govuk-frontend"
+  },
+  "bugs": {
+    "url": "https://github.com/alphagov/govuk-frontend/issues"
+  },
+  "homepage": "https://frontend.design-system.service.gov.uk/",
+  "keywords": [
+    "govuk",
+    "frontend",
+    "design system",
+    "template"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "dev": "gulp dev --color",
+    "prebuild:package": "npm run clean:package",
+    "prebuild:release": "npm run clean:release",
+    "build": "npm run build:package",
+    "build:package": "gulp build:package --color",
+    "build:release": "gulp build:release --color",
+    "build:stats": "npm run stats --workspace @govuk-frontend/stats",
+    "build:types": "tsc --build tsconfig.json",
+    "clean": "npm run clean:package",
+    "clean:package": "del-cli *.tsbuildinfo dist govuk-prototype-kit.config.json",
+    "clean:release": "del-cli ../../dist --force",
+    "postbuild:package": "npm run build:stats && govuk-prototype-kit validate-plugin .",
+    "postversion": "node ../../bin/update-changelog.mjs",
+    "get-version": "echo $npm_package_version"
+  }
+}
