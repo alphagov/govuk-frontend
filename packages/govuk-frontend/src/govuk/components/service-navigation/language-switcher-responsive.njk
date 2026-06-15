@@ -1,0 +1,50 @@
+{% from "../../macros/attributes.njk" import govukAttributes %}
+{% from "./language-switcher-icon.njk" import govukLanguageSwitcherIcon %}
+
+{% macro govukLanguageSwitcherResponsive(languageSwitch) %}
+  {%- set languageSwitchCurrentLanguage = languageSwitch.currentLanguage | default("en", true) -%}
+  {%- set languageSwitchNavigationId = languageSwitch.navigationId | default("language-switcher-navigation", true) -%}
+  {%- set languageSwitchShowIcon = languageSwitch.showIcon | default(false) -%}
+  {%- set languageSwitchItems = languageSwitch.items | default([
+    {
+      "code": "en",
+      "text": languageSwitch.englishText | default("English", true),
+      "href": languageSwitch.englishHref | default("#", true)
+    },
+    {
+      "code": "cy",
+      "text": languageSwitch.welshText | default("Cymraeg", true),
+      "href": languageSwitch.welshHref | default("#", true)
+    }
+  ], true) -%}
+
+  <nav class="govuk-language-switcher govuk-language-switcher-responsive{%- if languageSwitch.classes %} {{ languageSwitch.classes }}{% endif %}" aria-label="{{ languageSwitch.ariaLabel | default("Language", true) }}"
+    {{- govukAttributes(languageSwitch.attributes) }}>
+    <button type="button" class="govuk-service-navigation__toggle govuk-language-switcher__toggle govuk-js-service-navigation-toggle" aria-controls="{{ languageSwitchNavigationId }}" hidden aria-hidden="true">
+      {% if languageSwitchShowIcon %}
+        {{ govukLanguageSwitcherIcon() }}
+      {% endif %}
+      Language
+    </button>
+    <ul class="govuk-language-switcher__list" id="{{ languageSwitchNavigationId }}">
+      {% if languageSwitchShowIcon %}
+        <li class="govuk-language-switcher__item govuk-language-switcher__item--icon" aria-hidden="true">
+          {{ govukLanguageSwitcherIcon() }}
+        </li>
+      {% endif %}
+      {% for item in languageSwitchItems %}
+        <li class="govuk-language-switcher__item{%- if languageSwitchCurrentLanguage == item.code %} govuk-language-switcher__item--current{% endif %}">
+          {% if languageSwitchCurrentLanguage == item.code %}
+            <span class="govuk-service-navigation__text govuk-language-switcher__text" lang="{{ item.code }}" aria-current="page">
+              {{ item.text }}
+            </span>
+          {% else %}
+            <a class="govuk-service-navigation__link govuk-language-switcher__link" href="{{ item.href }}" hreflang="{{ item.code }}" lang="{{ item.code }}" rel="alternate">
+              {{ item.text }}
+            </a>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  </nav>
+{% endmacro %}

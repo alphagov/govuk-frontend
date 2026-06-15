@@ -1,0 +1,8 @@
+/// @group components/test-service-navigation
+/// @access private
+@mixin styles {
+  // Test component wrapper class for component discovery and optional overrides.
+  .govuk-test-service-navigation {
+    display: block;
+  }
+}

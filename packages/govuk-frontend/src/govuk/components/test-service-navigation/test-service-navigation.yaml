@@ -1,0 +1,109 @@
+params:
+  - name: classes
+    type: string
+    required: false
+    description: Classes to add to the service navigation container.
+  - name: attributes
+    type: object
+    required: false
+    description: HTML attributes to add to the service navigation container.
+  - name: serviceName
+    type: string
+    required: false
+    description: The name of your service.
+  - name: serviceUrl
+    type: string
+    required: false
+    description: The homepage of your service.
+  - name: navigation
+    type: array
+    required: false
+    description: Navigation items.
+    params:
+      - name: text
+        type: string
+        required: true
+        description: Link text.
+      - name: href
+        type: string
+        required: false
+        description: Link URL.
+      - name: active
+        type: boolean
+        required: false
+        description: Whether this item is active.
+      - name: current
+        type: boolean
+        required: false
+        description: Whether this item is the current page.
+      - name: attributes
+        type: object
+        required: false
+        description: HTML attributes for the navigation link.
+  - name: languageSwitch
+    type: object
+    required: false
+    description: Language switcher options using the new language-switcher component model.
+    params:
+      - name: currentLanguage
+        type: string
+        required: false
+        description: Current language code.
+      - name: classes
+        type: string
+        required: false
+        description: Language switcher classes. Use `govuk-language-switcher--right-align` for inline right or `govuk-language-switcher-responsive` to collapse on mobile.
+      - name: navigationId
+        type: string
+        required: false
+        description: ID for the language switcher list.
+      - name: showIcon
+        type: boolean
+        required: false
+        description: Show a leading globe icon.
+      - name: items
+        type: array
+        required: false
+        description: Language options.
+        params:
+          - name: code
+            type: string
+            required: true
+            description: Language code.
+          - name: text
+            type: string
+            required: true
+            description: Language name.
+          - name: href
+            type: string
+            required: false
+            description: Language URL.
+
+examples:
+  - name: default
+    screenshot:
+      variants:
+        - default
+        - no-js
+    options:
+      serviceName: Apply for a juggling license
+      serviceUrl: '#/'
+      navigation:
+        - href: '#/1'
+          text: Navigation item 1
+        - href: '#/2'
+          text: Navigation item 2
+      languageSwitch:
+        currentLanguage: en
+        showIcon: true
+        classes: govuk-language-switcher-responsive
+        items:
+          - code: en
+            text: English
+            href: /en
+          - code: cy
+            text: Cymraeg
+            href: /cy
+          - code: fr
+            text: Francais
+            href: /fr

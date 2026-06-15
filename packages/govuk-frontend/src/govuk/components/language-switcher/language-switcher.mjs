@@ -3,68 +3,61 @@ import { Component } from '../../component.mjs'
 import { ElementError } from '../../errors/index.mjs'
 
 /**
- * Service Navigation component
+ * Language Switcher component
  *
  * @preserve
  */
-export class ServiceNavigation extends Component {
+export class LanguageSwitcher extends Component {
   /** @private */
   controlledMenus = []
 
   /**
-   * A global const for storing a matchMedia instance which we'll use to detect
-   * when a screen size change happens. We rely on it being null if the feature
-   * isn't available to initially apply hidden attributes
-   *
    * @private
    * @type {MediaQueryList | null}
    */
   mql = null
 
   /**
-   * @param {Element | null} $root - HTML element to use for header
+   * @param {Element | null} $root - HTML element to use for language switcher
    */
   constructor($root) {
     super($root)
 
-    const $menuButtons = this.$root.querySelectorAll(
-      '.govuk-js-service-navigation-toggle'
+    const $menuButton = this.$root.querySelector(
+      '.govuk-js-language-switcher-toggle'
     )
 
-    // Headers don't necessarily have a navigation. When they don't, the menu
-    // toggle won't be rendered by our macro (or may be omitted when writing
-    // plain HTML)
-    if ($menuButtons.length === 0) {
+    if (!$menuButton) {
       return this
     }
 
-    this.controlledMenus = Array.from($menuButtons).map(($menuButton) => {
-      const menuId = $menuButton.getAttribute('aria-controls')
+    const menuId = $menuButton.getAttribute('aria-controls')
 
-      if (!menuId) {
-        throw new ElementError({
-          component: ServiceNavigation,
-          identifier:
-            'Navigation button (`<button class="govuk-js-service-navigation-toggle">`) attribute (`aria-controls`)'
-        })
-      }
+    if (!menuId) {
+      throw new ElementError({
+        component: LanguageSwitcher,
+        identifier:
+          'Language switcher button (`<button class="govuk-js-language-switcher-toggle">`) attribute (`aria-controls`)'
+      })
+    }
 
-      const $menu = document.getElementById(menuId)
+    const $menu = document.getElementById(menuId)
 
-      if (!$menu) {
-        throw new ElementError({
-          component: ServiceNavigation,
-          element: $menu,
-          identifier: `Navigation (\`<ul id="${menuId}">\`)`
-        })
-      }
+    if (!$menu) {
+      throw new ElementError({
+        component: LanguageSwitcher,
+        element: $menu,
+        identifier: `Language switcher list (\`<ul id="${menuId}">\`)`
+      })
+    }
 
-      return {
+    this.controlledMenus = [
+      {
         $menu,
         $menuButton,
         menuIsOpen: false
       }
-    })
+    ]
 
     this.setupResponsiveChecks()
 
@@ -85,16 +78,13 @@ export class ServiceNavigation extends Component {
 
     if (!breakpoint.value) {
       throw new ElementError({
-        component: ServiceNavigation,
+        component: LanguageSwitcher,
         identifier: `CSS custom property (\`${breakpoint.property}\`) on pseudo-class \`:root\``
       })
     }
 
-    // Media query list for GOV.UK Frontend desktop breakpoint
     this.mql = window.matchMedia(`(min-width: ${breakpoint.value})`)
 
-    // MediaQueryList.addEventListener isn't supported by Safari < 14 so we need
-    // to be able to fall back to the deprecated MediaQueryList.addListener
     if ('addEventListener' in this.mql) {
       this.mql.addEventListener('change', () => this.checkMode())
     } else {
@@ -108,11 +98,6 @@ export class ServiceNavigation extends Component {
 
   /**
    * Sync menu state
-   *
-   * Uses the global variable menuIsOpen to correctly set the accessible and
-   * visual states of the menu and the menu button.
-   * Additionally will force the menu to be visible and the menu button to be
-   * hidden if the matchMedia is triggered to desktop.
    *
    * @private
    */
@@ -147,9 +132,7 @@ export class ServiceNavigation extends Component {
   /**
    * Handle menu button click
    *
-   * When the menu button is clicked, change the visibility of the menu and then
-   * sync the accessibility state and menu button state
-   *
+   * @param controlledMenu
    * @private
    */
   handleMenuButtonClick(controlledMenu) {
@@ -160,25 +143,16 @@ export class ServiceNavigation extends Component {
   /**
    * Name for the component used when initialising using data-module attributes.
    */
-  static moduleName = 'govuk-service-navigation'
+  static moduleName = 'govuk-language-switcher'
 }
 
-/**
- * Collection of attributes that needs setting on a `<button>`
- * to fully hide it, both visually and from screen-readers,
- * and prevent its activation while hidden
- */
 const attributesForHidingButton = {
   hidden: '',
-  // Fix button still appearing in VoiceOver's form control's menu despite being hidden
-  // https://bugs.webkit.org/show_bug.cgi?id=300899
   'aria-hidden': 'true'
 }
 
 /**
- * Sets a group of attributes on the given element
- *
- * @param {Element} $element - The element to set the attribute on
+ * @param {Element} $element - The element to set attributes on
  * @param {{[attributeName: string]: string}} attributes - The attributes to set
  */
 function setAttributes($element, attributes) {
@@ -188,10 +162,8 @@ function setAttributes($element, attributes) {
 }
 
 /**
- * Removes a list of attributes from the given element
- *
- * @param {Element} $element - The element to remove the attributes from
- * @param {string[]} attributeNames - The names of the attributes to remove
+ * @param {Element} $element - The element to remove attributes from
+ * @param {string[]} attributeNames - The names of attributes to remove
  */
 function removeAttributes($element, attributeNames) {
   for (const attributeName of attributeNames) {

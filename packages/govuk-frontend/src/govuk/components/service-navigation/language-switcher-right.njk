@@ -1,0 +1,44 @@
+{% from "../../macros/attributes.njk" import govukAttributes %}
+{% from "./language-switcher-icon.njk" import govukLanguageSwitcherIcon %}
+
+{% macro govukLanguageSwitcherRight(languageSwitch) %}
+  {%- set languageSwitchCurrentLanguage = languageSwitch.currentLanguage | default("en", true) -%}
+  {%- set languageSwitchEnglishText = languageSwitch.englishText | default("English", true) -%}
+  {%- set languageSwitchWelshText = languageSwitch.welshText | default("Cymraeg", true) -%}
+  {%- set languageSwitchEnglishHref = languageSwitch.englishHref | default("#", true) -%}
+  {%- set languageSwitchWelshHref = languageSwitch.welshHref | default("#", true) -%}
+  {%- set languageSwitchShowIcon = languageSwitch.showIcon | default(false) -%}
+
+  <nav class="govuk-language-switcher govuk-language-switcher-right{%- if languageSwitch.classes %} {{ languageSwitch.classes }}{% endif %}" aria-label="{{ languageSwitch.ariaLabel | default("Language", true) }}"
+    {{- govukAttributes(languageSwitch.attributes) }}>
+    <ul class="govuk-language-switcher__list">
+      {% if languageSwitchShowIcon %}
+        <li class="govuk-language-switcher__item govuk-language-switcher__item--icon" aria-hidden="true">
+          {{ govukLanguageSwitcherIcon() }}
+        </li>
+      {% endif %}
+      <li class="govuk-language-switcher__item{%- if languageSwitchCurrentLanguage == 'en' %} govuk-language-switcher__item--current{% endif %}">
+        {% if languageSwitchCurrentLanguage == 'en' %}
+          <span class="govuk-service-navigation__text govuk-language-switcher__text" lang="en" aria-current="page">
+            {{ languageSwitchEnglishText }}
+          </span>
+        {% else %}
+          <a class="govuk-service-navigation__link govuk-language-switcher__link" href="{{ languageSwitchEnglishHref }}" hreflang="en" lang="en" rel="alternate">
+            {{ languageSwitchEnglishText }}
+          </a>
+        {% endif %}
+      </li>
+      <li class="govuk-language-switcher__item{%- if languageSwitchCurrentLanguage == 'cy' %} govuk-language-switcher__item--current{% endif %}">
+        {% if languageSwitchCurrentLanguage == 'cy' %}
+          <span class="govuk-service-navigation__text govuk-language-switcher__text" lang="cy" aria-current="page">
+            {{ languageSwitchWelshText }}
+          </span>
+        {% else %}
+          <a class="govuk-service-navigation__link govuk-language-switcher__link" href="{{ languageSwitchWelshHref }}" hreflang="cy" lang="cy" rel="alternate">
+            {{ languageSwitchWelshText }}
+          </a>
+        {% endif %}
+      </li>
+    </ul>
+  </nav>
+{% endmacro %}

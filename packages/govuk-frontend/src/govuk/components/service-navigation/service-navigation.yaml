@@ -93,6 +93,68 @@ params:
         type: string
         required: false
         description: HTML injected after the last list item in the navigation list. Requires `navigation` to be set.
+  - name: languageSwitch
+    type: object
+    required: false
+    description: Language switch links shown alongside the service navigation.
+    params:
+      - name: currentLanguage
+        type: string
+        required: false
+        description: The current language code. Use `en` for English or `cy` for Welsh. Defaults to `en`.
+      - name: englishHref
+        type: string
+        required: false
+        description: The URL for the English language link. Defaults to `#`.
+      - name: welshHref
+        type: string
+        required: false
+        description: The URL for the Welsh language link. Defaults to `#`.
+      - name: englishText
+        type: string
+        required: false
+        description: The text for the English language link. Defaults to `English`.
+      - name: welshText
+        type: string
+        required: false
+        description: The text for the Welsh language link. Defaults to `Cymraeg`.
+      - name: ariaLabel
+        type: string
+        required: false
+        description: The aria-label for the language switch navigation. Defaults to `Language`.
+      - name: classes
+        type: string
+        required: false
+        description: Classes to add to the language switch navigation. Use `govuk-language-switcher--right-align` for the right-aligned variant or `govuk-language-switcher-responsive` for the responsive toggle variant.
+      - name: navigationId
+        type: string
+        required: false
+        description: The ID used to associate the responsive language toggle with the language switch list. Defaults to `language-switcher-navigation`.
+      - name: items
+        type: array
+        required: false
+        description: Language items to render in the responsive variant. If omitted, the component falls back to English and Welsh.
+        params:
+          - name: code
+            type: string
+            required: true
+            description: The language code used for `lang`, `hreflang`, and current-language matching.
+          - name: text
+            type: string
+            required: true
+            description: The visible language name.
+          - name: href
+            type: string
+            required: false
+            description: The URL for the language link. Ignored for the current language.
+      - name: showIcon
+        type: boolean
+        required: false
+        description: If `true`, shows a globe icon at the start of the language switcher. Defaults to `false`.
+      - name: attributes
+        type: object
+        required: false
+        description: HTML attributes (for example, data attributes) to add to the language switch navigation.
 
 previewLayout: full-width
 
@@ -204,7 +266,92 @@ examples:
           text: Navigation item 3
         - href: '#/4'
           text: Navigation item 4
+  - name: with language switcher
+    options:
+      serviceName: Apply for a juggling license
+      serviceUrl: '#/'
+      navigation:
+        - href: '#/1'
+          text: Navigation item 1
+        - href: '#/2'
+          text: Navigation item 2
+      languageSwitch:
+        currentLanguage: en
+        englishHref: /en
+        welshHref: /cy
+  - name: with language switcher and icon
+    options:
+      serviceName: Apply for a juggling license
+      serviceUrl: '#/'
+      navigation:
+        - href: '#/1'
+          text: Navigation item 1
+        - href: '#/2'
+          text: Navigation item 2
+      languageSwitch:
+        currentLanguage: en
+        englishHref: /en
+        welshHref: /cy
+        showIcon: true
+  - name: with language switcher right-aligned
+    options:
+      serviceName: Apply for a juggling license
+      serviceUrl: '#/'
+      navigation:
+        - href: '#/1'
+          text: Navigation item 1
+        - href: '#/2'
+          text: Navigation item 2
+      languageSwitch:
+        currentLanguage: en
+        englishHref: /en
+        welshHref: /cy
+        classes: govuk-language-switcher--right-align
+  - name: with language switcher responsive
+    options:
+      serviceName: Apply for a juggling license
+      serviceUrl: '#/'
+      navigation:
+        - href: '#/1'
+          text: Navigation item 1
+        - href: '#/2'
+          text: Navigation item 2
+      languageSwitch:
+        currentLanguage: en
+        classes: govuk-language-switcher-responsive
+        items:
+          - code: en
+            text: English
+            href: /en
+          - code: cy
+            text: Cymraeg
+            href: /cy
+          - code: fr
+            text: Francais
+            href: /fr
+          - code: de
+            text: Deutsch
+            href: /de
+          - code: es
+            text: Espanol
+            href: /es
+          - code: it
+            text: Italiano
+            href: /it
+          - code: pt
+            text: Portugues
+            href: /pt
+          - code: nl
+            text: Nederlands
+            href: /nl
+          - code: pl
+            text: Polski
+            href: /pl
+          - code: ga
+            text: Gaeilge
+            href: /ga
   - name: inverse
+    hidden: true
     description: Service navigation that appears sandwiched between other areas of brand blue, such as the GOV.UK header and a custom page masthead.
     pageTemplateOptions:
       bodyClasses: app-template__body--inverse
@@ -223,6 +370,7 @@ examples:
         - href: '#/4'
           text: Navigation item 4
   - name: with collapseNavigationOnMobile set to false
+    hidden: true
     options:
       serviceName: Apply for a juggling license
       serviceUrl: '#/'
@@ -238,6 +386,7 @@ examples:
           text: Navigation item 4
       collapseNavigationOnMobile: false
   - name: with a single navigation item
+    hidden: true
     options:
       serviceName: Apply for a juggling license
       serviceUrl: '#/'
@@ -245,6 +394,7 @@ examples:
         - href: '#/1'
           text: Log out
   - name: with a single navigation item and collapseNavigationOnMobile set to true
+    hidden: true
     options:
       serviceName: Apply for a juggling license
       serviceUrl: '#/'

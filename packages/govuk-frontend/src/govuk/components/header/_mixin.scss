@@ -17,12 +17,42 @@
     padding: 0 base.govuk-spacing(3);
   }
 
+  .govuk-header__container--with-secondary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: base.govuk-spacing(3);
+  }
+
   .govuk-header__logo {
     box-sizing: border-box;
 
     // Magic numbers, set padding to vertically centre align the logo
     padding-top: 16px;
     padding-bottom: 14px - $logo-bottom-margin;
+  }
+
+  .govuk-header__secondary {
+    margin-left: auto;
+  }
+
+  .govuk-header__secondary .govuk-language-switcher {
+    margin: 0;
+    color: base.govuk-colour("white");
+  }
+
+  .govuk-header__secondary .govuk-language-switcher__link {
+    @include base.govuk-link-style-inverse;
+  }
+
+  .govuk-header__secondary .govuk-language-switcher__toggle {
+    margin: 0;
+    color: inherit;
+  }
+
+  .govuk-header__secondary .govuk-language-switcher-right,
+  .govuk-header__secondary .govuk-language-switcher--right-align {
+    margin: 0;
   }
 
   .govuk-header__homepage-link {

@@ -3,6 +3,7 @@
 {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
 {% from "govuk/components/skip-link/macro.njk" import govukSkipLink %}
 {% from "govuk/components/header/macro.njk" import govukHeader %}
+{% from "govuk/components/language-switcher/macro.njk" import govukLanguageSwitcher %}
 {% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
 {% from "govuk/components/footer/macro.njk" import govukFooter %}
 
@@ -15,6 +16,39 @@
 {% set bodyClasses = 'app-body-class' %}
 {% set containerClasses = "app-width-container--wide" %}
 {% set assetUrl = 'https://govuk-frontend-review.herokuapp.com/assets' %}
+{% set languageSwitcherItems = [
+  {
+    code: "fr",
+    text: "Francais",
+    href: "#fr"
+  },
+  {
+    code: "en",
+    text: "English",
+    href: "#en"
+  },
+  {
+    code: "cy",
+    text: "Cymraeg",
+    href: "#cy"
+  }
+] %}
+{% set headerLanguageSwitcherHtml %}
+  {{ govukLanguageSwitcher({
+    currentLanguage: "fr",
+    showIcon: true,
+    collapseOnMobile: true,
+    items: languageSwitcherItems
+  }) }}
+{% endset %}
+{% set footerLanguageSwitcherHtml %}
+  {{ govukLanguageSwitcher({
+    currentLanguage: "fr",
+    showIcon: true,
+    collapseOnMobile: false,
+    items: languageSwitcherItems
+  }) }}
+{% endset %}
 
 {% block pageTitle %}GOV.UK - Le meilleur endroit pour trouver des services gouvernementaux et de l'information{% endblock %}
 
@@ -60,6 +94,7 @@
   {{ govukHeader({
     serviceName: "Nom du service",
     containerClasses: containerClasses,
+    secondaryHtml: headerLanguageSwitcherHtml,
     navigation: [
       {
         href: '#1',
@@ -106,9 +141,18 @@
 
 {% block containerStart %}
   <!-- block:containerStart -->
-  {{ govukBackLink({
-    href: "/"
-  }) }}
+  <div style="display: flex; justify-content: space-between; align-items: start; gap: 20px;">
+    {{ govukBackLink({
+      href: "/"
+    }) }}
+    {{ govukLanguageSwitcher({
+      classes: "govuk-language-switcher--right-align",
+      currentLanguage: "fr",
+      showIcon: true,
+      collapseOnMobile: false,
+      items: languageSwitcherItems
+    }) }}
+  </div>
   <!-- endblock:containerStart -->
 {% endblock %}
 
@@ -120,6 +164,15 @@
 
 {% block content %}
   <!-- block:content -->
+  {{ govukLanguageSwitcher({
+    currentLanguage: "fr",
+    showIcon: true,
+    collapseOnMobile: true,
+    items: languageSwitcherItems
+  }) }}
+
+  <h1 class="govuk-heading-l">Exemples de placement du selecteur de langue</h1>
+  <p class="govuk-body">Cette page montre le composant language-switcher dans l'en-tete, sous l'en-tete, a cote du lien retour, en haut du contenu principal et dans le pied de page.</p>
   {{ super() }}
   <!-- endblock:content -->
 {% endblock %}
@@ -140,6 +193,7 @@
   {{ govukFooter({
     containerClasses: "app-width-container--wide",
     "meta": {
+      "html": footerLanguageSwitcherHtml,
       "items": [
         {
           "href": "#1",
