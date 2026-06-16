@@ -7,7 +7,8 @@
   {% if isCurrent %}
     <li class="govuk-language-switcher__list-item">
       <span class="govuk-language-switcher__text"
-        {%- if item.lang %} lang="{{ item.lang }}"{% endif %} aria-current="true">
+        {%- if item.lang %} lang="{{ item.lang }}"{% endif %}
+        {%- if item.dir %} dir="{{ item.dir }}"{% endif %} aria-current="true">
         {{- item.html | safe if item.html else item.text -}}
       </span>
     </li>
