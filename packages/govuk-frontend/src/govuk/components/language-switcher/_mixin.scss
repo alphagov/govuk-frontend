@@ -1,3 +1,5 @@
+@use "sass:math";
+
 @use "../../base";
 
 /// @access private
@@ -31,5 +33,32 @@
   .govuk-language-switcher__link {
     @include base.govuk-link-common;
     @include base.govuk-link-style-default;
+  }
+
+  // When used inside service navigation, align the language switcher
+  .govuk-service-navigation .govuk-language-switcher {
+    margin-top: base.govuk-spacing(2);
+    margin-bottom: base.govuk-spacing(2);
+
+    @media #{base.govuk-from-breakpoint(tablet)} {
+      display: inline;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
+
+  .govuk-service-navigation .govuk-language-switcher__list {
+    @media #{base.govuk-from-breakpoint(tablet)} {
+      padding: base.govuk-spacing(3) 0;
+
+      // Match the service navigation row height at the switcher's 16px size.
+      line-height: math.div(29, 16);
+    }
+  }
+
+  .govuk-service-navigation .govuk-language-switcher__list-item {
+    @media #{base.govuk-from-breakpoint(tablet)} {
+      margin-bottom: 0;
+    }
   }
 }
