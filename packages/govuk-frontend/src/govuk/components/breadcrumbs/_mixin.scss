@@ -124,11 +124,7 @@
   }
 
   .govuk-breadcrumbs--inverse {
-    color: base.govuk-colour("white");
-
-    .govuk-breadcrumbs__link {
-      @include base.govuk-link-style-inverse;
-    }
+    --govuk-text-colour: #{base.govuk-functional-colour(inverse-text)};
 
     .govuk-breadcrumbs__list-item::before {
       border-color: currentcolor;
