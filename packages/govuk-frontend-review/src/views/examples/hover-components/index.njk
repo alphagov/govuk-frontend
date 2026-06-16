@@ -517,6 +517,17 @@
       &:has(input[name="hover-colour"][value="dark"]:checked) {
         --govuk-hover-colour-lighter: var(--govuk-hover-colour);
       }
+      &:has(input[name="hover-colour"][value="black-tint-85"]:checked) {
+        --black-tint-85: color-mix(in srgb, #0b0c0c, #ffffff 85%);
+        --govuk-hover-colour-lighter: var(--black-tint-85);
+        --govuk-hover-colour: var(--govuk-hover-colour-lighter);
+        
+      }
+      &:has(input[name="hover-colour"][value="black-tint-90"]:checked) {
+        --black-tint-90: color-mix(in srgb, #0b0c0c, #ffffff 90%);
+        --govuk-hover-colour-lighter: var(--black-tint-90);
+        --govuk-hover-colour: var(--govuk-hover-colour-lighter);
+      }
     }
     </style>
     <div style="height: 9.5em;"></div>
@@ -537,11 +548,19 @@
           },
           {
             value: "light",
-            text: "All light grey (#f3f3f3)"
+            text: "black tint-95 (existing hardcoded)"
+          },
+          {
+            value: "black-tint-90",
+            text: "black tint-90 (doesnt exist yet)"
+          },
+          {
+            value: "black-tint-85",
+            text: "black tint-85 (doesnt exist yet)"
           },
           {
             value: "dark",
-            text: "All dark grey (existing hover colour)"
+            text: "black tint-80 All dark grey (existing hover colour)"
           }
         ]
       }) }}
