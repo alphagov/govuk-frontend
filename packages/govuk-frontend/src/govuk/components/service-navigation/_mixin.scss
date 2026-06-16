@@ -202,7 +202,8 @@
 
     // Set colour here so non-link text (service name, slot content) can
     // use it too.
-    color: base.govuk-colour("white");
+    --govuk-text-colour: #{base.govuk-functional-colour(inverse-text)};
+    color: base.govuk-functional-colour(text);
 
     background-color: base.govuk-functional-colour(brand);
 
@@ -220,12 +221,12 @@
     // Override the 'active' border colour
     .govuk-service-navigation__item,
     .govuk-service-navigation__service-name {
-      border-color: base.govuk-colour("white");
+      border-color: currentcolor;
     }
 
     // Override link styles
     .govuk-service-navigation__link {
-      @include base.govuk-link-style-inverse;
+      @include base.govuk-link-style-text;
     }
 
     // Override mobile menu toggle colour when not focused
