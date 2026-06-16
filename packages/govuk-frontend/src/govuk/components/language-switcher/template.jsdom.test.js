@@ -159,5 +159,75 @@ describe('Language switcher', () => {
 
       expect($link.innerHTML).toContain('<span>Cymraeg</span>')
     })
+
+    it('sets dir attributes on language items', () => {
+      document.body.innerHTML = render(
+        'language-switcher',
+        examples['with mixed text directions']
+      )
+
+      const $currentLanguage = document.querySelector(
+        '.govuk-language-switcher__text'
+      )
+      const $otherLanguage = document.querySelector(
+        '.govuk-language-switcher__link'
+      )
+
+      expect($currentLanguage).toHaveAttribute('dir', 'ltr')
+      expect($otherLanguage).toHaveAttribute('dir', 'rtl')
+    })
+
+    it('treats an item as current when href is missing', () => {
+      document.body.innerHTML = render('language-switcher', {
+        context: {
+          items: [
+            {
+              text: 'English',
+              lang: 'en',
+              href: '#/en'
+            },
+            {
+              text: 'Cymraeg',
+              lang: 'cy'
+            }
+          ]
+        }
+      })
+
+      const $items = document.querySelectorAll(
+        'li.govuk-language-switcher__list-item'
+      )
+      const $currentItem = $items[1]
+
+      expect($currentItem.querySelector('a')).toBeNull()
+      expect(
+        $currentItem.querySelector('.govuk-language-switcher__text')
+      ).toHaveAttribute('aria-current', 'true')
+    })
+
+    it('allows hreflang to differ from lang', () => {
+      document.body.innerHTML = render('language-switcher', {
+        context: {
+          items: [
+            {
+              text: 'English',
+              lang: 'en',
+              current: true
+            },
+            {
+              text: 'Welsh',
+              lang: 'en',
+              hrefLang: 'cy',
+              href: '#/cy'
+            }
+          ]
+        }
+      })
+
+      const $link = document.querySelector('.govuk-language-switcher__link')
+
+      expect($link).toHaveAttribute('lang', 'en')
+      expect($link).toHaveAttribute('hreflang', 'cy')
+    })
   })
 })
