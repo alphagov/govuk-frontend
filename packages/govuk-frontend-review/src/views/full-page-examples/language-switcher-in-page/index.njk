@@ -1,0 +1,45 @@
+---
+title: Apply for a driving licence
+name: Language switcher in page
+scenario: |
+  You want to switch the page content between English and Welsh.
+---
+
+{% extends "layouts/full-page-example.njk" %}
+
+{% from "govuk/components/language-switcher/macro.njk" import govukLanguageSwitcher %}
+
+{% set pageTitle = example.title %}
+
+{% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
+
+{% block containerStart %}
+  {{ govukLanguageSwitcher({
+    ariaLabel: "Language switcher",
+    items: [
+      {
+        text: "English",
+        lang: "en",
+        current: true
+      },
+      {
+        text: "Cymraeg",
+        lang: "cy",
+        href: "#/cy"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">{{ pageTitle }}</h1>
+
+      <p class="govuk-body govuk-!-margin-top-6">
+        Use the language switcher to move to the same page in another language.
+      </p>
+    </div>
+  </div>
+{% endblock %}
