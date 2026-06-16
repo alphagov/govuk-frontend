@@ -4,6 +4,7 @@
 {% from "govuk/components/header/macro.njk" import govukHeader %}
 {% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
 {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/pagination/macro.njk" import govukPagination %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
 {% from "govuk/components/service-navigation/macro.njk" import govukServiceNavigation %}
@@ -68,6 +69,9 @@
 
       <h3 class="govuk-heading-s">Panel</h3>
       {{ govukPanel(componentFixtures['panel']['default'][0].options) }}
+
+      <h3 class="govuk-heading-s">Pagination</h3>
+      {{ govukPagination(componentFixtures['pagination']['default'][0].options) }}
 
       <h3 class="govuk-heading-s">Notification banner</h3>
       {{ govukNotificationBanner(componentFixtures['notification-banner']['default'][0].options) }}
