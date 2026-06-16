@@ -94,6 +94,17 @@ examples:
         - text: Cymraeg
           lang: cy
           current: true
+  - name: with mixed text directions
+    options:
+      items:
+        - text: English
+          lang: en
+          dir: ltr
+          current: true
+        - text: العربية
+          lang: ar
+          dir: rtl
+          href: '#/ar'
 
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: classes
