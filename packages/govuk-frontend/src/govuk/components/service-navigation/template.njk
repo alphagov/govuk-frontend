@@ -2,6 +2,7 @@
 
 {%- set menuButtonText = params.menuButtonText | default("Menu", true) -%}
 {%- set navigationId = params.navigationId | default("navigation", true) %}
+{%- set endSlotRightAligned = params.slots.endRightAligned | default(false) %}
 
 {%- set commonAttributes %}
 class="govuk-service-navigation {%- if params.classes %} {{ params.classes }}{% endif %}"
@@ -84,10 +85,17 @@ data-module="govuk-service-navigation"
           </ul>
         </nav>
       {% endif %}
+
+      {# Slot: end (right aligned) #}
+      {% if params.slots.end and endSlotRightAligned %}
+        <div class="govuk-service-navigation__end">
+          {{ params.slots.end | safe }}
+        </div>
+      {% endif %}
     </div>
 
     {# Slot: end #}
-    {%- if params.slots.end %}{{ params.slots.end | safe }}{% endif -%}
+    {%- if params.slots.end and not endSlotRightAligned %}{{ params.slots.end | safe }}{% endif -%}
 
   </div>
 {% endset -%}
