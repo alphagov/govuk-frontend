@@ -6,7 +6,10 @@
   $logo-bottom-margin: 2px;
 
   .govuk-header {
-    @include genericHeader.block-styles($background: base.govuk-functional-colour("brand"));
+    @include genericHeader.block-styles(
+      $background-colour: base.govuk-functional-colour("brand"),
+      $text-colour: base.govuk-functional-colour("inverse-text")
+    );
   }
 
   .govuk-header__container--full-width {
