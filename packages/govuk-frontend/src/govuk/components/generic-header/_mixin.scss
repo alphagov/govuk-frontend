@@ -20,12 +20,15 @@ $header-forced-colour-border-width: 1px;
 
   // Add a transparent bottom border for forced-colour modes
   border-bottom: $header-forced-colour-border-width solid transparent;
-  color: base.govuk-colour("white");
+
+  --govuk-text-colour: #{base.govuk-functional-colour(inverse-text)};
+  color: base.govuk-functional-colour(text);
   background: $background;
 
   @media print {
     border-bottom-width: 0;
-    color: base.govuk-functional-colour(text);
+
+    --govuk-text-colour: inherit;
     background: transparent;
   }
 }
@@ -73,7 +76,7 @@ $header-forced-colour-border-width: 1px;
   font-size: 30px; // We don't have a mixin that produces 30px font size
   text-decoration: none;
 
-  @include base.govuk-link-style-inverse;
+  @include base.govuk-link-style-text;
 
   &:link,
   &:visited {
