@@ -6,14 +6,16 @@
   {% if item.current %}
     <li class="govuk-language-switcher__list-item">
       <span class="govuk-language-switcher__text"
-        {%- if item.lang %} lang="{{ item.lang }}"{% endif %} aria-current="true">
+        {%- if item.lang %} lang="{{ item.lang }}"{% endif %}
+        {%- if item.dir %} dir="{{ item.dir }}"{% endif %} aria-current="true">
         {{- item.html | safe if item.html else item.text -}}
       </span>
     </li>
   {% else %}
     <li class="govuk-language-switcher__list-item">
       <a class="govuk-language-switcher__link" href="{{ item.href }}"
-        {%- if item.lang %} lang="{{ item.lang }}" hreflang="{{ item.lang }}"{% endif %} rel="alternate"
+        {%- if item.lang %} lang="{{ item.lang }}" hreflang="{{ item.lang }}"{% endif %}
+        {%- if item.dir %} dir="{{ item.dir }}"{% endif %} rel="alternate"
         {{- govukAttributes(item.attributes) }}>
         {{- item.html | safe if item.html else item.text -}}
       </a>

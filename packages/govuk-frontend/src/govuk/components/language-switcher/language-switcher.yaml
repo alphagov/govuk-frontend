@@ -16,6 +16,10 @@ params:
         type: string
         required: true
         description: The language tag for the language (for example, `cy` for Welsh). Added as `lang` and `hreflang` attributes so that assistive technologies pronounce the language name correctly.
+      - name: dir
+        type: string
+        required: false
+        description: The text direction for the language item element. Use this on every item when the switcher includes languages with different directions.
       - name: href
         type: string
         required: false
@@ -84,6 +88,17 @@ examples:
         - text: Cymraeg
           lang: cy
           current: true
+  - name: with mixed text directions
+    options:
+      items:
+        - text: English
+          lang: en
+          dir: ltr
+          current: true
+        - text: العربية
+          lang: ar
+          dir: rtl
+          href: '#/ar'
 
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: classes

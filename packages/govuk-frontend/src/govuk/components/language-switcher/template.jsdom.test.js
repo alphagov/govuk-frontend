@@ -159,5 +159,22 @@ describe('Language switcher', () => {
 
       expect($link.innerHTML).toContain('<span>Cymraeg</span>')
     })
+
+    it('sets dir attributes on language items', () => {
+      document.body.innerHTML = render(
+        'language-switcher',
+        examples['with mixed text directions']
+      )
+
+      const $currentLanguage = document.querySelector(
+        '.govuk-language-switcher__text'
+      )
+      const $otherLanguage = document.querySelector(
+        '.govuk-language-switcher__link'
+      )
+
+      expect($currentLanguage).toHaveAttribute('dir', 'ltr')
+      expect($otherLanguage).toHaveAttribute('dir', 'rtl')
+    })
   })
 })
