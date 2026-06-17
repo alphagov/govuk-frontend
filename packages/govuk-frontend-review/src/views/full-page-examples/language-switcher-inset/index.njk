@@ -1,6 +1,6 @@
 ---
 title: Apply for a driving licence
-name: Language switcher in page
+name: Language switcher inset
 scenario: |
   You want to switch the page content between English and Welsh.
 ---
@@ -8,6 +8,7 @@ scenario: |
 {% extends "layouts/full-page-example.njk" %}
 
 {% from "govuk/components/language-switcher/macro.njk" import govukLanguageSwitcher %}
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
 
 {% set pageTitle = example.title %}
 
@@ -18,9 +19,11 @@ scenario: |
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-xl">{{ pageTitle }}</h1>
+
+      {% call govukInsetText() %}
+      <p>This content is also available in the following languages:</p>
       {{ govukLanguageSwitcher({
         ariaLabel: "Language switcher",
-        classes: "govuk-!-margin-top-0",
         items: [
           {
             text: "English",
@@ -34,6 +37,7 @@ scenario: |
           }
         ]
       }) }}
+      {% endcall %}
 
       <p class="govuk-body govuk-!-margin-top-6">
         Use the language switcher to move to the same page in another language.
