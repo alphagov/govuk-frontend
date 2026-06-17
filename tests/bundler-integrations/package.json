@@ -25,7 +25,7 @@
     "govuk-frontend": "*",
     "rollup": "^4.60.4",
     "terser-webpack-plugin": "^5.3.16",
-    "vite": "^8.0.14",
+    "vite": "^8.0.16",
     "webpack": "^5.107.1"
   }
 }
