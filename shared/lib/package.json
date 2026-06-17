@@ -16,7 +16,7 @@
     "@govuk-frontend/config": "*",
     "filesize": "^11.0.17",
     "glob": "^13.0.6",
-    "js-yaml": "^4.1.1",
+    "js-yaml": "^4.2.0",
     "minimatch": "^10.2.5",
     "nunjucks": "^3.2.4",
     "outdent": "^0.8.0",
