@@ -1,6 +1,6 @@
 ---
 title: Apply for a driving licence
-name: Language switcher in page
+name: Language switcher in containerStart
 scenario: |
   You want to switch the page content between English and Welsh.
 ---
@@ -13,27 +13,29 @@ scenario: |
 
 {% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
 
+{% block containerStart %}
+  {{ govukLanguageSwitcher({
+    ariaLabel: "Language switcher",
+    items: [
+      {
+        text: "English",
+        lang: "en",
+        current: true
+      },
+      {
+        text: "Cymraeg",
+        lang: "cy",
+        href: "#/cy"
+      }
+    ]
+  }) }}
+{% endblock %}
+
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-xl">{{ pageTitle }}</h1>
-      {{ govukLanguageSwitcher({
-        ariaLabel: "Language switcher",
-        classes: "govuk-!-margin-top-0",
-        items: [
-          {
-            text: "English",
-            lang: "en",
-            current: true
-          },
-          {
-            text: "Cymraeg",
-            lang: "cy",
-            href: "#/cy"
-          }
-        ]
-      }) }}
 
       <p class="govuk-body govuk-!-margin-top-6">
         Use the language switcher to move to the same page in another language.
