@@ -1,0 +1,135 @@
+////
+/// @group components/generic-header
+////
+
+@use "../../base";
+
+/// Width of transparent bottom border of header.
+/// Set to provide a visual border in forced colour modes
+///
+/// @type Number
+/// @access private
+$header-forced-colour-border-width: 1px;
+
+/// Shared block header styles, with automatic background setting
+///
+/// @param {String} $background - background colour of header
+/// @access private
+@mixin block-styles($background: base.govuk-colour("black")) {
+  @include base.govuk-font($size: 16, $line-height: 1);
+
+  // Add a transparent bottom border for forced-colour modes
+  border-bottom: $header-forced-colour-border-width solid transparent;
+  color: base.govuk-colour("white");
+  background: $background;
+
+  @media print {
+    border-bottom-width: 0;
+    color: base.govuk-functional-colour(text);
+    background: transparent;
+  }
+}
+
+/// Shared header full width container styles
+///
+/// @access private
+@mixin full-width-container-styles() {
+  padding: 0 base.$govuk-gutter-half;
+}
+
+/// Shared header logo container element styles, with automating padding setting
+///
+/// @param {String} $padding-top - top padding of logo container
+/// @param {String} $padding-bottom - bottom padding of logo container
+/// @access private
+@mixin logo-styles(
+  $padding-top: (
+    base.govuk-spacing(3)
+  ),
+  $padding-bottom: (
+    base.govuk-spacing(3)
+  )
+) {
+  padding-top: $padding-top;
+  padding-bottom: $padding-bottom;
+}
+
+/// Shared header logo link element styles
+///
+/// @access private
+@mixin link-styles {
+  // Avoid using the `base.govuk-link-common` mixin because the links in the
+  // header get a special treatment, because:
+  //
+  // - underlines are only visible on hover
+  // - all links get a 3px underline regardless of text size, as there are
+  //   multiple grouped elements close to one another and having slightly
+  //   different underline widths looks unbalanced
+  //
+  // Font size needs to be set on the link so that the box sizing is correct
+  // in Firefox
+  display: inline;
+  margin-right: base.govuk-spacing(2);
+  font-size: 30px; // We don't have a mixin that produces 30px font size
+  text-decoration: none;
+
+  @include base.govuk-link-style-inverse;
+
+  &:link,
+  &:visited {
+    text-decoration: none;
+  }
+
+  &:hover,
+  &:active {
+    // Negate the added border
+    $link-underline-thickness: 3px;
+    margin-bottom: $link-underline-thickness * -1;
+    border-bottom: $link-underline-thickness solid;
+  }
+
+  &:focus {
+    // Remove any borders that show when focused and hovered.
+    margin-bottom: 0;
+    border-bottom: 0;
+
+    @include base.govuk-focused-text;
+  }
+
+  @media print {
+    &:link,
+    &:visited {
+      color: base.govuk-functional-colour(text);
+    }
+
+    // Do not append link href to GOV.UK link when printing (e.g. '(/)')
+    &::after {
+      content: "";
+    }
+  }
+}
+
+/// @access private
+@mixin styles {
+  .govuk-generic-header {
+    @include block-styles;
+  }
+
+  .govuk-generic-header__container--full-width {
+    @include full-width-container-styles;
+  }
+
+  .govuk-generic-header__logo {
+    @include logo-styles;
+  }
+
+  .govuk-generic-header__homepage-link {
+    @include link-styles;
+
+    // Automatically centre align direct child elements to help users with
+    // positioning their logo assets eg: as `svg`s or `img`s
+    > * {
+      vertical-align: top;
+    }
+  }
+}
