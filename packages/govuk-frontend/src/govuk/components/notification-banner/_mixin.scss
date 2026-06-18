@@ -6,6 +6,7 @@
 @mixin styles {
   .govuk-notification-banner {
     --govuk-notification-banner-colour: #{base.govuk-functional-colour(brand)};
+    --govuk-notification-banner-title-text-colour: #{base.govuk-functional-colour(inverse-text)};
 
     @include base.govuk-font($size: 19);
     @include base.govuk-responsive-margin(8, "bottom");
@@ -26,7 +27,7 @@
     // text in high contrast mode
     border-bottom: 1px solid transparent;
 
-    --govuk-text-colour: #{base.govuk-functional-colour(inverse-text)};
+    --govuk-text-colour: var(--govuk-notification-banner-title-text-colour);
     color: base.govuk-functional-colour(text);
     background-color: var(--govuk-notification-banner-colour);
 
@@ -91,6 +92,7 @@
 
   .govuk-notification-banner--success {
     --govuk-notification-banner-colour: #{base.govuk-functional-colour(success)};
+    --govuk-notification-banner-title-text-colour: #{base.govuk-functional-colour(text-on-success)};
 
     .govuk-notification-banner__link {
       @include base.govuk-link-style-success;

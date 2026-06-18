@@ -36,7 +36,7 @@
   }
 
   .govuk-panel--confirmation {
-    --govuk-text-colour: #{base.govuk-functional-colour(inverse-text)};
+    --govuk-text-colour: #{base.govuk-functional-colour(text-on-success)};
     color: base.govuk-functional-colour(text);
     background: base.govuk-functional-colour(success);
 

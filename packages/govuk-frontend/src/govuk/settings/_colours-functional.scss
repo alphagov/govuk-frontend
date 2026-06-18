@@ -58,6 +58,9 @@ $govuk-default-functional-colours: (
     "success": (
         name: "green"
       ),
+    "text-on-success": (
+      ref: "inverse-text"
+    ),
     // Used in for example borders, separators, rules and keylines.
     "border": (
         name: "black",
