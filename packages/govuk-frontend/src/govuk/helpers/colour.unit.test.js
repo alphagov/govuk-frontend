@@ -297,7 +297,9 @@ describe('@function govuk-functional-colour', () => {
           "brand": (name: "magenta"), // palette reference
           "focus": (name: "teal", variant: "tint-25"), // palette reference with variant
           "border": (name: ""), // palette reference with empty name
-          "hover": (name: "magenta", variant: "") // palette reference with empty variant
+          "hover": (name: "magenta", variant: ""), // palette reference with empty variant,
+          "surface-background": (ref: "brand"),
+          "body-background": (ref: surface-background)
         )
       );
 
@@ -404,6 +406,124 @@ describe('@function govuk-functional-colour', () => {
       await expect(compileSassString(sass, sassConfig)).rejects.toThrow(
         "Colour reference `variant` shouldn't be empty."
       )
+    })
+
+    describe('referencing other colours', () => {
+      it('sets the fallback to the referenced functional colour', async () => {
+        const sass = `
+          ${sassBootstrap}
+
+          .foo {
+            color: govuk-functional-colour('surface-background');
+          }
+        `
+
+        await expect(
+          compileSassString(sass, sassConfig)
+        ).resolves.toMatchObject({
+          css: expect.stringContaining(outdent`
+            .foo {
+              color: var(--govuk-surface-background-colour, var(--govuk-brand-colour, #ca357c));
+            }
+          `)
+        })
+      })
+
+      it('creates a chain of fallback if multiple colours reference each other', async () => {
+        const sass = `
+          ${sassBootstrap}
+
+          .foo {
+            color: govuk-functional-colour('body-background');
+          }
+        `
+
+        await expect(
+          compileSassString(sass, sassConfig)
+        ).resolves.toMatchObject({
+          css: expect.stringContaining(outdent`
+            .foo {
+              color: var(--govuk-body-background-colour, var(--govuk-surface-background-colour, var(--govuk-brand-colour, #ca357c)));
+            }
+          `)
+        })
+      })
+
+      describe('errors', () => {
+        beforeEach(() => {
+          sassBootstrap = `
+            @use "settings/colours-functional" with (
+              $govuk-functional-colours: (
+                "brand": (ref: "brand"), // referencing itself
+                "focus": (ref: "border"), // circular reference with border
+                "border": (ref: "focus"), // circular reference with focus
+                "hover": (ref: "surface-background"), // long circular reference
+                "surface-background": (ref: "body-background"),
+                "body-background": (ref: hover),
+                "text": (ref: "focus"), // reference a circular reference
+              )
+            );
+
+            @use "helpers/colour" as *;
+          `
+        })
+
+        it('throws an error if a colour tries to reference itself', async () => {
+          const sass = `
+            ${sassBootstrap}
+
+            .foo {
+              color: govuk-functional-colour('brand');
+            }
+          `
+
+          await expect(compileSassString(sass, sassConfig)).rejects.toThrow(
+            '`brand` cannot be referenced by `brand`'
+          )
+        })
+
+        it('throws an error if two colours reference each other', async () => {
+          const sass = `
+            ${sassBootstrap}
+
+            .foo {
+              color: govuk-functional-colour('focus');
+            }
+          `
+
+          await expect(compileSassString(sass, sassConfig)).rejects.toThrow(
+            '`focus` cannot be referenced by `border` (resolving `focus` via `border`)'
+          )
+        })
+
+        it('throws an error if a chain of reference loops back to the start', async () => {
+          const sass = `
+            ${sassBootstrap}
+
+            .foo {
+              color: govuk-functional-colour('hover');
+            }
+          `
+
+          await expect(compileSassString(sass, sassConfig)).rejects.toThrow(
+            '`hover` cannot be referenced by `body-background` (resolving `hover` via `surface-background body-background`)'
+          )
+        })
+
+        it('throws an error if a chain of reference loops back to a part of the chain', async () => {
+          const sass = `
+            ${sassBootstrap}
+
+            .foo {
+              color: govuk-functional-colour('text');
+            }
+          `
+
+          await expect(compileSassString(sass, sassConfig)).rejects.toThrow(
+            '`focus` cannot be referenced by `border` (resolving `text` via `focus border`)'
+          )
+        })
+      })
     })
   })
 

@@ -124,7 +124,7 @@
 /// @throw if `$colour` is not an functional colour of GOV.UK Frontend
 /// @access public
 /// @see $govuk-functional-colours
-@function govuk-functional-colour($colour) {
+@function govuk-functional-colour($colour, $referenced-colours: ()) {
   // Sass parses unquoted colours as colours, so we need to turn them into
   // strings before looking them up in the colour palette
   // https://sass-lang.com/documentation/values/strings#unquoted
@@ -133,7 +133,8 @@
   }
 
   @if map.has-key($govuk-functional-colours, $colour) {
-    $value: govuk-resolve-colour(map.get($govuk-functional-colours, $colour));
+    $referenced-colours: list.append($referenced-colours, $colour);
+    $value: govuk-resolve-colour(map.get($govuk-functional-colours, $colour), $referenced-colours: $referenced-colours);
 
     @return var(--govuk-#{$colour}-colour, #{$value});
   }
@@ -148,7 +149,7 @@
 /// @throws if the `name` is present but falsy
 /// @throws if the `variant` is present but falsy
 /// @access public
-@function govuk-resolve-colour($colour-reference) {
+@function govuk-resolve-colour($colour-reference, $referenced-colours: ()) {
   // If the reference is already a colour, return the colour
   @if meta.type-of($colour-reference) == "color" {
     @return $colour-reference;
@@ -156,6 +157,21 @@
 
   @if not meta.type-of($colour-reference) == "map" {
     @error 'Colour reference should be a Sass colour or a Sass map';
+  }
+
+  $reference: map.get($colour-reference, "ref");
+  @if $reference {
+    @if list.index($referenced-colours, $reference) {
+      $resolution-info: null;
+      @if list.length($referenced-colours) > 1 {
+        $resolved-colour: list.nth($referenced-colours, 1);
+        $reference-path: list.set-nth($referenced-colours, 1, null);
+        $resolution-info: " (resolving `#{$resolved-colour}` via `#{$reference-path}`)";
+      }
+      @error "`#{$reference}` cannot be referenced by `#{list.nth($referenced-colours, list.length($referenced-colours))}`#{$resolution-info}";
+    }
+
+    @return govuk-functional-colour($reference, $referenced-colours: $referenced-colours);
   }
 
   $name: map.get($colour-reference, "name");
