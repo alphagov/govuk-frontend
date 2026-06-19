@@ -1,7 +1,0 @@
-@use "pkg:govuk-frontend/base" as *;
-
-// Resets the brand colour to our palette red.
-// Used by the "non-GOV.UK service" full page example.
-.app-template--hmpf {
-  --govuk-brand-colour: #{govuk-colour("red")};
-}
