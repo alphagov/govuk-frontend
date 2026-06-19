@@ -10,6 +10,7 @@ We've made fixes to GOV.UK Frontend in the following pull requests:
 
 - [#7168: Fix lack of explicit colour on input prefix and suffixes](https://github.com/alphagov/govuk-frontend/pull/7168)
 - [#7169: Fix text on small inline radios wrapping unnecessarily](https://github.com/alphagov/govuk-frontend/pull/7169)
+- [#7188: Add Nunjucks logic to insert `<span>` element around HTML in start buttons](https://github.com/alphagov/govuk-frontend/pull/7188)
 
 ## v6.2.0 (Feature release)
 
