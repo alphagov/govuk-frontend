@@ -10,9 +10,13 @@ scenario: You want to sign in to the HM Pizza Finder service
 {% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
 
-{% set htmlClasses = "app-template--hmpf" %}
+{% set themeColor = "#388E3C" %}
 
 {% block pageTitle %}HM Pizza Finder{% endblock %}
+
+{% block head %}
+  <link rel="stylesheet" href="/stylesheets/app-unbranded.min.css">
+{% endblock %}
 
 {% set logoContent %}
 <svg width="28" height="30" viewBox="0 0 28 30" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
