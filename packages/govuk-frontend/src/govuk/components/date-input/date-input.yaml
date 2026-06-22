@@ -139,16 +139,10 @@ examples:
         text: Er enghraifft, 27 3 2007
       day:
         label: Dydd
-        name: day
-        classes: govuk-input--width-2
       month:
         label: Mis
-        name: month
-        classes: govuk-input--width-2
       year:
         label: Blwyddyn
-        name: year
-        classes: govuk-input--width-4
   - name: day and month
     options:
       id: bday
