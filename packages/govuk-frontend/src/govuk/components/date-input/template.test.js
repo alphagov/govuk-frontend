@@ -312,12 +312,12 @@ describe('Date input', () => {
 
   describe('when it includes an error message', () => {
     it('renders the error message', () => {
-      const $ = render('date-input', examples['with errors only'])
+      const $ = render('date-input', examples['with error message and hint'])
       expect(htmlWithClassName($, '.govuk-error-message')).toMatchSnapshot()
     })
 
     it('uses the id as a prefix for the error message id', () => {
-      const $ = render('date-input', examples['with errors only'])
+      const $ = render('date-input', examples['with error message and hint'])
 
       const $errorMessage = $('.govuk-error-message')
 
@@ -325,7 +325,7 @@ describe('Date input', () => {
     })
 
     it('associates the fieldset as "described by" the error message', () => {
-      const $ = render('date-input', examples['with errors only'])
+      const $ = render('date-input', examples['with error message and hint'])
 
       const $fieldset = $('.govuk-fieldset')
       const errorMessageId = $('.govuk-error-message').attr('id')
@@ -351,7 +351,7 @@ describe('Date input', () => {
     })
 
     it('includes the error modifier class on the inputs', () => {
-      const $ = render('date-input', examples['with errors only'])
+      const $ = render('date-input', examples['with error message and hint'])
 
       const $dayInput = $('[name="day"]')
       const $monthInput = $('[name="month"]')
@@ -363,7 +363,7 @@ describe('Date input', () => {
     })
 
     it('includes the error modifier class on the form group wrapper', () => {
-      const $ = render('date-input', examples['with errors only'])
+      const $ = render('date-input', examples['with error message and hint'])
 
       const $formGroup = $('.govuk-form-group')
       expect($formGroup.hasClass('govuk-form-group--error')).toBeTruthy()

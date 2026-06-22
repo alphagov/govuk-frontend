@@ -261,8 +261,6 @@ examples:
       fieldset:
         legend:
           text: What is your date of birth?
-      errorMessage:
-        text: Error message goes here
       day:
         classes: govuk-input--error
       month:
@@ -275,8 +273,6 @@ examples:
       fieldset:
         legend:
           text: What is your date of birth?
-      errorMessage:
-        text: Error message goes here
       items:
         - name: day
           classes: govuk-input--width-2 govuk-input--error
