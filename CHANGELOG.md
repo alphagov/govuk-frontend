@@ -4,6 +4,20 @@ For advice on how to use these release notes, see [our guidance on staying up to
 
 ## Unreleased
 
+### New features
+
+#### Use the Generic header component in services not on the GOV.UK website
+
+We've added the [Generic header component](https://design-system.service.gov.uk/components/generic-header/) for services that are not part of [the GOV.UK proposition](https://www.gov.uk/government/publications/govuk-proposition/govuk-proposition) but would still benefit from using GOV.UK Frontend to build their service.
+
+The Generic header component is a version of the GOV.UK header component that you can customise to meet the needs of your service. This includes:
+
+- changing the spacing around the logo
+- adding a bottom border with your service's brand colour
+- changing the header colour
+
+This was added in [pull request #7061: Add Generic Header component](https://github.com/alphagov/govuk-frontend/pull/7061).
+
 ### Fixes
 
 We've made fixes to GOV.UK Frontend in the following pull requests:
