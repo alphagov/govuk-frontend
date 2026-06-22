@@ -98,6 +98,18 @@ params:
     required: false
     description: Can be used to add a fieldset to the date input component.
     isComponent: true
+  - name: day
+    type: object
+    required: false
+    description: Options for the day input within the date input component. See items.
+  - name: month
+    type: object
+    required: false
+    description: Options for the month input within the date input component. See items.
+  - name: year
+    type: object
+    required: false
+    description: Options for the year input within the date input component. See items.
   - name: classes
     type: string
     required: false
@@ -117,6 +129,26 @@ examples:
           text: What is your date of birth?
       hint:
         text: For example, 31 3 1980
+  - name: with translations
+    options:
+      id: with-translations
+      fieldset:
+        legend:
+          text: Pryd gafodd eich pasbort ei gyhoeddi?
+      hint:
+        text: Er enghraifft, 27 3 2007
+      day:
+        label: Dydd
+        name: day
+        classes: govuk-input--width-2
+      month:
+        label: Mis
+        name: month
+        classes: govuk-input--width-2
+      year:
+        label: Blwyddyn
+        name: year
+        classes: govuk-input--width-4
   - name: day and month
     options:
       id: bday
