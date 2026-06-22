@@ -1,0 +1,116 @@
+@use "../../base";
+@use "../generic-header/mixin" as genericHeader;
+
+/// @access private
+@mixin styles {
+  $logo-bottom-margin: 2px;
+
+  .govuk-header {
+    @include genericHeader.block-styles($background: base.govuk-functional-colour("brand"));
+  }
+
+  .govuk-header__container--full-width {
+    @include genericHeader.full-width-container-styles;
+  }
+
+  .govuk-header__logo {
+    // Magic numbers, set padding to vertically centre align the logo
+    @include genericHeader.logo-styles($padding-top: 16px, $padding-bottom: 14px - $logo-bottom-margin);
+  }
+
+  .govuk-header__homepage-link {
+    @include genericHeader.link-styles;
+
+    // Remove word-spacing from within the logo so we can ignore
+    // whitespace characters in the HTML
+    word-spacing: base.govuk-px-to-rem(-6px);
+    // Reset word-spacing for child elements
+    > * {
+      word-spacing: 0;
+    }
+  }
+
+  .govuk-header__logotype {
+    display: inline-block;
+    position: relative;
+    top: -3px;
+
+    // Add a gap after the logo in case it's followed by a product name. This
+    // gets removed later if the logotype is a :last-child.
+    margin-right: base.govuk-px-to-rem(7px); // 1 'dot'
+    // Add bottom margin to space Product name on small viewports
+    margin-bottom: $logo-bottom-margin;
+    fill: currentcolor;
+    vertical-align: top;
+
+    // Prevent readability backplate from obscuring underline in Windows High
+    // Contrast Mode
+    @media (forced-colors: active) {
+      color: linktext;
+      forced-color-adjust: none;
+    }
+
+    // Remove the gap after the logo if there's no product name to keep hover
+    // and focus states neat
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  // Colour in the Dot
+  .govuk-logo-dot {
+    fill: base.govuk-colour("teal", "accent");
+
+    // Override Dot colour when printing
+    @media print {
+      fill: currentcolor;
+    }
+
+    // Override Dot colour on forced colours mode
+    @media (forced-colors: active) {
+      fill: currentcolor;
+    }
+
+    // Override Dot colour on focus
+    :focus & {
+      fill: currentcolor;
+    }
+  }
+
+  .govuk-header__product-name {
+    display: inline-table;
+
+    // Remove 1px from the bottom to account for the font-size being 1px
+    // larger than the logo height.
+    margin-bottom: base.govuk-px-to-rem(-1px);
+
+    // Magic number font-size that visually aligns with GOV.UK logo.
+    // Also stops reducing the product name size on narrow screens
+    font-size: base.govuk-px-to-rem(31px);
+
+    // Reduce letter spacing
+    letter-spacing: -0.015em;
+
+    // Align vertically with logo when not wrapped
+    vertical-align: top;
+
+    // Prevent forced colour modes from applying a background colour behind
+    // the product name, which cuts off the underline that appears on hover.
+    forced-color-adjust: none;
+
+    @media screen and (forced-colors: active) {
+      color: LinkText;
+      background: transparent;
+    }
+  }
+
+  @media print {
+    .govuk-header__product-name {
+      // Fix product name alignment in Firefox when printing
+      @-moz-document url-prefix() {
+        margin-top: 2px;
+      }
+    }
+  }
+}
+

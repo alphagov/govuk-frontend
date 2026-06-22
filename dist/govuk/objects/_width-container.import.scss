@@ -1,0 +1,8 @@
+@use "width-container.mixin" as width-container;
+
+@import "../base";
+
+@include govuk-exports("govuk/objects/width-container") {
+  @include width-container.styles;
+}
+

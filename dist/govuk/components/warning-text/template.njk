@@ -1,0 +1,10 @@
+{% from "../../macros/attributes.njk" import govukAttributes -%}
+
+<div class="govuk-warning-text {%- if params.classes %} {{ params.classes }}{% endif %}"
+  {{- govukAttributes(params.attributes) }}>
+  <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+  <strong class="govuk-warning-text__text">
+    <span class="govuk-visually-hidden">{{ params.iconFallbackText | default("Warning", true) }}</span>
+    {{ params.html | safe if params.html else params.text }}
+  </strong>
+</div>

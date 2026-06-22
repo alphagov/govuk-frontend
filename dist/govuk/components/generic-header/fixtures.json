@@ -1,0 +1,90 @@
+{
+    "component": "generic-header",
+    "fixtures": [
+        {
+            "name": "default",
+            "options": {
+                "logoText": "My cool service"
+            },
+            "hidden": false,
+            "description": "",
+            "pageTemplateOptions": {},
+            "screenshot": true,
+            "html": "<div class=\"govuk-generic-header\">\n  <div class=\"govuk-generic-header__container govuk-width-container\">\n    <div class=\"govuk-generic-header__logo\">\n      <a href=\"/\" class=\"govuk-generic-header__homepage-link\">\n        My cool service\n      </a>\n    </div>\n  </div>\n</div>"
+        },
+        {
+            "name": "with image logo",
+            "options": {
+                "logoHtml": "<svg width=\"28\" height=\"30\" viewBox=\"0 0 28 30\" fill=\"currentColor\" xmlns=\"http://www.w3.org/2000/svg\">\n<title>HM Pizza Finder service</title>\n<circle cx=\"13.5549\" cy=\"4.21349\" r=\"4.21349\"/>\n<circle cx=\"13.5549\" cy=\"25.7865\" r=\"4.21349\"/>\n<circle cx=\"22.8963\" cy=\"9.6068\" r=\"4.21349\"/>\n<circle cx=\"4.2135\" cy=\"20.3932\" r=\"4.21349\"/>\n<circle cx=\"22.8963\" cy=\"20.3932\" r=\"4.21349\"/>\n<circle cx=\"4.21351\" cy=\"9.60674\" r=\"4.21349\"/>\n</svg>\n"
+            },
+            "hidden": false,
+            "description": "",
+            "pageTemplateOptions": {},
+            "screenshot": false,
+            "html": "<div class=\"govuk-generic-header\">\n  <div class=\"govuk-generic-header__container govuk-width-container\">\n    <div class=\"govuk-generic-header__logo\">\n      <a href=\"/\" class=\"govuk-generic-header__homepage-link\">\n        <svg width=\"28\" height=\"30\" viewBox=\"0 0 28 30\" fill=\"currentColor\" xmlns=\"http://www.w3.org/2000/svg\">\n<title>HM Pizza Finder service</title>\n<circle cx=\"13.5549\" cy=\"4.21349\" r=\"4.21349\"/>\n<circle cx=\"13.5549\" cy=\"25.7865\" r=\"4.21349\"/>\n<circle cx=\"22.8963\" cy=\"9.6068\" r=\"4.21349\"/>\n<circle cx=\"4.2135\" cy=\"20.3932\" r=\"4.21349\"/>\n<circle cx=\"22.8963\" cy=\"20.3932\" r=\"4.21349\"/>\n<circle cx=\"4.21351\" cy=\"9.60674\" r=\"4.21349\"/>\n</svg>\n\n      </a>\n    </div>\n  </div>\n</div>"
+        },
+        {
+            "name": "with text and image logo",
+            "options": {
+                "logoHtml": "<svg width=\"28\" height=\"30\" viewBox=\"0 0 28 30\" fill=\"currentColor\" xmlns=\"http://www.w3.org/2000/svg\">\n<title>HM Pizza Finder service</title>\n<circle cx=\"13.5549\" cy=\"4.21349\" r=\"4.21349\"/>\n<circle cx=\"13.5549\" cy=\"25.7865\" r=\"4.21349\"/>\n<circle cx=\"22.8963\" cy=\"9.6068\" r=\"4.21349\"/>\n<circle cx=\"4.2135\" cy=\"20.3932\" r=\"4.21349\"/>\n<circle cx=\"22.8963\" cy=\"20.3932\" r=\"4.21349\"/>\n<circle cx=\"4.21351\" cy=\"9.60674\" r=\"4.21349\"/>\n</svg> | HM Pizza Finder service\n"
+            },
+            "hidden": false,
+            "description": "",
+            "pageTemplateOptions": {},
+            "screenshot": true,
+            "html": "<div class=\"govuk-generic-header\">\n  <div class=\"govuk-generic-header__container govuk-width-container\">\n    <div class=\"govuk-generic-header__logo\">\n      <a href=\"/\" class=\"govuk-generic-header__homepage-link\">\n        <svg width=\"28\" height=\"30\" viewBox=\"0 0 28 30\" fill=\"currentColor\" xmlns=\"http://www.w3.org/2000/svg\">\n<title>HM Pizza Finder service</title>\n<circle cx=\"13.5549\" cy=\"4.21349\" r=\"4.21349\"/>\n<circle cx=\"13.5549\" cy=\"25.7865\" r=\"4.21349\"/>\n<circle cx=\"22.8963\" cy=\"9.6068\" r=\"4.21349\"/>\n<circle cx=\"4.2135\" cy=\"20.3932\" r=\"4.21349\"/>\n<circle cx=\"22.8963\" cy=\"20.3932\" r=\"4.21349\"/>\n<circle cx=\"4.21351\" cy=\"9.60674\" r=\"4.21349\"/>\n</svg> | HM Pizza Finder service\n\n      </a>\n    </div>\n  </div>\n</div>"
+        },
+        {
+            "name": "full width",
+            "options": {
+                "containerClasses": "govuk-generic-header__container--full-width",
+                "logoHtml": "<svg width=\"28\" height=\"30\" viewBox=\"0 0 28 30\" fill=\"currentColor\" xmlns=\"http://www.w3.org/2000/svg\">\n<title>HM Pizza Finder service</title>\n<circle cx=\"13.5549\" cy=\"4.21349\" r=\"4.21349\"/>\n<circle cx=\"13.5549\" cy=\"25.7865\" r=\"4.21349\"/>\n<circle cx=\"22.8963\" cy=\"9.6068\" r=\"4.21349\"/>\n<circle cx=\"4.2135\" cy=\"20.3932\" r=\"4.21349\"/>\n<circle cx=\"22.8963\" cy=\"20.3932\" r=\"4.21349\"/>\n<circle cx=\"4.21351\" cy=\"9.60674\" r=\"4.21349\"/>\n</svg> | HM Pizza Finder service\n"
+            },
+            "hidden": false,
+            "description": "",
+            "pageTemplateOptions": {},
+            "screenshot": false,
+            "html": "<div class=\"govuk-generic-header\">\n  <div class=\"govuk-generic-header__container govuk-generic-header__container--full-width\">\n    <div class=\"govuk-generic-header__logo\">\n      <a href=\"/\" class=\"govuk-generic-header__homepage-link\">\n        <svg width=\"28\" height=\"30\" viewBox=\"0 0 28 30\" fill=\"currentColor\" xmlns=\"http://www.w3.org/2000/svg\">\n<title>HM Pizza Finder service</title>\n<circle cx=\"13.5549\" cy=\"4.21349\" r=\"4.21349\"/>\n<circle cx=\"13.5549\" cy=\"25.7865\" r=\"4.21349\"/>\n<circle cx=\"22.8963\" cy=\"9.6068\" r=\"4.21349\"/>\n<circle cx=\"4.2135\" cy=\"20.3932\" r=\"4.21349\"/>\n<circle cx=\"22.8963\" cy=\"20.3932\" r=\"4.21349\"/>\n<circle cx=\"4.21351\" cy=\"9.60674\" r=\"4.21349\"/>\n</svg> | HM Pizza Finder service\n\n      </a>\n    </div>\n  </div>\n</div>"
+        },
+        {
+            "name": "attributes",
+            "options": {
+                "logoText": "Some logo text",
+                "attributes": {
+                    "data-test-attribute": "value",
+                    "data-test-attribute-2": "value-2"
+                }
+            },
+            "hidden": true,
+            "description": "",
+            "pageTemplateOptions": {},
+            "screenshot": false,
+            "html": "<div class=\"govuk-generic-header\" data-test-attribute=\"value\" data-test-attribute-2=\"value-2\">\n  <div class=\"govuk-generic-header__container govuk-width-container\">\n    <div class=\"govuk-generic-header__logo\">\n      <a href=\"/\" class=\"govuk-generic-header__homepage-link\">\n        Some logo text\n      </a>\n    </div>\n  </div>\n</div>"
+        },
+        {
+            "name": "classes",
+            "options": {
+                "logoText": "Some logo text",
+                "classes": "app-header--custom-modifier"
+            },
+            "hidden": true,
+            "description": "",
+            "pageTemplateOptions": {},
+            "screenshot": false,
+            "html": "<div class=\"govuk-generic-header app-header--custom-modifier\">\n  <div class=\"govuk-generic-header__container govuk-width-container\">\n    <div class=\"govuk-generic-header__logo\">\n      <a href=\"/\" class=\"govuk-generic-header__homepage-link\">\n        Some logo text\n      </a>\n    </div>\n  </div>\n</div>"
+        },
+        {
+            "name": "custom url",
+            "options": {
+                "logoText": "Some logo text",
+                "url": "https://www.pizza.gov.uk"
+            },
+            "hidden": true,
+            "description": "",
+            "pageTemplateOptions": {},
+            "screenshot": false,
+            "html": "<div class=\"govuk-generic-header\">\n  <div class=\"govuk-generic-header__container govuk-width-container\">\n    <div class=\"govuk-generic-header__logo\">\n      <a href=\"https://www.pizza.gov.uk\" class=\"govuk-generic-header__homepage-link\">\n        Some logo text\n      </a>\n    </div>\n  </div>\n</div>"
+        }
+    ],
+    "previewLayout": "full-width"
+}

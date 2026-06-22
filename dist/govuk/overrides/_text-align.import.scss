@@ -1,0 +1,8 @@
+@use "text-align.mixin" as mixin;
+
+@import "../tools/exports";
+
+@include govuk-exports("govuk/overrides/text-align") {
+  @include mixin.styles;
+}
+

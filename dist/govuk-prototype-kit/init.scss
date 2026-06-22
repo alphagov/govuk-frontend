@@ -1,0 +1,14 @@
+@use "../govuk/tools/if" as *;
+
+$govuk-prototype-kit-major-version: 0 !default;
+
+$govuk-assets-path: govuk-if(
+  $govuk-prototype-kit-major-version > 12,
+  $govuk-extensions-url-context + "/govuk-frontend/dist/govuk/assets/",
+  "/govuk/assets/"
+) !default;
+
+$govuk-global-styles: true !default;
+
+@import "../govuk";
+
