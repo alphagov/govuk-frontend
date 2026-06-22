@@ -115,7 +115,9 @@
     {{ params.formGroup.beforeInputs.html | safe | trim | indent(4) if params.formGroup.beforeInputs.html else params.formGroup.beforeInputs.text }}
     {% endif %}
     {% for item in dateInputItems %}
-      {{- _dateInputItem(params, item) | trim | indent(4, true) }}
+      {% if item %}
+        {{- _dateInputItem(params, item) | trim | indent(4, true) }}
+      {% endif %}
     {% endfor %}
     {% if params.formGroup.afterInputs %}
     {{ params.formGroup.afterInputs.html | safe | trim | indent(4) if params.formGroup.afterInputs.html else params.formGroup.afterInputs.text }}

@@ -152,12 +152,32 @@ examples:
           text: What is your birthday?
       hint:
         text: For example, 5 12
+      year: false
+  - name: day and month (using items)
+    options:
+      id: bday
+      namePrefix: bday
+      fieldset:
+        legend:
+          text: What is your birthday?
+      hint:
+        text: For example, 5 12
       items:
         - name: day
           classes: govuk-input--width-2
         - name: month
           classes: govuk-input--width-2
   - name: month and year
+    options:
+      id: dob
+      namePrefix: dob
+      fieldset:
+        legend:
+          text: When did you move to this property?
+      hint:
+        text: For example, 3 1980
+      day: false
+  - name: month and year (using items)
     options:
       id: dob
       namePrefix: dob
