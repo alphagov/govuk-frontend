@@ -179,6 +179,20 @@ examples:
           text: What is your date of birth?
       errorMessage:
         text: Error message goes here
+      day:
+        classes: govuk-input--error
+      month:
+        classes: govuk-input--error
+      year:
+        classes: govuk-input--error
+  - name: with errors only (using items)
+    options:
+      id: dob-errors
+      fieldset:
+        legend:
+          text: What is your date of birth?
+      errorMessage:
+        text: Error message goes here
       items:
         - name: day
           classes: govuk-input--width-2 govuk-input--error
@@ -196,6 +210,22 @@ examples:
         text: For example, 31 3 1980
       errorMessage:
         text: Error message goes here
+      day:
+        classes: govuk-input--error
+      month:
+        classes: govuk-input--error
+      year:
+        classes: govuk-input--error
+  - name: with errors and hint (using items)
+    options:
+      id: dob-errors
+      fieldset:
+        legend:
+          text: What is your date of birth?
+      hint:
+        text: For example, 31 3 1980
+      errorMessage:
+        text: Error message goes here
       items:
         - name: day
           classes: govuk-input--width-2 govuk-input--error
@@ -204,6 +234,19 @@ examples:
         - name: year
           classes: govuk-input--width-4 govuk-input--error
   - name: with error on day input
+    options:
+      id: dob-day-error
+      namePrefix: dob-day-error
+      fieldset:
+        legend:
+          text: What is your date of birth?
+      hint:
+        text: For example, 31 3 1980
+      errorMessage:
+        text: Error message goes here
+      day:
+        classes: govuk-input--error
+  - name: with error on day input (using items)
     options:
       id: dob-day-error
       namePrefix: dob-day-error
@@ -232,6 +275,19 @@ examples:
         text: For example, 31 3 1980
       errorMessage:
         text: Error message goes here
+      month:
+        classes: govuk-input--error
+  - name: with error on month input (using items)
+    options:
+      id: dob-month-error
+      namePrefix: dob-month-error
+      fieldset:
+        legend:
+          text: What is your date of birth?
+      hint:
+        text: For example, 31 3 1980
+      errorMessage:
+        text: Error message goes here
       items:
         - name: day
           classes: govuk-input--width-2
@@ -240,6 +296,19 @@ examples:
         - name: year
           classes: govuk-input--width-4
   - name: with error on year input
+    options:
+      id: dob-year-error
+      namePrefix: dob-year-error
+      fieldset:
+        legend:
+          text: What is your date of birth?
+      hint:
+        text: For example, 31 3 1980
+      errorMessage:
+        text: Error message goes here
+      year:
+        classes: govuk-input--error
+  - name: with error on year input (using items)
     options:
       id: dob-year-error
       namePrefix: dob-year-error
