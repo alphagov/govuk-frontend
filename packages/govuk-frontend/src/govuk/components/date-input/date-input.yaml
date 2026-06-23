@@ -320,7 +320,6 @@ examples:
   - name: with error on day input
     options:
       id: dob-day-error
-      namePrefix: dob-day-error
       fieldset:
         legend:
           text: What is your date of birth?
@@ -333,7 +332,6 @@ examples:
   - name: with error on day input (using items)
     options:
       id: dob-day-error
-      namePrefix: dob-day-error
       fieldset:
         legend:
           text: What is your date of birth?
@@ -351,7 +349,6 @@ examples:
   - name: with error on month input
     options:
       id: dob-month-error
-      namePrefix: dob-month-error
       fieldset:
         legend:
           text: What is your date of birth?
@@ -364,7 +361,6 @@ examples:
   - name: with error on month input (using items)
     options:
       id: dob-month-error
-      namePrefix: dob-month-error
       fieldset:
         legend:
           text: What is your date of birth?
@@ -382,7 +378,6 @@ examples:
   - name: with error on year input
     options:
       id: dob-year-error
-      namePrefix: dob-year-error
       fieldset:
         legend:
           text: What is your date of birth?
@@ -395,7 +390,6 @@ examples:
   - name: with error on year input (using items)
     options:
       id: dob-year-error
-      namePrefix: dob-year-error
       fieldset:
         legend:
           text: What is your date of birth?
