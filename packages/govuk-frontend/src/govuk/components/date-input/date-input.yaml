@@ -110,6 +110,23 @@ params:
     type: object
     required: false
     description: Options for the year input within the date input component. See items.
+  - name: values
+    type: object
+    required: false
+    description: An optional object used to specify `value` attributes for the date parts without setting items.
+    params:
+      day:
+        type: string
+        required: false
+        description: The `value` attribute for the day input.
+      month:
+        type: string
+        required: false
+        description: The `value` attribute for the month input.
+      year:
+        type: string
+        required: false
+        description: The `value` attribute for the year input.
   - name: classes
     type: string
     required: false
@@ -143,6 +160,53 @@ examples:
         label: Mis
       year:
         label: Blwyddyn
+  - name: with values
+    options:
+      id: with-values
+      fieldset:
+        legend:
+          text: What is your date of birth?
+      hint:
+        text: For example, 31 3 1980
+      values:
+        day: 31
+        month: 3
+        year: 1980
+  - name: with values and name prefix
+    options:
+      id: with-values-name-prefix
+      namePrefix: dob
+      fieldset:
+        legend:
+          text: What is your date of birth?
+      hint:
+        text: For example, 31 3 1980
+      values:
+        dob-day: 31
+        dob-month: 3
+        dob-year: 1980
+  - name: with values, name prefix and custom names
+    options:
+      id: with-values-name-prefix-custom
+      namePrefix: dob
+      fieldset:
+        legend:
+          text: What is your date of birth?
+      hint:
+        text: For example, 31 3 1980
+      day:
+        label: Day
+        name: user1-day
+      month:
+        label: Month
+        name: user1-month
+      year:
+        label: Year
+        name: user1-year
+      values:
+        dob-user1-day: 31
+        dob-user1-month: 3
+        dob-user1-year: 1980
   - name: day and month
     options:
       id: bday
@@ -468,6 +532,30 @@ examples:
           value: 2018
       year:
         value: 2023
+  - name: with field value, item value and values
+    hidden: true
+    options:
+      id: with-field-value-item-value-values
+      items:
+        - id: day
+          name: day
+        - id: month
+          name: month
+        - id: year
+          name: year
+          value: 2018
+      year:
+        value: 2023
+      values:
+        year: 2026
+  - name: with field value overriding values
+    hidden: true
+    options:
+      id: with-field-value-values
+      year:
+        value: 2023
+      values:
+        year: 2026
   - name: with hint and describedBy
     hidden: true
     options:

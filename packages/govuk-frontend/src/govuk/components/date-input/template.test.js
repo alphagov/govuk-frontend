@@ -118,6 +118,55 @@ describe('Date input', () => {
       expect($lastItems.val()).toBe('2018')
     })
 
+    it('renders items with values', () => {
+      const $ = render('date-input', examples['with values'])
+
+      const $input1 = $('.govuk-date-input__item:nth-of-type(1) input')
+      const $input2 = $('.govuk-date-input__item:nth-of-type(2) input')
+      const $input3 = $('.govuk-date-input__item:nth-of-type(3) input')
+
+      expect($input1.val()).toBe('31')
+      expect($input2.val()).toBe('3')
+      expect($input3.val()).toBe('1980')
+    })
+
+    it('renders items with values and name prefix', () => {
+      const $ = render('date-input', examples['with values and name prefix'])
+
+      const $input1 = $('.govuk-date-input__item:nth-of-type(1) input')
+      const $input2 = $('.govuk-date-input__item:nth-of-type(2) input')
+      const $input3 = $('.govuk-date-input__item:nth-of-type(3) input')
+
+      expect($input1.attr('name')).toBe('dob-day')
+      expect($input1.val()).toBe('31')
+
+      expect($input2.attr('name')).toBe('dob-month')
+      expect($input2.val()).toBe('3')
+
+      expect($input3.attr('name')).toBe('dob-year')
+      expect($input3.val()).toBe('1980')
+    })
+
+    it('renders items with values, name prefix and custom names', () => {
+      const $ = render(
+        'date-input',
+        examples['with values, name prefix and custom names']
+      )
+
+      const $input1 = $('.govuk-date-input__item:nth-of-type(1) input')
+      const $input2 = $('.govuk-date-input__item:nth-of-type(2) input')
+      const $input3 = $('.govuk-date-input__item:nth-of-type(3) input')
+
+      expect($input1.attr('name')).toBe('dob-user1-day')
+      expect($input1.val()).toBe('31')
+
+      expect($input2.attr('name')).toBe('dob-user1-month')
+      expect($input2.val()).toBe('3')
+
+      expect($input3.attr('name')).toBe('dob-user1-year')
+      expect($input3.val()).toBe('1980')
+    })
+
     it('renders items with field value', () => {
       const $ = render('date-input', examples['with field value'])
 
@@ -142,6 +191,28 @@ describe('Date input', () => {
       // Item value takes precedence over field value
       const $lastItems = $('.govuk-date-input__item:last-child input')
       expect($lastItems.val()).toBe('2018')
+    })
+
+    it('renders items with field value, item value and values', () => {
+      const $ = render(
+        'date-input',
+        examples['with field value, item value and values']
+      )
+
+      // Item value takes precedence over both field value and values option
+      const $lastItems = $('.govuk-date-input__item:last-child input')
+      expect($lastItems.val()).toBe('2018')
+    })
+
+    it('renders items with field value overriding values', () => {
+      const $ = render(
+        'date-input',
+        examples['with field value overriding values']
+      )
+
+      // Field value takes precedence over values option
+      const $lastItems = $('.govuk-date-input__item:last-child input')
+      expect($lastItems.val()).toBe('2023')
     })
   })
 
