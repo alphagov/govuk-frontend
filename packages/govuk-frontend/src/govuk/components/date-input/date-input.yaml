@@ -322,12 +322,6 @@ examples:
         text: For example, 31 3 1980
       errorMessage:
         text: Error message goes here
-      day:
-        error: true
-      month:
-        error: true
-      year:
-        error: true
   - name: with error message and hint (using items)
     options:
       id: dob-errors
@@ -341,13 +335,10 @@ examples:
       items:
         - name: day
           classes: govuk-input--width-2
-          error: true
         - name: month
           classes: govuk-input--width-2
-          error: true
         - name: year
           classes: govuk-input--width-4
-          error: true
   - name: with error on day input
     options:
       id: dob-day-error
@@ -617,6 +608,21 @@ examples:
         text: Error message goes here
       day:
         error: true
+  - name: with error on single field by omission
+    hidden: true
+    options:
+      id: dob-errors
+      fieldset:
+        legend:
+          text: What is your date of birth?
+      hint:
+        text: For example, 31 3 1980
+      errorMessage:
+        text: Error message goes here
+      month:
+        error: false
+      year:
+        error: false
   - name: with error on single field using classes
     hidden: true
     options:
@@ -649,6 +655,26 @@ examples:
           classes: govuk-input--width-2
         - name: year
           classes: govuk-input--width-4
+  - name: with error on single item by omission
+    hidden: true
+    options:
+      id: dob-errors
+      fieldset:
+        legend:
+          text: What is your date of birth?
+      hint:
+        text: For example, 31 3 1980
+      errorMessage:
+        text: Error message goes here
+      items:
+        - name: day
+          classes: govuk-input--width-2
+        - name: month
+          classes: govuk-input--width-2
+          error: false
+        - name: year
+          classes: govuk-input--width-4
+          error: false
   - name: with error on single item using classes
     hidden: true
     options:

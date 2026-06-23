@@ -43,6 +43,14 @@ exports[`Date input passes through html fieldset params without breaking 1`] = `
 </fieldset>
 `;
 
+exports[`Date input when it includes a field with an error by omission renders the error message 1`] = `
+<p id="dob-errors-error"
+   class="govuk-error-message"
+>
+  Error message goes here
+</p>
+`;
+
 exports[`Date input when it includes a field with an error class renders the error message 1`] = `
 <p id="dob-errors-error"
    class="govuk-error-message"
@@ -76,6 +84,14 @@ exports[`Date input when it includes an error message (using items) renders the 
 `;
 
 exports[`Date input when it includes an error message renders the error message 1`] = `
+<p id="dob-errors-error"
+   class="govuk-error-message"
+>
+  Error message goes here
+</p>
+`;
+
+exports[`Date input when it includes an item with an error by omission renders the error message 1`] = `
 <p id="dob-errors-error"
    class="govuk-error-message"
 >

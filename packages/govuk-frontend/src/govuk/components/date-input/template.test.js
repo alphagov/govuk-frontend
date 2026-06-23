@@ -431,6 +431,41 @@ describe('Date input', () => {
     })
   })
 
+  describe('when it includes a field with an error by omission', () => {
+    it('renders the error message', () => {
+      const $ = render(
+        'date-input',
+        examples['with error on single field by omission']
+      )
+      expect(htmlWithClassName($, '.govuk-error-message')).toMatchSnapshot()
+    })
+
+    it('includes the error modifier class on the input', () => {
+      const $ = render(
+        'date-input',
+        examples['with error on single field by omission']
+      )
+
+      const $dayInput = $('[name="day"]')
+      const $monthInput = $('[name="month"]')
+      const $yearInput = $('[name="year"]')
+
+      expect($dayInput.hasClass('govuk-input--error')).toBeTruthy()
+      expect($monthInput.hasClass('govuk-input--error')).toBeFalsy()
+      expect($yearInput.hasClass('govuk-input--error')).toBeFalsy()
+    })
+
+    it('includes the error modifier class on the form group wrapper', () => {
+      const $ = render(
+        'date-input',
+        examples['with error on single field by omission']
+      )
+
+      const $formGroup = $('.govuk-form-group')
+      expect($formGroup.hasClass('govuk-form-group--error')).toBeTruthy()
+    })
+  })
+
   describe('when it includes a field with an error class', () => {
     it('renders the error message', () => {
       const $ = render(
@@ -486,6 +521,41 @@ describe('Date input', () => {
 
     it('includes the error modifier class on the form group wrapper', () => {
       const $ = render('date-input', examples['with error on single item'])
+
+      const $formGroup = $('.govuk-form-group')
+      expect($formGroup.hasClass('govuk-form-group--error')).toBeTruthy()
+    })
+  })
+
+  describe('when it includes an item with an error by omission', () => {
+    it('renders the error message', () => {
+      const $ = render(
+        'date-input',
+        examples['with error on single item by omission']
+      )
+      expect(htmlWithClassName($, '.govuk-error-message')).toMatchSnapshot()
+    })
+
+    it('includes the error modifier class on the input', () => {
+      const $ = render(
+        'date-input',
+        examples['with error on single item by omission']
+      )
+
+      const $dayInput = $('[name="day"]')
+      const $monthInput = $('[name="month"]')
+      const $yearInput = $('[name="year"]')
+
+      expect($dayInput.hasClass('govuk-input--error')).toBeTruthy()
+      expect($monthInput.hasClass('govuk-input--error')).toBeFalsy()
+      expect($yearInput.hasClass('govuk-input--error')).toBeFalsy()
+    })
+
+    it('includes the error modifier class on the form group wrapper', () => {
+      const $ = render(
+        'date-input',
+        examples['with error on single item by omission']
+      )
 
       const $formGroup = $('.govuk-form-group')
       expect($formGroup.hasClass('govuk-form-group--error')).toBeTruthy()
