@@ -297,7 +297,7 @@ describe('Date input', () => {
     })
 
     it('associates the fieldset as "described by" the hint and parent fieldset', () => {
-      const $ = render('date-input', examples['with hint and describedBy'])
+      const $ = render('date-input', examples['with hint and described by'])
 
       const $fieldset = $('.govuk-fieldset')
       const hintId = $('.govuk-hint').attr('id')
@@ -338,7 +338,10 @@ describe('Date input', () => {
     })
 
     it('associates the fieldset as "described by" the error message and parent fieldset', () => {
-      const $ = render('date-input', examples['with error and describedBy'])
+      const $ = render(
+        'date-input',
+        examples['with error message and described by']
+      )
 
       const $fieldset = $('.govuk-fieldset')
 
@@ -369,7 +372,7 @@ describe('Date input', () => {
 
   describe('when they include both a hint and an error message', () => {
     it('sets the `group` role on the fieldset to force JAWS18 to announce the hint and error message', () => {
-      const $ = render('date-input', examples['with errors and hint'])
+      const $ = render('date-input', examples['with error message and hint'])
 
       const $fieldset = $('.govuk-fieldset')
 
@@ -377,7 +380,7 @@ describe('Date input', () => {
     })
 
     it('associates the fieldset as described by both the hint and the error message', () => {
-      const $ = render('date-input', examples['with errors and hint'])
+      const $ = render('date-input', examples['with error message and hint'])
 
       const $fieldset = $('.govuk-fieldset')
       const errorMessageId = $('.govuk-error-message').attr('id')
@@ -391,7 +394,7 @@ describe('Date input', () => {
     })
 
     it('associates the fieldset as described by the hint, error message and parent fieldset', () => {
-      const $ = render('date-input', examples['with errors and hint'])
+      const $ = render('date-input', examples['with error message and hint'])
 
       const $fieldset = $('.govuk-fieldset')
 
