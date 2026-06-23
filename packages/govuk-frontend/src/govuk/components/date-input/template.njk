@@ -57,6 +57,10 @@
   {% set itemWidth = 4 %}
 {% endif %}
 
+{%- if item.error and (not item.classes or not "govuk-input--error" in item.classes) %}
+  {% set itemClasses = (itemClasses + " govuk-input--error") | trim %}
+{% endif -%}
+
 {%- if not item.classes or not "govuk-input--width-" in item.classes %}
   {% set itemClasses = (itemClasses + " govuk-input--width-" + itemWidth) | trim %}
 {% endif %}

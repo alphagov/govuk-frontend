@@ -370,6 +370,163 @@ describe('Date input', () => {
     })
   })
 
+  describe('when it includes an error message (using items)', () => {
+    it('renders the error message', () => {
+      const $ = render(
+        'date-input',
+        examples['with error message and hint (using items)']
+      )
+      expect(htmlWithClassName($, '.govuk-error-message')).toMatchSnapshot()
+    })
+
+    it('includes the error modifier class on the inputs', () => {
+      const $ = render(
+        'date-input',
+        examples['with error message and hint (using items)']
+      )
+
+      const $dayInput = $('[name="day"]')
+      const $monthInput = $('[name="month"]')
+      const $yearInput = $('[name="year"]')
+
+      expect($dayInput.hasClass('govuk-input--error')).toBeTruthy()
+      expect($monthInput.hasClass('govuk-input--error')).toBeTruthy()
+      expect($yearInput.hasClass('govuk-input--error')).toBeTruthy()
+    })
+
+    it('includes the error modifier class on the form group wrapper', () => {
+      const $ = render(
+        'date-input',
+        examples['with error message and hint (using items)']
+      )
+
+      const $formGroup = $('.govuk-form-group')
+      expect($formGroup.hasClass('govuk-form-group--error')).toBeTruthy()
+    })
+  })
+
+  describe('when it includes a field with an error', () => {
+    it('renders the error message', () => {
+      const $ = render('date-input', examples['with error on single field'])
+      expect(htmlWithClassName($, '.govuk-error-message')).toMatchSnapshot()
+    })
+
+    it('includes the error modifier class on the input', () => {
+      const $ = render('date-input', examples['with error on single field'])
+
+      const $dayInput = $('[name="day"]')
+      const $monthInput = $('[name="month"]')
+      const $yearInput = $('[name="year"]')
+
+      expect($dayInput.hasClass('govuk-input--error')).toBeTruthy()
+      expect($monthInput.hasClass('govuk-input--error')).toBeFalsy()
+      expect($yearInput.hasClass('govuk-input--error')).toBeFalsy()
+    })
+
+    it('includes the error modifier class on the form group wrapper', () => {
+      const $ = render('date-input', examples['with error on single field'])
+
+      const $formGroup = $('.govuk-form-group')
+      expect($formGroup.hasClass('govuk-form-group--error')).toBeTruthy()
+    })
+  })
+
+  describe('when it includes a field with an error class', () => {
+    it('renders the error message', () => {
+      const $ = render(
+        'date-input',
+        examples['with error on single field using classes']
+      )
+      expect(htmlWithClassName($, '.govuk-error-message')).toMatchSnapshot()
+    })
+
+    it('includes the error modifier class on the input', () => {
+      const $ = render(
+        'date-input',
+        examples['with error on single field using classes']
+      )
+
+      const $dayInput = $('[name="day"]')
+      const $monthInput = $('[name="month"]')
+      const $yearInput = $('[name="year"]')
+
+      expect($dayInput.hasClass('govuk-input--error')).toBeTruthy()
+      expect($monthInput.hasClass('govuk-input--error')).toBeFalsy()
+      expect($yearInput.hasClass('govuk-input--error')).toBeFalsy()
+    })
+
+    it('includes the error modifier class on the form group wrapper', () => {
+      const $ = render(
+        'date-input',
+        examples['with error on single field using classes']
+      )
+
+      const $formGroup = $('.govuk-form-group')
+      expect($formGroup.hasClass('govuk-form-group--error')).toBeTruthy()
+    })
+  })
+
+  describe('when it includes an item with an error', () => {
+    it('renders the error message', () => {
+      const $ = render('date-input', examples['with error on single item'])
+      expect(htmlWithClassName($, '.govuk-error-message')).toMatchSnapshot()
+    })
+
+    it('includes the error modifier class on the input', () => {
+      const $ = render('date-input', examples['with error on single item'])
+
+      const $dayInput = $('[name="day"]')
+      const $monthInput = $('[name="month"]')
+      const $yearInput = $('[name="year"]')
+
+      expect($dayInput.hasClass('govuk-input--error')).toBeTruthy()
+      expect($monthInput.hasClass('govuk-input--error')).toBeFalsy()
+      expect($yearInput.hasClass('govuk-input--error')).toBeFalsy()
+    })
+
+    it('includes the error modifier class on the form group wrapper', () => {
+      const $ = render('date-input', examples['with error on single item'])
+
+      const $formGroup = $('.govuk-form-group')
+      expect($formGroup.hasClass('govuk-form-group--error')).toBeTruthy()
+    })
+  })
+
+  describe('when it includes an item with an error class', () => {
+    it('renders the error message', () => {
+      const $ = render(
+        'date-input',
+        examples['with error on single item using classes']
+      )
+      expect(htmlWithClassName($, '.govuk-error-message')).toMatchSnapshot()
+    })
+
+    it('includes the error modifier class on the input', () => {
+      const $ = render(
+        'date-input',
+        examples['with error on single item using classes']
+      )
+
+      const $dayInput = $('[name="day"]')
+      const $monthInput = $('[name="month"]')
+      const $yearInput = $('[name="year"]')
+
+      expect($dayInput.hasClass('govuk-input--error')).toBeTruthy()
+      expect($monthInput.hasClass('govuk-input--error')).toBeFalsy()
+      expect($yearInput.hasClass('govuk-input--error')).toBeFalsy()
+    })
+
+    it('includes the error modifier class on the form group wrapper', () => {
+      const $ = render(
+        'date-input',
+        examples['with error on single item using classes']
+      )
+
+      const $formGroup = $('.govuk-form-group')
+      expect($formGroup.hasClass('govuk-form-group--error')).toBeTruthy()
+    })
+  })
+
   describe('when they include both a hint and an error message', () => {
     it('sets the `group` role on the fieldset to force JAWS18 to announce the hint and error message', () => {
       const $ = render('date-input', examples['with error message and hint'])
