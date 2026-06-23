@@ -1,5 +1,7 @@
 name: Setup
 
+description: Setup Node.js and npm to use the correct versions
+
 inputs:
   use-cache:
     description: Restore global `~/.npm` cache

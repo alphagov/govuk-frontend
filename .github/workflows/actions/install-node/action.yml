@@ -1,5 +1,7 @@
 name: Install dependencies
 
+description: Install Node.js dependencies
+
 runs:
   using: composite
 

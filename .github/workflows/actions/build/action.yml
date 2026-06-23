@@ -1,5 +1,7 @@
 name: Build
 
+description: Build the project
+
 runs:
   using: composite
 
