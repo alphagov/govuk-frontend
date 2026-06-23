@@ -20,4 +20,5 @@ runs:
         cache: ${{ inputs.use-cache == 'true' && 'npm' || '' }}
         node-version-file: .nvmrc
     - name: Setup npm
+      shell: bash
       run: corepack install
