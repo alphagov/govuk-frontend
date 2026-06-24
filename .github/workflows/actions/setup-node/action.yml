@@ -17,7 +17,8 @@ runs:
       id: setup-node
 
       with:
-        cache: false
+        cache: ''
+        package-manager-cache: false
         node-version-file: .nvmrc
 
     - name: Setup npm using corepack
