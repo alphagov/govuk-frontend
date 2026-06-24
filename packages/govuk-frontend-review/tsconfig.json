@@ -1,6 +1,6 @@
 {
   "extends": "../../tsconfig.base.json",
-  "include": ["./src/**/*.mjs"],
+  "include": ["./src/**/*.mjs", "*.config.mjs"],
   "exclude": ["**/*.test.*"],
   "compilerOptions": {
     "strictNullChecks": false,
