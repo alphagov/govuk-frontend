@@ -5,7 +5,7 @@ const { NodePackageImporter, compileStringAsync } = require('sass-embedded')
 const sassConfig = {
   loadPaths: [paths.root, __dirname],
   quietDeps: true,
-  silenceDeprecations: ['import', 'mixed-decls'],
+  silenceDeprecations: ['import'],
   importers: [new NodePackageImporter()]
 }
 

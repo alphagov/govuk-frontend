@@ -452,14 +452,16 @@ describe('@mixin govuk-font-size', () => {
             font-family: "GDS Transport", arial, sans-serif;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            font-weight: 400;
-            font-size: 0.75rem;
-            line-height: 1.25;
           }
           @media print {
             .foo {
               font-family: sans-serif;
             }
+          }
+          .foo {
+            font-weight: 400;
+            font-size: 0.75rem;
+            line-height: 1.25;
           }
           @media (min-width: 30em) {
             .foo {
