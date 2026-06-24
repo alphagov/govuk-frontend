@@ -1,12 +1,11 @@
 const { readFile, stat } = require('fs/promises')
-const { parse, relative, basename } = require('path')
+const { parse, relative, basename, join } = require('path')
 
 const { paths } = require('@govuk-frontend/config')
 const { filesize } = require('filesize')
 const { glob } = require('glob')
 const yaml = require('js-yaml')
 const { minimatch } = require('minimatch')
-const slash = require('slash')
 
 /**
  * Check path exists
@@ -31,7 +30,7 @@ async function hasPath(entryPath) {
  * @returns {Promise<string[]>} File paths
  */
 async function getListing(directoryPath, options = {}) {
-  const listing = await glob(slash(directoryPath), {
+  const listing = await glob(directoryPath, {
     absolute: true,
     nodir: true,
     realpath: true,
@@ -53,7 +52,7 @@ async function getListing(directoryPath, options = {}) {
  * @returns {Promise<string[]>} Directory names
  */
 async function getDirectories(directoryPath) {
-  const listing = await getListing(`${slash(directoryPath)}/*/`, {
+  const listing = await getListing(join(directoryPath, '*'), {
     nodir: false
   })
 

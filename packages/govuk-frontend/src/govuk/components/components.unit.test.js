@@ -3,12 +3,11 @@ const { join, basename } = require('path')
 
 const { compileSassString } = require('@govuk-frontend/helpers/tests')
 const { sassNull } = require('sass-embedded')
-const { default: slash } = require('slash')
 const stylelint = require('stylelint')
 
 // Grab the list of components synchronously so we can create
 // individual test suites for each of them
-const componentFolders = globSync(`${slash(__dirname)}/*`, {
+const componentFolders = globSync(join(__dirname, '*'), {
   exclude: ['**/*.*']
 })
 
@@ -86,7 +85,9 @@ describe('Components', () => {
       })
     })
 
-    describe.each(componentFolders)('%s', (componentFolder) => {
+    describe.each(componentFolders)('%s', async (componentFolder) => {
+      const { default: slash } = await import('slash')
+
       const componentName = basename(componentFolder)
 
       describe('_index.scss', () => {

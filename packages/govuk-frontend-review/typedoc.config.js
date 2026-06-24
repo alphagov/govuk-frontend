@@ -5,11 +5,10 @@ const {
   packageResolveToPath,
   packageNameToPath
 } = require('@govuk-frontend/lib/names')
-const slash = require('slash')
 const typedoc = require('typedoc')
 
 const basePath = join(packageNameToPath('govuk-frontend'), 'src')
-const workspacePath = slash(relative(paths.root, basePath))
+const workspacePath = relative(paths.root, basePath)
 const { HEROKU_APP, HEROKU_BRANCH = 'main' } = process.env
 
 /**
@@ -25,9 +24,7 @@ module.exports = {
 
   // Configure paths
   basePath,
-  entryPoints: [
-    slash(packageResolveToPath('govuk-frontend/src/govuk/all.mjs'))
-  ],
+  entryPoints: [packageResolveToPath('govuk-frontend/src/govuk/all.mjs')],
   tsconfig: packageResolveToPath('govuk-frontend/tsconfig.json'),
   out: './dist/docs/jsdoc',
 
