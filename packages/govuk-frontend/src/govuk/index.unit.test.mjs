@@ -1,8 +1,9 @@
+import { join } from 'path'
+
 import { paths } from '@govuk-frontend/config'
 import { compileSassString } from '@govuk-frontend/helpers/tests'
 import { sassNull } from 'sass-embedded'
 import sassdoc from 'sassdoc'
-import slash from 'slash'
 
 let mockWarnFunction, sassConfig
 
@@ -173,8 +174,8 @@ describe('GOV.UK Frontend', () => {
     it('associates public Sass members with a group', async () => {
       return sassdoc
         .parse([
-          `${slash(paths.package)}/src/govuk/**/*.scss`,
-          `!${slash(paths.package)}/src/govuk/vendor/*.scss`
+          join(paths.package, 'src', 'govuk', '**', '*.scss'),
+          `!${join(paths.package, 'src', 'govuk', 'vendor', '*.scss')}`
         ])
         .then((docs) =>
           docs

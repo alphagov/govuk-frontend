@@ -3,7 +3,6 @@ import { join } from 'path'
 import { paths } from '@govuk-frontend/config'
 import { npm, task } from '@govuk-frontend/tasks'
 import gulp from 'gulp'
-import slash from 'slash'
 
 import { scripts, styles } from './index.mjs'
 
@@ -36,9 +35,7 @@ function getTasks(options) {
         { cwd: options.srcPath },
 
         // Run Stylelint checks
-        npm.script('lint:scss:cli', [
-          slash(join(options.workspace, '**/*.scss'))
-        ])
+        npm.script('lint:scss:cli', [join(options.workspace, '**', '*.scss')])
       )
     ),
     'compile:scss watch': () =>
@@ -66,7 +63,7 @@ function getTasks(options) {
 
           // Run ESLint checks
           npm.script('lint:js:cli', [
-            slash(join(options.workspace, '**/*.{cjs,js,mjs}'))
+            join(options.workspace, '**', '*.{cjs,js,mjs}')
           ])
         )
       )

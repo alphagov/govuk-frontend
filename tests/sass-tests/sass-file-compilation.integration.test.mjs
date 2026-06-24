@@ -1,8 +1,7 @@
 import { globSync } from 'node:fs'
-import { relative } from 'node:path'
+import { join, relative } from 'node:path'
 
 import { packageNameToPath } from '@govuk-frontend/lib/names'
-import slash from 'slash'
 import stylelint from 'stylelint'
 
 import { compileSassStringLikeUsers } from './helpers/sass.js'
@@ -13,10 +12,13 @@ import { compileSassStringLikeUsers } from './helpers/sass.js'
 const govukFrontendPath = packageNameToPath('govuk-frontend')
 
 // Grab a list of all Sass files and sort them alphabetically, for consistent output
-const sassFiles = globSync(`${slash(govukFrontendPath)}/src/govuk/**/*.scss`, {
-  exclude: ['**/*.import.scss', '**/*--internal.scss']
-})
-  .map((filePath) => slash(relative(govukFrontendPath, filePath)))
+const sassFiles = globSync(
+  join('govukFrontendPath', 'src', 'govuk', '**', '*.scss'),
+  {
+    exclude: ['**/*.import.scss', '**/*--internal.scss']
+  }
+)
+  .map((filePath) => relative(govukFrontendPath, filePath))
   .sort((a, b) => a.localeCompare(b))
 
 // Compile a Sass file and store any errors

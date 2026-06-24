@@ -1,8 +1,6 @@
 import { dirname, parse, relative } from 'path'
 import { fileURLToPath } from 'url'
 
-import slash from 'slash'
-
 import { files } from './index.mjs'
 
 /**
@@ -43,11 +41,9 @@ export async function write(filePath, result) {
        * {@link https://sass-lang.com/documentation/js-api/interfaces/CompileResult#sourceMap}
        */
       .map((path) =>
-        slash(
-          path.startsWith('file://')
-            ? relative(dirname(filePath), fileURLToPath(path))
-            : path
-        )
+        path.startsWith('file://')
+          ? relative(dirname(filePath), fileURLToPath(path))
+          : path
       )
 
     writeTasks.push(

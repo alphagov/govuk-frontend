@@ -7,7 +7,6 @@ import {
   componentNameToMacroName,
   packageNameToPath
 } from '@govuk-frontend/lib/names'
-import slash from 'slash'
 
 /**
  * GOV.UK Prototype Kit config builder
@@ -30,11 +29,11 @@ export default async () => {
   // Build array of macros
   const nunjucksMacros = componentNames.map((componentName) => {
     const [macroPath = ''] = componentMacros.filter(
-      filterPath([`**/${componentName}/macro.njk`])
+      filterPath([join('**', componentName, 'macro.njk')])
     )
 
     return {
-      importFrom: slash(macroPath),
+      importFrom: macroPath,
       macroName: componentNameToMacroName(componentName)
     }
   })
