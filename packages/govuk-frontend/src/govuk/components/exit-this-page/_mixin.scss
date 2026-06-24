@@ -68,7 +68,11 @@
     right: 0;
     bottom: 0;
     left: 0;
-    background-color: base.govuk-colour("white");
+    // The overlay is imitating a default browser window so we can use
+    // system colours ensure it matches the browser's default colours.
+    // https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/system-color
+    color: CanvasText;
+    background-color: Canvas;
   }
 
   // This class is added to the body when the Exit This Page button is activated
