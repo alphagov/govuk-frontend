@@ -32,10 +32,6 @@ runs:
         # Restore global `~/.npm` cache (unless packages change)
         use-cache: ${{ steps.npm-install-cache.outputs.cache-hit != 'true' }}
 
-    - name: Setup npm
-      shell: bash
-      run: corepack install
-
     - name: Install dependencies
       id: install-node
 

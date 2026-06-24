@@ -17,8 +17,17 @@ runs:
       id: setup-node
 
       with:
+        cache: false
+        node-version-file: .nvmrc
+
+    - name: Setup npm using corepack
+      shell: bash
+      run: corepack enable npm
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v6.4.0
+      id: setup-node
+
+      with:
         cache: ${{ inputs.use-cache == 'true' && 'npm' || '' }}
         node-version-file: .nvmrc
-    - name: Setup npm
-      shell: bash
-      run: corepack install
