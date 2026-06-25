@@ -1,5 +1,5 @@
 const { readFile, stat } = require('fs/promises')
-const { parse, relative, basename, join } = require('path')
+const { parse, relative, basename } = require('path')
 
 const { paths } = require('@govuk-frontend/config')
 const { filesize } = require('filesize')
@@ -30,7 +30,8 @@ async function hasPath(entryPath) {
  * @returns {Promise<string[]>} File paths
  */
 async function getListing(directoryPath, options = {}) {
-  const listing = await glob(directoryPath, {
+  const { default: slash } = await import('slash')
+  const listing = await glob(slash(directoryPath), {
     absolute: true,
     nodir: true,
     realpath: true,
@@ -52,7 +53,8 @@ async function getListing(directoryPath, options = {}) {
  * @returns {Promise<string[]>} Directory names
  */
 async function getDirectories(directoryPath) {
-  const listing = await getListing(join(directoryPath, '*'), {
+  const { default: slash } = await import('slash')
+  const listing = await getListing(`${slash(directoryPath)}/*/`, {
     nodir: false
   })
 
