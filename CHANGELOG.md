@@ -4,13 +4,26 @@ For advice on how to use these release notes, see [our guidance on staying up to
 
 ## Unreleased
 
+### Recommended changes
+
+#### Add a `<span>` element to start buttons containing HTML
+
+We've updated the Button component's Nunjucks macro to add a `<span>` element around HTML content within start buttons.
+
+This prevents whitespace around inline HTML elements from collapsing and prevents button content from wrapping incorrectly on narrow screens.
+
+If you're not using our Nunjucks macros, or have fixed this bug in a different way, you may want to update your code to add a `<span>` element instead.
+
+This change is only needed for start buttons containing HTML content. Other Button component styles and start buttons containing plain text were unaffected by the issue.
+
+We made this change in [pull request #7188: Add Nunjucks logic to insert `<span>` element around HTML in start buttons](https://github.com/alphagov/govuk-frontend/pull/7188).
+
 ### Fixes
 
 We've made fixes to GOV.UK Frontend in the following pull requests:
 
 - [#7168: Fix lack of explicit colour on input prefix and suffixes](https://github.com/alphagov/govuk-frontend/pull/7168)
 - [#7169: Fix text on small inline radios wrapping unnecessarily](https://github.com/alphagov/govuk-frontend/pull/7169)
-- [#7188: Add Nunjucks logic to insert `<span>` element around HTML in start buttons](https://github.com/alphagov/govuk-frontend/pull/7188)
 
 ## v6.2.0 (Feature release)
 
