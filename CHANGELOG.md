@@ -9,6 +9,7 @@ For advice on how to use these release notes, see [our guidance on staying up to
 We've made fixes to GOV.UK Frontend in the following pull requests:
 
 - [#7183: Update exit this page overlay colour to use system colours](https://github.com/alphagov/govuk-frontend/pull/7183)
+- [#7197: Improve source spacing for header](https://github.com/alphagov/govuk-frontend/pull/7197)
 
 ## v6.3.0 (Feature release)
 
