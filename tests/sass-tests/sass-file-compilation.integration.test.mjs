@@ -2,7 +2,7 @@ import { globSync } from 'node:fs'
 import { relative } from 'node:path'
 
 import { packageNameToPath } from '@govuk-frontend/lib/names'
-import slash from 'slash'
+import { slash } from '@govuk-frontend/lib/files'
 import stylelint from 'stylelint'
 
 import { compileSassStringLikeUsers } from './helpers/sass.js'

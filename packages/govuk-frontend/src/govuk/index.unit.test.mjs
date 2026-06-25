@@ -1,8 +1,8 @@
 import { paths } from '@govuk-frontend/config'
 import { compileSassString } from '@govuk-frontend/helpers/tests'
+import { slash } from '@govuk-frontend/lib/files'
 import { sassNull } from 'sass-embedded'
 import sassdoc from 'sassdoc'
-import slash from 'slash'
 
 let mockWarnFunction, sassConfig
 

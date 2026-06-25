@@ -7,7 +7,7 @@ import {
   componentNameToMacroName,
   packageNameToPath
 } from '@govuk-frontend/lib/names'
-import slash from 'slash'
+import { slash } from '@govuk-frontend/lib/files'
 
 /**
  * GOV.UK Prototype Kit config builder

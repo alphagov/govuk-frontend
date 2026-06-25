@@ -2,8 +2,8 @@ const { globSync } = require('fs')
 const { join, basename } = require('path')
 
 const { compileSassString } = require('@govuk-frontend/helpers/tests')
+const { slash } = require('@govuk-frontend/lib/files')
 const { sassNull } = require('sass-embedded')
-const { default: slash } = require('slash')
 const stylelint = require('stylelint')
 
 // Grab the list of components synchronously so we can create

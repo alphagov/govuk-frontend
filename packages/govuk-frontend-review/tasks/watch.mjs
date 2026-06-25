@@ -3,7 +3,7 @@ import { join } from 'path'
 import { paths } from '@govuk-frontend/config'
 import { npm, task } from '@govuk-frontend/tasks'
 import gulp from 'gulp'
-import slash from 'slash'
+import { slash } from '@govuk-frontend/lib/files'
 
 import { scripts, styles } from './index.mjs'
 
