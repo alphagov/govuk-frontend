@@ -2,13 +2,13 @@
 
 ## Install the VS Code extension
 
-If you're using Visual Studio Code install the GitHub Actions workflow extension: https://marketplace.visualstudio.com/items?itemName=github.vscode-github-actions
+If you're using Visual Studio Code, install the GitHub Actions workflow extension: https://marketplace.visualstudio.com/items?itemName=github.vscode-github-actions
 
 ## Set inputs as environment variables
 
-Set inputs as environment variables for the workflow rather using expressions inline (`${{ }}`).
+Set inputs as environment variables for the workflow rather than using inline expressions (`${{ }}`).
 
-Set the [`env` at the top-level](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#env)
+Set the [`env` at the top level](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#env)
 of the workflow or [per step](https://docs.github.com/en/actions/reference/security/secure-use#use-an-intermediate-environment-variable).
 
 Bad:
@@ -43,7 +43,7 @@ Good :
 
 ## Use quotes to protect variables
 
-When using variables use double quotes to prevent them from breaking scripts when spaces or other characters are used.
+When using variables, use double quotes to prevent the variables from breaking scripts when spaces or other characters are used.
 
 Bad:
 
@@ -62,7 +62,7 @@ git commit -m "$RELEASE_TITLE"
 
 ## Move complicated logic outside of the workflow
 
-Try to run any complicated logic in scripts outside the GitHub workflow, this allows us to test them using our regular test suite.
+Try to run any complicated logic in scripts outside the GitHub workflow, as this allows us to test them using our regular test suite.
 
 Bad:
 
@@ -143,7 +143,7 @@ Note that if the step is a one line command, it's okay to use `if:`.
 
 ## Surface important information into the Github Job Summary
 
-When there is important information to review output it to the top level summary.
+When there is important information to review, output it to the top level summary.
 
 ### Single line output
 
@@ -164,7 +164,7 @@ echo '# Built package output' >> $GITHUB_STEP_SUMMARY
 
 ### Set errors as annotations
 
-Set errors [using ::error::](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-commands#setting-an-error-message) which outputs to the top level summary
+Set errors [using ::error::](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-commands#setting-an-error-message), which outputs to the top level summary
 
 Bad:
 
@@ -184,8 +184,8 @@ Good:
 
 Sometimes you may run into issues where parts of GitHub Actions workflows are cached in a corrupted state.
 
-If a new pull request does not have a cache reference it'll check if a cache with the same key exists on the `main` branch.
+If a new pull request triggers a GitHub Actions workflow that does not have a cache reference, the workflow will check if a cache with the same key exists on the `main` branch.
 
-So you must remove the cache on `main` as well, if needed.
+This means you must remove the cache on `main` as well, if needed.
 
 You can delete the cache from https://github.com/alphagov/govuk-frontend/actions/caches or using the GitHub CLI (`gh cache delete --all`).
