@@ -92,7 +92,7 @@ Good:
 
 ## Using environments
 
-Avoid skipping steps and instead echo out destructive commands that would have been run.
+Avoid skipping steps with destructive commands and instead output them to the logs using `echo`.
 
 Bad:
 
