@@ -12,7 +12,6 @@
     "@govuk-frontend/lib": "*",
     "govuk-frontend": "*",
     "sass-embedded": "^1.89.2",
-    "slash": "^5.1.0",
     "stylelint": "^16.26.1"
   }
 }

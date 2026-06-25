@@ -19,7 +19,6 @@
     "js-yaml": "^4.2.0",
     "minimatch": "^10.2.5",
     "nunjucks": "^3.2.4",
-    "outdent": "^0.8.0",
-    "slash": "^3.0.0"
+    "outdent": "^0.8.0"
   }
 }

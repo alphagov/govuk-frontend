@@ -1,7 +1,7 @@
 import { dirname, parse, relative } from 'path'
 import { fileURLToPath } from 'url'
 
-import slash from 'slash'
+import { slash } from '@govuk-frontend/lib/files'
 
 import { files } from './index.mjs'
 
