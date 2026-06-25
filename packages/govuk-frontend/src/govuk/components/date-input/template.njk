@@ -11,24 +11,93 @@
 {#- fieldset is false by default -#}
 {% set hasFieldset = true if params.fieldset else false %}
 
+{%- set dateInputDay = params.day | default({
+  name: "day",
+  value: params.values.day,
+  classes: "govuk-input--width-2"
+}) -%}
+
+{%- set dateInputMonth = params.month | default({
+  name: "month",
+  value: params.values.month,
+  classes: "govuk-input--width-2"
+}) -%}
+
+{%- set dateInputYear = params.year | default({
+  name: "year",
+  value: params.values.year,
+  classes: "govuk-input--width-4"
+}) -%}
+
 {%- if params.items | length %}
   {% set dateInputItems = params.items %}
 {% else %}
   {% set dateInputItems = [
-    {
-      name: "day",
-      classes: "govuk-input--width-2"
-    },
-    {
-      name: "month",
-      classes: "govuk-input--width-2"
-    },
-    {
-      name: "year",
-      classes: "govuk-input--width-4"
-    }
+    dateInputDay,
+    dateInputMonth,
+    dateInputYear
   ] %}
 {% endif %}
+
+{%- macro _dateInputItem(params, item, anyItemHasError) %}
+{% set itemName = item.name %}
+{% set itemValue = item.value %}
+{% set itemWidth = 2 %}
+{% set itemClasses = "" %}
+{% set itemHasError = true if item.error or (item.classes and "govuk-input--error" in item.classes) else false %}
+
+{%- if item is sameas(dateInputDay) or (item.name and item.name in ["day", dateInputDay.name]) %}
+  {% set itemName = item.name | default("day") %}
+  {% set itemValue = item.value | default(dateInputDay.value) %}
+{% elif item is sameas(dateInputMonth) or (item.name and item.name in ["month", dateInputMonth.name]) %}
+  {% set itemName = item.name | default("month") %}
+  {% set itemValue = item.value | default(dateInputMonth.value) %}
+{% elif item is sameas(dateInputYear) or (item.name and item.name in ["year", dateInputYear.name]) %}
+  {% set itemName = item.name | default("year") %}
+  {% set itemValue = item.value | default(dateInputYear.value) %}
+  {% set itemWidth = 4 %}
+{% endif %}
+
+{%- if (not item.classes or not "govuk-input--error" in item.classes) and (
+  itemHasError or (item.error != false and params.errorMessage and not anyItemHasError)
+) %}
+  {% set itemClasses = (itemClasses + " govuk-input--error") | trim %}
+{% endif -%}
+
+{%- if not item.classes or not "govuk-input--width-" in item.classes %}
+  {% set itemClasses = (itemClasses + " govuk-input--width-" + itemWidth) | trim %}
+{% endif %}
+
+{%- if item.classes %}
+  {% set itemClasses = (itemClasses + " " + item.classes) | trim %}
+{% endif %}
+
+{%- set namePrefix = (params.namePrefix + "-") if params.namePrefix else "" -%}
+
+<div class="govuk-date-input__item">
+  {{ govukInput({
+    label: {
+      text: item.label if item.label else itemName | capitalize,
+      classes: "govuk-date-input__label"
+    },
+    id: item.id if item.id else (params.id + "-" + itemName),
+    classes: "govuk-date-input__input" + (" " + itemClasses if itemClasses),
+    name: namePrefix + itemName,
+    value: itemValue | default(params.values[namePrefix + itemName]),
+    type: "text",
+    inputmode: item.inputmode if item.inputmode else "numeric",
+    autocomplete: item.autocomplete,
+    pattern: item.pattern,
+    attributes: item.attributes
+  }) | trim | indent(2) }}
+</div>
+{%- endmacro -%}
+
+{#- Determine if any date input item has an error #}
+{%- set anyItemHasError = false %}
+{% for item in dateInputItems %}
+  {% set anyItemHasError = true if item.error or (item.classes and "govuk-input--error" in item.classes) else anyItemHasError %}
+{% endfor -%}
 
 {#- Capture the HTML so we can optionally nest it in a fieldset -#}
 {% set innerHtml %}
@@ -62,23 +131,9 @@
     {{ params.formGroup.beforeInputs.html | safe | trim | indent(4) if params.formGroup.beforeInputs.html else params.formGroup.beforeInputs.text }}
     {% endif %}
     {% for item in dateInputItems %}
-    <div class="govuk-date-input__item">
-      {{ govukInput({
-        label: {
-          text: item.label if item.label else item.name | capitalize,
-          classes: "govuk-date-input__label"
-        },
-        id: item.id if item.id else (params.id + "-" + item.name),
-        classes: "govuk-date-input__input " + (item.classes if item.classes),
-        name: (params.namePrefix + "-" + item.name) if params.namePrefix else item.name,
-        value: item.value,
-        type: "text",
-        inputmode: item.inputmode if item.inputmode else "numeric",
-        autocomplete: item.autocomplete,
-        pattern: item.pattern,
-        attributes: item.attributes
-      }) | trim | indent(6) }}
-    </div>
+      {% if item %}
+        {{- _dateInputItem(params, item, anyItemHasError) | trim | indent(4, true) }}
+      {% endif %}
     {% endfor %}
     {% if params.formGroup.afterInputs %}
     {{ params.formGroup.afterInputs.html | safe | trim | indent(4) if params.formGroup.afterInputs.html else params.formGroup.afterInputs.text }}
