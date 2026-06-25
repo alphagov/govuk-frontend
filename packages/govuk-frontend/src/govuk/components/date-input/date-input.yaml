@@ -117,7 +117,7 @@ params:
   - name: values
     type: object
     required: false
-    description: An optional object used to specify `value` attributes for the date parts without setting items.
+    description: Specify `value` attributes for the date parts without setting items. You can also use the `name` for the fields as keys, including any `namePrefix`.
     params:
       day:
         type: string
