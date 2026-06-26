@@ -6,6 +6,9 @@ import jestPuppeteerConfig from './jest-puppeteer.config.js'
 // Detect when browser has been launched headless
 const { headless = 'new' } = jestPuppeteerConfig.launch
 
+// Specify which ESM-only packages need transforming
+const packagesToTransform = []
+
 /**
  * Jest project config defaults
  *
@@ -34,7 +37,7 @@ const config = {
 
     // Transform some `*.js` to compatible CommonJS
     ...Object.fromEntries(
-      ['slash'].map((packagePath) => [
+      packagesToTransform.map((packagePath) => [
         replacePathSepForRegex(`${packageResolveToPath(packagePath)}$`),
         [
           'babel-jest',
@@ -49,7 +52,7 @@ const config = {
   // Enable Babel transforms for ESM-only node_modules
   // See: https://jestjs.io/docs/ecmascript-modules
   transformIgnorePatterns: [
-    `<rootDir>/node_modules/(?!${['slash'].join('|')}/)`
+    `<rootDir>/node_modules/(?!${packagesToTransform.join('|')}/)`
   ]
 }
 
