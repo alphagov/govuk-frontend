@@ -64,4 +64,5 @@ Technical writers, Developers
 - [ ] Verify that decisions are appropriately documented (in code/issues/pull request comments or in separate documents linked from issues/pull requests)
 - [ ] Update state of published issues on project board
 - [ ] Close published issues when appropriate
+- [ ] Update the latest version of Frontend listed in the canvas of our GDS and x-gov support slack channels
 - [ ] Open any follow-up issues if necessary
