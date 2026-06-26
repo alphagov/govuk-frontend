@@ -33,11 +33,7 @@ export default ({ to = '' } = {}) => ({
     to.endsWith('.css') &&
       cssnano({
         preset: cssnanoPresetDefault({
-          env: 'stylesheets',
-
-          // Sorted CSS is smaller when gzipped, but we sort using Stylelint
-          // https://cssnano.co/docs/optimisations/cssdeclarationsorter/
-          cssDeclarationSorter: false
+          env: 'stylesheets'
         })
       })
   ],
