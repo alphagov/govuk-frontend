@@ -112,6 +112,18 @@ We made this change in [pull request #6971: Add date input `day`, `month`, `year
 
 ### Recommended changes
 
+#### Use `inverse-text` instead of `govuk-colour("white")` for text on dark backgrounds that use functional colours
+
+We've introduced a new `inverse-text` functional colour to use on dark backgrounds that use functional colours such as `brand`, `success` and `error`.
+
+If you're using `govuk-colour("white")` as a text colour on dark backgrounds that use functional colours, replace `govuk-colour("white")` with `govuk-functional-colour(inverse-text)`.
+
+However, if you're using a dark background that does not use a functional colour, keep using `govuk-colour("white")`.
+
+In both cases, make sure your text has a minimum contrast of 4.5:1 with the background to meet the ['Contrast (minimum)' criterion of the Web Content Accessibility Guidelines](https://www.w3.org/WAI/WCAG22/quickref/#contrast-minimum).
+
+We made this change in [pull request #7178: Add `inverse-text` functional colour for white text on solid colour](https://github.com/alphagov/govuk-frontend/pull/7178).
+
 #### Add a `<span>` element to start buttons containing HTML
 
 We've updated the Button component's Nunjucks macro to add a `<span>` element around HTML content within start buttons.
