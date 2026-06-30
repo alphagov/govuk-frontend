@@ -125,6 +125,10 @@ describe('GOV.UK Prototype Kit config', () => {
           macroName: 'govukLabel'
         },
         {
+          importFrom: 'govuk/components/language-switcher/macro.njk',
+          macroName: 'govukLanguageSwitcher'
+        },
+        {
           importFrom: 'govuk/components/notification-banner/macro.njk',
           macroName: 'govukNotificationBanner'
         },

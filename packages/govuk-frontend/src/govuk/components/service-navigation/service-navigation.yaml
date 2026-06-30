@@ -85,6 +85,10 @@ params:
         type: string
         required: false
         description: HTML injected at the end of the service header container.
+      - name: endRightAligned
+        type: boolean
+        required: false
+        description: If `true`, renders the `end` slot inline in the service navigation row and right aligns it at tablet and above. Defaults to `false`.
       - name: navigationStart
         type: string
         required: false
@@ -378,6 +382,55 @@ examples:
           text: Navigation item 3
         - href: '#/4'
           text: Navigation item 4
+  - name: with language switcher
+    description: HTML rendered by the language switcher component can be injected into the `end` slot of the service header.
+    options:
+      serviceName: Service name
+      navigation:
+        - href: '#/1'
+          text: Navigation item 1
+          active: true
+        - href: '#/2'
+          text: Navigation item 2
+        - href: '#/3'
+          text: Navigation item 3
+      slots:
+        end: |-
+          <nav class="govuk-language-switcher" aria-label="Language switcher">
+            <ul class="govuk-language-switcher__list">
+              <li class="govuk-language-switcher__list-item">
+                <span class="govuk-language-switcher__text" lang="en" aria-current="true">English</span>
+              </li>
+              <li class="govuk-language-switcher__list-item">
+                <a class="govuk-language-switcher__link" href="#/cy" lang="cy" hreflang="cy" rel="alternate">Cymraeg</a>
+              </li>
+            </ul>
+          </nav>
+  - name: with right-aligned language switcher
+    description: HTML rendered by the language switcher component can be injected into the `end` slot of the service header.
+    options:
+      serviceName: Service name
+      navigation:
+        - href: '#/1'
+          text: Navigation item 1
+          active: true
+        - href: '#/2'
+          text: Navigation item 2
+        - href: '#/3'
+          text: Navigation item 3
+      slots:
+        end: |-
+          <nav class="govuk-language-switcher" aria-label="Language switcher">
+            <ul class="govuk-language-switcher__list">
+              <li class="govuk-language-switcher__list-item">
+                <span class="govuk-language-switcher__text" lang="en" aria-current="true">English</span>
+              </li>
+              <li class="govuk-language-switcher__list-item">
+                <a class="govuk-language-switcher__link" href="#/cy" lang="cy" hreflang="cy" rel="alternate">Cymraeg</a>
+              </li>
+            </ul>
+          </nav>
+        endRightAligned: true
   - name: with slotted content
     hidden: true
     options:
@@ -386,3 +439,12 @@ examples:
         end: '<div>[end]</div>'
         navigationStart: '<li>[navigation start]</li>'
         navigationEnd: '<li>[navigation end]</li>'
+  - name: with right-aligned end slot
+    options:
+      serviceName: Service name
+      navigation:
+        - href: '#/1'
+          text: Navigation item 1
+      slots:
+        end: '<div>[end]</div>'
+        endRightAligned: true
