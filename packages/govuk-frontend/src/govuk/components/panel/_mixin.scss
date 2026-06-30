@@ -12,6 +12,8 @@
 
     border: base.$govuk-border-width solid transparent;
 
+    color: base.govuk-functional-colour(text);
+
     text-align: center;
 
     @media #{base.govuk-until-breakpoint(tablet)} {
@@ -42,26 +44,49 @@
   }
 
   .govuk-panel--confirmation {
-    color: base.govuk-colour("white");
-    background: base.govuk-colour("green");
+    --govuk-text-colour: #{base.govuk-colour("white")};
+    background: base.govuk-functional-colour(success);
+  }
+
+  .govuk-panel--interruption {
+    --govuk-text-colour: #{base.govuk-colour("white")};
+    background: base.govuk-functional-colour(brand);
+    text-align: left;
   }
 
   .govuk-panel__title {
-    @include base.govuk-font-size($size: 48);
-    @include base.govuk-typography-weight-bold;
+    @include base.govuk-font($size: 48, $weight: bold);
+    @include base.govuk-responsive-margin(4, "bottom");
     margin-top: 0;
-    margin-bottom: base.govuk-spacing(6);
+    color: base.govuk-functional-colour(text);
   }
 
+  .govuk-panel__title--l {
+    @include base.govuk-font-size($size: 36);
+  }
+
+  // If something is at the end of the panel remove any spacing below and rely on the panel's internal spacing padding.
   .govuk-panel__title:last-child {
     margin-bottom: 0;
   }
 
-  .govuk-panel--interruption {
-    color: base.govuk-colour("white");
-    background-color: base.govuk-functional-colour(brand);
-    text-align: left;
+  .govuk-panel__body {
+    > :last-child {
+      margin-bottom: 0;
+    }
 
-    @include base.govuk-font($size: 19);
+    // TODO: This feels like it only needs to happen because we dont use `row-gap` in the base object
+    @media #{base.govuk-from-breakpoint(tablet)} {
+      $button-shadow-size: base.$govuk-border-width-form-element;
+
+      .govuk-button-group {
+        row-gap: base.govuk-spacing(3) + $button-shadow-size;
+      }
+
+      .govuk-button-group .govuk-button,
+      .govuk-button-group .govuk-link {
+        margin-bottom: 0;
+      }
+    }
   }
 }
