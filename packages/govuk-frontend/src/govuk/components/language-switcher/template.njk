@@ -1,0 +1,28 @@
+{% from "../../macros/attributes.njk" import govukAttributes %}
+
+<nav class="govuk-language-switcher {%- if params.classes %} {{ params.classes }}{% endif %}" {{- govukAttributes(params.attributes) }} aria-label="{{ params.ariaLabel | default("Language switcher") }}">
+  <ul class="govuk-language-switcher__list">
+{% for item in params.items %}
+  {% set isCurrent = item.current or (not item.href) %}
+  {% if isCurrent %}
+    <li class="govuk-language-switcher__list-item">
+      <span class="govuk-language-switcher__text"
+        {%- if item.lang %} lang="{{ item.lang }}"{% endif %}
+        {%- if item.dir %} dir="{{ item.dir }}"{% endif %} aria-current="true">
+        {{- item.html | safe if item.html else item.text -}}
+      </span>
+    </li>
+  {% else %}
+    <li class="govuk-language-switcher__list-item">
+      <a class="govuk-language-switcher__link" href="{{ item.href }}"
+        {%- if item.lang %} lang="{{ item.lang }}"{% endif %}
+        {%- if item.hrefLang or item.lang %} hreflang="{{ item.hrefLang if item.hrefLang else item.lang }}"{% endif %}
+        {%- if item.dir %} dir="{{ item.dir }}"{% endif %} rel="alternate"
+        {{- govukAttributes(item.attributes) }}>
+        {{- item.html | safe if item.html else item.text -}}
+      </a>
+    </li>
+  {% endif %}
+{% endfor %}
+  </ul>
+</nav>

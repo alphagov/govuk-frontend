@@ -30,6 +30,7 @@
     @media #{base.govuk-from-breakpoint(tablet)} {
       flex-direction: row;
       flex-wrap: wrap;
+      align-items: center;
     }
   }
 
@@ -118,6 +119,25 @@
   // nav items and use slots.
   .govuk-service-navigation__wrapper {
     flex-grow: 1;
+
+    // If the end slot is right-aligned, add some extra spacing to the right of
+    // the navigation. This ensures that the two elements don't get too close as
+    // viewports shrink but before the end slot content wraps to the next line.
+    &:has(+ .govuk-service-navigation__end) {
+      @media #{base.govuk-from-breakpoint(tablet)} {
+        margin-right: base.govuk-spacing(4);
+      }
+    }
+  }
+
+  .govuk-service-navigation__end {
+    width: 100%;
+  }
+
+  @media #{base.govuk-from-breakpoint(tablet)} {
+    .govuk-service-navigation__end {
+      width: auto;
+    }
   }
 
   //
