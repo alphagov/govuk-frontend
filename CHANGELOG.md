@@ -4,44 +4,7 @@ For advice on how to use these release notes, see [our guidance on staying up to
 
 ## Unreleased
 
-### Recommended changes
-
-#### Add a `<span>` element to start buttons containing HTML
-
-We've updated the Button component's Nunjucks macro to add a `<span>` element around HTML content within start buttons.
-
-This prevents whitespace around inline HTML elements from collapsing and prevents button content from wrapping incorrectly on narrow screens.
-
-If you're not using our Nunjucks macros, or have fixed this bug in a different way, you may want to update your code to add a `<span>` element instead.
-
-This change is only needed for start buttons containing HTML content. Other Button component styles and start buttons containing plain text were unaffected by the issue.
-
-We made this change in [pull request #7188: Add Nunjucks logic to insert `<span>` element around HTML in start buttons](https://github.com/alphagov/govuk-frontend/pull/7188).
-
-### Fixes
-
-We've made fixes to GOV.UK Frontend in the following pull requests:
-
-- [#7183: Update exit this page overlay colour to use system colours](https://github.com/alphagov/govuk-frontend/pull/7183)
-- [#7197: Improve source spacing for header](https://github.com/alphagov/govuk-frontend/pull/7197)
-
-## v6.3.0 (Feature release)
-
-To install this version with npm, run `npm install govuk-frontend@6.3.0`. You can also find more information about [how to stay up to date](https://frontend.design-system.service.gov.uk/staying-up-to-date/#updating-to-the-latest-version) in our documentation.
-
 ### New features
-
-#### Use the Generic header component in services not on the GOV.UK website
-
-We've added the [Generic header component](https://design-system.service.gov.uk/components/generic-header/) for services that are not part of [the GOV.UK proposition](https://www.gov.uk/government/publications/govuk-proposition/govuk-proposition) but would still benefit from using GOV.UK Frontend to build their service.
-
-The Generic header component is a version of the GOV.UK header component that you can customise to meet the needs of your service. This includes:
-
-- changing the spacing around the logo
-- adding a bottom border with your service's brand colour
-- changing the header colour
-
-This was added in [pull request #7061: Add Generic Header component](https://github.com/alphagov/govuk-frontend/pull/7061).
 
 #### You can now pass `day`, `month`, `year`, `error` and `values` options to the Date input component
 
@@ -146,6 +109,45 @@ You can now pass in `values: data` to automatically set item values:
 ```
 
 We made this change in [pull request #6971: Add date input `day`, `month`, `year` and `values` options](https://github.com/alphagov/govuk-frontend/pull/6971).
+
+### Recommended changes
+
+#### Add a `<span>` element to start buttons containing HTML
+
+We've updated the Button component's Nunjucks macro to add a `<span>` element around HTML content within start buttons.
+
+This prevents whitespace around inline HTML elements from collapsing and prevents button content from wrapping incorrectly on narrow screens.
+
+If you're not using our Nunjucks macros, or have fixed this bug in a different way, you may want to update your code to add a `<span>` element instead.
+
+This change is only needed for start buttons containing HTML content. Other Button component styles and start buttons containing plain text were unaffected by the issue.
+
+We made this change in [pull request #7188: Add Nunjucks logic to insert `<span>` element around HTML in start buttons](https://github.com/alphagov/govuk-frontend/pull/7188).
+
+### Fixes
+
+We've made fixes to GOV.UK Frontend in the following pull requests:
+
+- [#7183: Update exit this page overlay colour to use system colours](https://github.com/alphagov/govuk-frontend/pull/7183)
+- [#7197: Improve source spacing for header](https://github.com/alphagov/govuk-frontend/pull/7197)
+
+## v6.3.0 (Feature release)
+
+To install this version with npm, run `npm install govuk-frontend@6.3.0`. You can also find more information about [how to stay up to date](https://frontend.design-system.service.gov.uk/staying-up-to-date/#updating-to-the-latest-version) in our documentation.
+
+### New features
+
+#### Use the Generic header component in services not on the GOV.UK website
+
+We've added the [Generic header component](https://design-system.service.gov.uk/components/generic-header/) for services that are not part of [the GOV.UK proposition](https://www.gov.uk/government/publications/govuk-proposition/govuk-proposition) but would still benefit from using GOV.UK Frontend to build their service.
+
+The Generic header component is a version of the GOV.UK header component that you can customise to meet the needs of your service. This includes:
+
+- changing the spacing around the logo
+- adding a bottom border with your service's brand colour
+- changing the header colour
+
+This was added in [pull request #7061: Add Generic Header component](https://github.com/alphagov/govuk-frontend/pull/7061).
 
 ### Fixes
 
