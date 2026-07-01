@@ -1,0 +1,155 @@
+params:
+  - name: items
+    type: array
+    required: true
+    description: The languages to display within the language switcher.
+    params:
+      - name: text
+        type: string
+        required: true
+        description: If `html` is set, this is not required. Name of the language, written in that language (for example, "Cymraeg" for Welsh). If `html` is provided, the `text` option will be ignored.
+      - name: html
+        type: string
+        required: true
+        description: If `text` is set, this is not required. HTML to use for the language item. If `html` is provided, the `text` option will be ignored.
+      - name: lang
+        type: string
+        required: true
+        description: The language tag for the language item text (for example, `cy` for Welsh). Added as a `lang` attribute so that assistive technologies pronounce the language name correctly.
+      - name: hrefLang
+        type: string
+        required: false
+        description: The language tag for the linked page (for example, `cy` for Welsh). Added as an `hreflang` attribute for search engines and other machine readers. Defaults to `lang` when omitted.
+      - name: dir
+        type: string
+        required: false
+        description: The text direction for the language item element. Use this on every item when the switcher includes languages that use scripts with different directions.
+      - name: href
+        type: string
+        required: false
+        description: Link to the current page in this language.
+      - name: current
+        type: boolean
+        required: false
+        description: Whether this is the language of the current page. Defaults to `true` when `href` is not provided.
+      - name: attributes
+        type: object
+        required: false
+        description: HTML attributes to add to the language item anchor.
+  - name: ariaLabel
+    type: string
+    required: false
+    description: Plain text label identifying the navigation landmark to screen readers. Write it in the language of the current page. Defaults to "Language switcher".
+  - name: classes
+    type: string
+    required: false
+    description: Classes to add to the language switcher container.
+  - name: attributes
+    type: object
+    required: false
+    description: HTML attributes to add to the language switcher container.
+
+examples:
+  - name: default
+    screenshot: true
+    options:
+      items:
+        - text: English
+          lang: en
+          current: true
+        - text: Cymraeg
+          lang: cy
+          href: '#/cy'
+  - name: with multiple languages
+    options:
+      items:
+        - text: English
+          lang: en
+          current: true
+        - text: Français
+          lang: fr
+          href: '#/fr'
+        - text: हिंदी
+          lang: hi
+          href: '#/hi'
+        - text: 日本語
+          lang: ja
+          href: '#/ja'
+        - text: اردو
+          lang: ur
+          href: '#/ur'
+        - text: 中文
+          lang: zh
+          href: '#/zh'
+  - name: with translated navigation label
+    description: When the current page is not in English, translate the `ariaLabel` into the language of the current page.
+    options:
+      ariaLabel: Dewis iaith
+      attributes:
+        lang: cy
+      items:
+        - text: English
+          lang: en
+          href: '#/en'
+        - text: Cymraeg
+          lang: cy
+          current: true
+  - name: with mixed text directions
+    options:
+      items:
+        - text: English
+          lang: en
+          dir: ltr
+          current: true
+        - text: العربية
+          lang: ar
+          dir: rtl
+          href: '#/ar'
+
+  # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
+  - name: classes
+    hidden: true
+    options:
+      classes: app-language-switcher--custom-modifier
+      items:
+        - text: English
+          lang: en
+          current: true
+        - text: Cymraeg
+          lang: cy
+          href: '#/cy'
+  - name: attributes
+    hidden: true
+    options:
+      attributes:
+        id: my-language-switcher
+        'data-foo': 'bar'
+      items:
+        - text: English
+          lang: en
+          current: true
+        - text: Cymraeg
+          lang: cy
+          href: '#/cy'
+  - name: item attributes
+    hidden: true
+    options:
+      items:
+        - text: English
+          lang: en
+          current: true
+        - text: Cymraeg
+          lang: cy
+          href: '#/cy'
+          attributes:
+            data-attribute: my-attribute
+  - name: html
+    hidden: true
+    options:
+      items:
+        - text: English
+          lang: en
+          current: true
+        - html: <span>Cymraeg</span>
+          lang: cy
+          href: '#/cy'
