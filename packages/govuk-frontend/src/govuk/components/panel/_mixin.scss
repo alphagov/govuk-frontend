@@ -62,7 +62,5 @@
     --govuk-text-colour: #{base.govuk-functional-colour(inverse-text)};
     background: base.govuk-functional-colour(brand);
     text-align: left;
-
-    @include base.govuk-font($size: 19);
   }
 }
