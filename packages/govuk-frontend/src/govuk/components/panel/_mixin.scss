@@ -49,7 +49,9 @@
     margin-bottom: base.govuk-spacing(6);
   }
 
-  .govuk-panel__title:last-child {
+  // Remove the bottom spacing of anything at the end of the Panel so the Panel's padding spacing is used instead.
+  .govuk-panel__title:last-child,
+  .govuk-panel__body > :last-child {
     margin-bottom: 0;
   }
 
