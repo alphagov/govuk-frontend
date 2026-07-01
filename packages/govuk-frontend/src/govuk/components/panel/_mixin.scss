@@ -36,12 +36,13 @@
   }
 
   .govuk-panel--confirmation {
-    color: base.govuk-colour("white");
-    background: base.govuk-colour("green");
+    --govuk-text-colour: #{base.govuk-functional-colour(inverse-text)};
+    color: base.govuk-functional-colour(text);
+    background: base.govuk-functional-colour(success);
 
     @media print {
+      --govuk-text-colour: inherit;
       border-color: currentcolor;
-      color: base.govuk-functional-colour(text);
       background: none;
     }
   }

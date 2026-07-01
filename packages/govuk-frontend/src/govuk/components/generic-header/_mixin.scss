@@ -13,19 +13,23 @@ $header-forced-colour-border-width: 1px;
 
 /// Shared block header styles, with automatic background setting
 ///
-/// @param {String} $background - background colour of header
+/// @param {String} $background-colour - background colour of the header
+/// @param {String} $text-colour - text colour of the header
 /// @access private
-@mixin block-styles($background: base.govuk-colour("black")) {
+@mixin block-styles($background-colour: base.govuk-colour("black"), $text-colour: base.govuk-colour("white")) {
   @include base.govuk-font($size: 16, $line-height: 1);
 
   // Add a transparent bottom border for forced-colour modes
   border-bottom: $header-forced-colour-border-width solid transparent;
-  color: base.govuk-colour("white");
-  background: $background;
+
+  --govuk-text-colour: #{$text-colour};
+  color: base.govuk-functional-colour(text);
+  background: $background-colour;
 
   @media print {
     border-bottom-width: 0;
-    color: base.govuk-functional-colour(text);
+
+    --govuk-text-colour: inherit;
     background: transparent;
   }
 }
@@ -73,7 +77,7 @@ $header-forced-colour-border-width: 1px;
   font-size: 30px; // We don't have a mixin that produces 30px font size
   text-decoration: none;
 
-  @include base.govuk-link-style-inverse;
+  @include base.govuk-link-style-text;
 
   &:link,
   &:visited {

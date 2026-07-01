@@ -34,13 +34,6 @@
     }
   }
 
-  .govuk-select option:active,
-  .govuk-select option:checked,
-  .govuk-select:focus::-ms-value {
-    color: base.govuk-colour("white");
-    background-color: base.govuk-colour("blue");
-  }
-
   .govuk-select--error {
     border-color: base.govuk-functional-colour(error);
 

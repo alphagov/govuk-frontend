@@ -14,7 +14,11 @@
     border-bottom-width: 1px;
     border-bottom-style: solid;
     border-bottom-color: $govuk-service-navigation-border-colour;
-    color: $govuk-service-navigation-text-colour;
+    // Ensure that both raw content and content with typography classes
+    // will pick up the correct colour by setting both `--govuk-text-colour`
+    // and `color`.
+    --govuk-text-colour: #{$govuk-service-navigation-text-colour};
+    color: base.govuk-functional-colour(text);
     background-color: $govuk-service-navigation-background;
   }
 
@@ -200,10 +204,7 @@
     // Remove bottom border to add width-container ones
     border-bottom: none;
 
-    // Set colour here so non-link text (service name, slot content) can
-    // use it too.
-    color: base.govuk-colour("white");
-
+    --govuk-text-colour: #{base.govuk-functional-colour(inverse-text)};
     background-color: base.govuk-functional-colour(brand);
 
     .govuk-width-container {
@@ -220,12 +221,12 @@
     // Override the 'active' border colour
     .govuk-service-navigation__item,
     .govuk-service-navigation__service-name {
-      border-color: base.govuk-colour("white");
+      border-color: currentcolor;
     }
 
     // Override link styles
     .govuk-service-navigation__link {
-      @include base.govuk-link-style-inverse;
+      @include base.govuk-link-style-text;
     }
 
     // Override mobile menu toggle colour when not focused
