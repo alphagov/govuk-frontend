@@ -6,6 +6,12 @@ For advice on how to use these release notes, see [our guidance on staying up to
 
 ### New features
 
+#### Use the Feedback component to collect feedback from users on your service
+
+We've added the [Feedback component](https://design-system.service.gov.uk/components/feedback/) to help services collect feedback from their users throughout their service.
+
+This was added in [pull request #7232: Add Feedback component](https://github.com/alphagov/govuk-frontend/pull/7232).
+
 #### You can now pass `day`, `month`, `year`, `error` and `values` options to the Date input component
 
 We've updated the Date input component to add the following Nunjucks options:
