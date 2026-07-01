@@ -105,4 +105,39 @@ describe('Panel', () => {
       expect($component.attr('second-attribute')).toBe('bar')
     })
   })
+
+  describe('classes', () => {
+    it('has confirmation modifier class by default', () => {
+      const $ = render('panel')
+
+      const $component = $('.govuk-panel')
+      expect($component.attr('class')).toBe(
+        'govuk-panel govuk-panel--confirmation'
+      )
+    })
+    it('keeps confirmation modifier class if additional classes used', () => {
+      const $ = render('panel', examples.classes)
+
+      const $component = $('.govuk-panel')
+      expect($component.attr('class')).toBe(
+        'govuk-panel extra-class one-more-class govuk-panel--confirmation'
+      )
+    })
+    it('has no confirmation modifier class if interruption modifier class is used', () => {
+      const $ = render('panel', examples.interruption)
+
+      const $component = $('.govuk-panel')
+      expect($component.attr('class')).toBe(
+        'govuk-panel govuk-panel--interruption'
+      )
+    })
+    it('keeps interruption modifier class if additional classes used', () => {
+      const $ = render('panel', examples['interruption with custom classes'])
+
+      const $component = $('.govuk-panel')
+      expect($component.attr('class')).toBe(
+        'govuk-panel govuk-panel--interruption extra-class one-more-class'
+      )
+    })
+  })
 })
