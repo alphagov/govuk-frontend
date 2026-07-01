@@ -1,0 +1,38 @@
+@use "../../base";
+
+/// @access private
+@mixin styles {
+  .govuk-feedback {
+    box-sizing: border-box;
+    // Tie left/right padding to page gutter as it stretches across the whole
+    // screen on smaller screens
+    padding: base.govuk-spacing(4) base.$govuk-gutter-half base.govuk-spacing(5);
+    border-top: 1px solid;
+    border-color: base.govuk-functional-colour("brand");
+    background-color: base.govuk-functional-colour("surface-background");
+
+    @media #{base.govuk-from-breakpoint(tablet)} {
+      padding-right: base.govuk-spacing(4);
+      padding-left: base.govuk-spacing(4);
+    }
+
+    // Override $govuk-width-container's left and right margin as we want Feedback
+    // to go across the whole screen on smaller screens
+    @media #{base.govuk-until-breakpoint(tablet)} {
+      margin-right: 0;
+      margin-left: 0;
+    }
+  }
+
+  .govuk-feedback__title {
+    @include base.govuk-font($size: 24, $weight: bold);
+    margin-top: 0;
+    color: base.govuk-functional-colour(text);
+    @include base.govuk-responsive-margin(3, "bottom");
+  }
+
+  .govuk-feedback__body {
+    color: base.govuk-functional-colour(text);
+    @include base.govuk-font($size: 19);
+  }
+}

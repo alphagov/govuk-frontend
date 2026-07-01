@@ -1,0 +1,18 @@
+{% from "../../macros/attributes.njk" import govukAttributes -%}
+
+{% set headingLevel = params.headingLevel if params.headingLevel else 2 -%}
+
+<div class="govuk-feedback govuk-width-container {%- if params.classes %} {{ params.classes }}{% endif %}" {{- govukAttributes(params.attributes) }}>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h{{ headingLevel }} class="govuk-feedback__title">
+        {{ params.titleHtml | safe if params.titleHtml else params.titleText }}
+      </h{{ headingLevel }}>
+      {% if caller or params.html or params.text %}
+        <div class="govuk-feedback__body">
+          {{ caller() if caller else (params.html | safe | trim | indent(4) if params.html else params.text) }}
+        </div>
+    {% endif %}
+    </div>
+  </div>
+</div>

@@ -1,6 +1,7 @@
 {% extends "layouts/full-page-example.njk" %}
 
 {% from "govuk/components/panel/macro.njk" import govukPanel %}
+{% from "govuk/components/feedback/macro.njk" import govukFeedback %}
 
 {% set pageTitle = "Thank you for confirming if you have changed your name" %}
 {% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
@@ -13,4 +14,11 @@
       }) }}
     </div>
   </div>
+{% endblock %}
+
+{% block footerStart %}
+  {{ govukFeedback({
+    titleText: "Help us improve this service",
+    html: "Tell us about your experience using this service. <a href=\"#\" class=\"govuk-link\">Give us your feedback</a>"
+  }) }}
 {% endblock %}

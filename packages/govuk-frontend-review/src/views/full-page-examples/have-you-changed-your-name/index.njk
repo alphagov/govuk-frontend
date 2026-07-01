@@ -16,6 +16,7 @@ scenario: |
 {% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
 {% from "govuk/components/radios/macro.njk" import govukRadios %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/feedback/macro.njk" import govukFeedback %}
 
 {% set pageTitle = example.title %}
 {% block pageTitle %}{{ "Error: " if errorSummary | length }}{{ pageTitle }} - GOV.UK{% endblock %}
@@ -69,4 +70,11 @@ scenario: |
     }) }}
   </form>
 
+{% endblock %}
+
+{% block footerStart %}
+  {{ govukFeedback({
+    titleText: "Help us improve this service",
+    html: "Tell us about your experience using this service. <a href=\"#\" class=\"govuk-link\">Give us your feedback</a>"
+  }) }}
 {% endblock %}
