@@ -1,0 +1,95 @@
+params:
+  - name: titleText
+    type: string
+    required: true
+    description: Text to use within the title of the Feedback component. If `titleHtml` is provided, the `titleText` option will be ignored.
+  - name: titleHtml
+    type: string
+    required: true
+    description: HTML to use within the title of the Feedback component. If `titleHtml` is provided, the `titleText` option will be ignored.
+  - name: headingLevel
+    type: integer
+    required: false
+    description: Heading level, from `1` to `6`. Default is `2`.
+  - name: text
+    type: string
+    required: true
+    description: Text to use within the Feedback component content. If `html` is provided, the `text` option will be ignored.
+  - name: html
+    type: string
+    required: true
+    description: HTML to use within the Feedback component content. If `html` is provided, the `text` option will be ignored.
+  - name: caller
+    type: nunjucks-block
+    required: false
+    description: Not strictly a parameter but a [Nunjucks code convention](https://mozilla.github.io/nunjucks/templating.html#call). Using a `call` block lets you call a macro with all the text inside the tag. This is helpful if you want to pass a lot of content into a macro. To use it, you'll need to wrap the entire Feedback component in a `call` block.
+  - name: classes
+    type: string
+    required: false
+    description: Classes to add to the Feedback component container.
+  - name: attributes
+    type: object
+    required: false
+    description: HTML attributes (for example, data attributes) to add to the Feedback component container.
+
+examples:
+  - name: default
+    screenshot: true
+    options:
+      titleText: Help us improve this service
+      html: |
+        <p class="govuk-body">Tell us about your experience using this service. <a href="#" class="govuk-link">Give us your feedback</a></p>
+
+  - name: silly example
+    description: In reality we'd recommend users only use the default example but this is to illustrate if a service team decides they want to add a lot of content
+    options:
+      titleText: Help us improve this service
+      html: |
+        <p class="govuk-body">Tell us about your experience using this service.</p>
+        <p class="govuk-body">Click this cool link to <a href="#" class="govuk-link">give us your feedback</a>.</p>
+        <p class="govuk-body">There's another paragraph here.</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>There is also a list</li>
+          <li>With items in</li>
+          <li>How strange!</li>
+        </ul>
+
+  # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
+  - name: html in title
+    hidden: true
+    options:
+      titleHtml: Help us improve this <em>cool</em> service
+      html: |
+        <p class="govuk-body">Tell us about your experience using this service. <a href="#" class="govuk-link">Give us your feedback</a></p>
+
+  - name: custom heading level
+    hidden: true
+    options:
+      titleText: Help us improve this service
+      headingLevel: 3
+      html: |
+        <p class="govuk-body">Tell us about your experience using this service. <a href="#" class="govuk-link">Give us your feedback</a></p>
+
+  - name: html in text options
+    hidden: true
+    options:
+      titleText: Help us improve this <em>cool</em> service
+      text: Tell us about your experience using this <em>cool</em> service
+
+  - name: classes
+    hidden: true
+    options:
+      titleText: Help us improve this service
+      html: |
+        <p class="govuk-body">Tell us about your experience using this service. <a href="#" class="govuk-link">Give us your feedback</a></p>
+      classes: my-first-class my-second-class
+
+  - name: attributes
+    hidden: true
+    options:
+      titleText: Help us improve this service
+      html: |
+        <p class="govuk-body">Tell us about your experience using this service. <a href="#" class="govuk-link">Give us your feedback</a></p>
+      attributes:
+        first-attribute: first
+        second-attribute: second
