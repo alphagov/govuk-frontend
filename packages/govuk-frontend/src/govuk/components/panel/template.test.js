@@ -102,6 +102,14 @@ describe('Panel', () => {
       expect($component.attr('first-attribute')).toBe('foo')
       expect($component.attr('second-attribute')).toBe('bar')
     })
+
+    it('allows the title size to be changed', () => {
+      const $ = render('panel', examples['interruption with custom title size'])
+
+      const $component = $('.govuk-panel')
+      const $title = $component.find('.govuk-panel__title')
+      expect($title.hasClass('govuk-panel__title--l')).toBeTruthy()
+    })
   })
 
   describe('classes', () => {

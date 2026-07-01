@@ -1,4 +1,8 @@
 params:
+  - name: titleClasses
+    type: string
+    required: false
+    description: Classes to add to the panel title.
   - name: titleText
     type: string
     required: true
@@ -42,6 +46,7 @@ examples:
     options:
       classes: govuk-panel--interruption
       titleText: Is your age correct?
+      titleClasses: govuk-panel__title--l
       html: |
         <p class="govuk-body">You entered your age as <strong>109</strong>.</p>
         <div class="govuk-button-group">
@@ -52,8 +57,9 @@ examples:
         </div>
   - name: interruption-with-content-with-long-line-length
     options:
-      titleText: Are you sure you want to change this?
       classes: govuk-panel--interruption
+      titleText: Are you sure you want to change this?
+      titleClasses: govuk-panel__title--l
       html: |
         <p class="govuk-body">You've changed the person's address from Wales to England. This means that the referral needs to be cancelled.</p>
         <p class="govuk-body">Previous home address: 1 Willow Lane, Newchurch, Kington, HR5 3QF</p>
@@ -141,6 +147,16 @@ examples:
     hidden: true
     options:
       classes: govuk-panel--interruption extra-class one-more-class
+      titleText: Are you sure you want to change this?
+      html: |
+        <p class="govuk-body">You've changed the person's address from Wales to England. This means that the referral needs to be cancelled.</p>
+        <button>Are you sure you want to change this?</button>
+        <a href="#">Go back to application</a>
+  - name: interruption with custom title size
+    hidden: true
+    options:
+      classes: govuk-panel--interruption
+      titleClasses: govuk-panel__title--l
       titleText: Are you sure you want to change this?
       html: |
         <p class="govuk-body">You've changed the person's address from Wales to England. This means that the referral needs to be cancelled.</p>

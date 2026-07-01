@@ -13,7 +13,7 @@
   {%- if params.classes %} {{ params.classes }}{% endif -%}
 "
   {{- govukAttributes(params.attributes) }}>
-  <h{{ headingLevel }} class="govuk-panel__title">
+  <h{{ headingLevel }} class="govuk-panel__title {%- if params.titleClasses %} {{ params.titleClasses }}{% endif -%}">
     {{ params.titleHtml | safe if params.titleHtml else params.titleText }}
   </h{{ headingLevel }}>
   {% if caller or params.html or params.text %}

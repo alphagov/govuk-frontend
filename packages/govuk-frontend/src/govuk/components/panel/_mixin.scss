@@ -43,10 +43,13 @@
   }
 
   .govuk-panel__title {
-    @include base.govuk-font-size($size: 48);
-    @include base.govuk-typography-weight-bold;
+    @include base.govuk-font($size: 48, $weight: bold);
+    @include base.govuk-responsive-margin(4, "bottom");
     margin-top: 0;
-    margin-bottom: base.govuk-spacing(6);
+  }
+
+  .govuk-panel__title--l {
+    @include base.govuk-font-size($size: 36);
   }
 
   // Remove the bottom spacing of anything at the end of the Panel so the Panel's padding spacing is used instead.
