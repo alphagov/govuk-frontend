@@ -148,17 +148,11 @@ examples:
     options:
       classes: govuk-panel--interruption extra-class one-more-class
       titleText: Are you sure you want to change this?
-      html: |
-        <p class="govuk-body">You've changed the person's address from Wales to England. This means that the referral needs to be cancelled.</p>
-        <button>Are you sure you want to change this?</button>
-        <a href="#">Go back to application</a>
+      html: <p class="govuk-body">You've changed the person's address from Wales to England. This means that the referral needs to be cancelled.</p>
   - name: interruption with custom title size
     hidden: true
     options:
       classes: govuk-panel--interruption
       titleClasses: govuk-panel__title--l
       titleText: Are you sure you want to change this?
-      html: |
-        <p class="govuk-body">You've changed the person's address from Wales to England. This means that the referral needs to be cancelled.</p>
-        <button>Are you sure you want to change this?</button>
-        <a href="#">Go back to application</a>
+      html: <p class="govuk-body">You've changed the person's address from Wales to England. This means that the referral needs to be cancelled.</p>
