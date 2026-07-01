@@ -12,6 +12,7 @@
 {% from "govuk/components/error-message/macro.njk" import govukErrorMessage %}
 {% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
 {% from "govuk/components/exit-this-page/macro.njk" import govukExitThisPage %}
+{% from "govuk/components/feedback/macro.njk" import govukFeedback %}
 {% from "govuk/components/file-upload/macro.njk" import govukFileUpload %}
 {% from "govuk/components/footer/macro.njk" import govukFooter %}
 {% from "govuk/components/header/macro.njk" import govukHeader %}
@@ -330,6 +331,11 @@
         href: "#postcode-input"
       }
     ]
+  }) }}
+
+  {{ govukFeedback({
+    titleText: "Helpwch ni i wella'r gwasanaeth hwn",
+    html: "Dywedwch wrthym am eich profiad o ddefnyddio'r gwasanaeth hwn. <a href=\"#\" class=\"govuk-link\">Rhowch eich adborth i ni</a>"
   }) }}
 
   {{ govukFileUpload({
