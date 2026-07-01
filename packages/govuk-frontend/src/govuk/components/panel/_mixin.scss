@@ -55,6 +55,32 @@
     margin-bottom: 0;
   }
 
+  // Adjust spacing in the Button group object to so the Panel's padding spacing is used instead.
+  .govuk-panel__body > .govuk-button-group:last-child {
+    .govuk-link {
+      margin-bottom: base.govuk-spacing(1);
+    }
+    // Remove the bottom spacing of buttons and links within Button groups on larger screens
+    @media #{base.govuk-from-breakpoint(tablet)} {
+      // The default behaviour of the Button group object is to use bottom spacing (margin-bottom)
+      // so when the controls wrap they are not too close together.
+
+      // So there's not too much space on in the Panel we must remove this bottom spacing (margin-bottom)
+      // but that means when the controls wrap they're now too close...
+
+      // By using `row-gap` we can only add bottom spacing when wrapping occurs but not by default.
+
+      // Recreate the same spacing used in the button group which takes into account the shadow of the button.
+      $button-shadow-size: base.$govuk-border-width-form-element;
+      row-gap: base.govuk-spacing(3) + $button-shadow-size;
+
+      .govuk-button,
+      .govuk-link {
+        margin-bottom: 0;
+      }
+    }
+  }
+
   .govuk-panel--confirmation {
     --govuk-text-colour: #{base.govuk-functional-colour(inverse-text)};
     background: base.govuk-functional-colour(success);
