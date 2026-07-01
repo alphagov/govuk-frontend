@@ -115,7 +115,7 @@ describe('Panel', () => {
       const $ = render('panel', examples.classes)
 
       const $component = $('.govuk-panel')
-      expect($component.attr('class')).toBe('govuk-panel extra-class one-more-class govuk-panel--confirmation')
+      expect($component.attr('class')).toBe('govuk-panel govuk-panel--confirmation extra-class one-more-class')
     })
     it('has no confirmation modifier class if interruption modifier class is used', () => {
       const $ = render('panel', examples.interruption)
