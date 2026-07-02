@@ -25,6 +25,7 @@ $header-forced-colour-border-width: 1px;
   --govuk-text-colour: #{$text-colour};
   color: base.govuk-functional-colour(text);
   background: $background-colour;
+  @include base.govuk-link-style-text;
 
   @media print {
     border-bottom-width: 0;
@@ -77,7 +78,7 @@ $header-forced-colour-border-width: 1px;
   font-size: 30px; // We don't have a mixin that produces 30px font size
   text-decoration: none;
 
-  @include base.govuk-link-style-text;
+  @include base.govuk-link-style-default;
 
   &:link,
   &:visited {
@@ -96,16 +97,9 @@ $header-forced-colour-border-width: 1px;
     // Remove any borders that show when focused and hovered.
     margin-bottom: 0;
     border-bottom: 0;
-
-    @include base.govuk-focused-text;
   }
 
   @media print {
-    &:link,
-    &:visited {
-      color: base.govuk-functional-colour(text);
-    }
-
     // Do not append link href to GOV.UK link when printing (e.g. '(/)')
     &::after {
       content: "";
