@@ -97,6 +97,7 @@
   .govuk-service-navigation__link {
     @include base.govuk-link-common;
     @include base.govuk-link-style-no-underline;
+    @include base.govuk-link-style-default;
     @include base.govuk-link-style-no-visited-state;
   }
 
@@ -106,11 +107,6 @@
 
   .govuk-service-navigation__service-name {
     @include base.govuk-typography-weight-bold;
-  }
-
-  // Annoyingly this requires a compound selector in order to overcome the
-  // specificity of the other link colour override we're doing
-  .govuk-service-navigation__service-name .govuk-service-navigation__link {
     @include base.govuk-link-style-text;
   }
 
@@ -226,6 +222,11 @@
 
     --govuk-text-colour: #{base.govuk-functional-colour(inverse-text)};
     background-color: base.govuk-functional-colour(brand);
+    // Avoid defining specific link styles when inverted and just use the text colours
+    @include base.govuk-link-style-text;
+
+    // Similarly to the Breadcrumbs, switch the secondary text colour to `currentcolor`
+    --govuk-secondary-text-colour: currentcolor;
 
     .govuk-width-container {
       border-width: 1px 0;
@@ -242,11 +243,6 @@
     .govuk-service-navigation__item,
     .govuk-service-navigation__service-name {
       border-color: currentcolor;
-    }
-
-    // Override link styles
-    .govuk-service-navigation__link {
-      @include base.govuk-link-style-text;
     }
 
     // Override mobile menu toggle colour when not focused

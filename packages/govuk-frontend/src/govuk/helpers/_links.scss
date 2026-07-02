@@ -194,6 +194,7 @@
   @include govuk-link-style-no-visited-state;
 
   --govuk-link-colour: #{govuk-functional-colour(text)};
+  --govuk-link-hover-colour: var(--govuk-link-colour);
   --govuk-link-active-colour: var(--govuk-link-colour);
 }
 
