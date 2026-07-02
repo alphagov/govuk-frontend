@@ -120,7 +120,7 @@ describe('Panel', () => {
 
       const $component = $('.govuk-panel')
       expect($component.attr('class')).toBe(
-        'govuk-panel extra-class one-more-class govuk-panel--confirmation'
+        'govuk-panel govuk-panel--confirmation extra-class one-more-class'
       )
     })
     it('has no confirmation modifier class if interruption modifier class is used', () => {
