@@ -2,17 +2,14 @@
 
 {% set headingLevel = params.headingLevel if params.headingLevel else 1 -%}
 
-{%- set classNames = "govuk-panel" -%}
+{%- set isInterruption = params.classes and ("govuk-panel--interruption" in params.classes) -%}
 
-{%- if params.classes %}
-  {% set classNames = classNames + " " + params.classes %}
-{% endif %}
+{#- The Panel component defaults to the Confirmation variant -#}
+{%- set defaultModifierClassName = "govuk-panel--confirmation" if not isInterruption -%}
 
-{%- if (not params.classes) or (not "govuk-panel--interruption" in params.classes) %}
-  {% set classNames = classNames + " govuk-panel--confirmation" -%}
-{% endif %}
-
-<div class="{{ classNames }}"
+<div class="govuk-panel
+  {%- if defaultModifierClassName %} {{ defaultModifierClassName }}{% endif %}
+  {%- if params.classes %} {{ params.classes }}{% endif -%}"
   {{- govukAttributes(params.attributes) }}>
   <h{{ headingLevel }} class="govuk-panel__title">
     {{ params.titleHtml | safe if params.titleHtml else params.titleText }}
