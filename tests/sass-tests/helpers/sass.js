@@ -1,9 +1,11 @@
+const { resolve } = require('node:path')
+
 const { paths } = require('@govuk-frontend/config')
 const { NodePackageImporter, compileStringAsync } = require('sass-embedded')
 
 /** @type {import('sass-embedded').StringOptions<"async">} */
 const sassConfig = {
-  loadPaths: [paths.root, __dirname],
+  loadPaths: [paths.root, resolve(__dirname, '..')],
   quietDeps: true,
   silenceDeprecations: ['import', 'mixed-decls'],
   importers: [new NodePackageImporter()]
