@@ -9,7 +9,7 @@ BRANCH_NAME="preview-$CURRENT_BRANCH_NAME"
 # https://www.gnu.org/software/bash/manual/bash.html#Shell-Parameter-Expansion
 VERSION="$CURRENT_VERSION-${CURRENT_BRANCH_NAME/\//-}"
 
-# Check if there are files that need to be commited
+# Check if there are files that need to be committed
 if [[ -n $(git status --porcelain) ]]; then
   echo "⚠️ You have unstaged files, please commit these and then try again."
   exit 1
