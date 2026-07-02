@@ -11,6 +11,7 @@
     padding: base.govuk-spacing(7) - base.$govuk-border-width;
 
     border: base.$govuk-border-width solid transparent;
+    color: base.govuk-functional-colour(text);
 
     text-align: center;
 
@@ -41,12 +42,6 @@
     }
   }
 
-  .govuk-panel--confirmation {
-    --govuk-text-colour: #{base.govuk-functional-colour(inverse-text)};
-    color: base.govuk-functional-colour(text);
-    background: base.govuk-functional-colour(success);
-  }
-
   .govuk-panel__title {
     @include base.govuk-font-size($size: 48);
     @include base.govuk-typography-weight-bold;
@@ -58,9 +53,14 @@
     margin-bottom: 0;
   }
 
+  .govuk-panel--confirmation {
+    --govuk-text-colour: #{base.govuk-functional-colour(inverse-text)};
+    background: base.govuk-functional-colour(success);
+  }
+
   .govuk-panel--interruption {
-    color: base.govuk-colour("white");
-    background-color: base.govuk-functional-colour(brand);
+    --govuk-text-colour: #{base.govuk-functional-colour(inverse-text)};
+    background: base.govuk-functional-colour(brand);
     text-align: left;
 
     @include base.govuk-font($size: 19);
