@@ -22,9 +22,7 @@
     @include govuk-link-hover-decoration;
   }
 
-  &:focus {
-    @include govuk-focused-text;
-  }
+  @include govuk-link-style-default;
 }
 
 /// Link decoration
@@ -95,10 +93,8 @@
     color: govuk-functional-colour(link-active);
   }
 
-  // When focussed, the text colour needs to be darker to ensure that colour
-  // contrast is still acceptable
   &:focus {
-    color: govuk-functional-colour(focus-text);
+    @include govuk-focused-text;
   }
 }
 
