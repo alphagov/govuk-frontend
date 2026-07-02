@@ -80,4 +80,25 @@ describe('normaliseString', () => {
   it('does not normalise whitespace only strings', () => {
     expect(normaliseString('   ')).toBe('   ')
   })
+
+  it('handles missing property schema', () => {
+    // @ts-expect-error Property 'type' is missing
+    expect(normaliseString('true', {})).toBe(true)
+
+    // @ts-expect-error Property 'type' is missing
+    expect(normaliseString('1337', {})).toBe(1337)
+  })
+
+  it('skips unhandled property schema', () => {
+    const inputFunction = '() => "albatross"'
+    const inputObject = '{ not: "allowed" }'
+
+    // Functions in strings are ignored even with schema property type
+    expect(normaliseString(inputFunction)).toBe(inputFunction)
+    expect(normaliseString(inputFunction, { type: 'function' })).toBeUndefined()
+
+    // Objects in strings are ignored even with schema property type
+    expect(normaliseString(inputObject)).toBe(inputObject)
+    expect(normaliseString(inputObject, { type: 'object' })).toBeUndefined()
+  })
 })
