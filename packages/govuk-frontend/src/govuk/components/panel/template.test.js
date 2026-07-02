@@ -27,7 +27,7 @@ describe('Panel', () => {
       const $ = render('panel', examples.default)
       const panelBodyText = $('.govuk-panel__body').text().trim()
 
-      expect(panelBodyText).toBe('Your reference number: HDJ2123F')
+      expect(panelBodyText).toBe('Your reference numberHDJ2123F')
     })
 
     it('doesnt render panel body if no body text is passed', () => {
@@ -102,5 +102,41 @@ describe('Panel', () => {
       expect($component.attr('first-attribute')).toBe('foo')
       expect($component.attr('second-attribute')).toBe('bar')
     })
+
+    it('allows the title size to be changed', () => {
+      const $ = render('panel', examples['interruption with custom title size'])
+
+      const $component = $('.govuk-panel')
+      const $title = $component.find('.govuk-panel__title')
+      expect($title.hasClass('govuk-panel__title--l')).toBeTruthy()
+    })
   })
+
+  describe('classes', () => {
+    it('has confirmation modifier class by default', () => {
+      const $ = render('panel')
+
+      const $component = $('.govuk-panel')
+      expect($component.attr('class')).toBe('govuk-panel govuk-panel--confirmation')
+    })
+    it('keeps confirmation modifier class if additional classes used', () => {
+      const $ = render('panel', examples.classes)
+
+      const $component = $('.govuk-panel')
+      expect($component.attr('class')).toBe('govuk-panel govuk-panel--confirmation extra-class one-more-class')
+    })
+    it('has no confirmation modifier class if interruption modifier class is used', () => {
+      const $ = render('panel', examples.interruption)
+
+      const $component = $('.govuk-panel')
+      expect($component.attr('class')).toBe('govuk-panel govuk-panel--interruption')
+    })
+    it('keeps interruption modifier class if additional classes used', () => {
+      const $ = render('panel', examples['interruption with custom classes'])
+
+      const $component = $('.govuk-panel')
+      expect($component.attr('class')).toBe('govuk-panel govuk-panel--interruption extra-class one-more-class')
+    })
+  })
+
 })
