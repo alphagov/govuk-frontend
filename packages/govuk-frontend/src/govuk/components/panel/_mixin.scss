@@ -34,12 +34,6 @@
       // it but the the text remains legible.
       overflow-wrap: break-word;
     }
-
-    @media print {
-      --govuk-text-colour: inherit;
-      border-color: currentcolor;
-      background: none;
-    }
   }
 
   .govuk-panel__title {
@@ -62,5 +56,13 @@
     --govuk-text-colour: #{base.govuk-functional-colour(inverse-text)};
     background: base.govuk-functional-colour(brand);
     text-align: left;
+  }
+
+  @media print {
+    .govuk-panel {
+      --govuk-text-colour: inherit;
+      border-color: currentcolor;
+      background: none;
+    }
   }
 }
