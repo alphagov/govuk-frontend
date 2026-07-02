@@ -37,12 +37,7 @@ examples:
     screenshot: true
     options:
       titleHtml: Application complete
-      text: 'Your reference number: HDJ2123F'
-  - name: custom heading level
-    options:
-      titleText: Application complete
-      headingLevel: 2
-      text: 'Your reference number: HDJ2123F'
+      html: Your reference number<br><strong>HDJ2123F</strong>
   - name: interruption
     options:
       titleText: Is your age correct?
