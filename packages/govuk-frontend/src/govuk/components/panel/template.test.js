@@ -25,9 +25,11 @@ describe('Panel', () => {
 
     it('renders body text', () => {
       const $ = render('panel', examples.default)
-      const panelBodyText = $('.govuk-panel__body').text().trim()
+      const panelBodyText = $('.govuk-panel__body').html().trim()
 
-      expect(panelBodyText).toBe('Your reference number: HDJ2123F')
+      expect(panelBodyText).toBe(
+        'Your reference number<br><strong>HDJ2123F</strong>'
+      )
     })
 
     it('doesnt render panel body if no body text is passed', () => {

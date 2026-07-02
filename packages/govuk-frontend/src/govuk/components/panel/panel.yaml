@@ -40,16 +40,56 @@ examples:
       html: Your reference number<br><strong>HDJ2123F</strong>
   - name: interruption
     options:
+      classes: govuk-panel--interruption
       titleText: Is your age correct?
       html: |
-        <p>You entered your age as <strong>109</strong>.</p>
+        <p class="govuk-body">You entered your age as <strong>109</strong>.</p>
         <div class="govuk-button-group">
           <button type="submit" class="govuk-button govuk-button--inverse" data-module="govuk-button">
             Yes, this is correct
           </button>
           <a href="#" class="govuk-link govuk-link--inverse">Change my age</a>
         </div>
+  - name: interruption-with-content-with-long-line-length
+    options:
       classes: govuk-panel--interruption
+      titleText: Are you sure you want to change this?
+      html: |
+        <p class="govuk-body">You've changed the person's address from Wales to England. This means that the referral needs to be cancelled.</p>
+        <p class="govuk-body">Previous home address: 1 Willow Lane, Newchurch, Kington, HR5 3QF</p>
+        <p class="govuk-body">New home address: 9 Elm Street, Whitney-on-Wye, Hereford, HR3 6EH</p>
+        <p class="govuk-body">You can go back to undo this change.</p>
+        <div class="govuk-button-group">
+          <button type="submit" class="govuk-button govuk-button--inverse" data-module="govuk-button">
+            Are you sure you want to change this?
+          </button>
+          <a href="#" class="govuk-link govuk-link--inverse">
+            Go back to application
+          </a>
+        </div>
+  - name: interruption-with-headings-content-and-lists
+    options:
+      classes: govuk-panel--interruption
+      titleText: Your new answer affects other sections of this application
+      html: |
+        <h2 class="govuk-heading-m">Question: Where is Andy Cooke located?</h2>
+        <p class="govuk-body">
+          Previous answer: Custody<br>
+          New answer: Released
+        </p>
+        <p class="govuk-body govuk-!-margin-bottom-2">You need to:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>enter their custody information</li>
+          <li>update the licence conditions section</li>
+        </ul>
+        <div class="govuk-button-group">
+          <button type="submit" class="govuk-button govuk-button--inverse" data-module="govuk-button">
+            Continue to other sections
+          </button>
+          <a href="#" class="govuk-link govuk-link--inverse">
+            Go back to application
+          </a>
+        </div>
 
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: title html as text
