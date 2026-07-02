@@ -2,11 +2,12 @@
 
 {% set headingLevel = params.headingLevel if params.headingLevel else 1 -%}
 
-{%- set hasModifierClassName = params.classes and ("govuk-panel--" in params.classes)-%}
-
 {#- The Panel component defaults to the Confirmation variant -#}
-{#- If the user provides their own modifier class then use that instead. -#}
-{%- set defaultModifierClassName = "govuk-panel--confirmation" if not hasModifierClassName -%}
+{%- set defaultModifierClassName = "govuk-panel--confirmation" -%}
+{#- If the user specifies the Interruption variant instead use that instead. -#}
+{%- if params.classes and ("govuk-panel--interruption" in params.classes) -%}
+  {%- set defaultModifierClassName = "" -%}
+{%- endif -%}
 
 <div class="govuk-panel
   {%- if defaultModifierClassName %} {{ defaultModifierClassName }}{% endif %}
