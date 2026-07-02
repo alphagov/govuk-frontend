@@ -203,9 +203,21 @@
   // to be output by the mixin, as sometimes the mixins are used on their own
   // and not all instances use `govuk-link-common`
   @include govuk-link-style-default;
+  @include govuk-link-theme-text;
+}
+
+/// Themes links to look like the text
+///
+/// Applies the appropriate `--govuk-link-...` custom properties
+/// so that the styled element or links inside the style elements
+/// look like the text
+///
+/// @access private
+@mixin govuk-link-theme-text {
   @include govuk-link-theme-no-visited-state;
 
   --govuk-link-colour: #{govuk-functional-colour(text)};
+  --govuk-link-hover-colour: var(--govuk-link-colour);
   --govuk-link-active-colour: var(--govuk-link-colour);
 }
 
