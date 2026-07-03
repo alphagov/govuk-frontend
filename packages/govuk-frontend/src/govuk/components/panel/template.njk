@@ -1,4 +1,5 @@
 {% from "../../macros/attributes.njk" import govukAttributes -%}
+{% from "../button/macro.njk" import govukButton -%}
 
 {% set headingLevel = params.headingLevel if params.headingLevel else 1 -%}
 
@@ -17,6 +18,38 @@
   {% if caller or params.html or params.text %}
   <div class="govuk-panel__body">
     {{ caller() if caller else (params.html | safe | trim | indent(4) if params.html else params.text) }}
+  </div>
+  {% endif %}
+  {% if params.actions %}
+  {% set actions = params.actions %}
+  <div class="govuk-panel__actions
+    {%- if actions.classes %} {{ actions.classes }}{% endif -%}"
+    {{- govukAttributes(actions.attributes) }}>
+    {% if actions.items %}
+    <div class="govuk-button-group">
+    {% for action in actions.items %}
+      {% set buttonHtml -%}
+        {% if not action.href or action.type == "button" %}
+          {{ govukButton({
+            "text": action.text,
+            "type": action.type if action.type else "button",
+            "name": action.name,
+            "value": action.value,
+            "classes": "govuk-button--inverse" + (" " + action.classes if action.classes),
+            "href": action.href,
+            "attributes": action.attributes
+          }) }}
+        {% else %}
+          <a class="govuk-link govuk-link--inverse {%- if action.classes %} {{ action.classes }}{% endif %}" href="{{ action.href }}"
+            {{- govukAttributes(action.attributes) }}>
+            {{- action.text -}}
+          </a>
+        {% endif %}
+      {%- endset %}
+      {{ buttonHtml | safe | trim | indent(6) }}
+    {% endfor %}
+    </div>
+    {% endif %}
   </div>
   {% endif %}
 </div>
