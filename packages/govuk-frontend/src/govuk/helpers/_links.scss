@@ -143,7 +143,11 @@
 /// @access public
 
 @mixin govuk-link-style-success {
-  @include govuk-link-style-no-visited-state;
+  // In order to avoid a breaking change, we need the selectors
+  // to be output by the mixin, as sometimes the mixins are used on their own
+  // and not all instances use `govuk-link-common`
+  @include govuk-link-style-default;
+  @include govuk-link-theme-no-visited-state;
 
   --govuk-link-colour: #{govuk-functional-colour(success)};
   --govuk-link-hover-colour: #{govuk-colour("green", $variant: "shade-50")};
@@ -167,7 +171,11 @@
 /// @access public
 
 @mixin govuk-link-style-muted {
-  @include govuk-link-style-no-visited-state;
+  // In order to avoid a breaking change, we need the selectors
+  // to be output by the mixin, as sometimes the mixins are used on their own
+  // and not all instances use `govuk-link-common`
+  @include govuk-link-style-default;
+  @include govuk-link-theme-no-visited-state;
 
   --govuk-link-colour: #{govuk-functional-colour(secondary-text)};
   --govuk-link-hover-colour: #{govuk-functional-colour(text)};
@@ -191,7 +199,11 @@
 /// @access public
 
 @mixin govuk-link-style-text {
-  @include govuk-link-style-no-visited-state;
+  // In order to avoid a breaking change, we need the selectors
+  // to be output by the mixin, as sometimes the mixins are used on their own
+  // and not all instances use `govuk-link-common`
+  @include govuk-link-style-default;
+  @include govuk-link-theme-no-visited-state;
 
   --govuk-link-colour: #{govuk-functional-colour(text)};
   --govuk-link-active-colour: var(--govuk-link-colour);
@@ -214,7 +226,11 @@
 /// @access public
 
 @mixin govuk-link-style-inverse {
-  @include govuk-link-style-no-visited-state;
+  // In order to avoid a breaking change, we need the selectors
+  // to be output by the mixin, as sometimes the mixins are used on their own
+  // and not all instances use `govuk-link-common`
+  @include govuk-link-style-default;
+  @include govuk-link-theme-no-visited-state;
 
   --govuk-link-colour: #{govuk-functional-colour(inverse-text)};
   --govuk-link-hover-colour: var(--govuk-link-colour);
@@ -242,6 +258,22 @@
 /// @access public
 
 @mixin govuk-link-style-no-visited-state {
+  // In order to avoid a breaking change, we need the selectors
+  // to be output by the mixin, as sometimes the mixins are used on their own
+  // and not all instances use `govuk-link-common`
+  @include govuk-link-style-default;
+
+  @include govuk-link-theme-no-visited-state;
+}
+
+/// Themes links to have no visited states
+///
+/// Applies the appropriate `--govuk-link-...` custom properties
+/// so that the styled element or links inside the style elements
+/// have no visited states
+///
+/// @access private
+@mixin govuk-link-theme-no-visited-state {
   --govuk-link-visited-colour: var(--govuk-link-colour);
 }
 
