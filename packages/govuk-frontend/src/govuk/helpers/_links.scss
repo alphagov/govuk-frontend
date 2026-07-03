@@ -119,24 +119,11 @@
 /// @access public
 
 @mixin govuk-link-style-error {
-  &:link,
-  &:visited {
-    color: govuk-functional-colour(error);
-  }
+  @include govuk-link-style-no-visited-state;
 
-  &:hover {
-    color: govuk-colour("red", $variant: "shade-50");
-  }
-
-  &:active {
-    color: govuk-functional-colour(error);
-  }
-
-  // When focussed, the text colour needs to be darker to ensure that colour
-  // contrast is still acceptable
-  &:focus {
-    color: govuk-functional-colour(focus-text);
-  }
+  --govuk-link-colour: #{govuk-functional-colour(error)};
+  --govuk-link-hover-colour: #{govuk-colour("red", $variant: "shade-50")};
+  --govuk-link-active-colour: var(--govuk-link-colour);
 }
 
 /// Success link styles
@@ -156,24 +143,15 @@
 /// @access public
 
 @mixin govuk-link-style-success {
-  &:link,
-  &:visited {
-    color: govuk-functional-colour(success);
-  }
+  // In order to avoid a breaking change, we need the selectors
+  // to be output by the mixin, as sometimes the mixins are used on their own
+  // and not all instances use `govuk-link-common`
+  @include govuk-link-style-default;
+  @include govuk-link-theme-no-visited-state;
 
-  &:hover {
-    color: govuk-colour("green", $variant: "shade-50");
-  }
-
-  &:active {
-    color: govuk-functional-colour(success);
-  }
-
-  // When focussed, the text colour needs to be darker to ensure that colour
-  // contrast is still acceptable
-  &:focus {
-    color: govuk-functional-colour(focus-text);
-  }
+  --govuk-link-colour: #{govuk-functional-colour(success)};
+  --govuk-link-hover-colour: #{govuk-colour("green", $variant: "shade-50")};
+  --govuk-link-active-colour: var(--govuk-link-colour);
 }
 
 /// Muted link styles
@@ -193,21 +171,15 @@
 /// @access public
 
 @mixin govuk-link-style-muted {
-  &:link,
-  &:visited {
-    color: govuk-functional-colour(secondary-text);
-  }
+  // In order to avoid a breaking change, we need the selectors
+  // to be output by the mixin, as sometimes the mixins are used on their own
+  // and not all instances use `govuk-link-common`
+  @include govuk-link-style-default;
+  @include govuk-link-theme-no-visited-state;
 
-  &:hover,
-  &:active {
-    color: govuk-functional-colour(text);
-  }
-
-  // When focussed, the text colour needs to be darker to ensure that colour
-  // contrast is still acceptable
-  &:focus {
-    color: govuk-functional-colour(focus-text);
-  }
+  --govuk-link-colour: #{govuk-functional-colour(secondary-text)};
+  --govuk-link-hover-colour: #{govuk-functional-colour(text)};
+  --govuk-link-active-colour: var(--govuk-link-hover-colour);
 }
 
 /// Text link styles
@@ -227,15 +199,26 @@
 /// @access public
 
 @mixin govuk-link-style-text {
-  &:link,
-  &:visited,
-  &:active {
-    color: govuk-functional-colour(text);
-  }
+  // In order to avoid a breaking change, we need the selectors
+  // to be output by the mixin, as sometimes the mixins are used on their own
+  // and not all instances use `govuk-link-common`
+  @include govuk-link-style-default;
+  @include govuk-link-theme-text;
+}
 
-  &:focus {
-    color: govuk-functional-colour(focus-text);
-  }
+/// Themes links to look like the text
+///
+/// Applies the appropriate `--govuk-link-...` custom properties
+/// so that the styled element or links inside the style elements
+/// look like the text
+///
+/// @access private
+@mixin govuk-link-theme-text {
+  @include govuk-link-theme-no-visited-state;
+
+  --govuk-link-colour: #{govuk-functional-colour(text)};
+  --govuk-link-hover-colour: var(--govuk-link-colour);
+  --govuk-link-active-colour: var(--govuk-link-colour);
 }
 
 /// Inverse link styles
@@ -255,14 +238,15 @@
 /// @access public
 
 @mixin govuk-link-style-inverse {
-  &:link,
-  &:visited {
-    color: govuk-functional-colour(inverse-text);
-  }
+  // In order to avoid a breaking change, we need the selectors
+  // to be output by the mixin, as sometimes the mixins are used on their own
+  // and not all instances use `govuk-link-common`
+  @include govuk-link-style-default;
+  @include govuk-link-theme-no-visited-state;
 
-  &:focus {
-    color: govuk-functional-colour(focus-text);
-  }
+  --govuk-link-colour: #{govuk-functional-colour(inverse-text)};
+  --govuk-link-hover-colour: var(--govuk-link-colour);
+  --govuk-link-active-colour: var(--govuk-link-colour);
 }
 
 /// Default link styles, without a visited state
@@ -286,27 +270,23 @@
 /// @access public
 
 @mixin govuk-link-style-no-visited-state {
-  &:link {
-    color: govuk-functional-colour(link);
-  }
+  // In order to avoid a breaking change, we need the selectors
+  // to be output by the mixin, as sometimes the mixins are used on their own
+  // and not all instances use `govuk-link-common`
+  @include govuk-link-style-default;
 
-  &:visited {
-    color: govuk-functional-colour(link);
-  }
+  @include govuk-link-theme-no-visited-state;
+}
 
-  &:hover {
-    color: govuk-functional-colour(link-hover);
-  }
-
-  &:active {
-    color: govuk-functional-colour(link-active);
-  }
-
-  // When focussed, the text colour needs to be darker to ensure that colour
-  // contrast is still acceptable
-  &:focus {
-    color: govuk-functional-colour(focus-text);
-  }
+/// Themes links to have no visited states
+///
+/// Applies the appropriate `--govuk-link-...` custom properties
+/// so that the styled element or links inside the style elements
+/// have no visited states
+///
+/// @access private
+@mixin govuk-link-theme-no-visited-state {
+  --govuk-link-visited-colour: var(--govuk-link-colour);
 }
 
 /// Remove underline from links
