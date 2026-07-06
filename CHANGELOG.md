@@ -10,7 +10,19 @@ For advice on how to use these release notes, see [our guidance on staying up to
 
 We've added the [Feedback component](https://design-system.service.gov.uk/components/feedback/) to help services collect feedback from their users throughout their service.
 
-This was added in [pull request #7232: Add Feedback component](https://github.com/alphagov/govuk-frontend/pull/7232).
+If you are using our nunjucks page template, you can show the Feedback component in your service by setting the `feedbackBody` variable in your service's template:
+
+```nunjucks
+{% set feedbackBody %}
+  <p class="govuk-body">
+    Tell us about your experience using this service. <a href="/link-to-your-feedback-form" class="govuk-link">Give us your feedback</a>
+  </p>
+```
+
+We made this change in the following pull requests:
+
+- [#7232: Add Feedback component](https://github.com/alphagov/govuk-frontend/pull/7232)
+- [#7248: Add Feedback as a template block](https://github.com/alphagov/govuk-frontend/pull/7248)
 
 #### You can now pass `day`, `month`, `year`, `error` and `values` options to the Date input component
 

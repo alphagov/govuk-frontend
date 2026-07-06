@@ -918,6 +918,106 @@ describe('Template', () => {
         expect(document.querySelector('.govuk-footer')).not.toBeInTheDocument()
       })
 
+      describe('govukFeedback block', () => {
+        it('does not render Feedback by default', () => {
+          replacePageWith(renderTemplate('govuk/template.njk'))
+
+          expect(
+            document.querySelector('.govuk-feedback')
+          ).not.toBeInTheDocument()
+        })
+
+        it('renders Feedback if `feedbackBody` is set', () => {
+          const testBody = 'Feedback body content'
+
+          replacePageWith(
+            renderTemplate('govuk/template.njk', {
+              context: {
+                feedbackBody: testBody
+              }
+            })
+          )
+
+          expect(document.querySelector('.govuk-feedback')).toBeInTheDocument()
+
+          expect(
+            document.querySelector('.govuk-feedback__body').textContent.trim()
+          ).toEqual(testBody)
+        })
+
+        it('renders Feedback with default title from `feedbackTitle`', () => {
+          replacePageWith(
+            renderTemplate('govuk/template.njk', {
+              context: {
+                feedbackBody: 'Feedback body content'
+              }
+            })
+          )
+
+          expect(
+            document.querySelector('.govuk-feedback__title').textContent.trim()
+          ).toBe('Help us improve this service')
+        })
+
+        it('renders a different Feedback title text if `feedbackTitle` is set', () => {
+          const testTitle = 'Feedback title'
+
+          replacePageWith(
+            renderTemplate('govuk/template.njk', {
+              context: {
+                feedbackBody: 'Feedback body content',
+                feedbackTitle: testTitle
+              }
+            })
+          )
+
+          expect(
+            document.querySelector('.govuk-feedback__title').textContent.trim()
+          ).toEqual(testTitle)
+        })
+
+        it('renders `feedbackBody` as html', () => {
+          replacePageWith(
+            renderTemplate('govuk/template.njk', {
+              context: {
+                feedbackBody: '<mark>Feedback</mark>'
+              }
+            })
+          )
+
+          expect(
+            document.querySelector('.govuk-feedback__body > mark')
+          ).toBeInTheDocument()
+        })
+
+        it('allows content to be inserted using govukFeedback', () => {
+          replacePageWith(
+            renderTemplate('govuk/template.njk', {
+              blocks: {
+                govukFeedback: '<mark>Feedback</mark>'
+              }
+            })
+          )
+
+          expect(document.querySelector('mark')).toBeInTheDocument()
+          expect(
+            document.querySelector('.govuk-feedback')
+          ).not.toBeInTheDocument()
+        })
+
+        it('renders Feedback as a descendant of <footer>', () => {
+          replacePageWith(
+            renderTemplate('govuk/template.njk', {
+              blocks: {
+                govukFeedback: '<mark>Feedback</mark>'
+              }
+            })
+          )
+
+          expect(document.querySelector('footer > mark')).toBeInTheDocument()
+        })
+      })
+
       describe('govukFooter block', () => {
         it('allows content to be inserted using govukFooter', () => {
           replacePageWith(

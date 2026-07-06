@@ -2,11 +2,13 @@
 {% from "./components/skip-link/macro.njk" import govukSkipLink -%}
 {% from "./components/header/macro.njk" import govukHeader -%}
 {% from "./components/service-navigation/macro.njk" import govukServiceNavigation -%}
+{% from "./components/feedback/macro.njk" import govukFeedback -%}
 {% from "./components/footer/macro.njk" import govukFooter -%}
 
 {# Hardcoded value is $govuk-brand-blue -#}
 {% set themeColor = themeColor | default("#1d70b8", true) -%}
 {% set assetPath = assetPath | default("/assets", true) -%}
+{% set feedbackTitle = feedbackTitle | default("Help us improve this service") -%}
 
 <!DOCTYPE html>
 <html lang="{{ htmlLang | default("en", true) }}" class="govuk-template {%- if htmlClasses %} {{ htmlClasses }}{% endif %}">
@@ -95,6 +97,15 @@
     {% block footer %}
       {% call _govukTemplateFooter() %}
         {% block footerStart %}{% endblock %}
+        {% block govukFeedback %}
+          {%- if feedbackBody %}
+            {% call govukFeedback({
+              titleText: feedbackTitle
+            }) %}
+              {{ feedbackBody | safe | trim }}
+            {% endcall %}
+          {% endif %}
+        {% endblock %}
         {% block govukFooter %}
           {{ govukFooter() }}
         {% endblock %}
