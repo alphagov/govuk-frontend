@@ -23,16 +23,22 @@ title: Is your age correct?
     <div class="govuk-grid-column-two-thirds">
       {% call govukPanel({
         classes: "govuk-panel--interruption",
-        titleText: "Is your age correct?"
+        titleText: "Is your age correct?",
+        actions: {
+          items: [
+            {
+              text: "Yes, this is correct",
+              type: "button",
+              href: "#submit"
+            },
+            {
+              text: "Change my age",
+              href: "#change"
+            }
+          ]
+        }
       }) %}
         <p class="govuk-body">You entered your age as <strong>109</strong>.</p>
-        <div class="govuk-button-group">
-          {{ govukButton({
-            classes: "govuk-button--inverse",
-            text: "Yes, this is correct"
-          }) }}
-          <a href="#" class="govuk-link govuk-link--inverse">Change my age</a>
-        </div>
       {% endcall %}
     </div>
   </div>
