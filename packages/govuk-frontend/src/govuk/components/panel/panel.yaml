@@ -31,6 +31,44 @@ params:
     type: object
     required: false
     description: HTML attributes (for example data attributes) to add to the panel container.
+  - name: actions
+    type: object
+    required: false
+    description: Can be used when creating an [interruption panel](https://design-system.service.gov.uk/components/panel/#interruption-panel) which will add a button or link. Default is `button` unless you set `href` which will show the action as a link.
+    params:
+      - name: items
+        type: array
+        required: false
+        description: The list of buttons or links to display at the end of an Interruption panel.
+        params:
+          - name: text
+            type: string
+            required: true
+            description: The button or link text.
+          - name: type
+            type: string
+            required: false
+            description: The type of button – `"button"` or `"submit"`. If `href` is provided, set `type` to `"button"` render a link styled as a button.
+          - name: href
+            type: string
+            required: false
+            description: The `href` for a link. Set `type` to `"button"` and set `href` to render a link styled as a button.
+          - name: classes
+            type: string
+            required: false
+            description: The additional classes that you want to add to the button or link.
+          - name: attributes
+            type: object
+            required: false
+            description: The additional attributes that you want to add to the button or link. For example, data attributes.
+      - name: classes
+        type: string
+        required: false
+        description: The additional classes that you want to add to the `govuk-panel__actions` element that wraps the buttons or links.
+      - name: attributes
+        type: object
+        required: false
+        description: The additional attributes that you want to add to the `govuk-panel__actions` element that wraps the buttons or links. For example, data attributes.
 
 examples:
   - name: default
@@ -44,12 +82,12 @@ examples:
       titleText: Is your age correct?
       html: |
         <p class="govuk-body">You entered your age as <strong>109</strong>.</p>
-        <div class="govuk-button-group">
-          <button type="submit" class="govuk-button govuk-button--inverse" data-module="govuk-button">
-            Yes, this is correct
-          </button>
-          <a href="#" class="govuk-link govuk-link--inverse">Change my age</a>
-        </div>
+      actions:
+        items:
+          - text: Yes, this is correct
+            type: button
+          - text: No, change my age
+            href: '#'
   - name: interruption-with-content-with-long-line-length
     options:
       classes: govuk-panel--interruption
@@ -59,14 +97,14 @@ examples:
         <p class="govuk-body">Previous home address: 1 Willow Lane, Newchurch, Kington, HR5 3QF</p>
         <p class="govuk-body">New home address: 9 Elm Street, Whitney-on-Wye, Hereford, HR3 6EH</p>
         <p class="govuk-body">You can go back to undo this change.</p>
-        <div class="govuk-button-group">
-          <button type="submit" class="govuk-button govuk-button--inverse" data-module="govuk-button">
-            Are you sure you want to change this?
-          </button>
-          <a href="#" class="govuk-link govuk-link--inverse">
-            Go back to application
-          </a>
-        </div>
+      actions:
+        items:
+          - text: Are you sure you want to change this?
+            type: submit
+            attributes:
+              form: the-form-id
+          - text: Go back to application
+            href: '#'
   - name: interruption-with-headings-content-and-lists
     options:
       classes: govuk-panel--interruption
@@ -82,15 +120,11 @@ examples:
           <li>enter their custody information</li>
           <li>update the licence conditions section</li>
         </ul>
-        <div class="govuk-button-group">
-          <button type="submit" class="govuk-button govuk-button--inverse" data-module="govuk-button">
-            Continue to other sections
-          </button>
-          <a href="#" class="govuk-link govuk-link--inverse">
-            Go back to application
-          </a>
-        </div>
-
+      actions:
+        - text: Continue to other sections
+          type: submit
+        - text: Go back to application
+          href: '#'
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: title html as text
     hidden: true
@@ -142,3 +176,82 @@ examples:
       classes: govuk-panel--interruption extra-class one-more-class
       titleText: Are you sure you want to change this?
       html: <p class="govuk-body">You've changed the person's address from Wales to England. This means that the referral needs to be cancelled.</p>
+  - name: confirmation, with actions
+    hidden: true
+    options:
+      titleText: Is your age correct?
+      actions:
+        items:
+          - type: button
+            text: Yes, this is correct
+          - href: '#'
+            text: No, change my age
+  - name: interruption, with actions classes and attributes
+    hidden: true
+    options:
+      classes: govuk-panel--interruption
+      titleText: Is your age correct?
+      html: |
+        <p class="govuk-body">You entered your age as <strong>109</strong>.</p>
+      actions:
+        classes: extra-class one-more-class
+        attributes:
+          'data-test': 1
+          'data-other-test': 'yes'
+        items:
+          - type: button
+            text: Yes, this is correct
+          - href: '#'
+            text: No, change my age
+  - name: interruption, submit action
+    hidden: true
+    options:
+      classes: govuk-panel--interruption
+      titleText: Is your age correct?
+      html: |
+        <p class="govuk-body">You entered your age as <strong>109</strong>.</p>
+      actions:
+        items:
+          - type: submit
+            text: Yes, this is correct
+            attributes:
+              form: test-target-element
+              name: 'acknowledged'
+              value: ''
+            classes: 'extra-class one-more-class'
+          - href: '#'
+            text: No, change my age
+  - name: interruption, button link
+    hidden: true
+    options:
+      classes: govuk-panel--interruption
+      titleText: Is your age correct?
+      html: |
+        <p class="govuk-body">You entered your age as <strong>109</strong>.</p>
+      actions:
+        classes: extra-class one-more-class
+        attributes:
+          'data-test': 1
+          'data-other-test': 'yes'
+        items:
+          - type: button
+            text: Yes, this is correct
+            href: '?acknowledged=true'
+          - href: '#'
+            text: No, change my age
+  - name: interruption, no actions
+    hidden: true
+    options:
+      classes: govuk-panel--interruption
+      titleText: Is your age correct?
+      html: |
+        <p class="govuk-body">You entered your age as <strong>109</strong>.</p>
+  - name: interruption, no actions items
+    hidden: true
+    options:
+      classes: govuk-panel--interruption
+      titleText: Is your age correct?
+      html: |
+        <p class="govuk-body">You entered your age as <strong>109</strong>.</p>
+      actions:
+        classes: 'extra-class'
