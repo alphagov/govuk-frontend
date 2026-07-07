@@ -72,6 +72,31 @@ params:
         type: object
         required: false
         description: HTML attributes (for example data attributes) to add to the navigation item anchor.
+  - name: drawer
+    type: object
+    required: false
+    description: Adds a drawer of additional navigation items, opened by a toggle button in the service navigation.
+    params:
+      - name: text
+        type: string
+        required: true
+        description: Text for the drawer toggle button.
+      - name: icon
+        type: string
+        required: false
+        description: HTML for an icon to display before the text in the drawer toggle button.
+      - name: id
+        type: string
+        required: false
+        description: The ID used to associate the drawer toggle with the drawer. Defaults to `service-navigation-drawer`.
+      - name: navigationLabel
+        type: string
+        required: false
+        description: The screen reader label for the drawer navigation. Defaults to the same value as `text` if not specified.
+      - name: navigation
+        type: array
+        required: true
+        description: The navigation items to display within the drawer. Each item accepts the same options as the `navigation` option.
   - name: slots
     type: object
     required: false
@@ -116,6 +141,27 @@ examples:
           text: Navigation item 3
         - href: '#/4'
           text: Navigation item 4
+  - name: with drawer
+    description: A drawer of additional navigation items, opened by a toggle button at the end of the service navigation.
+    screenshot:
+      variants:
+        - default
+        - no-js
+    options:
+      navigation:
+        - href: '#/1'
+          text: Navigation item 1
+        - href: '#/2'
+          text: Navigation item 2
+      drawer:
+        text: Drawer toggle
+        navigation:
+          - href: '#/a'
+            text: Drawer item 1
+          - href: '#/b'
+            text: Drawer item 2
+          - href: '#/c'
+            text: Drawer item 3
   - name: with navigation with a current item
     description: The current item indicates that the user is present on that exact page. It looks the same as an active item, but marks this item as the one the user is currently viewing in ARIA.
     options:

@@ -15,6 +15,25 @@ export class ServiceNavigation extends Component {
   $menu
 
   /**
+   * @private
+   * @type {Element | undefined}
+   */
+  $drawerButton
+
+  /**
+   * @private
+   * @type {HTMLElement | undefined}
+   */
+  $drawer
+
+  /**
+   * Remember the open/closed state of the drawer.
+   *
+   * @private
+   */
+  drawerIsOpen = false
+
+  /**
    * Remember the open/closed state of the nav so we can maintain it when the
    * screen is resized.
    *
@@ -37,6 +56,8 @@ export class ServiceNavigation extends Component {
    */
   constructor($root) {
     super($root)
+
+    this.setupDrawer()
 
     const $menuButton = this.$root.querySelector(
       '.govuk-js-service-navigation-toggle'
@@ -149,6 +170,88 @@ export class ServiceNavigation extends Component {
   handleMenuButtonClick() {
     this.menuIsOpen = !this.menuIsOpen
     this.checkMode()
+  }
+
+  /**
+   * Setup the drawer toggle, if present
+   *
+   * Without JavaScript the drawer is visible and its toggle button hidden.
+   * When JavaScript is available, reveal the button and collapse the drawer.
+   *
+   * @private
+   */
+  setupDrawer() {
+    const $drawerButton = this.$root.querySelector(
+      '.govuk-js-service-navigation-drawer-toggle'
+    )
+
+    if (!$drawerButton) {
+      return
+    }
+
+    const drawerId = $drawerButton.getAttribute('aria-controls')
+    if (!drawerId) {
+      throw new ElementError({
+        component: ServiceNavigation,
+        identifier:
+          'Drawer button (`<button class="govuk-js-service-navigation-drawer-toggle">`) attribute (`aria-controls`)'
+      })
+    }
+
+    const $drawer = document.getElementById(drawerId)
+    if (!$drawer) {
+      throw new ElementError({
+        component: ServiceNavigation,
+        element: $drawer,
+        identifier: `Drawer (\`<nav id="${drawerId}">\`)`
+      })
+    }
+
+    this.$drawer = $drawer
+    this.$drawerButton = $drawerButton
+
+    removeAttributes(this.$drawerButton, Object.keys(attributesForHidingButton))
+
+    this.syncDrawerState()
+
+    this.$drawerButton.addEventListener('click', () =>
+      this.handleDrawerButtonClick()
+    )
+  }
+
+  /**
+   * Sync drawer state
+   *
+   * Uses drawerIsOpen to set the accessible and visual states of the drawer
+   * and its toggle button.
+   *
+   * @private
+   */
+  syncDrawerState() {
+    if (!this.$drawer || !this.$drawerButton) {
+      return
+    }
+
+    this.$drawerButton.setAttribute(
+      'aria-expanded',
+      this.drawerIsOpen.toString()
+    )
+
+    if (this.drawerIsOpen) {
+      this.$drawer.removeAttribute('hidden')
+    } else {
+      this.$drawer.setAttribute('hidden', '')
+    }
+  }
+
+  /**
+   * Handle drawer button click
+   *
+   * @private
+   */
+  handleDrawerButtonClick() {
+    this.drawerIsOpen = !this.drawerIsOpen
+    this.syncDrawerState()
   }
 
   /**

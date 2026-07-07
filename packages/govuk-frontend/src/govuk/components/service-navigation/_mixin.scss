@@ -178,6 +178,121 @@
     }
   }
 
+  //
+  // Drawer specific code
+  //
+
+  // Ensure the drawer toggle can stretch to the full height of the navigation
+  // row so that, when expanded, it visually connects to the drawer below
+  .govuk-service-navigation__end:has(.govuk-service-navigation__toggle--drawer) {
+    @media #{base.govuk-from-breakpoint(tablet)} {
+      display: flex;
+      align-items: center;
+      align-self: stretch;
+    }
+  }
+
+  .govuk-service-navigation__toggle-icon {
+    display: inline-flex;
+    align-items: center;
+    margin-right: base.govuk-spacing(1);
+  }
+
+  .govuk-service-navigation__toggle--drawer {
+    $border-width: 1px;
+
+    // Render the arrow inside the text element rather than on the button
+    // itself, so that it's always included in the focus style alongside
+    // the text
+    &::after {
+      content: none;
+    }
+
+    // Vertically centre the arrow against the text, matching the alignment
+    // the button's own inline-flex layout previously provided
+    .govuk-service-navigation__toggle-text {
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .govuk-service-navigation__toggle-text::after {
+      @include base.govuk-shape-arrow($direction: down, $base: 10px, $display: inline-block);
+      content: "";
+      margin-left: base.govuk-spacing(1);
+    }
+
+    &[aria-expanded="true"] .govuk-service-navigation__toggle-text::after {
+      @include base.govuk-shape-arrow($direction: up, $base: 10px, $display: inline-block);
+    }
+
+    // On smaller viewports the drawer toggle looks exactly like the main
+    // navigation menu toggle. From tablet up it takes on a tab-like
+    // appearance, connecting to the drawer below when expanded.
+    @media #{base.govuk-from-breakpoint(tablet)} {
+      // Give the toggle its expanded box geometry (padding, border, stretch)
+      // in both states, so that opening and closing the drawer doesn't shift
+      // the button text – only the colours change between states
+      position: relative;
+      z-index: 1;
+      align-self: stretch;
+      margin-top: 0;
+      // Overlap the drawer's top border so that, when expanded, the button
+      // and drawer appear as one continuous surface
+      margin-bottom: -$border-width;
+      padding: base.govuk-spacing(2) base.govuk-spacing(4) (base.govuk-spacing(2) + $border-width);
+      border: $border-width solid transparent;
+      border-bottom: 0;
+
+      // Apply the focus style to the button text only, so the focus
+      // background doesn't expand into the padding around the text
+      &:focus {
+        outline: none;
+        color: base.govuk-functional-colour(link);
+        background: none;
+        box-shadow: none;
+
+        .govuk-service-navigation__toggle-text {
+          @include base.govuk-focused-text;
+        }
+      }
+
+      // When expanded, connect the toggle to the drawer below in the same
+      // way that the selected tab connects to its panel in the tabs component.
+      // The white background is kept when focused, since the focus style is
+      // applied to the button text only.
+      &[aria-expanded="true"],
+      &[aria-expanded="true"]:focus {
+        border-color: $govuk-service-navigation-border-colour;
+        color: base.govuk-functional-colour(link);
+        background-color: base.govuk-colour("white");
+      }
+    }
+  }
+
+  .govuk-service-navigation__drawer {
+    // On smaller viewports the drawer looks like the main navigation menu,
+    // sitting on the same surface as the rest of the component
+    @media #{base.govuk-from-breakpoint(tablet)} {
+      border-top: 1px solid $govuk-service-navigation-border-colour;
+      background-color: base.govuk-colour("white");
+    }
+  }
+
+  .govuk-service-navigation__drawer-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    // On tablet and above, lay the items out in a row, aligned to the right.
+    // Below that, matching the main navigation list, items stack vertically
+    // and are left aligned.
+    @media #{base.govuk-from-breakpoint(tablet)} {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+  }
+
   .govuk-service-navigation__list {
     margin: 0;
     margin-bottom: base.govuk-spacing(3);
@@ -251,6 +366,15 @@
     // Override mobile menu toggle colour when not focused
     .govuk-service-navigation__toggle:not(:focus) {
       color: currentcolor;
+    }
+
+    // The expanded drawer toggle sits on a white background from tablet up,
+    // so restore the link colour rather than inheriting the inverse (white)
+    // text colour
+    .govuk-service-navigation__toggle--drawer[aria-expanded="true"]:not(:focus) {
+      @media #{base.govuk-from-breakpoint(tablet)} {
+        color: base.govuk-functional-colour(link);
+      }
     }
   }
 }

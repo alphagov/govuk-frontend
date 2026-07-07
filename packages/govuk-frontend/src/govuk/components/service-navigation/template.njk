@@ -3,6 +3,7 @@
 {%- set menuButtonText = params.menuButtonText | default("Menu", true) -%}
 {%- set navigationId = params.navigationId | default("navigation", true) %}
 {%- set endSlotRightAligned = params.slots.endRightAligned | default(false) %}
+{%- set drawerId = params.drawer.id | default("service-navigation-drawer", true) %}
 
 {%- set commonAttributes %}
 class="govuk-service-navigation {%- if params.classes %} {{ params.classes }}{% endif %}"
@@ -86,10 +87,20 @@ data-module="govuk-service-navigation"
         </nav>
       {% endif %}
 
-      {# Slot: end (right aligned) #}
-      {% if params.slots.end and endSlotRightAligned %}
+      {# Slot: end (right aligned) and/or drawer toggle #}
+      {% if (params.slots.end and endSlotRightAligned) or params.drawer %}
         <div class="govuk-service-navigation__end">
-          {{ params.slots.end | safe }}
+          {% if params.slots.end and endSlotRightAligned %}
+            {{ params.slots.end | safe }}
+          {% endif %}
+          {% if params.drawer %}
+            <button type="button" class="govuk-service-navigation__toggle govuk-service-navigation__toggle--drawer govuk-js-service-navigation-drawer-toggle" aria-controls="{{ drawerId }}" hidden aria-hidden="true">
+              {%- if params.drawer.icon %}
+                <span class="govuk-service-navigation__toggle-icon" aria-hidden="true">{{ params.drawer.icon | safe }}</span>
+              {% endif -%}
+              <span class="govuk-service-navigation__toggle-text">{{ params.drawer.text }}</span>
+            </button>
+          {% endif %}
         </div>
       {% endif %}
     </div>
@@ -98,12 +109,49 @@ data-module="govuk-service-navigation"
     {%- if params.slots.end and not endSlotRightAligned %}{{ params.slots.end | safe }}{% endif -%}
 
   </div>
+
+  {# Drawer #}
+  {% if params.drawer %}
+    <nav aria-label="{{ params.drawer.navigationLabel | default(params.drawer.text, true) }}" class="govuk-service-navigation__drawer" id="{{ drawerId }}">
+      <div class="govuk-width-container">
+        <ul class="govuk-service-navigation__drawer-list">
+          {% for item in params.drawer.navigation | default([]) | select("truthy") %}
+            {% set drawerLinkInnerContent %}
+              {# We wrap active links in strong tags so that users who
+                override colours or styles will still have some indicator of
+                the current nav item. #}
+              {% if item.active or item.current %}
+                <strong class="govuk-service-navigation__active-fallback">{{- item.html | safe if item.html else item.text -}}</strong>
+              {% else %}
+                {{- item.html | safe if item.html else item.text -}}
+              {% endif %}
+            {% endset %}
+
+            <li class="govuk-service-navigation__item {%- if item.active or item.current %} govuk-service-navigation__item--active{% endif %}">
+              {% if item.href %}
+                <a class="govuk-service-navigation__link" href="{{ item.href }}"
+                  {%- if item.active or item.current %} aria-current="{{ 'page' if item.current else 'true' }}"{% endif %}
+                  {{- govukAttributes(item.attributes) -}}>
+                  {{ drawerLinkInnerContent | safe }}
+                </a>
+              {% elif item.html or item.text %}
+                <span class="govuk-service-navigation__text"
+                  {%- if item.active or item.current %} aria-current="{{ 'page' if item.current else 'true' }}"{% endif %}>
+                  {{ drawerLinkInnerContent | safe }}
+                </span>
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </nav>
+  {% endif %}
 {% endset -%}
 
 {# If a service name is included, we use a <section> element with an
   aria-label to create a containing landmark region. Otherwise, the <nav> in
   the innerContent can do the job just fine by itself. #}
-{% if params.serviceName or params.slots.start or params.slots.end %}
+{% if params.serviceName or params.slots.start or params.slots.end or params.drawer %}
   <section aria-label="{{ params.ariaLabel | default("Service information") }}" {{ commonAttributes | safe }}>
     {{ innerContent | safe }}
   </section>
