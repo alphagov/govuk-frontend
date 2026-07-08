@@ -40,4 +40,16 @@
     @include base.govuk-link-common;
     @include base.govuk-link-style-default;
   }
+
+  .govuk-language-switcher--inverse {
+    color: base.govuk-colour("white");
+
+    .govuk-language-switcher__link {
+      @include base.govuk-link-style-inverse;
+    }
+
+    .govuk-language-switcher__list-item::after {
+      border-right-color: currentcolor;
+    }
+  }
 }
