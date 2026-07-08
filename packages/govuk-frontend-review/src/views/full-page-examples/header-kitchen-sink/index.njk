@@ -16,12 +16,30 @@ scenario: |
 {% from "govuk/components/details/macro.njk" import govukDetails %}
 {% from "govuk/components/exit-this-page/macro.njk" import govukExitThisPage %}
 {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+{% from "govuk/components/language-switcher/macro.njk" import govukLanguageSwitcher %}
 {% from "govuk/components/service-navigation/macro.njk" import govukServiceNavigation %}
 {% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
 {% from "govuk/components/footer/macro.njk" import govukFooter %}
 
 {% set pageTitle = example.title %}
 {% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
+
+{% set languageSwitcherHTML %}
+  {{ govukLanguageSwitcher({
+    classes: "govuk-language-switcher--no-top-margin",
+    items: [
+      {
+        text: "English",
+        href: "#",
+        current: true
+      },
+      {
+        text: "Cymraeg",
+        href: "#"
+      }
+    ]
+  }) }}
+{% endset %}
 
 {% from "govuk/components/header/macro.njk" import govukHeader %}
 
@@ -82,7 +100,11 @@ scenario: |
         text: 'Companies you follow',
         current: true
       }
-    ]
+    ],
+    slots: {
+      end: languageSwitcherHTML,
+      endRightAligned: true
+    }
   }) }}
 {% endblock %}
 
