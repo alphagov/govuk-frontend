@@ -83,8 +83,10 @@ describe('Language switcher', () => {
         expect($link).toHaveAttribute('href', '#/cy')
       })
 
-      it('sets the lang attribute', () => {
-        expect($link).toHaveAttribute('lang', 'cy')
+      it('sets the lang attribute on the visible text', () => {
+        expect(
+          $link.querySelector('span:not(.govuk-visually-hidden)')
+        ).toHaveAttribute('lang', 'cy')
       })
 
       it('sets the hreflang attribute', () => {
@@ -160,6 +162,42 @@ describe('Language switcher', () => {
       expect($link.innerHTML).toContain('<span>Cymraeg</span>')
     })
 
+    it('renders language link description', () => {
+      document.body.innerHTML = render(
+        'language-switcher',
+        examples['with language description']
+      )
+
+      const $listItem = document.querySelector(
+        'li.govuk-language-switcher__list-item'
+      )
+      const $link = $listItem.querySelector('.govuk-language-switcher__link')
+      const $hiddenText = $listItem.querySelector('.govuk-visually-hidden')
+
+      expect($hiddenText).not.toBeNull()
+      expect($hiddenText).toHaveTextContent(`Newid yr iaith i'r Saesneg`)
+
+      // The hidden text sits inside the link but after the visible text span,
+      // so it forms part of the link's accessible name while inheriting the
+      // current page's language rather than the target language's `lang`
+      expect($link.lastElementChild).toBe($hiddenText)
+    })
+
+    it('renders default language description when not set', () => {
+      document.body.innerHTML = render('language-switcher', examples.default)
+
+      const $listItem = document.querySelector(
+        'li.govuk-language-switcher__list-item:last-child'
+      )
+      const $link = $listItem.querySelector('.govuk-language-switcher__link')
+      const $hiddenText = $listItem.querySelector('.govuk-visually-hidden')
+
+      expect($hiddenText).not.toBeNull()
+      expect($hiddenText).toHaveTextContent(`Change the language to Cymraeg`)
+
+      expect($link.lastElementChild).toBe($hiddenText)
+    })
+
     it('sets dir attributes on language items', () => {
       document.body.innerHTML = render(
         'language-switcher',
@@ -170,7 +208,7 @@ describe('Language switcher', () => {
         '.govuk-language-switcher__text'
       )
       const $otherLanguage = document.querySelector(
-        '.govuk-language-switcher__link'
+        '.govuk-language-switcher__link span:not(.govuk-visually-hidden)'
       )
 
       expect($currentLanguage).toHaveAttribute('dir', 'ltr')
@@ -226,7 +264,9 @@ describe('Language switcher', () => {
 
       const $link = document.querySelector('.govuk-language-switcher__link')
 
-      expect($link).toHaveAttribute('lang', 'en')
+      expect(
+        $link.querySelector('span:not(.govuk-visually-hidden)')
+      ).toHaveAttribute('lang', 'en')
       expect($link).toHaveAttribute('hreflang', 'cy')
     })
   })

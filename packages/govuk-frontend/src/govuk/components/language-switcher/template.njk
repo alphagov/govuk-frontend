@@ -15,11 +15,14 @@
   {% else %}
     <li class="govuk-language-switcher__list-item">
       <a class="govuk-language-switcher__link" href="{{ item.href }}" rel="alternate"
-        {%- if item.lang %} lang="{{ item.lang }}"{% endif %}
         {%- if item.hrefLang or item.lang %} hreflang="{{ item.hrefLang if item.hrefLang else item.lang }}"{% endif %}
-        {%- if item.dir %} dir="{{ item.dir }}"{% endif %}
         {{- govukAttributes(item.attributes) }}>
-        {{- item.html | safe if item.html else item.text -}}
+        <span
+          {%- if item.lang %} lang="{{ item.lang }}"{% endif %}
+          {%- if item.dir %} dir="{{ item.dir }}"{% endif %}>
+          {{- item.html | safe if item.html else item.text -}}
+        </span>
+        <span class="govuk-visually-hidden"> {{ item.languageDescriptionText | default("Change the language to " ~ item.text) }}</span>
       </a>
     </li>
   {% endif %}
