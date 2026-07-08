@@ -32,6 +32,10 @@ params:
         type: boolean
         required: false
         description: Whether this is the language of the current page. Defaults to `true` when `href` is not provided.
+      - name: languageDescriptionText
+        type: string
+        required: false
+        description: Visually hidden text after a language link to indicate what the link will do. Write it in the language of the link (for example, "Change the language to English").
       - name: attributes
         type: object
         required: false
@@ -105,6 +109,19 @@ examples:
           lang: ar
           dir: rtl
           href: '#/ar'
+  - name: with language description
+    description: Add visually hidden text, written in the language of the link, so screen reader users know that selecting a link leads to a translation of the page".
+    options:
+      attributes:
+        lang: cy
+      items:
+        - text: English
+          lang: en
+          current: true
+        - text: Cymraeg
+          lang: cy
+          href: '#/cy'
+          languageDescriptionText: Newid yr iaith i'r Cymraeg
 
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: classes
