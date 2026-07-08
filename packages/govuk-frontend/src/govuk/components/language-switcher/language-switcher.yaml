@@ -85,6 +85,20 @@ examples:
         - text: 中文
           lang: zh
           href: '#/zh'
+  - name: inverse
+    screenshot: true
+    description: Language switcher that appears on dark backgrounds
+    pageTemplateOptions:
+      bodyClasses: app-template__body--inverse
+    options:
+      classes: govuk-language-switcher--inverse
+      items:
+        - text: English
+          lang: en
+          current: true
+        - text: Cymraeg
+          lang: cy
+          href: '#/cy'
   - name: with translated navigation label
     description: When the current page is not in English, translate the `ariaLabel` into the language of the current page.
     options:
