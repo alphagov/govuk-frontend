@@ -20,6 +20,9 @@
         {%- if item.dir %} dir="{{ item.dir }}"{% endif %}
         {{- govukAttributes(item.attributes) }}>
         {{- item.html | safe if item.html else item.text -}}
+        {%- if item.languageDescriptionText -%}
+        <span class="govuk-visually-hidden"> {{ item.languageDescriptionText }}</span>
+        {%- endif %}
       </a>
     </li>
   {% endif %}

@@ -160,6 +160,37 @@ describe('Language switcher', () => {
       expect($link.innerHTML).toContain('<span>Cymraeg</span>')
     })
 
+    it('renders language link description', () => {
+      document.body.innerHTML = render(
+        'language-switcher',
+        examples['with language description']
+      )
+
+      const $listItem = document.querySelector(
+        'li.govuk-language-switcher__list-item:last-child'
+      )
+      const $link = $listItem.querySelector('.govuk-language-switcher__link')
+      const $hiddenText = $listItem.querySelector('.govuk-visually-hidden')
+
+      expect($hiddenText).not.toBeNull()
+      expect($hiddenText).toHaveTextContent(`Newid yr iaith i'r Cymraeg`)
+
+      // The hidden text sits inside the link but after the visible text,
+      // so it forms part of the link's accessible name
+      expect($link.lastElementChild).toBe($hiddenText)
+    })
+
+    it('does not render a language description when not set', () => {
+      document.body.innerHTML = render('language-switcher', examples.default)
+
+      const $listItem = document.querySelector(
+        'li.govuk-language-switcher__list-item:last-child'
+      )
+      const $hiddenText = $listItem.querySelector('.govuk-visually-hidden')
+
+      expect($hiddenText).toBeNull()
+    })
+
     it('sets dir attributes on language items', () => {
       document.body.innerHTML = render(
         'language-switcher',
