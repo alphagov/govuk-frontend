@@ -23,7 +23,7 @@ params:
       - name: dir
         type: string
         required: false
-        description: The text direction for the language item element. Use this on every item when the switcher includes languages that use scripts with different directions.
+        description: The text direction for the language (`ltr` for left-to-right scripts or `rtl` for right-to-left). Set this on every item if the switcher contains a mix of language directions.
       - name: href
         type: string
         required: false
