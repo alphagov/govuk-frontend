@@ -10,28 +10,87 @@
     color: base.govuk-functional-colour(text);
   }
 
-  .govuk-language-switcher__list {
+  // Modifier to remove the top margin on small viewports. Intended for use when
+  // the switcher is in the service navigation. Kept as a modifier so the style is
+  // not dependent on another component.
+  .govuk-language-switcher--no-top-margin {
+    @media #{base.govuk-until-breakpoint(tablet)} {
+      margin-top: 0;
+    }
+  }
+
+  // Menu toggle button, shown on mobile when JavaScript is available. These
+  // styles deliberately mirror the service navigation menu toggle.
+  .govuk-language-switcher__toggle {
+    @include base.govuk-font($size: 19, $weight: bold);
     display: inline-flex;
-    flex-wrap: wrap;
-    row-gap: base.govuk-spacing(1);
+    align-items: center;
+    margin: base.govuk-spacing(2) 0;
+    padding: 0;
+    border: 0;
+    color: base.govuk-functional-colour(link);
+    background: none;
+    word-break: break-all;
+    cursor: pointer;
+
+    &:focus {
+      @include base.govuk-focused-text;
+    }
+
+    &::after {
+      @include base.govuk-shape-arrow($direction: down, $base: 10px, $display: inline-block);
+      content: "";
+      margin-left: base.govuk-spacing(1);
+    }
+
+    &[aria-expanded="true"]::after {
+      @include base.govuk-shape-arrow($direction: up, $base: 10px, $display: inline-block);
+    }
+
+    &[hidden] {
+      display: none;
+    }
+  }
+
+  // Icon shown before the toggle button text
+  .govuk-language-switcher__toggle-icon {
+    flex-shrink: 0;
+    margin-right: base.govuk-spacing(1);
+  }
+
+  .govuk-language-switcher__list {
     margin: 0;
     padding: 0;
     list-style-type: none;
+
+    @media #{base.govuk-from-breakpoint(tablet)} {
+      display: inline-flex;
+      flex-wrap: wrap;
+      row-gap: base.govuk-spacing(1);
+    }
   }
 
   .govuk-language-switcher__list-item {
-    display: flex;
-    align-items: center;
+    // On mobile, stack the language items vertically, matching the service
+    // navigation menu
+    @media #{base.govuk-until-breakpoint(tablet)} {
+      margin: base.govuk-spacing(2) 0;
+    }
 
-    &:not(:last-child) {
-      &::after {
-        content: "";
-        display: block;
-        height: 1em;
-        margin-right: base.govuk-spacing(2);
-        margin-left: base.govuk-spacing(2);
-        border-right: 1px solid;
-        border-right-color: base.govuk-functional-colour(secondary-text);
+    @media #{base.govuk-from-breakpoint(tablet)} {
+      display: flex;
+      align-items: center;
+
+      &:not(:last-child) {
+        &::after {
+          content: "";
+          display: block;
+          height: 1em;
+          margin-right: base.govuk-spacing(2);
+          margin-left: base.govuk-spacing(2);
+          border-right: 1px solid;
+          border-right-color: base.govuk-functional-colour(secondary-text);
+        }
       }
     }
   }

@@ -396,8 +396,16 @@ examples:
           text: Navigation item 3
       slots:
         end: |-
-          <nav class="govuk-language-switcher" aria-label="Language switcher">
-            <ul class="govuk-language-switcher__list">
+          <nav class="govuk-language-switcher govuk-language-switcher--no-top-margin" data-module="govuk-language-switcher" aria-label="Language switcher">
+            <button type="button" class="govuk-language-switcher__toggle govuk-js-language-switcher-toggle" aria-controls="language-switcher-list" hidden aria-hidden="true">
+              <svg class="govuk-language-switcher__toggle-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" focusable="false" aria-hidden="true">
+                <circle cx="9" cy="9" r="8" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                <ellipse cx="9" cy="9" rx="3.5" ry="8" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M1.5 6h15M1.5 12h15" fill="none" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+              Languages
+            </button>
+            <ul class="govuk-language-switcher__list" id="language-switcher-list">
               <li class="govuk-language-switcher__list-item">
                 <span class="govuk-language-switcher__text" lang="en" aria-current="true">English</span>
               </li>
@@ -420,8 +428,16 @@ examples:
           text: Navigation item 3
       slots:
         end: |-
-          <nav class="govuk-language-switcher" aria-label="Language switcher">
-            <ul class="govuk-language-switcher__list">
+          <nav class="govuk-language-switcher govuk-language-switcher--no-top-margin" data-module="govuk-language-switcher" aria-label="Language switcher">
+            <button type="button" class="govuk-language-switcher__toggle govuk-js-language-switcher-toggle" aria-controls="language-switcher-list" hidden aria-hidden="true">
+              <svg class="govuk-language-switcher__toggle-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" focusable="false" aria-hidden="true">
+                <circle cx="9" cy="9" r="8" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                <ellipse cx="9" cy="9" rx="3.5" ry="8" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M1.5 6h15M1.5 12h15" fill="none" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+              Languages
+            </button>
+            <ul class="govuk-language-switcher__list" id="language-switcher-list">
               <li class="govuk-language-switcher__list-item">
                 <span class="govuk-language-switcher__text" lang="en" aria-current="true">English</span>
               </li>

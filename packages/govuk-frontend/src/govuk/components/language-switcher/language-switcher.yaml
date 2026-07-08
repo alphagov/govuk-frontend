@@ -40,6 +40,22 @@ params:
     type: string
     required: false
     description: Plain text label identifying the navigation landmark to screen readers. Write it in the language of the current page. Defaults to "Language switcher".
+  - name: menuButtonText
+    type: string
+    required: false
+    description: The text of the button that opens the mobile menu. Write it in the language of the current page. Defaults to "Languages".
+  - name: menuButtonLabel
+    type: string
+    required: false
+    description: The screen reader label for the button that opens the mobile menu, when it is different to the text of the button. Defaults to the same value as `menuButtonText`.
+  - name: listId
+    type: string
+    required: false
+    description: The ID used to associate the mobile menu button with the list of languages it controls. Defaults to "language-switcher-list".
+  - name: collapseOnMobile
+    type: boolean
+    required: false
+    description: Setting this to `false` stops the list of languages from being collapsed into a menu on mobile, keeping it always visible. Defaults to `true` when there is more than one language.
   - name: classes
     type: string
     required: false

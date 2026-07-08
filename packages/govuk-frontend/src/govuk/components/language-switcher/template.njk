@@ -1,7 +1,21 @@
 {% from "../../macros/attributes.njk" import govukAttributes %}
 
-<nav class="govuk-language-switcher {%- if params.classes %} {{ params.classes }}{% endif %}" {{- govukAttributes(params.attributes) }} aria-label="{{ params.ariaLabel | default("Language switcher") }}">
-  <ul class="govuk-language-switcher__list">
+{%- set menuButtonText = params.menuButtonText | default("Languages", true) -%}
+{%- set listId = params.listId | default("language-switcher-list", true) -%}
+{%- set collapseOnMobile = params.collapseOnMobile | default(params.items.length > 1) -%}
+
+<nav class="govuk-language-switcher {%- if params.classes %} {{ params.classes }}{% endif %}" data-module="govuk-language-switcher" {{- govukAttributes(params.attributes) }} aria-label="{{ params.ariaLabel | default("Language switcher") }}">
+  {% if collapseOnMobile %}
+  <button type="button" class="govuk-language-switcher__toggle govuk-js-language-switcher-toggle" aria-controls="{{ listId }}" {%- if params.menuButtonLabel and params.menuButtonLabel != menuButtonText %} aria-label="{{ params.menuButtonLabel }}"{% endif %} hidden aria-hidden="true">
+    <svg class="govuk-language-switcher__toggle-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" focusable="false" aria-hidden="true">
+      <circle cx="9" cy="9" r="8" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <ellipse cx="9" cy="9" rx="3.5" ry="8" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M1.5 6h15M1.5 12h15" fill="none" stroke="currentColor" stroke-width="1.5"/>
+    </svg>
+    {{ menuButtonText }}
+  </button>
+  {% endif %}
+  <ul class="govuk-language-switcher__list" id="{{ listId }}">
 {% for item in params.items %}
   {% set isCurrent = item.current or (not item.href) %}
   {% if isCurrent %}
