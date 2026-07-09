@@ -186,7 +186,7 @@ export class FileUpload extends ConfigurableComponent {
 
     const buttonSpan = document.createElement('span')
     buttonSpan.className =
-      'govuk-button govuk-button--secondary govuk-file-upload-button__pseudo-button'
+      'govuk-button govuk-file-upload-button__pseudo-button'
     buttonSpan.innerText = this.i18n.t('chooseFilesButton')
 
     containerSpan.appendChild(buttonSpan)
