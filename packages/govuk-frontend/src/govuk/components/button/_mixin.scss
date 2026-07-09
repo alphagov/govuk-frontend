@@ -39,6 +39,10 @@
     --_govuk-button-background-colour: #{$govuk-button-colour};
     --_govuk-button-hover-background-colour: #{$govuk-button-hover-background-colour};
     --_govuk-button-shadow-colour: #{$govuk-button-shadow-colour};
+    --_govuk-inverse-button-background-colour: #{$inverse-background-colour};
+    --_govuk-inverse-button-text-colour: #{$inverse-text-colour};
+    --_govuk-inverse-button-hover-background-colour: #{$govuk-inverse-button-hover-colour};
+    --_govuk-inverse-button-shadow-colour: #{$govuk-inverse-button-shadow-colour};
   }
 
   .govuk-button {
@@ -165,10 +169,10 @@
   }
 
   .govuk-button--inverse {
-    --_govuk-button-background-colour: #{$govuk-inverse-button-colour};
-    --_govuk-button-shadow-colour: #{$govuk-inverse-button-shadow-colour};
-    --_govuk-button-text-colour: #{$govuk-inverse-button-text-colour};
-    --_govuk-button-hover-background-colour: #{$govuk-inverse-button-hover-colour};
+    --_govuk-button-background-colour: var(--_govuk-inverse-button-background-colour);
+    --_govuk-button-shadow-colour: var(--_govuk-inverse-button-shadow-colour);
+    --_govuk-button-text-colour: var(--_govuk-inverse-button-text-colour);
+    --_govuk-button-hover-background-colour: var(--_govuk-inverse-button-hover-background-colour);
   }
 
   .govuk-button--start {
