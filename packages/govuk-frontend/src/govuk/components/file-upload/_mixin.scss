@@ -118,17 +118,16 @@
       border-color: base.govuk-functional-colour("error");
     }
 
-    .govuk-file-upload-button__pseudo-button {
-      background-color: base.govuk-colour("black", $variant: "tint-95");
-    }
+    --_govuk-button-background-colour: var(--_govuk-secondary-button-background-colour);
+    --_govuk-button-shadow-colour: var(--_govuk-secondary-button-shadow-colour);
+    --_govuk-button-text-colour: var(--_govuk-secondary-button-text-colour);
+    --_govuk-button-hover-background-colour: var(--_govuk-secondary-button-hover-background-colour);
 
     &:hover {
+      --_govuk-button-background-colour: var(--_govuk-button-hover-background-colour);
+
       border-style: dashed;
       border-color: base.govuk-colour("black", $variant: "tint-50");
-
-      .govuk-file-upload-button__pseudo-button {
-        background-color: base.govuk-colour("black", $variant: "tint-80");
-      }
 
       .govuk-file-upload-button__status {
         background-color: base.govuk-colour("blue");
@@ -150,15 +149,13 @@
       // here as it is already used for the yellow focus state.
       box-shadow: inset 0 0 0 base.$govuk-border-width-form-element;
 
-      .govuk-file-upload-button__pseudo-button {
-        background-color: base.govuk-functional-colour(focus);
-        box-shadow: 0 2px 0 base.govuk-colour("black");
-      }
+      --_govuk-button-background-colour: #{base.govuk-functional-colour(focus)};
+      --_govuk-button-shadow-colour: #{base.govuk-functional-colour(focus-text)};
 
       &:hover .govuk-file-upload-button__pseudo-button {
+        --_govuk-button-background-colour: var(--_govuk-button-hover-background-colour);
         border-color: base.govuk-functional-colour(focus);
         outline: 3px solid transparent;
-        background-color: base.govuk-colour("black", $variant: "tint-80");
         box-shadow: inset 0 0 0 1px base.govuk-functional-colour(focus);
       }
     }
@@ -167,10 +164,6 @@
   .govuk-file-upload-button--empty {
     border-style: dashed;
     background-color: $empty-button-background-colour;
-
-    .govuk-file-upload-button__pseudo-button {
-      background-color: $empty-pseudo-button-background-colour;
-    }
 
     .govuk-file-upload-button__status {
       color: base.govuk-colour("black");
@@ -204,10 +197,6 @@
     opacity: 0.5;
 
     background-color: $empty-button-background-colour;
-
-    .govuk-file-upload-button__pseudo-button {
-      background-color: $empty-pseudo-button-background-colour;
-    }
 
     .govuk-file-upload-button__status {
       background-color: $empty-status-background-colour;
