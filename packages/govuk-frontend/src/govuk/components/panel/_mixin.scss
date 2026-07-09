@@ -15,10 +15,7 @@
 
     text-align: center;
 
-    --_govuk-button-background-colour: var(--_govuk-inverse-button-background-colour);
-    --_govuk-button-shadow-colour: var(--_govuk-inverse-button-shadow-colour);
-    --_govuk-button-text-colour: var(--_govuk-inverse-button-text-colour);
-    --_govuk-button-hover-background-colour: var(--_govuk-inverse-button-hover-background-colour);
+    @include base.govuk-button-style(inverse);
 
     @media #{base.govuk-until-breakpoint(tablet)} {
       padding: base.govuk-spacing(4) - base.$govuk-border-width;
