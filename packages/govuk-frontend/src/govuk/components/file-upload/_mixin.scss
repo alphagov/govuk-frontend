@@ -118,10 +118,7 @@
       border-color: base.govuk-functional-colour("error");
     }
 
-    --_govuk-button-background-colour: var(--_govuk-secondary-button-background-colour);
-    --_govuk-button-shadow-colour: var(--_govuk-secondary-button-shadow-colour);
-    --_govuk-button-text-colour: var(--_govuk-secondary-button-text-colour);
-    --_govuk-button-hover-background-colour: var(--_govuk-secondary-button-hover-background-colour);
+    @include base.govuk-button-style(secondary);
 
     &:hover {
       --_govuk-button-background-colour: var(--_govuk-button-hover-background-colour);
