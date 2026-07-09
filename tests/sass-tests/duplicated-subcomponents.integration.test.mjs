@@ -8,7 +8,7 @@ import { compileSassStringLikeUsers } from './helpers/sass.js'
  * string either doesn't exist anymore, or is now repeated.
  */
 const uniquePatterns = {
-  button: /\.govuk-button--secondary:active/g,
+  button: /\.govuk-button\[disabled\]:hover/g,
   'error-message':
     /\.govuk-error-message\s*\{\s*font-family:\s*"GDS Transport"/g,
   fieldset: /\.govuk-fieldset__heading/g,
