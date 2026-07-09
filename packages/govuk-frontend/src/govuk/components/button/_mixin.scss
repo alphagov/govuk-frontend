@@ -6,47 +6,35 @@
 
 /// @access private
 @mixin styles($background-colour, $text-colour, $inverse-background-colour, $inverse-text-colour) {
-  $govuk-button-colour: $background-colour;
-  $govuk-button-text-colour: $text-colour;
-  $govuk-button-hover-background-colour: base.govuk-colour("green", $variant: "shade-25");
-  $govuk-button-shadow-colour: base.govuk-colour("green", $variant: "shade-50");
-
-  // Secondary button variables
-  $govuk-secondary-button-colour: base.govuk-colour("black", $variant: "tint-95");
-  $govuk-secondary-button-text-colour: base.govuk-colour("black");
-  $govuk-secondary-button-hover-colour: base.govuk-colour("black", $variant: "tint-80");
-  $govuk-secondary-button-shadow-colour: base.govuk-colour("black", $variant: "tint-50");
-
-  // Warning button variables
-  $govuk-warning-button-colour: base.govuk-colour("red");
-  $govuk-warning-button-text-colour: base.govuk-colour("white");
-  $govuk-warning-button-hover-colour: base.govuk-colour("red", $variant: "shade-25");
-  $govuk-warning-button-shadow-colour: base.govuk-colour("red", $variant: "shade-50");
-
-  // Inverse button variables
-  $govuk-inverse-button-colour: $inverse-background-colour;
-  $govuk-inverse-button-text-colour: $inverse-text-colour;
-  $govuk-inverse-button-hover-colour: base.govuk-colour("blue", $variant: "tint-95");
-  $govuk-inverse-button-shadow-colour: base.govuk-colour("blue", $variant: "shade-50");
-
   // Because the shadow (s0) is visually 'part of' the button, we need to reduce
   // the height of the button to compensate by adjusting its padding (s1) and
   // increase the bottom margin to include it (s2).
   $button-shadow-size: base.$govuk-border-width-form-element;
 
   :root {
-    --_govuk-button-text-colour: #{$govuk-button-text-colour};
-    --_govuk-button-background-colour: #{$govuk-button-colour};
-    --_govuk-button-hover-background-colour: #{$govuk-button-hover-background-colour};
-    --_govuk-button-shadow-colour: #{$govuk-button-shadow-colour};
-    --_govuk-secondary-button-background-colour: #{$govuk-secondary-button-colour};
-    --_govuk-secondary-button-text-colour: #{$govuk-secondary-button-text-colour};
-    --_govuk-secondary-button-hover-background-colour: #{$govuk-secondary-button-hover-colour};
-    --_govuk-secondary-button-shadow-colour: #{$govuk-secondary-button-shadow-colour};
+    // Default button colours
+    --_govuk-button-background-colour: #{$background-colour};
+    --_govuk-button-text-colour: #{$text-colour};
+    --_govuk-button-hover-background-colour: #{base.govuk-colour("green", $variant: "shade-25")};
+    --_govuk-button-shadow-colour: #{base.govuk-colour("green", $variant: "shade-50")};
+
+    // Secondary button colours
+    --_govuk-secondary-button-background-colour: #{base.govuk-colour("black", $variant: "tint-95")};
+    --_govuk-secondary-button-text-colour: #{base.govuk-colour("black")};
+    --_govuk-secondary-button-hover-background-colour: #{base.govuk-colour("black", $variant: "tint-80")};
+    --_govuk-secondary-button-shadow-colour: #{base.govuk-colour("black", $variant: "tint-50")};
+
+    // Warning button colours
+    --_govuk-warning-button-background-colour: #{base.govuk-colour("red")};
+    --_govuk-warning-button-text-colour: #{base.govuk-colour("white")};
+    --_govuk-warning-button-hover-background-colour: #{base.govuk-colour("red", $variant: "shade-25")};
+    --_govuk-warning-button-shadow-colour: #{base.govuk-colour("red", $variant: "shade-50")};
+
+    // Warning button colours
     --_govuk-inverse-button-background-colour: #{$inverse-background-colour};
     --_govuk-inverse-button-text-colour: #{$inverse-text-colour};
-    --_govuk-inverse-button-hover-background-colour: #{$govuk-inverse-button-hover-colour};
-    --_govuk-inverse-button-shadow-colour: #{$govuk-inverse-button-shadow-colour};
+    --_govuk-inverse-button-hover-background-colour: #{base.govuk-colour("blue", $variant: "tint-95")};
+    --_govuk-inverse-button-shadow-colour: #{base.govuk-colour("blue", $variant: "shade-50")};
   }
 
   .govuk-button {
@@ -166,10 +154,10 @@
   }
 
   .govuk-button--warning {
-    --_govuk-button-background-colour: #{$govuk-warning-button-colour};
-    --_govuk-button-shadow-colour: #{$govuk-warning-button-shadow-colour};
-    --_govuk-button-text-colour: #{$govuk-warning-button-text-colour};
-    --_govuk-button-hover-background-colour: #{$govuk-warning-button-hover-colour};
+    --_govuk-button-background-colour: var(--_govuk-warning-button-background-colour);
+    --_govuk-button-shadow-colour: var(--_govuk-warning-button-shadow-colour);
+    --_govuk-button-text-colour: var(--_govuk-warning-button-text-colour);
+    --_govuk-button-hover-background-colour: var(--_govuk-warning-button-hover-background-colour);
   }
 
   .govuk-button--inverse {
