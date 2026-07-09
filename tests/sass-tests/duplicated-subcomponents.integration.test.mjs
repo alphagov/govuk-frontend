@@ -28,6 +28,7 @@ describe.each(['@use', '@import'])('%s', (method) => {
         `
         ${method} "node_modules/govuk-frontend/src/govuk/components/cookie-banner";
         ${method} "node_modules/govuk-frontend/src/govuk/components/exit-this-page";
+        ${method} "node_modules/govuk-frontend/src/govuk/components/panel";
         ${method} "node_modules/govuk-frontend/src/govuk/components/password-input";
         `
       )
