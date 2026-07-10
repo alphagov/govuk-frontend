@@ -43,11 +43,27 @@
     margin-bottom: base.govuk-spacing(6);
   }
 
-  // Remove bottom spacing from anything at the end of the Panel's body
+  // Remove bottom spacing from anything at the end of the Panel's content
   // to stop the Panel's padding spacing from becoming too large.
   .govuk-panel__title:last-child,
-  .govuk-panel__body > :last-child {
+  .govuk-panel__body > :last-child,
+  .govuk-panel__actions > :last-child {
     margin-bottom: 0;
+  }
+
+  // On larger screens if the Panel actions have a button group,
+  // then we want to adjust the spacing a bit to avoid the button group
+  // making the Panel's padding spacing being too large.
+  @media #{base.govuk-from-breakpoint(tablet)} {
+    .govuk-panel__actions > .govuk-button-group:last-child {
+      margin-bottom: -1 * base.govuk-spacing(2);
+    }
+  }
+
+  // When the panel shows some actions, make sure they have some spacing
+  // from the panel's content
+  .govuk-panel__body:not(:last-child) {
+    margin-bottom: base.govuk-spacing(7);
   }
 
   .govuk-panel--confirmation {
@@ -64,21 +80,6 @@
     .govuk-panel__title {
       @include base.govuk-font-size($size: 36);
       margin-bottom: base.govuk-spacing(3);
-    }
-
-    // When the Button group is at the end of the Panel's body then,
-    // make sure it has some spacing away from the other body content.
-    .govuk-panel__body > .govuk-button-group:last-child {
-      margin-top: base.govuk-spacing(7);
-    }
-
-    // On larger screens if the Interruption panel has a Button group at the end of the Panel's body,
-    // then we want to adjust the spacing a bit to avoid the Button group
-    // making the Panel's padding spacing being too large.
-    @media #{base.govuk-from-breakpoint(tablet)} {
-      &:has(.govuk-panel__body > .govuk-button-group:last-child) {
-        padding-bottom: base.govuk-spacing(5);
-      }
     }
   }
 
