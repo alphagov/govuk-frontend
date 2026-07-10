@@ -1,0 +1,8 @@
+@use "clearfix.mixin" as mixin;
+
+@import "../tools/exports";
+
+@include govuk-exports("govuk/utilities/clearfix") {
+  @include mixin.styles;
+}
+

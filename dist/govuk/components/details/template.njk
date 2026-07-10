@@ -1,0 +1,14 @@
+{% from "../../macros/attributes.njk" import govukAttributes -%}
+
+<details {%- if params.id %} id="{{ params.id }}"{% endif %} class="govuk-details {%- if params.classes %} {{ params.classes }}{% endif %}"
+  {{- govukAttributes(params.attributes) -}}
+  {{- " open" if params.open }}>
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">
+      {{ params.summaryHtml | safe | trim | indent(6) if params.summaryHtml else params.summaryText }}
+    </span>
+  </summary>
+  <div class="govuk-details__text">
+    {{ caller() if caller else (params.html | safe if params.html else params.text) }}
+  </div>
+</details>

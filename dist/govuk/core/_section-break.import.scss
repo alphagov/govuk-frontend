@@ -1,0 +1,8 @@
+@use "section-break.mixin" as mixin;
+
+@import "../base";
+
+@include govuk-exports("govuk/core/section-break") {
+  @include mixin.styles;
+}
+

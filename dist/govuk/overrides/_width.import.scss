@@ -1,0 +1,8 @@
+@use "width.mixin" as mixin;
+
+@import "../tools/exports";
+
+@include govuk-exports("govuk/overrides/width") {
+  @include mixin.styles;
+}
+

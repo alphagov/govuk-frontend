@@ -1,0 +1,8 @@
+@use "grid.mixin" as grid;
+
+@import "../base";
+
+@include govuk-exports("govuk/objects/grid") {
+  @include grid.styles;
+}
+

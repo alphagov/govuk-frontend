@@ -1,0 +1,7 @@
+@use "../custom-properties";
+@use "links";
+@use "typography";
+@use "global-styles.mixin" as mixin;
+
+@include mixin.styles;
+
