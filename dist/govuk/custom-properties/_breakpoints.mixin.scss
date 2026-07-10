@@ -1,0 +1,15 @@
+@use "../settings/custom-properties" as *;
+@use "../settings/media-queries" as *;
+@use "../tools/px-to-rem" as *;
+
+/// @access private
+@mixin styles {
+  :root {
+    @if $govuk-output-custom-properties {
+      @each $name, $value in $govuk-breakpoints {
+        --govuk-breakpoint-#{$name}: #{govuk-px-to-rem($value)};
+      }
+    }
+  }
+}
+

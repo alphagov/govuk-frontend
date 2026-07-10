@@ -1,0 +1,14 @@
+{% from "../../macros/attributes.njk" import govukAttributes -%}
+{# _namespace is a private macro option which allows the generic header macro
+to also be used by the 'main' header #}
+{% set namespace = params._namespace | default("govuk-generic") %}
+
+<div class="{{ namespace }}-header {%- if params.classes %} {{ params.classes }}{% endif %}" {{- govukAttributes(params.attributes) }}>
+  <div class="{{ namespace }}-header__container {{ params.containerClasses | default("govuk-width-container", true) }}">
+    <div class="{{ namespace }}-header__logo">
+      <a href="{{ params.url | default("/", true) }}" class="{{ namespace }}-header__homepage-link">
+        {{ params.logoHtml | safe if params.logoHtml else params.logoText }}
+      </a>
+    </div>
+  </div>
+</div>

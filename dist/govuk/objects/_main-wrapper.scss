@@ -1,0 +1,5 @@
+@use "main-wrapper.mixin" as main-wrapper;
+@use "../custom-properties";
+
+@include main-wrapper.styles;
+
