@@ -36,6 +36,14 @@ examples:
   - name: default
     screenshot: true
     options:
+      trialOptIn: true
+      titleText: Help us improve this service
+      html: |
+        <p class="govuk-body">Tell us about your experience using this service. <a href="#" class="govuk-link">Give us your feedback</a></p>
+
+  - name: not opted into trial
+    description: '`trialOptIn` is not set or falsey'
+    options:
       titleText: Help us improve this service
       html: |
         <p class="govuk-body">Tell us about your experience using this service. <a href="#" class="govuk-link">Give us your feedback</a></p>
@@ -43,6 +51,7 @@ examples:
   - name: silly example
     description: In reality we'd recommend users only use the default example but this is to illustrate if a service team decides they want to add a lot of content
     options:
+      trialOptIn: true
       titleText: Help us improve this service
       html: |
         <p class="govuk-body">Tell us about your experience using this service.</p>
@@ -58,6 +67,7 @@ examples:
   - name: html in title
     hidden: true
     options:
+      trialOptIn: true
       titleHtml: Help us improve this <em>cool</em> service
       html: |
         <p class="govuk-body">Tell us about your experience using this service. <a href="#" class="govuk-link">Give us your feedback</a></p>
@@ -65,6 +75,7 @@ examples:
   - name: custom heading level
     hidden: true
     options:
+      trialOptIn: true
       titleText: Help us improve this service
       headingLevel: 3
       html: |
@@ -73,12 +84,14 @@ examples:
   - name: html in text options
     hidden: true
     options:
+      trialOptIn: true
       titleText: Help us improve this <em>cool</em> service
       text: Tell us about your experience using this <em>cool</em> service
 
   - name: classes
     hidden: true
     options:
+      trialOptIn: true
       titleText: Help us improve this service
       html: |
         <p class="govuk-body">Tell us about your experience using this service. <a href="#" class="govuk-link">Give us your feedback</a></p>
@@ -87,6 +100,7 @@ examples:
   - name: attributes
     hidden: true
     options:
+      trialOptIn: true
       titleText: Help us improve this service
       html: |
         <p class="govuk-body">Tell us about your experience using this service. <a href="#" class="govuk-link">Give us your feedback</a></p>

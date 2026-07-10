@@ -1,0 +1,9 @@
+{%- macro govukTrialOptIn(name, params) %}
+  {%- if params.trialOptIn %}
+    {{ caller() }}
+  {%- else %}
+    <div style="padding: 15px; border: 5px solid red;">
+      <p class="govuk-body"><code>{{ name }}</code> is a trial component. You must opt-in to using the component by passing <code>trialOptIn: true</code> to the component's Nunjucks configuration.</p>
+    </div>
+  {%- endif %}
+{%- endmacro %}

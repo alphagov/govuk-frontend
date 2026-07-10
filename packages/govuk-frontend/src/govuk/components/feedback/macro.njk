@@ -1,3 +1,7 @@
+{% from "../internal-macros.njk" import govukTrialOptIn %}
+
 {% macro govukFeedback(params) %}
-  {%- include "./template.njk" -%}
+  {%- call govukTrialOptIn("govukFeedback", params) %}
+    {%- include "./template.njk" -%}
+  {%- endcall %}
 {% endmacro %}
