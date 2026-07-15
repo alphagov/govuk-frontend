@@ -11,6 +11,7 @@
     padding: base.govuk-spacing(7) - base.$govuk-border-width;
 
     border: base.$govuk-border-width solid transparent;
+    color: base.govuk-functional-colour(text);
 
     text-align: center;
 
@@ -35,17 +36,6 @@
     }
   }
 
-  .govuk-panel--confirmation {
-    color: base.govuk-colour("white");
-    background: base.govuk-colour("green");
-
-    @media print {
-      border-color: currentcolor;
-      color: base.govuk-functional-colour(text);
-      background: none;
-    }
-  }
-
   .govuk-panel__title {
     @include base.govuk-font-size($size: 48);
     @include base.govuk-typography-weight-bold;
@@ -53,7 +43,51 @@
     margin-bottom: base.govuk-spacing(6);
   }
 
-  .govuk-panel__title:last-child {
+  // Remove bottom spacing from anything at the end of the Panel's content
+  // to stop the Panel's padding spacing from becoming too large.
+  .govuk-panel__title:last-child,
+  .govuk-panel__body > :last-child,
+  .govuk-panel__actions > :last-child {
     margin-bottom: 0;
+  }
+
+  // On larger screens if the Panel actions have a button group,
+  // then we want to adjust the spacing a bit to avoid the button group
+  // making the Panel's padding spacing being too large.
+  @media #{base.govuk-from-breakpoint(tablet)} {
+    .govuk-panel__actions > .govuk-button-group:last-child {
+      margin-bottom: -1 * base.govuk-spacing(2);
+    }
+  }
+
+  // When the panel shows some actions, make sure they have some spacing
+  // from the panel's content
+  .govuk-panel__body:not(:last-child) {
+    margin-bottom: base.govuk-spacing(7);
+  }
+
+  .govuk-panel--confirmation {
+    --govuk-text-colour: #{base.govuk-functional-colour(inverse-text)};
+    background: base.govuk-functional-colour(success);
+  }
+
+  .govuk-panel--interruption {
+    --govuk-text-colour: #{base.govuk-functional-colour(inverse-text)};
+    background: base.govuk-functional-colour(brand);
+    text-align: left;
+
+    // Smaller title to go alongside smaller body text.
+    .govuk-panel__title {
+      @include base.govuk-font-size($size: 36);
+      margin-bottom: base.govuk-spacing(3);
+    }
+  }
+
+  @media print {
+    .govuk-panel {
+      --govuk-text-colour: inherit;
+      border-color: currentcolor;
+      background: none;
+    }
   }
 }

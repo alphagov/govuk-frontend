@@ -6,7 +6,19 @@ const { filesize } = require('filesize')
 const { glob } = require('glob')
 const yaml = require('js-yaml')
 const { minimatch } = require('minimatch')
-const slash = require('slash')
+
+/**
+ * Convert Windows backslash paths to slash paths: foo\\bar ➔ foo/bar
+ *
+ * Only use when using Node.js path utils e.g. `join()` is not appropriate,
+ * which automatically accounts for differences in paths between operating systems.
+ *
+ * @param {string} path - File or directory path
+ * @returns {string} A path with forward slashes.
+ */
+function slash(path) {
+  return path.replace(/\\/g, '/')
+}
 
 /**
  * Check path exists
@@ -227,7 +239,8 @@ module.exports = {
   getListing,
   getReadableFileSizes,
   getYaml,
-  mapPathTo
+  mapPathTo,
+  slash
 }
 
 /**

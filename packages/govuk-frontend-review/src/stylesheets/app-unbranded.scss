@@ -1,0 +1,13 @@
+@use "pkg:govuk-frontend" with (
+  $govuk-font-family: (
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    sans-serif
+  ),
+  $govuk-functional-colours: (
+    brand: #388e3c
+  )
+);
+
+@use "partials/banner";

@@ -2,12 +2,11 @@ import { join } from 'path'
 
 import { pkg } from '@govuk-frontend/config'
 import { getComponentNames } from '@govuk-frontend/lib/components'
-import { filterPath, getListing } from '@govuk-frontend/lib/files'
+import { filterPath, getListing, slash } from '@govuk-frontend/lib/files'
 import {
   componentNameToMacroName,
   packageNameToPath
 } from '@govuk-frontend/lib/names'
-import slash from 'slash'
 
 /**
  * GOV.UK Prototype Kit config builder

@@ -1,0 +1,45 @@
+---
+title: Is your age correct?
+---
+
+{% extends "layouts/full-page-example.njk" %}
+
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/panel/macro.njk" import govukPanel %}
+
+{% set pageTitle = example.title %}
+{% block pageTitle %}{{ example.title }} - GOV.UK{% endblock %}
+
+{% block containerStart %}
+  {{ govukBackLink({
+    href: "/",
+    text: "Back"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {% call govukPanel({
+        classes: "govuk-panel--interruption",
+        titleText: "Is your age correct?",
+        actions: {
+          items: [
+            {
+              text: "Yes, this is correct",
+              type: "button",
+              href: "#submit"
+            },
+            {
+              text: "Change my age",
+              href: "#change"
+            }
+          ]
+        }
+      }) %}
+        <p class="govuk-body">You entered your age as <strong>109</strong>.</p>
+      {% endcall %}
+    </div>
+  </div>
+{% endblock %}

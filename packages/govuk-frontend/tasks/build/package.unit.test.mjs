@@ -276,8 +276,9 @@ describe('packages/govuk-frontend/dist/', () => {
         )
         expect(options).toBeInstanceOf(Array)
 
-        // Component options requirements
-        const optionTasks = options.map(async (option) => {
+        // Options can be nested as many times as required, so recursively
+        // go through options looking for any nested options.
+        async function validateOptions(option) {
           // Required fields
           expect(option).toEqual(
             expect.objectContaining({
@@ -300,10 +301,16 @@ describe('packages/govuk-frontend/dist/', () => {
           if (option.isComponent) {
             expect(option.isComponent).toEqual(expect.any(Boolean))
           }
-        })
+
+          // Handle any nested parameters
+          if (option.params) {
+            expect(option.params).toEqual(expect.any(Array))
+            await Promise.all(option.params.map(validateOptions))
+          }
+        }
 
         // Check all component options
-        return Promise.all(optionTasks)
+        return Promise.all(options.map(validateOptions))
       })
 
       // Check all component files

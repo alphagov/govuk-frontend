@@ -257,7 +257,7 @@
 @mixin govuk-link-style-inverse {
   &:link,
   &:visited {
-    color: govuk-colour("white");
+    color: govuk-functional-colour(inverse-text);
   }
 
   &:focus {

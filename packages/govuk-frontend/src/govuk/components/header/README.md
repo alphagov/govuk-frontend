@@ -1,4 +1,4 @@
-# Header
+# GOV.UK Header
 
 ## Installation
 

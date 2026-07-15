@@ -124,6 +124,7 @@
     padding: base.govuk-spacing(1);
     border: base.$govuk-border-width-form-element solid;
     border-color: base.govuk-functional-colour(input-border);
+    color: base.govuk-functional-colour(text);
     background-color: base.govuk-colour("black", $variant: "tint-95");
     text-align: center;
     white-space: nowrap;

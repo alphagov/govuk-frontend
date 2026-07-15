@@ -46,7 +46,7 @@
       100% - #{($govuk-radios-label-padding-left-right + $govuk-touch-target-size + base.govuk-spacing(3))}
     );
     margin-bottom: 0;
-    padding: (base.govuk-spacing(1) + base.$govuk-border-width-form-element) base.govuk-spacing(3);
+    padding: (base.govuk-spacing(1) + base.$govuk-border-width-form-element) $govuk-radios-label-padding-left-right;
     cursor: pointer;
     // remove 300ms pause on mobile
     touch-action: manipulation;
@@ -227,6 +227,12 @@
     }
 
     .govuk-radios__label {
+      // Recalculate max-width to account for the smaller radio size
+      // 1px comes from padding-left (defined below)
+      max-width: calc(
+        100% - #{($govuk-touch-target-size - $input-offset) + $govuk-radios-label-padding-left-right + 1px}
+      );
+
       // Create a tiny space between the small radio hover state so that it
       // doesn't clash with the label
       padding-left: 1px;

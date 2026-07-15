@@ -79,6 +79,12 @@ export default async () => {
     ({ path }) => path
   )
 
+  app.locals.componentFixtures = Object.fromEntries(
+    componentsFixtures.map(({ component, fixtures }) => {
+      return [component, Object.groupBy(fixtures, ({ name }) => name)]
+    })
+  )
+
   // Configure nunjucks
   const env = nunjucks.renderer(app)
 

@@ -528,9 +528,9 @@ examples:
         - value: relevance
           text: relevance
         - value: title
-          text: title
+          text: A to Z
         - value: created
-          text: created
+          text: creation date
 
   - name: small with a divider
     options:

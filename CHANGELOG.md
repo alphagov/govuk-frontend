@@ -4,6 +4,170 @@ For advice on how to use these release notes, see [our guidance on staying up to
 
 ## Unreleased
 
+### New features
+
+#### You can now pass `day`, `month`, `year`, `error` and `values` options to the Date input component
+
+We've updated the Date input component to add the following Nunjucks options:
+
+- `day`, `month` and `year` options to customise individual items
+- `error` boolean option to set the error state on individual items
+- `values` option to set individual item values using a single object
+
+For consistency with other components, the Date input component's error state is now set automatically when `errorMessage` is provided.
+
+For example, it is no longer necessary to set the `"govuk-input--error"` class on every item:
+
+```patch
+  {{ govukDateInput({
+    fieldset: {
+      legend: {
+        text: "What is your date of birth?"
+      }
+    },
+    errorMessage: {
+      text: "Enter your date of birth"
+-   },
+-   items: [
+-     {
+-       name: "day",
+-       label: "Day",
+-       classes: "govuk-input--width-2 govuk-input--error"
+-     },
+-     {
+-       name: "month",
+-       label: "Month",
+-       classes: "govuk-input--width-2 govuk-input--error"
+-     },
+-     {
+-       name: "year",
+-       label: "Year",
+-       classes: "govuk-input--width-4 govuk-input--error"
+-     }
+-   ]
++   }
+  }) }}
+```
+
+If only one field has an error, use the new `day`, `month` or `year` options to set `error: true` for that field only:
+
+```patch
+  {{ govukDateInput({
+    fieldset: {
+      legend: {
+        text: "What is your date of birth?"
+      }
+    },
+    errorMessage: {
+      text: "Date of birth must include a year"
+    },
+-   items: [
+-     {
+-       name: "day",
+-       label: "Day",
+-       classes: "govuk-input--width-2"
+-     },
+-     {
+-       name: "month",
+-       label: "Month",
+-       classes: "govuk-input--width-2"
+-     },
+-     {
+-       name: "year",
+-       label: "Year",
+-       classes: "govuk-input--width-4 govuk-input--error"
+-     }
+-   ]
++   year: {
++     error: true
++   }
+  }) }}
+```
+
+When using the GOV.UK Prototype Kit, given the following `data` object:
+
+```json
+{
+  "dob-day": "31",
+  "dob-month": "3",
+  "dob-year": "1980"
+}
+```
+
+You can now pass in `values: data` to automatically set item values:
+
+```njk
+  {{ govukDateInput({
+    fieldset: {
+      legend: {
+        text: "What is your date of birth?"
+      }
+    },
+    namePrefix: "dob",
+    values: data
+  }) }}
+```
+
+We made this change in [pull request #6971: Add date input `day`, `month`, `year` and `values` options](https://github.com/alphagov/govuk-frontend/pull/6971).
+
+### Recommended changes
+
+#### Use `inverse-text` instead of `govuk-colour("white")` for text on dark backgrounds that use functional colours
+
+We've introduced a new `inverse-text` functional colour to use on dark backgrounds that use functional colours such as `brand`, `success` and `error`.
+
+If you're using `govuk-colour("white")` as a text colour on dark backgrounds that use functional colours, replace `govuk-colour("white")` with `govuk-functional-colour(inverse-text)`.
+
+However, if you're using a dark background that does not use a functional colour, keep using `govuk-colour("white")`.
+
+In both cases, make sure your text has a minimum contrast of 4.5:1 with the background to meet the ['Contrast (minimum)' criterion of the Web Content Accessibility Guidelines](https://www.w3.org/WAI/WCAG22/quickref/#contrast-minimum).
+
+We made this change in [pull request #7178: Add `inverse-text` functional colour for white text on solid colour](https://github.com/alphagov/govuk-frontend/pull/7178).
+
+#### Add a `<span>` element to start buttons containing HTML
+
+We've updated the Button component's Nunjucks macro to add a `<span>` element around HTML content within start buttons.
+
+This prevents whitespace around inline HTML elements from collapsing and prevents button content from wrapping incorrectly on narrow screens.
+
+If you're not using our Nunjucks macros, or have fixed this bug in a different way, you may want to update your code to add a `<span>` element instead.
+
+This change is only needed for start buttons containing HTML content. Other Button component styles and start buttons containing plain text were unaffected by the issue.
+
+We made this change in [pull request #7188: Add Nunjucks logic to insert `<span>` element around HTML in start buttons](https://github.com/alphagov/govuk-frontend/pull/7188).
+
+### Fixes
+
+We've made fixes to GOV.UK Frontend in the following pull requests:
+
+- [#7183: Update exit this page overlay colour to use system colours](https://github.com/alphagov/govuk-frontend/pull/7183)
+- [#7197: Improve source spacing for header](https://github.com/alphagov/govuk-frontend/pull/7197)
+
+## v6.3.0 (Feature release)
+
+To install this version with npm, run `npm install govuk-frontend@6.3.0`. You can also find more information about [how to stay up to date](https://frontend.design-system.service.gov.uk/staying-up-to-date/#updating-to-the-latest-version) in our documentation.
+
+### New features
+
+#### Use the Generic header component in services not on the GOV.UK website
+
+We've added the [Generic header component](https://design-system.service.gov.uk/components/generic-header/) for services that are not part of [the GOV.UK proposition](https://www.gov.uk/government/publications/govuk-proposition/govuk-proposition) but would still benefit from using GOV.UK Frontend to build their service.
+
+The Generic header component is a version of the GOV.UK header component that you can customise to meet the needs of your service. This includes:
+
+- changing the spacing around the logo
+- adding a bottom border with your service's brand colour
+- changing the header colour
+
+This was added in [pull request #7061: Add Generic Header component](https://github.com/alphagov/govuk-frontend/pull/7061).
+
+### Fixes
+
+We've made fixes to GOV.UK Frontend in the following pull requests:
+
+- [#7168: Fix lack of explicit colour on input prefix and suffixes](https://github.com/alphagov/govuk-frontend/pull/7168)
+- [#7169: Fix text on small inline radios wrapping unnecessarily](https://github.com/alphagov/govuk-frontend/pull/7169)
+
 ## v6.2.0 (Feature release)
 
 To install this version with npm, run `npm install govuk-frontend@6.2.0`. You can also find more information about [how to stay up to date](https://frontend.design-system.service.gov.uk/staying-up-to-date/#updating-to-the-latest-version) in our documentation.

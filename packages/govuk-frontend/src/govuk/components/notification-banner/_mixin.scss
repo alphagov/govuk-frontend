@@ -5,13 +5,14 @@
 /// @access private
 @mixin styles {
   .govuk-notification-banner {
+    --_govuk-notification-banner-colour: #{base.govuk-functional-colour(brand)};
+    --_govuk-notification-banner-title-text-colour: #{base.govuk-functional-colour(inverse-text)};
+
     @include base.govuk-font($size: 19);
     @include base.govuk-responsive-margin(8, "bottom");
 
     border: base.$govuk-border-width solid;
-    border-color: base.govuk-functional-colour(brand);
-
-    background-color: base.govuk-functional-colour(brand);
+    border-color: var(--_govuk-notification-banner-colour);
 
     &:focus {
       outline: base.$govuk-focus-width solid;
@@ -26,6 +27,9 @@
     // text in high contrast mode
     border-bottom: 1px solid transparent;
 
+    color: var(--_govuk-notification-banner-title-text-colour);
+    background-color: var(--_govuk-notification-banner-colour);
+
     @media #{base.govuk-from-breakpoint(tablet)} {
       padding: 2px base.govuk-spacing(4) base.govuk-spacing(1);
     }
@@ -38,7 +42,6 @@
     @include base.govuk-typography-weight-bold;
     margin: 0;
     padding: 0;
-    color: base.govuk-colour("white");
   }
 
   .govuk-notification-banner__content {
@@ -87,9 +90,7 @@
   }
 
   .govuk-notification-banner--success {
-    border-color: base.govuk-functional-colour(success);
-
-    background-color: base.govuk-functional-colour(success);
+    --_govuk-notification-banner-colour: #{base.govuk-functional-colour(success)};
 
     .govuk-notification-banner__link {
       @include base.govuk-link-style-success;

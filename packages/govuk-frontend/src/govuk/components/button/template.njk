@@ -24,11 +24,23 @@
 
 {%- set commonAttributes %} class="{{ classNames }}" data-module="govuk-button" {{- govukAttributes(params.attributes) -}} {% if params.id %} id="{{ params.id }}"{% endif %}{% endset %}
 
+{#- Wrap content of the button in a <span> if it's a start button with HTML.
+Start buttons use flexbox, which removes whitespace from between HTML elements
+inside of them. -#}
+
+{%- set buttonText %}
+  {%- if params.html and params.isStartButton -%}
+    <span>{{ params.html | safe | trim }}</span>
+  {%- else -%}
+    {{- (params.html | safe | trim) if params.html else params.text -}}
+  {%- endif %}
+{%- endset %}
+
 {#- Actually create a button... or a link! #}
 
 {%- if params.href %}
 <a href="{{ params.href if params.href else '#' }}" role="button" draggable="false" {{- commonAttributes | safe }}>
-  {{ params.html | safe | trim | indent(2) if params.html else params.text }}
+  {{ buttonText | safe | indent(2) }}
   {{- _startIcon() | safe if params.isStartButton }}
 </a>
 
@@ -39,7 +51,7 @@
   {%- if params.disabled %} disabled aria-disabled="true"{% endif %}
   {%- if params.preventDoubleClick !== undefined %} data-prevent-double-click="{{ params.preventDoubleClick }}"{% endif %}
   {{- commonAttributes | safe }}>
-  {{ params.html | safe | trim | indent(2) if params.html else params.text }}
+  {{ buttonText | safe | indent(2) }}
   {{- _startIcon() | safe if params.isStartButton }}
 </button>
 

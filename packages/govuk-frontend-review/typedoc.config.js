@@ -1,11 +1,11 @@
 const { join, relative } = require('path')
 
 const { paths } = require('@govuk-frontend/config')
+const { slash } = require('@govuk-frontend/lib/files')
 const {
   packageResolveToPath,
   packageNameToPath
 } = require('@govuk-frontend/lib/names')
-const slash = require('slash')
 const typedoc = require('typedoc')
 
 const basePath = join(packageNameToPath('govuk-frontend'), 'src')

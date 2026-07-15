@@ -56,7 +56,7 @@
     "@jest/environment": "^30.3.0",
     "@octokit/plugin-rest-endpoint-methods": "^17.0.0",
     "@octokit/rest": "22.0.1",
-    "@percy/core": "^1.31.14",
+    "@percy/core": "^1.32.2",
     "@testing-library/jest-dom": "^6.9.1",
     "@types/browser-sync": "^2.29.1",
     "@types/express": "^5.0.6",
@@ -65,14 +65,14 @@
     "@types/jest-axe": "^3.5.9",
     "@types/js-yaml": "^4.0.9",
     "@types/mime-types": "^3.0.1",
-    "@types/node": "^25.9.1",
+    "@types/node": "^26.0.1",
     "@types/nunjucks": "^3.2.6",
     "@types/semver": "^7.7.1",
     "@types/slug": "^5.0.9",
     "@types/vinyl": "^2.0.12",
     "@typescript-eslint/eslint-plugin": "^8.39.0",
     "@typescript-eslint/parser": "^8.38.0",
-    "concurrently": "^9.2.1",
+    "concurrently": "^10.0.3",
     "cross-env": "^10.1.0",
     "del-cli": "^7.0.0",
     "editorconfig-checker": "^6.1.1",
@@ -109,20 +109,8 @@
     "typescript": "^5.9.3"
   },
   "overrides": {
-    "chokidar@^2": {
-      "glob-parent": "^5"
-    },
-    "glob-stream@^6": {
-      "glob-parent": "^5"
-    },
     "latest-version@^5": {
       "package-json": "^7"
-    },
-    "sass-convert": {
-      "semver-regex": "^3"
-    },
-    "sassdoc-extras@^2": {
-      "marked": "^0.8.2"
     }
   }
 }

@@ -46,7 +46,7 @@ jobs:
           } >> $GITHUB_STEP_SUMMARY
 
       - name: Checkout
-        uses: actions/checkout@v6.0.2
+        uses: actions/checkout@v7.0.0
 
       - name: Setup Node
         uses: actions/setup-node@v6.4.0

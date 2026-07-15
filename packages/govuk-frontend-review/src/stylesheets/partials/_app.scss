@@ -6,7 +6,7 @@
 
 // Darken page background for previewing inversely coloured components
 .app-template__body--inverse {
-  background-color: govuk-colour("blue");
+  background-color: govuk-functional-colour(brand);
 }
 
 .app-template__body--component-preview.app-template__body--inverse {

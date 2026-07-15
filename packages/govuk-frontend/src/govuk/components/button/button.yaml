@@ -247,6 +247,12 @@ examples:
       href: '/'
       text: Start now link button
       isStartButton: true
+  - name: start link with html
+    hidden: true
+    options:
+      href: '/'
+      html: Start <em>now</em>
+      isStartButton: true
   - name: prevent double click
     hidden: true
     options:
