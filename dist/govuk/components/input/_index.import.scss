@@ -1,0 +1,11 @@
+@use "mixin";
+
+@import "../../base";
+@import "../error-message";
+@import "../hint";
+@import "../label";
+
+@include govuk-exports("govuk/component/input") {
+  @include mixin.styles;
+}
+

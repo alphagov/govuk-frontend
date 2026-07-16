@@ -1,0 +1,108 @@
+[
+    {
+        "name": "titleText",
+        "type": "string",
+        "required": true,
+        "description": "If `titleHtml` is set, this is not required. Text to use within the panel. If `titleHtml` is provided, the `titleText` option will be ignored."
+    },
+    {
+        "name": "titleHtml",
+        "type": "string",
+        "required": true,
+        "description": "If `titleText` is set, this is not required. HTML to use within the panel. If `titleHtml` is provided, the `titleText` option will be ignored."
+    },
+    {
+        "name": "headingLevel",
+        "type": "integer",
+        "required": false,
+        "description": "Heading level, from `1` to `6`. Default is `1`."
+    },
+    {
+        "name": "text",
+        "type": "string",
+        "required": true,
+        "description": "If `html` is set, this is not required. Text to use within the panel content. If `html` is provided, the `text` option will be ignored."
+    },
+    {
+        "name": "html",
+        "type": "string",
+        "required": true,
+        "description": "If `text` is set, this is not required. HTML to use within the panel content. If `html` is provided, the `text` option will be ignored."
+    },
+    {
+        "name": "caller",
+        "type": "nunjucks-block",
+        "required": false,
+        "description": "Not strictly a parameter but [Nunjucks code convention](https://mozilla.github.io/nunjucks/templating.html#call). Using a `call` block enables you to call a macro with all the text inside the tag. This is helpful if you want to pass a lot of content into a macro. To use it, you will need to wrap the entire panel component in a `call` block."
+    },
+    {
+        "name": "classes",
+        "type": "string",
+        "required": false,
+        "description": "Classes to add to the panel container."
+    },
+    {
+        "name": "attributes",
+        "type": "object",
+        "required": false,
+        "description": "HTML attributes (for example data attributes) to add to the panel container."
+    },
+    {
+        "name": "actions",
+        "type": "object",
+        "required": false,
+        "description": "Can be used when creating an [interruption panel](https://design-system.service.gov.uk/components/panel/#interruption-panel) which will add a button or link. Default is `button` unless you set `href` which will show the action as a link.",
+        "params": [
+            {
+                "name": "items",
+                "type": "array",
+                "required": false,
+                "description": "The list of buttons or links to display at the end of an Interruption panel.",
+                "params": [
+                    {
+                        "name": "text",
+                        "type": "string",
+                        "required": true,
+                        "description": "The button or link text."
+                    },
+                    {
+                        "name": "type",
+                        "type": "string",
+                        "required": false,
+                        "description": "The type of button – `\"button\"` or `\"submit\"`. If `href` is provided, set `type` to `\"button\"` render a link styled as a button."
+                    },
+                    {
+                        "name": "href",
+                        "type": "string",
+                        "required": false,
+                        "description": "The `href` for a link. Set `type` to `\"button\"` and set `href` to render a link styled as a button."
+                    },
+                    {
+                        "name": "classes",
+                        "type": "string",
+                        "required": false,
+                        "description": "The additional classes that you want to add to the button or link."
+                    },
+                    {
+                        "name": "attributes",
+                        "type": "object",
+                        "required": false,
+                        "description": "The additional attributes that you want to add to the button or link. For example, data attributes."
+                    }
+                ]
+            },
+            {
+                "name": "classes",
+                "type": "string",
+                "required": false,
+                "description": "The additional classes that you want to add to the `govuk-panel__actions` element that wraps the buttons or links."
+            },
+            {
+                "name": "attributes",
+                "type": "object",
+                "required": false,
+                "description": "The additional attributes that you want to add to the `govuk-panel__actions` element that wraps the buttons or links. For example, data attributes."
+            }
+        ]
+    }
+]

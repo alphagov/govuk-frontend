@@ -1,0 +1,110 @@
+{#
+  Renders component attributes as string
+
+  * By default or using `optional: false`, attributes render as ` name="value"`
+  * Using `optional: true`, attributes with empty (`null`, `undefined` or `false`) values are omitted
+  * Using `optional: true`, attributes with `true` (boolean) values render `name` only without value
+
+  {@link https://developer.mozilla.org/en-US/docs/Glossary/Boolean/HTML}
+
+  @example
+  Output attribute ` aria-hidden="true"` when `true` (boolean) or `"true"` (string)
+
+  ```njk
+  govukAttributes({
+    "aria-hidden": true
+  })
+  ```
+
+  @example
+  Output attribute ` aria-hidden="false"` when `false` (boolean) or `"false"` (string)
+
+  ```njk
+  govukAttributes({
+    "aria-hidden": false
+  })
+  ```
+
+  @example
+  Output attribute ` hidden=""` when `null`, `undefined` or empty `""` (string)
+
+  ```njk
+  govukAttributes({
+    "hidden": undefined
+  })
+  ```
+
+  @example
+  Output attribute ` hidden` as boolean attribute when optional and `true`
+
+  ```njk
+  govukAttributes({
+    hidden: {
+      value: true,
+      optional: true
+    },
+  })
+  ```
+
+  @example
+  Output empty string when optional and `null`, `undefined` or `false`
+
+  ```njk
+  govukAttributes({
+    hidden: {
+      value: undefined,
+      optional: true
+    },
+  })
+  ```
+
+  @private
+  @param {{ [attribute: string]: string | { value: string, optional?: boolean } } | string} attributes - Component attributes param
+#}
+{% macro govukAttributes(attributes) -%}
+  {#- Default attributes output as string -#}
+  {% set attributesHtml = attributes if attributes is string else "" %}
+
+  {#- Default attributes output as `safe` filtered string -#}
+  {%- if attributes is escaped and attributes.val is string %}
+    {% set attributesHtml = attributes %}
+
+  {#- Append attribute name/value pairs -#}
+  {%- elif attributes is mapping and attributes is not escaped %}
+    {% for name, item in attributes %}
+      {#- Set default attribute options -#}
+      {% set options = item if item is mapping and item is not escaped else {
+        value: item,
+        optional: false
+      } %}
+
+      {#- Remove values when not provided -#}
+      {%- if options.value in [undefined, null] %}
+        {% set value = null %}
+        {% set valueEscaped = "" %}
+
+      {#- Extract unescaped value when `safe` filtered -#}
+      {#- https://github.com/alphagov/govuk-frontend/issues/4937 -#}
+      {%- elif options.value is escaped %}
+        {% set value = options.value.val %}
+        {% set valueEscaped = options.value %}
+
+      {#- Otherwise assume escaping is necessary -#}
+      {#- https://github.com/alphagov/govuk-frontend/issues/4940 -#}
+      {%- else %}
+        {% set value = options.value %}
+        {% set valueEscaped = options.value | escape %}
+      {% endif %}
+
+      {#- Output ` name` only (no value) for boolean attributes -#}
+      {% if options.optional === true and value === true %}
+        {% set attributesHtml = attributesHtml + " " + name | escape %}
+      {#- Skip optional empty attributes or output ` name="value"` pair by default -#}
+      {% elif (options.optional === true and value not in [undefined, null, false]) or options.optional !== true %}
+        {% set attributesHtml = attributesHtml + " " + name | escape + '="' + valueEscaped + '"' %}
+      {% endif %}
+    {% endfor %}
+  {% endif -%}
+
+  {{- attributesHtml | safe -}}
+{%- endmacro %}

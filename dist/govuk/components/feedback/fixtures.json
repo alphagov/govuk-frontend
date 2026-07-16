@@ -1,0 +1,95 @@
+{
+    "component": "feedback",
+    "fixtures": [
+        {
+            "name": "default",
+            "options": {
+                "titleText": "Help us improve this service",
+                "html": "<p class=\"govuk-body\">Tell us about your experience using this service. <a href=\"#\" class=\"govuk-link\">Give us your feedback</a></p>\n"
+            },
+            "hidden": false,
+            "description": "",
+            "pageTemplateOptions": {},
+            "screenshot": true,
+            "html": "<div class=\"govuk-feedback govuk-width-container\">\n  <div class=\"govuk-grid-row\">\n    <div class=\"govuk-grid-column-two-thirds\">\n      <h2 class=\"govuk-feedback__title\">\n        Help us improve this service\n      </h2>\n        <div class=\"govuk-feedback__body\">\n            <p class=\"govuk-body\">Tell us about your experience using this service. <a href=\"#\" class=\"govuk-link\">Give us your feedback</a></p>\n        </div>\n    </div>\n  </div>\n</div>"
+        },
+        {
+            "name": "silly example",
+            "options": {
+                "titleText": "Help us improve this service",
+                "html": "<p class=\"govuk-body\">Tell us about your experience using this service.</p>\n<p class=\"govuk-body\">Click this cool link to <a href=\"#\" class=\"govuk-link\">give us your feedback</a>.</p>\n<p class=\"govuk-body\">There's another paragraph here.</p>\n<ul class=\"govuk-list govuk-list--bullet\">\n  <li>There is also a list</li>\n  <li>With items in</li>\n  <li>How strange!</li>\n</ul>\n"
+            },
+            "hidden": false,
+            "description": "In reality we'd recommend users only use the default example but this is to illustrate if a service team decides they want to add a lot of content",
+            "pageTemplateOptions": {},
+            "screenshot": false,
+            "html": "<div class=\"govuk-feedback govuk-width-container\">\n  <div class=\"govuk-grid-row\">\n    <div class=\"govuk-grid-column-two-thirds\">\n      <h2 class=\"govuk-feedback__title\">\n        Help us improve this service\n      </h2>\n        <div class=\"govuk-feedback__body\">\n            <p class=\"govuk-body\">Tell us about your experience using this service.</p>\n    <p class=\"govuk-body\">Click this cool link to <a href=\"#\" class=\"govuk-link\">give us your feedback</a>.</p>\n    <p class=\"govuk-body\">There's another paragraph here.</p>\n    <ul class=\"govuk-list govuk-list--bullet\">\n      <li>There is also a list</li>\n      <li>With items in</li>\n      <li>How strange!</li>\n    </ul>\n        </div>\n    </div>\n  </div>\n</div>"
+        },
+        {
+            "name": "html in title",
+            "options": {
+                "titleHtml": "Help us improve this <em>cool</em> service",
+                "html": "<p class=\"govuk-body\">Tell us about your experience using this service. <a href=\"#\" class=\"govuk-link\">Give us your feedback</a></p>\n"
+            },
+            "hidden": true,
+            "description": "",
+            "pageTemplateOptions": {},
+            "screenshot": false,
+            "html": "<div class=\"govuk-feedback govuk-width-container\">\n  <div class=\"govuk-grid-row\">\n    <div class=\"govuk-grid-column-two-thirds\">\n      <h2 class=\"govuk-feedback__title\">\n        Help us improve this <em>cool</em> service\n      </h2>\n        <div class=\"govuk-feedback__body\">\n            <p class=\"govuk-body\">Tell us about your experience using this service. <a href=\"#\" class=\"govuk-link\">Give us your feedback</a></p>\n        </div>\n    </div>\n  </div>\n</div>"
+        },
+        {
+            "name": "custom heading level",
+            "options": {
+                "titleText": "Help us improve this service",
+                "headingLevel": 3,
+                "html": "<p class=\"govuk-body\">Tell us about your experience using this service. <a href=\"#\" class=\"govuk-link\">Give us your feedback</a></p>\n"
+            },
+            "hidden": true,
+            "description": "",
+            "pageTemplateOptions": {},
+            "screenshot": false,
+            "html": "<div class=\"govuk-feedback govuk-width-container\">\n  <div class=\"govuk-grid-row\">\n    <div class=\"govuk-grid-column-two-thirds\">\n      <h3 class=\"govuk-feedback__title\">\n        Help us improve this service\n      </h3>\n        <div class=\"govuk-feedback__body\">\n            <p class=\"govuk-body\">Tell us about your experience using this service. <a href=\"#\" class=\"govuk-link\">Give us your feedback</a></p>\n        </div>\n    </div>\n  </div>\n</div>"
+        },
+        {
+            "name": "html in text options",
+            "options": {
+                "titleText": "Help us improve this <em>cool</em> service",
+                "text": "Tell us about your experience using this <em>cool</em> service"
+            },
+            "hidden": true,
+            "description": "",
+            "pageTemplateOptions": {},
+            "screenshot": false,
+            "html": "<div class=\"govuk-feedback govuk-width-container\">\n  <div class=\"govuk-grid-row\">\n    <div class=\"govuk-grid-column-two-thirds\">\n      <h2 class=\"govuk-feedback__title\">\n        Help us improve this &lt;em&gt;cool&lt;/em&gt; service\n      </h2>\n        <div class=\"govuk-feedback__body\">\n            <p class=\"govuk-body\">\n              Tell us about your experience using this &lt;em&gt;cool&lt;/em&gt; service\n            </p>\n        </div>\n    </div>\n  </div>\n</div>"
+        },
+        {
+            "name": "classes",
+            "options": {
+                "titleText": "Help us improve this service",
+                "html": "<p class=\"govuk-body\">Tell us about your experience using this service. <a href=\"#\" class=\"govuk-link\">Give us your feedback</a></p>\n",
+                "classes": "my-first-class my-second-class"
+            },
+            "hidden": true,
+            "description": "",
+            "pageTemplateOptions": {},
+            "screenshot": false,
+            "html": "<div class=\"govuk-feedback govuk-width-container my-first-class my-second-class\">\n  <div class=\"govuk-grid-row\">\n    <div class=\"govuk-grid-column-two-thirds\">\n      <h2 class=\"govuk-feedback__title\">\n        Help us improve this service\n      </h2>\n        <div class=\"govuk-feedback__body\">\n            <p class=\"govuk-body\">Tell us about your experience using this service. <a href=\"#\" class=\"govuk-link\">Give us your feedback</a></p>\n        </div>\n    </div>\n  </div>\n</div>"
+        },
+        {
+            "name": "attributes",
+            "options": {
+                "titleText": "Help us improve this service",
+                "html": "<p class=\"govuk-body\">Tell us about your experience using this service. <a href=\"#\" class=\"govuk-link\">Give us your feedback</a></p>\n",
+                "attributes": {
+                    "first-attribute": "first",
+                    "second-attribute": "second"
+                }
+            },
+            "hidden": true,
+            "description": "",
+            "pageTemplateOptions": {},
+            "screenshot": false,
+            "html": "<div class=\"govuk-feedback govuk-width-container\" first-attribute=\"first\" second-attribute=\"second\">\n  <div class=\"govuk-grid-row\">\n    <div class=\"govuk-grid-column-two-thirds\">\n      <h2 class=\"govuk-feedback__title\">\n        Help us improve this service\n      </h2>\n        <div class=\"govuk-feedback__body\">\n            <p class=\"govuk-body\">Tell us about your experience using this service. <a href=\"#\" class=\"govuk-link\">Give us your feedback</a></p>\n        </div>\n    </div>\n  </div>\n</div>"
+        }
+    ]
+}
