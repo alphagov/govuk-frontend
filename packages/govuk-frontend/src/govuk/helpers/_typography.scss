@@ -144,12 +144,13 @@
 ///   height. Omit to use the line height from the font map.
 /// @param {Boolean} $important [false] - Whether to mark declarations as
 ///   `!important`.
+/// @param {Boolean} $fixed-breakpoint [false] - Force a fixed breakpoint from the responsive type scale
 ///
 /// @throw if `$size` is not a valid point from the type scale
 ///
 /// @access public
 
-@mixin govuk-font-size($size, $line-height: false, $important: false) {
+@mixin govuk-font-size($size, $line-height: false, $important: false, $fixed-breakpoint: false) {
   // Flag font sizes that start with underscores so we can suppress warnings on
   // deprecated sizes used internally, for example `govuk-font($size: "_14")`
   $size-internal-use-only: string.slice(#{$size}, 1, 1) == "_";
@@ -218,18 +219,25 @@
     $font-size-rem: $font-size-rem govuk-if($important, !important);
     $calculated-line-height: $calculated-line-height govuk-if($important, !important);
 
-    @if not $breakpoint {
-      font-size: $font-size-rem;
-      line-height: $calculated-line-height;
-    } @else if $breakpoint == "print" {
-      @media print {
-        font-size: $font-size;
+    @if $fixed-breakpoint {
+      @if $fixed-breakpoint == $breakpoint {
+        font-size: $font-size-rem;
         line-height: $calculated-line-height;
       }
     } @else {
-      @media #{govuk-from-breakpoint($breakpoint)} {
+      @if not $breakpoint {
         font-size: $font-size-rem;
         line-height: $calculated-line-height;
+      } @else if $breakpoint == "print" {
+        @media print {
+          font-size: $font-size;
+          line-height: $calculated-line-height;
+        }
+      } @else {
+        @media #{govuk-from-breakpoint($breakpoint)} {
+          font-size: $font-size-rem;
+          line-height: $calculated-line-height;
+        }
       }
     }
   }
