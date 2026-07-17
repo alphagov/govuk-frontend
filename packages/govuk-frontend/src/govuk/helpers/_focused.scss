@@ -2,6 +2,8 @@
 /// @group helpers/accessibility
 ////
 
+@use "sass:string";
+
 @use "../settings/measurements" as *;
 @use "../tools/if" as *;
 @use "colour" as *;
@@ -33,7 +35,11 @@
   // so the presence of a custom property
   // does not invalidate the whole `outline` declaration.
   @if $appearance == transparent {
-    outline-color: transparent;
+    // Use a custom property to set the transparent outline
+    // so that browsers not supporting custom property
+    // will see an outline
+    --_govuk-outline-colour: transparent;
+    outline-color: var(--_govuk-outline-colour);
   } @else {
     outline-color: govuk-functional-colour(focus);
   }
