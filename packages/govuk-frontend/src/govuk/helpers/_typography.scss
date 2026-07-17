@@ -219,12 +219,7 @@
     $font-size-rem: $font-size-rem govuk-if($important, !important);
     $calculated-line-height: $calculated-line-height govuk-if($important, !important);
 
-    @if $breakpoint == "print" {
-      @media print {
-        font-size: $font-size;
-        line-height: $calculated-line-height;
-      }
-    } @else if $fixed-breakpoint {
+    @if $fixed-breakpoint {
       @if $fixed-breakpoint == $breakpoint {
         font-size: $font-size-rem;
         line-height: $calculated-line-height;
@@ -233,6 +228,11 @@
       @if not $breakpoint {
         font-size: $font-size-rem;
         line-height: $calculated-line-height;
+      } @else if $breakpoint == "print" {
+        @media print {
+          font-size: $font-size;
+          line-height: $calculated-line-height;
+        }
       } @else {
         @media #{govuk-from-breakpoint($breakpoint)} {
           font-size: $font-size-rem;
