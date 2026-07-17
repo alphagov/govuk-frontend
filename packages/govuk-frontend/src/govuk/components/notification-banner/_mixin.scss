@@ -15,8 +15,7 @@
     border-color: var(--_govuk-notification-banner-colour);
 
     &:focus {
-      outline: base.$govuk-focus-width solid;
-      outline-color: base.govuk-functional-colour(focus);
+      @include base.govuk-focus-outline;
     }
   }
 
