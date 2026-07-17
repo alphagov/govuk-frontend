@@ -40,7 +40,7 @@ We should also review the GOV.UK Design System overview canvases we have on each
 
 We should decide whether we need to update the following places on the website:
 
-- the "What's New" section on the homepage of the website - the content for this section can be found in [/views/partials/\_whats-new.njk](https://github.com/alphagov/govuk-design-system/blob/main/views/partials/_whats-new.njk)
+- the "What's New" section on the homepage of the website - the content for this section can be found in [/views/partials/\_whats-new.md](https://github.com/alphagov/govuk-design-system/blob/main/views/partials/_whats-new.md)
 - the aliases section in the metadata of the [Upcoming components and patterns page](https://github.com/alphagov/govuk-design-system/blob/main/src/community/upcoming-components-patterns/index.md?plain=1) to make sure that searches on the website for a new component no longer point at that page
 
 ## Tidy up our issue list and sprint board
