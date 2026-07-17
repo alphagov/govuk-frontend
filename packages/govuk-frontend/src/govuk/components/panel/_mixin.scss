@@ -78,7 +78,7 @@
 
     // Smaller title to go alongside smaller body text.
     .govuk-panel__title {
-      @include base.govuk-font-size($size: 36, $fixed-breakpoint: "tablet");
+      @include base.govuk-font-size($size: 36);
       margin-bottom: base.govuk-spacing(3);
     }
   }
