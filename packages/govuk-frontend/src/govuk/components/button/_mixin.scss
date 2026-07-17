@@ -38,6 +38,12 @@
   }
 
   .govuk-button {
+    // These values should only apply if custom properties are supported
+    // so we make them custom properties as well
+    --_govuk-button-border: #{base.$govuk-border-width-form-element} solid transparent;
+    --_govuk-button-border-radius: 0;
+    --_govuk-button-appearance: none;
+
     @include base.govuk-font($size: 19, $line-height: 19px);
 
     box-sizing: border-box;
@@ -50,15 +56,15 @@
     @include base.govuk-responsive-margin(6, "bottom", $adjustment: $button-shadow-size); // s2
     padding: (base.govuk-spacing(2) - base.$govuk-border-width-form-element) base.govuk-spacing(2)
       (base.govuk-spacing(2) - base.$govuk-border-width-form-element - ($button-shadow-size * 0.5)); // s1
-    border: base.$govuk-border-width-form-element solid transparent;
-    border-radius: 0;
+    border: var(--_govuk-button-border);
+    border-radius: var(--_govuk-button-border-radius);
     color: var(--_govuk-button-text-colour);
     background-color: var(--_govuk-button-background-colour);
     box-shadow: 0 $button-shadow-size 0 var(--_govuk-button-shadow-colour); // s0
     text-align: center;
     vertical-align: top;
     cursor: pointer;
-    -webkit-appearance: none;
+    -webkit-appearance: var(--_govuk-button-appearance);
 
     @media #{base.govuk-from-breakpoint(tablet)} {
       width: auto;
