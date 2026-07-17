@@ -86,7 +86,14 @@ If you're new to testing, see existing test files for examples of things to do. 
 
 Some test files use examples from each component’s `.yaml` file, for example `packages/govuk-frontend/src/govuk/components/button/button.yaml`. When you add or update these tests, you can use the existing examples or add new ones.
 
-Use `hidden: true` in a new example if you do not want to include the example in the review app. The example will still appear in our [test fixtures](http://frontend.design-system.service.gov.uk/testing-your-html/).
+Examples with no visual changes, for example HTML attribute changes, should be hidden using `hidden: true`.
+
+Hidden examples will:
+
+- be removed from the component's overview page in the GOV.UK Frontend review application
+- still appear in GOV.UK Frontend's [test fixtures](http://frontend.design-system.service.gov.uk/testing-your-html/)
+
+To visit hidden examples in the review application use a direct URL, for example the [hidden "start link" Button example](https://github.com/alphagov/govuk-frontend/blob/cd357d1b33be497349cb268febff8a5ee03aa664/packages/govuk-frontend/src/govuk/components/button/button.yaml#L244) can be accessed at "[/components/button/start-link/preview](https://govuk-frontend-review.herokuapp.com/components/button/start-link/preview).
 
 All tests should try and meet [our testing conventions](../releasing/testing-and-linting.md#conventions)
 
