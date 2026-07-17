@@ -3,6 +3,9 @@
 ////
 
 @use "sass:math";
+@use "sass:map";
+
+@use "../tools/if" as *;
 
 /// Convert line-heights specified in pixels into a relative value, unless
 /// they are already unit-less (and thus already treated as relative values)
@@ -20,4 +23,48 @@
   }
 
   @return $line-height;
+}
+
+/// TODO
+///
+/// @param {Number} TODO
+///
+/// @access private
+
+@mixin font-size-and-line-height($breakpoint: false, $font-map: false, $line-height: false, $important: false) {
+  $breakpoint-map: map.get($font-map, $breakpoint);
+  $font-size: map.get($breakpoint-map, "font-size");
+
+  // $calculated-line-height is a separate variable from $line-height,
+  // as otherwise the value would get redefined with each loop and
+  // eventually break typography--internal.line-height.
+  // 1. See if the function was called with a specific line-height
+  $calculated-line-height: $line-height;
+  // 2. Default to the breakpoint-map if no specific value was given
+  @if not $calculated-line-height {
+    $calculated-line-height: map.get($breakpoint-map, "line-height");
+  }
+
+  // 3. Turn the value into a unitless line-height if possible
+  // We continue to call the param $line-height to stay consistent with the
+  // naming with govuk-font.
+  $calculated-line-height: line-height(
+    $line-height: $calculated-line-height,
+    $font-size: $font-size
+  );
+
+  // Print styles do not need converting to rem as they're pt
+  $calculated-font-size: $font-size;
+  @if not $breakpoint == "print" {
+    $calculated-font-size: govuk-px-to-rem($font-size);
+  }
+
+  // Mark rules as !important if $important is true - this will result in
+  // these variables becoming strings, so this needs to happen *after* they
+  // are used in calculations
+  $calculated-font-size: $calculated-font-size govuk-if($important, !important);
+  $calculated-line-height: $calculated-line-height govuk-if($important, !important);
+
+  font-size: $calculated-font-size;
+  line-height: $calculated-line-height;
 }

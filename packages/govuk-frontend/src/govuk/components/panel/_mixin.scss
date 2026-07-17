@@ -1,4 +1,16 @@
+@use "sass:map";
+
 @use "../../base";
+@use "../../helpers/typography--internal";
+
+/// @access private
+@mixin _title-size($size) {
+  $font-map: map.get(base.$govuk-typography-scale, $size);
+  @include typography--internal.font-size-and-line-height("tablet", $font-map);
+  @media print {
+    @include typography--internal.font-size-and-line-height("print", $font-map);
+  }
+}
 
 /// @access private
 @mixin styles {
@@ -37,8 +49,8 @@
   }
 
   .govuk-panel__title {
-    @include base.govuk-font-size($size: 48);
-    @include base.govuk-typography-weight-bold;
+    @include base.govuk-font($size: 48, $weight: bold);
+
     margin-top: 0;
     margin-bottom: base.govuk-spacing(6);
   }
@@ -78,7 +90,7 @@
 
     // Smaller title to go alongside smaller body text.
     .govuk-panel__title {
-      @include base.govuk-font-size($size: 36);
+      @include _title-size($size: 36);
       margin-bottom: base.govuk-spacing(3);
     }
   }
