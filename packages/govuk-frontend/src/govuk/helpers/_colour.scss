@@ -149,13 +149,18 @@
 /// @throws if the `variant` is present but falsy
 /// @access public
 @function govuk-resolve-colour($colour-reference) {
-  // If the reference is already a colour, return the colour
-  @if meta.type-of($colour-reference) == "color" {
+  $colour-keywords: (currentcolor, inherit, initial, revert, revert-layer, unset);
+
+  // If the reference is already a valid colour value, return the value
+  @if meta.type-of($colour-reference) ==
+    "color" or
+    (meta.type-of($colour-reference) == "string" and list.index($colour-keywords, $colour-reference))
+  {
     @return $colour-reference;
   }
 
   @if meta.type-of($colour-reference) != "map" {
-    @error 'Colour reference should be a Sass colour or a Sass map';
+    @error 'Colour reference should be a colour value or a Sass map';
   }
 
   $name: map.get($colour-reference, "name");
