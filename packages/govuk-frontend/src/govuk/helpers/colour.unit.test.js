@@ -451,6 +451,26 @@ describe('@function govuk-resolve-colour', () => {
     })
   })
 
+  describe('when called with a colour keyword', () => {
+    it('returns the keyword as-is', async () => {
+      const sass = `
+      ${sassBootstrap}
+
+      .foo {
+        color: govuk-resolve-colour(inherit);
+      }
+    `
+
+      await expect(compileSassString(sass, sassConfig)).resolves.toMatchObject({
+        css: outdent`
+        .foo {
+          color: inherit;
+        }
+      `
+      })
+    })
+  })
+
   describe('when called with a map referring to the palette', () => {
     it('returns the hex representation of the colour', async () => {
       const sass = `
