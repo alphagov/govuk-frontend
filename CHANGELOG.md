@@ -12,6 +12,20 @@ We've added the [Feedback component](https://design-system.service.gov.uk/compon
 
 This was added in [pull request #7232: Add Feedback component](https://github.com/alphagov/govuk-frontend/pull/7232).
 
+### Recommended changes
+
+#### Update references to deprecated organisation colours
+
+Following the July 2026 machinery of government changes, we've made the following updates to Frontend's list of organisation colours:
+
+- `department-for-science-innovation-technology` has been deprecated
+- `department-for-business-trade` has been renamed to `department-for-business-innovation-science-trade` and the previous name deprecated
+- `department-for-culture-media-sport` has been renamed to `department-for-digital-culture-media-sport` and the previous name deprecated
+
+Deprecated organisation names will be removed in a future major release of GOV.UK Frontend.
+
+We made this change in [pull request #7306: Update organisation colours following July 2026 MoG changes](https://github.com/alphagov/govuk-frontend/pull/7306)
+
 ## v6.4.0 (Feature release)
 
 To install this version with npm, run `npm install govuk-frontend@6.4.0`. You can also find more information about [how to stay up to date](https://frontend.design-system.service.gov.uk/staying-up-to-date/#updating-to-the-latest-version) in our documentation.
