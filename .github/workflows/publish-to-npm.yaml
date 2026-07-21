@@ -1,5 +1,5 @@
-name: 'RELEASE: npm publish'
-run-name: 'RELEASE: npm publish to ${{inputs.environment}}'
+name: '[Release] Publish package to npm'
+run-name: '[Release] Publish package to npm (${{inputs.environment}})'
 
 on:
   workflow_dispatch:

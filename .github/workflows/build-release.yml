@@ -1,5 +1,5 @@
-name: 'RELEASE: Build release'
-run-name: "RELEASE: Build release (${{ join(inputs.*, ', ') }})"
+name: '[Release] Build release for review'
+run-name: "[Release] Build release for review (${{ join(inputs.*, ', ') }})"
 
 on:
   workflow_dispatch:

@@ -1,5 +1,5 @@
-name: 'RELEASE: GitHub release'
-run-name: 'RELEASE: GitHub release to ${{inputs.environment}}'
+name: '[Release] Publish to GitHub releases'
+run-name: '[Release] Publish to GitHub releases (${{inputs.environment}})'
 
 on:
   workflow_dispatch:
