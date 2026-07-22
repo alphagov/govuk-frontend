@@ -41,7 +41,7 @@
 
   {{- govukI18nAttributes({
     key: 'hide-section-aria-label',
-    message: params.hideSectionAriaLabelText
+    message: params.hideSectionAriaLabel if params.hideSectionAriaLabel else params.hideSectionAriaLabelText
   }) -}}
 
   {{- govukI18nAttributes({
@@ -56,7 +56,7 @@
 
   {{- govukI18nAttributes({
     key: 'show-section-aria-label',
-    message: params.showSectionAriaLabelText
+    message: params.showSectionAriaLabel if params.showSectionAriaLabel else params.showSectionAriaLabelText
   }) -}}
 
   {%- if params.rememberExpanded !== undefined %} data-remember-expanded="{{ params.rememberExpanded | escape }}"{% endif %}

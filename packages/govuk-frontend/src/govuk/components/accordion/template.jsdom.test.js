@@ -152,6 +152,24 @@ describe('Accordion', () => {
       )
     })
 
+    it('renders with deprecated `aria-label` parameters', () => {
+      document.body.innerHTML = render(
+        'accordion',
+        examples['with deprecated aria-label parameters']
+      )
+      const $component = document.querySelector('.govuk-accordion')
+
+      expect($component).toHaveAttribute(
+        'data-i18n.hide-section-aria-label',
+        'Collapse this section'
+      )
+
+      expect($component).toHaveAttribute(
+        'data-i18n.show-section-aria-label',
+        'Expand this section'
+      )
+    })
+
     it('renders with remember expanded data attribute', () => {
       document.body.innerHTML = render(
         'accordion',
