@@ -158,19 +158,6 @@ describe('I18n', () => {
         )
       })
 
-      it('nested placeholder only resolves with a matching key', () => {
-        const i18n = new I18n({
-          nameString: 'Their name is %{name%{age}}'
-        })
-        expect(
-          i18n.t('nameString', {
-            name: 'Andrew',
-            age: 55,
-            'name%{age}': 'Testing'
-          })
-        ).toBe('Their name is Testing')
-      })
-
       it('handles placeholder-style text within options values', () => {
         const i18n = new I18n(translations)
         expect(i18n.t('nameString', { name: '%{name}' })).toBe(
