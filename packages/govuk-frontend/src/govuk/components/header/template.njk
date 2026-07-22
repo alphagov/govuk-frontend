@@ -4,7 +4,7 @@
 {% set logoContent -%}
   {{ govukLogo({
     classes: "govuk-header__logotype",
-    ariaLabelText: "GOV.UK"
+    ariaLabel: "GOV.UK"
   }) | trim }}
   {% if (params.productName) -%}
     <span class="govuk-header__product-name">
