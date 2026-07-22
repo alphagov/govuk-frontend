@@ -23,6 +23,8 @@ We've changed some of the Nunjucks parameters relating to `aria-label` attribute
 - Pagination: `item.visuallyHiddenText` has changed to `item.ariaLabel`
 - Password input: `showPasswordAriaLabelText` has changed to `showPasswordAriaLabel`
 - Password input: `hidePasswordAriaLabelText` has changed to `hidePasswordAriaLabel`
+- Service navigation: `menuButtonLabel` has changed to `menuButtonAriaLabel`
+- Service navigation: `navigationLabel` has changed to `ariaLabel`
 
 Update any references to these parameters to use the new names. The old names have been deprecated and will be removed in the next major version of GOV.UK Frontend.
 

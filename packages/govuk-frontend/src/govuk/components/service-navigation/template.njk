@@ -35,9 +35,10 @@ data-module="govuk-service-navigation"
       {% set navigationItems = params.navigation | default([]) | select("truthy") %}
       {% set collapseNavigationOnMobile = params.collapseNavigationOnMobile | default(navigationItems.length > 1) %}
       {% if navigationItems | length or params.slots.navigationStart or params.slots.navigationEnd %}
-        <nav aria-label="{{ params.navigationLabel | default(menuButtonText, true) }}" class="govuk-service-navigation__wrapper {%- if params.navigationClasses %} {{ params.navigationClasses }}{% endif %}">
+        <nav aria-label="{{ params.ariaLabel if params.ariaLabel else (params.navigationLabel | default(menuButtonText, true)) }}" class="govuk-service-navigation__wrapper {%- if params.navigationClasses %} {{ params.navigationClasses }}{% endif %}">
           {% if collapseNavigationOnMobile %}
-          <button type="button" class="govuk-service-navigation__toggle govuk-js-service-navigation-toggle" aria-controls="{{ navigationId }}" {%- if params.menuButtonLabel and params.menuButtonLabel != menuButtonText %} aria-label="{{ params.menuButtonLabel }}"{% endif %} hidden aria-hidden="true">
+          {%- set menuButtonAriaLabel = params.menuButtonAriaLabel if params.menuButtonAriaLabel else params.menuButtonLabel %}
+          <button type="button" class="govuk-service-navigation__toggle govuk-js-service-navigation-toggle" aria-controls="{{ navigationId }}" {%- if menuButtonAriaLabel and menuButtonAriaLabel != menuButtonText %} aria-label="{{ menuButtonAriaLabel }}"{% endif %} hidden aria-hidden="true">
             {{ menuButtonText }}
           </button>
           {% endif %}

@@ -160,6 +160,22 @@ describe('Service Navigation', () => {
         expect(navId).toBe('main-nav')
         expect($navToggle.attr('aria-controls')).toBe(navId)
       })
+
+      it('renders deprecated `aria-label` parameters', () => {
+        const $ = render(
+          'service-navigation',
+          examples['with deprecated aria-label parameters']
+        )
+        const $component = $('.govuk-service-navigation')
+
+        const $nav = $component.find('nav.govuk-service-navigation__wrapper')
+        const $navToggle = $component.find('.govuk-service-navigation__toggle')
+
+        expect($nav.attr('aria-label')).toBe('Deprecated navigation')
+        expect($navToggle.attr('aria-label')).toBe(
+          'Enter the deprecated NavZone'
+        )
+      })
     })
 
     describe('toggle button', () => {
