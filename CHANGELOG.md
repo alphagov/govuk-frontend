@@ -18,6 +18,7 @@ This was added in [pull request #7232: Add Feedback component](https://github.co
 
 We've changed some of the Nunjucks parameters relating to `aria-label` attributes so that they're named consistently across our components.
 
+- Breadcrumbs: `labelText` has changed to `ariaLabel`
 - Pagination: `landmarkText` has changed to `ariaLabel`
 - Pagination: `item.visuallyHiddenText` has changed to `item.ariaLabel`
 
