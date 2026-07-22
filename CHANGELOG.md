@@ -21,6 +21,8 @@ We've changed some of the Nunjucks parameters relating to `aria-label` attribute
 - Breadcrumbs: `labelText` has changed to `ariaLabel`
 - Pagination: `landmarkText` has changed to `ariaLabel`
 - Pagination: `item.visuallyHiddenText` has changed to `item.ariaLabel`
+- Password input: `showPasswordAriaLabelText` has changed to `showPasswordAriaLabel`
+- Password input: `hidePasswordAriaLabelText` has changed to `hidePasswordAriaLabel`
 
 Update any references to these parameters to use the new names. The old names have been deprecated and will be removed in the next major version of GOV.UK Frontend.
 

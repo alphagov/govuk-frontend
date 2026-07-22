@@ -182,5 +182,20 @@ describe('Password input', () => {
         "Mae eich cyfrinair wedi'i guddio."
       )
     })
+
+    it('renders with deprecated `aria-label` parameters', () => {
+      const $ = render(
+        'password-input',
+        examples['with deprecated aria-label parameters']
+      )
+      const $component = $('[data-module]')
+
+      expect($component.attr('data-i18n.show-password-aria-label')).toBe(
+        'Reveal'
+      )
+      expect($component.attr('data-i18n.hide-password-aria-label')).toBe(
+        'Conceal'
+      )
+    })
   })
 })
