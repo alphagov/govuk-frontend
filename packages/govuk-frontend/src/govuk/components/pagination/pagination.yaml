@@ -8,10 +8,14 @@ params:
         type: string
         required: false
         description: The pagination item text – usually a page number.  Required unless the item is an ellipsis.
-      - name: visuallyHiddenText
+      - name: ariaLabel
         type: string
         required: false
         description: The visually hidden label for the pagination item, which will be applied to an `aria-label` and announced by screen readers on the pagination item link. Should include page number. Defaults to, for example "Page 1".
+      - name: visuallyHiddenText
+        type: string
+        required: false
+        description: Deprecated. Use `ariaLabel` instead.
       - name: href
         type: string
         required: false
@@ -78,10 +82,14 @@ params:
         type: object
         required: false
         description: The HTML attributes (for example, data attributes) you want to add to the anchor.
+  - name: ariaLabel
+    type: string
+    required: false
+    description: The accessible name for the navigation landmark that wraps the pagination. Defaults to `"Pagination"`.
   - name: landmarkLabel
     type: string
     required: false
-    description: The label for the navigation landmark that wraps the pagination. Defaults to `"Pagination"`.
+    description: Deprecated. Use `ariaLabel` instead.
   - name: classes
     type: string
     required: false
@@ -249,6 +257,22 @@ examples:
         href: '/previous'
       next:
         href: '/next'
+      ariaLabel: 'search'
+      items:
+        - number: 1
+          href: '/page/1'
+        - number: 2
+          href: '/page/2'
+          current: true
+        - number: 3
+          href: '/page/3'
+  - name: with custom navigation landmark (landmarkLabel)
+    hidden: true
+    options:
+      previous:
+        href: '/previous'
+      next:
+        href: '/next'
       landmarkLabel: 'search'
       items:
         - number: 1
@@ -259,6 +283,24 @@ examples:
         - number: 3
           href: '/page/3'
   - name: with custom accessible labels on item links
+    hidden: true
+    options:
+      previous:
+        href: '/previous'
+      next:
+        href: '/next'
+      items:
+        - number: 1
+          href: '/page/1'
+          ariaLabel: '1st page'
+        - number: 2
+          href: '/page/2'
+          current: true
+          ariaLabel: '2nd page (you are currently on this page)'
+        - number: 3
+          href: '/page/3'
+          ariaLabel: '3rd page'
+  - name: with custom accessible labels on item links (visuallyHiddenText)
     hidden: true
     options:
       previous:
