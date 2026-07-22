@@ -72,6 +72,17 @@ describe('I18n', () => {
         )
       })
 
+      it('throws an error if placeholder contains whitespace', () => {
+        expect(() => {
+          const i18n = new I18n({
+            person: '%{cat }'
+          })
+          i18n.t('person', { cat: 'Larry' })
+        }).toThrow(
+          'i18n: placeholder "%{cat }" has invalid key with whitespace'
+        )
+      })
+
       it('only matches %{} as a placeholder', () => {
         const i18n = new I18n({
           price: '%{name}, this } item %{ costs $5.00'

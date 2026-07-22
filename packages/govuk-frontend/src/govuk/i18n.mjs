@@ -9,6 +9,7 @@ import { isObject } from './common/index.mjs'
 export class I18n {
   translations
   locale
+  placeholderRegex
 
   /**
    * @internal
@@ -22,6 +23,14 @@ export class I18n {
 
     // The locale to use for PluralRules and NumberFormat
     this.locale = config.locale ?? (document.documentElement.lang || 'en')
+
+    /**
+     * Capture anything inside %{} but not if it contains a closing bracket }
+     * e.g "You have %{count} characters remaining" -> 'count'
+     * Set the regex to 'g' for global so it matches multiple placeholders
+     * e.g "You have %{count} characters remaining out of %{total}" -> 'count', 'total'
+     */
+    this.placeholderRegex = /%{([^}]+)}/g
   }
 
   /**
@@ -59,7 +68,7 @@ export class I18n {
 
     if (typeof translation === 'string') {
       // Check for %{} placeholders in the translation string
-      if (/%{(\S+)}/.test(translation)) {
+      if (this.placeholderRegex.test(translation)) {
         if (!options) {
           throw new Error(
             'i18n: cannot replace placeholders in string if no option data provided'
@@ -92,7 +101,7 @@ export class I18n {
       : undefined
 
     return translationString.replace(
-      /%{(\S+)}/g,
+      this.placeholderRegex,
 
       /**
        * Replace translation string placeholders
@@ -124,6 +133,13 @@ export class I18n {
           }
 
           return placeholderValue
+        }
+
+        // When a placeholder has whitespace, e.g. %{name }, throw a more useful error
+        if (/\s/.test(placeholderKey)) {
+          throw new Error(
+            `i18n: placeholder "${placeholderWithBraces}" has invalid key with whitespace`
+          )
         }
 
         throw new Error(
