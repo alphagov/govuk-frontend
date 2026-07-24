@@ -12,6 +12,12 @@ We've added the [Feedback component](https://design-system.service.gov.uk/compon
 
 This was added in [pull request #7232: Add Feedback component](https://github.com/alphagov/govuk-frontend/pull/7232).
 
+### Fixes
+
+We've made fixes to GOV.UK Frontend in the following pull requests:
+
+- [#7304: Ensure focus outline appears in browsers that don't support custom properties](https://github.com/alphagov/govuk-frontend/pull/7304)
+
 ## v6.4.0 (Feature release)
 
 To install this version with npm, run `npm install govuk-frontend@6.4.0`. You can also find more information about [how to stay up to date](https://frontend.design-system.service.gov.uk/staying-up-to-date/#updating-to-the-latest-version) in our documentation.
