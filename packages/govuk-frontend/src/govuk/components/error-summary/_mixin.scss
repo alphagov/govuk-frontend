@@ -11,9 +11,11 @@
     border-color: base.govuk-functional-colour(error);
     color: base.govuk-functional-colour(text);
 
-    &:focus {
-      outline: base.$govuk-focus-width solid;
-      outline-color: base.govuk-functional-colour(focus);
+    @include base.govuk-supports(govuk-functional-colour) {
+      &:focus {
+        outline: base.$govuk-focus-width solid;
+        outline-color: base.govuk-functional-colour(focus);
+      }
     }
   }
 
