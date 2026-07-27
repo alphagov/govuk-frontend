@@ -16,11 +16,11 @@ Developers must pair on releases, so do not publish on your own. You should crea
 
 ## Build the release
 
-1. Before running the build release workflow, make sure the [changelog](/CHANGELOG.md) is up to date with the latest release notes under the **Unreleased** heading - if it is not up to date, update it in a separate pull request before proceeding.
+1. Before running the "[Release] Build release for review" workflow, make sure the [changelog](/CHANGELOG.md) is up to date with the latest release notes under the **Unreleased** heading - if it is not up to date, update it in a separate pull request before proceeding.
 
 2. Open the [**Actions** tab](https://github.com/alphagov/govuk-frontend/actions) on the `alphagov/govuk-frontend` repo.
 
-3. Select the [RELEASE: Build release workflow](https://github.com/alphagov/govuk-frontend/actions/workflows/build-release.yml) and run the workflow:
+3. Select the ["[Release] Build release for review" workflow](https://github.com/alphagov/govuk-frontend/actions/workflows/build-release.yml) and run the workflow:
    1. Set the **Use workflow from** select field to `main` or the `support/*` branch you're releasing from.
    2. Set the **Release Type** select field to the version change, for example `major`.
    3. For pre-releases, set the **Prerelease label** input field, for example `beta`.
@@ -34,7 +34,7 @@ Developers must pair on releases, so do not publish on your own. You should crea
 
 1. Once you’ve merged the release pull request, open the **Actions** tab on the `alphagov/govuk-frontend` repo.
 
-2. Select the [RELEASE: npm publish workflow](https://github.com/alphagov/govuk-frontend/actions/workflows/publish-to-npm.yaml) and run the workflow:
+2. Select the ["[Release] Publish package to npm" workflow](https://github.com/alphagov/govuk-frontend/actions/workflows/publish-to-npm.yaml) and run the workflow:
    1. Set the **Use workflow from** select field to `main` or the `support/*` branch you're releasing from.
    2. Set the **Environment** select field to `production`.
    3. Select **Run workflow**.
@@ -51,7 +51,7 @@ Developers must pair on releases, so do not publish on your own. You should crea
 
 ## Create a release on GitHub
 
-1. Open the [RELEASE: GitHub release workflow](https://github.com/alphagov/govuk-frontend/actions/workflows/publish-release-to-github.yaml) and run the workflow:
+1. Open the ["[Release] Publish to GitHub releases" workflow](https://github.com/alphagov/govuk-frontend/actions/workflows/publish-release-to-github.yaml) and run the workflow:
    1. Set the **Use workflow from** select field to `main` or the `support/*` branch you're releasing from.
    2. Set the **Environment** select field to `production`.
    3. Select **Run workflow**.
