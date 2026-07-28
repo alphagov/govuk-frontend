@@ -1,0 +1,160 @@
+---
+title: Is your age correct?
+---
+
+{% extends "layouts/full-page-example.njk" %}
+
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/language-switcher/macro.njk" import govukLanguageSwitcher %}
+{% from "govuk/components/service-navigation/macro.njk" import govukServiceNavigation %}
+
+{% set pageTitle = example.title %}
+{% block pageTitle %}{{ example.title }} - GOV.UK{% endblock %}
+
+{% block containerStart %}
+  {{ govukBackLink({
+    href: "/",
+    text: "Back"
+  }) }}
+{% endblock %}
+
+{% block govukServiceNavigation %}
+    <style>
+      [popover]{
+        margin: 0;
+        position-area: end span-start;
+        position-try-fallbacks: flip-block, flip-inline, flip-block flip-inline;
+
+        border: 1px solid var(--govuk-border-colour);
+      }
+      .govuk-language-switcher-wrapper:not(:has(li:nth-child(3))) {
+        [popover] {
+          all: unset;
+        }
+        button {
+          display: none;
+        }
+      }
+    </style>
+  {% set endSlotHTML %}
+    <div class="govuk-language-switcher-wrapper">
+      <button class="govuk-button govuk-button--secondary govuk-!-margin-bottom-0" popovertarget="popover-language-switcher">
+        🌐 Languages
+      </button>
+      <div popover="auto" id="popover-language-switcher">
+        {{ govukLanguageSwitcher({
+          items: [
+            {
+              text: "English",
+              lang: "en",
+              current: true
+            },
+            {
+              text: "Français",
+              lang: "fr",
+              href: "#/fr"
+            },
+            {
+              text: "हिंदी",
+              lang: "hi",
+              href: "#/hi"
+            },
+            {
+              text: "日本語",
+              lang: "ja",
+              href: "#/ja"
+            },
+            {
+              text: "اردو",
+              lang: "ur",
+              href: "#/ur"
+            },
+            {
+              text: "中文",
+              lang: "zh",
+              href: "#/zh"
+            }
+          ]
+        }) }}
+      </div>
+    </div>
+  {% endset %}
+  {{ govukServiceNavigation({
+    serviceName: "Service name",
+    navigation: [
+      {
+        href: "#/1",
+        text: "Navigation item 1",
+        active: true
+      },
+      {
+        href: "#/2",
+        text: "Navigation item 2"
+      },
+      {
+        href: "#/3",
+        text: "Navigation item 3"
+      }
+    ],
+    slots: {
+      end: endSlotHTML,
+      endRightAligned: true
+    }
+  }) }}
+  <hr>
+  {% set endSlotHTML2 %}
+    <div class="govuk-language-switcher-wrapper">
+      <button class="govuk-button govuk-button--secondary govuk-!-margin-bottom-0" popovertarget="popover-language-switcher">
+        🌐 Languages
+      </button>
+      <div  popover="auto" id="popover-language-switcher">
+        {{ govukLanguageSwitcher({
+          items: [
+            {
+              text: "English",
+              lang: "en",
+              current: true
+            },
+            {
+              text: "Français",
+              lang: "fr",
+              href: "#/fr"
+            }
+          ]
+        }) }}
+      </div>
+    </div>
+  {% endset %}
+  {{ govukServiceNavigation({
+    serviceName: "Service name",
+    navigation: [
+      {
+        href: "#/1",
+        text: "Navigation item 1",
+        active: true
+      },
+      {
+        href: "#/2",
+        text: "Navigation item 2"
+      },
+      {
+        href: "#/3",
+        text: "Navigation item 3"
+      }
+    ],
+    slots: {
+      end: endSlotHTML2,
+      endRightAligned: true
+    }
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">Hello, world.</h1>
+    </div>
+  </div>
+{% endblock %}
