@@ -16,14 +16,14 @@ scenario: |
 {% from "govuk/components/details/macro.njk" import govukDetails %}
 {% from "govuk/components/exit-this-page/macro.njk" import govukExitThisPage %}
 {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
-{% from "govuk/components/language-switcher/macro.njk" import govukLanguageSwitcher %}
+{% from "govuk/components/language-navigation/macro.njk" import govukLanguageNavigation %}
 {% from "govuk/components/service-navigation/macro.njk" import govukServiceNavigation %}
 {% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
 {% from "govuk/components/footer/macro.njk" import govukFooter %}
 
-{% set languageSwitcherHTML %}
-  {{ govukLanguageSwitcher({
-    classes: "govuk-language-switcher--no-top-margin",
+{% set languageNavigationHTML %}
+  {{ govukLanguageNavigation({
+    classes: "govuk-language-navigation--no-top-margin",
     items: [
       {
         text: "English",
@@ -101,7 +101,7 @@ scenario: |
       }
     ],
     slots: {
-      end: languageSwitcherHTML,
+      end: languageNavigationHTML,
       endRightAligned: true
     }
   }) }}

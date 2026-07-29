@@ -2,6 +2,6 @@
 
 @import "../../base";
 
-@include govuk-exports("govuk/component/language-switcher") {
+@include govuk-exports("govuk/component/language-navigation") {
   @include mixin.styles;
 }

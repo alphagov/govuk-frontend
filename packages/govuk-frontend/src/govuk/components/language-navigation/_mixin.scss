@@ -2,7 +2,7 @@
 
 /// @access private
 @mixin styles {
-  .govuk-language-switcher {
+  .govuk-language-navigation {
     @include base.govuk-font($size: 19);
 
     margin-top: base.govuk-spacing(3);
@@ -10,7 +10,7 @@
     color: base.govuk-functional-colour(text);
   }
 
-  .govuk-language-switcher__list {
+  .govuk-language-navigation__list {
     display: inline-flex;
     flex-wrap: wrap;
     row-gap: base.govuk-spacing(1);
@@ -19,7 +19,7 @@
     list-style-type: none;
   }
 
-  .govuk-language-switcher__list-item {
+  .govuk-language-navigation__list-item {
     display: flex;
     align-items: center;
 
@@ -36,19 +36,19 @@
     }
   }
 
-  .govuk-language-switcher__link {
+  .govuk-language-navigation__link {
     @include base.govuk-link-common;
     @include base.govuk-link-style-default;
   }
 
-  .govuk-language-switcher--inverse {
+  .govuk-language-navigation--inverse {
     color: base.govuk-colour("white");
 
-    .govuk-language-switcher__link {
+    .govuk-language-navigation__link {
       @include base.govuk-link-style-inverse;
     }
 
-    .govuk-language-switcher__list-item::after {
+    .govuk-language-navigation__list-item::after {
       border-right-color: currentcolor;
     }
   }
