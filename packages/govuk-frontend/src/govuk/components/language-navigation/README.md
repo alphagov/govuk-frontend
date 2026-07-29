@@ -1,4 +1,4 @@
-# Language switcher
+# Language navigation
 
 ## Installation
 
@@ -6,10 +6,10 @@ See the [main README quick start guide](https://github.com/alphagov/govuk-fronte
 
 ## Guidance and Examples
 
-Find out when to use the language switcher component in your service in the [GOV.UK Design System](https://design-system.service.gov.uk/components/language-switcher).
+Find out when to use the language navigation component in your service in the [GOV.UK Design System](https://design-system.service.gov.uk/components/language-navigation).
 
 ## Component options
 
 Use options to customise the appearance, content and behaviour of a component when using a macro, for example, changing the text.
 
-See [options table](https://design-system.service.gov.uk/components/language-switcher/#options-language-switcher-example) for details.
+See [options table](https://design-system.service.gov.uk/components/language-navigation/#options-language-navigation-example) for details.

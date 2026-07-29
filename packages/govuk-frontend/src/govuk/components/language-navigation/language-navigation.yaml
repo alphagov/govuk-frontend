@@ -2,7 +2,7 @@ params:
   - name: items
     type: array
     required: true
-    description: The languages to display within the language switcher.
+    description: The languages to display within the language navigation.
     params:
       - name: text
         type: string
@@ -23,7 +23,7 @@ params:
       - name: dir
         type: string
         required: false
-        description: The text direction of the script the language name is written in (`ltr` for left-to-right scripts or `rtl` for right-to-left). Set this on every item if the switcher includes scripts written in different directions.
+        description: The text direction of the script the language name is written in (`ltr` for left-to-right scripts or `rtl` for right-to-left). Set this on every item if the navigation includes scripts written in different directions.
       - name: href
         type: string
         required: false
@@ -43,15 +43,15 @@ params:
   - name: ariaLabel
     type: string
     required: false
-    description: Plain text label identifying the navigation landmark to screen readers. Write it in the language of the current page. Defaults to "Language switcher".
+    description: Plain text label identifying the navigation landmark to screen readers. Write it in the language of the current page. Defaults to "Language navigation".
   - name: classes
     type: string
     required: false
-    description: Classes to add to the language switcher container.
+    description: Classes to add to the language navigation container.
   - name: attributes
     type: object
     required: false
-    description: HTML attributes to add to the language switcher container.
+    description: HTML attributes to add to the language navigation container.
 
 examples:
   - name: default
@@ -87,11 +87,11 @@ examples:
           href: '#/zh'
   - name: inverse
     screenshot: true
-    description: Language switcher that appears on dark backgrounds
+    description: Language navigation that appears on dark backgrounds
     pageTemplateOptions:
       bodyClasses: app-template__body--inverse
     options:
-      classes: govuk-language-switcher--inverse
+      classes: govuk-language-navigation--inverse
       items:
         - text: English
           lang: en
@@ -141,7 +141,7 @@ examples:
   - name: classes
     hidden: true
     options:
-      classes: app-language-switcher--custom-modifier
+      classes: app-language-navigation--custom-modifier
       items:
         - text: English
           lang: en
@@ -153,7 +153,7 @@ examples:
     hidden: true
     options:
       attributes:
-        id: my-language-switcher
+        id: my-language-navigation
         'data-foo': 'bar'
       items:
         - text: English

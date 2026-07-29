@@ -1,22 +1,22 @@
 const { getExamples, render } = require('@govuk-frontend/lib/components')
 
-describe('Language switcher', () => {
+describe('Language navigation', () => {
   let examples
 
   beforeAll(async () => {
-    examples = await getExamples('language-switcher')
+    examples = await getExamples('language-navigation')
   })
 
   describe('default example', () => {
     let $component, $list, $listItems
 
     beforeAll(() => {
-      document.body.innerHTML = render('language-switcher', examples.default)
+      document.body.innerHTML = render('language-navigation', examples.default)
 
-      $component = document.querySelector('.govuk-language-switcher')
-      $list = document.querySelector('ul.govuk-language-switcher__list')
+      $component = document.querySelector('.govuk-language-navigation')
+      $list = document.querySelector('ul.govuk-language-navigation__list')
       $listItems = document.querySelectorAll(
-        'li.govuk-language-switcher__list-item'
+        'li.govuk-language-navigation__list-item'
       )
     })
 
@@ -25,7 +25,7 @@ describe('Language switcher', () => {
     })
 
     it('renders with default aria-label', () => {
-      expect($component).toHaveAttribute('aria-label', 'Language switcher')
+      expect($component).toHaveAttribute('aria-label', 'Language navigation')
     })
 
     it('includes an unordered list', () => {
@@ -53,13 +53,13 @@ describe('Language switcher', () => {
 
       it('sets the lang attribute', () => {
         expect(
-          $currentItem.querySelector('.govuk-language-switcher__text')
+          $currentItem.querySelector('.govuk-language-navigation__text')
         ).toHaveAttribute('lang', 'en')
       })
 
       it('sets the aria-current attribute to "true"', () => {
         expect(
-          $currentItem.querySelector('.govuk-language-switcher__text')
+          $currentItem.querySelector('.govuk-language-navigation__text')
         ).toHaveAttribute('aria-current', 'true')
       })
     })
@@ -71,8 +71,8 @@ describe('Language switcher', () => {
         $link = $listItems[1].querySelector('a')
       })
 
-      it('renders as a link with the class govuk-language-switcher__link', () => {
-        expect($link).toHaveClass('govuk-language-switcher__link')
+      it('renders as a link with the class govuk-language-navigation__link', () => {
+        expect($link).toHaveClass('govuk-language-navigation__link')
       })
 
       it('includes the language name', () => {
@@ -100,12 +100,12 @@ describe('Language switcher', () => {
   describe('with multiple languages', () => {
     it('renders a list item for every language', () => {
       document.body.innerHTML = render(
-        'language-switcher',
+        'language-navigation',
         examples['with multiple languages']
       )
 
       const $listItems = document.querySelectorAll(
-        'li.govuk-language-switcher__list-item'
+        'li.govuk-language-navigation__list-item'
       )
 
       expect($listItems).toHaveLength(6)
@@ -115,61 +115,64 @@ describe('Language switcher', () => {
   describe('custom options', () => {
     it('sets custom aria-label', () => {
       document.body.innerHTML = render(
-        'language-switcher',
+        'language-navigation',
         examples['with translated navigation label']
       )
 
-      const $component = document.querySelector('.govuk-language-switcher')
+      const $component = document.querySelector('.govuk-language-navigation')
 
       expect($component).toHaveAttribute('aria-label', 'Dewis iaith')
     })
 
     it('sets custom classes', () => {
-      document.body.innerHTML = render('language-switcher', examples.classes)
+      document.body.innerHTML = render('language-navigation', examples.classes)
 
-      const $component = document.querySelector('.govuk-language-switcher')
+      const $component = document.querySelector('.govuk-language-navigation')
 
-      expect($component).toHaveClass('app-language-switcher--custom-modifier')
+      expect($component).toHaveClass('app-language-navigation--custom-modifier')
     })
 
     it('sets custom attributes', () => {
-      document.body.innerHTML = render('language-switcher', examples.attributes)
+      document.body.innerHTML = render(
+        'language-navigation',
+        examples.attributes
+      )
 
-      const $component = document.querySelector('.govuk-language-switcher')
+      const $component = document.querySelector('.govuk-language-navigation')
 
-      expect($component).toHaveAttribute('id', 'my-language-switcher')
+      expect($component).toHaveAttribute('id', 'my-language-navigation')
       expect($component).toHaveAttribute('data-foo', 'bar')
     })
 
     it('sets item attributes on the link', () => {
       document.body.innerHTML = render(
-        'language-switcher',
+        'language-navigation',
         examples['item attributes']
       )
 
-      const $link = document.querySelector('.govuk-language-switcher__link')
+      const $link = document.querySelector('.govuk-language-navigation__link')
 
       expect($link).toHaveAttribute('data-attribute', 'my-attribute')
     })
 
     it('renders item html', () => {
-      document.body.innerHTML = render('language-switcher', examples.html)
+      document.body.innerHTML = render('language-navigation', examples.html)
 
-      const $link = document.querySelector('.govuk-language-switcher__link')
+      const $link = document.querySelector('.govuk-language-navigation__link')
 
       expect($link.innerHTML).toContain('<span>Cymraeg</span>')
     })
 
     it('renders language link description', () => {
       document.body.innerHTML = render(
-        'language-switcher',
+        'language-navigation',
         examples['with language description']
       )
 
       const $listItem = document.querySelector(
-        'li.govuk-language-switcher__list-item:last-child'
+        'li.govuk-language-navigation__list-item:last-child'
       )
-      const $link = $listItem.querySelector('.govuk-language-switcher__link')
+      const $link = $listItem.querySelector('.govuk-language-navigation__link')
       const $hiddenText = $listItem.querySelector('.govuk-visually-hidden')
 
       expect($hiddenText).not.toBeNull()
@@ -181,10 +184,10 @@ describe('Language switcher', () => {
     })
 
     it('does not render a language description when not set', () => {
-      document.body.innerHTML = render('language-switcher', examples.default)
+      document.body.innerHTML = render('language-navigation', examples.default)
 
       const $listItem = document.querySelector(
-        'li.govuk-language-switcher__list-item:last-child'
+        'li.govuk-language-navigation__list-item:last-child'
       )
       const $hiddenText = $listItem.querySelector('.govuk-visually-hidden')
 
@@ -193,15 +196,15 @@ describe('Language switcher', () => {
 
     it('sets dir attributes on language items', () => {
       document.body.innerHTML = render(
-        'language-switcher',
+        'language-navigation',
         examples['with mixed text directions']
       )
 
       const $currentLanguage = document.querySelector(
-        '.govuk-language-switcher__text'
+        '.govuk-language-navigation__text'
       )
       const $otherLanguage = document.querySelector(
-        '.govuk-language-switcher__link'
+        '.govuk-language-navigation__link'
       )
 
       expect($currentLanguage).toHaveAttribute('dir', 'ltr')
@@ -209,7 +212,7 @@ describe('Language switcher', () => {
     })
 
     it('treats an item as current when href is missing', () => {
-      document.body.innerHTML = render('language-switcher', {
+      document.body.innerHTML = render('language-navigation', {
         context: {
           items: [
             {
@@ -226,18 +229,18 @@ describe('Language switcher', () => {
       })
 
       const $items = document.querySelectorAll(
-        'li.govuk-language-switcher__list-item'
+        'li.govuk-language-navigation__list-item'
       )
       const $currentItem = $items[1]
 
       expect($currentItem.querySelector('a')).toBeNull()
       expect(
-        $currentItem.querySelector('.govuk-language-switcher__text')
+        $currentItem.querySelector('.govuk-language-navigation__text')
       ).toHaveAttribute('aria-current', 'true')
     })
 
     it('allows hreflang to differ from lang', () => {
-      document.body.innerHTML = render('language-switcher', {
+      document.body.innerHTML = render('language-navigation', {
         context: {
           items: [
             {
@@ -255,7 +258,7 @@ describe('Language switcher', () => {
         }
       })
 
-      const $link = document.querySelector('.govuk-language-switcher__link')
+      const $link = document.querySelector('.govuk-language-navigation__link')
 
       expect($link).toHaveAttribute('lang', 'en')
       expect($link).toHaveAttribute('hreflang', 'cy')
