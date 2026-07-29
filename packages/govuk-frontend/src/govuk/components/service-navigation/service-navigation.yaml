@@ -382,8 +382,8 @@ examples:
           text: Navigation item 3
         - href: '#/4'
           text: Navigation item 4
-  - name: with language switcher
-    description: HTML rendered by the language switcher component can be injected into the `end` slot of the service header.
+  - name: with language navigation
+    description: HTML rendered by the language navigation component can be injected into the `end` slot of the service header.
     options:
       serviceName: Service name
       navigation:
@@ -396,18 +396,18 @@ examples:
           text: Navigation item 3
       slots:
         end: |-
-          <nav class="govuk-language-switcher" aria-label="Language switcher">
-            <ul class="govuk-language-switcher__list">
-              <li class="govuk-language-switcher__list-item">
-                <span class="govuk-language-switcher__text" lang="en" aria-current="true">English</span>
+          <nav class="govuk-language-navigation" aria-label="Language navigation">
+            <ul class="govuk-language-navigation__list">
+              <li class="govuk-language-navigation__list-item">
+                <span class="govuk-language-navigation__text" lang="en" aria-current="true">English</span>
               </li>
-              <li class="govuk-language-switcher__list-item">
-                <a class="govuk-language-switcher__link" href="#/cy" lang="cy" hreflang="cy" rel="alternate">Cymraeg</a>
+              <li class="govuk-language-navigation__list-item">
+                <a class="govuk-language-navigation__link" href="#/cy" lang="cy" hreflang="cy" rel="alternate">Cymraeg</a>
               </li>
             </ul>
           </nav>
-  - name: with right-aligned language switcher
-    description: HTML rendered by the language switcher component can be injected into the `end` slot of the service header.
+  - name: with right-aligned language navigation
+    description: HTML rendered by the language navigation component can be injected into the `end` slot of the service header.
     options:
       serviceName: Service name
       navigation:
@@ -420,18 +420,18 @@ examples:
           text: Navigation item 3
       slots:
         end: |-
-          <nav class="govuk-language-switcher" aria-label="Language switcher">
-            <ul class="govuk-language-switcher__list">
-              <li class="govuk-language-switcher__list-item">
-                <span class="govuk-language-switcher__text" lang="en" aria-current="true">English</span>
+          <nav class="govuk-language-navigation" aria-label="Language navigation">
+            <ul class="govuk-language-navigation__list">
+              <li class="govuk-language-navigation__list-item">
+                <span class="govuk-language-navigation__text" lang="en" aria-current="true">English</span>
               </li>
-              <li class="govuk-language-switcher__list-item">
-                <a class="govuk-language-switcher__link" href="#/cy" lang="cy" hreflang="cy" rel="alternate">Cymraeg</a>
+              <li class="govuk-language-navigation__list-item">
+                <a class="govuk-language-navigation__link" href="#/cy" lang="cy" hreflang="cy" rel="alternate">Cymraeg</a>
               </li>
             </ul>
           </nav>
         endRightAligned: true
-  - name: inverse with language switcher
+  - name: inverse with language navigation
     description: Service navigation that appears sandwiched between other areas of brand blue, such as the GOV.UK header and a custom page masthead.
     pageTemplateOptions:
       bodyClasses: app-template__body--inverse
@@ -451,13 +451,13 @@ examples:
           text: Navigation item 4
       slots:
         end: |-
-          <nav class="govuk-language-switcher govuk-language-switcher--inverse" aria-label="Language switcher">
-            <ul class="govuk-language-switcher__list">
-              <li class="govuk-language-switcher__list-item">
-                <span class="govuk-language-switcher__text" lang="en" aria-current="true">English</span>
+          <nav class="govuk-language-navigation govuk-language-navigation--inverse" aria-label="Language navigation">
+            <ul class="govuk-language-navigation__list">
+              <li class="govuk-language-navigation__list-item">
+                <span class="govuk-language-navigation__text" lang="en" aria-current="true">English</span>
               </li>
-              <li class="govuk-language-switcher__list-item">
-                <a class="govuk-language-switcher__link" href="#/cy" lang="cy" hreflang="cy" rel="alternate">Cymraeg</a>
+              <li class="govuk-language-navigation__list-item">
+                <a class="govuk-language-navigation__link" href="#/cy" lang="cy" hreflang="cy" rel="alternate">Cymraeg</a>
               </li>
             </ul>
           </nav>
