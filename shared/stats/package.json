@@ -16,7 +16,7 @@
   "dependencies": {
     "@govuk-frontend/config": "*",
     "@govuk-frontend/lib": "*",
-    "filesize": "^11.0.17"
+    "filesize": "^11.0.22"
   },
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^16.0.3",
