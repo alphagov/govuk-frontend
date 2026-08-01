@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^16.0.3",
-    "concurrently": "^10.0.3",
+    "concurrently": "^10.0.4",
     "cross-env": "^10.1.0",
     "del-cli": "^7.0.0",
     "govuk-frontend": "*",
