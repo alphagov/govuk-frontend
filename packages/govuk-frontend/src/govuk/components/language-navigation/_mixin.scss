@@ -41,6 +41,12 @@
     @include base.govuk-link-style-default;
   }
 
+  // Use when placed alongside other links without underlines, for example
+  // within the service navigation
+  .govuk-language-navigation--no-underline .govuk-language-navigation__link {
+    @include base.govuk-link-style-no-underline;
+  }
+
   .govuk-language-navigation--inverse {
     color: base.govuk-colour("white");
 

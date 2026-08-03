@@ -396,7 +396,7 @@ examples:
           text: Navigation item 3
       slots:
         end: |-
-          <nav class="govuk-language-navigation" aria-label="Language navigation">
+          <nav class="govuk-language-navigation govuk-language-navigation--no-underline" aria-label="Language navigation">
             <ul class="govuk-language-navigation__list">
               <li class="govuk-language-navigation__list-item">
                 <span class="govuk-language-navigation__text" lang="en" aria-current="true">English</span>
@@ -420,7 +420,7 @@ examples:
           text: Navigation item 3
       slots:
         end: |-
-          <nav class="govuk-language-navigation" aria-label="Language navigation">
+          <nav class="govuk-language-navigation govuk-language-navigation--no-underline" aria-label="Language navigation">
             <ul class="govuk-language-navigation__list">
               <li class="govuk-language-navigation__list-item">
                 <span class="govuk-language-navigation__text" lang="en" aria-current="true">English</span>
@@ -451,7 +451,7 @@ examples:
           text: Navigation item 4
       slots:
         end: |-
-          <nav class="govuk-language-navigation govuk-language-navigation--inverse" aria-label="Language navigation">
+          <nav class="govuk-language-navigation govuk-language-navigation--inverse govuk-language-navigation--no-underline" aria-label="Language navigation">
             <ul class="govuk-language-navigation__list">
               <li class="govuk-language-navigation__list-item">
                 <span class="govuk-language-navigation__text" lang="en" aria-current="true">English</span>
