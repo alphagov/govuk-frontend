@@ -69,7 +69,7 @@
 
   </div>
 
-  {% if flags.hasDocsStyles or flags.hasDocsScripts %}
+  {% if flags.hasDocsStyles %}
   <div class="govuk-grid-row">
 
     <div class="govuk-grid-column-two-thirds-from-desktop">
@@ -86,15 +86,6 @@
             <li><a href="/docs/sass" class="govuk-link">Local version</a></li>
           {% endif %}
             <li><a href="https://frontend.design-system.service.gov.uk/sass-api-reference/" class="govuk-link">Latest release</a></li>
-          </ul>
-        </div>
-        {% endif %}
-
-        {% if flags.hasDocsScripts %}
-        <div class="govuk-grid-column-one-half">
-          <h3 class="govuk-heading-m govuk-!-margin-bottom-2">JavaScript API reference</h3>
-          <ul class="govuk-list">
-            <li><a href="/docs/javascript" class="govuk-link">Local version</a></li>
           </ul>
         </div>
         {% endif %}
