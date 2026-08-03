@@ -4,7 +4,7 @@ const { parse, relative, basename } = require('path')
 const { paths } = require('@govuk-frontend/config')
 const { filesize } = require('filesize')
 const { glob } = require('glob')
-const yaml = require('js-yaml')
+const { load } = require('js-yaml')
 const { minimatch } = require('minimatch')
 
 /**
@@ -132,7 +132,7 @@ const mapPathTo = (patterns, callback) => (entryPath) => {
  * @returns {Promise<any>} Config from YAML file
  */
 async function getYaml(configPath) {
-  return yaml.load(await readFile(configPath, 'utf8'), { json: true })
+  return load(await readFile(configPath, 'utf8'), { json: true })
 }
 
 /**
