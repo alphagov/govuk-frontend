@@ -29,11 +29,23 @@ $govuk-colours-organisations: (
   "civil-service": (
     colour: #b2292e
   ),
-  "department-for-business-trade": (
+  "department-for-business-innovation-science-trade": (
     colour: #e52d13,
     contrast-safe: #e02c13
   ),
+  "department-for-business-trade": (
+    colour: #e52d13,
+    contrast-safe: #e02c13,
+    deprecation-message:
+      "`department-for-business-trade` was renamed to `department-for-business-innovation-science-trade` in July 2026."
+  ),
   "department-for-culture-media-sport": (
+    colour: #ed1588,
+    contrast-safe: #d6177a,
+    deprecation-message:
+      "`department-for-culture-media-sport` was renamed to `department-for-digital-culture-media-sport` in July 2026."
+  ),
+  "department-for-digital-culture-media-sport": (
     colour: #ed1588,
     contrast-safe: #d6177a
   ),
@@ -49,7 +61,9 @@ $govuk-colours-organisations: (
   ),
   "department-for-science-innovation-technology": (
     colour: #00f8f8,
-    contrast-safe: #008180
+    contrast-safe: #008180,
+    deprecation-message:
+      "`department-for-science-innovation-technology` was dissolved in July 2026. It was split into `department-for-business-innovation-science-trade` and `department-for-digital-culture-media-sport`."
   ),
   "department-for-transport": (
     colour: #006853
