@@ -57,7 +57,6 @@ export default async () => {
     isDevelopment: !process.env.HEROKU_APP && !process.env.CI,
 
     // Check for JSDoc, SassDoc and Rollup stats
-    hasDocsScripts: await hasPath(join(paths.app, 'dist/docs/jsdoc')),
     hasDocsStyles: await hasPath(join(paths.app, 'dist/docs/sassdoc')),
     hasStats: await hasPath(join(paths.stats, 'dist'))
   })
@@ -299,6 +298,5 @@ class NotFoundError extends Error {
  * @typedef {object} FeatureFlags
  * @property {boolean} isDevelopment - Review app not in CI or on Heroku
  * @property {boolean} hasDocsStyles - Stylesheets documentation (SassDoc) is available
- * @property {boolean} hasDocsScripts - JavaScripts documentation (JSDoc) is available
  * @property {boolean} hasStats - Rollup stats are available
  */

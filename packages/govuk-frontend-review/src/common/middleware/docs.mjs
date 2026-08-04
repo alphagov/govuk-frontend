@@ -16,7 +16,6 @@ router.get('/', (req, res) => {
  * Add middleware
  */
 router.use('/sass', express.static(join(paths.app, 'dist/docs/sassdoc')))
-router.use('/javascript', express.static(join(paths.app, 'dist/docs/jsdoc')))
 router.use('/stats', express.static(join(paths.stats, 'dist')))
 
 export default router
