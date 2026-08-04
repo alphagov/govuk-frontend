@@ -111,6 +111,7 @@
   "overrides": {
     "latest-version@^5": {
       "package-json": "^7"
-    }
+    },
+    "basic-ftp": "5.3.1"
   }
 }
