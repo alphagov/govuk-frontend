@@ -67,7 +67,7 @@ Your contribution needs to work with certain browsers and assistive technology a
 
 ## Commit hygiene
 
-Please see our [Git style guide in the 'How to store source code' page of the GDS Way](https://gds-way.cloudapps.digital/standards/source-code.html#commit-messages), which describes how we prefer Git history and commit messages to read.
+Please see our [Git style guide in the 'How to store source code' page of the GDS Way](https://gds-way.digital.cabinet-office.gov.uk/standards/source-code/working-with-git.html#commit-messages), which describes how we prefer Git history and commit messages to read.
 
 ## Updating Changelog
 
