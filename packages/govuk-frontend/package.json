@@ -79,7 +79,7 @@
     "autoprefixer": "^10.5.4",
     "cssnano": "^8.0.2",
     "cssnano-preset-default": "^8.0.2",
-    "govuk-prototype-kit": "^13.20.0",
+    "govuk-prototype-kit": "^13.20.2",
     "gulp": "^5.0.1",
     "gulp-cli": "^3.0.0",
     "html-validate": "11.4.0",
