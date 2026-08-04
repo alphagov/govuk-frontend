@@ -15,14 +15,22 @@ params:
     type: string
     required: false
     description: The text of the mobile navigation menu toggle.
+  - name: menuButtonAriaLabel
+    type: string
+    required: false
+    description: The accessible name for the mobile navigation menu toggle. Assistive software will use the text of the button (`menuButtonText`) if an accessible name isn't specified.
   - name: menuButtonLabel
     type: string
     required: false
-    description: The screen reader label for the mobile navigation menu toggle. Defaults to the same value as `menuButtonText` if not specified.
+    description: Deprecated. Use `menuButtonAriaLabel` instead.
+  - name: ariaLabel
+    type: string
+    required: false
+    description: The accessible name for the navigation menu. Defaults to the same value as `menuButtonText` if not specified.
   - name: navigationLabel
     type: string
     required: false
-    description: The screen reader label for the mobile navigation menu. Defaults to the same value as `menuButtonText` if not specified.
+    description: Deprecated. Use `ariaLabel` instead.
   - name: navigationId
     type: string
     required: false
@@ -287,7 +295,7 @@ examples:
   - name: with custom navigation toggle label
     hidden: true
     options:
-      menuButtonLabel: Enter the NavZone
+      menuButtonAriaLabel: Enter the NavZone
       navigation:
         - href: '#/1'
           text: Navigation item 1
@@ -297,7 +305,7 @@ examples:
     hidden: true
     options:
       menuButtonText: Enter the NavZone
-      menuButtonLabel: Enter the NavZone
+      menuButtonAriaLabel: Enter the NavZone
       navigation:
         - href: '#/1'
           text: Navigation item 1
@@ -306,7 +314,7 @@ examples:
   - name: with custom navigation label
     hidden: true
     options:
-      navigationLabel: Main navigation
+      ariaLabel: Main navigation
       navigation:
         - href: '#/1'
           text: Navigation item 1
@@ -316,7 +324,7 @@ examples:
     hidden: true
     options:
       menuButtonText: Enter the NavZone
-      navigationLabel: The NavZone
+      ariaLabel: The NavZone
       navigation:
         - href: '#/1'
           text: Navigation item 1
@@ -386,3 +394,13 @@ examples:
         end: '<div>[end]</div>'
         navigationStart: '<li>[navigation start]</li>'
         navigationEnd: '<li>[navigation end]</li>'
+  - name: with deprecated aria-label parameters
+    hidden: true
+    options:
+      navigationLabel: Deprecated navigation
+      menuButtonLabel: Enter the deprecated NavZone
+      navigation:
+        - href: '#/1'
+          text: Navigation item 1
+        - href: '#/2'
+          text: Navigation item 2

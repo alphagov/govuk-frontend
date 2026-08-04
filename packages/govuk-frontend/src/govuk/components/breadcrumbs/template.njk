@@ -3,6 +3,8 @@
 {#- Set classes for this component #}
 {%- set classNames = "govuk-breadcrumbs" -%}
 
+{%- set ariaLabel = params.ariaLabel if params.ariaLabel else (params.labelText | default("Breadcrumb", true)) -%}
+
 {% if params.classes %}
   {% set classNames = classNames + " " + params.classes %}
 {% endif -%}
@@ -11,7 +13,8 @@
   {% set classNames = classNames + " govuk-breadcrumbs--collapse-on-mobile" %}
 {% endif -%}
 
-<nav class="{{ classNames }}" {{- govukAttributes(params.attributes) }} aria-label="{{ params.labelText | default("Breadcrumb") }}">
+
+<nav class="{{ classNames }}" {{- govukAttributes(params.attributes) }} aria-label="{{ ariaLabel }}">
   <ol class="govuk-breadcrumbs__list">
 {% for item in params.items %}
   {% if item.href %}

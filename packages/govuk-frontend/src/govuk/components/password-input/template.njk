@@ -21,12 +21,12 @@
 
   {{- govukI18nAttributes({
     key: 'show-password-aria-label',
-    message: params.showPasswordAriaLabelText
+    message: params.showPasswordAriaLabel if params.showPasswordAriaLabel else params.showPasswordAriaLabelText
   }) -}}
 
   {{- govukI18nAttributes({
     key: 'hide-password-aria-label',
-    message: params.hidePasswordAriaLabelText
+    message: params.hidePasswordAriaLabel if params.hidePasswordAriaLabel else params.hidePasswordAriaLabelText
   }) -}}
 
   {{- govukI18nAttributes({
@@ -52,7 +52,7 @@
   text: params.showPasswordText | default("Show"),
   attributes: {
     "aria-controls": id,
-    "aria-label": params.showPasswordAriaLabelText | default("Show password"),
+    "aria-label": params.showPasswordAriaLabel if params.showPasswordAriaLabel else (params.showPasswordAriaLabelText | default("Show password")),
     "hidden": {
       value: true,
       optional: true

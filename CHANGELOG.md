@@ -12,6 +12,24 @@ We've added the [Feedback component](https://design-system.service.gov.uk/compon
 
 This was added in [pull request #7232: Add Feedback component](https://github.com/alphagov/govuk-frontend/pull/7232).
 
+### Recommended changes
+
+#### Update the Nunjucks parameter name for ARIA labels
+
+We've changed some of the Nunjucks parameters relating to `aria-label` attributes so that they're named consistently across our components.
+
+- Accordion: `showSectionAriaLabelText` has changed to `showSectionAriaLabel`
+- Accordion: `hideSectionAriaLabelText` has changed to `hideSectionAriaLabel`
+- Breadcrumbs: `labelText` has changed to `ariaLabel`
+- Pagination: `landmarkText` has changed to `ariaLabel`
+- Pagination: `item.visuallyHiddenText` has changed to `item.ariaLabel`
+- Password input: `showPasswordAriaLabelText` has changed to `showPasswordAriaLabel`
+- Password input: `hidePasswordAriaLabelText` has changed to `hidePasswordAriaLabel`
+- Service navigation: `menuButtonLabel` has changed to `menuButtonAriaLabel`
+- Service navigation: `navigationLabel` has changed to `ariaLabel`
+
+Update any references to these parameters to use the new names. The old names have been deprecated and will be removed in the next major version of GOV.UK Frontend.
+
 ## v6.4.0 (Feature release)
 
 To install this version with npm, run `npm install govuk-frontend@6.4.0`. You can also find more information about [how to stay up to date](https://frontend.design-system.service.gov.uk/staying-up-to-date/#updating-to-the-latest-version) in our documentation.

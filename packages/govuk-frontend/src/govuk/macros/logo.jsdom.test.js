@@ -72,7 +72,7 @@ describe('logo.njk', () => {
       expect($svg.classList).toContain('app-logo--custom-modifier')
     })
 
-    describe('if `ariaLabelText` is set', () => {
+    describe('if `ariaLabel` is set', () => {
       let $svg
 
       beforeAll(() => {
@@ -81,7 +81,7 @@ describe('logo.njk', () => {
           './govuk/macros/logo.njk',
           {
             context: {
-              ariaLabelText: 'test string'
+              ariaLabel: 'test string'
             }
           }
         )

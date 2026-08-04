@@ -1,6 +1,7 @@
 {% from "../../macros/attributes.njk" import govukAttributes -%}
 
 {% set blockLevel = not params.items and (params.next or params.previous) -%}
+{% set ariaLabel = params.ariaLabel if params.ariaLabel else (params.landmarkLabel | default("Pagination", true)) -%}
 
 {%- set arrowPrevious -%}
   <svg class="govuk-pagination__icon govuk-pagination__icon--prev" xmlns="http://www.w3.org/2000/svg" height="13" width="15" aria-hidden="true" focusable="false" viewBox="0 0 15 13">
@@ -41,7 +42,8 @@
   {% if item.ellipsis %}
     &ctdot;
   {% else %}
-    <a class="govuk-link govuk-pagination__link" href="{{ item.href }}" aria-label="{{ item.visuallyHiddenText | default("Page " + item.number) }}"
+    {%- set itemAriaLabel = item.ariaLabel if item.ariaLabel else (item.visuallyHiddenText | default("Page " + item.number)) %}
+    <a class="govuk-link govuk-pagination__link" href="{{ item.href }}" aria-label="{{ itemAriaLabel }}"
       {%- if item.current %} aria-current="page"{% endif %}
       {{- govukAttributes(item.attributes) }}>
       {{ item.number }}
@@ -50,7 +52,7 @@
   </li>
 {%- endmacro -%}
 
-<nav class="govuk-pagination {%- if blockLevel %} govuk-pagination--block{% endif %} {%- if params.classes %} {{ params.classes }}{% endif %}" aria-label="{{ params.landmarkLabel | default("Pagination", true) }}"
+<nav class="govuk-pagination {%- if blockLevel %} govuk-pagination--block{% endif %} {%- if params.classes %} {{ params.classes }}{% endif %}" aria-label="{{ ariaLabel }}"
   {{- govukAttributes(params.attributes) }}>
   {% set previous = params.previous %}
   {% set next = params.next %}

@@ -27,10 +27,14 @@ params:
     type: string
     required: false
     description: The text content of the 'Hide' button within each section of the accordion, which is visible when the section is expanded.
-  - name: hideSectionAriaLabelText
+  - name: hideSectionAriaLabel
     type: string
     required: false
     description: Text made available to assistive technologies, like screen-readers, as the final part of the toggle's accessible name when the section is expanded. Defaults to `"Hide this section"`.
+  - name: hideSectionAriaLabelText
+    type: string
+    required: false
+    description: Deprecated. Use `hideSectionAriaLabel` instead.
   - name: showAllSectionsText
     type: string
     required: false
@@ -39,10 +43,14 @@ params:
     type: string
     required: false
     description: The text content of the 'Show' button within each section of the accordion, which is visible when the section is collapsed.
-  - name: showSectionAriaLabelText
+  - name: showSectionAriaLabel
     type: string
     required: false
     description: Text made available to assistive technologies, like screen-readers, as the final part of the toggle's accessible name when the section is collapsed. Defaults to `"Show this section"`.
+  - name: showSectionAriaLabelText
+    type: string
+    required: false
+    description: Deprecated. Use `showSectionAriaLabel` instead.
   - name: items
     type: array
     required: true
@@ -290,8 +298,26 @@ examples:
       hideAllSectionsText: Collapse all sections
       showAllSectionsText: Expand all sections
       hideSectionText: Collapse
-      hideSectionAriaLabelText: Collapse this section
+      hideSectionAriaLabel: Collapse this section
       showSectionText: Expand
+      showSectionAriaLabel: Expand this section
+      items:
+        - heading:
+            text: Section A
+          content:
+            text: We need to know your nationality so we can work out which elections you’re entitled to vote in. If you cannot provide your nationality, you’ll have to send copies of identity documents through the post.
+        - heading:
+            text: Section B
+          content:
+            html: |
+              <ul class="govuk-list govuk-list--bullet">
+                <li>Example item 2</li>
+              </ul>
+  - name: with deprecated aria-label parameters
+    hidden: true
+    options:
+      id: with-deprecations
+      hideSectionAriaLabelText: Collapse this section
       showSectionAriaLabelText: Expand this section
       items:
         - heading:

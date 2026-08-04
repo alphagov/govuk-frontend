@@ -71,11 +71,21 @@ describe('Pagination', () => {
     })
   })
 
-  describe('with custom text, labels and landmarks', () => {
+  describe('with custom text, labels and landmarks (`ariaLabel`)', () => {
     it('renders a custom navigation landmark', () => {
       const $ = render(
         'pagination',
         examples['with custom navigation landmark']
+      )
+      const $nav = $('.govuk-pagination')
+
+      expect($nav.attr('aria-label')).toBe('search')
+    })
+
+    it('renders a custom navigation landmark (`landmarkLabel`)', () => {
+      const $ = render(
+        'pagination',
+        examples['with custom navigation landmark (landmarkLabel)']
       )
       const $nav = $('.govuk-pagination')
 
@@ -97,10 +107,34 @@ describe('Pagination', () => {
       expect($thirdNumber.text().trim()).toBe('three')
     })
 
-    it('renders custom accessible labels for pagination items', () => {
+    it('renders custom accessible labels for pagination items (`ariaLabel`)', () => {
       const $ = render(
         'pagination',
         examples['with custom accessible labels on item links']
+      )
+      const $firstNumber = $(
+        '.govuk-pagination__item:first-child .govuk-pagination__link'
+      )
+      const $secondNumber = $(
+        '.govuk-pagination__item:nth-child(2) .govuk-pagination__link'
+      )
+      const $thirdNumber = $(
+        '.govuk-pagination__item:last-child .govuk-pagination__link'
+      )
+
+      expect($firstNumber.attr('aria-label')).toBe('1st page')
+      expect($secondNumber.attr('aria-label')).toBe(
+        '2nd page (you are currently on this page)'
+      )
+      expect($thirdNumber.attr('aria-label')).toBe('3rd page')
+    })
+
+    it('renders custom accessible labels for pagination items (`visuallyHiddenText`)', () => {
+      const $ = render(
+        'pagination',
+        examples[
+          'with custom accessible labels on item links (visuallyHiddenText)'
+        ]
       )
       const $firstNumber = $(
         '.govuk-pagination__item:first-child .govuk-pagination__link'

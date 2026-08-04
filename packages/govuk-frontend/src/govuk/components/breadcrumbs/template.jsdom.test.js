@@ -169,8 +169,18 @@ describe('Breadcrumbs', () => {
       expect($component).toHaveAttribute('data-foo', 'bar')
     })
 
-    it('renders with a custom aria-label', () => {
+    it('renders with a custom aria-label (`ariaLabel`)', () => {
       document.body.innerHTML = render('breadcrumbs', examples['custom label'])
+
+      const $component = document.querySelector('.govuk-breadcrumbs')
+      expect($component).toHaveAttribute('aria-label', 'Briwsion bara')
+    })
+
+    it('renders with a custom aria-label (`labelText`)', () => {
+      document.body.innerHTML = render(
+        'breadcrumbs',
+        examples['custom label (labelText)']
+      )
 
       const $component = document.querySelector('.govuk-breadcrumbs')
       expect($component).toHaveAttribute('aria-label', 'Briwsion bara')
