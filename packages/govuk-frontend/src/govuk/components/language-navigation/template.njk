@@ -14,7 +14,7 @@
     </li>
   {% else %}
     <li class="govuk-language-navigation__list-item">
-      <a class="govuk-language-navigation__link" href="{{ item.href }}" rel="alternate"
+      <a class="govuk-language-navigation__link {%- if item.classes %} {{ item.classes }}{% endif %}" href="{{ item.href }}" rel="alternate"
         {%- if item.lang %} lang="{{ item.lang }}"{% endif %}
         {%- if item.hrefLang or item.lang %} hreflang="{{ item.hrefLang if item.hrefLang else item.lang }}"{% endif %}
         {%- if item.dir %} dir="{{ item.dir }}"{% endif %}
