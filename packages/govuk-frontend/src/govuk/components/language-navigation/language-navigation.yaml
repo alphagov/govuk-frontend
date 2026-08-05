@@ -36,6 +36,10 @@ params:
         type: string
         required: false
         description: Visually hidden text after a language link to indicate what the link will do. Write it in the language of the link (for example, "Change the language to English").
+      - name: classes
+        type: string
+        required: false
+        description: Classes to add to the language item anchor.
       - name: attributes
         type: object
         required: false
@@ -162,6 +166,17 @@ examples:
         - text: Cymraeg
           lang: cy
           href: '#/cy'
+  - name: item classes
+    hidden: true
+    options:
+      items:
+        - text: English
+          lang: en
+          current: true
+        - text: Cymraeg
+          lang: cy
+          href: '#/cy'
+          classes: 'govuk-language-navigation__link--modifier'
   - name: item attributes
     hidden: true
     options:

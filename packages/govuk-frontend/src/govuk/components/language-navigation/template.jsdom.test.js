@@ -144,6 +144,17 @@ describe('Language navigation', () => {
       expect($component).toHaveAttribute('data-foo', 'bar')
     })
 
+    it('sets item classes on the link', () => {
+      document.body.innerHTML = render(
+        'language-navigation',
+        examples['item classes']
+      )
+
+      const $link = document.querySelector('.govuk-language-navigation__link')
+
+      expect($link).toHaveClass('govuk-language-navigation__link--modifier')
+    })
+
     it('sets item attributes on the link', () => {
       document.body.innerHTML = render(
         'language-navigation',
