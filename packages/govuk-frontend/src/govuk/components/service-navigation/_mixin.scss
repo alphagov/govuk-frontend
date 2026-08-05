@@ -130,16 +130,6 @@
     }
   }
 
-  .govuk-service-navigation__end {
-    width: 100%;
-  }
-
-  @media #{base.govuk-from-breakpoint(tablet)} {
-    .govuk-service-navigation__end {
-      width: auto;
-    }
-  }
-
   //
   // Navigation list specific code
   //
