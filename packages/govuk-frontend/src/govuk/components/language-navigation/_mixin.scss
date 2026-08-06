@@ -52,4 +52,12 @@
       border-right-color: currentcolor;
     }
   }
+
+  // Ensure the Language navigation sits centred vertically
+  // when inside the Service Navigation and has enough
+  // spacing with the navigation items
+  .govuk-service-navigation .govuk-language-navigation {
+    margin-top: base.govuk-spacing(3);
+    margin-bottom: base.govuk-spacing(3);
+  }
 }
