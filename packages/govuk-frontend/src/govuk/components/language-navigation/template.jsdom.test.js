@@ -152,7 +152,7 @@ describe('Language navigation', () => {
 
       const $link = document.querySelector('.govuk-language-navigation__link')
 
-      expect($link).toHaveClass('govuk-language-navigation__link--modifier')
+      expect($link).toHaveClass('app-language-navigation__link--modifier')
     })
 
     it('sets item attributes on the link', () => {
