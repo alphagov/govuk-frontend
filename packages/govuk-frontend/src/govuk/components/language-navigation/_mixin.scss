@@ -42,7 +42,7 @@
   }
 
   .govuk-language-navigation--inverse {
-    color: base.govuk-colour("white");
+    color: base.govuk-functional-colour(inverse-text);
 
     .govuk-language-navigation__link {
       @include base.govuk-link-style-inverse;
