@@ -176,7 +176,7 @@ examples:
         - text: Cymraeg
           lang: cy
           href: '#/cy'
-          classes: 'govuk-language-navigation__link--modifier'
+          classes: 'app-language-navigation__link--modifier'
   - name: item attributes
     hidden: true
     options:
