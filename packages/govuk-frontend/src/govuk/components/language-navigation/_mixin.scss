@@ -5,7 +5,6 @@
   .govuk-language-navigation {
     @include base.govuk-font($size: 19);
 
-    margin-top: base.govuk-spacing(3);
     margin-bottom: base.govuk-spacing(3);
     color: base.govuk-functional-colour(text);
   }
