@@ -488,10 +488,10 @@ describe('Service Navigation', () => {
       expect($slottedElement.prop('outerHTML')).toBe('<div>[end]</div>')
     })
 
-    it('inserts HTML from the `end` slot inline when `endRightAligned` is enabled', () => {
+    it("inserts HTML from the `end` slot inline when the slot's `align` option is `inline`", () => {
       const $ = render(
         'service-navigation',
-        examples['with right-aligned end slot']
+        examples['with `inline` end slot']
       )
 
       const $endSlotInContainer = $('.govuk-service-navigation__end')
