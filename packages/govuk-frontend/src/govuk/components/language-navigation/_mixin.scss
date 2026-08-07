@@ -5,8 +5,7 @@
   .govuk-language-navigation {
     @include base.govuk-font($size: 19);
 
-    margin-top: base.govuk-spacing(3);
-    margin-bottom: base.govuk-spacing(3);
+    @include base.govuk-responsive-margin(6, "bottom");
     color: base.govuk-functional-colour(text);
   }
 
@@ -51,5 +50,13 @@
     .govuk-language-navigation__list-item::after {
       border-right-color: currentcolor;
     }
+  }
+
+  // Ensure the Language navigation sits centred vertically
+  // when inside the Service Navigation and has enough
+  // spacing with the navigation items
+  .govuk-service-navigation .govuk-language-navigation {
+    margin-top: base.govuk-spacing(3);
+    margin-bottom: base.govuk-spacing(3);
   }
 }
