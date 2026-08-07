@@ -13,7 +13,9 @@ data-module="govuk-service-navigation"
 {% endset -%}
 
 {%- set innerContent %}
-  <div class="govuk-width-container">
+  <div class="govuk-width-container
+    {%- if endSlotInline %} govuk-service-navigation__inlining-container{% endif -%}
+    ">
 
     {# Slot: start #}
     {%- if params.slots.start %}{{ params.slots.start | safe }}{% endif -%}
@@ -87,17 +89,10 @@ data-module="govuk-service-navigation"
           </ul>
         </nav>
       {% endif %}
-
-      {# Slot: end (right aligned) #}
-      {% if endSlotHtml and endSlotInline %}
-        <div class="govuk-service-navigation__end">
-          {{ endSlotHtml | safe }}
-        </div>
-      {% endif %}
     </div>
 
     {# Slot: end #}
-    {%- if endSlotHtml and not endSlotInline %}{{ endSlotHtml | safe }}{% endif -%}
+    {%- if endSlotHtml %}{{ endSlotHtml | safe }}{% endif -%}
 
   </div>
 {% endset -%}
