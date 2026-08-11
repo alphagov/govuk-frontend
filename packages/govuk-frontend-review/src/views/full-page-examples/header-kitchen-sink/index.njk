@@ -101,8 +101,10 @@ scenario: |
       }
     ],
     slots: {
-      end: languageNavigationHTML,
-      endRightAligned: true
+      end: {
+        html: languageNavigationHTML,
+        align: 'inline'
+      }
     }
   }) }}
 {% endblock %}
