@@ -8,7 +8,7 @@ body:
       value: |
         This is a template for creating issues that describe technical debt.
 
-        It is based off the [example in the GDS Way page on tracking technical debt](https://gds-way.cloudapps.digital/standards/technical-debt.html#example).
+        It is based off the [example in the GDS Way page on tracking technical debt](https://gds-way.digital.cabinet-office.gov.uk/standards/technical-debt.html#example).
 
   - type: textarea
     attributes:

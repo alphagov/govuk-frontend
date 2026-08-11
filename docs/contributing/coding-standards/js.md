@@ -179,7 +179,7 @@ For consistent formatting we run [Prettier](https://prettier.io).
 
 The standard docs have a [complete list of rules and some reasoning behind them](https://standardjs.com/rules.html).
 
-Read more about [running standard manually, or in your editor, on the 'JavaScript coding style' page of the GDS Way](https://gds-way.cloudapps.digital/manuals/programming-languages/js.html#linting).
+Read more about [running standard manually, or in your editor, on the 'JavaScript coding style' page of the GDS Way](https://gds-way.digital.cabinet-office.gov.uk/manuals/programming-languages/js.html#linting).
 
 See also [testing and linting](/docs/releasing/testing-and-linting.md).
 
