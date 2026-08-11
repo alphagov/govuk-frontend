@@ -1,0 +1,239 @@
+////
+/// @group helpers/colour
+////
+@use "sass:list";
+@use "sass:map";
+@use "sass:meta";
+@use "sass:string";
+
+@use "../settings/colours-palette--internal";
+@use "../settings/warnings--internal";
+
+@use "../settings/colours-functional" as *;
+@use "../settings/colours-organisations" as *;
+
+/// Get a colour from the palette
+///
+/// Before using this function, check if your use case is covered by a
+/// functional colour. For example, use `govuk-functional-colour("link")` for
+/// links rather than `govuk-colour("blue")`.
+///
+/// @param {String | Colour} $colour - Name of colour from the [colour
+///   palette](https://design-system.service.gov.uk/styles/colour/#add-colours-using-govuk-colour)
+/// @param {String | Colour} $variant - Name of the variant from the [colour
+///   palette](https://design-system.service.gov.uk/styles/colour/#add-colours-using-govuk-colour)
+/// @return {Colour} Representation of named colour
+///
+/// @example scss - Getting the primary variant of a colour
+///   .my-component {
+///     color: govuk-colour("blue");
+///   }
+///
+/// @example scss - Getting a 50% shade of blue
+///   .my-component {
+///     color: govuk-colour("blue", $variant: "shade-50")
+///   }
+///
+/// @throw if `$colour` is not a colour from the colour palette
+/// @throw if `$variant` is not a variant of the `$colour` in the colour palette
+/// @throw if the palette is misformatted and doesn't associate a colour or map to `$colour`
+/// @access public
+
+@function govuk-colour($colour, $variant: primary, $colours: colours-palette--internal.$govuk-palette) {
+  // Sass parses unquoted colours as colours, so we need to turn them into
+  // strings before looking them up in the colour palette
+  // https://sass-lang.com/documentation/values/strings#unquoted
+  @if meta.type-of($colour) != "string" {
+    $colour: "#{$colour}";
+  }
+
+  $colour-variants: map.get($colours, $colour);
+
+  @if not $colour-variants {
+    // To ease the transition between the brand palette and old GOV.UK Frontend colours
+    // we'll automatically convert old colour names into their equivalent in the palette
+    @if $colours == colours-palette--internal.$govuk-palette {
+      $corresponding-colour: _govuk-corresponding-brand-colour($colour);
+      @if $corresponding-colour {
+        @return $corresponding-colour;
+      }
+    }
+
+    @error "Unknown colour `#{$colour}` (available colours: #{map.keys($colours)})";
+  }
+
+  // Some colours may not have variants, if that's the case, we can return the colour straight away
+  @if meta.type-of($colour-variants) == "color" {
+    @return $colour-variants;
+  }
+
+  @if meta.type-of($colour-variants) != "map" {
+    @error "Colour `#{$colour}` should either be a `map` or `color`, not a `#{meta.type-of($colour-variants)}`";
+  }
+
+  $result: map.get($colour-variants, $variant);
+
+  @if not $result {
+    @error "Unknown variant `#{$variant}` for colour `#{$colour}` (available variants: #{map.keys($colour-variants)})";
+  }
+
+  @return $result;
+}
+
+@function _govuk-corresponding-brand-colour($colour) {
+  $pre-brand-colour: map.get(colours-palette--internal.$govuk-pre-brand-colours, $colour);
+
+  @if $pre-brand-colour {
+    $corresponding-colour: list.nth($pre-brand-colour, 1);
+    $corresponding-variant: list.nth($pre-brand-colour, 2);
+
+    $corresponding-govuk-colour-call: 'govuk-colour("#{$corresponding-colour}", $variant: "#{$corresponding-variant}")';
+
+    @if _should-warn("pre-brand-colour") {
+      @warn warnings--internal.warning-text("pre-brand-colour",
+        "We've updated GOV.UK Frontend's colour palette. Use " +
+        "`#{$corresponding-govuk-colour-call}` instead of " +
+        "`govuk-colour(\"#{$colour}\")`. The `#{$colour}` colour is " +
+        "deprecated and we'll remove it in the next major version."
+      );
+    }
+
+    @return govuk-colour($corresponding-colour, $variant: $corresponding-variant);
+  }
+}
+
+/// Get a functional colour
+///
+/// @param {String|Colour} $colour - Name of the colour from the list of
+///   [functional colours](https://design-system.service.gov.uk/styles/colour/)
+/// @return {String} A reference to the functional colour's custom property
+///   wrapped in a var function, with the functional colour's hex value as a
+///   fallback value.
+///
+/// @example scss - Getting a functional colour
+///   .branded-element {
+///     color: govuk-functional-colour('brand');
+///   }
+///
+/// @example css - Output from getting a functional colour
+///   .branded-element {
+///     /* Assuming the 'brand' colour is hotpink */
+///     color: var(--govuk-brand-colour, hotpink);
+///   }
+///
+/// @throw if `$colour` is not an functional colour of GOV.UK Frontend
+/// @access public
+/// @see $govuk-functional-colours
+@function govuk-functional-colour($colour) {
+  // Sass parses unquoted colours as colours, so we need to turn them into
+  // strings before looking them up in the colour palette
+  // https://sass-lang.com/documentation/values/strings#unquoted
+  @if meta.type-of($colour) != "string" {
+    $colour: "#{$colour}";
+  }
+
+  @if map.has-key($govuk-functional-colours, $colour) {
+    $value: govuk-resolve-colour(map.get($govuk-functional-colours, $colour));
+
+    @return var(--govuk-#{$colour}-colour, #{$value});
+  }
+
+  @error "Unknown colour `#{$colour}` (available colours: #{map.keys($govuk-functional-colours)})";
+}
+
+/// Resolves the given reference to a colour in the palette
+///
+/// @param {Map|Colour} $colour-reference - A map with the `name`, and optionally a `variant` for the colour in the palette
+/// @returns {Colour} The colour
+/// @throws if the `name` is present but falsy
+/// @throws if the `variant` is present but falsy
+/// @access public
+@function govuk-resolve-colour($colour-reference) {
+  // If the reference is already a colour, return the colour
+  @if meta.type-of($colour-reference) == "color" {
+    @return $colour-reference;
+  }
+
+  @if not meta.type-of($colour-reference) == "map" {
+    @error 'Colour reference should be a Sass colour or a Sass map';
+  }
+
+  $name: map.get($colour-reference, "name");
+  @if not $name or $name == "" {
+    @error "Colour reference `name` shouldn't be empty.";
+  }
+
+  $variant: "primary";
+  @if map.has-key($colour-reference, "variant") {
+    $variant: map.get($colour-reference, "variant");
+  }
+
+  @if not $variant or $variant == "" {
+    @error "Colour reference `variant` shouldn't be empty.";
+  }
+
+  @return govuk-colour($name, $variant: $variant);
+}
+
+/// Organisation colour aliases
+///
+/// Some organisations have been renamed within our code over time. Here we
+/// map the prior key to the new equivalent key.
+///
+/// Note: This is for internal renames only. If a department has changed name
+/// or brand colour in a machinery of government change, it should be added to
+/// $govuk-colours-organisations as a new entry with any superseded
+/// organisations marked deprecated.
+///
+/// @type Map
+///
+/// @access private
+
+$_govuk-colours-organisations-aliases: (
+  "department-for-business-and-trade": "department-for-business-trade"
+);
+
+/// Get the colour for a government organisation
+///
+/// @param {String} $organisation - Organisation name, lowercase, hyphenated
+/// @param {Boolean} $contrast-safe [true] - By default a version of the colour
+///   will be returned which has a minimum 4.5:1 contrast ratio when used with
+///   white, as per the WCAG 2.1 Level AA guidelines. If you want to use the
+///   non-contrast safe version you can set this to `false` but your should
+///   ensure that you still meets contrast requirements for accessibility -
+///   for example, do not use the non-contrast safe version for text.
+///
+/// @return {Colour} Representation of colour for organisation
+/// @throw if `$organisation` is not a known organisation
+/// @access public
+
+@function govuk-organisation-colour($organisation, $contrast-safe: true) {
+  // Check if the $organisation exists in the aliases map. If so, change the
+  // value of $organisation to the aliased value.
+  @if map.has-key($_govuk_colours-organisations-aliases, $organisation) {
+    $organisation: map.get($_govuk_colours-organisations-aliases, $organisation);
+  }
+
+  // Check to see if the organisation exists
+  @if not map.has-key($govuk-colours-organisations, $organisation) {
+    @error "Unknown organisation `#{$organisation}`";
+  }
+
+  $org-colour: map.get($govuk-colours-organisations, $organisation);
+
+  // If the organisation has a deprecation message associated with it
+  // (e.g. it has ceased to exist) then output a warning.
+  @if map.has-key($org-colour, "deprecation-message") and _should-warn("organisation-colours") {
+    @warn warnings--internal.warning-text(
+      "organisation-colours",
+      map.get($org-colour, "deprecation-message")
+    );
+  }
+
+  @if $contrast-safe and map.has-key($org-colour, "contrast-safe") {
+    @return map.get($org-colour, "contrast-safe");
+  } @else {
+    @return map.get($org-colour, "colour");
+  }
+}
+

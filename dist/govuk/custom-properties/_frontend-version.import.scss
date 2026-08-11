@@ -1,0 +1,8 @@
+@use "../tools/exports" as *;
+@use "frontend-version.mixin" as frontend-version;
+
+// CSS custom property for each breakpoint
+@include govuk-exports("govuk/custom-properties/frontend-version") {
+  @include frontend-version.styles;
+}
+

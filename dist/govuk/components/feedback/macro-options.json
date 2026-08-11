@@ -1,0 +1,50 @@
+[
+    {
+        "name": "titleText",
+        "type": "string",
+        "required": true,
+        "description": "Text to use within the title of the Feedback component. If `titleHtml` is provided, the `titleText` option will be ignored."
+    },
+    {
+        "name": "titleHtml",
+        "type": "string",
+        "required": true,
+        "description": "HTML to use within the title of the Feedback component. If `titleHtml` is provided, the `titleText` option will be ignored."
+    },
+    {
+        "name": "headingLevel",
+        "type": "integer",
+        "required": false,
+        "description": "Heading level, from `1` to `6`. Default is `2`."
+    },
+    {
+        "name": "text",
+        "type": "string",
+        "required": true,
+        "description": "Text to use within the Feedback component content. If `html` is provided, the `text` option will be ignored."
+    },
+    {
+        "name": "html",
+        "type": "string",
+        "required": true,
+        "description": "HTML to use within the Feedback component content. If `html` is provided, the `text` option will be ignored."
+    },
+    {
+        "name": "caller",
+        "type": "nunjucks-block",
+        "required": false,
+        "description": "Not strictly a parameter but a [Nunjucks code convention](https://mozilla.github.io/nunjucks/templating.html#call). Using a `call` block lets you call a macro with all the text inside the tag. This is helpful if you want to pass a lot of content into a macro. To use it, you'll need to wrap the entire Feedback component in a `call` block."
+    },
+    {
+        "name": "classes",
+        "type": "string",
+        "required": false,
+        "description": "Classes to add to the Feedback component container."
+    },
+    {
+        "name": "attributes",
+        "type": "object",
+        "required": false,
+        "description": "HTML attributes (for example, data attributes) to add to the Feedback component container."
+    }
+]

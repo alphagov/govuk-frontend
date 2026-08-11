@@ -1,0 +1,5 @@
+@use "width-container.mixin" as width-container;
+@use "../custom-properties";
+
+@include width-container.styles;
+

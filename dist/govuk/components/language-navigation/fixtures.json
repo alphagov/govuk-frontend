@@ -1,0 +1,266 @@
+{
+    "component": "language-navigation",
+    "fixtures": [
+        {
+            "name": "default",
+            "options": {
+                "items": [
+                    {
+                        "text": "English",
+                        "lang": "en",
+                        "current": true
+                    },
+                    {
+                        "text": "Cymraeg",
+                        "lang": "cy",
+                        "href": "#/cy"
+                    }
+                ]
+            },
+            "hidden": false,
+            "description": "",
+            "pageTemplateOptions": {},
+            "screenshot": true,
+            "html": "<nav class=\"govuk-language-navigation\" aria-label=\"Language navigation\">\n  <ul class=\"govuk-language-navigation__list\">\n    <li class=\"govuk-language-navigation__list-item\">\n      <span class=\"govuk-language-navigation__text\" lang=\"en\" aria-current=\"true\">English</span>\n    </li>\n    <li class=\"govuk-language-navigation__list-item\">\n      <a class=\"govuk-language-navigation__link\" href=\"#/cy\" rel=\"alternate\" lang=\"cy\" hreflang=\"cy\">Cymraeg      </a>\n    </li>\n  </ul>\n</nav>"
+        },
+        {
+            "name": "with multiple languages",
+            "options": {
+                "items": [
+                    {
+                        "text": "English",
+                        "lang": "en",
+                        "current": true
+                    },
+                    {
+                        "text": "Français",
+                        "lang": "fr",
+                        "href": "#/fr"
+                    },
+                    {
+                        "text": "हिंदी",
+                        "lang": "hi",
+                        "href": "#/hi"
+                    },
+                    {
+                        "text": "日本語",
+                        "lang": "ja",
+                        "href": "#/ja"
+                    },
+                    {
+                        "text": "اردو",
+                        "lang": "ur",
+                        "href": "#/ur"
+                    },
+                    {
+                        "text": "中文",
+                        "lang": "zh",
+                        "href": "#/zh"
+                    }
+                ]
+            },
+            "hidden": false,
+            "description": "",
+            "pageTemplateOptions": {},
+            "screenshot": false,
+            "html": "<nav class=\"govuk-language-navigation\" aria-label=\"Language navigation\">\n  <ul class=\"govuk-language-navigation__list\">\n    <li class=\"govuk-language-navigation__list-item\">\n      <span class=\"govuk-language-navigation__text\" lang=\"en\" aria-current=\"true\">English</span>\n    </li>\n    <li class=\"govuk-language-navigation__list-item\">\n      <a class=\"govuk-language-navigation__link\" href=\"#/fr\" rel=\"alternate\" lang=\"fr\" hreflang=\"fr\">Français      </a>\n    </li>\n    <li class=\"govuk-language-navigation__list-item\">\n      <a class=\"govuk-language-navigation__link\" href=\"#/hi\" rel=\"alternate\" lang=\"hi\" hreflang=\"hi\">हिंदी      </a>\n    </li>\n    <li class=\"govuk-language-navigation__list-item\">\n      <a class=\"govuk-language-navigation__link\" href=\"#/ja\" rel=\"alternate\" lang=\"ja\" hreflang=\"ja\">日本語      </a>\n    </li>\n    <li class=\"govuk-language-navigation__list-item\">\n      <a class=\"govuk-language-navigation__link\" href=\"#/ur\" rel=\"alternate\" lang=\"ur\" hreflang=\"ur\">اردو      </a>\n    </li>\n    <li class=\"govuk-language-navigation__list-item\">\n      <a class=\"govuk-language-navigation__link\" href=\"#/zh\" rel=\"alternate\" lang=\"zh\" hreflang=\"zh\">中文      </a>\n    </li>\n  </ul>\n</nav>"
+        },
+        {
+            "name": "inverse",
+            "options": {
+                "classes": "govuk-language-navigation--inverse",
+                "items": [
+                    {
+                        "text": "English",
+                        "lang": "en",
+                        "current": true
+                    },
+                    {
+                        "text": "Cymraeg",
+                        "lang": "cy",
+                        "href": "#/cy"
+                    }
+                ]
+            },
+            "hidden": false,
+            "description": "Language navigation that appears on dark backgrounds",
+            "pageTemplateOptions": {
+                "bodyClasses": "app-template__body--inverse"
+            },
+            "screenshot": true,
+            "html": "<nav class=\"govuk-language-navigation govuk-language-navigation--inverse\" aria-label=\"Language navigation\">\n  <ul class=\"govuk-language-navigation__list\">\n    <li class=\"govuk-language-navigation__list-item\">\n      <span class=\"govuk-language-navigation__text\" lang=\"en\" aria-current=\"true\">English</span>\n    </li>\n    <li class=\"govuk-language-navigation__list-item\">\n      <a class=\"govuk-language-navigation__link\" href=\"#/cy\" rel=\"alternate\" lang=\"cy\" hreflang=\"cy\">Cymraeg      </a>\n    </li>\n  </ul>\n</nav>"
+        },
+        {
+            "name": "with translated navigation label",
+            "options": {
+                "ariaLabel": "Dewis iaith",
+                "attributes": {
+                    "lang": "cy"
+                },
+                "items": [
+                    {
+                        "text": "English",
+                        "lang": "en",
+                        "href": "#/en"
+                    },
+                    {
+                        "text": "Cymraeg",
+                        "lang": "cy",
+                        "current": true
+                    }
+                ]
+            },
+            "hidden": false,
+            "description": "When the current page is not in English, translate the `ariaLabel` into the language of the current page.",
+            "pageTemplateOptions": {},
+            "screenshot": false,
+            "html": "<nav class=\"govuk-language-navigation\" lang=\"cy\" aria-label=\"Dewis iaith\">\n  <ul class=\"govuk-language-navigation__list\">\n    <li class=\"govuk-language-navigation__list-item\">\n      <a class=\"govuk-language-navigation__link\" href=\"#/en\" rel=\"alternate\" lang=\"en\" hreflang=\"en\">English      </a>\n    </li>\n    <li class=\"govuk-language-navigation__list-item\">\n      <span class=\"govuk-language-navigation__text\" lang=\"cy\" aria-current=\"true\">Cymraeg</span>\n    </li>\n  </ul>\n</nav>"
+        },
+        {
+            "name": "with mixed text directions",
+            "options": {
+                "items": [
+                    {
+                        "text": "English",
+                        "lang": "en",
+                        "dir": "ltr",
+                        "current": true
+                    },
+                    {
+                        "text": "العربية",
+                        "lang": "ar",
+                        "dir": "rtl",
+                        "href": "#/ar"
+                    }
+                ]
+            },
+            "hidden": false,
+            "description": "",
+            "pageTemplateOptions": {},
+            "screenshot": false,
+            "html": "<nav class=\"govuk-language-navigation\" aria-label=\"Language navigation\">\n  <ul class=\"govuk-language-navigation__list\">\n    <li class=\"govuk-language-navigation__list-item\">\n      <span class=\"govuk-language-navigation__text\" lang=\"en\" dir=\"ltr\" aria-current=\"true\">English</span>\n    </li>\n    <li class=\"govuk-language-navigation__list-item\">\n      <a class=\"govuk-language-navigation__link\" href=\"#/ar\" rel=\"alternate\" lang=\"ar\" hreflang=\"ar\" dir=\"rtl\">العربية      </a>\n    </li>\n  </ul>\n</nav>"
+        },
+        {
+            "name": "with language description",
+            "options": {
+                "attributes": {
+                    "lang": "cy"
+                },
+                "items": [
+                    {
+                        "text": "English",
+                        "lang": "en",
+                        "current": true
+                    },
+                    {
+                        "text": "Cymraeg",
+                        "lang": "cy",
+                        "href": "#/cy",
+                        "languageDescriptionText": "Newid yr iaith i'r Cymraeg"
+                    }
+                ]
+            },
+            "hidden": false,
+            "description": "Add visually hidden text, written in the language of the link, so screen reader users know that selecting a link leads to a translation of the page\".",
+            "pageTemplateOptions": {},
+            "screenshot": false,
+            "html": "<nav class=\"govuk-language-navigation\" lang=\"cy\" aria-label=\"Language navigation\">\n  <ul class=\"govuk-language-navigation__list\">\n    <li class=\"govuk-language-navigation__list-item\">\n      <span class=\"govuk-language-navigation__text\" lang=\"en\" aria-current=\"true\">English</span>\n    </li>\n    <li class=\"govuk-language-navigation__list-item\">\n      <a class=\"govuk-language-navigation__link\" href=\"#/cy\" rel=\"alternate\" lang=\"cy\" hreflang=\"cy\">Cymraeg<span class=\"govuk-visually-hidden\"> Newid yr iaith i&#39;r Cymraeg</span>      </a>\n    </li>\n  </ul>\n</nav>"
+        },
+        {
+            "name": "classes",
+            "options": {
+                "classes": "app-language-navigation--custom-modifier",
+                "items": [
+                    {
+                        "text": "English",
+                        "lang": "en",
+                        "current": true
+                    },
+                    {
+                        "text": "Cymraeg",
+                        "lang": "cy",
+                        "href": "#/cy"
+                    }
+                ]
+            },
+            "hidden": true,
+            "description": "",
+            "pageTemplateOptions": {},
+            "screenshot": false,
+            "html": "<nav class=\"govuk-language-navigation app-language-navigation--custom-modifier\" aria-label=\"Language navigation\">\n  <ul class=\"govuk-language-navigation__list\">\n    <li class=\"govuk-language-navigation__list-item\">\n      <span class=\"govuk-language-navigation__text\" lang=\"en\" aria-current=\"true\">English</span>\n    </li>\n    <li class=\"govuk-language-navigation__list-item\">\n      <a class=\"govuk-language-navigation__link\" href=\"#/cy\" rel=\"alternate\" lang=\"cy\" hreflang=\"cy\">Cymraeg      </a>\n    </li>\n  </ul>\n</nav>"
+        },
+        {
+            "name": "attributes",
+            "options": {
+                "attributes": {
+                    "id": "my-language-navigation",
+                    "data-foo": "bar"
+                },
+                "items": [
+                    {
+                        "text": "English",
+                        "lang": "en",
+                        "current": true
+                    },
+                    {
+                        "text": "Cymraeg",
+                        "lang": "cy",
+                        "href": "#/cy"
+                    }
+                ]
+            },
+            "hidden": true,
+            "description": "",
+            "pageTemplateOptions": {},
+            "screenshot": false,
+            "html": "<nav class=\"govuk-language-navigation\" id=\"my-language-navigation\" data-foo=\"bar\" aria-label=\"Language navigation\">\n  <ul class=\"govuk-language-navigation__list\">\n    <li class=\"govuk-language-navigation__list-item\">\n      <span class=\"govuk-language-navigation__text\" lang=\"en\" aria-current=\"true\">English</span>\n    </li>\n    <li class=\"govuk-language-navigation__list-item\">\n      <a class=\"govuk-language-navigation__link\" href=\"#/cy\" rel=\"alternate\" lang=\"cy\" hreflang=\"cy\">Cymraeg      </a>\n    </li>\n  </ul>\n</nav>"
+        },
+        {
+            "name": "item attributes",
+            "options": {
+                "items": [
+                    {
+                        "text": "English",
+                        "lang": "en",
+                        "current": true
+                    },
+                    {
+                        "text": "Cymraeg",
+                        "lang": "cy",
+                        "href": "#/cy",
+                        "attributes": {
+                            "data-attribute": "my-attribute"
+                        }
+                    }
+                ]
+            },
+            "hidden": true,
+            "description": "",
+            "pageTemplateOptions": {},
+            "screenshot": false,
+            "html": "<nav class=\"govuk-language-navigation\" aria-label=\"Language navigation\">\n  <ul class=\"govuk-language-navigation__list\">\n    <li class=\"govuk-language-navigation__list-item\">\n      <span class=\"govuk-language-navigation__text\" lang=\"en\" aria-current=\"true\">English</span>\n    </li>\n    <li class=\"govuk-language-navigation__list-item\">\n      <a class=\"govuk-language-navigation__link\" href=\"#/cy\" rel=\"alternate\" lang=\"cy\" hreflang=\"cy\" data-attribute=\"my-attribute\">Cymraeg      </a>\n    </li>\n  </ul>\n</nav>"
+        },
+        {
+            "name": "html",
+            "options": {
+                "items": [
+                    {
+                        "text": "English",
+                        "lang": "en",
+                        "current": true
+                    },
+                    {
+                        "html": "<span>Cymraeg</span>",
+                        "lang": "cy",
+                        "href": "#/cy"
+                    }
+                ]
+            },
+            "hidden": true,
+            "description": "",
+            "pageTemplateOptions": {},
+            "screenshot": false,
+            "html": "<nav class=\"govuk-language-navigation\" aria-label=\"Language navigation\">\n  <ul class=\"govuk-language-navigation__list\">\n    <li class=\"govuk-language-navigation__list-item\">\n      <span class=\"govuk-language-navigation__text\" lang=\"en\" aria-current=\"true\">English</span>\n    </li>\n    <li class=\"govuk-language-navigation__list-item\">\n      <a class=\"govuk-language-navigation__link\" href=\"#/cy\" rel=\"alternate\" lang=\"cy\" hreflang=\"cy\"><span>Cymraeg</span>      </a>\n    </li>\n  </ul>\n</nav>"
+        }
+    ]
+}

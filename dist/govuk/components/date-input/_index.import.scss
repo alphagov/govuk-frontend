@@ -1,0 +1,13 @@
+@use "mixin";
+
+@import "../../base";
+@import "../error-message";
+@import "../input";
+@import "../hint";
+@import "../label";
+@import "../fieldset";
+
+@include govuk-exports("govuk/component/date-input") {
+  @include mixin.styles;
+}
+

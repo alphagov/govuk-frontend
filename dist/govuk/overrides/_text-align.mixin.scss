@@ -1,0 +1,16 @@
+// stylelint-disable declaration-no-important
+/// @access private
+@mixin styles {
+  .govuk-\!-text-align-left {
+    text-align: left !important;
+  }
+
+  .govuk-\!-text-align-centre {
+    text-align: center !important;
+  }
+
+  .govuk-\!-text-align-right {
+    text-align: right !important;
+  }
+}
+

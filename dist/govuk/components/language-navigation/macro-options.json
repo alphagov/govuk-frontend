@@ -1,0 +1,82 @@
+[
+    {
+        "name": "items",
+        "type": "array",
+        "required": true,
+        "description": "The languages to display within the language navigation.",
+        "params": [
+            {
+                "name": "text",
+                "type": "string",
+                "required": true,
+                "description": "If `html` is set, this is not required. Name of the language, written in that language (for example, <span lang=\"cy\">\"Cymraeg\"</span> for Welsh). If `html` is provided, the `text` option will be ignored."
+            },
+            {
+                "name": "html",
+                "type": "string",
+                "required": true,
+                "description": "If `text` is set, this is not required. HTML to use for the language item. If `html` is provided, the `text` option will be ignored."
+            },
+            {
+                "name": "lang",
+                "type": "string",
+                "required": true,
+                "description": "The language tag for the language item text (for example, `cy` for Welsh). Added as a `lang` attribute so that assistive technologies pronounce the language name correctly."
+            },
+            {
+                "name": "hrefLang",
+                "type": "string",
+                "required": false,
+                "description": "The language tag for the linked page (for example, `cy` for Welsh). Added as an `hreflang` attribute for search engines and other machine readers. Defaults to `lang` when omitted."
+            },
+            {
+                "name": "dir",
+                "type": "string",
+                "required": false,
+                "description": "The text direction of the script the language name is written in (`ltr` for left-to-right scripts or `rtl` for right-to-left). Set this on every item if the navigation includes scripts written in different directions."
+            },
+            {
+                "name": "href",
+                "type": "string",
+                "required": false,
+                "description": "Link to the current page in this language."
+            },
+            {
+                "name": "current",
+                "type": "boolean",
+                "required": false,
+                "description": "Whether this is the language of the current page. Defaults to `true` when `href` is not provided."
+            },
+            {
+                "name": "languageDescriptionText",
+                "type": "string",
+                "required": false,
+                "description": "Visually hidden text after a language link to indicate what the link will do. Write it in the language of the link (for example, \"Change the language to English\")."
+            },
+            {
+                "name": "attributes",
+                "type": "object",
+                "required": false,
+                "description": "HTML attributes to add to the language item anchor."
+            }
+        ]
+    },
+    {
+        "name": "ariaLabel",
+        "type": "string",
+        "required": false,
+        "description": "Plain text label identifying the navigation landmark to screen readers. Write it in the language of the current page. Defaults to \"Language navigation\"."
+    },
+    {
+        "name": "classes",
+        "type": "string",
+        "required": false,
+        "description": "Classes to add to the language navigation container."
+    },
+    {
+        "name": "attributes",
+        "type": "object",
+        "required": false,
+        "description": "HTML attributes to add to the language navigation container."
+    }
+]
