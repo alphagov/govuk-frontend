@@ -2,7 +2,9 @@
 
 {%- set menuButtonText = params.menuButtonText | default("Menu", true) -%}
 {%- set navigationId = params.navigationId | default("navigation", true) %}
-{%- set endSlotRightAligned = params.slots.endRightAligned | default(false) %}
+
+{%- set endSlotHtml = params.slots.end if params.slots.end is string else params.slots.end.html %}
+{%- set endSlotInline = params.slots.end is mapping and params.slots.end.align == 'inline' %}
 
 {%- set commonAttributes %}
 class="govuk-service-navigation {%- if params.classes %} {{ params.classes }}{% endif %}"
@@ -11,7 +13,9 @@ data-module="govuk-service-navigation"
 {% endset -%}
 
 {%- set innerContent %}
-  <div class="govuk-width-container">
+  <div class="govuk-width-container
+    {%- if endSlotInline %} govuk-service-navigation__inlining-container{% endif -%}
+    ">
 
     {# Slot: start #}
     {%- if params.slots.start %}{{ params.slots.start | safe }}{% endif -%}
@@ -85,17 +89,10 @@ data-module="govuk-service-navigation"
           </ul>
         </nav>
       {% endif %}
-
-      {# Slot: end (right aligned) #}
-      {% if params.slots.end and endSlotRightAligned %}
-        <div class="govuk-service-navigation__end">
-          {{ params.slots.end | safe }}
-        </div>
-      {% endif %}
     </div>
 
     {# Slot: end #}
-    {%- if params.slots.end and not endSlotRightAligned %}{{ params.slots.end | safe }}{% endif -%}
+    {%- if endSlotHtml %}{{ endSlotHtml | safe }}{% endif -%}
 
   </div>
 {% endset -%}
@@ -103,7 +100,7 @@ data-module="govuk-service-navigation"
 {# If a service name is included, we use a <section> element with an
   aria-label to create a containing landmark region. Otherwise, the <nav> in
   the innerContent can do the job just fine by itself. #}
-{% if params.serviceName or params.slots.start or params.slots.end %}
+{% if params.serviceName or params.slots.start or endSlotHtml %}
   <section aria-label="{{ params.ariaLabel | default("Service information") }}" {{ commonAttributes | safe }}>
     {{ innerContent | safe }}
   </section>

@@ -27,10 +27,33 @@
     }
   }
 
+  .govuk-service-navigation__inlining-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+
+    .govuk-service-navigation__container {
+      // Expand the container to shift the `end` slot to the right
+      flex-grow: 1;
+
+      // Ensure some space between the `end` slot and the container
+      // when displayed inline
+      &:not(:last-child) {
+        margin-right: base.govuk-spacing(6);
+      }
+    }
+  }
+
   .govuk-service-navigation__container {
     display: flex;
     flex-direction: column;
     align-items: start;
+
+    // Avoid the end slot rendering on the right of the container
+    // in small viewports by ensuring the container is full width
+    @media #{base.govuk-until-breakpoint(tablet)} {
+      width: 100%;
+    }
 
     @media #{base.govuk-from-breakpoint(tablet)} {
       flex-direction: row;

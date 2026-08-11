@@ -85,10 +85,19 @@ params:
         type: string
         required: false
         description: HTML injected at the end of the service header container.
-      - name: endRightAligned
-        type: boolean
+      - name: end
+        type: string
         required: false
-        description: If `true`, renders the `end` slot inline in the service navigation row and right aligns it at tablet and above. Defaults to `false`.
+        description: Options for injecting HTML at the end of the service header container.
+        params:
+          - name: html
+            type: string
+            required: false
+            description: HTML injected at the end of the service header container.
+          - name: align
+            type: string
+            required: false
+            description: By default, the `end` slot renders below the navigation items. Use `inline` to render it on the same line as the navigation items when space is available.
       - name: navigationStart
         type: string
         required: false
@@ -430,7 +439,8 @@ examples:
               </li>
             </ul>
           </nav>
-        endRightAligned: true
+      slotsPreferredPositions:
+        end: same-line
   - name: inverse with language navigation
     description: Service navigation that appears sandwiched between other areas of brand blue, such as the GOV.UK header and a custom page masthead.
     pageTemplateOptions:
@@ -469,12 +479,13 @@ examples:
         end: '<div>[end]</div>'
         navigationStart: '<li>[navigation start]</li>'
         navigationEnd: '<li>[navigation end]</li>'
-  - name: with right-aligned end slot
+  - name: with `inline` end slot
     options:
       serviceName: Service name
       navigation:
         - href: '#/1'
           text: Navigation item 1
       slots:
-        end: '<div>[end]</div>'
-        endRightAligned: true
+        end:
+          html: '<div>[end]</div>'
+          align: 'inline'

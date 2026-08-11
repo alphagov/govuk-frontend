@@ -1,6 +1,6 @@
 ---
 title: Companies you follow
-name: Language navigation (in Service navigation, inline)
+name: Language navigation (in Service navigation)
 scenario: |
   You are a user logged into Companies House WebFiling service, looking at a
   list of companies you are following.
@@ -59,8 +59,7 @@ notes: Based on Companies House "Find an update company information" service
       }
     ],
     slots: {
-      end: languageNavigationHtml,
-      endRightAligned: true
+      end: languageNavigationHtml
     }
   }) }}
 {% endblock %}

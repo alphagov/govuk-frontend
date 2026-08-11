@@ -488,21 +488,16 @@ describe('Service Navigation', () => {
       expect($slottedElement.prop('outerHTML')).toBe('<div>[end]</div>')
     })
 
-    it('inserts HTML from the `end` slot inline when `endRightAligned` is enabled', () => {
-      const $ = render(
-        'service-navigation',
-        examples['with right-aligned end slot']
+    it("inserts HTML from the `end` slot inline when the slot's `align` option is `inline`", () => {
+      const $ = render('service-navigation', examples['with `inline` end slot'])
+
+      const $widthContainer = $(
+        '.govuk-service-navigation .govuk-width-container'
       )
 
-      const $endSlotInContainer = $('.govuk-service-navigation__end')
-      const $endSlotContent = $endSlotInContainer.find('> :first-child')
-      const $slottedElementAtRoot = $('.govuk-width-container > :last-child')
-
-      expect($endSlotInContainer).toHaveLength(1)
-      expect($endSlotContent.prop('outerHTML')).toBe('<div>[end]</div>')
-      expect(
-        $slottedElementAtRoot.hasClass('govuk-service-navigation__container')
-      ).toBeTruthy()
+      expect($widthContainer.attr('class')).toContain(
+        'govuk-service-navigation__inlining-container'
+      )
     })
 
     it('renders the component as a <section> if `start` or `end` slots are used', () => {
