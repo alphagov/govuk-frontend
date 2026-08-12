@@ -89,6 +89,103 @@ examples:
         - text: 中文
           lang: zh
           href: '#/zh'
+  # Example taken from https://www.gov.uk/government/publications/breast-screening-helping-women-decide
+  - name: with large amount of multiple languages
+    options:
+      items:
+        - text: English
+          lang: en
+          current: true
+        - text: العربيَّة
+          lang: ar
+          href: '#/ar'
+        - text: български
+          lang: bg
+          href: '#/bg'
+        - text: বাংলা
+          lang: bn
+          href: '#/bn'
+        - text: Deutsch
+          lang: de
+          href: '#/de'
+        - text: Ελληνικά
+          lang: el
+          href: '#/el'
+        - text: Español
+          lang: es
+          href: '#/es'
+        - text: فارسی
+          lang: fa
+          href: '#/fa'
+        - text: Français
+          lang: fr
+          href: '#/fr'
+        - text: જોર્જિયન
+          lang: gu
+          href: '#/gu'
+        - text: हिंदी
+          lang: hi
+          href: '#/hi'
+        - text: Magyar
+          lang: hu
+          href: '#/hu'
+        - text: Italiano
+          lang: it
+          href: '#/it'
+        - text: Lietuvių
+          lang: lt
+          href: '#/lt'
+        - text: Latviešu
+          lang: lv
+          href: '#/lv'
+        - text: नेपाली
+          lang: ne
+          href: '#/ne'
+        - text: ਪੰਜਾਬੀ ਗੁਰਮੁਖੀ
+          lang: pa
+          href: '#/pa'
+        - text: Polski
+          lang: pl
+          href: '#/pl'
+        - text: پښتو
+          lang: ps
+          href: '#/ps'
+        - text: Português
+          lang: pt
+          href: '#/pt'
+        - text: Română
+          lang: ro
+          href: '#/ro'
+        - text: Русский язык
+          lang: ru
+          href: '#/ru'
+        - text: Slovensky
+          lang: sk
+          href: '#/sk'
+        - text: Soomaali
+          lang: so
+          href: '#/so'
+        - text: Shqip
+          lang: sq
+          href: '#/sq'
+        - text: தமிழ்
+          lang: ta
+          href: '#/ta'
+        - text: Türkçe
+          lang: tr
+          href: '#/tr'
+        - text: Українська
+          lang: uk
+          href: '#/uk'
+        - text: اردو
+          lang: ur
+          href: '#/ur'
+        - text: 简体中文
+          lang: zh
+          href: '#/zh'
+        - text: w">繁體中文（臺灣）
+          lang: zh
+          href: '#/zh'
   - name: inverse
     screenshot: true
     description: Language navigation that appears on dark backgrounds
