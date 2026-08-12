@@ -218,6 +218,12 @@
 
   .govuk-summary-card__title {
     @include base.govuk-font($size: 19, $weight: bold);
+    // Flex items default to a min-width based on their content's intrinsic
+    // size, which stops long unbreakable strings (e.g. reference numbers)
+    // from wrapping even when `word-break`/`overflow-wrap` is applied. This
+    // lets the title actually shrink so those properties can take effect.
+    // https://github.com/alphagov/govuk-frontend/issues/6513
+    min-width: 0;
     margin: base.govuk-spacing(1) base.govuk-spacing(4) base.govuk-spacing(2) 0;
     color: base.govuk-functional-colour(text);
 
