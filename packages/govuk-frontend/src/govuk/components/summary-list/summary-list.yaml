@@ -815,6 +815,21 @@ examples:
             text: Date of birth
           value:
             text: 13/08/1980
+  - name: summary card with unbreakable title text
+    hidden: true
+    options:
+      card:
+        title:
+          html: '<span class="govuk-!-text-break-word">REF1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ</span>'
+        actions:
+          items:
+            - text: Change
+              href: '#'
+      rows:
+        - key:
+            text: Name
+          value:
+            text: Firstname Lastname
   - name: translated
     hidden: true
     options:
