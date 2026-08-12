@@ -39,25 +39,24 @@ notes: Based on https://www.gov.uk/foreign-travel-advice/iceland/entry-requireme
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds-from-desktop">
 
-    <div class="govuk-!-margin-bottom-8">
-      <span class="govuk-caption-xl">Foreign travel advice</span>
-      <h1 class="govuk-heading-xl govuk-!-margin-bottom-3">Narnia entry requirements</h1>
-      {{ govukLanguageNavigation({
-        items: [
-          {
-            text: "English",
-            lang: "en",
-            href: "#",
-            current: true
-          },
-          {
-            text: "Cymraeg",
-            lang: "cy",
-            href: "#"
-          }
-        ]
-      }) }}
-    </div>
+    <span class="govuk-caption-xl">Foreign travel advice</span>
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-3">Narnia entry requirements</h1>
+    {{ govukLanguageNavigation({
+      classes: "govuk-!-margin-bottom-8",
+      items: [
+        {
+          text: "English",
+          lang: "en",
+          href: "#",
+          current: true
+        },
+        {
+          text: "Cymraeg",
+          lang: "cy",
+          href: "#"
+        }
+      ]
+    }) }}
 
     <aside class="govuk-!-padding-bottom-3">
       <nav aria-label="Travel advice pages">
