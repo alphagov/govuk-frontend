@@ -19,12 +19,15 @@ This was added in [pull request #7232: Add Feedback component](https://github.co
 Following the July 2026 machinery of government changes, we've made the following updates to Frontend's list of organisation colours:
 
 - `department-for-science-innovation-technology` has been deprecated
-- `department-for-business-trade` has been renamed to `department-for-business-innovation-science-trade` and the previous name deprecated
+- `department-for-business-trade` has been deprecated, use `department-for-business-innovation-science-trade` instead, which provides up to date colours
 - `department-for-culture-media-sport` has been renamed to `department-for-digital-culture-media-sport` and the previous name deprecated
 
 Deprecated organisation names will be removed in a future major release of GOV.UK Frontend.
 
-We made this change in [pull request #7306: Update organisation colours following July 2026 MoG changes](https://github.com/alphagov/govuk-frontend/pull/7306)
+We made these changes in the following pull requests:
+
+- [#7306: Update organisation colours following July 2026 MoG changes](https://github.com/alphagov/govuk-frontend/pull/7306)
+- [#7354: Update organisation colour for BIST](https://github.com/alphagov/govuk-frontend/pull/7354)
 
 ## v6.4.0 (Feature release)
 
