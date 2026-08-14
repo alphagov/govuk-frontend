@@ -43,7 +43,7 @@ params:
   - name: ariaLabel
     type: string
     required: false
-    description: Plain text label identifying the navigation landmark to screen readers. Write it in the language of the current page. Defaults to "Language navigation".
+    description: Plain text label identifying the navigation landmark to screen readers. Write it in the language of the current page. Defaults to "Language".
   - name: classes
     type: string
     required: false

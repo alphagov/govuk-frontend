@@ -25,7 +25,7 @@ describe('Language navigation', () => {
     })
 
     it('renders with default aria-label', () => {
-      expect($component).toHaveAttribute('aria-label', 'Language navigation')
+      expect($component).toHaveAttribute('aria-label', 'Language')
     })
 
     it('includes an unordered list', () => {
