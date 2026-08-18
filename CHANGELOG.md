@@ -29,6 +29,12 @@ We made these changes in the following pull requests:
 - [#7306: Update organisation colours following July 2026 MoG changes](https://github.com/alphagov/govuk-frontend/pull/7306)
 - [#7354: Update organisation colour for BIST](https://github.com/alphagov/govuk-frontend/pull/7354)
 
+### Fixes
+
+We've made fixes to GOV.UK Frontend in the following pull requests:
+
+- [#7364: Print style updates for various components](https://github.com/alphagov/govuk-frontend/pull/7364)
+
 ## v6.4.0 (Feature release)
 
 To install this version with npm, run `npm install govuk-frontend@6.4.0`. You can also find more information about [how to stay up to date](https://frontend.design-system.service.gov.uk/staying-up-to-date/#updating-to-the-latest-version) in our documentation.
