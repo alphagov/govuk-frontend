@@ -266,11 +266,13 @@ examples:
         - text: English
           lang: en
           current: true
+          attributes:
+            data-test-id: english-link
         - text: Cymraeg
           lang: cy
           href: '#/cy'
           attributes:
-            data-attribute: my-attribute
+            data-test-id: welsh-link
   - name: html
     hidden: true
     options:
