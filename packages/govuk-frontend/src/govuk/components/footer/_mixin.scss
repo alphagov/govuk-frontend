@@ -19,6 +19,12 @@
     border-top-color: base.govuk-functional-colour(brand);
     color: $govuk-footer-text;
     background: base.govuk-functional-colour(template-background);
+
+    @media print {
+      border-top-color: currentcolor;
+      color: base.govuk-functional-colour(text);
+      background-color: transparent;
+    }
   }
 
   .govuk-footer__crown {
