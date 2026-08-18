@@ -161,9 +161,13 @@ describe('Language navigation', () => {
         examples['item attributes']
       )
 
+      const $current = document.querySelector(
+        '.govuk-language-navigation__text[aria-current=true]'
+      )
       const $link = document.querySelector('.govuk-language-navigation__link')
 
-      expect($link).toHaveAttribute('data-attribute', 'my-attribute')
+      expect($current).toHaveAttribute('data-test-id', 'english-link')
+      expect($link).toHaveAttribute('data-test-id', 'welsh-link')
     })
 
     it('renders item html', () => {
