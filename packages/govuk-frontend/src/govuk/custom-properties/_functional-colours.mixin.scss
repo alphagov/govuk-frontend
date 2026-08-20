@@ -14,6 +14,7 @@
       @media print {
         // Use 'true black' to avoid printers using colour ink to print body text
         --govuk-text-colour: #{govuk-functional-colour("print-text")};
+        --govuk-input-border-colour: #{govuk-functional-colour("print-text")};
       }
     }
   }

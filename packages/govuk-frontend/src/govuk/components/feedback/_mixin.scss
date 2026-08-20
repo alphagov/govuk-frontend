@@ -22,6 +22,11 @@
       margin-right: 0;
       margin-left: 0;
     }
+
+    @media print {
+      border-color: currentcolor;
+      background-color: transparent;
+    }
   }
 
   .govuk-feedback__title {

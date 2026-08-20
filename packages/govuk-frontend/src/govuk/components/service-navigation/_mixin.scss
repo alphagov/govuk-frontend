@@ -20,6 +20,11 @@
     --govuk-text-colour: #{$govuk-service-navigation-text-colour};
     color: base.govuk-functional-colour(text);
     background-color: $govuk-service-navigation-background;
+
+    @media print {
+      border-bottom-color: currentcolor;
+      background-color: transparent;
+    }
   }
 
   .govuk-service-navigation__container {
@@ -64,6 +69,10 @@
       &:not(:last-child) {
         @include base.govuk-responsive-margin(6, $direction: right);
       }
+    }
+
+    @media print {
+      border-color: currentcolor;
     }
   }
 
@@ -207,10 +216,19 @@
     --govuk-text-colour: #{base.govuk-functional-colour(inverse-text)};
     background-color: base.govuk-functional-colour(brand);
 
+    @media print {
+      --govuk-text-colour: #{base.govuk-functional-colour(print-text)};
+      background-color: transparent;
+    }
+
     .govuk-width-container {
       border-width: 1px 0;
       border-style: solid;
       border-color: $govuk-service-navigation-border-colour;
+
+      @media print {
+        border-color: currentcolor;
+      }
     }
 
     // Subtract 1px of space to account for the extra border-top
@@ -224,9 +242,12 @@
       border-color: currentcolor;
     }
 
-    // Override link styles
-    .govuk-service-navigation__link {
-      @include base.govuk-link-style-text;
+    // Override link styles if on screens
+    // In print, we want the normal link styles to still apply
+    @media not print {
+      .govuk-service-navigation__link {
+        @include base.govuk-link-style-text;
+      }
     }
 
     // Override mobile menu toggle colour when not focused

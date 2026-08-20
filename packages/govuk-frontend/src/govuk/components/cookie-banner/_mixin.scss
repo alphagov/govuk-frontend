@@ -16,6 +16,12 @@
 
     color: base.govuk-functional-colour(surface-text);
     background-color: base.govuk-functional-colour(surface-background);
+
+    @media print {
+      border-bottom-color: currentcolor;
+      color: base.govuk-functional-colour(print-text);
+      background-color: transparent;
+    }
   }
 
   // Support older browsers which don't hide elements with the `hidden` attribute
