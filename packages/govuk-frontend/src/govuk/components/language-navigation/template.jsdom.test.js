@@ -155,6 +155,17 @@ describe('Language navigation', () => {
       expect($link).toHaveClass('app-language-navigation__link--modifier')
     })
 
+    it('sets item classes on the active item', () => {
+      document.body.innerHTML = render(
+        'language-navigation',
+        examples['active item classes']
+      )
+
+      const $link = document.querySelector('.govuk-language-navigation__text')
+
+      expect($link).toHaveClass('app-language-navigation__link--modifier')
+    })
+
     it('sets item attributes on the link', () => {
       document.body.innerHTML = render(
         'language-navigation',

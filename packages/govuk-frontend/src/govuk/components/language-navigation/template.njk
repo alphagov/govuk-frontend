@@ -6,7 +6,8 @@
   {% set isCurrent = item.current or (not item.href) %}
   {% if isCurrent %}
     <li class="govuk-language-navigation__list-item">
-      <span class="govuk-language-navigation__text" aria-current="true"
+      <span class="govuk-language-navigation__text {%- if item.classes %} {{ item.classes }}{% endif %}"
+        aria-current="true"
         {%- if item.lang %} lang="{{ item.lang }}"{% endif %}
         {%- if item.dir %} dir="{{ item.dir }}"{% endif %}
         {{- govukAttributes(item.attributes) }}>

@@ -274,6 +274,17 @@ examples:
           lang: cy
           href: '#/cy'
           classes: 'app-language-navigation__link--modifier'
+  - name: active item classes
+    hidden: true
+    options:
+      items:
+        - text: English
+          lang: en
+          current: true
+          classes: 'app-language-navigation__link--modifier'
+        - text: Cymraeg
+          lang: cy
+          href: '#/cy'
   - name: item attributes
     hidden: true
     options:
