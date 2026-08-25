@@ -85,6 +85,19 @@ params:
         type: string
         required: false
         description: HTML injected at the end of the service header container.
+      - name: end
+        type: string
+        required: false
+        description: Options for injecting HTML at the end of the service header container.
+        params:
+          - name: html
+            type: string
+            required: false
+            description: HTML injected at the end of the service header container.
+          - name: align
+            type: string
+            required: false
+            description: By default, the `end` slot renders below the navigation items. Use `inline` to render it on the same line as the navigation items when space is available.
       - name: navigationStart
         type: string
         required: false
@@ -378,6 +391,86 @@ examples:
           text: Navigation item 3
         - href: '#/4'
           text: Navigation item 4
+  - name: with language navigation
+    description: HTML rendered by the language navigation component can be injected into the `end` slot of the service header.
+    options:
+      serviceName: Service name
+      navigation:
+        - href: '#/1'
+          text: Navigation item 1
+          active: true
+        - href: '#/2'
+          text: Navigation item 2
+        - href: '#/3'
+          text: Navigation item 3
+      slots:
+        end: |-
+          <nav class="govuk-language-navigation" aria-label="Language navigation">
+            <ul class="govuk-language-navigation__list">
+              <li class="govuk-language-navigation__list-item">
+                <span class="govuk-language-navigation__text" lang="en" aria-current="true">English</span>
+              </li>
+              <li class="govuk-language-navigation__list-item">
+                <a class="govuk-language-navigation__link" href="#/cy" lang="cy" hreflang="cy" rel="alternate">Cymraeg</a>
+              </li>
+            </ul>
+          </nav>
+  - name: with right-aligned language navigation
+    description: HTML rendered by the language navigation component can be injected into the `end` slot of the service header.
+    options:
+      serviceName: Service name
+      navigation:
+        - href: '#/1'
+          text: Navigation item 1
+          active: true
+        - href: '#/2'
+          text: Navigation item 2
+        - href: '#/3'
+          text: Navigation item 3
+      slots:
+        end: |-
+          <nav class="govuk-language-navigation" aria-label="Language navigation">
+            <ul class="govuk-language-navigation__list">
+              <li class="govuk-language-navigation__list-item">
+                <span class="govuk-language-navigation__text" lang="en" aria-current="true">English</span>
+              </li>
+              <li class="govuk-language-navigation__list-item">
+                <a class="govuk-language-navigation__link" href="#/cy" lang="cy" hreflang="cy" rel="alternate">Cymraeg</a>
+              </li>
+            </ul>
+          </nav>
+      slotsPreferredPositions:
+        end: same-line
+  - name: inverse with language navigation
+    description: Service navigation that appears sandwiched between other areas of brand blue, such as the GOV.UK header and a custom page masthead.
+    pageTemplateOptions:
+      bodyClasses: app-template__body--inverse
+    options:
+      classes: govuk-service-navigation--inverse
+      serviceName: Apply for a juggling license
+      serviceUrl: '#/'
+      navigation:
+        - href: '#/1'
+          text: Navigation item 1
+        - href: '#/2'
+          text: Navigation item 2
+          active: true
+        - href: '#/3'
+          text: Navigation item 3
+        - href: '#/4'
+          text: Navigation item 4
+      slots:
+        end: |-
+          <nav class="govuk-language-navigation govuk-language-navigation--inverse" aria-label="Language navigation">
+            <ul class="govuk-language-navigation__list">
+              <li class="govuk-language-navigation__list-item">
+                <span class="govuk-language-navigation__text" lang="en" aria-current="true">English</span>
+              </li>
+              <li class="govuk-language-navigation__list-item">
+                <a class="govuk-language-navigation__link" href="#/cy" lang="cy" hreflang="cy" rel="alternate">Cymraeg</a>
+              </li>
+            </ul>
+          </nav>
   - name: with slotted content
     hidden: true
     options:
@@ -386,3 +479,13 @@ examples:
         end: '<div>[end]</div>'
         navigationStart: '<li>[navigation start]</li>'
         navigationEnd: '<li>[navigation end]</li>'
+  - name: with `inline` end slot
+    options:
+      serviceName: Service name
+      navigation:
+        - href: '#/1'
+          text: Navigation item 1
+      slots:
+        end:
+          html: '<div>[end]</div>'
+          align: 'inline'

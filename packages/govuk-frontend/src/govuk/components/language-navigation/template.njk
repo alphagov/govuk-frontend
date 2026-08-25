@@ -1,0 +1,33 @@
+{% from "../../macros/attributes.njk" import govukAttributes %}
+
+<nav class="govuk-language-navigation {%- if params.classes %} {{ params.classes }}{% endif %}" {{- govukAttributes(params.attributes) }} aria-label="{{ params.ariaLabel | default("Language") }}">
+  <ul class="govuk-language-navigation__list">
+{% for item in params.items %}
+  {% set isCurrent = item.current or (not item.href) %}
+  {% if isCurrent %}
+    <li class="govuk-language-navigation__list-item">
+      <span class="govuk-language-navigation__text {%- if item.classes %} {{ item.classes }}{% endif %}"
+        aria-current="true"
+        {%- if item.lang %} lang="{{ item.lang }}"{% endif %}
+        {%- if item.dir %} dir="{{ item.dir }}"{% endif %}
+        {{- govukAttributes(item.attributes) }}>
+        {{- item.html | safe if item.html else item.text -}}
+      </span>
+    </li>
+  {% else %}
+    <li class="govuk-language-navigation__list-item">
+      <a class="govuk-language-navigation__link {%- if item.classes %} {{ item.classes }}{% endif %}" href="{{ item.href }}" rel="alternate"
+        {%- if item.lang %} lang="{{ item.lang }}"{% endif %}
+        {%- if item.hrefLang or item.lang %} hreflang="{{ item.hrefLang if item.hrefLang else item.lang }}"{% endif %}
+        {%- if item.dir %} dir="{{ item.dir }}"{% endif %}
+        {{- govukAttributes(item.attributes) }}>
+        {{- item.html | safe if item.html else item.text -}}
+        {%- if item.languageDescriptionText -%}
+        <span class="govuk-visually-hidden"> {{ item.languageDescriptionText }}</span>
+        {%- endif %}
+      </a>
+    </li>
+  {% endif %}
+{% endfor %}
+  </ul>
+</nav>

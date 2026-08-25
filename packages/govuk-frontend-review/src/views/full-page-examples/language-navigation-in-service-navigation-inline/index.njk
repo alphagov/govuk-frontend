@@ -1,0 +1,94 @@
+---
+title: Companies you follow
+name: Language navigation (in Service navigation, inline)
+scenario: |
+  You are a user logged into Companies House WebFiling service, looking at a
+  list of companies you are following.
+notes: Based on Companies House "Find an update company information" service
+---
+
+{% extends "layouts/full-page-example.njk" %}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+{% from "govuk/components/header/macro.njk" import govukHeader %}
+{% from "govuk/components/language-navigation/macro.njk" import govukLanguageNavigation %}
+{% from "govuk/components/service-navigation/macro.njk" import govukServiceNavigation %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+
+{% set pageTitle = example.title %}
+{% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
+
+{% block govukHeader %}
+  {{ govukHeader({
+    classes: "govuk-header--full-width-border"
+  }) }}
+{% endblock %}
+
+{% set languageNavigationHtml -%}
+  {{ govukLanguageNavigation({
+    items: [
+      {
+        text: "English",
+        lang: "en",
+        href: "#",
+        current: true
+      },
+      {
+        text: "Cymraeg",
+        lang: "cy",
+        href: "#"
+      }
+    ]
+  }) }}
+{%- endset %}
+
+{% block govukServiceNavigation %}
+  {{ govukServiceNavigation({
+    classes: "app-service-navigation",
+    serviceName: "Find company information",
+    serviceUrl: "#0",
+    navigation: [
+      {
+        href: '#1',
+        text: 'Search the register'
+      },
+      {
+        href: '#2',
+        text: 'Companies you follow',
+        current: true
+      }
+    ],
+    slots: {
+      end: {
+        html: languageNavigationHtml,
+        align: 'inline'
+      }
+    }
+  }) }}
+{% endblock %}
+
+{% block headerEnd %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Alpha"
+    },
+    html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback by email</a>.'
+  }) }}
+{% endblock %}
+
+{% block containerStart %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "#0"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <h1 class="govuk-heading-xl">Companies you follow</h1>
+  <p class="govuk-body">You are not following any companies.</p>
+{% endblock %}
