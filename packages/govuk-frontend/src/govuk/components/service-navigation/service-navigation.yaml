@@ -86,7 +86,7 @@ params:
         required: false
         description: HTML injected at the end of the service header container.
       - name: end
-        type: string
+        type: object
         required: false
         description: Options for injecting HTML at the end of the service header container.
         params:
