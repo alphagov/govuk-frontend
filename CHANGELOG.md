@@ -6,28 +6,76 @@ For advice on how to use these release notes, see [our guidance on staying up to
 
 ### New features
 
-#### Use the Feedback component to collect feedback from users on your service
+#### We’ve introduced the ‘Trial’ status tag for new components or variants of components
+
+We’ve introduced the ‘Trial’ status tag for new components or variants of components that might not meet all our [contribution criteria](https://design-system.service.gov.uk/community/contribution-criteria/). We release trial components to:
+
+- get feedback from the community
+- allow services to trial the components with users
+
+See the guidance on [Component lifecycles](https://design-system.service.gov.uk/community/component-lifecycle-statuses/) for more information on trial components.
+
+#### Use the Language navigation component to let users switch between languages
+
+We've added the [Language navigation component](https://design-system.service.gov.uk/components/language-navigation/) to let users switch between languages your service offers.
+
+This component is currently in trial status.
+
+We made this change in [pull request #7226: Add Language navigation component](https://github.com/alphagov/govuk-frontend/pull/7226).
+
+Thanks to [@danacotoran](https://github.com/danacotoran) for suggesting this component.
+
+#### Use the Feedback component to collect feedback from users of your service
 
 We've added the [Feedback component](https://design-system.service.gov.uk/components/feedback/) to help services collect feedback from their users throughout their service.
 
-This was added in [pull request #7232: Add Feedback component](https://github.com/alphagov/govuk-frontend/pull/7232).
+This component is currently in trial status.
+
+We made this change in [pull request #7232: Add Feedback component](https://github.com/alphagov/govuk-frontend/pull/7232).
+
+#### Align content of Service navigation's `end` slot with navigation items
+
+When enough space is available on a user’s screen, you can display content in the `end` slot in line with the navigation items to the right rather than underneath the navigation items.
+
+This can be useful when inserting content users expect in that area, such as:
+
+- language navigation
+- authentication and account links
+
+If you use Nunjucks, the `end` slot now accepts an object with the HTML to insert an `align` option:
+
+```nunjucks
+{{ govukServiceNavigation({
+  /* Other component options */
+  slots: {
+    end: {
+      html: /* Content of the slot */,
+      align: 'inline'
+    }
+  }
+}) }}
+```
+
+If you do not use Nunjucks to generate your components' HTML, add the `govuk-service-navigation__inlining-container` class to the `<div class="govuk-width-container">` inside your Service navigation.
+
+We made this change in [pull request #7349: Update how Service Navigation aligns the end slot](https://github.com/alphagov/govuk-frontend/pull/7349).
 
 ### Recommended changes
 
 #### Update references to deprecated organisation colours
 
-Following the July 2026 machinery of government changes, we've made the following updates to Frontend's list of organisation colours:
+Following the July 2026 machinery of government changes, we've made the following updates to Frontend's [list of organisation colours](https://github.com/alphagov/govuk-frontend/blob/main/packages/govuk-frontend/src/govuk/settings/_colours-organisations.scss):
 
 - `department-for-science-innovation-technology` has been deprecated
-- `department-for-business-trade` has been deprecated, use `department-for-business-innovation-science-trade` instead, which provides up to date colours
-- `department-for-culture-media-sport` has been renamed to `department-for-digital-culture-media-sport` and the previous name deprecated
+- `department-for-business-trade` has been deprecated - use `department-for-business-innovation-science-trade` instead
+- `department-for-culture-media-sport` has been deprecated – use `department-for-digital-culture-media-sport` instead
 
-Deprecated organisation names will be removed in a future major release of GOV.UK Frontend.
+We’ll remove deprecated organisation names in a future major release of GOV.UK Frontend.
 
-We made these changes in the following pull requests:
+We made this change in the following pull requests:
 
 - [#7306: Update organisation colours following July 2026 MoG changes](https://github.com/alphagov/govuk-frontend/pull/7306)
-- [#7354: Update organisation colour for BIST](https://github.com/alphagov/govuk-frontend/pull/7354)
+- [#7354: Update organisation colour for BIST](https://github.com/alphagov/govuk-frontend/pull/7354) - thanks to [@armstrongb](https://github.com/armstrongb) for reporting this issue
 
 ### Fixes
 
