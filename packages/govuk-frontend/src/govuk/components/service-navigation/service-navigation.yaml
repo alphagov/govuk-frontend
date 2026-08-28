@@ -428,19 +428,19 @@ examples:
         - href: '#/3'
           text: Navigation item 3
       slots:
-        end: |-
-          <nav class="govuk-language-navigation" aria-label="Language navigation">
-            <ul class="govuk-language-navigation__list">
-              <li class="govuk-language-navigation__list-item">
-                <span class="govuk-language-navigation__text" lang="en" aria-current="true">English</span>
-              </li>
-              <li class="govuk-language-navigation__list-item">
-                <a class="govuk-language-navigation__link" href="#/cy" lang="cy" hreflang="cy" rel="alternate">Cymraeg</a>
-              </li>
-            </ul>
-          </nav>
-      slotsPreferredPositions:
-        end: same-line
+        end:
+          align: inline
+          html: |-
+            <nav class="govuk-language-navigation" aria-label="Language navigation">
+              <ul class="govuk-language-navigation__list">
+                <li class="govuk-language-navigation__list-item">
+                  <span class="govuk-language-navigation__text" lang="en" aria-current="true">English</span>
+                </li>
+                <li class="govuk-language-navigation__list-item">
+                  <a class="govuk-language-navigation__link" href="#/cy" lang="cy" hreflang="cy" rel="alternate">Cymraeg</a>
+                </li>
+              </ul>
+            </nav>
   - name: inverse with language navigation
     description: Service navigation that appears sandwiched between other areas of brand blue, such as the GOV.UK header and a custom page masthead.
     pageTemplateOptions:
