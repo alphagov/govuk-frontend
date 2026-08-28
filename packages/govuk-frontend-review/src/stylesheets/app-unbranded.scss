@@ -6,7 +6,9 @@
     sans-serif
   ),
   $govuk-functional-colours: (
-    brand: #388e3c
+    brand: (
+      name: "black"
+    )
   )
 );
 
