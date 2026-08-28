@@ -13,3 +13,7 @@
 );
 
 @use "partials/banner";
+
+.govuk-footer__crown {
+  display: none;
+}
