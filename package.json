@@ -57,7 +57,7 @@
     "@octokit/plugin-rest-endpoint-methods": "^17.0.0",
     "@octokit/rest": "22.0.1",
     "@percy/core": "^1.32.4",
-    "@testing-library/jest-dom": "^7.0.0",
+    "@testing-library/jest-dom": "^7.0.1",
     "@types/browser-sync": "^2.29.1",
     "@types/express": "^5.0.6",
     "@types/gulp": "^4.0.18",
