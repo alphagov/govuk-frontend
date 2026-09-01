@@ -1,5 +1,5 @@
 GOV.UK Frontend ·
-[![Build Status](https://github.com/alphagov/govuk-frontend/workflows/Tests/badge.svg)](https://github.com/alphagov/govuk-frontend/actions?query=workflow%3ATests+branch%3Amain)
+[![Build Status](https://github.com/alphagov/govuk-frontend/actions/workflows/tests.yml/badge.svg?branch=main&event=push)](https://github.com/alphagov/govuk-frontend/actions/workflows/tests.yml)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 =====================
 
