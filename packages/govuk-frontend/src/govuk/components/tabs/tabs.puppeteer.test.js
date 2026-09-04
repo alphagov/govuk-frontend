@@ -363,4 +363,46 @@ describe('/components/tabs', () => {
       })
     })
   })
+
+  describe('when ids contain special characters', () => {
+    it('shows the panel for dotted ids', async () => {
+      // Errors logged to the console will cause this test to fail
+      await render(page, 'tabs', examples.default, {
+        beforeInitialisation($root) {
+          const $link = $root.querySelector('.govuk-tabs__tab')
+          const $panel = $root.querySelector($link.hash)
+          $link.setAttribute('href', '#a.b')
+          $panel.id = 'a.b'
+        }
+      })
+
+      await page.click('.govuk-tabs__list-item:first-child .govuk-tabs__tab')
+
+      const tabPanelIsHidden = await page.evaluate(
+        () =>
+          document.body.querySelector('.govuk-tabs > .govuk-tabs__panel')
+            .classList.contains('govuk-tabs__panel--hidden')
+      )
+      expect(tabPanelIsHidden).toBeFalsy()
+    })
+
+    it('ignores hashes that match no tab without errors', async () => {
+      // Errors logged to the console will cause this test to fail
+      await render(page, 'tabs', examples.default)
+
+      await page.evaluate(() => {
+        window.location.hash = 'a\\'
+      })
+      await new Promise((resolve) => setTimeout(resolve, 200))
+
+      const firstTabAriaSelected = await page.evaluate(() =>
+        document.body
+          .querySelector(
+            '.govuk-tabs__list-item:first-child .govuk-tabs__tab'
+          )
+          .getAttribute('aria-selected')
+      )
+      expect(firstTabAriaSelected).toBe('true')
+    })
+  })
 })
