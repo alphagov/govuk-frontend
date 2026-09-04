@@ -285,4 +285,32 @@ describe('Error Summary', () => {
       })
     })
   })
+
+  describe('when linking to an input whose id contains special characters', () => {
+    it('focuses the target input without errors', async () => {
+      // Errors logged to the console will cause this test to fail
+      await render(page, 'error-summary', examples.default, {
+        beforeInitialisation($root) {
+          const $link = $root.querySelector('.govuk-error-summary__list a')
+          const $input = document.createElement('input')
+          $input.id = "child's-name"
+          document.body.appendChild($input)
+
+          const $label = document.createElement('label')
+          $label.setAttribute('for', "child's-name")
+          $label.textContent = "Child's name"
+          document.body.appendChild($label)
+
+          $link.href = "#child's-name"
+        }
+      })
+
+      await page.click('.govuk-error-summary__list a')
+
+      const activeElement = await page.evaluate(
+        () => document.activeElement.id
+      )
+      expect(activeElement).toBe("child's-name")
+    })
+  })
 })
