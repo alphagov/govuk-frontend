@@ -93,6 +93,12 @@ We've made fixes to GOV.UK Frontend in the following pull requests:
 
 - [#7364: Print style updates for various components](https://github.com/alphagov/govuk-frontend/pull/7364)
 
+### Fixes
+
+We've made fixes to GOV.UK Frontend in the following pull requests:
+
+- [#7304: Ensure focus outline appears in browsers that don't support custom properties](https://github.com/alphagov/govuk-frontend/pull/7304)
+
 ## v6.4.0 (Feature release)
 
 To install this version with npm, run `npm install govuk-frontend@6.4.0`. You can also find more information about [how to stay up to date](https://frontend.design-system.service.gov.uk/staying-up-to-date/#updating-to-the-latest-version) in our documentation.
