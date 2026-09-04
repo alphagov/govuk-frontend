@@ -9,6 +9,7 @@ For advice on how to use these release notes, see [our guidance on staying up to
 We've made fixes to GOV.UK Frontend in the following pull requests:
 
 - [#7375: Fix Service navigation example with right aligned Language navigation](https://github.com/alphagov/govuk-frontend/pull/7375) – thanks to @peteryates for reporting this issue
+- [#7400: Escape special characters in File upload selector](https://github.com/alphagov/govuk-frontend/pull/7400)
 
 ## v6.5.0 (Feature release)
 
