@@ -422,6 +422,56 @@ describe('@function govuk-functional-colour', () => {
   })
 })
 
+describe('@function govuk-resolve-colour', () => {
+  let sassBootstrap = ''
+
+  beforeEach(() => {
+    sassBootstrap = `
+      @use "helpers/colour" as *;
+    `
+  })
+
+  describe('when called with a colour', () => {
+    it('returns the colour as-is', async () => {
+      const sass = `
+      ${sassBootstrap}
+
+      .foo {
+        color: govuk-resolve-colour(blue);
+      }
+    `
+
+      await expect(compileSassString(sass, sassConfig)).resolves.toMatchObject({
+        css: outdent`
+        .foo {
+          color: blue;
+        }
+      `
+      })
+    })
+  })
+
+  describe('when called with a map referring to the palette', () => {
+    it('returns the hex representation of the colour', async () => {
+      const sass = `
+      ${sassBootstrap}
+
+      .foo {
+        color: govuk-resolve-colour((name: 'white'));
+      }
+    `
+
+      await expect(compileSassString(sass, sassConfig)).resolves.toMatchObject({
+        css: outdent`
+        .foo {
+          color: #ffffff;
+        }
+      `
+      })
+    })
+  })
+})
+
 describe('@function govuk-organisation-colour', () => {
   const sassBootstrap = `
     @use "settings" with (
