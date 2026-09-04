@@ -8,7 +8,7 @@ import { compileSassStringLikeUsers } from './helpers/sass.js'
  * string either doesn't exist anymore, or is now repeated.
  */
 const uniquePatterns = {
-  button: /\.govuk-button--secondary:active/g,
+  button: /\.govuk-button\[disabled\]:hover/g,
   'error-message':
     /\.govuk-error-message\s*\{\s*font-family:\s*"GDS Transport"/g,
   fieldset: /\.govuk-fieldset__heading/g,
@@ -28,6 +28,8 @@ describe.each(['@use', '@import'])('%s', (method) => {
         `
         ${method} "node_modules/govuk-frontend/src/govuk/components/cookie-banner";
         ${method} "node_modules/govuk-frontend/src/govuk/components/exit-this-page";
+        ${method} "node_modules/govuk-frontend/src/govuk/components/file-upload";
+        ${method} "node_modules/govuk-frontend/src/govuk/components/panel";
         ${method} "node_modules/govuk-frontend/src/govuk/components/password-input";
         `
       )

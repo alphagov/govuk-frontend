@@ -13,7 +13,7 @@
     {{ govukButton({
       "text": action.text,
       "type": action.type if action.type else "button",
-      "classes": "govuk-button--inverse" + (" " + action.classes if action.classes),
+      "classes": action.classes if action.classes,
       "href": action.href,
       "attributes": action.attributes
     }) }}
