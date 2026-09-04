@@ -181,14 +181,14 @@ export { initAll, createAll }
  * @typedef {object} Config
  * @property {Element | Document | null} [scope] - Scope of the document to search within
  * @property {OnErrorCallback<CompatibleClass>} [onError] - Initialisation error callback
- * @property {AccordionConfig} [accordion] - Accordion config
- * @property {ButtonConfig} [button] - Button config
- * @property {CharacterCountConfig} [characterCount] - Character Count config
- * @property {ErrorSummaryConfig} [errorSummary] - Error Summary config
- * @property {ExitThisPageConfig} [exitThisPage] - Exit This Page config
- * @property {FileUploadConfig} [fileUpload] - File Upload config
- * @property {NotificationBannerConfig} [notificationBanner] - Notification Banner config
- * @property {PasswordInputConfig} [passwordInput] - Password input config
+ * @property {ComponentConfig<typeof Accordion>} [accordion] - Accordion config
+ * @property {ComponentConfig<typeof Button>} [button] - Button config
+ * @property {ComponentConfig<typeof CharacterCount>} [characterCount] - Character Count config
+ * @property {ComponentConfig<typeof ErrorSummary>} [errorSummary] - Error Summary config
+ * @property {ComponentConfig<typeof ExitThisPage>} [exitThisPage] - Exit This Page config
+ * @property {ComponentConfig<typeof FileUpload>} [fileUpload] - File Upload config
+ * @property {ComponentConfig<typeof NotificationBanner>} [notificationBanner] - Notification Banner config
+ * @property {ComponentConfig<typeof PasswordInput>} [passwordInput] - Password input config
  */
 
 /**
