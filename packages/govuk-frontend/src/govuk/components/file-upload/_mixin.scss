@@ -26,25 +26,27 @@
       -webkit-appearance: button;
     }
 
-    &:focus {
-      outline: base.$govuk-focus-width solid;
-      outline-color: base.govuk-functional-colour(focus);
-      // Use `box-shadow` to add border instead of changing `border-width`
-      // (which changes element size) and since `outline` is already used for
-      // the yellow focus state.
-      box-shadow: inset 0 0 0 4px base.govuk-functional-colour(input-border);
-    }
+    @include base.govuk-supports(govuk-functional-colour) {
+      &:focus {
+        outline: base.$govuk-focus-width solid;
+        outline-color: base.govuk-functional-colour(focus);
+        // Use `box-shadow` to add border instead of changing `border-width`
+        // (which changes element size) and since `outline` is already used for
+        // the yellow focus state.
+        box-shadow: inset 0 0 0 4px base.govuk-functional-colour(input-border);
+      }
 
-    // Set "focus-within" to fix https://bugzil.la/1430196 so that component
-    // receives focus in Firefox.
-    // This can't be set together with `:focus` as all versions of IE fail
-    // to recognise `focus-within` and don't set any styles from the block
-    // when it's a selector.
-    &:focus-within {
-      outline: base.$govuk-focus-width solid;
-      outline-color: base.govuk-functional-colour(focus);
+      // Set "focus-within" to fix https://bugzil.la/1430196 so that component
+      // receives focus in Firefox.
+      // This can't be set together with `:focus` as all versions of IE fail
+      // to recognise `focus-within` and don't set any styles from the block
+      // when it's a selector.
+      &:focus-within {
+        outline: base.$govuk-focus-width solid;
+        outline-color: base.govuk-functional-colour(focus);
 
-      box-shadow: inset 0 0 0 4px base.govuk-functional-colour(input-border);
+        box-shadow: inset 0 0 0 4px base.govuk-functional-colour(input-border);
+      }
     }
 
     &:disabled {
