@@ -146,8 +146,9 @@ export class ErrorSummary extends ConfigurableComponent {
     }
 
     return (
-      document.querySelector(`label[for='${$input.getAttribute('id')}']`) ??
-      $input.closest('label')
+      document.querySelector(
+        `label[for='${CSS.escape($input.getAttribute('id'))}']`
+      ) ?? $input.closest('label')
     )
   }
 

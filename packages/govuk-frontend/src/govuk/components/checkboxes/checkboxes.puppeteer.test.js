@@ -454,4 +454,33 @@ describe('Checkboxes', () => {
       })
     })
   })
+
+  describe('when checkbox names contain special characters', () => {
+    it('unchecks other checkboxes when the "None" checkbox is checked', async () => {
+      // Errors logged to the console will cause this test to fail
+      await render(page, 'checkboxes', examples['with divider and None'], {
+        beforeInitialisation($root) {
+          $root.querySelectorAll('.govuk-checkboxes__input').forEach(($input) => {
+            $input.name = 'contact-"None"'
+          })
+        }
+      })
+
+      const $component = await page.$('.govuk-checkboxes')
+      const $inputs = await $component.$$('.govuk-checkboxes__input')
+
+      // Check the first 3 checkboxes
+      await $inputs[0].click()
+      await $inputs[1].click()
+      await $inputs[2].click()
+
+      // Check the "None" checkbox
+      await $inputs[3].click()
+
+      // Expect first 3 checkboxes to have been unchecked
+      expect(await getProperty($inputs[0], 'checked')).toBe(false)
+      expect(await getProperty($inputs[1], 'checked')).toBe(false)
+      expect(await getProperty($inputs[2], 'checked')).toBe(false)
+    })
+  })
 })

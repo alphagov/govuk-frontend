@@ -122,7 +122,7 @@ export class Checkboxes extends Component {
    */
   unCheckAllInputsExcept($input) {
     const allInputsWithSameName = document.querySelectorAll(
-      `input[type="checkbox"][name="${$input.name}"]`
+      `input[type="checkbox"][name="${CSS.escape($input.name)}"]`
     )
 
     allInputsWithSameName.forEach(($inputWithSameName) => {
@@ -147,7 +147,7 @@ export class Checkboxes extends Component {
   unCheckExclusiveInputs($input) {
     const allInputsWithSameNameAndExclusiveBehaviour =
       document.querySelectorAll(
-        `input[data-behaviour="exclusive"][type="checkbox"][name="${$input.name}"]`
+        `input[data-behaviour="exclusive"][type="checkbox"][name="${CSS.escape($input.name)}"]`
       )
 
     allInputsWithSameNameAndExclusiveBehaviour.forEach(($exclusiveInput) => {
