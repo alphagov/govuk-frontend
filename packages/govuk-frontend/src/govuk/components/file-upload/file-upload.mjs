@@ -420,7 +420,9 @@ export class FileUpload extends ConfigurableComponent {
    */
   findLabel() {
     // Use `label` in the selector so TypeScript knows the type fo `HTMLElement`
-    const $label = document.querySelector(`label[for="${this.$input.id}"]`)
+    const $label = document.querySelector(
+      `label[for="${CSS.escape(this.$input.id)}"]`
+    )
 
     if (!$label) {
       throw new ElementError({

@@ -91,6 +91,29 @@ describe('/components/file-upload', () => {
 
             expect(label).not.toBeNull()
           })
+
+          it('resolves labels for input ids containing special characters', async () => {
+            // Errors logged to the console will cause this test to fail
+            await render(page, 'file-upload', examples.enhanced, {
+              beforeInitialisation($root) {
+                const $input = $root.querySelector('.govuk-file-upload')
+                const $label = document.querySelector(
+                  `label[for="${$input.id}"]`
+                )
+                $input.id = 'a"b'
+                $label.setAttribute('for', 'a"b')
+              }
+            })
+
+            const labelFor = await page.evaluate(() => {
+              const $found = Array.from(
+                document.querySelectorAll('label')
+              ).find(($el) => $el.getAttribute('for') === 'a"b')
+              return $found ? $found.getAttribute('for') : null
+            })
+
+            expect(labelFor).toBe('a"b')
+          })
         })
 
         describe('choose file button', () => {
