@@ -1,0 +1,6 @@
+@import "pkg:govuk-frontend/index.import";
+
+:root {
+  --with-import-colour: #{govuk-functional-colour("brand")};
+  --with-import-icon: #{govuk-image-url("home-icon.svg")};
+}
