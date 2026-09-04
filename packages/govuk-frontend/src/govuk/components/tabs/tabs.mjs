@@ -246,7 +246,9 @@ export class Tabs extends Component {
    * @returns {HTMLAnchorElement | null} Tab link
    */
   getTab(hash) {
-    return this.$root.querySelector(`a.govuk-tabs__tab[href="${hash}"]`)
+    return this.$root.querySelector(
+      `a.govuk-tabs__tab[href="${CSS.escape(hash)}"]`
+    )
   }
 
   /**
@@ -443,7 +445,7 @@ export class Tabs extends Component {
       return null
     }
 
-    return this.$root.querySelector(`#${panelId}`)
+    return this.$root.querySelector(`#${CSS.escape(panelId)}`)
   }
 
   /**
