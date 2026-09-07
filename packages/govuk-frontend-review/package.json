@@ -31,7 +31,7 @@
     "express-validator": "^7.3.2",
     "front-matter": "^4.0.2",
     "govuk-frontend": "*",
-    "highlight.js": "^11.11.1",
+    "highlight.js": "^11.12.0",
     "iframe-resizer": "^4.4.5",
     "marked": "^18.0.11",
     "marked-linkify-it": "^4.0.2",
