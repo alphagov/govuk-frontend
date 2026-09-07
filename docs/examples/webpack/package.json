@@ -21,7 +21,7 @@
     "autoprefixer": "^10.5.4",
     "babel-loader": "^10.1.1",
     "copy-webpack-plugin": "^14.0.0",
-    "css-loader": "^7.1.4",
+    "css-loader": "^7.1.5",
     "mini-css-extract-plugin": "^2.10.2",
     "postcss-loader": "^8.2.1",
     "sass-embedded": "^1.103.1",
