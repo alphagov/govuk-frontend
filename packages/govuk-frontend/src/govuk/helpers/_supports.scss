@@ -1,0 +1,24 @@
+/// Supports
+///
+/// Wrap code with @supports guard applicable to different features.
+///
+/// @example scss - Styling the focus state for a link
+///   .app-link:focus {
+///     @include govuk-supports(govuk-functional-colour) {
+///       outline: 1px solid transparent;
+///     }
+///   }
+///
+/// @access public
+
+@mixin govuk-supports($supports...) {
+  @each $support in $supports {
+    @if $support == govuk-functional-colour {
+      @supports (color: var(--css-custom-property)) {
+        @content;
+      }
+    } @else {
+      @error "Checking for support of '" + $support "' is not... supported";
+    }
+  }
+}
