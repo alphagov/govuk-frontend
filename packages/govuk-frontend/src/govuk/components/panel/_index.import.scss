@@ -1,6 +1,7 @@
 @use "mixin";
 
 @import "../../base";
+@import "../button";
 
 @include govuk-exports("govuk/component/panel") {
   @include mixin.styles;

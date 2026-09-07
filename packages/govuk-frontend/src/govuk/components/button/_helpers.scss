@@ -1,0 +1,29 @@
+////
+/// @group components/button
+////
+
+@use "sass:list";
+
+/// List of the button variants available in GOV.UK Frontend
+$_available-variants: (secondary, warning, inverse);
+
+/// Configure colours of the Button component for the given variant
+///
+/// Use:
+/// - to create modifiers of the `.govuk-button` class to apply a specific variant to a single button
+/// - inside a component to update the default style of all buttons with only the `.govuk-button` class
+///
+/// It configures the `--_govuk-button-<COLOUR_NAME>` custom properties that apply colours to the button
+/// with the appropriate `--_govuk-<VARIANT>-button-<COLOUR_NAME>` properties that define colours for a given variant.
+///
+/// @access private
+@mixin govuk-button-style($variant-name) {
+  @if not list.index($_available-variants, $variant-name) {
+    @error "Unknown button variant `#{$variant-name}` (available variants: #{$_available-variants})";
+  }
+
+  --_govuk-button-background-colour: var(--_govuk-#{$variant-name}-button-background-colour);
+  --_govuk-button-shadow-colour: var(--_govuk-#{$variant-name}-button-shadow-colour);
+  --_govuk-button-text-colour: var(--_govuk-#{$variant-name}-button-text-colour);
+  --_govuk-button-hover-background-colour: var(--_govuk-#{$variant-name}-button-hover-background-colour);
+}
