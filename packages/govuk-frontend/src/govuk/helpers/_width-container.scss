@@ -29,14 +29,9 @@
   margin-left: $govuk-gutter-half;
 
   // Respect 'display cutout' safe area (avoids notches and rounded corners)
-  @supports (margin: string.unquote("max(calc(0px))")) {
-    $gutter-safe-area-right: calc(#{$govuk-gutter-half} + env(safe-area-inset-right));
-    $gutter-safe-area-left: calc(#{$govuk-gutter-half} + env(safe-area-inset-left));
-
-    // Use max() to pick largest margin, default or with safe area
-    // Escaped due to Sass max() vs. CSS native max()
-    margin-right: string.unquote("max(#{$govuk-gutter-half}, #{$gutter-safe-area-right})");
-    margin-left: string.unquote("max(#{$govuk-gutter-half}, #{$gutter-safe-area-left})");
+  @supports (margin: calc(env())) {
+    margin-right: calc($govuk-gutter-half + env(safe-area-inset-right));
+    margin-left: calc($govuk-gutter-half + env(safe-area-inset-left));
   }
 
   // On tablet, add full width gutters
@@ -45,9 +40,9 @@
     margin-left: $govuk-gutter;
 
     // Respect 'display cutout' safe area (avoids notches and rounded corners)
-    @supports (margin: string.unquote("max(calc(0px))")) {
-      $gutter-safe-area-right: calc(#{$govuk-gutter-half} + env(safe-area-inset-right));
-      $gutter-safe-area-left: calc(#{$govuk-gutter-half} + env(safe-area-inset-left));
+    @supports (margin: string.unquote("max(env())")) {
+      $gutter-safe-area-right: #{$govuk-gutter-half} + env(safe-area-inset-right);
+      $gutter-safe-area-left: #{$govuk-gutter-half} + env(safe-area-inset-left);
 
       // Use max() to pick largest margin, default or with safe area
       // Escaped due to Sass max() vs. CSS native max()
