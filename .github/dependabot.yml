@@ -74,6 +74,10 @@ updates:
       # so we need to avoid upgrading to their next major version
       - dependency-name: 'iframe-resizer'
         update-types: ['version-update:semver-major']
+      # Node types should correspond to the version in `.nvmrc`
+      # rather than jump to the latest major release of `@types/node`
+      - dependency-name: '@types/node'
+        update-types: ['version-update:semver-major']
 
     schedule:
       interval: monthly
