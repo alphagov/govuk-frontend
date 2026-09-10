@@ -83,7 +83,8 @@
 
   .govuk-pagination__item--current {
     @include base.govuk-typography-weight-bold;
-    outline: 1px solid transparent;
+    @include base.govuk-focus-outline(transparent);
+    outline-width: 1px;
     background-color: base.govuk-functional-colour(link);
 
     &:hover {
