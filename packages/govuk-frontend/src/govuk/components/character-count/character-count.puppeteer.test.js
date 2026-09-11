@@ -2,10 +2,19 @@
 
 const { setTimeout } = require('timers/promises')
 
-const { render } = require('@govuk-frontend/helpers/puppeteer')
+const {
+  getAttribute,
+  getHtml,
+  getText,
+  isVisible,
+  render
+} = require('@govuk-frontend/helpers/puppeteer')
 const { getExamples } = require('@govuk-frontend/lib/components')
 
+const { CharacterCount } = require('./character-count.mjs')
+
 describe('Character count', () => {
+  /** @type {Awaited<ReturnType<typeof getExamples>>} */
   let examples
 
   const focusIntervalTime = 1000 // ms
@@ -14,6 +23,50 @@ describe('Character count', () => {
   // The longest possible time from a keyboard user ending input and the screen
   // reader counter being updated (+ 100ms to stay outside the total wait time)
   const debouncedWaitTime = focusIntervalTime + lastInputOffsetTime + 100
+
+  /** @type {ElementHandle} */
+  let $component
+
+  /** @type {ElementHandle} */
+  let $screenReaderCountMessage
+
+  /** @type {ElementHandle} */
+  let $textarea
+
+  /** @type {ElementHandle} */
+  let $textareaDescription
+
+  /** @type {ElementHandle<HTMLElement>} */
+  let $visibleCountMessage
+
+  /**
+   * @template {object} HandlerContext
+   * @param {keyof typeof examples} example
+   * @param {BrowserRenderOptions<HandlerContext>} [browserOptions] - Puppeteer browser render options
+   */
+  async function initExample(example, browserOptions) {
+    await render(page, 'character-count', examples[example], browserOptions)
+
+    $component = /** @type {ElementHandle<HTMLElement>} */ (
+      await page.$(`[data-module="${CharacterCount.moduleName}"]`)
+    )
+
+    $screenReaderCountMessage = /** @type {ElementHandle<HTMLElement>} */ (
+      await $component.$('div.govuk-character-count__sr-status')
+    )
+
+    $textarea = /** @type {ElementHandle<HTMLElement>} */ (
+      await $component.$('textarea.govuk-textarea')
+    )
+
+    $textareaDescription = /** @type {ElementHandle<HTMLElement>} */ (
+      await $component.$('div.govuk-character-count__message')
+    )
+
+    $visibleCountMessage = /** @type {ElementHandle<HTMLElement>} */ (
+      await $component.$('div.govuk-character-count__status')
+    )
+  }
 
   beforeAll(async () => {
     examples = await getExamples('character-count')
@@ -29,473 +82,353 @@ describe('Character count', () => {
     })
 
     it('shows the textarea description', async () => {
-      await render(page, 'character-count', examples.default)
+      await initExample('default')
 
-      const message = await page.$eval(
-        '.govuk-character-count__message',
-        (el) => el.innerHTML.trim()
+      expect((await getText($textareaDescription)).trim()).toBe(
+        'You can enter up to 10 characters'
       )
-
-      expect(message).toBe('You can enter up to 10 characters')
     })
   })
 
   describe('when JavaScript is available', () => {
     describe('on page load', () => {
-      beforeAll(async () => {
-        await render(page, 'character-count', examples.default)
+      beforeEach(async () => {
+        await initExample('default')
       })
 
       it('injects the visual counter', async () => {
-        const message =
-          (await page.$('.govuk-character-count__status')) !== null
-        expect(message).toBeTruthy()
+        expect(await isVisible($visibleCountMessage)).toBe(true)
       })
 
       it('injects the screen reader counter', async () => {
-        const srMessage =
-          (await page.$('.govuk-character-count__sr-status')) !== null
-        expect(srMessage).toBeTruthy()
+        expect(await isVisible($screenReaderCountMessage)).toBe(true)
       })
 
       it('hides the textarea description', async () => {
-        const messageClasses = await page.$eval(
-          '.govuk-character-count__message',
-          (el) => el.className
+        expect(await getAttribute($textareaDescription, 'class')).toContain(
+          'govuk-visually-hidden'
         )
-        expect(messageClasses).toContain('govuk-visually-hidden')
       })
 
       it('retains error class if there is already an error', async () => {
-        await render(
-          page,
-          'character-count',
-          examples['custom classes with error message']
-        )
+        await initExample('custom classes with error message')
 
-        const textAreaclasses = await page.$eval(
-          '.govuk-textarea',
-          (el) => el.className
+        expect(await getAttribute($textarea, 'class')).toContain(
+          'govuk-textarea--error'
         )
-        expect(textAreaclasses).toContain('govuk-textarea--error')
       })
     })
 
     describe('when counting characters', () => {
       it('shows the dynamic message', async () => {
-        await render(page, 'character-count', examples.default)
+        await initExample('default')
 
-        const message = await page.$eval(
-          '.govuk-character-count__status',
-          (el) => el.innerHTML.trim()
+        expect(await getText($visibleCountMessage)).toBe(
+          'You have 10 characters remaining'
         )
-        expect(message).toBe('You have 10 characters remaining')
 
-        const srMessage = await page.$eval(
-          '.govuk-character-count__sr-status',
-          (el) => el.innerHTML.trim()
+        expect(await getText($screenReaderCountMessage)).toBe(
+          'You have 10 characters remaining'
         )
-        expect(srMessage).toBe('You have 10 characters remaining')
       })
 
       it('shows the characters remaining if the field is pre-filled', async () => {
-        await render(page, 'character-count', examples['with default value'])
+        await initExample('with default value')
 
-        const message = await page.$eval(
-          '.govuk-character-count__status',
-          (el) => el.innerHTML.trim()
+        expect(await getText($visibleCountMessage)).toBe(
+          'You have 67 characters remaining'
         )
-        expect(message).toBe('You have 67 characters remaining')
 
-        const srMessage = await page.$eval(
-          '.govuk-character-count__sr-status',
-          (el) => el.innerHTML.trim()
+        expect(await getText($screenReaderCountMessage)).toBe(
+          'You have 67 characters remaining'
         )
-        expect(srMessage).toBe('You have 67 characters remaining')
       })
 
       it('counts down to the character limit', async () => {
-        await render(page, 'character-count', examples.default)
+        await initExample('default')
 
-        await page.type('.govuk-js-character-count', 'A')
+        await $textarea.type('A')
 
-        const message = await page.$eval(
-          '.govuk-character-count__status',
-          (el) => el.innerHTML.trim()
+        expect(await getText($visibleCountMessage)).toBe(
+          'You have 9 characters remaining'
         )
-        expect(message).toBe('You have 9 characters remaining')
 
         // Wait for debounced update to happen
         await setTimeout(debouncedWaitTime)
 
-        const srMessage = await page.$eval(
-          '.govuk-character-count__sr-status',
-          (el) => el.innerHTML.trim()
+        expect(await getText($screenReaderCountMessage)).toBe(
+          'You have 9 characters remaining'
         )
-        expect(srMessage).toBe('You have 9 characters remaining')
       })
 
       it('uses the singular when there is only one character remaining', async () => {
-        await render(page, 'character-count', examples.default)
+        await initExample('default')
 
-        await page.type('.govuk-js-character-count', 'A'.repeat(9))
+        await $textarea.type('A'.repeat(9))
 
-        const message = await page.$eval(
-          '.govuk-character-count__status',
-          (el) => el.innerHTML.trim()
+        expect(await getText($visibleCountMessage)).toBe(
+          'You have 1 character remaining'
         )
-        expect(message).toBe('You have 1 character remaining')
 
         // Wait for debounced update to happen
         await setTimeout(debouncedWaitTime)
 
-        const srMessage = await page.$eval(
-          '.govuk-character-count__sr-status',
-          (el) => el.innerHTML.trim()
+        expect(await getText($screenReaderCountMessage)).toBe(
+          'You have 1 character remaining'
         )
-        expect(srMessage).toBe('You have 1 character remaining')
       })
 
       it('retains error class if there is already an error', async () => {
-        await render(
-          page,
-          'character-count',
-          examples['custom classes with error message']
-        )
+        await initExample('custom classes with error message')
 
-        await page.type('.govuk-js-character-count', 'A')
+        await $textarea.type('A')
 
-        const textAreaClasses = await page.$eval(
-          '.govuk-textarea',
-          (el) => el.className
+        expect(await getAttribute($textarea, 'class')).toContain(
+          'govuk-textarea--error'
         )
-        expect(textAreaClasses).toContain('govuk-textarea--error')
       })
 
       describe('when the character limit is exceeded', () => {
-        beforeAll(async () => {
-          await render(page, 'character-count', examples.default)
+        beforeEach(async () => {
+          await initExample('default')
 
-          await page.type('.govuk-js-character-count', 'A'.repeat(11))
+          await $textarea.type('A'.repeat(11))
         })
 
         it('shows the number of characters over the limit', async () => {
-          const message = await page.$eval(
-            '.govuk-character-count__status',
-            (el) => el.innerHTML.trim()
+          expect(await getText($visibleCountMessage)).toBe(
+            'You have 1 character too many'
           )
-          expect(message).toBe('You have 1 character too many')
 
           // Wait for debounced update to happen
           await setTimeout(debouncedWaitTime)
 
-          const srMessage = await page.$eval(
-            '.govuk-character-count__sr-status',
-            (el) => el.innerHTML.trim()
+          expect(await getText($screenReaderCountMessage)).toBe(
+            'You have 1 character too many'
           )
-          expect(srMessage).toBe('You have 1 character too many')
         })
 
         it('uses the plural when the limit is exceeded by 2 or more', async () => {
-          await page.type('.govuk-js-character-count', 'A')
+          await $textarea.type('A')
 
-          const message = await page.$eval(
-            '.govuk-character-count__status',
-            (el) => el.innerHTML.trim()
+          expect(await getText($visibleCountMessage)).toBe(
+            'You have 2 characters too many'
           )
-          expect(message).toBe('You have 2 characters too many')
 
           // Wait for debounced update to happen
           await setTimeout(debouncedWaitTime)
 
-          const srMessage = await page.$eval(
-            '.govuk-character-count__sr-status',
-            (el) => el.innerHTML.trim()
+          expect(await getText($screenReaderCountMessage)).toBe(
+            'You have 2 characters too many'
           )
-          expect(srMessage).toBe('You have 2 characters too many')
         })
 
         it('adds error styles to the textarea', async () => {
-          const textareaClasses = await page.$eval(
-            '.govuk-js-character-count',
-            (el) => el.className
+          expect(await getAttribute($textarea, 'class')).toContain(
+            'govuk-textarea--error'
           )
-          expect(textareaClasses).toContain('govuk-textarea--error')
         })
 
         it('adds error styles to the count message', async () => {
-          const messageClasses = await page.$eval(
-            '.govuk-character-count__status',
-            (el) => el.className
+          expect(await getAttribute($visibleCountMessage, 'class')).toContain(
+            'govuk-error-message'
           )
-          expect(messageClasses).toContain('govuk-error-message')
         })
       })
 
       describe('when the character limit is exceeded on page load', () => {
-        beforeAll(async () => {
-          await render(
-            page,
-            'character-count',
-            examples['with default value exceeding limit']
-          )
+        beforeEach(async () => {
+          await initExample('with default value exceeding limit')
         })
 
         it('shows the number of characters over the limit', async () => {
-          const message = await page.$eval(
-            '.govuk-character-count__status',
-            (el) => el.innerHTML.trim()
+          expect(await getText($visibleCountMessage)).toBe(
+            'You have 23 characters too many'
           )
-          expect(message).toBe('You have 23 characters too many')
 
-          const srMessage = await page.$eval(
-            '.govuk-character-count__sr-status',
-            (el) => el.innerHTML.trim()
+          expect(await getText($screenReaderCountMessage)).toBe(
+            'You have 23 characters too many'
           )
-          expect(srMessage).toBe('You have 23 characters too many')
         })
 
         it('adds error styles to the textarea', async () => {
-          const textareaClasses = await page.$eval(
-            '.govuk-js-character-count',
-            (el) => el.className
+          expect(await getAttribute($textarea, 'class')).toContain(
+            'govuk-textarea--error'
           )
-          expect(textareaClasses).toContain('govuk-textarea--error')
         })
 
         it('adds error styles to the count message', async () => {
-          const messageClasses = await page.$eval(
-            '.govuk-character-count__status',
-            (el) => el.className
+          expect(await getAttribute($visibleCountMessage, 'class')).toContain(
+            'govuk-error-message'
           )
-          expect(messageClasses).toContain('govuk-error-message')
         })
       })
 
       describe('when a threshold is set', () => {
-        beforeAll(async () => {
-          await render(page, 'character-count', examples['with threshold'])
+        beforeEach(async () => {
+          await initExample('with threshold')
         })
 
         it('does not show the limit until the threshold is reached', async () => {
-          const visibility = await page.$eval(
-            '.govuk-character-count__status',
-            (el) => window.getComputedStyle(el).visibility
-          )
-          expect(visibility).toBe('hidden')
+          expect(await isVisible($visibleCountMessage)).toBe(false)
 
           // Ensure threshold is hidden for users of assistive technologies
-          const ariaHidden = await page.$eval(
-            '.govuk-character-count__sr-status',
-            (el) => el.getAttribute('aria-hidden')
-          )
-          expect(ariaHidden).toBe('true')
+          expect(
+            await getAttribute($screenReaderCountMessage, 'aria-hidden')
+          ).toBe('true')
         })
 
         it('becomes visible once the threshold is reached', async () => {
-          await page.type('.govuk-js-character-count', 'A'.repeat(8))
+          await $textarea.type('A'.repeat(8))
 
-          const visibility = await page.$eval(
-            '.govuk-character-count__status',
-            (el) => window.getComputedStyle(el).visibility
-          )
-          expect(visibility).toBe('visible')
+          expect(await isVisible($visibleCountMessage)).toBe(true)
 
           // Wait for debounced update to happen
           await setTimeout(debouncedWaitTime)
 
           // Ensure threshold is visible for users of assistive technologies
-          const ariaHidden = await page.$eval(
-            '.govuk-character-count__sr-status',
-            (el) => el.getAttribute('aria-hidden')
-          )
-          expect(ariaHidden).toBeFalsy()
+          expect(
+            await getAttribute($screenReaderCountMessage, 'aria-hidden')
+          ).toBeNull()
         })
       })
 
       // Errors logged to the console will cause these tests to fail
       describe('when the textarea ID starts with a number', () => {
         beforeAll(async () => {
-          await render(
-            page,
-            'character-count',
-            examples['with id starting with number']
-          )
+          await initExample('with id starting with number')
         })
 
         it('still works correctly', async () => {
-          const message = await page.$eval(
-            '.govuk-character-count__status',
-            (el) => el.innerHTML.trim()
+          expect(await getText($visibleCountMessage)).toBe(
+            'You have 10 characters remaining'
           )
-          expect(message).toBe('You have 10 characters remaining')
 
-          const srMessage = await page.$eval(
-            '.govuk-character-count__sr-status',
-            (el) => el.innerHTML.trim()
+          expect(await getText($screenReaderCountMessage)).toBe(
+            'You have 10 characters remaining'
           )
-          expect(srMessage).toBe('You have 10 characters remaining')
         })
       })
 
       describe('when the textarea ID contains CSS syntax characters', () => {
         beforeAll(async () => {
-          await render(
-            page,
-            'character-count',
-            examples['with id with special characters']
-          )
+          await initExample('with id with special characters')
         })
 
         it('still works correctly', async () => {
-          const message = await page.$eval(
-            '.govuk-character-count__status',
-            (el) => el.innerHTML.trim()
+          expect(await getText($visibleCountMessage)).toBe(
+            'You have 10 characters remaining'
           )
-          expect(message).toBe('You have 10 characters remaining')
 
-          const srMessage = await page.$eval(
-            '.govuk-character-count__sr-status',
-            (el) => el.innerHTML.trim()
+          expect(await getText($screenReaderCountMessage)).toBe(
+            'You have 10 characters remaining'
           )
-          expect(srMessage).toBe('You have 10 characters remaining')
         })
       })
 
       describe('when a maxlength attribute is specified on the textarea', () => {
-        beforeAll(async () => {
-          await render(
-            page,
-            'character-count',
-            examples['with textarea maxlength attribute']
-          )
+        beforeEach(async () => {
+          await initExample('with textarea maxlength attribute')
         })
 
         it('should not have a maxlength attribute once the JS has run', async () => {
-          const textareaMaxLength = await page.$eval('.govuk-textarea', (el) =>
-            el.getAttribute('maxlength')
-          )
-          expect(textareaMaxLength).toBeNull()
+          expect(await getAttribute($textarea, 'maxlength')).toBeNull()
         })
       })
     })
 
     describe('when counting words', () => {
       it('shows the dynamic message', async () => {
-        await render(page, 'character-count', examples['with word count'])
+        await initExample('with word count')
 
-        const message = await page.$eval(
-          '.govuk-character-count__status',
-          (el) => el.innerHTML.trim()
+        expect(await getText($visibleCountMessage)).toBe(
+          'You have 10 words remaining'
         )
-        expect(message).toBe('You have 10 words remaining')
 
-        const srMessage = await page.$eval(
-          '.govuk-character-count__sr-status',
-          (el) => el.innerHTML.trim()
+        expect(await getText($screenReaderCountMessage)).toBe(
+          'You have 10 words remaining'
         )
-        expect(srMessage).toBe('You have 10 words remaining')
       })
 
       it('counts down to the word limit', async () => {
-        await render(page, 'character-count', examples['with word count'])
+        await initExample('with word count')
 
-        await page.type('.govuk-js-character-count', 'Hello world')
+        await $textarea.type('Hello world')
 
-        const message = await page.$eval(
-          '.govuk-character-count__status',
-          (el) => el.innerHTML.trim()
+        expect(await getText($visibleCountMessage)).toBe(
+          'You have 8 words remaining'
         )
-        expect(message).toBe('You have 8 words remaining')
 
         // Wait for debounced update to happen
         await setTimeout(debouncedWaitTime)
 
-        const srMessage = await page.$eval(
-          '.govuk-character-count__sr-status',
-          (el) => el.innerHTML.trim()
+        expect(await getText($screenReaderCountMessage)).toBe(
+          'You have 8 words remaining'
         )
-        expect(srMessage).toBe('You have 8 words remaining')
       })
 
       it('uses the singular when there is only one word remaining', async () => {
-        await render(page, 'character-count', examples['with word count'])
+        await initExample('with word count')
 
-        await page.type('.govuk-js-character-count', 'Hello '.repeat(9))
+        await $textarea.type('Hello '.repeat(9))
 
-        const message = await page.$eval(
-          '.govuk-character-count__status',
-          (el) => el.innerHTML.trim()
+        expect(await getText($visibleCountMessage)).toBe(
+          'You have 1 word remaining'
         )
-        expect(message).toBe('You have 1 word remaining')
 
         // Wait for debounced update to happen
         await setTimeout(debouncedWaitTime)
 
-        const srMessage = await page.$eval(
-          '.govuk-character-count__sr-status',
-          (el) => el.innerHTML.trim()
+        expect(await getText($screenReaderCountMessage)).toBe(
+          'You have 1 word remaining'
         )
-        expect(srMessage).toBe('You have 1 word remaining')
       })
 
       describe('when the word limit is exceeded', () => {
-        beforeAll(async () => {
-          await render(page, 'character-count', examples['with word count'])
+        beforeEach(async () => {
+          await initExample('with word count')
 
-          await page.type('.govuk-js-character-count', 'Hello '.repeat(11))
+          await $textarea.type('Hello '.repeat(11))
         })
 
         it('shows the number of words over the limit', async () => {
-          const message = await page.$eval(
-            '.govuk-character-count__status',
-            (el) => el.innerHTML.trim()
+          expect(await getText($visibleCountMessage)).toBe(
+            'You have 1 word too many'
           )
-          expect(message).toBe('You have 1 word too many')
 
           // Wait for debounced update to happen
           await setTimeout(debouncedWaitTime)
 
-          const srMessage = await page.$eval(
-            '.govuk-character-count__sr-status',
-            (el) => el.innerHTML.trim()
+          expect(await getText($screenReaderCountMessage)).toBe(
+            'You have 1 word too many'
           )
-          expect(srMessage).toBe('You have 1 word too many')
         })
 
         it('uses the plural when the limit is exceeded by 2 or more', async () => {
-          await page.type('.govuk-js-character-count', 'World')
+          await $textarea.type('World')
 
-          const message = await page.$eval(
-            '.govuk-character-count__status',
-            (el) => el.innerHTML.trim()
+          expect(await getText($visibleCountMessage)).toBe(
+            'You have 2 words too many'
           )
-          expect(message).toBe('You have 2 words too many')
 
           // Wait for debounced update to happen
           await setTimeout(debouncedWaitTime)
 
-          const srMessage = await page.$eval(
-            '.govuk-character-count__sr-status',
-            (el) => el.innerHTML.trim()
+          expect(await getText($screenReaderCountMessage)).toBe(
+            'You have 2 words too many'
           )
-          expect(srMessage).toBe('You have 2 words too many')
         })
 
         it('adds error styles to the textarea', async () => {
-          const textareaClasses = await page.$eval(
-            '.govuk-js-character-count',
-            (el) => el.className
+          expect(await getAttribute($textarea, 'class')).toContain(
+            'govuk-textarea--error'
           )
-          expect(textareaClasses).toContain('govuk-textarea--error')
         })
 
         it('adds error styles to the count message', async () => {
-          const messageClasses = await page.$eval(
-            '.govuk-character-count__status',
-            (el) => el.className
+          expect(await getAttribute($visibleCountMessage, 'class')).toContain(
+            'govuk-error-message'
           )
-          expect(messageClasses).toContain('govuk-error-message')
         })
       })
     })
@@ -503,79 +436,52 @@ describe('Character count', () => {
     describe('JavaScript configuration', () => {
       describe('at instantiation', () => {
         it('configures the number of characters', async () => {
-          await render(
-            page,
-            'character-count',
-            examples['to configure in JavaScript'],
-            {
-              config: {
-                maxlength: 10
-              }
+          await initExample('to configure in JavaScript', {
+            config: {
+              maxlength: 10
             }
-          )
+          })
 
-          await page.type('.govuk-js-character-count', 'A'.repeat(11))
+          await $textarea.type('A'.repeat(11))
 
-          const message = await page.$eval(
-            '.govuk-character-count__status',
-            (el) => el.innerHTML.trim()
+          expect(await getText($visibleCountMessage)).toBe(
+            'You have 1 character too many'
           )
-          expect(message).toBe('You have 1 character too many')
         })
 
         it('configures the number of words', async () => {
-          await render(
-            page,
-            'character-count',
-            examples['to configure in JavaScript'],
-            {
-              config: {
-                maxwords: 10
-              }
+          await initExample('to configure in JavaScript', {
+            config: {
+              maxwords: 10
             }
-          )
+          })
 
-          await page.type('.govuk-js-character-count', 'Hello '.repeat(11))
+          await $textarea.type('Hello '.repeat(11))
 
-          const message = await page.$eval(
-            '.govuk-character-count__status',
-            (el) => el.innerHTML.trim()
+          expect(await getText($visibleCountMessage)).toBe(
+            'You have 1 word too many'
           )
-          expect(message).toBe('You have 1 word too many')
         })
 
         it('configures the threshold', async () => {
-          await render(
-            page,
-            'character-count',
-            examples['to configure in JavaScript'],
-            {
-              config: {
-                maxlength: 10,
-                threshold: 75
-              }
+          await initExample('to configure in JavaScript', {
+            config: {
+              maxlength: 10,
+              threshold: 75
             }
-          )
+          })
 
-          await page.type('.govuk-js-character-count', 'A'.repeat(8))
+          await $textarea.type('A'.repeat(8))
 
-          const visibility = await page.$eval(
-            '.govuk-character-count__status',
-            (el) => window.getComputedStyle(el).visibility
-          )
-          expect(visibility).toBe('visible')
+          expect(await isVisible($visibleCountMessage)).toBe(true)
         })
 
         it('configures the description of the textarea', async () => {
           // This tests that a description can be provided through JavaScript attributes
           // and interpolated with the limit provided to the character count in JS.
 
-          await render(
-            page,
-            'character-count',
-            examples[
-              'when neither maxlength/maxwords nor textarea description are set'
-            ],
+          await initExample(
+            'when neither maxlength/maxwords nor textarea description are set',
             {
               config: {
                 maxlength: 10,
@@ -588,77 +494,67 @@ describe('Character count', () => {
             }
           )
 
-          const message = await page.$eval(
-            '.govuk-character-count__message',
-            (el) => el.innerHTML.trim()
+          expect(await getText($textareaDescription)).toBe(
+            'No more than 10 characters'
           )
-          expect(message).toBe('No more than 10 characters')
         })
       })
 
       describe('when data-attributes are present', () => {
         it('uses `maxlength` data attribute instead of the JS one', async () => {
-          await render(page, 'character-count', examples.default, {
+          await initExample('default', {
             config: {
               maxlength: 12 // JS configuration that would tell 1 character remaining
             }
           })
 
-          await page.type('.govuk-js-character-count', 'A'.repeat(11))
+          await $textarea.type('A'.repeat(11))
 
-          const message = await page.$eval(
-            '.govuk-character-count__status',
-            (el) => el.innerHTML.trim()
+          expect(await getText($visibleCountMessage)).toBe(
+            'You have 1 character too many'
           )
-          expect(message).toBe('You have 1 character too many')
         })
 
         it("uses `maxlength` data attribute instead of JS's `maxwords`", async () => {
-          await render(page, 'character-count', examples.default, {
+          await initExample('default', {
             config: {
               maxwords: 12
             }
           })
 
-          await page.type('.govuk-js-character-count', 'A'.repeat(11))
+          await $textarea.type('A'.repeat(11))
 
-          const message = await page.$eval(
-            '.govuk-character-count__status',
-            (el) => el.innerHTML.trim()
+          expect(await getText($visibleCountMessage)).toBe(
+            'You have 1 character too many'
           )
-          expect(message).toBe('You have 1 character too many')
         })
 
         it('uses `maxwords` data attribute instead of the JS one', async () => {
-          await render(page, 'character-count', examples['with word count'], {
+          await initExample('with word count', {
             config: {
               maxwords: 12 // JS configuration that would tell 1 word remaining
             }
           })
 
-          await page.type('.govuk-js-character-count', 'Hello '.repeat(11))
+          await $textarea.type('Hello '.repeat(11))
 
-          const message = await page.$eval(
-            '.govuk-character-count__status',
-            (el) => el.innerHTML.trim()
+          expect(await getText($visibleCountMessage)).toBe(
+            'You have 1 word too many'
           )
-          expect(message).toBe('You have 1 word too many')
         })
 
         it("uses `maxwords` data attribute instead of the JS's `maxlength`", async () => {
-          await render(page, 'character-count', examples['with word count'], {
+          await initExample('with word count', {
             config: {
               maxlength: 10
             }
           })
 
-          await page.type('.govuk-js-character-count', 'Hello '.repeat(11))
+          await $textarea.type('Hello '.repeat(11))
 
-          const message = await page.$eval(
-            '.govuk-character-count__status',
-            (el) => el.innerHTML.trim()
+          expect(await getText($visibleCountMessage)).toBe(
+            'You have 1 word too many'
           )
-          expect(message).toBe('You have 1 word too many')
         })
 
         it('interpolates the textarea description in data attributes with the maximum set in JavaScript', async () => {
@@ -668,62 +564,42 @@ describe('Character count', () => {
           // element holding the textarea's accessible description
           // (and interpolated to replace `%{count}` with the maximum)
 
-          await render(
-            page,
-            'character-count',
-            examples['when neither maxlength nor maxwords are set'],
-            {
-              config: {
-                maxlength: 10
-              }
+          await initExample('when neither maxlength nor maxwords are set', {
+            config: {
+              maxlength: 10
             }
-          )
+          })
 
-          const message = await page.$eval(
-            '.govuk-character-count__message',
-            (el) => el.innerHTML.trim()
+          expect(await getText($textareaDescription)).toBe(
+            'No more than 10 characters'
           )
-          expect(message).toBe('No more than 10 characters')
         })
       })
     })
 
     describe('Cross Side Scripting prevention', () => {
       it('injects the localised strings as text not HTML', async () => {
-        await render(
-          page,
-          'character-count',
-          examples['to configure in JavaScript'],
-          {
-            config: {
-              maxlength: 10,
-              i18n: {
-                charactersUnderLimit: {
-                  other: '<strong>%{count}</strong> characters left'
-                }
+        await initExample('to configure in JavaScript', {
+          config: {
+            maxlength: 10,
+            i18n: {
+              charactersUnderLimit: {
+                other: '<strong>%{count}</strong> characters left'
               }
             }
           }
-        )
+        })
 
-        const message = await page.$eval(
-          '.govuk-character-count__status',
-          (el) => el.innerHTML.trim()
+        expect((await getHtml($visibleCountMessage)).trim()).toBe(
+          '&lt;strong&gt;10&lt;/strong&gt; characters left'
         )
-        expect(message).toBe('&lt;strong&gt;10&lt;/strong&gt; characters left')
       })
     })
 
     describe('errors at instantiation', () => {
-      let examples
-
-      beforeAll(async () => {
-        examples = await getExamples('character-count')
-      })
-
       it('can throw a SupportError if appropriate', async () => {
         await expect(
-          render(page, 'character-count', examples.default, {
+          initExample('default', {
             beforeInitialisation() {
               document.body.classList.remove('govuk-frontend-supported')
             }
@@ -739,7 +615,7 @@ describe('Character count', () => {
 
       it('throws when initialised twice', async () => {
         await expect(
-          render(page, 'character-count', examples.default, {
+          initExample('default', {
             async afterInitialisation($root) {
               const { CharacterCount } = await import('govuk-frontend')
               new CharacterCount($root)
@@ -754,7 +630,7 @@ describe('Character count', () => {
 
       it('throws when $root is not set', async () => {
         await expect(
-          render(page, 'character-count', examples.default, {
+          initExample('default', {
             beforeInitialisation($root) {
               $root.remove()
             }
@@ -769,7 +645,7 @@ describe('Character count', () => {
 
       it('throws when receiving the wrong type for $root', async () => {
         await expect(
-          render(page, 'character-count', examples.default, {
+          initExample('default', {
             beforeInitialisation($root) {
               // Replace with an `<svg>` element which is not an `HTMLElement` in the DOM (but an `SVGElement`)
               $root.outerHTML = `<svg data-module="govuk-character-count"></svg>`
@@ -786,7 +662,7 @@ describe('Character count', () => {
 
       it('throws when the textarea is missing', async () => {
         await expect(
-          render(page, 'character-count', examples.default, {
+          initExample('default', {
             beforeInitialisation($root, { selector }) {
               $root.querySelector(selector).remove()
             },
@@ -805,7 +681,7 @@ describe('Character count', () => {
 
       it('throws when the textarea is not the right type', async () => {
         await expect(
-          render(page, 'character-count', examples.default, {
+          initExample('default', {
             beforeInitialisation($root, { selector }) {
               // Replace with a tag that's neither an `<input>` or `<textarea>`
               $root.querySelector(selector).outerHTML =
@@ -826,7 +702,7 @@ describe('Character count', () => {
 
       it('throws when the textarea description is missing', async () => {
         await expect(
-          render(page, 'character-count', examples.default, {
+          initExample('default', {
             beforeInitialisation($root, { selector }) {
               $root.querySelector(selector).remove()
             },
@@ -845,11 +721,7 @@ describe('Character count', () => {
 
       it('throws when receiving invalid JavaScript configuration', async () => {
         await expect(
-          render(
-            page,
-            'character-count',
-            examples['to configure in JavaScript']
-          )
+          initExample('to configure in JavaScript')
         ).rejects.toMatchObject({
           cause: {
             name: 'ConfigError',
@@ -867,7 +739,7 @@ describe('Character count', () => {
       const pageErrorListener = jest.fn()
       page.on('pageerror', pageErrorListener)
 
-      await render(page, 'character-count', examples.default, {
+      await initExample('default', {
         config: {
           // Override maxlength to 10
           maxlength: 10
@@ -885,10 +757,15 @@ describe('Character count', () => {
 
       // Type 10 characters so we go 'through' all the different forms as we
       // approach 0 characters remaining.
-      await page.type('.govuk-js-character-count', 'A'.repeat(10))
+      await $textarea.type('A'.repeat(10))
 
       // Expect the page error event not to have been fired
       expect(pageErrorListener).not.toHaveBeenCalled()
     })
   })
 })
+
+/**
+ * @import { BrowserRenderOptions } from '@govuk-frontend/helpers/puppeteer'
+ * @import { ElementHandle } from 'puppeteer'
+ */
