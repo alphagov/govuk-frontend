@@ -1,4 +1,5 @@
 const { getExamples, render } = require('@govuk-frontend/lib/components')
+const { within } = require('@testing-library/dom')
 
 const { CharacterCount } = require('./character-count.mjs')
 
@@ -25,7 +26,7 @@ describe('Character count', () => {
       document.querySelector(`[data-module="${CharacterCount.moduleName}"]`)
     )
 
-    $textarea = $root.querySelector('textarea.govuk-textarea')
+    $textarea = within($root).getByRole('textbox')
     $textareaDescription = $root.querySelector(
       'div.govuk-character-count__message'
     )
@@ -102,7 +103,7 @@ describe('Character count', () => {
     })
 
     it('renders with the amount of words expected', () => {
-      initExample('with word count')
+      initExample('with maxwords')
 
       expect($textareaDescription).toHaveTextContent(
         'You can enter up to 10 words'
@@ -256,9 +257,9 @@ describe('Character count', () => {
     })
   })
 
-  describe('when neither maxlength nor maxwords are set', () => {
+  describe('with neither maxlength nor maxwords set', () => {
     beforeEach(() => {
-      initExample('when neither maxlength nor maxwords are set')
+      initExample('with neither maxlength nor maxwords set')
     })
 
     describe('with textarea description set', () => {
@@ -282,7 +283,7 @@ describe('Character count', () => {
     describe('without textarea description', () => {
       beforeEach(() => {
         initExample(
-          'when neither maxlength/maxwords nor textarea description are set'
+          'with neither maxlength, maxwords nor textarea description set'
         )
       })
 
