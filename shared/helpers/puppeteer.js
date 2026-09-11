@@ -406,7 +406,19 @@ async function getHtml($element) {
  * @returns {Promise<boolean>} Element visibility
  */
 async function isVisible($element) {
-  return !!(await $element.boundingBox())
+  const boundingBox = await $element.boundingBox()
+
+  // Check if part of layout, for example `display: none`
+  if (boundingBox === null) {
+    return false
+  }
+
+  // Otherwise check for `visibility: hidden`
+  const visibility = await $element.evaluate(
+    (el) => window.getComputedStyle(el).visibility
+  )
+
+  return visibility !== 'hidden'
 }
 
 module.exports = {
