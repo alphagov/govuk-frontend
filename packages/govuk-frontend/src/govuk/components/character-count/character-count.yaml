@@ -18,15 +18,20 @@ params:
   - name: maxlength
     type: string
     required: true
-    description: If `maxwords` is set, this is not required. The maximum number of characters. If `maxwords` is provided, the `maxlength` option will be ignored.
+    description: The maximum number of characters (or words if `countType` is set to `"words"`).
   - name: maxwords
     type: string
     required: true
-    description: If `maxlength` is set, this is not required. The maximum number of words. If `maxwords` is provided, the `maxlength` option will be ignored.
+    description: 'The maximum number of words. Replaced by the `maxlength` and `countType: "words"` options.'
+    deprecated: 6.6.0
   - name: threshold
     type: string
     required: false
     description: The percentage value of the limit at which point the count message is displayed. If this attribute is set, the count message will be hidden by default.
+  - name: countType
+    type: string
+    required: false
+    description: The count type used to count the text – `"length"` or `"words"`. Defaults to `"length"`.
   - name: label
     type: object
     required: true
@@ -105,7 +110,7 @@ params:
   - name: textareaDescriptionText
     type: string
     required: false
-    description: Message made available to assistive technologies to describe that the component accepts only a limited amount of content. It is visible on the page when JavaScript is unavailable. The component will replace the `%{count}` placeholder with the value of the `maxlength` or `maxwords` parameter.
+    description: Message made available to assistive technologies to describe that the component accepts only a limited amount of content. It is visible on the page when JavaScript is unavailable. The component will replace the `%{count}` placeholder with the value of the `maxlength` parameter.
   - name: charactersUnderLimitText
     type: object
     required: false
@@ -121,15 +126,18 @@ params:
   - name: wordsUnderLimitText
     type: object
     required: false
-    description: Message displayed when the number of words is under the configured maximum, `maxwords`. This message is displayed visually and through assistive technologies. The component will replace the `%{count}` placeholder with the number of remaining words. [Our pluralisation rules apply to this macro option](https://frontend.design-system.service.gov.uk/localise-govuk-frontend/#understanding-pluralisation-rules).
+    description: >-
+      Message displayed when the number of words is under the configured maximum, `maxlength` with `countType: "words"`. This message is displayed visually and through assistive technologies. The component will replace the `%{count}` placeholder with the number of remaining words. [Our pluralisation rules apply to this macro option](https://frontend.design-system.service.gov.uk/localise-govuk-frontend/#understanding-pluralisation-rules).
   - name: wordsAtLimitText
     type: string
     required: false
-    description: Message displayed when the number of words reaches the configured maximum, `maxwords`. This message is displayed visually and through assistive technologies.
+    description: >-
+      Message displayed when the number of words reaches the configured maximum, `maxlength` with `countType: "words"`. This message is displayed visually and through assistive technologies.
   - name: wordsOverLimitText
     type: object
     required: false
-    description: Message displayed when the number of words is over the configured maximum, `maxwords`. This message is displayed visually and through assistive technologies. The component will replace the `%{count}` placeholder with the number of words above the maximum. [Our pluralisation rules apply to this macro option](https://frontend.design-system.service.gov.uk/localise-govuk-frontend/#understanding-pluralisation-rules).
+    description: >-
+      Message displayed when the number of words is over the configured maximum, `maxlength` with `countType: "words"`. This message is displayed visually and through assistive technologies. The component will replace the `%{count}` placeholder with the number of words above the maximum. [Our pluralisation rules apply to this macro option](https://frontend.design-system.service.gov.uk/localise-govuk-frontend/#understanding-pluralisation-rules).
 
 examples:
   - name: default
@@ -219,6 +227,24 @@ examples:
       maxwords: 10
       label:
         text: Full address
+
+  - name: with count type 'length'
+    options:
+      id: with-count-type-length
+      name: example
+      countType: length
+      maxlength: 200
+      label:
+        text: Enter a job description
+
+  - name: with count type 'words'
+    options:
+      id: with-count-type-words
+      name: example
+      countType: words
+      maxlength: 150
+      label:
+        text: Enter a job description
 
   - name: with threshold
     options:
