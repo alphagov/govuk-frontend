@@ -220,10 +220,10 @@ examples:
         classes: govuk-label--l
         isPageHeading: true
 
-  - name: with word count
+  - name: with maxwords
     options:
-      id: word-count
-      name: word-count
+      id: maxwords
+      name: maxwords
       maxwords: 10
       label:
         text: Full address
@@ -246,14 +246,86 @@ examples:
       label:
         text: Enter a job description
 
+  - name: with count type 'characters' and value
+    options:
+      id: with-count-type-characters-value
+      name: example
+      countType: characters
+      maxlength: 350
+      label:
+        text: Enter a job description
+      value: |-
+        👩🏻‍🚀 A content designer works on the end-to-end journey of a service to help users complete their goal and government deliver a policy intent. Their work may involve the creation of, or change to, a transaction, product or single piece of content that stretches across digital and offline channels.
+
+  - name: with count type 'characters' and error message
+    options:
+      id: with-count-type-characters-error
+      name: example
+      countType: characters
+      maxlength: 350
+      label:
+        text: Enter a job description
+      errorMessage:
+        text: Job description must be 350 characters or less
+      value: |-
+        👩🏻‍🚀 A content designer works on the end-to-end journey of a service to help users complete their goal and government deliver a policy intent. Their work may involve the creation of, or change to, a transaction, product or single piece of content that stretches across digital and offline channels. They make sure appropriate content is shown to a user in the right place and in the best format.
+
+  - name: with count type 'characters' and threshold
+    options:
+      id: with-count-type-characters-threshold
+      name: example
+      countType: characters
+      maxlength: 112
+      threshold: 75
+      label:
+        text: Enter a job description
+      value: |-
+        Type another letter into this field after this message to see the threshold feature
+
   - name: with count type 'words'
     options:
       id: with-count-type-words
       name: example
       countType: words
-      maxlength: 150
+      maxlength: 50
       label:
         text: Enter a job description
+
+  - name: with count type 'words' and value
+    options:
+      id: with-count-type-words-value
+      name: example
+      countType: words
+      maxlength: 51
+      label:
+        text: Enter a job description
+      value: |-
+        👩🏻‍🚀 A content designer works on the end-to-end journey of a service to help users complete their goal and government deliver a policy intent. Their work may involve the creation of, or change to, a transaction, product or single piece of content that stretches across digital and offline channels.
+
+  - name: with count type 'words' and error message
+    options:
+      id: with-count-type-words-error
+      name: example
+      countType: words
+      maxlength: 51
+      label:
+        text: Enter a job description
+      errorMessage:
+        text: Job description must be 51 words or less
+      value: |-
+        👩🏻‍🚀 A content designer works on the end-to-end journey of a service to help users complete their goal and government deliver a policy intent. Their work may involve the creation of, or change to, a transaction, product or single piece of content that stretches across digital and offline channels. They make sure appropriate content is shown to a user in the right place and in the best format.
+
+  - name: with count type 'words' and threshold
+    options:
+      id: with-count-type-words-threshold
+      name: example
+      countType: words
+      maxlength: 51
+      threshold: 30
+      label:
+        text: Enter a job description
+      value: |-
+        Type another word into this field after this message to see the threshold feature
 
   - name: with threshold
     options:
@@ -384,7 +456,7 @@ examples:
       name: address
       label:
         text: Full address
-  - name: when neither maxlength nor maxwords are set
+  - name: with neither maxlength nor maxwords set
     hidden: true
     options:
       id: no-maximum
@@ -392,7 +464,7 @@ examples:
       label:
         text: Full address
       textareaDescriptionText: 'No more than %{count} characters'
-  - name: when neither maxlength/maxwords nor textarea description are set
+  - name: with neither maxlength, maxwords nor textarea description set
     hidden: true
     options:
       id: no-maximum
