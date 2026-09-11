@@ -1,5 +1,12 @@
+/* eslint-disable es-x/no-global-this */
+
 import { isInitialised, isSupported } from './common/index.mjs'
 import { ElementError, InitError, SupportError } from './errors/index.mjs'
+
+const _self =
+  typeof globalThis !== 'undefined'
+    ? globalThis // Modern browsers, Node.js
+    : self // Old browsers, web workers
 
 /**
  * Base Component class
@@ -13,7 +20,7 @@ export class Component {
   /**
    * @type {typeof Element}
    */
-  static elementType = HTMLElement
+  static elementType = _self.HTMLElement
 
   // allows Typescript user to work around the lack of types
   // in GOVUKFrontend package, Typescript is not aware of $root
