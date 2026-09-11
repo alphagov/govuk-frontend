@@ -117,9 +117,7 @@ describe('Character count', () => {
       it('counts down to the character limit', async () => {
         await render(page, 'character-count', examples.default)
 
-        await page.type('.govuk-js-character-count', 'A', {
-          delay: 50
-        })
+        await page.type('.govuk-js-character-count', 'A')
 
         const message = await page.$eval(
           '.govuk-character-count__status',
@@ -140,9 +138,7 @@ describe('Character count', () => {
       it('uses the singular when there is only one character remaining', async () => {
         await render(page, 'character-count', examples.default)
 
-        await page.type('.govuk-js-character-count', 'A'.repeat(9), {
-          delay: 50
-        })
+        await page.type('.govuk-js-character-count', 'A'.repeat(9))
 
         const message = await page.$eval(
           '.govuk-character-count__status',
@@ -167,12 +163,7 @@ describe('Character count', () => {
           examples['custom classes with error message']
         )
 
-        await page.type('.govuk-js-character-count', 'A', {
-          delay: 50
-        })
-
-        // Wait for debounced update to happen
-        await setTimeout(debouncedWaitTime)
+        await page.type('.govuk-js-character-count', 'A')
 
         const textAreaClasses = await page.$eval(
           '.govuk-textarea',
@@ -185,9 +176,7 @@ describe('Character count', () => {
         beforeAll(async () => {
           await render(page, 'character-count', examples.default)
 
-          await page.type('.govuk-js-character-count', 'A'.repeat(11), {
-            delay: 50
-          })
+          await page.type('.govuk-js-character-count', 'A'.repeat(11))
         })
 
         it('shows the number of characters over the limit', async () => {
@@ -208,9 +197,7 @@ describe('Character count', () => {
         })
 
         it('uses the plural when the limit is exceeded by 2 or more', async () => {
-          await page.type('.govuk-js-character-count', 'A', {
-            delay: 50
-          })
+          await page.type('.govuk-js-character-count', 'A')
 
           const message = await page.$eval(
             '.govuk-character-count__status',
@@ -297,9 +284,6 @@ describe('Character count', () => {
           )
           expect(visibility).toBe('hidden')
 
-          // Wait for debounced update to happen
-          await setTimeout(debouncedWaitTime)
-
           // Ensure threshold is hidden for users of assistive technologies
           const ariaHidden = await page.$eval(
             '.govuk-character-count__sr-status',
@@ -309,9 +293,7 @@ describe('Character count', () => {
         })
 
         it('becomes visible once the threshold is reached', async () => {
-          await page.type('.govuk-js-character-count', 'A'.repeat(8), {
-            delay: 50
-          })
+          await page.type('.govuk-js-character-count', 'A'.repeat(8))
 
           const visibility = await page.$eval(
             '.govuk-character-count__status',
@@ -418,9 +400,7 @@ describe('Character count', () => {
       it('counts down to the word limit', async () => {
         await render(page, 'character-count', examples['with word count'])
 
-        await page.type('.govuk-js-character-count', 'Hello world', {
-          delay: 50
-        })
+        await page.type('.govuk-js-character-count', 'Hello world')
 
         const message = await page.$eval(
           '.govuk-character-count__status',
@@ -441,9 +421,7 @@ describe('Character count', () => {
       it('uses the singular when there is only one word remaining', async () => {
         await render(page, 'character-count', examples['with word count'])
 
-        await page.type('.govuk-js-character-count', 'Hello '.repeat(9), {
-          delay: 50
-        })
+        await page.type('.govuk-js-character-count', 'Hello '.repeat(9))
 
         const message = await page.$eval(
           '.govuk-character-count__status',
@@ -465,9 +443,7 @@ describe('Character count', () => {
         beforeAll(async () => {
           await render(page, 'character-count', examples['with word count'])
 
-          await page.type('.govuk-js-character-count', 'Hello '.repeat(11), {
-            delay: 50
-          })
+          await page.type('.govuk-js-character-count', 'Hello '.repeat(11))
         })
 
         it('shows the number of words over the limit', async () => {
@@ -488,9 +464,7 @@ describe('Character count', () => {
         })
 
         it('uses the plural when the limit is exceeded by 2 or more', async () => {
-          await page.type('.govuk-js-character-count', 'World', {
-            delay: 50
-          })
+          await page.type('.govuk-js-character-count', 'World')
 
           const message = await page.$eval(
             '.govuk-character-count__status',
@@ -540,9 +514,7 @@ describe('Character count', () => {
             }
           )
 
-          await page.type('.govuk-js-character-count', 'A'.repeat(11), {
-            delay: 50
-          })
+          await page.type('.govuk-js-character-count', 'A'.repeat(11))
 
           const message = await page.$eval(
             '.govuk-character-count__status',
@@ -563,9 +535,7 @@ describe('Character count', () => {
             }
           )
 
-          await page.type('.govuk-js-character-count', 'Hello '.repeat(11), {
-            delay: 50
-          })
+          await page.type('.govuk-js-character-count', 'Hello '.repeat(11))
 
           const message = await page.$eval(
             '.govuk-character-count__status',
@@ -587,9 +557,7 @@ describe('Character count', () => {
             }
           )
 
-          await page.type('.govuk-js-character-count', 'A'.repeat(8), {
-            delay: 50
-          })
+          await page.type('.govuk-js-character-count', 'A'.repeat(8))
 
           const visibility = await page.$eval(
             '.govuk-character-count__status',
@@ -636,9 +604,7 @@ describe('Character count', () => {
             }
           })
 
-          await page.type('.govuk-js-character-count', 'A'.repeat(11), {
-            delay: 50
-          })
+          await page.type('.govuk-js-character-count', 'A'.repeat(11))
 
           const message = await page.$eval(
             '.govuk-character-count__status',
@@ -654,9 +620,7 @@ describe('Character count', () => {
             }
           })
 
-          await page.type('.govuk-js-character-count', 'A'.repeat(11), {
-            delay: 50
-          })
+          await page.type('.govuk-js-character-count', 'A'.repeat(11))
 
           const message = await page.$eval(
             '.govuk-character-count__status',
@@ -672,9 +636,7 @@ describe('Character count', () => {
             }
           })
 
-          await page.type('.govuk-js-character-count', 'Hello '.repeat(11), {
-            delay: 50
-          })
+          await page.type('.govuk-js-character-count', 'Hello '.repeat(11))
 
           const message = await page.$eval(
             '.govuk-character-count__status',
@@ -690,9 +652,7 @@ describe('Character count', () => {
             }
           })
 
-          await page.type('.govuk-js-character-count', 'Hello '.repeat(11), {
-            delay: 50
-          })
+          await page.type('.govuk-js-character-count', 'Hello '.repeat(11))
 
           const message = await page.$eval(
             '.govuk-character-count__status',
@@ -925,9 +885,7 @@ describe('Character count', () => {
 
       // Type 10 characters so we go 'through' all the different forms as we
       // approach 0 characters remaining.
-      await page.type('.govuk-js-character-count', 'A'.repeat(10), {
-        delay: 50
-      })
+      await page.type('.govuk-js-character-count', 'A'.repeat(10))
 
       // Expect the page error event not to have been fired
       expect(pageErrorListener).not.toHaveBeenCalled()
