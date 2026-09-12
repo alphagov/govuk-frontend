@@ -470,6 +470,74 @@ describe('@function govuk-resolve-colour', () => {
       })
     })
   })
+
+  describe('when called with a map referring to the palette, inc. a variant', () => {
+    it('returns the hex representation of the colour', async () => {
+      const sass = `
+      ${sassBootstrap}
+
+      .foo {
+        color: govuk-resolve-colour((name: 'black', variant: 'tint-50'));
+      }
+    `
+
+      await expect(compileSassString(sass, sassConfig)).resolves.toMatchObject({
+        css: outdent`
+        .foo {
+          color: #858686;
+        }
+      `
+      })
+    })
+  })
+
+  describe('when called with a map with no name', () => {
+    it('throws an appropriate error', async () => {
+      const sass = `
+      ${sassBootstrap}
+
+      .foo {
+        color: govuk-resolve-colour((name: ''));
+      }
+    `
+
+      await expect(compileSassString(sass, sassConfig)).rejects.toThrow(
+        "Colour reference `name` shouldn't be empty."
+      )
+    })
+  })
+
+  describe('when called with a map with a variant that is empty', () => {
+    it('throws an appropriate error', async () => {
+      const sass = `
+      ${sassBootstrap}
+
+      .foo {
+        color: govuk-resolve-colour((name: 'white', variant: ''));
+      }
+    `
+
+      await expect(compileSassString(sass, sassConfig)).rejects.toThrow(
+        "Colour reference `variant` shouldn't be empty."
+      )
+    })
+  })
+
+  describe('when called with an integer', () => {
+    it('throws an appropriate error', async () => {
+      const sass = `
+      ${sassBootstrap}
+
+      .foo {
+        color: govuk-resolve-colour(1);
+      }
+    `
+
+      await expect(compileSassString(sass, sassConfig)).rejects.toThrow(
+        'Colour reference should be a Sass colour or a Sass map'
+      )
+    })
+  })
 })
 
 describe('@function govuk-organisation-colour', () => {
