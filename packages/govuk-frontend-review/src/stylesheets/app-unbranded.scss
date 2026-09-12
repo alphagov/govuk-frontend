@@ -6,8 +6,14 @@
     sans-serif
   ),
   $govuk-functional-colours: (
-    brand: #388e3c
+    brand: (
+      name: "black"
+    )
   )
 );
 
 @use "partials/banner";
+
+.govuk-footer__crown {
+  display: none;
+}
