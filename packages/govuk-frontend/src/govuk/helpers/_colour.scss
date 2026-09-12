@@ -154,7 +154,7 @@
     @return $colour-reference;
   }
 
-  @if not meta.type-of($colour-reference) == "map" {
+  @if meta.type-of($colour-reference) != "map" {
     @error 'Colour reference should be a Sass colour or a Sass map';
   }
 
