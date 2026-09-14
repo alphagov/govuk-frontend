@@ -204,7 +204,7 @@ describe('Skip Link', () => {
         cause: {
           name: 'ElementError',
           message:
-            'Skip link: Target link (`href="/components/skip-link/preview"`) has no hash fragment'
+            'govuk-skip-link: Target link (`href="/components/skip-link/preview"`) hash fragment not found'
         }
       })
     })
