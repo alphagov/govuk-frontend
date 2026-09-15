@@ -41,6 +41,18 @@ If a technical writer is unavailable, ask a content designer for help. If a cont
 
 The team should also post a message on any relevant [issue discussions](https://github.com/orgs/alphagov/projects/43/views/1) with rationale for any decisions we've made.
 
+## Draft website changelog entries, if required
+
+In most cases, a release that changes one or more components warrants a changelog entry on the website for those components. Read [our guidance on adding changelog entries](https://gov-uk.atlassian.net/wiki/spaces/GDS/pages/5773131777/DRAFT+How+to+add+changelog+entries) for details on what type of change warrants a new entry and how to write new entries.
+
+New changelog entries should be written by the subject matter expert for the change and reviewed by a content designer or technical writer. Include in your entry:
+
+- details of the change
+- the new version of Frontend being released
+- the date the new version is published
+
+Raise a pull request on the website with your new changelog entry as early as possible.
+
 ## Finalise the release
 
 At this stage, the developer leading the release should agree on the publishing date with the rest of the team, then confirm a date for a code freeze. Use the [#design-system-team-channel](https://gds.slack.com/app_redirect?channel=design-system-team-channel) to confirm sign-off from the:
