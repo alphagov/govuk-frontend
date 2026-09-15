@@ -38,6 +38,7 @@ Technical writers, Developers
 
 - [ ] Draft release notes
 - [ ] Draft comms
+- [ ] Check if changes in this release warrant a new [website changelog entry](https://gov-uk.atlassian.net/wiki/spaces/GDS/pages/5773131777/DRAFT+How+to+add+changelog+entries) for any components and draft a new entry
 
 ### GOV.UK Frontend
 
@@ -48,6 +49,7 @@ Technical writers, Developers
 - [ ] Bump the version of `govuk-frontend`
 - [ ] Update [the "What's new" section on the homepage](https://github.com/alphagov/govuk-design-system/blob/main/views/partials/_whats-new.njk)
 - [ ] Update [the "Recently shipped" section of the roadmap](https://github.com/alphagov/govuk-design-system/blob/main/src/community/roadmap/index.md#recently-shipped)
+- [ ] Add new changelog entries to components, if there are any in this release
 
 ### Frontend docs
 
