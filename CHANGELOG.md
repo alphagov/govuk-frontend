@@ -63,6 +63,48 @@ Note: [The character count `maxwords` option and word counting behaviour are dep
 
 This was added in [pull request #6995: Add character count `Intl.Segmenter` support](https://github.com/alphagov/govuk-frontend/pull/6995) - thanks to @colinrotherham and the NHS Design System team for contributing this change.
 
+#### Custom character count functions
+
+We've added a new `countFunction` option to the character count component.
+
+Service teams can now cater for server-side differences in:
+
+- New lines that vary due to `\n` versus `\r\n`
+- Word counts that vary based on empty space and punctuation
+- How empty space is trimmed before counting
+- Support for multi-byte strings
+
+For example, services might already count multi-byte strings server-side (e.g. [`len()` in Python](https://docs.python.org/3.9/library/functions.html?highlight=len#len)) resulting in client-side count mismatches, yet [support for improved character count counting](#improved-character-count-counting) may be blocked by a [3rd party library integration](https://grapheme.readthedocs.io/en/latest/grapheme.html).
+
+Custom count functions are called with:
+
+- `text` (string) - Textarea value
+- `context` (object) - Character count context
+
+```mjs
+new CharacterCount($root, {
+  maxlength: 350,
+  countType: 'characters',
+  countFunction(text, context) {
+    return text.length
+  }
+})
+```
+
+Character count `context` objects contain the following properties:
+
+- `$textarea` - Textarea HTML element
+- `config` - Character count config
+- `segmenter` - Character count `Intl.Segmenter` (optional)
+
+Our built in count functions are available to call or extend via:
+
+```mjs
+CharacterCount.countFunctions.length
+CharacterCount.countFunctions.characters
+CharacterCount.countFunctions.words
+```
+
 ### Fixes
 
 We've made fixes to GOV.UK Frontend in the following pull requests:
