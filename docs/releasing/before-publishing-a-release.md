@@ -41,6 +41,15 @@ If a technical writer is unavailable, ask a content designer for help. If a cont
 
 The team should also post a message on any relevant [issue discussions](https://github.com/orgs/alphagov/projects/43/views/1) with rationale for any decisions we've made.
 
+## Draft website changelog entries, if required
+
+A release that makes significant changes to the code or guidance of one or more components requires a changelog entry on the relevant component history pages. Read [our guidance on adding changelog entries](https://gov-uk.atlassian.net/wiki/spaces/GDS/pages/5773131777/DRAFT+How+to+add+changelog+entries) for details on:
+
+- what type of change requires a new entry
+- how to write new entries
+
+Raise a pull request on the `govuk-design-system` repo with a new changelog entry as soon as possible after making changes to the code or guidance of a component.
+
 ## Finalise the release
 
 At this stage, the developer leading the release should agree on the publishing date with the rest of the team, then confirm a date for a code freeze. Use the [#design-system-team-channel](https://gds.slack.com/app_redirect?channel=design-system-team-channel) to confirm sign-off from the:
