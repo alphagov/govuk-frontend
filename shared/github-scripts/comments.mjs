@@ -373,8 +373,12 @@ function getReviewAppUrl(prNumber, path = '/') {
 }
 
 /**
+ * @import {Octokit} from "@octokit/rest"
+ */
+
+/**
  * @typedef {object} GithubActionContext
- * @property {import('@octokit/rest').Octokit} github - The pre-authenticated Octokit provided by GitHub actions
+ * @property {Octokit} github - The pre-authenticated Octokit provided by GitHub actions
  * @property {import('@actions/github').context} context - The context of the GitHub action
  * @property {string} commit - The SHA of the commit that triggered the action
  */
@@ -395,10 +399,9 @@ function getReviewAppUrl(prNumber, path = '/') {
  */
 
 /**
- * @import {RestEndpointMethodTypes} from '@octokit/plugin-rest-endpoint-methods'
- * @typedef {RestEndpointMethodTypes["issues"]} IssuesEndpoint
- * @typedef {IssuesEndpoint["listComments"]["parameters"]} IssueCommentsListParams
- * @typedef {IssuesEndpoint["getComment"]["response"]["data"]} IssueCommentData
+ * @typedef {Octokit["rest"]["issues"]} IssuesEndpoint
+ * @typedef {Parameters<IssuesEndpoint["listComments"]>[0]} IssueCommentsListParams
+ * @typedef {Awaited<ReturnType<IssuesEndpoint["listComments"]>>["data"][0]} IssueCommentData
  */
 
 /**
