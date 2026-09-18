@@ -1,0 +1,129 @@
+{% extends "./mock-service.njk" %}
+
+{% from "govuk/components/generic-header/macro.njk" import govukGenericHeader %}
+{% from "govuk/components/language-navigation/macro.njk" import govukLanguageNavigation %}
+{% from "govuk/components/tabs/macro.njk" import govukTabs %}
+
+{% set themeColor = "#0b0c0c" %}
+{% set pageTitle = "Wonka Industries" %}
+{% set pageType = "website" %}
+
+{% block pageTitle %}{{ pageTitle }} - Candy factory directory{% endblock %}
+
+{% block bodyStart %}{% endblock %}
+
+{% block head %}
+  <link rel="stylesheet" href="/stylesheets/app-unbranded.min.css">
+{% endblock %}
+
+{% block govukHeader %}
+  {{ govukGenericHeader({
+    url: mockServiceSlug + "/candy-factory-directory",
+    logoText: "Candy factory directory"
+  }) }}
+{% endblock %}
+
+{% block govukServiceNavigation %}
+  {%- set langNavHtml %}
+    {{ govukLanguageNavigation({
+      items: [
+        {
+          text: "English",
+          lang: "en",
+          current: true
+        },
+        {
+          text: "Cymraeg",
+          lang: "cy",
+          href: mockServiceSlug + "/candy-factory-directory-cy",
+          languageDescriptionText: "Newid yr iaith i'r Cymraeg"
+        }
+      ]
+    }) }}
+  {% endset -%}
+
+  {{ govukServiceNavigation({
+    navigation: [
+      {
+        href: fakeServicePath,
+        text: "Directory",
+        active: true
+      },
+      {
+        href: fakeServicePath,
+        text: "Search"
+      },
+      {
+        href: fakeServicePath,
+        text: "About us"
+      }
+    ],
+    slots: {
+      end: {
+        html: langNavHtml,
+        align: 'inline'
+      }
+    }
+  }) }}
+{% endblock %}
+
+{% block pageContent %}
+  <h1 class="govuk-heading-xl">{{pageTitle}}</h1>
+
+  {{ govukTabs({
+    items: [
+      {
+        label: "Facts",
+        id: "facts",
+        panel: {
+          text: "Wonka Industries was created in 1964 by Willard Wilbur “Willy” Wonka. Its most popular products are candies such as the Wonka Bar, the Everlasting Gobstopers, Fizzy Lifting Drinks, Hair Toffee, and Lickable Wallpaper."
+        }
+      },
+      {
+        label: "Location",
+        id: "location",
+        panel: {
+          text: "The factory is shrouded in mystery and no-one knows where it is, except that it is in England. They organise visits by collecting visitors from a collection point and blindfolding them."
+        }
+      },
+      {
+        label: "Contact",
+        id: "contact",
+        panel: {
+          html: "Telephone: 012 3456 7890<br />Email: willy@wonka.co.uk"
+        }
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block footerStart %}{% endblock %}
+
+{% block govukFooter %}
+  {{ govukFooter({
+    meta: {
+      items: [
+        {
+          href: fakeServicePath,
+          text: "Terms and conditions"
+        },
+        {
+          href: fakeServicePath,
+          text: "Privacy notice"
+        },
+        {
+          href: fakeServicePath,
+          text: "Cookies"
+        },
+        {
+          href: fakeServicePath,
+          text: "Accessibility statement"
+        }
+      ]
+    },
+    copyright: {
+      text: "© Ministry of Sugar"
+    },
+    contentLicence: null
+  }) }}
+{% endblock %}
