@@ -35,9 +35,10 @@ export class SkipLink extends Component {
 
     // Check link path matching current page
     if (!linkedElementId) {
-      throw new ElementError(
-        `Skip link: Target link (\`href="${href}"\`) has no hash fragment`
-      )
+      throw new ElementError({
+        component: SkipLink,
+        identifier: `Target link (\`href="${href}"\`) hash fragment`
+      })
     }
 
     const $linkedElement = document.getElementById(linkedElementId)
