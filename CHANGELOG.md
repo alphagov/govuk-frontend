@@ -4,6 +4,65 @@ For advice on how to use these release notes, see [our guidance on staying up to
 
 ## Unreleased
 
+### New features
+
+#### Improved character count counting
+
+We've added a new `countType` option to the character count component to enable [improved counting with `Intl.Segmenter`](https://developer.mozilla.org/en-US/blog/javascript-intl-segmenter-i18n/).
+
+This feature was introduced because [JavaScript counts `String: length` in code units](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/length) not characters, for example:
+
+| String | Length | Remarks                                                                    |
+| ------ | ------ | -------------------------------------------------------------------------- |
+| cafȩ́   | 5      | The character `ȩ́` counted as 2 code units                                  |
+| cafȩ́   | 5      | The character `ȩ` with combining mark ` ́` counted as 2 code units          |
+| cafȩ́   | 6      | The character `e` with combining marks ` ́` and ` ̧` counted as 3 code units |
+| 😹     | 2      | The cat emoji counted as 2 code units                                      |
+| 👩🏻‍🚀     | 7      | The astronaut emoji with gender and skin modifiers counted as 7 code units |
+
+Similarly when counting words, "my mother-in-law" is now counted as 4 (not 2) words to correctly follow the [Unicode **Default Word Boundary Specification**](https://unicode.org/reports/tr29/#Default_Word_Boundaries).
+
+To enable improved counting in [supported browsers](https://caniuse.com/wf-intl-segmenter) you should either:
+
+- add `countType: "characters"` to count user-perceived characters
+- add `countType: "words"` to count words between word boundaries
+
+Unsupported browsers will default to the `textareaDescriptionText` message shown when JavaScript is unavailable, such as:
+
+> You can enter up to 350 characters
+
+When using Nunjucks to count characters:
+
+```patch
+  {{ govukCharacterCount({
+    label: {
+      text: "Can you provide more detail?"
+    },
+    name: "more-detail",
+-   maxlength: 350
++   maxlength: 350,
++   countType: "characters"
+  }) }}
+```
+
+Or when using Nunjucks to count words:
+
+```patch
+  {{ govukCharacterCount({
+    label: {
+      text: "Can you provide more detail?"
+    },
+    name: "more-detail",
+-   maxwords: 150
++   maxlength: 150,
++   countType: "words"
+  }) }}
+```
+
+Note: [The character count `maxwords` option and word counting behaviour are deprecated](#rename-the-character-count-maxwords-option) and will be removed in a future release. You must replace `maxwords` with `maxlength` when using `countType: "words"`.
+
+This was added in [pull request #6995: Add character count `Intl.Segmenter` support](https://github.com/alphagov/govuk-frontend/pull/6995) - thanks to @colinrotherham and the NHS Design System team for contributing this change.
+
 ## v6.5.1 (Fix release)
 
 To install this version with npm, run `npm install govuk-frontend@6.5.1`. You can also find more information about [how to stay up to date](https://frontend.design-system.service.gov.uk/staying-up-to-date/#updating-to-the-latest-version) in our documentation.
