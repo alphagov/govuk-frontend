@@ -4,6 +4,12 @@ For advice on how to use these release notes, see [our guidance on staying up to
 
 ## Unreleased
 
+### Fixes
+
+We've made fixes to GOV.UK Frontend in the following pull requests:
+
+- [#7428: Fix guard in govuk-resolve-colour and add unit tests](https://github.com/alphagov/govuk-frontend/pull/7428) - thanks to @daniel-ac-martin for reporting and fixing this issue
+
 ## v6.5.1 (Fix release)
 
 To install this version with npm, run `npm install govuk-frontend@6.5.1`. You can also find more information about [how to stay up to date](https://frontend.design-system.service.gov.uk/staying-up-to-date/#updating-to-the-latest-version) in our documentation.
