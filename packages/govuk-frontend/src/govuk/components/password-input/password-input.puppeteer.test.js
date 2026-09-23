@@ -289,7 +289,7 @@ describe('/components/password-input', () => {
             cause: {
               name: 'ElementError',
               message:
-                'Password input: Form field (`.govuk-js-password-input-input`) must be of type `password`.'
+                'govuk-password-input: Form field (`.govuk-js-password-input-input`) must be of type `password`.'
             }
           })
         })
@@ -349,7 +349,7 @@ describe('/components/password-input', () => {
             cause: {
               name: 'ElementError',
               message:
-                'Password input: Button (`.govuk-js-password-input-toggle`) must be of type `button`.'
+                'govuk-password-input: Button (`.govuk-js-password-input-toggle`) must be of type `button`.'
             }
           })
         })
