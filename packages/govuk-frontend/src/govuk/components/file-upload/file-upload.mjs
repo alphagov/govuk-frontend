@@ -122,6 +122,16 @@ export class FileUpload extends ConfigurableComponent {
 
     // Bind all of the events relating to drag and drop functionality
     this.bindDraggingEvents()
+
+    // When the page is restored after navigating 'back' in some browsers the
+    // state of form controls is not restored until *after* the DOMContentLoaded
+    // event is fired, so we need to sync after the pageshow event.
+    window.addEventListener('pageshow', this.updateStatusState.bind(this))
+
+    // Although we've set up handlers to sync state on the pageshow event, init
+    // could be called after those events have fired, for example if they are
+    // added to the page dynamically, so update now too.
+    this.updateStatusState()
   }
 
   /**
@@ -388,27 +398,7 @@ export class FileUpload extends ConfigurableComponent {
    * @private
    */
   onChange() {
-    const fileCount = this.$input.files.length
-
-    if (fileCount === 0) {
-      // If there are no files, show the default selection text
-      this.$status.innerText = this.i18n.t('noFileChosen')
-      this.$button.classList.add('govuk-file-upload-button--empty')
-    } else {
-      if (
-        // If there is 1 file, just show the file name
-        fileCount === 1
-      ) {
-        this.$status.innerText = this.$input.files[0].name
-      } else {
-        // Otherwise, tell the user how many files are selected
-        this.$status.innerText = this.i18n.t('multipleFilesChosen', {
-          count: fileCount
-        })
-      }
-
-      this.$button.classList.remove('govuk-file-upload-button--empty')
-    }
+    this.updateStatusState()
   }
 
   /**
@@ -475,6 +465,35 @@ export class FileUpload extends ConfigurableComponent {
       'govuk-file-upload-wrapper--disabled',
       this.$button.disabled
     )
+  }
+
+  /**
+   * Update the status depending on how many files are in the underlying input
+   *
+   * @private
+   */
+  updateStatusState() {
+    const fileCount = this.$input.files.length
+
+    if (fileCount === 0) {
+      // If there are no files, show the default selection text
+      this.$status.innerText = this.i18n.t('noFileChosen')
+      this.$button.classList.add('govuk-file-upload-button--empty')
+    } else {
+      if (
+        // If there is 1 file, just show the file name
+        fileCount === 1
+      ) {
+        this.$status.innerText = this.$input.files[0].name
+      } else {
+        // Otherwise, tell the user how many files are selected
+        this.$status.innerText = this.i18n.t('multipleFilesChosen', {
+          count: fileCount
+        })
+      }
+
+      this.$button.classList.remove('govuk-file-upload-button--empty')
+    }
   }
 
   /**
