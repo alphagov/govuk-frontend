@@ -36,6 +36,7 @@
     "marked": "^18.0.11",
     "marked-linkify-it": "^4.0.2",
     "marked-smartypants": "^1.1.12",
+    "multer": "^2.4.0",
     "outdent": "^0.8.0",
     "shuffle-seed": "^1.1.6",
     "slug": "^9.1.0"
@@ -47,6 +48,7 @@
     "@rollup/plugin-commonjs": "^29.0.3",
     "@rollup/plugin-node-resolve": "^16.0.3",
     "@rollup/plugin-terser": "^1.0.0",
+    "@types/multer": "^2.2.0",
     "autoprefixer": "^10.5.4",
     "browser-sync": "^3.0.4",
     "gulp": "^5.0.1",
