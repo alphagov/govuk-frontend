@@ -108,7 +108,7 @@
     // which means the focus state is less obvious. By adding a transparent
     // outline, which becomes solid (text-coloured) in that context, we ensure
     // the focus remains clearly visible.
-    outline: base.$govuk-focus-width solid transparent;
+    @include base.govuk-focus-outline(transparent);
     outline-offset: 1px;
 
     // When in an explicit forced-color mode, we can use the Highlight system
@@ -274,10 +274,9 @@
     // feedback to the user as to which checkbox they will select when their
     // cursor is outside of the visible area.
     .govuk-checkboxes__input:not(:disabled):hover + .govuk-checkboxes__label::before {
-      // Forced colours modes tend to ignore box-shadow.
-      // Apply an outline for those modes to use instead.
-      outline: base.$govuk-focus-width dashed transparent;
+      @include base.govuk-focus-outline(transparent);
       outline-offset: 1px;
+      outline-style: dashed;
       box-shadow: 0 0 0 base.$govuk-hover-width base.govuk-functional-colour(hover);
     }
 

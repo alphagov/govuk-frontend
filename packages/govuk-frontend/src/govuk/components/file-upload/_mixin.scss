@@ -27,8 +27,7 @@
     }
 
     &:focus {
-      outline: base.$govuk-focus-width solid;
-      outline-color: base.govuk-functional-colour(focus);
+      @include base.govuk-focus-outline;
       // Use `box-shadow` to add border instead of changing `border-width`
       // (which changes element size) and since `outline` is already used for
       // the yellow focus state.
@@ -41,8 +40,7 @@
     // to recognise `focus-within` and don't set any styles from the block
     // when it's a selector.
     &:focus-within {
-      outline: base.$govuk-focus-width solid;
-      outline-color: base.govuk-functional-colour(focus);
+      @include base.govuk-focus-outline;
 
       box-shadow: inset 0 0 0 4px base.govuk-functional-colour(input-border);
     }
@@ -138,8 +136,7 @@
     &:active,
     &:focus {
       border: $file-upload-border-width solid base.govuk-colour("black");
-      outline: base.$govuk-focus-width solid;
-      outline-color: base.govuk-functional-colour(focus);
+      @include base.govuk-focus-outline;
       // Ensure outline appears outside of the element
       outline-offset: 0;
       background-color: base.govuk-colour("black", $variant: "tint-95");
@@ -157,7 +154,8 @@
 
       &:hover .govuk-file-upload-button__pseudo-button {
         border-color: base.govuk-functional-colour(focus);
-        outline: 3px solid transparent;
+        @include base.govuk-focus-outline;
+        outline-width: 3px;
         background-color: base.govuk-colour("black", $variant: "tint-80");
         box-shadow: inset 0 0 0 1px base.govuk-functional-colour(focus);
       }
