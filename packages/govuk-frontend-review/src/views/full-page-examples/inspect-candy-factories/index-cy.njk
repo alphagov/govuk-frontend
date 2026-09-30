@@ -1,0 +1,61 @@
+{% extends "./mock-service.njk" %}
+
+{% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+{% from "govuk/components/language-navigation/macro.njk" import govukLanguageNavigation %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% set pageTitle = "Cofrestrwch ar gyfer archwiliad ffatri losin" %}
+{% set pageType = "govuk" %}
+{% set mainLang = "cy" %}
+{% set pageTitleLang = "cy" %}
+
+{% block govukServiceNavigation %}{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: fakeServicePath
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block pageContent %}
+  <div class="govuk-!-margin-bottom-8">
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-3">{{pageTitle}}</h1>
+
+    {{ govukLanguageNavigation({
+      ariaLabel: "Iaith",
+      attributes: {
+        lang: "cy"
+      },
+      items: [
+        {
+          text: "English",
+          lang: "en",
+          href: mockServiceSlug + "/",
+          languageDescriptionText: "Change the language to English"
+        },
+        {
+          text: "Cymraeg",
+          lang: "cy",
+          current: true
+        }
+      ]
+    }) }}
+  </div>
+
+  <p class="govuk-body">Mae'r Weinyddiaeth Siwgr yn trefnu archwiliadau rheolaidd o ffatrïoedd losin. Gwahoddir Arolygwyr Losin Ardystiedig i ymuno â'r archwiliadau hynny.</p>
+
+  <p class="govuk-body">Os nad oes gennych gyfrif eto, bydd y gwasanaeth yn gofyn i chi gofrestru a darparu copi o'ch ardystiad Arolygwr Losin. </p>
+
+  {{ govukButton({
+    text: "Dechreuwch nawr",
+    href: mockServiceSlug + "/list-of-factories",
+    isStartButton: true
+  }) }}
+{% endblock %}
+
+{% block footerStart %}{% endblock %}

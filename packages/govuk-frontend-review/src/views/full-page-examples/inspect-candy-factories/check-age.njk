@@ -1,0 +1,41 @@
+{% extends "./mock-service.njk" %}
+
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/panel/macro.njk" import govukPanel %}
+
+{% set pageTitle = "Is your age correct?" %}
+
+{% block bodyStart %}{% endblock %}
+
+{% block containerStart %}
+  {{ govukBackLink({
+    href: mockServiceSlug + "/age"
+  }) }}
+{% endblock %}
+
+{% block pageContent %}
+  {% call govukPanel({
+    classes: "govuk-panel--interruption",
+    titleText: pageTitle,
+    actions: {
+      items: [
+        {
+          text: "Yes, this is correct",
+          href: mockServiceSlug + "/photo",
+          type: "button"
+        }, {
+          text: "No, change my age",
+          href: mockServiceSlug + "/age"
+        }
+      ]
+    }
+  }) %}
+    <p class="govuk-body">
+      {% if queryData.age %}
+        You entered your age as <strong>{{ queryData.age }}</strong>. Is this correct?
+      {% else %}
+        You haven't entered an age. Do you still want to proceed?
+      {% endif %}
+    </p>
+  {% endcall %}
+{% endblock %}

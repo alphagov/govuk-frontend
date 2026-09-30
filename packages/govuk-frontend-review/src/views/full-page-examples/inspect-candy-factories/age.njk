@@ -1,0 +1,52 @@
+{% extends "./mock-service.njk" %}
+
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+{% from "govuk/components/details/macro.njk" import govukDetails %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% set pageTitle = "What is your age?" %}
+
+{% block bodyStart %}{% endblock %}
+
+{% block containerStart %}
+  {{ govukBackLink({
+    href: mockServiceSlug + "/name"
+  }) }}
+{% endblock %}
+
+{% block pageContent %}
+  <form method="post">
+    {% if errorSummary | length %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errorSummary
+      }) }}
+    {% endif %}
+
+    {{ govukInput({
+      label: {
+        text: pageTitle,
+        classes: "govuk-label--xl",
+        isPageHeading: true
+      },
+      classes: "govuk-input--width-4",
+      id: "age",
+      name: "age",
+      value: queryData.age if queryData.age else "",
+      inputmode: "numeric",
+      errorMessage: errors["age"]
+    }) }}
+
+    {% call govukDetails({
+      summaryText: "Why do we need your age?"
+    }) %}
+      We serve alcoholic drinks and chocolates.
+    {% endcall %}
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+  </form>
+{% endblock %}
