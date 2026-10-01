@@ -71,7 +71,7 @@
     "@types/vinyl": "^2.0.12",
     "@typescript-eslint/eslint-plugin": "^8.39.0",
     "@typescript-eslint/parser": "^8.38.0",
-    "concurrently": "^10.0.4",
+    "concurrently": "^10.0.5",
     "cross-env": "^10.1.0",
     "del-cli": "^7.0.0",
     "editorconfig-checker": "^7.0.0",
