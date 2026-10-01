@@ -55,7 +55,7 @@
     "@govuk-frontend/tasks": "*",
     "@jest/environment": "^30.3.0",
     "@octokit/rest": "22.0.1",
-    "@percy/core": "^1.32.7",
+    "@percy/core": "^1.32.10",
     "@testing-library/jest-dom": "^7.0.1",
     "@types/browser-sync": "^2.29.1",
     "@types/express": "^5.0.6",
