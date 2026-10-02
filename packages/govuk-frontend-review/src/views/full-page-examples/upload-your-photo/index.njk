@@ -43,7 +43,7 @@ scenario: |
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-        <form method="post" novalidate>
+        <form method="post" enctype="multipart/form-data" novalidate>
             {% if errorSummary | length %}
               {{ govukErrorSummary({
                 titleText: "There is a problem",
@@ -68,7 +68,7 @@ scenario: |
                     text: "Upload your photo"
                 },
                 hint: {
-                    text: "Your photo must be at least 50KB and no more than 10MB"
+                    text: "Your photo must be smaller than 10MB"
                 },
                 errorMessage: errors["photo"],
                 javascript: true
