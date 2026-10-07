@@ -1,5 +1,6 @@
 import { closestAttributeValue } from '../../common/closest-attribute-value.mjs'
 import { ConfigurableComponent } from '../../common/configuration.mjs'
+import { formatErrorMessage } from '../../common/index.mjs'
 import { ElementError } from '../../errors/index.mjs'
 import { I18n } from '../../i18n.mjs'
 
@@ -47,7 +48,10 @@ export class PasswordInput extends ConfigurableComponent {
 
     if ($input.type !== 'password') {
       throw new ElementError(
-        'Password input: Form field (`.govuk-js-password-input-input`) must be of type `password`.'
+        formatErrorMessage(
+          PasswordInput,
+          'Form field (`.govuk-js-password-input-input`) must be of type `password`.'
+        )
       )
     }
 
@@ -65,7 +69,10 @@ export class PasswordInput extends ConfigurableComponent {
 
     if ($showHideButton.type !== 'button') {
       throw new ElementError(
-        'Password input: Button (`.govuk-js-password-input-toggle`) must be of type `button`.'
+        formatErrorMessage(
+          PasswordInput,
+          'Button (`.govuk-js-password-input-toggle`) must be of type `button`.'
+        )
       )
     }
 
