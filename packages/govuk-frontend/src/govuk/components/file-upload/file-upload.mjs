@@ -104,7 +104,7 @@ export class FileUpload extends ConfigurableComponent {
     this.$button = this.createButton()
 
     // Inject button into component
-    this.$root.insertAdjacentElement('afterbegin', this.$button)
+    this.$root.prepend(this.$button)
 
     // Bind change event to the underlying input
     this.$input.addEventListener('change', this.onChange.bind(this))
