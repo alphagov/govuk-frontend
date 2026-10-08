@@ -210,7 +210,7 @@ describe('Panel', () => {
           const $ = render('panel', examples.interruption)
 
           const $actions = $(
-            '.govuk-panel__actions .govuk-button-group > button.govuk-button.govuk-button--inverse'
+            '.govuk-panel__actions .govuk-button-group > button.govuk-button'
           )
           expect($actions.text()).toContain('Yes, this is correct')
         })
