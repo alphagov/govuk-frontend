@@ -4,6 +4,7 @@ import {
   ConfigurableComponent,
   configOverride
 } from '../../common/configuration.mjs'
+import { createElement } from '../../common/create-element.mjs'
 import { formatErrorMessage } from '../../common/index.mjs'
 import { ConfigError, ElementError } from '../../errors/index.mjs'
 import { I18n } from '../../i18n.mjs'
@@ -145,10 +146,11 @@ export class CharacterCount extends ConfigurableComponent {
 
     // Create the *screen reader* specific live-updating counter
     // This doesn't need any styling classes, as it is never visible
-    const $screenReaderCountMessage = document.createElement('div')
-    $screenReaderCountMessage.className =
-      'govuk-character-count__sr-status govuk-visually-hidden'
-    $screenReaderCountMessage.setAttribute('aria-live', 'polite')
+    const $screenReaderCountMessage = createElement('div', {
+      class: 'govuk-character-count__sr-status govuk-visually-hidden',
+      'aria-live': 'polite'
+    })
+
     this.$screenReaderCountMessage = $screenReaderCountMessage
     $textareaDescription.insertAdjacentElement(
       'afterend',
@@ -158,10 +160,11 @@ export class CharacterCount extends ConfigurableComponent {
     // Create our live-updating counter element, copying the classes from the
     // textarea description for backwards compatibility as these may have been
     // configured
-    const $visibleCountMessage = document.createElement('div')
-    $visibleCountMessage.className = $textareaDescription.className
-    $visibleCountMessage.classList.add('govuk-character-count__status')
-    $visibleCountMessage.setAttribute('aria-hidden', 'true')
+    const $visibleCountMessage = createElement('div', {
+      class: `${$textareaDescription.className} govuk-character-count__status`,
+      'aria-hidden': 'true'
+    })
+
     this.$visibleCountMessage = $visibleCountMessage
     $textareaDescription.insertAdjacentElement('afterend', $visibleCountMessage)
 
