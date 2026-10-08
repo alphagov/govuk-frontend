@@ -1,0 +1,62 @@
+---
+title: Sign up for a candy factory inspection
+scenario: You want to sign up to inspect a candy factory using the candy factory inspection service
+
+notes: Fake service used for 2026 DAC audit of Frontend
+---
+
+{% extends "./mock-service.njk" %}
+
+{% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+{% from "govuk/components/language-navigation/macro.njk" import govukLanguageNavigation %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% set pageTitle = "Sign up for a candy factory inspection" %}
+{% set pageType = "govuk" %}
+
+{% block govukServiceNavigation %}{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: fakeServicePath
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block pageContent %}
+  <div class="govuk-!-margin-bottom-8">
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-3">{{pageTitle}}</h1>
+
+    {{ govukLanguageNavigation({
+      items: [
+        {
+          text: "English",
+          lang: "en",
+          current: true
+        },
+        {
+          text: "Cymraeg",
+          lang: "cy",
+          href: mockServiceSlug + "/index-cy",
+          languageDescriptionText: "Newid yr iaith i'r Cymraeg"
+        }
+      ]
+    }) }}
+  </div>
+
+  <p class="govuk-body">The Ministry of Sugar organises regular candy factory inspections. Certified Candy Inspectors are invited to join those inspections.</p>
+
+  <p class="govuk-body">If you do not have an account yet, the service will ask you to sign up and provide a copy of your Candy Inspector certification.</p>
+
+  {{ govukButton({
+    text: "Start now",
+    href: mockServiceSlug + "/list-of-factories",
+    isStartButton: true
+  }) }}
+{% endblock %}
+
+{% block footerStart %}{% endblock %}

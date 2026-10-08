@@ -1,0 +1,302 @@
+{% extends "layouts/_generic.njk" %}
+
+{% from "govuk/components/cookie-banner/macro.njk" import govukCookieBanner %}
+{% from "govuk/components/service-navigation/macro.njk" import govukServiceNavigation %}
+{% from "govuk/components/feedback/macro.njk" import govukFeedback %}
+{% from "govuk/components/footer/macro.njk" import govukFooter %}
+
+{% set pageTitle = pageTitle | default("Inspect candy factories", true) %}
+{% set pageType = pageType | default("service") %} {# govuk, service or website #}
+{% set mockServiceSlug = "/full-page-examples/inspect-candy-factories" %}
+{% set fakeServicePath = mockServiceSlug + "/not-a-real-service" %}
+
+{% block pageTitle %}{{ "Error: " if errorSummary | length }}{{ pageTitle }} -{{" Inspect candy factories -" if pageType == "service"}} GOV.UK{% endblock %}
+
+{% set cookieHtml %}
+  <p class="govuk-body">We’d like to use analytics cookies so we can understand how you use this site.</p>
+  <p class="govuk-body">We also use essential cookies to remember if you’ve accepted analytics cookies.</p>
+{% endset %}
+
+{% set cookieAcceptHtml %}
+  <p class="govuk-body">You’ve accepted analytics cookies. You can <a class="govuk-link" href="/cookies">change your cookie settings</a> at any time.</p>
+{% endset %}
+
+{% set cookieRejectHtml %}
+  <p class="govuk-body">You’ve rejected analytics cookies. You can <a class="govuk-link" href="{{fakeServicePath}}">change your cookie settings</a> at any time.</p>
+{% endset %}
+
+{% block bodyStart %}
+  {{ govukCookieBanner({
+    classes: "js-cookies-banner",
+    messages: [
+      {
+        headingText: "Cookies on GOV.UK",
+        html: cookieHtml,
+        actions: [
+          {
+            text: "Accept analytics cookies",
+            type: "button",
+            classes: "js-cookies-button-accept"
+          },
+          {
+            text: "Reject analytics cookies",
+            type: "button",
+            classes: "js-cookies-button-reject"
+          },
+          {
+            text: "View cookie preferences",
+            href: fakeServicePath
+          }
+        ],
+        classes: "js-question-banner"
+      },
+      {
+        html: cookieAcceptHtml,
+        role: "alert",
+        actions: [
+          {
+              text: "Hide cookie message",
+              type: "button",
+              classes: "js-hide"
+          }
+        ],
+        classes: "js-cookies-accepted",
+        hidden: true
+      },
+      {
+        html: cookieRejectHtml,
+        role: "alert",
+        actions: [
+          {
+            text: "Hide cookie message",
+            type: "button",
+            classes: "js-hide"
+          }
+        ],
+        classes: "js-cookies-rejected",
+        hidden: true
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block govukServiceNavigation %}
+  {{ govukServiceNavigation({
+    serviceName: "Inspect candy factories",
+    serviceUrl: mockServiceSlug + "/list-of-factories",
+    navigation: [
+      {
+        href: fakeServicePath,
+        text: "Inspections",
+        active: true
+      },
+      {
+        href: fakeServicePath,
+        text: "Reports"
+      },
+      {
+        href: fakeServicePath,
+        text: "Account"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+      {% block pageContent %}{% endblock %}
+    </div>
+  </div>
+{% endblock %}
+
+{% block footerStart %}
+  {% call govukFeedback({
+    titleText: "Help us improve this service"
+  }) %}
+    <p class="govuk-body">
+      Tell us about your experience using this service. <a href="{{fakeServicePath}}" class="govuk-link">Give us your feedback</a>
+    </p>
+  {% endcall %}
+{% endblock %}
+
+{% block bodyEnd %}
+  {{ super() }}
+  <script type="module">
+    const acceptButton = document.querySelector('.js-cookies-button-accept')
+    const rejectButton = document.querySelector('.js-cookies-button-reject')
+
+    const acceptedBanner = document.querySelector('.js-cookies-accepted')
+    const rejectedBanner = document.querySelector('.js-cookies-rejected')
+    const questionBanner = document.querySelector('.js-question-banner')
+    const cookieBanner = document.querySelector('.js-cookies-banner')
+
+    function showBanner(banner) {
+        questionBanner.setAttribute('hidden', 'hidden')
+        banner.removeAttribute('hidden')
+
+        // Shift focus to the banner
+        banner.setAttribute('tabindex', '-1')
+        banner.focus()
+
+        banner.addEventListener('blur', function () {
+            banner.removeAttribute('tabindex')
+        })
+    }
+
+    acceptButton.addEventListener('click', function (event) {
+        showBanner(acceptedBanner)
+        event.preventDefault()
+    })
+
+    rejectButton.addEventListener('click', function (event) {
+        showBanner(rejectedBanner)
+        event.preventDefault()
+    })
+
+    acceptedBanner.querySelector('.js-hide').addEventListener('click', function () {
+      cookieBanner.setAttribute('hidden', 'hidden')
+    })
+
+    rejectedBanner.querySelector('.js-hide').addEventListener('click', function () {
+      cookieBanner.setAttribute('hidden', 'hidden')
+    })
+  </script>
+{% endblock %}
+
+{% block govukFooter %}
+  {% if pageType == "govuk" %}
+    {{ govukFooter({
+      navigation: [
+        {
+          title: "Services and information",
+          width: "two-thirds",
+          columns: 2,
+          items: [
+            {
+              href: fakeServicePath,
+              text: "Benefits"
+            },
+            {
+              href: fakeServicePath,
+              text: "Births, deaths, marriages and care"
+            },
+            {
+              href: fakeServicePath,
+              text: "Business and self-employed"
+            },
+            {
+              href: fakeServicePath,
+              text: "Childcare and parenting"
+            },
+            {
+              href: fakeServicePath,
+              text: "Citizenship and living in the UK"
+            },
+            {
+              href: fakeServicePath,
+              text: "Crime, justice and the law"
+            },
+            {
+              href: fakeServicePath,
+              text: "Disabled people"
+            },
+            {
+              href: fakeServicePath,
+              text: "Driving and transport"
+            },
+            {
+              href: fakeServicePath,
+              text: "Education and learning"
+            },
+            {
+              href: fakeServicePath,
+              text: "Employing people"
+            },
+            {
+              href: fakeServicePath,
+              text: "Environment and countryside"
+            },
+            {
+              href: fakeServicePath,
+              text: "Housing and local services"
+            },
+            {
+              href: fakeServicePath,
+              text: "Money and tax"
+            },
+            {
+              href: fakeServicePath,
+              text: "Passports, travel and living abroad"
+            },
+            {
+              href: fakeServicePath,
+              text: "Visas and immigration"
+            },
+            {
+              href: fakeServicePath,
+              text: "Working, jobs and pensions"
+            }
+          ]
+        },
+        {
+          title: "Government activity",
+          width: "one-third",
+          items: [
+            {
+              href: fakeServicePath,
+              text: "How government works"
+            },
+            {
+              href: fakeServicePath,
+              text: "Departments"
+            },
+            {
+              href: fakeServicePath,
+              text: "Worldwide"
+            },
+            {
+              href: fakeServicePath,
+              text: "Policies"
+            },
+            {
+              href: fakeServicePath,
+              text: "Publications"
+            },
+            {
+              href: fakeServicePath,
+              text: "Announcements"
+            }
+          ]
+        }
+      ],
+      meta: {
+        items: [
+          {
+            href: fakeServicePath,
+            text: "Help"
+          },
+          {
+            href: fakeServicePath,
+            text: "Cookies"
+          },
+          {
+            href: fakeServicePath,
+            text: "Contact"
+          },
+          {
+            href: fakeServicePath,
+            text: "Terms and conditions"
+          },
+          {
+            href: fakeServicePath,
+            text: "Rhestr o Wasanaethau Cymraeg"
+          }
+        ],
+        html: 'Built by the <a class="govuk-footer__link" href="{{fakeServicePath}}">Government Digital Service</a>'
+      }
+    }) }}
+  {% elif pageType == "service" %}
+    {{ govukFooter() }}
+  {% endif %}
+{% endblock %}
