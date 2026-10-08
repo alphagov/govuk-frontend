@@ -1,5 +1,6 @@
 import { closestAttributeValue } from '../../common/closest-attribute-value.mjs'
 import { ConfigurableComponent } from '../../common/configuration.mjs'
+import { createElement } from '../../common/create-element.mjs'
 import { ElementError } from '../../errors/index.mjs'
 import { I18n } from '../../i18n.mjs'
 
@@ -25,7 +26,10 @@ export class PasswordInput extends ConfigurableComponent {
    */
   $showHideButton
 
-  /** @private */
+  /**
+   * @private
+   * @type {HTMLDivElement}
+   */
   $screenReaderStatusMessage
 
   /**
@@ -84,10 +88,10 @@ export class PasswordInput extends ConfigurableComponent {
     // This is injected between the input and button so that users get a sensible reading order if
     // moving through the page content linearly:
     // [password input] -> [your password is visible/hidden] -> [show/hide password]
-    const $screenReaderStatusMessage = document.createElement('div')
-    $screenReaderStatusMessage.className =
-      'govuk-password-input__sr-status govuk-visually-hidden'
-    $screenReaderStatusMessage.setAttribute('aria-live', 'polite')
+    const $screenReaderStatusMessage = createElement('div', {
+      class: 'govuk-password-input__sr-status govuk-visually-hidden',
+      'aria-live': 'polite'
+    })
     this.$screenReaderStatusMessage = $screenReaderStatusMessage
     this.$input.insertAdjacentElement('afterend', $screenReaderStatusMessage)
 
