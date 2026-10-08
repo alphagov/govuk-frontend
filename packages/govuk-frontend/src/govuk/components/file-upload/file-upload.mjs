@@ -120,7 +120,7 @@ export class FileUpload extends ConfigurableComponent {
       'aria-live': 'assertive'
     })
 
-    this.$root.insertAdjacentElement('afterend', this.$announcements)
+    this.$root.after(this.$announcements)
 
     // Bind all of the events relating to drag and drop functionality
     this.bindDraggingEvents()
