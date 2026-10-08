@@ -1,5 +1,6 @@
 import { closestAttributeValue } from '../../common/closest-attribute-value.mjs'
 import { ConfigurableComponent } from '../../common/configuration.mjs'
+import { createElement } from '../../common/create-element.mjs'
 import { ElementError } from '../../errors/index.mjs'
 import { I18n } from '../../i18n.mjs'
 
@@ -114,10 +115,11 @@ export class FileUpload extends ConfigurableComponent {
 
     // Handle drop zone visibility
     // A live region to announce when users enter or leave the drop zone
-    this.$announcements = document.createElement('span')
-    this.$announcements.classList.add('govuk-file-upload-announcements')
-    this.$announcements.classList.add('govuk-visually-hidden')
-    this.$announcements.setAttribute('aria-live', 'assertive')
+    this.$announcements = createElement('span', {
+      class: 'govuk-file-upload-announcements govuk-visually-hidden',
+      'aria-live': 'assertive'
+    })
+
     this.$root.insertAdjacentElement('afterend', this.$announcements)
 
     // Bind all of the events relating to drag and drop functionality
@@ -131,9 +133,10 @@ export class FileUpload extends ConfigurableComponent {
    * @returns {HTMLSpanElement} - the status element
    */
   createStatus() {
-    const $status = document.createElement('span')
-    $status.className = 'govuk-body govuk-file-upload-button__status'
-    $status.setAttribute('aria-live', 'polite')
+    const $status = createElement('span', {
+      class: 'govuk-body govuk-file-upload-button__status',
+      'aria-live': 'polite'
+    })
     $status.innerText = this.i18n.t('noFileChosen')
 
     return $status
@@ -147,11 +150,11 @@ export class FileUpload extends ConfigurableComponent {
    */
   createButton() {
     // Create the file selection button
-    const $button = document.createElement('button')
-    $button.classList.add('govuk-file-upload-button')
-    $button.type = 'button'
-    $button.id = this.id
-    $button.classList.add('govuk-file-upload-button--empty')
+    const $button = createElement('button', {
+      class: 'govuk-file-upload-button govuk-file-upload-button--empty',
+      type: 'button',
+      id: this.id
+    })
 
     // Copy `aria-describedby` if present so hints and errors
     // are associated to the `<button>`
@@ -163,21 +166,29 @@ export class FileUpload extends ConfigurableComponent {
     // Inject status element
     $button.appendChild(this.$status)
 
-    const commaSpan = document.createElement('span')
-    commaSpan.className = 'govuk-visually-hidden'
-    commaSpan.innerText = ', '
-    commaSpan.id = `${this.id}-comma`
+    const commaSpan = createElement(
+      'span',
+      {
+        class: 'govuk-visually-hidden',
+        id: `${this.id}-comma`
+      },
+      [', ']
+    )
 
     $button.appendChild(commaSpan)
 
-    const containerSpan = document.createElement('span')
-    containerSpan.className =
-      'govuk-file-upload-button__pseudo-button-container'
+    const containerSpan = createElement('span', {
+      class: 'govuk-file-upload-button__pseudo-button-container'
+    })
 
-    const buttonSpan = document.createElement('span')
-    buttonSpan.className =
-      'govuk-button govuk-button--secondary govuk-file-upload-button__pseudo-button'
-    buttonSpan.innerText = this.i18n.t('chooseFilesButton')
+    const buttonSpan = createElement(
+      'span',
+      {
+        class:
+          'govuk-button govuk-button--secondary govuk-file-upload-button__pseudo-button'
+      },
+      [this.i18n.t('chooseFilesButton')]
+    )
 
     containerSpan.appendChild(buttonSpan)
 
@@ -185,10 +196,13 @@ export class FileUpload extends ConfigurableComponent {
     // when CSS is disabled
     containerSpan.insertAdjacentText('beforeend', ' ')
 
-    const instructionSpan = document.createElement('span')
-    instructionSpan.className =
-      'govuk-body govuk-file-upload-button__instruction'
-    instructionSpan.innerText = this.i18n.t('dropInstruction')
+    const instructionSpan = createElement(
+      'span',
+      {
+        class: 'govuk-body govuk-file-upload-button__instruction'
+      },
+      [this.i18n.t('dropInstruction')]
+    )
 
     containerSpan.appendChild(instructionSpan)
 
