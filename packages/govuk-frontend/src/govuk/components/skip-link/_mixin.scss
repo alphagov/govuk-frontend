@@ -25,8 +25,7 @@
     }
 
     &:focus {
-      outline: base.$govuk-focus-width solid;
-      outline-color: base.govuk-functional-colour(focus);
+      @include base.govuk-focus-outline;
       outline-offset: 0;
       background-color: base.govuk-functional-colour(focus);
 
