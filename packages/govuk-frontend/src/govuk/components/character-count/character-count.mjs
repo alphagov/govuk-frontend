@@ -142,7 +142,7 @@ export class CharacterCount extends ConfigurableComponent {
 
     // Move the textarea description to be immediately after the textarea
     // Kept for backwards compatibility
-    this.$textarea.insertAdjacentElement('afterend', $textareaDescription)
+    this.$textarea.after($textareaDescription)
 
     // Create the *screen reader* specific live-updating counter
     // This doesn't need any styling classes, as it is never visible
@@ -152,10 +152,7 @@ export class CharacterCount extends ConfigurableComponent {
     })
 
     this.$screenReaderCountMessage = $screenReaderCountMessage
-    $textareaDescription.insertAdjacentElement(
-      'afterend',
-      $screenReaderCountMessage
-    )
+    $textareaDescription.after($screenReaderCountMessage)
 
     // Create our live-updating counter element, copying the classes from the
     // textarea description for backwards compatibility as these may have been
@@ -166,7 +163,7 @@ export class CharacterCount extends ConfigurableComponent {
     })
 
     this.$visibleCountMessage = $visibleCountMessage
-    $textareaDescription.insertAdjacentElement('afterend', $visibleCountMessage)
+    $textareaDescription.after($visibleCountMessage)
 
     // Hide the textarea description
     $textareaDescription.classList.add('govuk-visually-hidden')
