@@ -1,4 +1,5 @@
 import { ConfigurableComponent } from '../../common/configuration.mjs'
+import { createElement } from '../../common/create-element.mjs'
 import { ElementError } from '../../errors/index.mjs'
 import { I18n } from '../../i18n.mjs'
 
@@ -22,19 +23,10 @@ export class Accordion extends ConfigurableComponent {
   i18n
 
   /** @private */
-  controlsClass = 'govuk-accordion__controls'
-
-  /** @private */
-  showAllClass = 'govuk-accordion__show-all'
-
-  /** @private */
-  showAllTextClass = 'govuk-accordion__show-all-text'
-
-  /** @private */
   sectionClass = 'govuk-accordion__section'
 
   /** @private */
-  sectionExpandedClass = 'govuk-accordion__section--expanded'
+  sectionExpandedModifier = 'govuk-accordion__section--expanded'
 
   /** @private */
   sectionButtonClass = 'govuk-accordion__section-button'
@@ -46,34 +38,19 @@ export class Accordion extends ConfigurableComponent {
   sectionHeadingClass = 'govuk-accordion__section-heading'
 
   /** @private */
-  sectionHeadingDividerClass = 'govuk-accordion__section-heading-divider'
-
-  /** @private */
   sectionHeadingTextClass = 'govuk-accordion__section-heading-text'
 
   /** @private */
-  sectionHeadingTextFocusClass = 'govuk-accordion__section-heading-text-focus'
+  sectionToggleTextClass = 'govuk-accordion__section-toggle-text'
 
   /** @private */
-  sectionShowHideToggleClass = 'govuk-accordion__section-toggle'
+  iconClass = 'govuk-accordion-nav__chevron'
 
   /** @private */
-  sectionShowHideToggleFocusClass = 'govuk-accordion__section-toggle-focus'
-
-  /** @private */
-  sectionShowHideTextClass = 'govuk-accordion__section-toggle-text'
-
-  /** @private */
-  upChevronIconClass = 'govuk-accordion-nav__chevron'
-
-  /** @private */
-  downChevronIconClass = 'govuk-accordion-nav__chevron--down'
+  iconOpenModifier = 'govuk-accordion-nav__chevron--down'
 
   /** @private */
   sectionSummaryClass = 'govuk-accordion__section-summary'
-
-  /** @private */
-  sectionSummaryFocusClass = 'govuk-accordion__section-summary-focus'
 
   /** @private */
   sectionContentClass = 'govuk-accordion__section-content'
@@ -131,25 +108,29 @@ export class Accordion extends ConfigurableComponent {
    */
   initControls() {
     // Create "Show all" button and set attributes
-    this.$showAllButton = document.createElement('button')
-    this.$showAllButton.setAttribute('type', 'button')
-    this.$showAllButton.setAttribute('class', this.showAllClass)
-    this.$showAllButton.setAttribute('aria-expanded', 'false')
+    this.$showAllButton = createElement('button', {
+      type: 'button',
+      class: 'govuk-accordion__show-all',
+      'aria-expanded': 'false'
+    })
 
     // Create icon, add to element
-    this.$showAllIcon = document.createElement('span')
-    this.$showAllIcon.classList.add(this.upChevronIconClass)
+    this.$showAllIcon = createElement('span', {
+      class: this.iconClass
+    })
     this.$showAllButton.appendChild(this.$showAllIcon)
 
     // Create control wrapper and add controls to it
-    const $accordionControls = document.createElement('div')
-    $accordionControls.setAttribute('class', this.controlsClass)
+    const $accordionControls = createElement('div', {
+      class: 'govuk-accordion__controls'
+    })
     $accordionControls.appendChild(this.$showAllButton)
     this.$root.insertBefore($accordionControls, this.$root.firstChild)
 
     // Build additional wrapper for Show all toggle text and place after icon
-    this.$showAllText = document.createElement('span')
-    this.$showAllText.classList.add(this.showAllTextClass)
+    this.$showAllText = createElement('span', {
+      class: 'govuk-accordion__show-all-text'
+    })
     this.$showAllButton.appendChild(this.$showAllText)
 
     // Handle click events on the show/hide all button
@@ -221,12 +202,10 @@ export class Accordion extends ConfigurableComponent {
 
     // Create a button element that will replace the
     // '.govuk-accordion__section-button' span
-    const $button = document.createElement('button')
-    $button.setAttribute('type', 'button')
-    $button.setAttribute(
-      'aria-controls',
-      `${this.$root.id}-content-${index + 1}`
-    )
+    const $button = createElement('button', {
+      type: 'button',
+      'aria-controls': `${this.$root.id}-content-${index + 1}`
+    })
 
     // Copy all attributes from $span to $button (except `id`, which gets added
     // to the `$headingText` element)
@@ -237,16 +216,16 @@ export class Accordion extends ConfigurableComponent {
     }
 
     // Create container for heading text so it can be styled
-    const $headingText = document.createElement('span')
-    $headingText.classList.add(this.sectionHeadingTextClass)
-    // Copy the span ID to the heading text to allow it to be referenced by
-    // `aria-labelledby` on the hidden content area without "Show this section"
-    $headingText.id = $span.id
+    const $headingText = createElement('span', {
+      class: this.sectionHeadingTextClass,
+      id: $span.id
+    })
 
     // Create an inner heading text container to limit the width of the focus
     // state
-    const $headingTextFocus = document.createElement('span')
-    $headingTextFocus.classList.add(this.sectionHeadingTextFocusClass)
+    const $headingTextFocus = createElement('span', {
+      class: 'govuk-accordion__section-heading-text-focus'
+    })
     $headingText.appendChild($headingTextFocus)
     // span could contain HTML elements
     // (see https://www.w3.org/TR/2011/WD-html5-20110525/content-models.html#phrasing-content)
@@ -255,23 +234,32 @@ export class Accordion extends ConfigurableComponent {
     )
 
     // Create container for show / hide icons and text.
-    const $showHideToggle = document.createElement('span')
-    $showHideToggle.classList.add(this.sectionShowHideToggleClass)
-    // Tell Google not to index the 'show' text as part of the heading. Must be
-    // set on the element before it's added to the DOM.
-    // See https://developers.google.com/search/docs/advanced/robots/robots_meta_tag#data-nosnippet-attr
-    $showHideToggle.setAttribute('data-nosnippet', '')
+    const $showHideToggle = createElement('span', {
+      class: 'govuk-accordion__section-toggle',
+      // Tell Google not to index the 'show' text as part of the heading. Must be
+      // set on the element before it's added to the DOM.
+      // See https://developers.google.com/search/docs/advanced/robots/robots_meta_tag#data-nosnippet-attr
+      'data-nosnippet': ''
+    })
+
     // Create an inner container to limit the width of the focus state
-    const $showHideToggleFocus = document.createElement('span')
-    $showHideToggleFocus.classList.add(this.sectionShowHideToggleFocusClass)
+    const $showHideToggleFocus = createElement('span', {
+      class: 'govuk-accordion__section-toggle-focus'
+    })
+
     $showHideToggle.appendChild($showHideToggleFocus)
     // Create wrapper for the show / hide text. Append text after the show/hide icon
-    const $showHideText = document.createElement('span')
-    const $showHideIcon = document.createElement('span')
-    $showHideIcon.classList.add(this.upChevronIconClass)
-    $showHideToggleFocus.appendChild($showHideIcon)
-    $showHideText.classList.add(this.sectionShowHideTextClass)
-    $showHideToggleFocus.appendChild($showHideText)
+
+    $showHideToggleFocus.appendChild(
+      createElement('span', {
+        class: this.iconClass
+      })
+    )
+    $showHideToggleFocus.appendChild(
+      createElement('span', {
+        class: this.sectionToggleTextClass
+      })
+    )
 
     // Append elements to the button:
     // 1. Heading text
@@ -287,11 +275,12 @@ export class Accordion extends ConfigurableComponent {
       // original `div` to the new `span`. This is because the summary line text
       // is now inside a button element, which can only contain phrasing
       // content.
-      const $summarySpan = document.createElement('span')
+      const $summarySpan = createElement('span')
       // Create an inner summary container to limit the width of the summary
       // focus state
-      const $summarySpanFocus = document.createElement('span')
-      $summarySpanFocus.classList.add(this.sectionSummaryFocusClass)
+      const $summarySpanFocus = createElement('span', {
+        class: 'govuk-accordion__section-summary-focus'
+      })
       $summarySpan.appendChild($summarySpanFocus)
 
       // Get original attributes, and pass them to the replacement
@@ -376,9 +365,9 @@ export class Accordion extends ConfigurableComponent {
    * @param {Element} $section - Section element
    */
   setExpanded(expanded, $section) {
-    const $showHideIcon = $section.querySelector(`.${this.upChevronIconClass}`)
+    const $showHideIcon = $section.querySelector(`.${this.iconClass}`)
     const $showHideText = $section.querySelector(
-      `.${this.sectionShowHideTextClass}`
+      `.${this.sectionToggleTextClass}`
     )
     const $button = $section.querySelector(`.${this.sectionButtonClass}`)
     const $content = $section.querySelector(`.${this.sectionContentClass}`)
@@ -432,12 +421,12 @@ export class Accordion extends ConfigurableComponent {
     // Swap icon, change class
     if (expanded) {
       $content.removeAttribute('hidden')
-      $section.classList.add(this.sectionExpandedClass)
-      $showHideIcon.classList.remove(this.downChevronIconClass)
+      $section.classList.add(this.sectionExpandedModifier)
+      $showHideIcon.classList.remove(this.iconOpenModifier)
     } else {
       $content.setAttribute('hidden', 'until-found')
-      $section.classList.remove(this.sectionExpandedClass)
-      $showHideIcon.classList.add(this.downChevronIconClass)
+      $section.classList.remove(this.sectionExpandedModifier)
+      $showHideIcon.classList.add(this.iconOpenModifier)
     }
 
     // See if "Show all sections" button text should be updated
@@ -452,7 +441,7 @@ export class Accordion extends ConfigurableComponent {
    * @returns {boolean} True if expanded
    */
   isExpanded($section) {
-    return $section.classList.contains(this.sectionExpandedClass)
+    return $section.classList.contains(this.sectionExpandedModifier)
   }
 
   /**
@@ -482,7 +471,7 @@ export class Accordion extends ConfigurableComponent {
     this.$showAllText.textContent = expanded
       ? this.i18n.t('hideAllSections')
       : this.i18n.t('showAllSections')
-    this.$showAllIcon.classList.toggle(this.downChevronIconClass, !expanded)
+    this.$showAllIcon.classList.toggle(this.iconOpenModifier, !expanded)
   }
 
   /**
@@ -558,13 +547,12 @@ export class Accordion extends ConfigurableComponent {
    * @returns {Element} DOM element
    */
   getButtonPunctuationEl() {
-    const $punctuationEl = document.createElement('span')
-    $punctuationEl.classList.add(
-      'govuk-visually-hidden',
-      this.sectionHeadingDividerClass
-    )
-    $punctuationEl.textContent = ', '
-    return $punctuationEl
+    const $element = createElement('span', {
+      class: 'govuk-visually-hidden govuk-accordion__section-heading-divider'
+    })
+
+    $element.textContent = ', '
+    return $element
   }
 
   /**
