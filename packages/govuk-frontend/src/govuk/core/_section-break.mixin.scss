@@ -14,8 +14,8 @@
   // Sizes
 
   %govuk-section-break--xl {
-    @include base.govuk-responsive-margin(8, "top");
-    @include base.govuk-responsive-margin(8, "bottom");
+    @include base.govuk-responsive-margin(8, "block-start");
+    @include base.govuk-responsive-margin(8, "block-end");
   }
 
   .govuk-section-break--xl {
@@ -23,8 +23,8 @@
   }
 
   %govuk-section-break--l {
-    @include base.govuk-responsive-margin(6, "top");
-    @include base.govuk-responsive-margin(6, "bottom");
+    @include base.govuk-responsive-margin(6, "block-start");
+    @include base.govuk-responsive-margin(6, "block-end");
   }
 
   .govuk-section-break--l {
@@ -32,8 +32,8 @@
   }
 
   %govuk-section-break--m {
-    @include base.govuk-responsive-margin(4, "top");
-    @include base.govuk-responsive-margin(4, "bottom");
+    @include base.govuk-responsive-margin(4, "block-start");
+    @include base.govuk-responsive-margin(4, "block-end");
   }
 
   .govuk-section-break--m {
@@ -43,8 +43,8 @@
   // Visible variant
 
   %govuk-section-break--visible {
-    border-bottom: 1px solid;
-    border-bottom-color: base.govuk-functional-colour(border);
+    border-block-end: 1px solid;
+    border-block-end-color: base.govuk-functional-colour(border);
   }
 
   .govuk-section-break--visible {

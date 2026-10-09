@@ -52,14 +52,14 @@
 ///
 /// @access public
 
-@mixin govuk-grid-column($width: full, $float: left, $at: tablet) {
+@mixin govuk-grid-column($width: full, $float: inline-start, $at: tablet) {
   box-sizing: border-box;
   @if $at != desktop {
-    width: 100%;
+    inline-size: 100%;
   }
-  padding: 0 $govuk-gutter-half;
+  padding-inline: $govuk-gutter-half;
   @media #{govuk-from-breakpoint($at)} {
-    width: govuk-grid-width($width);
+    inline-size: govuk-grid-width($width);
     float: $float;
   }
 }

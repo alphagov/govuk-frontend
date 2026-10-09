@@ -25,10 +25,10 @@
     // scroll-padding unnecessarily is better than risking not having scroll-padding
     // and needing it to account for exit this page.
     @supports (position: sticky) {
-      scroll-padding-top: base.govuk-spacing(9);
+      scroll-padding-block-start: base.govuk-spacing(9);
 
       &:not(:has(.govuk-exit-this-page)) {
-        scroll-padding-top: 0;
+        scroll-padding-block-start: 0;
       }
     }
 

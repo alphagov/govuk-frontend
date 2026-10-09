@@ -1,7 +1,7 @@
 @use "pkg:govuk-frontend/base" as *;
 
 .app-feature-flag-banner {
-  padding: govuk-spacing(4) 0;
-  border-bottom: 1px solid govuk-colour("black", $variant: "tint-80");
+  padding-block: govuk-spacing(4);
+  border-block-end: 1px solid govuk-colour("black", $variant: "tint-80");
   background-color: govuk-colour("black", $variant: "tint-95");
 }

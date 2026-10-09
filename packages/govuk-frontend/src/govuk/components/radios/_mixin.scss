@@ -16,20 +16,20 @@
     display: flex;
     position: relative;
     flex-wrap: wrap;
-    margin-bottom: base.govuk-spacing(2);
+    margin-block-end: base.govuk-spacing(2);
   }
 
   .govuk-radios__item:last-child,
   .govuk-radios__item:last-of-type {
-    margin-bottom: 0;
+    margin-block-end: 0;
   }
 
   .govuk-radios__input {
     // Allow the input to sit above the label, enabling its proper detection
     // when exploring by touch or using automation tools like Selenium
     z-index: 1;
-    width: $govuk-touch-target-size;
-    height: $govuk-touch-target-size;
+    inline-size: $govuk-touch-target-size;
+    block-size: $govuk-touch-target-size;
     margin: 0;
     opacity: 0;
     cursor: pointer;
@@ -42,11 +42,12 @@
     // container minus the input width minus the padding on either side of
     // the label. This prevents the label from going onto the next line due to
     // __item using flex-wrap because we want hints on a separate line
-    max-width: calc(
+    max-inline-size: calc(
       100% - #{($govuk-radios-label-padding-left-right + $govuk-touch-target-size + base.govuk-spacing(3))}
     );
-    margin-bottom: 0;
-    padding: (base.govuk-spacing(1) + base.$govuk-border-width-form-element) $govuk-radios-label-padding-left-right;
+    margin-block-end: 0;
+    padding-block: base.govuk-spacing(1) + base.$govuk-border-width-form-element;
+    padding-inline: $govuk-radios-label-padding-left-right;
     cursor: pointer;
     // remove 300ms pause on mobile
     touch-action: manipulation;
@@ -57,10 +58,10 @@
     content: "";
     box-sizing: border-box;
     position: absolute;
-    top: ($govuk-touch-target-gutter * 0.5);
-    left: ($govuk-touch-target-gutter * 0.5);
-    width: $govuk-radios-size;
-    height: $govuk-radios-size;
+    inset-block-start: ($govuk-touch-target-gutter * 0.5);
+    inset-inline-start: ($govuk-touch-target-gutter * 0.5);
+    inline-size: $govuk-radios-size;
+    block-size: $govuk-radios-size;
     border: base.$govuk-border-width-form-element solid currentcolor;
     border-radius: 50%;
     background: transparent;
@@ -79,10 +80,10 @@
     // Positioned by getting half the touch target, so we have the centre of the
     // input, and then moving back by the button's border width, thus positioning
     // the centre of the button in the centre of the input.
-    top: (($govuk-touch-target-size * 0.5) - $radio-button-size);
-    left: (($govuk-touch-target-size * 0.5) - $radio-button-size);
-    width: 0;
-    height: 0;
+    inset-block-start: (($govuk-touch-target-size * 0.5) - $radio-button-size);
+    inset-inline-start: (($govuk-touch-target-size * 0.5) - $radio-button-size);
+    inline-size: 0;
+    block-size: 0;
     border: $radio-button-size solid currentcolor;
     border-radius: 50%;
     opacity: 0;
@@ -91,17 +92,17 @@
 
   .govuk-radios__hint {
     display: block;
-    width: 100%;
-    margin-top: base.govuk-spacing(-1);
-    padding-right: $govuk-radios-label-padding-left-right;
-    padding-left: ($govuk-radios-label-padding-left-right + $govuk-touch-target-size);
+    inline-size: 100%;
+    margin-block-start: base.govuk-spacing(-1);
+    padding-inline-end: $govuk-radios-label-padding-left-right;
+    padding-inline-start: ($govuk-radios-label-padding-left-right + $govuk-touch-target-size);
   }
 
   // This is to bypass govuk-hint's specificity on hints following labels having
   // a margin bottom of 10px (govuk-spacing(2)). Because radios are flexbox,
   // the margin doesn't collapse so we have to do this manually.
   .govuk-label:not(.govuk-label--m):not(.govuk-label--l):not(.govuk-label--xl) + .govuk-radios__hint {
-    margin-bottom: 0;
+    margin-block-end: 0;
   }
 
   // Focused state
@@ -151,7 +152,7 @@
       align-items: flex-start;
 
       .govuk-radios__item {
-        margin-right: base.govuk-spacing(4);
+        margin-inline-end: base.govuk-spacing(4);
       }
     }
   }
@@ -164,9 +165,9 @@
     @include base.govuk-font($size: 19);
 
     $govuk-divider-size: $govuk-radios-size !default;
-    width: $govuk-divider-size;
+    inline-size: $govuk-divider-size;
 
-    margin-bottom: base.govuk-spacing(2);
+    margin-block-end: base.govuk-spacing(2);
     color: base.govuk-functional-colour(text);
     text-align: center;
   }
@@ -187,18 +188,18 @@
   $conditional-padding-left: $conditional-border-padding + $govuk-radios-label-padding-left-right;
 
   .govuk-radios__conditional {
-    @include base.govuk-responsive-margin(4, "bottom");
-    margin-left: $conditional-margin-left;
-    padding-left: $conditional-padding-left;
-    border-left: $conditional-border-width solid;
-    border-left-color: base.govuk-functional-colour(border);
+    @include base.govuk-responsive-margin(4, "block-end");
+    margin-inline-start: $conditional-margin-left;
+    padding-inline-start: $conditional-padding-left;
+    border-inline-start: $conditional-border-width solid;
+    border-inline-start-color: base.govuk-functional-colour(border);
 
     .govuk-frontend-supported &--hidden {
       display: none;
     }
 
     & > :last-child {
-      margin-bottom: 0;
+      margin-block-end: 0;
     }
   }
 
@@ -210,7 +211,7 @@
     $input-offset: ($govuk-touch-target-size - $govuk-small-radios-size) * 0.5;
 
     .govuk-radios__item {
-      margin-bottom: 0;
+      margin-block-end: 0;
     }
 
     // Shift the touch target into the left margin so that the visible edge of
@@ -223,19 +224,19 @@
     //  ▲┆└─ Radio pseudo element, aligned with margin
     //  └─── Touch target (invisible input), shifted into the margin
     .govuk-radios__input {
-      margin-left: $input-offset * -1;
+      margin-inline-start: $input-offset * -1;
     }
 
     .govuk-radios__label {
       // Recalculate max-width to account for the smaller radio size
       // 1px comes from padding-left (defined below)
-      max-width: calc(
+      max-inline-size: calc(
         100% - #{($govuk-touch-target-size - $input-offset) + $govuk-radios-label-padding-left-right + 1px}
       );
 
       // Create a tiny space between the small radio hover state so that it
       // doesn't clash with the label
-      padding-left: 1px;
+      padding-inline-start: 1px;
     }
 
     // ( ) Radio ring
@@ -244,10 +245,10 @@
     // touch target [2]
     // Left here is 0 because we've shifted the input into the left margin
     .govuk-radios__label::before {
-      top: $input-offset; // 2
-      left: 0;
-      width: $govuk-small-radios-size; // 1
-      height: $govuk-small-radios-size; // 1
+      inset-block-start: $input-offset; // 2
+      inset-inline-start: 0;
+      inline-size: $govuk-small-radios-size; // 1
+      block-size: $govuk-small-radios-size; // 1
     }
 
     //  •  Radio button
@@ -257,8 +258,8 @@
       $radio-button-size: base.govuk-spacing(1);
 
       // The same calculation as normal radio buttons but reduce the border width
-      top: (($govuk-touch-target-size * 0.5) - $radio-button-size);
-      left: ((($govuk-touch-target-size * 0.5) - $radio-button-size) - $input-offset);
+      inset-block-start: (($govuk-touch-target-size * 0.5) - $radio-button-size);
+      inset-inline-start: ((($govuk-touch-target-size * 0.5) - $radio-button-size) - $input-offset);
       border-width: $radio-button-size;
     }
 
@@ -271,19 +272,19 @@
     // (If you do use them, they won't look completely broken... but seriously,
     // don't use them)
     .govuk-radios__hint {
-      padding-left: ($govuk-small-radios-size + $input-offset);
+      padding-inline-start: ($govuk-small-radios-size + $input-offset);
     }
 
     // Align conditional reveals with small radios
     .govuk-radios__conditional {
       $margin-left: ($govuk-small-radios-size * 0.5) - ($conditional-border-width * 0.5);
-      margin-left: $margin-left;
-      padding-left: ($govuk-touch-target-size - $input-offset) - ($margin-left + $conditional-border-width);
+      margin-inline-start: $margin-left;
+      padding-inline-start: ($govuk-touch-target-size - $input-offset) - ($margin-left + $conditional-border-width);
     }
 
     .govuk-radios__divider {
-      width: $govuk-small-radios-size;
-      margin-bottom: base.govuk-spacing(1);
+      inline-size: $govuk-small-radios-size;
+      margin-block-end: base.govuk-spacing(1);
     }
 
     // Hover state for small radios.

@@ -4,10 +4,10 @@
 @mixin styles {
   .govuk-warning-text {
     @include base.govuk-font($size: 19);
-    @include base.govuk-responsive-margin(6, "bottom");
+    @include base.govuk-responsive-margin(6, "block-end");
     @include base.govuk-typography-weight-bold;
     position: relative;
-    padding: base.govuk-spacing(2) 0;
+    padding-block: base.govuk-spacing(2);
   }
 
   .govuk-warning-text__icon {
@@ -16,14 +16,14 @@
     display: inline-block;
 
     position: absolute;
-    left: 0;
+    inset-inline-start: 0;
 
-    min-width: 35px;
-    min-height: 35px;
-    margin-top: -7px;
+    min-inline-size: 35px;
+    min-block-size: 35px;
+    margin-block-start: -7px;
 
     @media #{base.govuk-from-breakpoint(tablet)} {
-      margin-top: -5px;
+      margin-block-start: -5px;
     }
 
     // When a user customises their colours the background colour will often be
@@ -57,7 +57,7 @@
 
   .govuk-warning-text__text {
     display: block;
-    padding-left: 45px;
+    padding-inline-start: 45px;
     color: base.govuk-functional-colour(text);
     // While `<strong>` is styled `bold` or `bolder` by user-agents
     // this can be reset by the app's stylesheet

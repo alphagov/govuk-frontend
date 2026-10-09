@@ -12,23 +12,23 @@
 
   .govuk-footer {
     @include base.govuk-font($size: 19);
-    @include base.govuk-responsive-padding(7, "top");
-    @include base.govuk-responsive-padding(5, "bottom");
+    @include base.govuk-responsive-padding(7, "block-start");
+    @include base.govuk-responsive-padding(5, "block-end");
 
-    border-top: 10px solid;
-    border-top-color: base.govuk-functional-colour(brand);
+    border-block-start: 10px solid;
+    border-block-start-color: base.govuk-functional-colour(brand);
     color: $govuk-footer-text;
     background: base.govuk-functional-colour(template-background);
 
     @media print {
-      border-top-color: currentcolor;
+      border-block-start-color: currentcolor;
       color: base.govuk-functional-colour(text);
       background-color: transparent;
     }
   }
 
   .govuk-footer__crown {
-    margin-bottom: base.govuk-spacing(5);
+    margin-block-end: base.govuk-spacing(5);
   }
 
   .govuk-footer__link {
@@ -38,11 +38,11 @@
 
   .govuk-footer__section-break {
     margin: 0; // Reset `<hr>` default margins
-    @include base.govuk-responsive-margin(8, "bottom");
+    @include base.govuk-responsive-margin(8, "block-end");
     border: 0; // Reset `<hr>` default borders
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
-    border-bottom-color: $govuk-footer-content-border;
+    border-block-end-width: 1px;
+    border-block-end-style: solid;
+    border-block-end-color: $govuk-footer-content-border;
   }
 
   .govuk-footer__meta {
@@ -50,14 +50,14 @@
     flex-wrap: wrap; // Support: Flexbox
     align-items: flex-end; // Support: Flexbox
     justify-content: center; // Support: Flexbox
-    margin-right: -(base.$govuk-gutter-half);
-    margin-left: -(base.$govuk-gutter-half);
+    margin-inline-end: -(base.$govuk-gutter-half);
+    margin-inline-start: -(base.$govuk-gutter-half);
   }
 
   .govuk-footer__meta-item {
-    margin-right: base.$govuk-gutter-half;
-    margin-bottom: base.govuk-spacing(5);
-    margin-left: base.$govuk-gutter-half;
+    margin-inline-end: base.$govuk-gutter-half;
+    margin-block-end: base.govuk-spacing(5);
+    margin-inline-start: base.$govuk-gutter-half;
   }
 
   .govuk-footer__meta-item--grow {
@@ -69,9 +69,9 @@
 
   .govuk-footer__licence-logo {
     display: inline-block;
-    margin-right: base.govuk-spacing(2);
+    margin-inline-end: base.govuk-spacing(2);
     @media #{base.govuk-until-breakpoint(desktop)} {
-      margin-bottom: base.govuk-spacing(3);
+      margin-block-end: base.govuk-spacing(3);
     }
     vertical-align: top;
     // Work around SVGs not inheriting color from parent in forced color mode
@@ -94,8 +94,8 @@
   .govuk-footer__copyright-logo::before {
     content: "";
     display: block;
-    width: 100%;
-    padding-top: ($govuk-footer-crest-image-height + base.govuk-spacing(2));
+    inline-size: 100%;
+    padding-block-start: ($govuk-footer-crest-image-height + base.govuk-spacing(2));
     background-image: base.govuk-image-url("govuk-crest.svg");
     background-repeat: no-repeat;
     background-position: 50% 0%;
@@ -125,51 +125,51 @@
   }
 
   .govuk-footer__inline-list {
-    margin-top: 0;
-    margin-bottom: base.govuk-spacing(3);
+    margin-block-start: 0;
+    margin-block-end: base.govuk-spacing(3);
     padding: 0;
   }
 
   .govuk-footer__inline-list:last-child {
-    margin-bottom: 0;
+    margin-block-end: 0;
   }
 
   .govuk-footer__meta-custom {
-    margin-bottom: base.govuk-spacing(4);
+    margin-block-end: base.govuk-spacing(4);
   }
 
   .govuk-footer__meta-custom:last-child {
-    margin-bottom: 0;
+    margin-block-end: 0;
   }
 
   .govuk-footer__inline-list-item {
     display: inline-block;
-    margin-right: base.govuk-spacing(3);
-    margin-bottom: base.govuk-spacing(1);
+    margin-inline-end: base.govuk-spacing(3);
+    margin-block-end: base.govuk-spacing(1);
   }
 
   .govuk-footer__heading {
-    margin-bottom: base.govuk-spacing(6);
-    padding-bottom: base.govuk-spacing(4);
+    margin-block-end: base.govuk-spacing(6);
+    padding-block-end: base.govuk-spacing(4);
 
     @media #{base.govuk-until-breakpoint(tablet)} {
-      padding-bottom: base.govuk-spacing(2);
+      padding-block-end: base.govuk-spacing(2);
     }
 
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
-    border-bottom-color: $govuk-footer-content-border;
+    border-block-end-width: 1px;
+    border-block-end-style: solid;
+    border-block-end-color: $govuk-footer-content-border;
   }
 
   .govuk-footer__navigation {
     @include base.govuk-clearfix;
-    margin-right: -(base.$govuk-gutter-half);
-    margin-left: -(base.$govuk-gutter-half);
+    margin-inline-end: -(base.$govuk-gutter-half);
+    margin-inline-start: -(base.$govuk-gutter-half);
   }
 
   .govuk-footer__section {
     display: inline-block;
-    margin-bottom: base.$govuk-gutter;
+    margin-block-end: base.$govuk-gutter;
     vertical-align: top;
   }
 
@@ -191,10 +191,10 @@
   }
 
   .govuk-footer__list-item {
-    @include base.govuk-responsive-margin(4, "bottom");
+    @include base.govuk-responsive-margin(4, "block-end");
   }
 
   .govuk-footer__list-item:last-child {
-    margin-bottom: 0;
+    margin-block-end: 0;
   }
 }

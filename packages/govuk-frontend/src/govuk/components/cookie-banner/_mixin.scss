@@ -3,22 +3,22 @@
 /// @access private
 @mixin styles {
   // This needs to be kept in sync with the header component's styles
-  $border-bottom-width: base.govuk-spacing(2);
+  $border-block-end-width: base.govuk-spacing(2);
 
   .govuk-cookie-banner {
-    padding-top: base.govuk-spacing(4);
+    padding-block-start: base.govuk-spacing(4);
     // The component does not set bottom spacing. The bottom spacing should be
     // created by the items inside the component.
 
     // Visually separate the cookie banner from content underneath when user
     // changes colours in their browser.
-    border-bottom: $border-bottom-width solid transparent;
+    border-block-end: $border-block-end-width solid transparent;
 
     color: base.govuk-functional-colour(surface-text);
     background-color: base.govuk-functional-colour(surface-background);
 
     @media print {
-      border-bottom-color: currentcolor;
+      border-block-end-color: currentcolor;
       color: base.govuk-functional-colour(print-text);
       background-color: transparent;
     }
@@ -32,7 +32,7 @@
 
   .govuk-cookie-banner__message {
     // Remove the extra height added by the separator border.
-    margin-bottom: -$border-bottom-width;
+    margin-block-end: -$border-block-end-width;
 
     &[hidden] {
       // Support older browsers which don't hide elements with the `hidden`
