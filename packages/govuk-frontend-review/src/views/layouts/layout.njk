@@ -3,6 +3,7 @@
 {% from "govuk/components/generic-header/macro.njk" import govukGenericHeader %}
 
 {% set htmlClasses = ["app-template", htmlClasses] | join(" ") if htmlClasses else "app-template" %}
+{% set bodyAttributes = {"dir": "rtl"} %}
 
 {% block pageTitle %}GOV.UK Frontend{% endblock %}
 

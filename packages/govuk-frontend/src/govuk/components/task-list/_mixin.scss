@@ -6,8 +6,8 @@
 
   .govuk-task-list {
     @include base.govuk-font($size: 19);
-    margin-top: 0;
-    @include base.govuk-responsive-margin(6, "bottom");
+    margin-block-start: 0;
+    @include base.govuk-responsive-margin(6, "block-end");
     padding: 0;
     list-style-type: none;
   }
@@ -22,17 +22,17 @@
   .govuk-task-list__item {
     display: table;
     position: relative;
-    width: 100%;
-    margin-bottom: 0;
-    padding-top: base.govuk-spacing(2);
-    padding-bottom: base.govuk-spacing(2);
-    border-bottom: 1px solid;
-    border-bottom-color: base.govuk-functional-colour(border);
+    inline-size: 100%;
+    margin-block-end: 0;
+    padding-block-start: base.govuk-spacing(2);
+    padding-block-end: base.govuk-spacing(2);
+    border-block-end: 1px solid;
+    border-block-end-color: base.govuk-functional-colour(border);
   }
 
   .govuk-task-list__item:first-child {
-    border-top: 1px solid;
-    border-top-color: base.govuk-functional-colour(border);
+    border-block-start: 1px solid;
+    border-block-start-color: base.govuk-functional-colour(border);
   }
 
   // This class is added to the <li> elements where the task name is a link. The
@@ -51,10 +51,10 @@
 
   .govuk-task-list__status {
     display: table-cell;
-    padding-left: base.govuk-spacing(2);
+    padding-inline-start: base.govuk-spacing(2);
 
     color: base.govuk-functional-colour(text);
-    text-align: right;
+    text-align: end;
     vertical-align: top;
   }
 
@@ -69,14 +69,14 @@
     content: "";
     display: block;
     position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    inset-block-start: 0;
+    inset-inline-end: 0;
+    inset-block-end: 0;
+    inset-inline-start: 0;
   }
 
   .govuk-task-list__hint {
-    margin-top: base.govuk-spacing(1);
+    margin-block-start: base.govuk-spacing(1);
     color: base.govuk-functional-colour(secondary-text);
   }
 }

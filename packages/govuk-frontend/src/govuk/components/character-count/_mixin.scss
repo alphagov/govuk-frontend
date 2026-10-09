@@ -3,11 +3,11 @@
 /// @access private
 @mixin styles {
   .govuk-character-count {
-    @include base.govuk-responsive-margin(6, "bottom");
+    @include base.govuk-responsive-margin(6, "block-end");
 
     .govuk-form-group,
     .govuk-textarea {
-      margin-bottom: base.govuk-spacing(1);
+      margin-block-end: base.govuk-spacing(1);
     }
 
     // If the textarea enters the error state whilst the user is focused on it,
@@ -21,8 +21,8 @@
 
   .govuk-character-count__message {
     @include base.govuk-font-tabular-numbers;
-    margin-top: 0;
-    margin-bottom: 0;
+    margin-block-start: 0;
+    margin-block-end: 0;
 
     &::after {
       // Zero-width space that will reserve vertical space when no hint is

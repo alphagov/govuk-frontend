@@ -5,30 +5,30 @@
   $indicator-size: 0.75em;
 
   .govuk-exit-this-page {
-    @include base.govuk-responsive-margin(8, "bottom");
+    @include base.govuk-responsive-margin(8, "block-end");
     position: sticky;
     z-index: 1000;
-    top: 0;
-    left: 0;
-    width: 100%;
+    inset-block-start: 0;
+    inset-inline-start: 0;
+    inline-size: 100%;
 
     @media #{base.govuk-from-breakpoint(tablet)} {
       display: inline-block;
-      right: 0;
-      left: auto;
-      width: auto;
-      float: right;
+      inset-inline-end: 0;
+      inset-inline-start: auto;
+      inline-size: auto;
+      float: inline-end;
     }
   }
 
   .govuk-exit-this-page__button {
-    margin-bottom: 0;
+    margin-block-end: 0;
   }
 
   .govuk-exit-this-page__indicator {
     @include base.govuk-responsive-padding(2);
     display: none;
-    padding-bottom: 0;
+    padding-block-end: 0;
     pointer-events: none;
     color: inherit;
     line-height: 0; // removes extra negative space below the indicators
@@ -42,9 +42,9 @@
   .govuk-exit-this-page__indicator-light {
     box-sizing: border-box;
     display: inline-block;
-    width: $indicator-size;
-    height: $indicator-size;
-    margin: 0 0.125em;
+    inline-size: $indicator-size;
+    block-size: $indicator-size;
+    margin-inline: 0.125em;
     border-width: 2px;
     border-style: solid;
     border-radius: 50%;
@@ -64,10 +64,10 @@
   .govuk-exit-this-page-overlay {
     position: fixed;
     z-index: 9999;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    inset-block-start: 0;
+    inset-inline-end: 0;
+    inset-block-end: 0;
+    inset-inline-start: 0;
     // The overlay is imitating a default browser window so we can use
     // system colours ensure it matches the browser's default colours.
     // https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/system-color

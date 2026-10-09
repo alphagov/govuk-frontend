@@ -5,7 +5,7 @@
   .govuk-language-navigation {
     @include base.govuk-font($size: 19);
 
-    @include base.govuk-responsive-margin(6, "bottom");
+    @include base.govuk-responsive-margin(6, "block-end");
     color: base.govuk-functional-colour(text);
   }
 
@@ -26,11 +26,11 @@
       &::after {
         content: "";
         display: block;
-        height: 1em;
-        margin-right: base.govuk-spacing(2);
-        margin-left: base.govuk-spacing(2);
-        border-right: 1px solid;
-        border-right-color: base.govuk-functional-colour(border);
+        block-size: 1em;
+        margin-inline-end: base.govuk-spacing(2);
+        margin-inline-start: base.govuk-spacing(2);
+        border-inline-end: 1px solid;
+        border-inline-end-color: base.govuk-functional-colour(border);
       }
     }
   }
@@ -48,7 +48,7 @@
     }
 
     .govuk-language-navigation__list-item::after {
-      border-right-color: currentcolor;
+      border-inline-end-color: currentcolor;
     }
   }
 
@@ -57,11 +57,11 @@
   .govuk-service-navigation .govuk-language-navigation {
     // Slightly smaller margin because the Service Navigation's menu toggle
     // has a little margin underneath it already.
-    margin-top: base.govuk-spacing(1);
-    margin-bottom: base.govuk-spacing(3);
+    margin-block-start: base.govuk-spacing(1);
+    margin-block-end: base.govuk-spacing(3);
 
     @media #{base.govuk-from-breakpoint(tablet)} {
-      margin-top: base.govuk-spacing(3);
+      margin-block-start: base.govuk-spacing(3);
     }
   }
 }

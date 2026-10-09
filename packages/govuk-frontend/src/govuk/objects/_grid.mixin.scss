@@ -6,8 +6,8 @@
 @mixin styles {
   .govuk-grid-row {
     @include base.govuk-clearfix;
-    margin-right: -(base.$govuk-gutter-half);
-    margin-left: -(base.$govuk-gutter-half);
+    margin-inline-end: -(base.$govuk-gutter-half);
+    margin-inline-start: -(base.$govuk-gutter-half);
   }
 
   @each $width in map.keys(base.$govuk-grid-widths) {

@@ -1,31 +1,31 @@
 @use "pkg:govuk-frontend/base" as *;
 
 .app-document-list > li {
-  padding-top: govuk-spacing(4);
-  padding-bottom: govuk-spacing(2);
-  border-bottom: 1px solid;
-  border-bottom-color: govuk-functional-colour(border);
+  padding-block-start: govuk-spacing(4);
+  padding-block-end: govuk-spacing(2);
+  border-block-end: 1px solid;
+  border-block-end-color: govuk-functional-colour(border);
 }
 
 .app-metadata-list > li {
   display: inline-block;
-  margin-right: govuk-spacing(2);
+  margin-inline-end: govuk-spacing(2);
 }
 
 .app-filter li {
-  padding-bottom: govuk-spacing(4);
-  border-bottom: 1px solid;
-  border-bottom-color: govuk-functional-colour(border);
+  padding-block-end: govuk-spacing(4);
+  border-block-end: 1px solid;
+  border-block-end-color: govuk-functional-colour(border);
 }
 
 .app-open-fieldset {
-  margin-top: govuk-spacing(4);
-  margin-bottom: govuk-spacing(4);
+  margin-block-start: govuk-spacing(4);
+  margin-block-end: govuk-spacing(4);
   font-weight: normal;
 }
 
 .app-search-result-list__children {
-  margin-left: govuk-spacing(4);
+  margin-inline-start: govuk-spacing(4);
 
   @media #{govuk-from-breakpoint(tablet)} {
     display: grid;
@@ -41,8 +41,8 @@
 
 .app-search-results-summary .subscribe-link {
   position: absolute;
-  top: 5px;
-  right: 0;
+  inset-block-start: 5px;
+  inset-inline-end: 0;
 }
 
 .app-search-result-sort {
@@ -52,7 +52,7 @@
 .app-search-result-sort label {
   @include govuk-font($size: 16);
   display: inline;
-  margin-right: govuk-spacing(1);
+  margin-inline-end: govuk-spacing(1);
 }
 
 .app-next-page__number {
@@ -61,7 +61,8 @@
 
 .app-next-page {
   display: block;
-  padding: govuk-spacing(4) govuk-spacing(2);
+  padding-block: govuk-spacing(4);
+  padding-inline: govuk-spacing(2);
 }
 
 .app-next-page:hover {

@@ -13,20 +13,20 @@
     display: flex;
     position: relative;
     flex-wrap: wrap;
-    margin-bottom: base.govuk-spacing(2);
+    margin-block-end: base.govuk-spacing(2);
   }
 
   .govuk-checkboxes__item:last-child,
   .govuk-checkboxes__item:last-of-type {
-    margin-bottom: 0;
+    margin-block-end: 0;
   }
 
   .govuk-checkboxes__input {
     // Allow the input to sit above the label, enabling its proper detection
     // when exploring by touch or using automation tools like Selenium
     z-index: 1;
-    width: $govuk-touch-target-size;
-    height: $govuk-touch-target-size;
+    inline-size: $govuk-touch-target-size;
+    block-size: $govuk-touch-target-size;
     margin: 0;
     opacity: 0;
     cursor: pointer;
@@ -39,9 +39,10 @@
     // container minus the input width minus the padding on either side of
     // the label. This prevents the label from going onto the next line due to
     // __item using flex-wrap because we want hints on a separate line.
-    max-width: calc(100% - #{(($govuk-checkboxes-label-padding-left-right * 2) + $govuk-touch-target-size)});
-    margin-bottom: 0;
-    padding: (base.govuk-spacing(1) + base.$govuk-border-width-form-element) $govuk-checkboxes-label-padding-left-right;
+    max-inline-size: calc(100% - #{(($govuk-checkboxes-label-padding-left-right * 2) + $govuk-touch-target-size)});
+    margin-block-end: 0;
+    padding-block: base.govuk-spacing(1) + base.$govuk-border-width-form-element;
+    padding-inline: $govuk-checkboxes-label-padding-left-right;
     cursor: pointer;
     // remove 300ms pause on mobile
     touch-action: manipulation;
@@ -52,10 +53,10 @@
     content: "";
     box-sizing: border-box;
     position: absolute;
-    top: ($govuk-touch-target-gutter * 0.5);
-    left: ($govuk-touch-target-gutter * 0.5);
-    width: $govuk-checkboxes-size;
-    height: $govuk-checkboxes-size;
+    inset-block-start: ($govuk-touch-target-gutter * 0.5);
+    inset-inline-start: ($govuk-touch-target-gutter * 0.5);
+    inline-size: $govuk-checkboxes-size;
+    block-size: $govuk-checkboxes-size;
     border: base.$govuk-border-width-form-element solid currentcolor;
     background: transparent;
   }
@@ -71,33 +72,33 @@
 
     // Use "magic numbers" to define shape and position of check mark because
     // the complexity of the shape makes it difficult to calculate dynamically.
-    top: 13px;
-    left: $govuk-checkbox-check-horizontal-position;
-    width: 23px;
-    height: 12px;
+    inset-block-start: 13px;
+    inset-inline-start: $govuk-checkbox-check-horizontal-position;
+    inline-size: 23px;
+    block-size: 12px;
     transform: rotate(-45deg);
     border: solid;
     border-width: 0 0 5px 5px;
     // Fix bug in IE11 caused by transform rotate (-45deg).
     // See: alphagov/govuk_elements/issues/518
-    border-top-color: transparent;
+    border-block-start-color: transparent;
     opacity: 0;
     background: transparent;
   }
 
   .govuk-checkboxes__hint {
     display: block;
-    width: 100%;
-    margin-top: base.govuk-spacing(-1);
-    padding-right: $govuk-checkboxes-label-padding-left-right;
-    padding-left: ($govuk-checkboxes-label-padding-left-right + $govuk-touch-target-size);
+    inline-size: 100%;
+    margin-block-start: base.govuk-spacing(-1);
+    padding-inline-end: $govuk-checkboxes-label-padding-left-right;
+    padding-inline-start: ($govuk-checkboxes-label-padding-left-right + $govuk-touch-target-size);
   }
 
   // This is to bypass govuk-hint's specificity on hints following labels having
   // a margin bottom of 10px (base.govuk-spacing(2)). Because checkboxes are flexbox,
   // the margin doesn't collapse so we have to do this manually.
   .govuk-label:not(.govuk-label--m):not(.govuk-label--l):not(.govuk-label--xl) + .govuk-checkboxes__hint {
-    margin-bottom: 0;
+    margin-block-end: 0;
   }
 
   // Focused state
@@ -144,9 +145,9 @@
     @include base.govuk-font($size: 19);
 
     $govuk-divider-size: $govuk-checkboxes-size !default;
-    width: $govuk-divider-size;
+    inline-size: $govuk-divider-size;
 
-    margin-bottom: base.govuk-spacing(2);
+    margin-block-end: base.govuk-spacing(2);
     color: base.govuk-functional-colour(text);
     text-align: center;
   }
@@ -166,18 +167,18 @@
   $conditional-padding-left: $conditional-border-padding + $govuk-checkboxes-label-padding-left-right;
 
   .govuk-checkboxes__conditional {
-    @include base.govuk-responsive-margin(4, "bottom");
-    margin-left: $conditional-margin-left;
-    padding-left: $conditional-padding-left;
-    border-left: $conditional-border-width solid;
-    border-left-color: base.govuk-functional-colour(border);
+    @include base.govuk-responsive-margin(4, "block-end");
+    margin-inline-start: $conditional-margin-left;
+    padding-inline-start: $conditional-padding-left;
+    border-inline-start: $conditional-border-width solid;
+    border-inline-start-color: base.govuk-functional-colour(border);
 
     .govuk-frontend-supported &--hidden {
       display: none;
     }
 
     & > :last-child {
-      margin-bottom: 0;
+      margin-block-end: 0;
     }
   }
 
@@ -189,7 +190,7 @@
     $input-offset: ($govuk-touch-target-size - $govuk-small-checkboxes-size) * 0.5;
 
     .govuk-checkboxes__item {
-      margin-bottom: 0;
+      margin-block-end: 0;
     }
 
     // Shift the touch target into the left margin so that the visible edge of
@@ -202,19 +203,19 @@
     //  ▲┆└─ Check box pseudo element, aligned with margin
     //  └─── Touch target (invisible input), shifted into the margin
     .govuk-checkboxes__input {
-      margin-left: $input-offset * -1;
+      margin-inline-start: $input-offset * -1;
     }
 
     .govuk-checkboxes__label {
       // Recalculate max-width to account for the smaller checkbox size
       // 1px comes from padding-left (defined below)
-      max-width: calc(
+      max-inline-size: calc(
         100% - #{($govuk-touch-target-size - $input-offset) + $govuk-checkboxes-label-padding-left-right + 1px}
       );
 
       // Create a tiny space between the small checkbox hover state so that it
       // doesn't clash with the label
-      padding-left: 1px;
+      padding-inline-start: 1px;
     }
 
     // [ ] Check box
@@ -223,23 +224,23 @@
     // touch target [2]
     // Left here is 0 because we've shifted the input into the left margin
     .govuk-checkboxes__label::before {
-      top: $input-offset; // 2
-      left: 0;
-      width: $govuk-small-checkboxes-size; // 1
-      height: $govuk-small-checkboxes-size; // 1
+      inset-block-start: $input-offset; // 2
+      inset-inline-start: 0;
+      inline-size: $govuk-small-checkboxes-size; // 1
+      block-size: $govuk-small-checkboxes-size; // 1
     }
 
     // ✔ Check mark
     //
     // Reduce the size of the check mark and re-align within the checkbox
     .govuk-checkboxes__label::after {
-      top: 17px;
+      inset-block-start: 17px;
 
       // Horizontal position is just the normal sized left value accounting for
       // the new width of the smaller checkbox
-      left: (16px - $govuk-checkbox-check-horizontal-position);
-      width: 12px;
-      height: 6.5px;
+      inset-inline-start: (16px - $govuk-checkbox-check-horizontal-position);
+      inline-size: 12px;
+      block-size: 6.5px;
       border-width: 0 0 3px 3px;
     }
 
@@ -252,19 +253,19 @@
     // (If you do use them, they won't look completely broken... but seriously,
     // don't use them)
     .govuk-checkboxes__hint {
-      padding-left: ($govuk-small-checkboxes-size + $input-offset);
+      padding-inline-start: ($govuk-small-checkboxes-size + $input-offset);
     }
 
     // Align conditional reveals with small checkboxes
     .govuk-checkboxes__conditional {
       $margin-left: ($govuk-small-checkboxes-size * 0.5) - ($conditional-border-width * 0.5);
-      margin-left: $margin-left;
-      padding-left: ($govuk-touch-target-size - $input-offset) - ($margin-left + $conditional-border-width);
+      margin-inline-start: $margin-left;
+      padding-inline-start: ($govuk-touch-target-size - $input-offset) - ($margin-left + $conditional-border-width);
     }
 
     .govuk-checkboxes__divider {
-      width: $govuk-small-checkboxes-size;
-      margin-bottom: base.govuk-spacing(1);
+      inline-size: $govuk-small-checkboxes-size;
+      margin-block-end: base.govuk-spacing(1);
     }
 
     // Hover state for small checkboxes.

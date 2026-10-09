@@ -11,9 +11,9 @@
 
   .govuk-service-navigation {
     @include base.govuk-font($size: 19);
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
-    border-bottom-color: $govuk-service-navigation-border-colour;
+    border-block-end-width: 1px;
+    border-block-end-style: solid;
+    border-block-end-color: $govuk-service-navigation-border-colour;
     // Ensure that both raw content and content with typography classes
     // will pick up the correct colour by setting both `--govuk-text-colour`
     // and `color`.
@@ -22,7 +22,7 @@
     background-color: $govuk-service-navigation-background;
 
     @media print {
-      border-bottom-color: currentcolor;
+      border-block-end-color: currentcolor;
       background-color: transparent;
     }
   }
@@ -39,7 +39,7 @@
       // Ensure some space between the `end` slot and the container
       // when displayed inline
       &:not(:last-child) {
-        margin-right: base.govuk-spacing(6);
+        margin-inline-end: base.govuk-spacing(6);
       }
     }
   }
@@ -52,7 +52,7 @@
     // Avoid the end slot rendering on the right of the container
     // in small viewports by ensuring the container is full width
     @media #{base.govuk-until-breakpoint(tablet)} {
-      width: 100%;
+      inline-size: 100%;
     }
 
     @media #{base.govuk-from-breakpoint(tablet)} {
@@ -67,7 +67,7 @@
   .govuk-service-navigation__item,
   .govuk-service-navigation__service-name {
     position: relative;
-    margin: base.govuk-spacing(2) 0;
+    margin-block: base.govuk-spacing(2);
 
     // A border matching the link colour is used to mark the active section –
     // see the `govuk-service-navigation__item--active` class
@@ -79,9 +79,9 @@
       // inline-block is used as a fallback for browsers that don't support flexbox
       display: inline-block;
 
-      margin-top: 0;
-      margin-bottom: 0;
-      padding: base.govuk-spacing(3) 0;
+      margin-block-start: 0;
+      margin-block-end: 0;
+      padding-block: base.govuk-spacing(3);
 
       // More magic numbers ahoy:
       // 29 is the desired height of the element (60), minus top and bottom
@@ -106,7 +106,7 @@
     .govuk-service-navigation__list:first-child,
     .govuk-service-navigation__toggle[hidden] + .govuk-service-navigation__list {
       .govuk-service-navigation__item:first-child {
-        margin-top: 0;
+        margin-block-start: 0;
       }
     }
   }
@@ -115,14 +115,14 @@
     @media #{base.govuk-until-breakpoint(tablet)} {
       // Negative offset the left margin so we can place a current page indicator
       // to the left without misaligning the list item text.
-      margin-left: ((base.govuk-spacing(2) + $govuk-service-navigation-active-link-border-width) * -1);
-      padding-left: base.govuk-spacing(2);
-      border-left-width: $govuk-service-navigation-active-link-border-width;
+      margin-inline-start: ((base.govuk-spacing(2) + $govuk-service-navigation-active-link-border-width) * -1);
+      padding-inline-start: base.govuk-spacing(2);
+      border-inline-start-width: $govuk-service-navigation-active-link-border-width;
     }
 
     @media #{base.govuk-from-breakpoint(tablet)} {
-      padding-bottom: base.govuk-spacing(3) - $govuk-service-navigation-active-link-border-width;
-      border-bottom-width: $govuk-service-navigation-active-link-border-width;
+      padding-block-end: base.govuk-spacing(3) - $govuk-service-navigation-active-link-border-width;
+      border-block-end-width: $govuk-service-navigation-active-link-border-width;
     }
   }
 
@@ -161,7 +161,8 @@
     @include base.govuk-font($size: 19, $weight: bold);
     display: inline-flex;
     align-items: center;
-    margin: base.govuk-spacing(2) 0;
+    margin-block: base.govuk-spacing(2);
+    margin-inline: 0;
     padding: 0;
     border: 0;
     color: base.govuk-functional-colour(link);
@@ -176,7 +177,7 @@
     &::after {
       @include base.govuk-shape-arrow($direction: down, $base: 10px, $display: inline-block);
       content: "";
-      margin-left: base.govuk-spacing(1);
+      margin-inline-start: base.govuk-spacing(1);
     }
 
     &[aria-expanded="true"]::after {
@@ -191,13 +192,13 @@
     // If we have both a service name and navigation toggle, remove the
     // margin-top so that there isn't a bunch of space between them
     .govuk-service-navigation__service-name + .govuk-service-navigation__wrapper & {
-      margin-top: 0;
+      margin-block-start: 0;
     }
   }
 
   .govuk-service-navigation__list {
     margin: 0;
-    margin-bottom: base.govuk-spacing(3);
+    margin-block-end: base.govuk-spacing(3);
     padding: 0;
     list-style: none;
 
@@ -210,7 +211,7 @@
     @media #{base.govuk-from-breakpoint(tablet)} {
       display: flex;
       flex-wrap: wrap;
-      margin-bottom: 0;
+      margin-block-end: 0;
 
       // However... IE11 totally trips over flexbox and doesn't wrap anything,
       // making all of the items into a single, horizontally scrolling row,
@@ -235,7 +236,7 @@
   // Inverted colour scheme style intended for product pages
   .govuk-service-navigation--inverse {
     // Remove bottom border to add width-container ones
-    border-bottom: none;
+    border-block-end: none;
 
     --govuk-text-colour: #{base.govuk-functional-colour(inverse-text)};
     background-color: base.govuk-functional-colour(brand);
@@ -257,7 +258,7 @@
 
     // Subtract 1px of space to account for the extra border-top
     .govuk-service-navigation__container {
-      margin-top: -1px;
+      margin-block-start: -1px;
     }
 
     // Override the 'active' border colour
