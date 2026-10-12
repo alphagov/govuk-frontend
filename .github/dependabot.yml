@@ -78,6 +78,10 @@ updates:
       # rather than jump to the latest major release of `@types/node`
       - dependency-name: '@types/node'
         update-types: ['version-update:semver-major']
+      # Stylelint 17 is ESM only and used in some of our tests
+      # Our current configuration doesn't let us use its JavaScript API in Jest
+      - dependency-name: 'stylelint'
+        update-types: ['version-update:semver-major']
 
     schedule:
       interval: monthly
