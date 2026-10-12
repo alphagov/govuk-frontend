@@ -89,6 +89,10 @@ updates:
       # Until we can prioritise addressing the changes of Babel 8
       - dependency-name: '@babel/*'
         update-types: ['version-update:semver-major']
+      # Puppeteer is ESM only and used in some of our tests
+      # Our current configuration doesn't let it be `import`ed in Jest
+      - dependency-name: 'puppeteer'
+        update-types: ['version-update:semver-major']
 
     schedule:
       interval: monthly
