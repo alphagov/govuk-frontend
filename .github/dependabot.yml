@@ -86,6 +86,9 @@ updates:
       # we're stuck on 6.x for `typescript`
       - dependency-name: 'typescript'
         version: '>=7.0.0'
+      # Until we can prioritise addressing the changes of Babel 8
+      - dependency-name: '@babel/*'
+        update-types: ['version-update:semver-major']
 
     schedule:
       interval: monthly
