@@ -93,6 +93,10 @@ updates:
       # Our current configuration doesn't let it be `import`ed in Jest
       - dependency-name: 'puppeteer'
         update-types: ['version-update:semver-major']
+      # CSSNano is ESM only and used in some of our tests
+      # Our current configuration doesn't let it be `import`ed in Jest
+      - dependency-name: 'cssnano'
+        update-types: ['version-update:semver-major']
 
     schedule:
       interval: monthly
