@@ -121,10 +121,11 @@ examples:
           <li>update the licence conditions section</li>
         </ul>
       actions:
-        - text: Continue to other sections
-          type: submit
-        - text: Go back to application
-          href: '#'
+        items:
+          - text: Continue to other sections
+            type: submit
+          - text: Go back to application
+            href: '#'
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: title html as text
     hidden: true

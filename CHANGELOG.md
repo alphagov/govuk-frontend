@@ -68,6 +68,7 @@ This was added in [pull request #6995: Add character count `Intl.Segmenter` supp
 We've made fixes to GOV.UK Frontend in the following pull requests:
 
 - [#7428: Fix guard in govuk-resolve-colour and add unit tests](https://github.com/alphagov/govuk-frontend/pull/7428) - thanks to @daniel-ac-martin for reporting and fixing this issue
+- [#7491: Correct panel example actions option](https://github.com/alphagov/govuk-frontend/pull/7491) - thanks to @markhobson for reporting and fixing this issue
 
 ## v6.5.1 (Fix release)
 
