@@ -6,7 +6,7 @@ import {
 } from '../../common/configuration.mjs'
 import { createElement } from '../../common/create-element.mjs'
 import { formatErrorMessage } from '../../common/index.mjs'
-import { ConfigError, ElementError } from '../../errors/index.mjs'
+import { ConfigError, ElementError, SupportError } from '../../errors/index.mjs'
 import { I18n } from '../../i18n.mjs'
 
 /**
@@ -28,6 +28,11 @@ export class CharacterCount extends ConfigurableComponent {
 
   /** @private */
   count = 0
+
+  /**
+   * @type {Intl.Segmenter | null}
+   */
+  segmenter = null
 
   /** @private */
   $visibleCountMessage
@@ -59,20 +64,35 @@ export class CharacterCount extends ConfigurableComponent {
   /**
    * Character count config override
    *
-   * To ensure data-attributes take complete precedence, even if they change
-   * the type of count, we need to reset the `maxlength` and `maxwords` from
-   * the JavaScript config.
-   *
    * @internal
-   * @param {CharacterCountConfig} datasetConfig - configuration specified by dataset
-   * @returns {CharacterCountConfig} - configuration to override by dataset
+   * @param {Partial<CharacterCountConfig>} datasetConfig - configuration specified by dataset
+   * @returns {Partial<CharacterCountConfig>} - configuration to override by dataset
    */
   [configOverride](datasetConfig) {
-    let configOverrides = {}
+    let configOverrides = /** @type {Partial<CharacterCountConfig>} */ ({})
+
+    // To ensure data-attributes take complete precedence, even if they change
+    // the type of count, we need to reset the `maxlength` and `maxwords` from
+    // the JavaScript config
     if ('maxwords' in datasetConfig || 'maxlength' in datasetConfig) {
       configOverrides = {
         maxlength: undefined,
         maxwords: undefined
+      }
+    }
+
+    if ('maxwords' in datasetConfig || this.config.maxwords !== undefined) {
+      console.warn(
+        formatErrorMessage(
+          CharacterCount,
+          'Option `maxwords` is deprecated. Use `maxlength` with `countType: "words"` instead.'
+        )
+      )
+
+      if (!('maxlength' in datasetConfig)) {
+        configOverrides.maxlength =
+          datasetConfig.maxwords ?? this.config.maxwords
+        configOverrides.countType = 'words'
       }
     }
 
@@ -112,8 +132,26 @@ export class CharacterCount extends ConfigurableComponent {
       locale: closestAttributeValue(this.$root, 'lang')
     })
 
+    if (
+      this.config.countType === 'characters' ||
+      (this.config.countType === 'words' && this.config.maxwords === undefined)
+    ) {
+      if (!('Segmenter' in Intl)) {
+        throw new SupportError(
+          formatErrorMessage(
+            CharacterCount,
+            'Support for "Intl.Segmenter" required'
+          )
+        )
+      }
+
+      this.segmenter = new Intl.Segmenter(this.i18n.locale, {
+        granularity: this.config.countType === 'words' ? 'word' : 'grapheme'
+      })
+    }
+
     // Determine the limit attribute (characters or words)
-    this.maxLength = this.config.maxwords ?? this.config.maxlength ?? Infinity
+    this.maxLength = this.config.maxlength ?? Infinity
 
     this.$textarea = $textarea
 
@@ -131,8 +169,8 @@ export class CharacterCount extends ConfigurableComponent {
     this.$errorMessage = this.$root.querySelector('.govuk-error-message')
 
     // Inject a description for the textarea if none is present already
-    // for when the component was rendered with no maxlength, maxwords
-    // nor custom textareaDescriptionText
+    // for when the component was rendered with no maxlength nor custom
+    // textareaDescriptionText
     // eslint-disable-next-line @typescript-eslint/prefer-regexp-exec
     if ($textareaDescription.textContent.match(/^\s*$/)) {
       $textareaDescription.textContent = this.i18n.t('textareaDescription', {
@@ -340,17 +378,39 @@ export class CharacterCount extends ConfigurableComponent {
   }
 
   /**
-   * Count the number of characters (or words, if `config.maxwords` is set)
-   * in the given text, and update the component-wide count
+   * Count the number of characters (or words) in the given text, using the
+   * configured count type, and update the component-wide count
    *
    * @private
    */
   updateCount() {
     const text = this.$textarea.value
 
-    if (this.config.maxwords) {
-      const tokens = text.match(/\S+/g) ?? [] // Matches consecutive non-whitespace chars
-      this.count = tokens.length
+    // Count grapheme clusters (user-perceived characters)
+    if (this.config.countType === 'characters') {
+      this.count = this.segmenter
+        ? Array.from(this.segmenter.segment(text)).length
+        : 0
+
+      return
+    }
+
+    // Count words
+    //
+    // If the (deprecated) `maxwords` option is set, count consecutive
+    // non-whitespace results rather than using the segmenter
+    if (this.config.countType === 'words') {
+      if (this.config.maxwords !== undefined) {
+        this.count = text.match(/\S+/g)?.length ?? 0
+        return
+      }
+
+      const segments = this.segmenter
+        ? Array.from(this.segmenter.segment(text))
+        : []
+
+      // Filter out punctuation and whitespace, leaving only words
+      this.count = segments.filter((segment) => segment.isWordLike).length
       return
     }
 
@@ -365,8 +425,7 @@ export class CharacterCount extends ConfigurableComponent {
    */
   getCountMessage() {
     const remainingNumber = this.maxLength - this.count
-    const countType = this.config.maxwords ? 'words' : 'characters'
-    return this.formatCountMessage(remainingNumber, countType)
+    return this.formatCountMessage(remainingNumber)
   }
 
   /**
@@ -374,20 +433,26 @@ export class CharacterCount extends ConfigurableComponent {
    * and how many remain
    *
    * @private
-   * @param {number} remainingNumber - The number of words/characaters remaining
-   * @param {string} countType - "words" or "characters"
+   * @param {number} remainingNumber - The number of words/characters remaining
+   * @param {CharacterCountConfig['countType']} [countType] - Deprecated
    * @returns {string} Status message
    */
   formatCountMessage(remainingNumber, countType) {
-    if (remainingNumber === 0) {
-      return this.i18n.t(`${countType}AtLimit`)
+    countType = countType ?? this.config.countType
+
+    let translationKeyPrefix = 'characters'
+    let translationKeySuffix = remainingNumber < 0 ? 'OverLimit' : 'UnderLimit'
+
+    if (countType === 'words') {
+      translationKeyPrefix = 'words'
     }
 
-    const translationKeySuffix =
-      remainingNumber < 0 ? 'OverLimit' : 'UnderLimit'
+    if (remainingNumber === 0) {
+      translationKeySuffix = 'AtLimit'
+    }
 
-    return this.i18n.t(`${countType}${translationKeySuffix}`, {
-      count: Math.abs(remainingNumber)
+    return this.i18n.t(`${translationKeyPrefix}${translationKeySuffix}`, {
+      count: remainingNumber === 0 ? undefined : Math.abs(remainingNumber)
     })
   }
 
@@ -431,6 +496,7 @@ export class CharacterCount extends ConfigurableComponent {
    */
   static defaults = Object.freeze({
     threshold: 0,
+    countType: 'length',
     i18n: {
       // Characters
       charactersUnderLimit: {
@@ -469,7 +535,8 @@ export class CharacterCount extends ConfigurableComponent {
       i18n: { type: 'object' },
       maxwords: { type: 'number' },
       maxlength: { type: 'number' },
-      threshold: { type: 'number' }
+      threshold: { type: 'number' },
+      countType: { type: 'string' }
     },
     anyOf: [
       {
@@ -489,13 +556,15 @@ export class CharacterCount extends ConfigurableComponent {
  *
  * @see {@link CharacterCount.defaults}
  * @typedef {object} CharacterCountConfig
- * @property {number} [maxlength] - The maximum number of characters.
- *   If maxwords is provided, the maxlength option will be ignored.
- * @property {number} [maxwords] - The maximum number of words. If maxwords is
- *   provided, the maxlength option will be ignored.
+ * @property {number} [maxlength] - The maximum number of characters (or words
+ *   if `countType` is set to `"words"`).
+ * @property {number} [maxwords] - Deprecated. Use `maxlength` and
+ *   `countType: "words"` instead.
  * @property {number} [threshold=0] - The percentage value of the limit at
  *   which point the count message is displayed. If this attribute is set, the
  *   count message will be hidden by default.
+ * @property {'characters' | 'length' | 'words'} [countType] - The count type
+ *   (`"characters"`, `"length"` or `"words"`) used to count the text.
  * @property {CharacterCountTranslations} [i18n=CharacterCount.defaults.i18n] - Character count translations
  */
 
@@ -541,9 +610,9 @@ export class CharacterCount extends ConfigurableComponent {
  * @property {TranslationPluralForms} [textareaDescription] - Message made
  *   available to assistive technologies, if none is already present in the
  *   HTML, to describe that the component accepts only a limited amount of
- *   content. It is visible on the page when JavaScript is unavailable. The
- *   component will replace the `%{count}` placeholder with the value of the
- *   `maxlength` or `maxwords` parameter.
+ *   content. It is visible on the page if `countType` is not supported or
+ *   JavaScript is unavailable. The component will replace the `%{count}`
+ *   placeholder with the value of the `maxlength` parameter.
  */
 
 /**

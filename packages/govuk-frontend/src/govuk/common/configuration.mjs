@@ -79,10 +79,15 @@ export class ConfigurableComponent extends Component {
       normaliseDataset(childConstructor, this._$root.dataset)
     )
 
+    // Override defaults with JavaScript config
+    this._config = /** @type {ConfigurationType} */ (
+      mergeConfigs(childConstructor.defaults, config ?? {})
+    )
+
+    // Override merged config with dataset config
     this._config = /** @type {ConfigurationType} */ (
       mergeConfigs(
-        childConstructor.defaults,
-        config ?? {},
+        this._config,
         this[configOverride](datasetConfig),
         datasetConfig
       )
@@ -107,6 +112,13 @@ export class ConfigurableComponent extends Component {
  * @returns {string | boolean | number | undefined} Normalised data
  */
 export function normaliseString(value, property) {
+  if (
+    property?.type &&
+    !['string', 'number', 'boolean'].includes(property.type)
+  ) {
+    return
+  }
+
   const trimmedValue = value ? value.trim() : ''
 
   let output
