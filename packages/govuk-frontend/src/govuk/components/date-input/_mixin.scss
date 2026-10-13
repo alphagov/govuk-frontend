@@ -9,8 +9,8 @@
 
   .govuk-date-input__item {
     display: inline-block;
-    margin-right: base.govuk-spacing(4);
-    margin-bottom: 0;
+    margin-inline-end: base.govuk-spacing(4);
+    margin-block-end: 0;
 
     // Prevents an issue in iOS Safari 18 where the items vertically
     // shift when the value of inputs is changed.
@@ -23,6 +23,6 @@
   }
 
   .govuk-date-input__input {
-    margin-bottom: 0;
+    margin-block-end: 0;
   }
 }

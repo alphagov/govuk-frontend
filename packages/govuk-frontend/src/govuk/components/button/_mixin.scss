@@ -40,13 +40,14 @@
     box-sizing: border-box;
     display: inline-block;
     position: relative;
-    width: 100%;
-    margin-top: 0;
-    margin-right: 0;
-    margin-left: 0;
-    @include base.govuk-responsive-margin(6, "bottom", $adjustment: $button-shadow-size); // s2
-    padding: (base.govuk-spacing(2) - base.$govuk-border-width-form-element) base.govuk-spacing(2)
-      (base.govuk-spacing(2) - base.$govuk-border-width-form-element - ($button-shadow-size * 0.5)); // s1
+    inline-size: 100%;
+    margin-block-start: 0;
+    margin-inline-end: 0;
+    margin-inline-start: 0;
+    @include base.govuk-responsive-margin(6, "block-end", $adjustment: $button-shadow-size); // s2
+    padding-block-start: base.govuk-spacing(2) - base.$govuk-border-width-form-element; // s1
+    padding-block-end: base.govuk-spacing(2) - base.$govuk-border-width-form-element - ($button-shadow-size * 0.5); // s1
+    padding-inline: base.govuk-spacing(2); // s1
     border: base.$govuk-border-width-form-element solid transparent;
     border-radius: 0;
     color: $text-colour;
@@ -58,7 +59,7 @@
     -webkit-appearance: none;
 
     @media #{base.govuk-from-breakpoint(tablet)} {
-      width: auto;
+      inline-size: auto;
     }
 
     // Ensure that any global link styles are overridden
@@ -82,7 +83,7 @@
 
     &:active {
       // Bump the button down so it looks like its being pressed in
-      top: $button-shadow-size;
+      inset-block-start: $button-shadow-size;
     }
 
     &:focus {
@@ -106,10 +107,10 @@
 
       position: absolute;
 
-      top: -(base.$govuk-border-width-form-element);
-      right: -(base.$govuk-border-width-form-element);
-      bottom: -(base.$govuk-border-width-form-element + $button-shadow-size);
-      left: -(base.$govuk-border-width-form-element);
+      inset-block-start: -(base.$govuk-border-width-form-element);
+      inset-inline-end: -(base.$govuk-border-width-form-element);
+      inset-block-end: -(base.$govuk-border-width-form-element + $button-shadow-size);
+      inset-inline-start: -(base.$govuk-border-width-form-element);
 
       background: transparent;
     }
@@ -125,7 +126,7 @@
     //
     // 🎉
     &:active::before {
-      top: -(base.$govuk-border-width-form-element + $button-shadow-size);
+      inset-block-start: -(base.$govuk-border-width-form-element + $button-shadow-size);
     }
   }
 
@@ -138,7 +139,7 @@
     }
 
     &:active {
-      top: 0;
+      inset-block-start: 0;
       box-shadow: 0 $button-shadow-size 0 $govuk-button-shadow-colour; // s0
     }
   }
@@ -212,13 +213,13 @@
 
     display: inline-flex;
     justify-content: center;
-    min-height: auto;
+    min-block-size: auto;
   }
 
   .govuk-button__start-icon {
     flex-shrink: 0;
     align-self: center;
-    margin-left: base.govuk-spacing(1);
+    margin-inline-start: base.govuk-spacing(1);
     vertical-align: middle;
 
     // Work around SVGs not inheriting color from parent in forced color mode
@@ -226,7 +227,7 @@
     forced-color-adjust: auto;
 
     @media #{base.govuk-from-breakpoint(desktop)} {
-      margin-left: base.govuk-spacing(2);
+      margin-inline-start: base.govuk-spacing(2);
     }
   }
 }

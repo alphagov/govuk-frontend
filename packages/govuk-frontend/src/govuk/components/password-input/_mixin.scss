@@ -31,10 +31,10 @@
 
   .govuk-password-input__toggle {
     // Add top margin so the button doesn't obscure the input's focus style
-    margin-top: base.govuk-spacing(1);
+    margin-block-start: base.govuk-spacing(1);
 
     // Remove default margin-bottom from button
-    margin-bottom: 0;
+    margin-block-end: 0;
 
     // Hide the button by default, JS removes this attribute
     &[hidden] {
@@ -45,11 +45,11 @@
       flex-basis: 5em;
       flex-shrink: 0;
       // Buttons are normally 100% wide on mobile, but we don't want that here
-      width: auto;
+      inline-size: auto;
 
       // Move the spacing from top to the left
-      margin-top: 0;
-      margin-left: base.govuk-spacing(1);
+      margin-block-start: 0;
+      margin-inline-start: base.govuk-spacing(1);
     }
   }
 }

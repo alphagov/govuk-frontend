@@ -1,8 +1,8 @@
 @use "pkg:govuk-frontend/base" as *;
 
 .app-banner {
-  padding-top: govuk-spacing(6);
-  padding-bottom: govuk-spacing(6);
+  padding-block-start: govuk-spacing(6);
+  padding-block-end: govuk-spacing(6);
   overflow: hidden;
   @include govuk-font($size: 36, $line-height: 1.5);
 

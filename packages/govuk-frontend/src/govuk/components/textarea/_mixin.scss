@@ -7,9 +7,9 @@
 
     box-sizing: border-box;
     display: block;
-    width: 100%;
-    min-height: 40px;
-    @include base.govuk-responsive-margin(6, "bottom");
+    inline-size: 100%;
+    min-block-size: 40px;
+    @include base.govuk-responsive-margin(6, "block-end");
     padding: base.govuk-spacing(1);
 
     resize: vertical;

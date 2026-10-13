@@ -5,49 +5,49 @@
   $govuk-accordion-base-colour: base.govuk-colour("black");
   $govuk-accordion-hover-colour: base.govuk-colour("black", $variant: "tint-95");
   $govuk-accordion-icon-focus-colour: base.govuk-functional-colour(focus);
-  $govuk-accordion-bottom-border-width: 1px;
+  $govuk-accordion-block-end-border-width: 1px;
 
   .govuk-accordion {
-    @include base.govuk-responsive-margin(6, "bottom");
+    @include base.govuk-responsive-margin(6, "block-end");
   }
 
   .govuk-accordion__section {
-    padding-top: base.govuk-spacing(3);
+    padding-block-start: base.govuk-spacing(3);
   }
 
   .govuk-accordion__section-heading {
     // Override browser defaults to ensure consistent element height
-    margin-top: 0;
-    margin-bottom: 0;
+    margin-block-start: 0;
+    margin-block-end: 0;
 
-    padding-top: base.govuk-spacing(3);
-    padding-bottom: base.govuk-spacing(3);
+    padding-block-start: base.govuk-spacing(3);
+    padding-block-end: base.govuk-spacing(3);
   }
 
   .govuk-accordion__section-button {
     @include base.govuk-font($size: 24, $weight: bold);
 
     display: block;
-    margin-bottom: 0;
-    padding-top: base.govuk-spacing(3);
+    margin-block-end: 0;
+    padding-block-start: base.govuk-spacing(3);
     color: base.govuk-functional-colour(text);
   }
 
   // Remove the bottom margin from the last item inside the content
   .govuk-accordion__section-content > :last-child {
-    margin-bottom: 0;
+    margin-block-end: 0;
   }
 
   // GOV.UK Frontend JavaScript enabled
   .govuk-frontend-supported {
     .govuk-accordion {
       // Border at the bottom of the whole accordion
-      border-bottom: $govuk-accordion-bottom-border-width solid;
-      border-bottom-color: base.govuk-functional-colour(border);
+      border-block-end: $govuk-accordion-block-end-border-width solid;
+      border-block-end-color: base.govuk-functional-colour(border);
     }
 
     .govuk-accordion__section {
-      padding-top: 0;
+      padding-block-start: 0;
     }
 
     // Hide the body of collapsed sections by default for browsers that lack
@@ -55,8 +55,8 @@
     .govuk-accordion__section-content {
       display: none;
 
-      @include base.govuk-responsive-padding(3, "top");
-      @include base.govuk-responsive-padding(8, "bottom");
+      @include base.govuk-responsive-padding(3, "block-start");
+      @include base.govuk-responsive-padding(8, "block-end");
     }
 
     // Hide the body of collapsed sections using `content-visibility` to enable
@@ -68,8 +68,8 @@
       }
 
       // Hide the padding of collapsed sections
-      padding-top: 0;
-      padding-bottom: 0;
+      padding-block-start: 0;
+      padding-block-end: 0;
     }
 
     // Show the body of expanded sections
@@ -82,8 +82,9 @@
       position: relative;
       z-index: 1;
 
-      margin-bottom: 9px;
-      padding: base.govuk-spacing(1) 2px base.govuk-spacing(1) 0;
+      margin-block-end: 9px;
+      padding-block: base.govuk-spacing(1);
+      padding-inline-end: 2px;
 
       border-width: 0;
 
@@ -94,7 +95,7 @@
       -webkit-appearance: none;
 
       @media #{base.govuk-from-breakpoint(tablet)} {
-        margin-bottom: 14px;
+        margin-block-end: 14px;
       }
 
       // Remove default button focus outline in Firefox
@@ -152,8 +153,8 @@
       position: relative;
 
       // Set size using rems so icon scales with text
-      width: base.govuk-px-to-rem(20px);
-      height: base.govuk-px-to-rem(20px);
+      inline-size: base.govuk-px-to-rem(20px);
+      block-size: base.govuk-px-to-rem(20px);
 
       border: base.govuk-px-to-rem(1px) solid;
       border-radius: 50%;
@@ -167,16 +168,15 @@
         display: block;
 
         position: absolute;
-        bottom: base.govuk-px-to-rem(5px);
-        left: base.govuk-px-to-rem(6px);
-
-        width: base.govuk-px-to-rem(6px);
-        height: base.govuk-px-to-rem(6px);
+        inset-block-end: base.govuk-px-to-rem(5px);
+        inset-inline-start: base.govuk-px-to-rem(6px);
+        inline-size: base.govuk-px-to-rem(6px);
+        block-size: base.govuk-px-to-rem(6px);
 
         transform: rotate(-45deg);
 
-        border-top: base.govuk-px-to-rem(2px) solid;
-        border-right: base.govuk-px-to-rem(2px) solid;
+        border-block-start: base.govuk-px-to-rem(2px) solid;
+        border-inline-end: base.govuk-px-to-rem(2px) solid;
       }
     }
 
@@ -186,31 +186,32 @@
     }
 
     .govuk-accordion__section-button {
-      width: 100%;
+      inline-size: 100%;
 
-      padding: base.govuk-spacing(2) 0 0;
+      padding: 0;
+      padding-block-start: base.govuk-spacing(2);
 
       border: 0;
 
-      border-top: $govuk-accordion-bottom-border-width solid;
+      border-block-start: $govuk-accordion-block-end-border-width solid;
 
       // Visually separate the section from the one underneath when user changes
       // colours in their browser. See
       // https://github.com/alphagov/govuk-frontend/issues/2321#issuecomment-924201488
-      border-bottom: base.govuk-spacing(2) solid transparent;
+      border-block-end: base.govuk-spacing(2) solid transparent;
 
-      border-top-color: base.govuk-functional-colour(border);
+      border-block-start-color: base.govuk-functional-colour(border);
 
       color: base.govuk-functional-colour(text);
       background: none;
 
-      text-align: left;
+      text-align: start;
       // Section headers have a pointer cursor as an additional affordance
       cursor: pointer;
       -webkit-appearance: none;
 
       @media #{base.govuk-from-breakpoint(tablet)} {
-        padding-bottom: base.govuk-spacing(2);
+        padding-block-end: base.govuk-spacing(2);
       }
 
       &:active {
@@ -269,21 +270,21 @@
     // maintain the height of the element. See
     // https://github.com/alphagov/govuk-frontend/pull/2257#issuecomment-951920798
     .govuk-accordion__section--expanded .govuk-accordion__section-button {
-      padding-bottom: base.govuk-spacing(3);
-      border-bottom: 0;
+      padding-block-end: base.govuk-spacing(3);
+      border-block-end: 0;
 
       @media #{base.govuk-from-breakpoint(tablet)} {
-        padding-bottom: base.govuk-spacing(4);
+        padding-block-end: base.govuk-spacing(4);
       }
     }
 
     // As Chevron icon is vertically aligned it overlaps with the focus state
     // bottom border – this adds some spacing
     .govuk-accordion__section-button:focus .govuk-accordion__section-toggle-focus {
-      padding-bottom: 3px;
+      padding-block-end: 3px;
 
       @media #{base.govuk-from-breakpoint(desktop)} {
-        padding-bottom: 2px;
+        padding-block-end: 2px;
       }
     }
 
@@ -291,7 +292,7 @@
     .govuk-accordion__section-heading-text,
     .govuk-accordion__section-summary {
       display: block;
-      margin-bottom: 13px;
+      margin-block-end: 13px;
 
       .govuk-accordion__section-heading-text-focus,
       .govuk-accordion__section-summary-focus,
@@ -312,7 +313,7 @@
     // margins.
     .govuk-accordion__show-all-text,
     .govuk-accordion__section-toggle-text {
-      margin-left: base.govuk-spacing(1);
+      margin-inline-start: base.govuk-spacing(1);
       vertical-align: middle;
     }
 
@@ -361,12 +362,12 @@
     // remove hover state as it can be stuck in that state (iOS).
     @media (hover: none) {
       .govuk-accordion__section-header:hover {
-        border-top-color: base.govuk-functional-colour(border);
+        border-block-start-color: base.govuk-functional-colour(border);
 
         box-shadow: inset 0 3px 0 0 base.govuk-functional-colour(link);
 
         .govuk-accordion__section-button {
-          border-top-color: base.govuk-functional-colour(border);
+          border-block-start-color: base.govuk-functional-colour(border);
         }
       }
     }

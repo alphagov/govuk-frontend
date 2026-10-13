@@ -20,7 +20,7 @@
 
     $link-spacing: base.govuk-spacing(1);
 
-    @include base.govuk-responsive-margin(6, "bottom", $adjustment: $vertical-gap * -1);
+    @include base.govuk-responsive-margin(6, "block-end", $adjustment: $vertical-gap * -1);
 
     // Flexbox is used to center-align links on mobile, align everything along
     // the baseline on tablet and above, and to removes extra whitespace that
@@ -44,16 +44,16 @@
       display: inline-block;
       // Prevent links overflowing their container in IE10/11 because of bug
       // with align-items: center
-      max-width: 100%;
-      margin-top: $link-spacing;
-      margin-bottom: $link-spacing + $vertical-gap;
+      max-inline-size: 100%;
+      margin-block-start: $link-spacing;
+      margin-block-end: $link-spacing + $vertical-gap;
       text-align: center;
     }
 
     // Reduce the bottom margin to the size of the vertical gap (accommodating
     // the button shadow) – the 'lost' margin is moved to the button-group.
     .govuk-button {
-      margin-bottom: $vertical-gap + $button-shadow-size;
+      margin-block-end: $vertical-gap + $button-shadow-size;
     }
 
     // On tablet and above, we also introduce a 'column gap' between the
@@ -64,15 +64,15 @@
       align-items: baseline;
 
       // Cancel out the column gap for the last item in each row
-      margin-right: ($horizontal-gap * -1);
+      margin-inline-end: ($horizontal-gap * -1);
 
       .govuk-button,
       .govuk-link {
-        margin-right: $horizontal-gap;
+        margin-inline-end: $horizontal-gap;
       }
 
       .govuk-link {
-        text-align: left;
+        text-align: start;
       }
     }
   }

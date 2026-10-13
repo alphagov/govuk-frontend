@@ -23,7 +23,7 @@
 ///
 /// @example scss
 ///  .element {
-///    width: govuk-breakpoint-value(tablet);
+///    inline-size: govuk-breakpoint-value(tablet);
 ///    @media (min-width: #{govuk-breakpoint-value(desktop)}) {
 ///      color: red;
 ///    }

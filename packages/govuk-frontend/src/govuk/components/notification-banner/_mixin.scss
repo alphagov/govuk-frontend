@@ -9,7 +9,7 @@
     --_govuk-notification-banner-title-text-colour: #{base.govuk-functional-colour(inverse-text)};
 
     @include base.govuk-font($size: 19);
-    @include base.govuk-responsive-margin(8, "bottom");
+    @include base.govuk-responsive-margin(8, "block-end");
 
     border: base.$govuk-border-width solid;
     border-color: var(--_govuk-notification-banner-colour);
@@ -21,11 +21,13 @@
   }
 
   .govuk-notification-banner__header {
-    padding: 2px base.govuk-spacing(3) base.govuk-spacing(1);
+    padding-block-start: 2px;
+    padding-block-end: base.govuk-spacing(1);
+    padding-inline: base.govuk-spacing(3);
 
     // Ensures the notification header appears separate to the notification body
     // text in high contrast mode
-    border-bottom: 1px solid transparent;
+    border-block-end: 1px solid transparent;
 
     color: var(--_govuk-notification-banner-title-text-colour);
     background-color: var(--_govuk-notification-banner-colour);
@@ -67,11 +69,11 @@
 
       // ...and then factor in the left border and padding
       $banner-exterior: ($padding-tablet + base.$govuk-border-width);
-      max-width: $two-col-width - $banner-exterior;
+      max-inline-size: $two-col-width - $banner-exterior;
     }
 
     > :last-child {
-      margin-bottom: 0;
+      margin-block-end: 0;
     }
   }
 
@@ -79,7 +81,8 @@
     @include base.govuk-font-size($size: 24);
     @include base.govuk-typography-weight-bold;
 
-    margin: 0 0 base.govuk-spacing(3);
+    margin: 0;
+    margin-block-end: base.govuk-spacing(3);
 
     padding: 0;
   }

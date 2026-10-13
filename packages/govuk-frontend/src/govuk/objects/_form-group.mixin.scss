@@ -4,17 +4,17 @@
 @mixin styles {
   .govuk-form-group {
     @include base.govuk-clearfix;
-    @include base.govuk-responsive-margin(6, "bottom");
+    @include base.govuk-responsive-margin(6, "block-end");
 
     .govuk-form-group:last-of-type {
-      margin-bottom: 0; // Remove margin from last item in nested groups
+      margin-block-end: 0; // Remove margin from last item in nested groups
     }
   }
 
   .govuk-form-group--error {
-    padding-left: base.govuk-spacing(3);
-    border-left: base.$govuk-border-width-form-group-error solid;
-    border-left-color: base.govuk-functional-colour(error);
+    padding-inline-start: base.govuk-spacing(3);
+    border-inline-start: base.$govuk-border-width-form-group-error solid;
+    border-inline-start-color: base.govuk-functional-colour(error);
 
     .govuk-form-group {
       // Reset error styles in nested form groups that might have error class

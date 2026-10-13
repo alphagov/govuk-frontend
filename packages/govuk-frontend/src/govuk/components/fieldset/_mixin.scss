@@ -3,7 +3,7 @@
 /// @access private
 @mixin styles {
   .govuk-fieldset {
-    min-width: 0;
+    min-inline-size: 0;
     margin: 0;
     padding: 0;
     border: 0;
@@ -28,8 +28,8 @@
     // 2. IE8-11
     box-sizing: border-box; // 1
     display: table; // 2
-    max-width: 100%; // 1
-    margin-bottom: base.govuk-spacing(2);
+    max-inline-size: 100%; // 1
+    margin-block-end: base.govuk-spacing(2);
     padding: 0;
     color: base.govuk-functional-colour(text);
 
@@ -41,7 +41,7 @@
   .govuk-fieldset__legend--l,
   .govuk-fieldset__legend--m {
     @include base.govuk-typography-weight-bold;
-    margin-bottom: base.govuk-spacing(3);
+    margin-block-end: base.govuk-spacing(3);
   }
 
   .govuk-fieldset__legend--xl {

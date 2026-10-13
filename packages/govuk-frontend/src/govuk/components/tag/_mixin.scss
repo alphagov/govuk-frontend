@@ -50,7 +50,7 @@
     // where a tag has a single long word and could overflow its boundaries.
     // The max-width is necessary as break-word requires a bounding box to base
     // where to break off of.
-    max-width: $govuk-tag-max-width;
+    max-inline-size: $govuk-tag-max-width;
 
     // These negative margins make sure that the tag component doesn’t increase
     // the size of its container. Otherwise, for example, a table row containing
@@ -58,13 +58,13 @@
     //
     // The negative margin added to the top and bottom matches the extra padding
     // added.
-    margin-top: -2px;
-    margin-bottom: -3px;
+    margin-block-start: -2px;
+    margin-block-end: -3px;
 
-    padding-top: 2px;
-    padding-right: 8px;
-    padding-bottom: 3px;
-    padding-left: 8px;
+    padding-block-start: 2px;
+    padding-inline-end: 8px;
+    padding-block-end: 3px;
+    padding-inline-start: 8px;
 
     border-radius: 1px;
     text-decoration: none;

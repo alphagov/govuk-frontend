@@ -12,7 +12,16 @@
 /// @type Map
 /// @access private
 
-$_spacing-directions: ("top", "right", "bottom", "left") !default;
+$_spacing-directions: (
+  "top",
+  "right",
+  "bottom",
+  "left",
+  "block-start",
+  "inline-end",
+  "block-end",
+  "inline-start"
+) !default;
 
 /// Generate responsive spacing override classes
 ///

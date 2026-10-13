@@ -17,9 +17,8 @@
 
 @mixin _govuk-visually-hide-content($important: true) {
   position: absolute govuk-if($important, !important);
-
-  width: 1px govuk-if($important, !important);
-  height: 1px govuk-if($important, !important);
+  inline-size: 1px govuk-if($important, !important);
+  block-size: 1px govuk-if($important, !important);
   // If margin is set to a negative value it can cause text to be announced in
   // the wrong order in VoiceOver for OSX
   margin: 0 govuk-if($important, !important);

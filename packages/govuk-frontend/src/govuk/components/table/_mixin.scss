@@ -4,9 +4,8 @@
 @mixin styles {
   .govuk-table {
     @include base.govuk-font($size: 19);
-
-    width: 100%;
-    @include base.govuk-responsive-margin(6, "bottom");
+    inline-size: 100%;
+    @include base.govuk-responsive-margin(6, "block-end");
 
     border-spacing: 0;
     border-collapse: collapse;
@@ -27,10 +26,11 @@
 
   .govuk-table__header,
   .govuk-table__cell {
-    padding: base.govuk-spacing(2) base.govuk-spacing(4) base.govuk-spacing(2) 0;
-    border-bottom: 1px solid;
-    border-bottom-color: base.govuk-functional-colour(border);
-    text-align: left;
+    padding-block: base.govuk-spacing(2);
+    padding-inline-end: base.govuk-spacing(4);
+    border-block-end: 1px solid;
+    border-block-end-color: base.govuk-functional-colour(border);
+    text-align: start;
     vertical-align: top;
   }
 
@@ -40,26 +40,26 @@
 
   .govuk-table__header--numeric,
   .govuk-table__cell--numeric {
-    text-align: right;
+    text-align: end;
   }
 
   .govuk-table__header:last-child,
   .govuk-table__cell:last-child {
-    padding-right: 0;
+    padding-inline-end: 0;
   }
 
   .govuk-table__caption {
     @include base.govuk-typography-weight-bold;
 
     display: table-caption;
-    text-align: left;
+    text-align: start;
   }
 
   // Modifiers that make captions look more like their equivalent headings
   .govuk-table__caption--xl,
   .govuk-table__caption--l,
   .govuk-table__caption--m {
-    margin-bottom: base.govuk-spacing(3);
+    margin-block-end: base.govuk-spacing(3);
   }
 
   .govuk-table__caption--xl {

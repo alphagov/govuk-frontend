@@ -6,8 +6,8 @@
     @include base.govuk-font($size: 19, $weight: bold);
 
     display: block;
-    margin-top: 0; // Reset any default browser margins for paragraphs
-    margin-bottom: base.govuk-spacing(3);
+    margin-block-start: 0; // Reset any default browser margins for paragraphs
+    margin-block-end: base.govuk-spacing(3);
     clear: both;
 
     color: base.govuk-functional-colour(error);

@@ -20,14 +20,14 @@ $header-forced-colour-border-width: 1px;
   @include base.govuk-font($size: 16, $line-height: 1);
 
   // Add a transparent bottom border for forced-colour modes
-  border-bottom: $header-forced-colour-border-width solid transparent;
+  border-block-end: $header-forced-colour-border-width solid transparent;
 
   --govuk-text-colour: #{$text-colour};
   color: base.govuk-functional-colour(text);
   background: $background-colour;
 
   @media print {
-    border-bottom-width: 0;
+    border-block-end-width: 0;
 
     --govuk-text-colour: inherit;
     background: transparent;
@@ -38,7 +38,8 @@ $header-forced-colour-border-width: 1px;
 ///
 /// @access private
 @mixin full-width-container-styles() {
-  padding: 0 base.$govuk-gutter-half;
+  padding-block: 0;
+  padding-inline: base.$govuk-gutter-half;
 }
 
 /// Shared header logo container element styles, with automating padding setting
@@ -54,8 +55,8 @@ $header-forced-colour-border-width: 1px;
     base.govuk-spacing(3)
   )
 ) {
-  padding-top: $padding-top;
-  padding-bottom: $padding-bottom;
+  padding-block-start: $padding-top;
+  padding-block-end: $padding-bottom;
 }
 
 /// Shared header logo link element styles
@@ -73,7 +74,7 @@ $header-forced-colour-border-width: 1px;
   // Font size needs to be set on the link so that the box sizing is correct
   // in Firefox
   display: inline;
-  margin-right: base.govuk-spacing(2);
+  margin-inline-end: base.govuk-spacing(2);
   font-size: 30px; // We don't have a mixin that produces 30px font size
   text-decoration: none;
 
@@ -88,14 +89,14 @@ $header-forced-colour-border-width: 1px;
   &:active {
     // Negate the added border
     $link-underline-thickness: 3px;
-    margin-bottom: $link-underline-thickness * -1;
-    border-bottom: $link-underline-thickness solid;
+    margin-block-end: $link-underline-thickness * -1;
+    border-block-end: $link-underline-thickness solid;
   }
 
   &:focus {
     // Remove any borders that show when focused and hovered.
-    margin-bottom: 0;
-    border-bottom: 0;
+    margin-block-end: 0;
+    border-block-end: 0;
 
     @include base.govuk-focused-text;
   }

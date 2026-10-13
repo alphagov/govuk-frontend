@@ -26,8 +26,8 @@
   .govuk-breadcrumbs {
     @include base.govuk-font($size: $font-size);
 
-    margin-top: base.govuk-spacing(3);
-    margin-bottom: base.govuk-spacing(2);
+    margin-block-start: base.govuk-spacing(3);
+    margin-block-end: base.govuk-spacing(2);
     color: base.govuk-functional-colour(text);
   }
 
@@ -43,14 +43,14 @@
     display: inline-block;
     position: relative;
 
-    margin-bottom: base.govuk-spacing(1);
+    margin-block-end: base.govuk-spacing(1);
 
     // Add both margin and padding such that the chevron appears centrally
     // between each breadcrumb item
-    margin-left: base.govuk-em(base.govuk-spacing(2), $font-size);
-    padding-left: base.govuk-em(base.govuk-spacing(2), $font-size) + $chevron-altitude-calculated;
+    margin-inline-start: base.govuk-em(base.govuk-spacing(2), $font-size);
+    padding-inline-start: base.govuk-em(base.govuk-spacing(2), $font-size) + $chevron-altitude-calculated;
 
-    float: left;
+    float: inline-start;
 
     // Create a chevron using a box with borders on two sides, rotated 45deg.
     &::before {
@@ -58,17 +58,16 @@
       display: block;
 
       position: absolute;
-      top: 0;
-      bottom: 0;
+      inset-block-start: 0;
+      inset-block-end: 0;
 
       // Offset by the difference between the width of the non-rotated square
       // and its width when rotated
-      left: (($chevron-altitude-calculated * -2) + $chevron-size + $chevron-border-width);
+      inset-inline-start: (($chevron-altitude-calculated * -2) + $chevron-size + $chevron-border-width);
+      inline-size: $chevron-size;
+      block-size: $chevron-size;
 
-      width: $chevron-size;
-      height: $chevron-size;
-
-      margin: auto 0;
+      margin-block: auto;
 
       transform: rotate(45deg);
 
@@ -86,8 +85,8 @@
     }
 
     &:first-child {
-      margin-left: 0;
-      padding-left: 0;
+      margin-inline-start: 0;
+      padding-inline-start: 0;
 
       &::before {
         content: none;
@@ -112,7 +111,7 @@
         }
 
         &::before {
-          top: base.govuk-em(6px, $font-size);
+          inset-block-start: base.govuk-em(6px, $font-size);
           margin: 0;
         }
       }

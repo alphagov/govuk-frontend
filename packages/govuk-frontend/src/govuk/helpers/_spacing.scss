@@ -25,12 +25,12 @@
 ///
 /// @example scss Using negative spacing
 ///   .element {
-///     margin-top: govuk-spacing(-1);
+///     margin-block-start: govuk-spacing(-1);
 ///   }
 ///
 /// @example scss Marking spacing declarations as important
 ///   .element {
-///     margin-top: govuk-spacing(1) !important;
+///     margin-block-start: govuk-spacing(1) !important;
 ///   }
 ///
 /// @access public
@@ -71,7 +71,7 @@
 ///
 /// @example scss
 ///   .element {
-///      @include govuk-responsive-margin(6, "left", $adjustment: 1px);
+///      @include govuk-responsive-margin(6, "inline-start", $adjustment: 1px);
 ///   }
 ///
 /// @access public
@@ -101,7 +101,7 @@
 ///
 /// @example scss
 ///   .element {
-///      @include govuk-responsive-padding(6, "left", $adjustment: 1px);
+///      @include govuk-responsive-padding(6, "inline-start", $adjustment: 1px);
 ///   }
 ///
 /// @access public

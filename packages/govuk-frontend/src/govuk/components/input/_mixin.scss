@@ -6,9 +6,9 @@
     @include base.govuk-font($size: 19);
 
     box-sizing: border-box;
-    width: 100%;
-    height: base.govuk-px-to-rem(40px);
-    margin-top: 0;
+    inline-size: 100%;
+    block-size: base.govuk-px-to-rem(40px);
+    margin-block-start: 0;
     padding: base.govuk-spacing(1);
     // Setting any background-color makes text invisible when changing colours
     // to dark backgrounds in Firefox (https://bugzil.la/1335476). As
@@ -60,31 +60,31 @@
   // Extra space is added on the right to allow for the Safari prefill icon
 
   .govuk-input--width-30 {
-    max-width: 29.5em;
+    max-inline-size: 29.5em;
   }
 
   .govuk-input--width-20 {
-    max-width: 20.5em;
+    max-inline-size: 20.5em;
   }
 
   .govuk-input--width-10 {
-    max-width: 11.5em;
+    max-inline-size: 11.5em;
   }
 
   .govuk-input--width-5 {
-    max-width: 5.5em;
+    max-inline-size: 5.5em;
   }
 
   .govuk-input--width-4 {
-    max-width: 4.5em;
+    max-inline-size: 4.5em;
   }
 
   .govuk-input--width-3 {
-    max-width: 3.75em;
+    max-inline-size: 3.75em;
   }
 
   .govuk-input--width-2 {
-    max-width: 2.75em;
+    max-inline-size: 2.75em;
   }
 
   .govuk-input__wrapper {
@@ -105,7 +105,7 @@
 
       .govuk-input {
         // Set max-width to override potential width override class on the input
-        max-width: 100%;
+        max-inline-size: 100%;
       }
     }
   }
@@ -119,8 +119,8 @@
     flex: 0 0 auto;
     align-items: center;
     justify-content: center;
-    min-width: base.govuk-px-to-rem(40px);
-    height: base.govuk-px-to-rem(40px);
+    min-inline-size: base.govuk-px-to-rem(40px);
+    block-size: base.govuk-px-to-rem(40px);
     padding: base.govuk-spacing(1);
     border: base.$govuk-border-width-form-element solid;
     border-color: base.govuk-functional-colour(input-border);
@@ -133,27 +133,27 @@
     // Split prefix/suffix onto separate lines on narrow screens
     @media #{base.govuk-until-breakpoint(mobile)} {
       display: block;
-      height: 100%;
+      block-size: 100%;
       white-space: normal;
     }
   }
 
   .govuk-input__prefix {
     @media #{base.govuk-until-breakpoint(mobile)} {
-      border-bottom: 0;
+      border-block-end: 0;
     }
     @media #{base.govuk-from-breakpoint(mobile)} {
-      border-right: 0;
+      border-inline-end: 0;
     }
   }
 
   // Split prefix/suffix onto separate lines on narrow screens
   .govuk-input__suffix {
     @media #{base.govuk-until-breakpoint(mobile)} {
-      border-top: 0;
+      border-block-start: 0;
     }
     @media #{base.govuk-from-breakpoint(mobile)} {
-      border-left: 0;
+      border-inline-start: 0;
     }
   }
 }

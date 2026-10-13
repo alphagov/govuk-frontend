@@ -7,7 +7,7 @@
 
     display: block;
 
-    margin-bottom: base.govuk-spacing(1);
+    margin-block-end: base.govuk-spacing(1);
     color: base.govuk-functional-colour(text);
   }
 
@@ -16,7 +16,7 @@
   .govuk-label--l,
   .govuk-label--m {
     @include base.govuk-typography-weight-bold;
-    margin-bottom: base.govuk-spacing(3);
+    margin-block-end: base.govuk-spacing(3);
   }
 
   .govuk-label--xl {
