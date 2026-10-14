@@ -6,32 +6,22 @@ For advice on how to use these release notes, see [our guidance on staying up to
 
 ### New features
 
-#### Improved character count counting
+#### We've improved how the Character count component works
 
-We've added a new `countType` option to the character count component to enable [improved counting with `Intl.Segmenter`](https://developer.mozilla.org/en-US/blog/javascript-intl-segmenter-i18n/).
+We've added a new `countType` option to the Character count component. This option uses JavaScript's [`Intl.Segmenter` object](https://developer.mozilla.org/en-US/blog/javascript-intl-segmenter-i18n/) to segment text into characters or words and make counting more accurate, particularly when users input special characters or emojis.
 
-This feature was introduced because [JavaScript counts `String: length` in code units](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/length) not characters, for example:
+You should consider how character or word limits are counted in your service's backend before using the `countType` option because you may need to adjust character or word limits.
 
-| String | Length | Remarks                                                                    |
-| ------ | ------ | -------------------------------------------------------------------------- |
-| cafȩ́   | 5      | The character `ȩ́` counted as 2 code units                                  |
-| cafȩ́   | 5      | The character `ȩ` with combining mark ` ́` counted as 2 code units          |
-| cafȩ́   | 6      | The character `e` with combining marks ` ́` and ` ̧` counted as 3 code units |
-| 😹     | 2      | The cat emoji counted as 2 code units                                      |
-| 👩🏻‍🚀     | 7      | The astronaut emoji with gender and skin modifiers counted as 7 code units |
-
-Similarly when counting words, "my mother-in-law" is now counted as 4 (not 2) words to correctly follow the [Unicode **Default Word Boundary Specification**](https://unicode.org/reports/tr29/#Default_Word_Boundaries).
-
-To enable improved counting in [supported browsers](https://caniuse.com/wf-intl-segmenter) you should either:
+To enable improved counting in [supported browsers](https://caniuse.com/wf-intl-segmenter), you should either:
 
 - add `countType: "characters"` to count user-perceived characters
 - add `countType: "words"` to count words between word boundaries
 
-Unsupported browsers will default to the `textareaDescriptionText` message shown when JavaScript is unavailable, such as:
+Unsupported browsers will default to the `textareaDescriptionText` message shown when JavaScript is unavailable, for example:
 
 > You can enter up to 350 characters
 
-When using Nunjucks to count characters:
+To use Nunjucks to count characters, add `countType: "characters"`:
 
 ```patch
   {{ govukCharacterCount({
@@ -45,7 +35,7 @@ When using Nunjucks to count characters:
   }) }}
 ```
 
-Or when using Nunjucks to count words:
+To use Nunjucks to count words, add `countType: "words"`:
 
 ```patch
   {{ govukCharacterCount({
@@ -59,9 +49,9 @@ Or when using Nunjucks to count words:
   }) }}
 ```
 
-Note: [The character count `maxwords` option and word counting behaviour are deprecated](#rename-the-character-count-maxwords-option) and will be removed in a future release. You must replace `maxwords` with `maxlength` when using `countType: "words"`.
+The Character count `maxwords` option and word-counting behaviour are deprecated, and we'll remove them in a future release. You must replace `maxwords` with `maxlength` when using `countType: "words"`.
 
-This was added in [pull request #6995: Add character count `Intl.Segmenter` support](https://github.com/alphagov/govuk-frontend/pull/6995) - thanks to @colinrotherham and the NHS Design System team for contributing this change.
+We made this change in [pull request #6995: Add character count `Intl.Segmenter` support](https://github.com/alphagov/govuk-frontend/pull/6995) - thanks to @colinrotherham and the NHS digital service manual team for contributing this change.
 
 ### Fixes
 
