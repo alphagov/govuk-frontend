@@ -1,4 +1,4 @@
-import pkg from './package.json'
+import pkg from './package.json' with { type: 'json' }
 
 describe('package.json', () => {
   // The `sideEffects` field allows us to tell bundlers like Webpack or Rollup

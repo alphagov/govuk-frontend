@@ -32,6 +32,7 @@ export default defineConfig(async ({ i: input }) => ({
      * Output plugins
      */
     plugins: [
+      // @ts-expect-error - This expression is not callable
       terser({
         // Allow Terser to remove @preserve comments
         format: { comments: false },
@@ -60,6 +61,7 @@ export default defineConfig(async ({ i: input }) => ({
    * Input plugins
    */
   plugins: [
+    // @ts-expect-error - This expression is not callable
     replace({
       include: '**/common/govuk-frontend-version.mjs',
       preventAssignment: true,

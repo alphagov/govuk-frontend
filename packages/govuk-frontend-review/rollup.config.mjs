@@ -1,5 +1,5 @@
 import commonjs from '@rollup/plugin-commonjs'
-import resolve from '@rollup/plugin-node-resolve'
+import { nodeResolve as resolve } from '@rollup/plugin-node-resolve'
 import terser from '@rollup/plugin-terser'
 import { defineConfig } from 'rollup'
 
@@ -20,6 +20,7 @@ export default defineConfig(({ i: input }) => ({
      * Output plugins
      */
     plugins: [
+      // @ts-expect-error - This expression is not callable
       terser({
         // Allow Terser to remove @preserve comments
         format: { comments: false },
@@ -43,6 +44,7 @@ export default defineConfig(({ i: input }) => ({
     resolve({
       browser: true
     }),
+    // @ts-expect-error - This expression is not callable
     commonjs({
       requireReturnsDefault: 'preferred',
       defaultIsModuleExports: true
