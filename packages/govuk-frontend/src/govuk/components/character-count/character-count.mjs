@@ -29,7 +29,14 @@ export class CharacterCount extends ConfigurableComponent {
   /** @private */
   count = 0
 
+  /** @private */
+  countFunction
+
+  /** @private */
+  countFunctionContext
+
   /**
+   * @private
    * @type {Intl.Segmenter | null}
    */
   segmenter = null
@@ -134,9 +141,19 @@ export class CharacterCount extends ConfigurableComponent {
 
     if (
       this.config.countType === 'characters' ||
-      (this.config.countType === 'words' && this.config.maxwords === undefined)
+      (this.config.countType === 'words' &&
+        this.config.maxwords === undefined) ||
+      this.config.countFunction
     ) {
-      if (!('Segmenter' in Intl)) {
+      if ('Segmenter' in Intl) {
+        this.segmenter = new Intl.Segmenter(this.i18n.locale, {
+          granularity: this.config.countType === 'words' ? 'word' : 'grapheme'
+        })
+      }
+
+      // Suppress support error if a custom count function is provided, since
+      // users may provide their own fallback without needing Intl.Segmenter
+      if (!this.segmenter && !this.config.countFunction) {
         throw new SupportError(
           formatErrorMessage(
             CharacterCount,
@@ -144,11 +161,18 @@ export class CharacterCount extends ConfigurableComponent {
           )
         )
       }
-
-      this.segmenter = new Intl.Segmenter(this.i18n.locale, {
-        granularity: this.config.countType === 'words' ? 'word' : 'grapheme'
-      })
     }
+
+    // Determine the count function to use
+    this.countFunction =
+      this.config.countFunction ??
+      CharacterCount.countFunctions[this.config.countType ?? 'length']
+
+    // Cache the count function context
+    this.countFunctionContext = /** @type {CharacterCountContext} */ ({
+      config: this.config,
+      segmenter: this.segmenter
+    })
 
     // Determine the limit attribute (characters or words)
     this.maxLength = this.config.maxlength ?? Infinity
@@ -384,37 +408,10 @@ export class CharacterCount extends ConfigurableComponent {
    * @private
    */
   updateCount() {
-    const text = this.$textarea.value
-
-    // Count grapheme clusters (user-perceived characters)
-    if (this.config.countType === 'characters') {
-      this.count = this.segmenter
-        ? Array.from(this.segmenter.segment(text)).length
-        : 0
-
-      return
-    }
-
-    // Count words
-    //
-    // If the (deprecated) `maxwords` option is set, count consecutive
-    // non-whitespace results rather than using the segmenter
-    if (this.config.countType === 'words') {
-      if (this.config.maxwords !== undefined) {
-        this.count = text.match(/\S+/g)?.length ?? 0
-        return
-      }
-
-      const segments = this.segmenter
-        ? Array.from(this.segmenter.segment(text))
-        : []
-
-      // Filter out punctuation and whitespace, leaving only words
-      this.count = segments.filter((segment) => segment.isWordLike).length
-      return
-    }
-
-    this.count = text.length
+    this.count = this.countFunction(
+      this.$textarea.value,
+      this.countFunctionContext
+    )
   }
 
   /**
@@ -483,6 +480,60 @@ export class CharacterCount extends ConfigurableComponent {
   }
 
   /**
+   * Character count functions
+   *
+   * @constant
+   * @satisfies {Record<string, CharacterCountFunction>}
+   */
+  static countFunctions = Object.freeze({
+    /**
+     * Count code points (string length)
+     *
+     * @param {string} text - Textarea value
+     * @returns {number} Count
+     */
+    length(text) {
+      return text.length
+    },
+
+    /**
+     * Count grapheme clusters (user-perceived characters)
+     *
+     * @param {string} text - Textarea value
+     * @param {CharacterCountContext} context - Object containing the config and segmenter
+     * @returns {number} Count
+     */
+    characters(text, context) {
+      return context.segmenter
+        ? Array.from(context.segmenter.segment(text)).length
+        : 0
+    },
+
+    /**
+     * Count words
+     *
+     * If the (deprecated) `maxwords` option is set, count consecutive
+     * non-whitespace results rather than using the segmenter
+     *
+     * @param {string} text - Textarea value
+     * @param {CharacterCountContext} context - Object containing the config and segmenter
+     * @returns {number} Count
+     */
+    words(text, context) {
+      if (context.config.maxwords !== undefined) {
+        return text.match(/\S+/g)?.length ?? 0
+      }
+
+      const segments = context.segmenter
+        ? Array.from(context.segmenter.segment(text))
+        : []
+
+      // Filter out punctuation and whitespace, leaving only words
+      return segments.filter((segment) => segment.isWordLike).length
+    }
+  })
+
+  /**
    * Name for the component used when initialising using data-module attributes.
    */
   static moduleName = 'govuk-character-count'
@@ -536,7 +587,8 @@ export class CharacterCount extends ConfigurableComponent {
       maxwords: { type: 'number' },
       maxlength: { type: 'number' },
       threshold: { type: 'number' },
-      countType: { type: 'string' }
+      countType: { type: 'string' },
+      countFunction: { type: 'function' }
     },
     anyOf: [
       {
@@ -565,7 +617,26 @@ export class CharacterCount extends ConfigurableComponent {
  *   count message will be hidden by default.
  * @property {'characters' | 'length' | 'words'} [countType] - The count type
  *   (`"characters"`, `"length"` or `"words"`) used to count the text.
+ * @property {CharacterCountFunction} [countFunction] - Custom character or
+ *   word counting function.
  * @property {CharacterCountTranslations} [i18n=CharacterCount.defaults.i18n] - Character count translations
+ */
+
+/**
+ * Character count function
+ *
+ * @callback CharacterCountFunction
+ * @param {string} text - Textarea value
+ * @param {CharacterCountContext} context - Object containing the config and segmenter
+ * @returns {number} Count
+ */
+
+/**
+ * Character count context
+ *
+ * @typedef {object} CharacterCountContext
+ * @property {CharacterCountConfig} config - Character count config
+ * @property {CharacterCount['segmenter']} segmenter - Character count segmenter
  */
 
 /**

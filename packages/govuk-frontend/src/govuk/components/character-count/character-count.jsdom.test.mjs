@@ -152,6 +152,18 @@ describe('Character count', () => {
       )
     })
 
+    it('should not throw without Intl.Segmenter support when count function is provided', () => {
+      // @ts-expect-error The operand of a 'delete' operator cannot be a read-only property
+      delete Intl.Segmenter
+
+      expect(() => {
+        new CharacterCount($root, {
+          countType: 'characters',
+          countFunction: jest.fn()
+        })
+      }).not.toThrow()
+    })
+
     it('should throw when initialised twice', () => {
       expect(() => {
         new CharacterCount($root)
@@ -405,6 +417,51 @@ describe('Character count', () => {
 
         // @ts-expect-error Property 'formatCountMessage' is private
         expect(component.getCountMessage()).toBe('You have 97 words remaining')
+      })
+
+      it('uses custom `countFunction` for `maxlength` limit when set', async () => {
+        const component = new CharacterCount($root, {
+          maxlength: 100,
+          countFunction: jest.fn().mockReturnValue(10)
+        })
+
+        $textarea.focus()
+        await user.keyboard('Newly updated value')
+
+        expect(component._config.countFunction).toHaveBeenLastCalledWith(
+          'Newly updated value',
+          {
+            config: component._config,
+            segmenter: expect.any(Intl.Segmenter)
+          }
+        )
+
+        // @ts-expect-error Property 'formatCountMessage' is private
+        expect(component.getCountMessage()).toBe(
+          'You have 90 characters remaining'
+        )
+      })
+
+      it('uses custom `countFunction` for `maxlength` limit with `countType: "words"` when set', async () => {
+        const component = new CharacterCount($root, {
+          maxlength: 100,
+          countType: 'words',
+          countFunction: jest.fn().mockReturnValue(10)
+        })
+
+        $textarea.focus()
+        await user.keyboard('Newly updated value')
+
+        expect(component._config.countFunction).toHaveBeenLastCalledWith(
+          'Newly updated value',
+          {
+            config: component._config,
+            segmenter: expect.any(Intl.Segmenter)
+          }
+        )
+
+        // @ts-expect-error Property 'formatCountMessage' is private
+        expect(component.getCountMessage()).toBe('You have 90 words remaining')
       })
     })
 
