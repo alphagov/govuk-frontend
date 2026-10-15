@@ -58,11 +58,11 @@
   // Insert a space character before and after visually hidden text to separate
   // it from any visible text surrounding it.
   &::before {
-    content: "\00a0";
+    content: "\00a0" / "";
   }
 
   &::after {
-    content: "\00a0";
+    content: "\00a0" / "";
   }
 }
 
