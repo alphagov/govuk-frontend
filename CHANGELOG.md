@@ -57,7 +57,7 @@ The Character count `maxwords` option and word-counting behaviour are deprecated
 
 We made this change in [pull request #6995: Add character count `Intl.Segmenter` support](https://github.com/alphagov/govuk-frontend/pull/6995) - thanks to @colinrotherham and the NHS digital service manual team for contributing this change.
 
-### Fixes
+### Fixes
 
 We've made fixes to GOV.UK Frontend in the following pull requests:
 
