@@ -1,0 +1,23 @@
+{% extends "./mock-service.njk" %}
+
+{% from "govuk/components/panel/macro.njk" import govukPanel %}
+
+{% set pageTitle = "Sign up complete" %}
+
+{% block bodyStart %}{% endblock %}
+
+{% block pageContent %}
+  {% call govukPanel({
+    titleText: pageTitle
+  }) %}
+    Your reference number<br><strong>WW 117</strong>
+  {% endcall %}
+
+  <p class="govuk-body">We have sent you a confirmation email.</p>
+
+  <h2 class="govuk-heading-m">What happens next</h2>
+
+  <p class="govuk-body">We will email you further instructions and confirm the inspection date before we welcome you at Wonka Industries.</p>
+
+  <p class="govuk-body">You can find more about us and how to find us on <a href="{{ mockServiceSlug }}/candy-factory-directory" class="govuk-link">the Candy factory directory</a>.</p>
+{% endblock %}
