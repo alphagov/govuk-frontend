@@ -102,7 +102,7 @@ examples:
           - text: Are you sure you want to change this?
             type: submit
             attributes:
-              form: the-form-id
+              form: test-target-form-element
           - text: Go back to application
             href: '#'
   - name: interruption-with-headings-content-and-lists
