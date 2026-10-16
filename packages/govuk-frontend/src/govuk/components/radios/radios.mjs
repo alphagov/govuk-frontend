@@ -103,7 +103,6 @@ export class Radios extends Component {
     if ($target?.classList.contains('govuk-radios__conditional')) {
       const inputIsChecked = $input.checked
 
-      $input.setAttribute('aria-expanded', inputIsChecked.toString())
       $target.classList.toggle(
         'govuk-radios__conditional--hidden',
         !inputIsChecked
