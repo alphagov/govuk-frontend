@@ -119,7 +119,7 @@ export class ExitThisPage extends ConfigurableComponent {
       class: 'govuk-visually-hidden'
     })
 
-    this.$root.appendChild(this.$updateSpan)
+    this.$root.append(this.$updateSpan)
   }
 
   /**
@@ -155,7 +155,7 @@ export class ExitThisPage extends ConfigurableComponent {
 
     // Create three 'lights' and place them within the container
     for (let i = 0; i < 3; i++) {
-      this.$indicatorContainer.appendChild(
+      this.$indicatorContainer.append(
         createElement('div', {
           class: 'govuk-exit-this-page__indicator-light'
         })
@@ -163,7 +163,7 @@ export class ExitThisPage extends ConfigurableComponent {
     }
 
     // Append it all to the module
-    this.$button.appendChild(this.$indicatorContainer)
+    this.$button.append(this.$indicatorContainer)
   }
 
   /**
@@ -223,7 +223,7 @@ export class ExitThisPage extends ConfigurableComponent {
     // we do these this way round, thus incurring a second paint, because changing
     // the element text after adding it means that screen readers pick up the
     // announcement more reliably.
-    document.body.appendChild(this.$overlay)
+    document.body.append(this.$overlay)
     this.$overlay.textContent = this.i18n.t('activated')
 
     window.location.href = this.$button.href

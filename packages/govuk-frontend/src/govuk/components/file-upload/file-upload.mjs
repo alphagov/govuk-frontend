@@ -104,7 +104,7 @@ export class FileUpload extends ConfigurableComponent {
     this.$button = this.createButton()
 
     // Inject button into component
-    this.$root.insertAdjacentElement('afterbegin', this.$button)
+    this.$root.prepend(this.$button)
 
     // Bind change event to the underlying input
     this.$input.addEventListener('change', this.onChange.bind(this))
@@ -120,7 +120,7 @@ export class FileUpload extends ConfigurableComponent {
       'aria-live': 'assertive'
     })
 
-    this.$root.insertAdjacentElement('afterend', this.$announcements)
+    this.$root.after(this.$announcements)
 
     // Bind all of the events relating to drag and drop functionality
     this.bindDraggingEvents()
@@ -164,7 +164,7 @@ export class FileUpload extends ConfigurableComponent {
     }
 
     // Inject status element
-    $button.appendChild(this.$status)
+    $button.append(this.$status)
 
     const commaSpan = createElement(
       'span',
@@ -175,7 +175,7 @@ export class FileUpload extends ConfigurableComponent {
       [', ']
     )
 
-    $button.appendChild(commaSpan)
+    $button.append(commaSpan)
 
     const containerSpan = createElement('span', {
       class: 'govuk-file-upload-button__pseudo-button-container'
@@ -190,7 +190,7 @@ export class FileUpload extends ConfigurableComponent {
       [this.i18n.t('chooseFilesButton')]
     )
 
-    containerSpan.appendChild(buttonSpan)
+    containerSpan.append(buttonSpan)
 
     // Add a space so the button and instruction read correctly
     // when CSS is disabled
@@ -204,9 +204,9 @@ export class FileUpload extends ConfigurableComponent {
       [this.i18n.t('dropInstruction')]
     )
 
-    containerSpan.appendChild(instructionSpan)
+    containerSpan.append(instructionSpan)
 
-    $button.appendChild(containerSpan)
+    $button.append(containerSpan)
     $button.setAttribute(
       'aria-labelledby',
       `${this.$label.id} ${commaSpan.id} ${$button.id}`
