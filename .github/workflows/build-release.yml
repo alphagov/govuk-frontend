@@ -48,6 +48,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v7.0.1
 
+      - name: Configure git
+        uses: ./.github/workflows/actions/git/config
+
       - name: Setup Node
         uses: actions/setup-node@v7.0.0
         with:
@@ -93,11 +96,6 @@ jobs:
         with:
           path: CHANGELOG.md
           archive: false # Saves having to decompress the CHANGELOG
-
-      - name: Configure Git
-        run: |
-          git config --global user.name '${{ github.actor }}'
-          git config --global user.email '${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com'
 
       - name: Create pull request
         env:

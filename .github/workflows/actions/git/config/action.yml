@@ -1,0 +1,12 @@
+name: Configure git
+
+runs:
+  using: composite
+
+  steps:
+    # Ensure any commits or tags created match the CI account
+    - name: Set git user to govuk-design-system-ci
+      shell: bash
+      run: |
+        git config --global user.name "govuk-design-system-ci"
+        git config --global user.email "29196610+govuk-design-system-ci@users.noreply.github.com"
