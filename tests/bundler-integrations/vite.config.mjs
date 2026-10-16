@@ -4,7 +4,7 @@
 // or `build.lib.entry`
 const entryName = process.env.ENTRY_NAME ?? 'single-component'
 
-/** @type {import('vite/dist/node').UserConfig} */
+/** @type {import('vite').UserConfig} */
 export default {
   build: {
     // Align output with other bundlers to facilitate testing

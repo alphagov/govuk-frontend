@@ -21,6 +21,7 @@ export async function getFullPageExamples() {
    */
   const examples = await Promise.all(
     directories.map(async (exampleName) => {
+      // @ts-expect-error - This expression is not callable
       const { attributes } = fm(
         await readFile(join(examplesPath, exampleName, 'index.njk'), 'utf8')
       )

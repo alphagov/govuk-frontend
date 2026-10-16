@@ -2,7 +2,7 @@ import { dirname, join, parse } from 'path'
 
 import { paths } from '@govuk-frontend/config'
 import { packageTypeToPath } from '@govuk-frontend/lib/names'
-import resolve from '@rollup/plugin-node-resolve'
+import { nodeResolve as resolve } from '@rollup/plugin-node-resolve'
 import terser from '@rollup/plugin-terser'
 import { defineConfig } from 'rollup'
 import { visualizer } from 'rollup-plugin-visualizer'
@@ -42,6 +42,7 @@ export default defineConfig(
            * {@link file://./../../packages/govuk-frontend/rollup.release.config.mjs}
            */
           plugins: [
+            // @ts-expect-error - This expression is not callable
             terser({
               // Allow Terser to remove @preserve comments
               format: { comments: false },

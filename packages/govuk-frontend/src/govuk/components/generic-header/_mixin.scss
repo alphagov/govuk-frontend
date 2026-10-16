@@ -46,14 +46,7 @@ $header-forced-colour-border-width: 1px;
 /// @param {String} $padding-top - top padding of logo container
 /// @param {String} $padding-bottom - bottom padding of logo container
 /// @access private
-@mixin logo-styles(
-  $padding-top: (
-    base.govuk-spacing(3)
-  ),
-  $padding-bottom: (
-    base.govuk-spacing(3)
-  )
-) {
+@mixin logo-styles($padding-top: (base.govuk-spacing(3)), $padding-bottom: (base.govuk-spacing(3))) {
   padding-top: $padding-top;
   padding-bottom: $padding-bottom;
 }
