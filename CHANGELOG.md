@@ -28,6 +28,7 @@ We've have also made fixes to GOV.UK Frontend in the following pull requests:
 
 - [#7584: Fix GOV.UK Logo Dot from appearing low contrast on browsers that dont support CSS Custom Properties](https://github.com/alphagov/govuk-frontend/pull/7584)
 - [#7574: Fix Accordion chevron background not inheriting focus-text colour when focused](https://github.com/alphagov/govuk-frontend/pull/7574)
+- [#7503: Remove `aria-expanded` from Radios which conditionally reveal (show and hide) content](https://github.com/alphagov/govuk-frontend/pull/7503)
 
 ## v6.6.0 (Feature release)
 
