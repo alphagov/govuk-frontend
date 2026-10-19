@@ -96,10 +96,12 @@ updates:
       # Our current configuration doesn't let it be `import`ed in Jest
       - dependency-name: 'puppeteer'
         update-types: ['version-update:semver-major']
-      # CSSNano is ESM only and used in some of our tests
+      # CSSNano removed their `main` entry from `package.json` in 8.0.3
+      # leading to `eslint-plugin-import` being unable to resolve it
+      # Version 9 has a fix is ESM only and used in some of our tests
       # Our current configuration doesn't let it be `import`ed in Jest
       - dependency-name: 'cssnano'
-        update-types: ['version-update:semver-major']
+        versions: '<8.0.3'
 
     schedule:
       interval: monthly
