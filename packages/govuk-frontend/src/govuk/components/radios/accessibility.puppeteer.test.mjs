@@ -5,14 +5,7 @@ describe('/components/radios', () => {
   let axeRules
 
   beforeAll(() => {
-    axeRules = {
-      /**
-       * Ignore 'ARIA attribute is not allowed: aria-expanded="false"'
-       *
-       * {@link https://github.com/alphagov/govuk-frontend/issues/979}
-       */
-      'aria-allowed-attr': { enabled: false }
-    }
+    axeRules = {}
   })
 
   describe('component examples', () => {
