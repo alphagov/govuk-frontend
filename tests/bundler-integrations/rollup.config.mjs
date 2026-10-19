@@ -1,4 +1,4 @@
-import resolve from '@rollup/plugin-node-resolve'
+import { nodeResolve as resolve } from '@rollup/plugin-node-resolve'
 
 /** @type {import('rollup').RollupOptions} */
 export default {

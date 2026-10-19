@@ -65,6 +65,7 @@ export default defineConfig(({ i: input }) => ({
    * Input plugins
    */
   plugins: [
+    // @ts-expect-error - This expression is not callable
     replace({
       include: '**/common/govuk-frontend-version.mjs',
       preventAssignment: true,
