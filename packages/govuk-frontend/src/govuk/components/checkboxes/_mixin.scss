@@ -42,9 +42,11 @@
     max-width: calc(100% - #{(($govuk-checkboxes-label-padding-left-right * 2) + $govuk-touch-target-size)});
     margin-bottom: 0;
     padding: (base.govuk-spacing(1) + base.$govuk-border-width-form-element) $govuk-checkboxes-label-padding-left-right;
-    cursor: pointer;
+
     // remove 300ms pause on mobile
     touch-action: manipulation;
+
+    cursor: pointer;
   }
 
   // [ ] Check box
@@ -75,14 +77,14 @@
     left: $govuk-checkbox-check-horizontal-position;
     width: 23px;
     height: 12px;
-    transform: rotate(-45deg);
     border: solid;
     border-width: 0 0 5px 5px;
     // Fix bug in IE11 caused by transform rotate (-45deg).
     // See: alphagov/govuk_elements/issues/518
     border-top-color: transparent;
-    opacity: 0;
     background: transparent;
+    transform: rotate(-45deg);
+    opacity: 0;
   }
 
   .govuk-checkboxes__hint {

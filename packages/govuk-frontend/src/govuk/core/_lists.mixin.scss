@@ -12,8 +12,8 @@
     // stylelint-enable order/order-properties
 
     padding-left: 0;
-    list-style-type: none;
     color: base.govuk-functional-colour(text);
+    list-style-type: none;
 
     // Add a top margin for nested lists
     %govuk-list {

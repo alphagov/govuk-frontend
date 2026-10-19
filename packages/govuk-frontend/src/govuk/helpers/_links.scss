@@ -365,11 +365,11 @@
   // Needed to draw the focus around the entire image
   display: inline-block;
 
-  // Remove extra space at the bottom of the image that's added by line-height
-  line-height: 0;
-
   // Don't render an underline
   text-decoration: none;
+
+  // Remove extra space at the bottom of the image that's added by line-height
+  line-height: 0;
 
   &:focus {
     @include govuk-focused-box;

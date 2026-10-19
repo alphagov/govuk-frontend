@@ -25,18 +25,18 @@
   margin: 0 govuk-if($important, !important);
   padding: 0 govuk-if($important, !important);
 
-  overflow: hidden govuk-if($important, !important);
-
-  // `clip` is needed for IE11 support
-  clip: rect(0 0 0 0) govuk-if($important, !important);
-  clip-path: inset(50%) govuk-if($important, !important);
-
   border: 0 govuk-if($important, !important);
+
+  overflow: hidden govuk-if($important, !important);
 
   // For long content, line feeds are not interpreted as spaces and small width
   // causes content to wrap 1 word per line:
   // https://medium.com/@jessebeach/beware-smushed-off-screen-accessible-text-5952a4c2cbfe
   white-space: nowrap govuk-if($important, !important);
+
+  // `clip` is needed for IE11 support
+  clip: rect(0 0 0 0) govuk-if($important, !important);
+  clip-path: inset(50%) govuk-if($important, !important);
 
   // Prevent users from selecting or copying visually-hidden text. This prevents
   // a user unintentionally copying more text than they intended and needing to

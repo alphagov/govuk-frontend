@@ -21,9 +21,10 @@
     // native appearance so the font-size is set to 19px
     // https://webkit.org/b/224746
     &::-webkit-file-upload-button {
+      -webkit-appearance: button;
+
       color: inherit;
       font: inherit;
-      -webkit-appearance: button;
     }
 
     &:focus {
@@ -200,10 +201,9 @@
   }
 
   .govuk-file-upload-button:disabled {
-    pointer-events: none;
-    opacity: 0.5;
-
     background-color: $empty-button-background-colour;
+    opacity: 0.5;
+    pointer-events: none;
 
     .govuk-file-upload-button__pseudo-button {
       background-color: $empty-pseudo-button-background-colour;

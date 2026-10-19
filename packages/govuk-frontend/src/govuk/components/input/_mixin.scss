@@ -4,6 +4,8 @@
 @mixin styles {
   .govuk-input {
     @include base.govuk-font($size: 19);
+    // Disable inner shadow and remove rounded corners
+    appearance: none;
 
     box-sizing: border-box;
     width: 100%;
@@ -18,25 +20,22 @@
     border-radius: 0;
     border-color: base.govuk-functional-colour(input-border);
 
-    // Disable inner shadow and remove rounded corners
-    appearance: none;
-
     &:focus {
       @include base.govuk-focused-form-input;
     }
 
     &:disabled {
-      opacity: 0.5;
       color: inherit;
       background-color: transparent;
+      opacity: 0.5;
       cursor: not-allowed;
     }
   }
 
   .govuk-input::-webkit-outer-spin-button,
   .govuk-input::-webkit-inner-spin-button {
-    margin: 0;
     -webkit-appearance: none;
+    margin: 0;
   }
 
   .govuk-input[type="number"] {

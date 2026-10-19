@@ -79,6 +79,8 @@
 
     .govuk-accordion__show-all {
       @include base.govuk-font($size: 19);
+      -webkit-appearance: none;
+
       position: relative;
       z-index: 1;
 
@@ -91,7 +93,6 @@
       background: none;
 
       cursor: pointer;
-      -webkit-appearance: none;
 
       @media #{base.govuk-from-breakpoint(tablet)} {
         margin-bottom: 14px;
@@ -151,14 +152,14 @@
 
       position: relative;
 
+      vertical-align: middle;
+
       // Set size using rems so icon scales with text
       width: base.govuk-px-to-rem(20px);
       height: base.govuk-px-to-rem(20px);
 
       border: base.govuk-px-to-rem(1px) solid;
       border-radius: 50%;
-
-      vertical-align: middle;
 
       // Create inner chevron arrow
       &::after {
@@ -173,10 +174,10 @@
         width: base.govuk-px-to-rem(6px);
         height: base.govuk-px-to-rem(6px);
 
-        transform: rotate(-45deg);
-
         border-top: base.govuk-px-to-rem(2px) solid;
         border-right: base.govuk-px-to-rem(2px) solid;
+
+        transform: rotate(-45deg);
       }
     }
 
@@ -186,6 +187,8 @@
     }
 
     .govuk-accordion__section-button {
+      -webkit-appearance: none;
+
       width: 100%;
 
       padding: base.govuk-spacing(2) 0 0;
@@ -205,9 +208,9 @@
       background: none;
 
       text-align: left;
+
       // Section headers have a pointer cursor as an additional affordance
       cursor: pointer;
-      -webkit-appearance: none;
 
       @media #{base.govuk-from-breakpoint(tablet)} {
         padding-bottom: base.govuk-spacing(2);
@@ -312,8 +315,8 @@
     // margins.
     .govuk-accordion__show-all-text,
     .govuk-accordion__section-toggle-text {
-      margin-left: base.govuk-spacing(1);
       vertical-align: middle;
+      margin-left: base.govuk-spacing(1);
     }
 
     // Background colour adjustment when user changes colours in Firefox
