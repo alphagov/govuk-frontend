@@ -4,6 +4,12 @@ For advice on how to use these release notes, see [our guidance on staying up to
 
 ## Unreleased
 
+### Fixes
+
+We've made fixes to GOV.UK Frontend in the following pull requests:
+
+- [#7508: Use functional colours for more colours in Accordion and File upload](https://github.com/alphagov/govuk-frontend/pull/7508)
+
 ## v6.6.0 (Feature release)
 
 To install this version with npm, run `npm install govuk-frontend@6.6.0`. You can also find more information about [how to stay up to date](https://frontend.design-system.service.gov.uk/staying-up-to-date/#updating-to-the-latest-version) in our documentation.
