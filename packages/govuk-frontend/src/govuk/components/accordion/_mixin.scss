@@ -2,10 +2,19 @@
 
 /// @access private
 @mixin styles {
-  $govuk-accordion-base-colour: base.govuk-colour("black");
-  $govuk-accordion-hover-colour: base.govuk-colour("black", $variant: "tint-95");
-  $govuk-accordion-icon-focus-colour: base.govuk-functional-colour(focus);
-  $govuk-accordion-bottom-border-width: 1px;
+  $govuk-accordion-text-colour: base.govuk-colour("black");
+  $govuk-accordion-border-width: 1px;
+  $govuk-accordion-border-colour: base.govuk-functional-colour(border);
+
+  $govuk-accordion-hover-text-colour: $govuk-accordion-text-colour;
+  $govuk-accordion-hover-background-colour: base.govuk-colour("black", $variant: "tint-95");
+
+  $govuk-accordion-button-text-colour: base.govuk-functional-colour(link);
+
+  $govuk-accordion-chevron-focus-colour: base.govuk-functional-colour(focus);
+  $govuk-accordion-chevron-focus-background-colour: $govuk-accordion-text-colour;
+
+  $govuk-accordion-button-active: base.govuk-functional-colour(link-active);
 
   .govuk-accordion {
     @include base.govuk-responsive-margin(6, "bottom");
@@ -30,7 +39,7 @@
     display: block;
     margin-bottom: 0;
     padding-top: base.govuk-spacing(3);
-    color: base.govuk-functional-colour(text);
+    color: $govuk-accordion-text-colour;
   }
 
   // Remove the bottom margin from the last item inside the content
@@ -42,8 +51,8 @@
   .govuk-frontend-supported {
     .govuk-accordion {
       // Border at the bottom of the whole accordion
-      border-bottom: $govuk-accordion-bottom-border-width solid;
-      border-bottom-color: base.govuk-functional-colour(border);
+      border-bottom: $govuk-accordion-border-width solid;
+      border-bottom-color: $govuk-accordion-border-colour;
     }
 
     .govuk-accordion__section {
@@ -87,7 +96,7 @@
 
       border-width: 0;
 
-      color: base.govuk-functional-colour(link);
+      color: $govuk-accordion-button-text-colour;
       background: none;
 
       cursor: pointer;
@@ -104,26 +113,26 @@
       }
 
       &:hover {
-        color: $govuk-accordion-base-colour;
-        background: $govuk-accordion-hover-colour;
+        color: $govuk-accordion-hover-text-colour;
+        background: $govuk-accordion-hover-background-colour;
         // The focus state adds a box-shadow to the top and bottom of the
         // button. We add a grey box-shadow on hover too, to make the height of
         // the hover state match the height of the focus state.
         box-shadow:
-          0 -2px $govuk-accordion-hover-colour,
-          0 4px $govuk-accordion-hover-colour;
+          0 -2px $govuk-accordion-hover-background-colour,
+          0 4px $govuk-accordion-hover-background-colour;
 
         .govuk-accordion__section-toggle-text {
-          color: $govuk-accordion-base-colour;
+          color: $govuk-accordion-hover-text-colour;
         }
 
         .govuk-accordion-nav__chevron {
-          color: $govuk-accordion-base-colour;
-          background: $govuk-accordion-base-colour;
+          color: $govuk-accordion-hover-text-colour;
+          background: $govuk-accordion-hover-text-colour;
         }
 
         .govuk-accordion-nav__chevron::after {
-          color: $govuk-accordion-hover-colour;
+          color: $govuk-accordion-hover-background-colour;
         }
       }
 
@@ -131,11 +140,11 @@
         @include base.govuk-focused-text;
 
         .govuk-accordion-nav__chevron {
-          background: $govuk-accordion-base-colour;
+          background: $govuk-accordion-chevron-focus-background-colour;
         }
 
         .govuk-accordion-nav__chevron::after {
-          color: $govuk-accordion-icon-focus-colour;
+          color: $govuk-accordion-chevron-focus-colour;
         }
       }
     }
@@ -192,16 +201,16 @@
 
       border: 0;
 
-      border-top: $govuk-accordion-bottom-border-width solid;
+      border-top: $govuk-accordion-border-width solid;
 
       // Visually separate the section from the one underneath when user changes
       // colours in their browser. See
       // https://github.com/alphagov/govuk-frontend/issues/2321#issuecomment-924201488
       border-bottom: base.govuk-spacing(2) solid transparent;
 
-      border-top-color: base.govuk-functional-colour(border);
+      border-top-color: $govuk-accordion-border-colour;
 
-      color: base.govuk-functional-colour(text);
+      color: $govuk-accordion-text-colour;
       background: none;
 
       text-align: left;
@@ -214,25 +223,25 @@
       }
 
       &:active {
-        color: base.govuk-functional-colour(link-active);
+        color: $govuk-accordion-button-active;
         background: none;
       }
 
       &:hover {
-        color: $govuk-accordion-base-colour;
-        background: $govuk-accordion-hover-colour;
+        color: $govuk-accordion-hover-text-colour;
+        background: $govuk-accordion-hover-background-colour;
 
         .govuk-accordion__section-toggle-text {
-          color: $govuk-accordion-base-colour;
+          color: $govuk-accordion-hover-text-colour;
         }
 
         .govuk-accordion-nav__chevron {
-          color: $govuk-accordion-base-colour;
-          background: $govuk-accordion-base-colour;
+          color: $govuk-accordion-hover-text-colour;
+          background: $govuk-accordion-hover-text-colour;
         }
 
         .govuk-accordion-nav__chevron::after {
-          color: $govuk-accordion-hover-colour;
+          color: $govuk-accordion-hover-background-colour;
         }
       }
 
@@ -248,12 +257,11 @@
         }
 
         .govuk-accordion-nav__chevron {
-          color: $govuk-accordion-base-colour;
-          background: $govuk-accordion-base-colour;
+          background: $govuk-accordion-chevron-focus-background-colour;
         }
 
         .govuk-accordion-nav__chevron::after {
-          color: $govuk-accordion-icon-focus-colour;
+          color: $govuk-accordion-chevron-focus-colour;
         }
       }
 
@@ -304,7 +312,7 @@
     .govuk-accordion__section-toggle {
       @include base.govuk-font-size($size: 19);
       @include base.govuk-typography-weight-regular;
-      color: base.govuk-functional-colour(link);
+      color: $govuk-accordion-button-text-colour;
     }
 
     // Add space between the icon and text. Avoid applying spacing directly to
@@ -361,12 +369,12 @@
     // remove hover state as it can be stuck in that state (iOS).
     @media (hover: none) {
       .govuk-accordion__section-header:hover {
-        border-top-color: base.govuk-functional-colour(border);
+        border-top-color: $govuk-accordion-border-colour;
 
-        box-shadow: inset 0 3px 0 0 base.govuk-functional-colour(link);
+        box-shadow: inset 0 3px 0 0 $govuk-accordion-button-text-colour;
 
         .govuk-accordion__section-button {
-          border-top-color: base.govuk-functional-colour(border);
+          border-top-color: $govuk-accordion-border-colour;
         }
       }
     }
