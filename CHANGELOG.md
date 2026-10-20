@@ -9,6 +9,7 @@ For advice on how to use these release notes, see [our guidance on staying up to
 We've made fixes to GOV.UK Frontend in the following pull requests:
 
 - [#7508: Use functional colours for more colours in Accordion and File upload](https://github.com/alphagov/govuk-frontend/pull/7508)
+- [#7509: Use body-background functional colour for Select component](https://github.com/alphagov/govuk-frontend/pull/7509)
 
 ## v6.6.0 (Feature release)
 
