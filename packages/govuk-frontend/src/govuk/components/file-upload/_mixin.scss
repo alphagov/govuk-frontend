@@ -4,7 +4,9 @@
 @mixin styles {
   $file-upload-border-width: 2px;
   $component-padding: base.govuk-spacing(1);
-  $empty-button-background-colour: base.govuk-functional-colour(body-background);
+
+  $button-background-colour: base.govuk-functional-colour(body-background);
+  $empty-button-background-colour: $button-background-colour;
   $empty-pseudo-button-background-colour: base.govuk-colour("black", $variant: "tint-95");
   $empty-status-background-colour: base.govuk-colour("blue", $variant: "tint-80");
 
@@ -106,7 +108,7 @@
     // align the padding to be same as notification banner and error summary accounting for the thicker borders
     padding: (base.govuk-spacing(3) + base.$govuk-border-width - $file-upload-border-width);
     border: $file-upload-border-width solid base.govuk-colour("black", $variant: "tint-80");
-    background-color: base.govuk-colour("white");
+    background-color: $button-background-colour;
     cursor: pointer;
 
     @media #{base.govuk-from-breakpoint(tablet)} {
