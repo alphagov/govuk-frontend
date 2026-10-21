@@ -14,6 +14,18 @@ describe('getFullPageExamples', () => {
     )
   })
 
+  it('contains title front matter, for all examples', async () => {
+    const examples = await getFullPageExamples()
+
+    examples.forEach((example) =>
+      expect(example).toEqual(
+        expect.objectContaining({
+          title: expect.any(String)
+        })
+      )
+    )
+  })
+
   it('contains scenario front matter, for some examples', async () => {
     const examples = await getFullPageExamples()
 
