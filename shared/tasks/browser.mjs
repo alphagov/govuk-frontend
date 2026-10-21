@@ -139,7 +139,8 @@ export async function percySnapshotNoJs(page, screenshotName, snapShotOptions) {
   // @ts-expect-error - This expression is not callable
   await percySnapshot(page, screenshotName, {
     ...snapShotOptions,
-    labels: `${snapShotOptions.labels}, No-JS`
+    labels: `${snapShotOptions.labels}, No-JS`,
+    readiness: { preset: 'disabled' }
   })
   await page.setJavaScriptEnabled(true)
   await page.reload({ waitUntil: 'load' })
