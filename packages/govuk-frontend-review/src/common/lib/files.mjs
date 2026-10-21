@@ -1,9 +1,9 @@
 import { readFile } from 'fs/promises'
 import { join } from 'path'
 
+import matter from '@11ty/gray-matter'
 import { paths } from '@govuk-frontend/config'
 import { getDirectories, getListing } from '@govuk-frontend/lib/files'
-import fm from 'front-matter'
 
 /**
  * Load all full page examples' front matter
@@ -21,10 +21,18 @@ export async function getFullPageExamples() {
    */
   const examples = await Promise.all(
     directories.map(async (exampleName) => {
-      // @ts-expect-error - This expression is not callable
-      const { attributes } = fm(
+      const { data } = matter(
         await readFile(join(examplesPath, exampleName, 'index.njk'), 'utf8')
       )
+
+      // Title is required, other front matter is optional
+      const { title, ...metadata } = data
+
+      if (typeof title !== 'string') {
+        throw new Error(
+          `Full page example '${exampleName}' must have a 'title'.`
+        )
+      }
 
       const exampleFiles = await getListing('*', {
         cwd: join(examplesPath, exampleName)
@@ -39,7 +47,8 @@ export async function getFullPageExamples() {
         hasPageConfirm: exampleFiles.includes('confirm.njk'),
 
         // Add metadata (front matter)
-        ...attributes
+        title,
+        ...metadata
       }
     })
   )
@@ -55,7 +64,7 @@ export async function getFullPageExamples() {
  * Full page example from front matter
  *
  * @typedef {object} FullPageExample
- * @property {string} name - Example name
+ * @property {string} name - Example name, from front matter or directory name
  * @property {string} path - Example directory name
  * @property {string} title - Example title
  * @property {string[]} files - Example file names
