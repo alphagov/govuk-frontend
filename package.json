@@ -103,7 +103,7 @@
     "standard": "^17.1.2",
     "stylelint": "^16.26.1",
     "stylelint-config-gds": "^2.0.0",
-    "stylelint-order": "^8.1.1",
+    "stylelint-order": "^8.1.2",
     "typed-query-selector": "^2.12.3",
     "typescript": "^6.0.3"
   },
