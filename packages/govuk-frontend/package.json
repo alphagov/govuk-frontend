@@ -76,7 +76,7 @@
     "@rollup/plugin-babel": "^7.1.0",
     "@rollup/plugin-replace": "^6.0.3",
     "@rollup/plugin-terser": "^1.0.0",
-    "@testing-library/dom": "^10.4.1",
+    "@testing-library/dom": "^10.4.2",
     "@testing-library/user-event": "^14.6.8",
     "autoprefixer": "^10.5.4",
     "cssnano": "^8.0.2",
