@@ -28,7 +28,7 @@
   },
   "sideEffects": false,
   "engines": {
-    "node": ">= 4.2.0"
+    "node": ">=4.2.0"
   },
   "author": {
     "name": "GOV.UK Design System Team (Government Digital Service)",
