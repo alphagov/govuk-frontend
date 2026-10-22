@@ -55,7 +55,7 @@
     "nunjucks": "^3.2.4",
     "postcss-pseudo-classes": "^0.4.0",
     "puppeteer": "^24.43.1",
-    "rollup": "^4.64.0",
+    "rollup": "^4.64.7",
     "sassdoc": "^2.7.4",
     "supertest": "^7.3.1"
   }
