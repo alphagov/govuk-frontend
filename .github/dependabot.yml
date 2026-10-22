@@ -101,7 +101,7 @@ updates:
       # Version 9 has a fix is ESM only and used in some of our tests
       # Our current configuration doesn't let it be `import`ed in Jest
       - dependency-name: 'cssnano'
-        versions: '<8.0.3'
+        versions: '>=8.0.3'
 
     schedule:
       interval: monthly
