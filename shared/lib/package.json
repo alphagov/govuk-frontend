@@ -14,7 +14,7 @@
   "license": "MIT",
   "dependencies": {
     "@govuk-frontend/config": "*",
-    "filesize": "^11.0.25",
+    "filesize": "^11.0.26",
     "glob": "^13.0.6",
     "js-yaml": "^5.4.2",
     "minimatch": "^10.2.5",
