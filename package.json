@@ -73,7 +73,7 @@
     "@typescript-eslint/parser": "^8.71.0",
     "concurrently": "^10.0.6",
     "cross-env": "^10.1.0",
-    "del-cli": "^7.0.0",
+    "del-cli": "^8.0.1",
     "editorconfig-checker": "^7.0.0",
     "eslint": "^8.57.1",
     "eslint-config-prettier": "^10.1.8",
