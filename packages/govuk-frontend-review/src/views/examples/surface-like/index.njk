@@ -1,6 +1,6 @@
 {% extends "layouts/examples.njk" %}
 
-    {% from "govuk/components/cookie-banner/macro.njk" import govukCookieBanner %}
+{% from "govuk/components/cookie-banner/macro.njk" import govukCookieBanner %}
 {% from "govuk/components/accordion/macro.njk" import govukAccordion %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
 {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
@@ -15,6 +15,7 @@
 {% from "govuk/components/table/macro.njk" import govukTable %}
 {% from "govuk/components/service-navigation/macro.njk" import govukServiceNavigation %}
 {% from "govuk/components/footer/macro.njk" import govukFooter %}
+{% from "govuk/components/header/macro.njk" import govukHeader %}
 
 {% block containerStart %}
   {{ govukBackLink({
@@ -26,19 +27,25 @@
 
   <style>
     :root {
+      --govuk-generic-brand-colour: #0b0c0c;
       --govuk-generic-surface-background-colour: #f3f3f3;
       --govuk-generic-surface-border-colour: var(--govuk-border-colour);
       --govuk-generic-surface-text-colour: var(--govuk-text-colour);
 
+      --govuk-generic-inverse-surface-background-colour:  var(--govuk-text-colour);
+      --govuk-generic-inverse-surface-border-colour:  var(--govuk-text-colour);
+      --govuk-generic-inverse-surface-text-colour:  var(--govuk-inverse-text-colour);
+
       --govuk-inverse-surface-background-colour: var(--govuk-brand-colour);
       --govuk-inverse-surface-border-colour: var(--govuk-brand-colour);
-      --govuk-inverse-surface-text-colour: #ffffff;
+      --govuk-inverse-surface-text-colour: var(--govuk-inverse-text-colour);
     }
     /* On large screens make use of the screen */
     @media (min-width: 1900px) {
       /* make page bigger to see more content */
       .govuk-width-container {
-        max-width: 90vw;
+        max-width: 95vw;
+        padding-inline: 30px;
       }
       /* hack the grid so sticky positioning works correctly */
       [class^=govuk-grid] {
@@ -50,140 +57,194 @@
         gap: 30px;
       }
     }
+    /* Component adjustments */
+    /* Prefixes */
+    .govuk-input__wrapper {
+      .govuk-input__prefix,
+      .govuk-input__suffix {
+        color: var(--govuk-surface-text-colour);
+        background-color: var(--govuk-surface-background-colour);
+        --govuk-input-border-colour: var(--govuk-surface-border-colour);
+      }
+    }
+    /* Summary list */
+    .govuk-summary-card {
+      border-color: var(--govuk-surface-border-colour);
+      .govuk-summary-card__title-wrapper {
+        background-color: var(--govuk-surface-background-colour);
+      }
+      .govuk-summary-card__title {
+        color: var(--govuk-surface-text-colour);
+      }
+    }
+    /* Tabs */
+    .govuk-tabs {
+      .govuk-tabs__list,
+      .govuk-tabs__list-item--selected,
+      .govuk-tabs__panel {
+        border-color: var(--govuk-surface-border-colour);
+      }
+      .govuk-summary-card {
+        border-color: var(--govuk-surface-border-colour);
+      }
+      .govuk-tabs__list-item:not(.govuk-tabs__list-item--selected) {
+        background: var(--govuk-surface-background-colour);
+        .govuk-tabs__tab {
+          color: var(--govuk-link-colour) !important;
+        }
+      }
+    }
+    /* Cookie banner */
+    .govuk-cookie-banner {
+      --govuk-text-colour: var(--govuk-surface-text-colour);
+    }
+    /* Header */
+    .govuk-header {
+      background: var(--govuk-surface-background-colour);
+      --govuk-text-colour: var(--govuk-surface-text-colour);
+    }
+    /* Footer */
+    .govuk-footer {
+      background: var(--govuk-surface-background-colour);
+      --govuk-text-colour: var(--govuk-surface-text-colour);
+    }
+
+    /* Themes */
+    .govuk-theme--generic-inverse {
+      --govuk-surface-text-colour: var(--govuk-generic-inverse-surface-text-colour);
+      --govuk-surface-background-colour: var(--govuk-generic-inverse-surface-background-colour);
+      --govuk-surface-border-colour: var(--govuk-generic-inverse-surface-border-colour);
+      --govuk-link-colour: var(--govuk-surface-text-colour);
+      --govuk-brand-colour: var(--govuk-generic-brand-colour);
+    }
+    .govuk-theme--generic {
+      --govuk-surface-text-colour: var(--govuk-generic-surface-text-colour);
+      --govuk-surface-background-colour: var(--govuk-generic-surface-background-colour);
+      --govuk-surface-border-colour: var(--govuk-generic-surface-border-colour);
+      --govuk-brand-colour: var(--govuk-generic-brand-colour);
+    }
+    .govuk-theme--inverse {
+      --govuk-surface-text-colour: var(--govuk-inverse-surface-text-colour);
+      --govuk-surface-background-colour: var(--govuk-inverse-surface-background-colour);
+      --govuk-surface-border-colour: var(--govuk-inverse-surface-border-colour);
+      --govuk-link-colour: var(--govuk-surface-text-colour);
+    }
   </style>
 
-  <h1 class="govuk-heading-l">Surface-like components</h1>
-  
-  <h2 class="govuk-heading-m">Text input</h2>
-  <hr class="govuk-section-break govuk-section-break--s govuk-!-margin-bottom-5 govuk-section-break--visible">
+  <h1 class="govuk-heading-l">Themed components</h1>
 
-  <div class="example-grid">
-    <div>
-      <h3 class="govuk-heading-s">Now</h3>
-      {{ govukInput({
-        id: "cost-per-item",
-        name: "costPerItem",
-        label: {
-          text: "What is the cost per item, in pounds?",
-          classes: "govuk-label--l",
-          isPageHeading: true
-        },
-        prefix: {
-          text: "£"
-        },
-        suffix: {
-          text: "per item"
-        },
-        classes: "govuk-input--width-5",
-        spellcheck: false
-      }) }}
-    </div>
-    <div>
-      <h3 class="govuk-heading-s">(Brand) Surface</h3>
-      <style>
-        .govuk-input__wrapper--surfaced {
-          .govuk-input__prefix,
-          .govuk-input__suffix {
-            color: var(--govuk-surface-text-colour);
-            background-color: var(--govuk-surface-background-colour);
-            --govuk-input-border-colour: var(--govuk-surface-border-colour);
-          }
-        }
-      </style>
-      {{ govukInput({
-        id: "cost-per-item",
-        name: "costPerItem",
-        label: {
-          text: "What is the cost per item, in pounds?",
-          classes: "govuk-label--l",
-          isPageHeading: true
-        },
-        prefix: {
-          text: "£"
-        },
-        suffix: {
-          text: "per item"
-        },
-        classes: "govuk-input--width-5",
-        wrapperClasses: "",
-        spellcheck: false
-      }) | replace("govuk-input__wrapper", "govuk-input__wrapper govuk-input__wrapper--surfaced") }}
-    </div>
-    <div>
-      <h3 class="govuk-heading-s">Generic Surface</h3>
-      <style>
-        .govuk-input__wrapper--generic-surfaced {
-          .govuk-input__prefix,
-          .govuk-input__suffix {
-            color: var(--govuk-generic-surface-text-colour);
-            background-color: var(--govuk-generic-surface-background-colour);
-            --govuk-input-border-colour: var(--govuk-generic-surface-border-colour);
-          }
-        }
-      </style>
-      {{ govukInput({
-        id: "cost-per-item",
-        name: "costPerItem",
-        label: {
-          text: "What is the cost per item, in pounds?",
-          classes: "govuk-label--l",
-          isPageHeading: true
-        },
-        prefix: {
-          text: "£"
-        },
-        suffix: {
-          text: "per item"
-        },
-        classes: "govuk-input--width-5",
-        wrapperClasses: "",
-        spellcheck: false
-      }) | replace("govuk-input__wrapper", "govuk-input__wrapper govuk-input__wrapper--generic-surfaced") }}
-    </div>
-    <div>
-      <h3 class="govuk-heading-s">Generic Surface</h3>
-      <style>
-        .govuk-input__wrapper--inverse-surfaced {
-          .govuk-input__prefix,
-          .govuk-input__suffix {
-            color: var(--govuk-inverse-surface-text-colour);
-            background-color: var(--govuk-inverse-surface-background-colour);
-            --govuk-input-border-colour: var(--govuk-inverse-surface-border-colour);
-          }
-        }
-      </style>
-      {{ govukInput({
-        id: "cost-per-item",
-        name: "costPerItem",
-        label: {
-          text: "What is the cost per item, in pounds?",
-          classes: "govuk-label--l",
-          isPageHeading: true
-        },
-        prefix: {
-          text: "£"
-        },
-        suffix: {
-          text: "per item"
-        },
-        classes: "govuk-input--width-5",
-        wrapperClasses: "",
-        spellcheck: false
-      }) | replace("govuk-input__wrapper", "govuk-input__wrapper govuk-input__wrapper--inverse-surfaced") }}
+  <div>
+    <div class="example-grid">
+      <div>
+        <h2 class="govuk-caption-l">Generic</h2>
+      </div>
+      <div>
+        <h2 class="govuk-caption-l">Generic (bold)</h2>
+      </div>
+      <div>
+        <h2 class="govuk-caption-l">Brand</h2>
+      </div>
+      <div>
+        <h2 class="govuk-caption-l">Brand (bold)</h2>
+      </div>
     </div>
   </div>
 
-  <hr class="govuk-section-break govuk-section-break--l govuk-!-margin-bottom-9 govuk-section-break--visible">
-
-
-  <h2 class="govuk-heading-m">Summary list cards</h2>
-  <hr class="govuk-section-break govuk-section-break--s govuk-!-margin-bottom-5 govuk-section-break--visible">
+  <h2 class="govuk-heading-m govuk-!-margin-top-3">Text input</h2>
+  <hr class="govuk-section-break govuk-section-break--s govuk-!-margin-bottom-1">
 
   <div class="example-grid">
     <div>
-      <h3 class="govuk-heading-s">Now</h3>
+      {{ govukInput({
+        id: "cost-per-item",
+        name: "costPerItem",
+        label: {
+          text: "What is the cost per item, in pounds?",
+          classes: "govuk-label--l",
+          isPageHeading: true
+        },
+        prefix: {
+          text: "£"
+        },
+        suffix: {
+          text: "per item"
+        },
+        classes: "govuk-input--width-5",
+        wrapperClasses: "",
+        spellcheck: false
+      }) | replace("govuk-input__wrapper", "govuk-input__wrapper govuk-theme--generic") }}
+    </div>
+    <div>
+      {{ govukInput({
+        id: "cost-per-item",
+        name: "costPerItem",
+        label: {
+          text: "What is the cost per item, in pounds?",
+          classes: "govuk-label--l",
+          isPageHeading: true
+        },
+        prefix: {
+          text: "£"
+        },
+        suffix: {
+          text: "per item"
+        },
+        classes: "govuk-input--width-5",
+        spellcheck: false
+      }) | replace("govuk-input__wrapper", "govuk-input__wrapper govuk-theme--generic-inverse") }}
+    </div>
+    <div>
+      {{ govukInput({
+        id: "cost-per-item",
+        name: "costPerItem",
+        label: {
+          text: "What is the cost per item, in pounds?",
+          classes: "govuk-label--l",
+          isPageHeading: true
+        },
+        prefix: {
+          text: "£"
+        },
+        suffix: {
+          text: "per item"
+        },
+        classes: "govuk-input--width-5",
+        wrapperClasses: "",
+        spellcheck: false
+      }) | replace("govuk-input__wrapper", "govuk-input__wrapper govuk-theme--surfaced") }}
+    </div>
+    <div>
+      {{ govukInput({
+        id: "cost-per-item",
+        name: "costPerItem",
+        label: {
+          text: "What is the cost per item, in pounds?",
+          classes: "govuk-label--l",
+          isPageHeading: true
+        },
+        prefix: {
+          text: "£"
+        },
+        suffix: {
+          text: "per item"
+        },
+        classes: "govuk-input--width-5",
+        wrapperClasses: "",
+        spellcheck: false
+      }) | replace("govuk-input__wrapper", "govuk-input__wrapper govuk-theme--inverse") }}
+    </div>
+  </div>
+
+
+
+  <h2 class="govuk-heading-m govuk-!-margin-top-9">Summary list cards</h2>
+  <hr class="govuk-section-break govuk-section-break--s govuk-!-margin-bottom-1">
+
+  <div class="example-grid">
+    <div>
       {{ govukSummaryList({
         card: {
+          classes: "govuk-theme--generic",
           title: {
             text: "University of Gloucestershire"
           },
@@ -221,19 +282,9 @@
       }) }}
     </div>
     <div>
-      <h3 class="govuk-heading-s">(Brand) Surface</h3>
-      <style>
-        .govuk-summary-list--surfaced {
-          --govuk-border-colour: var(--govuk-surface-border-colour);
-          --govuk-text-colour: var(--govuk-surface-text-colour);
-          .govuk-summary-card__title-wrapper {
-            background-color: var(--govuk-surface-background-colour);
-          }
-        }
-      </style>
       {{ govukSummaryList({
         card: {
-          classes: "govuk-summary-list--surfaced",
+          classes: "govuk-theme--generic-inverse",
           title: {
             text: "University of Gloucestershire"
           },
@@ -271,19 +322,9 @@
       }) }}
     </div>
     <div>
-      <h3 class="govuk-heading-s">Generic Surface</h3>
-      <style>
-        .govuk-summary-list--generic-surfaced {
-          --govuk-border-colour: var(--govuk-generic-surface-border-colour);
-          --govuk-text-colour: var(--govuk-generic-surface-text-colour);
-          .govuk-summary-card__title-wrapper {
-            background-color: var(--govuk-generic-surface-background-colour);
-          }
-        }
-      </style>
       {{ govukSummaryList({
         card: {
-          classes: "govuk-summary-list--generic-surfaced",
+          classes: "govuk-theme--brand",
           title: {
             text: "University of Gloucestershire"
           },
@@ -319,25 +360,11 @@
           }
         ]
       }) }}
-    </div><div>
-      <h3 class="govuk-heading-s">Inverse Surface</h3>
-      <style>
-        .govuk-summary-list--inverse-surfaced {
-          --govuk-surface-border-colour: var(--govuk-inverse-surface-border-colour);
-          border-color: var(--govuk-surface-border-colour);
-          --govuk-surface-text-colour: var(--govuk-inverse-surface-text-colour);
-          .govuk-summary-card__title-wrapper {
-            background-color: var(--govuk-inverse-surface-background-colour);
-          }
-          .govuk-summary-card__title {
-            --govuk-text-colour: white;
-          }
-          --govuk-link-colour: white;
-        }
-      </style>
+    </div>
+    <div>
       {{ govukSummaryList({
         card: {
-          classes: "govuk-summary-list--inverse-surfaced",
+          classes: "govuk-theme--inverse",
           title: {
             text: "University of Gloucestershire"
           },
@@ -376,14 +403,10 @@
     </div>
   </div>
 
-  <hr class="govuk-section-break govuk-section-break--l govuk-!-margin-bottom-9 govuk-section-break--visible">
-  <h2 class="govuk-heading-m">Tabs</h2>
-  <hr class="govuk-section-break govuk-section-break--s govuk-!-margin-bottom-5 govuk-section-break--visible">
+  <h2 class="govuk-heading-m govuk-!-margin-top-9">Tabs</h2>
+  <hr class="govuk-section-break govuk-section-break--s govuk-!-margin-bottom-1">
 
-  <div class="example-grid">
-    <div>
-      <h3 class="govuk-heading-s">Now</h3>
-      {% set pastDayHtml %}
+    {% set pastDayHtml %}
       <h2 class="govuk-heading-l">Past day</h2>
       {{ govukTable({
         head: [
@@ -591,7 +614,10 @@
       }) }}
       {% endset -%}
 
+  <div class="example-grid">
+    <div>
       {{ govukTabs({
+        classes: "govuk-theme--generic",
         items: [
           {
             label: "Past day",
@@ -625,17 +651,8 @@
       }) }}
     </div>
     <div>
-      <h3 class="govuk-heading-s">(Brand) Surface</h3>
-      <style>
-        .govuk-tabs--surfaced {
-          --govuk-border-colour: var(--govuk-surface-border-colour);
-          .govuk-tabs__list-item:not(.govuk-tabs__list-item--selected) {
-            background-color: var(--govuk-surface-background-colour);
-          }
-        }
-      </style>
       {{ govukTabs({
-        classes: "govuk-tabs--surfaced",
+        classes: "govuk-theme--generic-inverse",
         items: [
           {
             label: "Past day",
@@ -669,15 +686,8 @@
       }) }}
     </div>
     <div>
-      <h3 class="govuk-heading-s">Generic Surface</h3>
-      <style>
-        .govuk-tabs--generic-surfaced {
-          .govuk-tabs__list-item {
-            --govuk-border-colour: var(--govuk-surface-border-colour);
-          }
-        }
-      </style>
       {{ govukTabs({
+        classes: "govuk-theme--surfaced",
         items: [
           {
             label: "Past day",
@@ -711,20 +721,8 @@
       }) }}
     </div>
     <div>
-      <h3 class="govuk-heading-s">Inverse Surface</h3>
-      <style>
-        .govuk-tabs--inverse-surfaced {
-          --govuk-border-colour: var(--govuk-inverse-surface-border-colour);
-          .govuk-tabs__list-item {
-          }
-          .govuk-tabs__list-item:not(.govuk-tabs__list-item--selected) {
-            background-color: var(--govuk-inverse-surface-background-colour);
-            --govuk-text-colour: white;
-          }
-        }
-      </style>
       {{ govukTabs({
-        classes: "govuk-tabs--inverse-surfaced",
+        classes: "govuk-theme--inverse",
         items: [
           {
             label: "Past day",
@@ -759,16 +757,15 @@
     </div>
   </div>
 
-  <hr class="govuk-section-break govuk-section-break--l govuk-!-margin-bottom-9 govuk-section-break--visible">
 
 
-  <h2 class="govuk-heading-m">Footer</h2>
-  <hr class="govuk-section-break govuk-section-break--s govuk-!-margin-bottom-5 govuk-section-break--visible">
+  <h2 class="govuk-heading-m govuk-!-margin-top-9">Service navigation</h2>
+  <hr class="govuk-section-break govuk-section-break--s govuk-!-margin-bottom-1">
 
   <div class="example-grid">
     <div>
-      <h3 class="govuk-heading-s">Now</h3>
       {{ govukServiceNavigation({
+        classes: "govuk-theme--generic",
         navigation: [
           {
             href: "#",
@@ -787,8 +784,8 @@
       }) }}
     </div>
     <div>
-      <h3 class="govuk-heading-s">(Brand) Surface</h3>
       {{ govukServiceNavigation({
+        classes: "govuk-theme--generic-inverse",
         navigation: [
           {
             href: "#",
@@ -806,18 +803,9 @@
         ]
       }) }}
     </div>
-    
     <div>
-      <h3 class="govuk-heading-s">Generic Surface</h3>
-      <style>
-        .govuk-service-navigation--generic-surfaced {
-          --govuk-surface-border-colour: var(--govuk-border-colour);
-          --govuk-surface-background-colour: var(--govuk-generic-surface-background-colour);
-          --govuk-surface-text-colour: var(--govuk-text-colour);
-        }
-      </style>
       {{ govukServiceNavigation({
-        classes: "govuk-service-navigation--generic-surfaced",
+        classes: "govuk-theme--brand",
         navigation: [
           {
             href: "#",
@@ -834,18 +822,10 @@
           }
         ]
       }) }}
-    </div><div>
-      <h3 class="govuk-heading-s">Inverse surface</h3>
-      <style>
-        .govuk-service-navigation--inverse-surfaced {
-          --govuk-surface-border-colour: var(--govuk-inverse-surface-border-colour);
-          --govuk-surface-background-colour: var(--govuk-inverse-surface-background-colour);
-          --govuk-surface-text-colour: var(--govuk-inverse-surface-text-colour);
-          --govuk-link-colour: white;
-        }
-      </style>
+    </div>
+    <div>
       {{ govukServiceNavigation({
-        classes: "govuk-service-navigation--inverse-surfaced",
+        classes: "govuk-theme--inverse",
         navigation: [
           {
             href: "#",
@@ -865,177 +845,174 @@
     </div>
   </div>
 
-  <hr class="govuk-section-break govuk-section-break--l govuk-!-margin-bottom-9 govuk-section-break--visible">
   
-  <h2 class="govuk-heading-m">Footer</h2>
-  <hr class="govuk-section-break govuk-section-break--s govuk-!-margin-bottom-5 govuk-section-break--visible">
+  <h2 class="govuk-heading-m govuk-!-margin-top-9">Header</h2>
+  <hr class="govuk-section-break govuk-section-break--s govuk-!-margin-bottom-1">
 
   <div class="example-grid">
     <div>
-      <h3 class="govuk-heading-s">Now</h3>
-      {{ govukFooter({}) }}
-    </div>
-    <div>
-      <h3 class="govuk-heading-s">(Brand) Surface</h3>
-      <style>
-        .govuk-input__wrapper--surfaced {
-          .govuk-input__prefix,
-          .govuk-input__suffix {
-            color: var(--govuk-surface-text-colour);
-            background-color: var(--govuk-surface-background-colour);
-            --govuk-input-border-colour: var(--govuk-surface-border-colour);
-          }
-        }
-      </style>
-      {{ govukFooter({}) }}
-    </div>
-    <div>
-      <h3 class="govuk-heading-s">Generic Surface</h3>
-      <style>
-        .govuk-footer--generic-surfaced {
-          --govuk-brand-colour: var(--govuk-border-colour);
-          --govuk-surface-border-colour: var(--govuk-inverse-surface-border-colour);
-          --govuk-surface-background-colour: var(--govuk-generic-surface-background-colour);
-          --govuk-template-background-colour: var(--govuk-surface-background-colour);
-          /* uses the background colour since the html background colour of the page 'extends' the footer */
-          --govuk-surface-border-colour: var(--govuk-generic-surface-border-colour);
-        }
-      </style>
-      {{ govukFooter({
-        classes: "govuk-footer--generic-surfaced"
+      {{ govukHeader({
+        classes: "govuk-theme--generic"
       }) }}
     </div>
     <div>
-      <h3 class="govuk-heading-s">Inverse Surface</h3>
-      <style>
-        .govuk-footer--inverse-surfaced {
-          --govuk-brand-colour: var(--govuk-brand-colour);
-          --govuk-surface-border-colour: var(--govuk-inverse-surface-border-colour);
-          --govuk-surface-background-colour: var(--govuk-inverse-surface-background-colour);
-          --govuk-template-background-colour: var(--govuk-surface-background-colour);
-          /* uses the background colour since the html background colour of the page 'extends' the footer */
-          --govuk-surface-text-colour: var(--govuk-inverse-surface-text-colour);
-          --govuk-link-colour: var(--govuk-inverse-surface-text-colour);
-        }
-      </style>
-      {{ govukFooter({
-        classes: "govuk-footer--inverse-surfaced"
+      {{ govukHeader({
+        classes: "govuk-theme--generic-inverse"
+      }) | replace("govuk-link", "govuk-link govuk-link--inverse") }}
+    </div>
+    <div>
+      {{ govukHeader({
+        classes: "govuk-theme--brand"
       }) }}
+    </div>
+    <div>
+      {{ govukHeader({
+        classes: "govuk-theme--inverse"
+      }) | replace("govuk-link", "govuk-link govuk-link--inverse") }}
     </div>
   </div>
 
-  <hr class="govuk-section-break govuk-section-break--l govuk-!-margin-bottom-9 govuk-section-break--visible">
-  <h2 class="govuk-heading-m">Cookie Banner</h2>
-  <hr class="govuk-section-break govuk-section-break--s govuk-!-margin-bottom-5 govuk-section-break--visible">
+  <h2 class="govuk-heading-m govuk-!-margin-top-9">Footer</h2>
+  <hr class="govuk-section-break govuk-section-break--s govuk-!-margin-bottom-1">
 
   <div class="example-grid">
     <div>
-      <h3 class="govuk-heading-s">Now</h3>
-      {% set cookieBannerHtml %}
-        <p class="govuk-body">We use some essential cookies to make this service work.</p>
-        <p class="govuk-body">We’d also like to use analytics cookies so we can understand how you use the service and make improvements.</p>
-      {% endset %}
-
-      {{ govukCookieBanner({
-        ariaLabel: "Cookies on [name of service]",
-        messages: [
-          {
-            headingText: "Cookies on [name of service]",
-            html: cookieBannerHtml,
-            actions: [
-              {
-                text: "Accept analytics cookies",
-                type: "button"
-              },
-              {
-                text: "Reject analytics cookies",
-                type: "button"
-              },
-              {
-                text: "View cookies",
-                href: "#"
-              }
-            ]
-          }
-        ]
+      {{ govukFooter({
+        classes: "govuk-theme--generic"
       }) }}
     </div>
     <div>
-      <h3 class="govuk-heading-s">(Brand) Surface</h3>
-      <style>
-        .govuk-input__wrapper--surfaced {
-          .govuk-input__prefix,
-          .govuk-input__suffix {
-            color: var(--govuk-surface-text-colour);
-            background-color: var(--govuk-surface-background-colour);
-            --govuk-input-border-colour: var(--govuk-surface-border-colour);
-          }
-        }
-      </style>
-      {{ govukCookieBanner({
-        classes: "govuk-cookie-banner--surfaced",
-        ariaLabel: "Cookies on [name of service]",
-        messages: [
-          {
-            headingText: "Cookies on [name of service]",
-            html: cookieBannerHtml,
-            actions: [
-              {
-                text: "Accept analytics cookies",
-                type: "button"
-              },
-              {
-                text: "Reject analytics cookies",
-                type: "button"
-              },
-              {
-                text: "View cookies",
-                href: "#"
-              }
-            ]
-          }
-        ]
+      {{ govukFooter({
+        classes: "govuk-theme--generic-inverse"
+      }) | replace("govuk-link", "govuk-link govuk-link--inverse") }}
+    </div>
+    <div>
+      {{ govukFooter({
+        classes: "govuk-theme--brand"
       }) }}
     </div>
     <div>
-      <h3 class="govuk-heading-s">Generic Surface</h3>
-      <style>
-        .govuk-cookie-banner--generic-surfaced {
-          --govuk-brand-colour: grey;
-          --govuk-surface-border-colour: var(--govuk-generic-surface-border-colour);
-          --govuk-surface-background-colour: var(--govuk-generic-surface-background-colour);
-          --govuk-template-background-colour: var(--govuk-surface-background-colour);
-          /* uses the background colour since the html background colour of the page 'extends' the footer */
-          --govuk-surface-border-colour: var(--govuk-generic-surface-border-colour);
-        }
-      </style>
-      {{ govukCookieBanner({
-        classes: "govuk-cookie-banner--generic-surfaced",
-        ariaLabel: "Cookies on [name of service]",
-        messages: [
-          {
-            headingText: "Cookies on [name of service]",
-            html: cookieBannerHtml,
-            actions: [
-              {
-                text: "Accept analytics cookies",
-                type: "button"
-              },
-              {
-                text: "Reject analytics cookies",
-                type: "button"
-              },
-              {
-                text: "View cookies",
-                href: "#"
-              }
-            ]
-          }
-        ]
-      }) }}
+      {{ govukFooter({
+        classes: "govuk-theme--inverse"
+      }) | replace("govuk-link", "govuk-link govuk-link--inverse") }}
     </div>
   </div>
 
-  <hr class="govuk-section-break govuk-section-break--l govuk-!-margin-bottom-9 govuk-section-break--visible">
+  <h2 class="govuk-heading-m govuk-!-margin-top-9">Cookie Banner</h2>
+
+  {% set cookieBannerHtml %}
+    <p class="govuk-body">We use some essential cookies to make this service work.</p>
+    <p class="govuk-body">We’d also like to use analytics cookies so we can understand how you use the service and make improvements.</p>
+  {% endset %}
+
+  <hr class="govuk-section-break govuk-section-break--s govuk-!-margin-bottom-1">
+
+  <div class="example-grid">
+    <div>
+      {{ govukCookieBanner({
+        classes: "govuk-theme--generic",
+        ariaLabel: "Cookies on [name of service]",
+        messages: [
+          {
+            headingText: "Cookies on [name of service]",
+            html: cookieBannerHtml,
+            actions: [
+              {
+                text: "Accept analytics cookies",
+                type: "button"
+              },
+              {
+                text: "Reject analytics cookies",
+                type: "button"
+              },
+              {
+                text: "View cookies",
+                href: "#"
+              }
+            ]
+          }
+        ]
+      }) }}
+    </div>
+    <div>
+      {{ govukCookieBanner({
+        classes: "govuk-theme--generic-inverse",
+        ariaLabel: "Cookies on [name of service]",
+        messages: [
+          {
+            headingText: "Cookies on [name of service]",
+            html: cookieBannerHtml,
+            actions: [
+              {
+                text: "Accept analytics cookies",
+                type: "button"
+              },
+              {
+                text: "Reject analytics cookies",
+                type: "button"
+              },
+              {
+                text: "View cookies",
+                href: "#"
+              }
+            ]
+          }
+        ]
+      }) | replace("\"govuk-button\"", "\"govuk-button govuk-button--inverse\"") | replace("\"govuk-link\"", "\"govuk-link govuk-link--inverse\"") }}
+    </div>
+    <div>
+      {{ govukCookieBanner({
+        classes: "govuk-theme--brand",
+        ariaLabel: "Cookies on [name of service]",
+        messages: [
+          {
+            headingText: "Cookies on [name of service]",
+            html: cookieBannerHtml,
+            actions: [
+              {
+                text: "Accept analytics cookies",
+                type: "button"
+              },
+              {
+                text: "Reject analytics cookies",
+                type: "button"
+              },
+              {
+                text: "View cookies",
+                href: "#"
+              }
+            ]
+          }
+        ]
+      }) }}
+    </div>
+    <div>
+      {{ govukCookieBanner({
+        classes: "govuk-theme--inverse",
+        ariaLabel: "Cookies on [name of service]",
+        messages: [
+          {
+            headingText: "Cookies on [name of service]",
+            html: cookieBannerHtml,
+            actions: [
+              {
+                text: "Accept analytics cookies",
+                type: "button"
+              },
+              {
+                text: "Reject analytics cookies",
+                type: "button"
+              },
+              {
+                text: "View cookies",
+                href: "#"
+              }
+            ]
+          }
+        ]
+      }) | replace("\"govuk-button\"", "\"govuk-button govuk-button--inverse\"") | replace("\"govuk-link\"", "\"govuk-link govuk-link--inverse\"") }}
+    </div>
+  </div>
+
 
 {% endblock %}
