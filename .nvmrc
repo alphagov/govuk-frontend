@@ -1,6 +1,9 @@
-24.15
-# When updating this version, remember to update:
-# - the 'engines' fields in the various `package.json` files of the project
-# - `package-lock.json` by running `npm install`
-# - the `[node]` section of the various `.browserslistrc` files of the project
-# - the version on `@types/node` installed in the project with `npm install @types/node@<MAJOR>`
+24.22
+# When updating this version, remember to:
+# - run `nvm install` to install the matching version and update your local version of Node
+# - run `npm pkg set "engines.node"="^$(node -v | cut -c2- )"` to update the 'engines' field in the root `package.json`
+# - run `npm pkg set "engines.node"="^$(node -v | cut -c2- ) --workspaces" to update the 'engines' field in the workspaces `package.json`
+# - run `npm pkg set "engines.node"=">=4.2.0" --workspace govuk-frontend` to restore GOV.UK Frontend engine's field
+# - run `npm install` to update `package-lock.json`
+# - run `npm install @types/node@<MAJOR>` to update types
+# - check the `[node]` section of the various `.browserslistrc` files of the project match the major version
