@@ -259,23 +259,24 @@ examples:
         - number: 3
           href: '/page/3'
   - name: with custom accessible labels on item links
-    hidden: true
     options:
       previous:
+        text: 'Mlaenorol'
         href: '/previous'
       next:
+        text: 'Wedyn'
         href: '/next'
       items:
         - number: 1
           href: '/page/1'
-          visuallyHiddenText: '1st page'
+          visuallyHiddenText: 'Dudalen 1'
         - number: 2
           href: '/page/2'
           current: true
-          visuallyHiddenText: '2nd page (you are currently on this page)'
+          visuallyHiddenText: 'Dudalen 2'
         - number: 3
           href: '/page/3'
-          visuallyHiddenText: '3rd page'
+          visuallyHiddenText: 'Dudalen 3'
   - name: with empty items
     hidden: true
     options:
