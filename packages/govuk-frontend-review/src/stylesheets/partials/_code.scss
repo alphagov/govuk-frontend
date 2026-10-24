@@ -12,14 +12,14 @@
   padding: govuk-spacing(4);
   overflow-x: auto;
   border: $govuk-focus-width solid transparent;
-  outline: 1px solid transparent;
+  @include govuk-focus-outline(transparent);
+  outline-width: 1px;
   background-color: govuk-colour("black", $variant: "tint-95");
   @include govuk-responsive-margin(4, "bottom");
 
   &:focus {
     border: $govuk-focus-width solid;
     border-color: govuk-functional-colour(input-border);
-    outline: $govuk-focus-width solid;
-    outline-color: govuk-functional-colour(focus);
+    @include govuk-focus-outline;
   }
 }

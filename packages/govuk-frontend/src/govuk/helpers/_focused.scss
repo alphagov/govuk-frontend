@@ -2,8 +2,48 @@
 /// @group helpers/accessibility
 ////
 
+@use "sass:string";
+
 @use "../settings/measurements" as *;
+@use "../tools/if" as *;
 @use "colour" as *;
+
+/// Focus outline
+///
+/// Provides an outline to clearly indicate when the target element is focused.
+/// The outline can be `visible` (by default) to be shown in all situations,
+/// or `transparent` to show only in High contrast/Forced colours mode
+/// when other visible cues are used when not in High contrast/Forced colours mode
+/// (see `govuk-focused-text` and `govuk-focused-box`).
+///
+/// @example scss - Default outline, uses the `focus` functional colour
+///   .govuk-notification-banner:focus {
+///     @include govuk-focus-outline;
+///   }
+///
+/// @example scss - Transparent outline, revealed in High contrast mode
+///   .govuk-button:focus {
+///     @include govuk-focus-outline(transparent)
+///   }
+///
+/// @param {String} [$appearance] - The appearance of the outline, use `transparent` for a transparent outline
+/// @access public
+@mixin govuk-focus-outline($appearance: visible) {
+  outline: $govuk-focus-width solid;
+
+  // Separate `outline-color` from `outline`
+  // so the presence of a custom property
+  // does not invalidate the whole `outline` declaration.
+  @if $appearance == transparent {
+    // Use a custom property to set the transparent outline
+    // so that browsers not supporting custom property
+    // will see an outline
+    --_govuk-outline-colour: transparent;
+    outline-color: var(--_govuk-outline-colour);
+  } @else {
+    outline-color: govuk-functional-colour(focus);
+  }
+}
 
 /// Focused text
 ///
@@ -21,8 +61,8 @@
   // When colours are overridden, for example when users have a dark mode,
   // backgrounds and box-shadows disappear, so we need to ensure there's a
   // transparent outline which will be set to a visible colour.
+  @include govuk-focus-outline(transparent);
 
-  outline: $govuk-focus-width solid transparent;
   color: govuk-functional-colour(focus-text);
   background-color: govuk-functional-colour(focus);
   box-shadow:
@@ -62,7 +102,7 @@
 /// @access public
 
 @mixin govuk-focused-box {
-  outline: $govuk-focus-width solid transparent;
+  @include govuk-focus-outline(transparent);
   box-shadow:
     0 0 0 4px govuk-functional-colour(focus),
     0 0 0 8px govuk-functional-colour(focus-text);
@@ -81,8 +121,7 @@
 /// @access public
 
 @mixin govuk-focused-form-input {
-  outline: $govuk-focus-width solid;
-  outline-color: govuk-functional-colour(focus);
+  @include govuk-focus-outline;
   // Ensure outline appears outside of the element
   outline-offset: 0;
   // Double the border by adding its width again. Use `box-shadow` for this
