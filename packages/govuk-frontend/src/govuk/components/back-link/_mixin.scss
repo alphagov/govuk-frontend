@@ -48,11 +48,11 @@
 
     margin: auto 0;
 
-    transform: rotate(225deg);
-
     border: solid;
     border-width: $chevron-border-min-width $chevron-border-min-width 0 0;
     border-color: $chevron-border-colour;
+
+    transform: rotate(225deg);
 
     @supports (border-width: string.unquote("max(0px)")) {
       $border-width-eval: "max(#{$chevron-border-min-width}, #{$chevron-border-width})";

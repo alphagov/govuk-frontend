@@ -29,10 +29,10 @@
     @include base.govuk-responsive-padding(2);
     display: none;
     padding-bottom: 0;
-    pointer-events: none;
     color: inherit;
-    line-height: 0; // removes extra negative space below the indicators
     text-align: center;
+    line-height: 0; // removes extra negative space below the indicators
+    pointer-events: none;
   }
 
   .govuk-exit-this-page__indicator--visible {

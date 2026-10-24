@@ -10,9 +10,9 @@
   display: block;
   margin: 0;
   padding: govuk-spacing(4);
-  overflow-x: auto;
   border: $govuk-focus-width solid transparent;
   outline: 1px solid transparent;
+  overflow-x: auto;
   background-color: govuk-colour("black", $variant: "tint-95");
   @include govuk-responsive-margin(4, "bottom");
 

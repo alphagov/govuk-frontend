@@ -47,9 +47,11 @@
     );
     margin-bottom: 0;
     padding: (base.govuk-spacing(1) + base.$govuk-border-width-form-element) $govuk-radios-label-padding-left-right;
-    cursor: pointer;
+
     // remove 300ms pause on mobile
     touch-action: manipulation;
+
+    cursor: pointer;
   }
 
   // ( ) Radio ring
@@ -85,8 +87,8 @@
     height: 0;
     border: $radio-button-size solid currentcolor;
     border-radius: 50%;
-    opacity: 0;
     background: currentcolor;
+    opacity: 0;
   }
 
   .govuk-radios__hint {

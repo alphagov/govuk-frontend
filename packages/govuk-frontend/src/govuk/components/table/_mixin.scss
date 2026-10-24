@@ -8,9 +8,10 @@
     width: 100%;
     @include base.govuk-responsive-margin(6, "bottom");
 
-    border-spacing: 0;
-    border-collapse: collapse;
     color: base.govuk-functional-colour(text);
+
+    border-collapse: collapse;
+    border-spacing: 0;
   }
 
   // Modifier for tables with a lot of data. Tables with lots of data benefit
@@ -27,11 +28,12 @@
 
   .govuk-table__header,
   .govuk-table__cell {
+    vertical-align: top;
+
     padding: base.govuk-spacing(2) base.govuk-spacing(4) base.govuk-spacing(2) 0;
     border-bottom: 1px solid;
     border-bottom-color: base.govuk-functional-colour(border);
     text-align: left;
-    vertical-align: top;
   }
 
   .govuk-table__cell--numeric {

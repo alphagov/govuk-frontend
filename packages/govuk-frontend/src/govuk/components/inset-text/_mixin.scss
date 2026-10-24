@@ -12,10 +12,11 @@
     @include base.govuk-responsive-margin(6, "top");
     @include base.govuk-responsive-margin(6, "bottom");
 
-    clear: both;
-
     border-left: base.$govuk-border-width-wide solid;
     border-left-color: base.govuk-functional-colour(border);
+
+    clear: both;
+
     color: base.govuk-functional-colour(text);
 
     > :first-child {

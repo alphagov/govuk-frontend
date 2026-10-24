@@ -44,18 +44,18 @@
 
   .govuk-task-list__name-and-hint {
     display: table-cell;
+    vertical-align: top;
 
     color: base.govuk-functional-colour(text);
-    vertical-align: top;
   }
 
   .govuk-task-list__status {
     display: table-cell;
+    vertical-align: top;
     padding-left: base.govuk-spacing(2);
 
     color: base.govuk-functional-colour(text);
     text-align: right;
-    vertical-align: top;
   }
 
   .govuk-task-list__status--cannot-start-yet {
