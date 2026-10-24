@@ -1,0 +1,36 @@
+{% extends "./mock-service.njk" %}
+
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% set pageTitle = "What is your name?" %}
+
+{% block bodyStart %}{% endblock %}
+
+{% block pageContent %}
+  <form method="post">
+    {% if errorSummary | length %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errorSummary
+      }) }}
+    {% endif %}
+
+    {{ govukInput({
+      label: {
+        text: pageTitle,
+        classes: "govuk-label--xl",
+        isPageHeading: true
+      },
+      id: "name",
+      name: "name",
+      value: queryData.name if queryData.name else "",
+      errorMessage: errors["name"]
+    }) }}
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+  </form>
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends "./mock-service.njk" %}
+
+{% from "govuk/components/task-list/macro.njk" import govukTaskList %}
+{% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
+
+{% set pageTitle = "List of factories" %}
+{% set pageType = "service" %}
+
+{% block bodyStart %}{% endblock %}
+
+{% block pageContent %}
+  {% if queryData.delete %}
+    {{ govukNotificationBanner({
+      type: "success",
+      text: "Your data has been deleted."
+    }) }}
+  {% endif %}
+
+  <h1 class="govuk-heading-xl">{{pageTitle}}</h1>
+
+  {{ govukTaskList({
+    items: [
+      {
+        title: {
+          text: "Wonka Industries"
+        },
+        href: mockServiceSlug + "/name",
+        status: {
+          tag: {
+            text: "Active",
+            classes: "govuk-tag--yellow"
+          }
+        }
+      },
+      {
+        title: {
+          text: "Prodnose"
+        },
+        status: {
+          tag: {
+            text: "Closed",
+            classes: "govuk-tag--grey"
+          }
+        }
+      },
+      {
+        title: {
+          text: "Fickelgruber"
+        },
+        status: {
+          tag: {
+            text: "Pending"
+          }
+        }
+      }
+    ]
+  }) }}
+{% endblock %}
