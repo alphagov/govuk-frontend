@@ -6,6 +6,8 @@ For advice on how to use these release notes, see [our guidance on staying up to
 
 ### Fixes
 
+The Exit this page keyboard shortcut now starts a new three-press sequence when a page is restored from browser history.
+
 We've made fixes to GOV.UK Frontend in the following pull requests:
 
 - [#7508: Use functional colours for more colours in Accordion and File upload](https://github.com/alphagov/govuk-frontend/pull/7508)
