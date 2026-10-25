@@ -6,6 +6,10 @@ For advice on how to use these release notes, see [our guidance on staying up to
 
 ### Fixes
 
+#### Recount focused fields after polling
+
+Recount values changed by speech recognition.
+
 We've made fixes to GOV.UK Frontend in the following pull requests:
 
 - [#7508: Use functional colours for more colours in Accordion and File upload](https://github.com/alphagov/govuk-frontend/pull/7508)
