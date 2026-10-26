@@ -332,6 +332,8 @@ export class FileUpload extends ConfigurableComponent {
   onDrop(event) {
     event.preventDefault()
 
+    if (this.$input.matches(':disabled')) return
+
     if (event.dataTransfer && this.canFillInput(event.dataTransfer)) {
       this.$input.files = event.dataTransfer.files
 
