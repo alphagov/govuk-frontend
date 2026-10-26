@@ -47,7 +47,16 @@ export class SkipLink extends Component {
       )
     }
 
-    const $linkedElement = document.getElementById(linkedElementId)
+    let $linkedElement = document.getElementById(linkedElementId)
+    if (!$linkedElement) {
+      try {
+        $linkedElement = document.getElementById(
+          decodeURIComponent(linkedElementId)
+        )
+      } catch {
+        // Keep the existing missing-target error for malformed fragments.
+      }
+    }
 
     // Check for link target element
     if (!$linkedElement) {
