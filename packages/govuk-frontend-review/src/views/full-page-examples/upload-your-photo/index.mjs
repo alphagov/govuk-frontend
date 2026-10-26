@@ -1,14 +1,32 @@
 import express from 'express'
 import { body, matchedData, validationResult } from 'express-validator'
+import multer from 'multer'
 
 import { formatValidationErrors } from '../../../utils.mjs'
 
 const router = express.Router()
 
+const storage = multer.memoryStorage()
+const upload = multer({ storage })
+
 router.post(
   '/upload-your-photo',
 
-  body('photo').notEmpty().withMessage('Select a photo'),
+  upload.single('photo'),
+
+  body('photo').custom((value, { req }) => {
+    const { file } = req
+    if (!file) {
+      throw new Error('Select a photo')
+    }
+    if (!file.mimetype.startsWith('image')) {
+      throw new Error('Your photo must be an image')
+    }
+    if (file.size >= 10 * 1000000) {
+      throw new Error('Your photo must be smaller than 10MB')
+    }
+    return true
+  }),
 
   body('terms-and-conditions')
     .notEmpty()
@@ -19,6 +37,12 @@ router.post(
 
     const viewPath = `./full-page-examples/${example.path}`
     const errors = formatValidationErrors(validationResult(req))
+
+    if (req.file) {
+      console.log('Uploaded file information:')
+      delete req.file.buffer
+      console.table(req.file)
+    }
 
     if (!errors) {
       return res.redirect(303, `./${example.path}/confirm`)
