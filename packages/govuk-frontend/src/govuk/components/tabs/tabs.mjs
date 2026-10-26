@@ -336,6 +336,10 @@ export class Tabs extends Component {
    * @param {HTMLAnchorElement} $tab - Tab link
    */
   createHistoryEntry($tab) {
+    if (window.location.hash === $tab.hash) {
+      return
+    }
+
     const $panel = this.getPanel($tab)
     if (!$panel) {
       return
