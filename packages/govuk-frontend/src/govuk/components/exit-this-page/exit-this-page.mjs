@@ -385,16 +385,22 @@ export class ExitThisPage extends ConfigurableComponent {
       this.$updateSpan.textContent = ''
     }
 
+    // Start a fresh keyboard shortcut sequence after restoring the page
+    this.keypressCounter = 0
+    this.lastKeyWasModified = false
+
     // Sync the keypress indicator lights
     this.updateIndicator()
 
     // If the timeouts are active, clear them
     if (this.keypressTimeoutId) {
       window.clearTimeout(this.keypressTimeoutId)
+      this.keypressTimeoutId = null
     }
 
     if (this.timeoutMessageId) {
       window.clearTimeout(this.timeoutMessageId)
+      this.timeoutMessageId = null
     }
   }
 
