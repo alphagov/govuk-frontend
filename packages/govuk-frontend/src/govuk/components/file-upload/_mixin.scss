@@ -18,7 +18,10 @@
   $button-border-width: base.$govuk-border-width-form-element;
   $empty-button-background-colour: $button-background-colour;
 
+  $status-text-colour: base.govuk-colour("white");
+  $status-background-colour: base.govuk-colour("blue");
   $empty-status-background-colour: base.govuk-colour("blue", $variant: "tint-80");
+  $empty-status-text-colour: base.govuk-colour("black");
 
   .govuk-file-upload {
     @include base.govuk-font($size: 19);
@@ -98,8 +101,8 @@
     display: block;
     margin-bottom: base.govuk-spacing(2);
     padding: base.govuk-spacing(3) base.govuk-spacing(2);
-    color: base.govuk-colour("white");
-    background-color: base.govuk-colour("blue");
+    color: $status-text-colour;
+    background-color: $status-background-colour;
     text-align: left;
     @include base.govuk-text-break-word;
   }
@@ -143,7 +146,7 @@
       }
 
       .govuk-file-upload-button__status {
-        background-color: base.govuk-colour("blue");
+        background-color: $status-background-colour;
       }
     }
 
@@ -179,7 +182,7 @@
     }
 
     .govuk-file-upload-button__status {
-      color: base.govuk-colour("black");
+      color: $empty-status-text-colour;
       background-color: $empty-status-background-colour;
     }
 
@@ -189,7 +192,7 @@
       background-color: base.govuk-colour("black", $variant: "tint-95");
 
       .govuk-file-upload-button__status {
-        background-color: base.govuk-colour("blue", $variant: "tint-80");
+        background-color: $empty-status-background-colour;
       }
     }
   }
