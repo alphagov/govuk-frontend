@@ -204,7 +204,7 @@
     // extra specificity to apply when
     // empty
     &.govuk-file-upload-button--empty {
-      background-color: base.govuk-colour("black", $variant: "tint-95");
+      background-color: $govuk-secondary-button-colour;
     }
   }
 
