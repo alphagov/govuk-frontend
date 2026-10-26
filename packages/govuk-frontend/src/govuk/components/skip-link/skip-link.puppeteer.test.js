@@ -68,6 +68,50 @@ describe('Skip Link', () => {
     })
   })
 
+  describe('encoded fragments', () => {
+    it.each(['#café', '#caf%C3%A9', '#main%2Dcontent', '#section%23one'])(
+      'focuses the decoded target for %s',
+      async (href) => {
+        await render(
+          page,
+          'skip-link',
+          {
+            context: { text: 'Skip to main content', href }
+          },
+          {
+            beforeInitialisation($root) {
+              const $target = document.createElement('main')
+              $target.id = decodeURIComponent(
+                $root.getAttribute('href').slice(1)
+              )
+              $target.textContent = 'Main content'
+              document.body.append($target)
+            }
+          }
+        )
+        await page.keyboard.press('Tab')
+        await page.keyboard.press('Enter')
+        const target = await page.evaluate(() => {
+          const $target = document.getElementById(
+            decodeURIComponent(window.location.hash.slice(1))
+          )
+          return {
+            focused: document.activeElement === $target,
+            tabindex: $target.getAttribute('tabindex'),
+            helperClass: $target.classList.contains(
+              'govuk-skip-link-focused-element'
+            )
+          }
+        })
+        expect(target).toEqual({
+          focused: true,
+          tabindex: '-1',
+          helperClass: true
+        })
+      }
+    )
+  })
+
   describe('errors at instantiation', () => {
     it('can return early without errors for external href', async () => {
       return expect(
