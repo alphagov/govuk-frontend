@@ -56,6 +56,11 @@
                         id: "file-upload-default-" + example.id
                     },
                     {
+                        id: "file-upload-disabled-" + example.id,
+                        title: "When disabled",
+                        disabled: true
+                    },
+                    {
                         id: "file-upload-dragging-" + example.id,
                         title: "When dragging",
                         dragging: true
@@ -91,41 +96,42 @@
                         label: {
                             text: "Upload a file"
                         },
+                        disabled: true if state.disabled,
                         javascript: true
                     }) }}
                     <script>
                         document.addEventListener("DOMContentLoaded", (event) => {
                             let buttonClasses = []
 
-                            const exampleData = JSON.parse(`{{ example | dump() | safe }}`);
-                            // console.table(exampleData);
+                            const example = JSON.parse(`{{ example | dump() | safe }}`);
+                            // console.table(example);
 
-                            const stateData = JSON.parse(`{{ state | dump() | safe }}`);
-                            // console.table(stateData);
+                            const state = JSON.parse(`{{ state | dump() | safe }}`);
+                            // console.table(state);
 
-                            if (exampleData.buttonClasses) {
-                                buttonClasses = buttonClasses.concat(exampleData.buttonClasses)
+                            if (example.buttonClasses) {
+                                buttonClasses = buttonClasses.concat(example.buttonClasses)
                             }
-                            if (stateData.buttonClasses) {
-                                buttonClasses = buttonClasses.concat(stateData.buttonClasses)
+                            if (state.buttonClasses) {
+                                buttonClasses = buttonClasses.concat(state.buttonClasses)
                             }
 
-                            const $button = document.getElementById(stateData.id);
+                            const $button = document.getElementById(state.id);
                             const $status = $button.querySelector(".govuk-file-upload-button__status");
 
                             if (buttonClasses) {
                                 $button.classList.add(...buttonClasses);
                             }
-                            if (exampleData.removeButtonClasses) {
-                                $button.classList.remove(exampleData.removeButtonClasses);
+                            if (example.removeButtonClasses) {
+                                $button.classList.remove(example.removeButtonClasses);
                             }
-                            if (exampleData.fileSelected) {
-                                $status.textContent = exampleData.fileSelected;
+                            if (example.fileSelected) {
+                                $status.textContent = example.fileSelected;
                                 $button.classList.remove("govuk-file-upload-button--empty");
                             }
-                            if (stateData.dragging) {
+                            if (state.dragging) {
                                 console.log($button)
-                                console.table(stateData)
+                                console.table(state)
                                 $button.classList.add("govuk-file-upload-button--dragging");
                             }
                         });
