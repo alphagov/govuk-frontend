@@ -25,6 +25,12 @@
   // Status area, displays the current status of what file has been selected.
   $status-background-colour: base.govuk-colour("blue");
   $status-text-colour: base.govuk-colour("white");
+  $file-upload-border-width: 2px;
+  $component-padding: base.govuk-spacing(1);
+
+  $button-background-colour: base.govuk-functional-colour(body-background);
+  $empty-button-background-colour: $button-background-colour;
+
   $empty-status-background-colour: base.govuk-colour("blue", $variant: "tint-80");
   $empty-status-text-colour: base.govuk-colour("black");
 
