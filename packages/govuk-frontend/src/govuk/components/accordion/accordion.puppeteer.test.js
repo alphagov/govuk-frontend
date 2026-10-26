@@ -14,6 +14,63 @@ describe('/components/accordion', () => {
     examples = await getExamples('accordion')
   })
 
+  describe('beforematch with multiple accordions', () => {
+    it.each([false, true])(
+      'preserves translations with reverse init %s',
+      async (reverse) => {
+        await render(page, 'accordion', examples.default, {
+          context: { reverse },
+          beforeInitialisation($root, { reverse }) {
+            const $other = /** @type {HTMLElement} */ ($root.cloneNode(true))
+            $other.id = 'other-accordion'
+            $other.querySelectorAll('[id]').forEach(($element) => {
+              $element.id = `other-${$element.id}`
+            })
+            $other.setAttribute('data-i18n.hide-section', 'Other hide')
+            $other.setAttribute(
+              'data-i18n.hide-section-aria-label',
+              'Other hide label'
+            )
+            if (reverse) {
+              $root.before($other)
+            } else {
+              $root.after($other)
+            }
+          }
+        })
+        const result = await page.evaluate(() => {
+          const $root = document.getElementById('default-example')
+          const $other = document.getElementById('other-accordion')
+          const $content = $root.querySelector(
+            '.govuk-accordion__section-content'
+          )
+          $content.dispatchEvent(new Event('beforematch', { bubbles: true }))
+          return {
+            toggle: $root.querySelector('.govuk-accordion__section-toggle-text')
+              .textContent,
+            label: $root
+              .querySelector('.govuk-accordion__section-button')
+              .getAttribute('aria-label'),
+            expanded: $root
+              .querySelector('.govuk-accordion__section-button')
+              .getAttribute('aria-expanded'),
+            hidden: $content.hasAttribute('hidden'),
+            otherExpanded: $other
+              .querySelector('.govuk-accordion__section-button')
+              .getAttribute('aria-expanded')
+          }
+        })
+        expect(result).toEqual({
+          toggle: 'Hide',
+          label: 'Section A , Hide this section',
+          expanded: 'true',
+          hidden: false,
+          otherExpanded: 'false'
+        })
+      }
+    )
+  })
+
   describe('/components/accordion/preview', () => {
     describe('when JavaScript is unavailable or fails', () => {
       beforeAll(async () => {
