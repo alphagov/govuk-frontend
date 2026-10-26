@@ -310,6 +310,7 @@ export class CharacterCount extends ConfigurableComponent {
   updateIfValueChanged() {
     if (this.$textarea.value !== this.lastInputValue) {
       this.lastInputValue = this.$textarea.value
+      this.updateCount()
       this.updateCountMessage()
     }
   }
