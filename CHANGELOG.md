@@ -6,6 +6,8 @@ For advice on how to use these release notes, see [our guidance on staying up to
 
 ### Fixes
 
+Accordion sections found by the browser now keep the translations configured for their own accordion when a page has multiple accordions.
+
 We've made fixes to GOV.UK Frontend in the following pull requests:
 
 - [#7508: Use functional colours for more colours in Accordion and File upload](https://github.com/alphagov/govuk-frontend/pull/7508)
