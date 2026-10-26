@@ -1,0 +1,137 @@
+{% extends "layouts/examples.njk" %}
+
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/file-upload/macro.njk" import govukFileUpload %}
+
+{% block containerStart %}
+  {{ govukBackLink({
+    href: "/"
+  }) }}
+{% endblock %}
+
+{% block content %}
+    <h1 class="govuk-heading-l">File upload states</h1>
+    {% set examples = [
+        {
+            id: "empty",
+            title: 'When empty'
+        },
+        {
+            id: "file-selected",
+            title: 'When file was selected',
+            fileSelected: "photo.jpg"
+        }
+    ] %}
+    {% set columns = examples.length | default(1) %}
+    <style>
+        .app-custom-grid {
+            display: grid;
+            gap: 30px;
+        }
+        @media (min-width: 2000px) {
+            .app-custom-grid {
+                grid-template-columns: repeat({{ columns | default(1) }}, {{ (100 / columns) }}%);
+            }
+        }
+    </style>
+    <h2 class="govuk-heading-s">'Real' secondary Button</h2>
+    <p class="govuk-body">The File upload uses a constructed 'pseudo button'.</p>
+    {{ govukButton({
+        text: "Choose file",
+        classes: "govuk-button--secondary"
+    }) }}
+    <div class="app-custom-grid">
+        {% for example in examples %}
+            <div>
+                <h2 class="govuk-heading-s">{{ example.title | safe }}</h2>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="app-custom-grid">
+        {% for example in examples %}
+            <div>
+                {% set states = [
+                    {
+                        id: "file-upload-default-" + example.id
+                    },
+                    {
+                        id: "file-upload-dragging-" + example.id,
+                        title: "When dragging",
+                        dragging: true
+                    },
+                    {
+                        id: "file-upload-hovered-" + example.id,
+                        title: "When hovered",
+                        buttonClasses: [":hover"]
+                    },
+                    {
+                        id: "file-upload-active-" + example.id,
+                        title: "When hovered and pressed (active)",
+                        buttonClasses: [":hover", ":active"]
+                    },
+                    {
+                        id: "file-upload-focused-hovered-" + example.id,
+                        title: "When hovered and focused (mouse)",
+                        buttonClasses: [":focus", ":hover"]
+                    },
+                    {
+                        id: "file-upload-focused-" + example.id,
+                        title: "When focused (keyboard)",
+                        buttonClasses: [":focus"]
+                    }
+                ] %}
+                {% for state in states %}
+                    {% if state.title %}
+                        <h3 class="govuk-heading-s">{{ state.title }}</h3>
+                    {% endif %}
+                    {{ govukFileUpload({
+                        id: state.id,
+                        name: state.id,
+                        label: {
+                            text: "Upload a file"
+                        },
+                        javascript: true
+                    }) }}
+                    <script>
+                        document.addEventListener("DOMContentLoaded", (event) => {
+                            let buttonClasses = []
+
+                            const exampleData = JSON.parse(`{{ example | dump() | safe }}`);
+                            // console.table(exampleData);
+
+                            const stateData = JSON.parse(`{{ state | dump() | safe }}`);
+                            // console.table(stateData);
+
+                            if (exampleData.buttonClasses) {
+                                buttonClasses = buttonClasses.concat(exampleData.buttonClasses)
+                            }
+                            if (stateData.buttonClasses) {
+                                buttonClasses = buttonClasses.concat(stateData.buttonClasses)
+                            }
+
+                            const $button = document.getElementById(stateData.id);
+                            const $status = $button.querySelector(".govuk-file-upload-button__status");
+
+                            if (buttonClasses) {
+                                $button.classList.add(...buttonClasses);
+                            }
+                            if (exampleData.removeButtonClasses) {
+                                $button.classList.remove(exampleData.removeButtonClasses);
+                            }
+                            if (exampleData.fileSelected) {
+                                $status.textContent = exampleData.fileSelected;
+                                $button.classList.remove("govuk-file-upload-button--empty");
+                            }
+                            if (stateData.dragging) {
+                                console.log($button)
+                                console.table(stateData)
+                                $button.classList.add("govuk-file-upload-button--dragging");
+                            }
+                        });
+                    </script>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
