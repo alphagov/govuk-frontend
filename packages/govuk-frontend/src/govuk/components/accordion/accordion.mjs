@@ -322,7 +322,7 @@ export class Accordion extends ConfigurableComponent {
 
     // Handle when fragment is inside section
     const $section = $fragment.closest(`.${this.sectionClass}`)
-    if ($section) {
+    if ($section && Array.from(this.$sections).includes($section)) {
       this.setExpanded(true, $section)
     }
   }
