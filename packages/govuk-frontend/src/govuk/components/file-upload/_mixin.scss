@@ -12,10 +12,10 @@
   $govuk-secondary-button-hover-colour: base.govuk-colour("black", $variant: "tint-80");
 
   // Component specific variables
-  $file-upload-border-width: 2px;
   $component-padding: base.govuk-spacing(1);
 
   $button-background-colour: base.govuk-functional-colour(body-background);
+  $button-border-width: base.$govuk-border-width-form-element;
   $empty-button-background-colour: $button-background-colour;
 
   $empty-status-background-colour: base.govuk-colour("blue", $variant: "tint-80");
@@ -85,11 +85,11 @@
     flex-shrink: 0;
     width: auto;
     margin-right: base.govuk-spacing(2);
-    margin-bottom: base.$govuk-border-width-form-element + 1;
+    margin-bottom: $button-border-width + 1;
   }
 
   .govuk-file-upload-button__instruction {
-    margin-top: base.govuk-spacing(2) - (base.$govuk-border-width-form-element + 1);
+    margin-top: base.govuk-spacing(2) - ($button-border-width + 1);
     margin-bottom: 0;
     text-align: left;
   }
@@ -116,13 +116,13 @@
   .govuk-file-upload-button {
     width: 100%;
     // align the padding to be same as notification banner and error summary accounting for the thicker borders
-    padding: (base.govuk-spacing(3) + base.$govuk-border-width - $file-upload-border-width);
-    border: $file-upload-border-width solid base.govuk-colour("black", $variant: "tint-80");
+    padding: (base.govuk-spacing(3) + base.$govuk-border-width - $button-border-width);
+    border: $button-border-width solid base.govuk-colour("black", $variant: "tint-80");
     background-color: $button-background-colour;
     cursor: pointer;
 
     @media #{base.govuk-from-breakpoint(tablet)} {
-      padding: (base.govuk-spacing(4) + base.$govuk-border-width - $file-upload-border-width);
+      padding: (base.govuk-spacing(4) + base.$govuk-border-width - $button-border-width);
     }
 
     @at-root .govuk-form-group--error & {
