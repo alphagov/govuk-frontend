@@ -2,12 +2,22 @@
 
 /// @access private
 @mixin styles {
+  // The File upload component includes the GOV.UK Button component (secondary variant).
+  // Since the user may be interacting with the wider file drop area, we need to re-implement certain
+  // behaviours like hovering.
+
+  // Since we dont have a way of referencing the internal variables, copy them for now from:
+  // https://github.com/alphagov/govuk-frontend/blob/v6.6.0/packages/govuk-frontend/src/govuk/components/button/_mixin.scss#L15-L18
+  $govuk-secondary-button-colour: base.govuk-colour("black", $variant: "tint-95");
+  $govuk-secondary-button-hover-colour: base.govuk-colour("black", $variant: "tint-80");
+
+  // Component specific variables
   $file-upload-border-width: 2px;
   $component-padding: base.govuk-spacing(1);
 
   $button-background-colour: base.govuk-functional-colour(body-background);
   $empty-button-background-colour: $button-background-colour;
-  $empty-pseudo-button-background-colour: base.govuk-colour("black", $variant: "tint-95");
+
   $empty-status-background-colour: base.govuk-colour("blue", $variant: "tint-80");
 
   .govuk-file-upload {
@@ -121,7 +131,7 @@
     }
 
     .govuk-file-upload-button__pseudo-button {
-      background-color: base.govuk-colour("black", $variant: "tint-95");
+      background-color: $govuk-secondary-button-colour;
     }
 
     &:hover {
@@ -129,7 +139,7 @@
       border-color: base.govuk-colour("black", $variant: "tint-50");
 
       .govuk-file-upload-button__pseudo-button {
-        background-color: base.govuk-colour("black", $variant: "tint-80");
+        background-color: $govuk-secondary-button-hover-colour;
       }
 
       .govuk-file-upload-button__status {
@@ -160,7 +170,7 @@
       &:hover .govuk-file-upload-button__pseudo-button {
         border-color: base.govuk-functional-colour(focus);
         outline: 3px solid transparent;
-        background-color: base.govuk-colour("black", $variant: "tint-80");
+        background-color: $govuk-secondary-button-hover-colour;
         box-shadow: inset 0 0 0 1px base.govuk-functional-colour(focus);
       }
     }
@@ -171,7 +181,7 @@
     background-color: $empty-button-background-colour;
 
     .govuk-file-upload-button__pseudo-button {
-      background-color: $empty-pseudo-button-background-colour;
+      background-color: $govuk-secondary-button-colour;
     }
 
     .govuk-file-upload-button__status {
@@ -197,7 +207,7 @@
     // extra specificity to apply when
     // empty
     &.govuk-file-upload-button--empty {
-      background-color: base.govuk-colour("black", $variant: "tint-95");
+      background-color: $govuk-secondary-button-colour;
     }
   }
 
@@ -208,7 +218,7 @@
     background-color: $empty-button-background-colour;
 
     .govuk-file-upload-button__pseudo-button {
-      background-color: $empty-pseudo-button-background-colour;
+      background-color: $govuk-secondary-button-colour;
     }
 
     .govuk-file-upload-button__status {
