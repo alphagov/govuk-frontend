@@ -16,7 +16,10 @@
 
   $button-background-colour: base.govuk-functional-colour(body-background);
   $button-border-width: base.$govuk-border-width-form-element;
-  $empty-button-background-colour: $button-background-colour;
+  $button-border-colour: base.govuk-colour("black", $variant: "tint-80");
+  $button-focus-background-colour: base.govuk-colour("black", $variant: "tint-95");
+  $button-hover-border-colour: base.govuk-colour("black", $variant: "tint-50");
+  $dragging-button-border-colour: base.govuk-colour("black");
 
   $status-text-colour: base.govuk-colour("white");
   $status-background-colour: base.govuk-colour("blue");
@@ -120,7 +123,7 @@
     width: 100%;
     // align the padding to be same as notification banner and error summary accounting for the thicker borders
     padding: (base.govuk-spacing(3) + base.$govuk-border-width - $button-border-width);
-    border: $button-border-width solid base.govuk-colour("black", $variant: "tint-80");
+    border: $button-border-width solid $button-border-colour;
     background-color: $button-background-colour;
     cursor: pointer;
 
@@ -139,7 +142,7 @@
 
     &:hover {
       border-style: dashed;
-      border-color: base.govuk-colour("black", $variant: "tint-50");
+      border-color: $button-hover-border-colour;
 
       .govuk-file-upload-button__pseudo-button {
         background-color: $govuk-secondary-button-hover-colour;
@@ -155,7 +158,7 @@
       border-style: solid;
       border-color: base.govuk-functional-colour(input-border);
       @include base.govuk-focused-form-input;
-      background-color: base.govuk-colour("black", $variant: "tint-95");
+      background-color: $button-focus-background-colour;
 
       // Copy Button component focus styles from:
       // https://github.com/alphagov/govuk-frontend/blob/97d69e268cef49bbdf7520782f006d3e0ba98208/packages/govuk-frontend/src/govuk/components/button/_mixin.scss#L88-L99
@@ -175,7 +178,7 @@
 
   .govuk-file-upload-button--empty {
     border-style: dashed;
-    background-color: $empty-button-background-colour;
+    background-color: $button-background-colour;
 
     .govuk-file-upload-button__pseudo-button {
       background-color: $govuk-secondary-button-colour;
@@ -189,7 +192,7 @@
     &:hover,
     &:focus,
     &:active {
-      background-color: base.govuk-colour("black", $variant: "tint-95");
+      background-color: $button-focus-background-colour;
 
       .govuk-file-upload-button__status {
         background-color: $empty-status-background-colour;
@@ -199,7 +202,7 @@
 
   .govuk-file-upload-button--dragging {
     border-style: solid;
-    border-color: base.govuk-colour("black");
+    border-color: $dragging-button-border-colour;
 
     // extra specificity to apply when
     // empty
@@ -212,7 +215,7 @@
     pointer-events: none;
     opacity: 0.5;
 
-    background-color: $empty-button-background-colour;
+    background-color: $button-background-colour;
 
     .govuk-file-upload-button__pseudo-button {
       background-color: $govuk-secondary-button-colour;
