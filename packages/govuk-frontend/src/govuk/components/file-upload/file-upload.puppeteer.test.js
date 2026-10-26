@@ -20,6 +20,113 @@ describe('/components/file-upload', () => {
     examples = await getExamples('file-upload')
   })
 
+  describe('drops without CSS', () => {
+    it.each([
+      [false, false, false],
+      [false, true, false],
+      [true, false, false],
+      [true, true, false],
+      [false, false, true],
+      [false, true, true],
+      [true, false, true],
+      [true, true, true]
+    ])(
+      'preserves disabled files (multiple=%s, selected=%s, fieldset=%s)',
+      async (multiple, hasSelection, useFieldset) => {
+        await render(page, 'file-upload', examples.enhanced)
+        await page.evaluate(
+          ({ multiple, hasSelection, useFieldset }) => {
+            const $input = document.querySelector('input[type="file"]')
+            $input.multiple = multiple
+            if (hasSelection) {
+              const data = new DataTransfer()
+              data.items.add(new File(['original'], 'original.txt'))
+              $input.files = data.files
+              $input.dispatchEvent(new Event('change'))
+            }
+            if (useFieldset) {
+              const $fieldset = document.createElement('fieldset')
+              const $wrapper = document.querySelector(
+                '.govuk-file-upload-wrapper'
+              )
+              $wrapper.before($fieldset)
+              $fieldset.append($wrapper)
+              $fieldset.disabled = true
+            } else {
+              $input.disabled = true
+            }
+            for (const stylesheet of document.styleSheets) {
+              stylesheet.disabled = true
+            }
+            $input.dataset.fileChanges = '0'
+            $input.dataset.trustedDrops = '0'
+            $input.addEventListener('change', () => {
+              $input.dataset.fileChanges = String(
+                Number($input.dataset.fileChanges) + 1
+              )
+            })
+            document.addEventListener('drop', (event) => {
+              if (event.isTrusted) {
+                $input.dataset.trustedDrops = String(
+                  Number($input.dataset.trustedDrops) + 1
+                )
+              }
+            })
+          },
+          { multiple, hasSelection, useFieldset }
+        )
+        const $button = await page.$(buttonSelector)
+        const box = await $button.boundingBox()
+        const position = { x: box.x + 10, y: box.y + 10 }
+        const data = { items: [], files: [__filename], dragOperationsMask: 1 }
+        await page.mouse.dragEnter(position, structuredClone(data))
+        await page.mouse.drop(position, structuredClone(data))
+        const result = await page.evaluate(() => ({
+          files: Array.from(
+            document.querySelector('input[type="file"]').files,
+            (file) => file.name
+          ),
+          status: document.querySelector('.govuk-file-upload-button__status')
+            .textContent,
+          changes: Number(
+            document.querySelector('input[type="file"]').dataset.fileChanges
+          ),
+          drops: Number(
+            document.querySelector('input[type="file"]').dataset.trustedDrops
+          )
+        }))
+        expect(result).toEqual({
+          files: hasSelection ? ['original.txt'] : [],
+          status: hasSelection ? 'original.txt' : 'No file chosen',
+          changes: 0,
+          drops: 1
+        })
+
+        // The same native drop must work after the control is re-enabled.
+        await page.evaluate(() => {
+          document.querySelector('input[type="file"]').disabled = false
+          const $fieldset = document.querySelector('fieldset')
+          if ($fieldset) $fieldset.disabled = false
+        })
+        await page.mouse.dragEnter(position, structuredClone(data))
+        await page.mouse.drop(position, structuredClone(data))
+        await expect(
+          page.$eval('input[type="file"]', (input) =>
+            Array.from(input.files, (file) => file.name)
+          )
+        ).resolves.toEqual(['file-upload.puppeteer.test.js'])
+        await expect(
+          page.$eval('input[type="file"]', (input) =>
+            Number(input.dataset.fileChanges)
+          )
+        ).resolves.toBe(1)
+        await expect(
+          $button.$eval(statusSelector, (status) => status.textContent)
+        ).resolves.toBe('file-upload.puppeteer.test.js')
+      }
+    )
+  })
+
   describe('/components/file-upload/preview', () => {
     describe('when JavaScript is unavailable or fails', () => {
       beforeAll(async () => {
