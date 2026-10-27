@@ -51,7 +51,7 @@ export class Button extends ConfigurableComponent {
       $target instanceof HTMLElement &&
       $target.getAttribute('role') === 'button'
     ) {
-      event.preventDefault() // prevent the page from scrolling
+      event.preventDefault() // Prevent the page from scrolling
       $target.click()
     }
   }
@@ -88,24 +88,22 @@ export class Button extends ConfigurableComponent {
    * Name for the component used when initialising using data-module attributes.
    */
   static moduleName = 'govuk-button'
-
-  /**
-   * Button default config
-   *
-   * @see {@link ButtonConfig}
-   * @constant
-   * @type {ButtonConfig}
-   */
+/**
+ * Button default config
+ *
+ * @see {@link ButtonConfig}
+ * @constant
+ * @type {ButtonConfig}
+ */
   static defaults = Object.freeze({
     preventDoubleClick: false
   })
-
-  /**
-   * Button config schema
-   *
-   * @constant
-   * @satisfies {Schema<ButtonConfig>}
-   */
+/**
+ * Button config schema
+ *
+ * @constant
+ * @satisfies {Schema<ButtonConfig>}
+ */
   static schema = Object.freeze({
     properties: {
       preventDoubleClick: { type: 'boolean' }

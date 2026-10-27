@@ -8,9 +8,7 @@ const router = express.Router()
 /**
  * Sass docs have moved
  */
-router.get('/', (req, res) => {
-  return res.redirect('./sass')
-})
+router.get('/', (req, res) => res.redirect('./sass'))
 
 /**
  * Add middleware

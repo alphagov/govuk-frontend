@@ -21,59 +21,44 @@ import { I18n } from '../../i18n.mjs'
 export class Accordion extends ConfigurableComponent {
   /** @private */
   i18n
-
-  /** @private */
+/** @private */
   sectionClass = 'govuk-accordion__section'
-
-  /** @private */
+/** @private */
   sectionExpandedModifier = 'govuk-accordion__section--expanded'
-
-  /** @private */
+/** @private */
   sectionButtonClass = 'govuk-accordion__section-button'
-
-  /** @private */
+/** @private */
   sectionHeaderClass = 'govuk-accordion__section-header'
-
-  /** @private */
+/** @private */
   sectionHeadingClass = 'govuk-accordion__section-heading'
-
-  /** @private */
+/** @private */
   sectionHeadingTextClass = 'govuk-accordion__section-heading-text'
-
-  /** @private */
+/** @private */
   sectionToggleTextClass = 'govuk-accordion__section-toggle-text'
-
-  /** @private */
+/** @private */
   iconClass = 'govuk-accordion-nav__chevron'
-
-  /** @private */
+/** @private */
   iconOpenModifier = 'govuk-accordion-nav__chevron--down'
-
-  /** @private */
+/** @private */
   sectionSummaryClass = 'govuk-accordion__section-summary'
-
-  /** @private */
+/** @private */
   sectionContentClass = 'govuk-accordion__section-content'
-
-  /** @private */
+/** @private */
   $sections
-
-  /**
-   * @private
-   * @type {HTMLButtonElement | null}
-   */
+/**
+ * @private
+ * @type {HTMLButtonElement | null}
+ */
   $showAllButton = null
-
-  /**
-   * @private
-   * @type {HTMLElement | null}
-   */
+/**
+ * @private
+ * @type {HTMLElement | null}
+ */
   $showAllIcon = null
-
-  /**
-   * @private
-   * @type {HTMLElement | null}
-   */
+/**
+ * @private
+ * @type {HTMLElement | null}
+ */
   $showAllText = null
 
   /**
@@ -227,7 +212,7 @@ export class Accordion extends ConfigurableComponent {
       class: 'govuk-accordion__section-heading-text-focus'
     })
     $headingText.appendChild($headingTextFocus)
-    // span could contain HTML elements
+    // Span could contain HTML elements
     // (see https://www.w3.org/TR/2011/WD-html5-20110525/content-models.html#phrasing-content)
     Array.from($span.childNodes).forEach(($child) =>
       $headingTextFocus.appendChild($child)
@@ -559,14 +544,13 @@ export class Accordion extends ConfigurableComponent {
    * Name for the component used when initialising using data-module attributes.
    */
   static moduleName = 'govuk-accordion'
-
-  /**
-   * Accordion default config
-   *
-   * @see {@link AccordionConfig}
-   * @constant
-   * @type {AccordionConfig}
-   */
+/**
+ * Accordion default config
+ *
+ * @see {@link AccordionConfig}
+ * @constant
+ * @type {AccordionConfig}
+ */
   static defaults = Object.freeze({
     i18n: {
       hideAllSections: 'Hide all sections',
@@ -578,13 +562,12 @@ export class Accordion extends ConfigurableComponent {
     },
     rememberExpanded: true
   })
-
-  /**
-   * Accordion config schema
-   *
-   * @constant
-   * @satisfies {Schema<AccordionConfig>}
-   */
+/**
+ * Accordion config schema
+ *
+ * @constant
+ * @satisfies {Schema<AccordionConfig>}
+ */
   static schema = Object.freeze({
     properties: {
       i18n: { type: 'object' },

@@ -103,8 +103,8 @@ export class I18n {
        * @param {string} placeholderKey - Placeholder key
        * @returns {string} Placeholder value
        */
-      function (placeholderWithBraces, placeholderKey) {
-        if (Object.prototype.hasOwnProperty.call(options, placeholderKey)) {
+      (placeholderWithBraces, placeholderKey) => {
+        if (Object.hasOwn(options, placeholderKey)) {
           const placeholderValue = options[placeholderKey]
 
           // If a user has passed `false` as the value for the placeholder
@@ -196,7 +196,9 @@ export class I18n {
         return preferredForm
         // Fall back to `other` if the plural form is missing, but log a warning
         // to the console
-      } else if ('other' in translation) {
+      }
+
+ if ('other' in translation) {
         console.warn(
           `i18n: Missing plural form ".${preferredForm}" for "${this.locale}" locale. Falling back to ".other".`
         )

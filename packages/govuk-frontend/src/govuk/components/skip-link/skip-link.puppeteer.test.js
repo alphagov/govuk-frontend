@@ -69,52 +69,43 @@ describe('Skip Link', () => {
   })
 
   describe('errors at instantiation', () => {
-    it('can return early without errors for external href', async () => {
-      return expect(
+    it('can return early without errors for external href', async () => expect(
         render(page, 'skip-link', {
           context: {
             text: 'Exit this page',
             href: 'https://www.bbc.co.uk/weather'
           }
         })
-      ).resolves.not.toThrow()
-    })
+      ).resolves.not.toThrow())
 
-    it('can return early without errors when linking to another page (without hash fragment)', async () => {
-      return expect(
+    it('can return early without errors when linking to another page (without hash fragment)', async () => expect(
         render(page, 'skip-link', {
           context: {
             text: 'Exit this page',
             href: '/clear-session-data'
           }
         })
-      ).resolves.not.toThrow()
-    })
+      ).resolves.not.toThrow())
 
-    it('can return early without errors when linking to another page (with hash fragment)', async () => {
-      return expect(
+    it('can return early without errors when linking to another page (with hash fragment)', async () => expect(
         render(page, 'skip-link', {
           context: {
             text: 'Skip to main content',
             href: '/somewhere-else#main-content'
           }
         })
-      ).resolves.not.toThrow()
-    })
+      ).resolves.not.toThrow())
 
-    it('can return early without errors when linking to the current page (with hash fragment)', async () => {
-      return expect(
+    it('can return early without errors when linking to the current page (with hash fragment)', async () => expect(
         render(page, 'skip-link', {
           context: {
             text: 'Skip to main content',
             href: '#content'
           }
         })
-      ).resolves.not.toThrow()
-    })
+      ).resolves.not.toThrow())
 
-    it('can throw a SupportError if appropriate', async () => {
-      return expect(
+    it('can throw a SupportError if appropriate', async () => expect(
         render(page, 'skip-link', examples.default, {
           beforeInitialisation() {
             document.body.classList.remove('govuk-frontend-supported')
@@ -126,8 +117,7 @@ describe('Skip Link', () => {
           message:
             'GOV.UK Frontend initialised without `<body class="govuk-frontend-supported">` from template `<script>` snippet'
         }
-      })
-    })
+      }))
 
     it('throws when initialised twice', async () => {
       await expect(
@@ -143,8 +133,7 @@ describe('Skip Link', () => {
       })
     })
 
-    it('throws when $root is not set', async () => {
-      return expect(
+    it('throws when $root is not set', async () => expect(
         render(page, 'skip-link', examples.default, {
           beforeInitialisation($root) {
             $root.remove()
@@ -155,11 +144,9 @@ describe('Skip Link', () => {
           name: 'ElementError',
           message: 'govuk-skip-link: Root element (`$root`) not found'
         }
-      })
-    })
+      }))
 
-    it('throws when receiving the wrong type for $root', async () => {
-      return expect(
+    it('throws when receiving the wrong type for $root', async () => expect(
         render(page, 'skip-link', examples.default, {
           beforeInitialisation($root) {
             // Replace with an `<svg>` element which is not an `HTMLElement` in the DOM (but an `SVGElement`)
@@ -172,11 +159,9 @@ describe('Skip Link', () => {
           message:
             'govuk-skip-link: Root element (`$root`) is not of type HTMLAnchorElement'
         }
-      })
-    })
+      }))
 
-    it('throws when the linked element is missing', async () => {
-      return expect(
+    it('throws when the linked element is missing', async () => expect(
         render(page, 'skip-link', {
           context: {
             text: 'Skip to main content',
@@ -189,11 +174,9 @@ describe('Skip Link', () => {
           message:
             'govuk-skip-link: Target content (`id="this-element-does-not-exist"`) not found'
         }
-      })
-    })
+      }))
 
-    it('throws when the href does not contain a hash', async () => {
-      return expect(
+    it('throws when the href does not contain a hash', async () => expect(
         render(page, 'skip-link', {
           context: {
             text: 'Skip to main content',
@@ -206,7 +189,6 @@ describe('Skip Link', () => {
           message:
             'Skip link: Target link (`href="/components/skip-link/preview"`) has no hash fragment'
         }
-      })
-    })
+      }))
   })
 })

@@ -74,13 +74,9 @@ describe('Checkboxes', () => {
           expect($inputsWithAriaControls).toHaveLength(0)
         })
 
-        it('falls back to making all conditional content visible', async () => {
-          return Promise.all(
-            $conditionals.map(async ($conditional) => {
-              return expect(await isVisible($conditional)).toBe(true)
-            })
-          )
-        })
+        it('falls back to making all conditional content visible', async () => Promise.all(
+            $conditionals.map(async ($conditional) => expect(await isVisible($conditional)).toBe(true))
+          ))
       })
     })
 
@@ -107,7 +103,7 @@ describe('Checkboxes', () => {
         })
 
         it('has no conditional content revealed that is associated with an unchecked input', async () => {
-          const $input = $inputs[1] // second input, unchecked
+          const $input = $inputs[1] // Second input, unchecked
           const $conditional = await $component.$(
             `[id="${await getAttribute($input, 'aria-controls')}"]`
           )
@@ -197,16 +193,16 @@ describe('Checkboxes', () => {
       })
 
       describe('with conditional items with special characters', () => {
-        it('does not error when ID of revealed content contains special characters', async () => {
+        it('does not error when ID of revealed content contains special characters', async () => 
           // Errors logged to the console will cause this test to fail
-          return expect(
+           expect(
             render(
               page,
               'checkboxes',
               examples['with conditional items with special characters']
             )
           ).resolves.not.toThrow()
-        })
+        )
       })
     })
   })

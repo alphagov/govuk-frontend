@@ -15,6 +15,7 @@ export function checkRelevantChanges(changedFiles) {
 
   return false
 }
+
 /**
  * Check if a file is relevant for Percy screenshots
  *

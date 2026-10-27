@@ -20,7 +20,7 @@ const urls = require('./urls')
  */
 const version = ['test', 'production'].includes(NODE_ENV)
   ? pkg.version // Use release version
-  : NODE_ENV // or default to build type
+  : NODE_ENV // Or default to build type
 
 module.exports = {
   paths,

@@ -35,7 +35,7 @@ describe('normaliseOptions', () => {
     },
     {
       name: 'anonymous function',
-      handler: function () {}
+      handler () {}
     },
     {
       name: 'shorthand function',
@@ -43,7 +43,7 @@ describe('normaliseOptions', () => {
     },
     {
       name: 'arrow function',
-      handler: () => {}
+      handler() {}
     }
   ]
 

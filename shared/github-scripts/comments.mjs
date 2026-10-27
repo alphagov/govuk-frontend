@@ -360,7 +360,7 @@ export async function getComment({ github, context }, issueNumber, markerText) {
   })
 
   // Find first match for marker
-  return comments.find(({ body }) => !!body?.includes(markerText))
+  return comments.find(({ body }) => Boolean(body?.includes(markerText)))
 }
 
 /**

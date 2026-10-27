@@ -74,13 +74,9 @@ describe('Radios', () => {
           expect($inputsWithAriaControls).toHaveLength(0)
         })
 
-        it('falls back to making all conditional content visible', async () => {
-          return Promise.all(
-            $conditionals.map(async ($conditional) => {
-              return expect(await isVisible($conditional)).toBe(true)
-            })
-          )
-        })
+        it('falls back to making all conditional content visible', async () => Promise.all(
+            $conditionals.map(async ($conditional) => expect(await isVisible($conditional)).toBe(true))
+          ))
       })
     })
 
@@ -201,16 +197,16 @@ describe('Radios', () => {
       })
 
       describe('with conditional items with special characters', () => {
-        it('does not error when ID of revealed content contains special characters', async () => {
+        it('does not error when ID of revealed content contains special characters', async () => 
           // Errors logged to the console will cause this test to fail
-          return expect(
+           expect(
             render(
               page,
               'radios',
               examples['with conditional items with special characters']
             )
           ).resolves.not.toThrow()
-        })
+        )
       })
     })
   })

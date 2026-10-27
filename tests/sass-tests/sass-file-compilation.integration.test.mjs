@@ -32,7 +32,7 @@ async function compileSassFile(sassFilePath, type = 'import') {
  * Test suite
  */
 describe.each(sassFiles)('%s', (sassFilePath) => {
-  let useCss, importCss
+  let useCss; let importCss
 
   beforeAll(async () => {
     // Compile file with `@use` and `@import` in parallel. In most tests, we only

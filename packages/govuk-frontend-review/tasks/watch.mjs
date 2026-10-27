@@ -82,7 +82,7 @@ function getTasks(options) {
   }
 
   return Object.entries(tasks)
-    .filter(([taskName, fn]) => !!fn)
+    .filter(([taskName, fn]) => Boolean(fn))
     .map(([taskName, fn]) => task.name(taskName, fn))
 }
 

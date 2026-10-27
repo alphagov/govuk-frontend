@@ -12,42 +12,34 @@ import { I18n } from '../../i18n.mjs'
 export class ExitThisPage extends ConfigurableComponent {
   /** @private */
   i18n
-
-  /** @private */
+/** @private */
   $button
-
-  /**
-   * @private
-   * @type {HTMLAnchorElement | null}
-   */
+/**
+ * @private
+ * @type {HTMLAnchorElement | null}
+ */
   $skiplinkButton = null
-
-  /**
-   * @private
-   * @type {HTMLElement | null}
-   */
+/**
+ * @private
+ * @type {HTMLElement | null}
+ */
   $updateSpan = null
-
-  /**
-   * @private
-   * @type {HTMLElement | null}
-   */
+/**
+ * @private
+ * @type {HTMLElement | null}
+ */
   $indicatorContainer = null
-
-  /**
-   * @private
-   * @type {HTMLElement | null}
-   */
+/**
+ * @private
+ * @type {HTMLElement | null}
+ */
   $overlay = null
-
-  /** @private */
+/** @private */
   keypressCounter = 0
-
-  /** @private */
+/** @private */
   lastKeyWasModified = false
-
-  /** @private */
-  timeoutTime = 5000 // milliseconds
+/** @private */
+  timeoutTime = 5000 // Milliseconds
 
   // Store the timeout events so that we can clear them to avoid user keypresses overlapping
   // setTimeout returns an id that we can use to clear it with clearTimeout,
@@ -58,11 +50,10 @@ export class ExitThisPage extends ConfigurableComponent {
    * @type {number | null}
    */
   keypressTimeoutId = null
-
-  /**
-   * @private
-   * @type {number | null}
-   */
+/**
+ * @private
+ * @type {number | null}
+ */
   timeoutMessageId = null
 
   /**
@@ -220,7 +211,7 @@ export class ExitThisPage extends ConfigurableComponent {
       role: 'alert'
     })
 
-    // we do these this way round, thus incurring a second paint, because changing
+    // We do these this way round, thus incurring a second paint, because changing
     // the element text after adding it means that screen readers pick up the
     // announcement more reliably.
     document.body.appendChild(this.$overlay)
@@ -286,13 +277,11 @@ export class ExitThisPage extends ConfigurableComponent {
         }
 
         this.exitPage()
-      } else {
-        if (this.keypressCounter === 1) {
+      } else if (this.keypressCounter === 1) {
           this.$updateSpan.textContent = this.i18n.t('pressTwoMoreTimes')
         } else {
           this.$updateSpan.textContent = this.i18n.t('pressOneMoreTime')
         }
-      }
 
       this.setKeypressTimer()
     } else if (this.keypressTimeoutId) {
@@ -344,7 +333,7 @@ export class ExitThisPage extends ConfigurableComponent {
       this.keypressTimeoutId = null
     }
 
-    const $updateSpan = this.$updateSpan
+    const {$updateSpan} = this
 
     this.keypressCounter = 0
     $updateSpan.textContent = this.i18n.t('timedOut')
@@ -402,14 +391,13 @@ export class ExitThisPage extends ConfigurableComponent {
    * Name for the component used when initialising using data-module attributes.
    */
   static moduleName = 'govuk-exit-this-page'
-
-  /**
-   * Exit this page default config
-   *
-   * @see {@link ExitThisPageConfig}
-   * @constant
-   * @type {ExitThisPageConfig}
-   */
+/**
+ * Exit this page default config
+ *
+ * @see {@link ExitThisPageConfig}
+ * @constant
+ * @type {ExitThisPageConfig}
+ */
   static defaults = Object.freeze({
     i18n: {
       activated: 'Loading.',
@@ -418,13 +406,12 @@ export class ExitThisPage extends ConfigurableComponent {
       pressOneMoreTime: 'Shift, press 1 more time to exit.'
     }
   })
-
-  /**
-   * Exit this page config schema
-   *
-   * @constant
-   * @satisfies {Schema<ExitThisPageConfig>}
-   */
+/**
+ * Exit this page config schema
+ *
+ * @constant
+ * @satisfies {Schema<ExitThisPageConfig>}
+ */
   static schema = Object.freeze({
     properties: {
       i18n: { type: 'object' }

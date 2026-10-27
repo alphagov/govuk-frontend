@@ -28,8 +28,7 @@ describe('Components', () => {
   })
 
   describe('Nunjucks environment', () => {
-    it('renders template for each component', () => {
-      return Promise.all(
+    it('renders template for each component', () => Promise.all(
         componentNames.map((componentName) =>
           expect(() => {
             nunjucksEnvDefault.render(
@@ -38,11 +37,9 @@ describe('Components', () => {
             )
           }).not.toThrow()
         )
-      )
-    })
+      ))
 
-    it('renders template for each component (different base path)', () => {
-      return Promise.all(
+    it('renders template for each component (different base path)', () => Promise.all(
         componentNames.map((componentName) =>
           expect(() => {
             nunjucksEnvCustom.render(
@@ -51,8 +48,7 @@ describe('Components', () => {
             )
           }).not.toThrow()
         )
-      )
-    })
+      ))
   })
 
   describe('Nunjucks HTML validation', () => {

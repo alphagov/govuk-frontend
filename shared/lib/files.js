@@ -106,9 +106,7 @@ async function getFileSize(filePath) {
  * @param {string[]} patterns - Minimatch patterns
  * @returns {(entryPath: string) => boolean} Returns true for files matching every pattern
  */
-const filterPath = (patterns) => (entryPath) => {
-  return patterns.every((pattern) => minimatch(entryPath, pattern))
-}
+const filterPath = (patterns) => (entryPath) => patterns.every((pattern) => minimatch(entryPath, pattern))
 
 /**
  * Directory listing array mapper
@@ -190,7 +188,7 @@ function getFileSizeComparison(headFiles, baseFiles) {
     }
   })
 
-  // remove null rows before returning
+  // Remove null rows before returning
   return comparedFileSizes.filter((file) => file)
 }
 

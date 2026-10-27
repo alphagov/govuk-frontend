@@ -43,6 +43,7 @@ export function updateChangelog(newVersion, previousVersion) {
   if (!versionDiff) {
     throw new Error(processingErrorMessage)
   }
+
   const newVersionTitle = `## v${validatedNewVersion} (${capitalise(convertIncTypeWord(versionDiff, validatedNewVersion))})`
 
   const newLines = [newVersionTitle, ``]
@@ -232,6 +233,7 @@ function getPrereleaseIdentifier(version) {
   if (!versionIsAPrerelease(version)) {
     return ''
   }
+
   // Prerelease is made up of an optional string label and a number increment
   // e.g. `1.0.0-beta.0` and `1.0.0-0`, so only return something if we find a label
   const prereleaseIdentifier = semver
@@ -240,6 +242,7 @@ function getPrereleaseIdentifier(version) {
   if (!prereleaseIdentifier) {
     return ''
   }
+
   return prereleaseIdentifier
 }
 
@@ -260,6 +263,7 @@ function convertIncTypeWord(incType, version) {
     if (prereleaseIdentifier === 'rc') {
       return 'release candidate'
     }
+
     rewordedIncType = prereleaseIdentifier
   } else if (incType === 'major') {
     rewordedIncType = 'breaking'

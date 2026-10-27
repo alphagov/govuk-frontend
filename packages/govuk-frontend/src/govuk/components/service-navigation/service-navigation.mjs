@@ -10,26 +10,23 @@ import { ElementError } from '../../errors/index.mjs'
 export class ServiceNavigation extends Component {
   /** @private */
   $menuButton
-
-  /** @private */
+/** @private */
   $menu
-
-  /**
-   * Remember the open/closed state of the nav so we can maintain it when the
-   * screen is resized.
-   *
-   * @private
-   */
+/**
+ * Remember the open/closed state of the nav so we can maintain it when the
+ * screen is resized.
+ *
+ * @private
+ */
   menuIsOpen = false
-
-  /**
-   * A global const for storing a matchMedia instance which we'll use to detect
-   * when a screen size change happens. We rely on it being null if the feature
-   * isn't available to initially apply hidden attributes
-   *
-   * @private
-   * @type {MediaQueryList | null}
-   */
+/**
+ * A global const for storing a matchMedia instance which we'll use to detect
+ * when a screen size change happens. We rely on it being null if the feature
+ * isn't available to initially apply hidden attributes
+ *
+ * @private
+ * @type {MediaQueryList | null}
+ */
   mql = null
 
   /**

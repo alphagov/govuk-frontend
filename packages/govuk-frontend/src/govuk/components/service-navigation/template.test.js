@@ -10,7 +10,7 @@ describe('Service Navigation', () => {
 
   it('renders the container as a <div> if a service name is missing', () => {
     const $ = render('service-navigation', examples.default)
-    const tagName = $('.govuk-service-navigation').get(0).tagName
+    const {tagName} = $('.govuk-service-navigation').get(0)
 
     expect(tagName.toLowerCase()).toBe('div')
   })
@@ -445,7 +445,7 @@ describe('Service Navigation', () => {
     describe('<section> wrapper', () => {
       it('renders the container as a <section> if a service name is present', () => {
         const $ = render('service-navigation', examples['with service name'])
-        const tagName = $('.govuk-service-navigation').get(0).tagName
+        const {tagName} = $('.govuk-service-navigation').get(0)
 
         expect(tagName.toLowerCase()).toBe('section')
       })
@@ -502,7 +502,7 @@ describe('Service Navigation', () => {
 
     it('renders the component as a <section> if `start` or `end` slots are used', () => {
       const $ = render('service-navigation', examples['with slotted content'])
-      const tagName = $('.govuk-service-navigation').get(0).tagName
+      const {tagName} = $('.govuk-service-navigation').get(0)
 
       expect(tagName.toLowerCase()).toBe('section')
     })

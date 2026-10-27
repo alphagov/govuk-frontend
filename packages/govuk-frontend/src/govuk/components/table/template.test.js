@@ -247,14 +247,12 @@ describe('Table', () => {
 
       const cells = $('.govuk-table')
         .find('tbody tr')
-        .map((_, tr) => {
-          return [
+        .map((_, tr) => [
             $(tr)
               .find('td')
               .map((_, td) => $(td).text())
               .get()
-          ]
-        })
+          ])
         .get()
 
       expect(cells).toEqual([
@@ -269,14 +267,12 @@ describe('Table', () => {
 
       const cells = $('.govuk-table')
         .find('tbody tr')
-        .map((_, tr) => {
-          return [
+        .map((_, tr) => [
             $(tr)
               .find('td')
               .map((_, td) => $(td).text())
               .get()
-          ]
-        })
+          ])
         .get()
 
       expect(cells).toEqual([

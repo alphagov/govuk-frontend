@@ -22,7 +22,7 @@ export class Component {
    */
   static elementType = _self.HTMLElement
 
-  // allows Typescript user to work around the lack of types
+  // Allows Typescript user to work around the lack of types
   // in GOVUKFrontend package, Typescript is not aware of $root
   // in components that extend GOVUKFrontendComponent
   /**
@@ -78,7 +78,7 @@ export class Component {
 
     this.checkInitialised()
 
-    const moduleName = childConstructor.moduleName
+    const {moduleName} = childConstructor
 
     this.$root.setAttribute(`data-${moduleName}-init`, '')
   }
@@ -91,7 +91,7 @@ export class Component {
    */
   checkInitialised() {
     const constructor = /** @type {ChildClassConstructor} */ (this.constructor)
-    const moduleName = constructor.moduleName
+    const {moduleName} = constructor
 
     if (moduleName && isInitialised(this.$root, moduleName)) {
       throw new InitError(constructor)

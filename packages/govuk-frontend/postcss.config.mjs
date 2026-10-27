@@ -22,7 +22,7 @@ export default ({ to = '' } = {}) => ({
         // Find CSS declaration for version, update value
         // https://github.com/postcss/postcss/blob/main/docs/writing-a-plugin.md
         // https://postcss.org/api/#declaration
-        '--govuk-frontend-version': async (decl) => {
+        async '--govuk-frontend-version'(decl) {
           const config = await import('@govuk-frontend/config')
           decl.value = `"${config.version}"`
         }

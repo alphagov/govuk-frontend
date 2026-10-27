@@ -98,9 +98,7 @@ export async function compileStylesheet([
     }
   }
 
-  if (!css) {
-    css = await readFile(moduleSrcPath)
-  }
+  css ||= await readFile(moduleSrcPath);
 
   // Locate PostCSS config
   const config = await postcssrc(options, configPath)

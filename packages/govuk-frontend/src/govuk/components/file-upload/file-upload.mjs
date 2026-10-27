@@ -16,38 +16,31 @@ export class FileUpload extends ConfigurableComponent {
    * @type {HTMLFileInputElement}
    */
   $input
-
-  /**
-   * @private
-   * @type {HTMLButtonElement}
-   */
+/**
+ * @private
+ * @type {HTMLButtonElement}
+ */
   $button
-
-  /**
-   * @private
-   * @type {HTMLSpanElement}
-   */
+/**
+ * @private
+ * @type {HTMLSpanElement}
+ */
   $status
-
-  /**
-   * @private
-   * @type {HTMLLabelElement}
-   */
+/**
+ * @private
+ * @type {HTMLLabelElement}
+ */
   $label
-
-  /** @private */
+/** @private */
   i18n
-
-  /** @private */
+/** @private */
   id
-
-  /** @private */
+/** @private */
   $announcements
-
-  /**
-   * @private
-   * @type {boolean | undefined}
-   */
+/**
+ * @private
+ * @type {boolean | undefined}
+ */
   enteredAnotherElement
 
   /**
@@ -85,12 +78,10 @@ export class FileUpload extends ConfigurableComponent {
     const $label = this.findLabel()
     // Add an ID to the label if it doesn't have one already
     // so it can be referenced by `aria-labelledby`
-    if (!$label.id) {
-      $label.id = `${this.id}-label`
-    }
+    $label.id ||= `${this.id}-label`;
     this.$label = $label
 
-    // we need to copy the 'id' of the root element
+    // We need to copy the 'id' of the root element
     // to the new button replacement element
     // so that focus will work in the error summary
     this.$input.id = `${this.id}-input`
@@ -213,7 +204,7 @@ export class FileUpload extends ConfigurableComponent {
     )
     $button.addEventListener('click', this.onClick.bind(this))
     $button.addEventListener('dragover', (event) => {
-      // prevent default to allow drop
+      // Prevent default to allow drop
       event.preventDefault()
     })
 
@@ -226,7 +217,7 @@ export class FileUpload extends ConfigurableComponent {
    * @private
    */
   bindDraggingEvents() {
-    // if there is no CSS and input is hidden
+    // If there is no CSS and input is hidden
     // button will need to handle drop event
     this.$button.addEventListener('drop', this.onDrop.bind(this))
 
@@ -495,21 +486,20 @@ export class FileUpload extends ConfigurableComponent {
    * Name for the component used when initialising using data-module attributes.
    */
   static moduleName = 'govuk-file-upload'
-
-  /**
-   * File upload default config
-   *
-   * @see {@link FileUploadConfig}
-   * @constant
-   * @type {FileUploadConfig}
-   */
+/**
+ * File upload default config
+ *
+ * @see {@link FileUploadConfig}
+ * @constant
+ * @type {FileUploadConfig}
+ */
   static defaults = Object.freeze({
     i18n: {
       chooseFilesButton: 'Choose file',
       dropInstruction: 'or drop file',
       noFileChosen: 'No file chosen',
       multipleFilesChosen: {
-        // the 'one' string isn't used as the component displays the filename
+        // The 'one' string isn't used as the component displays the filename
         // instead, however it's here for coverage's sake
         one: '%{count} file chosen',
         other: '%{count} files chosen'
@@ -518,13 +508,12 @@ export class FileUpload extends ConfigurableComponent {
       leftDropZone: 'Left drop zone'
     }
   })
-
-  /**
-   * File upload config schema
-   *
-   * @constant
-   * @satisfies {Schema<FileUploadConfig>}
-   */
+/**
+ * File upload config schema
+ *
+ * @constant
+ * @satisfies {Schema<FileUploadConfig>}
+ */
   static schema = Object.freeze({
     properties: {
       i18n: { type: 'object' }
@@ -548,6 +537,7 @@ function countFileItems(list) {
       result++
     }
   }
+
   return result
 }
 

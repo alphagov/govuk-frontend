@@ -49,25 +49,25 @@ describe('/components/service-navigation', () => {
 
   describe('when JavaScript is available', () => {
     describe('if no navigation is present', () => {
-      it('exits gracefully with no errors', async () => {
+      it('exits gracefully with no errors', async () => 
         // Errors logged to the console will cause this test to fail
-        return expect(
+         expect(
           render(page, 'service-navigation', examples.default)
         ).resolves.not.toThrow()
-      })
+      )
     })
 
     describe('when navigation is present but the menu button is not', () => {
-      it('exits gracefully with no errors', async () => {
+      it('exits gracefully with no errors', async () => 
         // Errors logged to the console will cause this test to fail
-        return expect(
+         expect(
           render(
             page,
             'service-navigation',
             examples['with collapseNavigationOnMobile set to false']
           )
         ).resolves.not.toThrow()
-      })
+      )
     })
 
     describe('errors at instantiation', () => {

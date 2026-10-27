@@ -6,7 +6,7 @@ const router = express.Router()
  * Disallow search index indexing
  */
 router.use((req, res, next) => {
-  // none - Equivalent to noindex, nofollow
+  // None - Equivalent to noindex, nofollow
   // noindex - Do not show this page in search results and do not show a
   //  "Cached" link in search results.
   // nofollow - Do not follow the links on this page

@@ -8,7 +8,7 @@ describe('Language navigation', () => {
   })
 
   describe('default example', () => {
-    let $component, $list, $listItems
+    let $component; let $list; let $listItems
 
     beforeAll(() => {
       document.body.innerHTML = render('language-navigation', examples.default)

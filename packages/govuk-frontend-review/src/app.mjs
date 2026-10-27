@@ -79,9 +79,7 @@ export default async () => {
   )
 
   app.locals.componentFixtures = Object.fromEntries(
-    componentsFixtures.map(({ component, fixtures }) => {
-      return [component, Object.groupBy(fixtures, ({ name }) => name)]
-    })
+    componentsFixtures.map(({ component, fixtures }) => [component, Object.groupBy(fixtures, ({ name }) => name)])
   )
 
   // Configure nunjucks

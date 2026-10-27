@@ -6,7 +6,7 @@ const { getExamples } = require('@govuk-frontend/lib/components')
 describe('/components/button', () => {
   let examples
 
-  const clickTimeoutTime = 1000 // ms
+  const clickTimeoutTime = 1000 // Ms
 
   // The longest possible time a button will ignore unintentional clicks for
   // until it can be clicked again (+ 100ms to stay outside the total wait time)
@@ -28,7 +28,7 @@ describe('/components/button', () => {
 
       await page.focus('a[role="button"]')
 
-      // we need to start the waitForNavigation() before the keyboard action
+      // We need to start the waitForNavigation() before the keyboard action
       // so we return a promise that is fulfilled when the navigation and the keyboard action are respectively fulfilled
       // this is somewhat counter intuitive, as we humans expect to act and then wait for something.
       await Promise.all([

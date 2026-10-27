@@ -13,23 +13,20 @@ import { I18n } from '../../i18n.mjs'
 export class PasswordInput extends ConfigurableComponent {
   /** @private */
   i18n
-
-  /**
-   * @private
-   * @type {HTMLInputElement}
-   */
+/**
+ * @private
+ * @type {HTMLInputElement}
+ */
   $input
-
-  /**
-   * @private
-   * @type {HTMLButtonElement}
-   */
+/**
+ * @private
+ * @type {HTMLButtonElement}
+ */
   $showHideButton
-
-  /**
-   * @private
-   * @type {HTMLDivElement}
-   */
+/**
+ * @private
+ * @type {HTMLDivElement}
+ */
   $screenReaderStatusMessage
 
   /**
@@ -189,15 +186,14 @@ export class PasswordInput extends ConfigurableComponent {
    * Name for the component used when initialising using data-module attributes.
    */
   static moduleName = 'govuk-password-input'
-
-  /**
-   * Password input default config
-   *
-   * @see {@link PasswordInputConfig}
-   * @constant
-   * @default
-   * @type {PasswordInputConfig}
-   */
+/**
+ * Password input default config
+ *
+ * @see {@link PasswordInputConfig}
+ * @constant
+ * @default
+ * @type {PasswordInputConfig}
+ */
   static defaults = Object.freeze({
     i18n: {
       showPassword: 'Show',
@@ -208,13 +204,12 @@ export class PasswordInput extends ConfigurableComponent {
       passwordHiddenAnnouncement: 'Your password is hidden'
     }
   })
-
-  /**
-   * Password input config schema
-   *
-   * @constant
-   * @satisfies {Schema<PasswordInputConfig>}
-   */
+/**
+ * Password input config schema
+ *
+ * @constant
+ * @satisfies {Schema<PasswordInputConfig>}
+ */
   static schema = Object.freeze({
     properties: {
       i18n: { type: 'object' }

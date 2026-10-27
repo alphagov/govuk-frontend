@@ -25,40 +25,31 @@ import { I18n } from '../../i18n.mjs'
 export class CharacterCount extends ConfigurableComponent {
   /** @private */
   $textarea
-
-  /** @private */
+/** @private */
   count = 0
-
-  /**
-   * @type {Intl.Segmenter | null}
-   */
+/**
+ * @type {Intl.Segmenter | null}
+ */
   segmenter = null
-
-  /** @private */
+/** @private */
   $visibleCountMessage
-
-  /** @private */
+/** @private */
   $screenReaderCountMessage
-
-  /**
-   * @private
-   * @type {number | null}
-   */
+/**
+ * @private
+ * @type {number | null}
+ */
   lastInputTimestamp = null
-
-  /** @private */
+/** @private */
   lastInputValue = ''
-
-  /**
-   * @private
-   * @type {number | null}
-   */
+/**
+ * @private
+ * @type {number | null}
+ */
   valueChecker = null
-
-  /** @private */
+/** @private */
   i18n
-
-  /** @private */
+/** @private */
   maxLength;
 
   /**
@@ -350,6 +341,7 @@ export class CharacterCount extends ConfigurableComponent {
       // and would set the border colour back to black.
       this.$textarea.classList.toggle('govuk-textarea--error', isError)
     }
+
     this.$visibleCountMessage.classList.toggle('govuk-error-message', isError)
     this.$visibleCountMessage.classList.toggle('govuk-hint', !isError)
 
@@ -436,7 +428,7 @@ export class CharacterCount extends ConfigurableComponent {
    * @returns {string} Status message
    */
   formatCountMessage(remainingNumber, countType) {
-    countType = countType ?? this.config.countType
+    countType = countType ?? (this.config.countType)
 
     let translationKeyPrefix = 'characters'
     let translationKeySuffix = remainingNumber < 0 ? 'OverLimit' : 'UnderLimit'
@@ -473,7 +465,7 @@ export class CharacterCount extends ConfigurableComponent {
 
     // Determine the remaining number of characters/words
     const currentLength = this.count
-    const maxLength = this.maxLength
+    const {maxLength} = this
 
     const thresholdValue = (maxLength * this.config.threshold) / 100
 
@@ -484,14 +476,13 @@ export class CharacterCount extends ConfigurableComponent {
    * Name for the component used when initialising using data-module attributes.
    */
   static moduleName = 'govuk-character-count'
-
-  /**
-   * Character count default config
-   *
-   * @see {@link CharacterCountConfig}
-   * @constant
-   * @type {CharacterCountConfig}
-   */
+/**
+ * Character count default config
+ *
+ * @see {@link CharacterCountConfig}
+ * @constant
+ * @type {CharacterCountConfig}
+ */
   static defaults = Object.freeze({
     threshold: 0,
     countType: 'length',
@@ -521,13 +512,12 @@ export class CharacterCount extends ConfigurableComponent {
       }
     }
   })
-
-  /**
-   * Character count config schema
-   *
-   * @constant
-   * @satisfies {Schema<CharacterCountConfig>}
-   */
+/**
+ * Character count config schema
+ *
+ * @constant
+ * @satisfies {Schema<CharacterCountConfig>}
+ */
   static schema = Object.freeze({
     properties: {
       i18n: { type: 'object' },

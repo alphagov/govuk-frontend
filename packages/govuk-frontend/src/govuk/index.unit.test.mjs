@@ -4,7 +4,7 @@ import { slash } from '@govuk-frontend/lib/files'
 import { sassNull } from 'sass-embedded'
 import sassdoc from 'sassdoc'
 
-let mockWarnFunction, sassConfig
+let mockWarnFunction; let sassConfig
 
 describe('GOV.UK Frontend', () => {
   describe.each([
@@ -170,23 +170,19 @@ describe('GOV.UK Frontend', () => {
   })
 
   describe('Sass documentation', () => {
-    it('associates public Sass members with a group', async () => {
-      return sassdoc
+    it('associates public Sass members with a group', async () => sassdoc
         .parse([`${slash(paths.package)}/src/govuk/**/*.scss`])
         .then((docs) =>
           docs
             .filter((doc) => doc.access !== 'private')
-            .forEach((doc) => {
-              return expect(doc).toMatchObject({
+            .forEach((doc) => expect(doc).toMatchObject({
                 // Include doc.context.name in the expected result when this fails,
                 // giving you the context to be able to fix it
                 context: {
                   name: doc.context.name
                 },
                 group: [expect.not.stringMatching('undefined')]
-              })
-            })
-        )
-    })
+              }))
+        ))
   })
 })

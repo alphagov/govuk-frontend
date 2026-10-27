@@ -18,9 +18,7 @@ for (const route in browserSyncPaths) {
 
     // Single route (e.g. `/javascripts`) is mapped to multiple
     // Browsersync directories via static assets middleware
-    browserSyncPaths[route].map((assetPath) => {
-      return express.static(assetPath)
-    })
+    browserSyncPaths[route].map((assetPath) => express.static(assetPath))
   )
 }
 

@@ -55,7 +55,7 @@ describe('/components/accordion', () => {
 
     describe('when JavaScript is available', () => {
       afterEach(async () => {
-        // clear accordion state
+        // Clear accordion state
         await page.evaluate(() => window.sessionStorage.clear())
       })
 
@@ -65,15 +65,13 @@ describe('/components/accordion', () => {
         const numberOfExampleSections = 2
 
         for (let i = 0; i < numberOfExampleSections; i++) {
-          const sectionHeaderButtonExpanded = await page.evaluate(function (i) {
-            return document.body
+          const sectionHeaderButtonExpanded = await page.evaluate((i) => document.body
               .querySelector(
                 `.govuk-accordion .govuk-accordion__section:nth-of-type(${
                   2 + i
                 }) .govuk-accordion__section-button`
               )
-              .getAttribute('aria-expanded')
-          }, i)
+              .getAttribute('aria-expanded'), i)
 
           expect(sectionHeaderButtonExpanded).toBe('false')
         }
@@ -135,15 +133,13 @@ describe('/components/accordion', () => {
         const numberOfExampleSections = 2
 
         for (let i = 0; i < numberOfExampleSections; i++) {
-          const sectionHeaderButtonExpanded = await page.evaluate(function (i) {
-            return document.body
+          const sectionHeaderButtonExpanded = await page.evaluate((i) => document.body
               .querySelector(
                 `.govuk-accordion .govuk-accordion__section:nth-of-type(${
                   2 + i
                 }) .govuk-accordion__section-button`
               )
-              .getAttribute('aria-expanded')
-          }, i)
+              .getAttribute('aria-expanded'), i)
 
           expect(sectionHeaderButtonExpanded).toBe('true')
         }
@@ -164,21 +160,17 @@ describe('/components/accordion', () => {
         await render(page, 'accordion', examples.default)
         await page.click(sectionHeaderButton)
 
-        const expandedState = await page.evaluate((sectionHeaderButton) => {
-          return document.body
+        const expandedState = await page.evaluate((sectionHeaderButton) => document.body
             .querySelector(sectionHeaderButton)
-            .getAttribute('aria-expanded')
-        }, sectionHeaderButton)
+            .getAttribute('aria-expanded'), sectionHeaderButton)
 
         // Render again to simulate page refresh
         await render(page, 'accordion', examples.default)
 
         const expandedStateAfterRefresh = await page.evaluate(
-          (sectionHeaderButton) => {
-            return document.body
+          (sectionHeaderButton) => document.body
               .querySelector(sectionHeaderButton)
-              .getAttribute('aria-expanded')
-          },
+              .getAttribute('aria-expanded'),
           sectionHeaderButton
         )
 
@@ -193,21 +185,17 @@ describe('/components/accordion', () => {
 
         await page.click(sectionHeaderButton)
 
-        const expandedState = await page.evaluate((sectionHeaderButton) => {
-          return document.body
+        const expandedState = await page.evaluate((sectionHeaderButton) => document.body
             .querySelector(sectionHeaderButton)
-            .getAttribute('aria-expanded')
-        }, sectionHeaderButton)
+            .getAttribute('aria-expanded'), sectionHeaderButton)
 
         // Render again to simulate page refresh
         await render(page, 'accordion', examples['with remember expanded off'])
 
         const expandedStateAfterRefresh = await page.evaluate(
-          (sectionHeaderButton) => {
-            return document.body
+          (sectionHeaderButton) => document.body
               .querySelector(sectionHeaderButton)
-              .getAttribute('aria-expanded')
-          },
+              .getAttribute('aria-expanded'),
           sectionHeaderButton
         )
 

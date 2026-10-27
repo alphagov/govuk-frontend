@@ -125,7 +125,7 @@ function isArray(option) {
  * @returns {option is ObjectType} Whether the option is an object
  */
 export function isObject(option) {
-  return !!option && typeof option === 'object' && !isArray(option)
+  return Boolean(option) && typeof option === 'object' && !isArray(option)
 }
 
 /**
@@ -137,7 +137,7 @@ export function isObject(option) {
  * @returns {$scope is ScopeType} Whether the scope can be queried
  */
 export function isScope($scope) {
-  return !!$scope && ($scope instanceof Element || $scope instanceof Document)
+  return Boolean($scope) && ($scope instanceof Element || $scope instanceof Document)
 }
 
 /**
@@ -152,15 +152,11 @@ export function formatErrorMessage(Component, message) {
   return `${Component.moduleName}: ${message}`
 }
 
-/* eslint-disable jsdoc/valid-types --
- * `{new(...args: any[] ): object}` is not recognised as valid
- * https://github.com/gajus/eslint-plugin-jsdoc/issues/145#issuecomment-1308722878
- * https://github.com/jsdoc-type-pratt-parser/jsdoc-type-pratt-parser/issues/131
- **/
+ 
 
 /**
  * @typedef ComponentWithModuleName
  * @property {string} moduleName - Name of the component
  */
 
-/* eslint-enable jsdoc/valid-types */
+ 

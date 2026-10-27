@@ -32,6 +32,7 @@ describe('/components/file-upload', () => {
             throw e
           }
         }
+
         await expect(axe(page)).resolves.toHaveNoViolations()
       }
     }, 120000)

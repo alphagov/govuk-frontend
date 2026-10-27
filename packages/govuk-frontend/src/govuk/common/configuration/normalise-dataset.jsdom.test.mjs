@@ -12,10 +12,9 @@ describe('normaliseDataset', () => {
          */
         class Component extends ConfigurableComponent {
           static moduleName = 'Component'
-
-          /**
-           * @satisfies {Schema<Config>}
-           */
+/**
+ * @satisfies {Schema<Config>}
+ */
           static schema = {
             properties: {
               aNumber: { type: 'number' },

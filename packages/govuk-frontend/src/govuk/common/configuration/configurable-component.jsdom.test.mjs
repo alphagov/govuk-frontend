@@ -7,7 +7,7 @@ describe('ConfigurableComponent', () => {
     // so we need to take care of that ourselves
     document.documentElement.innerHTML = ''
 
-    // this is tested in the parent class GOVUKFrontendComponent
+    // This is tested in the parent class GOVUKFrontendComponent
     // so it can be go before each test instead of it needing to
     // be added each time seperately
     document.body.classList.add('govuk-frontend-supported')
@@ -17,8 +17,7 @@ describe('ConfigurableComponent', () => {
     it('if no schema defined', () => {
       class MockConfigurableComponent extends ConfigurableComponent {
         static moduleName = 'config-component'
-
-        static defaults = {
+static defaults = {
           randomAttribute: 0
         }
       }
@@ -33,8 +32,7 @@ describe('ConfigurableComponent', () => {
     it('if no defaults defined', () => {
       class MockConfigurableComponent extends ConfigurableComponent {
         static moduleName = 'config-component'
-
-        static schema = {
+static schema = {
           properties: {
             randomAttribute: { type: 'number' }
           }
@@ -57,14 +55,12 @@ describe('ConfigurableComponent', () => {
 
       class MockConfigurableComponent extends ConfigurableComponent {
         static moduleName = 'config-component'
-
-        static schema = {
+static schema = {
           properties: {
             randomAttribute: { type: 'number' }
           }
         }
-
-        static defaults = {
+static defaults = {
           randomAttribute: 0
         }
       }
@@ -83,14 +79,12 @@ describe('ConfigurableComponent', () => {
 
       class MockConfigurableComponent extends ConfigurableComponent {
         static moduleName = 'config-component'
-
-        static schema = {
+static schema = {
           properties: {
             randomAttribute: { type: 'number' }
           }
         }
-
-        static defaults = {
+static defaults = {
           randomAttribute: 0
         }
       }
@@ -109,14 +103,12 @@ describe('ConfigurableComponent', () => {
 
       class MockConfigurableComponent extends ConfigurableComponent {
         static moduleName = 'config-component'
-
-        static schema = {
+static schema = {
           properties: {
             randomAttribute: { type: 'number' }
           }
         }
-
-        static defaults = {
+static defaults = {
           randomAttribute: 0
         }
       }
@@ -137,14 +129,12 @@ describe('ConfigurableComponent', () => {
 
       class MockConfigurableComponent extends ConfigurableComponent {
         static moduleName = 'config-component'
-
-        static schema = {
+static schema = {
           properties: {
             randomAttribute: { type: 'number' }
           }
         }
-
-        static defaults = {
+static defaults = {
           randomAttribute: 0
         }
       }
@@ -159,9 +149,7 @@ describe('ConfigurableComponent', () => {
     })
 
     it('dataset overrides if configOverride set', () => {
-      const configOverrideFunction = jest.fn((config) => {
-        return { randomAttribute: undefined }
-      })
+      const configOverrideFunction = jest.fn((config) => ({ randomAttribute: undefined }))
 
       document.body.innerHTML = `
         <div id="test-component" data-random-attribute="13"></div>
@@ -173,14 +161,12 @@ describe('ConfigurableComponent', () => {
         }
 
         static moduleName = 'config-component'
-
-        static schema = {
+static schema = {
           properties: {
             randomAttribute: { type: 'number' }
           }
         }
-
-        static defaults = {
+static defaults = {
           randomAttribute: 0
         }
       }

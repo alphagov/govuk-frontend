@@ -155,24 +155,22 @@ export class ErrorSummary extends ConfigurableComponent {
    * Name for the component used when initialising using data-module attributes.
    */
   static moduleName = 'govuk-error-summary'
-
-  /**
-   * Error summary default config
-   *
-   * @see {@link ErrorSummaryConfig}
-   * @constant
-   * @type {ErrorSummaryConfig}
-   */
+/**
+ * Error summary default config
+ *
+ * @see {@link ErrorSummaryConfig}
+ * @constant
+ * @type {ErrorSummaryConfig}
+ */
   static defaults = Object.freeze({
     disableAutoFocus: false
   })
-
-  /**
-   * Error summary config schema
-   *
-   * @constant
-   * @satisfies {Schema<ErrorSummaryConfig>}
-   */
+/**
+ * Error summary config schema
+ *
+ * @constant
+ * @satisfies {Schema<ErrorSummaryConfig>}
+ */
   static schema = Object.freeze({
     properties: {
       disableAutoFocus: { type: 'boolean' }

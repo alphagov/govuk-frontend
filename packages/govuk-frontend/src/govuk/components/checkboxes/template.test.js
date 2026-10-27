@@ -427,6 +427,7 @@ describe('Checkboxes', () => {
         if (index === 0) {
           expectedDescribedById = 'waste-item-hint'
         }
+
         expect($(input).attr('aria-describedby')).toEqual(expectedDescribedById)
       })
     })

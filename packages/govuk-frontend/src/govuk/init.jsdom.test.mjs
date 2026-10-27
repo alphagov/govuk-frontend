@@ -301,19 +301,17 @@ describe('createAll', () => {
     }
 
     static moduleName = 'mock-component'
-
-    /**
-     * @satisfies {Schema<MockConfig>}
-     */
+/**
+ * @satisfies {Schema<MockConfig>}
+ */
     static schema = {
       properties: {
         __test: { type: 'boolean' }
       }
     }
-
-    /**
-     * @satisfies {MockConfig}
-     */
+/**
+ * @satisfies {MockConfig}
+ */
     static defaults = {
       __test: false
     }
@@ -502,7 +500,7 @@ describe('createAll', () => {
         </div>`
 
       const result = createAll(MockComponent, undefined, {
-        onError: (e, x) => {},
+        onError(e, x) {},
         scope: document.querySelector('.my-scope')
       })
 

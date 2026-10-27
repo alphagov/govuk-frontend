@@ -17,8 +17,8 @@ describe('Character count', () => {
   /** @type {Awaited<ReturnType<typeof getExamples>>} */
   let examples
 
-  const focusIntervalTime = 1000 // ms
-  const lastInputOffsetTime = 500 // ms
+  const focusIntervalTime = 1000 // Ms
+  const lastInputOffsetTime = 500 // Ms
 
   // The longest possible time from a keyboard user ending input and the screen
   // reader counter being updated (+ 100ms to stay outside the total wait time)
@@ -907,8 +907,7 @@ describe('Character count', () => {
     })
 
     describe('errors at instantiation', () => {
-      it('can throw a SupportError if appropriate', () => {
-        return expect(
+      it('can throw a SupportError if appropriate', () => expect(
           initExample('default', {
             beforeInitialisation() {
               document.body.classList.remove('govuk-frontend-supported')
@@ -920,11 +919,9 @@ describe('Character count', () => {
             message:
               'GOV.UK Frontend initialised without `<body class="govuk-frontend-supported">` from template `<script>` snippet'
           }
-        })
-      })
+        }))
 
-      it('throws when initialised twice', () => {
-        return expect(
+      it('throws when initialised twice', () => expect(
           initExample('default', {
             async afterInitialisation($root) {
               const { CharacterCount } = await import('govuk-frontend')
@@ -935,11 +932,9 @@ describe('Character count', () => {
           name: 'InitError',
           message:
             'govuk-character-count: Root element (`$root`) already initialised'
-        })
-      })
+        }))
 
-      it('throws when $root is not set', () => {
-        return expect(
+      it('throws when $root is not set', () => expect(
           initExample('default', {
             beforeInitialisation($root) {
               $root.remove()
@@ -950,11 +945,9 @@ describe('Character count', () => {
             name: 'ElementError',
             message: 'govuk-character-count: Root element (`$root`) not found'
           }
-        })
-      })
+        }))
 
-      it('throws when receiving the wrong type for $root', () => {
-        return expect(
+      it('throws when receiving the wrong type for $root', () => expect(
           initExample('default', {
             beforeInitialisation($root) {
               // Replace with an `<svg>` element which is not an `HTMLElement` in the DOM (but an `SVGElement`)
@@ -967,11 +960,9 @@ describe('Character count', () => {
             message:
               'govuk-character-count: Root element (`$root`) is not of type HTMLElement'
           }
-        })
-      })
+        }))
 
-      it('throws when the textarea is missing', () => {
-        return expect(
+      it('throws when the textarea is missing', () => expect(
           initExample('default', {
             beforeInitialisation($root, { selector }) {
               $root.querySelector(selector).remove()
@@ -986,11 +977,9 @@ describe('Character count', () => {
             message:
               'govuk-character-count: Form field (`.govuk-js-character-count`) not found'
           }
-        })
-      })
+        }))
 
-      it('throws when the textarea is not the right type', () => {
-        return expect(
+      it('throws when the textarea is not the right type', () => expect(
           initExample('default', {
             beforeInitialisation($root, { selector }) {
               const $div = document.createElement('div')
@@ -1009,11 +998,9 @@ describe('Character count', () => {
             message:
               'govuk-character-count: Form field (`.govuk-js-character-count`) is not of type HTMLTextareaElement or HTMLInputElement'
           }
-        })
-      })
+        }))
 
-      it('throws when the textarea description is missing', () => {
-        return expect(
+      it('throws when the textarea description is missing', () => expect(
           initExample('default', {
             beforeInitialisation($root, { selector }) {
               $root.querySelector(selector).remove()
@@ -1028,11 +1015,9 @@ describe('Character count', () => {
             message:
               'govuk-character-count: Count message (`id="more-detail-info"`) not found'
           }
-        })
-      })
+        }))
 
-      it('throws when receiving invalid JavaScript configuration', () => {
-        return expect(
+      it('throws when receiving invalid JavaScript configuration', () => expect(
           initExample('to configure in JavaScript')
         ).rejects.toMatchObject({
           cause: {
@@ -1040,8 +1025,7 @@ describe('Character count', () => {
             message:
               'govuk-character-count: Either "maxlength" or "maxwords" must be provided'
           }
-        })
-      })
+        }))
     })
   })
 

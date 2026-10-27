@@ -37,8 +37,8 @@ function nunjucksEnv(searchPaths = [], nunjucksOptions = {}, packageOptions) {
 
   // Nunjucks environment
   return nunjucks.configure(searchPaths, {
-    trimBlocks: true, // automatically remove trailing newlines from a block/tag
-    lstripBlocks: true, // automatically remove leading whitespace from a block/tag,
+    trimBlocks: true, // Automatically remove trailing newlines from a block/tag
+    lstripBlocks: true, // Automatically remove leading whitespace from a block/tag,
     ...nunjucksOptions
   })
 }
@@ -50,14 +50,12 @@ function nunjucksEnv(searchPaths = [], nunjucksOptions = {}, packageOptions) {
  * @param {import('./names').PackageOptions} [packageOptions] - Package options (optional)
  * @returns {Promise<ComponentFixtures>} Component data
  */
-const getComponentFixtures = async (componentName, packageOptions) => {
-  return require(
+const getComponentFixtures = async (componentName, packageOptions) => require(
     join(
       dirname(packageTypeToPath('govuk-frontend', packageOptions)),
       `components/${componentName}/fixtures.json`
     )
   )
-}
 
 /**
  * Load all components' data

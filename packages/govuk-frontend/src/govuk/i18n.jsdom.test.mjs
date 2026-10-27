@@ -232,7 +232,7 @@ describe('I18n', () => {
       consoleWarn = jest
         .spyOn(global.console, 'warn')
         .mockImplementation(() => {
-          /* noop */
+          /* Noop */
         })
     })
 

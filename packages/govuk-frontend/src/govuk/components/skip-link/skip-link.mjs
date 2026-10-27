@@ -27,7 +27,7 @@ export class SkipLink extends Component {
   constructor($root) {
     super($root)
 
-    const hash = this.$root.hash
+    const {hash} = this.$root
     const href = this.$root.getAttribute('href') ?? ''
 
     // Return early for external URLs or links to other pages

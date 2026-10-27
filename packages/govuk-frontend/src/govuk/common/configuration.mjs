@@ -17,7 +17,7 @@ export const configOverride = Symbol.for('configOverride')
  */
 export class ConfigurableComponent extends Component {
   /**
-   * configOverride
+   * ConfigOverride
    *
    * Function which defines configuration overrides to prioritize
    * properties from the root element's dataset.
@@ -309,7 +309,7 @@ export function validateConfig(schema, config) {
     // Check errors for each schema condition
     if (Array.isArray(conditions)) {
       for (const { required, errorMessage } of conditions) {
-        if (!required.every((key) => !!config[key])) {
+        if (!required.every((key) => Boolean(config[key]))) {
           errors.push(errorMessage) // Missing config key value
         }
       }

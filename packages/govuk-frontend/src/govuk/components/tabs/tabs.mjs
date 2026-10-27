@@ -10,32 +10,24 @@ import { ElementError } from '../../errors/index.mjs'
 export class Tabs extends Component {
   /** @private */
   $tabs
-
-  /** @private */
+/** @private */
   $tabList
-
-  /** @private */
+/** @private */
   $tabListItems
-
-  /** @private */
+/** @private */
   jsHiddenClass = 'govuk-tabs__panel--hidden'
-
-  /** @private */
+/** @private */
   changingHash = false
-
-  /** @private */
+/** @private */
   boundTabClick
-
-  /** @private */
+/** @private */
   boundTabKeydown
-
-  /** @private */
+/** @private */
   boundOnHashChange
-
-  /**
-   * @private
-   * @type {MediaQueryList | null}
-   */
+/**
+ * @private
+ * @type {MediaQueryList | null}
+ */
   mql = null
 
   /**
@@ -193,7 +185,7 @@ export class Tabs extends Component {
    * @returns {void | undefined} Returns void, or undefined when prevented
    */
   onHashChange() {
-    const hash = window.location.hash
+    const {hash} = window.location
     const $tabWithHash = this.getTab(hash)
     if (!$tabWithHash) {
       return
@@ -286,14 +278,14 @@ export class Tabs extends Component {
    * @param {HTMLAnchorElement} $tab - Tab link
    */
   unsetAttributes($tab) {
-    // unset tab attributes
+    // Unset tab attributes
     $tab.removeAttribute('id')
     $tab.removeAttribute('role')
     $tab.removeAttribute('aria-controls')
     $tab.removeAttribute('aria-selected')
     $tab.removeAttribute('tabindex')
 
-    // unset panel attributes
+    // Unset panel attributes
     const $panel = this.getPanel($tab)
     if (!$panel) {
       return

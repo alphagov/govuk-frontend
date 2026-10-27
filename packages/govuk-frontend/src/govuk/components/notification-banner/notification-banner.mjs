@@ -38,24 +38,22 @@ export class NotificationBanner extends ConfigurableComponent {
    * Name for the component used when initialising using data-module attributes.
    */
   static moduleName = 'govuk-notification-banner'
-
-  /**
-   * Notification banner default config
-   *
-   * @see {@link NotificationBannerConfig}
-   * @constant
-   * @type {NotificationBannerConfig}
-   */
+/**
+ * Notification banner default config
+ *
+ * @see {@link NotificationBannerConfig}
+ * @constant
+ * @type {NotificationBannerConfig}
+ */
   static defaults = Object.freeze({
     disableAutoFocus: false
   })
-
-  /**
-   * Notification banner config schema
-   *
-   * @constant
-   * @satisfies {Schema<NotificationBannerConfig>}
-   */
+/**
+ * Notification banner config schema
+ *
+ * @constant
+ * @satisfies {Schema<NotificationBannerConfig>}
+ */
   static schema = Object.freeze({
     properties: {
       disableAutoFocus: { type: 'boolean' }
