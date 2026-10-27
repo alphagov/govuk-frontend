@@ -133,7 +133,7 @@
     })
 
     for (const property of colourProperties) {
-      template.insertAdjacentElement('afterEnd', createField(property))
+      template.after(createField(property))
     }
 
     document.addEventListener('input', (event) => {
