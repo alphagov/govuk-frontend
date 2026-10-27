@@ -15,7 +15,7 @@
   $component-padding: base.govuk-spacing(1);
 
   // "Drop zone" button, large area that a user can drag and drop into.
-  $drop-zone-border-width: 2px;
+  $drop-zone-border-width: base.$govuk-border-width-form-element;
   $drop-zone-border-colour: base.govuk-colour("black", $variant: "tint-80");
   $drop-zone-hover-border-colour: base.govuk-colour("black", $variant: "tint-50");
   $dragging-drop-zone-border-colour: base.govuk-colour("black");
@@ -90,11 +90,11 @@
     flex-shrink: 0;
     width: auto;
     margin-right: base.govuk-spacing(2);
-    margin-bottom: base.$govuk-border-width-form-element + 1;
+    margin-bottom: $drop-zone-border-width + 1;
   }
 
   .govuk-file-upload-button__instruction {
-    margin-top: base.govuk-spacing(2) - (base.$govuk-border-width-form-element + 1);
+    margin-top: base.govuk-spacing(2) - ($drop-zone-border-width + 1);
     margin-bottom: 0;
     text-align: left;
   }
