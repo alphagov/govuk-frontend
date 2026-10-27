@@ -12,12 +12,14 @@
   $govuk-secondary-button-hover-colour: base.govuk-colour("black", $variant: "tint-80");
 
   // Component specific variables
-  $file-upload-border-width: 2px;
   $component-padding: base.govuk-spacing(1);
 
-  $button-background-colour: base.govuk-functional-colour(body-background);
-  $empty-button-background-colour: $button-background-colour;
+  // "Drop zone" button, large area that a user can drag and drop into.
+  $drop-zone-border-width: 2px;
+  $drop-zone-background-colour: base.govuk-functional-colour(body-background);
+  $empty-drop-zone-background-colour: $drop-zone-background-colour;
 
+  // Status area, displays the current status of what file has been selected.
   $empty-status-background-colour: base.govuk-colour("blue", $variant: "tint-80");
 
   .govuk-file-upload {
@@ -116,13 +118,13 @@
   .govuk-file-upload-button {
     width: 100%;
     // align the padding to be same as notification banner and error summary accounting for the thicker borders
-    padding: (base.govuk-spacing(3) + base.$govuk-border-width - $file-upload-border-width);
-    border: $file-upload-border-width solid base.govuk-colour("black", $variant: "tint-80");
-    background-color: $button-background-colour;
+    padding: (base.govuk-spacing(3) + base.$govuk-border-width - $drop-zone-border-width);
+    border: $drop-zone-border-width solid base.govuk-colour("black", $variant: "tint-80");
+    background-color: $drop-zone-background-colour;
     cursor: pointer;
 
     @media #{base.govuk-from-breakpoint(tablet)} {
-      padding: (base.govuk-spacing(4) + base.$govuk-border-width - $file-upload-border-width);
+      padding: (base.govuk-spacing(4) + base.$govuk-border-width - $drop-zone-border-width);
     }
 
     @at-root .govuk-form-group--error & {
@@ -149,7 +151,7 @@
 
     &:active,
     &:focus {
-      border: $file-upload-border-width solid base.govuk-colour("black");
+      border: $drop-zone-border-width solid base.govuk-colour("black");
       outline: base.$govuk-focus-width solid;
       outline-color: base.govuk-functional-colour(focus);
       // Ensure outline appears outside of the element
@@ -178,7 +180,7 @@
 
   .govuk-file-upload-button--empty {
     border-style: dashed;
-    background-color: $empty-button-background-colour;
+    background-color: $empty-drop-zone-background-colour;
 
     .govuk-file-upload-button__pseudo-button {
       background-color: $govuk-secondary-button-colour;
@@ -215,7 +217,7 @@
     pointer-events: none;
     opacity: 0.5;
 
-    background-color: $empty-button-background-colour;
+    background-color: $empty-drop-zone-background-colour;
 
     .govuk-file-upload-button__pseudo-button {
       background-color: $govuk-secondary-button-colour;
