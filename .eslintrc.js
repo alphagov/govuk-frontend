@@ -67,6 +67,9 @@ module.exports = {
         'func-names': 'off',
         'func-name-matching': 'off',
         'new-cap': 'off',
+        // Object.hasOwn is not supported in Safari < 15
+        // and Babel does not transpile it
+        'prefer-object-has-own': 'off',
 
         // Access import namespace (e.g. GOVUKFrontend) using string keys
         'import/namespace': [
