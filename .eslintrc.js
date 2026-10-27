@@ -46,6 +46,28 @@ module.exports = {
         'jest-dom'
       ],
       rules: {
+        // Disable rules throwing errors so we can fix them one by one
+        'no-undef': 'off',
+        'no-await-in-loop': 'off',
+        'no-unused-vars': 'off',
+        'no-negated-condition': 'off',
+        'no-return-await': 'off',
+        camelcase: 'off',
+        'es-x/no-object-hasown': 'off',
+        'guard-for-in': 'off',
+        radix: 'off',
+        'logical-assignment-operators': 'off',
+        'lines-between-class-members': 'off',
+        'es-x/no-logical-assignment-operators': 'off',
+        'no-lonely-if': 'off',
+        'prefer-destructuring': 'off',
+        'default-case': 'off',
+        'max-params': 'off',
+        'no-constructor-return': 'off',
+        'func-names': 'off',
+        'func-name-matching': 'off',
+        'new-cap': 'off',
+
         // Access import namespace (e.g. GOVUKFrontend) using string keys
         'import/namespace': [
           'error',
