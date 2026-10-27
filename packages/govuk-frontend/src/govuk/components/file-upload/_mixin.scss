@@ -16,17 +16,17 @@
 
   // "Drop zone" button, large area that a user can drag and drop into.
   $drop-zone-border-width: base.$govuk-border-width-form-element;
-  $drop-zone-border-colour: base.govuk-colour("black", $variant: "tint-80");
+  $drop-zone-border-colour: base.govuk-functional-colour(border);
   $drop-zone-hover-border-colour: base.govuk-colour("black", $variant: "tint-50");
-  $dragging-drop-zone-border-colour: base.govuk-colour("black");
+  $dragging-drop-zone-border-colour: base.govuk-functional-colour(input-border);
   $drop-zone-background-colour: base.govuk-functional-colour(body-background);
   $drop-zone-focus-background-colour: base.govuk-colour("black", $variant: "tint-95");
 
   // Status area, displays the current status of what file has been selected.
-  $status-background-colour: base.govuk-colour("blue");
-  $status-text-colour: base.govuk-colour("white");
+  $status-background-colour: base.govuk-functional-colour(brand);
+  $status-text-colour: base.govuk-functional-colour(inverse-text);
   $empty-status-background-colour: base.govuk-colour("blue", $variant: "tint-80");
-  $empty-status-text-colour: base.govuk-colour("black");
+  $empty-status-text-colour: base.govuk-functional-colour(text);
 
   .govuk-file-upload {
     @include base.govuk-font($size: 19);
