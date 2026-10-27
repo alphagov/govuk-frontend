@@ -25,12 +25,6 @@
   // Status area, displays the current status of what file has been selected.
   $status-background-colour: base.govuk-colour("blue");
   $status-text-colour: base.govuk-colour("white");
-  $file-upload-border-width: 2px;
-  $component-padding: base.govuk-spacing(1);
-
-  $button-background-colour: base.govuk-functional-colour(body-background);
-  $empty-button-background-colour: $button-background-colour;
-
   $empty-status-background-colour: base.govuk-colour("blue", $variant: "tint-80");
   $empty-status-text-colour: base.govuk-colour("black");
 
@@ -163,27 +157,21 @@
 
     &:active,
     &:focus {
-      border: $drop-zone-border-width solid base.govuk-colour("black");
-      outline: base.$govuk-focus-width solid;
-      outline-color: base.govuk-functional-colour(focus);
-      // Ensure outline appears outside of the element
-      outline-offset: 0;
+      @include base.govuk-focused-form-input;
+      border-style: solid;
+      border-color: base.govuk-functional-colour(input-border);
       background-color: $drop-zone-focus-background-colour;
-      // Double the border by adding its width again. Use `box-shadow` for this
-      // instead of changing `border-width` - this is for consistency with
-      // components such as textarea where we avoid changing `border-width` as
-      // it will change the element size. Also, `outline` cannot be utilised
-      // here as it is already used for the yellow focus state.
-      box-shadow: inset 0 0 0 base.$govuk-border-width-form-element;
 
+      // Copy Button component focus styles from:
+      // https://github.com/alphagov/govuk-frontend/blob/v6.6.0/packages/govuk-frontend/src/govuk/components/button/_mixin.scss#L88-L99
       .govuk-file-upload-button__pseudo-button {
         background-color: base.govuk-functional-colour(focus);
-        box-shadow: 0 2px 0 base.govuk-colour("black");
+        box-shadow: 0 2px 0 base.govuk-functional-colour(focus-text);
       }
 
       &:hover .govuk-file-upload-button__pseudo-button {
         border-color: base.govuk-functional-colour(focus);
-        outline: 3px solid transparent;
+        outline: base.$govuk-focus-width solid transparent;
         background-color: $govuk-secondary-button-hover-colour;
         box-shadow: inset 0 0 0 1px base.govuk-functional-colour(focus);
       }
