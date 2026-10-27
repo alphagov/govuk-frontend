@@ -366,6 +366,8 @@ export function extractConfigByNamespace(schema, dataset, namespace) {
         // Drop down to nested object until the last part
         if (index < keyParts.length - 1) {
           // New nested object (optionally) replaces existing value
+          // OK to nest once more for a single line of code
+          // eslint-disable-next-line max-depth
           if (!isObject(current[name])) {
             current[name] = {}
           }
