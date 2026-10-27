@@ -16,7 +16,11 @@
 
   // "Drop zone" button, large area that a user can drag and drop into.
   $drop-zone-border-width: 2px;
+  $drop-zone-border-colour: base.govuk-colour("black", $variant: "tint-80");
+  $drop-zone-hover-border-colour: base.govuk-colour("black", $variant: "tint-50");
+  $dragging-drop-zone-border-colour: base.govuk-colour("black");
   $drop-zone-background-colour: base.govuk-functional-colour(body-background);
+  $drop-zone-focus-background-colour: base.govuk-colour("black", $variant: "tint-95");
 
   // Status area, displays the current status of what file has been selected.
   $empty-status-background-colour: base.govuk-colour("blue", $variant: "tint-80");
@@ -116,9 +120,9 @@
 
   .govuk-file-upload-button {
     width: 100%;
-    // align the padding to be same as notification banner and error summary accounting for the thicker borders
     padding: (base.govuk-spacing(3) + base.$govuk-border-width - $drop-zone-border-width);
-    border: $drop-zone-border-width solid base.govuk-colour("black", $variant: "tint-80");
+    // align the padding to be same as notification banner and error summary accounting for the thicker borders
+    border: $drop-zone-border-width solid $drop-zone-border-colour;
     background-color: $drop-zone-background-colour;
     cursor: pointer;
 
@@ -137,7 +141,7 @@
 
     &:hover {
       border-style: dashed;
-      border-color: base.govuk-colour("black", $variant: "tint-50");
+      border-color: $drop-zone-hover-border-colour;
 
       .govuk-file-upload-button__pseudo-button {
         background-color: $govuk-secondary-button-hover-colour;
@@ -155,7 +159,7 @@
       outline-color: base.govuk-functional-colour(focus);
       // Ensure outline appears outside of the element
       outline-offset: 0;
-      background-color: base.govuk-colour("black", $variant: "tint-95");
+      background-color: $drop-zone-focus-background-colour;
       // Double the border by adding its width again. Use `box-shadow` for this
       // instead of changing `border-width` - this is for consistency with
       // components such as textarea where we avoid changing `border-width` as
@@ -193,7 +197,7 @@
     &:hover,
     &:focus,
     &:active {
-      background-color: base.govuk-colour("black", $variant: "tint-95");
+      background-color: $drop-zone-focus-background-colour;
 
       .govuk-file-upload-button__status {
         background-color: base.govuk-colour("blue", $variant: "tint-80");
@@ -203,7 +207,7 @@
 
   .govuk-file-upload-button--dragging {
     border-style: solid;
-    border-color: base.govuk-colour("black");
+    border-color: $dragging-drop-zone-border-colour;
 
     // extra specificity to apply when
     // empty
