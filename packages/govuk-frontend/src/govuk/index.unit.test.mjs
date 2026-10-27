@@ -172,10 +172,7 @@ describe('GOV.UK Frontend', () => {
   describe('Sass documentation', () => {
     it('associates public Sass members with a group', async () => {
       return sassdoc
-        .parse([
-          `${slash(paths.package)}/src/govuk/**/*.scss`,
-          `!${slash(paths.package)}/src/govuk/vendor/*.scss`
-        ])
+        .parse([`${slash(paths.package)}/src/govuk/**/*.scss`])
         .then((docs) =>
           docs
             .filter((doc) => doc.access !== 'private')
