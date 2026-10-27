@@ -1,6 +1,4 @@
 dest: dist/docs/sassdoc
-exclude:
-  - vendor/*
 
 groups:
   components/button: Components / Button

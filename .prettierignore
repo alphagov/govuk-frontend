@@ -11,9 +11,6 @@ coverage/
 # Build output
 dist/
 
-# 3rd party vendor code
-vendor/
-
 # Files to ignore
 package-lock.json
 govuk-prototype-kit.config.json

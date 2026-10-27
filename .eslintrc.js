@@ -2,7 +2,6 @@ module.exports = {
   extends: ['standard', 'prettier'],
   ignorePatterns: [
     '**/dist/**',
-    '**/vendor/**',
 
     // Enable dotfile linting
     '!.*',
