@@ -171,6 +171,9 @@ module.exports = {
       // Matches Puppeteer environment in jest.config.mjs
       // to ignore unknown Jest Puppeteer globals
       files: ['**/*.puppeteer.test.{js,mjs}'],
+      env: {
+        browser: true
+      },
       globals: {
         page: 'readonly',
         browser: 'readonly',
