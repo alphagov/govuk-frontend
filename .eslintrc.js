@@ -151,6 +151,10 @@ module.exports = {
       files: ['**/*.test.{cjs,js,mjs}'],
       env: {
         jest: true
+      },
+      rules: {
+        // Tests lead to a good amount of nesting because of nested `describe/it`
+        'max-nested-callbacks': 'off'
       }
     },
     {
