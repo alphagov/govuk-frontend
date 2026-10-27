@@ -78,7 +78,7 @@ export class FileUpload extends ConfigurableComponent {
     const $label = this.findLabel()
     // Add an ID to the label if it doesn't have one already
     // so it can be referenced by `aria-labelledby`
-    $label.id ||= `${this.id}-label`;
+    $label.id = $label.id || `${this.id}-label`;
     this.$label = $label
 
     // We need to copy the 'id' of the root element
