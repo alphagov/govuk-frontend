@@ -17,7 +17,6 @@
   // "Drop zone" button, large area that a user can drag and drop into.
   $drop-zone-border-width: 2px;
   $drop-zone-background-colour: base.govuk-functional-colour(body-background);
-  $empty-drop-zone-background-colour: $drop-zone-background-colour;
 
   // Status area, displays the current status of what file has been selected.
   $empty-status-background-colour: base.govuk-colour("blue", $variant: "tint-80");
@@ -180,7 +179,7 @@
 
   .govuk-file-upload-button--empty {
     border-style: dashed;
-    background-color: $empty-drop-zone-background-colour;
+    background-color: $drop-zone-background-colour;
 
     .govuk-file-upload-button__pseudo-button {
       background-color: $govuk-secondary-button-colour;
@@ -217,7 +216,7 @@
     pointer-events: none;
     opacity: 0.5;
 
-    background-color: $empty-drop-zone-background-colour;
+    background-color: $drop-zone-background-colour;
 
     .govuk-file-upload-button__pseudo-button {
       background-color: $govuk-secondary-button-colour;
