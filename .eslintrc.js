@@ -155,6 +155,16 @@ module.exports = {
     },
     {
       // Matches Puppeteer environment in jest.config.mjs
+      // to make browser globals available
+      files: ['**/*.jsdom.test.{cjs,js,mjs}'],
+      // Use `env` rather than `globals` so `document` is accessible directly
+      // rather than through `window.document`
+      env: {
+        browser: true
+      }
+    },
+    {
+      // Matches Puppeteer environment in jest.config.mjs
       // to ignore unknown Jest Puppeteer globals
       files: ['**/*.puppeteer.test.{js,mjs}'],
       globals: {
