@@ -125,7 +125,9 @@
     width: 100%;
     padding: (base.govuk-spacing(3) + base.$govuk-border-width - $drop-zone-border-width);
     // align the padding to be same as notification banner and error summary accounting for the thicker borders
-    border: $drop-zone-border-width solid $drop-zone-border-colour;
+    border-width: $drop-zone-border-width;
+    border-style: solid;
+    border-color: $drop-zone-border-colour;
     background-color: $drop-zone-background-colour;
     cursor: pointer;
 
