@@ -199,7 +199,7 @@ examples:
         data-custom-attribute: custom-value
         data-custom-attribute-2: custom-value-2
 
-  - name: translated
+  - name: enhanced, translated
     options:
       id: file-upload-1
       name: file-upload-1
@@ -215,6 +215,15 @@ examples:
         one: "%{count} ffeil wedi'i dewis"
       enteredDropZoneText: Wedi mynd i mewn i'r parth gollwng
       leftDropZoneText: Parth gollwng i'r chwith
+
+  - name: enhanced, disabled
+    options:
+      id: file-upload-disabled
+      name: file-upload-disabled
+      label:
+        text: Upload a file
+      javascript: true
+      disabled: true
 
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: with value
