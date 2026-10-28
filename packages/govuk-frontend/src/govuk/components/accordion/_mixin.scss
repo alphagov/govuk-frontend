@@ -4,6 +4,7 @@
 @mixin styles {
   $govuk-accordion-base-colour: base.govuk-functional-colour(text);
   $govuk-accordion-hover-colour: base.govuk-colour("black", $variant: "tint-95");
+  $govuk-accordion-hover-text-colour: $govuk-accordion-base-colour;
   $govuk-accordion-icon-focus-colour: base.govuk-functional-colour(focus);
   $govuk-accordion-bottom-border-width: 1px;
 
@@ -103,8 +104,15 @@
         border: 0;
       }
 
+      &:hover,
+      &:focus {
+        .govuk-accordion-nav__chevron {
+          background: currentcolor;
+        }
+      }
+
       &:hover {
-        color: $govuk-accordion-base-colour;
+        color: $govuk-accordion-hover-text-colour;
         background: $govuk-accordion-hover-colour;
         // The focus state adds a box-shadow to the top and bottom of the
         // button. We add a grey box-shadow on hover too, to make the height of
@@ -113,15 +121,6 @@
           0 -2px $govuk-accordion-hover-colour,
           0 4px $govuk-accordion-hover-colour;
 
-        .govuk-accordion__section-toggle-text {
-          color: $govuk-accordion-base-colour;
-        }
-
-        .govuk-accordion-nav__chevron {
-          color: $govuk-accordion-base-colour;
-          background: $govuk-accordion-base-colour;
-        }
-
         .govuk-accordion-nav__chevron::after {
           color: $govuk-accordion-hover-colour;
         }
@@ -129,10 +128,6 @@
 
       &:focus {
         @include base.govuk-focused-text;
-
-        .govuk-accordion-nav__chevron {
-          background: $govuk-accordion-base-colour;
-        }
 
         .govuk-accordion-nav__chevron::after {
           color: $govuk-accordion-icon-focus-colour;
@@ -213,23 +208,22 @@
         padding-bottom: base.govuk-spacing(2);
       }
 
-      &:active {
-        color: base.govuk-functional-colour(link-active);
-        background: none;
+      &:not(:hover):not(:focus) {
+        .govuk-accordion__section-toggle {
+          color: base.govuk-functional-colour(link);
+        }
+      }
+
+      &:hover,
+      &:focus {
+        .govuk-accordion-nav__chevron {
+          background: currentcolor;
+        }
       }
 
       &:hover {
-        color: $govuk-accordion-base-colour;
+        color: $govuk-accordion-hover-text-colour;
         background: $govuk-accordion-hover-colour;
-
-        .govuk-accordion__section-toggle-text {
-          color: $govuk-accordion-base-colour;
-        }
-
-        .govuk-accordion-nav__chevron {
-          color: $govuk-accordion-base-colour;
-          background: $govuk-accordion-base-colour;
-        }
 
         .govuk-accordion-nav__chevron::after {
           color: $govuk-accordion-hover-colour;
@@ -245,11 +239,6 @@
         .govuk-accordion__section-summary-focus,
         .govuk-accordion__section-toggle-focus {
           @include base.govuk-focused-text;
-        }
-
-        .govuk-accordion-nav__chevron {
-          color: $govuk-accordion-base-colour;
-          background: $govuk-accordion-base-colour;
         }
 
         .govuk-accordion-nav__chevron::after {
@@ -304,7 +293,6 @@
     .govuk-accordion__section-toggle {
       @include base.govuk-font-size($size: 19);
       @include base.govuk-typography-weight-regular;
-      color: base.govuk-functional-colour(link);
     }
 
     // Add space between the icon and text. Avoid applying spacing directly to
