@@ -35,7 +35,8 @@ export class ErrorSummary extends ConfigurableComponent {
    * @param {MouseEvent} event - Click event
    */
   handleClick(event) {
-    const $target = event.target
+    const $target =
+      event.target instanceof Element ? event.target.closest('a') : null
     if ($target && this.focusTarget($target)) {
       event.preventDefault()
     }

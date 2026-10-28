@@ -215,6 +215,30 @@ describe('Error Summary', () => {
     }
   )
 
+  it.each(['strong', 'span'])(
+    'handles clicks on a nested %s in an error link',
+    async (tagName) => {
+      const page = await goToExample(browser, 'error-summary')
+      await page.$eval(
+        '.govuk-error-summary a[href="#input"]',
+        ($link, tagName) => {
+          $link.innerHTML = `<${tagName}>Enter a value</${tagName}>`
+        },
+        tagName
+      )
+      await page.click(`.govuk-error-summary a[href="#input"] ${tagName}`)
+
+      expect(await page.evaluate(() => document.activeElement.id)).toBe('input')
+      expect(
+        await page.$eval(
+          'label[for="input"]',
+          ($) => $.getBoundingClientRect().top
+        )
+      ).toBeCloseTo(0, 0)
+      expect(await page.evaluate(() => window.location.hash)).toBe('')
+    }
+  )
+
   describe('errors at instantiation', () => {
     let examples
 
