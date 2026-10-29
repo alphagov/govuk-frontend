@@ -15,7 +15,7 @@ module.exports = {
     {
       extends: [
         'eslint:recommended',
-        'plugin:import/recommended',
+        'plugin:import-x/recommended',
         'plugin:jest/style',
         'plugin:jest-dom/recommended',
         'plugin:jsdoc/recommended-typescript-flavor',
@@ -38,7 +38,7 @@ module.exports = {
       },
       plugins: [
         '@typescript-eslint',
-        'import',
+        'import-x',
         'jsdoc',
         'n',
         'promise',
@@ -47,7 +47,7 @@ module.exports = {
       ],
       rules: {
         // Access import namespace (e.g. GOVUKFrontend) using string keys
-        'import/namespace': [
+        'import-x/namespace': [
           'error',
           {
             allowComputed: true
@@ -55,7 +55,7 @@ module.exports = {
         ],
 
         // Check import or require statements are A-Z ordered
-        'import/order': [
+        'import-x/order': [
           'error',
           {
             alphabetize: { order: 'asc' },
@@ -102,7 +102,7 @@ module.exports = {
         ],
 
         // Ignore `govuk-frontend` exports as they require auto-generated files
-        'import/no-unresolved': ['error', { ignore: ['govuk-frontend'] }],
+        'import-x/no-unresolved': ['error', { ignore: ['govuk-frontend'] }],
         'n/no-missing-import': ['error', { allowModules: ['govuk-frontend'] }],
         'n/no-missing-require': ['error', { allowModules: ['govuk-frontend'] }],
 
@@ -133,7 +133,7 @@ module.exports = {
       // Extensions required for ESM import
       files: ['**/*.mjs'],
       rules: {
-        'import/extensions': [
+        'import-x/extensions': [
           'error',
           'always',
           {
@@ -192,7 +192,7 @@ module.exports = {
         'no-useless-constructor': 'off',
 
         // Ignore paths to example modules
-        'import/no-unresolved': 'off',
+        'import-x/no-unresolved': 'off',
         'n/no-missing-import': 'off'
       }
     }
