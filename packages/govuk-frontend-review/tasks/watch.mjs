@@ -3,7 +3,7 @@ import { join } from 'path'
 import { paths } from '@govuk-frontend/config'
 import { slash } from '@govuk-frontend/lib/files'
 import { npm, task } from '@govuk-frontend/tasks'
-import gulp from 'gulp'
+import { parallel, watch as gulpWatch } from 'gulp'
 
 import { scripts, styles } from './index.mjs'
 
@@ -20,7 +20,7 @@ import { scripts, styles } from './index.mjs'
  *
  * @type {import('@govuk-frontend/tasks').TaskFunction}
  */
-export const watch = (options) => gulp.parallel(...getTasks(options))
+export const watch = (options) => parallel(...getTasks(options))
 
 /**
  * Compute the lists of tasks to be run in parallel
@@ -31,7 +31,7 @@ export const watch = (options) => gulp.parallel(...getTasks(options))
 function getTasks(options) {
   const tasks = {
     'lint:scss watch': disabledBy('GOVUK_DS_FRONTEND_NO_LINTING', 'scss', () =>
-      gulp.watch(
+      gulpWatch(
         '**/*.scss',
         { cwd: options.srcPath },
 
@@ -42,7 +42,7 @@ function getTasks(options) {
       )
     ),
     'compile:scss watch': () =>
-      gulp.watch(
+      gulpWatch(
         ['**/*.scss', join(paths.package, 'dist/govuk/index.scss')],
         {
           awaitWriteFinish: true,
@@ -57,10 +57,10 @@ function getTasks(options) {
         styles(options)
       ),
     'lint:js watch': disabledBy('GOVUK_DS_FRONTEND_NO_LINTING', 'js', () =>
-      gulp.watch(
+      gulpWatch(
         '**/*.{cjs,js,mjs}',
         { cwd: options.srcPath, ignored: ['**/*.test.*'] },
-        gulp.parallel(
+        parallel(
           // Run TypeScript compiler
           npm.script('build:types', ['--incremental', '--pretty'], options),
 
@@ -72,7 +72,7 @@ function getTasks(options) {
       )
     ),
     'compile:js watch': () =>
-      gulp.watch(
+      gulpWatch(
         'javascripts/**/*.mjs',
         { cwd: options.srcPath },
 

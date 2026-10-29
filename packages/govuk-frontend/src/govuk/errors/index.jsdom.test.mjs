@@ -1,4 +1,4 @@
-import { Accordion } from 'govuk-frontend'
+import { Accordion } from '../all.mjs'
 
 import {
   ElementError,

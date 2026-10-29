@@ -2,7 +2,7 @@ import { join } from 'path'
 
 import { pkg } from '@govuk-frontend/config'
 import { styles, task } from '@govuk-frontend/tasks'
-import gulp from 'gulp'
+import { series } from 'gulp'
 
 /**
  * Stylesheets task (for watch)
@@ -10,7 +10,7 @@ import gulp from 'gulp'
  * @type {import('@govuk-frontend/tasks').TaskFunction}
  */
 export const compile = (options) =>
-  gulp.series(
+  series(
     /**
      * Compile GOV.UK Frontend Sass
      */
