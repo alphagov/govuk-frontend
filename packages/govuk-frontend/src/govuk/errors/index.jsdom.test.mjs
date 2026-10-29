@@ -1,11 +1,11 @@
+import { Accordion } from '../all.mjs'
+
 import {
   ElementError,
   GOVUKFrontendError,
   InitError,
   SupportError
 } from './index.mjs'
-
-import { Accordion } from 'govuk-frontend'
 
 describe('errors', () => {
   describe('GOVUKFrontendError', () => {

@@ -87,6 +87,14 @@ module.exports = {
       }
     },
     {
+      // Apply to everything, including tests
+      files: ['src/govuk/**/*.mjs'],
+      rules: {
+        // Don't import govuk-frontend in the project itself
+        'no-restricted-imports': ['error', 'govuk-frontend']
+      }
+    },
+    {
       extends: ['plugin:@typescript-eslint/disable-type-checked'],
       files: ['src/govuk-prototype-kit/**/*.js'],
       parserOptions: {
