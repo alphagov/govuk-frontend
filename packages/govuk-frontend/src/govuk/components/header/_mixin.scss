@@ -62,6 +62,8 @@
 
   // Colour in the Dot
   .govuk-logo-dot {
+    // Hardcode the Dot to the Teal accent colour
+    // since it's part of the GOV.UK Logo branding and should not be overriden.
     fill: base.govuk-colour("teal", "accent");
 
     // Override Dot colour when printing
