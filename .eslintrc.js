@@ -1,5 +1,5 @@
 module.exports = {
-  extends: ['standard', 'prettier'],
+  extends: ['prettier'],
   ignorePatterns: [
     '**/dist/**',
 
