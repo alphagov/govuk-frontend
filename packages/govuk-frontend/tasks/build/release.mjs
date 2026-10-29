@@ -2,7 +2,7 @@ import { join } from 'path'
 
 import { pkg, version } from '@govuk-frontend/config'
 import { files, npm, scripts, styles, task } from '@govuk-frontend/tasks'
-import gulp from 'gulp'
+import { dest, series, src } from 'gulp'
 
 /**
  * Build dist task
@@ -11,18 +11,16 @@ import gulp from 'gulp'
  * @type {import('@govuk-frontend/tasks').TaskFunction}
  */
 export default (options) =>
-  gulp.series(
+  series(
     npm.script('clean:release', [], options),
 
     // Copy GOV.UK Frontend static assets
     task.name('copy:assets', () =>
-      gulp
-        .src('govuk/assets/**/*', {
-          base: join(options.srcPath, 'govuk'),
-          cwd: options.srcPath,
-          encoding: false
-        })
-        .pipe(gulp.dest(options.destPath))
+      src('govuk/assets/**/*', {
+        base: join(options.srcPath, 'govuk'),
+        cwd: options.srcPath,
+        encoding: false
+      }).pipe(dest(options.destPath))
     ),
 
     // Compile GOV.UK Frontend JavaScript

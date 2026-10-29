@@ -1,5 +1,5 @@
 import { task } from '@govuk-frontend/tasks'
-import gulp from 'gulp'
+import { dest, series, src } from 'gulp'
 
 /**
  * Copy GOV.UK Frontend assets (for watch)
@@ -7,14 +7,12 @@ import gulp from 'gulp'
  * @type {import('@govuk-frontend/tasks').TaskFunction}
  */
 export const assets = (options) =>
-  gulp.series(
+  series(
     task.name('copy:assets', () =>
-      gulp
-        .src('govuk/assets/**/*', {
-          base: options.srcPath,
-          cwd: options.srcPath,
-          encoding: false
-        })
-        .pipe(gulp.dest(options.destPath))
+      src('govuk/assets/**/*', {
+        base: options.srcPath,
+        cwd: options.srcPath,
+        encoding: false
+      }).pipe(dest(options.destPath))
     )
   )

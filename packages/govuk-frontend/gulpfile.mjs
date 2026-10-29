@@ -1,4 +1,4 @@
-import gulp from 'gulp'
+import { task } from 'gulp'
 
 import * as build from './tasks/build/index.mjs'
 import { options, targets } from './tasks/build/options.mjs'
@@ -14,16 +14,16 @@ import {
 /**
  * Build target tasks
  */
-gulp.task('build:package', build.package(targets.package))
-gulp.task('build:release', build.release(targets.release))
-gulp.task('dev', build.dev(options))
+task('build:package', build.package(targets.package))
+task('build:release', build.release(targets.release))
+task('dev', build.dev(options))
 
 /**
  * Utility tasks
  */
-gulp.task('assets', assets(options))
-gulp.task('fixtures', fixtures(options))
-gulp.task('scripts', scripts(options))
-gulp.task('styles', styles(options))
-gulp.task('templates', templates(options))
-gulp.task('watch', watch(options))
+task('assets', assets(options))
+task('fixtures', fixtures(options))
+task('scripts', scripts(options))
+task('styles', styles(options))
+task('templates', templates(options))
+task('watch', watch(options))

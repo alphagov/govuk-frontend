@@ -1,5 +1,5 @@
 import { npm } from '@govuk-frontend/tasks'
-import gulp from 'gulp'
+import { series } from 'gulp'
 
 import { scripts, styles } from '../index.mjs'
 
@@ -10,8 +10,4 @@ import { scripts, styles } from '../index.mjs'
  * @type {import('@govuk-frontend/tasks').TaskFunction}
  */
 export default (options) =>
-  gulp.series(
-    npm.script('clean', [], options),
-    scripts(options),
-    styles(options)
-  )
+  series(npm.script('clean', [], options), scripts(options), styles(options))

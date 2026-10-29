@@ -1,4 +1,4 @@
-import gulp from 'gulp'
+import { series } from 'gulp'
 
 import { watch } from '../index.mjs'
 
@@ -8,4 +8,4 @@ import { watch } from '../index.mjs'
  *
  * @type {import('@govuk-frontend/tasks').TaskFunction}
  */
-export default (options) => gulp.series(watch(options))
+export default (options) => series(watch(options))

@@ -1,7 +1,7 @@
 import { join } from 'path'
 
 import { styles, task } from '@govuk-frontend/tasks'
-import gulp from 'gulp'
+import { series } from 'gulp'
 
 /**
  * Stylesheets task (for watch)
@@ -9,7 +9,7 @@ import gulp from 'gulp'
  * @type {import('@govuk-frontend/tasks').TaskFunction}
  */
 export const compile = (options) =>
-  gulp.series(
+  series(
     task.name('compile:scss', () =>
       styles.compile('**/[!_]*.scss', {
         ...options,

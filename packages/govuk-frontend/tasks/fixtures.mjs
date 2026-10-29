@@ -1,5 +1,5 @@
 import { components, task } from '@govuk-frontend/tasks'
-import gulp from 'gulp'
+import { series } from 'gulp'
 
 /**
  * Component fixtures and macro options (for watch)
@@ -7,7 +7,7 @@ import gulp from 'gulp'
  * @type {import('@govuk-frontend/tasks').TaskFunction}
  */
 export const compile = (options) =>
-  gulp.series(
+  series(
     /**
      * Generate GOV.UK Frontend fixtures.json from ${componentName}.yaml
      */

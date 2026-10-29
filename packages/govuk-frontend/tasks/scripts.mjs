@@ -2,7 +2,7 @@ import { join, resolve } from 'path'
 
 import { pkg } from '@govuk-frontend/config'
 import { configs, scripts, task } from '@govuk-frontend/tasks'
-import gulp from 'gulp'
+import { series } from 'gulp'
 
 import {
   createGlobFromPaths,
@@ -90,5 +90,5 @@ export const compile = (options) => {
     )
   ]
 
-  return gulp.series(...args)
+  return series(...args)
 }
