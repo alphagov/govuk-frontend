@@ -249,7 +249,7 @@ describe('File upload', () => {
     })
 
     it('adds the data-module attribute when receiving an object', () => {
-      const $ = render('file-upload', examples.translated)
+      const $ = render('file-upload', examples['enhanced, translated'])
 
       const $wrapper = $('.govuk-form-group > .govuk-file-upload-wrapper')
 
@@ -257,7 +257,7 @@ describe('File upload', () => {
     })
 
     it('enables the rendering of translation messages when true', () => {
-      const $ = render('file-upload', examples.translated)
+      const $ = render('file-upload', examples['enhanced, translated'])
 
       const $wrapper = $('.govuk-form-group > .govuk-file-upload-wrapper')
 
