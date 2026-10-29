@@ -1,5 +1,5 @@
 module.exports = {
-  extends: ['standard', 'prettier'],
+  extends: ['prettier'],
   ignorePatterns: [
     '**/dist/**',
 
@@ -45,6 +45,10 @@ module.exports = {
         'jest',
         'jest-dom'
       ],
+      // Replicate standard's environment set up
+      env: {
+        browser: true
+      },
       rules: {
         // Access import namespace (e.g. GOVUKFrontend) using string keys
         'import-x/namespace': [
@@ -116,7 +120,12 @@ module.exports = {
         'no-else-return': 'error',
 
         // Avoid hard to read multi assign statements
-        'no-multi-assign': 'error'
+        'no-multi-assign': 'error',
+
+        // Deviations from ESLint's recommended config that standard implements
+        // that our code relies on
+        'no-unused-vars': ['error', { args: 'none' }],
+        'no-empty': ['error', { allowEmptyCatch: true }]
       },
       settings: {
         jsdoc: {

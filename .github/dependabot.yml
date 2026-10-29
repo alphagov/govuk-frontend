@@ -16,7 +16,6 @@ updates:
         patterns:
           - '@typescript-eslint/*'
           - 'editorconfig-checker'
-          - 'standard'
           - 'prettier'
           - 'typescript'
 
