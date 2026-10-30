@@ -15,9 +15,11 @@ export default defineConfig([
   {
     files: ['src/govuk/**/*.mjs'],
     ignores: ['**/*.test.mjs'],
-    parserOptions: {
-      // Note: Allow ES2015 for import/export syntax
-      ecmaVersion: '2015'
+    languageOptions: {
+      parserOptions: {
+        // Note: Allow ES2015 for import/export syntax
+        ecmaVersion: '2015'
+      }
     },
     extends: [
       TypescriptEslint.configs.strictTypeChecked,
@@ -103,8 +105,10 @@ export default defineConfig([
   {
     extends: [TypescriptEslint.configs.disableTypeChecked],
     files: ['src/govuk-prototype-kit/**/*.js'],
-    parserOptions: {
-      sourceType: 'module'
+    languageOptions: {
+      parserOptions: {
+        sourceType: 'module'
+      }
     },
     env: {
       browser: true
