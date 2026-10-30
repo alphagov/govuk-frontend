@@ -53,8 +53,10 @@ export default defineConfig([
       tsconfigRootDir: __dirname
     },
     // Replicate standard's environment set up
-    env: {
-      browser: true
+    languageOptions: {
+      globals: {
+        ...globals.browser
+      }
     },
     rules: {
       // Access import namespace (e.g. GOVUKFrontend) using string keys
@@ -165,18 +167,22 @@ export default defineConfig([
   },
   {
     files: ['**/*.test.{cjs,js,mjs}'],
-    env: {
-      jest: true
+    languageOptions: {
+      globals: {
+        ...globals.jest
+      }
     }
   },
   {
     // Matches Puppeteer environment in jest.config.mjs
     // to ignore unknown Jest Puppeteer globals
     files: ['**/*.puppeteer.test.{js,mjs}'],
-    globals: {
-      page: 'readonly',
-      browser: 'readonly',
-      jestPuppeteer: 'readonly'
+    languageOptions: {
+      globals: {
+        page: 'readonly',
+        browser: 'readonly',
+        jestPuppeteer: 'readonly'
+      }
     }
   },
   {
@@ -193,9 +199,6 @@ export default defineConfig([
       '**/coding-standards/component-options.md/*.{cjs,js,mjs}',
       '**/coding-standards/js.md/*.{cjs,js,mjs}'
     ],
-    env: {
-      browser: true
-    },
     rules: {
       // Ignore unused example code
       'no-new': 'off',
