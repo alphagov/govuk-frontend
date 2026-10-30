@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   extends: ['prettier'],
   ignorePatterns: [
     '**/dist/**',
