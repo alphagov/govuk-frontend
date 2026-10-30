@@ -125,6 +125,7 @@ const mapPathTo = (patterns, callback) => (entryPath) => {
   return isMatch(entryPath) ? callback(parse(entryPath)) : entryPath
 }
 
+/* eslint-disable jsdoc/reject-any-type -- We don't have a type of the config read by `getYaml` */
 /**
  * Read config from YAML file
  *
@@ -134,6 +135,7 @@ const mapPathTo = (patterns, callback) => (entryPath) => {
 async function getYaml(configPath) {
   return load(await readFile(configPath, 'utf8'), { json: true })
 }
+/* eslint-enable jsdoc/reject-any-type */
 
 /**
  * Compare arrays of FileSize types from the base and the head branch and add a
