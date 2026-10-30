@@ -11,14 +11,14 @@ export const compile = (options) =>
     /**
      * Generate GOV.UK Frontend fixtures.json from ${componentName}.yaml
      */
-    task.name('compile:fixtures', () =>
+    task.create('compile:fixtures', () =>
       components.generateFixtures('**/*.yaml', options)
     ),
 
     /**
      * Generate GOV.UK Frontend macro-options.json from ${componentName}.yaml
      */
-    task.name('compile:macro-options', () =>
+    task.create('compile:macro-options', () =>
       components.generateMacroOptions('**/*.yaml', options)
     )
   )
