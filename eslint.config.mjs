@@ -139,7 +139,8 @@ export default defineConfig([
       // Deviations from ESLint's recommended config that standard implements
       // that our code relies on
       'no-unused-vars': ['error', { args: 'none' }],
-      'no-empty': ['error', { allowEmptyCatch: true }]
+      'no-empty': ['error', { allowEmptyCatch: true }],
+      'no-new': 'error'
     },
     settings: {
       jsdoc: {
