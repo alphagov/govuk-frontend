@@ -33,7 +33,7 @@ describeIf(process.platform !== 'win32')('generate-npm-tag.sh', () => {
  * when a condition is not met (for ex. if tests are running in a specific platform)
  *
  * @param {boolean} condition - The condition that needs to be met for tests to run
- * @returns {Function} Jest's `describe` function if the `condition` is met, `describe.skip` otherwise
+ * @returns {jest.Describe} Jest's `describe` function if the `condition` is met, `describe.skip` otherwise
  */
 function describeIf(condition) {
   return condition ? describe : describe.skip
