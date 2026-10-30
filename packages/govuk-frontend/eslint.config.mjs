@@ -4,8 +4,10 @@ import TypescriptEslint from 'typescript-eslint'
 import ESX from 'eslint-plugin-es-x'
 import prettierConfig from 'eslint-config-prettier'
 import globals from 'globals'
+import base from '../../eslint.config.mjs'
 
 export default defineConfig([
+  ...base,
   {
     settings: {
       node: {
