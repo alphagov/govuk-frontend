@@ -1,4 +1,4 @@
-import { defineConfig } from 'eslint/config'
+import { defineConfig, globalIgnores, includeIgnoreFile } from 'eslint/config'
 
 import prettierConfig from 'eslint-config-prettier'
 import TypescriptEslint from 'typescript-eslint'
@@ -12,23 +12,27 @@ import JestDomPlugin from 'eslint-plugin-jest-dom'
 import MarkdownPlugin from '@eslint/markdown'
 import JSConfigs from '@eslint/js'
 import globals from 'globals'
+import { fileURLToPath } from 'node:url'
+
+const gitignorePaths = [
+  fileURLToPath(new URL('.gitignore', import.meta.url)),
+  fileURLToPath(new URL('packages/govuk-frontend/.gitignore', import.meta.url))
+]
 
 export default defineConfig([
+  includeIgnoreFile(gitignorePaths, { gitignoreResolution: true }),
+  globalIgnores([
+    // Enable dotfile linting
+    '!.*',
+    'node_modules',
+    'node_modules/.*',
+
+    // Prevent CHANGELOG history changes
+    'CHANGELOG.md'
+  ]),
   {
     extends: [prettierConfig]
   },
-  // TODO: Replace with using gitignore
-  // ignorePatterns: [
-  //   '**/dist/**',
-
-  //   // Enable dotfile linting
-  //   '!.*',
-  //   'node_modules',
-  //   'node_modules/.*',
-
-  //   // Prevent CHANGELOG history changes
-  //   'CHANGELOG.md'
-  // ],
   {
     extends: [
       JSConfigs.configs.recommended,
