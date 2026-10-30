@@ -22,6 +22,9 @@ const gitignorePaths = [
 export default defineConfig([
   includeIgnoreFile(gitignorePaths, { gitignoreResolution: true }),
   globalIgnores([
+    // Ignore committed built files
+    'dist/*',
+
     // Prevent CHANGELOG history changes
     'CHANGELOG.md'
   ]),
