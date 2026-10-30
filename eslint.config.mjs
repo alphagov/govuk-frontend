@@ -1,18 +1,18 @@
-import { defineConfig, globalIgnores, includeIgnoreFile } from 'eslint/config'
+import { fileURLToPath } from 'node:url'
 
-import prettierConfig from 'eslint-config-prettier'
-import TypescriptEslint from 'typescript-eslint'
+import JSConfigs from '@eslint/js'
+import MarkdownPlugin from '@eslint/markdown'
 import TypescriptParser from '@typescript-eslint/parser'
-import ImportXPlugin from 'eslint-plugin-import-x'
-import JSDocPlugin from 'eslint-plugin-jsdoc'
-import NPlugin from 'eslint-plugin-n'
-import PromisePlugin from 'eslint-plugin-promise'
+import { defineConfig, globalIgnores, includeIgnoreFile } from 'eslint/config'
+import prettierConfig from 'eslint-config-prettier'
+import { configs as ImportXConfigs } from 'eslint-plugin-import-x'
 import JestPlugin from 'eslint-plugin-jest'
 import JestDomPlugin from 'eslint-plugin-jest-dom'
-import MarkdownPlugin from '@eslint/markdown'
-import JSConfigs from '@eslint/js'
+import { configs as JSDocConfigs } from 'eslint-plugin-jsdoc'
+import NPlugin from 'eslint-plugin-n'
+import PromisePlugin from 'eslint-plugin-promise'
 import globals from 'globals'
-import { fileURLToPath } from 'node:url'
+import TypescriptEslint from 'typescript-eslint'
 
 const gitignorePaths = [
   fileURLToPath(new URL('.gitignore', import.meta.url)),
@@ -36,10 +36,10 @@ export default defineConfig([
   {
     extends: [
       JSConfigs.configs.recommended,
-      ImportXPlugin.configs['flat/recommended'],
+      ImportXConfigs['flat/recommended'],
       JestPlugin.configs['flat/style'],
       JestDomPlugin.configs['flat/recommended'],
-      JSDocPlugin.configs['flat/recommended-typescript-flavor'],
+      JSDocConfigs['flat/recommended-typescript-flavor'],
       NPlugin.configs['flat/recommended'],
       PromisePlugin.configs['flat/recommended'],
       prettierConfig

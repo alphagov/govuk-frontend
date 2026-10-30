@@ -1,9 +1,9 @@
 import { defineConfig } from 'eslint/config'
-
-import TypescriptEslint from 'typescript-eslint'
-import ESX from 'eslint-plugin-es-x'
 import prettierConfig from 'eslint-config-prettier'
+import ESX from 'eslint-plugin-es-x'
 import globals from 'globals'
+import TypescriptEslint from 'typescript-eslint'
+
 import base from '../../eslint.config.mjs'
 
 export default defineConfig([
