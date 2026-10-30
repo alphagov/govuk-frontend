@@ -1,8 +1,20 @@
 import { defineConfig } from 'eslint/config'
 
+import prettierConfig from 'eslint-config-prettier'
+import TypescriptEslint from 'typescript-eslint'
+import ImportXPlugin from 'eslint-plugin-import-x'
+import JSDocPlugin from 'eslint-plugin-jsdoc'
+import NPlugin from 'eslint-plugin-n'
+import PromisePlugin from 'eslint-plugin-promise'
+import JestPlugin from 'eslint-plugin-jest'
+import JestDomPlugin from 'eslint-plugin-jest-dom'
+import MarkdownPlugin from '@eslint/markdown'
+import JSConfigs from '@eslint/js'
+import globals from 'globals'
+
 export default defineConfig([
   {
-    extends: ['prettier']
+    extends: [prettierConfig]
   },
   // TODO: Replace with using gitignore
   // ignorePatterns: [
@@ -18,14 +30,14 @@ export default defineConfig([
   // ],
   {
     extends: [
-      'eslint:recommended',
-      'plugin:import-x/recommended',
-      'plugin:jest/style',
-      'plugin:jest-dom/recommended',
-      'plugin:jsdoc/recommended-typescript-flavor',
-      'plugin:n/recommended',
-      'plugin:promise/recommended',
-      'prettier'
+      JSConfigs.configs.recommended,
+      ImportXPlugin.configs['flat/recommended'],
+      JestPlugin.configs['flat/style'],
+      JestDomPlugin.configs['flat/recommended'],
+      JSDocPlugin.configs['flat/recommended-typescript-flavor'],
+      NPlugin.configs['flat/recommended'],
+      PromisePlugin.configs['flat/recommended'],
+      prettierConfig
     ],
     files: [
       '**/*.{cjs,js,mjs}',
@@ -40,15 +52,6 @@ export default defineConfig([
       projectService: true,
       tsconfigRootDir: __dirname
     },
-    plugins: [
-      '@typescript-eslint',
-      'import-x',
-      'jsdoc',
-      'n',
-      'promise',
-      'jest',
-      'jest-dom'
-    ],
     // Replicate standard's environment set up
     env: {
       browser: true
@@ -177,15 +180,12 @@ export default defineConfig([
     }
   },
   {
-    // Add plugin for markdown `*.md` code blocks. Its config is in the new
-    // "flat" format, so we need to use the legacy config
-    extends: ['plugin:markdown/recommended-legacy'],
+    extends: [MarkdownPlugin.configs.recommended],
     files: ['**/*.md'],
-    plugins: ['markdown'],
     processor: 'markdown/markdown'
   },
   {
-    extends: ['plugin:@typescript-eslint/disable-type-checked'],
+    extends: [TypescriptEslint.configs.disableTypeChecked],
     files: ['**/*.md/*.{cjs,js,mjs}']
   },
   {
