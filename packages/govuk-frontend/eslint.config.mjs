@@ -3,6 +3,7 @@ import { defineConfig } from 'eslint/config'
 import TypescriptEslint from 'typescript-eslint'
 import ESX from 'eslint-plugin-es-x'
 import prettierConfig from 'eslint-config-prettier'
+import globals from 'globals'
 
 export default defineConfig([
   {
@@ -16,6 +17,9 @@ export default defineConfig([
     files: ['src/govuk/**/*.mjs'],
     ignores: ['**/*.test.mjs'],
     languageOptions: {
+      globals: {
+        ...globals.browser
+      },
       parserOptions: {
         // Note: Allow ES2015 for import/export syntax
         ecmaVersion: '2015'
@@ -27,9 +31,6 @@ export default defineConfig([
       ESX.configs['flat/restrict-to-es2015'],
       prettierConfig
     ],
-    env: {
-      browser: true
-    },
     rules: {
       // Allow void return shorthand in arrow functions
       '@typescript-eslint/no-confusing-void-expression': [
@@ -106,12 +107,12 @@ export default defineConfig([
     extends: [TypescriptEslint.configs.disableTypeChecked],
     files: ['src/govuk-prototype-kit/**/*.js'],
     languageOptions: {
+      globals: {
+        ...globals.browser
+      },
       parserOptions: {
         sourceType: 'module'
       }
-    },
-    env: {
-      browser: true
     },
     rules: {
       // Allow browser import `govuk-frontend.min.js`
