@@ -99,10 +99,18 @@ export default defineConfig([
   },
   {
     // Apply to everything, including tests
-    files: ['src/govuk/**/*.mjs'],
+    files: ['src/govuk/**/*.{cjs,js,mjs}'],
     rules: {
       // Don't import govuk-frontend in the project itself
-      'no-restricted-imports': ['error', 'govuk-frontend']
+      'no-restricted-imports': ['error', 'govuk-frontend'],
+
+      // Fix collisions between Node and browser APIs
+      'n/no-unsupported-features/node-builtins': [
+        'error',
+        {
+          ignores: ['sessionStorage']
+        }
+      ]
     }
   },
   {
