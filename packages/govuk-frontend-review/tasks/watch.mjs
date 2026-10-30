@@ -83,7 +83,7 @@ function getTasks(options) {
 
   return Object.entries(tasks)
     .filter(([taskName, fn]) => !!fn)
-    .map(([taskName, fn]) => task.name(taskName, fn))
+    .map(([taskName, fn]) => task.create(taskName, fn))
 }
 
 function disabledBy(envVariableName, value, fn) {

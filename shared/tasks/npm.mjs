@@ -56,7 +56,7 @@ export function script(name, args = [], options) {
     displayName = `${displayName} ${args.join(' ')}`
   }
 
-  return task.name(displayName, () => run(name, args, options))
+  return task.create(displayName, () => run(name, args, options))
 }
 
 /**
