@@ -1,5 +1,9 @@
 import { defineConfig } from 'eslint/config'
 
+import TypescriptEslint from 'typescript-eslint'
+import ESX from 'eslint-plugin-es-x'
+import prettierConfig from 'eslint-config-prettier'
+
 export default defineConfig([
   {
     settings: {
@@ -15,12 +19,11 @@ export default defineConfig([
       // Note: Allow ES2015 for import/export syntax
       ecmaVersion: '2015'
     },
-    plugins: ['@typescript-eslint', 'es-x'],
     extends: [
-      'plugin:@typescript-eslint/strict-type-checked',
-      'plugin:@typescript-eslint/stylistic-type-checked',
-      'plugin:es-x/restrict-to-es2015',
-      'prettier'
+      TypescriptEslint.configs.strictTypeChecked,
+      TypescriptEslint.configs.stylisticTypeChecked,
+      ESX.configs['flat/restrict-to-es2015'],
+      prettierConfig
     ],
     env: {
       browser: true
@@ -98,7 +101,7 @@ export default defineConfig([
     }
   },
   {
-    extends: ['plugin:@typescript-eslint/disable-type-checked'],
+    extends: [TypescriptEslint.configs.disableTypeChecked],
     files: ['src/govuk-prototype-kit/**/*.js'],
     parserOptions: {
       sourceType: 'module'
