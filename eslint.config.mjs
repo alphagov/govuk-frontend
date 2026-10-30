@@ -2,6 +2,7 @@ import { defineConfig } from 'eslint/config'
 
 import prettierConfig from 'eslint-config-prettier'
 import TypescriptEslint from 'typescript-eslint'
+import TypescriptParser from '@typescript-eslint/parser'
 import ImportXPlugin from 'eslint-plugin-import-x'
 import JSDocPlugin from 'eslint-plugin-jsdoc'
 import NPlugin from 'eslint-plugin-n'
@@ -46,14 +47,14 @@ export default defineConfig([
       // https://github.com/eslint/eslint-plugin-markdown#advanced-configuration
       '**/*.md/*.{cjs,js,mjs}'
     ],
-    parser: '@typescript-eslint/parser',
-    parserOptions: {
-      ecmaVersion: 'latest',
-      projectService: true,
-      tsconfigRootDir: __dirname
-    },
     // Replicate standard's environment set up
     languageOptions: {
+      parser: TypescriptParser,
+      parserOptions: {
+        ecmaVersion: 'latest',
+        projectService: true,
+        tsconfigRootDir: import.meta.dirname
+      },
       globals: {
         ...globals.browser
       }
