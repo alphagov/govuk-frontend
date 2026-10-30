@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   settings: {
     node: {
       version: '^18.12.0'
