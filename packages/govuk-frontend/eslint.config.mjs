@@ -11,7 +11,7 @@ export default defineConfig([
   {
     settings: {
       node: {
-        version: '^18.12.0'
+        version: '^24.22.0'
       }
     }
   },
