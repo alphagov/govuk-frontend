@@ -22,11 +22,6 @@ const gitignorePaths = [
 export default defineConfig([
   includeIgnoreFile(gitignorePaths, { gitignoreResolution: true }),
   globalIgnores([
-    // Enable dotfile linting
-    '!.*',
-    'node_modules',
-    'node_modules/.*',
-
     // Prevent CHANGELOG history changes
     'CHANGELOG.md'
   ]),
