@@ -14,7 +14,7 @@ export default defineConfig([
   },
   {
     files: ['src/govuk/**/*.mjs'],
-    excludedFiles: ['**/*.test.mjs'],
+    ignores: ['**/*.test.mjs'],
     parserOptions: {
       // Note: Allow ES2015 for import/export syntax
       ecmaVersion: '2015'
