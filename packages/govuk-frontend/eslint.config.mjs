@@ -1,0 +1,132 @@
+import { defineConfig } from 'eslint/config'
+import prettierConfig from 'eslint-config-prettier'
+import ESX from 'eslint-plugin-es-x'
+import globals from 'globals'
+import TypescriptEslint from 'typescript-eslint'
+
+import base from '../../eslint.config.mjs'
+
+export default defineConfig([
+  ...base,
+  {
+    settings: {
+      node: {
+        version: '^24.22.0'
+      }
+    }
+  },
+  {
+    files: ['src/govuk/**/*.mjs'],
+    ignores: ['**/*.test.mjs'],
+    languageOptions: {
+      globals: {
+        ...globals.browser
+      },
+      parserOptions: {
+        // Note: Allow ES2015 for import/export syntax
+        ecmaVersion: '2015'
+      }
+    },
+    extends: [
+      TypescriptEslint.configs.strictTypeChecked,
+      TypescriptEslint.configs.stylisticTypeChecked,
+      ESX.configs['flat/restrict-to-es2015'],
+      prettierConfig
+    ],
+    rules: {
+      // Allow void return shorthand in arrow functions
+      '@typescript-eslint/no-confusing-void-expression': [
+        'error',
+        {
+          ignoreArrowShorthand: true
+        }
+      ],
+
+      // Check type support for template string implicit `.toString()`
+      '@typescript-eslint/restrict-template-expressions': [
+        'error',
+        {
+          allowBoolean: true,
+          allowNumber: true
+        }
+      ],
+
+      // Babel transpiles ES2020 class fields
+      'es-x/no-class-fields': 'off',
+
+      // Babel transpiles ES2022 class instance fields
+      'es-x/no-class-instance-fields': 'off',
+
+      // Babel transpiles ES2022 class static fields
+      'es-x/no-class-static-fields': 'off',
+
+      // Babel transpiles optional catch binding
+      'es-x/no-optional-catch-binding': 'off',
+
+      // ES modules include ES2016 '[].includes()' coverage
+      // https://browsersl.ist/#q=supports+es6-module+and+not+supports+array-includes
+      'es-x/no-array-prototype-includes': 'off',
+
+      // Babel transpiles ES2020 `??` nullish coalescing
+      'es-x/no-nullish-coalescing-operators': 'off',
+
+      // ES modules include ES2017 'Object.entries()' coverage
+      // https://browsersl.ist/#q=supports+es6-module+and+not+supports+object-entries
+      'es-x/no-object-entries': 'off',
+
+      // Babel transpiles ES2020 optional chaining
+      'es-x/no-optional-chaining': 'off',
+
+      // JSDoc blocks are mandatory in source code
+      'jsdoc/require-jsdoc': [
+        'error',
+        {
+          enableFixer: false,
+          require: {
+            ClassDeclaration: true,
+            ClassExpression: true,
+            FunctionExpression: false,
+            MethodDefinition: true
+          }
+        }
+      ],
+
+      // JSDoc @param required in (mandatory) blocks but
+      // @param description is necessary in source code
+      'jsdoc/require-param-description': 'warn',
+      'jsdoc/require-param': 'error'
+    }
+  },
+  {
+    // Apply to everything, including tests
+    files: ['src/govuk/**/*.{cjs,js,mjs}'],
+    rules: {
+      // Don't import govuk-frontend in the project itself
+      'no-restricted-imports': ['error', 'govuk-frontend'],
+
+      // Fix collisions between Node and browser APIs
+      'n/no-unsupported-features/node-builtins': [
+        'error',
+        {
+          ignores: ['sessionStorage']
+        }
+      ]
+    }
+  },
+  {
+    extends: [TypescriptEslint.configs.disableTypeChecked],
+    files: ['src/govuk-prototype-kit/**/*.js'],
+    languageOptions: {
+      globals: {
+        ...globals.browser
+      },
+      parserOptions: {
+        sourceType: 'module'
+      }
+    },
+    rules: {
+      // Allow browser import `govuk-frontend.min.js`
+      'n/no-missing-import': 'off'
+    }
+  }
+])

@@ -20,7 +20,7 @@ import { assets, fixtures, scripts, styles, templates } from './index.mjs'
  * These tasks build output for `gulp watch` in Review app:
  * {@link file://./../../govuk-frontend-review/tasks/watch.mjs}
  *
- * @type {import('@govuk-frontend/tasks').TaskFunction}
+ * @type {TaskFunction}
  */
 export const watch = (options) => parallel(...getTasks(options))
 
@@ -29,8 +29,8 @@ export const watch = (options) => parallel(...getTasks(options))
  *
  * Allows some of the tasks to be disabled by environment variables
  *
- * @param {import('@govuk-frontend/tasks').TaskOptions} options
- * @returns {any[]} The list of tasks to run in parallel
+ * @param {TaskOptions} options
+ * @returns {GulpTaskFunction[]} The list of tasks to run in parallel
  */
 function getTasks(options) {
   const tasks = {
@@ -104,7 +104,7 @@ function getTasks(options) {
 
   return Object.entries(tasks)
     .filter(([taskName, fn]) => !!fn)
-    .map(([taskName, fn]) => task.name(taskName, fn))
+    .map(([taskName, fn]) => task.create(taskName, fn))
 }
 
 function disabledBy(envVariableName, value, fn) {
@@ -118,3 +118,8 @@ function disabledBy(envVariableName, value, fn) {
 
   return fn
 }
+
+/**
+ * @import { TaskFunction as GulpTaskFunction} from 'gulp'
+ * @import { TaskOptions, TaskFunction} from '@govuk-frontend/tasks'
+ */

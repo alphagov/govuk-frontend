@@ -103,9 +103,12 @@ export async function commentStats(
   { titleText, markerText }
 ) {
   const reviewAppURL = getReviewAppUrl(issueNumber)
-  let bodyText = ''
-  let fileSizeText = ''
-  let modulesText = ''
+  /** @type {string} */
+  let bodyText
+  /** @type {string} */
+  let fileSizeText
+  /** @type {string} */
+  let modulesText
 
   if (!fileSizeData.length && !modulesData.length) {
     bodyText = 'No changes to any distributed file sizes!'

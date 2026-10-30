@@ -1,0 +1,219 @@
+import { fileURLToPath } from 'node:url'
+
+import JSConfigs from '@eslint/js'
+import MarkdownPlugin from '@eslint/markdown'
+import TypescriptParser from '@typescript-eslint/parser'
+import { defineConfig, globalIgnores, includeIgnoreFile } from 'eslint/config'
+import prettierConfig from 'eslint-config-prettier'
+import { configs as ImportXConfigs } from 'eslint-plugin-import-x'
+import JestPlugin from 'eslint-plugin-jest'
+import JestDomPlugin from 'eslint-plugin-jest-dom'
+import { configs as JSDocConfigs } from 'eslint-plugin-jsdoc'
+import NPlugin from 'eslint-plugin-n'
+import PromisePlugin from 'eslint-plugin-promise'
+import globals from 'globals'
+import TypescriptEslint from 'typescript-eslint'
+
+const gitignorePaths = [
+  fileURLToPath(new URL('.gitignore', import.meta.url)),
+  fileURLToPath(new URL('packages/govuk-frontend/.gitignore', import.meta.url))
+]
+
+export default defineConfig([
+  includeIgnoreFile(gitignorePaths, { gitignoreResolution: true }),
+  globalIgnores([
+    // Ignore committed built files
+    'dist/*',
+
+    // Prevent CHANGELOG history changes
+    'CHANGELOG.md'
+  ]),
+  {
+    extends: [prettierConfig]
+  },
+  {
+    extends: [
+      JSConfigs.configs.recommended,
+      ImportXConfigs['flat/recommended'],
+      JestPlugin.configs['flat/style'],
+      JestDomPlugin.configs['flat/recommended'],
+      JSDocConfigs['flat/recommended-typescript-flavor'],
+      NPlugin.configs['flat/recommended'],
+      PromisePlugin.configs['flat/recommended'],
+      prettierConfig
+    ],
+    files: [
+      '**/*.{cjs,js,mjs}',
+
+      // Check markdown `*.md` contains valid code blocks
+      // https://github.com/eslint/eslint-plugin-markdown#advanced-configuration
+      '**/*.md/*.{cjs,js,mjs}'
+    ],
+    // Replicate standard's environment set up
+    languageOptions: {
+      parser: TypescriptParser,
+      parserOptions: {
+        ecmaVersion: 'latest',
+        projectService: true,
+        tsconfigRootDir: import.meta.dirname
+      },
+      globals: {
+        ...globals.browser
+      }
+    },
+    rules: {
+      // Access import namespace (e.g. GOVUKFrontend) using string keys
+      'import-x/namespace': [
+        'error',
+        {
+          allowComputed: true
+        }
+      ],
+
+      // Check import or require statements are A-Z ordered
+      'import-x/order': [
+        'error',
+        {
+          alphabetize: { order: 'asc' },
+          'newlines-between': 'always'
+        }
+      ],
+
+      // Check for valid formatting
+      'jsdoc/check-line-alignment': [
+        'warn',
+        'never',
+        {
+          wrapIndent: '  '
+        }
+      ],
+
+      // JSDoc blocks can use `@preserve` to prevent removal
+      'jsdoc/check-tag-names': [
+        'warn',
+        {
+          definedTags: ['preserve']
+        }
+      ],
+
+      // JSDoc blocks are optional by default
+      'jsdoc/require-jsdoc': 'off',
+
+      // JSDoc @param required in (optional) blocks but
+      // @param description is not necessary by default
+      'jsdoc/require-param-description': 'off',
+      'jsdoc/require-param': 'error',
+
+      // Require hyphens before param description
+      // Aligns with TSDoc style: https://tsdoc.org/pages/tags/param/
+      'jsdoc/require-hyphen-before-param-description': 'warn',
+
+      // Maintain new line after description
+      'jsdoc/tag-lines': [
+        'warn',
+        'never',
+        {
+          startLines: 1
+        }
+      ],
+
+      // Ignore `govuk-frontend` exports as they require auto-generated files
+      'import-x/no-unresolved': ['error', { ignore: ['govuk-frontend'] }],
+      'n/no-missing-import': ['error', { allowModules: ['govuk-frontend'] }],
+      'n/no-missing-require': ['error', { allowModules: ['govuk-frontend'] }],
+
+      // Automatically use template strings
+      'no-useless-concat': 'error',
+      'prefer-template': 'error',
+
+      // Flow control – avoid continue and else blocks after return statements
+      // in if statements
+      'no-continue': 'error',
+      'no-else-return': 'error',
+
+      // Avoid hard to read multi assign statements
+      'no-multi-assign': 'error',
+
+      // Deviations from ESLint's recommended config that standard implements
+      // that our code relies on
+      'no-unused-vars': ['error', { args: 'none' }],
+      'no-empty': ['error', { allowEmptyCatch: true }],
+      'no-new': 'error'
+    },
+    settings: {
+      jsdoc: {
+        // Allows us to use type declarations that exist in our dependencies
+        mode: 'typescript',
+        tagNamePreference: {
+          // TypeDoc doesn't understand '@abstract' but '@virtual'
+          abstract: 'virtual'
+        }
+      }
+    }
+  },
+  {
+    // Extensions required for ESM import
+    files: ['**/*.mjs'],
+    rules: {
+      'import-x/extensions': [
+        'error',
+        'always',
+        {
+          ignorePackages: true,
+          pattern: {
+            cjs: 'always',
+            js: 'always',
+            mjs: 'always'
+          }
+        }
+      ]
+    }
+  },
+  {
+    files: ['**/*.test.{cjs,js,mjs}'],
+    languageOptions: {
+      globals: {
+        ...globals.jest
+      }
+    }
+  },
+  {
+    // Matches Puppeteer environment in jest.config.mjs
+    // to ignore unknown Jest Puppeteer globals
+    files: ['**/*.puppeteer.test.{js,mjs}'],
+    languageOptions: {
+      globals: {
+        page: 'readonly',
+        browser: 'readonly',
+        jestPuppeteer: 'readonly'
+      }
+    }
+  },
+  {
+    extends: [MarkdownPlugin.configs.recommended],
+    files: ['**/*.md'],
+    processor: 'markdown/markdown'
+  },
+  {
+    extends: [TypescriptEslint.configs.disableTypeChecked],
+    files: ['**/*.md/*.{cjs,js,mjs}']
+  },
+  {
+    files: [
+      '**/coding-standards/component-options.md/*.{cjs,js,mjs}',
+      '**/coding-standards/js.md/*.{cjs,js,mjs}'
+    ],
+    rules: {
+      // Ignore unused example code
+      'no-new': 'off',
+      'no-undef': 'off',
+      'no-unused-expressions': 'off',
+      'no-unused-vars': 'off',
+      'no-useless-constructor': 'off',
+
+      // Ignore paths to example modules
+      'import-x/no-unresolved': 'off',
+      'n/no-missing-import': 'off'
+    }
+  }
+])
