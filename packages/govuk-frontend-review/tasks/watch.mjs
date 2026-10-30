@@ -18,15 +18,15 @@ import { scripts, styles } from './index.mjs'
  * These tasks respond to `gulp watch` output from GOV.UK Frontend:
  * {@link file://./../../govuk-frontend/tasks/watch.mjs}
  *
- * @type {import('@govuk-frontend/tasks').TaskFunction}
+ * @type {TaskFunction}
  */
 export const watch = (options) => parallel(...getTasks(options))
 
 /**
  * Compute the lists of tasks to be run in parallel
  *
- * @param {import('@govuk-frontend/tasks').TaskOptions} options
- * @returns {any[]} The list of tasks to run in parallel
+ * @param {TaskOptions} options
+ * @returns {GulpTaskFunction[]} The list of tasks to run in parallel
  */
 function getTasks(options) {
   const tasks = {
@@ -97,3 +97,8 @@ function disabledBy(envVariableName, value, fn) {
 
   return fn
 }
+
+/**
+ * @import { TaskFunction as GulpTaskFunction} from 'gulp'
+ * @import { TaskOptions, TaskFunction} from '@govuk-frontend/tasks'
+ */
