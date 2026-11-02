@@ -43,8 +43,6 @@ export default defineConfig([
     extends: [
       JSConfigs.configs.recommended,
       ImportXConfigs['flat/recommended'],
-      JestPlugin.configs['flat/style'],
-      JestDomPlugin.configs['flat/recommended'],
       JSDocConfigs['flat/recommended-typescript-flavor'],
       NodePlugin.configs['flat/recommended'],
       PromisePlugin.configs['flat/recommended']
@@ -178,6 +176,10 @@ export default defineConfig([
   },
   {
     files: ['**/*.test.{cjs,js,mjs}'],
+    extends: [
+      JestPlugin.configs['flat/style'],
+      JestDomPlugin.configs['flat/recommended']
+    ],
     languageOptions: {
       globals: {
         ...globals.jest
