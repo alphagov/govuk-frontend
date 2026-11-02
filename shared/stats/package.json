@@ -20,9 +20,9 @@
   },
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^16.0.3",
-    "@rollup/plugin-terser": "^1.0.0",
+    "@rollup/plugin-terser": "^1.0.2",
     "govuk-frontend": "*",
-    "rollup": "^4.64.7",
+    "rollup": "^4.65.0",
     "rollup-plugin-visualizer": "^7.1.1"
   }
 }

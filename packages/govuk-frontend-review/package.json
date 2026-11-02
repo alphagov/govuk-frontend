@@ -46,7 +46,7 @@
     "@percy/cli": "^1.32.12",
     "@rollup/plugin-commonjs": "^29.0.3",
     "@rollup/plugin-node-resolve": "^16.0.3",
-    "@rollup/plugin-terser": "^1.0.0",
+    "@rollup/plugin-terser": "^1.0.2",
     "autoprefixer": "^10.5.4",
     "browser-sync": "^3.0.4",
     "gulp": "^5.0.1",
@@ -55,7 +55,7 @@
     "nunjucks": "^3.2.4",
     "postcss-pseudo-classes": "^0.4.0",
     "puppeteer": "^24.43.1",
-    "rollup": "^4.64.7",
+    "rollup": "^4.65.0",
     "sassdoc": "^2.7.4",
     "supertest": "^7.3.1"
   }
