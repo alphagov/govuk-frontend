@@ -17,7 +17,7 @@
     "filesize": "^11.0.26",
     "glob": "^13.0.6",
     "js-yaml": "^5.5.0",
-    "minimatch": "^10.2.5",
+    "minimatch": "^11.0.1",
     "nunjucks": "^3.2.4",
     "outdent": "^0.8.0"
   }
