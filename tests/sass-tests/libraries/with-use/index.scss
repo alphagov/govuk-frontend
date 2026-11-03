@@ -1,0 +1,6 @@
+@use "pkg:govuk-frontend" as *;
+
+:root {
+  --with-use-colour: #{govuk-functional-colour("brand")};
+  --with-use-icon: #{govuk-image-url("home-icon.svg")};
+}

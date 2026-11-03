@@ -1,0 +1,7 @@
+@forward "pkg:govuk-frontend";
+@use "pkg:govuk-frontend" as *;
+
+:root {
+  --with-forward-colour: #{govuk-functional-colour("brand")};
+  --with-forward-icon: #{govuk-image-url("home-icon.svg")};
+}
