@@ -12,7 +12,7 @@ export const configOverride = Symbol.for('configOverride')
  *
  * @virtual
  * @template {Partial<Record<keyof ConfigurationType, unknown>>} [ConfigurationType=ObjectNested]
- * @template {Element & { dataset: DOMStringMap }} [RootElementType=HTMLElement]
+ * @template {HTMLElement} [RootElementType=HTMLElement]
  * @augments Component<RootElementType>
  */
 export class ConfigurableComponent extends Component {
@@ -57,8 +57,8 @@ export class ConfigurableComponent extends Component {
    * Constructs a new component, validating that GOV.UK Frontend is supported
    *
    * @internal
-   * @param {Element | null} [$root] - HTML element to use for component
-   * @param {ConfigurationType} [config] - HTML element to use for component
+   * @param {Element | null} $root - HTML element to use for component
+   * @param {Partial<ConfigurationType>} [config] - HTML element to use for component
    */
   constructor($root, config) {
     super($root)
@@ -75,7 +75,7 @@ export class ConfigurableComponent extends Component {
       )
     }
 
-    const datasetConfig = /** @type {ConfigurationType} */ (
+    const datasetConfig = /** @type {Partial<ConfigurationType>} */ (
       normaliseDataset(childConstructor, this._$root.dataset)
     )
 

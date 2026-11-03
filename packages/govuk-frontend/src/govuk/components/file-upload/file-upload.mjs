@@ -52,7 +52,7 @@ export class FileUpload extends ConfigurableComponent {
 
   /**
    * @param {Element | null} $root - File input element
-   * @param {FileUploadConfig} [config] - File Upload config
+   * @param {Partial<FileUploadConfig>} [config] - File Upload config
    */
   constructor($root, config = {}) {
     super($root, config)

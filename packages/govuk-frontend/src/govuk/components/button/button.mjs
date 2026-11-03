@@ -17,7 +17,7 @@ export class Button extends ConfigurableComponent {
 
   /**
    * @param {Element | null} $root - HTML element to use for button
-   * @param {ButtonConfig} [config] - Button config
+   * @param {Partial<ButtonConfig>} [config] - Button config
    */
   constructor($root, config = {}) {
     super($root, config)

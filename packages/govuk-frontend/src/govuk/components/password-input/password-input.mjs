@@ -34,7 +34,7 @@ export class PasswordInput extends ConfigurableComponent {
 
   /**
    * @param {Element | null} $root - HTML element to use for password input
-   * @param {PasswordInputConfig} [config] - Password input config
+   * @param {Partial<PasswordInputConfig>} [config] - Password input config
    */
   constructor($root, config = {}) {
     super($root, config)
