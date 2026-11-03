@@ -7,7 +7,7 @@ describe('ConfigurableComponent', () => {
     // so we need to take care of that ourselves
     document.documentElement.innerHTML = ''
 
-    // this is tested in the parent class GOVUKFrontendComponent
+    // This is tested in the parent class GOVUKFrontendComponent
     // so it can be go before each test instead of it needing to
     // be added each time seperately
     document.body.classList.add('govuk-frontend-supported')

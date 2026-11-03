@@ -20,10 +20,10 @@ export function renderer(app) {
   const env = nunjucksEnv(
     [join(paths.app, 'src/views')],
     {
-      dev: true, // log stack traces
-      express: app, // the Express.js review app that nunjucks should install to
-      noCache: flags.isDevelopment, // use cache in development only
-      watch: flags.isDevelopment // reload templates in development only
+      dev: true, // Log stack traces
+      express: app, // The Express.js review app that nunjucks should install to
+      noCache: flags.isDevelopment, // Use cache in development only
+      watch: flags.isDevelopment // Reload templates in development only
     },
     {
       moduleRoot: paths.app

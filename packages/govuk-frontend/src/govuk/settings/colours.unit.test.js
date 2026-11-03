@@ -154,7 +154,7 @@ describe('Functional colours', () => {
     `
 
     await expect(compileSassString(sass)).rejects.toThrow(
-      'Unknown colour `non-existing-colour`' // partial string match
+      'Unknown colour `non-existing-colour`' // Partial string match
     )
   })
 })
@@ -223,7 +223,7 @@ describe('Organisation colours', () => {
       }
     `
 
-    // sass-color-helpers relies on global builtins which would trigger a
+    // Sass-color-helpers relies on global builtins which would trigger a
     // deprecation that breaks the compilation. As the settings are thoroughly
     // tested by other of our tests, we'll silence the deprecations here
     // waiting for us to replace the function

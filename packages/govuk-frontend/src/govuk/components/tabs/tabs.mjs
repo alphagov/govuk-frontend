@@ -286,14 +286,14 @@ export class Tabs extends Component {
    * @param {HTMLAnchorElement} $tab - Tab link
    */
   unsetAttributes($tab) {
-    // unset tab attributes
+    // Unset tab attributes
     $tab.removeAttribute('id')
     $tab.removeAttribute('role')
     $tab.removeAttribute('aria-controls')
     $tab.removeAttribute('aria-selected')
     $tab.removeAttribute('tabindex')
 
-    // unset panel attributes
+    // Unset panel attributes
     const $panel = this.getPanel($tab)
     if (!$panel) {
       return

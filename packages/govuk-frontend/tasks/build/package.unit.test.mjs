@@ -74,7 +74,7 @@ describe('packages/govuk-frontend/dist/', () => {
       .flatMap(
         mapPathTo(['**/*.mjs'], ({ dir: requirePath, name }) => [
           join(requirePath, `${name}.mjs`),
-          join(requirePath, `${name}.mjs.map`) // with source map
+          join(requirePath, `${name}.mjs.map`) // With source map
         ])
       )
 
@@ -87,11 +87,11 @@ describe('packages/govuk-frontend/dist/', () => {
 
             // UMD bundles for compatibility (e.g. Rails Asset Pipeline)
             join(requirePath, `${name}.bundle.js`),
-            join(requirePath, `${name}.bundle.js.map`), // with source map
+            join(requirePath, `${name}.bundle.js.map`), // With source map
 
             // ES module bundles for browsers
             join(requirePath, `${name}.bundle.mjs`),
-            join(requirePath, `${name}.bundle.mjs.map`) // with source map
+            join(requirePath, `${name}.bundle.mjs.map`) // With source map
           ]
         )
       )
@@ -102,8 +102,8 @@ describe('packages/govuk-frontend/dist/', () => {
           join(requirePath, 'all.mjs'),
 
           // ES module bundles for browsers, minified
-          join(requirePath, 'govuk-frontend.min.js'), // avoid .mjs extension MIME issues
-          join(requirePath, 'govuk-frontend.min.js.map') // with source map
+          join(requirePath, 'govuk-frontend.min.js'), // Avoid .mjs extension MIME issues
+          join(requirePath, 'govuk-frontend.min.js.map') // With source map
         ])
       )
 
@@ -114,7 +114,7 @@ describe('packages/govuk-frontend/dist/', () => {
 
           // CSS bundle, minified
           join(requirePath, 'govuk-frontend.min.css'),
-          join(requirePath, 'govuk-frontend.min.css.map') // with source map
+          join(requirePath, 'govuk-frontend.min.css.map') // With source map
         ])
       )
 

@@ -37,8 +37,8 @@ function nunjucksEnv(searchPaths = [], nunjucksOptions = {}, packageOptions) {
 
   // Nunjucks environment
   return nunjucks.configure(searchPaths, {
-    trimBlocks: true, // automatically remove trailing newlines from a block/tag
-    lstripBlocks: true, // automatically remove leading whitespace from a block/tag,
+    trimBlocks: true, // Automatically remove trailing newlines from a block/tag
+    lstripBlocks: true, // Automatically remove leading whitespace from a block/tag,
     ...nunjucksOptions
   })
 }

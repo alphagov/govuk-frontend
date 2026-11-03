@@ -55,7 +55,7 @@ describe('/components/accordion', () => {
 
     describe('when JavaScript is available', () => {
       afterEach(async () => {
-        // clear accordion state
+        // Clear accordion state
         await page.evaluate(() => window.sessionStorage.clear())
       })
 

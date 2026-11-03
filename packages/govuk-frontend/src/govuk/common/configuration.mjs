@@ -17,7 +17,7 @@ export const configOverride = Symbol.for('configOverride')
  */
 export class ConfigurableComponent extends Component {
   /**
-   * configOverride
+   * ConfigOverride
    *
    * Function which defines configuration overrides to prioritize
    * properties from the root element's dataset.
