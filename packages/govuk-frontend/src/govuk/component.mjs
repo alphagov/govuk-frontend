@@ -13,7 +13,7 @@ const _self =
  *
  * Centralises the behaviours shared by our components
  *
- * @virtual
+ * @abstract
  * @template {Element} [RootElementType=HTMLElement]
  */
 export class Component {

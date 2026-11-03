@@ -18,7 +18,7 @@ import { formatErrorMessage, isObject, isScope } from '../common/index.mjs'
  *   name = "MissingRootError"
  * }
  * ```
- * @virtual
+ * @abstract
  */
 export class GOVUKFrontendError extends Error {
   name = 'GOVUKFrontendError'
