@@ -48,9 +48,8 @@ export class Component {
    * @param {Element | null} $root - HTML element to use for component
    */
   constructor($root) {
-    const childConstructor = /** @type {ComponentConstructor} */ (
-      this.constructor
-    )
+    const childConstructor =
+      /** @type {ComponentConstructor<typeof Component>} */ (this.constructor)
 
     // TypeScript does not enforce that inheriting classes will define a `moduleName`
     // (even if we add a `@virtual` `static moduleName` property to this class).
@@ -111,12 +110,13 @@ export class Component {
 }
 
 /**
- * @typedef ChildClass
- * @property {string} moduleName - The module name that'll be looked for in the DOM when initialising the component
+ * Component constructor
+ *
+ * @template {typeof Component | typeof ConfigurableComponent} [ComponentType=typeof Component]
+ * @typedef {CompatibleClass & ComponentType} ComponentConstructor
  */
 
 /**
- * Component constructor
- *
- * @typedef {typeof Component & ChildClass} ComponentConstructor
+ * @import { ConfigurableComponent } from './common/configuration.mjs'
+ * @import { CompatibleClass } from './init.mjs'
  */
