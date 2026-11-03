@@ -101,7 +101,7 @@ export class CharacterCount extends ConfigurableComponent {
 
   /**
    * @param {Element | null} $root - HTML element to use for character count
-   * @param {CharacterCountConfig} [config] - Character count config
+   * @param {Partial<CharacterCountConfig>} [config] - Character count config
    */
   constructor($root, config = {}) {
     super($root, config)

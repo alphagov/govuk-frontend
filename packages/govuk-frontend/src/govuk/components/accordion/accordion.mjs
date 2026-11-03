@@ -78,7 +78,7 @@ export class Accordion extends ConfigurableComponent {
 
   /**
    * @param {Element | null} $root - HTML element to use for accordion
-   * @param {AccordionConfig} [config] - Accordion config
+   * @param {Partial<AccordionConfig>} [config] - Accordion config
    */
   constructor($root, config = {}) {
     super($root, config)

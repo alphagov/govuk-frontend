@@ -45,7 +45,7 @@ export class Component {
    * Constructs a new component, validating that GOV.UK Frontend is supported
    *
    * @internal
-   * @param {Element | null} [$root] - HTML element to use for component
+   * @param {Element | null} $root - HTML element to use for component
    */
   constructor($root) {
     const childConstructor = /** @type {ChildClassConstructor} */ (
