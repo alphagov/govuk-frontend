@@ -13,7 +13,7 @@ export const configOverride = Symbol.for('configOverride')
  * @virtual
  * @template {SchemaConfig<ConfigType>} [ConfigType=ObjectNested]
  * @template {HTMLElement} [RootElementType=HTMLElement]
- * @augments Component<RootElementType>
+ * @augments {Component<RootElementType>}
  */
 export class ConfigurableComponent extends Component {
   /**

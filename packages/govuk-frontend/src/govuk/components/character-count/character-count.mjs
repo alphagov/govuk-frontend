@@ -20,7 +20,7 @@ import { I18n } from '../../i18n.mjs'
  * of the available characters/words has been entered.
  *
  * @preserve
- * @augments ConfigurableComponent<CharacterCountConfig>
+ * @augments {ConfigurableComponent<CharacterCountConfig>}
  */
 export class CharacterCount extends ConfigurableComponent {
   /** @private */

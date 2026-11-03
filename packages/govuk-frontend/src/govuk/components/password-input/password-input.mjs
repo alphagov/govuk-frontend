@@ -8,7 +8,7 @@ import { I18n } from '../../i18n.mjs'
  * Password input component
  *
  * @preserve
- * @augments ConfigurableComponent<PasswordInputConfig>
+ * @augments {ConfigurableComponent<PasswordInputConfig>}
  */
 export class PasswordInput extends ConfigurableComponent {
   /** @private */
