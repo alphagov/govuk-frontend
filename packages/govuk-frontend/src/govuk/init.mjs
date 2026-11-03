@@ -21,7 +21,19 @@ import { ElementError, SupportError } from './errors/index.mjs'
  * Use the `data-module` attributes to find and initialise all of the
  * components provided as part of GOV.UK Frontend.
  *
- * @param {Config | Element | Document | null} [scopeOrConfig] - Scope of the document to search within or config for all components (with optional scope)
+ * @overload
+ * @param {Config} [config] - Config for all components (with optional scope)
+ * @returns {void}
+ */
+
+/**
+ * @overload
+ * @param {Element | Document | null} [$scope] - Scope of the document to search within
+ * @returns {void}
+ */
+
+/**
+ * @param {Config | Element | Document | null} [scopeOrConfig] - Scope of the document to search within or config for all components
  */
 function initAll(scopeOrConfig) {
   const config = isObject(scopeOrConfig) ? scopeOrConfig : undefined
