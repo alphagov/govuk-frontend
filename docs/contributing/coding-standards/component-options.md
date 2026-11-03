@@ -95,10 +95,10 @@ createAll(Accordion, {
 
 Data attributes only accept strings, but our [naming conventions for data attributes](https://frontend.design-system.service.gov.uk/building-your-own-javascript-components/#receiving-configuration-from-data-attributes) allow you to set options in nested objects using a dot `.` separator for each level of nesting. For example `data-i18n.showSection="Show"` will set the same option as the following constructor argument:
 
-```json
-{
+```js
+new Accordion({
   i18n: {
     showSection: 'Show'
   }
-}
+})
 ```
