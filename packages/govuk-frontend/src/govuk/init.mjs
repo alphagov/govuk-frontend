@@ -194,19 +194,6 @@ export { initAll, createAll }
  */
 
 /**
- * Config for individual components
- *
- * @import { AccordionConfig } from './components/accordion/accordion.mjs'
- * @import { ButtonConfig } from './components/button/button.mjs'
- * @import { CharacterCountConfig } from './components/character-count/character-count.mjs'
- * @import { ErrorSummaryConfig } from './components/error-summary/error-summary.mjs'
- * @import { ExitThisPageConfig } from './components/exit-this-page/exit-this-page.mjs'
- * @import { NotificationBannerConfig } from './components/notification-banner/notification-banner.mjs'
- * @import { PasswordInputConfig } from './components/password-input/password-input.mjs'
- * @import { FileUploadConfig } from './components/file-upload/file-upload.mjs'
- */
-
-/**
  * Component config keys, e.g. `accordion` and `characterCount`
  *
  * @typedef {keyof Omit<Config, 'scope' | 'onError'>} ConfigKey
