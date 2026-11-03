@@ -6,4 +6,5 @@
 # - run `npm pkg set "engines.node"=">=4.2.0" --workspace govuk-frontend` to restore GOV.UK Frontend engine's field
 # - run `npm install` to update `package-lock.json`
 # - run `npm install @types/node@<MAJOR>` to update types
+# - update the version of Node in `packages/govuk-frontend/eslint.config.mjs`
 # - check the `[node]` section of the various `.browserslistrc` files of the project match the major version

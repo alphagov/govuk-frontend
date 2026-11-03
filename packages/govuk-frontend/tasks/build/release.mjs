@@ -15,7 +15,7 @@ export default (options) =>
     npm.script('clean:release', [], options),
 
     // Copy GOV.UK Frontend static assets
-    task.name('copy:assets', () =>
+    task.create('copy:assets', () =>
       src('govuk/assets/**/*', {
         base: join(options.srcPath, 'govuk'),
         cwd: options.srcPath,
@@ -24,7 +24,7 @@ export default (options) =>
     ),
 
     // Compile GOV.UK Frontend JavaScript
-    task.name("compile:js 'release'", () =>
+    task.create("compile:js 'release'", () =>
       scripts.compile('all.mjs', {
         ...options,
 
@@ -43,7 +43,7 @@ export default (options) =>
     ),
 
     // Compile GOV.UK Frontend Sass
-    task.name('compile:scss', () =>
+    task.create('compile:scss', () =>
       styles.compile('index.scss', {
         ...options,
 
@@ -58,7 +58,7 @@ export default (options) =>
     ),
 
     // Update GOV.UK Frontend version
-    task.name("file:version 'VERSION.txt'", () =>
+    task.create("file:version 'VERSION.txt'", () =>
       files.version('VERSION.txt', options)
     )
   )
