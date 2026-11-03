@@ -213,7 +213,7 @@ export { initAll, createAll }
  *
  * @typedef {object} Config
  * @property {Element | Document | null} [scope] - Scope of the document to search within
- * @property {OnErrorCallback<CompatibleClass>} [onError] - Initialisation error callback
+ * @property {OnErrorCallback} [onError] - Initialisation error callback
  * @property {ComponentConfig<typeof Accordion>} [accordion] - Accordion config
  * @property {ComponentConfig<typeof Button>} [button] - Button config
  * @property {ComponentConfig<typeof CharacterCount>} [characterCount] - Character Count config
@@ -238,7 +238,16 @@ export { initAll, createAll }
  */
 
 /**
- * Initialisation or create all error context
+ * Initialisation error context
+ *
+ * @typedef {object} InitErrorContext
+ * @property {undefined} [element] - Element used for component module initialisation
+ * @property {undefined} [component] - Class of component
+ * @property {Config} [config] - Config supplied to components
+ */
+
+/**
+ * Create all error context
  *
  * Contains the element, component class and configuration
  *
@@ -246,7 +255,7 @@ export { initAll, createAll }
  * @typedef {object} ErrorContext
  * @property {Element} [element] - Element used for component module initialisation
  * @property {ComponentClass} [component] - Class of component
- * @property {Config | ComponentConfig<ComponentClass>} [config] - Config supplied to components
+ * @property {ComponentConfig<ComponentClass>} [config] - Config supplied to component
  */
 
 /**
@@ -255,7 +264,7 @@ export { initAll, createAll }
  * @template [ComponentClass=unknown]
  * @callback OnErrorCallback
  * @param {unknown} error - Thrown error
- * @param {ErrorContext<ComponentClass>} context - Object containing the element, component class and configuration
+ * @param {[ComponentClass] extends [CompatibleClass] ? ErrorContext<ComponentClass> : InitErrorContext | ErrorContext} context - Object containing the element, component class and configuration
  */
 
 /**
@@ -263,8 +272,8 @@ export { initAll, createAll }
  *
  * @template [ComponentClass=unknown]
  * @typedef {object} CreateAllOptions
- * @property {Element | Document | null} [scope] - scope of the document to search within
- * @property {OnErrorCallback<ComponentClass>} [onError] - callback function if error throw by component on init
+ * @property {Element | Document | null} [scope] - Scope of the document to search within
+ * @property {OnErrorCallback<ComponentClass>} [onError] - Initialisation error callback
  */
 
 /**
