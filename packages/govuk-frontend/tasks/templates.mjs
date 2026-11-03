@@ -8,7 +8,7 @@ import { dest, series, src } from 'gulp'
  */
 export const templates = (options) =>
   series(
-    task.name('copy:templates', () =>
+    task.create('copy:templates', () =>
       src('govuk/**/*.{md,njk}', {
         base: options.srcPath,
         cwd: options.srcPath
