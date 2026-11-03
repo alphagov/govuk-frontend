@@ -8,7 +8,7 @@ import { I18n } from '../../i18n.mjs'
  * File upload component
  *
  * @preserve
- * @augments ConfigurableComponent<FileUploadConfig>
+ * @augments {ConfigurableComponent<FileUploadConfig>}
  */
 export class FileUpload extends ConfigurableComponent {
   /**

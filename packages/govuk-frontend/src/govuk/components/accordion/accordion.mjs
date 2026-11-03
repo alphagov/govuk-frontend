@@ -16,7 +16,7 @@ import { I18n } from '../../i18n.mjs'
  * attribute, which also provides accessibility.
  *
  * @preserve
- * @augments ConfigurableComponent<AccordionConfig>
+ * @augments {ConfigurableComponent<AccordionConfig>}
  */
 export class Accordion extends ConfigurableComponent {
   /** @private */

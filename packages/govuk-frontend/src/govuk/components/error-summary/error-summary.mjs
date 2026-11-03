@@ -8,7 +8,7 @@ import { setFocus } from '../../common/index.mjs'
  * configuration.
  *
  * @preserve
- * @augments ConfigurableComponent<ErrorSummaryConfig>
+ * @augments {ConfigurableComponent<ErrorSummaryConfig>}
  */
 export class ErrorSummary extends ConfigurableComponent {
   /**
