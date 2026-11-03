@@ -48,7 +48,7 @@ export class Component {
    * @param {Element | null} $root - HTML element to use for component
    */
   constructor($root) {
-    const childConstructor = /** @type {ChildClassConstructor} */ (
+    const childConstructor = /** @type {ComponentConstructor} */ (
       this.constructor
     )
 
@@ -58,7 +58,7 @@ export class Component {
     // a helpful error message.
     //
     // After this, we'll be sure that `childConstructor` has a `moduleName`
-    // as expected of the `ChildClassConstructor` we've cast `this.constructor` to.
+    // as expected of the `ComponentConstructor` we've cast `this.constructor` to.
     if (typeof childConstructor.moduleName !== 'string') {
       throw new InitError(`\`moduleName\` not defined in component`)
     }
@@ -90,7 +90,7 @@ export class Component {
    * @throws {InitError} when component is already initialised
    */
   checkInitialised() {
-    const constructor = /** @type {ChildClassConstructor} */ (this.constructor)
+    const constructor = /** @type {ComponentConstructor} */ (this.constructor)
     const moduleName = constructor.moduleName
 
     if (moduleName && isInitialised(this.$root, moduleName)) {
@@ -118,5 +118,5 @@ export class Component {
 /**
  * Component constructor
  *
- * @typedef {typeof Component & ChildClass} ChildClassConstructor
+ * @typedef {typeof Component & ChildClass} ComponentConstructor
  */
