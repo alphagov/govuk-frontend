@@ -18,7 +18,7 @@ import { ElementError, SupportError } from './errors/index.mjs'
 /**
  * Initialise all components
  *
- * Use the `data-module` attributes to find, instantiate and init all of the
+ * Use the `data-module` attributes to find and initialise all of the
  * components provided as part of GOV.UK Frontend.
  *
  * @param {Config | Element | Document | null} [scopeOrConfig] - Scope of the document to search within or config for all components (with optional scope)
@@ -86,10 +86,10 @@ function initAll(scopeOrConfig) {
  * Any component errors will be caught and logged to the console.
  *
  * @template {CompatibleClass} ComponentClass
- * @param {ComponentClass} Component - class of the component to create
+ * @param {ComponentClass} Component - Component class to initialise
  * @param {ComponentConfig<ComponentClass>} [config] - Config supplied to component
- * @param {OnErrorCallback<ComponentClass> | Element | Document | null | CreateAllOptions<ComponentClass>} [scopeOrOptions] - options for createAll including scope of the document to search within and callback function if error throw by component on init
- * @returns {Array<InstanceType<ComponentClass>>} - array of instantiated components
+ * @param {CreateAllOptions<ComponentClass> | OnErrorCallback<ComponentClass> | Element | Document | null} [scopeOrOptions] - Scope of the document to search within, initialisation options or error callback function
+ * @returns {Array<InstanceType<ComponentClass>>} Array of initialised components
  */
 function createAll(Component, config, scopeOrOptions) {
   let /** @type {NodeListOf<Element> | undefined} */ $elements
