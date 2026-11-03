@@ -112,8 +112,8 @@ export class Component {
 /**
  * Component constructor
  *
- * @template {typeof Component | typeof ConfigurableComponent} [ComponentType=typeof Component]
- * @typedef {CompatibleClass & ComponentType} ComponentConstructor
+ * @template {typeof Component | typeof ConfigurableComponent} [ComponentType=typeof Component | typeof ConfigurableComponent]
+ * @typedef {ComponentType extends unknown ? CompatibleClass<ComponentType> & ComponentType : never} ComponentConstructor
  */
 
 /**
