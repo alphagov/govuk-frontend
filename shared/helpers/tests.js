@@ -116,7 +116,7 @@ function configureGOVUKFrontend(type, settings) {
     return settingsAssignments.map((assignment) => `${assignment};`).join('\n')
   }
 
-  // while with `@use` they need to each be separated by `,`
+  // While with `@use` they need to each be separated by `,`
   return `@use 'base' with (
     ${settingsAssignments.join(',\n')}
   );`

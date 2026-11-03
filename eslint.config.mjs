@@ -381,7 +381,6 @@ export default defineConfig([
       '@stylistic/padding-line-between-statements': 'off',
       'arrow-body-style': 'off',
       camelcase: 'off',
-      'capitalized-comments': 'off',
       'default-case': 'off',
       'func-name-matching': 'off',
       'func-names': 'off',
