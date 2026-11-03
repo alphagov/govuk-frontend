@@ -4,6 +4,7 @@ import JSConfigs from '@eslint/js'
 import MarkdownPlugin from '@eslint/markdown'
 import { defineConfig, globalIgnores, includeIgnoreFile } from 'eslint/config'
 import PrettierConfig from 'eslint-config-prettier'
+import eslintConfigXo from 'eslint-config-xo'
 import ESXPlugin from 'eslint-plugin-es-x'
 import { configs as ImportXConfigs } from 'eslint-plugin-import-x'
 import JestPlugin from 'eslint-plugin-jest'
@@ -36,6 +37,18 @@ export default defineConfig([
       node: {
         version: '^24.22.0'
       }
+    }
+  },
+  {
+    extends: [
+      ...eslintConfigXo({
+        space: true,
+        semicolon: false,
+        prettier: 'compat'
+      })
+    ],
+    rules: {
+      // Rules we'll keep disabled after review to go here
     }
   },
   {
