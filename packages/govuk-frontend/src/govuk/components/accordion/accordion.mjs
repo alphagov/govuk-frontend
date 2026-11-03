@@ -118,20 +118,20 @@ export class Accordion extends ConfigurableComponent {
     this.$showAllIcon = createElement('span', {
       class: this.iconClass
     })
-    this.$showAllButton.appendChild(this.$showAllIcon)
+    this.$showAllButton.append(this.$showAllIcon)
 
     // Create control wrapper and add controls to it
     const $accordionControls = createElement('div', {
       class: 'govuk-accordion__controls'
     })
-    $accordionControls.appendChild(this.$showAllButton)
+    $accordionControls.append(this.$showAllButton)
     this.$root.insertBefore($accordionControls, this.$root.firstChild)
 
     // Build additional wrapper for Show all toggle text and place after icon
     this.$showAllText = createElement('span', {
       class: 'govuk-accordion__show-all-text'
     })
-    this.$showAllButton.appendChild(this.$showAllText)
+    this.$showAllButton.append(this.$showAllText)
 
     // Handle click events on the show/hide all button
     this.$showAllButton.addEventListener('click', () =>
@@ -226,11 +226,11 @@ export class Accordion extends ConfigurableComponent {
     const $headingTextFocus = createElement('span', {
       class: 'govuk-accordion__section-heading-text-focus'
     })
-    $headingText.appendChild($headingTextFocus)
+    $headingText.append($headingTextFocus)
     // span could contain HTML elements
     // (see https://www.w3.org/TR/2011/WD-html5-20110525/content-models.html#phrasing-content)
     Array.from($span.childNodes).forEach(($child) =>
-      $headingTextFocus.appendChild($child)
+      $headingTextFocus.append($child)
     )
 
     // Create container for show / hide icons and text.
@@ -247,15 +247,15 @@ export class Accordion extends ConfigurableComponent {
       class: 'govuk-accordion__section-toggle-focus'
     })
 
-    $showHideToggle.appendChild($showHideToggleFocus)
+    $showHideToggle.append($showHideToggleFocus)
     // Create wrapper for the show / hide text. Append text after the show/hide icon
 
-    $showHideToggleFocus.appendChild(
+    $showHideToggleFocus.append(
       createElement('span', {
         class: this.iconClass
       })
     )
-    $showHideToggleFocus.appendChild(
+    $showHideToggleFocus.append(
       createElement('span', {
         class: this.sectionToggleTextClass
       })
@@ -266,8 +266,8 @@ export class Accordion extends ConfigurableComponent {
     // 2. Punctuation
     // 3. (Optional: Summary line followed by punctuation)
     // 4. Show / hide toggle
-    $button.appendChild($headingText)
-    $button.appendChild(this.getButtonPunctuationEl())
+    $button.append($headingText)
+    $button.append(this.getButtonPunctuationEl())
 
     // If summary content exists add to DOM in correct order
     if ($summary) {
@@ -281,7 +281,7 @@ export class Accordion extends ConfigurableComponent {
       const $summarySpanFocus = createElement('span', {
         class: 'govuk-accordion__section-summary-focus'
       })
-      $summarySpan.appendChild($summarySpanFocus)
+      $summarySpan.append($summarySpanFocus)
 
       // Get original attributes, and pass them to the replacement
       for (const attr of Array.from($summary.attributes)) {
@@ -290,20 +290,20 @@ export class Accordion extends ConfigurableComponent {
 
       // Copy original contents of summary to the new summary span
       Array.from($summary.childNodes).forEach(($child) =>
-        $summarySpanFocus.appendChild($child)
+        $summarySpanFocus.append($child)
       )
 
       // Replace the original summary `div` with the new summary `span`
       $summary.remove()
 
-      $button.appendChild($summarySpan)
-      $button.appendChild(this.getButtonPunctuationEl())
+      $button.append($summarySpan)
+      $button.append(this.getButtonPunctuationEl())
     }
 
-    $button.appendChild($showHideToggle)
+    $button.append($showHideToggle)
 
     $heading.removeChild($span)
-    $heading.appendChild($button)
+    $heading.append($button)
   }
 
   /**

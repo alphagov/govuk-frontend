@@ -93,7 +93,7 @@ export class PasswordInput extends ConfigurableComponent {
       'aria-live': 'polite'
     })
     this.$screenReaderStatusMessage = $screenReaderStatusMessage
-    this.$input.insertAdjacentElement('afterend', $screenReaderStatusMessage)
+    this.$input.after($screenReaderStatusMessage)
 
     // Bind toggle button
     this.$showHideButton.addEventListener('click', this.toggle.bind(this))
