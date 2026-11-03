@@ -98,10 +98,37 @@ function initAll(scopeOrConfig) {
  * Any component errors will be caught and logged to the console.
  *
  * @template {CompatibleClass} ComponentClass
+ * @overload
+ * @param {ComponentClass} Component - Component class to initialise
+ * @param {ComponentConfig<ComponentClass>} [config] - Config supplied to component
+ * @param {CreateAllOptions<ComponentClass>} [options] - Options including scope of the document to search within and callback function if error throw by component on init
+ * @returns {InstanceType<ComponentClass>[]} Array of initialised components
+ */
+
+/**
+ * @template {CompatibleClass} ComponentClass
+ * @overload
+ * @param {ComponentClass} Component - Component class to initialise
+ * @param {ComponentConfig<ComponentClass>} [config] - Config supplied to component
+ * @param {OnErrorCallback<ComponentClass>} [onError] - Initialisation error callback
+ * @returns {InstanceType<ComponentClass>[]} Array of initialised components
+ */
+
+/**
+ * @template {CompatibleClass} ComponentClass
+ * @overload
+ * @param {ComponentClass} Component - Component class to initialise
+ * @param {ComponentConfig<ComponentClass>} [config] - Config supplied to component
+ * @param {Element | Document | null} [$scope] - Scope of the document to search within
+ * @returns {InstanceType<ComponentClass>[]} Array of initialised components
+ */
+
+/**
+ * @template {CompatibleClass} ComponentClass
  * @param {ComponentClass} Component - Component class to initialise
  * @param {ComponentConfig<ComponentClass>} [config] - Config supplied to component
  * @param {CreateAllOptions<ComponentClass> | OnErrorCallback<ComponentClass> | Element | Document | null} [scopeOrOptions] - Scope of the document to search within, initialisation options or error callback function
- * @returns {Array<InstanceType<ComponentClass>>} Array of initialised components
+ * @returns {InstanceType<ComponentClass>[]} Array of initialised components
  */
 function createAll(Component, config, scopeOrOptions) {
   let /** @type {NodeListOf<Element> | undefined} */ $elements
