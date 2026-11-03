@@ -170,6 +170,8 @@ export { initAll, createAll }
  **/
 
 /**
+ * Component compatible class
+ *
  * @typedef {{new (...args: any[]): any, moduleName: string}} CompatibleClass
  */
 
@@ -211,11 +213,17 @@ export { initAll, createAll }
  */
 
 /**
+ * Component config
+ *
  * @template {CompatibleClass} ComponentClass
  * @typedef {ConstructorParameters<ComponentClass>[1]} ComponentConfig
  */
 
 /**
+ * Initialisation or create all error context
+ *
+ * Contains the element, component class and configuration
+ *
  * @template {CompatibleClass} ComponentClass
  * @typedef {object} ErrorContext
  * @property {Element} [element] - Element used for component module initialisation
@@ -224,6 +232,8 @@ export { initAll, createAll }
  */
 
 /**
+ * Initialisation or create all error callback
+ *
  * @template {CompatibleClass} ComponentClass
  * @callback OnErrorCallback
  * @param {unknown} error - Thrown error
@@ -231,6 +241,8 @@ export { initAll, createAll }
  */
 
 /**
+ * Create all options
+ *
  * @template {CompatibleClass} ComponentClass
  * @typedef {object} CreateAllOptions
  * @property {Element | Document | null} [scope] - scope of the document to search within

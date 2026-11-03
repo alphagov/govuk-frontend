@@ -116,5 +116,7 @@ export class Component {
  */
 
 /**
+ * Component constructor
+ *
  * @typedef {typeof Component & ChildClass} ChildClassConstructor
  */
