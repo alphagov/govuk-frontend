@@ -23,8 +23,8 @@ import { ElementError, SupportError } from './errors/index.mjs'
  *
  * @param {Config | Element | Document | null} [scopeOrConfig] - Scope of the document to search within or config for all components (with optional scope)
  */
-function initAll(scopeOrConfig = {}) {
-  const config = isObject(scopeOrConfig) ? scopeOrConfig : {}
+function initAll(scopeOrConfig) {
+  const config = isObject(scopeOrConfig) ? scopeOrConfig : undefined
 
   // Extract initialisation options
   const options = normaliseOptions(scopeOrConfig)
@@ -56,15 +56,15 @@ function initAll(scopeOrConfig = {}) {
   }
 
   const components = /** @type {const} */ ([
-    [Accordion, config.accordion],
-    [Button, config.button],
-    [CharacterCount, config.characterCount],
+    [Accordion, config?.accordion],
+    [Button, config?.button],
+    [CharacterCount, config?.characterCount],
     [Checkboxes],
-    [ErrorSummary, config.errorSummary],
-    [ExitThisPage, config.exitThisPage],
-    [FileUpload, config.fileUpload],
-    [NotificationBanner, config.notificationBanner],
-    [PasswordInput, config.passwordInput],
+    [ErrorSummary, config?.errorSummary],
+    [ExitThisPage, config?.exitThisPage],
+    [FileUpload, config?.fileUpload],
+    [NotificationBanner, config?.notificationBanner],
+    [PasswordInput, config?.passwordInput],
     [Radios],
     [ServiceNavigation],
     [SkipLink],
