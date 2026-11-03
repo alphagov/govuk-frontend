@@ -11,7 +11,7 @@ export const configOverride = Symbol.for('configOverride')
  * Centralises the behaviours shared by our components
  *
  * @virtual
- * @template {Partial<Record<keyof ConfigurationType, unknown>>} [ConfigurationType=ObjectNested]
+ * @template {SchemaConfig<ConfigType>} [ConfigType=ObjectNested]
  * @template {HTMLElement} [RootElementType=HTMLElement]
  * @augments Component<RootElementType>
  */
@@ -29,8 +29,8 @@ export class ConfigurableComponent extends Component {
    *
    * @internal
    * @virtual
-   * @param {Partial<ConfigurationType>} [param] - Configuration object
-   * @returns {Partial<ConfigurationType>} return - Configuration object
+   * @param {Partial<ConfigType>} [param] - Configuration object
+   * @returns {Partial<ConfigType>} return - Configuration object
    */
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   [configOverride](param) {
@@ -41,7 +41,7 @@ export class ConfigurableComponent extends Component {
    * Returns the root element of the component
    *
    * @protected
-   * @returns {ConfigurationType} - the root element of component
+   * @returns {ConfigType} - the root element of component
    */
   get config() {
     return this._config
@@ -49,7 +49,7 @@ export class ConfigurableComponent extends Component {
 
   /**
    *
-   * @type {ConfigurationType}
+   * @type {ConfigType}
    */
   _config
 
@@ -58,7 +58,7 @@ export class ConfigurableComponent extends Component {
    *
    * @internal
    * @param {Element | null} $root - HTML element to use for component
-   * @param {Partial<ConfigurationType>} [config] - HTML element to use for component
+   * @param {Partial<ConfigType>} [config] - HTML element to use for component
    */
   constructor($root, config) {
     super($root)
@@ -77,17 +77,17 @@ export class ConfigurableComponent extends Component {
       )
     }
 
-    const datasetConfig = /** @type {Partial<ConfigurationType>} */ (
+    const datasetConfig = /** @type {Partial<ConfigType>} */ (
       normaliseDataset(childConstructor, this._$root.dataset)
     )
 
     // Override defaults with JavaScript config
-    this._config = /** @type {ConfigurationType} */ (
+    this._config = /** @type {ConfigType} */ (
       mergeConfigs(childConstructor.defaults, config ?? {})
     )
 
     // Override merged config with dataset config
-    this._config = /** @type {ConfigurationType} */ (
+    this._config = /** @type {ConfigType} */ (
       mergeConfigs(
         this._config,
         this[configOverride](datasetConfig),
@@ -162,8 +162,8 @@ export function normaliseString(value, property) {
  * optionally expanding nested `i18n.field`
  *
  * @internal
- * @template {Partial<Record<keyof ConfigurationType, unknown>>} ConfigurationType
- * @param {CompatibleClass & { schema?: Schema<ConfigurationType> }} Component - Component class
+ * @template {SchemaConfig<ConfigType>} ConfigType
+ * @param {CompatibleClass & { schema?: Schema<ConfigType> }} Component - Component class
  * @param {DOMStringMap} dataset - HTML element dataset
  * @returns {ObjectNested} Normalised dataset
  */
@@ -179,7 +179,7 @@ export function normaliseDataset(Component, dataset) {
 
   const out = /** @type {ObjectNested} */ ({})
   const entries =
-    /** @type {[keyof ConfigurationType, SchemaProperty | undefined][]} */ (
+    /** @type {[keyof ConfigType, SchemaProperty | undefined][]} */ (
       Object.entries(Component.schema.properties)
     )
 
@@ -214,8 +214,8 @@ export function normaliseDataset(Component, dataset) {
  * Normalise options passed to `initAll` or `createAll`
  *
  * @internal
- * @template {CompatibleClass} ComponentClass
- * @param {Config | CreateAllOptions<ComponentClass> | OnErrorCallback<ComponentClass> | Element | Document | null} [scopeOrOptions] - Scope of the document to search within, initialisation options or error callback function
+ * @template ComponentClass
+ * @param {CreateAllOptions<ComponentClass> | OnErrorCallback<ComponentClass> | Element | Document | null} [scopeOrOptions] - Scope of the document to search within, initialisation options or error callback function
  * @returns {{ scope: Element | Document | null, onError?: OnErrorCallback<ComponentClass> }} Normalised options
  */
 export function normaliseOptions(scopeOrOptions) {
@@ -296,9 +296,9 @@ export function mergeConfigs(...configObjects) {
  * {@link https://ajv.js.org/packages/ajv-errors.html#single-message}
  *
  * @internal
- * @template {Partial<Record<keyof ConfigurationType, unknown>>} ConfigurationType
- * @param {Schema<ConfigurationType>} schema - The schema of a component
- * @param {ConfigurationType} config - Component config
+ * @template {SchemaConfig<ConfigType>} ConfigType
+ * @param {Schema<ConfigType>} schema - The schema of a component
+ * @param {ConfigType} config - Component config
  * @returns {string[]} List of validation errors
  */
 export function validateConfig(schema, config) {
@@ -331,10 +331,10 @@ export function validateConfig(schema, config) {
  * object, removing the namespace in the process, normalising all values
  *
  * @internal
- * @template {Partial<Record<keyof ConfigurationType, unknown>>} ConfigurationType
- * @param {Schema<ConfigurationType>} schema - The schema of a component
+ * @template {SchemaConfig<ConfigType>} ConfigType
+ * @param {Schema<ConfigType>} schema - The schema of a component
  * @param {DOMStringMap} dataset - The object to extract key-value pairs from
- * @param {keyof ConfigurationType} namespace - The namespace to filter keys with
+ * @param {keyof ConfigType} namespace - The namespace to filter keys with
  * @returns {ObjectNested | undefined} Nested object with dot-separated key namespace removed
  */
 export function extractConfigByNamespace(schema, dataset, namespace) {
@@ -388,16 +388,26 @@ export function extractConfigByNamespace(schema, dataset, namespace) {
 /**
  * @internal
  * @typedef {keyof ObjectNested} NestedKey
- * @typedef {{ [key: string]: string | boolean | number | ObjectNested | undefined }} ObjectNested
+ * @typedef {string | boolean | number} NestedValue
+ * @typedef {{ [key: string]: NestedValue | ObjectNested | undefined }} ObjectNested
+ */
+
+/**
+ * Schema config
+ *
+ * Config object type, including interfaces without index signatures
+ *
+ * @template ConfigType
+ * @typedef {Partial<Record<keyof ConfigType, unknown>>} SchemaConfig
  */
 
 /**
  * Schema for component config
  *
- * @template {Partial<Record<keyof ConfigurationType, unknown>>} ConfigurationType
+ * @template {SchemaConfig<ConfigType>} ConfigType
  * @typedef {object} Schema
- * @property {Record<keyof ConfigurationType, SchemaProperty | undefined>} properties - Schema properties
- * @property {SchemaCondition<ConfigurationType>[]} [anyOf] - List of schema conditions
+ * @property {Record<keyof ConfigType, SchemaProperty | undefined>} properties - Schema properties
+ * @property {SchemaCondition<ConfigType>[]} [anyOf] - List of schema conditions
  */
 
 /**
@@ -410,13 +420,13 @@ export function extractConfigByNamespace(schema, dataset, namespace) {
 /**
  * Schema condition for component config
  *
- * @template {Partial<Record<keyof ConfigurationType, unknown>>} ConfigurationType
+ * @template {SchemaConfig<ConfigType>} ConfigType
  * @typedef {object} SchemaCondition
- * @property {(keyof ConfigurationType)[]} required - List of required config fields
+ * @property {(keyof ConfigType)[]} required - List of required config fields
  * @property {string} errorMessage - Error message when required config fields not provided
  */
 
 /**
  * @import { ComponentConstructor } from '../component.mjs'
- * @import { CompatibleClass, Config, CreateAllOptions, OnErrorCallback } from '../init.mjs'
+ * @import { CompatibleClass, CreateAllOptions, OnErrorCallback } from '../init.mjs'
  */
