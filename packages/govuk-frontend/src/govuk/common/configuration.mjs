@@ -10,7 +10,7 @@ export const configOverride = Symbol.for('configOverride')
  *
  * Centralises the behaviours shared by our components
  *
- * @virtual
+ * @abstract
  * @template {SchemaConfig<ConfigType>} [ConfigType=ObjectNested]
  * @template {HTMLElement} [RootElementType=HTMLElement]
  * @augments {Component<RootElementType>}
@@ -28,7 +28,7 @@ export class ConfigurableComponent extends Component {
    * is used for indexing to prevent conflicts.
    *
    * @internal
-   * @virtual
+   * @abstract
    * @param {Partial<ConfigType>} [param] - Configuration object
    * @returns {Partial<ConfigType>} return - Configuration object
    */
