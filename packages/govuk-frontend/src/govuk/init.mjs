@@ -113,7 +113,7 @@ function createAll(Component, config, scopeOrOptions) {
       })
     }
 
-    $elements = options.scope?.querySelectorAll(
+    $elements = options.scope.querySelectorAll(
       `[data-module="${Component.moduleName}"]`
     )
   } catch (error) {
@@ -136,7 +136,7 @@ function createAll(Component, config, scopeOrOptions) {
    * This means we have to set the constructor of `CompatibleClass` as `{new(): any}`,
    * leading to ESLint frowning that we're returning `any[]`.
    */
-  return Array.from($elements ?? [])
+  return Array.from($elements)
     .map(($element) => {
       try {
         // Only pass config to components that accept it
