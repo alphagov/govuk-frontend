@@ -231,13 +231,6 @@ export { initAll, createAll }
  */
 
 /**
- * Component config
- *
- * @template {CompatibleClass} ComponentClass
- * @typedef {ConstructorParameters<ComponentClass>[1]} ComponentConfig
- */
-
-/**
  * Initialisation error context
  *
  * @typedef {object} InitErrorContext
@@ -278,5 +271,5 @@ export { initAll, createAll }
 
 /**
  * @import { ConfigurableComponent, ObjectNested, Schema } from './common/configuration.mjs'
- * @import { Component } from './component.mjs'
+ * @import { Component, ComponentConfig } from './component.mjs'
  */
