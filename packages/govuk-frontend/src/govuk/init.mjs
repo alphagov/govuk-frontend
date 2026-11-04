@@ -18,13 +18,25 @@ import { ElementError, SupportError } from './errors/index.mjs'
 /**
  * Initialise all components
  *
- * Use the `data-module` attributes to find, instantiate and init all of the
+ * Use the `data-module` attributes to find and initialise all of the
  * components provided as part of GOV.UK Frontend.
  *
- * @param {Config | Element | Document | null} [scopeOrConfig] - Scope of the document to search within or config for all components (with optional scope)
+ * @overload
+ * @param {Config} [config] - Config for all components (with optional scope)
+ * @returns {void}
  */
-function initAll(scopeOrConfig = {}) {
-  const config = isObject(scopeOrConfig) ? scopeOrConfig : {}
+
+/**
+ * @overload
+ * @param {Element | Document | null} [$scope] - Scope of the document to search within
+ * @returns {void}
+ */
+
+/**
+ * @param {Config | Element | Document | null} [scopeOrConfig] - Scope of the document to search within or config for all components
+ */
+function initAll(scopeOrConfig) {
+  const config = isObject(scopeOrConfig) ? scopeOrConfig : undefined
 
   // Extract initialisation options
   const options = normaliseOptions(scopeOrConfig)
@@ -56,15 +68,15 @@ function initAll(scopeOrConfig = {}) {
   }
 
   const components = /** @type {const} */ ([
-    [Accordion, config.accordion],
-    [Button, config.button],
-    [CharacterCount, config.characterCount],
+    [Accordion, config?.accordion],
+    [Button, config?.button],
+    [CharacterCount, config?.characterCount],
     [Checkboxes],
-    [ErrorSummary, config.errorSummary],
-    [ExitThisPage, config.exitThisPage],
-    [FileUpload, config.fileUpload],
-    [NotificationBanner, config.notificationBanner],
-    [PasswordInput, config.passwordInput],
+    [ErrorSummary, config?.errorSummary],
+    [ExitThisPage, config?.exitThisPage],
+    [FileUpload, config?.fileUpload],
+    [NotificationBanner, config?.notificationBanner],
+    [PasswordInput, config?.passwordInput],
     [Radios],
     [ServiceNavigation],
     [SkipLink],
@@ -86,10 +98,37 @@ function initAll(scopeOrConfig = {}) {
  * Any component errors will be caught and logged to the console.
  *
  * @template {CompatibleClass} ComponentClass
- * @param {ComponentClass} Component - class of the component to create
+ * @overload
+ * @param {ComponentClass} Component - Component class to initialise
  * @param {ComponentConfig<ComponentClass>} [config] - Config supplied to component
- * @param {OnErrorCallback<ComponentClass> | Element | Document | null | CreateAllOptions<ComponentClass>} [scopeOrOptions] - options for createAll including scope of the document to search within and callback function if error throw by component on init
- * @returns {Array<InstanceType<ComponentClass>>} - array of instantiated components
+ * @param {CreateAllOptions<ComponentClass>} [options] - Options including scope of the document to search within and callback function if error throw by component on init
+ * @returns {InstanceType<ComponentClass>[]} Array of initialised components
+ */
+
+/**
+ * @template {CompatibleClass} ComponentClass
+ * @overload
+ * @param {ComponentClass} Component - Component class to initialise
+ * @param {ComponentConfig<ComponentClass>} [config] - Config supplied to component
+ * @param {OnErrorCallback<ComponentClass>} [onError] - Initialisation error callback
+ * @returns {InstanceType<ComponentClass>[]} Array of initialised components
+ */
+
+/**
+ * @template {CompatibleClass} ComponentClass
+ * @overload
+ * @param {ComponentClass} Component - Component class to initialise
+ * @param {ComponentConfig<ComponentClass>} [config] - Config supplied to component
+ * @param {Element | Document | null} [$scope] - Scope of the document to search within
+ * @returns {InstanceType<ComponentClass>[]} Array of initialised components
+ */
+
+/**
+ * @template {CompatibleClass} ComponentClass
+ * @param {ComponentClass} Component - Component class to initialise
+ * @param {ComponentConfig<ComponentClass>} [config] - Config supplied to component
+ * @param {CreateAllOptions<ComponentClass> | OnErrorCallback<ComponentClass> | Element | Document | null} [scopeOrOptions] - Scope of the document to search within, initialisation options or error callback function
+ * @returns {InstanceType<ComponentClass>[]} Array of initialised components
  */
 function createAll(Component, config, scopeOrOptions) {
   let /** @type {NodeListOf<Element> | undefined} */ $elements
@@ -113,7 +152,7 @@ function createAll(Component, config, scopeOrOptions) {
       })
     }
 
-    $elements = options.scope?.querySelectorAll(
+    $elements = options.scope.querySelectorAll(
       `[data-module="${Component.moduleName}"]`
     )
   } catch (error) {
@@ -129,21 +168,15 @@ function createAll(Component, config, scopeOrOptions) {
     return []
   }
 
-  /* eslint-disable-next-line @typescript-eslint/no-unsafe-return --
-   * We can't define CompatibleClass as `{new(): CompatibleClass, moduleName: string}`,
-   * as when doing `typeof Accordion` (or any component), TypeScript doesn't seem
-   * to acknowledge the static `moduleName` that's set in our component classes.
-   * This means we have to set the constructor of `CompatibleClass` as `{new(): any}`,
-   * leading to ESLint frowning that we're returning `any[]`.
-   */
-  return Array.from($elements ?? [])
+  return Array.from($elements)
     .map(($element) => {
       try {
-        // Only pass config to components that accept it
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-        return typeof config !== 'undefined'
-          ? new Component($element, config)
-          : new Component($element)
+        return /** @type {InstanceType<ComponentClass>} */ (
+          // Only pass config to components that accept it
+          typeof config !== 'undefined'
+            ? new Component($element, config)
+            : new Component($element)
+        )
       } catch (error) {
         if (options.onError) {
           options.onError(error, {
@@ -158,29 +191,29 @@ function createAll(Component, config, scopeOrOptions) {
         return null
       }
     })
-    .filter(Boolean) // Exclude components that errored
+    .filter((instance) => !!instance) // Exclude components that errored
 }
 
 export { initAll, createAll }
 
-/* eslint-disable jsdoc/reject-any-type --
- * `{new(...args: any[] ): object}` is not recognised as valid
- * https://github.com/gajus/eslint-plugin-jsdoc/issues/145#issuecomment-1308722878
- * https://github.com/jsdoc-type-pratt-parser/jsdoc-type-pratt-parser/issues/131
- **/
-
 /**
- * @typedef {{new (...args: any[]): any, moduleName: string}} CompatibleClass
+ * Component compatible class
+ *
+ * @template {new (...args: never[]) => Component} [ComponentType=typeof Component | typeof ConfigurableComponent<ObjectNested>]
+ * @typedef {ComponentType extends unknown ? {
+ *   new(...args: ConstructorParameters<ComponentType>): InstanceType<ComponentType>,
+ *   defaults?: object,
+ *   schema?: Schema<ObjectNested>,
+ *   moduleName: string
+ * } : never} CompatibleClass
  */
-
-/* eslint-enable jsdoc/reject-any-type */
 
 /**
  * Config for all components via `initAll()`
  *
  * @typedef {object} Config
  * @property {Element | Document | null} [scope] - Scope of the document to search within
- * @property {OnErrorCallback<CompatibleClass>} [onError] - Initialisation error callback
+ * @property {OnErrorCallback} [onError] - Initialisation error callback
  * @property {ComponentConfig<typeof Accordion>} [accordion] - Accordion config
  * @property {ComponentConfig<typeof Button>} [button] - Button config
  * @property {ComponentConfig<typeof CharacterCount>} [characterCount] - Character Count config
@@ -192,47 +225,51 @@ export { initAll, createAll }
  */
 
 /**
- * Config for individual components
- *
- * @import { AccordionConfig } from './components/accordion/accordion.mjs'
- * @import { ButtonConfig } from './components/button/button.mjs'
- * @import { CharacterCountConfig } from './components/character-count/character-count.mjs'
- * @import { ErrorSummaryConfig } from './components/error-summary/error-summary.mjs'
- * @import { ExitThisPageConfig } from './components/exit-this-page/exit-this-page.mjs'
- * @import { NotificationBannerConfig } from './components/notification-banner/notification-banner.mjs'
- * @import { PasswordInputConfig } from './components/password-input/password-input.mjs'
- * @import { FileUploadConfig } from './components/file-upload/file-upload.mjs'
- */
-
-/**
  * Component config keys, e.g. `accordion` and `characterCount`
  *
  * @typedef {keyof Omit<Config, 'scope' | 'onError'>} ConfigKey
  */
 
 /**
- * @template {CompatibleClass} ComponentClass
- * @typedef {ConstructorParameters<ComponentClass>[1]} ComponentConfig
+ * Initialisation error context
+ *
+ * @typedef {object} InitErrorContext
+ * @property {undefined} [element] - Element used for component module initialisation
+ * @property {undefined} [component] - Class of component
+ * @property {Config} [config] - Config supplied to components
  */
 
 /**
- * @template {CompatibleClass} ComponentClass
+ * Create all error context
+ *
+ * Contains the element, component class and configuration
+ *
+ * @template {CompatibleClass} [ComponentClass=CompatibleClass]
  * @typedef {object} ErrorContext
  * @property {Element} [element] - Element used for component module initialisation
  * @property {ComponentClass} [component] - Class of component
- * @property {Config | ComponentConfig<ComponentClass>} [config] - Config supplied to components
+ * @property {ComponentConfig<ComponentClass>} [config] - Config supplied to component
  */
 
 /**
- * @template {CompatibleClass} ComponentClass
+ * Initialisation or create all error callback
+ *
+ * @template [ComponentClass=unknown]
  * @callback OnErrorCallback
  * @param {unknown} error - Thrown error
- * @param {ErrorContext<ComponentClass>} context - Object containing the element, component class and configuration
+ * @param {[ComponentClass] extends [CompatibleClass] ? ErrorContext<ComponentClass> : InitErrorContext | ErrorContext} context - Object containing the element, component class and configuration
  */
 
 /**
- * @template {CompatibleClass} ComponentClass
+ * Create all options
+ *
+ * @template [ComponentClass=unknown]
  * @typedef {object} CreateAllOptions
- * @property {Element | Document | null} [scope] - scope of the document to search within
- * @property {OnErrorCallback<ComponentClass>} [onError] - callback function if error throw by component on init
+ * @property {Element | Document | null} [scope] - Scope of the document to search within
+ * @property {OnErrorCallback<ComponentClass>} [onError] - Initialisation error callback
+ */
+
+/**
+ * @import { ConfigurableComponent, ObjectNested, Schema } from './common/configuration.mjs'
+ * @import { Component, ComponentConfig } from './component.mjs'
  */

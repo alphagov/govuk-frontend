@@ -5,12 +5,12 @@ import { setFocus } from '../../common/index.mjs'
  * Notification Banner component
  *
  * @preserve
- * @augments ConfigurableComponent<NotificationBannerConfig>
+ * @augments {ConfigurableComponent<NotificationBannerConfig>}
  */
 export class NotificationBanner extends ConfigurableComponent {
   /**
    * @param {Element | null} $root - HTML element to use for notification banner
-   * @param {NotificationBannerConfig} [config] - Notification banner config
+   * @param {Partial<NotificationBannerConfig>} [config] - Notification banner config
    */
   constructor($root, config = {}) {
     super($root, config)

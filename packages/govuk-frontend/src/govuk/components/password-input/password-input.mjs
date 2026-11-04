@@ -8,7 +8,7 @@ import { I18n } from '../../i18n.mjs'
  * Password input component
  *
  * @preserve
- * @augments ConfigurableComponent<PasswordInputConfig>
+ * @augments {ConfigurableComponent<PasswordInputConfig>}
  */
 export class PasswordInput extends ConfigurableComponent {
   /** @private */
@@ -34,7 +34,7 @@ export class PasswordInput extends ConfigurableComponent {
 
   /**
    * @param {Element | null} $root - HTML element to use for password input
-   * @param {PasswordInputConfig} [config] - Password input config
+   * @param {Partial<PasswordInputConfig>} [config] - Password input config
    */
   constructor($root, config = {}) {
     super($root, config)

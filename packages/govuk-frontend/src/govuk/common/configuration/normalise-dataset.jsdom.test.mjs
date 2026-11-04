@@ -8,7 +8,7 @@ describe('normaliseDataset', () => {
     expect(
       normaliseDataset(
         /**
-         * @augments ConfigurableComponent<Config>
+         * @augments {ConfigurableComponent<Config>}
          */
         class Component extends ConfigurableComponent {
           static moduleName = 'Component'

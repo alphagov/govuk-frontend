@@ -8,7 +8,7 @@ import { I18n } from '../../i18n.mjs'
  * File upload component
  *
  * @preserve
- * @augments ConfigurableComponent<FileUploadConfig>
+ * @augments {ConfigurableComponent<FileUploadConfig>}
  */
 export class FileUpload extends ConfigurableComponent {
   /**
@@ -52,7 +52,7 @@ export class FileUpload extends ConfigurableComponent {
 
   /**
    * @param {Element | null} $root - File input element
-   * @param {FileUploadConfig} [config] - File Upload config
+   * @param {Partial<FileUploadConfig>} [config] - File Upload config
    */
   constructor($root, config = {}) {
     super($root, config)
