@@ -117,6 +117,13 @@ export class Component {
  */
 
 /**
+ * Component config
+ *
+ * @template {CompatibleClass} ComponentClass
+ * @typedef {ConstructorParameters<ComponentClass>[1]} ComponentConfig
+ */
+
+/**
  * @import { ConfigurableComponent } from './common/configuration.mjs'
  * @import { CompatibleClass } from './init.mjs'
  */
