@@ -8,7 +8,7 @@ For advice on how to use these release notes, see [our guidance on staying up to
 
 We've made fixes to GOV.UK Frontend in the following pull requests:
 
-- [#PR_NUMBER: Use the module name in all Password input and Skip link error messages](https://github.com/alphagov/govuk-frontend/pull/PR_NUMBER) - thanks to @colinrotherham for reporting this issue
+- [#7616: Use the module name in all Password input and Skip link error messages](https://github.com/alphagov/govuk-frontend/pull/7616) - thanks to @colinrotherham for reporting this issue
 
 ### We've updated components to make more use of Functional colours
 
