@@ -8,7 +8,7 @@ For advice on how to use these release notes, see [our guidance on staying up to
 
 We've made fixes to GOV.UK Frontend in the following pull requests:
 
-- [#PR_NUMBER: Keep File upload grey hover background after a file is chosen](https://github.com/alphagov/govuk-frontend/pull/PR_NUMBER)
+- [#7615: Keep File upload grey hover background after a file is chosen](https://github.com/alphagov/govuk-frontend/pull/7615)
 
 ### We've updated components to make more use of Functional colours
 
