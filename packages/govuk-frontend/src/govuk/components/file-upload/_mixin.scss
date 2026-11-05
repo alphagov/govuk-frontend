@@ -164,7 +164,7 @@
 
     &.govuk-file-upload-button--dragging,
     &:hover {
-      border-color: $drop-zone-hover-border-colour;
+      // border-color: $drop-zone-hover-border-colour;
       background-color: $drop-zone-hover-background-colour;
 
       .govuk-file-upload-button__pseudo-button {
