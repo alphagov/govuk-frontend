@@ -31,7 +31,7 @@ export async function commentDiffs(githubActionContext, issueNumber, diffs) {
   }
 
   // Throw on any deferred errors above
-  if (errors.length) {
+  if (errors.length > 0) {
     throw new Error('Failed to post GitHub comments', {
       cause: errors
     })
@@ -107,10 +107,10 @@ export async function commentStats(
   let fileSizeText
   let modulesText
 
-  if (!fileSizeData.length && !modulesData.length) {
+  if (fileSizeData.length === 0 && modulesData.length === 0) {
     bodyText = 'No changes to any distributed file sizes!'
   } else {
-    if (fileSizeData.length) {
+    if (fileSizeData.length > 0) {
       // File sizes
       const fileSizeTitle = '### File sizes'
       // We cast the type to both specify explicitly that getReadableFileSizes
@@ -128,7 +128,7 @@ export async function commentStats(
       fileSizeText = 'No changes to asset file sizes.'
     }
 
-    if (modulesData.length) {
+    if (modulesData.length > 0) {
       // Module sizes
       const modulesTitle = '### Modules'
 

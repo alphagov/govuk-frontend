@@ -29,7 +29,7 @@ router.post(
       error.id.includes(`${expiryNamePrefix}-`)
     )
 
-    if (expiryErrors.length) {
+    if (expiryErrors.length > 0) {
       const firstExpiryErrorId = expiryErrors[0].id
       // Get the first error message and merge it into a single error message.
       errors[expiryNamePrefix] = {

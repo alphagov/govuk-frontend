@@ -112,7 +112,7 @@ export class ErrorSummary extends ConfigurableComponent {
     if ($fieldset) {
       const $legends = $fieldset.getElementsByTagName('legend')
 
-      if ($legends.length) {
+      if ($legends.length > 0) {
         const $candidateLegend = $legends[0]
 
         // If the input type is radio or checkbox, always use the legend if

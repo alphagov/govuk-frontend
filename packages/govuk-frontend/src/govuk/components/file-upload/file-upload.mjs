@@ -367,12 +367,12 @@ export class FileUpload extends ConfigurableComponent {
    */
   canDrop(dataTransfer) {
     // If the browser is kind enough to give a list of items, we'll use that as source of truth
-    if (dataTransfer.items.length) {
+    if (dataTransfer.items.length > 0) {
       return this.matchesInputCapacity(countFileItems(dataTransfer.items))
     }
 
     // If we have some type information, we'll use that
-    if (dataTransfer.types.length) {
+    if (dataTransfer.types.length > 0) {
       return dataTransfer.types.includes('Files')
     }
 

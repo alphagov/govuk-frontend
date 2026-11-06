@@ -43,6 +43,6 @@ function filterTask(task) {
       .filter((_, i) => !ignoredStates[i])
       .map((file) => `"${file}"`)
 
-    return paths.length ? [`${task} ${paths.join(' ')}`] : []
+    return paths.length > 0 ? [`${task} ${paths.join(' ')}`] : []
   }
 }

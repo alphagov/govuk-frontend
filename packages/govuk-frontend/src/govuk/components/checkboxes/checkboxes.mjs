@@ -28,7 +28,7 @@ export class Checkboxes extends Component {
     super($root)
 
     const $inputs = this.$root.querySelectorAll('input[type="checkbox"]')
-    if (!$inputs.length) {
+    if ($inputs.length === 0) {
       throw new ElementError({
         component: Checkboxes,
         identifier: 'Form inputs (`<input type="checkbox">`)'

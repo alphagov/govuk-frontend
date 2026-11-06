@@ -52,7 +52,7 @@ export async function run(name, args = [], options) {
 export function script(name, args = [], options) {
   let displayName = `npm run ${name}`
 
-  if (args.length) {
+  if (args.length > 0) {
     displayName = `${displayName} ${args.join(' ')}`
   }
 

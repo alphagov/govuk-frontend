@@ -45,7 +45,7 @@ export class Tabs extends Component {
     super($root)
 
     const $tabs = this.$root.querySelectorAll('a.govuk-tabs__tab')
-    if (!$tabs.length) {
+    if ($tabs.length === 0) {
       throw new ElementError({
         component: Tabs,
         identifier: 'Links (`<a class="govuk-tabs__tab">`)'
@@ -71,7 +71,7 @@ export class Tabs extends Component {
       })
     }
 
-    if (!$tabListItems.length) {
+    if ($tabListItems.length === 0) {
       throw new ElementError({
         component: Tabs,
         identifier: 'List items (`<li class="govuk-tabs__list-item">`)'

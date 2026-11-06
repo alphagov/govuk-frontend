@@ -86,7 +86,7 @@ export class Accordion extends ConfigurableComponent {
     this.i18n = new I18n(this.config.i18n)
 
     const $sections = this.$root.querySelectorAll(`.${this.sectionClass}`)
-    if (!$sections.length) {
+    if ($sections.length === 0) {
       throw new ElementError({
         component: Accordion,
         identifier: `Sections (\`<div class="${this.sectionClass}">\`)`
