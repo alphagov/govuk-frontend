@@ -59,7 +59,11 @@ export default defineConfig([
       'prefer-object-has-own': 'off',
       // We keep some static members (defaults, schema...)
       // at the end of our components to declutter the code
-      'unicorn/consistent-class-member-order': 'off'
+      'unicorn/consistent-class-member-order': 'off',
+      // Accessing `data-` attributes through `dataset`
+      // prevents copying the attribute from the HTML to search
+      // the codebase
+      'unicorn/dom-node-dataset': 'off'
     }
   },
   {
@@ -436,7 +440,6 @@ export default defineConfig([
       'regexp/prefer-regexp-test': 'off',
       'regexp/strict': 'off',
       'require-unicode-regexp': 'off',
-      'unicorn/dom-node-dataset': 'off',
       'unicorn/escape-case': 'off',
       'unicorn/explicit-length-check': 'off',
       'unicorn/filename-case': 'off',
