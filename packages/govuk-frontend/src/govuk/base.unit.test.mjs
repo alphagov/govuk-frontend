@@ -1,7 +1,8 @@
 import { compileSassString } from '@govuk-frontend/helpers/tests'
 import { sassNull } from 'sass-embedded'
 
-let mockWarnFunction, sassConfig
+let mockWarnFunction
+let sassConfig
 
 describe('_base.scss', () => {
   describe.each([
