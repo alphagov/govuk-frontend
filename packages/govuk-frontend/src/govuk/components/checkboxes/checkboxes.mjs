@@ -28,7 +28,7 @@ export class Checkboxes extends Component {
     super($root)
 
     const $inputs = this.$root.querySelectorAll('input[type="checkbox"]')
-    if (!$inputs.length) {
+    if ($inputs.length === 0) {
       throw new ElementError({
         component: Checkboxes,
         identifier: 'Form inputs (`<input type="checkbox">`)'
@@ -101,12 +101,12 @@ export class Checkboxes extends Component {
 
     const $target = document.getElementById(targetId)
     if ($target?.classList.contains('govuk-checkboxes__conditional')) {
-      const inputIsChecked = $input.checked
+      const isInputChecked = $input.checked
 
-      $input.setAttribute('aria-expanded', inputIsChecked.toString())
+      $input.setAttribute('aria-expanded', isInputChecked.toString())
       $target.classList.toggle(
         'govuk-checkboxes__conditional--hidden',
-        !inputIsChecked
+        !isInputChecked
       )
     }
   }
@@ -181,7 +181,7 @@ export class Checkboxes extends Component {
     }
 
     // If the checkbox conditionally-reveals some content, sync the state
-    const hasAriaControls = $clickedInput.getAttribute('aria-controls')
+    const hasAriaControls = Boolean($clickedInput.getAttribute('aria-controls'))
     if (hasAriaControls) {
       this.syncConditionalRevealWithInputState($clickedInput)
     }

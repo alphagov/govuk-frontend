@@ -267,11 +267,15 @@ describe('initAll', () => {
 })
 
 describe('createAll', () => {
+  let checkSupportMock
+
   beforeEach(() => {
     document.body.classList.add('govuk-frontend-supported')
 
     // Silence warnings in test output, and allow us to 'expect' them
     jest.spyOn(console, 'log').mockImplementation()
+
+    checkSupportMock = jest.fn()
   })
 
   afterEach(() => {
@@ -285,7 +289,8 @@ describe('createAll', () => {
     }
 
     static checkSupport() {
-      Component.checkSupport()
+      super.checkSupport()
+      checkSupportMock()
     }
 
     static moduleName = 'mock-component'
@@ -383,8 +388,6 @@ describe('createAll', () => {
     const componentRoot = document.createElement('div')
     componentRoot.setAttribute('data-module', 'mock-component')
     document.body.appendChild(componentRoot)
-
-    const checkSupportMock = jest.spyOn(MockComponent, 'checkSupport')
 
     const result = createAll(MockComponent)
 

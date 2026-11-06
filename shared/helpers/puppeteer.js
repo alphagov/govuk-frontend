@@ -175,7 +175,7 @@ async function render(page, componentName, renderOptions, browserOptions) {
         try {
           // Loop and initialise all $roots or use default
           // selector `null` return value when none found
-          ;($roots.length ? $roots : [null]).forEach(
+          ;($roots.length > 0 ? $roots : [null]).forEach(
             ($root) => new namespace[exportName]($root, config)
           )
         } catch ({ name, message }) {

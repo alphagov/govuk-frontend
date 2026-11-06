@@ -56,7 +56,14 @@ export default defineConfig([
       // to keep using `Object.hasOwnProperty`
       // as Babel does not transpile it
       // https://caniuse.com/?search=Object.hasOwn
-      'prefer-object-has-own': 'off'
+      'prefer-object-has-own': 'off',
+      // We keep some static members (defaults, schema...)
+      // at the end of our components to declutter the code
+      'unicorn/consistent-class-member-order': 'off',
+      // Accessing `data-` attributes through `dataset`
+      // prevents copying the attribute from the HTML to search
+      // the codebase
+      'unicorn/dom-node-dataset': 'off'
     }
   },
   {
@@ -433,16 +440,6 @@ export default defineConfig([
       'regexp/prefer-regexp-test': 'off',
       'regexp/strict': 'off',
       'require-unicode-regexp': 'off',
-      'unicorn/catch-error-name': 'off',
-      'unicorn/class-reference-in-static-methods': 'off',
-      'unicorn/consistent-boolean-name': 'off',
-      'unicorn/consistent-class-member-order': 'off',
-      'unicorn/consistent-conditional-object-spread': 'off',
-      'unicorn/default-export-style': 'off',
-      'unicorn/dom-node-dataset': 'off',
-      'unicorn/escape-case': 'off',
-      'unicorn/explicit-length-check': 'off',
-      'unicorn/filename-case': 'off',
       'unicorn/import-style': 'off',
       'unicorn/logical-assignment-operators': 'off',
       'unicorn/max-nested-calls': 'off',
