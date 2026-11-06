@@ -7,13 +7,13 @@
   },
   "private": true,
   "scripts": {
-    "rollup": "npm run rollup:single-component && npm run rollup:initAll && npm run rollup:individual-import",
+    "rollup": "npm run rollup:single-component && npm run rollup:init-all && npm run rollup:individual-import",
     "rollup:individual-import": "npm run rollup:cli -- -o dist/rollup/individual-import.js ./src/individual-import.mjs",
     "rollup:single-component": "npm run rollup:cli -- -o dist/rollup/single-component.js ./src/single-component.mjs",
-    "rollup:initAll": "npm run rollup:cli -- -o dist/rollup/initAll.js ./src/initAll.mjs",
+    "rollup:init-all": "npm run rollup:cli -- -o dist/rollup/init-all.js ./src/init-all.mjs",
     "rollup:cli": "rollup -c rollup.config.mjs",
     "webpack": "webpack --mode production -o dist/webpack",
-    "vite": "cross-env ENTRY_NAME=single-component vite build && cross-env ENTRY_NAME=initAll vite build",
+    "vite": "cross-env ENTRY_NAME=single-component vite build && cross-env ENTRY_NAME=init-all vite build",
     "clean": "del-cli dist",
     "build:all": "concurrently \"npm run rollup\" \"npm run webpack\" \"npm run vite\" --names \"rollup,webpack,vite\" --prefix-colors \"red.dim,blue.dim,yellow.dim\""
   },
