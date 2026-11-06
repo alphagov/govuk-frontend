@@ -1,6 +1,5 @@
 GOV.UK Frontend ·
 [![Build Status](https://github.com/alphagov/govuk-frontend/actions/workflows/tests.yml/badge.svg?branch=main&event=push)](https://github.com/alphagov/govuk-frontend/actions/workflows/tests.yml)
-[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 =====================
 
 GOV.UK Frontend contains the code you need to start building a user interface

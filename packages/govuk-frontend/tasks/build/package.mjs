@@ -22,7 +22,7 @@ export default (options) =>
     templates(options),
 
     // Copy GOV.UK Prototype Kit JavaScript
-    task.name("copy:files 'govuk-prototype-kit'", () =>
+    task.create("copy:files 'govuk-prototype-kit'", () =>
       src('govuk-prototype-kit/**/*.js', {
         base: options.srcPath,
         cwd: options.srcPath
