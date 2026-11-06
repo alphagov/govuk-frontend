@@ -41,7 +41,7 @@ describe('The core layer', () => {
       })
 
       // Output stylelint warnings to make debugging easier
-      if (linter.results[0].warnings.length) {
+      if (linter.results[0].warnings.length > 0) {
         console.log(
           'Warnings were present when testing the core layer for unknown custom properties:'
         )

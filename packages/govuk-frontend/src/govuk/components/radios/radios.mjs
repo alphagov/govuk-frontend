@@ -28,7 +28,7 @@ export class Radios extends Component {
     super($root)
 
     const $inputs = this.$root.querySelectorAll('input[type="radio"]')
-    if (!$inputs.length) {
+    if ($inputs.length === 0) {
       throw new ElementError({
         component: Radios,
         identifier: 'Form inputs (`<input type="radio">`)'
