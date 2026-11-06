@@ -51,7 +51,12 @@ export default defineConfig([
       // The rules is stylistic and makes some arrow functions
       // less readable, even with its `as-needed` config,
       // so we'll leave it off and trust human eye
-      'arrow-body-style': 'off'
+      'arrow-body-style': 'off',
+      // Safari <15 does not support `Object.hasOwn` so we need
+      // to keep using `Object.hasOwnProperty`
+      // as Babel does not transpile it
+      // https://caniuse.com/?search=Object.hasOwn
+      'prefer-object-has-own': 'off'
     }
   },
   {
@@ -418,7 +423,6 @@ export default defineConfig([
       'package-json/sort-files': 'off',
       'package-json/sort-properties': 'off',
       'prefer-destructuring': 'off',
-      'prefer-object-has-own': 'off',
       radix: 'off',
       'regexp/letter-case': 'off',
       'regexp/no-super-linear-move': 'off',
