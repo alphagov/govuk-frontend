@@ -192,7 +192,7 @@ function getFileSizeComparison(headFiles, baseFiles) {
     }
   })
 
-  // remove null rows before returning
+  // Remove null rows before returning
   return comparedFileSizes.filter((file) => file)
 }
 

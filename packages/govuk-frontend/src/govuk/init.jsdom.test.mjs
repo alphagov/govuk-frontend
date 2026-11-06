@@ -502,7 +502,7 @@ describe('createAll', () => {
         </div>`
 
       const result = createAll(MockComponent, undefined, {
-        onError: (e, x) => {},
+        onError(e, x) {},
         scope: document.querySelector('.my-scope')
       })
 

@@ -125,7 +125,7 @@ function isArray(option) {
  * @returns {option is ObjectType} Whether the option is an object
  */
 export function isObject(option) {
-  return !!option && typeof option === 'object' && !isArray(option)
+  return Boolean(option) && typeof option === 'object' && !isArray(option)
 }
 
 /**
@@ -137,7 +137,9 @@ export function isObject(option) {
  * @returns {$scope is ScopeType} Whether the scope can be queried
  */
 export function isScope($scope) {
-  return !!$scope && ($scope instanceof Element || $scope instanceof Document)
+  return (
+    Boolean($scope) && ($scope instanceof Element || $scope instanceof Document)
+  )
 }
 
 /**

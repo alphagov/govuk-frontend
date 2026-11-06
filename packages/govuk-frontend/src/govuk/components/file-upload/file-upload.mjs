@@ -90,7 +90,7 @@ export class FileUpload extends ConfigurableComponent {
     }
     this.$label = $label
 
-    // we need to copy the 'id' of the root element
+    // We need to copy the 'id' of the root element
     // to the new button replacement element
     // so that focus will work in the error summary
     this.$input.id = `${this.id}-input`
@@ -213,7 +213,7 @@ export class FileUpload extends ConfigurableComponent {
     )
     $button.addEventListener('click', this.onClick.bind(this))
     $button.addEventListener('dragover', (event) => {
-      // prevent default to allow drop
+      // Prevent default to allow drop
       event.preventDefault()
     })
 
@@ -226,7 +226,7 @@ export class FileUpload extends ConfigurableComponent {
    * @private
    */
   bindDraggingEvents() {
-    // if there is no CSS and input is hidden
+    // If there is no CSS and input is hidden
     // button will need to handle drop event
     this.$button.addEventListener('drop', this.onDrop.bind(this))
 
@@ -509,7 +509,7 @@ export class FileUpload extends ConfigurableComponent {
       dropInstruction: 'or drop file',
       noFileChosen: 'No file chosen',
       multipleFilesChosen: {
-        // the 'one' string isn't used as the component displays the filename
+        // The 'one' string isn't used as the component displays the filename
         // instead, however it's here for coverage's sake
         one: '%{count} file chosen',
         other: '%{count} files chosen'
