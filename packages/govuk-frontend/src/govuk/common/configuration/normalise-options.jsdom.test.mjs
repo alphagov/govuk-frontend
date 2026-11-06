@@ -28,6 +28,7 @@ describe('normaliseOptions', () => {
     }
   ]
 
+  /* eslint-disable object-shorthand -- The aim is to test various kind so functions */
   const handlers = [
     {
       name: 'plain function',
@@ -46,6 +47,7 @@ describe('normaliseOptions', () => {
       handler: () => {}
     }
   ]
+  /* eslint-enable object-shorthand */
 
   it('returns defaults', () => {
     expect(normaliseOptions()).toMatchObject({
