@@ -398,7 +398,6 @@ export default defineConfig([
       'no-lonely-if': 'off',
       'no-shadow': 'off',
       null: 'off',
-      'object-shorthand': 'off',
       'one-var': 'off',
       'package-json/consistent-path-prefix': 'off',
       'package-json/dependency-version-range': 'off',
