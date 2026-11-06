@@ -45,8 +45,12 @@ module.exports = {
       files: ['**/*.scss']
     }
   ],
-  plugins: ['stylelint-order'],
+  plugins: [
+    'stylelint-order',
+    './stylelint-rules/no-govuk-colour'
+  ],
   rules: {
+    'govuk-frontend/no-govuk-colour': true,
     'custom-property-pattern': [
       '^_?([a-z][a-z0-9]*)(-[a-z0-9]+)*$',
       {

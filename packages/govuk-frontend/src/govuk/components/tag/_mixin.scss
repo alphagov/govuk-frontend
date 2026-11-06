@@ -1,6 +1,10 @@
 ////
 /// @group components/tag
 ////
+
+// Tags are a special case that intentionally map to the colour palette
+// stylelint-disable govuk-frontend/no-govuk-colour
+
 @use "sass:map";
 
 @use "../../base";

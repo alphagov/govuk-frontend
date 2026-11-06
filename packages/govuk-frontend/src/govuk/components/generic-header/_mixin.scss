@@ -16,6 +16,9 @@ $header-forced-colour-border-width: 1px;
 /// @param {String} $background-colour - background colour of the header
 /// @param {String} $text-colour - text colour of the header
 /// @access private
+
+// The colours are meant to be changed by users so can be hardcoded
+// stylelint-disable-next-line govuk-frontend/no-govuk-colour
 @mixin block-styles($background-colour: base.govuk-colour("black"), $text-colour: base.govuk-colour("white")) {
   @include base.govuk-font($size: 16, $line-height: 1);
 

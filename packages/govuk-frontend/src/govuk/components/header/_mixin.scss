@@ -62,6 +62,8 @@
 
   // Colour in the Dot
   .govuk-logo-dot {
+    // The Dot is part of the Logo so should be hardcoded
+    // stylelint-disable-next-line govuk-frontend/no-govuk-colour
     fill: base.govuk-colour("teal", "accent");
 
     // Override Dot colour when printing
