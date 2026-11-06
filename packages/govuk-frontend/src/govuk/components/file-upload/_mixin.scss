@@ -147,6 +147,7 @@
     &:hover {
       border-style: dashed;
       border-color: $drop-zone-hover-border-colour;
+      background-color: $drop-zone-focus-background-colour;
 
       .govuk-file-upload-button__pseudo-button {
         background-color: $govuk-secondary-button-hover-colour;
