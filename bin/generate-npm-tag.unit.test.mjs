@@ -32,9 +32,9 @@ describeIf(process.platform !== 'win32')('generate-npm-tag.sh', () => {
  * Jest does not allow empty test suites, so this allows to skip all tests
  * when a condition is not met (for ex. if tests are running in a specific platform)
  *
- * @param {boolean} condition - The condition that needs to be met for tests to run
+ * @param {boolean} shouldDescribe - The condition that needs to be met for tests to run
  * @returns {jest.Describe} Jest's `describe` function if the `condition` is met, `describe.skip` otherwise
  */
-function describeIf(condition) {
-  return condition ? describe : describe.skip
+function describeIf(shouldDescribe) {
+  return shouldDescribe ? describe : describe.skip
 }

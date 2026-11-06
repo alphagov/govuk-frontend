@@ -6,7 +6,7 @@ const EXTENSIONS = ['.css', '.scss', '.js', '.mjs', '.njk', '.yaml', '.yml']
  * @param {string[]} changedFiles - Array of file paths that have changed
  * @returns {boolean} True if relevant changes are detected
  */
-export function checkRelevantChanges(changedFiles) {
+export function hasRelevantChanges(changedFiles) {
   for (const file of changedFiles) {
     if (isRelevantFile(file)) {
       return true

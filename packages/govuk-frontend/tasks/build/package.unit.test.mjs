@@ -246,10 +246,16 @@ describe('packages/govuk-frontend/dist/', () => {
   describe('Components', () => {
     it('should have macro-options.json that contains JSON', () => {
       const componentTasks = componentNames.map(async (componentName) => {
-        const componentFilter = filterPath([`**/${componentName}/**`])
+        const doesIncludeComponentFolder = filterPath([
+          `**/${componentName}/**`
+        ])
 
-        const componentSource = componentsFilesSource.filter(componentFilter)
-        const componentDist = componentsFilesDist.filter(componentFilter)
+        const componentSource = componentsFilesSource.filter(
+          doesIncludeComponentFolder
+        )
+        const componentDist = componentsFilesDist.filter(
+          doesIncludeComponentFolder
+        )
 
         // File not found at source
         expect(componentSource).toEqual(
@@ -322,12 +328,18 @@ describe('packages/govuk-frontend/dist/', () => {
     it('should have component JavaScript file with correct module name', () => {
       const componentTasks = componentNamesWithJavaScript.map(
         async (componentName) => {
-          const componentFilter = filterPath([`**/${componentName}/**`])
+          const doesIncludeComponentFolder = filterPath([
+            `**/${componentName}/**`
+          ])
 
           const componentClassName = componentNameToClassName(componentName)
 
-          const componentSource = componentsFilesSource.filter(componentFilter)
-          const componentDist = componentsFilesDist.filter(componentFilter)
+          const componentSource = componentsFilesSource.filter(
+            doesIncludeComponentFolder
+          )
+          const componentDist = componentsFilesDist.filter(
+            doesIncludeComponentFolder
+          )
 
           // UMD bundle not found at source
           expect(componentSource).toEqual(
@@ -382,10 +394,16 @@ describe('packages/govuk-frontend/dist/', () => {
   describe('Fixtures', () => {
     it('should have fixtures.json that contains JSON', () => {
       const componentTasks = componentNames.map(async (componentName) => {
-        const componentFilter = filterPath([`**/${componentName}/**`])
+        const doesIncludeComponentFolder = filterPath([
+          `**/${componentName}/**`
+        ])
 
-        const componentSource = componentsFilesSource.filter(componentFilter)
-        const componentDist = componentsFilesDist.filter(componentFilter)
+        const componentSource = componentsFilesSource.filter(
+          doesIncludeComponentFolder
+        )
+        const componentDist = componentsFilesDist.filter(
+          doesIncludeComponentFolder
+        )
 
         // File not found at source
         expect(componentSource).toEqual(
