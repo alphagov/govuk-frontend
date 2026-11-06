@@ -35,10 +35,12 @@ function getTasks(options) {
         '**/*.scss',
         { cwd: options.srcPath },
 
-        // Run Stylelint checks
-        npm.script('lint:scss:cli', [
-          slash(join(options.workspace, '**/*.scss'))
-        ])
+        // Run Stylelint checks, logging errors so they do not end the watch
+        task.logErrors(
+          npm.script('lint:scss:cli', [
+            slash(join(options.workspace, '**/*.scss'))
+          ])
+        )
       )
     ),
     'compile:scss watch': () =>
@@ -61,13 +63,17 @@ function getTasks(options) {
         '**/*.{cjs,js,mjs}',
         { cwd: options.srcPath, ignored: ['**/*.test.*'] },
         parallel(
-          // Run TypeScript compiler
-          npm.script('build:types', ['--incremental', '--pretty'], options),
+          // Run TypeScript compiler, logging errors so they do not end the watch
+          task.logErrors(
+            npm.script('build:types', ['--incremental', '--pretty'], options)
+          ),
 
-          // Run ESLint checks
-          npm.script('lint:js:cli', [
-            slash(join(options.workspace, '**/*.{cjs,js,mjs}'))
-          ])
+          // Run ESLint checks, logging errors so they do not end the watch
+          task.logErrors(
+            npm.script('lint:js:cli', [
+              slash(join(options.workspace, '**/*.{cjs,js,mjs}'))
+            ])
+          )
         )
       )
     ),
