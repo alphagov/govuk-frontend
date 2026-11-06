@@ -440,7 +440,6 @@ export default defineConfig([
       'regexp/prefer-regexp-test': 'off',
       'regexp/strict': 'off',
       'require-unicode-regexp': 'off',
-      'unicorn/escape-case': 'off',
       'unicorn/explicit-length-check': 'off',
       'unicorn/filename-case': 'off',
       'unicorn/import-style': 'off',
