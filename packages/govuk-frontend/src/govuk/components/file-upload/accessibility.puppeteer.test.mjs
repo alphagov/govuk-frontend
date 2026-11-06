@@ -18,18 +18,18 @@ describe('/components/file-upload', () => {
         // component to examples that actually run the JavaScript enhancements
         try {
           await render(page, 'file-upload', examples[exampleName])
-        } catch (e) {
+        } catch (error) {
           const macroOptions = /** @type {MacroOptions} */ (
             examples[exampleName].context
           )
 
           const exampleUsesJavaScript = macroOptions.javascript
-          const exampleLackedRoot = e.message.includes(
+          const exampleLackedRoot = error.message.includes(
             'govuk-file-upload: Root element'
           )
 
           if (!exampleLackedRoot || exampleUsesJavaScript) {
-            throw e
+            throw error
           }
         }
         await expect(axe(page)).resolves.toHaveNoViolations()

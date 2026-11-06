@@ -20,8 +20,8 @@ export async function compile(pattern, options) {
     for (const modulePath of modulePaths) {
       await compileJavaScript([modulePath, options])
     }
-  } catch (cause) {
-    throw new PluginError(`scripts.compile('${pattern}')`, cause, {
+  } catch (error) {
+    throw new PluginError(`scripts.compile('${pattern}')`, error, {
       // Show additional error properties from Babel etc
       showProperties: true
     })
