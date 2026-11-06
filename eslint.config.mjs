@@ -417,7 +417,6 @@ export default defineConfig([
       'package-json/sort-dependencies': 'off',
       'package-json/sort-files': 'off',
       'package-json/sort-properties': 'off',
-      'prefer-arrow-callback': 'off',
       'prefer-destructuring': 'off',
       'prefer-object-has-own': 'off',
       radix: 'off',

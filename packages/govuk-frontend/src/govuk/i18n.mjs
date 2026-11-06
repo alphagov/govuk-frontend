@@ -103,7 +103,7 @@ export class I18n {
        * @param {string} placeholderKey - Placeholder key
        * @returns {string} Placeholder value
        */
-      function (placeholderWithBraces, placeholderKey) {
+      (placeholderWithBraces, placeholderKey) => {
         if (Object.prototype.hasOwnProperty.call(options, placeholderKey)) {
           const placeholderValue = options[placeholderKey]
 
