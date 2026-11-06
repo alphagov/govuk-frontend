@@ -433,7 +433,6 @@ export default defineConfig([
       'regexp/prefer-regexp-test': 'off',
       'regexp/strict': 'off',
       'require-unicode-regexp': 'off',
-      'unicorn/class-reference-in-static-methods': 'off',
       'unicorn/consistent-boolean-name': 'off',
       'unicorn/consistent-class-member-order': 'off',
       'unicorn/consistent-conditional-object-spread': 'off',
