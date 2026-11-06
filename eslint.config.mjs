@@ -436,7 +436,6 @@ export default defineConfig([
       'regexp/prefer-regexp-test': 'off',
       'regexp/strict': 'off',
       'require-unicode-regexp': 'off',
-      'unicorn/default-export-style': 'off',
       'unicorn/dom-node-dataset': 'off',
       'unicorn/escape-case': 'off',
       'unicorn/explicit-length-check': 'off',
