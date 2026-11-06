@@ -196,7 +196,8 @@ export class I18n {
         return preferredForm
         // Fall back to `other` if the plural form is missing, but log a warning
         // to the console
-      } else if ('other' in translation) {
+      }
+      if ('other' in translation) {
         console.warn(
           `i18n: Missing plural form ".${preferredForm}" for "${this.locale}" locale. Falling back to ".other".`
         )
