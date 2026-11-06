@@ -48,7 +48,10 @@ export default defineConfig([
       })
     ],
     rules: {
-      // Rules we'll keep disabled after review to go here
+      // The rules is stylistic and makes some arrow functions
+      // less readable, even with its `as-needed` config,
+      // so we'll leave it off and trust human eye
+      'arrow-body-style': 'off'
     }
   },
   {
@@ -379,7 +382,6 @@ export default defineConfig([
       '@html-eslint/use-baseline': 'off',
       '@stylistic/lines-between-class-members': 'off',
       '@stylistic/padding-line-between-statements': 'off',
-      'arrow-body-style': 'off',
       camelcase: 'off',
       'default-case': 'off',
       'func-name-matching': 'off',
