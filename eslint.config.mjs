@@ -387,7 +387,6 @@ export default defineConfig([
       'guard-for-in': 'off',
       'import-x/no-anonymous-default-export': 'off',
       'import-x/no-unassigned-import': 'off',
-      'import-x/order': 'off',
       'max-depth': 'off',
       'max-params': 'off',
       'n/prefer-global/process': 'off',
