@@ -41,7 +41,7 @@ export function getBreakpoint(name) {
  * @param {function(this: FocusElement): void} [options.onBlur] - Callback on blur
  */
 export function setFocus($element, options = {}) {
-  const isFocusable = $element.getAttribute('tabindex')
+  const isFocusable = $element.hasAttribute('tabindex')
 
   if (!isFocusable) {
     $element.setAttribute('tabindex', '-1')

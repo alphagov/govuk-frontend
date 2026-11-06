@@ -38,12 +38,12 @@ describe('/components/service-navigation', () => {
     })
 
     it('renders the toggle button hidden', async () => {
-      const buttonHiddenAttribute = await page.$eval(
+      const hasButtonHiddenAttribute = await page.$eval(
         toggleButtonSelector,
         (el) => el.hasAttribute('hidden')
       )
 
-      expect(buttonHiddenAttribute).toBeTruthy()
+      expect(hasButtonHiddenAttribute).toBeTruthy()
     })
   })
 
@@ -151,29 +151,30 @@ describe('/components/service-navigation', () => {
       })
 
       it('renders navigation hidden by default', async () => {
-        const navigationIsHidden = await page.$eval(navigationSelector, (el) =>
-          el.hasAttribute('hidden')
+        const isNavigationIsHidden = await page.$eval(
+          navigationSelector,
+          (el) => el.hasAttribute('hidden')
         )
 
-        expect(navigationIsHidden).toBeTruthy()
+        expect(isNavigationIsHidden).toBeTruthy()
       })
 
       it('renders the toggle button visibly', async () => {
-        const buttonHiddenAttribute = await page.$eval(
+        const hasButtonHiddenAttribute = await page.$eval(
           toggleButtonSelector,
           (el) => el.hasAttribute('hidden')
         )
 
-        expect(buttonHiddenAttribute).toBeFalsy()
+        expect(hasButtonHiddenAttribute).toBeFalsy()
       })
 
       it('does not add an `aria-hidden` attribute to the button for Voice Over', async () => {
-        const buttonHiddenAttribute = await page.$eval(
+        const hasButtonHiddenAttribute = await page.$eval(
           toggleButtonSelector,
           (el) => el.hasAttribute('aria-hidden')
         )
 
-        expect(buttonHiddenAttribute).toBeFalsy()
+        expect(hasButtonHiddenAttribute).toBeFalsy()
       })
 
       it('renders the toggle button with `aria-expanded` set to false', async () => {
@@ -194,12 +195,12 @@ describe('/components/service-navigation', () => {
       })
 
       it('shows the navigation', async () => {
-        const navigationHiddenAttribute = await page.$eval(
+        const isNavigationHiddenAttribute = await page.$eval(
           navigationSelector,
           (el) => el.hasAttribute('hidden')
         )
 
-        expect(navigationHiddenAttribute).toBeFalsy()
+        expect(isNavigationHiddenAttribute).toBeFalsy()
       })
 
       it('sets `aria-expanded` to true', async () => {
@@ -221,12 +222,12 @@ describe('/components/service-navigation', () => {
       })
 
       it('hides the navigation', async () => {
-        const navigationHiddenAttribute = await page.$eval(
+        const isNavigationHiddenAttribute = await page.$eval(
           navigationSelector,
           (el) => el.hasAttribute('hidden')
         )
 
-        expect(navigationHiddenAttribute).toBeTruthy()
+        expect(isNavigationHiddenAttribute).toBeTruthy()
       })
 
       it('sets `aria-expanded` to false', async () => {
@@ -259,21 +260,21 @@ describe('/components/service-navigation', () => {
         })
 
         it('shows the navigation', async () => {
-          const navigationHiddenAttribute = await page.$eval(
+          const isNavigationHiddenAttribute = await page.$eval(
             navigationSelector,
             (el) => el.hasAttribute('hidden')
           )
 
-          expect(navigationHiddenAttribute).toBeFalsy()
+          expect(isNavigationHiddenAttribute).toBeFalsy()
         })
 
         it('keeps the toggle button hidden', async () => {
-          const buttonHiddenAttribute = await page.$eval(
+          const hasButtonHiddenAttribute = await page.$eval(
             toggleButtonSelector,
             (el) => el.hasAttribute('hidden')
           )
 
-          expect(buttonHiddenAttribute).toBeTruthy()
+          expect(hasButtonHiddenAttribute).toBeTruthy()
         })
 
         it('adds an `aria-hidden` attribute for Voice Over', async () => {
@@ -303,30 +304,30 @@ describe('/components/service-navigation', () => {
         })
 
         it('hides the navigation', async () => {
-          const navigationHiddenAttribute = await page.$eval(
+          const isNavigationHiddenAttribute = await page.$eval(
             `${navigationSelector}`,
             (el) => el.hasAttribute('hidden')
           )
 
-          expect(navigationHiddenAttribute).toBeTruthy()
+          expect(isNavigationHiddenAttribute).toBeTruthy()
         })
 
         it('reveals the toggle button', async () => {
-          const buttonHiddenAttribute = await page.$eval(
+          const hasButtonHiddenAttribute = await page.$eval(
             toggleButtonSelector,
             (el) => el.hasAttribute('hidden')
           )
 
-          expect(buttonHiddenAttribute).toBeFalsy()
+          expect(hasButtonHiddenAttribute).toBeFalsy()
         })
 
         it('removes the `aria-hidden` attribute on the toggle', async () => {
-          const buttonHiddenAttribute = await page.$eval(
+          const hasButtonHiddenAttribute = await page.$eval(
             toggleButtonSelector,
             (el) => el.hasAttribute('aria-hidden')
           )
 
-          expect(buttonHiddenAttribute).toBeFalsy()
+          expect(hasButtonHiddenAttribute).toBeFalsy()
         })
       })
     })

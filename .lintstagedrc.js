@@ -34,13 +34,13 @@ const eslint = new ESLint()
  */
 function filterTask(task) {
   return async (files) => {
-    const isIgnored = await Promise.all(
+    const ignoredStates = await Promise.all(
       files.map((file) => eslint.isPathIgnored(file))
     )
 
     // Wrap files in quotes in case they contains a space
     const paths = files
-      .filter((_, i) => !isIgnored[i])
+      .filter((_, i) => !ignoredStates[i])
       .map((file) => `"${file}"`)
 
     return paths.length ? [`${task} ${paths.join(' ')}`] : []

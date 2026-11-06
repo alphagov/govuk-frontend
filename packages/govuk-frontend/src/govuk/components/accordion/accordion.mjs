@@ -334,11 +334,11 @@ export class Accordion extends ConfigurableComponent {
    * @param {Element} $section - Section element
    */
   onSectionToggle($section) {
-    const nowExpanded = !this.isExpanded($section)
-    this.setExpanded(nowExpanded, $section)
+    const isNowExpanded = !this.isExpanded($section)
+    this.setExpanded(isNowExpanded, $section)
 
     // Store the state in sessionStorage when a change is triggered
-    this.storeState($section, nowExpanded)
+    this.storeState($section, isNowExpanded)
   }
 
   /**
@@ -347,24 +347,24 @@ export class Accordion extends ConfigurableComponent {
    * @private
    */
   onShowOrHideAllToggle() {
-    const nowExpanded = !this.areAllSectionsOpen()
+    const isNowExpanded = !this.areAllSectionsOpen()
 
     this.$sections.forEach(($section) => {
-      this.setExpanded(nowExpanded, $section)
-      this.storeState($section, nowExpanded)
+      this.setExpanded(isNowExpanded, $section)
+      this.storeState($section, isNowExpanded)
     })
 
-    this.updateShowAllButton(nowExpanded)
+    this.updateShowAllButton(isNowExpanded)
   }
 
   /**
    * Set section attributes when opened/closed
    *
    * @private
-   * @param {boolean} expanded - Section expanded
+   * @param {boolean} isExpanded - Section expanded
    * @param {Element} $section - Section element
    */
-  setExpanded(expanded, $section) {
+  setExpanded(isExpanded, $section) {
     const $showHideIcon = $section.querySelector(`.${this.iconClass}`)
     const $showHideText = $section.querySelector(
       `.${this.sectionToggleTextClass}`
@@ -384,12 +384,12 @@ export class Accordion extends ConfigurableComponent {
       return
     }
 
-    const newButtonText = expanded
+    const newButtonText = isExpanded
       ? this.i18n.t('hideSection')
       : this.i18n.t('showSection')
 
     $showHideText.textContent = newButtonText
-    $button.setAttribute('aria-expanded', `${expanded}`)
+    $button.setAttribute('aria-expanded', `${isExpanded}`)
 
     // Update aria-label combining
     const ariaLabelParts = []
@@ -406,7 +406,7 @@ export class Accordion extends ConfigurableComponent {
       ariaLabelParts.push($summary.textContent.trim())
     }
 
-    const ariaLabelMessage = expanded
+    const ariaLabelMessage = isExpanded
       ? this.i18n.t('hideSectionAriaLabel')
       : this.i18n.t('showSectionAriaLabel')
     ariaLabelParts.push(ariaLabelMessage)
@@ -419,7 +419,7 @@ export class Accordion extends ConfigurableComponent {
     $button.setAttribute('aria-label', ariaLabelParts.join(' , '))
 
     // Swap icon, change class
-    if (expanded) {
+    if (isExpanded) {
       $content.removeAttribute('hidden')
       $section.classList.add(this.sectionExpandedModifier)
       $showHideIcon.classList.remove(this.iconOpenModifier)
@@ -460,18 +460,18 @@ export class Accordion extends ConfigurableComponent {
    * Update "Show all sections" button
    *
    * @private
-   * @param {boolean} expanded - Section expanded
+   * @param {boolean} isExpanded - Section expanded
    */
-  updateShowAllButton(expanded) {
+  updateShowAllButton(isExpanded) {
     if (!this.$showAllButton || !this.$showAllText || !this.$showAllIcon) {
       return
     }
 
-    this.$showAllButton.setAttribute('aria-expanded', expanded.toString())
-    this.$showAllText.textContent = expanded
+    this.$showAllButton.setAttribute('aria-expanded', isExpanded.toString())
+    this.$showAllText.textContent = isExpanded
       ? this.i18n.t('hideAllSections')
       : this.i18n.t('showAllSections')
-    this.$showAllIcon.classList.toggle(this.iconOpenModifier, !expanded)
+    this.$showAllIcon.classList.toggle(this.iconOpenModifier, !isExpanded)
   }
 
   /**

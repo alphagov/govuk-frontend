@@ -101,12 +101,12 @@ export class Radios extends Component {
 
     const $target = document.getElementById(targetId)
     if ($target?.classList.contains('govuk-radios__conditional')) {
-      const inputIsChecked = $input.checked
+      const isInputChecked = $input.checked
 
-      $input.setAttribute('aria-expanded', inputIsChecked.toString())
+      $input.setAttribute('aria-expanded', isInputChecked.toString())
       $target.classList.toggle(
         'govuk-radios__conditional--hidden',
-        !inputIsChecked
+        !isInputChecked
       )
     }
   }

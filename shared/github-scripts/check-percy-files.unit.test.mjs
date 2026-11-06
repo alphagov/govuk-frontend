@@ -1,9 +1,9 @@
-import { checkRelevantChanges } from './check-percy-files.mjs'
+import { hasRelevantChanges } from './check-percy-files.mjs'
 
 const govukFrontendSrcPath = 'packages/govuk-frontend/src/govuk'
 const govukReviewSrcPath = 'packages/govuk-frontend-review/src'
 
-describe('checkRelevantChanges', () => {
+describe('hasRelevantChanges', () => {
   describe('govuk-frontend file extensions', () => {
     test.each([
       ['.scss', [`${govukFrontendSrcPath}/components/button/button.scss`]],
@@ -13,7 +13,7 @@ describe('checkRelevantChanges', () => {
       ['.yaml', [`${govukFrontendSrcPath}/components/button/button.yaml`]],
       ['.yml', [`${govukFrontendSrcPath}/components/button/button.yml`]]
     ])('returns true for %s', (description, changedFiles) => {
-      expect(checkRelevantChanges(changedFiles)).toBe(true)
+      expect(hasRelevantChanges(changedFiles)).toBe(true)
     })
   })
 
@@ -26,7 +26,7 @@ describe('checkRelevantChanges', () => {
       ['.yaml', [`${govukReviewSrcPath}/views/examples/example.yaml`]],
       ['.yml', [`${govukReviewSrcPath}/views/examples/example.yml`]]
     ])('returns true for %s', (description, changedFiles) => {
-      expect(checkRelevantChanges(changedFiles)).toBe(true)
+      expect(hasRelevantChanges(changedFiles)).toBe(true)
     })
   })
 
@@ -35,7 +35,7 @@ describe('checkRelevantChanges', () => {
       ['.js', [`dist/govuk-frontend.min.js`]],
       ['.css', [`dist/govuk-frontend.min.css`]]
     ])('returns true for %s', (description, changedFiles) => {
-      expect(checkRelevantChanges(changedFiles)).toBe(true)
+      expect(hasRelevantChanges(changedFiles)).toBe(true)
     })
   })
 
@@ -47,7 +47,7 @@ describe('checkRelevantChanges', () => {
       ],
       ['dist', ['dist/assets/manifest.json']]
     ])('returns true for %s', (description, changedFiles) => {
-      expect(checkRelevantChanges(changedFiles)).toBe(true)
+      expect(hasRelevantChanges(changedFiles)).toBe(true)
     })
   })
 
@@ -57,7 +57,7 @@ describe('checkRelevantChanges', () => {
       ['root package.json', ['package.json']],
       ['root package-lock', ['package-lock.json']]
     ])('returns true for %s', (description, changedFiles) => {
-      expect(checkRelevantChanges(changedFiles)).toBe(true)
+      expect(hasRelevantChanges(changedFiles)).toBe(true)
     })
   })
 
@@ -68,7 +68,7 @@ describe('checkRelevantChanges', () => {
         `${govukFrontendSrcPath}/components/button/button.scss`,
         'docs/contributing/testing.md'
       ]
-      expect(checkRelevantChanges(changedFiles)).toBe(true)
+      expect(hasRelevantChanges(changedFiles)).toBe(true)
     })
 
     it('returns false for irrelevant files', () => {
@@ -83,11 +83,11 @@ describe('checkRelevantChanges', () => {
         'packages/govuk-frontend-review/tasks/index.mjs', // Right extension in the package, but not relevant
         'shared/config/index.js' // Shared files
       ]
-      expect(checkRelevantChanges(changedFiles)).toBe(false)
+      expect(hasRelevantChanges(changedFiles)).toBe(false)
     })
 
     it('returns false for empty file list', () => {
-      expect(checkRelevantChanges([])).toBe(false)
+      expect(hasRelevantChanges([])).toBe(false)
     })
   })
 })
