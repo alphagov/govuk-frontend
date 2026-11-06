@@ -394,7 +394,6 @@ export default defineConfig([
       'new-cap': 'off',
       'no-await-in-loop': 'off',
       'no-constructor-return': 'off',
-      'no-implicit-coercion': 'off',
       'no-implicit-globals': 'off',
       'no-lonely-if': 'off',
       'no-shadow': 'off',

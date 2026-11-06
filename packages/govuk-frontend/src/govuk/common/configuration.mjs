@@ -309,7 +309,7 @@ export function validateConfig(schema, config) {
     // Check errors for each schema condition
     if (Array.isArray(conditions)) {
       for (const { required, errorMessage } of conditions) {
-        if (!required.every((key) => !!config[key])) {
+        if (!required.every((key) => config[key])) {
           errors.push(errorMessage) // Missing config key value
         }
       }
