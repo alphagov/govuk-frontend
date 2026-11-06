@@ -27,14 +27,14 @@ export async function run(name, args = [], options) {
     if (!task.cmd) {
       throw new Error(`Task '${name}' not found in '${pkgPath}'`)
     }
-  } catch (cause) {
+  } catch (error) {
     // Skip Nodemon (SIGINT) exit or aborted task error codes
     // https://github.com/open-cli-tools/concurrently/pull/359/files
-    if (cause.signal === 'SIGINT' || [130, 3221225786].includes(cause.code)) {
+    if (error.signal === 'SIGINT' || [130, 3221225786].includes(error.code)) {
       return
     }
 
-    throw new PluginError(`npm run ${name}`, cause, {
+    throw new PluginError(`npm run ${name}`, error, {
       // Hide error properties already formatted by npm
       showProperties: false
     })
