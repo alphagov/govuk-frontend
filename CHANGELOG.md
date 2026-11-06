@@ -16,6 +16,7 @@ If you set your own [Functional colours](https://design-system.service.gov.uk/st
 
 We made these changes in the following pull requests:
 
+- Handle clicks on HTML elements inside Error summary links so the target input is focused and its label or legend remain visible.
 - [#7508: Use functional colours for more colours in Accordion and File upload](https://github.com/alphagov/govuk-frontend/pull/7508)
 - [#7509: Use body-background functional colour for Select component](https://github.com/alphagov/govuk-frontend/pull/7509)
 - [#7510: Keep file upload button background consistent](https://github.com/alphagov/govuk-frontend/pull/7510)
