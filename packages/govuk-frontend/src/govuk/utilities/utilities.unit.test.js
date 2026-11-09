@@ -24,7 +24,9 @@ describe('The utilities layer', () => {
     let css
 
     beforeAll(async () => {
-      css = (await compileSassString(sass)).css
+      const compilationResult = await compileSassString(sass)
+
+      css = compilationResult.css
     })
 
     it('does not reference any undefined custom properties', async () => {
@@ -50,7 +52,9 @@ describe('The utilities layer', () => {
     beforeAll(async () => {
       const file = join(paths.package, partialPath)
 
-      css = (await compileSassFile(file)).css
+      const compilationResult = await compileSassFile(file)
+
+      css = compilationResult.css
     })
 
     // Sass will error when trying to access an undefined variable or mixin
