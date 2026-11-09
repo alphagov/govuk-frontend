@@ -75,7 +75,7 @@
     "cross-env": "^10.1.0",
     "del-cli": "^8.0.1",
     "editorconfig-checker": "^7.0.0",
-    "eslint": "^10.13.0",
+    "eslint": "^10.14.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-config-xo": "^7.0.0",
     "eslint-plugin-es-x": "^10.1.0",
