@@ -208,5 +208,6 @@
 
   .govuk-file-upload-button--dragging {
     border-style: dashed;
+    border-color: base.govuk-functional-colour(input-border);
   }
 }
