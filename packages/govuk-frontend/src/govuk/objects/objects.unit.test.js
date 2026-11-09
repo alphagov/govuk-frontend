@@ -24,7 +24,9 @@ describe('The objects layer', () => {
     let css
 
     beforeAll(async () => {
-      css = (await compileSassString(sass)).css
+      const compilationResult = await compileSassString(sass)
+
+      css = compilationResult.css
     })
 
     it('outputs the custom properties only once', () => {

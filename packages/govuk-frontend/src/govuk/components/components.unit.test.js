@@ -28,7 +28,9 @@ describe('Components', () => {
         let css
 
         beforeAll(async () => {
-          css = (await compileSassString(sass)).css
+          const compilationResult = await compileSassString(sass)
+
+          css = compilationResult.css
         })
 
         it('outputs the custom properties only once', () => {
@@ -106,14 +108,14 @@ describe('Components', () => {
           let css
 
           beforeAll(async () => {
-            css = (
-              await compileSassString(`
+            const compilationResult = await compileSassString(`
               ${sass}
               :root {
                 --value: #{govuk-functional-colour(brand)}
               }
             `)
-            ).css
+
+            css = compilationResult.css
           })
 
           it("includes the component's CSS", () => {
@@ -281,7 +283,9 @@ describe('Components', () => {
         let css
 
         beforeAll(async () => {
-          css = (await compileSassString(sass)).css
+          const compilationResult = await compileSassString(sass)
+
+          css = compilationResult.css
         })
 
         it.each(buttonColours)(

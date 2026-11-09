@@ -457,7 +457,6 @@ export default defineConfig([
       'require-unicode-regexp': 'off',
       'unicorn/import-style': 'off',
       'unicorn/name-replacements': 'off',
-      'unicorn/no-await-expression-member': 'off',
       'unicorn/no-computed-property-existence-check': 'off',
       'unicorn/no-declarations-before-early-exit': 'off',
       'unicorn/no-for-each': 'off',
