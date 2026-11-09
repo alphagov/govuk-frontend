@@ -365,6 +365,9 @@ export default defineConfig([
       // Babel transpiles ES2020 optional chaining
       'es-x/no-optional-chaining': 'off',
 
+      // Babel transpiles ES2021 logical assignment operators
+      'es-x/no-logical-assignment-operators': 'off',
+
       // JSDoc blocks are mandatory in source code
       'jsdoc/require-jsdoc': [
         'error',
@@ -499,7 +502,6 @@ export default defineConfig([
       'regexp/strict': 'off',
       'require-unicode-regexp': 'off',
       'unicorn/import-style': 'off',
-      'unicorn/logical-assignment-operators': 'off',
       'unicorn/max-nested-calls': 'off',
       'unicorn/name-replacements': 'off',
       'unicorn/new-for-builtins': 'off',
