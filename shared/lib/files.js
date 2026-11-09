@@ -82,7 +82,7 @@ async function getDirectories(directoryPath) {
  */
 async function getFileSizes(directoryPath, options = {}) {
   const filesForAnalysis = await getListing(directoryPath, options)
-  return Promise.all(filesForAnalysis.map(getFileSize))
+  return Promise.all(filesForAnalysis.map((filePath) => getFileSize(filePath)))
 }
 
 /**

@@ -2,11 +2,9 @@ import config from './postcss.config.mjs'
 
 describe('PostCSS config', () => {
   function getPluginNames(config) {
-    return config.plugins.flatMap(getPluginName)
-  }
-
-  function getPluginName({ plugins, postcssPlugin }) {
-    return plugins ? getPluginNames({ plugins }) : postcssPlugin
+    return config.plugins.flatMap(({ plugins, postcssPlugin }) => {
+      return plugins ? getPluginNames({ plugins }) : postcssPlugin
+    })
   }
 
   describe('Browserslist', () => {
