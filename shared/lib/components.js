@@ -52,9 +52,9 @@ function nunjucksEnv(searchPaths = [], nunjucksOptions = {}, packageOptions) {
  */
 const getComponentFixtures = async (componentName, packageOptions) => {
   return require(
-    join(
-      dirname(packageTypeToPath('govuk-frontend', packageOptions)),
-      `components/${componentName}/fixtures.json`
+    resolveInGOVUKFrontendPackage(
+      `components/${componentName}/fixtures.json`,
+      packageOptions
     )
   )
 }
@@ -83,9 +83,9 @@ const getComponentsFixtures = async (packageOptions) => {
  */
 const getComponentFiles = (componentName = '*', packageOptions) =>
   getListing(
-    join(
-      dirname(packageTypeToPath('govuk-frontend', packageOptions)),
-      `components/${componentName}/**/*`
+    resolveInGOVUKFrontendPackage(
+      `components/${componentName}/**/*`,
+      packageOptions
     )
   )
 
@@ -97,10 +97,7 @@ const getComponentFiles = (componentName = '*', packageOptions) =>
  */
 async function getComponentNames(packageOptions) {
   return getDirectories(
-    join(
-      dirname(packageTypeToPath('govuk-frontend', packageOptions)),
-      'components/'
-    )
+    resolveInGOVUKFrontendPackage('components/', packageOptions)
   )
 }
 
@@ -272,6 +269,20 @@ function renderTemplate(templatePath, options) {
   }
 
   return renderString(viewString, options)
+}
+
+/**
+ * Resolves the given path inside the `govuk-frontend` package
+ *
+ * @param {string} path -- The path inside `govuk-frontend`
+ * @param {import('./names').PackageOptions} packageOptions -- Package resolution options
+ * @returns {string} The resolved path
+ */
+function resolveInGOVUKFrontendPackage(path, packageOptions) {
+  return join(
+    dirname(packageTypeToPath('govuk-frontend', packageOptions)),
+    path
+  )
 }
 
 module.exports = {

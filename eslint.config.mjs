@@ -215,7 +215,10 @@ export default defineConfig([
     rules: {
       // Because of `describe` and `it`, we need to be
       // a bit looser on nesting in tests
-      'max-nested-callbacks': 'off'
+      'max-nested-callbacks': 'off',
+      // Using `expect.objectContaining` can lead to quite nested structures
+      // so we'll be a bit looser in tests
+      'unicorn/max-nested-calls': 'off'
     }
   },
   {
@@ -444,7 +447,6 @@ export default defineConfig([
       'regexp/strict': 'off',
       'require-unicode-regexp': 'off',
       'unicorn/import-style': 'off',
-      'unicorn/max-nested-calls': 'off',
       'unicorn/name-replacements': 'off',
       'unicorn/new-for-builtins': 'off',
       'unicorn/no-anonymous-default-export': 'off',
