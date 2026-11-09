@@ -448,7 +448,6 @@ export default defineConfig([
       'require-unicode-regexp': 'off',
       'unicorn/import-style': 'off',
       'unicorn/name-replacements': 'off',
-      'unicorn/new-for-builtins': 'off',
       'unicorn/no-anonymous-default-export': 'off',
       'unicorn/no-array-callback-reference': 'off',
       'unicorn/no-array-reduce': 'off',

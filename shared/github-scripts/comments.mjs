@@ -287,7 +287,8 @@ function renderTable(headers, rows) {
    * | --- | --- |
    * ```
    */
-  const headerSeparator = `| ${Array(headers.length).fill('---').join(' | ')} |`
+  // eslint-disable-next-line unicorn/no-new-array -- Constructor is the only way to get an array of a specific length
+  const headerSeparator = `| ${new Array(headers.length).fill('---').join(' | ')} |`
 
   /**
    * @example
