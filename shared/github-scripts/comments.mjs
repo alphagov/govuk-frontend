@@ -144,6 +144,7 @@ export async function commentStats(
       const modulesDataByPath =
         /** @type {(FileSizeWithPercentage & {size: string})[]} */ (
           getReadableFileSizes(modulesData)
+          // eslint-disable-next-line unicorn/no-array-reduce -- Lack of tests make it tricky to touch
         ).reduce((pathData, module) => {
           if (!pathData[module.path]) {
             pathData[module.path] = [module]
