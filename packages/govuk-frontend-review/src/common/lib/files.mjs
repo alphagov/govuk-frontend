@@ -57,7 +57,7 @@ export async function getFullPageExamples() {
     sensitivity: 'base'
   })
 
-  return examples.sort(({ name: a }, { name: b }) => collator.compare(a, b))
+  return examples.toSorted(({ name: a }, { name: b }) => collator.compare(a, b))
 }
 
 /**

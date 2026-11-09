@@ -60,7 +60,7 @@ describe('GOV.UK Frontend', () => {
           (method) =>
             !['initAll', 'createAll', 'version', 'isSupported'].includes(method)
         )
-        .sort()
+        .toSorted()
 
       // Ensure GOV.UK Frontend exports the expected components
       expect(components).toEqual([

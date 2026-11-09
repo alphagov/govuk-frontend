@@ -136,7 +136,7 @@ describe('packages/govuk-frontend/dist/', () => {
           join(requirePath, 'macro-options.json')
         ])
       )
-      .sort()
+      .toSorted()
 
     // Compare output files with '.npmignore' filter
     const listingDistIgnored = listingDist.filter(
