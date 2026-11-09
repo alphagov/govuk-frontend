@@ -227,7 +227,7 @@ export class Accordion extends ConfigurableComponent {
       class: 'govuk-accordion__section-heading-text-focus'
     })
     $headingText.appendChild($headingTextFocus)
-    // span could contain HTML elements
+    // Span could contain HTML elements
     // (see https://www.w3.org/TR/2011/WD-html5-20110525/content-models.html#phrasing-content)
     Array.from($span.childNodes).forEach(($child) =>
       $headingTextFocus.appendChild($child)

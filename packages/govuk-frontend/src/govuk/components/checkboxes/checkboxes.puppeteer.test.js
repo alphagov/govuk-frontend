@@ -107,7 +107,7 @@ describe('Checkboxes', () => {
         })
 
         it('has no conditional content revealed that is associated with an unchecked input', async () => {
-          const $input = $inputs[1] // second input, unchecked
+          const $input = $inputs[1] // Second input, unchecked
           const $conditional = await $component.$(
             `[id="${await getAttribute($input, 'aria-controls')}"]`
           )

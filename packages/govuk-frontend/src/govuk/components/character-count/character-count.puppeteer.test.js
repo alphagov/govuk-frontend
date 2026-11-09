@@ -21,8 +21,8 @@ describe('Character count', () => {
   /** @type {Awaited<ReturnType<typeof getExamples>>} */
   let examples
 
-  const focusIntervalTime = 1000 // ms
-  const lastInputOffsetTime = 500 // ms
+  const focusIntervalTime = 1000 // Ms
+  const lastInputOffsetTime = 500 // Ms
 
   // The longest possible time from a keyboard user ending input and the screen
   // reader counter being updated (+ 100ms to stay outside the total wait time)

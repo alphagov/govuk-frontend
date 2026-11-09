@@ -48,7 +48,15 @@ export default defineConfig([
       })
     ],
     rules: {
-      // Rules we'll keep disabled after review to go here
+      // The rules is stylistic and makes some arrow functions
+      // less readable, even with its `as-needed` config,
+      // so we'll leave it off and trust human eye
+      'arrow-body-style': 'off',
+      // Safari <15 does not support `Object.hasOwn` so we need
+      // to keep using `Object.hasOwnProperty`
+      // as Babel does not transpile it
+      // https://caniuse.com/?search=Object.hasOwn
+      'prefer-object-has-own': 'off'
     }
   },
   {
@@ -379,17 +387,13 @@ export default defineConfig([
       '@html-eslint/use-baseline': 'off',
       '@stylistic/lines-between-class-members': 'off',
       '@stylistic/padding-line-between-statements': 'off',
-      'arrow-body-style': 'off',
       camelcase: 'off',
-      'capitalized-comments': 'off',
       'default-case': 'off',
       'func-name-matching': 'off',
       'func-names': 'off',
       'guard-for-in': 'off',
       'import-x/no-anonymous-default-export': 'off',
       'import-x/no-unassigned-import': 'off',
-      'import-x/no-useless-path-segments': 'off',
-      'import-x/order': 'off',
       'max-depth': 'off',
       'max-params': 'off',
       'n/prefer-global/process': 'off',
@@ -397,14 +401,10 @@ export default defineConfig([
       'new-cap': 'off',
       'no-await-in-loop': 'off',
       'no-constructor-return': 'off',
-      'no-else-return': 'off',
-      'no-implicit-coercion': 'off',
       'no-implicit-globals': 'off',
       'no-lonely-if': 'off',
       'no-shadow': 'off',
       null: 'off',
-      'object-shorthand': 'off',
-      'one-var': 'off',
       'package-json/consistent-path-prefix': 'off',
       'package-json/dependency-version-range': 'off',
       'package-json/no-exports-trailing-slash': 'off',
@@ -422,9 +422,7 @@ export default defineConfig([
       'package-json/sort-dependencies': 'off',
       'package-json/sort-files': 'off',
       'package-json/sort-properties': 'off',
-      'prefer-arrow-callback': 'off',
       'prefer-destructuring': 'off',
-      'prefer-object-has-own': 'off',
       radix: 'off',
       'regexp/letter-case': 'off',
       'regexp/no-super-linear-move': 'off',

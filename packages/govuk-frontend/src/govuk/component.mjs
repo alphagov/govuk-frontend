@@ -22,7 +22,7 @@ export class Component {
    */
   static elementType = _self.HTMLElement
 
-  // allows Typescript user to work around the lack of types
+  // Allows Typescript user to work around the lack of types
   // in GOVUKFrontend package, Typescript is not aware of $root
   // in components that extend GOVUKFrontendComponent
   /**
