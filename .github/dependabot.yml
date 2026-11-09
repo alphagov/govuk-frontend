@@ -84,7 +84,7 @@ updates:
       # `typescript-eslint` doesn't yet support TypeScript 7
       # so we need to hold off a major bump for TypeScript
       - dependency-name: 'typescript'
-        versions: ['version-update:semver-major']
+        update-types: ['version-update:semver-major']
       # Until we can prioritise addressing the changes of Babel 8
       - dependency-name: '@babel/*'
         update-types: ['version-update:semver-major']
