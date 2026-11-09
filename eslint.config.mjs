@@ -266,6 +266,17 @@ export default defineConfig([
     }
   },
   {
+    // Adjustments for config files
+    name: 'govuk-frontend-configuration',
+    files: ['**/*.config.{js,cjs,mjs}', '**/.*.{js,cjs,mjs}'],
+    rules: {
+      // Configuration files usually export the configuration
+      // as their default export, there's not much point naming it
+      // in a variable before exporting it
+      'unicorn/no-anonymous-default-export': 'off'
+    }
+  },
+  {
     // Enable Markdown parser for `.md` files
     name: 'govuk-frontend-parse-markdown',
     extends: [MarkdownPlugin.configs.recommended],
@@ -506,7 +517,6 @@ export default defineConfig([
       'require-unicode-regexp': 'off',
       'unicorn/import-style': 'off',
       'unicorn/name-replacements': 'off',
-      'unicorn/no-anonymous-default-export': 'off',
       'unicorn/no-array-callback-reference': 'off',
       'unicorn/no-array-reduce': 'off',
       'unicorn/no-array-sort': 'off',
