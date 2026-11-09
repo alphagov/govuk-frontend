@@ -99,7 +99,7 @@
     "postcss-scss": "^4.0.9",
     "prettier": "^3.9.10",
     "puppeteer": "^24.43.1",
-    "semver": "^7.8.1",
+    "semver": "^7.8.6",
     "stylelint": "^16.26.1",
     "stylelint-config-gds": "^2.0.0",
     "stylelint-order": "^8.1.2",
