@@ -401,7 +401,7 @@ describe('createAll', () => {
     document.body.appendChild(componentRoot)
 
     const checkSupportMock = jest.fn(() => {
-      throw Error('Mock error')
+      throw new Error('Mock error')
     })
 
     class MockComponentWithCheckSupport extends MockComponent {
