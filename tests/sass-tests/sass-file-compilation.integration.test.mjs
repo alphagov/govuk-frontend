@@ -17,7 +17,7 @@ const sassFiles = globSync(`${slash(govukFrontendPath)}/src/govuk/**/*.scss`, {
   exclude: ['**/*.import.scss', '**/*--internal.scss']
 })
   .map((filePath) => slash(relative(govukFrontendPath, filePath)))
-  .sort((a, b) => a.localeCompare(b))
+  .toSorted((a, b) => a.localeCompare(b))
 
 // Compile a Sass file and store any errors
 async function compileSassFile(sassFilePath, type = 'import') {
