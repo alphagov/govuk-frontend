@@ -1,9 +1,8 @@
-const { readFile, stat } = require('fs/promises')
+const { glob, readFile, stat } = require('fs/promises')
 const { parse, relative, basename } = require('path')
 
 const { paths } = require('@govuk-frontend/config')
 const { filesize } = require('filesize')
-const { glob } = require('glob')
 const { load } = require('js-yaml')
 const { minimatch } = require('minimatch')
 
@@ -39,21 +38,16 @@ async function hasPath(entryPath) {
  * Directory listing for path
  *
  * @param {string} directoryPath - Minimatch pattern to directory
- * @param {import('glob').GlobOptionsWithFileTypesUnset} [options] - Glob options
+ * @param {import('node:fs').GlobOptionsWithoutFileTypes} [options] - Glob options
  * @returns {Promise<string[]>} File paths
  */
 async function getListing(directoryPath, options = {}) {
-  const listing = await glob(slash(directoryPath), {
-    absolute: true,
-    nodir: true,
-    realpath: true,
-    ...options
-  })
+  const listing = await Array.fromAsync(glob(slash(directoryPath), options))
 
   // Use relative paths
   return listing
     .map((entryPath) =>
-      relative(options.cwd?.toString() ?? paths.root, entryPath)
+      options.cwd ? entryPath : relative(paths.root, entryPath)
     )
     .sort()
 }
@@ -65,9 +59,7 @@ async function getListing(directoryPath, options = {}) {
  * @returns {Promise<string[]>} Directory names
  */
 async function getDirectories(directoryPath) {
-  const listing = await getListing(`${slash(directoryPath)}/*/`, {
-    nodir: false
-  })
+  const listing = await getListing(`${slash(directoryPath)}/*/`)
 
   // Use directory names only
   return listing.map((directoryPath) => basename(directoryPath)).sort()
@@ -77,7 +69,7 @@ async function getDirectories(directoryPath) {
  * Get file size entries
  *
  * @param {string} directoryPath - Minimatch pattern to directory
- * @param {import('glob').GlobOptionsWithFileTypesUnset} [options] - Glob options
+ * @param {import('node:fs').GlobOptionsWithoutFileTypes} [options] - Glob options
  * @returns {Promise<FileSize[]>} - File entries with name and size
  */
 async function getFileSizes(directoryPath, options = {}) {
