@@ -234,6 +234,12 @@ export default defineConfig([
     }
   },
   {
+    files: ['**/*.config.{js,cjs,mjs}', '**/.*.{js,cjs,mjs}'],
+    rules: {
+      'unicorn/no-anonymous-default-export': 'off'
+    }
+  },
+  {
     extends: [MarkdownPlugin.configs.recommended],
     files: ['**/*.md'],
     processor: 'markdown/markdown'
@@ -448,7 +454,6 @@ export default defineConfig([
       'require-unicode-regexp': 'off',
       'unicorn/import-style': 'off',
       'unicorn/name-replacements': 'off',
-      'unicorn/no-anonymous-default-export': 'off',
       'unicorn/no-array-callback-reference': 'off',
       'unicorn/no-array-reduce': 'off',
       'unicorn/no-array-sort': 'off',

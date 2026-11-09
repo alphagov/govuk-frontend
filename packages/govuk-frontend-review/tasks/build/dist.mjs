@@ -9,5 +9,10 @@ import { scripts, styles } from '../index.mjs'
  *
  * @type {import('@govuk-frontend/tasks').TaskFunction}
  */
-export default (options) =>
-  series(npm.script('clean', [], options), scripts(options), styles(options))
+export default function buildDist(options) {
+  return series(
+    npm.script('clean', [], options),
+    scripts(options),
+    styles(options)
+  )
+}

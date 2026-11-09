@@ -1,4 +1,6 @@
 import { teardown } from 'jest-dev-server'
 
 // Stop web server
-export default () => teardown(globalThis.servers)
+export default function stopServer() {
+  teardown(globalThis.servers)
+}

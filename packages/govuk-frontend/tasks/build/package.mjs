@@ -10,8 +10,8 @@ import { assets, fixtures, scripts, styles, templates } from '../index.mjs'
  *
  * @type {import('@govuk-frontend/tasks').TaskFunction}
  */
-export default (options) =>
-  series(
+export default function buildPackage(options) {
+  return series(
     npm.script('clean', [], { basePath: paths.stats }),
     npm.script('clean:package', [], options),
 
@@ -29,3 +29,4 @@ export default (options) =>
       }).pipe(dest(options.destPath))
     )
   )
+}
