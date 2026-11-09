@@ -67,7 +67,10 @@ export default defineConfig([
       // Accessing `data-` attributes through `dataset`
       // prevents copying the attribute from the HTML to search
       // the codebase
-      'unicorn/dom-node-dataset': 'off'
+      'unicorn/dom-node-dataset': 'off',
+      // Editors tend to automatically add asterisks, particularly for JSDOC
+      // so the rule would just create noise
+      'unicorn/no-asterisk-prefix-in-documentation-comments': 'off'
     }
   },
   {
@@ -517,7 +520,6 @@ export default defineConfig([
       'require-unicode-regexp': 'off',
       'unicorn/import-style': 'off',
       'unicorn/name-replacements': 'off',
-      'unicorn/no-asterisk-prefix-in-documentation-comments': 'off',
       'unicorn/no-await-expression-member': 'off',
       'unicorn/no-computed-property-existence-check': 'off',
       'unicorn/no-declarations-before-early-exit': 'off',
