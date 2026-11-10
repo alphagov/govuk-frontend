@@ -31,7 +31,7 @@ params:
   - name: countType
     type: string
     required: false
-    description: The count type used to count the text – `"length"` or `"words"`. Defaults to `"length"`.
+    description: The count type used to count the text – `"length"`, `"characters"` or `"words"`. Defaults to `"length"`.
   - name: label
     type: object
     required: true
