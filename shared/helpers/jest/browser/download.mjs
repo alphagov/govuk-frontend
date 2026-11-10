@@ -30,7 +30,7 @@ export async function download() {
   }
 
   const currentVerisons = cache.getInstalledBrowsers()
-  if (!currentVerisons || !currentVerisons.length) {
+  if (!currentVerisons || currentVerisons.length === 0) {
     throw new Error('No browser versions are installed.')
   }
 }

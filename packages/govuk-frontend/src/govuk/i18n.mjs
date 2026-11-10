@@ -88,9 +88,10 @@ export class I18n {
    * @returns {string} The translation string to output, with $\{\} placeholders replaced
    */
   replacePlaceholders(translationString, options) {
-    const formatter = Intl.NumberFormat.supportedLocalesOf(this.locale).length
-      ? new Intl.NumberFormat(this.locale)
-      : undefined
+    const formatter =
+      Intl.NumberFormat.supportedLocalesOf(this.locale).length > 0
+        ? new Intl.NumberFormat(this.locale)
+        : undefined
 
     return translationString.replace(
       /%{(.\S+)}/g,
@@ -147,9 +148,9 @@ export class I18n {
    * @returns {boolean} Returns true if all conditions are met. Returns false otherwise.
    */
   hasIntlPluralRulesSupport() {
-    return Boolean(
+    return (
       'PluralRules' in window.Intl &&
-      Intl.PluralRules.supportedLocalesOf(this.locale).length
+      Intl.PluralRules.supportedLocalesOf(this.locale).length > 0
     )
   }
 

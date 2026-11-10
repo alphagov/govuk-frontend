@@ -25,8 +25,8 @@ export async function compile(pattern, options) {
     for (const modulePath of modulePaths) {
       await compileStylesheet([modulePath, options])
     }
-  } catch (cause) {
-    throw new PluginError(`styles.compile('${pattern}')`, cause, {
+  } catch (error) {
+    throw new PluginError(`styles.compile('${pattern}')`, error, {
       // Hide error properties already formatted by Sass
       showProperties: false
     })

@@ -107,17 +107,17 @@ async function getComponentNames(packageOptions) {
 /**
  * Get component names, filtered
  *
- * @param {(componentName: string, componentFiles: string[]) => boolean} filter - Component names array filter
+ * @param {(componentName: string, componentFiles: string[]) => boolean} shouldInclude - Component names array filter
  * @param {import('./names').PackageOptions} [packageOptions] - Package options (optional)
  * @returns {Promise<string[]>} Component names
  */
-async function getComponentNamesFiltered(filter, packageOptions) {
+async function getComponentNamesFiltered(shouldInclude, packageOptions) {
   const componentNames = await getComponentNames(packageOptions)
   const componentFiles = await getComponentFiles('*', packageOptions)
 
   // Apply component names filter
   return componentNames.filter((componentName) =>
-    filter(componentName, componentFiles)
+    shouldInclude(componentName, componentFiles)
   )
 }
 
