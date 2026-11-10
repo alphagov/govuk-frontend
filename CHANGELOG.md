@@ -11,7 +11,9 @@ For advice on how to use these release notes, see [our guidance on staying up to
 If you set your own [Functional colours](https://design-system.service.gov.uk/styles/colour/#functional-colours) to theme GOV.UK Frontend, check the following components look as expected:
 
 - Accordion
+- Cookie banner
 - File upload (enhanced)
+- GOV.UK footer
 - Select
 
 We made these changes in the following pull requests:
@@ -20,6 +22,7 @@ We made these changes in the following pull requests:
 - [#7509: Use body-background functional colour for Select component](https://github.com/alphagov/govuk-frontend/pull/7509)
 - [#7510: Keep file upload button background consistent](https://github.com/alphagov/govuk-frontend/pull/7510)
 - [#7565: Update File upload component to use functional colours where possible](https://github.com/alphagov/govuk-frontend/pull/7565)
+- [#7618: Make sure Cookie banner and GOV.UK footer use template-background](https://github.com/alphagov/govuk-frontend/pull/7618)
 
 ## v6.6.0 (Feature release)
 

@@ -2,7 +2,10 @@
 
 /// @access private
 @mixin styles {
-  $govuk-footer-background: base.govuk-functional-colour(surface-background);
+  // Devices like mobile phones have  'natural scrolling' where users can 'bounce' past the end of the screen.
+  // Make GOV.UK footer component's background match the template background (`<html>` element)
+  // so it appears to users that the GOV.UK footer is continuous.
+  $govuk-footer-background: base.govuk-functional-colour(template-background);
   $govuk-footer-text: base.govuk-functional-colour(surface-text);
   $govuk-footer-content-border: base.govuk-functional-colour(surface-border);
 
@@ -18,7 +21,7 @@
     border-top: 10px solid;
     border-top-color: base.govuk-functional-colour(brand);
     color: $govuk-footer-text;
-    background: base.govuk-functional-colour(template-background);
+    background: $govuk-footer-background;
 
     @media print {
       border-top-color: currentcolor;
