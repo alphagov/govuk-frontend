@@ -35,7 +35,7 @@ export default defineConfig([
     // of the `govuk-frontend` package
     settings: {
       node: {
-        version: '^24.22.0'
+        version: '^24.22.3'
       }
     }
   },

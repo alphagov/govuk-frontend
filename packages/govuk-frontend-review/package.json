@@ -4,7 +4,7 @@
   "description": "GOV.UK Frontend review app",
   "main": "src/start.mjs",
   "engines": {
-    "node": "^24.22.1",
+    "node": "^24.22.3",
     "npm": "^11.6.1 <11.6.3 || ^11.6.4"
   },
   "license": "MIT",
@@ -22,6 +22,7 @@
     "test:screenshots": "gulp screenshots --color"
   },
   "dependencies": {
+    "@11ty/gray-matter": "^3.0.0",
     "@govuk-frontend/config": "*",
     "@govuk-frontend/lib": "*",
     "@govuk-frontend/stats": "*",
@@ -29,7 +30,6 @@
     "cookie-parser": "^1.4.7",
     "express": "^5.2.1",
     "express-validator": "^7.3.2",
-    "@11ty/gray-matter": "^3.0.0",
     "govuk-frontend": "*",
     "highlight.js": "^11.12.0",
     "iframe-resizer": "^4.4.5",
