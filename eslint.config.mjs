@@ -40,6 +40,10 @@ export default defineConfig([
     }
   },
   {
+    // XO offers a set of opinionated best practices that nudge us towards modern JavaScript
+    // We need to adjust of couple of their rules to suit our browser support or improve legibility
+    // Configuration: https://github.com/xojs/eslint-config-xo/blob/main/index.js
+    name: 'govuk-frontend-xo',
     extends: [
       ...xoConfig({
         space: true,
@@ -67,13 +71,8 @@ export default defineConfig([
     }
   },
   {
-    extends: [
-      JSConfigs.configs.recommended,
-      ImportXConfigs['flat/recommended'],
-      JSDocConfigs['flat/recommended-typescript-flavor'],
-      NodePlugin.configs['flat/recommended'],
-      PromisePlugin.configs['flat/recommended']
-    ],
+    // General rules targetting all JavaScript files (including examples in Markdown)
+    name: 'govuk-frontend-js',
     files: [
       '**/*.{cjs,js,mjs}',
 
@@ -81,15 +80,36 @@ export default defineConfig([
       // https://github.com/eslint/eslint-plugin-markdown#advanced-configuration
       '**/*.md/*.{cjs,js,mjs}'
     ],
-    // Replicate standard's environment set up
+    extends: [
+      // Recommended JavaScript rules
+      // https://github.com/eslint/eslint/blob/main/packages/js/src/configs/eslint-recommended.js
+      JSConfigs.configs.recommended,
+      // Keep our imports tidy and make sure they import existing modules
+      // https://github.com/un-ts/eslint-plugin-import-x/blob/master/src/config/recommended.ts
+      ImportXConfigs['flat/recommended'],
+      // Keep our JSDoc tidy
+      // https://github.com/gajus/eslint-plugin-jsdoc/blob/a7ad52a76373a162c0f1e90302ddf47f0bfd21e9/src/index.js#L437
+      JSDocConfigs['flat/recommended-typescript-flavor'],
+      // Node best practices
+      // https://github.com/eslint-community/eslint-plugin-n/blob/master/lib/configs/recommended.js
+      NodePlugin.configs['flat/recommended'],
+      // Best practices for using `Promise`
+      // https://github.com/eslint-community/eslint-plugin-promise/blob/main/index.js#L3
+      PromisePlugin.configs['flat/recommended']
+    ],
     languageOptions: {
+      // Provide type information to rules so they can be more accurate
       parser: TypescriptEslint.parser,
       parserOptions: {
         ecmaVersion: 'latest',
+        // Let `typescript-eslint`'s parser pick the closest `tsconfig.json`
+        // https://typescript-eslint.io/packages/parser#projectservice
         projectService: true,
         tsconfigRootDir: import.meta.dirname
       },
       globals: {
+        // Provide browser globals to all our files. It's a bit blunt,
+        // but being more granular is more effort than it's worth
         ...globals.browser
       }
     },
@@ -103,6 +123,7 @@ export default defineConfig([
       ],
 
       // Check import or require statements are A-Z ordered
+      // and separate groups of imports with new lines
       'import-x/order': [
         'error',
         {
@@ -149,7 +170,8 @@ export default defineConfig([
         }
       ],
 
-      // Ignore `govuk-frontend` exports as they require auto-generated files
+      // Allow to import `govuk-frontend` regardless of whether the project
+      // has been built in `dist` or not
       'import-x/no-unresolved': ['error', { ignore: ['govuk-frontend'] }],
       'n/no-missing-import': ['error', { allowModules: ['govuk-frontend'] }],
       'n/no-missing-require': ['error', { allowModules: ['govuk-frontend'] }],
@@ -184,9 +206,12 @@ export default defineConfig([
     }
   },
   {
-    // Extensions required for ESM import
+    // Rules for ES modules
+    name: 'govuk-frontend-mjs',
     files: ['**/*.mjs'],
     rules: {
+      // Require extension in the paths used for `import`
+      // so that files can be loaded by browsers directly
       'import-x/extensions': [
         'error',
         'always',
@@ -202,9 +227,15 @@ export default defineConfig([
     }
   },
   {
+    // Rules for test files
+    name: 'govuk-frontend-tests',
     files: ['**/*.test.{cjs,js,mjs}'],
     extends: [
+      // Ensure we use matchers consistently (eg. `toBe`)
+      // https://github.com/jest-community/eslint-plugin-jest/blob/main/src/index.ts#L55
       JestPlugin.configs['flat/style'],
+      // Ensure we use `testing-library` consistently
+      // https://github.com/testing-library/eslint-plugin-jest-dom/blob/main/src/index.js#L31
       JestDomPlugin.configs['flat/recommended']
     ],
     languageOptions: {
@@ -219,10 +250,11 @@ export default defineConfig([
     }
   },
   {
-    // Matches Puppeteer environment in jest.config.mjs
-    // to ignore unknown Jest Puppeteer globals
+    // Rules for Puppeteer tests
+    name: 'govuk-frontend-puppeteer-tests',
     files: ['**/*.puppeteer.test.{js,mjs}'],
     languageOptions: {
+      // Add puppeteer globals
       globals: {
         page: 'readonly',
         browser: 'readonly',
@@ -231,15 +263,22 @@ export default defineConfig([
     }
   },
   {
+    // Enable Markdown parser for `.md` files
+    name: 'govuk-frontend-parse-markdown',
     extends: [MarkdownPlugin.configs.recommended],
     files: ['**/*.md'],
     processor: 'markdown/markdown'
   },
   {
+    // Disable TypeScript in our Markdown examples
+    name: 'govuk-frontend-markdown-javascript-examples',
     extends: [TypescriptEslint.configs.disableTypeChecked],
     files: ['**/*.md/*.{cjs,js,mjs}']
   },
   {
+    // Disable rules in our coding standards examples
+    // which have examples of what not to do
+    name: 'govuk-frontend-coding-standards',
     files: [
       '**/coding-standards/component-options.md/*.{cjs,js,mjs}',
       '**/coding-standards/js.md/*.{cjs,js,mjs}'
@@ -258,20 +297,28 @@ export default defineConfig([
     }
   },
   {
+    // Rules for code that will run in the browser
+    name: 'govuk-frontend-browser-js',
     files: ['packages/govuk-frontend/src/govuk/**/*.mjs'],
-    ignores: ['**/*.test.mjs'],
+    ignores: ['**/*.test.mjs'], // Test files don't run in the browser ;)
     languageOptions: {
       globals: {
         ...globals.browser
       },
       parserOptions: {
-        // Note: Allow ES2015 for import/export syntax
+        // Reduce supported ECMA version to match our browser support
         ecmaVersion: '2015'
       }
     },
     extends: [
+      // Strict rules for TypeScript
+      // https://typescript-eslint.io/users/configs/#strict-type-checked
       TypescriptEslint.configs.strictTypeChecked,
+      // Stylistic rules for TypeScript
+      // https://typescript-eslint.io/users/configs/#stylistic-type-checked
       TypescriptEslint.configs.stylisticTypeChecked,
+      // Ensure we don't use syntaxes that do not match our browser support
+      // https://github.com/eslint-community/eslint-plugin-es-x/blob/master/lib/configs/flat/restrict-to-es2015.ts
       ESXPlugin.configs['flat/restrict-to-es2015']
     ],
     rules: {
@@ -339,7 +386,8 @@ export default defineConfig([
     }
   },
   {
-    // Apply to everything, including tests
+    // Rules for all files in our package
+    name: 'govuk-frontend-package-js',
     files: ['packages/govuk-frontend/src/govuk/**/*.{cjs,js,mjs}'],
     rules: {
       // Don't import govuk-frontend in the project itself
@@ -357,6 +405,8 @@ export default defineConfig([
     }
   },
   {
+    // Loosen rules for the Prototype Kit plugin files
+    name: 'govuk-frontend-prototype-kit',
     extends: [TypescriptEslint.configs.disableTypeChecked],
     files: ['packages/govuk-frontend/src/govuk-prototype-kit/**/*.js'],
     languageOptions: {
@@ -373,6 +423,8 @@ export default defineConfig([
     }
   },
   {
+    // Provide Jest globals to functions run in Jest
+    name: 'govuk-frontend-jest-helpers',
     files: ['shared/helpers/jest/**/*.{cjs,js,mjs}'],
     languageOptions: {
       globals: {
@@ -381,10 +433,16 @@ export default defineConfig([
     }
   },
   {
+    // IMPORTANT: Keep after the other configuration objects
+    // and apply to all files so we don't risk re-enabling
+    // rules that conflict with Prettier
+    // Disable rules that conflict with Prettier formatting
+    name: 'govuk-frontend-prettier',
     extends: [PrettierConfig]
   },
   {
     // XO rules that our code breaks and we still need to review
+    name: 'govuk-frontend-xo-migration',
     rules: {
       '@eslint-community/eslint-comments/require-description': 'off',
       '@html-eslint/head-order': 'off',
