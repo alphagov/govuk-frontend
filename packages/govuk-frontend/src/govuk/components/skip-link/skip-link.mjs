@@ -13,7 +13,7 @@ const _self =
  * Skip link component
  *
  * @preserve
- * @augments Component<HTMLAnchorElement>
+ * @augments {Component<HTMLAnchorElement>}
  */
 export class SkipLink extends Component {
   static elementType = _self.HTMLAnchorElement

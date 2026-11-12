@@ -20,7 +20,7 @@ import { I18n } from '../../i18n.mjs'
  * of the available characters/words has been entered.
  *
  * @preserve
- * @augments ConfigurableComponent<CharacterCountConfig>
+ * @augments {ConfigurableComponent<CharacterCountConfig>}
  */
 export class CharacterCount extends ConfigurableComponent {
   /** @private */
@@ -101,7 +101,7 @@ export class CharacterCount extends ConfigurableComponent {
 
   /**
    * @param {Element | null} $root - HTML element to use for character count
-   * @param {CharacterCountConfig} [config] - Character count config
+   * @param {Partial<CharacterCountConfig>} [config] - Character count config
    */
   constructor($root, config = {}) {
     super($root, config)
