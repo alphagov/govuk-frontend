@@ -55,7 +55,7 @@ async function getListing(directoryPath, options = {}) {
     .map((entryPath) =>
       relative(options.cwd?.toString() ?? paths.root, entryPath)
     )
-    .sort()
+    .toSorted()
 }
 
 /**
@@ -70,7 +70,7 @@ async function getDirectories(directoryPath) {
   })
 
   // Use directory names only
-  return listing.map((directoryPath) => basename(directoryPath)).sort()
+  return listing.map((directoryPath) => basename(directoryPath)).toSorted()
 }
 
 /**
@@ -82,7 +82,7 @@ async function getDirectories(directoryPath) {
  */
 async function getFileSizes(directoryPath, options = {}) {
   const filesForAnalysis = await getListing(directoryPath, options)
-  return Promise.all(filesForAnalysis.map(getFileSize))
+  return Promise.all(filesForAnalysis.map((filePath) => getFileSize(filePath)))
 }
 
 /**

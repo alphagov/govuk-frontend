@@ -10,8 +10,8 @@ import { dest, series, src } from 'gulp'
  *
  * @type {import('@govuk-frontend/tasks').TaskFunction}
  */
-export default (options) =>
-  series(
+export default function buildRelease(options) {
+  return series(
     npm.script('clean:release', [], options),
 
     // Copy GOV.UK Frontend static assets
@@ -62,3 +62,4 @@ export default (options) =>
       files.version('VERSION.txt', options)
     )
   )
+}

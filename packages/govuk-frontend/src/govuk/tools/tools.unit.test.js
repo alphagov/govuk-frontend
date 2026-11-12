@@ -19,7 +19,9 @@ describe('The tools layer', () => {
     let css
 
     beforeAll(async () => {
-      css = (await compileSassString(sass)).css
+      const compilationResult = await compileSassString(sass)
+
+      css = compilationResult.css
     })
 
     it('should not output any CSS', async () => {

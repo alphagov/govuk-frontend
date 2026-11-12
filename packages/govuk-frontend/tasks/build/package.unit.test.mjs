@@ -1,3 +1,5 @@
+/* eslint-disable unicorn/no-array-callback-reference -- Functions passed to Array callbacks in this file are designed for it */
+
 import { readFile } from 'fs/promises'
 import { join } from 'path'
 
@@ -134,7 +136,7 @@ describe('packages/govuk-frontend/dist/', () => {
           join(requirePath, 'macro-options.json')
         ])
       )
-      .sort()
+      .toSorted()
 
     // Compare output files with '.npmignore' filter
     const listingDistIgnored = listingDist.filter(
