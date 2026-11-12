@@ -113,13 +113,8 @@
           0 -2px $govuk-accordion-hover-colour,
           0 4px $govuk-accordion-hover-colour;
 
-        .govuk-accordion__section-toggle-text {
-          color: $govuk-accordion-base-colour;
-        }
-
         .govuk-accordion-nav__chevron {
-          color: $govuk-accordion-base-colour;
-          background: $govuk-accordion-base-colour;
+          background: currentcolor;
         }
 
         .govuk-accordion-nav__chevron::after {
@@ -131,7 +126,7 @@
         @include base.govuk-focused-text;
 
         .govuk-accordion-nav__chevron {
-          background: $govuk-accordion-base-colour;
+          background: currentcolor;
         }
 
         .govuk-accordion-nav__chevron::after {
@@ -222,13 +217,12 @@
         color: $govuk-accordion-base-colour;
         background: $govuk-accordion-hover-colour;
 
-        .govuk-accordion__section-toggle-text {
-          color: $govuk-accordion-base-colour;
+        .govuk-accordion__section-toggle {
+          color: currentcolor;
         }
 
         .govuk-accordion-nav__chevron {
-          color: $govuk-accordion-base-colour;
-          background: $govuk-accordion-base-colour;
+          background: currentcolor;
         }
 
         .govuk-accordion-nav__chevron::after {
@@ -248,8 +242,7 @@
         }
 
         .govuk-accordion-nav__chevron {
-          color: $govuk-accordion-base-colour;
-          background: $govuk-accordion-base-colour;
+          background: currentcolor;
         }
 
         .govuk-accordion-nav__chevron::after {
