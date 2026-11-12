@@ -5,6 +5,10 @@
 @mixin styles {
   $logo-bottom-margin: 2px;
 
+  // Hardcode the Dot to the Teal accent colour
+  // since it's part of the GOV.UK Logo branding and should not be overriden.
+  $logo-dot-colour: base.govuk-colour("teal", "accent");
+
   .govuk-header {
     @include genericHeader.block-styles(
       $background-colour: base.govuk-functional-colour("brand"),
@@ -62,7 +66,8 @@
 
   // Colour in the Dot
   .govuk-logo-dot {
-    fill: base.govuk-colour("teal", "accent");
+    --_govuk-logo-dot-colour: #{$logo-dot-colour};
+    fill: var(--_govuk-logo-dot-colour, currentcolor);
 
     // Override Dot colour when printing
     @media print {

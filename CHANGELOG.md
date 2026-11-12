@@ -24,6 +24,10 @@ We made these changes in the following pull requests:
 - [#7565: Update File upload component to use functional colours where possible](https://github.com/alphagov/govuk-frontend/pull/7565)
 - [#7618: Make sure Cookie banner and GOV.UK footer use template-background](https://github.com/alphagov/govuk-frontend/pull/7618)
 
+We've have also made fixes to GOV.UK Frontend in the following pull requests:
+
+- [#7584: Fix GOV.UK Logo Dot from appearing low contrast on browsers that dont support CSS Custom Properties](https://github.com/alphagov/govuk-frontend/pull/7584)
+
 ## v6.6.0 (Feature release)
 
 To install this version with npm, run `npm install govuk-frontend@6.6.0`. You can also find more information about [how to stay up to date](https://frontend.design-system.service.gov.uk/staying-up-to-date/#updating-to-the-latest-version) in our documentation.
