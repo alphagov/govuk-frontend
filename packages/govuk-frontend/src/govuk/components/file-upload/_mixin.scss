@@ -15,7 +15,7 @@
   $component-padding: base.govuk-spacing(1);
 
   // "Drop zone" button, large area that a user can drag and drop into.
-  $drop-zone-border-width: base.$govuk-border-width-form-element;
+  $drop-zone-border-width: 3px;
   $drop-zone-border-colour: base.govuk-functional-colour(border);
   $drop-zone-hover-border-colour: base.govuk-colour("black", $variant: "tint-50");
   $dragging-drop-zone-border-colour: base.govuk-functional-colour(input-border);
@@ -135,7 +135,7 @@
     padding: (base.govuk-spacing(3) + base.$govuk-border-width - $drop-zone-border-width);
     // align the padding to be same as notification banner and error summary accounting for the thicker borders
     border-width: $drop-zone-border-width;
-    border-style: solid;
+    border-style: dashed;
     border-color: $drop-zone-border-colour;
     background-color: $drop-zone-background-colour;
 
@@ -187,7 +187,7 @@
 
     &:focus {
       @include base.govuk-focused-form-input;
-
+      border-style: solid;
       border-color: base.govuk-functional-colour(input-border);
 
       // Copy Button component focus styles from:
@@ -207,7 +207,6 @@
   }
 
   .govuk-file-upload-button--dragging {
-    border-style: dashed;
     border-color: base.govuk-functional-colour(input-border);
   }
 }
