@@ -1,5 +1,30 @@
 {% from "../../macros/attributes.njk" import govukAttributes -%}
 
+{%- macro _govukTableCell(params) %}
+  {%- set commonAttributes %}
+    {%- if params.colspan %} colspan="{{ params.colspan }}"{% endif %}
+    {%- if params.rowspan %} rowspan="{{ params.rowspan }}"{% endif %}
+    {{- govukAttributes(params.attributes) }}
+  {%- endset %}
+
+  {%- if params.scope %}
+    <th class="govuk-table__header
+      {%- if params.format %} govuk-table__header--{{ params.format }}{% endif %}
+      {%- if params.classes %} {{ params.classes }}{% endif %}"
+      scope="{{ params.scope }}"
+      {{- commonAttributes | safe }}>
+      {{- params.html | safe if params.html else params.text -}}
+    </th>
+  {%- else %}
+    <td class="govuk-table__cell
+      {%- if params.format %} govuk-table__cell--{{ params.format }}{% endif %}
+      {%- if params.classes %} {{ params.classes }}{% endif %}"
+      {{- commonAttributes | safe }}>
+      {{- params.html | safe if params.html else params.text -}}
+    </td>
+  {%- endif %}
+{%- endmacro %}
+
 <table class="govuk-table
   {%- if params.classes %} {{ params.classes }}{% endif %}"
   {{- govukAttributes(params.attributes) }}>
@@ -12,15 +37,17 @@
 {% if params.head %}
   <thead class="govuk-table__head">
     <tr class="govuk-table__row">
-    {% for item in params.head %}
-      <th scope="col" class="govuk-table__header
-        {%- if item.format %} govuk-table__header--{{ item.format }}{% endif %}
-        {%- if item.classes %} {{ item.classes }}{% endif %}"
-        {%- if item.colspan %} colspan="{{ item.colspan }}"{% endif %}
-        {%- if item.rowspan %} rowspan="{{ item.rowspan }}"{% endif %}
-        {{- govukAttributes(item.attributes) }}>
-          {{- item.html | safe if item.html else item.text -}}
-        </th>
+    {% for cell in params.head %}
+      {{ _govukTableCell({
+        scope: "col",
+        format: cell.format,
+        classes: cell.classes,
+        colspan: cell.colspan,
+        rowspan: cell.rowspan,
+        attributes: cell.attributes,
+        html: cell.html,
+        text: cell.text
+      }) }}
     {% endfor %}
     </tr>
   </thead>
@@ -30,25 +57,16 @@
   {% if row %}
     <tr class="govuk-table__row">
     {% for cell in row %}
-      {% set commonAttributes %}
-        {%- if cell.colspan %} colspan="{{ cell.colspan }}"{% endif %}
-        {%- if cell.rowspan %} rowspan="{{ cell.rowspan }}"{% endif %}
-        {{- govukAttributes(cell.attributes) -}}
-      {% endset %}
-      {% if loop.first and params.firstCellIsHeader %}
-      <th scope="row" class="govuk-table__header
-        {%- if cell.classes %} {{ cell.classes }}{% endif %}"
-        {{- commonAttributes | safe }}>
-        {{- cell.html | safe if cell.html else cell.text -}}
-      </th>
-      {% else %}
-      <td class="govuk-table__cell
-        {%- if cell.format %} govuk-table__cell--{{ cell.format }}{% endif %}
-        {%- if cell.classes %} {{ cell.classes }}{% endif %}"
-        {{- commonAttributes | safe }}>
-        {{- cell.html | safe if cell.html else cell.text -}}
-      </td>
-      {% endif %}
+      {{ _govukTableCell({
+        scope: "row" if loop.first and params.firstCellIsHeader,
+        format: cell.format,
+        classes: cell.classes,
+        colspan: cell.colspan,
+        rowspan: cell.rowspan,
+        attributes: cell.attributes,
+        html: cell.html,
+        text: cell.text
+      }) }}
     {% endfor %}
     </tr>
   {% endif %}
