@@ -8,4 +8,6 @@ import { watch } from '../index.mjs'
  *
  * @type {import('@govuk-frontend/tasks').TaskFunction}
  */
-export default (options) => series(watch(options))
+export default function dev(options) {
+  return series(watch(options))
+}

@@ -371,12 +371,12 @@ async function getAccessibleName(page, $element) {
   //   why the name is not set right
   // - TypeError accessing `name`: we need to figure out
   //   why there's no node in the accessibility tree
-  return (
-    await page.accessibility.snapshot({
-      root: $element,
-      interestingOnly: false
-    })
-  ).name
+  const elementAccessibilityTreeSnapshot = await page.accessibility.snapshot({
+    root: $element,
+    interestingOnly: false
+  })
+
+  return elementAccessibilityTreeSnapshot.name
 }
 
 /**

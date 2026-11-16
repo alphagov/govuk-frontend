@@ -30,16 +30,20 @@ export const watch = (options) => parallel(...getTasks(options))
  */
 function getTasks(options) {
   const tasks = {
-    'lint:scss watch': disabledBy('GOVUK_DS_FRONTEND_NO_LINTING', 'scss', () =>
-      gulpWatch(
-        '**/*.scss',
-        { cwd: options.srcPath },
+    'lint:scss watch': disabledBy(
+      'GOVUK_DS_FRONTEND_NO_LINTING',
+      'scss',
+      () => {
+        const stylesheetsGlob = slash(join(options.workspace, '**/*.scss'))
 
-        // Run Stylelint checks
-        npm.script('lint:scss:cli', [
-          slash(join(options.workspace, '**/*.scss'))
-        ])
-      )
+        return gulpWatch(
+          '**/*.scss',
+          { cwd: options.srcPath },
+
+          // Run Stylelint checks
+          npm.script('lint:scss:cli', [stylesheetsGlob])
+        )
+      }
     ),
     'compile:scss watch': () =>
       gulpWatch(
@@ -56,8 +60,10 @@ function getTasks(options) {
         // Run Sass compile
         styles(options)
       ),
-    'lint:js watch': disabledBy('GOVUK_DS_FRONTEND_NO_LINTING', 'js', () =>
-      gulpWatch(
+    'lint:js watch': disabledBy('GOVUK_DS_FRONTEND_NO_LINTING', 'js', () => {
+      const scriptsGlob = slash(join(options.workspace, '**/*.{cjs,js,mjs}'))
+
+      return gulpWatch(
         '**/*.{cjs,js,mjs}',
         { cwd: options.srcPath, ignored: ['**/*.test.*'] },
         parallel(
@@ -65,12 +71,10 @@ function getTasks(options) {
           npm.script('build:types', ['--incremental', '--pretty'], options),
 
           // Run ESLint checks
-          npm.script('lint:js:cli', [
-            slash(join(options.workspace, '**/*.{cjs,js,mjs}'))
-          ])
+          npm.script('lint:js:cli', [scriptsGlob])
         )
       )
-    ),
+    }),
     'compile:js watch': () =>
       gulpWatch(
         'javascripts/**/*.mjs',

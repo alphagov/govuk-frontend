@@ -67,7 +67,10 @@ export default defineConfig([
       // Accessing `data-` attributes through `dataset`
       // prevents copying the attribute from the HTML to search
       // the codebase
-      'unicorn/dom-node-dataset': 'off'
+      'unicorn/dom-node-dataset': 'off',
+      // Editors tend to automatically add asterisks, particularly for JSDOC
+      // so the rule would just create noise
+      'unicorn/no-asterisk-prefix-in-documentation-comments': 'off'
     }
   },
   {
@@ -246,7 +249,10 @@ export default defineConfig([
     rules: {
       // Because of `describe` and `it`, we need to be
       // a bit looser on nesting in tests
-      'max-nested-callbacks': 'off'
+      'max-nested-callbacks': 'off',
+      // Using `expect.objectContaining` can lead to quite nested structures
+      // so we'll be a bit looser in tests
+      'unicorn/max-nested-calls': 'off'
     }
   },
   {
@@ -260,6 +266,17 @@ export default defineConfig([
         browser: 'readonly',
         jestPuppeteer: 'readonly'
       }
+    }
+  },
+  {
+    // Adjustments for config files
+    name: 'govuk-frontend-configuration',
+    files: ['**/*.config.{js,cjs,mjs}', '**/.*.{js,cjs,mjs}'],
+    rules: {
+      // Configuration files usually export the configuration
+      // as their default export, there's not much point naming it
+      // in a variable before exporting it
+      'unicorn/no-anonymous-default-export': 'off'
     }
   },
   {
@@ -364,6 +381,9 @@ export default defineConfig([
 
       // Babel transpiles ES2020 optional chaining
       'es-x/no-optional-chaining': 'off',
+
+      // Babel transpiles ES2021 logical assignment operators
+      'es-x/no-logical-assignment-operators': 'off',
 
       // JSDoc blocks are mandatory in source code
       'jsdoc/require-jsdoc': [
@@ -499,16 +519,7 @@ export default defineConfig([
       'regexp/strict': 'off',
       'require-unicode-regexp': 'off',
       'unicorn/import-style': 'off',
-      'unicorn/logical-assignment-operators': 'off',
-      'unicorn/max-nested-calls': 'off',
       'unicorn/name-replacements': 'off',
-      'unicorn/new-for-builtins': 'off',
-      'unicorn/no-anonymous-default-export': 'off',
-      'unicorn/no-array-callback-reference': 'off',
-      'unicorn/no-array-reduce': 'off',
-      'unicorn/no-array-sort': 'off',
-      'unicorn/no-asterisk-prefix-in-documentation-comments': 'off',
-      'unicorn/no-await-expression-member': 'off',
       'unicorn/no-computed-property-existence-check': 'off',
       'unicorn/no-declarations-before-early-exit': 'off',
       'unicorn/no-for-each': 'off',

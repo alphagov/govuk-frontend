@@ -88,9 +88,9 @@ describe('Character count', () => {
     it('shows the textarea description', async () => {
       await initExample('default')
 
-      expect((await getText($textareaDescription)).trim()).toBe(
-        'You can enter up to 10 characters'
-      )
+      const description = await getText($textareaDescription)
+
+      expect(description.trim()).toBe('You can enter up to 10 characters')
     })
   })
 
@@ -904,7 +904,9 @@ describe('Character count', () => {
           }
         })
 
-        expect((await getHtml($visibleCountMessage)).trim()).toBe(
+        const message = await getHtml($visibleCountMessage)
+
+        expect(message.trim()).toBe(
           '&lt;strong&gt;10&lt;/strong&gt; characters left'
         )
       })
