@@ -72,4 +72,22 @@
   {% endif %}
 {% endfor %}
   </tbody>
+{% if params.foot %}
+  <tfoot class="govuk-table__foot">
+    <tr class="govuk-table__row">
+    {% for cell in params.foot %}
+      {{ _govukTableCell({
+        scope: "row" if loop.first and params.firstCellIsHeader,
+        format: cell.format,
+        classes: cell.classes,
+        colspan: cell.colspan,
+        rowspan: cell.rowspan,
+        attributes: cell.attributes,
+        html: cell.html,
+        text: cell.text
+      }) }}
+    {% endfor %}
+    </tr>
+  </tfoot>
+{% endif %}
 </table>

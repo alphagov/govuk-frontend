@@ -26,14 +26,14 @@ describe('Table', () => {
 
   describe('captions', () => {
     it('can have custom text', () => {
-      const $ = render('table', examples['with head and caption'])
+      const $ = render('table', examples['with head, foot and caption'])
       const $caption = $('.govuk-table__caption')
 
       expect($caption.text()).toBe('Caption 1: Months and rates')
     })
 
     it('can have additional classes', () => {
-      const $ = render('table', examples['with head and caption'])
+      const $ = render('table', examples['with head, foot and caption'])
       const $caption = $('.govuk-table__caption')
 
       expect($caption.hasClass('govuk-table__caption--m')).toBeTruthy()
@@ -121,20 +121,100 @@ describe('Table', () => {
   })
 
   // =========================================================
+  // Column footers
+  // =========================================================
+
+  describe('column footers', () => {
+    it('can be specified', () => {
+      const args = examples['with foot']
+      const $ = render('table', args)
+
+      const cells = $('.govuk-table')
+        .find('tfoot tr td')
+        .map((_, e) => $(e).text())
+        .get()
+
+      expect(cells).toEqual(['Total', '£325', '£275'])
+    })
+
+    it('have HTML escaped when passed as text', () => {
+      const $ = render('table', examples['html as text'])
+
+      const $td = $('.govuk-table tfoot tr td')
+
+      expect($td.html()).toBe(
+        'Foo &lt;script&gt;hacking.do(1337)&lt;/script&gt;'
+      )
+    })
+
+    it('allow HTML when passed as HTML', () => {
+      const $ = render('table', examples.html)
+
+      const $td = $('.govuk-table tfoot tr td')
+
+      expect($td.html()).toBe('Foo <span>bar</span>')
+    })
+
+    it('can have a format specified', () => {
+      const $ = render('table', examples['with foot'])
+
+      const $td = $('.govuk-table tfoot tr td')
+
+      expect($td.hasClass('govuk-table__cell--numeric')).toBeTruthy()
+    })
+
+    it('can have additional classes', () => {
+      const $ = render('table', examples['foot with classes'])
+
+      const $td = $('.govuk-table tfoot tr td')
+
+      expect($td.hasClass('my-custom-class')).toBeTruthy()
+    })
+
+    it('can have rowspan specified', () => {
+      const $ = render('table', examples['foot with rowspan and colspan'])
+
+      const $td = $('.govuk-table tfoot tr td')
+
+      expect($td.attr('rowspan')).toBe('2')
+    })
+
+    it('can have colspan specified', () => {
+      const $ = render('table', examples['foot with rowspan and colspan'])
+
+      const $td = $('.govuk-table tfoot tr td')
+
+      expect($td.attr('colspan')).toBe('2')
+    })
+
+    it('can have additional attributes', () => {
+      const $ = render('table', examples['foot with attributes'])
+
+      const $td = $('.govuk-table tfoot tr td')
+
+      expect($td.attr('data-fizz')).toBe('buzz')
+    })
+  })
+
+  // =========================================================
   // Row headers
   // =========================================================
 
   describe('row headers', () => {
     describe('when firstCellIsHeader is false', () => {
       it('are not included', () => {
-        const $ = render('table', examples.default)
+        const $ = render('table', examples['with head and foot'])
 
-        const cells = $('.govuk-table')
+        const bodyCells = $('.govuk-table')
           .find('tbody tr td')
           .map((_, e) => $(e).text())
           .get()
+        const footCells = $('.govuk-table')
+          .find('tfoot tr td')
+          .map((_, e) => $(e).text())
+          .get()
 
-        expect(cells).toEqual([
+        expect(bodyCells).toEqual([
           'January',
           '£85',
           '£95',
@@ -145,6 +225,7 @@ describe('Table', () => {
           '£165',
           '£125'
         ])
+        expect(footCells).toEqual(['Total', '£325', '£275'])
       })
     })
 
@@ -152,12 +233,17 @@ describe('Table', () => {
       it('are included', () => {
         const $ = render('table', examples['with firstCellIsHeader true'])
 
-        const headings = $('.govuk-table')
+        const rowHeadings = $('.govuk-table')
           .find('tbody tr th')
           .map((_, e) => $(e).text())
           .get()
+        const footHeadings = $('.govuk-table')
+          .find('tfoot tr th')
+          .map((_, e) => $(e).text())
+          .get()
 
-        expect(headings).toEqual(['January', 'February', 'March'])
+        expect(rowHeadings).toEqual(['January', 'February', 'March'])
+        expect(footHeadings).toEqual(['Foo'])
       })
 
       it('have HTML escaped when passed as text', () => {
