@@ -12,7 +12,7 @@
     "rollup:single-component": "npm run rollup:cli -- -o dist/rollup/single-component.js ./src/single-component.mjs",
     "rollup:init-all": "npm run rollup:cli -- -o dist/rollup/init-all.js ./src/init-all.mjs",
     "rollup:cli": "rollup -c rollup.config.mjs",
-    "webpack": "webpack --mode production -o dist/webpack",
+    "webpack": "npx webpack-cli --mode production -o dist/webpack",
     "vite": "cross-env ENTRY_NAME=single-component vite build && cross-env ENTRY_NAME=init-all vite build",
     "clean": "del-cli dist",
     "build:all": "concurrently \"npm run rollup\" \"npm run webpack\" \"npm run vite\" --names \"rollup,webpack,vite\" --prefix-colors \"red.dim,blue.dim,yellow.dim\""
@@ -26,6 +26,7 @@
     "rollup": "^4.67.4",
     "terser-webpack-plugin": "^5.3.16",
     "vite": "^8.3.5",
-    "webpack": "^5.112.2"
+    "webpack": "^5.112.2",
+    "webpack-cli": "^7.3.1"
   }
 }
