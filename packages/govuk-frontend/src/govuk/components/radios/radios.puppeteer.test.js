@@ -62,15 +62,11 @@ describe('Radios', () => {
           expect($conditionals).toHaveLength(3)
         })
 
-        it('has no ARIA attributes applied', async () => {
-          const $inputsWithAriaExpanded = await $component.$$(
-            '.govuk-radios__input[aria-expanded]'
-          )
+        it('does not have aria-controls applied by default', async () => {
           const $inputsWithAriaControls = await $component.$$(
             '.govuk-radios__input[aria-controls]'
           )
 
-          expect($inputsWithAriaExpanded).toHaveLength(0)
           expect($inputsWithAriaControls).toHaveLength(0)
         })
 
@@ -130,26 +126,6 @@ describe('Radios', () => {
 
           $component = await page.$('.govuk-radios')
           $inputs = await $component.$$('.govuk-radios__input')
-        })
-
-        it('indicates when conditional content is collapsed or revealed', async () => {
-          const $input = $inputs[0] // First input, with conditional content
-
-          // Initially collapsed
-          expect(await getProperty($input, 'checked')).toBe(false)
-          expect(await getAttribute($input, 'aria-expanded')).toBe('false')
-
-          // Toggle revealed
-          await $input.click()
-
-          expect(await getProperty($input, 'checked')).toBe(true)
-          expect(await getAttribute($input, 'aria-expanded')).toBe('true')
-
-          // Stays revealed (unlike radios)
-          await $input.click()
-
-          expect(await getProperty($input, 'checked')).toBe(true)
-          expect(await getAttribute($input, 'aria-expanded')).toBe('true')
         })
 
         it('toggles the conditional content when clicking an input', async () => {
