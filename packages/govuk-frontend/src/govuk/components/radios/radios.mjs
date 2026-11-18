@@ -28,7 +28,7 @@ export class Radios extends Component {
     super($root)
 
     const $inputs = this.$root.querySelectorAll('input[type="radio"]')
-    if (!$inputs.length) {
+    if ($inputs.length === 0) {
       throw new ElementError({
         component: Radios,
         identifier: 'Form inputs (`<input type="radio">`)'
@@ -101,12 +101,12 @@ export class Radios extends Component {
 
     const $target = document.getElementById(targetId)
     if ($target?.classList.contains('govuk-radios__conditional')) {
-      const inputIsChecked = $input.checked
+      const isInputChecked = $input.checked
 
-      $input.setAttribute('aria-expanded', inputIsChecked.toString())
+      $input.setAttribute('aria-expanded', isInputChecked.toString())
       $target.classList.toggle(
         'govuk-radios__conditional--hidden',
-        !inputIsChecked
+        !isInputChecked
       )
     }
   }

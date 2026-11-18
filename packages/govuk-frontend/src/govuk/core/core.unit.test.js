@@ -25,7 +25,9 @@ describe('The core layer', () => {
     let css
 
     beforeAll(async () => {
-      css = (await compileSassString(sass)).css
+      const compilationResult = await compileSassString(sass)
+
+      css = compilationResult.css
     })
 
     it('outputs the custom properties only once', () => {
@@ -41,7 +43,7 @@ describe('The core layer', () => {
       })
 
       // Output stylelint warnings to make debugging easier
-      if (linter.results[0].warnings.length) {
+      if (linter.results[0].warnings.length > 0) {
         console.log(
           'Warnings were present when testing the core layer for unknown custom properties:'
         )
@@ -81,7 +83,9 @@ describe('The core layer', () => {
     beforeAll(async () => {
       const file = join(paths.package, partialPath)
 
-      css = (await compileSassFile(file)).css
+      const compilationResult = await compileSassFile(file)
+
+      css = compilationResult.css
     })
 
     // Sass will error when trying to access an undefined variable or mixin

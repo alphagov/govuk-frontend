@@ -55,7 +55,7 @@ async function getListing(directoryPath, options = {}) {
     .map((entryPath) =>
       relative(options.cwd?.toString() ?? paths.root, entryPath)
     )
-    .sort()
+    .toSorted()
 }
 
 /**
@@ -70,7 +70,7 @@ async function getDirectories(directoryPath) {
   })
 
   // Use directory names only
-  return listing.map((directoryPath) => basename(directoryPath)).sort()
+  return listing.map((directoryPath) => basename(directoryPath)).toSorted()
 }
 
 /**
@@ -82,7 +82,7 @@ async function getDirectories(directoryPath) {
  */
 async function getFileSizes(directoryPath, options = {}) {
   const filesForAnalysis = await getListing(directoryPath, options)
-  return Promise.all(filesForAnalysis.map(getFileSize))
+  return Promise.all(filesForAnalysis.map((filePath) => getFileSize(filePath)))
 }
 
 /**
@@ -125,6 +125,7 @@ const mapPathTo = (patterns, callback) => (entryPath) => {
   return isMatch(entryPath) ? callback(parse(entryPath)) : entryPath
 }
 
+/* eslint-disable jsdoc/reject-any-type -- We don't have a type of the config read by `getYaml` */
 /**
  * Read config from YAML file
  *
@@ -134,6 +135,7 @@ const mapPathTo = (patterns, callback) => (entryPath) => {
 async function getYaml(configPath) {
   return load(await readFile(configPath, 'utf8'), { json: true })
 }
+/* eslint-enable jsdoc/reject-any-type */
 
 /**
  * Compare arrays of FileSize types from the base and the head branch and add a
@@ -190,7 +192,7 @@ function getFileSizeComparison(headFiles, baseFiles) {
     }
   })
 
-  // remove null rows before returning
+  // Remove null rows before returning
   return comparedFileSizes.filter((file) => file)
 }
 

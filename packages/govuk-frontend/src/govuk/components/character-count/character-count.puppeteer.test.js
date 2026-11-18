@@ -1,5 +1,9 @@
 /* eslint-disable no-new */
 
+/* eslint-disable-next-line no-redeclare --
+  ESLint has all browser globals for this file,
+  but they're effectively only available inside functions ran on the page
+  so `setTimeout` doesn't redeclare anything  */
 const { setTimeout } = require('timers/promises')
 
 const {
@@ -17,8 +21,8 @@ describe('Character count', () => {
   /** @type {Awaited<ReturnType<typeof getExamples>>} */
   let examples
 
-  const focusIntervalTime = 1000 // ms
-  const lastInputOffsetTime = 500 // ms
+  const focusIntervalTime = 1000 // Ms
+  const lastInputOffsetTime = 500 // Ms
 
   // The longest possible time from a keyboard user ending input and the screen
   // reader counter being updated (+ 100ms to stay outside the total wait time)
@@ -84,9 +88,9 @@ describe('Character count', () => {
     it('shows the textarea description', async () => {
       await initExample('default')
 
-      expect((await getText($textareaDescription)).trim()).toBe(
-        'You can enter up to 10 characters'
-      )
+      const description = await getText($textareaDescription)
+
+      expect(description.trim()).toBe('You can enter up to 10 characters')
     })
   })
 
@@ -900,7 +904,9 @@ describe('Character count', () => {
           }
         })
 
-        expect((await getHtml($visibleCountMessage)).trim()).toBe(
+        const message = await getHtml($visibleCountMessage)
+
+        expect(message.trim()).toBe(
           '&lt;strong&gt;10&lt;/strong&gt; characters left'
         )
       })

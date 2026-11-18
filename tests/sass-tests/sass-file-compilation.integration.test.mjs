@@ -17,7 +17,7 @@ const sassFiles = globSync(`${slash(govukFrontendPath)}/src/govuk/**/*.scss`, {
   exclude: ['**/*.import.scss', '**/*--internal.scss']
 })
   .map((filePath) => slash(relative(govukFrontendPath, filePath)))
-  .sort((a, b) => a.localeCompare(b))
+  .toSorted((a, b) => a.localeCompare(b))
 
 // Compile a Sass file and store any errors
 async function compileSassFile(sassFilePath, type = 'import') {
@@ -32,7 +32,8 @@ async function compileSassFile(sassFilePath, type = 'import') {
  * Test suite
  */
 describe.each(sassFiles)('%s', (sassFilePath) => {
-  let useCss, importCss
+  let useCss
+  let importCss
 
   beforeAll(async () => {
     // Compile file with `@use` and `@import` in parallel. In most tests, we only
@@ -80,7 +81,7 @@ describe.each(sassFiles)('%s', (sassFilePath) => {
     })
 
     // Output stylelint warnings to make debugging easier
-    if (linter.results[0].warnings.length) {
+    if (linter.results[0].warnings.length > 0) {
       console.log(
         'Warnings were present when testing the utilities for unknown custom properties:'
       )

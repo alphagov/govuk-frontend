@@ -4,7 +4,8 @@ import { slash } from '@govuk-frontend/lib/files'
 import { sassNull } from 'sass-embedded'
 import sassdoc from 'sassdoc'
 
-let mockWarnFunction, sassConfig
+let mockWarnFunction
+let sassConfig
 
 describe('GOV.UK Frontend', () => {
   describe.each([

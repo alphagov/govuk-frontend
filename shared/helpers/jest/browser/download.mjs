@@ -1,6 +1,9 @@
 import { join } from 'path'
 
 import { paths } from '@govuk-frontend/config'
+/* eslint-disable-next-line no-redeclare --
+  Cache (part of workers API) is not implemented in JSDom
+  so no collision https://github.com/jsdom/jsdom/issues/2422 */
 import { Browser, Cache, install } from '@puppeteer/browsers'
 import { PUPPETEER_REVISIONS } from 'puppeteer-core/lib/cjs/puppeteer/revisions.js'
 
@@ -27,7 +30,7 @@ export async function download() {
   }
 
   const currentVerisons = cache.getInstalledBrowsers()
-  if (!currentVerisons || !currentVerisons.length) {
+  if (!currentVerisons || currentVerisons.length === 0) {
     throw new Error('No browser versions are installed.')
   }
 }

@@ -28,7 +28,7 @@ module.exports = {
   entry: {
     'single-component': './src/single-component.mjs',
     'individual-import': './src/individual-import.mjs',
-    initAll: './src/initAll.mjs'
+    'init-all': './src/init-all.mjs'
   },
   output: {
     filename: '[name].js'

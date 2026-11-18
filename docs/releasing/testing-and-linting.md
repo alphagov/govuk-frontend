@@ -56,7 +56,7 @@ This will run the following checks:
 
 1. [EditorConfig](https://editorconfig.org)
 2. [Prettier](https://prettier.io)
-3. [ESLint](https://eslint.org) (using [JavaScript Standard Style](https://standardjs.com))
+3. [ESLint](https://eslint.org)
 4. [Stylelint](https://stylelint.io) (using [GDS Stylelint Config](https://github.com/alphagov/stylelint-config-gds))
 
 Where possible, issues will be fixed automatically on `git commit` using [Husky](https://typicode.github.io/husky/) and [`.lintstagedrc.js`](/.lintstagedrc.js).

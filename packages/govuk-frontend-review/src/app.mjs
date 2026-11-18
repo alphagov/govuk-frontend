@@ -21,7 +21,7 @@ import * as middleware from './common/middleware/index.mjs'
 import * as nunjucks from './common/nunjucks/index.mjs'
 import * as routes from './routes/index.mjs'
 
-export default async () => {
+export default async function createApp() {
   const app = express()
 
   // Resolve GOV.UK Frontend from review app `node_modules`
@@ -99,7 +99,7 @@ export default async () => {
 
     /**
      * @param {import('express').Request} req
-     * @param {import('express').Response<{}, Partial<PreviewLocals>>} res
+     * @param {import('express').Response<string, Partial<PreviewLocals>>} res
      * @param {import('express').NextFunction} next
      * @param {string} componentName
      */
@@ -131,7 +131,7 @@ export default async () => {
 
     /**
      * @param {import('express').Request} req
-     * @param {import('express').Response<{}, Partial<PreviewLocals>>} res
+     * @param {import('express').Response<string, Partial<PreviewLocals>>} res
      * @param {import('express').NextFunction} next
      * @param {string} exampleName
      */
@@ -207,7 +207,7 @@ export default async () => {
 
     /**
      * @param {import('express').Request} req
-     * @param {import('express').Response<{}, Partial<PreviewLocals>>} res
+     * @param {import('express').Response<string, Partial<PreviewLocals>>} res
      * @param {import('express').NextFunction} next
      * @returns {void}
      */

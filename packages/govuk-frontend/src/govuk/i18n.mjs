@@ -88,9 +88,10 @@ export class I18n {
    * @returns {string} The translation string to output, with $\{\} placeholders replaced
    */
   replacePlaceholders(translationString, options) {
-    const formatter = Intl.NumberFormat.supportedLocalesOf(this.locale).length
-      ? new Intl.NumberFormat(this.locale)
-      : undefined
+    const formatter =
+      Intl.NumberFormat.supportedLocalesOf(this.locale).length > 0
+        ? new Intl.NumberFormat(this.locale)
+        : undefined
 
     return translationString.replace(
       /%{(.\S+)}/g,
@@ -103,7 +104,7 @@ export class I18n {
        * @param {string} placeholderKey - Placeholder key
        * @returns {string} Placeholder value
        */
-      function (placeholderWithBraces, placeholderKey) {
+      (placeholderWithBraces, placeholderKey) => {
         if (Object.prototype.hasOwnProperty.call(options, placeholderKey)) {
           const placeholderValue = options[placeholderKey]
 
@@ -147,9 +148,9 @@ export class I18n {
    * @returns {boolean} Returns true if all conditions are met. Returns false otherwise.
    */
   hasIntlPluralRulesSupport() {
-    return Boolean(
+    return (
       'PluralRules' in window.Intl &&
-      Intl.PluralRules.supportedLocalesOf(this.locale).length
+      Intl.PluralRules.supportedLocalesOf(this.locale).length > 0
     )
   }
 
@@ -196,7 +197,8 @@ export class I18n {
         return preferredForm
         // Fall back to `other` if the plural form is missing, but log a warning
         // to the console
-      } else if ('other' in translation) {
+      }
+      if ('other' in translation) {
         console.warn(
           `i18n: Missing plural form ".${preferredForm}" for "${this.locale}" locale. Falling back to ".other".`
         )

@@ -10,7 +10,7 @@ import { series } from 'gulp'
  */
 export const compile = (options) =>
   series(
-    task.name('compile:js', () =>
+    task.create('compile:js', () =>
       scripts.compile('**/*.mjs', {
         ...options,
 

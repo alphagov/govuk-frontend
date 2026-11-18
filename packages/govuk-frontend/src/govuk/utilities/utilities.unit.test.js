@@ -24,7 +24,9 @@ describe('The utilities layer', () => {
     let css
 
     beforeAll(async () => {
-      css = (await compileSassString(sass)).css
+      const compilationResult = await compileSassString(sass)
+
+      css = compilationResult.css
     })
 
     it('does not reference any undefined custom properties', async () => {
@@ -34,7 +36,7 @@ describe('The utilities layer', () => {
       })
 
       // Output stylelint warnings to make debugging easier
-      if (linter.results[0].warnings.length) {
+      if (linter.results[0].warnings.length > 0) {
         console.log(
           'Warnings were present when testing the utilities layer for unknown custom properties:'
         )
@@ -50,7 +52,9 @@ describe('The utilities layer', () => {
     beforeAll(async () => {
       const file = join(paths.package, partialPath)
 
-      css = (await compileSassFile(file)).css
+      const compilationResult = await compileSassFile(file)
+
+      css = compilationResult.css
     })
 
     // Sass will error when trying to access an undefined variable or mixin

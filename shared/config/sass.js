@@ -1,5 +1,5 @@
 /**
- * @type {import('sass-embedded').Options<"async">}
+ * @satisfies {Options<"async">}}
  */
 const deprecationOptions = {
   silenceDeprecations: ['import'],
@@ -9,3 +9,7 @@ const deprecationOptions = {
 module.exports = {
   deprecationOptions
 }
+
+/**
+ * @import {Options} from 'sass-embedded'
+ */

@@ -19,7 +19,7 @@ export const compile = (options) => {
     /**
      * Compile GOV.UK Frontend JavaScript for component entry points
      */
-    task.name("compile:js 'components'", () =>
+    task.create("compile:js 'components'", () =>
       scripts.compile('**/components/*/!(*.test).mjs', {
         ...options,
 
@@ -35,7 +35,7 @@ export const compile = (options) => {
            * Compile deprecated files no longer imported by `all.mjs`
            * but that need to be kept in the package
            */
-          task.name("compile:js 'deprecations'", () =>
+          task.create("compile:js 'deprecations'", () =>
             scripts.compile(createGlobFromPaths(deprecatedFilesPaths), {
               ...options,
 
@@ -50,7 +50,7 @@ export const compile = (options) => {
     /**
      * Compile GOV.UK Frontend JavaScript for main entry point only
      */
-    task.name("compile:js 'entry'", () =>
+    task.create("compile:js 'entry'", () =>
       scripts.compile('**/all.mjs', {
         ...options,
 
@@ -63,7 +63,7 @@ export const compile = (options) => {
     /**
      * Compile GOV.UK Frontend JavaScript (minified) for main entry point only
      */
-    task.name("compile:js 'minified'", () =>
+    task.create("compile:js 'minified'", () =>
       scripts.compile('**/all.mjs', {
         ...options,
 
@@ -82,7 +82,7 @@ export const compile = (options) => {
     /**
      * Compile GOV.UK Prototype Kit config
      */
-    task.name("compile:js 'govuk-prototype-kit'", () =>
+    task.create("compile:js 'govuk-prototype-kit'", () =>
       configs.compile('govuk-prototype-kit.config.mjs', {
         srcPath: join(options.srcPath, 'govuk-prototype-kit'),
         destPath: resolve(options.destPath, '../') // Top level (not dist) for compatibility

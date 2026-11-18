@@ -1,3 +1,6 @@
+/* eslint-disable-next-line no-redeclare --
+  WebCrypto is not implemented in JSDom
+  so no collision https://github.com/jsdom/jsdom/issues/1612 */
 const crypto = require('crypto')
 
 require('html-validate/jest')

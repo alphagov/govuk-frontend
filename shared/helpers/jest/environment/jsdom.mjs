@@ -4,7 +4,7 @@ import { TestEnvironment } from 'jest-environment-jsdom'
  * Virtual browser environment
  * Adds jsdom window/document globals, shared test globals
  */
-class BrowserVirtualEnvironment extends TestEnvironment {
+export default class BrowserVirtualEnvironment extends TestEnvironment {
   async setup() {
     await super.setup()
 
@@ -17,5 +17,3 @@ class BrowserVirtualEnvironment extends TestEnvironment {
     )
   }
 }
-
-export default BrowserVirtualEnvironment

@@ -34,11 +34,11 @@ describe('Skip Link', () => {
     })
 
     it('adds the class for removing the native focus style to the linked element', async () => {
-      const cssClass = await page.$eval('#test-target-element', (el) =>
+      const hasCssClass = await page.$eval('#test-target-element', (el) =>
         el.classList.contains('govuk-skip-link-focused-element')
       )
 
-      expect(cssClass).toBeTruthy()
+      expect(hasCssClass).toBeTruthy()
     })
 
     it('removes the tabindex attribute from the linked element on blur', async () => {

@@ -31,7 +31,7 @@ export async function commentDiffs(githubActionContext, issueNumber, diffs) {
   }
 
   // Throw on any deferred errors above
-  if (errors.length) {
+  if (errors.length > 0) {
     throw new Error('Failed to post GitHub comments', {
       cause: errors
     })
@@ -103,14 +103,14 @@ export async function commentStats(
   { titleText, markerText }
 ) {
   const reviewAppURL = getReviewAppUrl(issueNumber)
-  let bodyText = ''
-  let fileSizeText = ''
-  let modulesText = ''
+  let bodyText
+  let fileSizeText
+  let modulesText
 
-  if (!fileSizeData.length && !modulesData.length) {
+  if (fileSizeData.length === 0 && modulesData.length === 0) {
     bodyText = 'No changes to any distributed file sizes!'
   } else {
-    if (fileSizeData.length) {
+    if (fileSizeData.length > 0) {
       // File sizes
       const fileSizeTitle = '### File sizes'
       // We cast the type to both specify explicitly that getReadableFileSizes
@@ -128,7 +128,7 @@ export async function commentStats(
       fileSizeText = 'No changes to asset file sizes.'
     }
 
-    if (modulesData.length) {
+    if (modulesData.length > 0) {
       // Module sizes
       const modulesTitle = '### Modules'
 
@@ -144,6 +144,7 @@ export async function commentStats(
       const modulesDataByPath =
         /** @type {(FileSizeWithPercentage & {size: string})[]} */ (
           getReadableFileSizes(modulesData)
+          // eslint-disable-next-line unicorn/no-array-reduce -- Lack of tests make it tricky to touch
         ).reduce((pathData, module) => {
           if (!pathData[module.path]) {
             pathData[module.path] = [module]
@@ -287,7 +288,8 @@ function renderTable(headers, rows) {
    * | --- | --- |
    * ```
    */
-  const headerSeparator = `| ${Array(headers.length).fill('---').join(' | ')} |`
+  // eslint-disable-next-line unicorn/no-new-array -- Constructor is the only way to get an array of a specific length
+  const headerSeparator = `| ${new Array(headers.length).fill('---').join(' | ')} |`
 
   /**
    * @example
@@ -360,7 +362,7 @@ export async function getComment({ github, context }, issueNumber, markerText) {
   })
 
   // Find first match for marker
-  return comments.find(({ body }) => !!body?.includes(markerText))
+  return comments.find(({ body }) => Boolean(body?.includes(markerText)))
 }
 
 /**

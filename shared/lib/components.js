@@ -37,8 +37,8 @@ function nunjucksEnv(searchPaths = [], nunjucksOptions = {}, packageOptions) {
 
   // Nunjucks environment
   return nunjucks.configure(searchPaths, {
-    trimBlocks: true, // automatically remove trailing newlines from a block/tag
-    lstripBlocks: true, // automatically remove leading whitespace from a block/tag,
+    trimBlocks: true, // Automatically remove trailing newlines from a block/tag
+    lstripBlocks: true, // Automatically remove leading whitespace from a block/tag,
     ...nunjucksOptions
   })
 }
@@ -52,9 +52,9 @@ function nunjucksEnv(searchPaths = [], nunjucksOptions = {}, packageOptions) {
  */
 const getComponentFixtures = async (componentName, packageOptions) => {
   return require(
-    join(
-      dirname(packageTypeToPath('govuk-frontend', packageOptions)),
-      `components/${componentName}/fixtures.json`
+    resolveInGOVUKFrontendPackage(
+      `components/${componentName}/fixtures.json`,
+      packageOptions
     )
   )
 }
@@ -83,9 +83,9 @@ const getComponentsFixtures = async (packageOptions) => {
  */
 const getComponentFiles = (componentName = '*', packageOptions) =>
   getListing(
-    join(
-      dirname(packageTypeToPath('govuk-frontend', packageOptions)),
-      `components/${componentName}/**/*`
+    resolveInGOVUKFrontendPackage(
+      `components/${componentName}/**/*`,
+      packageOptions
     )
   )
 
@@ -97,27 +97,24 @@ const getComponentFiles = (componentName = '*', packageOptions) =>
  */
 async function getComponentNames(packageOptions) {
   return getDirectories(
-    join(
-      dirname(packageTypeToPath('govuk-frontend', packageOptions)),
-      'components/'
-    )
+    resolveInGOVUKFrontendPackage('components/', packageOptions)
   )
 }
 
 /**
  * Get component names, filtered
  *
- * @param {(componentName: string, componentFiles: string[]) => boolean} filter - Component names array filter
+ * @param {(componentName: string, componentFiles: string[]) => boolean} shouldInclude - Component names array filter
  * @param {import('./names').PackageOptions} [packageOptions] - Package options (optional)
  * @returns {Promise<string[]>} Component names
  */
-async function getComponentNamesFiltered(filter, packageOptions) {
+async function getComponentNamesFiltered(shouldInclude, packageOptions) {
   const componentNames = await getComponentNames(packageOptions)
   const componentFiles = await getComponentFiles('*', packageOptions)
 
   // Apply component names filter
   return componentNames.filter((componentName) =>
-    filter(componentName, componentFiles)
+    shouldInclude(componentName, componentFiles)
   )
 }
 
@@ -272,6 +269,20 @@ function renderTemplate(templatePath, options) {
   }
 
   return renderString(viewString, options)
+}
+
+/**
+ * Resolves the given path inside the `govuk-frontend` package
+ *
+ * @param {string} path -- The path inside `govuk-frontend`
+ * @param {import('./names').PackageOptions} packageOptions -- Package resolution options
+ * @returns {string} The resolved path
+ */
+function resolveInGOVUKFrontendPackage(path, packageOptions) {
+  return join(
+    dirname(packageTypeToPath('govuk-frontend', packageOptions)),
+    path
+  )
 }
 
 module.exports = {

@@ -5,7 +5,6 @@ import { sass as sassConfig } from '@govuk-frontend/config'
 import { getListing } from '@govuk-frontend/lib/files'
 import PluginError from 'plugin-error'
 import postcss from 'postcss'
-// eslint-disable-next-line import-x/default
 import postcssrc from 'postcss-load-config'
 import { compileAsync, NodePackageImporter } from 'sass-embedded'
 
@@ -26,8 +25,8 @@ export async function compile(pattern, options) {
     for (const modulePath of modulePaths) {
       await compileStylesheet([modulePath, options])
     }
-  } catch (cause) {
-    throw new PluginError(`styles.compile('${pattern}')`, cause, {
+  } catch (error) {
+    throw new PluginError(`styles.compile('${pattern}')`, error, {
       // Hide error properties already formatted by Sass
       showProperties: false
     })
@@ -98,9 +97,7 @@ export async function compileStylesheet([
     }
   }
 
-  if (!css) {
-    css = await readFile(moduleSrcPath)
-  }
+  css ??= await readFile(moduleSrcPath)
 
   // Locate PostCSS config
   const config = await postcssrc(options, configPath)

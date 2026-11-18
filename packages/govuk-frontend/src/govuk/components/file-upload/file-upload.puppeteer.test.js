@@ -497,15 +497,15 @@ describe('/components/file-upload', () => {
             }
           })
 
-          const buttonDisabled = await page.$eval(buttonSelector, (el) =>
+          const isButtonDisabled = await page.$eval(buttonSelector, (el) =>
             el.hasAttribute('disabled')
           )
-          const dropZoneDisabled = await page.$eval(wrapperSelector, (el) =>
+          const isDropZoneDisabled = await page.$eval(wrapperSelector, (el) =>
             el.classList.contains('govuk-file-upload-wrapper--disabled')
           )
 
-          expect(buttonDisabled).toBeTruthy()
-          expect(dropZoneDisabled).toBeTruthy()
+          expect(isButtonDisabled).toBeTruthy()
+          expect(isDropZoneDisabled).toBeTruthy()
         })
 
         it('disables the button if the input is disabled programmatically', async () => {
@@ -515,15 +515,15 @@ describe('/components/file-upload', () => {
             el.setAttribute('disabled', '')
           )
 
-          const buttonDisabledAfter = await page.$eval(buttonSelector, (el) =>
+          const isButtonDisabledAfter = await page.$eval(buttonSelector, (el) =>
             el.hasAttribute('disabled')
           )
-          const dropZoneDisabled = await page.$eval(wrapperSelector, (el) =>
+          const isDropZoneDisabled = await page.$eval(wrapperSelector, (el) =>
             el.classList.contains('govuk-file-upload-wrapper--disabled')
           )
 
-          expect(buttonDisabledAfter).toBeTruthy()
-          expect(dropZoneDisabled).toBeTruthy()
+          expect(isButtonDisabledAfter).toBeTruthy()
+          expect(isDropZoneDisabled).toBeTruthy()
         })
 
         it('enables the button if the input is enabled programmatically', async () => {
@@ -539,15 +539,15 @@ describe('/components/file-upload', () => {
             el.removeAttribute('disabled')
           )
 
-          const buttonDisabled = await page.$eval(buttonSelector, (el) =>
+          const isButtonDisabled = await page.$eval(buttonSelector, (el) =>
             el.hasAttribute('disabled')
           )
-          const dropZoneDisabled = await page.$eval(wrapperSelector, (el) =>
+          const isDropZoneDisabled = await page.$eval(wrapperSelector, (el) =>
             el.classList.contains('govuk-file-upload-wrapper--disabled')
           )
 
-          expect(buttonDisabled).toBeFalsy()
-          expect(dropZoneDisabled).toBeFalsy()
+          expect(isButtonDisabled).toBeFalsy()
+          expect(isDropZoneDisabled).toBeFalsy()
         })
       })
 

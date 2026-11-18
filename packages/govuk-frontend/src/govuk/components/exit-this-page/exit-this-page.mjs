@@ -47,7 +47,7 @@ export class ExitThisPage extends ConfigurableComponent {
   lastKeyWasModified = false
 
   /** @private */
-  timeoutTime = 5000 // milliseconds
+  timeoutTime = 5000 // Milliseconds
 
   // Store the timeout events so that we can clear them to avoid user keypresses overlapping
   // setTimeout returns an id that we can use to clear it with clearTimeout,
@@ -220,7 +220,7 @@ export class ExitThisPage extends ConfigurableComponent {
       role: 'alert'
     })
 
-    // we do these this way round, thus incurring a second paint, because changing
+    // We do these this way round, thus incurring a second paint, because changing
     // the element text after adding it means that screen readers pick up the
     // announcement more reliably.
     document.body.appendChild(this.$overlay)

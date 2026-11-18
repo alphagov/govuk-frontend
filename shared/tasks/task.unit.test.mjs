@@ -1,4 +1,4 @@
-import { logErrors, name } from './task.mjs'
+import { create, logErrors } from './task.mjs'
 
 describe('logErrors', () => {
   beforeEach(() => {
@@ -27,7 +27,7 @@ describe('logErrors', () => {
   })
 
   it('keeps the display name of the task', () => {
-    const taskFn = name('npm run lint:scss:cli', async () => {})
+    const taskFn = create('npm run lint:scss:cli', async () => {})
 
     expect(logErrors(taskFn)).toHaveProperty(
       'displayName',

@@ -20,7 +20,7 @@ import { assets, fixtures, scripts, styles, templates } from './index.mjs'
  * These tasks build output for `gulp watch` in Review app:
  * {@link file://./../../govuk-frontend-review/tasks/watch.mjs}
  *
- * @type {import('@govuk-frontend/tasks').TaskFunction}
+ * @type {TaskFunction}
  */
 export const watch = (options) => parallel(...getTasks(options))
 
@@ -29,23 +29,25 @@ export const watch = (options) => parallel(...getTasks(options))
  *
  * Allows some of the tasks to be disabled by environment variables
  *
- * @param {import('@govuk-frontend/tasks').TaskOptions} options
- * @returns {any[]} The list of tasks to run in parallel
+ * @param {TaskOptions} options
+ * @returns {GulpTaskFunction[]} The list of tasks to run in parallel
  */
 function getTasks(options) {
   const tasks = {
-    'lint:scss watch': disabledBy('GOVUK_DS_FRONTEND_NO_LINTING', 'scss', () =>
-      gulpWatch(
-        '**/*.scss',
-        { cwd: options.srcPath },
+    'lint:scss watch': disabledBy(
+      'GOVUK_DS_FRONTEND_NO_LINTING',
+      'scss',
+      () => {
+        const stylesheetsGlob = slash(join(options.workspace, '**/*.scss'))
 
-        // Run Stylelint checks, logging errors so they do not end the watch
-        task.logErrors(
-          npm.script('lint:scss:cli', [
-            slash(join(options.workspace, '**/*.scss'))
-          ])
+        gulpWatch(
+          '**/*.scss',
+          { cwd: options.srcPath },
+
+          // Run Stylelint checks, logging errors so they do not end the watch
+          task.logErrors(npm.script('lint:scss:cli', [stylesheetsGlob]))
         )
-      )
+      }
     ),
     'compile:scss watch': () =>
       gulpWatch(
@@ -55,25 +57,22 @@ function getTasks(options) {
         // Run Sass compile
         styles(options)
       ),
-    'lint:js watch': disabledBy('GOVUK_DS_FRONTEND_NO_LINTING', 'js', () =>
-      gulpWatch(
+    'lint:js watch': disabledBy('GOVUK_DS_FRONTEND_NO_LINTING', 'js', () => {
+      const scriptsGlob = slash(join(options.workspace, '**/*.{cjs,js,mjs}'))
+
+      // Log linting errors so they do not end the watch
+      const typesTask = task.logErrors(
+        npm.script('build:types', ['--incremental', '--pretty'], options)
+      )
+      const lintTask = task.logErrors(npm.script('lint:js:cli', [scriptsGlob]))
+
+      return gulpWatch(
         '**/*.{cjs,js,mjs}',
         { cwd: options.srcPath, ignored: ['**/*.test.*'] },
-        parallel(
-          // Run TypeScript compiler, logging errors so they do not end the watch
-          task.logErrors(
-            npm.script('build:types', ['--incremental', '--pretty'], options)
-          ),
-
-          // Run ESLint checks, logging errors so they do not end the watch
-          task.logErrors(
-            npm.script('lint:js:cli', [
-              slash(join(options.workspace, '**/*.{cjs,js,mjs}'))
-            ])
-          )
-        )
+        // Run TypeScript compiler and ESLint checks
+        parallel(typesTask, lintTask)
       )
-    ),
+    }),
     'compile:js watch': () =>
       gulpWatch(
         '**/*.{cjs,js,mjs}',
@@ -109,8 +108,8 @@ function getTasks(options) {
   }
 
   return Object.entries(tasks)
-    .filter(([taskName, fn]) => !!fn)
-    .map(([taskName, fn]) => task.name(taskName, fn))
+    .filter(([taskName, fn]) => fn)
+    .map(([taskName, fn]) => task.create(taskName, fn))
 }
 
 function disabledBy(envVariableName, value, fn) {
@@ -124,3 +123,8 @@ function disabledBy(envVariableName, value, fn) {
 
   return fn
 }
+
+/**
+ * @import { TaskFunction as GulpTaskFunction} from 'gulp'
+ * @import { TaskOptions, TaskFunction} from '@govuk-frontend/tasks'
+ */

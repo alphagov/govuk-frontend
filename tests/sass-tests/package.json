@@ -3,7 +3,7 @@
   "name": "@govuk-frontend/sass-tests",
   "description": "GOV.UK Frontend Sass tests",
   "engines": {
-    "node": "^24.22.1",
+    "node": "^24.22.3",
     "npm": "^11.6.1 <11.6.3 || ^11.6.4"
   },
   "license": "MIT",
@@ -11,7 +11,7 @@
     "@govuk-frontend/config": "*",
     "@govuk-frontend/lib": "*",
     "govuk-frontend": "*",
-    "sass-embedded": "^1.106.1",
+    "sass-embedded": "^1.107.1",
     "stylelint": "^16.26.1"
   }
 }

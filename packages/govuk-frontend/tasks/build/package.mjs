@@ -10,8 +10,8 @@ import { assets, fixtures, scripts, styles, templates } from '../index.mjs'
  *
  * @type {import('@govuk-frontend/tasks').TaskFunction}
  */
-export default (options) =>
-  series(
+export default function buildPackage(options) {
+  return series(
     npm.script('clean', [], { basePath: paths.stats }),
     npm.script('clean:package', [], options),
 
@@ -22,10 +22,11 @@ export default (options) =>
     templates(options),
 
     // Copy GOV.UK Prototype Kit JavaScript
-    task.name("copy:files 'govuk-prototype-kit'", () =>
+    task.create("copy:files 'govuk-prototype-kit'", () =>
       src('govuk-prototype-kit/**/*.js', {
         base: options.srcPath,
         cwd: options.srcPath
       }).pipe(dest(options.destPath))
     )
   )
+}

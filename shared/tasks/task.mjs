@@ -8,7 +8,7 @@
  * @param {TaskFunction} taskFn - Task function to wrap
  * @returns {TaskFunction} Script run
  */
-export function name(displayName, taskFn) {
+export function create(displayName, taskFn) {
   taskFn.displayName = displayName
   return taskFn
 }
@@ -22,7 +22,7 @@ export function name(displayName, taskFn) {
  * @returns {() => Promise<void>} Task function that logs errors
  */
 export function logErrors(taskFn) {
-  return name(taskFn.displayName ?? taskFn.name, async () => {
+  return create(taskFn.displayName ?? taskFn.name, async () => {
     try {
       await taskFn()
     } catch (error) {

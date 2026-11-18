@@ -88,7 +88,7 @@ describe('Task List', () => {
     let $item
     let $itemLink
 
-    beforeAll(function () {
+    beforeAll(() => {
       document.body.innerHTML = render('task-list', examples.default)
       $item = document.querySelector('.govuk-task-list__item')
       $itemLink = document.querySelector('a.govuk-task-list__link')
@@ -225,7 +225,7 @@ describe('Task List', () => {
   describe('when a task has a hint', () => {
     let $component
 
-    beforeAll(function () {
+    beforeAll(() => {
       document.body.innerHTML = render(
         'task-list',
         examples['with hint text and additional states']
@@ -258,7 +258,7 @@ describe('Task List', () => {
   describe('when a custom idPrefix is used', () => {
     let $component
 
-    beforeAll(function () {
+    beforeAll(() => {
       document.body.innerHTML = render(
         'task-list',
         examples['custom id prefix']

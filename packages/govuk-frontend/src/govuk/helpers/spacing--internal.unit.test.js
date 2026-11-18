@@ -1,3 +1,4 @@
+/* eslint-disable unicorn/filename-case -- Need to match the Sass filename */
 const { compileSassString } = require('@govuk-frontend/helpers/tests')
 const { outdent } = require('outdent')
 

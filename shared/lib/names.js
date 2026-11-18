@@ -13,7 +13,7 @@ function kebabCaseToPascalCase(value) {
     value
       .toLowerCase()
       .split('-')
-      // capitalize each 'word'
+      // Capitalize each 'word'
       .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
       .join('')
   )

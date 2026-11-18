@@ -1,7 +1,8 @@
-import { packageResolveToPath } from '@govuk-frontend/lib/names'
 import { replacePathSepForRegex } from 'jest-regex-util'
 
 import jestPuppeteerConfig from './jest-puppeteer.config.js'
+
+import { packageResolveToPath } from '@govuk-frontend/lib/names'
 
 // Detect when browser has been launched headless
 const { headless = 'new' } = jestPuppeteerConfig.launch

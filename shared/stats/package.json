@@ -4,7 +4,7 @@
   "description": "GOV.UK Frontend build stats",
   "main": "src/index.mjs",
   "engines": {
-    "node": "^24.22.1",
+    "node": "^24.22.3",
     "npm": "^11.6.1 <11.6.3 || ^11.6.4"
   },
   "license": "MIT",
@@ -22,7 +22,7 @@
     "@rollup/plugin-node-resolve": "^16.0.3",
     "@rollup/plugin-terser": "^1.0.2",
     "govuk-frontend": "*",
-    "rollup": "^4.65.0",
+    "rollup": "^4.67.4",
     "rollup-plugin-visualizer": "^7.1.1"
   }
 }

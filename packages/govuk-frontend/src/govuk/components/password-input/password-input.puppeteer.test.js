@@ -34,10 +34,11 @@ describe('/components/password-input', () => {
       it('renders the toggle button hidden', async () => {
         await render(page, 'password-input', examples.default)
 
-        const buttonHiddenAttribute = await page.$eval(buttonSelector, (el) =>
-          el.hasAttribute('hidden')
+        const hasButtonHiddenAttribute = await page.$eval(
+          buttonSelector,
+          (el) => el.hasAttribute('hidden')
         )
-        expect(buttonHiddenAttribute).toBeTruthy()
+        expect(hasButtonHiddenAttribute).toBeTruthy()
       })
     })
 
@@ -71,11 +72,12 @@ describe('/components/password-input', () => {
         })
 
         it('shows the toggle button', async () => {
-          const buttonHiddenAttribute = await page.$eval(buttonSelector, (el) =>
-            el.hasAttribute('hidden')
+          const hasButtonHiddenAttribute = await page.$eval(
+            buttonSelector,
+            (el) => el.hasAttribute('hidden')
           )
 
-          expect(buttonHiddenAttribute).toBeFalsy()
+          expect(hasButtonHiddenAttribute).toBeFalsy()
         })
       })
 

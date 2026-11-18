@@ -48,7 +48,7 @@ jobs:
         run: |
           ! grep "getFragmentFromUrl" dist/${{matrix.bundler}}/single-component.js -q
 
-      - name: Check presence of modules in `initAll.js`
+      - name: Check presence of modules in `init-all.js`
         working-directory: ./tests/bundler-integrations
         run: |
-          grep "Accordion" dist/${{matrix.bundler}}/initAll.js -q
+          grep "Accordion" dist/${{matrix.bundler}}/init-all.js -q

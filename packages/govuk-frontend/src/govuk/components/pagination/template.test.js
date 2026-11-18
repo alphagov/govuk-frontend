@@ -60,7 +60,7 @@ describe('Pagination', () => {
 
       expect($firstEllipsis).toBeTruthy()
       // Test for the unicode character of &ctdot;
-      expect($firstEllipsis.text().trim()).toBe('\u22ef')
+      expect($firstEllipsis.text().trim()).toBe('\u22EF')
     })
 
     it('does not output empty list items', () => {

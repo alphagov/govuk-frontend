@@ -2,6 +2,11 @@
 
 /// @access private
 @mixin styles {
+  // Devices like mobile phones have  'natural scrolling' where users can 'bounce' past the end of the screen.
+  // Make Cookie banner component's background match the template background (`<html>` element)
+  // so it appears to users that the Cookie banner is continuous.
+  $govuk-cookie-banner-background-colour: base.govuk-functional-colour(template-background);
+
   // This needs to be kept in sync with the header component's styles
   $border-bottom-width: base.govuk-spacing(2);
 
@@ -15,7 +20,7 @@
     border-bottom: $border-bottom-width solid transparent;
 
     color: base.govuk-functional-colour(surface-text);
-    background-color: base.govuk-functional-colour(surface-background);
+    background-color: $govuk-cookie-banner-background-colour;
 
     @media print {
       border-bottom-color: currentcolor;

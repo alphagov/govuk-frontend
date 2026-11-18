@@ -19,9 +19,9 @@ module.exports = {
   proxy: urls.app,
 
   // Bind to localhost only by default
-  ...(process.env.ALLOW_EXTERNAL_CONNECTIONS === 'true'
-    ? {}
-    : { listen: 'localhost' }),
+  ...(process.env.ALLOW_EXTERNAL_CONNECTIONS !== 'true' && {
+    listen: 'localhost'
+  }),
 
   // Prevent browser mirroring
   ghostMode: false,
@@ -30,7 +30,7 @@ module.exports = {
   open: false,
 
   // Disable BrowserSync UI
-  ...(process.env.ENABLE_BROWSERSYNC_UI === 'true' ? {} : { ui: false }),
+  ...(process.env.ENABLE_BROWSERSYNC_UI !== 'true' && { ui: false }),
 
   // Allow for Express.js restart
   reloadDelay: 1000,

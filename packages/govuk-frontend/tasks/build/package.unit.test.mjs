@@ -1,3 +1,5 @@
+/* eslint-disable unicorn/no-array-callback-reference -- Functions passed to Array callbacks in this file are designed for it */
+
 import { readFile } from 'fs/promises'
 import { join } from 'path'
 
@@ -74,7 +76,7 @@ describe('packages/govuk-frontend/dist/', () => {
       .flatMap(
         mapPathTo(['**/*.mjs'], ({ dir: requirePath, name }) => [
           join(requirePath, `${name}.mjs`),
-          join(requirePath, `${name}.mjs.map`) // with source map
+          join(requirePath, `${name}.mjs.map`) // With source map
         ])
       )
 
@@ -87,11 +89,11 @@ describe('packages/govuk-frontend/dist/', () => {
 
             // UMD bundles for compatibility (e.g. Rails Asset Pipeline)
             join(requirePath, `${name}.bundle.js`),
-            join(requirePath, `${name}.bundle.js.map`), // with source map
+            join(requirePath, `${name}.bundle.js.map`), // With source map
 
             // ES module bundles for browsers
             join(requirePath, `${name}.bundle.mjs`),
-            join(requirePath, `${name}.bundle.mjs.map`) // with source map
+            join(requirePath, `${name}.bundle.mjs.map`) // With source map
           ]
         )
       )
@@ -102,8 +104,8 @@ describe('packages/govuk-frontend/dist/', () => {
           join(requirePath, 'all.mjs'),
 
           // ES module bundles for browsers, minified
-          join(requirePath, 'govuk-frontend.min.js'), // avoid .mjs extension MIME issues
-          join(requirePath, 'govuk-frontend.min.js.map') // with source map
+          join(requirePath, 'govuk-frontend.min.js'), // Avoid .mjs extension MIME issues
+          join(requirePath, 'govuk-frontend.min.js.map') // With source map
         ])
       )
 
@@ -114,7 +116,7 @@ describe('packages/govuk-frontend/dist/', () => {
 
           // CSS bundle, minified
           join(requirePath, 'govuk-frontend.min.css'),
-          join(requirePath, 'govuk-frontend.min.css.map') // with source map
+          join(requirePath, 'govuk-frontend.min.css.map') // With source map
         ])
       )
 
@@ -134,7 +136,7 @@ describe('packages/govuk-frontend/dist/', () => {
           join(requirePath, 'macro-options.json')
         ])
       )
-      .sort()
+      .toSorted()
 
     // Compare output files with '.npmignore' filter
     const listingDistIgnored = listingDist.filter(
@@ -246,10 +248,16 @@ describe('packages/govuk-frontend/dist/', () => {
   describe('Components', () => {
     it('should have macro-options.json that contains JSON', () => {
       const componentTasks = componentNames.map(async (componentName) => {
-        const componentFilter = filterPath([`**/${componentName}/**`])
+        const doesIncludeComponentFolder = filterPath([
+          `**/${componentName}/**`
+        ])
 
-        const componentSource = componentsFilesSource.filter(componentFilter)
-        const componentDist = componentsFilesDist.filter(componentFilter)
+        const componentSource = componentsFilesSource.filter(
+          doesIncludeComponentFolder
+        )
+        const componentDist = componentsFilesDist.filter(
+          doesIncludeComponentFolder
+        )
 
         // File not found at source
         expect(componentSource).toEqual(
@@ -322,12 +330,18 @@ describe('packages/govuk-frontend/dist/', () => {
     it('should have component JavaScript file with correct module name', () => {
       const componentTasks = componentNamesWithJavaScript.map(
         async (componentName) => {
-          const componentFilter = filterPath([`**/${componentName}/**`])
+          const doesIncludeComponentFolder = filterPath([
+            `**/${componentName}/**`
+          ])
 
           const componentClassName = componentNameToClassName(componentName)
 
-          const componentSource = componentsFilesSource.filter(componentFilter)
-          const componentDist = componentsFilesDist.filter(componentFilter)
+          const componentSource = componentsFilesSource.filter(
+            doesIncludeComponentFolder
+          )
+          const componentDist = componentsFilesDist.filter(
+            doesIncludeComponentFolder
+          )
 
           // UMD bundle not found at source
           expect(componentSource).toEqual(
@@ -382,10 +396,16 @@ describe('packages/govuk-frontend/dist/', () => {
   describe('Fixtures', () => {
     it('should have fixtures.json that contains JSON', () => {
       const componentTasks = componentNames.map(async (componentName) => {
-        const componentFilter = filterPath([`**/${componentName}/**`])
+        const doesIncludeComponentFolder = filterPath([
+          `**/${componentName}/**`
+        ])
 
-        const componentSource = componentsFilesSource.filter(componentFilter)
-        const componentDist = componentsFilesDist.filter(componentFilter)
+        const componentSource = componentsFilesSource.filter(
+          doesIncludeComponentFolder
+        )
+        const componentDist = componentsFilesDist.filter(
+          doesIncludeComponentFolder
+        )
 
         // File not found at source
         expect(componentSource).toEqual(

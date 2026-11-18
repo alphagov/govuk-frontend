@@ -24,8 +24,8 @@ export function updateChangelog(newVersion, previousVersion) {
   const validatedPreviousVersion = validateVersionNumber(previousVersion)
 
   // Skip the entire function if the release version is internal eg: 5.1.0-internal.0
-  const newVersionIsAPrerelease = versionIsAPrerelease(validatedNewVersion)
-  if (newVersionIsAPrerelease) {
+  const isNewVersionAPrerelease = isVersionAPrerelease(validatedNewVersion)
+  if (isNewVersionAPrerelease) {
     const identifier = getPrereleaseIdentifier(validatedNewVersion)
 
     if (identifier === 'internal') {
@@ -46,7 +46,7 @@ export function updateChangelog(newVersion, previousVersion) {
   const newVersionTitle = `## v${validatedNewVersion} (${capitalise(convertIncTypeWord(versionDiff, validatedNewVersion))})`
 
   const newLines = [newVersionTitle, ``]
-  if (newVersionIsAPrerelease) {
+  if (isNewVersionAPrerelease) {
     newLines.push(
       `> [!WARNING]`,
       `> Do not use in production.`,
@@ -84,7 +84,7 @@ export function generateReleaseNotes(newVersion, options) {
   // Get the identifier from the version if there is one as we'll use this to
   // change what we pass to getChangelogLineIndexes if the version has an
   // 'internal' tag
-  const identifier = versionIsAPrerelease(newVersion)
+  const identifier = isVersionAPrerelease(newVersion)
     ? getPrereleaseIdentifier(newVersion)
     : undefined
   const changelogLines = getChangelogLines()
@@ -218,7 +218,7 @@ function findIndexOfFirstMatchingLine(changelogLines, regExp, offset = 0) {
  * @param {string} version
  * @returns {boolean} - If the passed version is a pre-release or not
  */
-function versionIsAPrerelease(version) {
+function isVersionAPrerelease(version) {
   return /^\d+\.\d+\.\d+-\D+\.\d+$/i.test(version)
 }
 
@@ -229,7 +229,7 @@ function versionIsAPrerelease(version) {
  * @returns {string} - the identifier of the pre-release
  */
 function getPrereleaseIdentifier(version) {
-  if (!versionIsAPrerelease(version)) {
+  if (!isVersionAPrerelease(version)) {
     return ''
   }
   // Prerelease is made up of an optional string label and a number increment

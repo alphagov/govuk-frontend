@@ -9,9 +9,10 @@ import { watch } from '../index.mjs'
  *
  * @type {import('@govuk-frontend/tasks').TaskFunction}
  */
-export default (options) =>
-  parallel(
+export default function buildDev(options) {
+  return parallel(
     npm.script('serve', [], options), // Express.js server using Nodemon
     npm.script('proxy', [], options), // Auto reloading proxy using Browsersync
     watch(options)
   )
+}

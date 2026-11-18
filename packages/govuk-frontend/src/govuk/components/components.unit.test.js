@@ -28,7 +28,9 @@ describe('Components', () => {
         let css
 
         beforeAll(async () => {
-          css = (await compileSassString(sass)).css
+          const compilationResult = await compileSassString(sass)
+
+          css = compilationResult.css
         })
 
         it('outputs the custom properties only once', () => {
@@ -74,7 +76,7 @@ describe('Components', () => {
           })
 
           // Output stylelint warnings to make debugging easier
-          if (linter.results[0].warnings.length) {
+          if (linter.results[0].warnings.length > 0) {
             console.log(
               'Warnings were present when testing all components for unknown custom properties:'
             )
@@ -106,14 +108,14 @@ describe('Components', () => {
           let css
 
           beforeAll(async () => {
-            css = (
-              await compileSassString(`
+            const compilationResult = await compileSassString(`
               ${sass}
               :root {
                 --value: #{govuk-functional-colour(brand)}
               }
             `)
-            ).css
+
+            css = compilationResult.css
           })
 
           it("includes the component's CSS", () => {
@@ -127,7 +129,7 @@ describe('Components', () => {
             })
 
             // Output stylelint warnings to make debugging easier
-            if (linter.results[0].warnings.length) {
+            if (linter.results[0].warnings.length > 0) {
               console.log(
                 `Warnings were present when testing ${sassPath} for unknown custom properties:`
               )
@@ -190,7 +192,7 @@ describe('Components', () => {
           })
 
           // Output stylelint warnings to make debugging easier
-          if (linter.results[0].warnings.length) {
+          if (linter.results[0].warnings.length > 0) {
             console.log(
               `Warnings were present when testing ${sassPath} for unknown custom properties:`
             )
@@ -281,7 +283,9 @@ describe('Components', () => {
         let css
 
         beforeAll(async () => {
-          css = (await compileSassString(sass)).css
+          const compilationResult = await compileSassString(sass)
+
+          css = compilationResult.css
         })
 
         it.each(buttonColours)(

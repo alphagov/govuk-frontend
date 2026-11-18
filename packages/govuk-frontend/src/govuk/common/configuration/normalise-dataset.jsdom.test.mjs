@@ -1,7 +1,4 @@
-import {
-  ConfigurableComponent,
-  normaliseDataset
-} from '../../common/configuration.mjs'
+import { ConfigurableComponent, normaliseDataset } from '../configuration.mjs'
 
 describe('normaliseDataset', () => {
   it('normalises the entire dataset', () => {

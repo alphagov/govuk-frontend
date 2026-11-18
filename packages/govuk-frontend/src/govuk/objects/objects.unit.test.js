@@ -24,7 +24,9 @@ describe('The objects layer', () => {
     let css
 
     beforeAll(async () => {
-      css = (await compileSassString(sass)).css
+      const compilationResult = await compileSassString(sass)
+
+      css = compilationResult.css
     })
 
     it('outputs the custom properties only once', () => {
@@ -40,7 +42,7 @@ describe('The objects layer', () => {
       })
 
       // Output stylelint warnings to make debugging easier
-      if (linter.results[0].warnings.length) {
+      if (linter.results[0].warnings.length > 0) {
         console.log(
           'Warnings were present when testing the objects layer for unknown custom properties:'
         )

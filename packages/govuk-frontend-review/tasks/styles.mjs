@@ -10,7 +10,7 @@ import { series } from 'gulp'
  */
 export const compile = (options) =>
   series(
-    task.name('compile:scss', () =>
+    task.create('compile:scss', () =>
       styles.compile('**/[!_]*.scss', {
         ...options,
 

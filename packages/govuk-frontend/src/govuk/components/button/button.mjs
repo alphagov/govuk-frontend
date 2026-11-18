@@ -51,7 +51,7 @@ export class Button extends ConfigurableComponent {
       $target instanceof HTMLElement &&
       $target.getAttribute('role') === 'button'
     ) {
-      event.preventDefault() // prevent the page from scrolling
+      event.preventDefault() // Prevent the page from scrolling
       $target.click()
     }
   }

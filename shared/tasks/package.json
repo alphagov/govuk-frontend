@@ -4,7 +4,7 @@
   "description": "GOV.UK Frontend shared tasks",
   "main": "index.mjs",
   "engines": {
-    "node": "^24.22.1",
+    "node": "^24.22.3",
     "npm": "^11.6.1 <11.6.3 || ^11.6.4"
   },
   "license": "MIT",
@@ -21,8 +21,8 @@
     "postcss": "^8.5.23",
     "postcss-load-config": "^6.0.1",
     "puppeteer": "^24.43.1",
-    "rollup": "^4.65.0",
-    "sass-embedded": "^1.106.1",
+    "rollup": "^4.67.4",
+    "sass-embedded": "^1.107.1",
     "slug": "^9.1.0"
   }
 }

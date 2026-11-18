@@ -436,7 +436,7 @@ export class CharacterCount extends ConfigurableComponent {
    * @returns {string} Status message
    */
   formatCountMessage(remainingNumber, countType) {
-    countType = countType ?? this.config.countType
+    countType ??= this.config.countType
 
     let translationKeyPrefix = 'characters'
     let translationKeySuffix = remainingNumber < 0 ? 'OverLimit' : 'UnderLimit'

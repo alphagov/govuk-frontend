@@ -12,7 +12,7 @@
     }
   },
   "engines": {
-    "node": "^24.22.1",
+    "node": "^24.22.3",
     "npm": "^11.6.1 <11.6.3 || ^11.6.4"
   },
   "license": "MIT",
@@ -31,7 +31,7 @@
     "mime-types": "^3.0.2",
     "outdent": "^0.8.0",
     "puppeteer": "^24.43.1",
-    "sass-embedded": "^1.106.1",
+    "sass-embedded": "^1.107.1",
     "slug": "^9.1.0"
   },
   "peerDependencies": {

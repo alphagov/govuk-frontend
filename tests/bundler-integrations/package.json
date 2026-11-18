@@ -2,18 +2,18 @@
   "name": "@govuk-frontend/bundler-integrations",
   "description": "Boilerplate to verify that GOV.UK Frontend works OK with main bundlers",
   "engines": {
-    "node": "^24.22.1",
+    "node": "^24.22.3",
     "npm": "^11.6.1 <11.6.3 || ^11.6.4"
   },
   "private": true,
   "scripts": {
-    "rollup": "npm run rollup:single-component && npm run rollup:initAll && npm run rollup:individual-import",
+    "rollup": "npm run rollup:single-component && npm run rollup:init-all && npm run rollup:individual-import",
     "rollup:individual-import": "npm run rollup:cli -- -o dist/rollup/individual-import.js ./src/individual-import.mjs",
     "rollup:single-component": "npm run rollup:cli -- -o dist/rollup/single-component.js ./src/single-component.mjs",
-    "rollup:initAll": "npm run rollup:cli -- -o dist/rollup/initAll.js ./src/initAll.mjs",
+    "rollup:init-all": "npm run rollup:cli -- -o dist/rollup/init-all.js ./src/init-all.mjs",
     "rollup:cli": "rollup -c rollup.config.mjs",
     "webpack": "webpack --mode production -o dist/webpack",
-    "vite": "cross-env ENTRY_NAME=single-component vite build && cross-env ENTRY_NAME=initAll vite build",
+    "vite": "cross-env ENTRY_NAME=single-component vite build && cross-env ENTRY_NAME=init-all vite build",
     "clean": "del-cli dist",
     "build:all": "concurrently \"npm run rollup\" \"npm run webpack\" \"npm run vite\" --names \"rollup,webpack,vite\" --prefix-colors \"red.dim,blue.dim,yellow.dim\""
   },
@@ -23,7 +23,7 @@
     "cross-env": "^10.1.0",
     "del-cli": "^8.0.1",
     "govuk-frontend": "*",
-    "rollup": "^4.65.0",
+    "rollup": "^4.67.4",
     "terser-webpack-plugin": "^5.3.16",
     "vite": "^8.3.5",
     "webpack": "^5.112.2"

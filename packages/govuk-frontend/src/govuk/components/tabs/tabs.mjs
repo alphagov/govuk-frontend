@@ -45,7 +45,7 @@ export class Tabs extends Component {
     super($root)
 
     const $tabs = this.$root.querySelectorAll('a.govuk-tabs__tab')
-    if (!$tabs.length) {
+    if ($tabs.length === 0) {
       throw new ElementError({
         component: Tabs,
         identifier: 'Links (`<a class="govuk-tabs__tab">`)'
@@ -71,7 +71,7 @@ export class Tabs extends Component {
       })
     }
 
-    if (!$tabListItems.length) {
+    if ($tabListItems.length === 0) {
       throw new ElementError({
         component: Tabs,
         identifier: 'List items (`<li class="govuk-tabs__list-item">`)'
@@ -286,14 +286,14 @@ export class Tabs extends Component {
    * @param {HTMLAnchorElement} $tab - Tab link
    */
   unsetAttributes($tab) {
-    // unset tab attributes
+    // Unset tab attributes
     $tab.removeAttribute('id')
     $tab.removeAttribute('role')
     $tab.removeAttribute('aria-controls')
     $tab.removeAttribute('aria-selected')
     $tab.removeAttribute('tabindex')
 
-    // unset panel attributes
+    // Unset panel attributes
     const $panel = this.getPanel($tab)
     if (!$panel) {
       return

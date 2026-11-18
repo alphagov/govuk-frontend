@@ -8,16 +8,16 @@
     "./*": "./*.js"
   },
   "engines": {
-    "node": "^24.22.1",
+    "node": "^24.22.3",
     "npm": "^11.6.1 <11.6.3 || ^11.6.4"
   },
   "license": "MIT",
   "dependencies": {
     "@govuk-frontend/config": "*",
     "filesize": "^11.0.29",
-    "glob": "^14.0.2",
+    "glob": "^14.0.3",
     "js-yaml": "^5.5.0",
-    "minimatch": "^11.0.1",
+    "minimatch": "^11.0.4",
     "nunjucks": "^3.2.4",
     "outdent": "^0.8.0"
   }

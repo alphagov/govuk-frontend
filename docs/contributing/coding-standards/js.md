@@ -99,7 +99,7 @@ class Example {
 
 // Bad
 Example.prototype = {
-  doSomething: function () {
+  doSomething () {
     // Code goes here
   }
 }

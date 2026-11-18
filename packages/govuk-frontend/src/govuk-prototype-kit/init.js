@@ -1,4 +1,3 @@
-// @ts-nocheck
 import * as GOVUKFrontend from '../govuk/govuk-frontend.min.js'
 
 // Maintain window global for compatibility

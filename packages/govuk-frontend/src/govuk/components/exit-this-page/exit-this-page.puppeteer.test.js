@@ -1,5 +1,9 @@
 /* eslint-disable no-new */
 
+/* eslint-disable-next-line no-redeclare --
+  ESLint has all browser globals for this file,
+  but they're effectively only available inside functions ran on the page
+  so `setTimeout` doesn't redeclare anything  */
 const { setTimeout } = require('timers/promises')
 
 const { goToExample, render } = require('@govuk-frontend/helpers/puppeteer')

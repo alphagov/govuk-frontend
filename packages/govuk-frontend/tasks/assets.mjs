@@ -8,7 +8,7 @@ import { dest, series, src } from 'gulp'
  */
 export const assets = (options) =>
   series(
-    task.name('copy:assets', () =>
+    task.create('copy:assets', () =>
       src('govuk/assets/**/*', {
         base: options.srcPath,
         cwd: options.srcPath,
