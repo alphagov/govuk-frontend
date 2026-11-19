@@ -24,11 +24,14 @@ We made these changes in the following pull requests:
 - [#7565: Update File upload component to use functional colours where possible](https://github.com/alphagov/govuk-frontend/pull/7565)
 - [#7618: Make sure Cookie banner and GOV.UK footer use template-background](https://github.com/alphagov/govuk-frontend/pull/7618)
 
-We've have also made fixes to GOV.UK Frontend in the following pull requests:
+#### Other fixes
+
+We've made fixes to GOV.UK Frontend in the following pull requests:
 
 - [#7584: Fix GOV.UK Logo Dot from appearing low contrast on browsers that dont support CSS Custom Properties](https://github.com/alphagov/govuk-frontend/pull/7584)
 - [#7574: Fix Accordion chevron background not inheriting focus-text colour when focused](https://github.com/alphagov/govuk-frontend/pull/7574)
 - [#7503: Remove `aria-expanded` from Radios which conditionally reveal (show and hide) content](https://github.com/alphagov/govuk-frontend/pull/7503)
+- [#7665: Fix logo dot changing colour when a parent of the logo link is focused](https://github.com/alphagov/govuk-frontend/pull/7665) – thanks to @peter-mal for reporting this issue
 
 ## v6.6.0 (Feature release)
 
