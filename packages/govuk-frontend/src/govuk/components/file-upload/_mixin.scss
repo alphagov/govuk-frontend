@@ -25,7 +25,7 @@
   // Status area, displays the current status of what file has been selected.
   $status-background-colour: base.govuk-functional-colour(brand);
   $status-text-colour: base.govuk-functional-colour(inverse-text);
-  $empty-status-background-colour: base.govuk-colour("blue", $variant: "tint-80");
+  $empty-status-background-colour: base.govuk-colour("black", $variant: "tint-95");
   $empty-status-text-colour: base.govuk-functional-colour(text);
 
   .govuk-file-upload {
@@ -110,13 +110,13 @@
     display: block;
     margin-bottom: base.govuk-spacing(2);
     padding: base.govuk-spacing(3) base.govuk-spacing(2);
-    padding-left: 0;
+    color: $empty-status-text-colour;
+    background-color: $empty-status-background-colour;
     text-align: left;
     @include base.govuk-text-break-word;
   }
 
   .govuk-file-upload-button:not(.govuk-file-upload-button--empty) .govuk-file-upload-button__status {
-    padding: base.govuk-spacing(3) base.govuk-spacing(2);
     color: $status-text-colour;
     background-color: $status-background-colour;
   }
