@@ -78,6 +78,10 @@ params:
         type: object
         required: false
         description: The HTML attributes (for example, data attributes) you want to add to the anchor.
+  - name: ellipsisText
+    type: string
+    required: false
+    description: The visually hidden text that explains each ellipsis. Defaults to `"Pages not shown"`.
   - name: landmarkLabel
     type: string
     required: false
@@ -147,6 +151,16 @@ examples:
         - ellipsis: true
         - number: 40
           href: '/page/40'
+  - name: with custom ellipsis text
+    hidden: true
+    options:
+      ellipsisText: Pages omitted
+      items:
+        - number: 3
+          href: '/page/3'
+        - ellipsis: true
+        - number: 17
+          href: '/page/17'
   - name: first page
     options:
       next:
