@@ -40,8 +40,8 @@ function getTasks(options) {
           '**/*.scss',
           { cwd: options.srcPath },
 
-          // Run Stylelint checks
-          npm.script('lint:scss:cli', [stylesheetsGlob])
+          // Run Stylelint checks, logging errors so they do not end the watch
+          task.logErrors(npm.script('lint:scss:cli', [stylesheetsGlob]))
         )
       }
     ),
@@ -63,16 +63,17 @@ function getTasks(options) {
     'lint:js watch': disabledBy('GOVUK_DS_FRONTEND_NO_LINTING', 'js', () => {
       const scriptsGlob = slash(join(options.workspace, '**/*.{cjs,js,mjs}'))
 
+      // Log linting errors so they do not end the watch
+      const typesTask = task.logErrors(
+        npm.script('build:types', ['--incremental', '--pretty'], options)
+      )
+      const lintTask = task.logErrors(npm.script('lint:js:cli', [scriptsGlob]))
+
       return gulpWatch(
         '**/*.{cjs,js,mjs}',
         { cwd: options.srcPath, ignored: ['**/*.test.*'] },
-        parallel(
-          // Run TypeScript compiler
-          npm.script('build:types', ['--incremental', '--pretty'], options),
-
-          // Run ESLint checks
-          npm.script('lint:js:cli', [scriptsGlob])
-        )
+        // Run TypeScript compiler and ESLint checks
+        parallel(typesTask, lintTask)
       )
     }),
     'compile:js watch': () =>
