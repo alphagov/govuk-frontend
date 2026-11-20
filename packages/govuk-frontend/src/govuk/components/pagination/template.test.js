@@ -52,15 +52,17 @@ describe('Pagination', () => {
       expect($currentNumberLink.attr('aria-current')).toBe('page')
     })
 
-    it('marks up pagination items as ellipses when specified', () => {
+    it('explains each ellipsis to screen readers and keeps the dots visible', () => {
       const $ = render('pagination', examples['with many pages'])
-      const $firstEllipsis = $(
-        '.govuk-pagination__item:nth-child(2).govuk-pagination__item--ellipsis'
-      )
+      const $ellipses = $('.govuk-pagination__item--ellipsis')
 
-      expect($firstEllipsis).toBeTruthy()
-      // Test for the unicode character of &ctdot;
-      expect($firstEllipsis.text().trim()).toBe('\u22EF')
+      expect($ellipses).toHaveLength(2)
+      $ellipses.each((_, item) => {
+        expect($(item).find('[aria-hidden="true"]').text()).toBe('\u22EF')
+        expect($(item).find('.govuk-visually-hidden').text()).toBe(
+          'Pages not shown'
+        )
+      })
     })
 
     it('does not output empty list items', () => {
@@ -72,6 +74,15 @@ describe('Pagination', () => {
   })
 
   describe('with custom text, labels and landmarks', () => {
+    it('renders custom text for an ellipsis', () => {
+      const $ = render('pagination', examples['with custom ellipsis text'])
+      const $ellipsis = $('.govuk-pagination__item--ellipsis')
+
+      expect($ellipsis.find('.govuk-visually-hidden').text()).toBe(
+        'Pages omitted'
+      )
+    })
+
     it('renders a custom navigation landmark', () => {
       const $ = render(
         'pagination',

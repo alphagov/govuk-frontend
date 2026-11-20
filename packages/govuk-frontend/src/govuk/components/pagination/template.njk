@@ -36,10 +36,11 @@
   </div>
 {% endmacro -%}
 
-{%- macro _pageItem(item) -%}
+{%- macro _pageItem(item, ellipsisText) -%}
   <li class="govuk-pagination__item {%- if item.current %} govuk-pagination__item--current{% endif %} {%- if item.ellipsis %} govuk-pagination__item--ellipsis{% endif %}">
   {% if item.ellipsis %}
-    &ctdot;
+    <span aria-hidden="true">&ctdot;</span>
+    <span class="govuk-visually-hidden">{{ ellipsisText | default("Pages not shown", true) }}</span>
   {% else %}
     <a class="govuk-link govuk-pagination__link" href="{{ item.href }}" aria-label="{{ item.visuallyHiddenText | default("Page " + item.number) }}"
       {%- if item.current %} aria-current="page"{% endif %}
@@ -69,7 +70,7 @@
   <ul class="govuk-pagination__list">
   {% for item in params.items %}
     {% if item is not null and (item | length) > 0 %}
-      {{ _pageItem(item) | indent(2) }}
+      {{ _pageItem(item, params.ellipsisText) | indent(2) }}
     {% endif %}
   {% endfor %}
   </ul>
