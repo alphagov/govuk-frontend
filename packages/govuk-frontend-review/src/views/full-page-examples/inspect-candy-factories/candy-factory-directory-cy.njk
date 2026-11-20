@@ -1,0 +1,136 @@
+{% extends "./mock-service.njk" %}
+
+{% from "govuk/components/generic-header/macro.njk" import govukGenericHeader %}
+{% from "govuk/components/language-navigation/macro.njk" import govukLanguageNavigation %}
+{% from "govuk/components/tabs/macro.njk" import govukTabs %}
+
+{% set themeColor = "#0b0c0c" %}
+{% set pageTitle = "Wonka Industries" %}
+{% set pageType = "website" %}
+{% set htmlLang = "cy" %}
+
+{% block pageTitle %}{{ pageTitle }} - Cyfeiriadur ffatri losin{% endblock %}
+
+{% block bodyStart %}{% endblock %}
+
+{% block head %}
+  <link rel="stylesheet" href="/stylesheets/app-unbranded.min.css">
+{% endblock %}
+
+{% block govukHeader %}
+  {{ govukGenericHeader({
+    url: mockServiceSlug + "/candy-factory-directory",
+    logoText: "Cyfeiriadur ffatri losin"
+  }) }}
+{% endblock %}
+
+{% block govukServiceNavigation %}
+  {%- set langNavHtml %}
+    {{ govukLanguageNavigation({
+      ariaLabel: "Iaith",
+      attributes: {
+        lang: "cy"
+      },
+      items: [
+        {
+          text: "English",
+          lang: "en",
+          href: mockServiceSlug + "/candy-factory-directory",
+          languageDescriptionText: "Change the language to English"
+        },
+        {
+          text: "Cymraeg",
+          lang: "cy",
+          current: true
+        }
+      ]
+    }) }}
+  {% endset -%}
+
+  {{ govukServiceNavigation({
+    navigation: [
+      {
+        href: fakeServicePath,
+        text: "Cyfeiriadur",
+        active: true
+      },
+      {
+        href: fakeServicePath,
+        text: "Chwilio"
+      },
+      {
+        href: fakeServicePath,
+        text: "Amdanom ni"
+      }
+    ],
+    ariaLabel: "Gwybodaeth am y gwasanaeth",
+    menuButtonText: "Dewislen",
+    slots: {
+      end: {
+        html: langNavHtml,
+        align: 'inline'
+      }
+    }
+  }) }}
+{% endblock %}
+
+{% block pageContent %}
+  <h1 class="govuk-heading-xl">{{pageTitle}}</h1>
+
+  {{ govukTabs({
+    items: [
+      {
+        label: "Ffeithiau",
+        id: "facts",
+        panel: {
+          text: "Crëwyd Wonka Industries ym 1964 gan Willard Wilbur “Willy” Wonka. Ei gynhyrchion mwyaf poblogaidd yw losin fel y Wonka Bar, y Everlasting Gobstopers, Fizzy Lifting Drinks, Hair Toffee, a Lickable Wallpaper."
+        }
+      },
+      {
+        label: "Lleoliad",
+        id: "location",
+        panel: {
+          text: "Mae'r ffatri wedi'i hamgylchynu gan ddirgelwch ac nid oes neb yn gwybod ble mae, ac eithrio ei bod yn Lloegr. Maen nhw'n trefnu ymweliadau trwy gasglu ymwelwyr o fan casglu a'u rhoi â rhwymyn dros eu llygaid."
+        }
+      },
+      {
+        label: "Cyswllt",
+        id: "contact",
+        panel: {
+          html: "Ffôn: 012 3456 7890<br />E-bost: willy@wonka.co.uk"
+        }
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block footerStart %}{% endblock %}
+
+{% block govukFooter %}
+  {{ govukFooter({
+    meta: {
+      items: [
+        {
+          href: fakeServicePath,
+          text: "Telerau ac amodau"
+        },
+        {
+          href: fakeServicePath,
+          text: "Hysbysiad preifatrwydd"
+        },
+        {
+          href: fakeServicePath,
+          text: "Cwcis"
+        },
+        {
+          href: fakeServicePath,
+          text: "Datganiad hygyrchedd"
+        }
+      ]
+    },
+    copyright: {
+      text: "© Weinyddiaeth Siwgr"
+    },
+    contentLicence: null
+  }) }}
+{% endblock %}
