@@ -6,7 +6,7 @@ const DEBOUNCE_TIMEOUT_IN_SECONDS = 1
  * JavaScript enhancements for the Button component
  *
  * @preserve
- * @augments ConfigurableComponent<ButtonConfig>
+ * @augments {ConfigurableComponent<ButtonConfig>}
  */
 export class Button extends ConfigurableComponent {
   /**
@@ -17,7 +17,7 @@ export class Button extends ConfigurableComponent {
 
   /**
    * @param {Element | null} $root - HTML element to use for button
-   * @param {ButtonConfig} [config] - Button config
+   * @param {Partial<ButtonConfig>} [config] - Button config
    */
   constructor($root, config = {}) {
     super($root, config)

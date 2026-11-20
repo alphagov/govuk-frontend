@@ -297,7 +297,7 @@ describe('createAll', () => {
   }
 
   /**
-   * @augments ConfigurableComponent<MockConfig>
+   * @augments {ConfigurableComponent<MockConfig>}
    */
   class MockConfigurableComponent extends ConfigurableComponent {
     constructor($root, config) {

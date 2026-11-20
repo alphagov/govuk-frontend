@@ -7,7 +7,7 @@ import { I18n } from '../../i18n.mjs'
  * Exit this page component
  *
  * @preserve
- * @augments ConfigurableComponent<ExitThisPageConfig>
+ * @augments {ConfigurableComponent<ExitThisPageConfig>}
  */
 export class ExitThisPage extends ConfigurableComponent {
   /** @private */
@@ -67,7 +67,7 @@ export class ExitThisPage extends ConfigurableComponent {
 
   /**
    * @param {Element | null} $root - HTML element that wraps the Exit This Page button
-   * @param {ExitThisPageConfig} [config] - Exit This Page config
+   * @param {Partial<ExitThisPageConfig>} [config] - Exit This Page config
    */
   constructor($root, config = {}) {
     super($root, config)
