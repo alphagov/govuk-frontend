@@ -80,7 +80,7 @@
     }
 
     // Override Dot colour on focus
-    :focus & {
+    .govuk-header__homepage-link:focus & {
       fill: currentcolor;
     }
   }
