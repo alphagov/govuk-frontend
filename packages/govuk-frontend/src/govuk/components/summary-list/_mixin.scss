@@ -218,8 +218,19 @@
 
   .govuk-summary-card__title {
     @include base.govuk-font($size: 19, $weight: bold);
+
+    // Flex children have an implicit min-width of `fit-content`. This causes
+    // the break-word rules below to not work as expected, because the text is
+    // never technically overflowing, so we additionally need to specify a fixed
+    // min-width value.
+    min-width: 0;
+
     margin: base.govuk-spacing(1) base.govuk-spacing(4) base.govuk-spacing(2) 0;
     color: base.govuk-functional-colour(text);
+
+    // Automatic wrapping for unbreakable text (e.g. URLs)
+    word-wrap: break-word; // Fallback for older browsers only
+    overflow-wrap: break-word;
 
     @media #{base.govuk-from-breakpoint(tablet)} {
       margin-bottom: base.govuk-spacing(1);
