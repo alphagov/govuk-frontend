@@ -73,7 +73,7 @@
 
   .govuk-panel--interruption {
     --govuk-text-colour: #{base.govuk-functional-colour(inverse-text)};
-    background: base.govuk-functional-colour(brand);
+    background: base.govuk-functional-colour(info);
     text-align: left;
 
     // Smaller title to go alongside smaller body text.
