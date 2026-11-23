@@ -88,7 +88,7 @@ examples:
             type: button
           - text: No, change my age
             href: '#'
-  - name: interruption-with-content-with-long-line-length
+  - name: interruption with content with long line length
     options:
       classes: govuk-panel--interruption
       titleText: Are you sure you want to change this?
@@ -105,7 +105,7 @@ examples:
               form: test-target-form-element
           - text: Go back to application
             href: '#'
-  - name: interruption-with-headings-content-and-lists
+  - name: interruption with headings content and lists
     options:
       classes: govuk-panel--interruption
       titleText: Your new answer affects other sections of this application
