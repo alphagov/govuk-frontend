@@ -32,6 +32,7 @@ We've made fixes to GOV.UK Frontend in the following pull requests:
 - [#7574: Fix Accordion chevron background not inheriting focus-text colour when focused](https://github.com/alphagov/govuk-frontend/pull/7574)
 - [#7503: Remove `aria-expanded` from Radios which conditionally reveal (show and hide) content](https://github.com/alphagov/govuk-frontend/pull/7503)
 - [#7665: Fix logo dot changing colour when a parent of the logo link is focused](https://github.com/alphagov/govuk-frontend/pull/7665) – thanks to @peter-mal for reporting this issue
+- [#7672: Fix long text strings not wrapping in Summary card titles](https://github.com/alphagov/govuk-frontend/pull/7672) – thanks to @DannyPayne-CH for reporting this issue
 
 ## v6.6.0 (Feature release)
 
