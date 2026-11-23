@@ -183,7 +183,7 @@ examples:
         - text: 简体中文
           lang: zh
           href: '#/zh'
-        - text: w">繁體中文（臺灣）
+        - text: 繁體中文（臺灣）
           lang: zh
           href: '#/zh'
   - name: inverse
