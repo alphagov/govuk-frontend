@@ -1,3 +1,4 @@
+@use "sass:map";
 @use "pkg:govuk-frontend/base" as *;
 
 .app-organisation-swatch {
@@ -10,11 +11,13 @@
 }
 
 @each $key, $map in $govuk-colours-organisations {
-  .app-organisation-swatch--#{$key} {
-    border-left-color: govuk-organisation-colour($key, $contrast-safe: false);
+  @if not map.has-key($map, deprecation-message) {
+    .app-organisation-swatch--#{$key} {
+      border-left-color: govuk-organisation-colour($key, $contrast-safe: false);
 
-    h2 {
-      color: govuk-organisation-colour($key);
+      h2 {
+        color: govuk-organisation-colour($key);
+      }
     }
   }
 }
