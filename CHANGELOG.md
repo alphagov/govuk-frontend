@@ -4,6 +4,19 @@ For advice on how to use these release notes, see [our guidance on staying up to
 
 ## Unreleased
 
+### Recommended changes
+
+#### Use `info` instead of `brand` for informational content that is not related to the brand
+
+We've introduced a new `info` Functional colour for informational content that is not related to the brand.
+
+When the colour relates to:
+
+- general information, use `info`
+- the branding of the page, use `brand`
+
+We made this change in [pull request #7676: Add `info` Functional colour and use them in components](https://github.com/alphagov/govuk-frontend/pull/7676).
+
 ### Fixes
 
 ### We've updated components to make more use of Functional colours
@@ -14,6 +27,8 @@ If you set your own [Functional colours](https://design-system.service.gov.uk/st
 - Cookie banner
 - File upload (enhanced)
 - GOV.UK footer
+- Notification banner
+- Panel (Interruption variant)
 - Select
 
 We made these changes in the following pull requests:
@@ -23,6 +38,7 @@ We made these changes in the following pull requests:
 - [#7510: Keep file upload button background consistent](https://github.com/alphagov/govuk-frontend/pull/7510)
 - [#7565: Update File upload component to use functional colours where possible](https://github.com/alphagov/govuk-frontend/pull/7565)
 - [#7618: Make sure Cookie banner and GOV.UK footer use template-background](https://github.com/alphagov/govuk-frontend/pull/7618)
+- [#7676: Add `info` Functional colour and use them in components](https://github.com/alphagov/govuk-frontend/pull/7676)
 
 #### Other fixes
 
