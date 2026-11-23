@@ -4,6 +4,36 @@ For advice on how to use these release notes, see [our guidance on staying up to
 
 ## Unreleased
 
+### New features
+
+#### Add a footer row to Table components
+
+You can now add a footer row to Table components to provide a summary of the table's columns, such as the total or average of numerical data.
+
+You can use the `foot` parameter of the Nunjucks macro to add data to the footer row. The `foot` parameter takes all of the same options and values as the existing `head` parameter.
+
+```njk
+{{ govukTable({
+  caption: "Cost per quarter",
+  head: [
+    { text: "Quarter" },
+    { text: "Fee", format: "numeric" }
+  ],
+  rows: [
+    [{ text: "Q1" }, { text: "£35", format: "numeric" }],
+    [{ text: "Q2" }, { text: "£45", format: "numeric" }],
+    [{ text: "Q3" }, { text: "£25", format: "numeric" }],
+    [{ text: "Q4" }, { text: "£90", format: "numeric" }],
+  ],
+  foot: [
+    { text: "Total" },
+    { text: "£195", format: "numeric" }
+  ]
+}) }}
+```
+
+We made this change in [pull request #7661: Add footer row parameter to tables](https://github.com/alphagov/govuk-frontend/pull/7661).
+
 ### Fixes
 
 ### We've updated components to make more use of Functional colours

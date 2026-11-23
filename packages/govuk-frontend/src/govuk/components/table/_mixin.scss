@@ -55,6 +55,13 @@
     text-align: left;
   }
 
+  .govuk-table__foot .govuk-table__header,
+  .govuk-table__foot .govuk-table__cell {
+    border-top: 3px solid;
+    border-bottom-width: 3px;
+    border-top-color: base.govuk-functional-colour(border);
+  }
+
   // Modifiers that make captions look more like their equivalent headings
   .govuk-table__caption--xl,
   .govuk-table__caption--l,

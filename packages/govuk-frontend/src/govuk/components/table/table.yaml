@@ -65,6 +65,39 @@ params:
         type: object
         required: false
         description: HTML attributes (for example data attributes) to add to the table cell.
+  - name: foot
+    type: array
+    required: false
+    description: Can be used to add a row of table footer cells at the bottom of the table component.
+    params:
+      - name: text
+        type: string
+        required: false
+        description: If `html` is set, this is not required. Text for table footer cells. If `html` is provided, the `text` option will be ignored.
+      - name: html
+        type: string
+        required: false
+        description: If `text` is set, this is not required. HTML for table footer cells. If `html` is provided, the `text` option will be ignored.
+      - name: format
+        type: string
+        required: false
+        description: Specify format of a cell. Currently we only use "numeric".
+      - name: classes
+        type: string
+        required: false
+        description: Classes to add to the table footer cell.
+      - name: colspan
+        type: integer
+        required: false
+        description: Specify how many columns a cell extends.
+      - name: rowspan
+        type: integer
+        required: false
+        description: Specify how many rows a cell extends.
+      - name: attributes
+        type: object
+        required: false
+        description: HTML attributes (for example data attributes) to add to the table cell.
   - name: caption
     type: string
     required: false
@@ -129,7 +162,61 @@ examples:
             format: numeric
           - text: £125
             format: numeric
-  - name: with head and caption
+  - name: with foot
+    options:
+      rows:
+        - - text: January
+          - text: £85
+            format: numeric
+          - text: £95
+            format: numeric
+        - - text: February
+          - text: £75
+            format: numeric
+          - text: £55
+            format: numeric
+        - - text: March
+          - text: £165
+            format: numeric
+          - text: £125
+            format: numeric
+      foot:
+        - text: Total
+        - text: £325
+          format: numeric
+        - text: £275
+          format: numeric
+  - name: with head and foot
+    options:
+      head:
+        - text: Month you apply
+        - text: Rate for bicycles
+          format: numeric
+        - text: Rate for vehicles
+          format: numeric
+      rows:
+        - - text: January
+          - text: £85
+            format: numeric
+          - text: £95
+            format: numeric
+        - - text: February
+          - text: £75
+            format: numeric
+          - text: £55
+            format: numeric
+        - - text: March
+          - text: £165
+            format: numeric
+          - text: £125
+            format: numeric
+      foot:
+        - text: Total
+        - text: £325
+          format: numeric
+        - text: £275
+          format: numeric
+  - name: with head, foot and caption
     screenshot: true
     options:
       caption: 'Caption 1: Months and rates'
@@ -157,6 +244,12 @@ examples:
             format: numeric
           - text: £125
             format: numeric
+      foot:
+        - text: Total
+        - text: £325
+          format: numeric
+        - text: £275
+          format: numeric
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: classes
     hidden: true
@@ -180,6 +273,8 @@ examples:
         - text: Foo <script>hacking.do(1337)</script>
       rows:
         - - text: Foo <script>hacking.do(1337)</script>
+      foot:
+        - text: Foo <script>hacking.do(1337)</script>
   - name: html
     hidden: true
     options:
@@ -187,6 +282,8 @@ examples:
         - html: Foo <span>bar</span>
       rows:
         - - html: Foo <span>bar</span>
+      foot:
+        - html: Foo <span>bar</span>
   - name: head with classes
     hidden: true
     options:
@@ -216,6 +313,35 @@ examples:
       rows:
         - - text: Jan
           - text: Feb
+  - name: foot with classes
+    hidden: true
+    options:
+      rows:
+        - - text: Jan
+          - text: Feb
+      foot:
+        - text: Foo
+          classes: my-custom-class
+  - name: foot with rowspan and colspan
+    hidden: true
+    options:
+      rows:
+        - - text: Jan
+          - text: Feb
+      foot:
+        - text: Foo
+          rowspan: 2
+          colspan: 2
+  - name: foot with attributes
+    hidden: true
+    options:
+      rows:
+        - - text: Jan
+          - text: Feb
+      foot:
+        - text: Foo
+          attributes:
+            data-fizz: buzz
   - name: with firstCellIsHeader true
     hidden: true
     options:
@@ -236,6 +362,10 @@ examples:
             format: numeric
           - text: £125
             format: numeric
+      foot:
+        - text: Foo
+        - text: Bar
+        - text: Baz
   - name: firstCellIsHeader with classes
     hidden: true
     options:
