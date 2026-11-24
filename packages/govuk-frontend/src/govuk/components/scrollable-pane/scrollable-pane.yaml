@@ -25,6 +25,17 @@ examples:
     options:
       label: HMCTS management information
       html: |
+        <style>
+          /* Demo styles to guarantee the table overflows the pane */
+          .govuk-scrollable-pane {
+            max-width: 960px;
+          }
+
+          .govuk-scrollable-pane .govuk-table__cell {
+            min-width: 128px;
+            white-space: nowrap;
+          }
+        </style>
         <table class="govuk-table">
           <caption class="govuk-table__caption">HMCTS management information, July to October 2025</caption>
           <thead class="govuk-table__head">
