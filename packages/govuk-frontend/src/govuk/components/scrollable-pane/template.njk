@@ -1,0 +1,16 @@
+{% from "../../macros/attributes.njk" import govukAttributes -%}
+
+<div class="govuk-scrollable-pane{{ (" " + params.classes) if params.classes }}"
+  {{- govukAttributes({
+    "role": "region",
+    "tabindex": "0"
+  }) if params.label or params.labelledBy }}
+  {{- govukAttributes({
+    "aria-label": params.label
+  }) if params.label }}
+  {{- govukAttributes({
+    "aria-labelledby": params.labelledBy
+  }) if params.labelledBy and not params.label }}
+  {{- govukAttributes(params.attributes) }}>
+  {{ caller() if caller else params.html | safe }}
+</div>

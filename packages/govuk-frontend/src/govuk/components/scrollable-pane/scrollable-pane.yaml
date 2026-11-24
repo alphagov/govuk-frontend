@@ -1,0 +1,169 @@
+params:
+  - name: label
+    type: string
+    required: false
+    description: Accessible name for the scrollable pane. Setting `label` or `labelledBy` makes the pane a focusable `region` landmark. If both are set, `label` is used and `labelledBy` is ignored.
+  - name: labelledBy
+    type: string
+    required: false
+    description: The `id` of an element that labels the scrollable pane. Ignored if `label` is set.
+  - name: html
+    type: string
+    required: false
+    description: HTML to use within the scrollable pane. If a `call` block is provided, the `html` option will be ignored.
+  - name: classes
+    type: string
+    required: false
+    description: Classes to add to the scrollable pane container.
+  - name: attributes
+    type: object
+    required: false
+    description: HTML attributes (for example data attributes) to add to the scrollable pane container.
+
+examples:
+  - name: default
+    options:
+      label: HMCTS management information
+      html: |
+        <table class="govuk-table">
+          <caption class="govuk-table__caption">HMCTS management information, July to October 2025</caption>
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header">Month</th>
+              <th scope="col" class="govuk-table__header">Civil claims received</th>
+              <th scope="col" class="govuk-table__header">Civil defences</th>
+              <th scope="col" class="govuk-table__header">Small claims referred to mediation</th>
+              <th scope="col" class="govuk-table__header">Small claims mediations</th>
+              <th scope="col" class="govuk-table__header">Small claims settled</th>
+              <th scope="col" class="govuk-table__header">Small claims settled at mediation (%)</th>
+              <th scope="col" class="govuk-table__header">Private family law receipts</th>
+              <th scope="col" class="govuk-table__header">Private family law disposals</th>
+              <th scope="col" class="govuk-table__header">Private family law open caseload</th>
+              <th scope="col" class="govuk-table__header">Public family law receipts</th>
+              <th scope="col" class="govuk-table__header">Public family law disposals</th>
+              <th scope="col" class="govuk-table__header">Public family law open caseload</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">July 2025</td>
+              <td class="govuk-table__cell">180,271</td>
+              <td class="govuk-table__cell">26,217</td>
+              <td class="govuk-table__cell">7,683</td>
+              <td class="govuk-table__cell">5,339</td>
+              <td class="govuk-table__cell">1,585</td>
+              <td class="govuk-table__cell">29.7</td>
+              <td class="govuk-table__cell">5,251</td>
+              <td class="govuk-table__cell">4,382</td>
+              <td class="govuk-table__cell">36,631</td>
+              <td class="govuk-table__cell">1,588</td>
+              <td class="govuk-table__cell">1,468</td>
+              <td class="govuk-table__cell">10,021</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">August 2025</td>
+              <td class="govuk-table__cell">145,848</td>
+              <td class="govuk-table__cell">24,945</td>
+              <td class="govuk-table__cell">6,580</td>
+              <td class="govuk-table__cell">4,579</td>
+              <td class="govuk-table__cell">1,433</td>
+              <td class="govuk-table__cell">31.3</td>
+              <td class="govuk-table__cell">4,612</td>
+              <td class="govuk-table__cell">3,609</td>
+              <td class="govuk-table__cell">36,922</td>
+              <td class="govuk-table__cell">1,273</td>
+              <td class="govuk-table__cell">1,186</td>
+              <td class="govuk-table__cell">10,105</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">September 2025</td>
+              <td class="govuk-table__cell">150,357</td>
+              <td class="govuk-table__cell">23,587</td>
+              <td class="govuk-table__cell">8,936</td>
+              <td class="govuk-table__cell">5,617</td>
+              <td class="govuk-table__cell">1,691</td>
+              <td class="govuk-table__cell">30.1</td>
+              <td class="govuk-table__cell">5,289</td>
+              <td class="govuk-table__cell">3,986</td>
+              <td class="govuk-table__cell">37,374</td>
+              <td class="govuk-table__cell">1,286</td>
+              <td class="govuk-table__cell">1,382</td>
+              <td class="govuk-table__cell">10,004</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">October 2025</td>
+              <td class="govuk-table__cell">162,618</td>
+              <td class="govuk-table__cell">23,366</td>
+              <td class="govuk-table__cell">10,662</td>
+              <td class="govuk-table__cell">6,201</td>
+              <td class="govuk-table__cell">1,731</td>
+              <td class="govuk-table__cell">27.9</td>
+              <td class="govuk-table__cell">5,219</td>
+              <td class="govuk-table__cell">4,118</td>
+              <td class="govuk-table__cell">37,770</td>
+              <td class="govuk-table__cell">1,500</td>
+              <td class="govuk-table__cell">1,397</td>
+              <td class="govuk-table__cell">10,064</td>
+            </tr>
+          </tbody>
+        </table>
+
+  # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
+  - name: with labelled by
+    options:
+      labelledBy: pane-heading
+      html: |
+        <h2 class="govuk-heading-m" id="pane-heading">Historic rainfall in June</h2>
+        <p class="govuk-body">Rainfall measurements by station.</p>
+  - name: with html
+    hidden: true
+    options:
+      label: Rainfall measurements
+      html: '<p>Rainfall measurements <strong>by station</strong>.</p>'
+  - name: without content
+    hidden: true
+    options:
+      label: Rainfall measurements
+  - name: with label and labelled by
+    hidden: true
+    options:
+      label: Rainfall measurements
+      labelledBy: pane-heading
+      html: |
+        <h2 id="pane-heading">Historic rainfall in June</h2>
+  - name: without label
+    hidden: true
+    options:
+      html: |
+        <p>Rainfall measurements by station.</p>
+  - name: with empty labels
+    hidden: true
+    options:
+      label: ''
+      labelledBy: ''
+      html: |
+        <p>Rainfall measurements by station.</p>
+  - name: with classes
+    hidden: true
+    options:
+      label: Rainfall measurements
+      classes: app-scrollable-pane--custom-modifier another-pane-class
+      html: |
+        <p>Rainfall measurements by station.</p>
+  - name: with attributes
+    hidden: true
+    options:
+      label: Rainfall measurements
+      attributes:
+        id: rainfall-pane
+        data-custom: custom-value
+      html: |
+        <p>Rainfall measurements by station.</p>
+  - name: with special characters
+    hidden: true
+    options:
+      label: 'Rainfall "measurements" <by station> & year'
+      attributes:
+        data-custom: 'A "quoted" value <with markup> & symbols'
+      html: |
+        <p>Rainfall measurements by station.</p>
