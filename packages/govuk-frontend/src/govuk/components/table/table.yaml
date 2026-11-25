@@ -77,27 +77,6 @@ params:
     type: boolean
     required: false
     description: If set to `true`, the first cell in each row will be a table header (`<th>`).
-  - name: pane
-    type: object
-    required: false
-    description: Can be used to wrap the table in a scrollable pane, for wide tables that would otherwise overflow their container. If any of these options are present, a scrollable pane will wrap around the table. Set `label` or `labelledBy` to make the pane a focusable `region` landmark.
-    params:
-      - name: label
-        type: string
-        required: false
-        description: Accessible name for the scrollable pane. If both `label` and `labelledBy` are set, `label` is used and `labelledBy` is ignored. If neither is set and the table has a `caption`, the caption text is used as the accessible name.
-      - name: labelledBy
-        type: string
-        required: false
-        description: The `id` of an element that labels the scrollable pane. Ignored if `label` is set.
-      - name: classes
-        type: string
-        required: false
-        description: Classes to add to the scrollable pane container.
-      - name: attributes
-        type: object
-        required: false
-        description: HTML attributes (for example data attributes) to add to the scrollable pane container.
   - name: classes
     type: string
     required: false
@@ -347,8 +326,7 @@ examples:
   - name: in a scrollable pane
     options:
       caption: HMCTS management information, July to October 2025
-      pane:
-        classes: app-scrollable-pane-demo
+      classes: app-table--overflow-demo
       head:
         - text: Month
         - text: Civil claims received
@@ -416,66 +394,3 @@ examples:
           - text: 1,500
           - text: 1,397
           - text: 10,064
-
-  # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
-  - name: pane with labelled by
-    hidden: true
-    options:
-      pane:
-        labelledBy: pane-heading
-      rows:
-        - - text: January
-          - text: £85
-  - name: pane with label and labelled by
-    hidden: true
-    options:
-      pane:
-        label: Rainfall measurements
-        labelledBy: pane-heading
-      rows:
-        - - text: January
-          - text: £85
-  - name: pane without label
-    hidden: true
-    options:
-      pane: {}
-      rows:
-        - - text: January
-          - text: £85
-  - name: pane with attributes
-    hidden: true
-    options:
-      pane:
-        label: Rainfall measurements
-        attributes:
-          id: rainfall-pane
-          data-custom: 'A "quoted" value <with markup> & symbols'
-      rows:
-        - - text: January
-          - text: £85
-  - name: pane with caption
-    hidden: true
-    options:
-      caption: Rainfall measurements
-      pane: {}
-      rows:
-        - - text: January
-          - text: £85
-  - name: pane with caption and label
-    hidden: true
-    options:
-      caption: Rainfall measurements
-      pane:
-        label: Rainfall data
-      rows:
-        - - text: January
-          - text: £85
-  - name: pane with labelled by and caption
-    hidden: true
-    options:
-      caption: Rainfall measurements
-      pane:
-        labelledBy: pane-heading
-      rows:
-        - - text: January
-          - text: £85

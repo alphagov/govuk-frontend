@@ -350,102 +350,31 @@ describe('Table', () => {
   // =========================================================
 
   describe('scrollable pane', () => {
-    it('does not wrap the table by default', () => {
+    it('wraps the table in a focusable pane', () => {
       const $ = render('table', examples.default)
 
-      expect($('.govuk-scrollable-pane')).toHaveLength(0)
-    })
-
-    it('wraps the table in a labelled, keyboard-focusable region', () => {
-      const $ = render('table', examples['in a scrollable pane'])
-
       const $pane = $('.govuk-scrollable-pane')
 
       expect($pane.children('.govuk-table')).toHaveLength(1)
-      expect($pane.attr('role')).toBe('region')
       expect($pane.attr('tabindex')).toBe('0')
-      expect($pane.attr('aria-label')).toBe(
-        'HMCTS management information, July to October 2025'
-      )
-      expect($pane.attr('aria-labelledby')).toBeUndefined()
     })
 
-    it('defaults to the caption text as its accessible name', () => {
-      const $ = render('table', examples['pane with caption'])
+    it('is not a region when the table has no caption', () => {
+      const $ = render('table', examples.default)
 
       const $pane = $('.govuk-scrollable-pane')
 
-      expect($pane.attr('role')).toBe('region')
-      expect($pane.attr('aria-label')).toBe('Rainfall measurements')
-      expect($pane.attr('aria-labelledby')).toBeUndefined()
-    })
-
-    it('uses `label` in preference to the caption', () => {
-      const $ = render('table', examples['pane with caption and label'])
-
-      const $pane = $('.govuk-scrollable-pane')
-
-      expect($pane.attr('aria-label')).toBe('Rainfall data')
-    })
-
-    it('uses `labelledBy` in preference to the caption', () => {
-      const $ = render('table', examples['pane with labelled by and caption'])
-
-      const $pane = $('.govuk-scrollable-pane')
-
-      expect($pane.attr('aria-labelledby')).toBe('pane-heading')
-      expect($pane.attr('aria-label')).toBeUndefined()
-    })
-
-    it('can have additional classes', () => {
-      const $ = render('table', examples['in a scrollable pane'])
-
-      expect(
-        $('.govuk-scrollable-pane').hasClass('app-scrollable-pane-demo')
-      ).toBeTruthy()
-    })
-
-    it('can be labelled by another element', () => {
-      const $ = render('table', examples['pane with labelled by'])
-
-      const $pane = $('.govuk-scrollable-pane')
-
-      expect($pane.attr('role')).toBe('region')
-      expect($pane.attr('tabindex')).toBe('0')
-      expect($pane.attr('aria-labelledby')).toBe('pane-heading')
-      expect($pane.attr('aria-label')).toBeUndefined()
-    })
-
-    it('uses `label` in preference to `labelledBy`', () => {
-      const $ = render('table', examples['pane with label and labelled by'])
-
-      const $pane = $('.govuk-scrollable-pane')
-
-      expect($pane.attr('aria-label')).toBe('Rainfall measurements')
-      expect($pane.attr('aria-labelledby')).toBeUndefined()
-    })
-
-    it('wraps the table without region or focus attributes when unlabelled', () => {
-      const $ = render('table', examples['pane without label'])
-
-      const $pane = $('.govuk-scrollable-pane')
-
-      expect($pane.children('.govuk-table')).toHaveLength(1)
       expect($pane.attr('role')).toBeUndefined()
-      expect($pane.attr('tabindex')).toBeUndefined()
       expect($pane.attr('aria-label')).toBeUndefined()
-      expect($pane.attr('aria-labelledby')).toBeUndefined()
     })
 
-    it('can have additional attributes with escaped values', () => {
-      const $ = render('table', examples['pane with attributes'])
+    it('is a region named after the caption when the table has one', () => {
+      const $ = render('table', examples['with head and caption'])
 
       const $pane = $('.govuk-scrollable-pane')
 
-      expect($pane.attr('id')).toBe('rainfall-pane')
-      expect($pane.attr('data-custom')).toBe(
-        'A "quoted" value <with markup> & symbols'
-      )
+      expect($pane.attr('role')).toBe('region')
+      expect($pane.attr('aria-label')).toBe('Caption 1: Months and rates')
     })
   })
 })

@@ -1,20 +1,12 @@
 {% from "../../macros/attributes.njk" import govukAttributes -%}
 
-{% if params.pane %}
-{% set paneLabel = params.pane.label if params.pane.label else (params.caption if params.caption and not params.pane.labelledBy) %}
-<div class="govuk-scrollable-pane{{ (" " + params.pane.classes) if params.pane.classes }}"
+{#- Focusable so keyboard users can scroll wide tables. When the table has a
+  caption, the pane is a region landmark named after it -#}
+<div class="govuk-scrollable-pane" tabindex="0"
   {{- govukAttributes({
     "role": "region",
-    "tabindex": "0"
-  }) if paneLabel or params.pane.labelledBy }}
-  {{- govukAttributes({
-    "aria-label": paneLabel
-  }) if paneLabel }}
-  {{- govukAttributes({
-    "aria-labelledby": params.pane.labelledBy
-  }) if params.pane.labelledBy and not paneLabel }}
-  {{- govukAttributes(params.pane.attributes) }}>
-{% endif %}
+    "aria-label": params.caption
+  }) if params.caption }}>
 <table class="govuk-table
   {%- if params.classes %} {{ params.classes }}{% endif %}"
   {{- govukAttributes(params.attributes) }}>
@@ -70,6 +62,4 @@
 {% endfor %}
   </tbody>
 </table>
-{% if params.pane %}
 </div>
-{% endif %}

@@ -21,11 +21,11 @@
 
 // Constrain the scrollable pane table example and stop its cells wrapping,
 // to guarantee the table overflows the pane
-.app-scrollable-pane-demo {
+.govuk-scrollable-pane:has(> .app-table--overflow-demo) {
   max-width: 960px;
+}
 
-  .govuk-table__cell {
-    min-width: 128px;
-    white-space: nowrap;
-  }
+.app-table--overflow-demo .govuk-table__cell {
+  min-width: 128px;
+  white-space: nowrap;
 }
