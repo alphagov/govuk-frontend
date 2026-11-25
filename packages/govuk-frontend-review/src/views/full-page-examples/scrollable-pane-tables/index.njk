@@ -1,0 +1,157 @@
+---
+title: Scrollable pane tables (temporary spike page)
+scenario: Temporary page to test scrollable tables
+---
+{% extends "layouts/full-page-example.njk" %}
+
+{% from "govuk/components/table/macro.njk" import govukTable %}
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+{% from "govuk/components/details/macro.njk" import govukDetails %}
+
+{% set pageTitle = example.title %}
+{% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
+
+{% set smallRows = [
+  [{ text: "January" }, { text: "£85", format: "numeric" }, { text: "£95", format: "numeric" }],
+  [{ text: "February" }, { text: "£75", format: "numeric" }, { text: "£55", format: "numeric" }],
+  [{ text: "March" }, { text: "£165", format: "numeric" }, { text: "£125", format: "numeric" }]
+] %}
+
+{% set smallHead = [
+  { text: "Month you apply" },
+  { text: "Rate for bicycles", format: "numeric" },
+  { text: "Rate for vehicles", format: "numeric" }
+] %}
+
+{% set wideHead = [] %}
+{% for heading in ["Month", "Civil claims received", "Civil defences", "Small claims referred to mediation", "Small claims mediations", "Small claims settled", "Small claims settled at mediation (%)", "Private family law receipts", "Private family law disposals", "Private family law open caseload", "Public family law receipts", "Public family law disposals", "Public family law open caseload"] %}
+  {% set wideHead = (wideHead.push({ text: heading }), wideHead) %}
+{% endfor %}
+
+{% set wideRows = [] %}
+{% for row in [
+  ["July 2025", "180,271", "26,217", "7,683", "5,339", "1,585", "29.7", "5,251", "4,382", "36,631", "1,588", "1,468", "10,021"],
+  ["August 2025", "145,848", "24,945", "6,580", "4,579", "1,433", "31.3", "4,612", "3,609", "36,922", "1,273", "1,186", "10,105"],
+  ["September 2025", "150,357", "23,587", "8,936", "5,617", "1,691", "30.1", "5,289", "3,986", "37,374", "1,286", "1,382", "10,004"],
+  ["October 2025", "162,618", "23,366", "10,662", "6,201", "1,731", "27.9", "5,219", "4,118", "37,770", "1,500", "1,397", "10,064"]
+] %}
+  {% set cells = [] %}
+  {% for value in row %}
+    {% set cells = (cells.push({ text: value }), cells) %}
+  {% endfor %}
+  {% set wideRows = (wideRows.push(cells), wideRows) %}
+{% endfor %}
+
+{% set referenceRows = [
+  [{ text: "hmcts_civil_claim_reference_2025_000123456_listed_for_hearing" }, { text: "Claimant Organisation Holdings Limited" }, { text: "listed-for-hearing" }],
+  [{ text: "hmcts_family_case_reference_2025_000987654_awaiting_documents" }, { text: "Respondent Partnership LLP" }, { text: "awaiting-documents" }]
+] %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <h1 class="govuk-heading-xl">Scrollable pane tables</h1>
+      <p class="govuk-body">Spike</p>
+
+      <h2 class="govuk-heading-l">1. Small table, no caption</h2>
+      {{ govukTable({
+        rows: smallRows
+      }) }}
+
+      <h2 class="govuk-heading-l">2. Small table with head and caption</h2>
+      {{ govukTable({
+        caption: "Months and rates",
+        captionClasses: "govuk-table__caption--m",
+        firstCellIsHeader: true,
+        head: smallHead,
+        rows: smallRows
+      }) }}
+
+      <h2 class="govuk-heading-l">3. Medium table</h2>
+      {% set mediumRows = [] %}
+      {% for row in wideRows %}
+        {% set mediumRows = (mediumRows.push(row.slice(0, 7)), mediumRows) %}
+      {% endfor %}
+      {{ govukTable({
+        caption: "HMCTS civil claims, July to October 2025",
+        captionClasses: "govuk-table__caption--m",
+        head: wideHead.slice(0, 7),
+        rows: mediumRows
+      }) }}
+
+      <h2 class="govuk-heading-l">4. Wide table</h2>
+      {{ govukTable({
+        caption: "HMCTS management information, July to October 2025",
+        captionClasses: "govuk-table__caption--m",
+        head: wideHead,
+        rows: wideRows
+      }) }}
+
+      <h2 class="govuk-heading-l">6. Long unbreakable strings</h2>
+      {{ govukTable({
+        caption: "Case references",
+        captionClasses: "govuk-table__caption--m",
+        head: [{ text: "Reference" }, { text: "Party" }, { text: "Status" }],
+        rows: referenceRows
+      }) }}
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h2 class="govuk-heading-l">7. Wide table in a two-thirds column</h2>
+      {{ govukTable({
+        caption: "HMCTS management information in two-thirds",
+        captionClasses: "govuk-table__caption--m",
+        head: wideHead,
+        rows: wideRows
+      }) }}
+    </div>
+    <div class="govuk-grid-column-one-third">
+      <h2 class="govuk-heading-m">8. Small table in a one-third column</h2>
+      {{ govukTable({
+        caption: "Months and rates",
+        captionClasses: "govuk-table__caption--s",
+        head: smallHead,
+        rows: smallRows
+      }) }}
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <h2 class="govuk-heading-l">9. Tables inside other components</h2>
+
+      {% set insetTable %}
+        {{ govukTable({
+          caption: "Small table in inset text",
+          head: smallHead,
+          rows: smallRows
+        }) }}
+      {% endset %}
+      {{ govukInsetText({ html: insetTable }) }}
+
+      {% set detailsTable %}
+        {{ govukTable({
+          caption: "Wide table in details",
+          head: wideHead,
+          rows: wideRows
+        }) }}
+      {% endset %}
+      {{ govukDetails({
+        summaryText: "Show the wide table",
+        html: detailsTable
+      }) }}
+
+      <h2 class="govuk-heading-l">10. Small table on a grey background</h2>
+      <div style="background-color: #f3f2f1; padding: 15px;">
+        {{ govukTable({
+          caption: "Months and rates on grey",
+          captionClasses: "govuk-table__caption--m",
+          head: smallHead,
+          rows: smallRows
+        }) }}
+      </div>
+    </div>
+  </div>
+{% endblock %}
