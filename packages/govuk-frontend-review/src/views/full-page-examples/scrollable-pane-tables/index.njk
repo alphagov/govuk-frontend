@@ -42,6 +42,151 @@ scenario: Temporary page to test scrollable tables
   {% set wideRows = (wideRows.push(cells), wideRows) %}
 {% endfor %}
 
+{# Inspired by check-for-flooding.service.gov.uk river levels: links, notes, numerics and text #}
+{% set riverRows = [
+  ["Long brook at Plympton", "3198", "8:15pm on 25 November", "0.27", "steady"],
+  ["River Avon at Didworthy", "3220", "4:00pm on 25 November", "0.57", "falling"],
+  ["River Erme at Harford", "3208", "4:00pm on 25 November", "0.58", "rising"],
+  ["River Erme at Ermington", "3219", "8:30pm on 25 November", "0.50", "steady"],
+  ["River Plym at Carnwood", "3197", "8:15pm on 25 November", "0.57", "steady"],
+  ["River Tavy at Ludbrook", "3196", "8:15pm on 25 November", "0.68", "falling"],
+  ["River Walkham at Horrabridge", "3200", "8:30pm on 25 November", "0.41", "steady"],
+  ["River Yealm at Cornwood", "3188", "8:15pm on 25 November", "0.29", "steady"],
+  ["River Yealm at Puslinch", "3193", "8:15pm on 25 November", "0.63", "steady"],
+  ["Tory Brook at Newnham Park", "3199", "8:15pm on 25 November", "0.50", "steady"]
+] %}
+{% set riverTableRows = [] %}
+{% for row in riverRows %}
+  {% set riverTableRows = (riverTableRows.push([
+    { html: '<a class="govuk-link" href="#">' + row[0] + '</a><br><span class="govuk-hint govuk-!-font-size-16">Latest at ' + row[2] + '</span>' },
+    { text: row[3] + "m", format: "numeric" },
+    { text: row[4] },
+    { text: "Normal" }
+  ]), riverTableRows) %}
+{% endfor %}
+
+{# Inspired by search-uk-sanctions-list.service.gov.uk: many columns, long values, real data #}
+{% set sanctionsHead = [
+  { text: "Unique ID" },
+  { text: "OFSI Group ID" },
+  { text: "Name" },
+  { text: "Regime name" },
+  { text: "Type" },
+  { text: "Designation source" },
+  { text: "Date designated" },
+  { text: "Sanctions imposed" },
+  { text: "Details" }
+] %}
+{% set sanctionsRows = [] %}
+{% for row in [
+  ["DPR0182", "12453", "OFFICE 39", "Democratic People's Republic of Korea", "Entity", "UN", "02-03-2016", "Asset freeze, Chartering of Ships, Closure of representative offices, Crew servicing of ships and aircraft, Prevention of business arrangements, Prohibition of port entry", "/designations/DPR0182/Entity"],
+  ["SUD0012", "16027", "M-Invest", "Sudan", "Entity", "UK", "20-07-2023", "Asset freeze, Director Disqualification Sanction", "/designations/SUD0012/Entity"],
+  ["RUS1405", "15325", "MOLECULAR ELECTRONICS RESEARCH INSTITUTE, JOINT STOCK COMPANY", "Russia", "Entity", "UK", "04-05-2022", "Asset freeze, Director Disqualification Sanction, Trust Services Sanctions", "/designations/RUS1405/Entity"],
+  ["RUS1404", "15324", "Joint Stock Company Mikron", "Russia", "Entity", "UK", "04-05-2022", "Asset freeze, Director Disqualification Sanction, Trust Services Sanctions", "/designations/RUS1404/Entity"],
+  ["RUS1935", "16018", "DUKHIN Vyacheslav Vyacheslavovich", "Russia", "Individual", "UK", "17-07-2023", "Asset freeze, Director Disqualification Sanction, Travel Ban, Trust Services Sanctions", "/designations/RUS1935/Individual"],
+  ["RUS0182", "13047", "So-called 'Lugansk People's Republic'", "Russia", "Entity", "UK", "31-12-2020", "Asset freeze, Director Disqualification Sanction, Trust Services Sanctions", "/designations/RUS0182/Entity"],
+  ["SSU0004", "13698", "RENGU MALEK REUBEN RIAK", "South Sudan", "Individual", "UN", "13-07-2018", "Asset freeze, Travel Ban", "/designations/SSU0004/Individual"],
+  ["DPR0187", "13543", "PROPAGANDA AND AGITATION DEPARTMENT (PAD)", "Democratic People's Republic of Korea", "Entity", "UN", "11-09-2017", "Asset freeze, Chartering of Ships, Closure of representative offices, Crew servicing of ships and aircraft, Prevention of business arrangements, Prohibition of port entry", "/designations/DPR0187/Entity"],
+  ["LIB0023", "11704", "Al-Charif Ibrahim Zarroug", "Libya", "Individual", "UK", "31-12-2020", "Asset freeze, Director Disqualification Sanction, Travel Ban", "/designations/LIB0023/Individual"],
+  ["DPR0142", "13484", "KANGBONG TRADING CORPORATION", "Democratic People's Republic of Korea", "Entity", "UN", "02-06-2017", "Asset freeze, Chartering of Ships, Closure of representative offices, Crew servicing of ships and aircraft, Prevention of business arrangements, Prohibition of port entry", "/designations/DPR0142/Entity"],
+  ["AQD0179", "13313", "KHALIMOV GULMUROD", "ISIL (Da'esh) and Al-Qaida", "Individual", "UN", "29-02-2016", "Arms embargo, Asset freeze, Travel Ban", "/designations/AQD0179/Individual"],
+  ["GHR0049", "13900", "Ministry of People's Security Correctional (MPS) Bureau", "Global Human Rights", "Entity", "UK", "06-07-2020", "Asset freeze, Director Disqualification Sanction", "/designations/GHR0049/Entity"]
+] %}
+  {% set sanctionsRows = (sanctionsRows.push([
+    { text: row[0] },
+    { text: row[1], format: "numeric" },
+    { text: row[2] },
+    { text: row[3] },
+    { text: row[4] },
+    { text: row[5] },
+    { text: row[6] },
+    { text: row[7] },
+    { html: '<a class="govuk-link govuk-link--no-visited-state" href="' + row[8] + '">View Details</a>' }
+  ]), sanctionsRows) %}
+{% endfor %}
+
+{# Inspired by visa-fees.homeoffice.gov.uk: one long text column, one short numeric column #}
+{% set visaRows = [
+  [{ text: "Parent of a Student child visa (up to 12 months) (Tier 4 Isle of Man)" }, { text: "987", format: "numeric" }],
+  [{ text: "Family visas - Joining your partner, parent, proposed civil partner or child (also applicable to EC to the Isle of Man, Baliwick of Jersey and Bailiwick of Gurnsey)" }, { text: "2807", format: "numeric" }],
+  [{ text: "Family visas – Adult dependant relative (also applicable for EC to the Isle of Man)" }, { text: "4943", format: "numeric" }],
+  [{ text: "Indefinite leave to enter the UK as a victim of domestic abuse and dependant children under Appendix Victim of Domestic Abuse to the Immigration Rules" }, { text: "4387", format: "numeric" }],
+  [{ text: "Route to Settlement - refugee dependant relative" }, { text: "615", format: "numeric" }],
+  [{ text: "Dependent children under the age of 21 only applying under “Appendix ECAA Extension of Stay” to the immigration rules." }, { text: "Free of charge", format: "numeric" }],
+  [{ text: "Pre 1997 Gurkhas (outside immigration rules)" }, { text: "2807", format: "numeric" }],
+  [{ text: "Diplomatic Posting to the UK (Dependant)" }, { text: "Free of charge", format: "numeric" }]
+] %}
+
+{# Inspired by terms.landregistry.gov.uk: wordy cell content including lists #}
+{% set landRegistryRows = [
+  [{ text: "Summary" }, { text: "Free" }, { html: 'The Summary includes:<ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-0"><li>the property description (how we describe the property in the land register)</li><li>the tenure or interest type (for example, freehold or leasehold)</li><li>what the property last sold for (if available)</li><li>an indication of whether there are any easements or restrictive covenants recorded in the register – these entries can affect how you can use a property</li></ul>' }],
+  [{ text: "Title register" }, { text: "£7" }, { html: 'If you buy a copy of the title register, you can find out more details about the land or property. This includes:<ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-0"><li>the title number</li><li>who owns it</li><li>whether there’s a mortgage</li><li>things that might burden or benefit it (for example, restrictive covenants or easements)</li></ul>' }],
+  [{ text: "Title plan" }, { text: "£7" }, { html: 'If you buy a copy of the title plan, this will show:<ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-0"><li>the location of the property</li><li>the general boundaries of the property – most title plans do not show the exact position of the boundaries</li></ul>' }]
+] %}
+
+{# Inspired by find-energy-certificate.service.gov.uk: links and tags in cells #}
+{% set epcRows = [
+  [{ html: '<a class="govuk-link" href="#">1, Example Lane, AYLESBURY, HP22 6AD</a>' }, { text: "D" }, { text: "17 July 2029" }],
+  [{ html: '<a class="govuk-link" href="#">2, Example Lane, AYLESBURY, HP22 6AD</a>' }, { text: "C" }, { html: '7 May 2023 <strong class="govuk-tag govuk-tag--red">Expired</strong>' }],
+  [{ html: '<a class="govuk-link" href="#">3, Example Lane, AYLESBURY, HP22 6AD</a>' }, { text: "C" }, { text: "20 August 2035" }],
+  [{ html: '<a class="govuk-link" href="#">4, Example Lane, AYLESBURY, HP22 6AD</a>' }, { text: "C" }, { text: "25 August 2035" }],
+  [{ html: '<a class="govuk-link" href="#">5, Example Lane, AYLESBURY, HP22 6AD</a>' }, { text: "D" }, { html: '26 July 2019 <strong class="govuk-tag govuk-tag--red">Expired</strong>' }],
+  [{ html: '<a class="govuk-link" href="#">6, Example Lane, AYLESBURY, HP22 6AD</a>' }, { text: "E" }, { html: '13 April 2025 <strong class="govuk-tag govuk-tag--red">Expired</strong>' }],
+  [{ html: '<a class="govuk-link" href="#">7, Example Lane, AYLESBURY, HP22 6AD</a>' }, { text: "D" }, { text: "21 June 2027" }],
+  [{ html: '<a class="govuk-link" href="#">8, Example Lane, AYLESBURY, HP22 6AD</a>' }, { text: "C" }, { text: "21 February 2028" }]
+] %}
+
+{# Inspired by immigration rules appendix skilled occupations: very long vertically #}
+{% set occupationRows = [] %}
+{% for row in [
+  ["1111", "Chief executives and senior officials", "Chief executive; chief operating officer; vice president (corporate)"],
+  ["1112", "Elected officers and representatives", "MP; councillor"],
+  ["1121", "Production managers and directors in manufacturing", "Operations manager (manufacturing); production manager"],
+  ["1122", "Production managers and directors in construction", "Construction manager; site manager (building construction)"],
+  ["1123", "Production managers and directors in mining and energy", "Quarry manager; operations manager (mining)"],
+  ["1131", "Financial managers and directors", "Financial controller; investment manager"],
+  ["1132", "Marketing, sales and advertising directors", "Marketing director; sales director"],
+  ["1133", "Public relations and communications directors", "Head of communications; PR director"],
+  ["1134", "Purchasing managers and directors", "Head of procurement; purchasing manager"],
+  ["1135", "Charitable organisation managers and directors", "Charity director; head of fundraising"],
+  ["1150", "Managers and directors in retail and wholesale", "Retail director; wholesale manager"],
+  ["1161", "Senior officers in protective services", "Chief constable; fire service area manager"],
+  ["1171", "Senior police officers", "Detective chief inspector; superintendent"],
+  ["1172", "Senior officers in fire, ambulance, prison and related services", "Station manager (fire service); prison governor"],
+  ["1211", "Managers and proprietors in agriculture and horticulture", "Farm manager; market gardener"],
+  ["1213", "Managers and proprietors in forestry, fishing and related services", "Forest manager; fish farm manager"],
+  ["1221", "Hotel and accommodation managers and proprietors", "Hotel manager; guest house owner"],
+  ["1223", "Restaurant and catering establishment managers and proprietors", "Restaurant manager; catering manager"],
+  ["1224", "Publicans and managers of licensed premises", "Publican; licensee"],
+  ["1225", "Leisure and sports managers", "Leisure centre manager; sports club manager"],
+  ["1226", "Travel agency managers and proprietors", "Travel agency manager; tour operator"],
+  ["1241", "Health care services managers", "Clinical services manager; hospital manager"],
+  ["1242", "Residential, day and domiciliary care managers and proprietors", "Care home manager; residential care manager"],
+  ["1251", "Property, housing and estate managers", "Estate manager; housing manager; landlord (property management)"],
+  ["1252", "Garage managers and proprietors", "Garage owner; workshop manager (garage)"],
+  ["1253", "Hairdressing and beauty salon managers and proprietors", "Salon manager (hairdressing); beauty salon owner"],
+  ["1254", "Shopkeepers and owners – retail and wholesale", "Newsagent; shopkeeper"],
+  ["1255", "Waste disposal and environmental services managers", "Recycling manager; environmental services manager"],
+  ["1311", "Managers and directors in transport and distribution", "Fleet manager; logistics manager"],
+  ["1321", "Managers and directors in storage and warehousing", "Warehouse manager; depot manager"],
+  ["2111", "Chemical scientists", "Analytical chemist; research chemist"],
+  ["2112", "Biological scientists", "Microbiologist; ecologist"],
+  ["2113", "Biochemists and biomedical scientists", "Biomedical scientist; clinical biochemist"],
+  ["2114", "Physical scientists", "Geologist; physicist; meteorologist"],
+  ["2121", "Civil engineers", "Structural engineer; highways engineer"],
+  ["2122", "Mechanical engineers", "Design engineer (mechanical); aerospace engineer"],
+  ["2123", "Electrical engineers", "Power systems engineer; electrical design engineer"],
+  ["2124", "Electronics engineers", "Broadcast engineer; instrumentation engineer"],
+  ["2131", "IT business analysts, architects and systems designers", "Systems analyst; solutions architect"],
+  ["2132", "Programmers and software development professionals", "Software developer; games developer; web developer"]
+] %}
+  {% set occupationRows = (occupationRows.push([
+    { text: row[0], format: "numeric" },
+    { text: row[1] },
+    { text: row[2] }
+  ]), occupationRows) %}
+{% endfor %}
+
 {% set referenceRows = [
   [{ text: "hmcts_civil_claim_reference_2025_000123456_listed_for_hearing" }, { text: "Claimant Organisation Holdings Limited" }, { text: "listed-for-hearing" }],
   [{ text: "hmcts_family_case_reference_2025_000987654_awaiting_documents" }, { text: "Respondent Partnership LLP" }, { text: "awaiting-documents" }]
@@ -152,6 +297,78 @@ scenario: Temporary page to test scrollable tables
           rows: smallRows
         }) }}
       </div>
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+        <h2 class="govuk-heading-l">11. Mixed data</h2>
+        {{ govukTable({
+          caption: "River levels within 5 miles of River Yealm",
+          captionClasses: "govuk-table__caption--m",
+          head: [
+            { text: "Measuring station" },
+            { text: "Height", format: "numeric" },
+            { text: "Trend" },
+            { text: "State" }
+          ],
+          rows: riverTableRows
+        }) }}
+
+        <h2 class="govuk-heading-l">12. Overwhelming table</h2>
+        {{ govukTable({
+          caption: "Search results for “government”",
+          captionClasses: "govuk-table__caption--m",
+          head: sanctionsHead,
+          rows: sanctionsRows
+        }) }}
+
+        <h2 class="govuk-heading-l">13. Mixed column widths</h2>
+        {{ govukTable({
+          caption: "Visa application fees, join family",
+          captionClasses: "govuk-table__caption--m",
+          head: [
+            { text: "Visa types" },
+            { text: "Visa application fee (USD)", format: "numeric" }
+          ],
+          rows: visaRows
+        }) }}
+
+        <h2 class="govuk-heading-l">14. Wordy data</h2>
+        {{ govukTable({
+          caption: "Available information",
+          captionClasses: "govuk-table__caption--m",
+          head: [
+            { text: "Information" },
+            { text: "Cost" },
+            { text: "What’s included" }
+          ],
+          rows: landRegistryRows
+        }) }}
+
+        <h2 class="govuk-heading-l">15. Links and tags</h2>
+        {{ govukTable({
+          caption: "EPCs for HP22 6AD",
+          captionClasses: "govuk-table__caption--m",
+          head: [
+            { text: "Address" },
+            { text: "Energy rating" },
+            { text: "Valid until" }
+          ],
+          rows: epcRows
+        }) }}
+
+        <h2 class="govuk-heading-l">16. Super vertical table</h2>
+        {{ govukTable({
+          caption: "Skilled Worker eligible occupations",
+          captionClasses: "govuk-table__caption--m",
+          head: [
+            { text: "SOC 2020 code", format: "numeric" },
+            { text: "Occupation" },
+            { text: "Related job titles" }
+          ],
+          rows: occupationRows
+        }) }}
     </div>
   </div>
 {% endblock %}
