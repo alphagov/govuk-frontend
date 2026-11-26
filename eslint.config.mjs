@@ -1,7 +1,6 @@
 import { fileURLToPath } from 'node:url'
 
 import JSConfigs from '@eslint/js'
-import MarkdownPlugin from '@eslint/markdown'
 import { defineConfig, globalIgnores, includeIgnoreFile } from 'eslint/config'
 import PrettierConfig from 'eslint-config-prettier'
 import xoConfig from 'eslint-config-xo'
@@ -280,10 +279,17 @@ export default defineConfig([
     }
   },
   {
-    // Enable Markdown parser for `.md` files
-    name: 'govuk-frontend-parse-markdown',
-    extends: [MarkdownPlugin.configs.recommended],
+    // Enable markdown processor for `.md` files
+    // The XO config already configures recommended rules,
+    // sets up the plugin, and configures the language so markdown
+    // is parsed AST and rules can check if the Markdown structure is correct.
+    // https://github.com/xojs/eslint-config-xo/blob/main/source/markdown.js#L56-L69
+    name: 'govuk-frontend-process-markdown',
     files: ['**/*.md'],
+    // XO, however, does not set up the markdown plugin
+    // to let each code blocks be linted based on their language
+    // so we need to set it up as a processor
+    // https://eslint.org/docs/latest/extend/custom-processors
     processor: 'markdown/markdown'
   },
   {
