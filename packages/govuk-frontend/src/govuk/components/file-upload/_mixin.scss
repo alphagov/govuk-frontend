@@ -147,6 +147,7 @@
     &:hover {
       border-style: dashed;
       border-color: $drop-zone-hover-border-colour;
+      background-color: $drop-zone-focus-background-colour;
 
       .govuk-file-upload-button__pseudo-button {
         background-color: $govuk-secondary-button-hover-colour;
@@ -207,6 +208,8 @@
   .govuk-file-upload-button--dragging {
     border-style: solid;
     border-color: $dragging-drop-zone-border-colour;
+    // match the hover background, so it shows whether or not a file has been chosen
+    background-color: $drop-zone-focus-background-colour;
 
     // extra specificity to apply when
     // empty
