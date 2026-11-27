@@ -1,0 +1,84 @@
+{% extends "./mock-service.njk" %}
+
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% set pageTitle = "Check your answers" %}
+
+{% block bodyStart %}{% endblock %}
+
+{% block pageContent %}
+  <h1 class="govuk-heading-xl">{{pageTitle}}</h1>
+
+  {% set renderedImg %}
+    <img src="/images/full-page-examples/inspect-candy-factories/charlie-bucket.png" alt="Photo provided by you" width="100%">
+  {% endset %}
+  {{ govukSummaryList({
+    rows: [
+      {
+        key: {
+          text: "Name"
+        },
+        value: {
+          text: "Charlie Bucket"
+        },
+        actions: {
+          items: [
+            {
+              href: mockServiceSlug + "/name?name=Charlie%20Bucket",
+              text: "Change",
+              visuallyHiddenText: "name"
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          text: "Age"
+        },
+        value: {
+          text: "19"
+        },
+        actions: {
+          items: [
+            {
+              href: mockServiceSlug + "/age?age=19",
+              text: "Change",
+              visuallyHiddenText: "age"
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          text: "Photo"
+        },
+        value: {
+          html: renderedImg
+        },
+        actions: {
+          items: [
+            {
+              href: mockServiceSlug + "/photo",
+              text: "Change",
+              visuallyHiddenText: "photo"
+            }
+          ]
+        }
+      }
+    ]
+  }) }}
+
+  <div class="govuk-button-group">
+    {{ govukButton({
+      text: "Sign up",
+      href: mockServiceSlug + "/confirm"
+    }) }}
+
+    {{ govukButton({
+      text: "Delete data",
+      href: mockServiceSlug + "/list-of-factories?delete=y",
+      classes: "govuk-button--warning"
+    }) }}
+  </div>
+{% endblock %}
