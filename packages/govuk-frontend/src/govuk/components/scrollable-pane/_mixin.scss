@@ -1,0 +1,52 @@
+@use "../../base";
+
+/// @access private
+@mixin styles {
+  .govuk-scrollable-pane {
+    --_govuk-scrollable-pane-background-colour: #{base.govuk-functional-colour("body-background")};
+    --_govuk-scrollable-pane-transparent-colour: rgb(255, 255, 255, 0);
+    --_govuk-scrollable-pane-shadow-colour: rgb(0, 0, 0, 0.3);
+    --_govuk-scrollable-pane-shadow-size: 1.25em;
+  }
+
+  .govuk-scrollable-pane[role="region"][tabindex][aria-label],
+  .govuk-scrollable-pane[role="region"][tabindex][aria-labelledby] {
+    overflow-x: scroll;
+    background:
+      linear-gradient(
+        to right,
+        var(--_govuk-scrollable-pane-background-colour),
+        var(--_govuk-scrollable-pane-background-colour),
+        var(--_govuk-scrollable-pane-transparent-colour) calc(var(--_govuk-scrollable-pane-shadow-size) * 2)
+      ),
+      radial-gradient(
+        farthest-side at 0 50%,
+        var(--_govuk-scrollable-pane-shadow-colour),
+        var(--_govuk-scrollable-pane-transparent-colour)
+      ),
+      linear-gradient(
+        to left,
+        var(--_govuk-scrollable-pane-background-colour),
+        var(--_govuk-scrollable-pane-background-colour),
+        var(--_govuk-scrollable-pane-transparent-colour) calc(var(--_govuk-scrollable-pane-shadow-size) * 2)
+      ),
+      radial-gradient(
+          farthest-side at 100% 50%,
+          var(--_govuk-scrollable-pane-shadow-colour),
+          var(--_govuk-scrollable-pane-transparent-colour)
+        )
+        100%;
+    background-color: var(--_govuk-scrollable-pane-background-colour);
+    background-repeat: no-repeat;
+    background-attachment: local, scroll, local, scroll;
+    background-size:
+      100% 100%,
+      var(--_govuk-scrollable-pane-shadow-size) 100%,
+      100% 100%,
+      var(--_govuk-scrollable-pane-shadow-size) 100%;
+
+    &:focus {
+      @include base.govuk-focused-box;
+    }
+  }
+}

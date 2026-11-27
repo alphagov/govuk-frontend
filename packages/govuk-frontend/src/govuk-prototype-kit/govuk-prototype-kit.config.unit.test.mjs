@@ -161,6 +161,10 @@ describe('GOV.UK Prototype Kit config', () => {
           macroName: 'govukRadios'
         },
         {
+          importFrom: 'govuk/components/scrollable-pane/macro.njk',
+          macroName: 'govukScrollablePane'
+        },
+        {
           importFrom: 'govuk/components/select/macro.njk',
           macroName: 'govukSelect'
         },
