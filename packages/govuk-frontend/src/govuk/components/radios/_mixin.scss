@@ -74,6 +74,7 @@
     $radio-button-size: base.govuk-spacing(2);
 
     content: "";
+    box-sizing: border-box;
     position: absolute;
 
     // Positioned by getting half the touch target, so we have the centre of the
@@ -81,8 +82,13 @@
     // the centre of the button in the centre of the input.
     top: (($govuk-touch-target-size * 0.5) - $radio-button-size);
     left: (($govuk-touch-target-size * 0.5) - $radio-button-size);
-    width: 0;
-    height: 0;
+
+    // Set the button's size explicitly rather than letting its borders define
+    // it. Browsers round border widths down to whole device pixels, so at
+    // fractional zoom levels a button sized only by its borders shrinks
+    // towards its top left corner and sits off centre in the ring.
+    width: $radio-button-size * 2;
+    height: $radio-button-size * 2;
     border: $radio-button-size solid currentcolor;
     border-radius: 50%;
     opacity: 0;
@@ -256,9 +262,12 @@
     .govuk-radios__label::after {
       $radio-button-size: base.govuk-spacing(1);
 
-      // The same calculation as normal radio buttons but reduce the border width
+      // The same calculation as normal radio buttons but reduce the size and
+      // border width
       top: (($govuk-touch-target-size * 0.5) - $radio-button-size);
       left: ((($govuk-touch-target-size * 0.5) - $radio-button-size) - $input-offset);
+      width: $radio-button-size * 2;
+      height: $radio-button-size * 2;
       border-width: $radio-button-size;
     }
 
