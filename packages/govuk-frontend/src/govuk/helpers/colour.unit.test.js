@@ -451,6 +451,78 @@ describe('@function govuk-resolve-colour', () => {
     })
   })
 
+  describe('when called with a map referring to an existing functional colour', () => {
+    it('returns the colour from the functional colour map', async () => {
+      const sass = `
+      ${sassBootstrap}
+
+      .foo {
+        color: govuk-resolve-colour((ref: 'text'));
+      }
+    `
+
+      await expect(compileSassString(sass, sassConfig)).resolves.toMatchObject({
+        css: outdent`
+        .foo {
+          color: var(--govuk-text-colour, #0b0c0c);
+        }
+      `
+      })
+    })
+
+    describe('when the referenced colour refers to another colour', () => {
+      it('returns the colour from the functional colour map', async () => {
+        const sass = `
+        // Set a custom map with nested example
+        @use "settings/colours-functional" with (
+          $govuk-functional-colours: (
+            "text": (name: "black"),
+            "focus-text": (ref: "text")
+          )
+        );
+        ${sassBootstrap}
+
+        .foo {
+          color: govuk-resolve-colour((ref: 'focus-text'));
+        }
+      `
+
+        await expect(
+          compileSassString(sass, sassConfig)
+        ).resolves.toMatchObject({
+          css: outdent`
+          .foo {
+            color: var(--govuk-focus-text-colour, var(--govuk-text-colour, #0b0c0c));
+          }
+        `
+        })
+      })
+    })
+
+    describe('when the referenced colour refers to itself', () => {
+      it('should error with a useful message', async () => {
+        const sass = `
+        // Set a custom map with nested example
+        @use "settings/colours-functional" with (
+          $govuk-functional-colours: (
+            "text": (ref: "focus-text"),
+            "focus-text": (ref: "text")
+          )
+        );
+        ${sassBootstrap}
+
+        .foo {
+          color: govuk-resolve-colour((ref: 'focus-text'));
+        }
+      `
+
+        await expect(compileSassString(sass, sassConfig)).rejects.toThrow(
+          'Colour reference `focus-text` creates a circular reference. (`focus-text, text`).'
+        )
+      })
+    })
+  })
+
   describe('when called with a map referring to the palette', () => {
     it('returns the hex representation of the colour', async () => {
       const sass = `
@@ -491,7 +563,23 @@ describe('@function govuk-resolve-colour', () => {
     })
   })
 
-  describe('when called with a map with no name', () => {
+  describe('when called with a map with no name or ref', () => {
+    it('throws an appropriate error', async () => {
+      const sass = `
+      ${sassBootstrap}
+
+      .foo {
+        color: govuk-resolve-colour((foo: ''));
+      }
+    `
+
+      await expect(compileSassString(sass, sassConfig)).rejects.toThrow(
+        'Colour reference needs either `name` or `ref`.'
+      )
+    })
+  })
+
+  describe('when called with a map with an empty name', () => {
     it('throws an appropriate error', async () => {
       const sass = `
       ${sassBootstrap}
@@ -503,6 +591,22 @@ describe('@function govuk-resolve-colour', () => {
 
       await expect(compileSassString(sass, sassConfig)).rejects.toThrow(
         "Colour reference `name` shouldn't be empty."
+      )
+    })
+  })
+
+  describe('when called with a map with an empty ref', () => {
+    it('throws an appropriate error', async () => {
+      const sass = `
+      ${sassBootstrap}
+
+      .foo {
+        color: govuk-resolve-colour((ref: ''));
+      }
+    `
+
+      await expect(compileSassString(sass, sassConfig)).rejects.toThrow(
+        "Colour reference `ref` shouldn't be empty."
       )
     })
   })

@@ -23,12 +23,11 @@ $govuk-default-functional-colours: (
     "inverse-text": (
       name: "white"
     ),
-    // The background colour of the template. This is intended to be the same
-    // as `surface-background` for the purposes of making the Footer and Cookie
-    // banner components merge seamlessly with the template.
+    // The background colour of the template.
+    // Alias `surface-background` for the purposes of making the
+    // Footer and Cookie banner components merge seamlessly with the template.
     "template-background": (
-        name: "blue",
-        variant: "tint-95"
+        ref: "surface-background"
       ),
     "body-background": (
       name: "white"

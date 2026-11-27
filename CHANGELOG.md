@@ -4,6 +4,14 @@ For advice on how to use these release notes, see [our guidance on staying up to
 
 ## Unreleased
 
+### New feature
+
+### You can now reference other Functional colours when setting the Functional colour map
+
+You can use `ref` instead of `name` when changing the [`govuk-functional-colour` map](https://frontend.design-system.service.gov.uk/sass-api-reference/#govuk-functional-colours) to reference another Functional colour, rather than using one from the palette.
+
+We made this change in [pull request #7687: Allow functional colours to reference another functional colours](https://github.com/alphagov/govuk-frontend/pull/7687).
+
 ### Recommended changes
 
 #### Use `secondary-background` Functional colour when you need more emphasis against `body-background`

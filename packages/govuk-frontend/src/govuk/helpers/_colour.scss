@@ -106,6 +106,7 @@
 ///
 /// @param {String|Colour} $colour - Name of the colour from the list of
 ///   [functional colours](https://design-system.service.gov.uk/styles/colour/)
+/// @param {List} $_resolvedColours - Internal: Keep list of resolved colours to provide clearer error messages
 /// @return {String} A reference to the functional colour's custom property
 ///   wrapped in a var function, with the functional colour's hex value as a
 ///   fallback value.
@@ -124,7 +125,7 @@
 /// @throw if `$colour` is not an functional colour of GOV.UK Frontend
 /// @access public
 /// @see $govuk-functional-colours
-@function govuk-functional-colour($colour) {
+@function govuk-functional-colour($colour, $_resolvedColours: ($colour)) {
   // Sass parses unquoted colours as colours, so we need to turn them into
   // strings before looking them up in the colour palette
   // https://sass-lang.com/documentation/values/strings#unquoted
@@ -133,7 +134,7 @@
   }
 
   @if map.has-key($govuk-functional-colours, $colour) {
-    $value: govuk-resolve-colour(map.get($govuk-functional-colours, $colour));
+    $value: govuk-resolve-colour(map.get($govuk-functional-colours, $colour), $_resolvedColours);
 
     @return var(--govuk-#{$colour}-colour, #{$value});
   }
@@ -144,11 +145,12 @@
 /// Resolves the given reference to a colour in the palette
 ///
 /// @param {Map|Colour} $colour-reference - A map with the `name`, and optionally a `variant` for the colour in the palette
+/// @param {List} $_resolvedColours - Internal: Keep list of resolved colours to provide clearer error messages
 /// @returns {Colour} The colour
 /// @throws if the `name` is present but falsy
 /// @throws if the `variant` is present but falsy
 /// @access public
-@function govuk-resolve-colour($colour-reference) {
+@function govuk-resolve-colour($colour-reference, $_resolvedColours: ()) {
   // If the reference is already a colour, return the colour
   @if meta.type-of($colour-reference) == "color" {
     @return $colour-reference;
@@ -158,8 +160,24 @@
     @error 'Colour reference should be a Sass colour or a Sass map';
   }
 
+  $ref: map.get($colour-reference, "ref");
   $name: map.get($colour-reference, "name");
-  @if not $name or $name == "" {
+
+  @if not $name and not $ref {
+    @error "Colour reference needs either `name` or `ref`.";
+  }
+
+  @if $ref {
+    @if $ref == "" {
+      @error "Colour reference `ref` shouldn't be empty.";
+    }
+    @if list.index($_resolvedColours, $ref) {
+      @error "Colour reference `#{$ref}` creates a circular reference. (`#{$_resolvedColours}`).";
+    }
+    @return govuk-functional-colour($ref, list.append($_resolvedColours, $ref, $separator: "comma"));
+  }
+
+  @if $name == "" {
     @error "Colour reference `name` shouldn't be empty.";
   }
 
