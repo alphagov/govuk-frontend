@@ -504,20 +504,20 @@ describe('@function govuk-resolve-colour', () => {
         const sass = `
         // Set a custom map with nested example
         @use "settings/colours-functional" with (
-         $govuk-functional-colours: (
-           "text": (ref: "focus-text"),
-           "focus-text": (ref: "text")
-         )
+          $govuk-functional-colours: (
+            "text": (ref: "focus-text"),
+            "focus-text": (ref: "text")
+          )
         );
         ${sassBootstrap}
-  
+
         .foo {
           color: govuk-resolve-colour((ref: 'focus-text'));
         }
       `
 
         await expect(compileSassString(sass, sassConfig)).rejects.toThrow(
-          'Compiler reported error: Stack Overflow'
+          'Colour reference `focus-text` creates a circular reference. (`focus-text, text`).'
         )
       })
     })
