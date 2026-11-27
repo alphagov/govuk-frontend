@@ -344,4 +344,37 @@ describe('Table', () => {
       expect($td.attr('data-fizz')).toBe('buzz')
     })
   })
+
+  // =========================================================
+  // Scrollable pane
+  // =========================================================
+
+  describe('scrollable pane', () => {
+    it('wraps the table in a focusable pane', () => {
+      const $ = render('table', examples.default)
+
+      const $pane = $('.govuk-scrollable-pane')
+
+      expect($pane.children('.govuk-table')).toHaveLength(1)
+      expect($pane.attr('tabindex')).toBe('0')
+    })
+
+    it('is not a region when the table has no caption', () => {
+      const $ = render('table', examples.default)
+
+      const $pane = $('.govuk-scrollable-pane')
+
+      expect($pane.attr('role')).toBeUndefined()
+      expect($pane.attr('aria-label')).toBeUndefined()
+    })
+
+    it('is a region named after the caption when the table has one', () => {
+      const $ = render('table', examples['with head and caption'])
+
+      const $pane = $('.govuk-scrollable-pane')
+
+      expect($pane.attr('role')).toBe('region')
+      expect($pane.attr('aria-label')).toBe('Caption 1: Months and rates')
+    })
+  })
 })

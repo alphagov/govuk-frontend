@@ -1,0 +1,4 @@
+@use "scrollable-pane.mixin" as scrollable-pane;
+@use "../custom-properties";
+
+@include scrollable-pane.styles;

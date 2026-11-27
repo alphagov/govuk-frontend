@@ -323,3 +323,74 @@ examples:
             format: numeric
           - text: £125
             format: numeric
+  - name: in a scrollable pane
+    options:
+      caption: HMCTS management information, July to October 2025
+      classes: app-table--overflow-demo
+      head:
+        - text: Month
+        - text: Civil claims received
+        - text: Civil defences
+        - text: Small claims referred to mediation
+        - text: Small claims mediations
+        - text: Small claims settled
+        - text: Small claims settled at mediation (%)
+        - text: Private family law receipts
+        - text: Private family law disposals
+        - text: Private family law open caseload
+        - text: Public family law receipts
+        - text: Public family law disposals
+        - text: Public family law open caseload
+      rows:
+        - - text: July 2025
+          - text: 180,271
+          - text: 26,217
+          - text: 7,683
+          - text: 5,339
+          - text: 1,585
+          - text: 29.7
+          - text: 5,251
+          - text: 4,382
+          - text: 36,631
+          - text: 1,588
+          - text: 1,468
+          - text: 10,021
+        - - text: August 2025
+          - text: 145,848
+          - text: 24,945
+          - text: 6,580
+          - text: 4,579
+          - text: 1,433
+          - text: 31.3
+          - text: 4,612
+          - text: 3,609
+          - text: 36,922
+          - text: 1,273
+          - text: 1,186
+          - text: 10,105
+        - - text: September 2025
+          - text: 150,357
+          - text: 23,587
+          - text: 8,936
+          - text: 5,617
+          - text: 1,691
+          - text: 30.1
+          - text: 5,289
+          - text: 3,986
+          - text: 37,374
+          - text: 1,286
+          - text: 1,382
+          - text: 10,004
+        - - text: October 2025
+          - text: 162,618
+          - text: 23,366
+          - text: 10,662
+          - text: 6,201
+          - text: 1,731
+          - text: 27.9
+          - text: 5,219
+          - text: 4,118
+          - text: 37,770
+          - text: 1,500
+          - text: 1,397
+          - text: 10,064

@@ -1,5 +1,12 @@
 {% from "../../macros/attributes.njk" import govukAttributes -%}
 
+{#- Focusable so keyboard users can scroll wide tables. When the table has a
+  caption, the pane is a region landmark named after it -#}
+<div class="govuk-scrollable-pane" tabindex="0"
+  {{- govukAttributes({
+    "role": "region",
+    "aria-label": params.caption
+  }) if params.caption }}>
 <table class="govuk-table
   {%- if params.classes %} {{ params.classes }}{% endif %}"
   {{- govukAttributes(params.attributes) }}>
@@ -55,3 +62,4 @@
 {% endfor %}
   </tbody>
 </table>
+</div>
