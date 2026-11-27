@@ -19,6 +19,10 @@ We made this change in [pull request #7676: Add `info` Functional colour and use
 
 ### Fixes
 
+#### Pagination now explains gaps in page numbers to screen readers
+
+Each ellipsis in the pagination component now has the visually hidden text ‘Pages not shown’. If you use the Nunjucks macro, you can change or translate this text with the `ellipsisText` option.
+
 ### We've updated components to make more use of Functional colours
 
 If you set your own [Functional colours](https://design-system.service.gov.uk/styles/colour/#functional-colours) to theme GOV.UK Frontend, check the following components look as expected:
