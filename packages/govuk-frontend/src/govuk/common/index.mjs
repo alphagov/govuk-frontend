@@ -146,7 +146,7 @@ export function isScope($scope) {
  * Format error message
  *
  * @internal
- * @param {ComponentWithModuleName} Component - Component that threw the error
+ * @param {CompatibleClass} Component - Component that threw the error
  * @param {string} message - Error message
  * @returns {string} - Formatted error message
  */
@@ -155,6 +155,5 @@ export function formatErrorMessage(Component, message) {
 }
 
 /**
- * @typedef ComponentWithModuleName
- * @property {string} moduleName - Name of the component
+ * @import { CompatibleClass } from '../init.mjs'
  */

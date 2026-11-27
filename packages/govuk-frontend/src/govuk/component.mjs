@@ -13,7 +13,7 @@ const _self =
  *
  * Centralises the behaviours shared by our components
  *
- * @virtual
+ * @abstract
  * @template {Element} [RootElementType=HTMLElement]
  */
 export class Component {
@@ -45,12 +45,11 @@ export class Component {
    * Constructs a new component, validating that GOV.UK Frontend is supported
    *
    * @internal
-   * @param {Element | null} [$root] - HTML element to use for component
+   * @param {Element | null} $root - HTML element to use for component
    */
   constructor($root) {
-    const childConstructor = /** @type {ChildClassConstructor} */ (
-      this.constructor
-    )
+    const childConstructor =
+      /** @type {ComponentConstructor<typeof Component>} */ (this.constructor)
 
     // TypeScript does not enforce that inheriting classes will define a `moduleName`
     // (even if we add a `@virtual` `static moduleName` property to this class).
@@ -58,7 +57,7 @@ export class Component {
     // a helpful error message.
     //
     // After this, we'll be sure that `childConstructor` has a `moduleName`
-    // as expected of the `ChildClassConstructor` we've cast `this.constructor` to.
+    // as expected of the `ComponentConstructor` we've cast `this.constructor` to.
     if (typeof childConstructor.moduleName !== 'string') {
       throw new InitError(`\`moduleName\` not defined in component`)
     }
@@ -90,7 +89,7 @@ export class Component {
    * @throws {InitError} when component is already initialised
    */
   checkInitialised() {
-    const constructor = /** @type {ChildClassConstructor} */ (this.constructor)
+    const constructor = /** @type {ComponentConstructor} */ (this.constructor)
     const moduleName = constructor.moduleName
 
     if (moduleName && isInitialised(this.$root, moduleName)) {
@@ -111,10 +110,20 @@ export class Component {
 }
 
 /**
- * @typedef ChildClass
- * @property {string} moduleName - The module name that'll be looked for in the DOM when initialising the component
+ * Component constructor
+ *
+ * @template {typeof Component | typeof ConfigurableComponent} [ComponentType=typeof Component | typeof ConfigurableComponent]
+ * @typedef {ComponentType extends unknown ? CompatibleClass<ComponentType> & ComponentType : never} ComponentConstructor
  */
 
 /**
- * @typedef {typeof Component & ChildClass} ChildClassConstructor
+ * Component config
+ *
+ * @template {CompatibleClass} ComponentClass
+ * @typedef {ConstructorParameters<ComponentClass>[1]} ComponentConfig
+ */
+
+/**
+ * @import { ConfigurableComponent } from './common/configuration.mjs'
+ * @import { CompatibleClass } from './init.mjs'
  */
