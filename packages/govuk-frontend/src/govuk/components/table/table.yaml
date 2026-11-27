@@ -77,6 +77,27 @@ params:
     type: boolean
     required: false
     description: If set to `true`, the first cell in each row will be a table header (`<th>`).
+  - name: pane
+    type: object
+    required: false
+    description: Can be used to wrap the table in a scrollable pane, for wide tables that would otherwise overflow their container. If any of these options are present, a scrollable pane will wrap around the table. Set `label` or `labelledBy` to make the pane a focusable `region` landmark.
+    params:
+      - name: label
+        type: string
+        required: false
+        description: Accessible name for the scrollable pane. If both `label` and `labelledBy` are set, `label` is used and `labelledBy` is ignored. If neither is set and the table has a `caption`, the caption text is used as the accessible name.
+      - name: labelledBy
+        type: string
+        required: false
+        description: The `id` of an element that labels the scrollable pane. Ignored if `label` is set.
+      - name: classes
+        type: string
+        required: false
+        description: Classes to add to the scrollable pane container.
+      - name: attributes
+        type: object
+        required: false
+        description: HTML attributes (for example data attributes) to add to the scrollable pane container.
   - name: classes
     type: string
     required: false
@@ -323,3 +344,138 @@ examples:
             format: numeric
           - text: £125
             format: numeric
+  - name: in a scrollable pane
+    options:
+      caption: HMCTS management information, July to October 2025
+      pane:
+        classes: app-scrollable-pane-demo
+      head:
+        - text: Month
+        - text: Civil claims received
+        - text: Civil defences
+        - text: Small claims referred to mediation
+        - text: Small claims mediations
+        - text: Small claims settled
+        - text: Small claims settled at mediation (%)
+        - text: Private family law receipts
+        - text: Private family law disposals
+        - text: Private family law open caseload
+        - text: Public family law receipts
+        - text: Public family law disposals
+        - text: Public family law open caseload
+      rows:
+        - - text: July 2025
+          - text: 180,271
+          - text: 26,217
+          - text: 7,683
+          - text: 5,339
+          - text: 1,585
+          - text: 29.7
+          - text: 5,251
+          - text: 4,382
+          - text: 36,631
+          - text: 1,588
+          - text: 1,468
+          - text: 10,021
+        - - text: August 2025
+          - text: 145,848
+          - text: 24,945
+          - text: 6,580
+          - text: 4,579
+          - text: 1,433
+          - text: 31.3
+          - text: 4,612
+          - text: 3,609
+          - text: 36,922
+          - text: 1,273
+          - text: 1,186
+          - text: 10,105
+        - - text: September 2025
+          - text: 150,357
+          - text: 23,587
+          - text: 8,936
+          - text: 5,617
+          - text: 1,691
+          - text: 30.1
+          - text: 5,289
+          - text: 3,986
+          - text: 37,374
+          - text: 1,286
+          - text: 1,382
+          - text: 10,004
+        - - text: October 2025
+          - text: 162,618
+          - text: 23,366
+          - text: 10,662
+          - text: 6,201
+          - text: 1,731
+          - text: 27.9
+          - text: 5,219
+          - text: 4,118
+          - text: 37,770
+          - text: 1,500
+          - text: 1,397
+          - text: 10,064
+
+  # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
+  - name: pane with labelled by
+    hidden: true
+    options:
+      pane:
+        labelledBy: pane-heading
+      rows:
+        - - text: January
+          - text: £85
+  - name: pane with label and labelled by
+    hidden: true
+    options:
+      pane:
+        label: Rainfall measurements
+        labelledBy: pane-heading
+      rows:
+        - - text: January
+          - text: £85
+  - name: pane without label
+    hidden: true
+    options:
+      pane: {}
+      rows:
+        - - text: January
+          - text: £85
+  - name: pane with attributes
+    hidden: true
+    options:
+      pane:
+        label: Rainfall measurements
+        attributes:
+          id: rainfall-pane
+          data-custom: 'A "quoted" value <with markup> & symbols'
+      rows:
+        - - text: January
+          - text: £85
+  - name: pane with caption
+    hidden: true
+    options:
+      caption: Rainfall measurements
+      pane: {}
+      rows:
+        - - text: January
+          - text: £85
+  - name: pane with caption and label
+    hidden: true
+    options:
+      caption: Rainfall measurements
+      pane:
+        label: Rainfall data
+      rows:
+        - - text: January
+          - text: £85
+  - name: pane with labelled by and caption
+    hidden: true
+    options:
+      caption: Rainfall measurements
+      pane:
+        labelledBy: pane-heading
+      rows:
+        - - text: January
+          - text: £85

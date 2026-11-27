@@ -1,0 +1,7 @@
+@use "scrollable-pane.mixin" as scrollable-pane;
+
+@import "../base";
+
+@include govuk-exports("govuk/objects/scrollable-pane") {
+  @include scrollable-pane.styles;
+}
