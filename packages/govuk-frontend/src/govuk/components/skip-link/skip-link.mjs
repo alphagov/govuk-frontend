@@ -1,6 +1,6 @@
 /* eslint-disable es-x/no-global-this */
 
-import { setFocus } from '../../common/index.mjs'
+import { formatErrorMessage, setFocus } from '../../common/index.mjs'
 import { Component } from '../../component.mjs'
 import { ElementError } from '../../errors/index.mjs'
 
@@ -43,7 +43,10 @@ export class SkipLink extends Component {
     // Check link path matching current page
     if (!linkedElementId) {
       throw new ElementError(
-        `Skip link: Target link (\`href="${href}"\`) has no hash fragment`
+        formatErrorMessage(
+          SkipLink,
+          `Target link (\`href="${href}"\`) has no hash fragment`
+        )
       )
     }
 
