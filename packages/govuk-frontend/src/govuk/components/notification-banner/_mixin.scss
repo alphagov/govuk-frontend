@@ -5,7 +5,7 @@
 /// @access private
 @mixin styles {
   .govuk-notification-banner {
-    --_govuk-notification-banner-colour: #{base.govuk-functional-colour(brand)};
+    --_govuk-notification-banner-colour: #{base.govuk-functional-colour(info)};
     --_govuk-notification-banner-title-text-colour: #{base.govuk-functional-colour(inverse-text)};
 
     @include base.govuk-font($size: 19);

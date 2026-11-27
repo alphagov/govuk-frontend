@@ -54,6 +54,10 @@ $govuk-default-functional-colours: (
     "error": (
         name: "red"
       ),
+    // Used to highlight info messages, banners, and panels
+    "info": (
+        name: "blue"
+      ),
     // Used to highlight success messages and banners
     "success": (
         name: "green"
