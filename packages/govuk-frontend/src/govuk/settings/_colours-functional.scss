@@ -33,6 +33,11 @@ $govuk-default-functional-colours: (
     "body-background": (
       name: "white"
     ),
+    // Used for more emphasis against body-background
+    "secondary-background": (
+        name: "black",
+        variant: "tint-95"
+      ),
     // Use 'true black' to avoid printers using colour ink to print body text
     "print-text": #000000,
     // Used in for example 'muted' text and help text.

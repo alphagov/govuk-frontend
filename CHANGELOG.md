@@ -6,6 +6,12 @@ For advice on how to use these release notes, see [our guidance on staying up to
 
 ### Recommended changes
 
+#### Use `secondary-background` Functional colour when you need more emphasis against `body-background`
+
+We've introduced a new `secondary-background` Functional colour (black tint-95) when you need more emphasis against `body-background`.
+
+We made this change in [pull request #7682: Add `secondary-background` Functional colour and use it in components](https://github.com/alphagov/govuk-frontend/pull/7682).
+
 #### Use `info` instead of `brand` for informational content that is not related to the brand
 
 We've introduced a new `info` Functional colour for informational content that is not related to the brand.
