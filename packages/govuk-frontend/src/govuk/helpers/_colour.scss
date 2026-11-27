@@ -158,8 +158,21 @@
     @error 'Colour reference should be a Sass colour or a Sass map';
   }
 
+  $ref: map.get($colour-reference, "ref");
   $name: map.get($colour-reference, "name");
-  @if not $name or $name == "" {
+
+  @if not $name and not $ref {
+    @error "Colour reference needs either `name` or `ref`.";
+  }
+
+  @if $ref {
+    @if $ref == "" {
+      @error "Colour reference `ref` shouldn't be empty.";
+    }
+    @return govuk-functional-colour($ref);
+  }
+
+  @if $name == "" {
     @error "Colour reference `name` shouldn't be empty.";
   }
 
